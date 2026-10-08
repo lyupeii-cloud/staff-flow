@@ -7,7 +7,7 @@ void main() {
   testWidgets('sans session, l\'écran de connexion s\'affiche', (tester) async {
     final session = Session(Api())..state = SessionState.signedOut;
     await tester.pumpWidget(StaffFlowApp(session: session));
-    expect(find.text('Staff Flow'), findsOneWidget);
+    expect(find.textContaining('Les plannings de votre équipe', findRichText: true), findsOneWidget);
     expect(find.textContaining('Connexion Google non configurée'), findsOneWidget);
   });
 }

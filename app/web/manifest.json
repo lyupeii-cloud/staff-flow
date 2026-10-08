@@ -1,11 +1,12 @@
 {
-    "name": "staff_flow",
-    "short_name": "staff_flow",
+    "name": "Staff Flow",
+    "short_name": "Staff Flow",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#061440",
+    "theme_color": "#061440",
+    "description": "Les plannings de votre équipe, partout.",
+    "lang": "fr",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

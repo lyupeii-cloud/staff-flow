@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../api.dart';
+import '../brand.dart';
 import '../models.dart';
 import '../session.dart';
 import 'company_tab.dart';
@@ -22,7 +23,7 @@ class HomeScreen extends StatelessWidget {
       length: companies.length,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Staff Flow'),
+          title: const BrandTitle(size: 22),
           actions: [
             IconButton(
               tooltip: 'Nouvelle entreprise',
