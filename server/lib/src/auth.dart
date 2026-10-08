@@ -12,7 +12,11 @@ class GoogleIdentity {
   final String name;
   final String? picture;
 
-  const GoogleIdentity({required this.sub, required this.email, required this.name, this.picture});
+  /// Langue du compte Google (« fr », « uk »…), quand le jeton la contient.
+  final String? locale;
+
+  const GoogleIdentity(
+      {required this.sub, required this.email, required this.name, this.picture, this.locale});
 }
 
 abstract class GoogleVerifier {
@@ -48,6 +52,7 @@ class TokenInfoGoogleVerifier implements GoogleVerifier {
       email: email,
       name: (claims['name'] as String?) ?? email.split('@').first,
       picture: claims['picture'] as String?,
+      locale: claims['locale'] as String?,
     );
   }
 }

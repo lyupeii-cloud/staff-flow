@@ -11,8 +11,11 @@ class FakeGoogle implements GoogleVerifier {
   @override
   Future<GoogleIdentity> verify(String idToken) async {
     if (!idToken.startsWith('google:')) throw const ApiError.unauthorized('Jeton Google invalide.');
-    final sub = idToken.substring(7);
-    return GoogleIdentity(sub: sub, email: '$sub@example.com', name: sub);
+    // « google:sub » ou « google:sub:langue »
+    final parts = idToken.substring(7).split(':');
+    final sub = parts.first;
+    return GoogleIdentity(
+        sub: sub, email: '$sub@example.com', name: sub, locale: parts.length > 1 ? parts[1] : null);
   }
 }
 
@@ -26,10 +29,11 @@ class FakeClock {
 class Client {
   final Handler handler;
   final String ip;
+  final String? language;
   String? token;
   late Map<String, dynamic> user;
 
-  Client(this.handler, {this.ip = '203.0.113.1'});
+  Client(this.handler, {this.ip = '203.0.113.1', this.language});
 
   Future<(int, dynamic)> call(String method, String path, [Object? body]) async {
     final res = await handler(Request(
@@ -39,6 +43,7 @@ class Client {
       headers: {
         if (token != null) 'authorization': 'Bearer $token',
         'x-forwarded-for': ip,
+        'accept-language': ?language,
       },
     ));
     final text = await res.readAsString();

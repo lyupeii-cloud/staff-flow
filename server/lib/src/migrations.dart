@@ -143,4 +143,7 @@ CREATE TABLE join_attempts (
 );
 CREATE INDEX join_attempts_recent ON join_attempts (at) WHERE NOT success;
 ''',
+
+  // 3 — langue du compte Google (« fr », « uk », « en-GB »…), si Google la fournit
+  'ALTER TABLE users ADD COLUMN locale text;',
 ];

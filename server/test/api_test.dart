@@ -20,6 +20,21 @@ void main() {
       expect(me['companies'], isEmpty);
     });
 
+    test('la langue du compte Google est gardée, même si un jeton suivant ne la donne pas', () async {
+      final c = Client(env.handler);
+      await c.ok('POST', '/auth/google', {'idToken': 'google:olena:uk'});
+      expect((await c.ok('POST', '/auth/google', {'idToken': 'google:olena'}))['user']['locale'], 'uk');
+    });
+
+    test('les erreurs sont dans la langue demandée', () async {
+      final (_, uk) = await Client(env.handler, language: 'uk-UA,uk;q=0.9')('GET', '/me');
+      expect(uk['error']['message'], 'Потрібно увійти.');
+      final (_, fr) = await Client(env.handler, language: 'fr-FR')('GET', '/me');
+      expect(fr['error']['message'], 'Connexion requise.');
+      final (_, other) = await Client(env.handler, language: 'pl')('GET', '/me');
+      expect(other['error']['message'], 'Please sign in.');
+    });
+
     test('se reconnecter garde le même compte', () async {
       final first = await login('alice');
       final second = await login('alice');

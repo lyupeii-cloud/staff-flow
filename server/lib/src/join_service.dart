@@ -83,7 +83,7 @@ class JoinService {
 
     final user = (await store.findUser(found))!;
     if (await store.roleOf(companyId, user.id) != null) {
-      throw ApiError.conflict('${user.name} fait déjà partie de l\'entreprise.');
+      throw ApiError.conflict('{name} fait déjà partie de l\'entreprise.', {'name': user.name});
     }
     final rows = await store.query(store.db, '''
       INSERT INTO join_requests (company_id, user_id, role, invited_by)

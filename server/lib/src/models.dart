@@ -27,6 +27,9 @@ class User {
   final String email;
   final String name;
   final String? photoUrl;
+
+  /// Langue du compte Google, pour afficher le site dans cette langue.
+  final String? locale;
   final DateTime createdAt;
 
   const User({
@@ -36,6 +39,7 @@ class User {
     required this.email,
     required this.name,
     this.photoUrl,
+    this.locale,
     required this.createdAt,
   });
 
@@ -45,6 +49,7 @@ class User {
         'email': email,
         'name': name,
         'photoUrl': photoUrl,
+        'locale': locale,
       };
 }
 

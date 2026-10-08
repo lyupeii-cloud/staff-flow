@@ -180,7 +180,7 @@ final _ianaZone = RegExp(r'^(UTC|[A-Z][A-Za-z_]+(/[A-Za-z0-9_+\-]+){1,2})$');
 /// Vérifie la forme d'un fuseau IANA (`Europe/Paris`, `America/Argentina/Buenos_Aires`).
 String validTimezone(String value) {
   if (!_ianaZone.hasMatch(value)) {
-    throw ApiError.badRequest('Fuseau horaire invalide : $value');
+    throw ApiError.badRequest('Fuseau horaire invalide : {value}', {'value': value});
   }
   return value;
 }

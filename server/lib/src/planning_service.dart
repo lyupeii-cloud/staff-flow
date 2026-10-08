@@ -52,7 +52,7 @@ class PlanningService {
                            WHEN @a::boolean THEN coalesce(archived_at, now()) ELSE NULL END
       WHERE id = @id::uuid AND company_id = @c::uuid RETURNING id''',
         {'id': id, 'c': companyId, 'n': name == null ? null : _name(name), 'a': archived});
-    if (rows.isEmpty) throw ApiError.notFound('${kind.label} introuvable.');
+    if (rows.isEmpty) throw ApiError.notFound(kind == CatalogKind.sites ? 'Site introuvable.' : 'Poste introuvable.');
   }
 
   // --- Services -------------------------------------------------------------
@@ -285,7 +285,10 @@ class PlanningService {
         SELECT 1 FROM ${kind.table}
         WHERE id = @id::uuid AND company_id = @c::uuid AND archived_at IS NULL''',
           {'id': id, 'c': companyId});
-      if (rows.isEmpty) throw ApiError.badRequest('${kind.label} inconnu ou archivé.');
+      if (rows.isEmpty) {
+        throw ApiError.badRequest(
+            kind == CatalogKind.sites ? 'Site inconnu ou archivé.' : 'Poste inconnu ou archivé.');
+      }
     }
   }
 
@@ -508,7 +511,7 @@ final _dayFormat = RegExp(r'^\d{4}-\d{2}-\d{2}$');
 
 DateTime parseDay(String value) {
   final d = _dayFormat.hasMatch(value) ? DateTime.tryParse('${value}T00:00:00Z') : null;
-  if (d == null || formatDay(d) != value) throw ApiError.badRequest('Date invalide : $value');
+  if (d == null || formatDay(d) != value) throw ApiError.badRequest('Date invalide : {value}', {'value': value});
   return d;
 }
 

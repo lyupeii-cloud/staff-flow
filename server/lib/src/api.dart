@@ -8,6 +8,7 @@ import 'auth.dart';
 import 'company_service.dart';
 import 'errors.dart';
 import 'join_service.dart';
+import 'messages.dart';
 import 'models.dart';
 import 'planning_service.dart';
 import 'store.dart';
@@ -88,7 +89,7 @@ class Api {
     if (idToken is! String || idToken.isEmpty) throw const ApiError.badRequest('idToken manquant.');
     final id = await google.verify(idToken);
     return _session(await store.upsertGoogleUser(
-        sub: id.sub, email: id.email, name: id.name, photoUrl: id.picture));
+        sub: id.sub, email: id.email, name: id.name, photoUrl: id.picture, locale: id.locale));
   }
 
   Future<Response> _loginDev(Request req) async {
@@ -289,8 +290,8 @@ class Api {
   static Role _role(String value) {
     try {
       return Role.parse(value);
-    } on FormatException catch (e) {
-      throw ApiError.badRequest(e.message);
+    } on FormatException {
+      throw ApiError.badRequest('Rôle inconnu : {value}', {'value': value});
     }
   }
 
@@ -304,8 +305,9 @@ class Api {
 
   // --- Outils --------------------------------------------------------------
 
-  static Response _notFound(Request _) =>
-      _json(const ApiError.notFound('Route inconnue.').toJson(), status: 404);
+  static Response _notFound(Request req) => _json(
+      const ApiError.notFound('Route inconnue.').toJson(negotiateLanguage(req.headers['accept-language'])),
+      status: 404);
 
   Handler _authed(Future<Response> Function(Request, User) handler) => (Request req) async {
         final header = req.headers['authorization'] ?? '';
@@ -319,7 +321,7 @@ class Api {
         try {
           return await inner(req);
         } on ApiError catch (e) {
-          return _json(e.toJson(), status: e.status);
+          return _json(e.toJson(negotiateLanguage(req.headers['accept-language'])), status: e.status);
         }
       };
 
@@ -350,7 +352,7 @@ class Api {
 
   static String _string(Map<String, dynamic> body, String key) {
     final value = body[key];
-    if (value is! String) throw ApiError.badRequest('Champ « $key » manquant.');
+    if (value is! String) throw ApiError.badRequest('Champ « {field} » manquant.', {'field': key});
     return value;
   }
 

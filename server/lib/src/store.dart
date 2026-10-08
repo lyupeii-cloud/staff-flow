@@ -63,6 +63,7 @@ class Store {
         email: r['email'] as String,
         name: r['name'] as String,
         photoUrl: r['photo_url'] as String?,
+        locale: r['locale'] as String?,
         createdAt: r['created_at'] as DateTime,
       );
 
@@ -88,18 +89,21 @@ class Store {
     required String email,
     required String name,
     String? photoUrl,
+    String? locale,
   }) async {
     final rows = await query(_db, '''
-      INSERT INTO users (public_id, google_sub, email, name, photo_url)
-      VALUES (@publicId, @sub, @email, @name, @photo)
+      INSERT INTO users (public_id, google_sub, email, name, photo_url, locale)
+      VALUES (@publicId, @sub, @email, @name, @photo, @locale)
       ON CONFLICT (google_sub) DO UPDATE
-        SET email = EXCLUDED.email, name = EXCLUDED.name, photo_url = EXCLUDED.photo_url
+        SET email = EXCLUDED.email, name = EXCLUDED.name, photo_url = EXCLUDED.photo_url,
+            locale = coalesce(EXCLUDED.locale, users.locale)
       RETURNING *''', {
       'publicId': newPublicId(),
       'sub': sub,
       'email': email,
       'name': name,
       'photo': photoUrl,
+      'locale': locale,
     });
     return _user(rows.first.toColumnMap());
   }
