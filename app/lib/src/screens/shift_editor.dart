@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../api.dart';
 import '../dates.dart';
+import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
 import 'company_tab.dart';
@@ -67,7 +68,10 @@ class _ShiftEditorState extends State<_ShiftEditor> {
   var _series = false;
 
   bool _saving = false;
-  String? _error;
+  Localized? _error;
+
+  L10n get t => context.l10n;
+  String get loc => context.localeName;
 
   @override
   Widget build(BuildContext context) {
@@ -82,34 +86,34 @@ class _ShiftEditorState extends State<_ShiftEditor> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(editing ? 'Modifier le service' : 'Nouveau service', style: theme.textTheme.titleLarge),
+            Text(editing ? t.editShift : t.newShift, style: theme.textTheme.titleLarge),
             const SizedBox(height: 12),
             if (editing && s!.seriesId != null) ...[
               SegmentedButton<bool>(
-                segments: const [
-                  ButtonSegment(value: false, label: Text('Ce service')),
-                  ButtonSegment(value: true, label: Text('Celui-ci et les suivants')),
+                segments: [
+                  ButtonSegment(value: false, label: Text(t.thisShift)),
+                  ButtonSegment(value: true, label: Text(t.thisAndFollowing)),
                 ],
                 selected: {_series},
                 onSelectionChanged: (v) => setState(() => _series = v.first),
               ),
               const SizedBox(height: 12),
             ],
-            _label('Jour${_days.length > 1 ? 's' : ''}'),
+            _label(t.daysLabel(_days.length)),
             Wrap(
               spacing: 8,
               runSpacing: 4,
               children: [
                 for (final d in _days)
                   InputChip(
-                    label: Text(dayLabel(d)),
+                    label: Text(dayLabel(d, loc)),
                     onPressed: editing && _series ? null : () => _pickDay(replace: d),
                     onDeleted: !editing && _days.length > 1 ? () => setState(() => _days.remove(d)) : null,
                   ),
                 if (!editing)
                   ActionChip(
                     avatar: const Icon(Icons.add, size: 18),
-                    label: const Text('Autre jour'),
+                    label: Text(t.otherDay),
                     onPressed: () => _pickDay(),
                   ),
               ],
@@ -117,27 +121,27 @@ class _ShiftEditorState extends State<_ShiftEditor> {
             const SizedBox(height: 12),
             Row(
               children: [
-                Expanded(child: _timeButton('Début', _start, (v) => _start = v)),
+                Expanded(child: _timeButton(t.start, _start, (v) => _start = v)),
                 const SizedBox(width: 12),
-                Expanded(child: _timeButton('Fin', _end, (v) => _end = v)),
+                Expanded(child: _timeButton(t.end, _end, (v) => _end = v)),
               ],
             ),
-            if (_end <= _start) Text('Se termine le lendemain.', style: theme.textTheme.bodySmall),
+            if (_end <= _start) Text(t.endsNextDay, style: theme.textTheme.bodySmall),
             const SizedBox(height: 12),
             DropdownButtonFormField<String?>(
               initialValue: _userId,
-              decoration: const InputDecoration(labelText: 'Personne'),
+              decoration: InputDecoration(labelText: t.person),
               items: [
-                const DropdownMenuItem(value: null, child: Text('Non attribué')),
+                DropdownMenuItem(value: null, child: Text(t.unassigned)),
                 for (final m in members)
-                  DropdownMenuItem(value: m.user.id, child: Text('${m.user.name} · ${m.role.label}')),
+                  DropdownMenuItem(value: m.user.id, child: Text('${m.user.name} · ${m.role.label(t)}')),
               ],
               onChanged: (v) => setState(() => _userId = v),
             ),
             if (positions.isNotEmpty)
               DropdownButtonFormField<String?>(
                 initialValue: _positionId,
-                decoration: const InputDecoration(labelText: 'Poste'),
+                decoration: InputDecoration(labelText: t.position),
                 items: [
                   const DropdownMenuItem(value: null, child: Text('—')),
                   for (final p in positions) DropdownMenuItem(value: p.id, child: Text(p.name)),
@@ -147,7 +151,7 @@ class _ShiftEditorState extends State<_ShiftEditor> {
             if (sites.isNotEmpty)
               DropdownButtonFormField<String?>(
                 initialValue: _siteId,
-                decoration: const InputDecoration(labelText: 'Site'),
+                decoration: InputDecoration(labelText: t.site),
                 items: [
                   const DropdownMenuItem(value: null, child: Text('—')),
                   for (final p in sites) DropdownMenuItem(value: p.id, child: Text(p.name)),
@@ -156,12 +160,12 @@ class _ShiftEditorState extends State<_ShiftEditor> {
               ),
             TextField(
               controller: _note,
-              decoration: const InputDecoration(labelText: 'Note (facultatif)'),
+              decoration: InputDecoration(labelText: t.noteOptional),
             ),
             if (!editing) ..._repeatFields(),
             if (_error != null) ...[
               const SizedBox(height: 12),
-              Text(_error!, style: TextStyle(color: theme.colorScheme.error)),
+              Text(_error!(t), style: TextStyle(color: theme.colorScheme.error)),
             ],
             const SizedBox(height: 20),
             Row(
@@ -170,13 +174,13 @@ class _ShiftEditorState extends State<_ShiftEditor> {
                   TextButton.icon(
                     onPressed: _saving ? null : _delete,
                     icon: const Icon(Icons.delete_outline),
-                    label: const Text('Supprimer'),
+                    label: Text(t.delete),
                     style: TextButton.styleFrom(foregroundColor: theme.colorScheme.error),
                   ),
                 const Spacer(),
-                TextButton(onPressed: () => Navigator.pop(context), child: const Text('Annuler')),
+                TextButton(onPressed: () => Navigator.pop(context), child: Text(t.cancel)),
                 const SizedBox(width: 8),
-                FilledButton(onPressed: _saving ? null : _save, child: const Text('Enregistrer')),
+                FilledButton(onPressed: _saving ? null : _save, child: Text(t.save)),
               ],
             ),
           ],
@@ -187,12 +191,12 @@ class _ShiftEditorState extends State<_ShiftEditor> {
 
   List<Widget> _repeatFields() => [
     const SizedBox(height: 16),
-    _label('Répétition'),
+    _label(t.repetition),
     SegmentedButton<_Repeat>(
-      segments: const [
-        ButtonSegment(value: _Repeat.none, label: Text('Aucune')),
-        ButtonSegment(value: _Repeat.daily, label: Text('Chaque jour')),
-        ButtonSegment(value: _Repeat.weekly, label: Text('Chaque semaine')),
+      segments: [
+        ButtonSegment(value: _Repeat.none, label: Text(t.repeatNone)),
+        ButtonSegment(value: _Repeat.daily, label: Text(t.repeatDaily)),
+        ButtonSegment(value: _Repeat.weekly, label: Text(t.repeatWeekly)),
       ],
       selected: {_repeat},
       onSelectionChanged: (v) => setState(() {
@@ -209,7 +213,7 @@ class _ShiftEditorState extends State<_ShiftEditor> {
         children: [
           for (var d = 1; d <= 7; d++)
             FilterChip(
-              label: Text(weekdayShort[d - 1]),
+              label: Text(weekdayShort(d, loc)),
               selected: _weekdays.contains(d),
               onSelected: (on) => setState(() => on ? _weekdays.add(d) : _weekdays.remove(d)),
             ),
@@ -226,7 +230,7 @@ class _ShiftEditorState extends State<_ShiftEditor> {
             Row(
               children: [
                 const Radio<_End>(value: _End.count),
-                const Text('Pendant '),
+                Text(t.repeatForPrefix),
                 SizedBox(
                   width: 56,
                   child: TextField(
@@ -236,13 +240,13 @@ class _ShiftEditorState extends State<_ShiftEditor> {
                     onTap: () => setState(() => _endKind = _End.count),
                   ),
                 ),
-                Text(_repeat == _Repeat.daily ? ' jours' : ' semaines'),
+                Text(_repeat == _Repeat.daily ? t.repeatDaysSuffix : t.repeatWeeksSuffix),
               ],
             ),
             Row(
               children: [
                 const Radio<_End>(value: _End.until),
-                const Text('Jusqu\'au '),
+                Text(t.repeatUntilPrefix),
                 TextButton(
                   onPressed: () async {
                     final d = await showDatePicker(
@@ -253,7 +257,7 @@ class _ShiftEditorState extends State<_ShiftEditor> {
                     );
                     if (d != null) setState(() => (_until = d, _endKind = _End.until));
                   },
-                  child: Text(longDate(_until)),
+                  child: Text(longDate(_until, loc)),
                 ),
               ],
             ),
@@ -338,9 +342,9 @@ class _ShiftEditorState extends State<_ShiftEditor> {
       await action();
       if (mounted) Navigator.pop(context, true);
     } on ApiException catch (e) {
-      setState(() => _error = e.message);
+      setState(() => _error = e.describe);
     } catch (_) {
-      setState(() => _error = 'Serveur injoignable.');
+      setState(() => _error = (t) => t.serverUnreachable);
     } finally {
       if (mounted) setState(() => _saving = false);
     }
@@ -356,6 +360,8 @@ Future<bool?> showReplaceDialog(
   required DateTime from,
   required DateTime to,
 }) {
+  final t = context.l10n;
+  final loc = context.localeName;
   String? fromId, toId;
   var range = DateTimeRange(start: from, end: to);
   String? error;
@@ -373,16 +379,16 @@ Future<bool?> showReplaceDialog(
               onChanged: (v) => setState(() => set(v)),
             );
         return AlertDialog(
-          title: const Text('Remplacer une personne'),
+          title: Text(t.replacePersonTitle),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              who('Remplacer', fromId, (v) => fromId = v),
-              who('Par', toId, (v) => toId = v),
+              who(t.replaceFrom, fromId, (v) => fromId = v),
+              who(t.replaceBy, toId, (v) => toId = v),
               const SizedBox(height: 12),
               OutlinedButton.icon(
                 icon: const Icon(Icons.date_range),
-                label: Text('Du ${dayLabel(range.start)} au ${dayLabel(range.end)}'),
+                label: Text(t.dateRange(dayLabel(range.start, loc), dayLabel(range.end, loc))),
                 onPressed: () async {
                   final r = await showDateRangePicker(
                     context: context,
@@ -401,7 +407,7 @@ Future<bool?> showReplaceDialog(
             ],
           ),
           actions: [
-            TextButton(onPressed: () => Navigator.pop(context), child: const Text('Annuler')),
+            TextButton(onPressed: () => Navigator.pop(context), child: Text(t.cancel)),
             FilledButton(
               onPressed: fromId == null || toId == null || fromId == toId
                   ? null
@@ -417,15 +423,15 @@ Future<bool?> showReplaceDialog(
                         if (!context.mounted) return;
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text('$n service${n > 1 ? 's' : ''} modifié${n > 1 ? 's' : ''}.'),
+                            content: Text(t.shiftsChanged(n)),
                           ),
                         );
                         Navigator.pop(context, true);
                       } on ApiException catch (e) {
-                        setState(() => error = e.message);
+                        setState(() => error = e.describe(t));
                       }
                     },
-              child: const Text('Remplacer'),
+              child: Text(t.replaceButton),
             ),
           ],
         );

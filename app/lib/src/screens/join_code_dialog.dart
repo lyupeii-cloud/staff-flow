@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../api.dart';
+import '../i18n.dart';
 import '../session.dart';
 
 /// Affiche un code à 6 chiffres valable 2 minutes, à donner au responsable.
@@ -23,7 +24,7 @@ class _JoinCodeDialog extends StatefulWidget {
 class _JoinCodeDialogState extends State<_JoinCodeDialog> {
   String? _code;
   DateTime? _expires;
-  String? _error;
+  Localized? _error;
   Timer? _timer;
 
   @override
@@ -53,9 +54,9 @@ class _JoinCodeDialogState extends State<_JoinCodeDialog> {
                 : lifetime)
           ));
     } on ApiException catch (e) {
-      setState(() => _error = e.message);
+      setState(() => _error = e.describe);
     } catch (_) {
-      setState(() => _error = 'Serveur injoignable.');
+      setState(() => _error = (t) => t.serverUnreachable);
     }
   }
 
@@ -64,16 +65,16 @@ class _JoinCodeDialogState extends State<_JoinCodeDialog> {
     final theme = Theme.of(context);
     final left = _expires?.difference(DateTime.now());
     final expired = left != null && left.isNegative;
+    final t = context.l10n;
     return AlertDialog(
-      title: const Text('Rejoindre une entreprise'),
+      title: Text(t.joinCompany),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text('Donnez ce code à votre responsable. Il le saisit dans son application, '
-              'puis vous recevez une invitation à accepter.'),
+          Text(t.joinHint),
           const SizedBox(height: 20),
           if (_error != null)
-            Text(_error!, style: TextStyle(color: theme.colorScheme.error))
+            Text(_error!(t), style: TextStyle(color: theme.colorScheme.error))
           else if (_code == null)
             const CircularProgressIndicator()
           else ...[
@@ -87,19 +88,19 @@ class _JoinCodeDialogState extends State<_JoinCodeDialog> {
             ),
             const SizedBox(height: 8),
             Text(expired
-                ? 'Code expiré.'
-                : 'Valable encore ${left!.inMinutes}:${(left.inSeconds % 60).toString().padLeft(2, '0')}'),
+                ? t.codeExpired
+                : t.codeValidFor('${left!.inMinutes}:${(left.inSeconds % 60).toString().padLeft(2, '0')}')),
           ],
         ],
       ),
       actions: [
-        TextButton(onPressed: _generate, child: const Text('Nouveau code')),
+        TextButton(onPressed: _generate, child: Text(t.newCode)),
         FilledButton(
           onPressed: () {
             Navigator.pop(context);
             widget.session.refresh().catchError((_) {});
           },
-          child: const Text('Fermer'),
+          child: Text(t.close),
         ),
       ],
     );

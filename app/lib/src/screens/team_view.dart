@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
 import 'home_screen.dart';
@@ -24,6 +25,7 @@ class _TeamViewState extends State<TeamView> {
 
   Company get company => widget.membership.company;
   Role get role => widget.membership.role;
+  L10n get t => context.l10n;
 
   @override
   void initState() {
@@ -56,18 +58,18 @@ class _TeamViewState extends State<TeamView> {
         children: [
           Row(
             children: [
-              Expanded(child: Text('Équipe', style: theme.textTheme.titleMedium)),
+              Expanded(child: Text(t.team, style: theme.textTheme.titleMedium)),
               if (role.canManage && !company.readOnly)
                 TextButton.icon(
                   onPressed: _addWithCode,
                   icon: const Icon(Icons.person_add, size: 18),
-                  label: const Text('Ajouter'),
+                  label: Text(t.add),
                 ),
               if (role.canManage && !company.readOnly)
                 TextButton.icon(
                   onPressed: _rename,
                   icon: const Icon(Icons.edit, size: 18),
-                  label: const Text('Renommer'),
+                  label: Text(t.rename),
                 ),
             ],
           ),
@@ -89,7 +91,7 @@ class _TeamViewState extends State<TeamView> {
             OutlinedButton.icon(
               onPressed: _leave,
               icon: const Icon(Icons.logout),
-              label: const Text('Quitter cette entreprise'),
+              label: Text(t.leaveCompany),
             ),
           ],
         ],
@@ -105,14 +107,14 @@ class _TeamViewState extends State<TeamView> {
         backgroundImage: m.user.photoUrl == null ? null : NetworkImage(m.user.photoUrl!),
         child: m.user.photoUrl == null ? Text(m.user.name.characters.first.toUpperCase()) : null,
       ),
-      title: Text(isMe ? '${m.user.name} (vous)' : m.user.name),
-      subtitle: Text('${m.role.label} · ${m.user.publicId}'),
+      title: Text(isMe ? t.meSuffix(m.user.name) : m.user.name),
+      subtitle: Text('${m.role.label(t)} · ${m.user.publicId}'),
       trailing: actions.isEmpty
           ? null
           : PopupMenuButton<_MemberAction>(
               onSelected: (a) => _run(a, m),
               itemBuilder: (_) => [
-                for (final a in actions) PopupMenuItem(value: a, child: Text(a.label(m))),
+                for (final a in actions) PopupMenuItem(value: a, child: Text(a.label(t, m))),
               ],
             ),
     );
@@ -145,14 +147,12 @@ class _TeamViewState extends State<TeamView> {
         final to = m.role == Role.extra ? Role.employee : Role.extra;
         await _act(() => api.setRole(company.id, m.user.id, to));
       case _MemberAction.transfer:
-        if (await _confirm('Transférer l\'entreprise à ${m.user.name} ?',
-            'Une fois qu\'il aura accepté, il deviendra propriétaire (abonnement, factures, '
-                'responsables) et vous deviendrez responsable.')) {
+        if (await _confirm(t.transferConfirmTitle(m.user.name), t.transferConfirmBody)) {
           await _act(() => api.proposeTransfer(company.id, m.user.id),
-              success: 'Proposition envoyée à ${m.user.name}.');
+              success: t.transferSent(m.user.name));
         }
       case _MemberAction.remove:
-        if (await _confirm('Retirer ${m.user.name} ?', 'Son historique est conservé.')) {
+        if (await _confirm(t.removeConfirmTitle(m.user.name), t.removeConfirmBody)) {
           await _act(() => api.removeMember(company.id, m.user.id));
         }
     }
@@ -167,13 +167,12 @@ class _TeamViewState extends State<TeamView> {
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setState) => AlertDialog(
-          title: const Text('Ajouter une personne'),
+          title: Text(t.addPersonTitle),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Demandez-lui d\'ouvrir Staff Flow, menu de son compte, '
-                  '« Rejoindre une entreprise », puis saisissez le code affiché.'),
+              Text(t.addPersonHint),
               const SizedBox(height: 12),
               TextField(
                 controller: code,
@@ -181,13 +180,13 @@ class _TeamViewState extends State<TeamView> {
                 keyboardType: TextInputType.number,
                 maxLength: 6,
                 style: const TextStyle(fontSize: 24, letterSpacing: 8),
-                decoration: const InputDecoration(labelText: 'Code à 6 chiffres', counterText: ''),
+                decoration: InputDecoration(labelText: t.sixDigitCode, counterText: ''),
               ),
               const SizedBox(height: 8),
               SegmentedButton<Role>(
-                segments: const [
-                  ButtonSegment(value: Role.employee, label: Text('Salarié')),
-                  ButtonSegment(value: Role.extra, label: Text('Extra')),
+                segments: [
+                  ButtonSegment(value: Role.employee, label: Text(Role.employee.label(t))),
+                  ButtonSegment(value: Role.extra, label: Text(Role.extra.label(t))),
                 ],
                 selected: {role},
                 onSelectionChanged: (s) => setState(() => role = s.first),
@@ -195,8 +194,8 @@ class _TeamViewState extends State<TeamView> {
             ],
           ),
           actions: [
-            TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Annuler')),
-            FilledButton(onPressed: () => Navigator.pop(context, true), child: const Text('Valider')),
+            TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
+            FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.validate)),
           ],
         ),
       ),
@@ -205,13 +204,12 @@ class _TeamViewState extends State<TeamView> {
     String? name;
     await _act(() async => name = await widget.session.api.redeemJoinCode(company.id, code.text, role));
     if (name != null && mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Invitation envoyée à $name : il doit l\'accepter.')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.invitationSent(name!))));
     }
   }
 
   Future<void> _leave() async {
-    if (await _confirm('Quitter ${company.name} ?', 'Vous ne verrez plus son planning.')) {
+    if (await _confirm(t.leaveConfirmTitle(company.name), t.leaveConfirmBody)) {
       await _act(() => widget.session.api.removeMember(company.id, widget.session.me!.user.id));
     }
   }
@@ -221,11 +219,11 @@ class _TeamViewState extends State<TeamView> {
     final ok = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Renommer l\'entreprise'),
+        title: Text(t.renameCompany),
         content: TextField(controller: name, autofocus: true),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Annuler')),
-          FilledButton(onPressed: () => Navigator.pop(context, true), child: const Text('Enregistrer')),
+          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
+          FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.save)),
         ],
       ),
     );
@@ -239,8 +237,8 @@ class _TeamViewState extends State<TeamView> {
           title: Text(title),
           content: Text(body),
           actions: [
-            TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Annuler')),
-            FilledButton(onPressed: () => Navigator.pop(context, true), child: const Text('Confirmer')),
+            TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
+            FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.confirm)),
           ],
         ),
       ) ??
@@ -254,11 +252,11 @@ enum _MemberAction {
   transfer,
   remove;
 
-  String label(Member m) => switch (this) {
-        makeManager => 'Nommer responsable',
-        makeEmployee => 'Repasser salarié',
-        toggleExtra => m.role == Role.extra ? 'Passer salarié' : 'Passer extra',
-        transfer => 'Transférer la propriété',
-        remove => 'Retirer de l\'entreprise',
+  String label(L10n t, Member m) => switch (this) {
+        makeManager => t.actionMakeManager,
+        makeEmployee => t.actionMakeEmployee,
+        toggleExtra => m.role == Role.extra ? t.actionToEmployee : t.actionToExtra,
+        transfer => t.actionTransfer,
+        remove => t.actionRemove,
       };
 }

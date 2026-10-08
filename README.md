@@ -31,6 +31,8 @@ Organisation des plannings de travail des entreprises : application Android et s
 - Vues semaine et mois ; filtre « mes services » ; total d'heures de la période.
 - Ajout par code à 6 chiffres (2 minutes, usage unique, confirmé par le salarié, blocage 2 minutes après 3 erreurs).
 
+**Langues** : ukrainien, français, anglais (anglais pour toute autre langue). L'application Android suit la langue du téléphone ; le site suit la langue du compte Google une fois connecté (sinon celle du navigateur). Textes de l'application : `app/lib/l10n/app_*.arb` ; messages du serveur : `server/lib/src/messages.dart`. Ajouter une langue = un fichier `.arb` de plus et une colonne dans `messages.dart`.
+
 ## Développement local (Windows)
 
 Prérequis : Flutter 3.47.6 (contient Dart 3.13.5).

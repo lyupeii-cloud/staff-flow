@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
 import 'catalog_view.dart';
@@ -75,6 +76,7 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
   Widget build(BuildContext context) {
     super.build(context);
     final theme = Theme.of(context);
+    final t = context.l10n;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -83,16 +85,19 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text('${role.label} · ${company.timezone}', style: theme.textTheme.bodySmall),
+              Text('${role.label(t)} · ${company.timezone}', style: theme.textTheme.bodySmall),
               const SizedBox(height: 8),
               SegmentedButton<_View>(
                 showSelectedIcon: false,
                 segments: [
-                  const ButtonSegment(
-                      value: _View.planning, icon: Icon(Icons.calendar_month), label: Text('Planning')),
-                  const ButtonSegment(value: _View.team, icon: Icon(Icons.group), label: Text('Équipe')),
+                  ButtonSegment(
+                      value: _View.planning,
+                      icon: const Icon(Icons.calendar_month),
+                      label: Text(t.viewPlanning)),
+                  ButtonSegment(value: _View.team, icon: const Icon(Icons.group), label: Text(t.viewTeam)),
                   if (role.canManage)
-                    const ButtonSegment(value: _View.catalog, icon: Icon(Icons.store), label: Text('Postes')),
+                    ButtonSegment(
+                        value: _View.catalog, icon: const Icon(Icons.store), label: Text(t.viewPositions)),
                 ],
                 selected: {_view},
                 onSelectionChanged: (s) => setState(() => _view = s.first),
@@ -103,7 +108,7 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
         if (company.readOnly)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Text('Entreprise en lecture seule.', style: TextStyle(color: theme.colorScheme.error)),
+            child: Text(t.readOnlyCompany, style: TextStyle(color: theme.colorScheme.error)),
           ),
         Expanded(
           child: FutureBuilder(
@@ -114,7 +119,7 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
                   child: TextButton.icon(
                     onPressed: _reload,
                     icon: const Icon(Icons.refresh),
-                    label: Text('${snap.error}\nRéessayer'),
+                    label: Text('${snap.error}\n${t.retry}'),
                   ),
                 );
               }

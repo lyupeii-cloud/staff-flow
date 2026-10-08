@@ -1,11 +1,9 @@
+/// Rôle dans une entreprise ; son libellé traduit est dans i18n.dart.
 enum Role {
-  owner('Propriétaire'),
-  manager('Responsable'),
-  employee('Salarié'),
-  extra('Extra');
-
-  final String label;
-  const Role(this.label);
+  owner,
+  manager,
+  employee,
+  extra;
 
   bool get canManage => this == owner || this == manager;
 }
@@ -17,12 +15,16 @@ class User {
   final String name;
   final String? photoUrl;
 
+  /// Langue du compte Google (« uk », « fr »…), si Google l'a fournie.
+  final String? locale;
+
   User.fromJson(Map<String, dynamic> j)
       : id = j['id'],
         publicId = j['publicId'],
         email = j['email'],
         name = j['name'],
-        photoUrl = j['photoUrl'];
+        photoUrl = j['photoUrl'],
+        locale = j['locale'];
 }
 
 class Company {

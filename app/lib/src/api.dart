@@ -3,16 +3,21 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'config.dart';
+import 'i18n.dart';
 import 'models.dart';
 
 class ApiException implements Exception {
   final int status;
-  final String message;
 
-  ApiException(this.status, this.message);
+  /// Message du serveur, déjà dans la langue envoyée (Accept-Language).
+  final String? serverMessage;
+
+  ApiException(this.status, this.serverMessage);
+
+  String describe(L10n t) => serverMessage ?? t.errorStatus(status);
 
   @override
-  String toString() => message;
+  String toString() => serverMessage ?? 'HTTP $status';
 }
 
 /// Client de l'API Staff Flow (`/api/v1`).
@@ -20,13 +25,17 @@ class Api {
   final http.Client _http;
   String? token;
 
+  /// Langue de l'application, transmise au serveur pour ses messages.
+  String language = 'en';
+
   Api({http.Client? client}) : _http = client ?? http.Client();
 
   Uri _uri(String path) => Uri.parse('${Config.apiUrl}/api/v1$path');
 
   Future<dynamic> _send(String method, String path, [Object? body]) async {
     final req = http.Request(method, _uri(path))
-      ..headers['content-type'] = 'application/json';
+      ..headers['content-type'] = 'application/json; charset=utf-8'
+      ..headers['accept-language'] = language;
     if (token != null) req.headers['authorization'] = 'Bearer $token';
     if (body != null) req.body = jsonEncode(body);
     final res = await http.Response.fromStream(await _http.send(req));
@@ -34,7 +43,7 @@ class Api {
     if (res.statusCode >= 400) {
       final error = decoded is Map ? decoded['error'] : null;
       final message = error is Map ? error['message'] as String? : null;
-      throw ApiException(res.statusCode, message ?? 'Erreur ${res.statusCode}');
+      throw ApiException(res.statusCode, message);
     }
     return decoded;
   }

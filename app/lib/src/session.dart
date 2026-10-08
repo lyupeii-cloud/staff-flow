@@ -6,9 +6,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api.dart';
 import 'config.dart';
+import 'i18n.dart';
 import 'models.dart';
 
 enum SessionState { loading, signedOut, signedIn }
+
+/// Texte à afficher, produit dans la langue de l'écran au moment de l'afficher.
+typedef Localized = String Function(L10n t);
 
 /// Connexion Google, jeton de session et données de l'utilisateur (`/me`).
 class Session extends ChangeNotifier {
@@ -20,7 +24,7 @@ class Session extends ChangeNotifier {
 
   SessionState state = SessionState.loading;
   Me? me;
-  String? error;
+  Localized? error;
   bool _googleReady = false;
 
   bool get googleReady => _googleReady;
@@ -34,10 +38,10 @@ class Session extends ChangeNotifier {
       await refresh();
     } on ApiException catch (e) {
       if (e.status == 401) return signOut();
-      error = e.message;
+      error = e.describe;
       _set(SessionState.signedOut);
     } catch (_) {
-      error = 'Serveur injoignable.';
+      error = (t) => t.serverUnreachable;
       _set(SessionState.signedOut);
     }
   }
@@ -51,7 +55,7 @@ class Session extends ChangeNotifier {
         serverClientId: kIsWeb ? null : Config.googleWebClientId,
       );
     } catch (e) {
-      error = 'Connexion Google indisponible : $e';
+      error = (t) => t.googleUnavailable('$e');
       notifyListeners();
       return;
     }
@@ -64,7 +68,7 @@ class Session extends ChangeNotifier {
       }
     }, onError: (Object e) {
       if (e is GoogleSignInException && e.code == GoogleSignInExceptionCode.canceled) return;
-      error = 'Connexion Google impossible : $e';
+      error = (t) => t.googleFailed('$e');
       notifyListeners();
     });
     _googleReady = true;
@@ -108,15 +112,15 @@ class Session extends ChangeNotifier {
     try {
       await action();
     } on ApiException catch (e) {
-      error = e.message;
+      error = e.describe;
       notifyListeners();
     } on GoogleSignInException catch (e) {
       if (e.code != GoogleSignInExceptionCode.canceled) {
-        error = 'Connexion Google impossible : ${e.description ?? e.code.name}';
+        error = (t) => t.googleFailed(e.description ?? e.code.name);
         notifyListeners();
       }
     } catch (e) {
-      error = 'Serveur injoignable.';
+      error = (t) => t.serverUnreachable;
       notifyListeners();
     }
   }

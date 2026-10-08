@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../api.dart';
 import '../brand.dart';
+import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
 import 'company_tab.dart';
@@ -26,7 +27,7 @@ class HomeScreen extends StatelessWidget {
           title: const BrandTitle(size: 22),
           actions: [
             IconButton(
-              tooltip: 'Nouvelle entreprise',
+              tooltip: context.l10n.newCompany,
               icon: const Icon(Icons.add_business),
               onPressed: () => createCompany(context, session),
             ),
@@ -61,55 +62,36 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-const timezones = [
-  'Europe/Paris',
-  'Europe/Brussels',
-  'Europe/Zurich',
-  'Europe/Luxembourg',
-  'Europe/London',
-  'Europe/Berlin',
-  'Europe/Madrid',
-  'Europe/Rome',
-  'America/Toronto',
-  'America/Montreal',
-  'America/New_York',
-  'America/Los_Angeles',
-  'Africa/Casablanca',
-  'Africa/Dakar',
-  'Indian/Reunion',
-  'America/Martinique',
-  'Pacific/Noumea',
-  'UTC',
-];
-
 Future<void> createCompany(BuildContext context, Session session) async {
+  final t = context.l10n;
   final name = TextEditingController();
-  var timezone = timezones.first;
+  final suggested = defaultTimezone(WidgetsBinding.instance.platformDispatcher.locale);
+  var timezone = timezones.contains(suggested) ? suggested : timezones.first;
   final created = await showDialog<bool>(
     context: context,
     builder: (context) => StatefulBuilder(
       builder: (context, setState) => AlertDialog(
-        title: const Text('Nouvelle entreprise'),
+        title: Text(t.newCompany),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               controller: name,
               autofocus: true,
-              decoration: const InputDecoration(labelText: 'Nom'),
+              decoration: InputDecoration(labelText: t.name),
             ),
             const SizedBox(height: 12),
             DropdownButtonFormField<String>(
               initialValue: timezone,
-              decoration: const InputDecoration(labelText: 'Fuseau horaire'),
+              decoration: InputDecoration(labelText: t.timezone),
               items: [for (final z in timezones) DropdownMenuItem(value: z, child: Text(z))],
               onChanged: (z) => setState(() => timezone = z!),
             ),
           ],
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Annuler')),
-          FilledButton(onPressed: () => Navigator.pop(context, true), child: const Text('Créer')),
+          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
+          FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.create)),
         ],
       ),
     ),
@@ -122,13 +104,14 @@ Future<void> createCompany(BuildContext context, Session session) async {
 Future<void> runAction(BuildContext context, Session session, Future<void> Function() action,
     {String? success}) async {
   final messenger = ScaffoldMessenger.of(context);
+  final t = context.l10n;
   try {
     await action();
     if (success != null) messenger.showSnackBar(SnackBar(content: Text(success)));
   } on ApiException catch (e) {
-    messenger.showSnackBar(SnackBar(content: Text(e.message)));
+    messenger.showSnackBar(SnackBar(content: Text(e.describe(t))));
   } catch (_) {
-    messenger.showSnackBar(const SnackBar(content: Text('Serveur injoignable.')));
+    messenger.showSnackBar(SnackBar(content: Text(t.serverUnreachable)));
   }
   await session.refresh().catchError((_) {});
 }
@@ -139,35 +122,36 @@ class _NoCompany extends StatelessWidget {
   const _NoCompany({required this.session});
 
   @override
-  Widget build(BuildContext context) => Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.storefront, size: 48),
-              const SizedBox(height: 12),
-              const Text('Vous ne faites partie d\'aucune entreprise.', textAlign: TextAlign.center),
-              const SizedBox(height: 4),
-              const Text('Pour rejoindre celle de votre employeur, générez un code '
-                  'et donnez-le à votre responsable.',
-                  textAlign: TextAlign.center),
-              const SizedBox(height: 16),
-              FilledButton.icon(
-                onPressed: () => showJoinCodeDialog(context, session),
-                icon: const Icon(Icons.pin),
-                label: const Text('Rejoindre une entreprise'),
-              ),
-              const SizedBox(height: 8),
-              OutlinedButton.icon(
-                onPressed: () => createCompany(context, session),
-                icon: const Icon(Icons.add_business),
-                label: const Text('Créer une entreprise'),
-              ),
-            ],
-          ),
+  Widget build(BuildContext context) {
+    final t = context.l10n;
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.storefront, size: 48),
+            const SizedBox(height: 12),
+            Text(t.noCompanyTitle, textAlign: TextAlign.center),
+            const SizedBox(height: 4),
+            Text(t.noCompanyHint, textAlign: TextAlign.center),
+            const SizedBox(height: 16),
+            FilledButton.icon(
+              onPressed: () => showJoinCodeDialog(context, session),
+              icon: const Icon(Icons.pin),
+              label: Text(t.joinCompany),
+            ),
+            const SizedBox(height: 8),
+            OutlinedButton.icon(
+              onPressed: () => createCompany(context, session),
+              icon: const Icon(Icons.add_business),
+              label: Text(t.createCompany),
+            ),
+          ],
         ),
-      );
+      ),
+    );
+  }
 }
 
 class _TransferBanner extends StatelessWidget {
@@ -178,24 +162,25 @@ class _TransferBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = context.l10n;
     final company = session.me!.companies
         .where((m) => m.company.id == transfer.companyId)
         .firstOrNull
         ?.company
         .name;
     return MaterialBanner(
-      content: Text('On vous propose de devenir propriétaire de « ${company ?? 'une entreprise'} ».'),
+      content: Text(t.transferOffer(company ?? t.someCompany)),
       actions: [
         TextButton(
           onPressed: () => runAction(context, session,
               () => session.api.answerTransfer(transfer.id, accept: false)),
-          child: const Text('Refuser'),
+          child: Text(t.decline),
         ),
         FilledButton(
           onPressed: () => runAction(
               context, session, () => session.api.answerTransfer(transfer.id, accept: true),
-              success: 'Vous êtes maintenant propriétaire.'),
-          child: const Text('Accepter'),
+              success: t.becameOwner),
+          child: Text(t.accept),
         ),
       ],
     );
@@ -209,9 +194,10 @@ class _ProfileMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = context.l10n;
     final user = session.me!.user;
     return PopupMenuButton<String>(
-      tooltip: 'Mon compte',
+      tooltip: t.myAccount,
       icon: CircleAvatar(
         radius: 16,
         backgroundImage: user.photoUrl == null ? null : NetworkImage(user.photoUrl!),
@@ -222,17 +208,16 @@ class _ProfileMenu extends StatelessWidget {
           showJoinCodeDialog(context, session);
         } else if (v == 'copy') {
           Clipboard.setData(ClipboardData(text: user.publicId));
-          ScaffoldMessenger.of(context)
-              .showSnackBar(const SnackBar(content: Text('Identifiant copié.')));
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.idCopied)));
         } else if (v == 'logout') {
           session.signOut();
         }
       },
       itemBuilder: (_) => [
         PopupMenuItem(enabled: false, child: Text('${user.name}\n${user.email}')),
-        const PopupMenuItem(value: 'join', child: Text('Rejoindre une entreprise')),
-        PopupMenuItem(value: 'copy', child: Text('Mon identifiant : ${user.publicId}')),
-        const PopupMenuItem(value: 'logout', child: Text('Se déconnecter')),
+        PopupMenuItem(value: 'join', child: Text(t.joinCompany)),
+        PopupMenuItem(value: 'copy', child: Text(t.myId(user.publicId))),
+        PopupMenuItem(value: 'logout', child: Text(t.signOut)),
       ],
     );
   }
@@ -245,20 +230,23 @@ class _JoinBanner extends StatelessWidget {
   const _JoinBanner({required this.session, required this.request});
 
   @override
-  Widget build(BuildContext context) => MaterialBanner(
-        content: Text('« ${request.company.name} » vous invite comme ${request.role.label.toLowerCase()}.'),
-        actions: [
-          TextButton(
-            onPressed: () => runAction(
-                context, session, () => session.api.answerJoin(request.id, accept: false)),
-            child: const Text('Refuser'),
-          ),
-          FilledButton(
-            onPressed: () => runAction(
-                context, session, () => session.api.answerJoin(request.id, accept: true),
-                success: 'Vous avez rejoint ${request.company.name}.'),
-            child: const Text('Accepter'),
-          ),
-        ],
-      );
+  Widget build(BuildContext context) {
+    final t = context.l10n;
+    return MaterialBanner(
+      content: Text(t.joinInvite(request.company.name, request.role.label(t).toLowerCase())),
+      actions: [
+        TextButton(
+          onPressed: () =>
+              runAction(context, session, () => session.api.answerJoin(request.id, accept: false)),
+          child: Text(t.decline),
+        ),
+        FilledButton(
+          onPressed: () => runAction(
+              context, session, () => session.api.answerJoin(request.id, accept: true),
+              success: t.joinedCompany(request.company.name)),
+          child: Text(t.accept),
+        ),
+      ],
+    );
+  }
 }

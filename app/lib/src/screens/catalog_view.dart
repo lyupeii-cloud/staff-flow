@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
 import 'company_tab.dart';
@@ -16,20 +17,22 @@ class CatalogView extends StatelessWidget {
       {super.key, required this.session, required this.company, required this.data, required this.onChanged});
 
   @override
-  Widget build(BuildContext context) => ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          _section(context, 'Postes', 'positions', data.positions,
-              'Ce que fait la personne : caisse, cuisine, accueil…'),
-          const SizedBox(height: 24),
-          _section(context, 'Sites', 'sites', data.sites,
-              'Où se passe le service, si l\'entreprise a plusieurs lieux.'),
-        ],
-      );
+  Widget build(BuildContext context) {
+    final t = context.l10n;
+    return ListView(
+      padding: const EdgeInsets.all(16),
+      children: [
+        _section(context, t.positions, 'positions', data.positions, t.positionsHint),
+        const SizedBox(height: 24),
+        _section(context, t.sites, 'sites', data.sites, t.sitesHint),
+      ],
+    );
+  }
 
   Widget _section(
       BuildContext context, String title, String kind, List<CatalogItem> items, String hint) {
     final theme = Theme.of(context);
+    final t = context.l10n;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -40,7 +43,7 @@ class CatalogView extends StatelessWidget {
               TextButton.icon(
                 onPressed: () => _edit(context, kind, null),
                 icon: const Icon(Icons.add, size: 18),
-                label: const Text('Ajouter'),
+                label: Text(t.add),
               ),
           ],
         ),
@@ -48,9 +51,8 @@ class CatalogView extends StatelessWidget {
         for (final i in items)
           ListTile(
             contentPadding: EdgeInsets.zero,
-            title: Text(i.name,
-                style: i.archived ? TextStyle(color: theme.disabledColor) : null),
-            subtitle: i.archived ? const Text('Archivé') : null,
+            title: Text(i.name, style: i.archived ? TextStyle(color: theme.disabledColor) : null),
+            subtitle: i.archived ? Text(t.archived) : null,
             trailing: company.readOnly
                 ? null
                 : PopupMenuButton<String>(
@@ -59,8 +61,8 @@ class CatalogView extends StatelessWidget {
                         : _run(context,
                             () => session.api.updateCatalogItem(company.id, kind, i.id, archived: !i.archived)),
                     itemBuilder: (_) => [
-                      const PopupMenuItem(value: 'rename', child: Text('Renommer')),
-                      PopupMenuItem(value: 'archive', child: Text(i.archived ? 'Réactiver' : 'Archiver')),
+                      PopupMenuItem(value: 'rename', child: Text(t.rename)),
+                      PopupMenuItem(value: 'archive', child: Text(i.archived ? t.reactivate : t.archive)),
                     ],
                   ),
           ),
@@ -69,20 +71,21 @@ class CatalogView extends StatelessWidget {
   }
 
   Future<void> _edit(BuildContext context, String kind, CatalogItem? item) async {
+    final t = context.l10n;
     final name = TextEditingController(text: item?.name);
     final ok = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(item == null ? 'Ajouter' : 'Renommer'),
+        title: Text(item == null ? t.add : t.rename),
         content: TextField(
           controller: name,
           autofocus: true,
-          decoration: const InputDecoration(labelText: 'Nom'),
+          decoration: InputDecoration(labelText: t.name),
           onSubmitted: (_) => Navigator.pop(context, true),
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Annuler')),
-          FilledButton(onPressed: () => Navigator.pop(context, true), child: const Text('Enregistrer')),
+          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
+          FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.save)),
         ],
       ),
     );

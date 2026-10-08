@@ -97,7 +97,9 @@ class Api {
     final email = body['email'];
     if (email is! String || !email.contains('@')) throw const ApiError.badRequest('email manquant.');
     final name = (body['name'] as String?) ?? email.split('@').first;
-    return _session(await store.upsertGoogleUser(sub: 'dev:$email', email: email, name: name));
+    // `locale` simule la langue d'un compte Google.
+    return _session(await store.upsertGoogleUser(
+        sub: 'dev:$email', email: email, name: name, locale: body['locale'] as String?));
   }
 
   Future<Response> _session(User user) async {

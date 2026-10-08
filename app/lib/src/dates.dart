@@ -1,13 +1,7 @@
-/// Petits outils de dates en français, sans dépendance.
-library;
+import 'package:intl/intl.dart';
 
-const weekdayShort = ['lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.', 'dim.'];
-const weekdayLetter = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-const monthNames = [
-  'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
-  'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre',
-];
-
+/// Dates du calendrier, et leur affichage dans la langue de l'application
+/// ([locale] : `fr`, `uk`, `en`…).
 DateTime dateOnly(DateTime d) => DateTime(d.year, d.month, d.day);
 
 DateTime addDays(DateTime d, int n) => DateTime(d.year, d.month, d.day + n);
@@ -21,20 +15,31 @@ DateTime endOfMonth(DateTime d) => DateTime(d.year, d.month + 1, 0);
 
 bool sameDay(DateTime a, DateTime b) => a.year == b.year && a.month == b.month && a.day == b.day;
 
-/// « lun. 5 oct. »
-String dayLabel(DateTime d) => '${weekdayShort[d.weekday - 1]} ${d.day} ${monthNames[d.month - 1].substring(0, 3)}.';
+/// Un lundi quelconque, pour nommer les jours de la semaine.
+final _monday = DateTime(2024, 1, 1);
 
-/// « lundi 5 octobre 2026 »-like, plus court : « 5 octobre 2026 »
-String longDate(DateTime d) => '${d.day} ${monthNames[d.month - 1]} ${d.year}';
+/// « lun. 5 oct. », « Mon, Oct 5 », « пн, 5 жовт. »
+String dayLabel(DateTime d, String locale) => DateFormat.MMMEd(locale).format(d);
 
-/// « 08:30 » ; au-delà de minuit, l'heure du lendemain.
+/// « 5 octobre 2026 »
+String longDate(DateTime d, String locale) => DateFormat.yMMMMd(locale).format(d);
+
+/// « Octobre 2026 », avec majuscule (certaines langues écrivent les mois en minuscules).
+String monthTitle(DateTime d, String locale) {
+  final s = DateFormat.yMMMM(locale).format(d);
+  return s.isEmpty ? s : s[0].toUpperCase() + s.substring(1);
+}
+
+/// Nom court du jour [weekday] (1 = lundi) : « lun. », « Mon », « пн ».
+String weekdayShort(int weekday, String locale) =>
+    DateFormat.E(locale).format(addDays(_monday, weekday - 1));
+
+/// Initiale du jour [weekday] (1 = lundi) : « L », « M », « П ».
+String weekdayLetter(int weekday, String locale) =>
+    DateFormat.EEEEE(locale).format(addDays(_monday, weekday - 1)).toUpperCase();
+
+/// « 08:30 » (24 h) ; au-delà de minuit, l'heure du lendemain.
 String timeLabel(int minutes) {
   final m = minutes % 1440;
   return '${(m ~/ 60).toString().padLeft(2, '0')}:${(m % 60).toString().padLeft(2, '0')}';
-}
-
-/// « 7 h 30 »
-String durationLabel(int minutes) {
-  final h = minutes ~/ 60, m = minutes % 60;
-  return m == 0 ? '$h h' : '$h h ${m.toString().padLeft(2, '0')}';
 }

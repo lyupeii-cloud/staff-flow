@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../brand.dart';
 import '../config.dart';
 import '../google/button.dart';
+import '../i18n.dart';
 import '../session.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -28,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final session = widget.session;
     final theme = Brand.theme(Brightness.dark);
+    final t = context.l10n;
     return Theme(
       data: theme,
       child: Scaffold(
@@ -59,14 +61,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text.rich(
                       TextSpan(
                         children: [
-                          const TextSpan(text: 'Les plannings de votre équipe, '),
+                          TextSpan(text: t.taglineStart),
                           WidgetSpan(
                             alignment: PlaceholderAlignment.baseline,
                             baseline: TextBaseline.alphabetic,
                             child: ShaderMask(
                               blendMode: BlendMode.srcIn,
                               shaderCallback: Brand.flow.createShader,
-                              child: Text('partout.', style: Brand.display(18)),
+                              child: Text(t.taglineEnd, style: Brand.display(18)),
                             ),
                           ),
                         ],
@@ -76,8 +78,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 32),
                     if (Config.googleWebClientId.isEmpty)
-                      const Text(
-                        'Connexion Google non configurée (GOOGLE_WEB_CLIENT_ID).',
+                      Text(
+                    t.googleNotConfigured,
                         textAlign: TextAlign.center,
                       )
                     else if (!session.googleReady)
@@ -88,29 +90,29 @@ class _LoginScreenState extends State<LoginScreen> {
                       FilledButton.icon(
                         onPressed: session.signInWithGoogle,
                         icon: const Icon(Icons.login),
-                        label: const Text('Se connecter avec Google'),
+                        label: Text(t.signInWithGoogle),
                       ),
                     if (Config.devLogin) ...[
                       const SizedBox(height: 32),
                       const Divider(),
-                      Text('Développement', style: theme.textTheme.labelMedium),
+                      Text(t.devSection, style: theme.textTheme.labelMedium),
                       const SizedBox(height: 8),
                       TextField(
                         controller: _email,
-                        decoration: const InputDecoration(labelText: 'Adresse e-mail'),
+                        decoration: InputDecoration(labelText: t.emailLabel),
                         keyboardType: TextInputType.emailAddress,
                         onSubmitted: (v) => session.signInDev(v.trim()),
                       ),
                       const SizedBox(height: 8),
                       OutlinedButton(
                         onPressed: () => session.signInDev(_email.text.trim()),
-                        child: const Text('Connexion de test'),
+                        child: Text(t.devSignIn),
                       ),
                     ],
                     if (session.error != null) ...[
                       const SizedBox(height: 16),
                       Text(
-                        session.error!,
+                        session.error!(t),
                         textAlign: TextAlign.center,
                         style: TextStyle(color: theme.colorScheme.error),
                       ),

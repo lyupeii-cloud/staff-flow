@@ -1,7 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'src/api.dart';
 import 'src/brand.dart';
+import 'src/i18n.dart';
 import 'src/screens/home_screen.dart';
 import 'src/screens/login_screen.dart';
 import 'src/session.dart';
@@ -18,24 +21,40 @@ class StaffFlowApp extends StatelessWidget {
 
   const StaffFlowApp({super.key, required this.session});
 
+  /// Langue affichée. Android : celle du téléphone (`null` = langue du système).
+  /// Web : celle du compte Google une fois connecté, sinon celle du navigateur.
+  /// Une langue non proposée donne l'anglais.
+  Locale? get _locale => kIsWeb ? supportedLocaleFor(session.me?.user.locale) : null;
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Staff Flow',
-      debugShowCheckedModeBanner: false,
-      theme: Brand.theme(Brightness.light),
-      darkTheme: Brand.theme(Brightness.dark),
-      home: ListenableBuilder(
+  Widget build(BuildContext context) => ListenableBuilder(
         listenable: session,
-        builder: (context, _) => switch (session.state) {
-          SessionState.loading => Scaffold(
-            backgroundColor: Brand.navy,
-            body: Center(child: Image.asset('assets/brand/logo-mark.png', width: 160)),
-          ),
-          SessionState.signedOut => LoginScreen(session: session),
-          SessionState.signedIn => HomeScreen(session: session),
-        },
-      ),
-    );
-  }
+        builder: (context, _) => MaterialApp(
+          onGenerateTitle: (_) => 'Staff Flow',
+          debugShowCheckedModeBanner: false,
+          theme: Brand.theme(Brightness.light),
+          darkTheme: Brand.theme(Brightness.dark),
+          locale: _locale,
+          supportedLocales: supportedLocales,
+          localizationsDelegates: const [
+            L10n.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          builder: (context, child) {
+            // Le serveur répond dans la langue de l'écran.
+            session.api.language = Localizations.localeOf(context).languageCode;
+            return child!;
+          },
+          home: switch (session.state) {
+            SessionState.loading => Scaffold(
+                backgroundColor: Brand.navy,
+                body: Center(child: Image.asset('assets/brand/logo-mark.png', width: 160)),
+              ),
+            SessionState.signedOut => LoginScreen(session: session),
+            SessionState.signedIn => HomeScreen(session: session),
+          },
+        ),
+      );
 }
