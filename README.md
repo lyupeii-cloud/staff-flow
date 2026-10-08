@@ -9,7 +9,9 @@ Organisation des plannings de travail des entreprises : application Android et s
 | `server/` | API Dart (shelf) + PostgreSQL, migrations appliquées au démarrage       |
 | `deploy/` | Docker Compose pour le serveur : PostgreSQL, API, Caddy (HTTPS), sauvegardes |
 
-## État : phase 1 « Fondations »
+## État : phases 1 et 2
+
+**Phase 1 — fondations**
 
 - Connexion uniquement avec un compte Google ; chaque utilisateur reçoit un identifiant unique (`SF-XXXXXXXX`).
 - Entreprises, avec un rôle par entreprise : propriétaire, responsable, salarié, extra.
@@ -20,28 +22,37 @@ Organisation des plannings de travail des entreprises : application Android et s
 - Journal des actions sensibles (`audit_log`).
 - Serveur : HTTPS automatique (Let's Encrypt), sauvegardes quotidiennes chiffrées conservées 30 jours.
 
-Pour l'instant, on ne peut ajouter un salarié qu'en passant par la base. Le code à 6 chiffres arrive en phase 2.
+**Phase 2 — planning**
+
+- Sites et postes ; services sur un ou plusieurs jours, de nuit compris.
+- Répétition chaque jour ou certains jours de la semaine, jusqu'à une date ou N fois ; une occurrence se modifie seule sans casser la série.
+- Brouillon puis publication : les salariés voient la dernière version publiée.
+- Remplacement d'une personne par une autre sur une période.
+- Vues semaine et mois ; filtre « mes services » ; total d'heures de la période.
+- Ajout par code à 6 chiffres (2 minutes, usage unique, confirmé par le salarié, blocage 2 minutes après 3 erreurs).
 
 ## Développement local (Windows)
 
 Prérequis : Flutter 3.47.6 (contient Dart 3.13.5).
 
 ```bash
-# API en mémoire, avec connexion de test (sans Google)
+# API avec connexion de test (sans Google)
 cd server
-SESSION_SECRET=une-chaine-d-au-moins-32-caracteres-xx DEV_LOGIN=true ALLOWED_ORIGINS=http://localhost:5050 dart run bin/server.dart
+DATABASE_URL=postgresql://… SESSION_SECRET=une-chaine-d-au-moins-32-caracteres-xx DEV_LOGIN=true ALLOWED_ORIGINS=http://localhost:5050 dart run bin/server.dart
 
 # Application web, branchée sur cette API
 cd app
 flutter run -d chrome --web-port 5050 --dart-define=API_URL=http://localhost:8080 --dart-define=DEV_LOGIN=true
 ```
 
-Sans `DATABASE_URL`, l'API garde tout en mémoire. Avec `DATABASE_URL=postgresql://…`, elle utilise PostgreSQL.
+L'API exige PostgreSQL (`DATABASE_URL=postgresql://…`).
 
 Tests :
 
 ```bash
-cd server && dart test
+# Tests de l'API sur un PostgreSQL jetable, sur le serveur (conteneurs supprimés ensuite)
+tool/test-server.sh
+# ou avec une base locale : TEST_DATABASE_URL=postgresql://… dart test
 cd app && flutter test
 ```
 

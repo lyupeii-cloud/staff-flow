@@ -2,10 +2,41 @@ import 'package:flutter/material.dart';
 
 import '../models.dart';
 import '../session.dart';
-import 'home_screen.dart';
+import 'catalog_view.dart';
+import 'planning_view.dart';
+import 'team_view.dart';
 
-/// Contenu de l'onglet d'une entreprise. Phase 1 : informations et membres ;
-/// le planning arrive en phase 2.
+/// Données partagées par les vues d'une entreprise : membres, sites, postes.
+class CompanyData {
+  final List<Member> members;
+  final List<CatalogItem> sites;
+  final List<CatalogItem> positions;
+
+  const CompanyData(this.members, this.sites, this.positions);
+
+  static Future<CompanyData> load(Session session, String companyId) async {
+    final api = session.api;
+    final r = await Future.wait([
+      api.members(companyId),
+      api.catalog(companyId, 'sites'),
+      api.catalog(companyId, 'positions'),
+    ]);
+    return CompanyData(
+        r[0] as List<Member>, r[1] as List<CatalogItem>, r[2] as List<CatalogItem>);
+  }
+
+  String? memberName(String? userId) =>
+      members.where((m) => m.user.id == userId).firstOrNull?.user.name;
+
+  String? siteName(String? id) => sites.where((s) => s.id == id).firstOrNull?.name;
+
+  String? positionName(String? id) => positions.where((p) => p.id == id).firstOrNull?.name;
+}
+
+enum _View { planning, team, catalog }
+
+/// Onglet d'une entreprise : planning, équipe, et pour les responsables,
+/// sites et postes.
 class CompanyTab extends StatefulWidget {
   final Session session;
   final Membership membership;
@@ -16,209 +47,91 @@ class CompanyTab extends StatefulWidget {
   State<CompanyTab> createState() => _CompanyTabState();
 }
 
-class _CompanyTabState extends State<CompanyTab> {
-  late Future<List<Member>> _members;
+class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMixin {
+  var _view = _View.planning;
+  late Future<CompanyData> _data;
 
   Company get company => widget.membership.company;
   Role get role => widget.membership.role;
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   void initState() {
     super.initState();
-    _load();
+    _reload();
   }
 
   @override
   void didUpdateWidget(CompanyTab old) {
     super.didUpdateWidget(old);
-    if (old.membership.role != role) _load();
+    if (old.membership.role != role) _reload();
   }
 
-  void _load() => _members = widget.session.api.members(company.id);
-
-  Future<void> _act(Future<void> Function() action, {String? success}) async {
-    await runAction(context, widget.session, action, success: success);
-    if (mounted) setState(_load);
-  }
+  void _reload() => setState(() => _data = CompanyData.load(widget.session, company.id));
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final theme = Theme.of(context);
-    final me = widget.session.me!.user;
-    return RefreshIndicator(
-      onRefresh: () async => setState(_load),
-      child: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(child: Text(company.name, style: theme.textTheme.headlineSmall)),
-              Chip(label: Text(role.label)),
+              Text('${role.label} · ${company.timezone}', style: theme.textTheme.bodySmall),
+              const SizedBox(height: 8),
+              SegmentedButton<_View>(
+                showSelectedIcon: false,
+                segments: [
+                  const ButtonSegment(
+                      value: _View.planning, icon: Icon(Icons.calendar_month), label: Text('Planning')),
+                  const ButtonSegment(value: _View.team, icon: Icon(Icons.group), label: Text('Équipe')),
+                  if (role.canManage)
+                    const ButtonSegment(value: _View.catalog, icon: Icon(Icons.store), label: Text('Postes')),
+                ],
+                selected: {_view},
+                onSelectionChanged: (s) => setState(() => _view = s.first),
+              ),
             ],
           ),
-          Text(company.timezone, style: theme.textTheme.bodySmall),
-          if (company.readOnly)
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Text('Entreprise en lecture seule.',
-                  style: TextStyle(color: theme.colorScheme.error)),
-            ),
-          const SizedBox(height: 16),
-          Card(
-            child: ListTile(
-              leading: const Icon(Icons.calendar_view_week),
-              title: const Text('Planning'),
-              subtitle: const Text('Disponible dans la prochaine version.'),
-            ),
+        ),
+        if (company.readOnly)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text('Entreprise en lecture seule.', style: TextStyle(color: theme.colorScheme.error)),
           ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              Expanded(child: Text('Équipe', style: theme.textTheme.titleMedium)),
-              if (role.canManage && !company.readOnly)
-                TextButton.icon(
-                  onPressed: _rename,
-                  icon: const Icon(Icons.edit, size: 18),
-                  label: const Text('Renommer'),
-                ),
-            ],
-          ),
-          FutureBuilder(
-            future: _members,
+        Expanded(
+          child: FutureBuilder(
+            future: _data,
             builder: (context, snap) {
-              if (snap.hasError) return Text('${snap.error}');
-              if (!snap.hasData) {
-                return const Padding(
-                    padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator()));
+              if (snap.hasError) {
+                return Center(
+                  child: TextButton.icon(
+                    onPressed: _reload,
+                    icon: const Icon(Icons.refresh),
+                    label: Text('${snap.error}\nRéessayer'),
+                  ),
+                );
               }
-              return Column(
-                children: [for (final m in snap.data!) _memberTile(m, isMe: m.user.id == me.id)],
-              );
+              if (!snap.hasData) return const Center(child: CircularProgressIndicator());
+              final data = snap.data!;
+              return switch (_view) {
+                _View.planning =>
+                  PlanningView(session: widget.session, membership: widget.membership, data: data),
+                _View.team => TeamView(
+                    session: widget.session, membership: widget.membership, onChanged: _reload),
+                _View.catalog => CatalogView(
+                    session: widget.session, company: company, data: data, onChanged: _reload),
+              };
             },
           ),
-          if (role != Role.owner) ...[
-            const SizedBox(height: 24),
-            OutlinedButton.icon(
-              onPressed: _leave,
-              icon: const Icon(Icons.logout),
-              label: const Text('Quitter cette entreprise'),
-            ),
-          ],
-        ],
-      ),
-    );
-  }
-
-  Widget _memberTile(Member m, {required bool isMe}) {
-    final actions = isMe || company.readOnly ? const <_MemberAction>[] : _actionsFor(m);
-    return ListTile(
-      contentPadding: EdgeInsets.zero,
-      leading: CircleAvatar(
-        backgroundImage: m.user.photoUrl == null ? null : NetworkImage(m.user.photoUrl!),
-        child: m.user.photoUrl == null ? Text(m.user.name.characters.first.toUpperCase()) : null,
-      ),
-      title: Text(isMe ? '${m.user.name} (vous)' : m.user.name),
-      subtitle: Text('${m.role.label} · ${m.user.publicId}'),
-      trailing: actions.isEmpty
-          ? null
-          : PopupMenuButton<_MemberAction>(
-              onSelected: (a) => _run(a, m),
-              itemBuilder: (_) => [
-                for (final a in actions) PopupMenuItem(value: a, child: Text(a.label(m))),
-              ],
-            ),
-    );
-  }
-
-  /// Mêmes règles que le serveur : le propriétaire gère les responsables,
-  /// un responsable gère les salariés et les extras.
-  List<_MemberAction> _actionsFor(Member m) {
-    if (m.role == Role.owner) return const [];
-    final isOwner = role == Role.owner;
-    final isManager = role == Role.manager;
-    final targetIsStaff = m.role == Role.employee || m.role == Role.extra;
-    return [
-      if (isOwner && targetIsStaff) _MemberAction.makeManager,
-      if (isOwner && m.role == Role.manager) _MemberAction.makeEmployee,
-      if ((isOwner || isManager) && targetIsStaff) _MemberAction.toggleExtra,
-      if (isOwner && m.role == Role.manager) _MemberAction.transfer,
-      if (isOwner || (isManager && targetIsStaff)) _MemberAction.remove,
-    ];
-  }
-
-  Future<void> _run(_MemberAction a, Member m) async {
-    final api = widget.session.api;
-    switch (a) {
-      case _MemberAction.makeManager:
-        await _act(() => api.setRole(company.id, m.user.id, Role.manager));
-      case _MemberAction.makeEmployee:
-        await _act(() => api.setRole(company.id, m.user.id, Role.employee));
-      case _MemberAction.toggleExtra:
-        final to = m.role == Role.extra ? Role.employee : Role.extra;
-        await _act(() => api.setRole(company.id, m.user.id, to));
-      case _MemberAction.transfer:
-        if (await _confirm('Transférer l\'entreprise à ${m.user.name} ?',
-            'Une fois qu\'il aura accepté, il deviendra propriétaire (abonnement, factures, '
-                'responsables) et vous deviendrez responsable.')) {
-          await _act(() => api.proposeTransfer(company.id, m.user.id),
-              success: 'Proposition envoyée à ${m.user.name}.');
-        }
-      case _MemberAction.remove:
-        if (await _confirm('Retirer ${m.user.name} ?', 'Son historique est conservé.')) {
-          await _act(() => api.removeMember(company.id, m.user.id));
-        }
-    }
-  }
-
-  Future<void> _leave() async {
-    if (await _confirm('Quitter ${company.name} ?', 'Vous ne verrez plus son planning.')) {
-      await _act(() => widget.session.api.removeMember(company.id, widget.session.me!.user.id));
-    }
-  }
-
-  Future<void> _rename() async {
-    final name = TextEditingController(text: company.name);
-    final ok = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Renommer l\'entreprise'),
-        content: TextField(controller: name, autofocus: true),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Annuler')),
-          FilledButton(onPressed: () => Navigator.pop(context, true), child: const Text('Enregistrer')),
-        ],
-      ),
-    );
-    if (ok == true) await _act(() => widget.session.api.updateCompany(company.id, name: name.text));
-  }
-
-  Future<bool> _confirm(String title, String body) async =>
-      await showDialog<bool>(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text(title),
-          content: Text(body),
-          actions: [
-            TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Annuler')),
-            FilledButton(onPressed: () => Navigator.pop(context, true), child: const Text('Confirmer')),
-          ],
         ),
-      ) ??
-      false;
-}
-
-enum _MemberAction {
-  makeManager,
-  makeEmployee,
-  toggleExtra,
-  transfer,
-  remove;
-
-  String label(Member m) => switch (this) {
-        makeManager => 'Nommer responsable',
-        makeEmployee => 'Repasser salarié',
-        toggleExtra => m.role == Role.extra ? 'Passer salarié' : 'Passer extra',
-        transfer => 'Transférer la propriété',
-        remove => 'Retirer de l\'entreprise',
-      };
+      ],
+    );
+  }
 }

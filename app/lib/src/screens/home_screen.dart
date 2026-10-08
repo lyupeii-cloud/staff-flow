@@ -5,6 +5,7 @@ import '../api.dart';
 import '../models.dart';
 import '../session.dart';
 import 'company_tab.dart';
+import 'join_code_dialog.dart';
 
 /// Un onglet par entreprise dont l'utilisateur est membre (section 3).
 class HomeScreen extends StatelessWidget {
@@ -40,6 +41,7 @@ class HomeScreen extends StatelessWidget {
         ),
         body: Column(
           children: [
+            for (final r in me.pendingJoinRequests) _JoinBanner(session: session, request: r),
             for (final t in me.pendingTransfers) _TransferBanner(session: session, transfer: t),
             Expanded(
               child: companies.isEmpty
@@ -146,11 +148,17 @@ class _NoCompany extends StatelessWidget {
               const SizedBox(height: 12),
               const Text('Vous ne faites partie d\'aucune entreprise.', textAlign: TextAlign.center),
               const SizedBox(height: 4),
-              Text('Créez la vôtre, ou donnez votre identifiant ${session.me!.user.publicId} '
-                  'à votre responsable.',
+              const Text('Pour rejoindre celle de votre employeur, générez un code '
+                  'et donnez-le à votre responsable.',
                   textAlign: TextAlign.center),
               const SizedBox(height: 16),
               FilledButton.icon(
+                onPressed: () => showJoinCodeDialog(context, session),
+                icon: const Icon(Icons.pin),
+                label: const Text('Rejoindre une entreprise'),
+              ),
+              const SizedBox(height: 8),
+              OutlinedButton.icon(
                 onPressed: () => createCompany(context, session),
                 icon: const Icon(Icons.add_business),
                 label: const Text('Créer une entreprise'),
@@ -209,7 +217,9 @@ class _ProfileMenu extends StatelessWidget {
         child: user.photoUrl == null ? Text(user.name.characters.first.toUpperCase()) : null,
       ),
       onSelected: (v) {
-        if (v == 'copy') {
+        if (v == 'join') {
+          showJoinCodeDialog(context, session);
+        } else if (v == 'copy') {
           Clipboard.setData(ClipboardData(text: user.publicId));
           ScaffoldMessenger.of(context)
               .showSnackBar(const SnackBar(content: Text('Identifiant copié.')));
@@ -219,9 +229,35 @@ class _ProfileMenu extends StatelessWidget {
       },
       itemBuilder: (_) => [
         PopupMenuItem(enabled: false, child: Text('${user.name}\n${user.email}')),
+        const PopupMenuItem(value: 'join', child: Text('Rejoindre une entreprise')),
         PopupMenuItem(value: 'copy', child: Text('Mon identifiant : ${user.publicId}')),
         const PopupMenuItem(value: 'logout', child: Text('Se déconnecter')),
       ],
     );
   }
+}
+
+class _JoinBanner extends StatelessWidget {
+  final Session session;
+  final JoinRequest request;
+
+  const _JoinBanner({required this.session, required this.request});
+
+  @override
+  Widget build(BuildContext context) => MaterialBanner(
+        content: Text('« ${request.company.name} » vous invite comme ${request.role.label.toLowerCase()}.'),
+        actions: [
+          TextButton(
+            onPressed: () => runAction(
+                context, session, () => session.api.answerJoin(request.id, accept: false)),
+            child: const Text('Refuser'),
+          ),
+          FilledButton(
+            onPressed: () => runAction(
+                context, session, () => session.api.answerJoin(request.id, accept: true),
+                success: 'Vous avez rejoint ${request.company.name}.'),
+            child: const Text('Accepter'),
+          ),
+        ],
+      );
 }

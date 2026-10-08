@@ -75,4 +75,69 @@ class Api {
 
   Future<void> answerTransfer(String transferId, {required bool accept}) =>
       _send('POST', '/transfers/$transferId/${accept ? 'accept' : 'decline'}');
+
+  // --- Code à 6 chiffres ---------------------------------------------------
+
+  Future<(String, DateTime)> createJoinCode() async {
+    final j = await _send('POST', '/join-codes');
+    return (j['code'] as String, DateTime.parse(j['expiresAt']));
+  }
+
+  /// Renvoie le nom de la personne invitée.
+  Future<String> redeemJoinCode(String companyId, String code, Role role) async {
+    final j = await _send('POST', '/companies/$companyId/join', {'code': code, 'role': role.name});
+    return j['user']['name'] as String;
+  }
+
+  Future<void> answerJoin(String requestId, {required bool accept}) =>
+      _send('POST', '/join-requests/$requestId/${accept ? 'accept' : 'decline'}');
+
+  // --- Planning ------------------------------------------------------------
+
+  /// [kind] : `sites` ou `positions`.
+  Future<List<CatalogItem>> catalog(String companyId, String kind) async {
+    final j = await _send('GET', '/companies/$companyId/$kind');
+    return [for (final i in j['items']) CatalogItem.fromJson(i)];
+  }
+
+  Future<void> addCatalogItem(String companyId, String kind, String name) =>
+      _send('POST', '/companies/$companyId/$kind', {'name': name});
+
+  Future<void> updateCatalogItem(String companyId, String kind, String id,
+          {String? name, bool? archived}) =>
+      _send('PATCH', '/companies/$companyId/$kind/$id', {'name': ?name, 'archived': ?archived});
+
+  /// Services de la période et nombre de modifications non publiées.
+  Future<(List<Shift>, int)> shifts(String companyId, DateTime from, DateTime to) async {
+    final j = await _send(
+        'GET', '/companies/$companyId/shifts?from=${formatDay(from)}&to=${formatDay(to)}');
+    return ([for (final s in j['shifts']) Shift.fromJson(s)], j['pending'] as int);
+  }
+
+  Future<int> createShifts(String companyId, Map<String, Object?> body) async {
+    final j = await _send('POST', '/companies/$companyId/shifts', body);
+    return (j['shifts'] as List).length;
+  }
+
+  Future<void> updateShift(String companyId, String shiftId, Map<String, Object?> patch,
+          {bool series = false}) =>
+      _send('PATCH', '/companies/$companyId/shifts/$shiftId?scope=${series ? 'series' : 'one'}',
+          patch);
+
+  Future<void> deleteShift(String companyId, String shiftId, {bool series = false}) =>
+      _send('DELETE', '/companies/$companyId/shifts/$shiftId?scope=${series ? 'series' : 'one'}');
+
+  Future<int> replace(String companyId,
+      {required String fromUserId, required String toUserId, required DateTime from, required DateTime to}) async {
+    final j = await _send('POST', '/companies/$companyId/shifts/replace', {
+      'fromUserId': fromUserId,
+      'toUserId': toUserId,
+      'from': formatDay(from),
+      'to': formatDay(to),
+    });
+    return j['replaced'] as int;
+  }
+
+  Future<int> publish(String companyId) async =>
+      (await _send('POST', '/companies/$companyId/publish'))['published'] as int;
 }
