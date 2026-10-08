@@ -237,5 +237,13 @@ void main() {
       expect((await preflight('https://evil.example')).headers['access-control-allow-origin'],
           isNull);
     });
+
+    test('le navigateur peut envoyer les en-têtes dont l\'application a besoin', () async {
+      final res = await env.handler(Request('OPTIONS', Uri.parse('http://localhost/api/v1/companies/x/shifts'),
+          headers: {'origin': 'http://localhost:5000'}));
+      final allowed = res.headers['access-control-allow-headers']!.split(', ');
+      // Sans « idempotency-key », le site ne pourrait jamais envoyer sa file d'attente.
+      expect(allowed, containsAll(['authorization', 'content-type', 'accept-language', 'idempotency-key']));
+    });
   });
 }

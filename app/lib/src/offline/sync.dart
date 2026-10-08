@@ -52,6 +52,10 @@ class Sync extends ChangeNotifier {
   Timer? _timer;
   bool _flushing = false;
 
+  /// Après un envoi échoué, on attend la vérification périodique (20 s)
+  /// avant de réessayer, au lieu de recommencer à chaque lecture réussie.
+  DateTime? _flushFailedAt;
+
   @override
   void dispose() {
     _timer?.cancel();
@@ -68,6 +72,8 @@ class Sync extends ChangeNotifier {
   void _setOnline(bool value) {
     if (online == value) return;
     online = value;
+    // Retour du réseau : les écrans se rechargent avec les données à jour.
+    if (value) synced++;
     notifyListeners();
   }
 
@@ -75,6 +81,12 @@ class Sync extends ChangeNotifier {
 
   /// Lit [path] sur le serveur, ou la dernière réponse gardée sous [key].
   Future<dynamic> read(String key, String path) async {
+    // Déjà hors connexion : la copie gardée tout de suite, sans attendre
+    // l'échec d'une requête (le retour du réseau est guetté à part).
+    if (!online) {
+      final cached = await _cache.record(key).get(_db);
+      if (cached != null) return cached;
+    }
     try {
       final json = await api.send('GET', path);
       await _cache.record(key).put(_db, json);
@@ -102,6 +114,7 @@ class Sync extends ChangeNotifier {
       Filter.lessThanOrEquals('day', formatDay(to)),
     ]);
     try {
+      if (!online) throw OfflineException();
       final j = await api.send('GET', '/companies/$companyId/shifts?from=${formatDay(from)}&to=${formatDay(to)}');
       server = [for (final s in j['shifts']) Shift.fromJson(s)];
       serverPending = j['pending'] as int;
@@ -191,8 +204,10 @@ class Sync extends ChangeNotifier {
   /// Envoie les modifications en attente, dans l'ordre. S'arrête au premier
   /// échec réseau ; une modification refusée par le serveur est retirée et
   /// sa raison gardée dans [rejection].
-  Future<void> flush() async {
+  Future<void> flush({bool force = false}) async {
     if (_flushing || _pending.isEmpty) return;
+    final failedAt = _flushFailedAt;
+    if (!force && failedAt != null && DateTime.now().difference(failedAt) < const Duration(seconds: 20)) return;
     _flushing = true;
     var sent = false;
     try {
@@ -202,6 +217,7 @@ class Sync extends ChangeNotifier {
           await api.send(op.method, op.path, body: op.body, idempotencyKey: op.id);
           _setOnline(true);
         } on OfflineException {
+          _flushFailedAt = DateTime.now();
           _setOnline(false);
           break;
         } on ApiException catch (e) {
@@ -209,6 +225,7 @@ class Sync extends ChangeNotifier {
         }
         await _queue.record(key).delete(_db);
         _pending.removeAt(0);
+        _flushFailedAt = null;
         sent = true;
       }
     } finally {
@@ -222,7 +239,7 @@ class Sync extends ChangeNotifier {
     if (online && _pending.isEmpty) return;
     if (await api.ping()) {
       _setOnline(true);
-      await flush();
+      await flush(force: true);
     }
   }
 
@@ -230,7 +247,7 @@ class Sync extends ChangeNotifier {
   Future<void> syncNow() async {
     if (await api.ping()) {
       _setOnline(true);
-      await flush();
+      await flush(force: true);
       synced++;
     } else {
       _setOnline(false);

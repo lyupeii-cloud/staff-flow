@@ -393,7 +393,7 @@ class Api {
             ? {
                 'access-control-allow-origin': origin,
                 'access-control-allow-methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
-                'access-control-allow-headers': 'authorization, content-type',
+                'access-control-allow-headers': 'authorization, content-type, accept-language, idempotency-key',
                 'vary': 'origin',
               }
             : <String, String>{};

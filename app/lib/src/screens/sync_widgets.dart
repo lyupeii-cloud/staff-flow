@@ -99,7 +99,7 @@ class NoticesButton extends StatelessWidget {
     final data = n['data'] as Map<String, dynamic>;
     return switch (n['kind']) {
       'shift_overwritten' => t.noticeOverwritten(
-          data['byName'] ?? '?', dayLabel(parseDay(data['shift']['day']), loc)),
+          data['byName'] ?? '?', longDate(parseDay(data['shift']['day']), loc)),
       _ => n['kind'] as String,
     };
   }
