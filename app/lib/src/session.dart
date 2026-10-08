@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -8,6 +9,7 @@ import 'api.dart';
 import 'config.dart';
 import 'i18n.dart';
 import 'models.dart';
+import 'offline/background.dart';
 import 'offline/sync.dart';
 
 enum SessionState { loading, signedOut, signedIn }
@@ -21,7 +23,7 @@ class Session extends ChangeNotifier {
   /// Données hors connexion et file d'attente ; prête après [start].
   late final Sync sync;
 
-  static const _tokenKey = 'session_token';
+  static const tokenKey = 'session_token';
 
   SessionState state = SessionState.loading;
   Me? me;
@@ -30,7 +32,7 @@ class Session extends ChangeNotifier {
 
   bool get googleReady => _googleReady;
 
-  static const _languageKey = 'language';
+  static const languageKey = 'language';
 
   /// Langue choisie à la main dans le menu « Langue » (code `uk`, `fr`…) ;
   /// `null` = automatique (téléphone, ou compte Google sur le web).
@@ -40,16 +42,17 @@ class Session extends ChangeNotifier {
     language = code;
     notifyListeners();
     final prefs = await SharedPreferences.getInstance();
-    code == null ? await prefs.remove(_languageKey) : await prefs.setString(_languageKey, code);
+    code == null ? await prefs.remove(languageKey) : await prefs.setString(languageKey, code);
   }
 
   Future<void> start() async {
     unawaited(_initGoogle());
     try {
       final prefs = await SharedPreferences.getInstance();
-      language = prefs.getString(_languageKey);
+      language = prefs.getString(languageKey);
       sync = await Sync.open(api);
-      api.token = prefs.getString(_tokenKey);
+      _watchLifecycle();
+      api.token = prefs.getString(tokenKey);
       if (api.token == null) return _set(SessionState.signedOut);
       await refresh();
     } on ApiException catch (e) {
@@ -60,6 +63,32 @@ class Session extends ChangeNotifier {
       error = (t) => t.serverUnreachable;
       _set(SessionState.signedOut);
     }
+  }
+
+  /// Hors de l'écran, Android peut geler l'application : une tâche
+  /// d'arrière-plan prend alors le relais pour envoyer la file d'attente
+  /// dès que le réseau revient (voir [BackgroundSync]).
+  void _watchLifecycle() {
+    if (!BackgroundSync.supported) return;
+    unawaited(BackgroundSync.init().then((_) => BackgroundSync.cancel()));
+    _lifecycle = AppLifecycleListener(
+      onHide: () {
+        sync.pause();
+        if (sync.queue.isNotEmpty) unawaited(BackgroundSync.schedule());
+      },
+      onShow: () async {
+        await BackgroundSync.cancel();
+        await sync.resume(reload: true);
+      },
+    );
+  }
+
+  AppLifecycleListener? _lifecycle;
+
+  @override
+  void dispose() {
+    _lifecycle?.dispose();
+    super.dispose();
   }
 
   Future<void> _initGoogle() async {
@@ -104,7 +133,7 @@ class Session extends ChangeNotifier {
     final (token, _) = login;
     api.token = token;
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_tokenKey, token);
+    await prefs.setString(tokenKey, token);
     await refresh();
   }
 
@@ -119,7 +148,7 @@ class Session extends ChangeNotifier {
     me = null;
     await sync.clear();
     final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(_tokenKey);
+    await prefs.remove(tokenKey);
     if (_googleReady) await GoogleSignIn.instance.signOut();
     _set(SessionState.signedOut);
   }

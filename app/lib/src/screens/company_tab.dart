@@ -74,7 +74,9 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
     if (old.membership.role != role) _reload();
   }
 
-  void _reload() => setState(() => _data = CompanyData.load(widget.session, company.id));
+  void _reload() => setState(() {
+        _data = CompanyData.load(widget.session, company.id);
+      });
 
   @override
   Widget build(BuildContext context) {

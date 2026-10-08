@@ -20,7 +20,7 @@ import 'ops.dart';
 ///   rejouée après une coupure n'est appliquée qu'une fois.
 class Sync extends ChangeNotifier {
   final Api api;
-  final Database _db;
+  Database _db;
 
   final _cache = StoreRef<String, Object?>('cache');
   final _shifts = StoreRef<String, Map<String, Object?>>('shifts');
@@ -28,12 +28,42 @@ class Sync extends ChangeNotifier {
 
   Sync._(this.api, this._db);
 
-  static Future<Sync> open(Api api) async {
+  /// [watch] : vérifier le réseau toutes les 20 s (application à l'écran).
+  /// La tâche d'arrière-plan n'en a pas besoin : elle envoie et s'arrête.
+  static Future<Sync> open(Api api, {bool watch = true}) async {
     final sync = Sync._(api, await openLocalDb());
     await sync._loadQueue();
-    sync._timer = Timer.periodic(const Duration(seconds: 20), (_) => sync._tick());
+    if (watch) await sync.resume();
     return sync;
   }
+
+  /// L'application quitte l'écran : la tâche d'arrière-plan prend le relais.
+  void pause() {
+    _timer?.cancel();
+    _timer = null;
+  }
+
+  /// L'application revient à l'écran. Avec [reload], la base locale est
+  /// relue (la tâche d'arrière-plan a pu envoyer une partie de la file),
+  /// puis ce qui reste est envoyé et les écrans se rechargent.
+  Future<void> resume({bool reload = false}) async {
+    if (reload) {
+      await _db.close();
+      _db = await openLocalDb();
+      await _loadQueue();
+      synced++;
+      notifyListeners();
+      unawaited(_tick(force: true));
+    }
+    _timer ??= Timer.periodic(const Duration(seconds: 20), (_) => _tick());
+  }
+
+  Future<void> close() async {
+    pause();
+    await _db.close();
+  }
+
+  static const _rejectionKey = 'rejection';
 
   /// Le dernier échange avec le serveur a-t-il abouti ?
   bool online = true;
@@ -67,6 +97,9 @@ class Sync extends ChangeNotifier {
     _pending
       ..clear()
       ..addAll([for (final r in records) (r.key, PendingOp.fromJson(r.value.cast()))]);
+    // Un refus survenu pendant une synchronisation en arrière-plan.
+    final refused = await _cache.record(_rejectionKey).get(_db) as String?;
+    if (refused != null) rejection = (_) => refused;
   }
 
   void _setOnline(bool value) {
@@ -222,6 +255,8 @@ class Sync extends ChangeNotifier {
           break;
         } on ApiException catch (e) {
           rejection = e.describe;
+          // Gardé pour la prochaine ouverture si l'envoi se fait en arrière-plan.
+          await _cache.record(_rejectionKey).put(_db, e.serverMessage ?? 'HTTP ${e.status}');
         }
         await _queue.record(key).delete(_db);
         _pending.removeAt(0);
@@ -235,8 +270,8 @@ class Sync extends ChangeNotifier {
     }
   }
 
-  Future<void> _tick() async {
-    if (online && _pending.isEmpty) return;
+  Future<void> _tick({bool force = false}) async {
+    if (!force && online && _pending.isEmpty) return;
     if (await api.ping()) {
       _setOnline(true);
       await flush(force: true);
@@ -265,6 +300,7 @@ class Sync extends ChangeNotifier {
   void clearRejection() {
     rejection = null;
     notifyListeners();
+    unawaited(_cache.record(_rejectionKey).delete(_db));
   }
 
   /// À la déconnexion : rien ne doit rester sur l'appareil.
