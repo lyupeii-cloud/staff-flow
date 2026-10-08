@@ -24,15 +24,33 @@ void main() {
     expect(find.textContaining('Les plannings de votre équipe', findRichText: true), findsOneWidget);
   });
 
-  testWidgets('langue non proposée (polonais) : anglais', (tester) async {
-    await pumpLogin(tester, const [Locale('pl', 'PL')]);
+  testWidgets('langue non proposée (turc) : anglais', (tester) async {
+    await pumpLogin(tester, const [Locale('tr', 'TR')]);
     expect(find.textContaining('Your team\'s schedules', findRichText: true), findsOneWidget);
+  });
+
+  testWidgets('la langue choisie dans le menu l\'emporte sur celle du téléphone', (tester) async {
+    tester.platformDispatcher.localesTestValue = const [Locale('uk', 'UA')];
+    addTearDown(tester.platformDispatcher.clearLocalesTestValue);
+    final session = Session(Api())
+      ..state = SessionState.signedOut
+      ..language = 'ja';
+    await tester.pumpWidget(StaffFlowApp(session: session));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('チームのシフトを', findRichText: true), findsOneWidget);
+    // Retour à « automatique » : langue du téléphone.
+    session.language = null;
+    session.notifyListeners();
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Графіки вашої команди', findRichText: true), findsOneWidget);
   });
 
   test('langue du compte Google : seules les langues proposées sont retenues', () {
     expect(supportedLocaleFor('uk'), const Locale('uk'));
     expect(supportedLocaleFor('fr-CA'), const Locale('fr'));
-    expect(supportedLocaleFor('pl'), isNull);
+    expect(supportedLocaleFor('tr'), isNull);
+    expect(supportedLocaleFor('no'), const Locale('nb'));
+    expect(supportedLocaleFor('tl'), const Locale('fil'));
     expect(supportedLocaleFor(null), isNull);
   });
 

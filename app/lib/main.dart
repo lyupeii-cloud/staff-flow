@@ -21,10 +21,13 @@ class StaffFlowApp extends StatelessWidget {
 
   const StaffFlowApp({super.key, required this.session});
 
-  /// Langue affichée. Android : celle du téléphone (`null` = langue du système).
-  /// Web : celle du compte Google une fois connecté, sinon celle du navigateur.
-  /// Une langue non proposée donne l'anglais.
-  Locale? get _locale => kIsWeb ? supportedLocaleFor(session.me?.user.locale) : null;
+  /// Langue affichée : celle choisie dans le menu « Langue » si l'utilisateur
+  /// en a choisi une ; sinon, sur Android, celle du téléphone (`null` = langue
+  /// du système) et, sur le web, celle du compte Google une fois connecté,
+  /// ou à défaut celle du navigateur. Une langue non proposée donne l'anglais.
+  Locale? get _locale =>
+      supportedLocaleFor(session.language) ??
+      (kIsWeb ? supportedLocaleFor(session.me?.user.locale) : null);
 
   @override
   Widget build(BuildContext context) => ListenableBuilder(

@@ -5,9 +5,59 @@ import 'models.dart';
 
 export '../l10n/app_localizations.dart';
 
-/// Langues de l'application. Le premier sert quand celle du téléphone ou du
-/// compte Google n'est pas proposée.
-const supportedLocales = [Locale('en'), Locale('fr'), Locale('uk')];
+/// Une langue proposée, avec son nom écrit dans cette langue (pour le menu).
+class AppLanguage {
+  final String code;
+  final String nativeName;
+
+  const AppLanguage(this.code, this.nativeName);
+
+  Locale get locale => Locale(code);
+}
+
+/// Langues de l'application. La première (anglais) sert quand celle du
+/// téléphone ou du compte Google n'est pas proposée ; elle est toujours là.
+const appLanguages = [
+  AppLanguage('en', 'English'),
+  AppLanguage('fr', 'Français'),
+  AppLanguage('es', 'Español'),
+  AppLanguage('uk', 'Українська'),
+  AppLanguage('ru', 'Русский'),
+  AppLanguage('pt', 'Português'),
+  AppLanguage('de', 'Deutsch'),
+  AppLanguage('zh', '中文（简体）'),
+  AppLanguage('hi', 'हिन्दी'),
+  AppLanguage('bn', 'বাংলা'),
+  AppLanguage('ja', '日本語'),
+  AppLanguage('id', 'Bahasa Indonesia'),
+  AppLanguage('vi', 'Tiếng Việt'),
+  AppLanguage('ko', '한국어'),
+  AppLanguage('it', 'Italiano'),
+  AppLanguage('pl', 'Polski'),
+  AppLanguage('nl', 'Nederlands'),
+  AppLanguage('th', 'ไทย'),
+  AppLanguage('ta', 'தமிழ்'),
+  AppLanguage('te', 'తెలుగు'),
+  AppLanguage('mr', 'मराठी'),
+  AppLanguage('sw', 'Kiswahili'),
+  AppLanguage('ro', 'Română'),
+  AppLanguage('el', 'Ελληνικά'),
+  AppLanguage('cs', 'Čeština'),
+  AppLanguage('hu', 'Magyar'),
+  AppLanguage('sv', 'Svenska'),
+  AppLanguage('ms', 'Bahasa Melayu'),
+  AppLanguage('fil', 'Filipino'),
+  AppLanguage('pa', 'ਪੰਜਾਬੀ'),
+  AppLanguage('gu', 'ગુજરાતી'),
+  AppLanguage('kk', 'Қазақ тілі'),
+  AppLanguage('da', 'Dansk'),
+  AppLanguage('fi', 'Suomi'),
+  AppLanguage('nb', 'Norsk bokmål'),
+  AppLanguage('sk', 'Slovenčina'),
+  AppLanguage('bg', 'Български'),
+];
+
+final supportedLocales = [for (final l in appLanguages) l.locale];
 
 extension L10nContext on BuildContext {
   L10n get l10n => L10n.of(this);
@@ -35,7 +85,9 @@ String durationLabel(L10n t, int minutes) {
 /// l'application la propose ; sinon `null` (on garde celle de l'appareil).
 Locale? supportedLocaleFor(String? tag) {
   if (tag == null || tag.isEmpty) return null;
-  final language = tag.split(RegExp('[-_]')).first.toLowerCase();
+  const aliases = {'no': 'nb', 'nn': 'nb', 'tl': 'fil'};
+  var language = tag.split(RegExp('[-_]')).first.toLowerCase();
+  language = aliases[language] ?? language;
   for (final l in supportedLocales) {
     if (l.languageCode == language) return l;
   }

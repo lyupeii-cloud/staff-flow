@@ -29,10 +29,24 @@ class Session extends ChangeNotifier {
 
   bool get googleReady => _googleReady;
 
+  static const _languageKey = 'language';
+
+  /// Langue choisie à la main dans le menu « Langue » (code `uk`, `fr`…) ;
+  /// `null` = automatique (téléphone, ou compte Google sur le web).
+  String? language;
+
+  Future<void> setLanguage(String? code) async {
+    language = code;
+    notifyListeners();
+    final prefs = await SharedPreferences.getInstance();
+    code == null ? await prefs.remove(_languageKey) : await prefs.setString(_languageKey, code);
+  }
+
   Future<void> start() async {
     unawaited(_initGoogle());
     try {
       final prefs = await SharedPreferences.getInstance();
+      language = prefs.getString(_languageKey);
       api.token = prefs.getString(_tokenKey);
       if (api.token == null) return _set(SessionState.signedOut);
       await refresh();

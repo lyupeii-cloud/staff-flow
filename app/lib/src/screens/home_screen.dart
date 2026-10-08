@@ -8,6 +8,7 @@ import '../models.dart';
 import '../session.dart';
 import 'company_tab.dart';
 import 'join_code_dialog.dart';
+import 'language_picker.dart';
 
 /// Un onglet par entreprise dont l'utilisateur est membre (section 3).
 class HomeScreen extends StatelessWidget {
@@ -206,6 +207,8 @@ class _ProfileMenu extends StatelessWidget {
       onSelected: (v) {
         if (v == 'join') {
           showJoinCodeDialog(context, session);
+        } else if (v == 'language') {
+          showLanguagePicker(context, session);
         } else if (v == 'copy') {
           Clipboard.setData(ClipboardData(text: user.publicId));
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.idCopied)));
@@ -217,6 +220,7 @@ class _ProfileMenu extends StatelessWidget {
         PopupMenuItem(enabled: false, child: Text('${user.name}\n${user.email}')),
         PopupMenuItem(value: 'join', child: Text(t.joinCompany)),
         PopupMenuItem(value: 'copy', child: Text(t.myId(user.publicId))),
+        PopupMenuItem(value: 'language', child: Text(t.language)),
         PopupMenuItem(value: 'logout', child: Text(t.signOut)),
       ],
     );

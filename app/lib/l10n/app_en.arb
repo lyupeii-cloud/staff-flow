@@ -1,6 +1,5 @@
 {
   "@@locale": "en",
-
   "cancel": "Cancel",
   "save": "Save",
   "confirm": "Confirm",
@@ -15,12 +14,17 @@
   "name": "Name",
   "serverUnreachable": "Cannot reach the server.",
   "errorStatus": "Error {status}",
-
+  "@errorStatus": {
+    "placeholders": {
+      "status": {
+        "type": "int"
+      }
+    }
+  },
   "roleOwner": "Owner",
   "roleManager": "Manager",
   "roleEmployee": "Employee",
   "roleExtra": "Extra",
-
   "taglineStart": "Your team's schedules, ",
   "taglineEnd": "everywhere.",
   "googleNotConfigured": "Google sign-in is not configured (GOOGLE_WEB_CLIENT_ID).",
@@ -29,8 +33,21 @@
   "emailLabel": "Email address",
   "devSignIn": "Test sign-in",
   "googleUnavailable": "Google sign-in unavailable: {detail}",
+  "@googleUnavailable": {
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
   "googleFailed": "Google sign-in failed: {detail}",
-
+  "@googleFailed": {
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
   "newCompany": "New company",
   "timezone": "Time zone",
   "create": "Create",
@@ -39,33 +56,104 @@
   "joinCompany": "Join a company",
   "createCompany": "Create a company",
   "transferOffer": "You are invited to become the owner of “{company}”.",
+  "@transferOffer": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
   "someCompany": "a company",
   "becameOwner": "You are now the owner.",
   "myAccount": "My account",
   "idCopied": "ID copied.",
   "myId": "My ID: {id}",
+  "@myId": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
   "signOut": "Sign out",
   "joinInvite": "“{company}” invites you as {role}.",
+  "@joinInvite": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      },
+      "role": {
+        "type": "String"
+      }
+    }
+  },
   "joinedCompany": "You joined {company}.",
-
+  "@joinedCompany": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
   "viewPlanning": "Schedule",
   "viewTeam": "Team",
   "viewPositions": "Positions",
   "readOnlyCompany": "This company is read-only.",
-
   "team": "Team",
   "leaveCompany": "Leave this company",
   "meSuffix": "{name} (you)",
+  "@meSuffix": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "transferConfirmTitle": "Transfer the company to {name}?",
+  "@transferConfirmTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "transferConfirmBody": "Once they accept, they will become the owner (subscription, invoices, managers) and you will become a manager.",
   "transferSent": "Offer sent to {name}.",
+  "@transferSent": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "removeConfirmTitle": "Remove {name}?",
+  "@removeConfirmTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "removeConfirmBody": "Their history is kept.",
   "addPersonTitle": "Add a person",
   "addPersonHint": "Ask them to open Staff Flow, then their account menu, “Join a company”, and enter the code they see.",
   "sixDigitCode": "6-digit code",
   "invitationSent": "Invitation sent to {name}: they need to accept it.",
+  "@invitationSent": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "leaveConfirmTitle": "Leave {company}?",
+  "@leaveConfirmTitle": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
   "leaveConfirmBody": "You will no longer see its schedule.",
   "renameCompany": "Rename the company",
   "actionMakeManager": "Make manager",
@@ -74,7 +162,6 @@
   "actionToExtra": "Make extra",
   "actionTransfer": "Transfer ownership",
   "actionRemove": "Remove from the company",
-
   "positions": "Positions",
   "sites": "Sites",
   "positionsHint": "What the person does: checkout, kitchen, reception…",
@@ -82,9 +169,22 @@
   "archived": "Archived",
   "archive": "Archive",
   "reactivate": "Reactivate",
-
   "weekOf": "Week of {date}",
+  "@weekOf": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "changesPublished": "{count, plural, =1{1 change published.} other{{count} changes published.}}",
+  "@changesPublished": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "shiftButton": "Shift",
   "display": "View",
   "week": "Week",
@@ -93,9 +193,23 @@
   "onlyMine": "Only my shifts",
   "replacePersonMenu": "Replace a person…",
   "pendingChanges": "{count, plural, =1{1 unpublished change} other{{count} unpublished changes}}",
+  "@pendingChanges": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "pendingHint": "Employees can't see them yet.",
   "publish": "Publish",
   "yourHours": "Your hours for this period: {duration}",
+  "@yourHours": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
   "addShiftThisDay": "Add a shift on this day",
   "noShift": "No shifts",
   "unassigned": "Unassigned",
@@ -104,13 +218,36 @@
   "statusModified": "Changed",
   "statusDeleted": "Deleted",
   "durationHours": "{hours}h",
+  "@durationHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
   "durationHoursMinutes": "{hours}h{minutes}",
-
+  "@durationHoursMinutes": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
   "editShift": "Edit shift",
   "newShift": "New shift",
   "thisShift": "This shift",
   "thisAndFollowing": "This and following",
   "daysLabel": "{count, plural, =1{Day} other{Days}}",
+  "@daysLabel": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "otherDay": "Another day",
   "start": "Start",
   "end": "End",
@@ -127,16 +264,40 @@
   "repeatDaysSuffix": " days",
   "repeatWeeksSuffix": " weeks",
   "repeatUntilPrefix": "Until ",
-
   "replacePersonTitle": "Replace a person",
   "replaceFrom": "Replace",
   "replaceBy": "With",
   "dateRange": "From {from} to {to}",
+  "@dateRange": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
   "shiftsChanged": "{count, plural, =0{No shifts changed.} =1{1 shift changed.} other{{count} shifts changed.}}",
+  "@shiftsChanged": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "replaceButton": "Replace",
-
   "joinHint": "Give this code to your manager. They enter it in their app, then you receive an invitation to accept.",
   "codeExpired": "Code expired.",
   "codeValidFor": "Valid for {time}",
-  "newCode": "New code"
+  "@codeValidFor": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "newCode": "New code",
+  "language": "Language",
+  "languageAuto": "Automatic (device language)"
 }

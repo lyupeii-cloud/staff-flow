@@ -31,7 +31,7 @@ Organisation des plannings de travail des entreprises : application Android et s
 - Vues semaine et mois ; filtre « mes services » ; total d'heures de la période.
 - Ajout par code à 6 chiffres (2 minutes, usage unique, confirmé par le salarié, blocage 2 minutes après 3 erreurs).
 
-**Langues** : ukrainien, français, anglais (anglais pour toute autre langue). L'application Android suit la langue du téléphone ; le site suit la langue du compte Google une fois connecté (sinon celle du navigateur). Textes de l'application : `app/lib/l10n/app_*.arb` ; messages du serveur : `server/lib/src/messages.dart`. Ajouter une langue = un fichier `.arb` de plus et une colonne dans `messages.dart`.
+**Langues** : 37 langues (anglais, français, espagnol, ukrainien, russe, portugais, allemand, chinois, hindi, bengali, japonais, indonésien, vietnamien, coréen, italien, polonais, néerlandais, thaï, tamoul, télougou, marathi, swahili, roumain, grec, tchèque, hongrois, suédois, malais, filipino, pendjabi, gujarati, kazakh, danois, finnois, norvégien, slovaque, bulgare), toutes incluses dans l'application ; anglais pour toute autre langue. Par défaut, Android suit la langue du téléphone et le site celle du compte Google (sinon celle du navigateur) ; le menu « Langue » permet d'en choisir une autre. Textes de l'application : `app/lib/l10n/app_*.arb` ; messages du serveur : `server/lib/src/messages/<code>.dart`. Ajouter une langue = un fichier `.arb`, un fichier de messages serveur et une ligne dans `appLanguages` (app/lib/src/i18n.dart) ; les tests vérifient que rien ne manque.
 
 ## Développement local (Windows)
 

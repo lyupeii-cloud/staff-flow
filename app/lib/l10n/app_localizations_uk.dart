@@ -475,4 +475,10 @@ class L10nUk extends L10n {
 
   @override
   String get newCode => 'Новий код';
+
+  @override
+  String get language => 'Мова';
+
+  @override
+  String get languageAuto => 'Автоматично (мова пристрою)';
 }

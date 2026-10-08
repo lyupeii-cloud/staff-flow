@@ -6,6 +6,7 @@ import '../config.dart';
 import '../google/button.dart';
 import '../i18n.dart';
 import '../session.dart';
+import 'language_picker.dart';
 
 class LoginScreen extends StatefulWidget {
   final Session session;
@@ -34,6 +35,18 @@ class _LoginScreenState extends State<LoginScreen> {
       data: theme,
       child: Scaffold(
         backgroundColor: Brand.navy,
+        floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: TextButton.icon(
+            onPressed: () => showLanguagePicker(context, session),
+            icon: const Icon(Icons.language, color: Colors.white70),
+            label: Text(
+              appLanguages.firstWhere((l) => l.code == t.localeName, orElse: () => appLanguages.first).nativeName,
+              style: const TextStyle(color: Colors.white70),
+            ),
+          ),
+        ),
         body: Container(
           decoration: const BoxDecoration(
             gradient: RadialGradient(

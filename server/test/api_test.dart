@@ -31,7 +31,7 @@ void main() {
       expect(uk['error']['message'], 'Потрібно увійти.');
       final (_, fr) = await Client(env.handler, language: 'fr-FR')('GET', '/me');
       expect(fr['error']['message'], 'Connexion requise.');
-      final (_, other) = await Client(env.handler, language: 'pl')('GET', '/me');
+      final (_, other) = await Client(env.handler, language: 'tr')('GET', '/me');
       expect(other['error']['message'], 'Please sign in.');
     });
 

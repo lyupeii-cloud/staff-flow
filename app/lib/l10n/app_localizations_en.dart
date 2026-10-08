@@ -470,4 +470,10 @@ class L10nEn extends L10n {
 
   @override
   String get newCode => 'New code';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get languageAuto => 'Automatic (device language)';
 }

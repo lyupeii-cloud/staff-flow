@@ -470,4 +470,10 @@ class L10nFr extends L10n {
 
   @override
   String get newCode => 'Nouveau code';
+
+  @override
+  String get language => 'Langue';
+
+  @override
+  String get languageAuto => 'Automatique (langue de l’appareil)';
 }
