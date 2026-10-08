@@ -161,5 +161,21 @@
   "scanQrHint": "Skieruj aparat na kod QR wyświetlony w aplikacji tej osoby (menu konta, „Mój kod QR”).",
   "orEnterCode": "Lub wpisz jej 6-cyfrowy kod",
   "qrInvalid": "To nie jest kod QR Staff Flow.",
-  "cameraUnavailable": "Aparat niedostępny ({error})."
+  "cameraUnavailable": "Aparat niedostępny ({error}).",
+  "notificationsTitle": "Powiadomienia",
+  "notifChooseHint": "Wybierz, o czym chcesz dostawać powiadomienia. Wszystko pozostaje widoczne pod dzwonkiem.",
+  "notifPlanning": "Grafik opublikowany lub zmieniony",
+  "notifRequests": "Prośby: zamiany, urlopy, zaproszenia",
+  "notifMessages": "Nowe wiadomości",
+  "notifOverlap": "Nakładające się zmiany w różnych firmach",
+  "notifConflicts": "Twoje zmiany zastąpione przez innego kierownika",
+  "notifBilling": "Przypomnienia o subskrypcji",
+  "pushEnabled": "Powiadomienia są włączone na tym urządzeniu.",
+  "pushOff": "Powiadomienia są wyłączone na tym urządzeniu.",
+  "pushBlocked": "Powiadomienia są zablokowane: zezwól na nie w ustawieniach telefonu lub przeglądarki.",
+  "pushUnavailable": "Powiadomienia nie są dostępne na tym urządzeniu.",
+  "enablePush": "Włącz",
+  "noticeSchedulePublished": "{company}: twój grafik został opublikowany lub zmieniony.",
+  "noticeJoinInvite": "{company} chce dodać cię do swojego zespołu.",
+  "noticeTransferOffer": "{name} proponuje, abyś został właścicielem {company}."
 }

@@ -608,4 +608,60 @@ class L10nUk extends L10n {
   String cameraUnavailable(String error) {
     return 'Камера недоступна ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Сповіщення';
+
+  @override
+  String get notifChooseHint =>
+      'Оберіть, про що отримувати сповіщення. Усе залишається видимим у дзвіночку.';
+
+  @override
+  String get notifPlanning => 'Графік опубліковано або змінено';
+
+  @override
+  String get notifRequests => 'Запити: обміни, відпустки, запрошення';
+
+  @override
+  String get notifMessages => 'Нові повідомлення';
+
+  @override
+  String get notifOverlap => 'Накладання змін між компаніями';
+
+  @override
+  String get notifConflicts => 'Ваші зміни замінив інший керівник';
+
+  @override
+  String get notifBilling => 'Нагадування про підписку';
+
+  @override
+  String get pushEnabled => 'Сповіщення на цьому пристрої увімкнено.';
+
+  @override
+  String get pushOff => 'Сповіщення на цьому пристрої вимкнено.';
+
+  @override
+  String get pushBlocked =>
+      'Сповіщення заблоковано: дозвольте їх у налаштуваннях телефона або браузера.';
+
+  @override
+  String get pushUnavailable => 'Сповіщення недоступні на цьому пристрої.';
+
+  @override
+  String get enablePush => 'Увімкнути';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: ваш графік опубліковано або змінено.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company хоче додати вас до своєї команди.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name пропонує вам стати власником $company.';
+  }
 }

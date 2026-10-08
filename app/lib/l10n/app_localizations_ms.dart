@@ -596,4 +596,61 @@ class L10nMs extends L10n {
   String cameraUnavailable(String error) {
     return 'Kamera tidak tersedia ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Pemberitahuan';
+
+  @override
+  String get notifChooseHint =>
+      'Pilih perkara yang anda mahu diberitahu. Semuanya tetap kelihatan di loceng.';
+
+  @override
+  String get notifPlanning => 'Jadual diterbitkan atau diubah';
+
+  @override
+  String get notifRequests => 'Permintaan: tukar syif, cuti, jemputan';
+
+  @override
+  String get notifMessages => 'Mesej baharu';
+
+  @override
+  String get notifOverlap => 'Syif bertindih antara syarikat';
+
+  @override
+  String get notifConflicts => 'Perubahan anda digantikan oleh pengurus lain';
+
+  @override
+  String get notifBilling => 'Peringatan langganan';
+
+  @override
+  String get pushEnabled => 'Pemberitahuan dihidupkan pada peranti ini.';
+
+  @override
+  String get pushOff => 'Pemberitahuan dimatikan pada peranti ini.';
+
+  @override
+  String get pushBlocked =>
+      'Pemberitahuan disekat: benarkan dalam tetapan telefon atau pelayar.';
+
+  @override
+  String get pushUnavailable =>
+      'Pemberitahuan tidak tersedia pada peranti ini.';
+
+  @override
+  String get enablePush => 'Hidupkan';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: jadual anda telah diterbitkan atau diubah.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company mahu menambah anda ke dalam pasukannya.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name menawarkan anda menjadi pemilik $company.';
+  }
 }

@@ -601,4 +601,62 @@ class L10nNl extends L10n {
   String cameraUnavailable(String error) {
     return 'Camera niet beschikbaar ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Meldingen';
+
+  @override
+  String get notifChooseHint =>
+      'Kies waarover je meldingen krijgt. Alles blijft zichtbaar onder de bel.';
+
+  @override
+  String get notifPlanning => 'Rooster gepubliceerd of gewijzigd';
+
+  @override
+  String get notifRequests => 'Verzoeken: ruilen, verlof, uitnodigingen';
+
+  @override
+  String get notifMessages => 'Nieuwe berichten';
+
+  @override
+  String get notifOverlap => 'Overlappende diensten tussen bedrijven';
+
+  @override
+  String get notifConflicts =>
+      'Je wijzigingen vervangen door een andere leidinggevende';
+
+  @override
+  String get notifBilling => 'Herinneringen over het abonnement';
+
+  @override
+  String get pushEnabled => 'Meldingen staan aan op dit apparaat.';
+
+  @override
+  String get pushOff => 'Meldingen staan uit op dit apparaat.';
+
+  @override
+  String get pushBlocked =>
+      'Meldingen zijn geblokkeerd: sta ze toe in de instellingen van je telefoon of browser.';
+
+  @override
+  String get pushUnavailable =>
+      'Meldingen zijn niet beschikbaar op dit apparaat.';
+
+  @override
+  String get enablePush => 'Aanzetten';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: je rooster is gepubliceerd of gewijzigd.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company wil je aan het team toevoegen.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name stelt voor dat jij eigenaar van $company wordt.';
+  }
 }

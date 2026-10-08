@@ -1162,6 +1162,102 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Camera unavailable ({error}).'**
   String cameraUnavailable(String error);
+
+  /// No description provided for @notificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsTitle;
+
+  /// No description provided for @notifChooseHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose what you are notified about. Everything stays visible in the bell.'**
+  String get notifChooseHint;
+
+  /// No description provided for @notifPlanning.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule published or changed'**
+  String get notifPlanning;
+
+  /// No description provided for @notifRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Requests: swaps, leave, invitations'**
+  String get notifRequests;
+
+  /// No description provided for @notifMessages.
+  ///
+  /// In en, this message translates to:
+  /// **'New messages'**
+  String get notifMessages;
+
+  /// No description provided for @notifOverlap.
+  ///
+  /// In en, this message translates to:
+  /// **'Overlapping shifts between companies'**
+  String get notifOverlap;
+
+  /// No description provided for @notifConflicts.
+  ///
+  /// In en, this message translates to:
+  /// **'Your changes replaced by another manager'**
+  String get notifConflicts;
+
+  /// No description provided for @notifBilling.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription reminders'**
+  String get notifBilling;
+
+  /// No description provided for @pushEnabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications are on for this device.'**
+  String get pushEnabled;
+
+  /// No description provided for @pushOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications are off on this device.'**
+  String get pushOff;
+
+  /// No description provided for @pushBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications are blocked: allow them in your phone or browser settings.'**
+  String get pushBlocked;
+
+  /// No description provided for @pushUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications are not available on this device.'**
+  String get pushUnavailable;
+
+  /// No description provided for @enablePush.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on'**
+  String get enablePush;
+
+  /// No description provided for @noticeSchedulePublished.
+  ///
+  /// In en, this message translates to:
+  /// **'{company}: your schedule has been published or changed.'**
+  String noticeSchedulePublished(String company);
+
+  /// No description provided for @noticeJoinInvite.
+  ///
+  /// In en, this message translates to:
+  /// **'{company} wants to add you to its team.'**
+  String noticeJoinInvite(String company);
+
+  /// No description provided for @noticeTransferOffer.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} offers to make you the owner of {company}.'**
+  String noticeTransferOffer(String name, String company);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

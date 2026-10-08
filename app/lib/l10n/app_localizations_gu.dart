@@ -598,4 +598,60 @@ class L10nGu extends L10n {
   String cameraUnavailable(String error) {
     return 'કેમેરા ઉપલબ્ધ નથી ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'સૂચનાઓ';
+
+  @override
+  String get notifChooseHint =>
+      'કઈ બાબતની સૂચના મળે તે પસંદ કરો. બધું ઘંટડીમાં દેખાતું રહેશે.';
+
+  @override
+  String get notifPlanning => 'સમયપત્રક પ્રકાશિત અથવા બદલાયું';
+
+  @override
+  String get notifRequests => 'વિનંતીઓ: અદલાબદલી, રજા, આમંત્રણો';
+
+  @override
+  String get notifMessages => 'નવા સંદેશા';
+
+  @override
+  String get notifOverlap => 'કંપનીઓ વચ્ચે એકબીજા પર આવતી શિફ્ટ';
+
+  @override
+  String get notifConflicts => 'બીજા મેનેજરે તમારો ફેરફાર બદલ્યો';
+
+  @override
+  String get notifBilling => 'સબ્સ્ક્રિપ્શન રિમાઇન્ડર';
+
+  @override
+  String get pushEnabled => 'આ ઉપકરણ પર સૂચનાઓ ચાલુ છે.';
+
+  @override
+  String get pushOff => 'આ ઉપકરણ પર સૂચનાઓ બંધ છે.';
+
+  @override
+  String get pushBlocked =>
+      'સૂચનાઓ અવરોધિત છે: ફોન અથવા બ્રાઉઝરના સેટિંગ્સમાં મંજૂરી આપો.';
+
+  @override
+  String get pushUnavailable => 'આ ઉપકરણ પર સૂચનાઓ ઉપલબ્ધ નથી.';
+
+  @override
+  String get enablePush => 'ચાલુ કરો';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: તમારું સમયપત્રક પ્રકાશિત થયું છે અથવા બદલાયું છે.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company તમને તેની ટીમમાં ઉમેરવા માંગે છે.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name તમને $company ના માલિક બનવાનો પ્રસ્તાવ આપે છે.';
+  }
 }

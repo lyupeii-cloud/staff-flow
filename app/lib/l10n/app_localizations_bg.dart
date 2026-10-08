@@ -599,4 +599,60 @@ class L10nBg extends L10n {
   String cameraUnavailable(String error) {
     return 'Камерата не е достъпна ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Известия';
+
+  @override
+  String get notifChooseHint =>
+      'Изберете за какво да получавате известия. Всичко остава видимо в камбанката.';
+
+  @override
+  String get notifPlanning => 'Графикът е публикуван или променен';
+
+  @override
+  String get notifRequests => 'Заявки: размени, отпуски, покани';
+
+  @override
+  String get notifMessages => 'Нови съобщения';
+
+  @override
+  String get notifOverlap => 'Застъпващи се смени между фирми';
+
+  @override
+  String get notifConflicts => 'Вашите промени, заменени от друг ръководител';
+
+  @override
+  String get notifBilling => 'Напомняния за абонамента';
+
+  @override
+  String get pushEnabled => 'Известията са включени на това устройство.';
+
+  @override
+  String get pushOff => 'Известията са изключени на това устройство.';
+
+  @override
+  String get pushBlocked =>
+      'Известията са блокирани: разрешете ги в настройките на телефона или браузъра.';
+
+  @override
+  String get pushUnavailable => 'Известията не са достъпни на това устройство.';
+
+  @override
+  String get enablePush => 'Включване';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: графикът ви е публикуван или променен.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company иска да ви добави към екипа си.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name ви предлага да станете собственик на $company.';
+  }
 }

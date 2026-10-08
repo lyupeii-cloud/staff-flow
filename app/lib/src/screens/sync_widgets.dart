@@ -81,7 +81,7 @@ class NoticesButton extends StatelessWidget {
           for (final n in notices)
             ListTile(
               contentPadding: EdgeInsets.zero,
-              leading: Icon(Icons.edit_note,
+              leading: Icon(_noticeIcon(n['kind']),
                   color: n['read'] == true ? Theme.of(context).disabledColor : Theme.of(context).colorScheme.primary),
               title: Text(_noticeText(t, loc, n)),
               subtitle: Text(_when(loc, DateTime.parse(n['createdAt']).toLocal())),
@@ -97,12 +97,23 @@ class NoticesButton extends StatelessWidget {
 
   static String _noticeText(L10n t, String loc, dynamic n) {
     final data = n['data'] as Map<String, dynamic>;
+    final company = (n['companyName'] as String?) ?? t.someCompany;
     return switch (n['kind']) {
       'shift_overwritten' => t.noticeOverwritten(
           data['byName'] ?? '?', longDate(parseDay(data['shift']['day']), loc)),
+      'schedule_published' => t.noticeSchedulePublished(company),
+      'join_invite' => t.noticeJoinInvite(company),
+      'transfer_offer' => t.noticeTransferOffer(data['byName'] ?? '?', company),
       _ => n['kind'] as String,
     };
   }
+
+  static IconData _noticeIcon(String? kind) => switch (kind) {
+        'schedule_published' => Icons.calendar_month,
+        'join_invite' => Icons.group_add,
+        'transfer_offer' => Icons.key,
+        _ => Icons.edit_note,
+      };
 }
 
 String _when(String loc, DateTime at) => '${dayLabel(at, loc)} ${timeLabel(at.hour * 60 + at.minute)}';

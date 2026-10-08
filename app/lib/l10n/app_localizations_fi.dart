@@ -601,4 +601,61 @@ class L10nFi extends L10n {
   String cameraUnavailable(String error) {
     return 'Kamera ei ole käytettävissä ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Ilmoitukset';
+
+  @override
+  String get notifChooseHint =>
+      'Valitse, mistä saat ilmoituksia. Kaikki näkyy edelleen kellossa.';
+
+  @override
+  String get notifPlanning => 'Työvuorolista julkaistu tai muutettu';
+
+  @override
+  String get notifRequests => 'Pyynnöt: vaihdot, lomat, kutsut';
+
+  @override
+  String get notifMessages => 'Uudet viestit';
+
+  @override
+  String get notifOverlap => 'Päällekkäiset vuorot eri yrityksissä';
+
+  @override
+  String get notifConflicts => 'Toinen esihenkilö korvasi muutoksesi';
+
+  @override
+  String get notifBilling => 'Tilausmuistutukset';
+
+  @override
+  String get pushEnabled => 'Ilmoitukset ovat käytössä tällä laitteella.';
+
+  @override
+  String get pushOff => 'Ilmoitukset ovat pois päältä tällä laitteella.';
+
+  @override
+  String get pushBlocked =>
+      'Ilmoitukset on estetty: salli ne puhelimen tai selaimen asetuksista.';
+
+  @override
+  String get pushUnavailable =>
+      'Ilmoitukset eivät ole käytettävissä tällä laitteella.';
+
+  @override
+  String get enablePush => 'Ota käyttöön';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: työvuorolistasi on julkaistu tai sitä on muutettu.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company haluaa lisätä sinut tiimiinsä.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name ehdottaa, että sinusta tulee yrityksen $company omistaja.';
+  }
 }

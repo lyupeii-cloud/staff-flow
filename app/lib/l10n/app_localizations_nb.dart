@@ -599,4 +599,61 @@ class L10nNb extends L10n {
   String cameraUnavailable(String error) {
     return 'Kameraet er ikke tilgjengelig ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Varsler';
+
+  @override
+  String get notifChooseHint =>
+      'Velg hva du vil få varsler om. Alt er fortsatt synlig under bjella.';
+
+  @override
+  String get notifPlanning => 'Vaktplan publisert eller endret';
+
+  @override
+  String get notifRequests => 'Forespørsler: bytte, fravær, invitasjoner';
+
+  @override
+  String get notifMessages => 'Nye meldinger';
+
+  @override
+  String get notifOverlap => 'Overlappende vakter mellom bedrifter';
+
+  @override
+  String get notifConflicts => 'Endringene dine erstattet av en annen leder';
+
+  @override
+  String get notifBilling => 'Påminnelser om abonnement';
+
+  @override
+  String get pushEnabled => 'Varsler er på for denne enheten.';
+
+  @override
+  String get pushOff => 'Varsler er av på denne enheten.';
+
+  @override
+  String get pushBlocked =>
+      'Varsler er blokkert: tillat dem i innstillingene på telefonen eller i nettleseren.';
+
+  @override
+  String get pushUnavailable =>
+      'Varsler er ikke tilgjengelige på denne enheten.';
+
+  @override
+  String get enablePush => 'Slå på';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: vaktplanen din er publisert eller endret.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company vil legge deg til i teamet sitt.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name foreslår at du blir eier av $company.';
+  }
 }

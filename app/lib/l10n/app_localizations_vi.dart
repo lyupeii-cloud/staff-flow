@@ -594,4 +594,60 @@ class L10nVi extends L10n {
   String cameraUnavailable(String error) {
     return 'Không dùng được camera ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Thông báo';
+
+  @override
+  String get notifChooseHint =>
+      'Chọn những gì bạn muốn nhận thông báo. Mọi thứ vẫn hiển thị ở chuông.';
+
+  @override
+  String get notifPlanning => 'Lịch được công bố hoặc thay đổi';
+
+  @override
+  String get notifRequests => 'Yêu cầu: đổi ca, nghỉ phép, lời mời';
+
+  @override
+  String get notifMessages => 'Tin nhắn mới';
+
+  @override
+  String get notifOverlap => 'Ca làm trùng giữa các công ty';
+
+  @override
+  String get notifConflicts => 'Thay đổi của bạn bị quản lý khác thay thế';
+
+  @override
+  String get notifBilling => 'Nhắc nhở gói đăng ký';
+
+  @override
+  String get pushEnabled => 'Thông báo đang bật trên thiết bị này.';
+
+  @override
+  String get pushOff => 'Thông báo đang tắt trên thiết bị này.';
+
+  @override
+  String get pushBlocked =>
+      'Thông báo bị chặn: hãy cho phép trong cài đặt điện thoại hoặc trình duyệt.';
+
+  @override
+  String get pushUnavailable => 'Thông báo không khả dụng trên thiết bị này.';
+
+  @override
+  String get enablePush => 'Bật';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: lịch làm việc của bạn đã được công bố hoặc thay đổi.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company muốn thêm bạn vào nhóm.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name đề nghị bạn trở thành chủ sở hữu $company.';
+  }
 }

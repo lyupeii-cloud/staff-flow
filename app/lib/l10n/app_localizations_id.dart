@@ -597,4 +597,60 @@ class L10nId extends L10n {
   String cameraUnavailable(String error) {
     return 'Kamera tidak tersedia ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Notifikasi';
+
+  @override
+  String get notifChooseHint =>
+      'Pilih hal yang ingin Anda terima notifikasinya. Semuanya tetap terlihat di lonceng.';
+
+  @override
+  String get notifPlanning => 'Jadwal diterbitkan atau diubah';
+
+  @override
+  String get notifRequests => 'Permintaan: tukar, cuti, undangan';
+
+  @override
+  String get notifMessages => 'Pesan baru';
+
+  @override
+  String get notifOverlap => 'Shift yang tumpang tindih antarperusahaan';
+
+  @override
+  String get notifConflicts => 'Perubahan Anda digantikan manajer lain';
+
+  @override
+  String get notifBilling => 'Pengingat langganan';
+
+  @override
+  String get pushEnabled => 'Notifikasi aktif di perangkat ini.';
+
+  @override
+  String get pushOff => 'Notifikasi nonaktif di perangkat ini.';
+
+  @override
+  String get pushBlocked =>
+      'Notifikasi diblokir: izinkan di pengaturan ponsel atau browser.';
+
+  @override
+  String get pushUnavailable => 'Notifikasi tidak tersedia di perangkat ini.';
+
+  @override
+  String get enablePush => 'Aktifkan';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: jadwal Anda telah diterbitkan atau diubah.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company ingin menambahkan Anda ke timnya.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name menawarkan Anda menjadi pemilik $company.';
+  }
 }

@@ -594,4 +594,60 @@ class L10nTh extends L10n {
   String cameraUnavailable(String error) {
     return 'ใช้กล้องไม่ได้ ($error)';
   }
+
+  @override
+  String get notificationsTitle => 'การแจ้งเตือน';
+
+  @override
+  String get notifChooseHint =>
+      'เลือกเรื่องที่ต้องการรับการแจ้งเตือน ทุกอย่างยังดูได้ที่กระดิ่ง';
+
+  @override
+  String get notifPlanning => 'ตารางงานเผยแพร่หรือแก้ไข';
+
+  @override
+  String get notifRequests => 'คำขอ: แลกกะ ลางาน คำเชิญ';
+
+  @override
+  String get notifMessages => 'ข้อความใหม่';
+
+  @override
+  String get notifOverlap => 'กะทำงานซ้อนกันระหว่างบริษัท';
+
+  @override
+  String get notifConflicts => 'การแก้ไขของคุณถูกผู้จัดการคนอื่นแทนที่';
+
+  @override
+  String get notifBilling => 'การแจ้งเตือนการสมัครใช้งาน';
+
+  @override
+  String get pushEnabled => 'เปิดการแจ้งเตือนบนอุปกรณ์นี้แล้ว';
+
+  @override
+  String get pushOff => 'ปิดการแจ้งเตือนบนอุปกรณ์นี้อยู่';
+
+  @override
+  String get pushBlocked =>
+      'การแจ้งเตือนถูกบล็อก: อนุญาตในการตั้งค่าของโทรศัพท์หรือเบราว์เซอร์';
+
+  @override
+  String get pushUnavailable => 'อุปกรณ์นี้ใช้การแจ้งเตือนไม่ได้';
+
+  @override
+  String get enablePush => 'เปิด';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: ตารางงานของคุณได้รับการเผยแพร่หรือแก้ไขแล้ว';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company ต้องการเพิ่มคุณเข้าทีม';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name เสนอให้คุณเป็นเจ้าของ $company';
+  }
 }

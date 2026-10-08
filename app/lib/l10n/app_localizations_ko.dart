@@ -589,4 +589,58 @@ class L10nKo extends L10n {
   String cameraUnavailable(String error) {
     return '카메라를 사용할 수 없습니다($error).';
   }
+
+  @override
+  String get notificationsTitle => '알림';
+
+  @override
+  String get notifChooseHint => '알림 받을 항목을 선택하세요. 모든 내용은 종 아이콘에서 계속 볼 수 있습니다.';
+
+  @override
+  String get notifPlanning => '근무표 게시 또는 변경';
+
+  @override
+  String get notifRequests => '요청: 교대, 휴가, 초대';
+
+  @override
+  String get notifMessages => '새 메시지';
+
+  @override
+  String get notifOverlap => '회사 간 겹치는 근무';
+
+  @override
+  String get notifConflicts => '다른 관리자가 내 변경을 대체함';
+
+  @override
+  String get notifBilling => '구독 알림';
+
+  @override
+  String get pushEnabled => '이 기기에서 알림이 켜져 있습니다.';
+
+  @override
+  String get pushOff => '이 기기에서 알림이 꺼져 있습니다.';
+
+  @override
+  String get pushBlocked => '알림이 차단되었습니다. 휴대전화나 브라우저 설정에서 허용하세요.';
+
+  @override
+  String get pushUnavailable => '이 기기에서는 알림을 사용할 수 없습니다.';
+
+  @override
+  String get enablePush => '켜기';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: 근무표가 게시되었거나 변경되었습니다.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company에서 회원님을 팀에 추가하려고 합니다.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name님이 회원님에게 $company 소유권을 넘기려고 합니다.';
+  }
 }

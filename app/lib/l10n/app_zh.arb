@@ -161,5 +161,21 @@
   "scanQrHint": "将摄像头对准对方应用中显示的二维码（账户菜单“我的二维码”）。",
   "orEnterCode": "或输入对方的 6 位数字代码",
   "qrInvalid": "这不是 Staff Flow 二维码。",
-  "cameraUnavailable": "摄像头不可用（{error}）。"
+  "cameraUnavailable": "摄像头不可用（{error}）。",
+  "notificationsTitle": "通知",
+  "notifChooseHint": "选择要接收哪些通知。所有内容仍会显示在铃铛中。",
+  "notifPlanning": "排班发布或更改",
+  "notifRequests": "申请：换班、休假、邀请",
+  "notifMessages": "新消息",
+  "notifOverlap": "不同公司之间的排班重叠",
+  "notifConflicts": "你的修改被其他负责人替换",
+  "notifBilling": "订阅提醒",
+  "pushEnabled": "此设备已开启通知。",
+  "pushOff": "此设备已关闭通知。",
+  "pushBlocked": "通知已被阻止：请在手机或浏览器设置中允许。",
+  "pushUnavailable": "此设备无法使用通知。",
+  "enablePush": "开启",
+  "noticeSchedulePublished": "{company}：你的排班已发布或更改。",
+  "noticeJoinInvite": "{company} 想把你加入团队。",
+  "noticeTransferOffer": "{name} 提议由你成为 {company} 的所有者。"
 }

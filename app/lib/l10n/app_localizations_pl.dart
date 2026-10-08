@@ -607,4 +607,62 @@ class L10nPl extends L10n {
   String cameraUnavailable(String error) {
     return 'Aparat niedostępny ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Powiadomienia';
+
+  @override
+  String get notifChooseHint =>
+      'Wybierz, o czym chcesz dostawać powiadomienia. Wszystko pozostaje widoczne pod dzwonkiem.';
+
+  @override
+  String get notifPlanning => 'Grafik opublikowany lub zmieniony';
+
+  @override
+  String get notifRequests => 'Prośby: zamiany, urlopy, zaproszenia';
+
+  @override
+  String get notifMessages => 'Nowe wiadomości';
+
+  @override
+  String get notifOverlap => 'Nakładające się zmiany w różnych firmach';
+
+  @override
+  String get notifConflicts =>
+      'Twoje zmiany zastąpione przez innego kierownika';
+
+  @override
+  String get notifBilling => 'Przypomnienia o subskrypcji';
+
+  @override
+  String get pushEnabled => 'Powiadomienia są włączone na tym urządzeniu.';
+
+  @override
+  String get pushOff => 'Powiadomienia są wyłączone na tym urządzeniu.';
+
+  @override
+  String get pushBlocked =>
+      'Powiadomienia są zablokowane: zezwól na nie w ustawieniach telefonu lub przeglądarki.';
+
+  @override
+  String get pushUnavailable =>
+      'Powiadomienia nie są dostępne na tym urządzeniu.';
+
+  @override
+  String get enablePush => 'Włącz';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: twój grafik został opublikowany lub zmieniony.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company chce dodać cię do swojego zespołu.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name proponuje, abyś został właścicielem $company.';
+  }
 }

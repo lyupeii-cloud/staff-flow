@@ -161,5 +161,21 @@
   "scanQrHint": "ਉਹਨਾਂ ਦੀ ਐਪ ਵਿੱਚ ਦਿਖ ਰਹੇ QR ਕੋਡ ਵੱਲ ਕੈਮਰਾ ਕਰੋ (ਖਾਤਾ ਮੀਨੂ, “ਮੇਰਾ QR ਕੋਡ”)।",
   "orEnterCode": "ਜਾਂ ਉਹਨਾਂ ਦਾ 6 ਅੰਕਾਂ ਦਾ ਕੋਡ ਦਿਓ",
   "qrInvalid": "ਇਹ Staff Flow QR ਕੋਡ ਨਹੀਂ ਹੈ।",
-  "cameraUnavailable": "ਕੈਮਰਾ ਉਪਲਬਧ ਨਹੀਂ ({error})।"
+  "cameraUnavailable": "ਕੈਮਰਾ ਉਪਲਬਧ ਨਹੀਂ ({error})।",
+  "notificationsTitle": "ਸੂਚਨਾਵਾਂ",
+  "notifChooseHint": "ਚੁਣੋ ਕਿ ਤੁਹਾਨੂੰ ਕਿਹੜੀਆਂ ਸੂਚਨਾਵਾਂ ਮਿਲਣ। ਸਭ ਕੁਝ ਘੰਟੀ ਵਿੱਚ ਦਿਖਦਾ ਰਹੇਗਾ।",
+  "notifPlanning": "ਸ਼ਡਿਊਲ ਪ੍ਰਕਾਸ਼ਿਤ ਜਾਂ ਬਦਲਿਆ",
+  "notifRequests": "ਬੇਨਤੀਆਂ: ਅਦਲਾ-ਬਦਲੀ, ਛੁੱਟੀ, ਸੱਦੇ",
+  "notifMessages": "ਨਵੇਂ ਸੁਨੇਹੇ",
+  "notifOverlap": "ਕੰਪਨੀਆਂ ਵਿਚਕਾਰ ਟਕਰਾਉਂਦੀਆਂ ਸ਼ਿਫ਼ਟਾਂ",
+  "notifConflicts": "ਕਿਸੇ ਹੋਰ ਮੈਨੇਜਰ ਨੇ ਤੁਹਾਡੀ ਤਬਦੀਲੀ ਬਦਲੀ",
+  "notifBilling": "ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਯਾਦ-ਦਹਾਨੀਆਂ",
+  "pushEnabled": "ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਸੂਚਨਾਵਾਂ ਚਾਲੂ ਹਨ।",
+  "pushOff": "ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਸੂਚਨਾਵਾਂ ਬੰਦ ਹਨ।",
+  "pushBlocked": "ਸੂਚਨਾਵਾਂ ਬਲੌਕ ਹਨ: ਫ਼ੋਨ ਜਾਂ ਬ੍ਰਾਊਜ਼ਰ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਇਜਾਜ਼ਤ ਦਿਓ।",
+  "pushUnavailable": "ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਸੂਚਨਾਵਾਂ ਉਪਲਬਧ ਨਹੀਂ ਹਨ।",
+  "enablePush": "ਚਾਲੂ ਕਰੋ",
+  "noticeSchedulePublished": "{company}: ਤੁਹਾਡਾ ਸ਼ਡਿਊਲ ਪ੍ਰਕਾਸ਼ਿਤ ਜਾਂ ਬਦਲਿਆ ਗਿਆ ਹੈ।",
+  "noticeJoinInvite": "{company} ਤੁਹਾਨੂੰ ਆਪਣੀ ਟੀਮ ਵਿੱਚ ਜੋੜਨਾ ਚਾਹੁੰਦੀ ਹੈ।",
+  "noticeTransferOffer": "{name} ਤੁਹਾਨੂੰ {company} ਦਾ ਮਾਲਕ ਬਣਨ ਦੀ ਪੇਸ਼ਕਸ਼ ਕਰ ਰਹੇ ਹਨ।"
 }

@@ -72,7 +72,7 @@ void main() {
       await shift(owner, bob.id);
       await owner.ok('POST', '/companies/$company/publish');
       final notices = (await bob.ok('GET', '/notices'))['notices'];
-      expect(notices.single['kind'], 'schedule_published');
+      expect([notices.single['kind'], notices.single['companyName']], ['schedule_published', 'Boulangerie']);
       expect((await bob.ok('GET', '/me'))['unreadNotices'], 1);
       expect(await sent(), isEmpty);
     });

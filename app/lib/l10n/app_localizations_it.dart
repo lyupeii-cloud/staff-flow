@@ -599,4 +599,62 @@ class L10nIt extends L10n {
   String cameraUnavailable(String error) {
     return 'Fotocamera non disponibile ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Notifiche';
+
+  @override
+  String get notifChooseHint =>
+      'Scegli per cosa ricevere notifiche. Tutto resta visibile nella campanella.';
+
+  @override
+  String get notifPlanning => 'Turni pubblicati o modificati';
+
+  @override
+  String get notifRequests => 'Richieste: scambi, ferie, inviti';
+
+  @override
+  String get notifMessages => 'Nuovi messaggi';
+
+  @override
+  String get notifOverlap => 'Turni sovrapposti tra aziende';
+
+  @override
+  String get notifConflicts =>
+      'Le tue modifiche sostituite da un altro responsabile';
+
+  @override
+  String get notifBilling => 'Promemoria dell\'abbonamento';
+
+  @override
+  String get pushEnabled => 'Le notifiche sono attive su questo dispositivo.';
+
+  @override
+  String get pushOff => 'Le notifiche sono disattivate su questo dispositivo.';
+
+  @override
+  String get pushBlocked =>
+      'Le notifiche sono bloccate: consentile nelle impostazioni del telefono o del browser.';
+
+  @override
+  String get pushUnavailable =>
+      'Le notifiche non sono disponibili su questo dispositivo.';
+
+  @override
+  String get enablePush => 'Attiva';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: i tuoi turni sono stati pubblicati o modificati.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company vuole aggiungerti al suo team.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name ti propone di diventare proprietario di $company.';
+  }
 }

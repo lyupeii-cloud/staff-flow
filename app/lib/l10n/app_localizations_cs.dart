@@ -604,4 +604,60 @@ class L10nCs extends L10n {
   String cameraUnavailable(String error) {
     return 'Fotoaparát není dostupný ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Oznámení';
+
+  @override
+  String get notifChooseHint =>
+      'Vyberte, o čem chcete dostávat oznámení. Vše zůstává vidět pod zvonečkem.';
+
+  @override
+  String get notifPlanning => 'Rozpis zveřejněn nebo změněn';
+
+  @override
+  String get notifRequests => 'Žádosti: výměny, dovolená, pozvánky';
+
+  @override
+  String get notifMessages => 'Nové zprávy';
+
+  @override
+  String get notifOverlap => 'Překrývající se směny mezi firmami';
+
+  @override
+  String get notifConflicts => 'Vaše změny nahrazené jiným vedoucím';
+
+  @override
+  String get notifBilling => 'Připomínky předplatného';
+
+  @override
+  String get pushEnabled => 'Oznámení jsou na tomto zařízení zapnutá.';
+
+  @override
+  String get pushOff => 'Oznámení jsou na tomto zařízení vypnutá.';
+
+  @override
+  String get pushBlocked =>
+      'Oznámení jsou blokovaná: povolte je v nastavení telefonu nebo prohlížeče.';
+
+  @override
+  String get pushUnavailable => 'Oznámení nejsou na tomto zařízení dostupná.';
+
+  @override
+  String get enablePush => 'Zapnout';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: váš rozpis byl zveřejněn nebo změněn.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company vás chce přidat do svého týmu.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name vám nabízí, abyste se stali vlastníkem $company.';
+  }
 }

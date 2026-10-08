@@ -161,5 +161,21 @@
   "scanQrHint": "Itapat ang camera sa QR code sa kanyang app (menu ng account, “Ang QR code ko”).",
   "orEnterCode": "O ilagay ang kanyang 6-digit na code",
   "qrInvalid": "Hindi ito QR code ng Staff Flow.",
-  "cameraUnavailable": "Hindi magamit ang camera ({error})."
+  "cameraUnavailable": "Hindi magamit ang camera ({error}).",
+  "notificationsTitle": "Mga notification",
+  "notifChooseHint": "Piliin kung tungkol saan ka aabisuhan. Makikita pa rin ang lahat sa kampana.",
+  "notifPlanning": "Na-publish o nabago ang iskedyul",
+  "notifRequests": "Mga kahilingan: palitan, leave, imbitasyon",
+  "notifMessages": "Mga bagong mensahe",
+  "notifOverlap": "Nagsasabay na shift sa magkaibang kumpanya",
+  "notifConflicts": "Pinalitan ng ibang manager ang mga binago mo",
+  "notifBilling": "Mga paalala sa subscription",
+  "pushEnabled": "Naka-on ang mga notification sa device na ito.",
+  "pushOff": "Naka-off ang mga notification sa device na ito.",
+  "pushBlocked": "Naka-block ang mga notification: payagan ang mga ito sa settings ng telepono o browser.",
+  "pushUnavailable": "Hindi available ang mga notification sa device na ito.",
+  "enablePush": "I-on",
+  "noticeSchedulePublished": "{company}: na-publish o nabago ang iskedyul mo.",
+  "noticeJoinInvite": "Gusto kang idagdag ng {company} sa kanilang team.",
+  "noticeTransferOffer": "Inaalok ni {name} na ikaw ang maging may-ari ng {company}."
 }

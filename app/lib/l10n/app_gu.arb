@@ -161,5 +161,21 @@
   "scanQrHint": "તેમની એપમાં દેખાતા QR કોડ તરફ કેમેરા રાખો (એકાઉન્ટ મેનૂ, “મારો QR કોડ”).",
   "orEnterCode": "અથવા તેમનો 6 અંકનો કોડ દાખલ કરો",
   "qrInvalid": "આ Staff Flow QR કોડ નથી.",
-  "cameraUnavailable": "કેમેરા ઉપલબ્ધ નથી ({error})."
+  "cameraUnavailable": "કેમેરા ઉપલબ્ધ નથી ({error}).",
+  "notificationsTitle": "સૂચનાઓ",
+  "notifChooseHint": "કઈ બાબતની સૂચના મળે તે પસંદ કરો. બધું ઘંટડીમાં દેખાતું રહેશે.",
+  "notifPlanning": "સમયપત્રક પ્રકાશિત અથવા બદલાયું",
+  "notifRequests": "વિનંતીઓ: અદલાબદલી, રજા, આમંત્રણો",
+  "notifMessages": "નવા સંદેશા",
+  "notifOverlap": "કંપનીઓ વચ્ચે એકબીજા પર આવતી શિફ્ટ",
+  "notifConflicts": "બીજા મેનેજરે તમારો ફેરફાર બદલ્યો",
+  "notifBilling": "સબ્સ્ક્રિપ્શન રિમાઇન્ડર",
+  "pushEnabled": "આ ઉપકરણ પર સૂચનાઓ ચાલુ છે.",
+  "pushOff": "આ ઉપકરણ પર સૂચનાઓ બંધ છે.",
+  "pushBlocked": "સૂચનાઓ અવરોધિત છે: ફોન અથવા બ્રાઉઝરના સેટિંગ્સમાં મંજૂરી આપો.",
+  "pushUnavailable": "આ ઉપકરણ પર સૂચનાઓ ઉપલબ્ધ નથી.",
+  "enablePush": "ચાલુ કરો",
+  "noticeSchedulePublished": "{company}: તમારું સમયપત્રક પ્રકાશિત થયું છે અથવા બદલાયું છે.",
+  "noticeJoinInvite": "{company} તમને તેની ટીમમાં ઉમેરવા માંગે છે.",
+  "noticeTransferOffer": "{name} તમને {company} ના માલિક બનવાનો પ્રસ્તાવ આપે છે."
 }

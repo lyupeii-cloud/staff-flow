@@ -161,5 +161,21 @@
   "scanQrHint": "Hướng camera vào mã QR trong ứng dụng của họ (menu tài khoản, “Mã QR của tôi”).",
   "orEnterCode": "Hoặc nhập mã 6 chữ số của họ",
   "qrInvalid": "Đây không phải mã QR Staff Flow.",
-  "cameraUnavailable": "Không dùng được camera ({error})."
+  "cameraUnavailable": "Không dùng được camera ({error}).",
+  "notificationsTitle": "Thông báo",
+  "notifChooseHint": "Chọn những gì bạn muốn nhận thông báo. Mọi thứ vẫn hiển thị ở chuông.",
+  "notifPlanning": "Lịch được công bố hoặc thay đổi",
+  "notifRequests": "Yêu cầu: đổi ca, nghỉ phép, lời mời",
+  "notifMessages": "Tin nhắn mới",
+  "notifOverlap": "Ca làm trùng giữa các công ty",
+  "notifConflicts": "Thay đổi của bạn bị quản lý khác thay thế",
+  "notifBilling": "Nhắc nhở gói đăng ký",
+  "pushEnabled": "Thông báo đang bật trên thiết bị này.",
+  "pushOff": "Thông báo đang tắt trên thiết bị này.",
+  "pushBlocked": "Thông báo bị chặn: hãy cho phép trong cài đặt điện thoại hoặc trình duyệt.",
+  "pushUnavailable": "Thông báo không khả dụng trên thiết bị này.",
+  "enablePush": "Bật",
+  "noticeSchedulePublished": "{company}: lịch làm việc của bạn đã được công bố hoặc thay đổi.",
+  "noticeJoinInvite": "{company} muốn thêm bạn vào nhóm.",
+  "noticeTransferOffer": "{name} đề nghị bạn trở thành chủ sở hữu {company}."
 }

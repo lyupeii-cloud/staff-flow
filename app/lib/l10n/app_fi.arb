@@ -161,5 +161,21 @@
   "scanQrHint": "Suuntaa kamera henkilön sovelluksessa näkyvään QR-koodiin (tilivalikko, ”Oma QR-koodi”).",
   "orEnterCode": "Tai syötä hänen 6-numeroinen koodinsa",
   "qrInvalid": "Tämä ei ole Staff Flow -QR-koodi.",
-  "cameraUnavailable": "Kamera ei ole käytettävissä ({error})."
+  "cameraUnavailable": "Kamera ei ole käytettävissä ({error}).",
+  "notificationsTitle": "Ilmoitukset",
+  "notifChooseHint": "Valitse, mistä saat ilmoituksia. Kaikki näkyy edelleen kellossa.",
+  "notifPlanning": "Työvuorolista julkaistu tai muutettu",
+  "notifRequests": "Pyynnöt: vaihdot, lomat, kutsut",
+  "notifMessages": "Uudet viestit",
+  "notifOverlap": "Päällekkäiset vuorot eri yrityksissä",
+  "notifConflicts": "Toinen esihenkilö korvasi muutoksesi",
+  "notifBilling": "Tilausmuistutukset",
+  "pushEnabled": "Ilmoitukset ovat käytössä tällä laitteella.",
+  "pushOff": "Ilmoitukset ovat pois päältä tällä laitteella.",
+  "pushBlocked": "Ilmoitukset on estetty: salli ne puhelimen tai selaimen asetuksista.",
+  "pushUnavailable": "Ilmoitukset eivät ole käytettävissä tällä laitteella.",
+  "enablePush": "Ota käyttöön",
+  "noticeSchedulePublished": "{company}: työvuorolistasi on julkaistu tai sitä on muutettu.",
+  "noticeJoinInvite": "{company} haluaa lisätä sinut tiimiinsä.",
+  "noticeTransferOffer": "{name} ehdottaa, että sinusta tulee yrityksen {company} omistaja."
 }

@@ -601,4 +601,61 @@ class L10nFil extends L10n {
   String cameraUnavailable(String error) {
     return 'Hindi magamit ang camera ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Mga notification';
+
+  @override
+  String get notifChooseHint =>
+      'Piliin kung tungkol saan ka aabisuhan. Makikita pa rin ang lahat sa kampana.';
+
+  @override
+  String get notifPlanning => 'Na-publish o nabago ang iskedyul';
+
+  @override
+  String get notifRequests => 'Mga kahilingan: palitan, leave, imbitasyon';
+
+  @override
+  String get notifMessages => 'Mga bagong mensahe';
+
+  @override
+  String get notifOverlap => 'Nagsasabay na shift sa magkaibang kumpanya';
+
+  @override
+  String get notifConflicts => 'Pinalitan ng ibang manager ang mga binago mo';
+
+  @override
+  String get notifBilling => 'Mga paalala sa subscription';
+
+  @override
+  String get pushEnabled => 'Naka-on ang mga notification sa device na ito.';
+
+  @override
+  String get pushOff => 'Naka-off ang mga notification sa device na ito.';
+
+  @override
+  String get pushBlocked =>
+      'Naka-block ang mga notification: payagan ang mga ito sa settings ng telepono o browser.';
+
+  @override
+  String get pushUnavailable =>
+      'Hindi available ang mga notification sa device na ito.';
+
+  @override
+  String get enablePush => 'I-on';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: na-publish o nabago ang iskedyul mo.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return 'Gusto kang idagdag ng $company sa kanilang team.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return 'Inaalok ni $name na ikaw ang maging may-ari ng $company.';
+  }
 }

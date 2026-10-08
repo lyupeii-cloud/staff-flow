@@ -165,5 +165,21 @@
   "scanQrHint": "Visez le QR code affiché dans son application (menu du compte, « Mon QR code »).",
   "orEnterCode": "Ou saisissez son code à 6 chiffres",
   "qrInvalid": "Ce n'est pas un QR code Staff Flow.",
-  "cameraUnavailable": "Caméra indisponible ({error})."
+  "cameraUnavailable": "Caméra indisponible ({error}).",
+  "notificationsTitle": "Notifications",
+  "notifChooseHint": "Choisissez ce qui vous est notifié. Tout reste visible dans la cloche.",
+  "notifPlanning": "Planning publié ou modifié",
+  "notifRequests": "Demandes : échanges, congés, invitations",
+  "notifMessages": "Nouveaux messages",
+  "notifOverlap": "Chevauchement d'horaires entre entreprises",
+  "notifConflicts": "Vos modifications remplacées par un autre responsable",
+  "notifBilling": "Rappels d'abonnement",
+  "pushEnabled": "Les notifications sont activées sur cet appareil.",
+  "pushOff": "Les notifications sont désactivées sur cet appareil.",
+  "pushBlocked": "Les notifications sont bloquées : autorisez-les dans les réglages du téléphone ou du navigateur.",
+  "pushUnavailable": "Les notifications ne sont pas disponibles sur cet appareil.",
+  "enablePush": "Activer",
+  "noticeSchedulePublished": "{company} : votre planning a été publié ou modifié.",
+  "noticeJoinInvite": "{company} veut vous ajouter à son équipe.",
+  "noticeTransferOffer": "{name} vous propose de devenir propriétaire de {company}."
 }

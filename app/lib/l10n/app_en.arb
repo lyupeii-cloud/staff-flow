@@ -380,5 +380,45 @@
         "type": "String"
       }
     }
+  },
+  "notificationsTitle": "Notifications",
+  "notifChooseHint": "Choose what you are notified about. Everything stays visible in the bell.",
+  "notifPlanning": "Schedule published or changed",
+  "notifRequests": "Requests: swaps, leave, invitations",
+  "notifMessages": "New messages",
+  "notifOverlap": "Overlapping shifts between companies",
+  "notifConflicts": "Your changes replaced by another manager",
+  "notifBilling": "Subscription reminders",
+  "pushEnabled": "Notifications are on for this device.",
+  "pushOff": "Notifications are off on this device.",
+  "pushBlocked": "Notifications are blocked: allow them in your phone or browser settings.",
+  "pushUnavailable": "Notifications are not available on this device.",
+  "enablePush": "Turn on",
+  "noticeSchedulePublished": "{company}: your schedule has been published or changed.",
+  "@noticeSchedulePublished": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeJoinInvite": "{company} wants to add you to its team.",
+  "@noticeJoinInvite": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeTransferOffer": "{name} offers to make you the owner of {company}.",
+  "@noticeTransferOffer": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "company": {
+        "type": "String"
+      }
+    }
   }
 }

@@ -161,5 +161,21 @@
   "scanQrHint": "Îndreaptă camera spre codul QR afișat în aplicația persoanei (meniul contului, „Codul meu QR”).",
   "orEnterCode": "Sau introdu codul de 6 cifre",
   "qrInvalid": "Acesta nu este un cod QR Staff Flow.",
-  "cameraUnavailable": "Camera nu este disponibilă ({error})."
+  "cameraUnavailable": "Camera nu este disponibilă ({error}).",
+  "notificationsTitle": "Notificări",
+  "notifChooseHint": "Alege despre ce primești notificări. Totul rămâne vizibil la clopoțel.",
+  "notifPlanning": "Program publicat sau modificat",
+  "notifRequests": "Cereri: schimburi, concedii, invitații",
+  "notifMessages": "Mesaje noi",
+  "notifOverlap": "Ture suprapuse între firme",
+  "notifConflicts": "Modificările tale înlocuite de alt responsabil",
+  "notifBilling": "Mementouri despre abonament",
+  "pushEnabled": "Notificările sunt activate pe acest dispozitiv.",
+  "pushOff": "Notificările sunt dezactivate pe acest dispozitiv.",
+  "pushBlocked": "Notificările sunt blocate: permite-le în setările telefonului sau ale browserului.",
+  "pushUnavailable": "Notificările nu sunt disponibile pe acest dispozitiv.",
+  "enablePush": "Activează",
+  "noticeSchedulePublished": "{company}: programul tău a fost publicat sau modificat.",
+  "noticeJoinInvite": "{company} vrea să te adauge în echipa sa.",
+  "noticeTransferOffer": "{name} îți propune să devii proprietarul {company}."
 }

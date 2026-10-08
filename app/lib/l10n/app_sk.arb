@@ -161,5 +161,21 @@
   "scanQrHint": "Namierte fotoaparát na QR kód v jeho aplikácii (ponuka účtu, „Môj QR kód“).",
   "orEnterCode": "Alebo zadajte jeho 6-miestny kód",
   "qrInvalid": "Toto nie je QR kód Staff Flow.",
-  "cameraUnavailable": "Fotoaparát nie je dostupný ({error})."
+  "cameraUnavailable": "Fotoaparát nie je dostupný ({error}).",
+  "notificationsTitle": "Upozornenia",
+  "notifChooseHint": "Vyberte, o čom chcete dostávať upozornenia. Všetko zostáva viditeľné pod zvončekom.",
+  "notifPlanning": "Rozpis zverejnený alebo zmenený",
+  "notifRequests": "Žiadosti: výmeny, dovolenka, pozvánky",
+  "notifMessages": "Nové správy",
+  "notifOverlap": "Prekrývajúce sa zmeny medzi firmami",
+  "notifConflicts": "Vaše zmeny nahradené iným vedúcim",
+  "notifBilling": "Pripomienky predplatného",
+  "pushEnabled": "Upozornenia sú na tomto zariadení zapnuté.",
+  "pushOff": "Upozornenia sú na tomto zariadení vypnuté.",
+  "pushBlocked": "Upozornenia sú zablokované: povoľte ich v nastaveniach telefónu alebo prehliadača.",
+  "pushUnavailable": "Upozornenia nie sú na tomto zariadení dostupné.",
+  "enablePush": "Zapnúť",
+  "noticeSchedulePublished": "{company}: váš rozpis bol zverejnený alebo zmenený.",
+  "noticeJoinInvite": "{company} vás chce pridať do svojho tímu.",
+  "noticeTransferOffer": "{name} vám ponúka, aby ste sa stali vlastníkom {company}."
 }

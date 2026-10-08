@@ -586,4 +586,58 @@ class L10nZh extends L10n {
   String cameraUnavailable(String error) {
     return '摄像头不可用（$error）。';
   }
+
+  @override
+  String get notificationsTitle => '通知';
+
+  @override
+  String get notifChooseHint => '选择要接收哪些通知。所有内容仍会显示在铃铛中。';
+
+  @override
+  String get notifPlanning => '排班发布或更改';
+
+  @override
+  String get notifRequests => '申请：换班、休假、邀请';
+
+  @override
+  String get notifMessages => '新消息';
+
+  @override
+  String get notifOverlap => '不同公司之间的排班重叠';
+
+  @override
+  String get notifConflicts => '你的修改被其他负责人替换';
+
+  @override
+  String get notifBilling => '订阅提醒';
+
+  @override
+  String get pushEnabled => '此设备已开启通知。';
+
+  @override
+  String get pushOff => '此设备已关闭通知。';
+
+  @override
+  String get pushBlocked => '通知已被阻止：请在手机或浏览器设置中允许。';
+
+  @override
+  String get pushUnavailable => '此设备无法使用通知。';
+
+  @override
+  String get enablePush => '开启';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company：你的排班已发布或更改。';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company 想把你加入团队。';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name 提议由你成为 $company 的所有者。';
+  }
 }

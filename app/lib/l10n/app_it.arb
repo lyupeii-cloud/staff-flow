@@ -161,5 +161,21 @@
   "scanQrHint": "Inquadra il codice QR mostrato nella sua app (menu dell'account, «Il mio codice QR»).",
   "orEnterCode": "Oppure inserisci il suo codice a 6 cifre",
   "qrInvalid": "Questo non è un codice QR di Staff Flow.",
-  "cameraUnavailable": "Fotocamera non disponibile ({error})."
+  "cameraUnavailable": "Fotocamera non disponibile ({error}).",
+  "notificationsTitle": "Notifiche",
+  "notifChooseHint": "Scegli per cosa ricevere notifiche. Tutto resta visibile nella campanella.",
+  "notifPlanning": "Turni pubblicati o modificati",
+  "notifRequests": "Richieste: scambi, ferie, inviti",
+  "notifMessages": "Nuovi messaggi",
+  "notifOverlap": "Turni sovrapposti tra aziende",
+  "notifConflicts": "Le tue modifiche sostituite da un altro responsabile",
+  "notifBilling": "Promemoria dell'abbonamento",
+  "pushEnabled": "Le notifiche sono attive su questo dispositivo.",
+  "pushOff": "Le notifiche sono disattivate su questo dispositivo.",
+  "pushBlocked": "Le notifiche sono bloccate: consentile nelle impostazioni del telefono o del browser.",
+  "pushUnavailable": "Le notifiche non sono disponibili su questo dispositivo.",
+  "enablePush": "Attiva",
+  "noticeSchedulePublished": "{company}: i tuoi turni sono stati pubblicati o modificati.",
+  "noticeJoinInvite": "{company} vuole aggiungerti al suo team.",
+  "noticeTransferOffer": "{name} ti propone di diventare proprietario di {company}."
 }

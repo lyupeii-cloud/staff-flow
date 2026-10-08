@@ -161,5 +161,21 @@
   "scanQrHint": "Arahkan kamera ke kode QR di aplikasinya (menu akun, “Kode QR saya”).",
   "orEnterCode": "Atau masukkan kode 6 digitnya",
   "qrInvalid": "Ini bukan kode QR Staff Flow.",
-  "cameraUnavailable": "Kamera tidak tersedia ({error})."
+  "cameraUnavailable": "Kamera tidak tersedia ({error}).",
+  "notificationsTitle": "Notifikasi",
+  "notifChooseHint": "Pilih hal yang ingin Anda terima notifikasinya. Semuanya tetap terlihat di lonceng.",
+  "notifPlanning": "Jadwal diterbitkan atau diubah",
+  "notifRequests": "Permintaan: tukar, cuti, undangan",
+  "notifMessages": "Pesan baru",
+  "notifOverlap": "Shift yang tumpang tindih antarperusahaan",
+  "notifConflicts": "Perubahan Anda digantikan manajer lain",
+  "notifBilling": "Pengingat langganan",
+  "pushEnabled": "Notifikasi aktif di perangkat ini.",
+  "pushOff": "Notifikasi nonaktif di perangkat ini.",
+  "pushBlocked": "Notifikasi diblokir: izinkan di pengaturan ponsel atau browser.",
+  "pushUnavailable": "Notifikasi tidak tersedia di perangkat ini.",
+  "enablePush": "Aktifkan",
+  "noticeSchedulePublished": "{company}: jadwal Anda telah diterbitkan atau diubah.",
+  "noticeJoinInvite": "{company} ingin menambahkan Anda ke timnya.",
+  "noticeTransferOffer": "{name} menawarkan Anda menjadi pemilik {company}."
 }

@@ -88,6 +88,9 @@ class Me {
   /// Avis non lus (par exemple : une modification remplacée par un autre responsable).
   final int unreadNotices;
 
+  /// Familles de notifications activées (planning, requests, messages…).
+  final Map<String, bool> notificationPrefs;
+
   Me.fromJson(Map<String, dynamic> j)
       : user = User.fromJson(j['user']),
         companies = [for (final c in j['companies']) Membership.fromJson(c)],
@@ -95,7 +98,10 @@ class Me {
         pendingJoinRequests = [
           for (final r in j['pendingJoinRequests'] ?? const []) JoinRequest.fromJson(r),
         ],
-        unreadNotices = j['unreadNotices'] ?? 0;
+        unreadNotices = j['unreadNotices'] ?? 0,
+        notificationPrefs = {
+          for (final e in ((j['notificationPrefs'] ?? const {}) as Map).entries) e.key as String: e.value == true,
+        };
 }
 
 class JoinRequest {

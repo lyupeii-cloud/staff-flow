@@ -599,4 +599,60 @@ class L10nHi extends L10n {
   String cameraUnavailable(String error) {
     return 'कैमरा उपलब्ध नहीं है ($error)।';
   }
+
+  @override
+  String get notificationsTitle => 'सूचनाएँ';
+
+  @override
+  String get notifChooseHint =>
+      'चुनें कि आपको किन बातों की सूचना मिले। सब कुछ घंटी में दिखता रहेगा।';
+
+  @override
+  String get notifPlanning => 'शेड्यूल प्रकाशित या बदला गया';
+
+  @override
+  String get notifRequests => 'अनुरोध: अदला-बदली, छुट्टी, आमंत्रण';
+
+  @override
+  String get notifMessages => 'नए संदेश';
+
+  @override
+  String get notifOverlap => 'कंपनियों के बीच टकराती शिफ़्ट';
+
+  @override
+  String get notifConflicts => 'किसी दूसरे मैनेजर ने आपका बदलाव बदला';
+
+  @override
+  String get notifBilling => 'सदस्यता अनुस्मारक';
+
+  @override
+  String get pushEnabled => 'इस डिवाइस पर सूचनाएँ चालू हैं।';
+
+  @override
+  String get pushOff => 'इस डिवाइस पर सूचनाएँ बंद हैं।';
+
+  @override
+  String get pushBlocked =>
+      'सूचनाएँ ब्लॉक हैं: फ़ोन या ब्राउज़र की सेटिंग में इन्हें अनुमति दें।';
+
+  @override
+  String get pushUnavailable => 'इस डिवाइस पर सूचनाएँ उपलब्ध नहीं हैं।';
+
+  @override
+  String get enablePush => 'चालू करें';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: आपका शेड्यूल प्रकाशित या बदला गया है।';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company आपको अपनी टीम में जोड़ना चाहती है।';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name आपको $company का मालिक बनाने का प्रस्ताव दे रहे हैं।';
+  }
 }

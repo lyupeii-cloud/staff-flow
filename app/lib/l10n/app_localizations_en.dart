@@ -601,4 +601,61 @@ class L10nEn extends L10n {
   String cameraUnavailable(String error) {
     return 'Camera unavailable ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Notifications';
+
+  @override
+  String get notifChooseHint =>
+      'Choose what you are notified about. Everything stays visible in the bell.';
+
+  @override
+  String get notifPlanning => 'Schedule published or changed';
+
+  @override
+  String get notifRequests => 'Requests: swaps, leave, invitations';
+
+  @override
+  String get notifMessages => 'New messages';
+
+  @override
+  String get notifOverlap => 'Overlapping shifts between companies';
+
+  @override
+  String get notifConflicts => 'Your changes replaced by another manager';
+
+  @override
+  String get notifBilling => 'Subscription reminders';
+
+  @override
+  String get pushEnabled => 'Notifications are on for this device.';
+
+  @override
+  String get pushOff => 'Notifications are off on this device.';
+
+  @override
+  String get pushBlocked =>
+      'Notifications are blocked: allow them in your phone or browser settings.';
+
+  @override
+  String get pushUnavailable =>
+      'Notifications are not available on this device.';
+
+  @override
+  String get enablePush => 'Turn on';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: your schedule has been published or changed.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company wants to add you to its team.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name offers to make you the owner of $company.';
+  }
 }

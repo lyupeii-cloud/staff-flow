@@ -161,5 +161,21 @@
   "scanQrHint": "Richten Sie die Kamera auf den QR-Code in der App der Person (Kontomenü, „Mein QR-Code“).",
   "orEnterCode": "Oder geben Sie den 6-stelligen Code ein",
   "qrInvalid": "Das ist kein Staff-Flow-QR-Code.",
-  "cameraUnavailable": "Kamera nicht verfügbar ({error})."
+  "cameraUnavailable": "Kamera nicht verfügbar ({error}).",
+  "notificationsTitle": "Benachrichtigungen",
+  "notifChooseHint": "Wählen Sie, worüber Sie benachrichtigt werden. Alles bleibt in der Glocke sichtbar.",
+  "notifPlanning": "Dienstplan veröffentlicht oder geändert",
+  "notifRequests": "Anfragen: Tausch, Urlaub, Einladungen",
+  "notifMessages": "Neue Nachrichten",
+  "notifOverlap": "Überschneidende Schichten zwischen Unternehmen",
+  "notifConflicts": "Ihre Änderungen von einer anderen Führungskraft ersetzt",
+  "notifBilling": "Abo-Erinnerungen",
+  "pushEnabled": "Benachrichtigungen sind auf diesem Gerät aktiviert.",
+  "pushOff": "Benachrichtigungen sind auf diesem Gerät deaktiviert.",
+  "pushBlocked": "Benachrichtigungen sind blockiert: Erlauben Sie sie in den Einstellungen des Telefons oder Browsers.",
+  "pushUnavailable": "Benachrichtigungen sind auf diesem Gerät nicht verfügbar.",
+  "enablePush": "Aktivieren",
+  "noticeSchedulePublished": "{company}: Ihr Dienstplan wurde veröffentlicht oder geändert.",
+  "noticeJoinInvite": "{company} möchte Sie in sein Team aufnehmen.",
+  "noticeTransferOffer": "{name} bietet Ihnen an, Inhaber von {company} zu werden."
 }

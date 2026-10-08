@@ -161,5 +161,21 @@
   "scanQrHint": "Aponte a câmara para o código QR mostrado na aplicação da pessoa (menu da conta, «O meu código QR»).",
   "orEnterCode": "Ou introduza o código de 6 dígitos",
   "qrInvalid": "Este não é um código QR do Staff Flow.",
-  "cameraUnavailable": "Câmara indisponível ({error})."
+  "cameraUnavailable": "Câmara indisponível ({error}).",
+  "notificationsTitle": "Notificações",
+  "notifChooseHint": "Escolha sobre o que quer ser notificado. Tudo continua visível no sino.",
+  "notifPlanning": "Horário publicado ou alterado",
+  "notifRequests": "Pedidos: trocas, férias, convites",
+  "notifMessages": "Novas mensagens",
+  "notifOverlap": "Turnos sobrepostos entre empresas",
+  "notifConflicts": "As suas alterações substituídas por outro responsável",
+  "notifBilling": "Lembretes de subscrição",
+  "pushEnabled": "As notificações estão ativas neste dispositivo.",
+  "pushOff": "As notificações estão desativadas neste dispositivo.",
+  "pushBlocked": "As notificações estão bloqueadas: permita-as nas definições do telemóvel ou do navegador.",
+  "pushUnavailable": "As notificações não estão disponíveis neste dispositivo.",
+  "enablePush": "Ativar",
+  "noticeSchedulePublished": "{company}: o seu horário foi publicado ou alterado.",
+  "noticeJoinInvite": "{company} quer adicioná-lo à equipa.",
+  "noticeTransferOffer": "{name} propõe que se torne proprietário de {company}."
 }

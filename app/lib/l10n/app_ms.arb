@@ -161,5 +161,21 @@
   "scanQrHint": "Halakan kamera ke kod QR dalam aplikasinya (menu akaun, “Kod QR saya”).",
   "orEnterCode": "Atau masukkan kod 6 digitnya",
   "qrInvalid": "Ini bukan kod QR Staff Flow.",
-  "cameraUnavailable": "Kamera tidak tersedia ({error})."
+  "cameraUnavailable": "Kamera tidak tersedia ({error}).",
+  "notificationsTitle": "Pemberitahuan",
+  "notifChooseHint": "Pilih perkara yang anda mahu diberitahu. Semuanya tetap kelihatan di loceng.",
+  "notifPlanning": "Jadual diterbitkan atau diubah",
+  "notifRequests": "Permintaan: tukar syif, cuti, jemputan",
+  "notifMessages": "Mesej baharu",
+  "notifOverlap": "Syif bertindih antara syarikat",
+  "notifConflicts": "Perubahan anda digantikan oleh pengurus lain",
+  "notifBilling": "Peringatan langganan",
+  "pushEnabled": "Pemberitahuan dihidupkan pada peranti ini.",
+  "pushOff": "Pemberitahuan dimatikan pada peranti ini.",
+  "pushBlocked": "Pemberitahuan disekat: benarkan dalam tetapan telefon atau pelayar.",
+  "pushUnavailable": "Pemberitahuan tidak tersedia pada peranti ini.",
+  "enablePush": "Hidupkan",
+  "noticeSchedulePublished": "{company}: jadual anda telah diterbitkan atau diubah.",
+  "noticeJoinInvite": "{company} mahu menambah anda ke dalam pasukannya.",
+  "noticeTransferOffer": "{name} menawarkan anda menjadi pemilik {company}."
 }

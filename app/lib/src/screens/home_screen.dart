@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -5,10 +7,12 @@ import '../api.dart';
 import '../brand.dart';
 import '../i18n.dart';
 import '../models.dart';
+import '../push.dart';
 import '../session.dart';
 import 'company_tab.dart';
 import 'join_code_dialog.dart';
 import 'language_picker.dart';
+import 'notification_settings.dart';
 import 'people_widgets.dart';
 import 'sync_widgets.dart';
 
@@ -25,16 +29,28 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   Session get session => widget.session;
 
+  StreamSubscription<PushEvent>? _push;
+
   @override
   void initState() {
     super.initState();
     session.sync.addListener(_onSync);
+    _push = session.push.events.listen(_onPush);
   }
 
   @override
   void dispose() {
     session.sync.removeListener(_onSync);
+    _push?.cancel();
     super.dispose();
+  }
+
+  /// Notification reçue pendant que l'application est à l'écran : Android
+  /// ne l'affiche pas lui-même, on la montre ici.
+  void _onPush(PushEvent e) {
+    if (e.opened || !mounted || e.body == null) return;
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(e.title == null ? e.body! : '${e.title} · ${e.body}')));
   }
 
   /// Une modification en attente a été refusée par le serveur : on le dit.
@@ -55,7 +71,8 @@ class _HomeScreenState extends State<HomeScreen> {
       length: companies.length,
       child: Scaffold(
         appBar: AppBar(
-          title: const BrandTitle(size: 22),
+          // Sur un très petit écran, le titre rétrécit au lieu de cacher les boutons.
+          title: const FittedBox(fit: BoxFit.scaleDown, child: BrandTitle(size: 22)),
           actions: [
             SyncIndicator(session: session),
             NoticesButton(session: session),
@@ -243,6 +260,8 @@ class _ProfileMenu extends StatelessWidget {
           showMyQrCode(context, user);
         } else if (v == 'name') {
           _changeName(context);
+        } else if (v == 'notifications') {
+          NotificationSettingsPage.open(context, session);
         } else if (v == 'join') {
           showJoinCodeDialog(context, session);
         } else if (v == 'language') {
@@ -258,6 +277,7 @@ class _ProfileMenu extends StatelessWidget {
         PopupMenuItem(enabled: false, child: Text('${user.name}\n${user.email}')),
         _item('qr', Icons.qr_code_2, t.myQrCode),
         _item('name', Icons.badge_outlined, t.changeMyName),
+        _item('notifications', Icons.notifications_outlined, t.notificationsTitle),
         _item('join', Icons.pin_outlined, t.joinCompany),
         _item('copy', Icons.copy, t.myId(user.publicId)),
         _item('language', Icons.language, t.language),

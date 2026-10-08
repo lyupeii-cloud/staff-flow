@@ -590,4 +590,58 @@ class L10nJa extends L10n {
   String cameraUnavailable(String error) {
     return 'カメラを使用できません（$error）。';
   }
+
+  @override
+  String get notificationsTitle => '通知';
+
+  @override
+  String get notifChooseHint => '通知を受け取る内容を選んでください。すべてベルにはそのまま表示されます。';
+
+  @override
+  String get notifPlanning => 'シフトの公開・変更';
+
+  @override
+  String get notifRequests => '申請：交代、休暇、招待';
+
+  @override
+  String get notifMessages => '新着メッセージ';
+
+  @override
+  String get notifOverlap => '会社間のシフトの重複';
+
+  @override
+  String get notifConflicts => '自分の変更が別の管理者に置き換えられたとき';
+
+  @override
+  String get notifBilling => 'サブスクリプションのお知らせ';
+
+  @override
+  String get pushEnabled => 'この端末で通知はオンです。';
+
+  @override
+  String get pushOff => 'この端末で通知はオフです。';
+
+  @override
+  String get pushBlocked => '通知がブロックされています。スマートフォンまたはブラウザの設定で許可してください。';
+
+  @override
+  String get pushUnavailable => 'この端末では通知を利用できません。';
+
+  @override
+  String get enablePush => 'オンにする';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company：シフトが公開または変更されました。';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company があなたをチームに追加しようとしています。';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name さんがあなたを $company のオーナーにすることを提案しています。';
+  }
 }

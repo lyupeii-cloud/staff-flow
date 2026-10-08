@@ -601,4 +601,61 @@ class L10nSv extends L10n {
   String cameraUnavailable(String error) {
     return 'Kameran är inte tillgänglig ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Aviseringar';
+
+  @override
+  String get notifChooseHint =>
+      'Välj vad du vill få aviseringar om. Allt syns fortfarande under klockan.';
+
+  @override
+  String get notifPlanning => 'Schema publicerat eller ändrat';
+
+  @override
+  String get notifRequests => 'Förfrågningar: byten, ledighet, inbjudningar';
+
+  @override
+  String get notifMessages => 'Nya meddelanden';
+
+  @override
+  String get notifOverlap => 'Överlappande pass mellan företag';
+
+  @override
+  String get notifConflicts => 'Dina ändringar ersatta av en annan chef';
+
+  @override
+  String get notifBilling => 'Påminnelser om abonnemang';
+
+  @override
+  String get pushEnabled => 'Aviseringar är på för den här enheten.';
+
+  @override
+  String get pushOff => 'Aviseringar är av på den här enheten.';
+
+  @override
+  String get pushBlocked =>
+      'Aviseringar är blockerade: tillåt dem i telefonens eller webbläsarens inställningar.';
+
+  @override
+  String get pushUnavailable =>
+      'Aviseringar är inte tillgängliga på den här enheten.';
+
+  @override
+  String get enablePush => 'Slå på';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: ditt schema har publicerats eller ändrats.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company vill lägga till dig i sitt team.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name föreslår att du blir ägare till $company.';
+  }
 }

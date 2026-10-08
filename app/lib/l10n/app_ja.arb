@@ -161,5 +161,21 @@
   "scanQrHint": "相手のアプリに表示されたQRコードにカメラを向けてください（アカウントメニュー「自分のQRコード」）。",
   "orEnterCode": "または6桁のコードを入力",
   "qrInvalid": "Staff FlowのQRコードではありません。",
-  "cameraUnavailable": "カメラを使用できません（{error}）。"
+  "cameraUnavailable": "カメラを使用できません（{error}）。",
+  "notificationsTitle": "通知",
+  "notifChooseHint": "通知を受け取る内容を選んでください。すべてベルにはそのまま表示されます。",
+  "notifPlanning": "シフトの公開・変更",
+  "notifRequests": "申請：交代、休暇、招待",
+  "notifMessages": "新着メッセージ",
+  "notifOverlap": "会社間のシフトの重複",
+  "notifConflicts": "自分の変更が別の管理者に置き換えられたとき",
+  "notifBilling": "サブスクリプションのお知らせ",
+  "pushEnabled": "この端末で通知はオンです。",
+  "pushOff": "この端末で通知はオフです。",
+  "pushBlocked": "通知がブロックされています。スマートフォンまたはブラウザの設定で許可してください。",
+  "pushUnavailable": "この端末では通知を利用できません。",
+  "enablePush": "オンにする",
+  "noticeSchedulePublished": "{company}：シフトが公開または変更されました。",
+  "noticeJoinInvite": "{company} があなたをチームに追加しようとしています。",
+  "noticeTransferOffer": "{name} さんがあなたを {company} のオーナーにすることを提案しています。"
 }

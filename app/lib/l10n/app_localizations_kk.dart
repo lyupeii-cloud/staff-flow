@@ -600,4 +600,60 @@ class L10nKk extends L10n {
   String cameraUnavailable(String error) {
     return 'Камера қолжетімсіз ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Хабарландырулар';
+
+  @override
+  String get notifChooseHint =>
+      'Қандай хабарландыру алатыныңызды таңдаңыз. Бәрі қоңырауда көрініп тұрады.';
+
+  @override
+  String get notifPlanning => 'Кесте жарияланды немесе өзгертілді';
+
+  @override
+  String get notifRequests => 'Сұраулар: ауысулар, демалыс, шақырулар';
+
+  @override
+  String get notifMessages => 'Жаңа хабарлар';
+
+  @override
+  String get notifOverlap => 'Компаниялар арасындағы қабаттасқан ауысымдар';
+
+  @override
+  String get notifConflicts => 'Өзгерісіңізді басқа басшы ауыстырды';
+
+  @override
+  String get notifBilling => 'Жазылым туралы еске салғыштар';
+
+  @override
+  String get pushEnabled => 'Бұл құрылғыда хабарландырулар қосулы.';
+
+  @override
+  String get pushOff => 'Бұл құрылғыда хабарландырулар өшірулі.';
+
+  @override
+  String get pushBlocked =>
+      'Хабарландырулар бұғатталған: телефон немесе браузер параметрлерінде рұқсат етіңіз.';
+
+  @override
+  String get pushUnavailable => 'Бұл құрылғыда хабарландырулар қолжетімсіз.';
+
+  @override
+  String get enablePush => 'Қосу';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: кестеңіз жарияланды немесе өзгертілді.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company сізді командасына қосқысы келеді.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name сізге $company иесі болуды ұсынады.';
+  }
 }

@@ -602,4 +602,63 @@ class L10nEl extends L10n {
   String cameraUnavailable(String error) {
     return 'Η κάμερα δεν είναι διαθέσιμη ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Ειδοποιήσεις';
+
+  @override
+  String get notifChooseHint =>
+      'Επιλέξτε για τι θα ειδοποιείστε. Όλα παραμένουν ορατά στο καμπανάκι.';
+
+  @override
+  String get notifPlanning => 'Πρόγραμμα δημοσιεύτηκε ή άλλαξε';
+
+  @override
+  String get notifRequests => 'Αιτήματα: ανταλλαγές, άδειες, προσκλήσεις';
+
+  @override
+  String get notifMessages => 'Νέα μηνύματα';
+
+  @override
+  String get notifOverlap => 'Επικαλυπτόμενες βάρδιες μεταξύ εταιρειών';
+
+  @override
+  String get notifConflicts =>
+      'Οι αλλαγές σας αντικαταστάθηκαν από άλλον υπεύθυνο';
+
+  @override
+  String get notifBilling => 'Υπενθυμίσεις συνδρομής';
+
+  @override
+  String get pushEnabled => 'Οι ειδοποιήσεις είναι ενεργές σε αυτή τη συσκευή.';
+
+  @override
+  String get pushOff =>
+      'Οι ειδοποιήσεις είναι απενεργοποιημένες σε αυτή τη συσκευή.';
+
+  @override
+  String get pushBlocked =>
+      'Οι ειδοποιήσεις είναι αποκλεισμένες: επιτρέψτε τις στις ρυθμίσεις του τηλεφώνου ή του προγράμματος περιήγησης.';
+
+  @override
+  String get pushUnavailable =>
+      'Οι ειδοποιήσεις δεν είναι διαθέσιμες σε αυτή τη συσκευή.';
+
+  @override
+  String get enablePush => 'Ενεργοποίηση';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: το πρόγραμμά σας δημοσιεύτηκε ή άλλαξε.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return 'Η εταιρεία $company θέλει να σας προσθέσει στην ομάδα της.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return 'Ο/Η $name σας προτείνει να γίνετε ιδιοκτήτης της $company.';
+  }
 }

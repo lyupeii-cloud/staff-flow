@@ -601,4 +601,61 @@ class L10nSw extends L10n {
   String cameraUnavailable(String error) {
     return 'Kamera haipatikani ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Arifa';
+
+  @override
+  String get notifChooseHint =>
+      'Chagua mambo unayotaka kuarifiwa. Kila kitu kinaendelea kuonekana kwenye kengele.';
+
+  @override
+  String get notifPlanning => 'Ratiba imechapishwa au kubadilishwa';
+
+  @override
+  String get notifRequests => 'Maombi: kubadilishana, likizo, mialiko';
+
+  @override
+  String get notifMessages => 'Ujumbe mpya';
+
+  @override
+  String get notifOverlap => 'Zamu zinazogongana kati ya kampuni';
+
+  @override
+  String get notifConflicts =>
+      'Mabadiliko yako yamebadilishwa na msimamizi mwingine';
+
+  @override
+  String get notifBilling => 'Vikumbusho vya usajili';
+
+  @override
+  String get pushEnabled => 'Arifa zimewashwa kwenye kifaa hiki.';
+
+  @override
+  String get pushOff => 'Arifa zimezimwa kwenye kifaa hiki.';
+
+  @override
+  String get pushBlocked =>
+      'Arifa zimezuiwa: ziruhusu kwenye mipangilio ya simu au kivinjari.';
+
+  @override
+  String get pushUnavailable => 'Arifa hazipatikani kwenye kifaa hiki.';
+
+  @override
+  String get enablePush => 'Washa';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: ratiba yako imechapishwa au kubadilishwa.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company inataka kukuongeza kwenye timu yake.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name anapendekeza uwe mmiliki wa $company.';
+  }
 }

@@ -597,4 +597,61 @@ class L10nBn extends L10n {
   String cameraUnavailable(String error) {
     return 'ক্যামেরা পাওয়া যাচ্ছে না ($error)।';
   }
+
+  @override
+  String get notificationsTitle => 'বিজ্ঞপ্তি';
+
+  @override
+  String get notifChooseHint =>
+      'কোন বিষয়ে বিজ্ঞপ্তি পাবেন তা বেছে নিন। সবকিছু ঘণ্টায় দেখা যাবে।';
+
+  @override
+  String get notifPlanning => 'সময়সূচি প্রকাশিত বা পরিবর্তিত';
+
+  @override
+  String get notifRequests => 'অনুরোধ: অদলবদল, ছুটি, আমন্ত্রণ';
+
+  @override
+  String get notifMessages => 'নতুন বার্তা';
+
+  @override
+  String get notifOverlap => 'কোম্পানিগুলোর মধ্যে ওভারল্যাপ করা শিফট';
+
+  @override
+  String get notifConflicts =>
+      'অন্য ম্যানেজার আপনার পরিবর্তন প্রতিস্থাপন করেছেন';
+
+  @override
+  String get notifBilling => 'সাবস্ক্রিপশন রিমাইন্ডার';
+
+  @override
+  String get pushEnabled => 'এই ডিভাইসে বিজ্ঞপ্তি চালু আছে।';
+
+  @override
+  String get pushOff => 'এই ডিভাইসে বিজ্ঞপ্তি বন্ধ আছে।';
+
+  @override
+  String get pushBlocked =>
+      'বিজ্ঞপ্তি ব্লক করা আছে: ফোন বা ব্রাউজারের সেটিংসে অনুমতি দিন।';
+
+  @override
+  String get pushUnavailable => 'এই ডিভাইসে বিজ্ঞপ্তি পাওয়া যায় না।';
+
+  @override
+  String get enablePush => 'চালু করুন';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: আপনার সময়সূচি প্রকাশিত বা পরিবর্তিত হয়েছে।';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company আপনাকে তাদের দলে যুক্ত করতে চায়।';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name আপনাকে $company-এর মালিক হওয়ার প্রস্তাব দিচ্ছেন।';
+  }
 }

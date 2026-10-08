@@ -161,5 +161,21 @@
   "scanQrHint": "Irányítsd a kamerát az alkalmazásában látható QR-kódra (fiókmenü, „Saját QR-kódom”).",
   "orEnterCode": "Vagy írd be a 6 jegyű kódját",
   "qrInvalid": "Ez nem Staff Flow QR-kód.",
-  "cameraUnavailable": "A kamera nem érhető el ({error})."
+  "cameraUnavailable": "A kamera nem érhető el ({error}).",
+  "notificationsTitle": "Értesítések",
+  "notifChooseHint": "Válaszd ki, miről kapj értesítést. Minden látható marad a csengőnél.",
+  "notifPlanning": "Beosztás közzétéve vagy módosítva",
+  "notifRequests": "Kérések: cserék, szabadság, meghívások",
+  "notifMessages": "Új üzenetek",
+  "notifOverlap": "Átfedő műszakok cégek között",
+  "notifConflicts": "A módosításaidat egy másik vezető felülírta",
+  "notifBilling": "Előfizetési emlékeztetők",
+  "pushEnabled": "Az értesítések be vannak kapcsolva ezen az eszközön.",
+  "pushOff": "Az értesítések ki vannak kapcsolva ezen az eszközön.",
+  "pushBlocked": "Az értesítések le vannak tiltva: engedélyezd őket a telefon vagy a böngésző beállításaiban.",
+  "pushUnavailable": "Az értesítések nem érhetők el ezen az eszközön.",
+  "enablePush": "Bekapcsolás",
+  "noticeSchedulePublished": "{company}: a beosztásodat közzétették vagy módosították.",
+  "noticeJoinInvite": "{company} fel szeretne venni a csapatába.",
+  "noticeTransferOffer": "{name} felajánlja, hogy te legyél a(z) {company} tulajdonosa."
 }

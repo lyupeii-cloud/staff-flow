@@ -596,4 +596,62 @@ class L10nHu extends L10n {
   String cameraUnavailable(String error) {
     return 'A kamera nem érhető el ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Értesítések';
+
+  @override
+  String get notifChooseHint =>
+      'Válaszd ki, miről kapj értesítést. Minden látható marad a csengőnél.';
+
+  @override
+  String get notifPlanning => 'Beosztás közzétéve vagy módosítva';
+
+  @override
+  String get notifRequests => 'Kérések: cserék, szabadság, meghívások';
+
+  @override
+  String get notifMessages => 'Új üzenetek';
+
+  @override
+  String get notifOverlap => 'Átfedő műszakok cégek között';
+
+  @override
+  String get notifConflicts => 'A módosításaidat egy másik vezető felülírta';
+
+  @override
+  String get notifBilling => 'Előfizetési emlékeztetők';
+
+  @override
+  String get pushEnabled =>
+      'Az értesítések be vannak kapcsolva ezen az eszközön.';
+
+  @override
+  String get pushOff => 'Az értesítések ki vannak kapcsolva ezen az eszközön.';
+
+  @override
+  String get pushBlocked =>
+      'Az értesítések le vannak tiltva: engedélyezd őket a telefon vagy a böngésző beállításaiban.';
+
+  @override
+  String get pushUnavailable =>
+      'Az értesítések nem érhetők el ezen az eszközön.';
+
+  @override
+  String get enablePush => 'Bekapcsolás';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: a beosztásodat közzétették vagy módosították.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company fel szeretne venni a csapatába.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name felajánlja, hogy te legyél a(z) $company tulajdonosa.';
+  }
 }

@@ -161,5 +161,21 @@
   "scanQrHint": "Richt de camera op de QR-code in hun app (accountmenu, ‘Mijn QR-code’).",
   "orEnterCode": "Of voer hun 6-cijferige code in",
   "qrInvalid": "Dit is geen Staff Flow-QR-code.",
-  "cameraUnavailable": "Camera niet beschikbaar ({error})."
+  "cameraUnavailable": "Camera niet beschikbaar ({error}).",
+  "notificationsTitle": "Meldingen",
+  "notifChooseHint": "Kies waarover je meldingen krijgt. Alles blijft zichtbaar onder de bel.",
+  "notifPlanning": "Rooster gepubliceerd of gewijzigd",
+  "notifRequests": "Verzoeken: ruilen, verlof, uitnodigingen",
+  "notifMessages": "Nieuwe berichten",
+  "notifOverlap": "Overlappende diensten tussen bedrijven",
+  "notifConflicts": "Je wijzigingen vervangen door een andere leidinggevende",
+  "notifBilling": "Herinneringen over het abonnement",
+  "pushEnabled": "Meldingen staan aan op dit apparaat.",
+  "pushOff": "Meldingen staan uit op dit apparaat.",
+  "pushBlocked": "Meldingen zijn geblokkeerd: sta ze toe in de instellingen van je telefoon of browser.",
+  "pushUnavailable": "Meldingen zijn niet beschikbaar op dit apparaat.",
+  "enablePush": "Aanzetten",
+  "noticeSchedulePublished": "{company}: je rooster is gepubliceerd of gewijzigd.",
+  "noticeJoinInvite": "{company} wil je aan het team toevoegen.",
+  "noticeTransferOffer": "{name} stelt voor dat jij eigenaar van {company} wordt."
 }

@@ -161,5 +161,21 @@
   "scanQrHint": "Ret kameraet mod QR-koden i personens app (kontomenuen, »Min QR-kode«).",
   "orEnterCode": "Eller indtast personens 6-cifrede kode",
   "qrInvalid": "Dette er ikke en Staff Flow-QR-kode.",
-  "cameraUnavailable": "Kameraet er ikke tilgængeligt ({error})."
+  "cameraUnavailable": "Kameraet er ikke tilgængeligt ({error}).",
+  "notificationsTitle": "Notifikationer",
+  "notifChooseHint": "Vælg, hvad du vil have besked om. Alt er stadig synligt under klokken.",
+  "notifPlanning": "Vagtplan offentliggjort eller ændret",
+  "notifRequests": "Anmodninger: bytte, ferie, invitationer",
+  "notifMessages": "Nye beskeder",
+  "notifOverlap": "Overlappende vagter mellem virksomheder",
+  "notifConflicts": "Dine ændringer erstattet af en anden leder",
+  "notifBilling": "Påmindelser om abonnement",
+  "pushEnabled": "Notifikationer er slået til på denne enhed.",
+  "pushOff": "Notifikationer er slået fra på denne enhed.",
+  "pushBlocked": "Notifikationer er blokeret: tillad dem i telefonens eller browserens indstillinger.",
+  "pushUnavailable": "Notifikationer er ikke tilgængelige på denne enhed.",
+  "enablePush": "Slå til",
+  "noticeSchedulePublished": "{company}: din vagtplan er offentliggjort eller ændret.",
+  "noticeJoinInvite": "{company} vil tilføje dig til sit team.",
+  "noticeTransferOffer": "{name} foreslår, at du bliver ejer af {company}."
 }

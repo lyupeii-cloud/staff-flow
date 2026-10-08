@@ -604,4 +604,61 @@ class L10nRo extends L10n {
   String cameraUnavailable(String error) {
     return 'Camera nu este disponibilă ($error).';
   }
+
+  @override
+  String get notificationsTitle => 'Notificări';
+
+  @override
+  String get notifChooseHint =>
+      'Alege despre ce primești notificări. Totul rămâne vizibil la clopoțel.';
+
+  @override
+  String get notifPlanning => 'Program publicat sau modificat';
+
+  @override
+  String get notifRequests => 'Cereri: schimburi, concedii, invitații';
+
+  @override
+  String get notifMessages => 'Mesaje noi';
+
+  @override
+  String get notifOverlap => 'Ture suprapuse între firme';
+
+  @override
+  String get notifConflicts => 'Modificările tale înlocuite de alt responsabil';
+
+  @override
+  String get notifBilling => 'Mementouri despre abonament';
+
+  @override
+  String get pushEnabled => 'Notificările sunt activate pe acest dispozitiv.';
+
+  @override
+  String get pushOff => 'Notificările sunt dezactivate pe acest dispozitiv.';
+
+  @override
+  String get pushBlocked =>
+      'Notificările sunt blocate: permite-le în setările telefonului sau ale browserului.';
+
+  @override
+  String get pushUnavailable =>
+      'Notificările nu sunt disponibile pe acest dispozitiv.';
+
+  @override
+  String get enablePush => 'Activează';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: programul tău a fost publicat sau modificat.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company vrea să te adauge în echipa sa.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name îți propune să devii proprietarul $company.';
+  }
 }

@@ -11,6 +11,7 @@ import 'i18n.dart';
 import 'models.dart';
 import 'offline/background.dart';
 import 'offline/sync.dart';
+import 'push.dart';
 
 enum SessionState { loading, signedOut, signedIn }
 
@@ -22,6 +23,9 @@ class Session extends ChangeNotifier {
 
   /// Données hors connexion et file d'attente ; prête après [start].
   late final Sync sync;
+
+  /// Notifications sur l'appareil.
+  late final Push push = Push(api);
 
   static const tokenKey = 'session_token';
 
@@ -43,10 +47,14 @@ class Session extends ChangeNotifier {
     notifyListeners();
     final prefs = await SharedPreferences.getInstance();
     code == null ? await prefs.remove(languageKey) : await prefs.setString(languageKey, code);
+    // Les notifications suivent la langue de l'écran (réglée au prochain affichage).
+    WidgetsBinding.instance.addPostFrameCallback((_) => push.languageChanged());
   }
 
   Future<void> start() async {
     unawaited(_initGoogle());
+    unawaited(_initPush());
+    unawaited(_initPush());
     try {
       final prefs = await SharedPreferences.getInstance();
       language = prefs.getString(languageKey);
@@ -63,6 +71,17 @@ class Session extends ChangeNotifier {
       error = (t) => t.serverUnreachable;
       _set(SessionState.signedOut);
     }
+  }
+
+  Future<void> _initPush() async {
+    await push.init();
+    push.events.listen((e) async {
+      // Nouvel avis : la cloche se met à jour ; planning publié : il se recharge.
+      if (state != SessionState.signedIn) return;
+      if (e.kind == 'schedule_published') sync.markChanged();
+      await refresh().catchError((_) {});
+    });
+    if (state == SessionState.signedIn) await push.signedIn();
   }
 
   /// Hors de l'écran, Android peut geler l'application : une tâche
@@ -144,6 +163,7 @@ class Session extends ChangeNotifier {
   }
 
   Future<void> signOut() async {
+    await push.signOut();
     api.token = null;
     me = null;
     await sync.clear();
@@ -173,6 +193,7 @@ class Session extends ChangeNotifier {
   }
 
   void _set(SessionState s) {
+    if (s == SessionState.signedIn && state != SessionState.signedIn) unawaited(push.signedIn());
     state = s;
     notifyListeners();
   }

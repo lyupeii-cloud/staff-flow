@@ -161,5 +161,21 @@
   "scanQrHint": "Elekeza kamera kwenye msimbo wa QR ulio kwenye programu yake (menyu ya akaunti, “Msimbo wangu wa QR”).",
   "orEnterCode": "Au weka msimbo wake wa tarakimu 6",
   "qrInvalid": "Huu si msimbo wa QR wa Staff Flow.",
-  "cameraUnavailable": "Kamera haipatikani ({error})."
+  "cameraUnavailable": "Kamera haipatikani ({error}).",
+  "notificationsTitle": "Arifa",
+  "notifChooseHint": "Chagua mambo unayotaka kuarifiwa. Kila kitu kinaendelea kuonekana kwenye kengele.",
+  "notifPlanning": "Ratiba imechapishwa au kubadilishwa",
+  "notifRequests": "Maombi: kubadilishana, likizo, mialiko",
+  "notifMessages": "Ujumbe mpya",
+  "notifOverlap": "Zamu zinazogongana kati ya kampuni",
+  "notifConflicts": "Mabadiliko yako yamebadilishwa na msimamizi mwingine",
+  "notifBilling": "Vikumbusho vya usajili",
+  "pushEnabled": "Arifa zimewashwa kwenye kifaa hiki.",
+  "pushOff": "Arifa zimezimwa kwenye kifaa hiki.",
+  "pushBlocked": "Arifa zimezuiwa: ziruhusu kwenye mipangilio ya simu au kivinjari.",
+  "pushUnavailable": "Arifa hazipatikani kwenye kifaa hiki.",
+  "enablePush": "Washa",
+  "noticeSchedulePublished": "{company}: ratiba yako imechapishwa au kubadilishwa.",
+  "noticeJoinInvite": "{company} inataka kukuongeza kwenye timu yake.",
+  "noticeTransferOffer": "{name} anapendekeza uwe mmiliki wa {company}."
 }

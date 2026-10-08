@@ -161,5 +161,21 @@
   "scanQrHint": "Rikta kameran mot QR-koden i personens app (kontomenyn, ”Min QR-kod”).",
   "orEnterCode": "Eller ange personens sexsiffriga kod",
   "qrInvalid": "Det här är inte en QR-kod från Staff Flow.",
-  "cameraUnavailable": "Kameran är inte tillgänglig ({error})."
+  "cameraUnavailable": "Kameran är inte tillgänglig ({error}).",
+  "notificationsTitle": "Aviseringar",
+  "notifChooseHint": "Välj vad du vill få aviseringar om. Allt syns fortfarande under klockan.",
+  "notifPlanning": "Schema publicerat eller ändrat",
+  "notifRequests": "Förfrågningar: byten, ledighet, inbjudningar",
+  "notifMessages": "Nya meddelanden",
+  "notifOverlap": "Överlappande pass mellan företag",
+  "notifConflicts": "Dina ändringar ersatta av en annan chef",
+  "notifBilling": "Påminnelser om abonnemang",
+  "pushEnabled": "Aviseringar är på för den här enheten.",
+  "pushOff": "Aviseringar är av på den här enheten.",
+  "pushBlocked": "Aviseringar är blockerade: tillåt dem i telefonens eller webbläsarens inställningar.",
+  "pushUnavailable": "Aviseringar är inte tillgängliga på den här enheten.",
+  "enablePush": "Slå på",
+  "noticeSchedulePublished": "{company}: ditt schema har publicerats eller ändrats.",
+  "noticeJoinInvite": "{company} vill lägga till dig i sitt team.",
+  "noticeTransferOffer": "{name} föreslår att du blir ägare till {company}."
 }
