@@ -5,5 +5,6 @@ export 'src/errors.dart';
 export 'src/join_service.dart';
 export 'src/messages.dart';
 export 'src/models.dart';
+export 'src/notice_service.dart';
 export 'src/planning_service.dart';
 export 'src/store.dart';

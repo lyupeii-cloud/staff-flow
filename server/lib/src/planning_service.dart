@@ -119,7 +119,9 @@ class PlanningService {
           ...input.params(),
           'by': actor.id,
         });
-        created.add(Shift.fromRow(rows.first.toColumnMap()));
+        final row = rows.first.toColumnMap();
+        await _history(tx, companyId, row['id'] as String, actor, 'create', null, _snapshot(row));
+        created.add(Shift.fromRow(row));
       }
       await store.audit(
           companyId: companyId,
@@ -134,8 +136,12 @@ class PlanningService {
   /// Modifie un service. `series` : celui-ci et les suivants de sa série
   /// (sauf ceux déjà modifiés à part). `one` : celui-ci seul, qui sort alors
   /// de sa série sans la casser.
+  ///
+  /// [baseVersion] est la version du service sur laquelle le client s'est
+  /// appuyé. Si un autre responsable l'a modifié depuis, la modification la
+  /// plus récente l'emporte quand même, et l'autre responsable est prévenu.
   Future<int> update(User actor, String companyId, String shiftId, ShiftPatch patch,
-      {required Scope scope}) async {
+      {required Scope scope, int? baseVersion}) async {
     await _manager(actor, companyId);
     final shift = await _find(companyId, shiftId);
     if (scope == Scope.series && patch.day != null) {
@@ -143,56 +149,50 @@ class PlanningService {
     }
     final merged = patch.merge(shift);
     await _checkRefs(companyId, merged);
-    final sets = '''
-      start_min = @start, end_min = @end, user_id = @user::uuid, site_id = @site::uuid,
-      position_id = @pos::uuid, note = @note, dirty = true, updated_by = @by::uuid, updated_at = now()''';
-    final Result rows;
-    if (scope == Scope.series && shift.seriesId != null) {
-      rows = await store.query(store.db, '''
-        UPDATE shifts SET $sets
-        WHERE series_id = @series::uuid AND day >= @day::date AND NOT deleted
-          AND (NOT detached OR id = @id::uuid)
-        RETURNING id''', {
-        ...merged.params(),
-        'by': actor.id,
-        'series': shift.seriesId,
-        'day': formatDay(shift.day),
-        'id': shift.id,
-      });
-    } else {
-      rows = await store.query(store.db, '''
-        UPDATE shifts SET $sets, day = @day::date, detached = series_id IS NOT NULL
-        WHERE id = @id::uuid RETURNING id''', {
-        ...merged.params(),
-        'by': actor.id,
-        'day': formatDay(patch.day ?? shift.day),
-        'id': shift.id,
-      });
-    }
+    final series = scope == Scope.series && shift.seriesId != null;
+    final count = await store.db.runTx((tx) async {
+      final rows = await _lock(tx, shift, series: series);
+      await _noticeIfOverwritten(tx, actor, companyId, rows, shift.id, baseVersion);
+      for (final row in rows) {
+        final after = await store.query(tx, '''
+          UPDATE shifts SET start_min = @start, end_min = @end, user_id = @user::uuid,
+            site_id = @site::uuid, position_id = @pos::uuid, note = @note,
+            day = @day::date, detached = @detached,
+            dirty = true, version = version + 1, updated_by = @by::uuid, updated_at = now()
+          WHERE id = @id::uuid RETURNING *''', {
+          ...merged.params(),
+          'id': row['id'],
+          'day': series ? formatDay(row['day'] as DateTime) : formatDay(patch.day ?? shift.day),
+          'detached': series ? row['detached'] : row['series_id'] != null,
+          'by': actor.id,
+        });
+        await _history(tx, companyId, row['id'] as String, actor, 'update', _snapshot(row),
+            _snapshot(after.first.toColumnMap()));
+      }
+      return rows.length;
+    });
     await store.audit(
         companyId: companyId,
         actorId: actor.id,
         action: 'shift.update',
-        details: {'shiftId': shiftId, 'scope': scope.name, 'count': rows.length});
-    return rows.length;
+        details: {'shiftId': shiftId, 'scope': scope.name, 'count': count});
+    return count;
   }
 
   /// Supprime un service (ou la suite de sa série). Un service déjà publié
   /// reste visible des salariés jusqu'à la prochaine publication.
-  Future<int> delete(User actor, String companyId, String shiftId, {required Scope scope}) async {
+  Future<int> delete(User actor, String companyId, String shiftId,
+      {required Scope scope, int? baseVersion}) async {
     await _manager(actor, companyId);
     final shift = await _find(companyId, shiftId);
-    final where = scope == Scope.series && shift.seriesId != null
-        ? 'series_id = @series::uuid AND day >= @day::date AND (NOT detached OR id = @id::uuid)'
-        : 'id = @id::uuid';
-    final params = {'series': shift.seriesId, 'day': formatDay(shift.day), 'id': shift.id};
+    final series = scope == Scope.series && shift.seriesId != null;
     final count = await store.db.runTx((tx) async {
-      final dropped = await store.query(
-          tx, 'DELETE FROM shifts WHERE $where AND published IS NULL RETURNING id', params);
-      final marked = await store.query(tx, '''
-        UPDATE shifts SET deleted = true, dirty = true, updated_by = @by::uuid, updated_at = now()
-        WHERE $where AND NOT deleted RETURNING id''', {...params, 'by': actor.id});
-      return dropped.length + marked.length;
+      final rows = await _lock(tx, shift, series: series);
+      await _noticeIfOverwritten(tx, actor, companyId, rows, shift.id, baseVersion);
+      for (final row in rows) {
+        await _deleteRow(tx, actor, companyId, row, action: 'delete');
+      }
+      return rows.length;
     });
     await store.audit(
         companyId: companyId,
@@ -209,25 +209,185 @@ class PlanningService {
     if (await store.roleOf(companyId, toUserId) == null) {
       throw const ApiError.badRequest('Le remplaçant ne fait pas partie de l\'entreprise.');
     }
-    final rows = await store.query(store.db, '''
-      UPDATE shifts SET user_id = @to::uuid, dirty = true, updated_by = @by::uuid, updated_at = now()
-      WHERE company_id = @c::uuid AND user_id = @from::uuid AND NOT deleted
-        AND day BETWEEN @start::date AND @end::date
-      RETURNING id''', {
-      'c': companyId,
-      'from': fromUserId,
-      'to': toUserId,
-      'start': formatDay(parseDay(from)),
-      'end': formatDay(parseDay(to)),
-      'by': actor.id,
+    final count = await store.db.runTx((tx) async {
+      final rows = await store.query(tx, '''
+        SELECT * FROM shifts
+        WHERE company_id = @c::uuid AND user_id = @from::uuid AND NOT deleted
+          AND day BETWEEN @start::date AND @end::date
+        FOR UPDATE''', {
+        'c': companyId,
+        'from': fromUserId,
+        'start': formatDay(parseDay(from)),
+        'end': formatDay(parseDay(to)),
+      });
+      for (final row in rows.map((r) => r.toColumnMap())) {
+        final after = await store.query(tx, '''
+          UPDATE shifts SET user_id = @to::uuid, dirty = true, version = version + 1,
+            updated_by = @by::uuid, updated_at = now()
+          WHERE id = @id::uuid RETURNING *''', {'id': row['id'], 'to': toUserId, 'by': actor.id});
+        await _history(tx, companyId, row['id'] as String, actor, 'update', _snapshot(row),
+            _snapshot(after.first.toColumnMap()));
+      }
+      return rows.length;
     });
     await store.audit(
         companyId: companyId,
         actorId: actor.id,
         action: 'shift.replace',
-        details: {'fromUserId': fromUserId, 'toUserId': toUserId, 'count': rows.length});
-    return rows.length;
+        details: {'fromUserId': fromUserId, 'toUserId': toUserId, 'count': count});
+    return count;
   }
+
+  // --- Historique ----------------------------------------------------------
+
+  /// Dernières modifications de l'entreprise, ou d'un service ([shiftId]).
+  Future<List<HistoryEntry>> history(User actor, String companyId, {String? shiftId, int limit = 100}) async {
+    final (_, role) = await companies.open(actor, companyId);
+    if (!role.canManage) throw const ApiError.forbidden();
+    final rows = await store.query(store.db, '''
+      SELECT h.id, h.shift_id::text, h.action, h.before, h.after, h.at,
+             h.actor_id::text AS actor_id, u.name AS actor_name
+      FROM shift_history h LEFT JOIN users u ON u.id = h.actor_id
+      WHERE h.company_id = @c::uuid ${shiftId == null ? '' : 'AND h.shift_id = @s::uuid'}
+      ORDER BY h.id DESC LIMIT @limit''', {'c': companyId, 's': shiftId, 'limit': limit.clamp(1, 500)});
+    return [for (final r in rows) HistoryEntry.fromRow(r.toColumnMap())];
+  }
+
+  /// Annule une modification : le service revient à son état d'avant.
+  /// Annuler une création supprime le service ; annuler une suppression le
+  /// rétablit (en brouillon s'il n'avait jamais été publié). Renvoie `false`
+  /// si le service était déjà dans cet état.
+  Future<bool> undo(User actor, String companyId, int historyId) async {
+    await _manager(actor, companyId);
+    final changed = await store.db.runTx((tx) async {
+      final entries = await store.query(tx,
+          'SELECT shift_id::text, before FROM shift_history WHERE id = @id AND company_id = @c::uuid',
+          {'id': historyId, 'c': companyId});
+      if (entries.isEmpty) throw const ApiError.notFound();
+      final shiftId = entries.first[0] as String;
+      final target = entries.first[1] as Map<String, dynamic>?;
+      final current = await store.query(tx, 'SELECT * FROM shifts WHERE id = @id::uuid FOR UPDATE', {'id': shiftId});
+      final row = current.isEmpty ? null : current.first.toColumnMap();
+      final alive = row != null && row['deleted'] != true;
+
+      if (target == null) {
+        // Annuler une création : supprimer le service s'il existe encore.
+        if (!alive) return false;
+        await _deleteRow(tx, actor, companyId, row, action: 'undo');
+        return true;
+      }
+      if (row == null) {
+        // Brouillon effacé : on le recrée tel quel, avec le même identifiant.
+        final inserted = await store.query(tx, '''
+          INSERT INTO shifts (id, company_id, series_id, day, start_min, end_min, user_id,
+                              site_id, position_id, note, detached, updated_by)
+          VALUES (@id::uuid, @c::uuid, @series::uuid, @day::date, @start, @end, @user::uuid,
+                  @site::uuid, @pos::uuid, @note, @detached, @by::uuid)
+          RETURNING *''', {..._fields(target), 'id': shiftId, 'c': companyId, 'by': actor.id});
+        await _history(tx, companyId, shiftId, actor, 'undo', null, _snapshot(inserted.first.toColumnMap()));
+        return true;
+      }
+      if (alive && _sameState(_snapshot(row), target)) return false;
+      final updated = await store.query(tx, '''
+        UPDATE shifts SET series_id = @series::uuid, day = @day::date, start_min = @start,
+          end_min = @end, user_id = @user::uuid, site_id = @site::uuid, position_id = @pos::uuid,
+          note = @note, detached = @detached, deleted = false, dirty = true,
+          version = version + 1, updated_by = @by::uuid, updated_at = now()
+        WHERE id = @id::uuid RETURNING *''', {..._fields(target), 'id': shiftId, 'by': actor.id});
+      await _history(tx, companyId, shiftId, actor, 'undo', _snapshot(row), _snapshot(updated.first.toColumnMap()));
+      return true;
+    });
+    await store.audit(
+        companyId: companyId, actorId: actor.id, action: 'shift.undo', details: {'historyId': historyId});
+    return changed;
+  }
+
+  // --- Outils des modifications ---------------------------------------------
+
+  /// Verrouille, pour la transaction, le service et (série) ceux qui suivent.
+  Future<List<Map<String, dynamic>>> _lock(TxSession tx, Shift shift, {required bool series}) async {
+    final rows = await store.query(tx, '''
+      SELECT * FROM shifts WHERE ${series ? 'series_id = @series::uuid AND day >= @day::date AND NOT deleted AND (NOT detached OR id = @id::uuid)' : 'id = @id::uuid'}
+      ORDER BY day FOR UPDATE''', {'series': shift.seriesId, 'day': formatDay(shift.day), 'id': shift.id});
+    return [for (final r in rows) r.toColumnMap()];
+  }
+
+  /// Le client a modifié une version dépassée du service, changée entre-temps
+  /// par un autre responsable : on prévient celui-ci que son travail a été remplacé.
+  Future<void> _noticeIfOverwritten(TxSession tx, User actor, String companyId,
+      List<Map<String, dynamic>> rows, String shiftId, int? baseVersion) async {
+    if (baseVersion == null) return;
+    final target = rows.firstWhere((r) => r['id'] == shiftId);
+    final previousAuthor = target['updated_by'] as String?;
+    if (target['version'] == baseVersion || previousAuthor == null || previousAuthor == actor.id) return;
+    await store.query(tx, '''
+      INSERT INTO notices (user_id, company_id, kind, data)
+      VALUES (@u::uuid, @c::uuid, 'shift_overwritten', @d::jsonb)''', {
+      'u': previousAuthor,
+      'c': companyId,
+      'd': jsonEncode({'shiftId': shiftId, 'byId': actor.id, 'byName': actor.name, 'shift': _snapshot(target)}),
+    });
+  }
+
+  /// Supprime un brouillon, ou marque supprimé un service déjà publié.
+  Future<void> _deleteRow(TxSession tx, User actor, String companyId, Map<String, dynamic> row,
+      {required String action}) async {
+    Map<String, dynamic>? after;
+    if (row['published'] == null) {
+      await store.query(tx, 'DELETE FROM shifts WHERE id = @id::uuid', {'id': row['id']});
+    } else {
+      final updated = await store.query(tx, '''
+        UPDATE shifts SET deleted = true, dirty = true, version = version + 1,
+          updated_by = @by::uuid, updated_at = now()
+        WHERE id = @id::uuid RETURNING *''', {'id': row['id'], 'by': actor.id});
+      after = _snapshot(updated.first.toColumnMap());
+    }
+    await _history(tx, companyId, row['id'] as String, actor, action, _snapshot(row), after);
+  }
+
+  Future<void> _history(TxSession tx, String companyId, String shiftId, User actor, String action,
+      Map<String, dynamic>? before, Map<String, dynamic>? after) async {
+    await store.query(tx, '''
+      INSERT INTO shift_history (company_id, shift_id, actor_id, action, before, after)
+      VALUES (@c::uuid, @s::uuid, @a::uuid, @action, @before::jsonb, @after::jsonb)''', {
+      'c': companyId,
+      's': shiftId,
+      'a': actor.id,
+      'action': action,
+      'before': before == null ? null : jsonEncode(before),
+      'after': after == null ? null : jsonEncode(after),
+    });
+  }
+
+  /// État d'un service tel que le garde l'historique.
+  static Map<String, dynamic> _snapshot(Map<String, dynamic> r) => {
+        'day': formatDay(r['day'] as DateTime),
+        'start': r['start_min'],
+        'end': r['end_min'],
+        'userId': r['user_id'],
+        'siteId': r['site_id'],
+        'positionId': r['position_id'],
+        'note': r['note'],
+        'seriesId': r['series_id'],
+        'detached': r['detached'],
+        'deleted': r['deleted'],
+      };
+
+  static Map<String, Object?> _fields(Map<String, dynamic> s) => {
+        'series': s['seriesId'],
+        'day': s['day'],
+        'start': s['start'],
+        'end': s['end'],
+        'user': s['userId'],
+        'site': s['siteId'],
+        'pos': s['positionId'],
+        'note': s['note'],
+        'detached': s['detached'] ?? false,
+      };
+
+  static bool _sameState(Map<String, dynamic> a, Map<String, dynamic> b) =>
+      [for (final k in ['day', 'start', 'end', 'userId', 'siteId', 'positionId', 'note']) a[k] == b[k]]
+          .every((same) => same);
 
   /// Publie toutes les modifications en attente. Renvoie le nombre de
   /// services publiés et les personnes concernées (à prévenir).
@@ -439,6 +599,9 @@ class Shift {
   final String? positionId;
   final String? note;
 
+  /// Augmente à chaque modification (renvoyée par le client pour les conflits).
+  final int version;
+
   /// draft (jamais publié), published, modified (publié puis modifié),
   /// deleted (publié, supprimé à la prochaine publication).
   final String status;
@@ -453,6 +616,7 @@ class Shift {
     this.siteId,
     this.positionId,
     this.note,
+    this.version = 1,
     required this.status,
   });
 
@@ -466,6 +630,7 @@ class Shift {
         siteId: r['site_id'] as String?,
         positionId: r['position_id'] as String?,
         note: r['note'] as String?,
+        version: r['version'] as int,
         status: r['published'] == null
             ? 'draft'
             : r['deleted'] == true
@@ -503,6 +668,7 @@ class Shift {
         'siteId': siteId,
         'positionId': positionId,
         'note': note,
+        'version': version,
         'status': status,
       };
 }
@@ -516,3 +682,47 @@ DateTime parseDay(String value) {
 }
 
 String formatDay(DateTime d) => d.toIso8601String().substring(0, 10);
+
+/// Une ligne de l'historique d'un service.
+class HistoryEntry {
+  final int id;
+  final String shiftId;
+  final String action;
+  final Map<String, dynamic>? before;
+  final Map<String, dynamic>? after;
+  final DateTime at;
+  final String? actorId;
+  final String? actorName;
+
+  const HistoryEntry({
+    required this.id,
+    required this.shiftId,
+    required this.action,
+    this.before,
+    this.after,
+    required this.at,
+    this.actorId,
+    this.actorName,
+  });
+
+  factory HistoryEntry.fromRow(Map<String, dynamic> r) => HistoryEntry(
+        id: r['id'] as int,
+        shiftId: r['shift_id'] as String,
+        action: r['action'] as String,
+        before: r['before'] as Map<String, dynamic>?,
+        after: r['after'] as Map<String, dynamic>?,
+        at: r['at'] as DateTime,
+        actorId: r['actor_id'] as String?,
+        actorName: r['actor_name'] as String?,
+      );
+
+  Map<String, Object?> toJson() => {
+        'id': id,
+        'shiftId': shiftId,
+        'action': action,
+        'before': before,
+        'after': after,
+        'at': at.toUtc().toIso8601String(),
+        'actor': actorId == null ? null : {'id': actorId, 'name': actorName},
+      };
+}

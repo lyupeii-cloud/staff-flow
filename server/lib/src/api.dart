@@ -9,6 +9,7 @@ import 'company_service.dart';
 import 'errors.dart';
 import 'join_service.dart';
 import 'messages.dart';
+import 'notice_service.dart';
 import 'models.dart';
 import 'planning_service.dart';
 import 'store.dart';
@@ -21,6 +22,7 @@ class Api {
   final CompanyService companies;
   late final PlanningService planning = PlanningService(store, companies);
   late final JoinService joins = JoinService(store, companies, now: now);
+  late final NoticeService notices = NoticeService(store);
 
   /// Horloge (UTC), remplaçable dans les tests.
   final DateTime Function() now;
@@ -68,7 +70,12 @@ class Api {
       ..post('/companies/<id>/shifts/replace', _authed(_replace))
       ..patch('/companies/<id>/shifts/<shiftId>', _authed(_updateShift))
       ..delete('/companies/<id>/shifts/<shiftId>', _authed(_deleteShift))
-      ..post('/companies/<id>/publish', _authed(_publish));
+      ..post('/companies/<id>/publish', _authed(_publish))
+      // Historique, annulation, avis
+      ..get('/companies/<id>/history', _authed(_history))
+      ..post('/companies/<id>/history/<entryId>/undo', _authed(_undo))
+      ..get('/notices', _authed(_notices))
+      ..post('/notices/read', _authed(_readNotices));
     if (devLogin) v1.post('/auth/dev', _loginDev);
 
     final root = Router(notFoundHandler: _notFound)
@@ -116,6 +123,7 @@ class Api {
           for (final t in await store.pendingTransfersFor(user.id)) t.toJson(),
         ],
         'pendingJoinRequests': [for (final j in await joins.pendingFor(user)) j.toJson()],
+        'unreadNotices': await notices.unreadCount(user.id),
       });
 
   // --- Entreprises ---------------------------------------------------------
@@ -241,16 +249,38 @@ class Api {
 
   Future<Response> _updateShift(Request req, User user) async {
     final body = await _body(req);
+    final baseVersion = body.remove('baseVersion');
     final count = await _input(() => planning.update(
         user, req.params['id']!, req.params['shiftId']!, ShiftPatch(body),
-        scope: _scope(req)));
+        scope: _scope(req), baseVersion: baseVersion as int?));
     return _json({'updated': count});
   }
 
   Future<Response> _deleteShift(Request req, User user) async {
-    final count =
-        await planning.delete(user, req.params['id']!, req.params['shiftId']!, scope: _scope(req));
+    final count = await planning.delete(user, req.params['id']!, req.params['shiftId']!,
+        scope: _scope(req), baseVersion: int.tryParse(req.url.queryParameters['baseVersion'] ?? ''));
     return _json({'deleted': count});
+  }
+
+  Future<Response> _history(Request req, User user) async {
+    final q = req.url.queryParameters;
+    final entries = await planning.history(user, req.params['id']!,
+        shiftId: q['shiftId'], limit: int.tryParse(q['limit'] ?? '') ?? 100);
+    return _json({'entries': [for (final e in entries) e.toJson()]});
+  }
+
+  Future<Response> _undo(Request req, User user) async {
+    final id = int.tryParse(req.params['entryId']!);
+    if (id == null) throw const ApiError.notFound();
+    return _json({'changed': await planning.undo(user, req.params['id']!, id)});
+  }
+
+  Future<Response> _notices(Request req, User user) async =>
+      _json({'notices': [for (final n in await notices.list(user.id)) n.toJson()]});
+
+  Future<Response> _readNotices(Request req, User user) async {
+    await notices.markAllRead(user.id);
+    return Response(204);
   }
 
   Future<Response> _replace(Request req, User user) async {
@@ -316,8 +346,38 @@ class Api {
         if (!header.startsWith('Bearer ')) throw const ApiError.unauthorized();
         final user = await store.findUser(tokens.verify(header.substring(7)));
         if (user == null) throw const ApiError.unauthorized('Compte introuvable.');
-        return handler(req, user);
+        final key = req.headers['idempotency-key'];
+        if (key == null || req.method == 'GET') return handler(req, user);
+        return _once(user, key, () => handler(req, user));
       };
+
+  /// Requête rejouée par l'application après une coupure réseau : si la même
+  /// clé a déjà été traitée pour cet utilisateur, on renvoie la même réponse
+  /// sans refaire la modification.
+  Future<Response> _once(User user, String key, Future<Response> Function() run) async {
+    final seen = await store.query(store.db,
+        'SELECT status, body FROM idempotency_keys WHERE user_id = @u::uuid AND key = @k',
+        {'u': user.id, 'k': key});
+    if (seen.isNotEmpty) {
+      return Response(seen.first[0] as int,
+          body: seen.first[1] as String,
+          headers: {'content-type': 'application/json; charset=utf-8', 'idempotent-replay': 'true'});
+    }
+    // Seules les réussites sont mémorisées : une requête refusée est
+    // simplement réévaluée si elle revient.
+    final res = await run();
+    final body = await res.readAsString();
+    if (res.statusCode < 300) await _remember(user, key, res.statusCode, body);
+    return res.change(body: body);
+  }
+
+  Future<void> _remember(User user, String key, int status, String body) async {
+    await store.query(store.db, '''
+      INSERT INTO idempotency_keys (user_id, key, status, body) VALUES (@u::uuid, @k, @s, @b)
+      ON CONFLICT DO NOTHING''', {'u': user.id, 'k': key, 's': status, 'b': body});
+    await store.query(store.db,
+        "DELETE FROM idempotency_keys WHERE created_at < now() - interval '7 days'");
+  }
 
   Middleware _errors() => (inner) => (req) async {
         try {

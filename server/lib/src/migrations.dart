@@ -146,4 +146,48 @@ CREATE INDEX join_attempts_recent ON join_attempts (at) WHERE NOT success;
 
   // 3 — langue du compte Google (« fr », « uk », « en-GB »…), si Google la fournit
   'ALTER TABLE users ADD COLUMN locale text;',
+
+  // 4 — hors connexion : versions, historique, avis, requêtes rejouées
+  '''
+-- Augmente à chaque modification ; le client renvoie la version qu'il a vue
+-- pour qu'on sache s'il écrase le travail d'un autre responsable.
+ALTER TABLE shifts ADD COLUMN version int NOT NULL DEFAULT 1;
+
+-- Qui a changé quoi et quand, service par service ; « before » et « after »
+-- sont l'état complet du service (null : il n'existait pas / plus).
+CREATE TABLE shift_history (
+  id          bigserial PRIMARY KEY,
+  company_id  uuid NOT NULL REFERENCES companies(id) ON DELETE CASCADE,
+  shift_id    uuid NOT NULL,
+  actor_id    uuid REFERENCES users(id) ON DELETE SET NULL,
+  action      text NOT NULL CHECK (action IN ('create', 'update', 'delete', 'undo')),
+  before      jsonb,
+  after       jsonb,
+  at          timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX shift_history_company ON shift_history (company_id, at DESC);
+CREATE INDEX shift_history_shift ON shift_history (shift_id, at DESC);
+
+-- Avis affichés dans l'application (et envoyés en notification en phase 4).
+CREATE TABLE notices (
+  id          uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id     uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  company_id  uuid REFERENCES companies(id) ON DELETE CASCADE,
+  kind        text NOT NULL,
+  data        jsonb NOT NULL DEFAULT '{}',
+  created_at  timestamptz NOT NULL DEFAULT now(),
+  read_at     timestamptz
+);
+CREATE INDEX notices_user ON notices (user_id, created_at DESC);
+
+-- Une modification rejouée après une coupure (même clé) n'est appliquée qu'une fois.
+CREATE TABLE idempotency_keys (
+  user_id     uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  key         text NOT NULL,
+  status      int NOT NULL,
+  body        text NOT NULL,
+  created_at  timestamptz NOT NULL DEFAULT now(),
+  PRIMARY KEY (user_id, key)
+);
+''',
 ];
