@@ -35,4 +35,9 @@ const hu = <String, String>{
   "Service introuvable.": "A műszak nem található.",
   "Cette personne ne fait pas partie de l'entreprise.": "Ez a személy nem a cég tagja.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "A helyettes nem a cég tagja.",
+  'Votre planning a été publié ou modifié.': 'A beosztásodat közzétették vagy módosították.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Ez a cég fel szeretne venni a csapatába.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} felajánlja, hogy te legyél a cég tulajdonosa.',
+  'Un autre responsable a modifié ce planning': 'Egy másik vezető módosította ezt a beosztást',
+  '{name} a remplacé votre modification.': '{name} felülírta a módosításodat.',
 };

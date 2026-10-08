@@ -35,4 +35,9 @@ const fil = <String, String>{
   "Service introuvable.": "Hindi nahanap ang shift.",
   "Cette personne ne fait pas partie de l'entreprise.": "Hindi kasapi ng kumpanya ang taong ito.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Hindi kasapi ng kumpanya ang kapalit.",
+  'Votre planning a été publié ou modifié.': 'Na-publish o nabago ang iskedyul mo.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Gusto kang idagdag ng kumpanyang ito sa kanilang team.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': 'Inaalok ni {name} na ikaw ang maging may-ari ng kumpanya.',
+  'Un autre responsable a modifié ce planning': 'Binago ng ibang manager ang iskedyul na ito',
+  '{name} a remplacé votre modification.': 'Pinalitan ni {name} ang binago mo.',
 };

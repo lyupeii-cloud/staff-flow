@@ -35,4 +35,9 @@ const hi = <String, String>{
   "Service introuvable.": "शिफ़्ट नहीं मिली।",
   "Cette personne ne fait pas partie de l'entreprise.": "यह व्यक्ति कंपनी का सदस्य नहीं है।",
   "Le remplaçant ne fait pas partie de l'entreprise.": "बदलने वाला व्यक्ति कंपनी का सदस्य नहीं है।",
+  'Votre planning a été publié ou modifié.': 'आपका शेड्यूल प्रकाशित या बदला गया है।',
+  'Cette entreprise veut vous ajouter à son équipe.': 'यह कंपनी आपको अपनी टीम में जोड़ना चाहती है।',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} आपको कंपनी का मालिक बनाने का प्रस्ताव दे रहे हैं।',
+  'Un autre responsable a modifié ce planning': 'किसी दूसरे मैनेजर ने यह शेड्यूल बदला है',
+  '{name} a remplacé votre modification.': '{name} ने आपका बदलाव बदल दिया।',
 };

@@ -35,4 +35,9 @@ const kk = <String, String>{
   "Service introuvable.": "Ауысым табылмады.",
   "Cette personne ne fait pas partie de l'entreprise.": "Бұл адам компанияда жоқ.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Ауыстырушы компанияда жоқ.",
+  'Votre planning a été publié ou modifié.': 'Кестеңіз жарияланды немесе өзгертілді.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Бұл компания сізді командасына қосқысы келеді.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} сізге компанияның иесі болуды ұсынады.',
+  'Un autre responsable a modifié ce planning': 'Басқа басшы осы кестені өзгертті',
+  '{name} a remplacé votre modification.': '{name} сіздің өзгерісіңізді ауыстырды.',
 };

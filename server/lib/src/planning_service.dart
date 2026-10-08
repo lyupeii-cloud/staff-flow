@@ -5,6 +5,7 @@ import 'package:postgres/postgres.dart';
 import 'company_service.dart';
 import 'errors.dart';
 import 'models.dart';
+import 'notifications.dart';
 import 'store.dart';
 
 /// Planning (section 4 du cahier des charges) : sites et postes, services,
@@ -17,8 +18,9 @@ import 'store.dart';
 class PlanningService {
   final Store store;
   final CompanyService companies;
+  final NotificationService notifications;
 
-  PlanningService(this.store, this.companies);
+  PlanningService(this.store, this.companies, this.notifications);
 
   static const maxRangeDays = 62;
   static const maxOccurrences = 400;
@@ -150,9 +152,10 @@ class PlanningService {
     final merged = patch.merge(shift);
     await _checkRefs(companyId, merged);
     final series = scope == Scope.series && shift.seriesId != null;
+    var overwritten = const <String>[];
     final count = await store.db.runTx((tx) async {
       final rows = await _lock(tx, shift, series: series);
-      await _noticeIfOverwritten(tx, actor, companyId, rows, shift.id, baseVersion);
+      overwritten = await _noticeIfOverwritten(tx, actor, companyId, rows, shift.id, baseVersion);
       for (final row in rows) {
         final after = await store.query(tx, '''
           UPDATE shifts SET start_min = @start, end_min = @end, user_id = @user::uuid,
@@ -171,6 +174,7 @@ class PlanningService {
       }
       return rows.length;
     });
+    notifications.deliver(overwritten);
     await store.audit(
         companyId: companyId,
         actorId: actor.id,
@@ -186,14 +190,16 @@ class PlanningService {
     await _manager(actor, companyId);
     final shift = await _find(companyId, shiftId);
     final series = scope == Scope.series && shift.seriesId != null;
+    var overwritten = const <String>[];
     final count = await store.db.runTx((tx) async {
       final rows = await _lock(tx, shift, series: series);
-      await _noticeIfOverwritten(tx, actor, companyId, rows, shift.id, baseVersion);
+      overwritten = await _noticeIfOverwritten(tx, actor, companyId, rows, shift.id, baseVersion);
       for (final row in rows) {
         await _deleteRow(tx, actor, companyId, row, action: 'delete');
       }
       return rows.length;
     });
+    notifications.deliver(overwritten);
     await store.audit(
         companyId: companyId,
         actorId: actor.id,
@@ -314,18 +320,20 @@ class PlanningService {
 
   /// Le client a modifié une version dépassée du service, changée entre-temps
   /// par un autre responsable : on prévient celui-ci que son travail a été remplacé.
-  Future<void> _noticeIfOverwritten(TxSession tx, User actor, String companyId,
+  /// Renvoie l'avis créé (à envoyer après la transaction), ou rien.
+  Future<List<String>> _noticeIfOverwritten(TxSession tx, User actor, String companyId,
       List<Map<String, dynamic>> rows, String shiftId, int? baseVersion) async {
-    if (baseVersion == null) return;
+    if (baseVersion == null) return const [];
     final target = rows.firstWhere((r) => r['id'] == shiftId);
     final previousAuthor = target['updated_by'] as String?;
-    if (target['version'] == baseVersion || previousAuthor == null || previousAuthor == actor.id) return;
-    await store.query(tx, '''
-      INSERT INTO notices (user_id, company_id, kind, data)
-      VALUES (@u::uuid, @c::uuid, 'shift_overwritten', @d::jsonb)''', {
-      'u': previousAuthor,
-      'c': companyId,
-      'd': jsonEncode({'shiftId': shiftId, 'byId': actor.id, 'byName': actor.name, 'shift': _snapshot(target)}),
+    if (target['version'] == baseVersion || previousAuthor == null || previousAuthor == actor.id) {
+      return const [];
+    }
+    return notifications.add(tx, [previousAuthor], companyId: companyId, kind: 'shift_overwritten', data: {
+      'shiftId': shiftId,
+      'byId': actor.id,
+      'byName': actor.name,
+      'shift': _snapshot(target),
     });
   }
 

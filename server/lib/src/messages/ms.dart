@@ -35,4 +35,9 @@ const ms = <String, String>{
   "Service introuvable.": "Syif tidak ditemui.",
   "Cette personne ne fait pas partie de l'entreprise.": "Orang ini bukan ahli syarikat.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Pengganti bukan ahli syarikat.",
+  'Votre planning a été publié ou modifié.': 'Jadual anda telah diterbitkan atau diubah.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Syarikat ini mahu menambah anda ke dalam pasukannya.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} menawarkan anda menjadi pemilik syarikat.',
+  'Un autre responsable a modifié ce planning': 'Pengurus lain telah mengubah jadual ini',
+  '{name} a remplacé votre modification.': '{name} telah menggantikan perubahan anda.',
 };

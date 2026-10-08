@@ -35,4 +35,9 @@ const de = <String, String>{
   "Service introuvable.": "Schicht nicht gefunden.",
   "Cette personne ne fait pas partie de l'entreprise.": "Diese Person gehört nicht zum Unternehmen.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Die Vertretung gehört nicht zum Unternehmen.",
+  'Votre planning a été publié ou modifié.': 'Ihr Dienstplan wurde veröffentlicht oder geändert.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Dieses Unternehmen möchte Sie in sein Team aufnehmen.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} bietet Ihnen an, Inhaber des Unternehmens zu werden.',
+  'Un autre responsable a modifié ce planning': 'Eine andere Führungskraft hat diesen Dienstplan geändert',
+  '{name} a remplacé votre modification.': '{name} hat Ihre Änderung ersetzt.',
 };

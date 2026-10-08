@@ -35,4 +35,9 @@ const bn = <String, String>{
   "Service introuvable.": "শিফট পাওয়া যায়নি।",
   "Cette personne ne fait pas partie de l'entreprise.": "এই ব্যক্তি প্রতিষ্ঠানের সদস্য নন।",
   "Le remplaçant ne fait pas partie de l'entreprise.": "বদলি ব্যক্তি প্রতিষ্ঠানের সদস্য নন।",
+  'Votre planning a été publié ou modifié.': 'আপনার সময়সূচি প্রকাশিত বা পরিবর্তিত হয়েছে।',
+  'Cette entreprise veut vous ajouter à son équipe.': 'এই কোম্পানি আপনাকে তাদের দলে যুক্ত করতে চায়।',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} আপনাকে কোম্পানির মালিক হওয়ার প্রস্তাব দিচ্ছেন।',
+  'Un autre responsable a modifié ce planning': 'অন্য একজন ম্যানেজার এই সময়সূচি পরিবর্তন করেছেন',
+  '{name} a remplacé votre modification.': '{name} আপনার পরিবর্তনটি প্রতিস্থাপন করেছেন।',
 };

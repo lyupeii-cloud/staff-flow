@@ -35,4 +35,9 @@ const te = <String, String>{
   "Service introuvable.": "షిఫ్ట్ కనబడలేదు.",
   "Cette personne ne fait pas partie de l'entreprise.": "ఈ వ్యక్తి సంస్థలో లేరు.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "బదులు వ్యక్తి సంస్థలో లేరు.",
+  'Votre planning a été publié ou modifié.': 'మీ షెడ్యూల్ ప్రచురించబడింది లేదా మార్చబడింది.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'ఈ కంపెనీ మిమ్మల్ని తమ టీమ్‌లో చేర్చాలనుకుంటోంది.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} మిమ్మల్ని కంపెనీ యజమానిగా చేయాలని ప్రతిపాదిస్తున్నారు.',
+  'Un autre responsable a modifié ce planning': 'మరో మేనేజర్ ఈ షెడ్యూల్‌ను మార్చారు',
+  '{name} a remplacé votre modification.': '{name} మీ మార్పును భర్తీ చేశారు.',
 };

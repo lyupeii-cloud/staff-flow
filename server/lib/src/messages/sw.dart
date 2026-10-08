@@ -35,4 +35,9 @@ const sw = <String, String>{
   "Service introuvable.": "Zamu haijapatikana.",
   "Cette personne ne fait pas partie de l'entreprise.": "Mtu huyu si mwanachama wa kampuni.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Mbadala si mwanachama wa kampuni.",
+  'Votre planning a été publié ou modifié.': 'Ratiba yako imechapishwa au kubadilishwa.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Kampuni hii inataka kukuongeza kwenye timu yake.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} anapendekeza uwe mmiliki wa kampuni.',
+  'Un autre responsable a modifié ce planning': 'Msimamizi mwingine amebadilisha ratiba hii',
+  '{name} a remplacé votre modification.': '{name} amebadilisha mabadiliko yako.',
 };

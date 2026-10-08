@@ -35,4 +35,9 @@ const ro = <String, String>{
   "Service introuvable.": "Tura nu a fost găsită.",
   "Cette personne ne fait pas partie de l'entreprise.": "Această persoană nu face parte din firmă.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Înlocuitorul nu face parte din firmă.",
+  'Votre planning a été publié ou modifié.': 'Programul tău a fost publicat sau modificat.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Această firmă vrea să te adauge în echipa sa.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} îți propune să devii proprietarul firmei.',
+  'Un autre responsable a modifié ce planning': 'Un alt responsabil a modificat acest program',
+  '{name} a remplacé votre modification.': '{name} a înlocuit modificarea ta.',
 };

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:shelf/shelf.dart';
@@ -9,6 +10,8 @@ import 'package:staff_flow_server/staff_flow_server.dart';
 /// - `SESSION_SECRET` : au moins 32 caractères
 /// - `GOOGLE_CLIENT_IDS` : identifiants client OAuth acceptés, séparés par des virgules
 /// - `ALLOWED_ORIGINS` : origines web autorisées (CORS), séparées par des virgules
+/// - `FCM_CREDENTIALS_B64` : compte de service Firebase (fichier JSON en base64), pour les
+///   notifications sur les téléphones et navigateurs ; absent : avis dans l'application seulement
 /// - `DEV_LOGIN=true` : connexion sans Google, développement local uniquement
 /// - `PORT` : 8080 par défaut
 Future<void> main() async {
@@ -33,12 +36,20 @@ Future<void> main() async {
   final devLogin = env['DEV_LOGIN'] == 'true';
   if (devLogin) stderr.writeln('ATTENTION : DEV_LOGIN actif, ne jamais utiliser en production.');
 
+  PushSender? push;
+  final fcm = env['FCM_CREDENTIALS_B64'] ?? '';
+  if (fcm.isNotEmpty) {
+    push = FcmSender.fromJson(utf8.decode(base64.decode(fcm.trim())));
+    print('Notifications Firebase actives.');
+  }
+
   final api = Api(
     store: store,
     google: TokenInfoGoogleVerifier(list('GOOGLE_CLIENT_IDS').toSet()),
     tokens: SessionTokens(secret),
     devLogin: devLogin,
     allowedOrigins: list('ALLOWED_ORIGINS').toSet(),
+    push: push,
   );
 
   final port = int.parse(env['PORT'] ?? '8080');

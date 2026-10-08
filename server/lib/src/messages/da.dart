@@ -35,4 +35,9 @@ const da = <String, String>{
   "Service introuvable.": "Vagten blev ikke fundet.",
   "Cette personne ne fait pas partie de l'entreprise.": "Personen er ikke med i virksomheden.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Afløseren er ikke med i virksomheden.",
+  'Votre planning a été publié ou modifié.': 'Din vagtplan er offentliggjort eller ændret.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Denne virksomhed vil tilføje dig til sit team.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} foreslår, at du bliver ejer af virksomheden.',
+  'Un autre responsable a modifié ce planning': 'En anden leder har ændret denne vagtplan',
+  '{name} a remplacé votre modification.': '{name} erstattede din ændring.',
 };

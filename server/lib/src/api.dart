@@ -10,6 +10,7 @@ import 'errors.dart';
 import 'join_service.dart';
 import 'messages.dart';
 import 'notice_service.dart';
+import 'notifications.dart';
 import 'models.dart';
 import 'planning_service.dart';
 import 'store.dart';
@@ -20,7 +21,8 @@ class Api {
   final GoogleVerifier google;
   final SessionTokens tokens;
   final CompanyService companies;
-  late final PlanningService planning = PlanningService(store, companies);
+  late final NotificationService notifications = NotificationService(store, push: push);
+  late final PlanningService planning = PlanningService(store, companies, notifications);
   late final JoinService joins = JoinService(store, companies, now: now);
   late final NoticeService notices = NoticeService(store);
 
@@ -32,12 +34,16 @@ class Api {
   final bool devLogin;
   final Set<String> allowedOrigins;
 
+  /// Envoi des notifications (Firebase) ; `null` : avis dans l'application seulement.
+  final PushSender? push;
+
   Api({
     required this.store,
     required this.google,
     required this.tokens,
     this.devLogin = false,
     this.allowedOrigins = const {},
+    this.push,
     DateTime Function()? now,
   })  : companies = CompanyService(store),
         now = now ?? (() => DateTime.now().toUtc());
@@ -78,7 +84,12 @@ class Api {
       ..get('/companies/<id>/history', _authed(_history))
       ..post('/companies/<id>/history/<entryId>/undo', _authed(_undo))
       ..get('/notices', _authed(_notices))
-      ..post('/notices/read', _authed(_readNotices));
+      ..post('/notices/read', _authed(_readNotices))
+      // Notifications sur l'appareil
+      ..put('/devices', _authed(_registerDevice))
+      ..post('/devices/forget', _authed(_forgetDevice))
+      ..get('/me/notifications', _authed(_getPrefs))
+      ..patch('/me/notifications', _authed(_setPrefs));
     if (devLogin) v1.post('/auth/dev', _loginDev);
 
     final root = Router(notFoundHandler: _notFound)
@@ -127,6 +138,7 @@ class Api {
         ],
         'pendingJoinRequests': [for (final j in await joins.pendingFor(user)) j.toJson()],
         'unreadNotices': await notices.unreadCount(user.id),
+        'notificationPrefs': await notifications.prefs(user.id),
       });
 
   /// La personne choisit le nom affiché partout (vide : celui de Google).
@@ -189,6 +201,8 @@ class Api {
   Future<Response> _proposeTransfer(Request req, User user) async {
     final body = await _body(req);
     final t = await companies.proposeTransfer(user, req.params['id']!, _string(body, 'toUserId'));
+    await notifications.notify([t.toUserId],
+        companyId: t.companyId, kind: 'transfer_offer', data: {'byName': user.name});
     return _json(t.toJson(), status: 201);
   }
 
@@ -215,6 +229,7 @@ class Api {
         code: _string(body, 'code'),
         role: _role((body['role'] as String?) ?? 'employee'),
         ip: _clientIp(req));
+    await _notifyInvite(request, invited, user);
     return _json({'request': request.toJson(), 'user': invited.toJson()}, status: 201);
   }
 
@@ -224,8 +239,15 @@ class Api {
         qr: _string(body, 'qr'),
         role: _role((body['role'] as String?) ?? 'employee'),
         ip: _clientIp(req));
+    await _notifyInvite(request, invited, user);
     return _json({'request': request.toJson(), 'user': invited.toJson()}, status: 201);
   }
+
+  Future<void> _notifyInvite(JoinRequest request, User invited, User manager) =>
+      notifications.notify([invited.id],
+          companyId: request.company.id,
+          kind: 'join_invite',
+          data: {'requestId': request.id, 'role': request.role.name, 'byName': manager.name});
 
   Future<Response> _answerJoin(Request req, User user, {required bool accept}) async {
     await joins.answer(user, req.params['id']!, accept: accept);
@@ -313,6 +335,26 @@ class Api {
     return Response(204);
   }
 
+  // --- Notifications sur l'appareil -----------------------------------------
+
+  Future<Response> _registerDevice(Request req, User user) async {
+    final body = await _body(req);
+    await notifications.registerDevice(
+        user.id, _string(body, 'token'), _string(body, 'platform'), body['language'] as String?);
+    return Response(204);
+  }
+
+  /// À la déconnexion : l'appareil ne reçoit plus rien pour ce compte.
+  Future<Response> _forgetDevice(Request req, User user) async {
+    await notifications.forgetDevice(user.id, _string(await _body(req), 'token'));
+    return Response(204);
+  }
+
+  Future<Response> _getPrefs(Request req, User user) async => _json(await notifications.prefs(user.id));
+
+  Future<Response> _setPrefs(Request req, User user) async =>
+      _json(await notifications.setPrefs(user.id, await _body(req)));
+
   Future<Response> _replace(Request req, User user) async {
     final body = await _body(req);
     final count = await planning.replace(user, req.params['id']!,
@@ -325,6 +367,9 @@ class Api {
 
   Future<Response> _publish(Request req, User user) async {
     final (count, users) = await planning.publish(user, req.params['id']!);
+    // Une seule notification par personne concernée (section 4).
+    await notifications.notify(users.where((u) => u != user.id),
+        companyId: req.params['id'], kind: 'schedule_published');
     return _json({'published': count, 'notifiedUsers': users.length});
   }
 

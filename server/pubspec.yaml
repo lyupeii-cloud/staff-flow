@@ -17,3 +17,4 @@ dependencies:
 dev_dependencies:
   test: ^1.32.0
   lints: ^6.1.0
+  pointycastle: ^4.0.0

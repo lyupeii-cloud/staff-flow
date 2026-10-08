@@ -35,4 +35,9 @@ const ru = <String, String>{
   "Service introuvable.": "Смена не найдена.",
   "Cette personne ne fait pas partie de l'entreprise.": "Этот человек не состоит в компании.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Заменяющий не состоит в компании.",
+  'Votre planning a été publié ou modifié.': 'Ваш график опубликован или изменён.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Эта компания хочет добавить вас в свою команду.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} предлагает вам стать владельцем компании.',
+  'Un autre responsable a modifié ce planning': 'Другой руководитель изменил этот график',
+  '{name} a remplacé votre modification.': '{name} заменил ваше изменение.',
 };

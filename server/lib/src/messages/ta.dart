@@ -35,4 +35,9 @@ const ta = <String, String>{
   "Service introuvable.": "பணி நேரம் கிடைக்கவில்லை.",
   "Cette personne ne fait pas partie de l'entreprise.": "இவர் நிறுவனத்தில் இல்லை.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "மாற்று நபர் நிறுவனத்தில் இல்லை.",
+  'Votre planning a été publié ou modifié.': 'உங்கள் பணி அட்டவணை வெளியிடப்பட்டது அல்லது மாற்றப்பட்டது.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'இந்த நிறுவனம் உங்களைத் தன் குழுவில் சேர்க்க விரும்புகிறது.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} உங்களை நிறுவனத்தின் உரிமையாளராக்க முன்மொழிகிறார்.',
+  'Un autre responsable a modifié ce planning': 'மற்றொரு மேலாளர் இந்த அட்டவணையை மாற்றினார்',
+  '{name} a remplacé votre modification.': '{name} உங்கள் மாற்றத்தை மாற்றியமைத்தார்.',
 };

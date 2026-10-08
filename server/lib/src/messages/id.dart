@@ -35,4 +35,9 @@ const id = <String, String>{
   "Service introuvable.": "Shift tidak ditemukan.",
   "Cette personne ne fait pas partie de l'entreprise.": "Orang ini bukan anggota perusahaan.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Pengganti bukan anggota perusahaan.",
+  'Votre planning a été publié ou modifié.': 'Jadwal Anda telah diterbitkan atau diubah.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Perusahaan ini ingin menambahkan Anda ke timnya.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} menawarkan Anda menjadi pemilik perusahaan.',
+  'Un autre responsable a modifié ce planning': 'Manajer lain mengubah jadwal ini',
+  '{name} a remplacé votre modification.': '{name} menggantikan perubahan Anda.',
 };

@@ -35,4 +35,9 @@ const pa = <String, String>{
   "Service introuvable.": "ਸ਼ਿਫ਼ਟ ਨਹੀਂ ਮਿਲੀ।",
   "Cette personne ne fait pas partie de l'entreprise.": "ਇਹ ਵਿਅਕਤੀ ਕੰਪਨੀ ਵਿੱਚ ਨਹੀਂ ਹੈ।",
   "Le remplaçant ne fait pas partie de l'entreprise.": "ਬਦਲਵਾਂ ਵਿਅਕਤੀ ਕੰਪਨੀ ਵਿੱਚ ਨਹੀਂ ਹੈ।",
+  'Votre planning a été publié ou modifié.': 'ਤੁਹਾਡਾ ਸ਼ਡਿਊਲ ਪ੍ਰਕਾਸ਼ਿਤ ਜਾਂ ਬਦਲਿਆ ਗਿਆ ਹੈ।',
+  'Cette entreprise veut vous ajouter à son équipe.': 'ਇਹ ਕੰਪਨੀ ਤੁਹਾਨੂੰ ਆਪਣੀ ਟੀਮ ਵਿੱਚ ਜੋੜਨਾ ਚਾਹੁੰਦੀ ਹੈ।',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} ਤੁਹਾਨੂੰ ਕੰਪਨੀ ਦਾ ਮਾਲਕ ਬਣਨ ਦੀ ਪੇਸ਼ਕਸ਼ ਕਰ ਰਹੇ ਹਨ।',
+  'Un autre responsable a modifié ce planning': 'ਕਿਸੇ ਹੋਰ ਮੈਨੇਜਰ ਨੇ ਇਹ ਸ਼ਡਿਊਲ ਬਦਲਿਆ',
+  '{name} a remplacé votre modification.': '{name} ਨੇ ਤੁਹਾਡੀ ਤਬਦੀਲੀ ਬਦਲ ਦਿੱਤੀ।',
 };

@@ -7,6 +7,7 @@ import 'package:test/test.dart';
 Set<String> messagesInCode() {
   final literal = RegExp(r"""(?:'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)")""");
   final call = RegExp(r'ApiError(?:\.\w+)?\(([^;]*)', dotAll: true);
+  final notification = RegExp(r"\bt\('((?:[^'\\]|\\.)*)'");
   final found = <String>{'Connexion requise.', 'Action non autorisée.', 'Introuvable.'};
   for (final file in Directory('lib').listSync(recursive: true).whereType<File>()) {
     if (file.path.contains('messages')) continue;
@@ -17,6 +18,10 @@ Set<String> messagesInCode() {
         if (!text.contains(' ') && !text.endsWith('.')) continue;
         found.add(text);
       }
+    }
+    // Textes des notifications : t('…') dans notifications.dart.
+    for (final m in notification.allMatches(file.readAsStringSync())) {
+      found.add(m[1]!.replaceAll(r"\'", "'"));
     }
   }
   return found;

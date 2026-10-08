@@ -35,4 +35,9 @@ const zh = <String, String>{
   "Service introuvable.": "找不到班次。",
   "Cette personne ne fait pas partie de l'entreprise.": "此人不是公司成员。",
   "Le remplaçant ne fait pas partie de l'entreprise.": "替换人员不是公司成员。",
+  'Votre planning a été publié ou modifié.': '你的排班已发布或更改。',
+  'Cette entreprise veut vous ajouter à son équipe.': '这家公司想把你加入团队。',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} 提议由你成为公司所有者。',
+  'Un autre responsable a modifié ce planning': '另一位负责人修改了此排班',
+  '{name} a remplacé votre modification.': '{name} 替换了你的修改。',
 };

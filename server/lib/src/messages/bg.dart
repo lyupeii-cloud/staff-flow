@@ -35,4 +35,9 @@ const bg = <String, String>{
   "Service introuvable.": "Смяната не е намерена.",
   "Cette personne ne fait pas partie de l'entreprise.": "Този човек не е във фирмата.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Заместникът не е във фирмата.",
+  'Votre planning a été publié ou modifié.': 'Графикът ви е публикуван или променен.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Тази фирма иска да ви добави към екипа си.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} ви предлага да станете собственик на фирмата.',
+  'Un autre responsable a modifié ce planning': 'Друг ръководител промени този график',
+  '{name} a remplacé votre modification.': '{name} замени вашата промяна.',
 };

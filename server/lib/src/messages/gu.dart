@@ -35,4 +35,9 @@ const gu = <String, String>{
   "Service introuvable.": "શિફ્ટ મળી નહીં.",
   "Cette personne ne fait pas partie de l'entreprise.": "આ વ્યક્તિ કંપનીમાં નથી.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "બદલી વ્યક્તિ કંપનીમાં નથી.",
+  'Votre planning a été publié ou modifié.': 'તમારું સમયપત્રક પ્રકાશિત થયું છે અથવા બદલાયું છે.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'આ કંપની તમને તેની ટીમમાં ઉમેરવા માંગે છે.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} તમને કંપનીના માલિક બનવાનો પ્રસ્તાવ આપે છે.',
+  'Un autre responsable a modifié ce planning': 'બીજા મેનેજરે આ સમયપત્રક બદલ્યું',
+  '{name} a remplacé votre modification.': '{name} એ તમારો ફેરફાર બદલી નાખ્યો.',
 };

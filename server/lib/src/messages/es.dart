@@ -35,4 +35,9 @@ const es = <String, String>{
   "Service introuvable.": "Turno no encontrado.",
   "Cette personne ne fait pas partie de l'entreprise.": "Esta persona no forma parte de la empresa.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "El sustituto no forma parte de la empresa.",
+  'Votre planning a été publié ou modifié.': 'Tu horario se ha publicado o modificado.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Esta empresa quiere añadirte a su equipo.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} te propone ser el propietario de la empresa.',
+  'Un autre responsable a modifié ce planning': 'Otro responsable ha modificado este horario',
+  '{name} a remplacé votre modification.': '{name} ha sustituido tu cambio.',
 };

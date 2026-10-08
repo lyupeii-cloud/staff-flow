@@ -19,6 +19,21 @@ class FakeGoogle implements GoogleVerifier {
   }
 }
 
+/// Garde les notifications au lieu de les envoyer à Firebase.
+class FakePush implements PushSender {
+  final sent = <PushMessage>[];
+
+  /// Jetons que Firebase déclare invalides.
+  final invalid = <String>{};
+
+  @override
+  Future<PushOutcome> send(PushMessage m) async {
+    if (invalid.contains(m.token)) return PushOutcome.invalidToken;
+    sent.add(m);
+    return PushOutcome.sent;
+  }
+}
+
 /// Horloge réglable, pour tester les expirations sans attendre.
 class FakeClock {
   DateTime now = DateTime.utc(2026, 10, 5, 8);
@@ -73,6 +88,10 @@ class TestEnv {
   late Pool admin;
   late Store store;
   late Handler handler;
+  late Api api;
+
+  /// Notifications « envoyées » pendant le test.
+  final push = FakePush();
   late FakeClock clock;
 
   TestEnv() {
@@ -93,13 +112,16 @@ class TestEnv {
           queryMode: QueryMode.simple);
       await store.migrate();
       clock = FakeClock();
-      handler = Api(
+      push.sent.clear();
+      api = Api(
         store: store,
         google: FakeGoogle(),
         tokens: SessionTokens('x' * 32),
         allowedOrigins: {'http://localhost:5000'},
         now: () => clock.now,
-      ).handler;
+        push: push,
+      );
+      handler = api.handler;
     });
   }
 

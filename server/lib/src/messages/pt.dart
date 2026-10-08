@@ -35,4 +35,9 @@ const pt = <String, String>{
   "Service introuvable.": "Turno não encontrado.",
   "Cette personne ne fait pas partie de l'entreprise.": "Esta pessoa não faz parte da empresa.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "O substituto não faz parte da empresa.",
+  'Votre planning a été publié ou modifié.': 'O seu horário foi publicado ou alterado.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Esta empresa quer adicioná-lo à equipa.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} propõe que se torne proprietário da empresa.',
+  'Un autre responsable a modifié ce planning': 'Outro responsável alterou este horário',
+  '{name} a remplacé votre modification.': '{name} substituiu a sua alteração.',
 };

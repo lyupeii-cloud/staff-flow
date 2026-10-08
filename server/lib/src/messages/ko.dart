@@ -35,4 +35,9 @@ const ko = <String, String>{
   "Service introuvable.": "근무를 찾을 수 없습니다.",
   "Cette personne ne fait pas partie de l'entreprise.": "이 사람은 회사 멤버가 아닙니다.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "대신할 사람이 회사 멤버가 아닙니다.",
+  'Votre planning a été publié ou modifié.': '근무표가 게시되었거나 변경되었습니다.',
+  'Cette entreprise veut vous ajouter à son équipe.': '이 회사가 회원님을 팀에 추가하려고 합니다.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name}님이 회원님에게 회사 소유권을 넘기려고 합니다.',
+  'Un autre responsable a modifié ce planning': '다른 관리자가 이 근무표를 변경했습니다',
+  '{name} a remplacé votre modification.': '{name}님이 회원님의 변경 내용을 대체했습니다.',
 };

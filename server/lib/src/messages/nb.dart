@@ -35,4 +35,9 @@ const nb = <String, String>{
   "Service introuvable.": "Fant ikke vakten.",
   "Cette personne ne fait pas partie de l'entreprise.": "Personen er ikke med i bedriften.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Erstatteren er ikke med i bedriften.",
+  'Votre planning a été publié ou modifié.': 'Vaktplanen din er publisert eller endret.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Denne bedriften vil legge deg til i teamet sitt.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} foreslår at du blir eier av bedriften.',
+  'Un autre responsable a modifié ce planning': 'En annen leder har endret denne vaktplanen',
+  '{name} a remplacé votre modification.': '{name} erstattet endringen din.',
 };

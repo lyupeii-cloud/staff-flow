@@ -35,4 +35,9 @@ const pl = <String, String>{
   "Service introuvable.": "Nie znaleziono zmiany.",
   "Cette personne ne fait pas partie de l'entreprise.": "Ta osoba nie należy do firmy.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Zastępca nie należy do firmy.",
+  'Votre planning a été publié ou modifié.': 'Twój grafik został opublikowany lub zmieniony.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Ta firma chce dodać cię do swojego zespołu.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} proponuje, abyś został właścicielem firmy.',
+  'Un autre responsable a modifié ce planning': 'Inny kierownik zmienił ten grafik',
+  '{name} a remplacé votre modification.': '{name} zastąpił twoją zmianę.',
 };

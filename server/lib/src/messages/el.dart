@@ -35,4 +35,9 @@ const el = <String, String>{
   "Service introuvable.": "Η βάρδια δεν βρέθηκε.",
   "Cette personne ne fait pas partie de l'entreprise.": "Αυτό το άτομο δεν ανήκει στην επιχείρηση.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Ο αντικαταστάτης δεν ανήκει στην επιχείρηση.",
+  'Votre planning a été publié ou modifié.': 'Το πρόγραμμά σας δημοσιεύτηκε ή άλλαξε.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Αυτή η εταιρεία θέλει να σας προσθέσει στην ομάδα της.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': 'Ο/Η {name} σας προτείνει να γίνετε ιδιοκτήτης της εταιρείας.',
+  'Un autre responsable a modifié ce planning': 'Άλλος υπεύθυνος άλλαξε αυτό το πρόγραμμα',
+  '{name} a remplacé votre modification.': 'Ο/Η {name} αντικατέστησε την αλλαγή σας.',
 };

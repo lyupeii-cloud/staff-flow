@@ -196,4 +196,17 @@ CREATE TABLE idempotency_keys (
 ALTER TABLE users ADD COLUMN custom_name text;
 ALTER TABLE memberships ADD COLUMN display_name text;
 ''',
+  // 6 — notifications : appareils (jeton Firebase) et familles coupées par chacun
+  '''
+CREATE TABLE push_devices (
+  token       text PRIMARY KEY,
+  user_id     uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  platform    text NOT NULL CHECK (platform IN ('android', 'web')),
+  language    text,
+  created_at  timestamptz NOT NULL DEFAULT now(),
+  seen_at     timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX push_devices_user ON push_devices (user_id);
+ALTER TABLE users ADD COLUMN notification_prefs jsonb NOT NULL DEFAULT '{}';
+''',
 ];

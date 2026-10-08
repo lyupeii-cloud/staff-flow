@@ -35,4 +35,9 @@ const fi = <String, String>{
   "Service introuvable.": "Vuoroa ei löytynyt.",
   "Cette personne ne fait pas partie de l'entreprise.": "Tämä henkilö ei kuulu yritykseen.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Sijainen ei kuulu yritykseen.",
+  'Votre planning a été publié ou modifié.': 'Työvuorolistasi on julkaistu tai sitä on muutettu.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Tämä yritys haluaa lisätä sinut tiimiinsä.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} ehdottaa, että sinusta tulee yrityksen omistaja.',
+  'Un autre responsable a modifié ce planning': 'Toinen esihenkilö muutti tätä työvuorolistaa',
+  '{name} a remplacé votre modification.': '{name} korvasi muutoksesi.',
 };

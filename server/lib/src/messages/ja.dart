@@ -35,4 +35,9 @@ const ja = <String, String>{
   "Service introuvable.": "シフトが見つかりません。",
   "Cette personne ne fait pas partie de l'entreprise.": "この人は会社のメンバーではありません。",
   "Le remplaçant ne fait pas partie de l'entreprise.": "交代先の人は会社のメンバーではありません。",
+  'Votre planning a été publié ou modifié.': 'シフトが公開または変更されました。',
+  'Cette entreprise veut vous ajouter à son équipe.': 'この会社があなたをチームに追加しようとしています。',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} さんがあなたを会社のオーナーにすることを提案しています。',
+  'Un autre responsable a modifié ce planning': '別の管理者がこのシフトを変更しました',
+  '{name} a remplacé votre modification.': '{name} さんがあなたの変更を置き換えました。',
 };

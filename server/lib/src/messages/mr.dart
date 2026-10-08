@@ -35,4 +35,9 @@ const mr = <String, String>{
   "Service introuvable.": "शिफ्ट सापडली नाही.",
   "Cette personne ne fait pas partie de l'entreprise.": "ही व्यक्ती कंपनीत नाही.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "बदली व्यक्ती कंपनीत नाही.",
+  'Votre planning a été publié ou modifié.': 'तुमचे वेळापत्रक प्रकाशित किंवा बदलले आहे.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'ही कंपनी तुम्हाला तिच्या संघात जोडू इच्छिते.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} तुम्हाला कंपनीचे मालक होण्याचा प्रस्ताव देत आहेत.',
+  'Un autre responsable a modifié ce planning': 'दुसऱ्या व्यवस्थापकाने हे वेळापत्रक बदलले',
+  '{name} a remplacé votre modification.': '{name} यांनी तुमचा बदल बदलला.',
 };

@@ -35,4 +35,9 @@ const sv = <String, String>{
   "Service introuvable.": "Passet hittades inte.",
   "Cette personne ne fait pas partie de l'entreprise.": "Personen tillhör inte företaget.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Ersättaren tillhör inte företaget.",
+  'Votre planning a été publié ou modifié.': 'Ditt schema har publicerats eller ändrats.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Det här företaget vill lägga till dig i sitt team.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} föreslår att du blir ägare till företaget.',
+  'Un autre responsable a modifié ce planning': 'En annan chef har ändrat det här schemat',
+  '{name} a remplacé votre modification.': '{name} ersatte din ändring.',
 };

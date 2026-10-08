@@ -35,4 +35,9 @@ const vi = <String, String>{
   "Service introuvable.": "Không tìm thấy ca làm.",
   "Cette personne ne fait pas partie de l'entreprise.": "Người này không thuộc công ty.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Người thay thế không thuộc công ty.",
+  'Votre planning a été publié ou modifié.': 'Lịch làm việc của bạn đã được công bố hoặc thay đổi.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Công ty này muốn thêm bạn vào nhóm.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} đề nghị bạn trở thành chủ sở hữu công ty.',
+  'Un autre responsable a modifié ce planning': 'Một quản lý khác đã thay đổi lịch này',
+  '{name} a remplacé votre modification.': '{name} đã thay thế thay đổi của bạn.',
 };

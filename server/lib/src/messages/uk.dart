@@ -55,4 +55,9 @@ const uk = <String, String>{
   'Service introuvable.': 'Зміну не знайдено.',
   'Cette personne ne fait pas partie de l\'entreprise.': 'Ця особа не є учасником компанії.',
   'Le remplaçant ne fait pas partie de l\'entreprise.': 'Заміна не є учасником компанії.',
+  'Votre planning a été publié ou modifié.': 'Ваш графік опубліковано або змінено.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Ця компанія хоче додати вас до своєї команди.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} пропонує вам стати власником компанії.',
+  'Un autre responsable a modifié ce planning': 'Інший керівник змінив цей графік',
+  '{name} a remplacé votre modification.': '{name} замінив вашу зміну.',
 };

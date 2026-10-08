@@ -27,6 +27,8 @@ services:
       SESSION_SECRET: ${SESSION_SECRET:?}
       GOOGLE_CLIENT_IDS: ${GOOGLE_CLIENT_IDS:?}
       ALLOWED_ORIGINS: https://${DOMAIN}
+      # Compte de service Firebase (JSON en base64) ; vide : pas de notifications sur les appareils.
+      FCM_CREDENTIALS_B64: ${FCM_CREDENTIALS_B64:-}
 
   web:
     build:

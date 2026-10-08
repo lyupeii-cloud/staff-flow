@@ -35,4 +35,9 @@ const nl = <String, String>{
   "Service introuvable.": "Dienst niet gevonden.",
   "Cette personne ne fait pas partie de l'entreprise.": "Deze persoon hoort niet bij het bedrijf.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "De vervanger hoort niet bij het bedrijf.",
+  'Votre planning a été publié ou modifié.': 'Je rooster is gepubliceerd of gewijzigd.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Dit bedrijf wil je aan het team toevoegen.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} stelt voor dat jij eigenaar van het bedrijf wordt.',
+  'Un autre responsable a modifié ce planning': 'Een andere leidinggevende heeft dit rooster gewijzigd',
+  '{name} a remplacé votre modification.': '{name} heeft je wijziging vervangen.',
 };

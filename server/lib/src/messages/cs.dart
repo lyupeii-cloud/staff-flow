@@ -35,4 +35,9 @@ const cs = <String, String>{
   "Service introuvable.": "Směna nebyla nalezena.",
   "Cette personne ne fait pas partie de l'entreprise.": "Tato osoba do firmy nepatří.",
   "Le remplaçant ne fait pas partie de l'entreprise.": "Náhradník do firmy nepatří.",
+  'Votre planning a été publié ou modifié.': 'Váš rozpis byl zveřejněn nebo změněn.',
+  'Cette entreprise veut vous ajouter à son équipe.': 'Tato firma vás chce přidat do svého týmu.',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} vám nabízí, abyste se stali vlastníkem firmy.',
+  'Un autre responsable a modifié ce planning': 'Jiný vedoucí změnil tento rozpis',
+  '{name} a remplacé votre modification.': '{name} nahradil vaši změnu.',
 };

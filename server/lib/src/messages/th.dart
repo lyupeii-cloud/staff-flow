@@ -35,4 +35,9 @@ const th = <String, String>{
   "Service introuvable.": "ไม่พบกะ",
   "Cette personne ne fait pas partie de l'entreprise.": "บุคคลนี้ไม่ได้อยู่ในบริษัท",
   "Le remplaçant ne fait pas partie de l'entreprise.": "ผู้มาแทนไม่ได้อยู่ในบริษัท",
+  'Votre planning a été publié ou modifié.': 'ตารางงานของคุณได้รับการเผยแพร่หรือแก้ไขแล้ว',
+  'Cette entreprise veut vous ajouter à son équipe.': 'บริษัทนี้ต้องการเพิ่มคุณเข้าทีม',
+  '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} เสนอให้คุณเป็นเจ้าของบริษัท',
+  'Un autre responsable a modifié ce planning': 'ผู้จัดการคนอื่นแก้ไขตารางงานนี้',
+  '{name} a remplacé votre modification.': '{name} แทนที่การแก้ไขของคุณ',
 };
