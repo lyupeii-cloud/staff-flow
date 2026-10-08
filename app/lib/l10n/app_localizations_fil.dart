@@ -475,4 +475,78 @@ class L10nFil extends L10n {
 
   @override
   String get languageAuto => 'Awtomatiko (wika ng device)';
+
+  @override
+  String get syncUpToDate => 'Updated';
+
+  @override
+  String get syncOffline => 'Offline';
+
+  @override
+  String syncPending(int count) {
+    return 'Mga nakabinbing pagbabago: $count';
+  }
+
+  @override
+  String get syncNow => 'I-sync ngayon';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Tinanggihan ng server ang pagbabago: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Nakabinbin';
+
+  @override
+  String get offlineUnavailable => 'Hindi available kapag offline.';
+
+  @override
+  String get offlineCached => 'Offline: huling naka-save na data.';
+
+  @override
+  String get savedOffline =>
+      'Naka-save sa device, ipapadala kapag bumalik ang network.';
+
+  @override
+  String get notices => 'Mga abiso';
+
+  @override
+  String get noNotices => 'Walang abiso.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return 'Pinalitan ni $name ang iyong pagbabago sa shift ng $date.';
+  }
+
+  @override
+  String get history => 'History';
+
+  @override
+  String get recentChanges => 'Mga kamakailang pagbabago';
+
+  @override
+  String get undoChange => 'I-undo ang pagbabagong ito';
+
+  @override
+  String get undoDone => 'Na-undo ang pagbabago.';
+
+  @override
+  String get historyCreate => 'Ginawa';
+
+  @override
+  String get historyUpdate => 'Binago';
+
+  @override
+  String get historyDelete => 'Binura';
+
+  @override
+  String get historyUndo => 'Na-undo';
+
+  @override
+  String get noHistory => 'Walang pagbabago.';
+
+  @override
+  String get pendingNotEditable =>
+      'Hindi pa naka-sync ang shift na ito: subukan ulit kapag online.';
 }

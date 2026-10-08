@@ -473,4 +473,77 @@ class L10nBn extends L10n {
 
   @override
   String get languageAuto => 'স্বয়ংক্রিয় (ডিভাইসের ভাষা)';
+
+  @override
+  String get syncUpToDate => 'হালনাগাদ';
+
+  @override
+  String get syncOffline => 'অফলাইন';
+
+  @override
+  String syncPending(int count) {
+    return 'অপেক্ষমাণ পরিবর্তন: $count';
+  }
+
+  @override
+  String get syncNow => 'এখনই সিঙ্ক করুন';
+
+  @override
+  String syncRejected(String reason) {
+    return 'সার্ভার পরিবর্তন প্রত্যাখ্যান করেছে: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'অপেক্ষমাণ';
+
+  @override
+  String get offlineUnavailable => 'অফলাইনে পাওয়া যায় না।';
+
+  @override
+  String get offlineCached => 'অফলাইন: সর্বশেষ সংরক্ষিত তথ্য।';
+
+  @override
+  String get savedOffline => 'ডিভাইসে সংরক্ষিত, নেটওয়ার্ক ফিরলে পাঠানো হবে।';
+
+  @override
+  String get notices => 'বিজ্ঞপ্তি';
+
+  @override
+  String get noNotices => 'কোনো বিজ্ঞপ্তি নেই।';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name $date তারিখের শিফটে আপনার পরিবর্তন বদলে দিয়েছেন।';
+  }
+
+  @override
+  String get history => 'ইতিহাস';
+
+  @override
+  String get recentChanges => 'সাম্প্রতিক পরিবর্তন';
+
+  @override
+  String get undoChange => 'এই পরিবর্তন বাতিল করুন';
+
+  @override
+  String get undoDone => 'পরিবর্তন বাতিল হয়েছে।';
+
+  @override
+  String get historyCreate => 'তৈরি';
+
+  @override
+  String get historyUpdate => 'পরিবর্তন';
+
+  @override
+  String get historyDelete => 'মুছে ফেলা';
+
+  @override
+  String get historyUndo => 'বাতিল';
+
+  @override
+  String get noHistory => 'কোনো পরিবর্তন নেই।';
+
+  @override
+  String get pendingNotEditable =>
+      'এই শিফট এখনো সিঙ্ক হয়নি: অনলাইনে আবার চেষ্টা করুন।';
 }

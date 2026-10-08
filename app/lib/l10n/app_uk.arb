@@ -1,6 +1,5 @@
 {
   "@@locale": "uk",
-
   "cancel": "Скасувати",
   "save": "Зберегти",
   "confirm": "Підтвердити",
@@ -15,12 +14,10 @@
   "name": "Назва",
   "serverUnreachable": "Сервер недоступний.",
   "errorStatus": "Помилка {status}",
-
   "roleOwner": "Власник",
   "roleManager": "Керівник",
   "roleEmployee": "Працівник",
   "roleExtra": "Тимчасовий працівник",
-
   "taglineStart": "Графіки вашої команди — ",
   "taglineEnd": "будь-де.",
   "googleNotConfigured": "Вхід через Google не налаштовано (GOOGLE_WEB_CLIENT_ID).",
@@ -30,7 +27,6 @@
   "devSignIn": "Тестовий вхід",
   "googleUnavailable": "Вхід через Google недоступний: {detail}",
   "googleFailed": "Не вдалося увійти через Google: {detail}",
-
   "newCompany": "Нова компанія",
   "timezone": "Часовий пояс",
   "create": "Створити",
@@ -47,12 +43,10 @@
   "signOut": "Вийти",
   "joinInvite": "«{company}» запрошує вас як: {role}.",
   "joinedCompany": "Ви приєдналися до «{company}».",
-
   "viewPlanning": "Графік",
   "viewTeam": "Команда",
   "viewPositions": "Посади",
   "readOnlyCompany": "Компанія доступна лише для перегляду.",
-
   "team": "Команда",
   "leaveCompany": "Вийти з компанії",
   "meSuffix": "{name} (ви)",
@@ -74,7 +68,6 @@
   "actionToExtra": "Зробити тимчасовим",
   "actionTransfer": "Передати право власності",
   "actionRemove": "Вилучити з компанії",
-
   "positions": "Посади",
   "sites": "Об’єкти",
   "positionsHint": "Що робить людина: каса, кухня, рецепція…",
@@ -82,7 +75,6 @@
   "archived": "В архіві",
   "archive": "Архівувати",
   "reactivate": "Відновити",
-
   "weekOf": "Тиждень з {date}",
   "changesPublished": "{count, plural, one{Опубліковано {count} зміну.} few{Опубліковано {count} зміни.} many{Опубліковано {count} змін.} other{Опубліковано {count} зміни.}}",
   "shiftButton": "Зміна",
@@ -105,7 +97,6 @@
   "statusDeleted": "Видалено",
   "durationHours": "{hours} год",
   "durationHoursMinutes": "{hours} год {minutes} хв",
-
   "editShift": "Редагувати зміну",
   "newShift": "Нова зміна",
   "thisShift": "Лише ця зміна",
@@ -127,18 +118,38 @@
   "repeatDaysSuffix": " дн.",
   "repeatWeeksSuffix": " тиж.",
   "repeatUntilPrefix": "До ",
-
   "replacePersonTitle": "Замінити особу",
   "replaceFrom": "Замінити",
   "replaceBy": "На",
   "dateRange": "З {from} по {to}",
   "shiftsChanged": "{count, plural, =0{Жодну зміну не змінено.} one{Змінено {count} зміну.} few{Змінено {count} зміни.} many{Змінено {count} змін.} other{Змінено {count} зміни.}}",
   "replaceButton": "Замінити",
-
   "joinHint": "Передайте цей код керівнику. Він введе його у своєму застосунку, а ви отримаєте запрошення.",
   "codeExpired": "Термін дії коду минув.",
   "codeValidFor": "Дійсний ще {time}",
   "newCode": "Новий код",
   "language": "Мова",
-  "languageAuto": "Автоматично (мова пристрою)"
+  "languageAuto": "Автоматично (мова пристрою)",
+  "syncUpToDate": "Актуально",
+  "syncOffline": "Немає з’єднання",
+  "syncPending": "Зміни в черзі: {count}",
+  "syncNow": "Синхронізувати",
+  "syncRejected": "Сервер відхилив зміну: {reason}",
+  "pendingBadge": "У черзі",
+  "offlineUnavailable": "Недоступно без з’єднання.",
+  "offlineCached": "Немає з’єднання: показано останні збережені дані.",
+  "savedOffline": "Збережено на пристрої, буде надіслано, коли з’явиться мережа.",
+  "notices": "Сповіщення",
+  "noNotices": "Сповіщень немає.",
+  "noticeOverwritten": "{name} замінив(ла) вашу зміну у зміні за {date}.",
+  "history": "Історія",
+  "recentChanges": "Останні зміни",
+  "undoChange": "Скасувати цю зміну",
+  "undoDone": "Зміну скасовано.",
+  "historyCreate": "Створення",
+  "historyUpdate": "Редагування",
+  "historyDelete": "Видалення",
+  "historyUndo": "Скасування",
+  "noHistory": "Змін немає.",
+  "pendingNotEditable": "Цю зміну ще не синхронізовано: спробуйте знову, коли буде з’єднання."
 }

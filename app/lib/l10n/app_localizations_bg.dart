@@ -474,4 +474,78 @@ class L10nBg extends L10n {
 
   @override
   String get languageAuto => 'Автоматично (езикът на устройството)';
+
+  @override
+  String get syncUpToDate => 'Актуално';
+
+  @override
+  String get syncOffline => 'Офлайн';
+
+  @override
+  String syncPending(int count) {
+    return 'Чакащи промени: $count';
+  }
+
+  @override
+  String get syncNow => 'Синхронизиране';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Сървърът отказа промяната: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Чака';
+
+  @override
+  String get offlineUnavailable => 'Не е достъпно офлайн.';
+
+  @override
+  String get offlineCached => 'Офлайн: последните запазени данни.';
+
+  @override
+  String get savedOffline =>
+      'Запазено на устройството, ще се изпрати при връщане на мрежата.';
+
+  @override
+  String get notices => 'Известия';
+
+  @override
+  String get noNotices => 'Няма известия.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name замени вашата промяна на смяната от $date.';
+  }
+
+  @override
+  String get history => 'История';
+
+  @override
+  String get recentChanges => 'Последни промени';
+
+  @override
+  String get undoChange => 'Отмяна на тази промяна';
+
+  @override
+  String get undoDone => 'Промяната е отменена.';
+
+  @override
+  String get historyCreate => 'Създаване';
+
+  @override
+  String get historyUpdate => 'Промяна';
+
+  @override
+  String get historyDelete => 'Изтриване';
+
+  @override
+  String get historyUndo => 'Отмяна';
+
+  @override
+  String get noHistory => 'Няма промени.';
+
+  @override
+  String get pendingNotEditable =>
+      'Тази смяна още не е синхронизирана: опитайте отново онлайн.';
 }

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -20,6 +21,12 @@ class ApiException implements Exception {
   String toString() => serverMessage ?? 'HTTP $status';
 }
 
+/// Pas de réseau, ou serveur injoignable : la requête n'a pas abouti.
+class OfflineException implements Exception {
+  @override
+  String toString() => 'offline';
+}
+
 /// Client de l'API Staff Flow (`/api/v1`).
 class Api {
   final http.Client _http;
@@ -32,13 +39,37 @@ class Api {
 
   Uri _uri(String path) => Uri.parse('${Config.apiUrl}/api/v1$path');
 
-  Future<dynamic> _send(String method, String path, [Object? body]) async {
+  /// Appel direct ; [idempotencyKey] protège une modification rejouée
+  /// (file d'attente hors connexion) contre une double application.
+  Future<dynamic> send(String method, String path, {Object? body, String? idempotencyKey}) =>
+      _send(method, path, body, idempotencyKey);
+
+  /// Le serveur répond-il ? (Sans session : simple test de connexion.)
+  Future<bool> ping() async {
+    try {
+      final res = await _http.get(Uri.parse('${Config.apiUrl}/health')).timeout(const Duration(seconds: 8));
+      return res.statusCode == 200;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  Future<dynamic> _send(String method, String path, [Object? body, String? idempotencyKey]) async {
     final req = http.Request(method, _uri(path))
       ..headers['content-type'] = 'application/json; charset=utf-8'
       ..headers['accept-language'] = language;
     if (token != null) req.headers['authorization'] = 'Bearer $token';
+    if (idempotencyKey != null) req.headers['idempotency-key'] = idempotencyKey;
     if (body != null) req.body = jsonEncode(body);
-    final res = await http.Response.fromStream(await _http.send(req));
+    final http.Response res;
+    try {
+      res = await http.Response.fromStream(await _http.send(req)).timeout(const Duration(seconds: 20));
+    } on TimeoutException {
+      throw OfflineException();
+    } on http.ClientException {
+      throw OfflineException();
+    }
+    if (res.statusCode >= 500) throw OfflineException();
     final decoded = res.body.isEmpty ? null : jsonDecode(utf8.decode(res.bodyBytes));
     if (res.statusCode >= 400) {
       final error = decoded is Map ? decoded['error'] : null;
@@ -58,7 +89,6 @@ class Api {
     return (j['token'] as String, User.fromJson(j['user']));
   }
 
-  Future<Me> me() async => Me.fromJson(await _send('GET', '/me'));
 
   Future<Membership> createCompany(String name, String timezone) async =>
       Membership.fromJson(await _send('POST', '/companies', {'name': name, 'timezone': timezone}));
@@ -66,10 +96,6 @@ class Api {
   Future<void> updateCompany(String id, {String? name, String? timezone}) =>
       _send('PATCH', '/companies/$id', {'name': ?name, 'timezone': ?timezone});
 
-  Future<List<Member>> members(String companyId) async {
-    final j = await _send('GET', '/companies/$companyId/members');
-    return [for (final m in j['members']) Member.fromJson(m)];
-  }
 
   Future<void> setRole(String companyId, String userId, Role role) =>
       _send('PUT', '/companies/$companyId/members/$userId/role', {'role': role.name});
@@ -101,13 +127,7 @@ class Api {
   Future<void> answerJoin(String requestId, {required bool accept}) =>
       _send('POST', '/join-requests/$requestId/${accept ? 'accept' : 'decline'}');
 
-  // --- Planning ------------------------------------------------------------
-
-  /// [kind] : `sites` ou `positions`.
-  Future<List<CatalogItem>> catalog(String companyId, String kind) async {
-    final j = await _send('GET', '/companies/$companyId/$kind');
-    return [for (final i in j['items']) CatalogItem.fromJson(i)];
-  }
+  // --- Sites et postes ------------------------------------------------------
 
   Future<void> addCatalogItem(String companyId, String kind, String name) =>
       _send('POST', '/companies/$companyId/$kind', {'name': name});
@@ -116,37 +136,6 @@ class Api {
           {String? name, bool? archived}) =>
       _send('PATCH', '/companies/$companyId/$kind/$id', {'name': ?name, 'archived': ?archived});
 
-  /// Services de la période et nombre de modifications non publiées.
-  Future<(List<Shift>, int)> shifts(String companyId, DateTime from, DateTime to) async {
-    final j = await _send(
-        'GET', '/companies/$companyId/shifts?from=${formatDay(from)}&to=${formatDay(to)}');
-    return ([for (final s in j['shifts']) Shift.fromJson(s)], j['pending'] as int);
-  }
-
-  Future<int> createShifts(String companyId, Map<String, Object?> body) async {
-    final j = await _send('POST', '/companies/$companyId/shifts', body);
-    return (j['shifts'] as List).length;
-  }
-
-  Future<void> updateShift(String companyId, String shiftId, Map<String, Object?> patch,
-          {bool series = false}) =>
-      _send('PATCH', '/companies/$companyId/shifts/$shiftId?scope=${series ? 'series' : 'one'}',
-          patch);
-
-  Future<void> deleteShift(String companyId, String shiftId, {bool series = false}) =>
-      _send('DELETE', '/companies/$companyId/shifts/$shiftId?scope=${series ? 'series' : 'one'}');
-
-  Future<int> replace(String companyId,
-      {required String fromUserId, required String toUserId, required DateTime from, required DateTime to}) async {
-    final j = await _send('POST', '/companies/$companyId/shifts/replace', {
-      'fromUserId': fromUserId,
-      'toUserId': toUserId,
-      'from': formatDay(from),
-      'to': formatDay(to),
-    });
-    return j['replaced'] as int;
-  }
-
-  Future<int> publish(String companyId) async =>
-      (await _send('POST', '/companies/$companyId/publish'))['published'] as int;
+  // Planning (services, publication, remplacement) : voir offline/sync.dart,
+  // qui gère aussi le mode hors connexion.
 }

@@ -475,4 +475,79 @@ class L10nEl extends L10n {
 
   @override
   String get languageAuto => 'Αυτόματα (γλώσσα συσκευής)';
+
+  @override
+  String get syncUpToDate => 'Ενημερωμένο';
+
+  @override
+  String get syncOffline => 'Εκτός σύνδεσης';
+
+  @override
+  String syncPending(int count) {
+    return 'Αλλαγές σε αναμονή: $count';
+  }
+
+  @override
+  String get syncNow => 'Συγχρονισμός τώρα';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Ο διακομιστής απέρριψε την αλλαγή: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Σε αναμονή';
+
+  @override
+  String get offlineUnavailable => 'Μη διαθέσιμο εκτός σύνδεσης.';
+
+  @override
+  String get offlineCached =>
+      'Εκτός σύνδεσης: τελευταία αποθηκευμένα δεδομένα.';
+
+  @override
+  String get savedOffline =>
+      'Αποθηκεύτηκε στη συσκευή, θα σταλεί μόλις επανέλθει το δίκτυο.';
+
+  @override
+  String get notices => 'Ειδοποιήσεις';
+
+  @override
+  String get noNotices => 'Καμία ειδοποίηση.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return 'Ο/Η $name αντικατέστησε την αλλαγή σας στη βάρδια της $date.';
+  }
+
+  @override
+  String get history => 'Ιστορικό';
+
+  @override
+  String get recentChanges => 'Πρόσφατες αλλαγές';
+
+  @override
+  String get undoChange => 'Αναίρεση αυτής της αλλαγής';
+
+  @override
+  String get undoDone => 'Η αλλαγή αναιρέθηκε.';
+
+  @override
+  String get historyCreate => 'Δημιουργία';
+
+  @override
+  String get historyUpdate => 'Αλλαγή';
+
+  @override
+  String get historyDelete => 'Διαγραφή';
+
+  @override
+  String get historyUndo => 'Αναίρεση';
+
+  @override
+  String get noHistory => 'Καμία αλλαγή.';
+
+  @override
+  String get pendingNotEditable =>
+      'Αυτή η βάρδια δεν έχει συγχρονιστεί ακόμη: δοκιμάστε ξανά όταν είστε συνδεδεμένοι.';
 }

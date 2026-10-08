@@ -8,17 +8,18 @@ import 'api.dart';
 import 'config.dart';
 import 'i18n.dart';
 import 'models.dart';
+import 'offline/sync.dart';
 
 enum SessionState { loading, signedOut, signedIn }
-
-/// Texte à afficher, produit dans la langue de l'écran au moment de l'afficher.
-typedef Localized = String Function(L10n t);
 
 /// Connexion Google, jeton de session et données de l'utilisateur (`/me`).
 class Session extends ChangeNotifier {
   final Api api;
 
   Session(this.api);
+
+  /// Données hors connexion et file d'attente ; prête après [start].
+  late final Sync sync;
 
   static const _tokenKey = 'session_token';
 
@@ -47,6 +48,7 @@ class Session extends ChangeNotifier {
     try {
       final prefs = await SharedPreferences.getInstance();
       language = prefs.getString(_languageKey);
+      sync = await Sync.open(api);
       api.token = prefs.getString(_tokenKey);
       if (api.token == null) return _set(SessionState.signedOut);
       await refresh();
@@ -106,14 +108,16 @@ class Session extends ChangeNotifier {
     await refresh();
   }
 
+  /// Recharge `/me` ; hors connexion, garde la dernière version enregistrée.
   Future<void> refresh() async {
-    me = await api.me();
+    me = Me.fromJson(await sync.read('me', '/me'));
     _set(SessionState.signedIn);
   }
 
   Future<void> signOut() async {
     api.token = null;
     me = null;
+    await sync.clear();
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_tokenKey);
     if (_googleReady) await GoogleSignIn.instance.signOut();

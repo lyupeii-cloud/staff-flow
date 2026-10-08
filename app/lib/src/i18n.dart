@@ -5,6 +5,9 @@ import 'models.dart';
 
 export '../l10n/app_localizations.dart';
 
+/// Texte à afficher, produit dans la langue de l'écran au moment de l'afficher.
+typedef Localized = String Function(L10n t);
+
 /// Une langue proposée, avec son nom écrit dans cette langue (pour le menu).
 class AppLanguage {
   final String code;

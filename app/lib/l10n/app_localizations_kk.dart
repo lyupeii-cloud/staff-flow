@@ -475,4 +475,78 @@ class L10nKk extends L10n {
 
   @override
   String get languageAuto => 'Автоматты (құрылғы тілі)';
+
+  @override
+  String get syncUpToDate => 'Жаңартылған';
+
+  @override
+  String get syncOffline => 'Желіден тыс';
+
+  @override
+  String syncPending(int count) {
+    return 'Күтудегі өзгерістер: $count';
+  }
+
+  @override
+  String get syncNow => 'Қазір синхрондау';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Сервер өзгерісті қабылдамады: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Күтуде';
+
+  @override
+  String get offlineUnavailable => 'Желісіз қолжетімсіз.';
+
+  @override
+  String get offlineCached => 'Желіден тыс: соңғы сақталған деректер.';
+
+  @override
+  String get savedOffline =>
+      'Құрылғыда сақталды, желі қалпына келгенде жіберіледі.';
+
+  @override
+  String get notices => 'Хабарламалар';
+
+  @override
+  String get noNotices => 'Хабарлама жоқ.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name сіздің $date ауысымындағы өзгерісіңізді ауыстырды.';
+  }
+
+  @override
+  String get history => 'Тарих';
+
+  @override
+  String get recentChanges => 'Соңғы өзгерістер';
+
+  @override
+  String get undoChange => 'Бұл өзгерісті болдырмау';
+
+  @override
+  String get undoDone => 'Өзгеріс болдырылмады.';
+
+  @override
+  String get historyCreate => 'Құрылды';
+
+  @override
+  String get historyUpdate => 'Өзгертілді';
+
+  @override
+  String get historyDelete => 'Жойылды';
+
+  @override
+  String get historyUndo => 'Болдырылмады';
+
+  @override
+  String get noHistory => 'Өзгеріс жоқ.';
+
+  @override
+  String get pendingNotEditable =>
+      'Бұл ауысым әлі синхрондалмаған: желіде болғанда қайталаңыз.';
 }

@@ -474,4 +474,78 @@ class L10nPa extends L10n {
 
   @override
   String get languageAuto => 'ਆਪਣੇ-ਆਪ (ਡਿਵਾਈਸ ਦੀ ਭਾਸ਼ਾ)';
+
+  @override
+  String get syncUpToDate => 'ਅੱਪਡੇਟ ਹੈ';
+
+  @override
+  String get syncOffline => 'ਆਫ਼ਲਾਈਨ';
+
+  @override
+  String syncPending(int count) {
+    return 'ਬਕਾਇਆ ਤਬਦੀਲੀਆਂ: $count';
+  }
+
+  @override
+  String get syncNow => 'ਹੁਣੇ ਸਿੰਕ ਕਰੋ';
+
+  @override
+  String syncRejected(String reason) {
+    return 'ਸਰਵਰ ਨੇ ਤਬਦੀਲੀ ਅਸਵੀਕਾਰ ਕੀਤੀ: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'ਬਕਾਇਆ';
+
+  @override
+  String get offlineUnavailable => 'ਆਫ਼ਲਾਈਨ ਉਪਲਬਧ ਨਹੀਂ।';
+
+  @override
+  String get offlineCached => 'ਆਫ਼ਲਾਈਨ: ਆਖ਼ਰੀ ਸੰਭਾਲਿਆ ਡਾਟਾ।';
+
+  @override
+  String get savedOffline =>
+      'ਡਿਵਾਈਸ ਉੱਤੇ ਸੰਭਾਲਿਆ, ਨੈੱਟਵਰਕ ਆਉਣ ਤੇ ਭੇਜਿਆ ਜਾਵੇਗਾ।';
+
+  @override
+  String get notices => 'ਸੂਚਨਾਵਾਂ';
+
+  @override
+  String get noNotices => 'ਕੋਈ ਸੂਚਨਾ ਨਹੀਂ।';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name ਨੇ $date ਦੀ ਸ਼ਿਫ਼ਟ ਵਿੱਚ ਤੁਹਾਡੀ ਤਬਦੀਲੀ ਬਦਲ ਦਿੱਤੀ।';
+  }
+
+  @override
+  String get history => 'ਇਤਿਹਾਸ';
+
+  @override
+  String get recentChanges => 'ਹਾਲੀਆ ਤਬਦੀਲੀਆਂ';
+
+  @override
+  String get undoChange => 'ਇਹ ਤਬਦੀਲੀ ਵਾਪਸ ਲਓ';
+
+  @override
+  String get undoDone => 'ਤਬਦੀਲੀ ਵਾਪਸ ਲਈ ਗਈ।';
+
+  @override
+  String get historyCreate => 'ਬਣਾਇਆ';
+
+  @override
+  String get historyUpdate => 'ਬਦਲਿਆ';
+
+  @override
+  String get historyDelete => 'ਮਿਟਾਇਆ';
+
+  @override
+  String get historyUndo => 'ਵਾਪਸ ਲਿਆ';
+
+  @override
+  String get noHistory => 'ਕੋਈ ਤਬਦੀਲੀ ਨਹੀਂ।';
+
+  @override
+  String get pendingNotEditable =>
+      'ਇਹ ਸ਼ਿਫ਼ਟ ਅਜੇ ਸਿੰਕ ਨਹੀਂ ਹੋਈ: ਆਨਲਾਈਨ ਹੋਣ ਤੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ।';
 }

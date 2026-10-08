@@ -475,4 +475,78 @@ class L10nMr extends L10n {
 
   @override
   String get languageAuto => 'स्वयंचलित (डिव्हाइसची भाषा)';
+
+  @override
+  String get syncUpToDate => 'अद्ययावत';
+
+  @override
+  String get syncOffline => 'ऑफलाइन';
+
+  @override
+  String syncPending(int count) {
+    return 'प्रलंबित बदल: $count';
+  }
+
+  @override
+  String get syncNow => 'आता सिंक करा';
+
+  @override
+  String syncRejected(String reason) {
+    return 'सर्व्हरने बदल नाकारला: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'प्रलंबित';
+
+  @override
+  String get offlineUnavailable => 'ऑफलाइन उपलब्ध नाही.';
+
+  @override
+  String get offlineCached => 'ऑफलाइन: शेवटचा जतन केलेला डेटा.';
+
+  @override
+  String get savedOffline =>
+      'डिव्हाइसवर जतन केले, नेटवर्क आल्यावर पाठवले जाईल.';
+
+  @override
+  String get notices => 'सूचना';
+
+  @override
+  String get noNotices => 'कोणत्याही सूचना नाहीत.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name यांनी $date च्या शिफ्टमधील तुमचा बदल बदलला.';
+  }
+
+  @override
+  String get history => 'इतिहास';
+
+  @override
+  String get recentChanges => 'अलीकडील बदल';
+
+  @override
+  String get undoChange => 'हा बदल रद्द करा';
+
+  @override
+  String get undoDone => 'बदल रद्द केला.';
+
+  @override
+  String get historyCreate => 'निर्मिती';
+
+  @override
+  String get historyUpdate => 'बदल';
+
+  @override
+  String get historyDelete => 'हटवणे';
+
+  @override
+  String get historyUndo => 'रद्द करणे';
+
+  @override
+  String get noHistory => 'कोणतेही बदल नाहीत.';
+
+  @override
+  String get pendingNotEditable =>
+      'ही शिफ्ट अजून सिंक झालेली नाही: ऑनलाइन असताना पुन्हा प्रयत्न करा.';
 }

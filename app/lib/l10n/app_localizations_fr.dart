@@ -476,4 +476,79 @@ class L10nFr extends L10n {
 
   @override
   String get languageAuto => 'Automatique (langue de l’appareil)';
+
+  @override
+  String get syncUpToDate => 'À jour';
+
+  @override
+  String get syncOffline => 'Hors connexion';
+
+  @override
+  String syncPending(int count) {
+    return 'Modifications en attente : $count';
+  }
+
+  @override
+  String get syncNow => 'Synchroniser';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Modification refusée par le serveur : $reason';
+  }
+
+  @override
+  String get pendingBadge => 'En attente';
+
+  @override
+  String get offlineUnavailable => 'Indisponible hors connexion.';
+
+  @override
+  String get offlineCached =>
+      'Hors connexion : dernières données enregistrées.';
+
+  @override
+  String get savedOffline =>
+      'Enregistré sur l’appareil, envoyé au retour du réseau.';
+
+  @override
+  String get notices => 'Avis';
+
+  @override
+  String get noNotices => 'Aucun avis.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name a remplacé votre modification du service du $date.';
+  }
+
+  @override
+  String get history => 'Historique';
+
+  @override
+  String get recentChanges => 'Dernières modifications';
+
+  @override
+  String get undoChange => 'Annuler ce changement';
+
+  @override
+  String get undoDone => 'Changement annulé.';
+
+  @override
+  String get historyCreate => 'Création';
+
+  @override
+  String get historyUpdate => 'Modification';
+
+  @override
+  String get historyDelete => 'Suppression';
+
+  @override
+  String get historyUndo => 'Annulation';
+
+  @override
+  String get noHistory => 'Aucune modification.';
+
+  @override
+  String get pendingNotEditable =>
+      'Ce service n’est pas encore synchronisé : réessayez une fois en ligne.';
 }

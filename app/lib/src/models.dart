@@ -74,13 +74,17 @@ class Me {
   final List<Transfer> pendingTransfers;
   final List<JoinRequest> pendingJoinRequests;
 
+  /// Avis non lus (par exemple : une modification remplacée par un autre responsable).
+  final int unreadNotices;
+
   Me.fromJson(Map<String, dynamic> j)
       : user = User.fromJson(j['user']),
         companies = [for (final c in j['companies']) Membership.fromJson(c)],
         pendingTransfers = [for (final t in j['pendingTransfers']) Transfer.fromJson(t)],
         pendingJoinRequests = [
           for (final r in j['pendingJoinRequests'] ?? const []) JoinRequest.fromJson(r),
-        ];
+        ],
+        unreadNotices = j['unreadNotices'] ?? 0;
 }
 
 class JoinRequest {
@@ -122,6 +126,31 @@ class Shift {
   final String? note;
   final ShiftStatus status;
 
+  /// Augmente à chaque modification sur le serveur (détection des conflits).
+  final int version;
+
+  /// Occurrence modifiée à part de sa série.
+  final bool detached;
+
+  /// Modification faite sur l'appareil, pas encore envoyée au serveur.
+  final bool pending;
+
+  const Shift({
+    required this.id,
+    this.seriesId,
+    required this.day,
+    required this.start,
+    required this.end,
+    this.userId,
+    this.siteId,
+    this.positionId,
+    this.note,
+    required this.status,
+    this.version = 1,
+    this.detached = false,
+    this.pending = false,
+  });
+
   Shift.fromJson(Map<String, dynamic> j)
       : id = j['id'],
         seriesId = j['seriesId'],
@@ -132,7 +161,29 @@ class Shift {
         siteId = j['siteId'],
         positionId = j['positionId'],
         note = j['note'],
-        status = ShiftStatus.values.byName(j['status']);
+        status = ShiftStatus.values.byName(j['status']),
+        version = j['version'] ?? 1,
+        detached = j['detached'] ?? false,
+        pending = j['pending'] ?? false;
+
+  Map<String, Object?> toJson() => {
+        'id': id,
+        'seriesId': seriesId,
+        'day': formatDay(day),
+        'start': start,
+        'end': end,
+        'userId': userId,
+        'siteId': siteId,
+        'positionId': positionId,
+        'note': note,
+        'status': status.name,
+        'version': version,
+        'detached': detached,
+        if (pending) 'pending': true,
+      };
+
+  /// Créé hors connexion : il n'a pas encore d'identifiant sur le serveur.
+  bool get isLocal => id.startsWith('local:');
 
   int get minutes => end - start;
 }

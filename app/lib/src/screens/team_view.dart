@@ -39,7 +39,9 @@ class _TeamViewState extends State<TeamView> {
     if (old.membership.role != role) _load();
   }
 
-  void _load() => _members = widget.session.api.members(company.id);
+  void _load() => _members = widget.session.sync
+      .read('members:${company.id}', '/companies/${company.id}/members')
+      .then((j) => [for (final m in j['members']) Member.fromJson(m)]);
 
   Future<void> _act(Future<void> Function() action, {String? success}) async {
     await runAction(context, widget.session, action, success: success);

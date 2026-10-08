@@ -468,4 +468,76 @@ class L10nJa extends L10n {
 
   @override
   String get languageAuto => '自動（端末の言語）';
+
+  @override
+  String get syncUpToDate => '最新の状態';
+
+  @override
+  String get syncOffline => 'オフライン';
+
+  @override
+  String syncPending(int count) {
+    return '未送信の変更: $count';
+  }
+
+  @override
+  String get syncNow => '今すぐ同期';
+
+  @override
+  String syncRejected(String reason) {
+    return 'サーバーが変更を拒否しました: $reason';
+  }
+
+  @override
+  String get pendingBadge => '未送信';
+
+  @override
+  String get offlineUnavailable => 'オフラインでは利用できません。';
+
+  @override
+  String get offlineCached => 'オフライン: 最後に保存したデータを表示しています。';
+
+  @override
+  String get savedOffline => 'この端末に保存しました。ネットワーク復帰後に送信します。';
+
+  @override
+  String get notices => 'お知らせ';
+
+  @override
+  String get noNotices => 'お知らせはありません。';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name が $date のシフトに対するあなたの変更を上書きしました。';
+  }
+
+  @override
+  String get history => '履歴';
+
+  @override
+  String get recentChanges => '最近の変更';
+
+  @override
+  String get undoChange => 'この変更を元に戻す';
+
+  @override
+  String get undoDone => '変更を元に戻しました。';
+
+  @override
+  String get historyCreate => '作成';
+
+  @override
+  String get historyUpdate => '変更';
+
+  @override
+  String get historyDelete => '削除';
+
+  @override
+  String get historyUndo => '取り消し';
+
+  @override
+  String get noHistory => '変更はありません。';
+
+  @override
+  String get pendingNotEditable => 'このシフトはまだ同期されていません。オンラインで再度お試しください。';
 }

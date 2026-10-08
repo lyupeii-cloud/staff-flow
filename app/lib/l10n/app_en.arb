@@ -299,5 +299,51 @@
   },
   "newCode": "New code",
   "language": "Language",
-  "languageAuto": "Automatic (device language)"
+  "languageAuto": "Automatic (device language)",
+  "syncUpToDate": "Up to date",
+  "syncOffline": "Offline",
+  "syncPending": "Pending changes: {count}",
+  "@syncPending": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "syncNow": "Sync now",
+  "syncRejected": "Change refused by the server: {reason}",
+  "@syncRejected": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "pendingBadge": "Pending",
+  "offlineUnavailable": "Unavailable offline.",
+  "offlineCached": "Offline: showing the last saved data.",
+  "savedOffline": "Saved on this device, will be sent when the network is back.",
+  "notices": "Notices",
+  "noNotices": "No notices.",
+  "noticeOverwritten": "{name} replaced your change to the shift on {date}.",
+  "@noticeOverwritten": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "history": "History",
+  "recentChanges": "Recent changes",
+  "undoChange": "Undo this change",
+  "undoDone": "Change undone.",
+  "historyCreate": "Created",
+  "historyUpdate": "Changed",
+  "historyDelete": "Deleted",
+  "historyUndo": "Undone",
+  "noHistory": "No changes.",
+  "pendingNotEditable": "This shift is not synced yet: try again once online."
 }

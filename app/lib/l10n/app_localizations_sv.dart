@@ -475,4 +475,78 @@ class L10nSv extends L10n {
 
   @override
   String get languageAuto => 'Automatiskt (enhetens språk)';
+
+  @override
+  String get syncUpToDate => 'Uppdaterad';
+
+  @override
+  String get syncOffline => 'Offline';
+
+  @override
+  String syncPending(int count) {
+    return 'Väntande ändringar: $count';
+  }
+
+  @override
+  String get syncNow => 'Synkronisera';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Ändringen nekades av servern: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Väntar';
+
+  @override
+  String get offlineUnavailable => 'Inte tillgängligt offline.';
+
+  @override
+  String get offlineCached => 'Offline: senast sparade data.';
+
+  @override
+  String get savedOffline =>
+      'Sparat på enheten, skickas när nätet är tillbaka.';
+
+  @override
+  String get notices => 'Aviseringar';
+
+  @override
+  String get noNotices => 'Inga aviseringar.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name ersatte din ändring av passet $date.';
+  }
+
+  @override
+  String get history => 'Historik';
+
+  @override
+  String get recentChanges => 'Senaste ändringar';
+
+  @override
+  String get undoChange => 'Ångra den här ändringen';
+
+  @override
+  String get undoDone => 'Ändringen ångrades.';
+
+  @override
+  String get historyCreate => 'Skapad';
+
+  @override
+  String get historyUpdate => 'Ändrad';
+
+  @override
+  String get historyDelete => 'Borttagen';
+
+  @override
+  String get historyUndo => 'Ångrad';
+
+  @override
+  String get noHistory => 'Inga ändringar.';
+
+  @override
+  String get pendingNotEditable =>
+      'Passet är inte synkroniserat ännu: försök igen när du är online.';
 }

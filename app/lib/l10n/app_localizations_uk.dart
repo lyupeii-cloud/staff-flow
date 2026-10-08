@@ -481,4 +481,79 @@ class L10nUk extends L10n {
 
   @override
   String get languageAuto => 'Автоматично (мова пристрою)';
+
+  @override
+  String get syncUpToDate => 'Актуально';
+
+  @override
+  String get syncOffline => 'Немає з’єднання';
+
+  @override
+  String syncPending(int count) {
+    return 'Зміни в черзі: $count';
+  }
+
+  @override
+  String get syncNow => 'Синхронізувати';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Сервер відхилив зміну: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'У черзі';
+
+  @override
+  String get offlineUnavailable => 'Недоступно без з’єднання.';
+
+  @override
+  String get offlineCached =>
+      'Немає з’єднання: показано останні збережені дані.';
+
+  @override
+  String get savedOffline =>
+      'Збережено на пристрої, буде надіслано, коли з’явиться мережа.';
+
+  @override
+  String get notices => 'Сповіщення';
+
+  @override
+  String get noNotices => 'Сповіщень немає.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name замінив(ла) вашу зміну у зміні за $date.';
+  }
+
+  @override
+  String get history => 'Історія';
+
+  @override
+  String get recentChanges => 'Останні зміни';
+
+  @override
+  String get undoChange => 'Скасувати цю зміну';
+
+  @override
+  String get undoDone => 'Зміну скасовано.';
+
+  @override
+  String get historyCreate => 'Створення';
+
+  @override
+  String get historyUpdate => 'Редагування';
+
+  @override
+  String get historyDelete => 'Видалення';
+
+  @override
+  String get historyUndo => 'Скасування';
+
+  @override
+  String get noHistory => 'Змін немає.';
+
+  @override
+  String get pendingNotEditable =>
+      'Цю зміну ще не синхронізовано: спробуйте знову, коли буде з’єднання.';
 }

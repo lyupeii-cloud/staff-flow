@@ -475,4 +475,78 @@ class L10nNl extends L10n {
 
   @override
   String get languageAuto => 'Automatisch (taal van het apparaat)';
+
+  @override
+  String get syncUpToDate => 'Bijgewerkt';
+
+  @override
+  String get syncOffline => 'Offline';
+
+  @override
+  String syncPending(int count) {
+    return 'Wijzigingen in wachtrij: $count';
+  }
+
+  @override
+  String get syncNow => 'Nu synchroniseren';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Wijziging geweigerd door de server: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'In wachtrij';
+
+  @override
+  String get offlineUnavailable => 'Niet beschikbaar offline.';
+
+  @override
+  String get offlineCached => 'Offline: laatst opgeslagen gegevens.';
+
+  @override
+  String get savedOffline =>
+      'Opgeslagen op het apparaat, wordt verstuurd zodra er netwerk is.';
+
+  @override
+  String get notices => 'Meldingen';
+
+  @override
+  String get noNotices => 'Geen meldingen.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name heeft je wijziging van de dienst van $date vervangen.';
+  }
+
+  @override
+  String get history => 'Geschiedenis';
+
+  @override
+  String get recentChanges => 'Recente wijzigingen';
+
+  @override
+  String get undoChange => 'Deze wijziging ongedaan maken';
+
+  @override
+  String get undoDone => 'Wijziging ongedaan gemaakt.';
+
+  @override
+  String get historyCreate => 'Aangemaakt';
+
+  @override
+  String get historyUpdate => 'Gewijzigd';
+
+  @override
+  String get historyDelete => 'Verwijderd';
+
+  @override
+  String get historyUndo => 'Ongedaan gemaakt';
+
+  @override
+  String get noHistory => 'Geen wijzigingen.';
+
+  @override
+  String get pendingNotEditable =>
+      'Deze dienst is nog niet gesynchroniseerd: probeer het online opnieuw.';
 }

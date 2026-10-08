@@ -480,4 +480,78 @@ class L10nSk extends L10n {
 
   @override
   String get languageAuto => 'Automaticky (jazyk zariadenia)';
+
+  @override
+  String get syncUpToDate => 'Aktuálne';
+
+  @override
+  String get syncOffline => 'Offline';
+
+  @override
+  String syncPending(int count) {
+    return 'Čakajúce zmeny: $count';
+  }
+
+  @override
+  String get syncNow => 'Synchronizovať';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Server zmenu odmietol: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Čaká';
+
+  @override
+  String get offlineUnavailable => 'Offline nedostupné.';
+
+  @override
+  String get offlineCached => 'Offline: posledné uložené údaje.';
+
+  @override
+  String get savedOffline =>
+      'Uložené v zariadení, odošle sa po obnovení siete.';
+
+  @override
+  String get notices => 'Oznámenia';
+
+  @override
+  String get noNotices => 'Žiadne oznámenia.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name nahradil(a) vašu úpravu zmeny z $date.';
+  }
+
+  @override
+  String get history => 'História';
+
+  @override
+  String get recentChanges => 'Posledné zmeny';
+
+  @override
+  String get undoChange => 'Vrátiť túto zmenu';
+
+  @override
+  String get undoDone => 'Zmena vrátená.';
+
+  @override
+  String get historyCreate => 'Vytvorenie';
+
+  @override
+  String get historyUpdate => 'Úprava';
+
+  @override
+  String get historyDelete => 'Odstránenie';
+
+  @override
+  String get historyUndo => 'Vrátenie';
+
+  @override
+  String get noHistory => 'Žiadne zmeny.';
+
+  @override
+  String get pendingNotEditable =>
+      'Táto zmena ešte nie je synchronizovaná: skúste to znova online.';
 }

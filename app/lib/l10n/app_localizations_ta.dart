@@ -475,4 +475,78 @@ class L10nTa extends L10n {
 
   @override
   String get languageAuto => 'தானியங்கு (சாதனத்தின் மொழி)';
+
+  @override
+  String get syncUpToDate => 'புதுப்பிக்கப்பட்டது';
+
+  @override
+  String get syncOffline => 'இணைப்பில்லை';
+
+  @override
+  String syncPending(int count) {
+    return 'நிலுவையிலுள்ள மாற்றங்கள்: $count';
+  }
+
+  @override
+  String get syncNow => 'இப்போது ஒத்திசை';
+
+  @override
+  String syncRejected(String reason) {
+    return 'சர்வர் மாற்றத்தை நிராகரித்தது: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'நிலுவையில்';
+
+  @override
+  String get offlineUnavailable => 'இணைப்பின்றி கிடைக்காது.';
+
+  @override
+  String get offlineCached => 'இணைப்பில்லை: கடைசியாகச் சேமித்த தரவு.';
+
+  @override
+  String get savedOffline =>
+      'சாதனத்தில் சேமிக்கப்பட்டது, இணைப்பு வந்ததும் அனுப்பப்படும்.';
+
+  @override
+  String get notices => 'அறிவிப்புகள்';
+
+  @override
+  String get noNotices => 'அறிவிப்புகள் இல்லை.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$date பணி நேரத்தில் உங்கள் மாற்றத்தை $name மாற்றினார்.';
+  }
+
+  @override
+  String get history => 'வரலாறு';
+
+  @override
+  String get recentChanges => 'சமீபத்திய மாற்றங்கள்';
+
+  @override
+  String get undoChange => 'இந்த மாற்றத்தைச் செயல்தவிர்';
+
+  @override
+  String get undoDone => 'மாற்றம் செயல்தவிர்க்கப்பட்டது.';
+
+  @override
+  String get historyCreate => 'உருவாக்கம்';
+
+  @override
+  String get historyUpdate => 'மாற்றம்';
+
+  @override
+  String get historyDelete => 'நீக்கம்';
+
+  @override
+  String get historyUndo => 'செயல்தவிர்ப்பு';
+
+  @override
+  String get noHistory => 'மாற்றங்கள் இல்லை.';
+
+  @override
+  String get pendingNotEditable =>
+      'இந்தப் பணி நேரம் இன்னும் ஒத்திசைக்கப்படவில்லை: இணைப்பில் இருக்கும்போது மீண்டும் முயலவும்.';
 }

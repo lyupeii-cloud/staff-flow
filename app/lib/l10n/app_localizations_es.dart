@@ -476,4 +476,78 @@ class L10nEs extends L10n {
 
   @override
   String get languageAuto => 'Automático (idioma del dispositivo)';
+
+  @override
+  String get syncUpToDate => 'Al día';
+
+  @override
+  String get syncOffline => 'Sin conexión';
+
+  @override
+  String syncPending(int count) {
+    return 'Cambios pendientes: $count';
+  }
+
+  @override
+  String get syncNow => 'Sincronizar';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Cambio rechazado por el servidor: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Pendiente';
+
+  @override
+  String get offlineUnavailable => 'No disponible sin conexión.';
+
+  @override
+  String get offlineCached => 'Sin conexión: últimos datos guardados.';
+
+  @override
+  String get savedOffline =>
+      'Guardado en el dispositivo, se enviará cuando vuelva la red.';
+
+  @override
+  String get notices => 'Avisos';
+
+  @override
+  String get noNotices => 'Ningún aviso.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name ha sustituido tu cambio en el turno del $date.';
+  }
+
+  @override
+  String get history => 'Historial';
+
+  @override
+  String get recentChanges => 'Últimos cambios';
+
+  @override
+  String get undoChange => 'Deshacer este cambio';
+
+  @override
+  String get undoDone => 'Cambio deshecho.';
+
+  @override
+  String get historyCreate => 'Creación';
+
+  @override
+  String get historyUpdate => 'Modificación';
+
+  @override
+  String get historyDelete => 'Eliminación';
+
+  @override
+  String get historyUndo => 'Deshecho';
+
+  @override
+  String get noHistory => 'Ningún cambio.';
+
+  @override
+  String get pendingNotEditable =>
+      'Este turno aún no está sincronizado: inténtalo de nuevo con conexión.';
 }

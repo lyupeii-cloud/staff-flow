@@ -482,4 +482,78 @@ class L10nPl extends L10n {
 
   @override
   String get languageAuto => 'Automatycznie (język urządzenia)';
+
+  @override
+  String get syncUpToDate => 'Aktualne';
+
+  @override
+  String get syncOffline => 'Offline';
+
+  @override
+  String syncPending(int count) {
+    return 'Oczekujące zmiany: $count';
+  }
+
+  @override
+  String get syncNow => 'Synchronizuj';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Serwer odrzucił zmianę: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Oczekuje';
+
+  @override
+  String get offlineUnavailable => 'Niedostępne offline.';
+
+  @override
+  String get offlineCached => 'Offline: ostatnio zapisane dane.';
+
+  @override
+  String get savedOffline =>
+      'Zapisano na urządzeniu, zostanie wysłane po powrocie sieci.';
+
+  @override
+  String get notices => 'Powiadomienia';
+
+  @override
+  String get noNotices => 'Brak powiadomień.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name zastąpił(a) Twoją zmianę zmiany z $date.';
+  }
+
+  @override
+  String get history => 'Historia';
+
+  @override
+  String get recentChanges => 'Ostatnie zmiany';
+
+  @override
+  String get undoChange => 'Cofnij tę zmianę';
+
+  @override
+  String get undoDone => 'Zmiana cofnięta.';
+
+  @override
+  String get historyCreate => 'Utworzenie';
+
+  @override
+  String get historyUpdate => 'Edycja';
+
+  @override
+  String get historyDelete => 'Usunięcie';
+
+  @override
+  String get historyUndo => 'Cofnięcie';
+
+  @override
+  String get noHistory => 'Brak zmian.';
+
+  @override
+  String get pendingNotEditable =>
+      'Ta zmiana nie jest jeszcze zsynchronizowana: spróbuj ponownie online.';
 }

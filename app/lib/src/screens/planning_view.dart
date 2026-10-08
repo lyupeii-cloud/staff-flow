@@ -7,6 +7,7 @@ import '../models.dart';
 import '../session.dart';
 import 'company_tab.dart';
 import 'shift_editor.dart';
+import 'sync_widgets.dart';
 
 enum _Mode { week, month }
 
@@ -44,22 +45,47 @@ class _PlanningViewState extends State<PlanningView> {
   DateTime get _from => _mode == _Mode.week ? startOfWeek(_anchor) : startOfMonth(_anchor);
   DateTime get _to => _mode == _Mode.week ? addDays(_from, 6) : endOfMonth(_anchor);
 
+  /// Hors connexion : planning tiré des dernières données gardées.
+  bool _stale = false;
+  int _seenSync = 0;
+  int _seenQueue = 0;
+
   @override
   void initState() {
     super.initState();
+    widget.session.sync.addListener(_onSync);
     _load();
   }
 
+  @override
+  void dispose() {
+    widget.session.sync.removeListener(_onSync);
+    super.dispose();
+  }
+
+  /// Recharge quand des modifications en attente sont parties ou ont été
+  /// ajoutées (les modifications en attente s'affichent par-dessus).
+  void _onSync() {
+    final sync = widget.session.sync;
+    if (sync.synced != _seenSync || sync.queue.length != _seenQueue) _load();
+  }
+
   Future<void> _load() async {
+    final sync = widget.session.sync;
+    _seenSync = sync.synced;
+    _seenQueue = sync.queue.length;
     setState(() => _loading = true);
     try {
-      final (shifts, pending) = await widget.session.api.shifts(company.id, _from, _to);
+      final r = await sync.shifts(company.id, _from, _to);
       if (!mounted) return;
       setState(() {
-        _shifts = shifts;
-        _pending = pending;
+        _shifts = r.shifts;
+        _pending = r.pending;
+        _stale = r.stale;
         _error = null;
       });
+    } on OfflineException {
+      if (mounted) setState(() => _error = (t) => t.offlineUnavailable);
     } on ApiException catch (e) {
       if (mounted) setState(() => _error = e.describe);
     } catch (_) {
@@ -79,20 +105,19 @@ class _PlanningViewState extends State<PlanningView> {
     _load();
   }
 
-  List<Shift> get _visible =>
-      _mineOnly ? _shifts.where((s) => s.userId == myId).toList() : _shifts;
+  List<Shift> get _visible => _mineOnly ? _shifts.where((s) => s.userId == myId).toList() : _shifts;
 
   List<Shift> _onDay(DateTime d) => _visible.where((s) => sameDay(s.day, d)).toList();
 
-  String get _title => _mode == _Mode.week
-      ? t.weekOf(dayLabel(_from, loc))
-      : monthTitle(_anchor, loc);
+  String get _title => _mode == _Mode.week ? t.weekOf(dayLabel(_from, loc)) : monthTitle(_anchor, loc);
 
   Future<void> _publish() async {
     final messenger = ScaffoldMessenger.of(context);
     try {
-      final n = await widget.session.api.publish(company.id);
-      messenger.showSnackBar(SnackBar(content: Text(t.changesPublished(n))));
+      final r = await widget.session.sync.publish(company.id);
+      messenger.showSnackBar(
+        SnackBar(content: Text(r == null ? t.savedOffline : t.changesPublished(r['published'] as int))),
+      );
     } on ApiException catch (e) {
       messenger.showSnackBar(SnackBar(content: Text(e.describe(t))));
     }
@@ -100,22 +125,39 @@ class _PlanningViewState extends State<PlanningView> {
   }
 
   Future<void> _openEditor({Shift? shift, DateTime? day}) async {
-    final changed = await showShiftEditor(context,
-        session: widget.session, company: company, data: widget.data, shift: shift, day: day ?? _selected);
+    if (shift != null && shift.isLocal) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.pendingNotEditable)));
+      return;
+    }
+    final changed = await showShiftEditor(
+      context,
+      session: widget.session,
+      company: company,
+      data: widget.data,
+      shift: shift,
+      day: day ?? _selected,
+    );
     if (changed == true) _load();
   }
 
   Future<void> _replace() async {
-    final changed = await showReplaceDialog(context,
-        session: widget.session, company: company, data: widget.data, from: _from, to: _to);
+    final changed = await showReplaceDialog(
+      context,
+      session: widget.session,
+      company: company,
+      data: widget.data,
+      from: _from,
+      to: _to,
+    );
     if (changed == true) _load();
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final myMinutes =
-        _shifts.where((s) => s.userId == myId && s.status != ShiftStatus.deleted).fold(0, (t, s) => t + s.minutes);
+    final myMinutes = _shifts
+        .where((s) => s.userId == myId && s.status != ShiftStatus.deleted)
+        .fold(0, (t, s) => t + s.minutes);
     return Scaffold(
       backgroundColor: Colors.transparent,
       floatingActionButton: canEdit
@@ -151,6 +193,13 @@ class _PlanningViewState extends State<PlanningView> {
                         setState(() => _mineOnly = !_mineOnly);
                       case 'replace':
                         _replace();
+                      case 'history':
+                        showHistorySheet(
+                          context,
+                          session: widget.session,
+                          company: company,
+                          data: widget.data,
+                        );
                     }
                   },
                   itemBuilder: (_) => [
@@ -159,11 +208,23 @@ class _PlanningViewState extends State<PlanningView> {
                     PopupMenuItem(value: 'today', child: Text(t.today)),
                     CheckedPopupMenuItem(value: 'mine', checked: _mineOnly, child: Text(t.onlyMine)),
                     if (canEdit) PopupMenuItem(value: 'replace', child: Text(t.replacePersonMenu)),
+                    if (canEdit) PopupMenuItem(value: 'history', child: Text(t.recentChanges)),
                   ],
                 ),
               ],
             ),
           ),
+          if (_stale)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
+              child: Row(
+                children: [
+                  const Icon(Icons.cloud_off, size: 16, color: Colors.orange),
+                  const SizedBox(width: 6),
+                  Expanded(child: Text(t.offlineCached, style: theme.textTheme.bodySmall)),
+                ],
+              ),
+            ),
           if (canEdit && _pending > 0)
             Card(
               margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
@@ -178,17 +239,16 @@ class _PlanningViewState extends State<PlanningView> {
           if (myMinutes > 0)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
-              child: Text(t.yourHours(durationLabel(t, myMinutes)),
-                  style: theme.textTheme.bodySmall),
+              child: Text(t.yourHours(durationLabel(t, myMinutes)), style: theme.textTheme.bodySmall),
             ),
           if (_loading) const LinearProgressIndicator(minHeight: 2) else const SizedBox(height: 2),
           if (_error != null)
-            Padding(padding: const EdgeInsets.all(16), child: Text(_error!(t), style: TextStyle(color: theme.colorScheme.error))),
-          Expanded(
-            child: RefreshIndicator(
-              onRefresh: _load,
-              child: _mode == _Mode.week ? _weekList() : _month(),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(_error!(t), style: TextStyle(color: theme.colorScheme.error)),
             ),
+          Expanded(
+            child: RefreshIndicator(onRefresh: _load, child: _mode == _Mode.week ? _weekList() : _month()),
           ),
         ],
       ),
@@ -196,11 +256,9 @@ class _PlanningViewState extends State<PlanningView> {
   }
 
   Widget _weekList() => ListView(
-        padding: const EdgeInsets.fromLTRB(16, 4, 16, 96),
-        children: [
-          for (var i = 0; i < 7; i++) ..._daySection(addDays(_from, i)),
-        ],
-      );
+    padding: const EdgeInsets.fromLTRB(16, 4, 16, 96),
+    children: [for (var i = 0; i < 7; i++) ..._daySection(addDays(_from, i))],
+  );
 
   List<Widget> _daySection(DateTime day) {
     final theme = Theme.of(context);
@@ -211,9 +269,13 @@ class _PlanningViewState extends State<PlanningView> {
         padding: const EdgeInsets.only(top: 12, bottom: 4),
         child: Row(
           children: [
-            Text(dayLabel(day, loc),
-                style: theme.textTheme.titleSmall?.copyWith(
-                    color: today ? theme.colorScheme.primary : null, fontWeight: today ? FontWeight.bold : null)),
+            Text(
+              dayLabel(day, loc),
+              style: theme.textTheme.titleSmall?.copyWith(
+                color: today ? theme.colorScheme.primary : null,
+                fontWeight: today ? FontWeight.bold : null,
+              ),
+            ),
             const Spacer(),
             if (canEdit)
               IconButton(
@@ -235,17 +297,20 @@ class _PlanningViewState extends State<PlanningView> {
     final theme = Theme.of(context);
     final d = widget.data;
     final who = s.userId == null ? t.unassigned : (d.memberName(s.userId) ?? t.formerMember);
-    final details = [d.positionName(s.positionId), d.siteName(s.siteId), s.note]
-        .whereType<String>()
-        .where((x) => x.isNotEmpty)
-        .join(' · ');
+    final details = [
+      d.positionName(s.positionId),
+      d.siteName(s.siteId),
+      s.note,
+    ].whereType<String>().where((x) => x.isNotEmpty).join(' · ');
     final deleted = s.status == ShiftStatus.deleted;
-    final badge = switch (s.status) {
-      ShiftStatus.draft => t.statusDraft,
-      ShiftStatus.modified => t.statusModified,
-      ShiftStatus.deleted => t.statusDeleted,
-      ShiftStatus.published => null,
-    };
+    final badge = s.pending
+        ? t.pendingBadge
+        : switch (s.status) {
+            ShiftStatus.draft => t.statusDraft,
+            ShiftStatus.modified => t.statusModified,
+            ShiftStatus.deleted => t.statusDeleted,
+            ShiftStatus.published => null,
+          };
     final mine = s.userId == myId;
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 3),
@@ -282,14 +347,16 @@ class _PlanningViewState extends State<PlanningView> {
     return ListView(
       padding: const EdgeInsets.fromLTRB(12, 4, 12, 96),
       children: [
-        Row(children: [
-          for (var wd = 1; wd <= 7; wd++)
-            Expanded(child: Center(child: Text(weekdayLetter(wd, loc), style: theme.textTheme.labelSmall))),
-        ]),
+        Row(
+          children: [
+            for (var wd = 1; wd <= 7; wd++)
+              Expanded(
+                child: Center(child: Text(weekdayLetter(wd, loc), style: theme.textTheme.labelSmall)),
+              ),
+          ],
+        ),
         for (var w = 0; w < weeks; w++)
-          Row(children: [
-            for (var i = 0; i < 7; i++) Expanded(child: _monthCell(addDays(first, w * 7 + i))),
-          ]),
+          Row(children: [for (var i = 0; i < 7; i++) Expanded(child: _monthCell(addDays(first, w * 7 + i)))]),
         const Divider(height: 24),
         Text(dayLabel(_selected, loc), style: theme.textTheme.titleSmall),
         if (selected.isEmpty)
@@ -319,11 +386,15 @@ class _PlanningViewState extends State<PlanningView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('${day.day}',
-                style: TextStyle(color: inMonth ? null : theme.disabledColor.withValues(alpha: 0.3))),
+            Text(
+              '${day.day}',
+              style: TextStyle(color: inMonth ? null : theme.disabledColor.withValues(alpha: 0.3)),
+            ),
             if (count > 0)
-              Text(count > 3 ? '•••+' : '•' * count,
-                  style: TextStyle(color: theme.colorScheme.primary, height: 1)),
+              Text(
+                count > 3 ? '•••+' : '•' * count,
+                style: TextStyle(color: theme.colorScheme.primary, height: 1),
+              ),
           ],
         ),
       ),

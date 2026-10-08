@@ -470,4 +470,77 @@ class L10nVi extends L10n {
 
   @override
   String get languageAuto => 'Tự động (ngôn ngữ thiết bị)';
+
+  @override
+  String get syncUpToDate => 'Đã cập nhật';
+
+  @override
+  String get syncOffline => 'Ngoại tuyến';
+
+  @override
+  String syncPending(int count) {
+    return 'Thay đổi đang chờ: $count';
+  }
+
+  @override
+  String get syncNow => 'Đồng bộ ngay';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Máy chủ từ chối thay đổi: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Đang chờ';
+
+  @override
+  String get offlineUnavailable => 'Không khả dụng khi ngoại tuyến.';
+
+  @override
+  String get offlineCached => 'Ngoại tuyến: dữ liệu đã lưu gần nhất.';
+
+  @override
+  String get savedOffline => 'Đã lưu trên thiết bị, sẽ gửi khi có mạng.';
+
+  @override
+  String get notices => 'Thông báo';
+
+  @override
+  String get noNotices => 'Không có thông báo.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name đã thay thế thay đổi của bạn cho ca ngày $date.';
+  }
+
+  @override
+  String get history => 'Lịch sử';
+
+  @override
+  String get recentChanges => 'Thay đổi gần đây';
+
+  @override
+  String get undoChange => 'Hoàn tác thay đổi này';
+
+  @override
+  String get undoDone => 'Đã hoàn tác.';
+
+  @override
+  String get historyCreate => 'Tạo';
+
+  @override
+  String get historyUpdate => 'Sửa';
+
+  @override
+  String get historyDelete => 'Xóa';
+
+  @override
+  String get historyUndo => 'Hoàn tác';
+
+  @override
+  String get noHistory => 'Không có thay đổi.';
+
+  @override
+  String get pendingNotEditable =>
+      'Ca này chưa được đồng bộ: hãy thử lại khi có mạng.';
 }

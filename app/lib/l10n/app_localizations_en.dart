@@ -476,4 +476,78 @@ class L10nEn extends L10n {
 
   @override
   String get languageAuto => 'Automatic (device language)';
+
+  @override
+  String get syncUpToDate => 'Up to date';
+
+  @override
+  String get syncOffline => 'Offline';
+
+  @override
+  String syncPending(int count) {
+    return 'Pending changes: $count';
+  }
+
+  @override
+  String get syncNow => 'Sync now';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Change refused by the server: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Pending';
+
+  @override
+  String get offlineUnavailable => 'Unavailable offline.';
+
+  @override
+  String get offlineCached => 'Offline: showing the last saved data.';
+
+  @override
+  String get savedOffline =>
+      'Saved on this device, will be sent when the network is back.';
+
+  @override
+  String get notices => 'Notices';
+
+  @override
+  String get noNotices => 'No notices.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name replaced your change to the shift on $date.';
+  }
+
+  @override
+  String get history => 'History';
+
+  @override
+  String get recentChanges => 'Recent changes';
+
+  @override
+  String get undoChange => 'Undo this change';
+
+  @override
+  String get undoDone => 'Change undone.';
+
+  @override
+  String get historyCreate => 'Created';
+
+  @override
+  String get historyUpdate => 'Changed';
+
+  @override
+  String get historyDelete => 'Deleted';
+
+  @override
+  String get historyUndo => 'Undone';
+
+  @override
+  String get noHistory => 'No changes.';
+
+  @override
+  String get pendingNotEditable =>
+      'This shift is not synced yet: try again once online.';
 }

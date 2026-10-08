@@ -471,4 +471,78 @@ class L10nMs extends L10n {
 
   @override
   String get languageAuto => 'Automatik (bahasa peranti)';
+
+  @override
+  String get syncUpToDate => 'Terkini';
+
+  @override
+  String get syncOffline => 'Luar talian';
+
+  @override
+  String syncPending(int count) {
+    return 'Perubahan tertunda: $count';
+  }
+
+  @override
+  String get syncNow => 'Segerak sekarang';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Perubahan ditolak pelayan: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Tertunda';
+
+  @override
+  String get offlineUnavailable => 'Tidak tersedia di luar talian.';
+
+  @override
+  String get offlineCached => 'Luar talian: data terakhir yang disimpan.';
+
+  @override
+  String get savedOffline =>
+      'Disimpan pada peranti, akan dihantar apabila rangkaian kembali.';
+
+  @override
+  String get notices => 'Notis';
+
+  @override
+  String get noNotices => 'Tiada notis.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name menggantikan perubahan anda pada syif $date.';
+  }
+
+  @override
+  String get history => 'Sejarah';
+
+  @override
+  String get recentChanges => 'Perubahan terkini';
+
+  @override
+  String get undoChange => 'Buat asal perubahan ini';
+
+  @override
+  String get undoDone => 'Perubahan dibuat asal.';
+
+  @override
+  String get historyCreate => 'Dicipta';
+
+  @override
+  String get historyUpdate => 'Diubah';
+
+  @override
+  String get historyDelete => 'Dipadam';
+
+  @override
+  String get historyUndo => 'Dibuat asal';
+
+  @override
+  String get noHistory => 'Tiada perubahan.';
+
+  @override
+  String get pendingNotEditable =>
+      'Syif ini belum disegerakkan: cuba lagi apabila dalam talian.';
 }

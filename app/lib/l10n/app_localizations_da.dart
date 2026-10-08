@@ -475,4 +475,78 @@ class L10nDa extends L10n {
 
   @override
   String get languageAuto => 'Automatisk (enhedens sprog)';
+
+  @override
+  String get syncUpToDate => 'Opdateret';
+
+  @override
+  String get syncOffline => 'Offline';
+
+  @override
+  String syncPending(int count) {
+    return 'Ventende ændringer: $count';
+  }
+
+  @override
+  String get syncNow => 'Synkronisér nu';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Ændringen blev afvist af serveren: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Venter';
+
+  @override
+  String get offlineUnavailable => 'Ikke tilgængelig offline.';
+
+  @override
+  String get offlineCached => 'Offline: senest gemte data.';
+
+  @override
+  String get savedOffline =>
+      'Gemt på enheden, sendes når netværket er tilbage.';
+
+  @override
+  String get notices => 'Meddelelser';
+
+  @override
+  String get noNotices => 'Ingen meddelelser.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name har erstattet din ændring af vagten den $date.';
+  }
+
+  @override
+  String get history => 'Historik';
+
+  @override
+  String get recentChanges => 'Seneste ændringer';
+
+  @override
+  String get undoChange => 'Fortryd denne ændring';
+
+  @override
+  String get undoDone => 'Ændringen er fortrudt.';
+
+  @override
+  String get historyCreate => 'Oprettet';
+
+  @override
+  String get historyUpdate => 'Ændret';
+
+  @override
+  String get historyDelete => 'Slettet';
+
+  @override
+  String get historyUndo => 'Fortrudt';
+
+  @override
+  String get noHistory => 'Ingen ændringer.';
+
+  @override
+  String get pendingNotEditable =>
+      'Vagten er ikke synkroniseret endnu: prøv igen, når du er online.';
 }

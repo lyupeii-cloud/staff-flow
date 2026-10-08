@@ -480,4 +480,77 @@ class L10nCs extends L10n {
 
   @override
   String get languageAuto => 'Automaticky (jazyk zařízení)';
+
+  @override
+  String get syncUpToDate => 'Aktuální';
+
+  @override
+  String get syncOffline => 'Offline';
+
+  @override
+  String syncPending(int count) {
+    return 'Čekající změny: $count';
+  }
+
+  @override
+  String get syncNow => 'Synchronizovat';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Server změnu odmítl: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Čeká';
+
+  @override
+  String get offlineUnavailable => 'Offline nedostupné.';
+
+  @override
+  String get offlineCached => 'Offline: poslední uložená data.';
+
+  @override
+  String get savedOffline => 'Uloženo v zařízení, odešle se po obnovení sítě.';
+
+  @override
+  String get notices => 'Oznámení';
+
+  @override
+  String get noNotices => 'Žádná oznámení.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name nahradil(a) vaši úpravu směny z $date.';
+  }
+
+  @override
+  String get history => 'Historie';
+
+  @override
+  String get recentChanges => 'Poslední změny';
+
+  @override
+  String get undoChange => 'Vrátit tuto změnu';
+
+  @override
+  String get undoDone => 'Změna vrácena.';
+
+  @override
+  String get historyCreate => 'Vytvoření';
+
+  @override
+  String get historyUpdate => 'Úprava';
+
+  @override
+  String get historyDelete => 'Smazání';
+
+  @override
+  String get historyUndo => 'Vrácení';
+
+  @override
+  String get noHistory => 'Žádné změny.';
+
+  @override
+  String get pendingNotEditable =>
+      'Tato směna ještě není synchronizována: zkuste to znovu online.';
 }

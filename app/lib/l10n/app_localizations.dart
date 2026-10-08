@@ -946,6 +946,138 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Automatic (device language)'**
   String get languageAuto;
+
+  /// No description provided for @syncUpToDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to date'**
+  String get syncUpToDate;
+
+  /// No description provided for @syncOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'Offline'**
+  String get syncOffline;
+
+  /// No description provided for @syncPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending changes: {count}'**
+  String syncPending(int count);
+
+  /// No description provided for @syncNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync now'**
+  String get syncNow;
+
+  /// No description provided for @syncRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Change refused by the server: {reason}'**
+  String syncRejected(String reason);
+
+  /// No description provided for @pendingBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get pendingBadge;
+
+  /// No description provided for @offlineUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Unavailable offline.'**
+  String get offlineUnavailable;
+
+  /// No description provided for @offlineCached.
+  ///
+  /// In en, this message translates to:
+  /// **'Offline: showing the last saved data.'**
+  String get offlineCached;
+
+  /// No description provided for @savedOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved on this device, will be sent when the network is back.'**
+  String get savedOffline;
+
+  /// No description provided for @notices.
+  ///
+  /// In en, this message translates to:
+  /// **'Notices'**
+  String get notices;
+
+  /// No description provided for @noNotices.
+  ///
+  /// In en, this message translates to:
+  /// **'No notices.'**
+  String get noNotices;
+
+  /// No description provided for @noticeOverwritten.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} replaced your change to the shift on {date}.'**
+  String noticeOverwritten(String name, String date);
+
+  /// No description provided for @history.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get history;
+
+  /// No description provided for @recentChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent changes'**
+  String get recentChanges;
+
+  /// No description provided for @undoChange.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo this change'**
+  String get undoChange;
+
+  /// No description provided for @undoDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Change undone.'**
+  String get undoDone;
+
+  /// No description provided for @historyCreate.
+  ///
+  /// In en, this message translates to:
+  /// **'Created'**
+  String get historyCreate;
+
+  /// No description provided for @historyUpdate.
+  ///
+  /// In en, this message translates to:
+  /// **'Changed'**
+  String get historyUpdate;
+
+  /// No description provided for @historyDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted'**
+  String get historyDelete;
+
+  /// No description provided for @historyUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Undone'**
+  String get historyUndo;
+
+  /// No description provided for @noHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'No changes.'**
+  String get noHistory;
+
+  /// No description provided for @pendingNotEditable.
+  ///
+  /// In en, this message translates to:
+  /// **'This shift is not synced yet: try again once online.'**
+  String get pendingNotEditable;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

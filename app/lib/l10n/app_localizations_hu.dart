@@ -471,4 +471,78 @@ class L10nHu extends L10n {
 
   @override
   String get languageAuto => 'Automatikus (eszköz nyelve)';
+
+  @override
+  String get syncUpToDate => 'Naprakész';
+
+  @override
+  String get syncOffline => 'Offline';
+
+  @override
+  String syncPending(int count) {
+    return 'Függő módosítások: $count';
+  }
+
+  @override
+  String get syncNow => 'Szinkronizálás';
+
+  @override
+  String syncRejected(String reason) {
+    return 'A szerver elutasította a módosítást: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Függőben';
+
+  @override
+  String get offlineUnavailable => 'Offline nem érhető el.';
+
+  @override
+  String get offlineCached => 'Offline: az utoljára mentett adatok.';
+
+  @override
+  String get savedOffline =>
+      'Mentve az eszközön, a hálózat visszatérésekor elküldjük.';
+
+  @override
+  String get notices => 'Értesítések';
+
+  @override
+  String get noNotices => 'Nincs értesítés.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name felülírta a(z) $date műszakon végzett módosításodat.';
+  }
+
+  @override
+  String get history => 'Előzmények';
+
+  @override
+  String get recentChanges => 'Legutóbbi módosítások';
+
+  @override
+  String get undoChange => 'Módosítás visszavonása';
+
+  @override
+  String get undoDone => 'Módosítás visszavonva.';
+
+  @override
+  String get historyCreate => 'Létrehozás';
+
+  @override
+  String get historyUpdate => 'Módosítás';
+
+  @override
+  String get historyDelete => 'Törlés';
+
+  @override
+  String get historyUndo => 'Visszavonás';
+
+  @override
+  String get noHistory => 'Nincs módosítás.';
+
+  @override
+  String get pendingNotEditable =>
+      'Ez a műszak még nincs szinkronizálva: próbáld újra online.';
 }

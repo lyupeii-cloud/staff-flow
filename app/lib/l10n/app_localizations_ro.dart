@@ -478,4 +478,78 @@ class L10nRo extends L10n {
 
   @override
   String get languageAuto => 'Automat (limba dispozitivului)';
+
+  @override
+  String get syncUpToDate => 'Actualizat';
+
+  @override
+  String get syncOffline => 'Offline';
+
+  @override
+  String syncPending(int count) {
+    return 'Modificări în așteptare: $count';
+  }
+
+  @override
+  String get syncNow => 'Sincronizează';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Modificare refuzată de server: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'În așteptare';
+
+  @override
+  String get offlineUnavailable => 'Indisponibil offline.';
+
+  @override
+  String get offlineCached => 'Offline: ultimele date salvate.';
+
+  @override
+  String get savedOffline =>
+      'Salvat pe dispozitiv, va fi trimis când revine rețeaua.';
+
+  @override
+  String get notices => 'Notificări';
+
+  @override
+  String get noNotices => 'Nicio notificare.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name a înlocuit modificarea ta la tura din $date.';
+  }
+
+  @override
+  String get history => 'Istoric';
+
+  @override
+  String get recentChanges => 'Modificări recente';
+
+  @override
+  String get undoChange => 'Anulează această modificare';
+
+  @override
+  String get undoDone => 'Modificare anulată.';
+
+  @override
+  String get historyCreate => 'Creare';
+
+  @override
+  String get historyUpdate => 'Modificare';
+
+  @override
+  String get historyDelete => 'Ștergere';
+
+  @override
+  String get historyUndo => 'Anulare';
+
+  @override
+  String get noHistory => 'Nicio modificare.';
+
+  @override
+  String get pendingNotEditable =>
+      'Această tură nu este încă sincronizată: încearcă din nou când ești online.';
 }

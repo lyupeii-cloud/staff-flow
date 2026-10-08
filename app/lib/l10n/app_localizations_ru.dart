@@ -480,4 +480,79 @@ class L10nRu extends L10n {
 
   @override
   String get languageAuto => 'Автоматически (язык устройства)';
+
+  @override
+  String get syncUpToDate => 'Актуально';
+
+  @override
+  String get syncOffline => 'Нет подключения';
+
+  @override
+  String syncPending(int count) {
+    return 'Изменения в очереди: $count';
+  }
+
+  @override
+  String get syncNow => 'Синхронизировать';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Сервер отклонил изменение: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'В очереди';
+
+  @override
+  String get offlineUnavailable => 'Недоступно без подключения.';
+
+  @override
+  String get offlineCached =>
+      'Нет подключения: показаны последние сохранённые данные.';
+
+  @override
+  String get savedOffline =>
+      'Сохранено на устройстве, будет отправлено при появлении сети.';
+
+  @override
+  String get notices => 'Уведомления';
+
+  @override
+  String get noNotices => 'Уведомлений нет.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name заменил(а) ваше изменение смены на $date.';
+  }
+
+  @override
+  String get history => 'История';
+
+  @override
+  String get recentChanges => 'Последние изменения';
+
+  @override
+  String get undoChange => 'Отменить это изменение';
+
+  @override
+  String get undoDone => 'Изменение отменено.';
+
+  @override
+  String get historyCreate => 'Создание';
+
+  @override
+  String get historyUpdate => 'Изменение';
+
+  @override
+  String get historyDelete => 'Удаление';
+
+  @override
+  String get historyUndo => 'Отмена';
+
+  @override
+  String get noHistory => 'Изменений нет.';
+
+  @override
+  String get pendingNotEditable =>
+      'Эта смена ещё не синхронизирована: повторите, когда будет подключение.';
 }

@@ -15,15 +15,19 @@ class CompanyData {
 
   const CompanyData(this.members, this.sites, this.positions);
 
+  /// Depuis le serveur, ou hors connexion depuis la dernière copie gardée.
   static Future<CompanyData> load(Session session, String companyId) async {
-    final api = session.api;
+    final sync = session.sync;
     final r = await Future.wait([
-      api.members(companyId),
-      api.catalog(companyId, 'sites'),
-      api.catalog(companyId, 'positions'),
+      sync.read('members:$companyId', '/companies/$companyId/members'),
+      sync.read('sites:$companyId', '/companies/$companyId/sites'),
+      sync.read('positions:$companyId', '/companies/$companyId/positions'),
     ]);
     return CompanyData(
-        r[0] as List<Member>, r[1] as List<CatalogItem>, r[2] as List<CatalogItem>);
+      [for (final m in r[0]['members']) Member.fromJson(m)],
+      [for (final i in r[1]['items']) CatalogItem.fromJson(i)],
+      [for (final i in r[2]['items']) CatalogItem.fromJson(i)],
+    );
   }
 
   String? memberName(String? userId) =>

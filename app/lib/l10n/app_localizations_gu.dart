@@ -474,4 +474,77 @@ class L10nGu extends L10n {
 
   @override
   String get languageAuto => 'આપમેળે (ઉપકરણની ભાષા)';
+
+  @override
+  String get syncUpToDate => 'અપડેટ છે';
+
+  @override
+  String get syncOffline => 'ઑફલાઇન';
+
+  @override
+  String syncPending(int count) {
+    return 'બાકી ફેરફારો: $count';
+  }
+
+  @override
+  String get syncNow => 'હમણાં સિંક કરો';
+
+  @override
+  String syncRejected(String reason) {
+    return 'સર્વરે ફેરફાર નકાર્યો: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'બાકી';
+
+  @override
+  String get offlineUnavailable => 'ઑફલાઇન ઉપલબ્ધ નથી.';
+
+  @override
+  String get offlineCached => 'ઑફલાઇન: છેલ્લો સાચવેલો ડેટા.';
+
+  @override
+  String get savedOffline => 'ઉપકરણ પર સાચવ્યું, નેટવર્ક આવ્યે મોકલાશે.';
+
+  @override
+  String get notices => 'સૂચનાઓ';
+
+  @override
+  String get noNotices => 'કોઈ સૂચના નથી.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$nameએ $dateની શિફ્ટમાં તમારો ફેરફાર બદલી નાખ્યો.';
+  }
+
+  @override
+  String get history => 'ઇતિહાસ';
+
+  @override
+  String get recentChanges => 'તાજેતરના ફેરફારો';
+
+  @override
+  String get undoChange => 'આ ફેરફાર પાછો લો';
+
+  @override
+  String get undoDone => 'ફેરફાર પાછો લીધો.';
+
+  @override
+  String get historyCreate => 'બનાવ્યું';
+
+  @override
+  String get historyUpdate => 'બદલ્યું';
+
+  @override
+  String get historyDelete => 'કાઢી નાખ્યું';
+
+  @override
+  String get historyUndo => 'પાછું લીધું';
+
+  @override
+  String get noHistory => 'કોઈ ફેરફાર નથી.';
+
+  @override
+  String get pendingNotEditable =>
+      'આ શિફ્ટ હજી સિંક થઈ નથી: ઑનલાઇન હો ત્યારે ફરી પ્રયાસ કરો.';
 }

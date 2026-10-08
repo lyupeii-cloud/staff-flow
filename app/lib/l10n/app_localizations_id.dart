@@ -472,4 +472,78 @@ class L10nId extends L10n {
 
   @override
   String get languageAuto => 'Otomatis (bahasa perangkat)';
+
+  @override
+  String get syncUpToDate => 'Terbaru';
+
+  @override
+  String get syncOffline => 'Offline';
+
+  @override
+  String syncPending(int count) {
+    return 'Perubahan tertunda: $count';
+  }
+
+  @override
+  String get syncNow => 'Sinkronkan';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Perubahan ditolak server: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Tertunda';
+
+  @override
+  String get offlineUnavailable => 'Tidak tersedia saat offline.';
+
+  @override
+  String get offlineCached => 'Offline: data terakhir yang disimpan.';
+
+  @override
+  String get savedOffline =>
+      'Disimpan di perangkat, dikirim saat jaringan kembali.';
+
+  @override
+  String get notices => 'Pemberitahuan';
+
+  @override
+  String get noNotices => 'Tidak ada pemberitahuan.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name menggantikan perubahan Anda pada shift $date.';
+  }
+
+  @override
+  String get history => 'Riwayat';
+
+  @override
+  String get recentChanges => 'Perubahan terbaru';
+
+  @override
+  String get undoChange => 'Batalkan perubahan ini';
+
+  @override
+  String get undoDone => 'Perubahan dibatalkan.';
+
+  @override
+  String get historyCreate => 'Dibuat';
+
+  @override
+  String get historyUpdate => 'Diubah';
+
+  @override
+  String get historyDelete => 'Dihapus';
+
+  @override
+  String get historyUndo => 'Dibatalkan';
+
+  @override
+  String get noHistory => 'Tidak ada perubahan.';
+
+  @override
+  String get pendingNotEditable =>
+      'Shift ini belum disinkronkan: coba lagi saat online.';
 }

@@ -475,4 +475,78 @@ class L10nDe extends L10n {
 
   @override
   String get languageAuto => 'Automatisch (Gerätesprache)';
+
+  @override
+  String get syncUpToDate => 'Aktuell';
+
+  @override
+  String get syncOffline => 'Offline';
+
+  @override
+  String syncPending(int count) {
+    return 'Ausstehende Änderungen: $count';
+  }
+
+  @override
+  String get syncNow => 'Synchronisieren';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Änderung vom Server abgelehnt: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Ausstehend';
+
+  @override
+  String get offlineUnavailable => 'Offline nicht verfügbar.';
+
+  @override
+  String get offlineCached => 'Offline: zuletzt gespeicherte Daten.';
+
+  @override
+  String get savedOffline =>
+      'Auf dem Gerät gespeichert, wird gesendet, sobald das Netz zurück ist.';
+
+  @override
+  String get notices => 'Hinweise';
+
+  @override
+  String get noNotices => 'Keine Hinweise.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name hat deine Änderung der Schicht vom $date ersetzt.';
+  }
+
+  @override
+  String get history => 'Verlauf';
+
+  @override
+  String get recentChanges => 'Letzte Änderungen';
+
+  @override
+  String get undoChange => 'Diese Änderung rückgängig machen';
+
+  @override
+  String get undoDone => 'Änderung rückgängig gemacht.';
+
+  @override
+  String get historyCreate => 'Erstellt';
+
+  @override
+  String get historyUpdate => 'Geändert';
+
+  @override
+  String get historyDelete => 'Gelöscht';
+
+  @override
+  String get historyUndo => 'Rückgängig gemacht';
+
+  @override
+  String get noHistory => 'Keine Änderungen.';
+
+  @override
+  String get pendingNotEditable =>
+      'Diese Schicht ist noch nicht synchronisiert: versuche es online erneut.';
 }

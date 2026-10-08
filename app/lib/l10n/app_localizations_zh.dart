@@ -466,4 +466,76 @@ class L10nZh extends L10n {
 
   @override
   String get languageAuto => '自动（设备语言）';
+
+  @override
+  String get syncUpToDate => '已同步';
+
+  @override
+  String get syncOffline => '离线';
+
+  @override
+  String syncPending(int count) {
+    return '待同步的更改：$count';
+  }
+
+  @override
+  String get syncNow => '立即同步';
+
+  @override
+  String syncRejected(String reason) {
+    return '服务器拒绝了更改：$reason';
+  }
+
+  @override
+  String get pendingBadge => '待同步';
+
+  @override
+  String get offlineUnavailable => '离线时不可用。';
+
+  @override
+  String get offlineCached => '离线：显示最近保存的数据。';
+
+  @override
+  String get savedOffline => '已保存在本设备，联网后发送。';
+
+  @override
+  String get notices => '通知';
+
+  @override
+  String get noNotices => '没有通知。';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name 替换了您对 $date 班次的修改。';
+  }
+
+  @override
+  String get history => '历史记录';
+
+  @override
+  String get recentChanges => '最近的更改';
+
+  @override
+  String get undoChange => '撤销此更改';
+
+  @override
+  String get undoDone => '已撤销更改。';
+
+  @override
+  String get historyCreate => '创建';
+
+  @override
+  String get historyUpdate => '修改';
+
+  @override
+  String get historyDelete => '删除';
+
+  @override
+  String get historyUndo => '撤销';
+
+  @override
+  String get noHistory => '没有更改。';
+
+  @override
+  String get pendingNotEditable => '此班次尚未同步：请联网后重试。';
 }

@@ -6,6 +6,7 @@ import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
 import 'company_tab.dart';
+import 'sync_widgets.dart';
 
 /// Crée un service ([shift] nul) ou modifie [shift]. Renvoie `true` si le
 /// planning a changé.
@@ -86,7 +87,18 @@ class _ShiftEditorState extends State<_ShiftEditor> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(editing ? t.editShift : t.newShift, style: theme.textTheme.titleLarge),
+            Row(
+              children: [
+                Expanded(child: Text(editing ? t.editShift : t.newShift, style: theme.textTheme.titleLarge)),
+                if (editing)
+                  TextButton.icon(
+                    onPressed: () => showHistorySheet(context,
+                        session: widget.session, company: widget.company, data: widget.data, shiftId: s!.id),
+                    icon: const Icon(Icons.history, size: 18),
+                    label: Text(t.history),
+                  ),
+              ],
+            ),
             const SizedBox(height: 12),
             if (editing && s!.seriesId != null) ...[
               SegmentedButton<bool>(
@@ -309,15 +321,15 @@ class _ShiftEditorState extends State<_ShiftEditor> {
   };
 
   Future<void> _save() async {
-    final api = widget.session.api;
+    final sync = widget.session.sync;
     final companyId = widget.company.id;
     await _run(() async {
       if (editing) {
         final patch = _fields();
         if (!_series && !sameDay(_days.first, s!.day)) patch['day'] = formatDay(_days.first);
-        await api.updateShift(companyId, s!.id, patch, series: _series);
+        return sync.updateShift(companyId, s!, patch, series: _series);
       } else {
-        await api.createShifts(companyId, {
+        return sync.createShifts(companyId, {
           ..._fields(),
           'days': [for (final d in _days) formatDay(d)],
           if (_repeat != _Repeat.none)
@@ -333,13 +345,18 @@ class _ShiftEditorState extends State<_ShiftEditor> {
   }
 
   Future<void> _delete() async {
-    await _run(() => widget.session.api.deleteShift(widget.company.id, s!.id, series: _series));
+    await _run(() => widget.session.sync.deleteShift(widget.company.id, s!, series: _series));
   }
 
-  Future<void> _run(Future<void> Function() action) async {
+  /// [action] renvoie la réponse du serveur, ou `null` si la modification a
+  /// été gardée sur l'appareil faute de réseau (elle partira plus tard).
+  Future<void> _run(Future<dynamic> Function() action) async {
     setState(() => (_saving = true, _error = null));
     try {
-      await action();
+      final result = await action();
+      if (result == null && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.l10n.savedOffline)));
+      }
       if (mounted) Navigator.pop(context, true);
     } on ApiException catch (e) {
       setState(() => _error = e.describe);
@@ -413,17 +430,16 @@ Future<bool?> showReplaceDialog(
                   ? null
                   : () async {
                       try {
-                        final n = await session.api.replace(
-                          company.id,
-                          fromUserId: fromId!,
-                          toUserId: toId!,
-                          from: range.start,
-                          to: range.end,
-                        );
+                        final r = await session.sync.replace(company.id, {
+                          'fromUserId': fromId!,
+                          'toUserId': toId!,
+                          'from': formatDay(range.start),
+                          'to': formatDay(range.end),
+                        });
                         if (!context.mounted) return;
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text(t.shiftsChanged(n)),
+                            content: Text(r == null ? t.savedOffline : t.shiftsChanged(r['replaced'] as int)),
                           ),
                         );
                         Navigator.pop(context, true);

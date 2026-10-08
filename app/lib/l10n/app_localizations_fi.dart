@@ -476,4 +476,78 @@ class L10nFi extends L10n {
 
   @override
   String get languageAuto => 'Automaattinen (laitteen kieli)';
+
+  @override
+  String get syncUpToDate => 'Ajan tasalla';
+
+  @override
+  String get syncOffline => 'Offline-tila';
+
+  @override
+  String syncPending(int count) {
+    return 'Odottavat muutokset: $count';
+  }
+
+  @override
+  String get syncNow => 'Synkronoi nyt';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Palvelin hylkäsi muutoksen: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Odottaa';
+
+  @override
+  String get offlineUnavailable => 'Ei käytettävissä offline-tilassa.';
+
+  @override
+  String get offlineCached => 'Offline-tila: viimeksi tallennetut tiedot.';
+
+  @override
+  String get savedOffline =>
+      'Tallennettu laitteelle, lähetetään kun verkko palaa.';
+
+  @override
+  String get notices => 'Ilmoitukset';
+
+  @override
+  String get noNotices => 'Ei ilmoituksia.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name korvasi muutoksesi vuoroon $date.';
+  }
+
+  @override
+  String get history => 'Historia';
+
+  @override
+  String get recentChanges => 'Viimeisimmät muutokset';
+
+  @override
+  String get undoChange => 'Peru tämä muutos';
+
+  @override
+  String get undoDone => 'Muutos peruttu.';
+
+  @override
+  String get historyCreate => 'Luotu';
+
+  @override
+  String get historyUpdate => 'Muutettu';
+
+  @override
+  String get historyDelete => 'Poistettu';
+
+  @override
+  String get historyUndo => 'Peruttu';
+
+  @override
+  String get noHistory => 'Ei muutoksia.';
+
+  @override
+  String get pendingNotEditable =>
+      'Tätä vuoroa ei ole vielä synkronoitu: yritä uudelleen verkossa.';
 }

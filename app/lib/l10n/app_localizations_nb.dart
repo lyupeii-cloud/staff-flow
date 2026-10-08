@@ -475,4 +475,77 @@ class L10nNb extends L10n {
 
   @override
   String get languageAuto => 'Automatisk (enhetens språk)';
+
+  @override
+  String get syncUpToDate => 'Oppdatert';
+
+  @override
+  String get syncOffline => 'Frakoblet';
+
+  @override
+  String syncPending(int count) {
+    return 'Ventende endringer: $count';
+  }
+
+  @override
+  String get syncNow => 'Synkroniser nå';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Endringen ble avvist av serveren: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Venter';
+
+  @override
+  String get offlineUnavailable => 'Ikke tilgjengelig frakoblet.';
+
+  @override
+  String get offlineCached => 'Frakoblet: sist lagrede data.';
+
+  @override
+  String get savedOffline => 'Lagret på enheten, sendes når nettet er tilbake.';
+
+  @override
+  String get notices => 'Varsler';
+
+  @override
+  String get noNotices => 'Ingen varsler.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name erstattet endringen din av vakten $date.';
+  }
+
+  @override
+  String get history => 'Historikk';
+
+  @override
+  String get recentChanges => 'Siste endringer';
+
+  @override
+  String get undoChange => 'Angre denne endringen';
+
+  @override
+  String get undoDone => 'Endringen er angret.';
+
+  @override
+  String get historyCreate => 'Opprettet';
+
+  @override
+  String get historyUpdate => 'Endret';
+
+  @override
+  String get historyDelete => 'Slettet';
+
+  @override
+  String get historyUndo => 'Angret';
+
+  @override
+  String get noHistory => 'Ingen endringer.';
+
+  @override
+  String get pendingNotEditable =>
+      'Vakten er ikke synkronisert ennå: prøv igjen når du er tilkoblet.';
 }

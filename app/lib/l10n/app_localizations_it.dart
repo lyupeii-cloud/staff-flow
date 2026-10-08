@@ -474,4 +474,78 @@ class L10nIt extends L10n {
 
   @override
   String get languageAuto => 'Automatica (lingua del dispositivo)';
+
+  @override
+  String get syncUpToDate => 'Aggiornato';
+
+  @override
+  String get syncOffline => 'Offline';
+
+  @override
+  String syncPending(int count) {
+    return 'Modifiche in attesa: $count';
+  }
+
+  @override
+  String get syncNow => 'Sincronizza';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Modifica rifiutata dal server: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'In attesa';
+
+  @override
+  String get offlineUnavailable => 'Non disponibile offline.';
+
+  @override
+  String get offlineCached => 'Offline: ultimi dati salvati.';
+
+  @override
+  String get savedOffline =>
+      'Salvato sul dispositivo, verrà inviato al ritorno della rete.';
+
+  @override
+  String get notices => 'Avvisi';
+
+  @override
+  String get noNotices => 'Nessun avviso.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name ha sostituito la tua modifica al turno del $date.';
+  }
+
+  @override
+  String get history => 'Cronologia';
+
+  @override
+  String get recentChanges => 'Ultime modifiche';
+
+  @override
+  String get undoChange => 'Annulla questa modifica';
+
+  @override
+  String get undoDone => 'Modifica annullata.';
+
+  @override
+  String get historyCreate => 'Creazione';
+
+  @override
+  String get historyUpdate => 'Modifica';
+
+  @override
+  String get historyDelete => 'Eliminazione';
+
+  @override
+  String get historyUndo => 'Annullamento';
+
+  @override
+  String get noHistory => 'Nessuna modifica.';
+
+  @override
+  String get pendingNotEditable =>
+      'Questo turno non è ancora sincronizzato: riprova quando sei online.';
 }

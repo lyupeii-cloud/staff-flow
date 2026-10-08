@@ -468,4 +468,76 @@ class L10nKo extends L10n {
 
   @override
   String get languageAuto => '자동(기기 언어)';
+
+  @override
+  String get syncUpToDate => '최신 상태';
+
+  @override
+  String get syncOffline => '오프라인';
+
+  @override
+  String syncPending(int count) {
+    return '대기 중인 변경: $count';
+  }
+
+  @override
+  String get syncNow => '지금 동기화';
+
+  @override
+  String syncRejected(String reason) {
+    return '서버가 변경을 거부했습니다: $reason';
+  }
+
+  @override
+  String get pendingBadge => '대기 중';
+
+  @override
+  String get offlineUnavailable => '오프라인에서는 사용할 수 없습니다.';
+
+  @override
+  String get offlineCached => '오프라인: 마지막으로 저장된 데이터입니다.';
+
+  @override
+  String get savedOffline => '기기에 저장했습니다. 네트워크가 돌아오면 보냅니다.';
+
+  @override
+  String get notices => '알림';
+
+  @override
+  String get noNotices => '알림이 없습니다.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name님이 $date 근무에 대한 내 변경을 덮어썼습니다.';
+  }
+
+  @override
+  String get history => '기록';
+
+  @override
+  String get recentChanges => '최근 변경';
+
+  @override
+  String get undoChange => '이 변경 취소';
+
+  @override
+  String get undoDone => '변경을 취소했습니다.';
+
+  @override
+  String get historyCreate => '생성';
+
+  @override
+  String get historyUpdate => '수정';
+
+  @override
+  String get historyDelete => '삭제';
+
+  @override
+  String get historyUndo => '취소';
+
+  @override
+  String get noHistory => '변경 사항이 없습니다.';
+
+  @override
+  String get pendingNotEditable => '이 근무는 아직 동기화되지 않았습니다. 온라인에서 다시 시도하세요.';
 }

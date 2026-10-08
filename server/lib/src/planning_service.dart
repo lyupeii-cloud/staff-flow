@@ -602,6 +602,9 @@ class Shift {
   /// Augmente à chaque modification (renvoyée par le client pour les conflits).
   final int version;
 
+  /// Occurrence modifiée à part : « celle-ci et les suivantes » ne la touche plus.
+  final bool detached;
+
   /// draft (jamais publié), published, modified (publié puis modifié),
   /// deleted (publié, supprimé à la prochaine publication).
   final String status;
@@ -617,6 +620,7 @@ class Shift {
     this.positionId,
     this.note,
     this.version = 1,
+    this.detached = false,
     required this.status,
   });
 
@@ -631,6 +635,7 @@ class Shift {
         positionId: r['position_id'] as String?,
         note: r['note'] as String?,
         version: r['version'] as int,
+        detached: r['detached'] as bool,
         status: r['published'] == null
             ? 'draft'
             : r['deleted'] == true
@@ -669,6 +674,7 @@ class Shift {
         'positionId': positionId,
         'note': note,
         'version': version,
+        'detached': detached,
         'status': status,
       };
 }

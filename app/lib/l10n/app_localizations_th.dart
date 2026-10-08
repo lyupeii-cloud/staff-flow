@@ -470,4 +470,77 @@ class L10nTh extends L10n {
 
   @override
   String get languageAuto => 'อัตโนมัติ (ภาษาของอุปกรณ์)';
+
+  @override
+  String get syncUpToDate => 'ล่าสุดแล้ว';
+
+  @override
+  String get syncOffline => 'ออฟไลน์';
+
+  @override
+  String syncPending(int count) {
+    return 'การเปลี่ยนแปลงที่รอส่ง: $count';
+  }
+
+  @override
+  String get syncNow => 'ซิงค์ตอนนี้';
+
+  @override
+  String syncRejected(String reason) {
+    return 'เซิร์ฟเวอร์ปฏิเสธการเปลี่ยนแปลง: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'รอส่ง';
+
+  @override
+  String get offlineUnavailable => 'ใช้ไม่ได้เมื่อออฟไลน์';
+
+  @override
+  String get offlineCached => 'ออฟไลน์: แสดงข้อมูลที่บันทึกล่าสุด';
+
+  @override
+  String get savedOffline => 'บันทึกไว้ในอุปกรณ์แล้ว จะส่งเมื่อมีเครือข่าย';
+
+  @override
+  String get notices => 'การแจ้งเตือน';
+
+  @override
+  String get noNotices => 'ไม่มีการแจ้งเตือน';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name แทนที่การแก้ไขกะวันที่ $date ของคุณ';
+  }
+
+  @override
+  String get history => 'ประวัติ';
+
+  @override
+  String get recentChanges => 'การเปลี่ยนแปลงล่าสุด';
+
+  @override
+  String get undoChange => 'เลิกทำการเปลี่ยนแปลงนี้';
+
+  @override
+  String get undoDone => 'เลิกทำแล้ว';
+
+  @override
+  String get historyCreate => 'สร้าง';
+
+  @override
+  String get historyUpdate => 'แก้ไข';
+
+  @override
+  String get historyDelete => 'ลบ';
+
+  @override
+  String get historyUndo => 'เลิกทำ';
+
+  @override
+  String get noHistory => 'ไม่มีการเปลี่ยนแปลง';
+
+  @override
+  String get pendingNotEditable =>
+      'กะนี้ยังไม่ได้ซิงค์: ลองอีกครั้งเมื่อออนไลน์';
 }

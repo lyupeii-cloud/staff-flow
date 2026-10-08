@@ -9,12 +9,41 @@ import '../session.dart';
 import 'company_tab.dart';
 import 'join_code_dialog.dart';
 import 'language_picker.dart';
+import 'sync_widgets.dart';
 
 /// Un onglet par entreprise dont l'utilisateur est membre (section 3).
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   final Session session;
 
   const HomeScreen({super.key, required this.session});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  Session get session => widget.session;
+
+  @override
+  void initState() {
+    super.initState();
+    session.sync.addListener(_onSync);
+  }
+
+  @override
+  void dispose() {
+    session.sync.removeListener(_onSync);
+    super.dispose();
+  }
+
+  /// Une modification en attente a été refusée par le serveur : on le dit.
+  void _onSync() {
+    final rejection = session.sync.rejection;
+    if (rejection == null || !mounted) return;
+    session.sync.clearRejection();
+    final t = context.l10n;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.syncRejected(rejection(t)))));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +56,8 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           title: const BrandTitle(size: 22),
           actions: [
+            SyncIndicator(session: session),
+            NoticesButton(session: session),
             IconButton(
               tooltip: context.l10n.newCompany,
               icon: const Icon(Icons.add_business),
@@ -111,6 +142,8 @@ Future<void> runAction(BuildContext context, Session session, Future<void> Funct
     if (success != null) messenger.showSnackBar(SnackBar(content: Text(success)));
   } on ApiException catch (e) {
     messenger.showSnackBar(SnackBar(content: Text(e.describe(t))));
+  } on OfflineException {
+    messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
   } catch (_) {
     messenger.showSnackBar(SnackBar(content: Text(t.serverUnreachable)));
   }

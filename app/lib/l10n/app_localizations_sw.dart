@@ -475,4 +475,78 @@ class L10nSw extends L10n {
 
   @override
   String get languageAuto => 'Otomatiki (lugha ya kifaa)';
+
+  @override
+  String get syncUpToDate => 'Imesasishwa';
+
+  @override
+  String get syncOffline => 'Nje ya mtandao';
+
+  @override
+  String syncPending(int count) {
+    return 'Mabadiliko yanayosubiri: $count';
+  }
+
+  @override
+  String get syncNow => 'Sawazisha sasa';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Seva imekataa badiliko: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'Inasubiri';
+
+  @override
+  String get offlineUnavailable => 'Haipatikani nje ya mtandao.';
+
+  @override
+  String get offlineCached => 'Nje ya mtandao: data za mwisho zilizohifadhiwa.';
+
+  @override
+  String get savedOffline =>
+      'Imehifadhiwa kwenye kifaa, itatumwa mtandao ukirudi.';
+
+  @override
+  String get notices => 'Arifa';
+
+  @override
+  String get noNotices => 'Hakuna arifa.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name amebadilisha marekebisho yako ya zamu ya $date.';
+  }
+
+  @override
+  String get history => 'Historia';
+
+  @override
+  String get recentChanges => 'Mabadiliko ya karibuni';
+
+  @override
+  String get undoChange => 'Tendua badiliko hili';
+
+  @override
+  String get undoDone => 'Badiliko limetenduliwa.';
+
+  @override
+  String get historyCreate => 'Kuundwa';
+
+  @override
+  String get historyUpdate => 'Kubadilishwa';
+
+  @override
+  String get historyDelete => 'Kufutwa';
+
+  @override
+  String get historyUndo => 'Kutendua';
+
+  @override
+  String get noHistory => 'Hakuna mabadiliko.';
+
+  @override
+  String get pendingNotEditable =>
+      'Zamu hii bado haijasawazishwa: jaribu tena ukiwa mtandaoni.';
 }

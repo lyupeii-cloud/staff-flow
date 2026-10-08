@@ -475,4 +475,78 @@ class L10nTe extends L10n {
 
   @override
   String get languageAuto => 'ఆటోమేటిక్ (పరికరం భాష)';
+
+  @override
+  String get syncUpToDate => 'తాజాగా ఉంది';
+
+  @override
+  String get syncOffline => 'ఆఫ్‌లైన్';
+
+  @override
+  String syncPending(int count) {
+    return 'పెండింగ్ మార్పులు: $count';
+  }
+
+  @override
+  String get syncNow => 'ఇప్పుడే సింక్ చేయి';
+
+  @override
+  String syncRejected(String reason) {
+    return 'సర్వర్ మార్పును తిరస్కరించింది: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'పెండింగ్';
+
+  @override
+  String get offlineUnavailable => 'ఆఫ్‌లైన్‌లో అందుబాటులో లేదు.';
+
+  @override
+  String get offlineCached => 'ఆఫ్‌లైన్: చివరిగా సేవ్ చేసిన డేటా.';
+
+  @override
+  String get savedOffline =>
+      'పరికరంలో సేవ్ చేయబడింది, నెట్‌వర్క్ వచ్చాక పంపబడుతుంది.';
+
+  @override
+  String get notices => 'నోటీసులు';
+
+  @override
+  String get noNotices => 'నోటీసులు లేవు.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$date షిఫ్ట్‌లో మీ మార్పును $name భర్తీ చేశారు.';
+  }
+
+  @override
+  String get history => 'చరిత్ర';
+
+  @override
+  String get recentChanges => 'ఇటీవలి మార్పులు';
+
+  @override
+  String get undoChange => 'ఈ మార్పును రద్దు చేయి';
+
+  @override
+  String get undoDone => 'మార్పు రద్దు చేయబడింది.';
+
+  @override
+  String get historyCreate => 'సృష్టి';
+
+  @override
+  String get historyUpdate => 'మార్పు';
+
+  @override
+  String get historyDelete => 'తొలగింపు';
+
+  @override
+  String get historyUndo => 'రద్దు';
+
+  @override
+  String get noHistory => 'మార్పులు లేవు.';
+
+  @override
+  String get pendingNotEditable =>
+      'ఈ షిఫ్ట్ ఇంకా సింక్ కాలేదు: ఆన్‌లైన్‌లో మళ్లీ ప్రయత్నించండి.';
 }
