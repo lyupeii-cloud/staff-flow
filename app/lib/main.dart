@@ -6,6 +6,8 @@ import 'src/screens/login_screen.dart';
 import 'src/session.dart';
 
 void main() {
+  // Les plugins (stockage, Google) exigent le moteur Flutter prêt.
+  WidgetsFlutterBinding.ensureInitialized();
   final session = Session(Api())..start();
   runApp(StaffFlowApp(session: session));
 }

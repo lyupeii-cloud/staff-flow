@@ -27,10 +27,10 @@ class Session extends ChangeNotifier {
 
   Future<void> start() async {
     unawaited(_initGoogle());
-    final prefs = await SharedPreferences.getInstance();
-    api.token = prefs.getString(_tokenKey);
-    if (api.token == null) return _set(SessionState.signedOut);
     try {
+      final prefs = await SharedPreferences.getInstance();
+      api.token = prefs.getString(_tokenKey);
+      if (api.token == null) return _set(SessionState.signedOut);
       await refresh();
     } on ApiException catch (e) {
       if (e.status == 401) return signOut();
@@ -45,10 +45,16 @@ class Session extends ChangeNotifier {
   Future<void> _initGoogle() async {
     if (Config.googleWebClientId.isEmpty) return;
     final google = GoogleSignIn.instance;
-    await google.initialize(
-      clientId: kIsWeb ? Config.googleWebClientId : null,
-      serverClientId: kIsWeb ? null : Config.googleWebClientId,
-    );
+    try {
+      await google.initialize(
+        clientId: kIsWeb ? Config.googleWebClientId : null,
+        serverClientId: kIsWeb ? null : Config.googleWebClientId,
+      );
+    } catch (e) {
+      error = 'Connexion Google indisponible : $e';
+      notifyListeners();
+      return;
+    }
     google.authenticationEvents.listen((event) async {
       if (event is GoogleSignInAuthenticationEventSignIn) {
         final idToken = event.user.authentication.idToken;
