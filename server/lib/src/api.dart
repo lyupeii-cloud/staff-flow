@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
@@ -6,7 +7,9 @@ import 'package:shelf_router/shelf_router.dart';
 import 'auth.dart';
 import 'company_service.dart';
 import 'errors.dart';
+import 'join_service.dart';
 import 'models.dart';
+import 'planning_service.dart';
 import 'store.dart';
 
 /// Construit le gestionnaire HTTP de l'API, sous `/api/v1`.
@@ -15,6 +18,11 @@ class Api {
   final GoogleVerifier google;
   final SessionTokens tokens;
   final CompanyService companies;
+  late final PlanningService planning = PlanningService(store, companies);
+  late final JoinService joins = JoinService(store, companies, now: now);
+
+  /// Horloge (UTC), remplaçable dans les tests.
+  final DateTime Function() now;
 
   /// Connexion sans Google (`POST /auth/dev`), pour le développement local
   /// uniquement. Ne jamais l'activer en production.
@@ -27,7 +35,9 @@ class Api {
     required this.tokens,
     this.devLogin = false,
     this.allowedOrigins = const {},
-  }) : companies = CompanyService(store);
+    DateTime Function()? now,
+  })  : companies = CompanyService(store),
+        now = now ?? (() => DateTime.now().toUtc());
 
   Handler get handler {
     final v1 = Router(notFoundHandler: _notFound)
@@ -42,7 +52,22 @@ class Api {
       ..post('/companies/<id>/transfer', _authed(_proposeTransfer))
       ..delete('/companies/<id>/transfer', _authed(_cancelTransfer))
       ..post('/transfers/<id>/accept', _authed((r, u) => _answerTransfer(r, u, accept: true)))
-      ..post('/transfers/<id>/decline', _authed((r, u) => _answerTransfer(r, u, accept: false)));
+      ..post('/transfers/<id>/decline', _authed((r, u) => _answerTransfer(r, u, accept: false)))
+      // Ajout par code à 6 chiffres
+      ..post('/join-codes', _authed(_createJoinCode))
+      ..post('/companies/<id>/join', _authed(_redeemJoinCode))
+      ..post('/join-requests/<id>/accept', _authed((r, u) => _answerJoin(r, u, accept: true)))
+      ..post('/join-requests/<id>/decline', _authed((r, u) => _answerJoin(r, u, accept: false)))
+      // Planning
+      ..get('/companies/<id>/<kind|sites|positions>', _authed(_catalog))
+      ..post('/companies/<id>/<kind|sites|positions>', _authed(_addCatalogItem))
+      ..patch('/companies/<id>/<kind|sites|positions>/<itemId>', _authed(_updateCatalogItem))
+      ..get('/companies/<id>/shifts', _authed(_shifts))
+      ..post('/companies/<id>/shifts', _authed(_createShifts))
+      ..post('/companies/<id>/shifts/replace', _authed(_replace))
+      ..patch('/companies/<id>/shifts/<shiftId>', _authed(_updateShift))
+      ..delete('/companies/<id>/shifts/<shiftId>', _authed(_deleteShift))
+      ..post('/companies/<id>/publish', _authed(_publish));
     if (devLogin) v1.post('/auth/dev', _loginDev);
 
     final root = Router(notFoundHandler: _notFound)
@@ -87,6 +112,7 @@ class Api {
         'pendingTransfers': [
           for (final t in await store.pendingTransfersFor(user.id)) t.toJson(),
         ],
+        'pendingJoinRequests': [for (final j in await joins.pendingFor(user)) j.toJson()],
       });
 
   // --- Entreprises ---------------------------------------------------------
@@ -116,12 +142,7 @@ class Api {
 
   Future<Response> _setRole(Request req, User user) async {
     final body = await _body(req);
-    final Role role;
-    try {
-      role = Role.parse(_string(body, 'role'));
-    } on FormatException catch (e) {
-      throw ApiError.badRequest(e.message);
-    }
+    final role = _role(_string(body, 'role'));
     await companies.setRole(user, req.params['id']!, req.params['userId']!, role);
     return Response(204);
   }
@@ -147,6 +168,138 @@ class Api {
   Future<Response> _answerTransfer(Request req, User user, {required bool accept}) async {
     await companies.answerTransfer(user, req.params['id']!, accept: accept);
     return Response(204);
+  }
+
+  // --- Ajout par code à 6 chiffres ---------------------------------------
+
+  Future<Response> _createJoinCode(Request req, User user) async {
+    final (code, expires) = await joins.createCode(user);
+    return _json({'code': code, 'expiresAt': expires.toIso8601String()}, status: 201);
+  }
+
+  Future<Response> _redeemJoinCode(Request req, User user) async {
+    final body = await _body(req);
+    final (request, invited) = await joins.redeem(user, req.params['id']!,
+        code: _string(body, 'code'),
+        role: _role((body['role'] as String?) ?? 'employee'),
+        ip: _clientIp(req));
+    return _json({'request': request.toJson(), 'user': invited.toJson()}, status: 201);
+  }
+
+  Future<Response> _answerJoin(Request req, User user, {required bool accept}) async {
+    await joins.answer(user, req.params['id']!, accept: accept);
+    return Response(204);
+  }
+
+  // --- Planning -----------------------------------------------------------
+
+  static CatalogKind _kind(Request req) => CatalogKind.values.byName(req.params['kind']!);
+
+  Future<Response> _catalog(Request req, User user) async => _json({
+        'items': [
+          for (final i in await planning.catalog(user, req.params['id']!, _kind(req))) i.toJson(),
+        ],
+      });
+
+  Future<Response> _addCatalogItem(Request req, User user) async {
+    final body = await _body(req);
+    final item =
+        await planning.addCatalogItem(user, req.params['id']!, _kind(req), _string(body, 'name'));
+    return _json(item.toJson(), status: 201);
+  }
+
+  Future<Response> _updateCatalogItem(Request req, User user) async {
+    final body = await _body(req);
+    await planning.updateCatalogItem(user, req.params['id']!, _kind(req), req.params['itemId']!,
+        name: body['name'] as String?, archived: body['archived'] as bool?);
+    return Response(204);
+  }
+
+  Future<Response> _shifts(Request req, User user) async {
+    final q = req.url.queryParameters;
+    final from = q['from'], to = q['to'];
+    if (from == null || to == null) throw const ApiError.badRequest('Paramètres from et to requis.');
+    final (shifts, pending) = await planning.shifts(user, req.params['id']!, from, to);
+    return _json({'shifts': [for (final s in shifts) s.toJson()], 'pending': pending});
+  }
+
+  Future<Response> _createShifts(Request req, User user) async {
+    final body = await _body(req);
+    final days = body['days'];
+    if (days is! List || days.any((d) => d is! String)) {
+      throw const ApiError.badRequest('Champ « days » : liste de dates attendue.');
+    }
+    final repeat = body['repeat'];
+    final created = await _input(() => planning.create(user, req.params['id']!, _shiftInput(body),
+        days: [for (final d in days) parseDay(d as String)],
+        repeat: repeat is Map<String, dynamic> ? Repeat.fromJson(repeat) : null));
+    return _json({'shifts': [for (final s in created) s.toJson()]}, status: 201);
+  }
+
+  Future<Response> _updateShift(Request req, User user) async {
+    final body = await _body(req);
+    final count = await _input(() => planning.update(
+        user, req.params['id']!, req.params['shiftId']!, ShiftPatch(body),
+        scope: _scope(req)));
+    return _json({'updated': count});
+  }
+
+  Future<Response> _deleteShift(Request req, User user) async {
+    final count =
+        await planning.delete(user, req.params['id']!, req.params['shiftId']!, scope: _scope(req));
+    return _json({'deleted': count});
+  }
+
+  Future<Response> _replace(Request req, User user) async {
+    final body = await _body(req);
+    final count = await planning.replace(user, req.params['id']!,
+        fromUserId: _string(body, 'fromUserId'),
+        toUserId: _string(body, 'toUserId'),
+        from: _string(body, 'from'),
+        to: _string(body, 'to'));
+    return _json({'replaced': count});
+  }
+
+  Future<Response> _publish(Request req, User user) async {
+    final (count, users) = await planning.publish(user, req.params['id']!);
+    return _json({'published': count, 'notifiedUsers': users.length});
+  }
+
+  static ShiftInput _shiftInput(Map<String, dynamic> body) => ShiftInput(
+        start: body['start'] as int,
+        end: body['end'] as int,
+        userId: body['userId'] as String?,
+        siteId: body['siteId'] as String?,
+        positionId: body['positionId'] as String?,
+        note: body['note'] as String?,
+      );
+
+  static Scope _scope(Request req) =>
+      req.url.queryParameters['scope'] == 'series' ? Scope.series : Scope.one;
+
+  /// Un champ du mauvais type dans le corps devient une erreur 400.
+  static Future<T> _input<T>(Future<T> Function() action) async {
+    try {
+      return await action();
+    } on TypeError {
+      throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    }
+  }
+
+  static Role _role(String value) {
+    try {
+      return Role.parse(value);
+    } on FormatException catch (e) {
+      throw ApiError.badRequest(e.message);
+    }
+  }
+
+  /// Adresse du client : Caddy la transmet dans X-Forwarded-For.
+  static String _clientIp(Request req) {
+    final forwarded = req.headers['x-forwarded-for'];
+    if (forwarded != null && forwarded.isNotEmpty) return forwarded.split(',').first.trim();
+    final info = req.context['shelf.io.connection_info'];
+    return info is HttpConnectionInfo ? info.remoteAddress.address : 'inconnue';
   }
 
   // --- Outils --------------------------------------------------------------

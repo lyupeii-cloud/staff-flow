@@ -104,6 +104,18 @@ class Member {
       };
 }
 
+/// Invitation créée quand un responsable saisit le code d'un salarié ;
+/// le salarié l'accepte ou la refuse.
+class JoinRequest {
+  final String id;
+  final Company company;
+  final Role role;
+
+  const JoinRequest({required this.id, required this.company, required this.role});
+
+  Map<String, Object?> toJson() => {'id': id, 'company': company.toJson(), 'role': role.name};
+}
+
 class OwnershipTransfer {
   final String id;
   final String companyId;

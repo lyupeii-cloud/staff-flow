@@ -1,108 +1,14 @@
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:postgres/postgres.dart' show Pool, QueryMode, Sql;
 import 'package:shelf/shelf.dart';
 import 'package:staff_flow_server/staff_flow_server.dart';
 import 'package:test/test.dart';
 
-/// Accepte les jetons `google:<sub>` et refuse le reste.
-class FakeGoogle implements GoogleVerifier {
-  @override
-  Future<GoogleIdentity> verify(String idToken) async {
-    if (!idToken.startsWith('google:')) throw const ApiError.unauthorized('Jeton Google invalide.');
-    final sub = idToken.substring(7);
-    return GoogleIdentity(sub: sub, email: '$sub@example.com', name: sub);
-  }
-}
-
-class Client {
-  final Handler handler;
-  String? token;
-  late Map<String, dynamic> user;
-
-  Client(this.handler);
-
-  Future<(int, dynamic)> call(String method, String path, [Object? body]) async {
-    final res = await handler(Request(
-      method,
-      Uri.parse('http://localhost/api/v1$path'),
-      body: body == null ? null : jsonEncode(body),
-      headers: {if (token != null) 'authorization': 'Bearer $token'},
-    ));
-    final text = await res.readAsString();
-    return (res.statusCode, text.isEmpty ? null : jsonDecode(text));
-  }
-
-  Future<Client> login(String sub) async {
-    final (status, body) = await call('POST', '/auth/google', {'idToken': 'google:$sub'});
-    expect(status, 200);
-    token = body['token'];
-    user = body['user'];
-    return this;
-  }
-
-  String get id => user['id'];
-}
+import 'helpers.dart';
 
 void main() {
-  // Avec TEST_DATABASE_URL, les mêmes tests tournent sur PostgreSQL
-  // (base dédiée aux tests : elle est vidée avant chaque test).
-  final pgUrl = Platform.environment['TEST_DATABASE_URL'];
-  Pool? pgAdmin;
-  PostgresStore? pg;
-
-  late Store store;
-  late Handler handler;
-
-  setUpAll(() {
-    if (pgUrl == null) return;
-    pgAdmin = Pool.withUrl(pgUrl);
-    pg = PostgresStore.connect(pgUrl);
-  });
-
-  tearDownAll(() async {
-    await pg?.close();
-    await pgAdmin?.close();
-  });
-
-  setUp(() async {
-    if (pg != null) {
-      await pgAdmin!.execute('DROP SCHEMA public CASCADE; CREATE SCHEMA public;',
-          queryMode: QueryMode.simple);
-      await pg!.migrate();
-      store = pg!;
-    } else {
-      store = MemoryStore();
-    }
-    handler = Api(
-      store: store,
-      google: FakeGoogle(),
-      tokens: SessionTokens('x' * 32),
-      allowedOrigins: {'http://localhost:5000'},
-    ).handler;
-  });
-
-  Future<Client> login(String sub) => Client(handler).login(sub);
-
-  Future<(String, Map<String, Object?>)> lastAudit(String action) async {
-    final s = store;
-    if (s is MemoryStore) {
-      final e = s.auditLog.lastWhere((e) => e.action == action);
-      return (e.actorId, e.details);
-    }
-    final rows = await pgAdmin!.execute(
-        Sql.named('SELECT actor_id::text, details FROM audit_log WHERE action = @a ORDER BY id DESC LIMIT 1'),
-        parameters: {'a': action});
-    return (rows.first[0] as String, Map<String, Object?>.from(rows.first[1] as Map));
-  }
-
-  Future<String> createCompany(Client c, [String name = 'Boulangerie']) async {
-    final (status, body) =
-        await c('POST', '/companies', {'name': name, 'timezone': 'Europe/Paris'});
-    expect(status, 201);
-    return body['company']['id'];
-  }
+  final env = TestEnv();
+  Future<Client> login(String sub) => env.login(sub);
+  Future<String> createCompany(Client c, [String name = 'Boulangerie']) =>
+      env.createCompany(c, name);
 
   group('connexion', () {
     test('un jeton Google valide crée le compte avec un identifiant unique', () async {
@@ -122,18 +28,18 @@ void main() {
     });
 
     test('un jeton Google invalide est refusé', () async {
-      final (status, body) = await Client(handler)('POST', '/auth/google', {'idToken': 'faux'});
+      final (status, body) = await Client(env.handler)('POST', '/auth/google', {'idToken': 'faux'});
       expect(status, 401);
       expect(body['error']['code'], 'unauthorized');
     });
 
     test('sans session, l\'API répond 401', () async {
-      final (status, _) = await Client(handler)('GET', '/me');
+      final (status, _) = await Client(env.handler)('GET', '/me');
       expect(status, 401);
     });
 
     test('la connexion de développement est fermée par défaut', () async {
-      final (status, _) = await Client(handler)('POST', '/auth/dev', {'email': 'a@b.c'});
+      final (status, _) = await Client(env.handler)('POST', '/auth/dev', {'email': 'a@b.c'});
       expect(status, 404);
     });
   });
@@ -168,8 +74,8 @@ void main() {
       final bob = await login('bob');
       final carol = await login('carol');
       final id = await createCompany(alice);
-      await store.addMember(id, bob.id, Role.employee);
-      await store.addMember(id, carol.id, Role.manager);
+      await env.store.addMember(id, bob.id, Role.employee);
+      await env.store.addMember(id, carol.id, Role.manager);
       expect((await bob('PATCH', '/companies/$id', {'name': 'Pirate'})).$1, 403);
       final (status, body) = await carol('PATCH', '/companies/$id', {'name': 'Boulangerie Dupont'});
       expect(status, 200);
@@ -181,7 +87,7 @@ void main() {
       final bob = await login('bob');
       final a = await createCompany(alice, 'Chez Alice');
       final b = await createCompany(bob, 'Chez Bob');
-      await store.addMember(a, bob.id, Role.employee);
+      await env.store.addMember(a, bob.id, Role.employee);
       final (_, me) = await bob('GET', '/me');
       final roles = {for (final m in me['companies']) m['company']['id']: m['role']};
       expect(roles, {a: 'employee', b: 'owner'});
@@ -197,8 +103,8 @@ void main() {
       manager = await login('manager');
       employee = await login('employee');
       id = await createCompany(owner);
-      await store.addMember(id, manager.id, Role.manager);
-      await store.addMember(id, employee.id, Role.employee);
+      await env.store.addMember(id, manager.id, Role.manager);
+      await env.store.addMember(id, employee.id, Role.employee);
     });
 
     Future<int> setRole(Client actor, Client target, String role) async =>
@@ -207,12 +113,12 @@ void main() {
     test('seul le propriétaire nomme un responsable', () async {
       expect(await setRole(manager, employee, 'manager'), 403);
       expect(await setRole(owner, employee, 'manager'), 204);
-      expect(await store.roleOf(id, employee.id), Role.manager);
+      expect(await env.store.roleOf(id, employee.id), Role.manager);
     });
 
     test('un responsable peut passer un salarié en extra', () async {
       expect(await setRole(manager, employee, 'extra'), 204);
-      expect(await store.roleOf(id, employee.id), Role.extra);
+      expect(await env.store.roleOf(id, employee.id), Role.extra);
     });
 
     test('la propriété ne se donne pas par changement de rôle', () async {
@@ -222,9 +128,9 @@ void main() {
 
     test('un responsable retire un salarié mais pas un autre responsable', () async {
       expect((await manager('DELETE', '/companies/$id/members/${employee.id}')).$1, 204);
-      expect(await store.roleOf(id, employee.id), isNull);
+      expect(await env.store.roleOf(id, employee.id), isNull);
       final other = await login('other');
-      await store.addMember(id, other.id, Role.manager);
+      await env.store.addMember(id, other.id, Role.manager);
       expect((await manager('DELETE', '/companies/$id/members/${other.id}')).$1, 403);
     });
 
@@ -236,13 +142,13 @@ void main() {
 
     test('un membre retiré puis réintégré retrouve l\'entreprise', () async {
       await owner('DELETE', '/companies/$id/members/${employee.id}');
-      await store.addMember(id, employee.id, Role.employee);
-      expect(await store.roleOf(id, employee.id), Role.employee);
+      await env.store.addMember(id, employee.id, Role.employee);
+      expect(await env.store.roleOf(id, employee.id), Role.employee);
     });
 
     test('les actions sensibles sont journalisées', () async {
       await setRole(owner, employee, 'manager');
-      final (actorId, details) = await lastAudit('member.role');
+      final (actorId, details) = await env.lastAudit('member.role');
       expect(actorId, owner.id);
       expect(details, {'userId': employee.id, 'from': 'employee', 'to': 'manager'});
     });
@@ -257,8 +163,8 @@ void main() {
       manager = await login('manager');
       employee = await login('employee');
       id = await createCompany(owner);
-      await store.addMember(id, manager.id, Role.manager);
-      await store.addMember(id, employee.id, Role.employee);
+      await env.store.addMember(id, manager.id, Role.manager);
+      await env.store.addMember(id, employee.id, Role.employee);
     });
 
     Future<(int, dynamic)> propose(Client to) =>
@@ -271,14 +177,14 @@ void main() {
       expect(me['pendingTransfers'].single['id'], transfer['id']);
 
       expect((await manager('POST', '/transfers/${transfer['id']}/accept')).$1, 204);
-      expect(await store.roleOf(id, manager.id), Role.owner);
-      expect(await store.roleOf(id, owner.id), Role.manager);
+      expect(await env.store.roleOf(id, manager.id), Role.owner);
+      expect(await env.store.roleOf(id, owner.id), Role.manager);
     });
 
     test('un refus ne change rien', () async {
       final (_, transfer) = await propose(manager);
       expect((await manager('POST', '/transfers/${transfer['id']}/decline')).$1, 204);
-      expect(await store.roleOf(id, owner.id), Role.owner);
+      expect(await env.store.roleOf(id, owner.id), Role.owner);
     });
 
     test('on ne transfère qu\'à un responsable de l\'entreprise', () async {
@@ -300,15 +206,15 @@ void main() {
 
     test('le transfert tombe si le destinataire n\'est plus responsable', () async {
       final (_, transfer) = await propose(manager);
-      await store.setRole(id, manager.id, Role.employee);
+      await env.store.setRole(id, manager.id, Role.employee);
       expect((await manager('POST', '/transfers/${transfer['id']}/accept')).$1, 409);
-      expect(await store.roleOf(id, owner.id), Role.owner);
+      expect(await env.store.roleOf(id, owner.id), Role.owner);
     });
   });
 
   group('CORS', () {
     test('seules les origines autorisées reçoivent les en-têtes', () async {
-      Future<Response> preflight(String origin) async => handler(Request(
+      Future<Response> preflight(String origin) async => env.handler(Request(
           'OPTIONS', Uri.parse('http://localhost/api/v1/me'),
           headers: {'origin': origin}));
       expect((await preflight('http://localhost:5000')).headers['access-control-allow-origin'],
