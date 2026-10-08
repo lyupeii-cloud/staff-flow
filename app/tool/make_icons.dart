@@ -78,21 +78,31 @@ void _save(String path, img.Image im) {
   print('  $path  ${im.width}×${im.height}');
 }
 
-/// Fond 1024 × 1024 : pour chaque ligne et colonne, la couleur moyenne du bord de [full],
-/// prolongée au-delà de la zone où le dessin est posé.
+/// Fond 1024 × 1024 : dégradé vertical bleu nuit, calé sur les couleurs du haut et du bas de
+/// [full] là où le dessin est posé, et prolongé au-dessus et en dessous.
 img.Image _background(img.Image full, {required int inset, required int side}) {
-  final scaled = img.copyResize(full, width: side, height: side, interpolation: img.Interpolation.average);
+  List<double> rowAverage(int y0, int y1) {
+    final sum = [0.0, 0.0, 0.0];
+    var n = 0;
+    for (var y = y0; y < y1; y++) {
+      for (var x = 0; x < full.width; x++) {
+        final p = full.getPixel(x, y);
+        sum[0] += p.r;
+        sum[1] += p.g;
+        sum[2] += p.b;
+        n++;
+      }
+    }
+    return [for (final s in sum) s / n];
+  }
+
+  final top = rowAverage(0, 12), bottom = rowAverage(full.height - 12, full.height);
   final bg = img.Image(width: 1024, height: 1024);
-  num at(int x, int y, int c) => scaled.getPixel(x.clamp(0, side - 1), y.clamp(0, side - 1))[c];
   for (var y = 0; y < 1024; y++) {
+    final t = (y - inset) / side;
+    final c = [for (var i = 0; i < 3; i++) (top[i] + (bottom[i] - top[i]) * t).round().clamp(0, 255)];
     for (var x = 0; x < 1024; x++) {
-      // Point du bord le plus proche dans le dessin, moyenné sur quelques pixels pour lisser.
-      final sx = (x - inset).clamp(0, side - 1), sy = (y - inset).clamp(0, side - 1);
-      final rgb = [
-        for (var c = 0; c < 3; c++)
-          ([for (var d = -6; d <= 6; d += 3) at(sx + d, sy, c) + at(sx, sy + d, c)].reduce((a, b) => a + b) / 10).round(),
-      ];
-      bg.setPixelRgb(x, y, rgb[0], rgb[1], rgb[2]);
+      bg.setPixelRgb(x, y, c[0], c[1], c[2]);
     }
   }
   return bg;
