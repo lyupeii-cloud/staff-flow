@@ -1,0 +1,1089 @@
+import 'dart:async';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart' as intl;
+
+import 'app_localizations_bg.dart';
+import 'app_localizations_bn.dart';
+import 'app_localizations_cs.dart';
+import 'app_localizations_da.dart';
+import 'app_localizations_de.dart';
+import 'app_localizations_el.dart';
+import 'app_localizations_en.dart';
+import 'app_localizations_es.dart';
+import 'app_localizations_fi.dart';
+import 'app_localizations_fil.dart';
+import 'app_localizations_fr.dart';
+import 'app_localizations_gu.dart';
+import 'app_localizations_hi.dart';
+import 'app_localizations_hu.dart';
+import 'app_localizations_id.dart';
+import 'app_localizations_it.dart';
+import 'app_localizations_ja.dart';
+import 'app_localizations_kk.dart';
+import 'app_localizations_ko.dart';
+import 'app_localizations_mr.dart';
+import 'app_localizations_ms.dart';
+import 'app_localizations_nb.dart';
+import 'app_localizations_nl.dart';
+import 'app_localizations_pa.dart';
+import 'app_localizations_pl.dart';
+import 'app_localizations_pt.dart';
+import 'app_localizations_ro.dart';
+import 'app_localizations_ru.dart';
+import 'app_localizations_sk.dart';
+import 'app_localizations_sv.dart';
+import 'app_localizations_sw.dart';
+import 'app_localizations_ta.dart';
+import 'app_localizations_te.dart';
+import 'app_localizations_th.dart';
+import 'app_localizations_uk.dart';
+import 'app_localizations_vi.dart';
+import 'app_localizations_zh.dart';
+
+// ignore_for_file: type=lint
+
+/// Callers can lookup localized strings with an instance of L10n
+/// returned by `L10n.of(context)`.
+///
+/// Applications need to include `L10n.delegate()` in their app's
+/// `localizationDelegates` list, and the locales they support in the app's
+/// `supportedLocales` list. For example:
+///
+/// ```dart
+/// import 'l10n/app_localizations.dart';
+///
+/// return MaterialApp(
+///   localizationsDelegates: L10n.localizationsDelegates,
+///   supportedLocales: L10n.supportedLocales,
+///   home: MyApplicationHome(),
+/// );
+/// ```
+///
+/// ## Update pubspec.yaml
+///
+/// Please make sure to update your pubspec.yaml to include the following
+/// packages:
+///
+/// ```yaml
+/// dependencies:
+///   # Internationalization support.
+///   flutter_localizations:
+///     sdk: flutter
+///   intl: any # Use the pinned version from flutter_localizations
+///
+///   # Rest of dependencies
+/// ```
+///
+/// ## iOS Applications
+///
+/// iOS applications define key application metadata, including supported
+/// locales, in an Info.plist file that is built into the application bundle.
+/// To configure the locales supported by your app, you’ll need to edit this
+/// file.
+///
+/// First, open your project’s ios/Runner.xcworkspace Xcode workspace file.
+/// Then, in the Project Navigator, open the Info.plist file under the Runner
+/// project’s Runner folder.
+///
+/// Next, select the Information Property List item, select Add Item from the
+/// Editor menu, then select Localizations from the pop-up menu.
+///
+/// Select and expand the newly-created Localizations item then, for each
+/// locale your application supports, add a new item and select the locale
+/// you wish to add from the pop-up menu in the Value field. This list should
+/// be consistent with the languages listed in the L10n.supportedLocales
+/// property.
+abstract class L10n {
+  L10n(String locale)
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+
+  final String localeName;
+
+  static L10n of(BuildContext context) {
+    return Localizations.of<L10n>(context, L10n)!;
+  }
+
+  static const LocalizationsDelegate<L10n> delegate = _L10nDelegate();
+
+  /// A list of this localizations delegate along with the default localizations
+  /// delegates.
+  ///
+  /// Returns a list of localizations delegates containing this delegate along with
+  /// GlobalMaterialLocalizations.delegate, GlobalCupertinoLocalizations.delegate,
+  /// and GlobalWidgetsLocalizations.delegate.
+  ///
+  /// Additional delegates can be added by appending to this list in
+  /// MaterialApp. This list does not have to be used at all if a custom list
+  /// of delegates is preferred or required.
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
+
+  /// A list of this localizations delegate's supported locales.
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('bg'),
+    Locale('bn'),
+    Locale('cs'),
+    Locale('da'),
+    Locale('de'),
+    Locale('el'),
+    Locale('en'),
+    Locale('es'),
+    Locale('fi'),
+    Locale('fil'),
+    Locale('fr'),
+    Locale('gu'),
+    Locale('hi'),
+    Locale('hu'),
+    Locale('id'),
+    Locale('it'),
+    Locale('ja'),
+    Locale('kk'),
+    Locale('ko'),
+    Locale('mr'),
+    Locale('ms'),
+    Locale('nb'),
+    Locale('nl'),
+    Locale('pa'),
+    Locale('pl'),
+    Locale('pt'),
+    Locale('ro'),
+    Locale('ru'),
+    Locale('sk'),
+    Locale('sv'),
+    Locale('sw'),
+    Locale('ta'),
+    Locale('te'),
+    Locale('th'),
+    Locale('uk'),
+    Locale('vi'),
+    Locale('zh'),
+  ];
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @validate.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get validate;
+
+  /// No description provided for @add.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
+
+  /// No description provided for @rename.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename'**
+  String get rename;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// No description provided for @accept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get accept;
+
+  /// No description provided for @decline.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get decline;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get retry;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @serverUnreachable.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot reach the server.'**
+  String get serverUnreachable;
+
+  /// No description provided for @errorStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Error {status}'**
+  String errorStatus(int status);
+
+  /// No description provided for @roleOwner.
+  ///
+  /// In en, this message translates to:
+  /// **'Owner'**
+  String get roleOwner;
+
+  /// No description provided for @roleManager.
+  ///
+  /// In en, this message translates to:
+  /// **'Manager'**
+  String get roleManager;
+
+  /// No description provided for @roleEmployee.
+  ///
+  /// In en, this message translates to:
+  /// **'Employee'**
+  String get roleEmployee;
+
+  /// No description provided for @roleExtra.
+  ///
+  /// In en, this message translates to:
+  /// **'Extra'**
+  String get roleExtra;
+
+  /// No description provided for @taglineStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Your team\'s schedules, '**
+  String get taglineStart;
+
+  /// No description provided for @taglineEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'everywhere.'**
+  String get taglineEnd;
+
+  /// No description provided for @googleNotConfigured.
+  ///
+  /// In en, this message translates to:
+  /// **'Google sign-in is not configured (GOOGLE_WEB_CLIENT_ID).'**
+  String get googleNotConfigured;
+
+  /// No description provided for @signInWithGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in with Google'**
+  String get signInWithGoogle;
+
+  /// No description provided for @devSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Development'**
+  String get devSection;
+
+  /// No description provided for @emailLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Email address'**
+  String get emailLabel;
+
+  /// No description provided for @devSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Test sign-in'**
+  String get devSignIn;
+
+  /// No description provided for @googleUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Google sign-in unavailable: {detail}'**
+  String googleUnavailable(String detail);
+
+  /// No description provided for @googleFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Google sign-in failed: {detail}'**
+  String googleFailed(String detail);
+
+  /// No description provided for @newCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'New company'**
+  String get newCompany;
+
+  /// No description provided for @timezone.
+  ///
+  /// In en, this message translates to:
+  /// **'Time zone'**
+  String get timezone;
+
+  /// No description provided for @create.
+  ///
+  /// In en, this message translates to:
+  /// **'Create'**
+  String get create;
+
+  /// No description provided for @noCompanyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You are not part of any company yet.'**
+  String get noCompanyTitle;
+
+  /// No description provided for @noCompanyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'To join your employer\'s, generate a code and give it to your manager.'**
+  String get noCompanyHint;
+
+  /// No description provided for @joinCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'Join a company'**
+  String get joinCompany;
+
+  /// No description provided for @createCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a company'**
+  String get createCompany;
+
+  /// No description provided for @transferOffer.
+  ///
+  /// In en, this message translates to:
+  /// **'You are invited to become the owner of “{company}”.'**
+  String transferOffer(String company);
+
+  /// No description provided for @someCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'a company'**
+  String get someCompany;
+
+  /// No description provided for @becameOwner.
+  ///
+  /// In en, this message translates to:
+  /// **'You are now the owner.'**
+  String get becameOwner;
+
+  /// No description provided for @myAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'My account'**
+  String get myAccount;
+
+  /// No description provided for @idCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'ID copied.'**
+  String get idCopied;
+
+  /// No description provided for @myId.
+  ///
+  /// In en, this message translates to:
+  /// **'My ID: {id}'**
+  String myId(String id);
+
+  /// No description provided for @signOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get signOut;
+
+  /// No description provided for @joinInvite.
+  ///
+  /// In en, this message translates to:
+  /// **'“{company}” invites you as {role}.'**
+  String joinInvite(String company, String role);
+
+  /// No description provided for @joinedCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'You joined {company}.'**
+  String joinedCompany(String company);
+
+  /// No description provided for @viewPlanning.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule'**
+  String get viewPlanning;
+
+  /// No description provided for @viewTeam.
+  ///
+  /// In en, this message translates to:
+  /// **'Team'**
+  String get viewTeam;
+
+  /// No description provided for @viewPositions.
+  ///
+  /// In en, this message translates to:
+  /// **'Positions'**
+  String get viewPositions;
+
+  /// No description provided for @readOnlyCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'This company is read-only.'**
+  String get readOnlyCompany;
+
+  /// No description provided for @team.
+  ///
+  /// In en, this message translates to:
+  /// **'Team'**
+  String get team;
+
+  /// No description provided for @leaveCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave this company'**
+  String get leaveCompany;
+
+  /// No description provided for @meSuffix.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} (you)'**
+  String meSuffix(String name);
+
+  /// No description provided for @transferConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Transfer the company to {name}?'**
+  String transferConfirmTitle(String name);
+
+  /// No description provided for @transferConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Once they accept, they will become the owner (subscription, invoices, managers) and you will become a manager.'**
+  String get transferConfirmBody;
+
+  /// No description provided for @transferSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer sent to {name}.'**
+  String transferSent(String name);
+
+  /// No description provided for @removeConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove {name}?'**
+  String removeConfirmTitle(String name);
+
+  /// No description provided for @removeConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Their history is kept.'**
+  String get removeConfirmBody;
+
+  /// No description provided for @addPersonTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a person'**
+  String get addPersonTitle;
+
+  /// No description provided for @addPersonHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask them to open Staff Flow, then their account menu, “Join a company”, and enter the code they see.'**
+  String get addPersonHint;
+
+  /// No description provided for @sixDigitCode.
+  ///
+  /// In en, this message translates to:
+  /// **'6-digit code'**
+  String get sixDigitCode;
+
+  /// No description provided for @invitationSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Invitation sent to {name}: they need to accept it.'**
+  String invitationSent(String name);
+
+  /// No description provided for @leaveConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave {company}?'**
+  String leaveConfirmTitle(String company);
+
+  /// No description provided for @leaveConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You will no longer see its schedule.'**
+  String get leaveConfirmBody;
+
+  /// No description provided for @renameCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename the company'**
+  String get renameCompany;
+
+  /// No description provided for @actionMakeManager.
+  ///
+  /// In en, this message translates to:
+  /// **'Make manager'**
+  String get actionMakeManager;
+
+  /// No description provided for @actionMakeEmployee.
+  ///
+  /// In en, this message translates to:
+  /// **'Make employee again'**
+  String get actionMakeEmployee;
+
+  /// No description provided for @actionToEmployee.
+  ///
+  /// In en, this message translates to:
+  /// **'Make employee'**
+  String get actionToEmployee;
+
+  /// No description provided for @actionToExtra.
+  ///
+  /// In en, this message translates to:
+  /// **'Make extra'**
+  String get actionToExtra;
+
+  /// No description provided for @actionTransfer.
+  ///
+  /// In en, this message translates to:
+  /// **'Transfer ownership'**
+  String get actionTransfer;
+
+  /// No description provided for @actionRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from the company'**
+  String get actionRemove;
+
+  /// No description provided for @positions.
+  ///
+  /// In en, this message translates to:
+  /// **'Positions'**
+  String get positions;
+
+  /// No description provided for @sites.
+  ///
+  /// In en, this message translates to:
+  /// **'Sites'**
+  String get sites;
+
+  /// No description provided for @positionsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What the person does: checkout, kitchen, reception…'**
+  String get positionsHint;
+
+  /// No description provided for @sitesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Where the shift takes place, if the company has several locations.'**
+  String get sitesHint;
+
+  /// No description provided for @archived.
+  ///
+  /// In en, this message translates to:
+  /// **'Archived'**
+  String get archived;
+
+  /// No description provided for @archive.
+  ///
+  /// In en, this message translates to:
+  /// **'Archive'**
+  String get archive;
+
+  /// No description provided for @reactivate.
+  ///
+  /// In en, this message translates to:
+  /// **'Reactivate'**
+  String get reactivate;
+
+  /// No description provided for @weekOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Week of {date}'**
+  String weekOf(String date);
+
+  /// No description provided for @changesPublished.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 change published.} other{{count} changes published.}}'**
+  String changesPublished(int count);
+
+  /// No description provided for @shiftButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Shift'**
+  String get shiftButton;
+
+  /// No description provided for @display.
+  ///
+  /// In en, this message translates to:
+  /// **'View'**
+  String get display;
+
+  /// No description provided for @week.
+  ///
+  /// In en, this message translates to:
+  /// **'Week'**
+  String get week;
+
+  /// No description provided for @month.
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get month;
+
+  /// No description provided for @today.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get today;
+
+  /// No description provided for @onlyMine.
+  ///
+  /// In en, this message translates to:
+  /// **'Only my shifts'**
+  String get onlyMine;
+
+  /// No description provided for @replacePersonMenu.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace a person…'**
+  String get replacePersonMenu;
+
+  /// No description provided for @pendingChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 unpublished change} other{{count} unpublished changes}}'**
+  String pendingChanges(int count);
+
+  /// No description provided for @pendingHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Employees can\'t see them yet.'**
+  String get pendingHint;
+
+  /// No description provided for @publish.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish'**
+  String get publish;
+
+  /// No description provided for @yourHours.
+  ///
+  /// In en, this message translates to:
+  /// **'Your hours for this period: {duration}'**
+  String yourHours(String duration);
+
+  /// No description provided for @addShiftThisDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a shift on this day'**
+  String get addShiftThisDay;
+
+  /// No description provided for @noShift.
+  ///
+  /// In en, this message translates to:
+  /// **'No shifts'**
+  String get noShift;
+
+  /// No description provided for @unassigned.
+  ///
+  /// In en, this message translates to:
+  /// **'Unassigned'**
+  String get unassigned;
+
+  /// No description provided for @formerMember.
+  ///
+  /// In en, this message translates to:
+  /// **'Former member'**
+  String get formerMember;
+
+  /// No description provided for @statusDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft'**
+  String get statusDraft;
+
+  /// No description provided for @statusModified.
+  ///
+  /// In en, this message translates to:
+  /// **'Changed'**
+  String get statusModified;
+
+  /// No description provided for @statusDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted'**
+  String get statusDeleted;
+
+  /// No description provided for @durationHours.
+  ///
+  /// In en, this message translates to:
+  /// **'{hours}h'**
+  String durationHours(int hours);
+
+  /// No description provided for @durationHoursMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'{hours}h{minutes}'**
+  String durationHoursMinutes(int hours, String minutes);
+
+  /// No description provided for @editShift.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit shift'**
+  String get editShift;
+
+  /// No description provided for @newShift.
+  ///
+  /// In en, this message translates to:
+  /// **'New shift'**
+  String get newShift;
+
+  /// No description provided for @thisShift.
+  ///
+  /// In en, this message translates to:
+  /// **'This shift'**
+  String get thisShift;
+
+  /// No description provided for @thisAndFollowing.
+  ///
+  /// In en, this message translates to:
+  /// **'This and following'**
+  String get thisAndFollowing;
+
+  /// No description provided for @daysLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Day} other{Days}}'**
+  String daysLabel(int count);
+
+  /// No description provided for @otherDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Another day'**
+  String get otherDay;
+
+  /// No description provided for @start.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get start;
+
+  /// No description provided for @end.
+  ///
+  /// In en, this message translates to:
+  /// **'End'**
+  String get end;
+
+  /// No description provided for @endsNextDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Ends the next day.'**
+  String get endsNextDay;
+
+  /// No description provided for @person.
+  ///
+  /// In en, this message translates to:
+  /// **'Person'**
+  String get person;
+
+  /// No description provided for @position.
+  ///
+  /// In en, this message translates to:
+  /// **'Position'**
+  String get position;
+
+  /// No description provided for @site.
+  ///
+  /// In en, this message translates to:
+  /// **'Site'**
+  String get site;
+
+  /// No description provided for @noteOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Note (optional)'**
+  String get noteOptional;
+
+  /// No description provided for @repetition.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat'**
+  String get repetition;
+
+  /// No description provided for @repeatNone.
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get repeatNone;
+
+  /// No description provided for @repeatDaily.
+  ///
+  /// In en, this message translates to:
+  /// **'Every day'**
+  String get repeatDaily;
+
+  /// No description provided for @repeatWeekly.
+  ///
+  /// In en, this message translates to:
+  /// **'Every week'**
+  String get repeatWeekly;
+
+  /// No description provided for @repeatForPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'For '**
+  String get repeatForPrefix;
+
+  /// No description provided for @repeatDaysSuffix.
+  ///
+  /// In en, this message translates to:
+  /// **' days'**
+  String get repeatDaysSuffix;
+
+  /// No description provided for @repeatWeeksSuffix.
+  ///
+  /// In en, this message translates to:
+  /// **' weeks'**
+  String get repeatWeeksSuffix;
+
+  /// No description provided for @repeatUntilPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Until '**
+  String get repeatUntilPrefix;
+
+  /// No description provided for @replacePersonTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace a person'**
+  String get replacePersonTitle;
+
+  /// No description provided for @replaceFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace'**
+  String get replaceFrom;
+
+  /// No description provided for @replaceBy.
+  ///
+  /// In en, this message translates to:
+  /// **'With'**
+  String get replaceBy;
+
+  /// No description provided for @dateRange.
+  ///
+  /// In en, this message translates to:
+  /// **'From {from} to {to}'**
+  String dateRange(String from, String to);
+
+  /// No description provided for @shiftsChanged.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No shifts changed.} =1{1 shift changed.} other{{count} shifts changed.}}'**
+  String shiftsChanged(int count);
+
+  /// No description provided for @replaceButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace'**
+  String get replaceButton;
+
+  /// No description provided for @joinHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Give this code to your manager. They enter it in their app, then you receive an invitation to accept.'**
+  String get joinHint;
+
+  /// No description provided for @codeExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Code expired.'**
+  String get codeExpired;
+
+  /// No description provided for @codeValidFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Valid for {time}'**
+  String codeValidFor(String time);
+
+  /// No description provided for @newCode.
+  ///
+  /// In en, this message translates to:
+  /// **'New code'**
+  String get newCode;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// No description provided for @languageAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic (device language)'**
+  String get languageAuto;
+}
+
+class _L10nDelegate extends LocalizationsDelegate<L10n> {
+  const _L10nDelegate();
+
+  @override
+  Future<L10n> load(Locale locale) {
+    return SynchronousFuture<L10n>(lookupL10n(locale));
+  }
+
+  @override
+  bool isSupported(Locale locale) => <String>[
+    'bg',
+    'bn',
+    'cs',
+    'da',
+    'de',
+    'el',
+    'en',
+    'es',
+    'fi',
+    'fil',
+    'fr',
+    'gu',
+    'hi',
+    'hu',
+    'id',
+    'it',
+    'ja',
+    'kk',
+    'ko',
+    'mr',
+    'ms',
+    'nb',
+    'nl',
+    'pa',
+    'pl',
+    'pt',
+    'ro',
+    'ru',
+    'sk',
+    'sv',
+    'sw',
+    'ta',
+    'te',
+    'th',
+    'uk',
+    'vi',
+    'zh',
+  ].contains(locale.languageCode);
+
+  @override
+  bool shouldReload(_L10nDelegate old) => false;
+}
+
+L10n lookupL10n(Locale locale) {
+  // Lookup logic when only language code is specified.
+  switch (locale.languageCode) {
+    case 'bg':
+      return L10nBg();
+    case 'bn':
+      return L10nBn();
+    case 'cs':
+      return L10nCs();
+    case 'da':
+      return L10nDa();
+    case 'de':
+      return L10nDe();
+    case 'el':
+      return L10nEl();
+    case 'en':
+      return L10nEn();
+    case 'es':
+      return L10nEs();
+    case 'fi':
+      return L10nFi();
+    case 'fil':
+      return L10nFil();
+    case 'fr':
+      return L10nFr();
+    case 'gu':
+      return L10nGu();
+    case 'hi':
+      return L10nHi();
+    case 'hu':
+      return L10nHu();
+    case 'id':
+      return L10nId();
+    case 'it':
+      return L10nIt();
+    case 'ja':
+      return L10nJa();
+    case 'kk':
+      return L10nKk();
+    case 'ko':
+      return L10nKo();
+    case 'mr':
+      return L10nMr();
+    case 'ms':
+      return L10nMs();
+    case 'nb':
+      return L10nNb();
+    case 'nl':
+      return L10nNl();
+    case 'pa':
+      return L10nPa();
+    case 'pl':
+      return L10nPl();
+    case 'pt':
+      return L10nPt();
+    case 'ro':
+      return L10nRo();
+    case 'ru':
+      return L10nRu();
+    case 'sk':
+      return L10nSk();
+    case 'sv':
+      return L10nSv();
+    case 'sw':
+      return L10nSw();
+    case 'ta':
+      return L10nTa();
+    case 'te':
+      return L10nTe();
+    case 'th':
+      return L10nTh();
+    case 'uk':
+      return L10nUk();
+    case 'vi':
+      return L10nVi();
+    case 'zh':
+      return L10nZh();
+  }
+
+  throw FlutterError(
+    'L10n.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.',
+  );
+}
