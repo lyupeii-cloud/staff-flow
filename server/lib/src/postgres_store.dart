@@ -218,17 +218,18 @@ class PostgresStore implements Store {
 
   @override
   Future<void> completeTransfer(OwnershipTransfer t) => _db.runTx((tx) async {
-        final p = {'c': t.companyId, 'f': t.fromUserId, 't': t.toUserId, 'id': t.id};
         // L'ancien propriétaire d'abord, à cause de l'index « un seul propriétaire ».
         await _q(tx, '''
           UPDATE memberships SET role = 'manager'
-          WHERE company_id = @c::uuid AND user_id = @f::uuid AND left_at IS NULL''', p);
+          WHERE company_id = @c::uuid AND user_id = @u::uuid AND left_at IS NULL''',
+            {'c': t.companyId, 'u': t.fromUserId});
         await _q(tx, '''
           UPDATE memberships SET role = 'owner'
-          WHERE company_id = @c::uuid AND user_id = @t::uuid AND left_at IS NULL''', p);
+          WHERE company_id = @c::uuid AND user_id = @u::uuid AND left_at IS NULL''',
+            {'c': t.companyId, 'u': t.toUserId});
         await _q(tx, '''
           UPDATE ownership_transfers SET status = 'accepted', resolved_at = now()
-          WHERE id = @id::uuid''', p);
+          WHERE id = @id::uuid''', {'id': t.id});
       });
 
   @override
