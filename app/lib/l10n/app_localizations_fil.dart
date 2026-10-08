@@ -549,4 +549,56 @@ class L10nFil extends L10n {
   @override
   String get pendingNotEditable =>
       'Hindi pa naka-sync ang shift na ito: subukan ulit kapag online.';
+
+  @override
+  String get myQrCode => 'Ang QR code ko';
+
+  @override
+  String get myQrCodeHint =>
+      'Ini-scan ng manager ang code na ito para idagdag ka sa kanilang kumpanya; pagkatapos ay kukumpirmahin mo. Hindi ito nagbabago.';
+
+  @override
+  String get changeMyName => 'Palitan ang pangalan ko';
+
+  @override
+  String get nameShownToTeam =>
+      'Ito ang pangalang makikita ng mga kasamahan mo sa halip na pangalan mo sa Google.';
+
+  @override
+  String googleName(String name) {
+    return 'Pangalan sa Google: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Gamitin ang pangalan ko sa Google';
+
+  @override
+  String renameMemberTitle(String name) {
+    return 'Palitan ang pangalan ni $name';
+  }
+
+  @override
+  String get renameMemberHint =>
+      'Sa kumpanyang ito lang ginagamit ang pangalang ito.';
+
+  @override
+  String get useOwnName => 'Gamitin ang sarili niyang pangalan';
+
+  @override
+  String get scanQrCode => 'Mag-scan ng QR code';
+
+  @override
+  String get scanQrHint =>
+      'Itapat ang camera sa QR code sa kanyang app (menu ng account, “Ang QR code ko”).';
+
+  @override
+  String get orEnterCode => 'O ilagay ang kanyang 6-digit na code';
+
+  @override
+  String get qrInvalid => 'Hindi ito QR code ng Staff Flow.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'Hindi magamit ang camera ($error).';
+  }
 }

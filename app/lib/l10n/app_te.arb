@@ -147,5 +147,19 @@
   "historyDelete": "తొలగింపు",
   "historyUndo": "రద్దు",
   "noHistory": "మార్పులు లేవు.",
-  "pendingNotEditable": "ఈ షిఫ్ట్ ఇంకా సింక్ కాలేదు: ఆన్‌లైన్‌లో మళ్లీ ప్రయత్నించండి."
+  "pendingNotEditable": "ఈ షిఫ్ట్ ఇంకా సింక్ కాలేదు: ఆన్‌లైన్‌లో మళ్లీ ప్రయత్నించండి.",
+  "myQrCode": "నా QR కోడ్",
+  "myQrCodeHint": "మేనేజర్ ఈ కోడ్‌ను స్కాన్ చేసి మిమ్మల్ని తమ కంపెనీలో చేరుస్తారు; ఆ తర్వాత మీరు నిర్ధారిస్తారు. ఇది ఎప్పటికీ మారదు.",
+  "changeMyName": "నా పేరు మార్చు",
+  "nameShownToTeam": "మీ Google పేరుకు బదులుగా ఈ పేరు మీ సహోద్యోగులకు కనిపిస్తుంది.",
+  "googleName": "Google పేరు: {name}",
+  "useGoogleName": "నా Google పేరు వాడు",
+  "renameMemberTitle": "{name} పేరు మార్చు",
+  "renameMemberHint": "ఈ పేరు ఈ కంపెనీలో మాత్రమే వాడబడుతుంది.",
+  "useOwnName": "వారి స్వంత పేరు వాడు",
+  "scanQrCode": "QR కోడ్ స్కాన్ చేయి",
+  "scanQrHint": "వారి యాప్‌లో చూపిన QR కోడ్ వైపు కెమెరా పెట్టండి (ఖాతా మెనూ, “నా QR కోడ్”).",
+  "orEnterCode": "లేదా వారి 6 అంకెల కోడ్ నమోదు చేయండి",
+  "qrInvalid": "ఇది Staff Flow QR కోడ్ కాదు.",
+  "cameraUnavailable": "కెమెరా అందుబాటులో లేదు ({error})."
 }

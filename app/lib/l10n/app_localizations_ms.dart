@@ -545,4 +545,55 @@ class L10nMs extends L10n {
   @override
   String get pendingNotEditable =>
       'Syif ini belum disegerakkan: cuba lagi apabila dalam talian.';
+
+  @override
+  String get myQrCode => 'Kod QR saya';
+
+  @override
+  String get myQrCodeHint =>
+      'Pengurus mengimbas kod ini untuk menambah anda ke syarikatnya; kemudian anda mengesahkan. Kod ini tidak pernah berubah.';
+
+  @override
+  String get changeMyName => 'Tukar nama saya';
+
+  @override
+  String get nameShownToTeam =>
+      'Nama ini dipaparkan kepada rakan sekerja anda dan bukannya nama Google anda.';
+
+  @override
+  String googleName(String name) {
+    return 'Nama Google: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Guna nama Google saya';
+
+  @override
+  String renameMemberTitle(String name) {
+    return 'Namakan semula $name';
+  }
+
+  @override
+  String get renameMemberHint => 'Nama ini hanya digunakan dalam syarikat ini.';
+
+  @override
+  String get useOwnName => 'Guna namanya sendiri';
+
+  @override
+  String get scanQrCode => 'Imbas kod QR';
+
+  @override
+  String get scanQrHint =>
+      'Halakan kamera ke kod QR dalam aplikasinya (menu akaun, “Kod QR saya”).';
+
+  @override
+  String get orEnterCode => 'Atau masukkan kod 6 digitnya';
+
+  @override
+  String get qrInvalid => 'Ini bukan kod QR Staff Flow.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'Kamera tidak tersedia ($error).';
+  }
 }

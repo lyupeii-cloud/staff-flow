@@ -147,5 +147,19 @@
   "historyDelete": "Dipadam",
   "historyUndo": "Dibuat asal",
   "noHistory": "Tiada perubahan.",
-  "pendingNotEditable": "Syif ini belum disegerakkan: cuba lagi apabila dalam talian."
+  "pendingNotEditable": "Syif ini belum disegerakkan: cuba lagi apabila dalam talian.",
+  "myQrCode": "Kod QR saya",
+  "myQrCodeHint": "Pengurus mengimbas kod ini untuk menambah anda ke syarikatnya; kemudian anda mengesahkan. Kod ini tidak pernah berubah.",
+  "changeMyName": "Tukar nama saya",
+  "nameShownToTeam": "Nama ini dipaparkan kepada rakan sekerja anda dan bukannya nama Google anda.",
+  "googleName": "Nama Google: {name}",
+  "useGoogleName": "Guna nama Google saya",
+  "renameMemberTitle": "Namakan semula {name}",
+  "renameMemberHint": "Nama ini hanya digunakan dalam syarikat ini.",
+  "useOwnName": "Guna namanya sendiri",
+  "scanQrCode": "Imbas kod QR",
+  "scanQrHint": "Halakan kamera ke kod QR dalam aplikasinya (menu akaun, “Kod QR saya”).",
+  "orEnterCode": "Atau masukkan kod 6 digitnya",
+  "qrInvalid": "Ini bukan kod QR Staff Flow.",
+  "cameraUnavailable": "Kamera tidak tersedia ({error})."
 }

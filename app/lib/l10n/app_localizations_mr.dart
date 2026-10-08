@@ -549,4 +549,55 @@ class L10nMr extends L10n {
   @override
   String get pendingNotEditable =>
       'ही शिफ्ट अजून सिंक झालेली नाही: ऑनलाइन असताना पुन्हा प्रयत्न करा.';
+
+  @override
+  String get myQrCode => 'माझा QR कोड';
+
+  @override
+  String get myQrCodeHint =>
+      'व्यवस्थापक हा कोड स्कॅन करून तुम्हाला त्यांच्या कंपनीत जोडतात; नंतर तुम्ही पुष्टी करता. तो कधीही बदलत नाही.';
+
+  @override
+  String get changeMyName => 'माझे नाव बदला';
+
+  @override
+  String get nameShownToTeam =>
+      'तुमच्या सहकाऱ्यांना तुमच्या Google नावाऐवजी हे नाव दिसेल.';
+
+  @override
+  String googleName(String name) {
+    return 'Google नाव: $name';
+  }
+
+  @override
+  String get useGoogleName => 'माझे Google नाव वापरा';
+
+  @override
+  String renameMemberTitle(String name) {
+    return '$name चे नाव बदला';
+  }
+
+  @override
+  String get renameMemberHint => 'हे नाव फक्त या कंपनीत वापरले जाते.';
+
+  @override
+  String get useOwnName => 'त्यांचे स्वतःचे नाव वापरा';
+
+  @override
+  String get scanQrCode => 'QR कोड स्कॅन करा';
+
+  @override
+  String get scanQrHint =>
+      'त्यांच्या अॅपमध्ये दिसणाऱ्या QR कोडकडे कॅमेरा धरा (खाते मेनू, “माझा QR कोड”).';
+
+  @override
+  String get orEnterCode => 'किंवा त्यांचा ६ अंकी कोड टाका';
+
+  @override
+  String get qrInvalid => 'हा Staff Flow QR कोड नाही.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'कॅमेरा उपलब्ध नाही ($error).';
+  }
 }

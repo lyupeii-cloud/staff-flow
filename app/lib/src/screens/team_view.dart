@@ -4,6 +4,7 @@ import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
 import 'home_screen.dart';
+import 'people_widgets.dart';
 
 /// Équipe de l'entreprise : membres, rôles, ajout par code, transfert.
 class TeamView extends StatefulWidget {
@@ -56,6 +57,7 @@ class _TeamViewState extends State<TeamView> {
     return RefreshIndicator(
       onRefresh: () async => setState(_load),
       child: ListView(
+        physics: const AlwaysScrollableScrollPhysics(),
         padding: const EdgeInsets.all(16),
         children: [
           Row(
@@ -130,6 +132,7 @@ class _TeamViewState extends State<TeamView> {
     final isManager = role == Role.manager;
     final targetIsStaff = m.role == Role.employee || m.role == Role.extra;
     return [
+      if (isOwner || (isManager && targetIsStaff)) _MemberAction.rename,
       if (isOwner && targetIsStaff) _MemberAction.makeManager,
       if (isOwner && m.role == Role.manager) _MemberAction.makeEmployee,
       if ((isOwner || isManager) && targetIsStaff) _MemberAction.toggleExtra,
@@ -141,6 +144,18 @@ class _TeamViewState extends State<TeamView> {
   Future<void> _run(_MemberAction a, Member m) async {
     final api = widget.session.api;
     switch (a) {
+      case _MemberAction.rename:
+        final name = await askName(
+          context,
+          title: t.renameMemberTitle(m.user.name),
+          current: m.user.name,
+          hint: '${t.renameMemberHint}\n${t.googleName(m.user.googleName)}',
+          resetLabel: t.useOwnName,
+          canReset: m.nameInCompany != null,
+        );
+        if (name != null) {
+          await _act(() => api.renameMember(company.id, m.user.id, name.isEmpty ? null : name));
+        }
       case _MemberAction.makeManager:
         await _act(() => api.setRole(company.id, m.user.id, Role.manager));
       case _MemberAction.makeEmployee:
@@ -160,51 +175,70 @@ class _TeamViewState extends State<TeamView> {
     }
   }
 
-  /// Le salarié génère un code dans son application ; le responsable le
-  /// saisit ici. Le salarié doit ensuite accepter l'invitation.
+  /// Ajout d'une personne : le responsable scanne son QR code permanent
+  /// (menu du compte, « Mon QR code »), ou saisit le code à 6 chiffres
+  /// qu'elle a généré. Elle doit ensuite accepter l'invitation.
   Future<void> _addWithCode() async {
     final code = TextEditingController();
     var role = Role.employee;
-    final ok = await showDialog<bool>(
+    final choice = await showDialog<_AddWith>(
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setState) => AlertDialog(
           title: Text(t.addPersonTitle),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(t.addPersonHint),
-              const SizedBox(height: 12),
-              TextField(
-                controller: code,
-                autofocus: true,
-                keyboardType: TextInputType.number,
-                maxLength: 6,
-                style: const TextStyle(fontSize: 24, letterSpacing: 8),
-                decoration: InputDecoration(labelText: t.sixDigitCode, counterText: ''),
-              ),
-              const SizedBox(height: 8),
-              SegmentedButton<Role>(
-                segments: [
-                  ButtonSegment(value: Role.employee, label: Text(Role.employee.label(t))),
-                  ButtonSegment(value: Role.extra, label: Text(Role.extra.label(t))),
-                ],
-                selected: {role},
-                onSelectionChanged: (s) => setState(() => role = s.first),
-              ),
-            ],
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SegmentedButton<Role>(
+                  segments: [
+                    ButtonSegment(value: Role.employee, label: Text(Role.employee.label(t))),
+                    ButtonSegment(value: Role.extra, label: Text(Role.extra.label(t))),
+                  ],
+                  selected: {role},
+                  onSelectionChanged: (s) => setState(() => role = s.first),
+                ),
+                const SizedBox(height: 16),
+                // Le plus simple avec les mains occupées : un grand bouton.
+                FilledButton.icon(
+                  style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(64)),
+                  onPressed: () => Navigator.pop(context, _AddWith.qr),
+                  icon: const Icon(Icons.qr_code_scanner, size: 32),
+                  label: Text(t.scanQrCode, style: const TextStyle(fontSize: 18)),
+                ),
+                const SizedBox(height: 20),
+                Text(t.orEnterCode, style: Theme.of(context).textTheme.titleSmall),
+                const SizedBox(height: 4),
+                Text(t.addPersonHint, style: Theme.of(context).textTheme.bodySmall),
+                TextField(
+                  controller: code,
+                  keyboardType: TextInputType.number,
+                  maxLength: 6,
+                  style: const TextStyle(fontSize: 24, letterSpacing: 8),
+                  decoration: InputDecoration(labelText: t.sixDigitCode, counterText: ''),
+                  onSubmitted: (_) => Navigator.pop(context, _AddWith.code),
+                ),
+              ],
+            ),
           ),
           actions: [
-            TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
-            FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.validate)),
+            TextButton(onPressed: () => Navigator.pop(context), child: Text(t.cancel)),
+            FilledButton(onPressed: () => Navigator.pop(context, _AddWith.code), child: Text(t.validate)),
           ],
         ),
       ),
     );
-    if (ok != true || !mounted) return;
+    if (choice == null || !mounted) return;
+    final api = widget.session.api;
     String? name;
-    await _act(() async => name = await widget.session.api.redeemJoinCode(company.id, code.text, role));
+    if (choice == _AddWith.qr) {
+      final qr = await scanQrCode(context);
+      if (qr == null || !mounted) return;
+      await _act(() async => name = await api.inviteByQr(company.id, qr, role));
+    } else {
+      await _act(() async => name = await api.redeemJoinCode(company.id, code.text, role));
+    }
     if (name != null && mounted) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.invitationSent(name!))));
     }
@@ -248,6 +282,7 @@ class _TeamViewState extends State<TeamView> {
 }
 
 enum _MemberAction {
+  rename,
   makeManager,
   makeEmployee,
   toggleExtra,
@@ -255,6 +290,7 @@ enum _MemberAction {
   remove;
 
   String label(L10n t, Member m) => switch (this) {
+        rename => t.rename,
         makeManager => t.actionMakeManager,
         makeEmployee => t.actionMakeEmployee,
         toggleExtra => m.role == Role.extra ? t.actionToEmployee : t.actionToExtra,
@@ -262,3 +298,5 @@ enum _MemberAction {
         remove => t.actionRemove,
       };
 }
+
+enum _AddWith { qr, code }

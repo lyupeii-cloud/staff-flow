@@ -549,4 +549,56 @@ class L10nTa extends L10n {
   @override
   String get pendingNotEditable =>
       'இந்தப் பணி நேரம் இன்னும் ஒத்திசைக்கப்படவில்லை: இணைப்பில் இருக்கும்போது மீண்டும் முயலவும்.';
+
+  @override
+  String get myQrCode => 'எனது QR குறியீடு';
+
+  @override
+  String get myQrCodeHint =>
+      'மேலாளர் இந்தக் குறியீட்டை ஸ்கேன் செய்து உங்களை நிறுவனத்தில் சேர்ப்பார்; பிறகு நீங்கள் உறுதிப்படுத்துவீர்கள். இது ஒருபோதும் மாறாது.';
+
+  @override
+  String get changeMyName => 'என் பெயரை மாற்று';
+
+  @override
+  String get nameShownToTeam =>
+      'உங்கள் Google பெயருக்குப் பதிலாக இந்தப் பெயர் சக ஊழியர்களுக்குக் காட்டப்படும்.';
+
+  @override
+  String googleName(String name) {
+    return 'Google பெயர்: $name';
+  }
+
+  @override
+  String get useGoogleName => 'என் Google பெயரைப் பயன்படுத்து';
+
+  @override
+  String renameMemberTitle(String name) {
+    return '$name பெயரை மாற்று';
+  }
+
+  @override
+  String get renameMemberHint =>
+      'இந்தப் பெயர் இந்த நிறுவனத்தில் மட்டுமே பயன்படும்.';
+
+  @override
+  String get useOwnName => 'அவரது சொந்தப் பெயரைப் பயன்படுத்து';
+
+  @override
+  String get scanQrCode => 'QR குறியீட்டை ஸ்கேன் செய்';
+
+  @override
+  String get scanQrHint =>
+      'அவரது செயலியில் காட்டப்படும் QR குறியீட்டை நோக்கி கேமராவைக் காட்டுங்கள் (கணக்கு மெனு, “எனது QR குறியீடு”).';
+
+  @override
+  String get orEnterCode => 'அல்லது அவரது 6 இலக்கக் குறியீட்டை உள்ளிடுங்கள்';
+
+  @override
+  String get qrInvalid => 'இது Staff Flow QR குறியீடு அல்ல.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'கேமரா கிடைக்கவில்லை ($error).';
+  }
 }

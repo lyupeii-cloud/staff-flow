@@ -147,5 +147,19 @@
   "historyDelete": "Ștergere",
   "historyUndo": "Anulare",
   "noHistory": "Nicio modificare.",
-  "pendingNotEditable": "Această tură nu este încă sincronizată: încearcă din nou când ești online."
+  "pendingNotEditable": "Această tură nu este încă sincronizată: încearcă din nou când ești online.",
+  "myQrCode": "Codul meu QR",
+  "myQrCodeHint": "Un responsabil scanează acest cod pentru a te adăuga în firma sa; apoi confirmi tu. Nu se schimbă niciodată.",
+  "changeMyName": "Schimbă-mi numele",
+  "nameShownToTeam": "Acest nume este afișat colegilor în locul numelui tău Google.",
+  "googleName": "Nume Google: {name}",
+  "useGoogleName": "Folosește numele meu Google",
+  "renameMemberTitle": "Redenumește {name}",
+  "renameMemberHint": "Acest nume este folosit doar în această firmă.",
+  "useOwnName": "Folosește propriul nume",
+  "scanQrCode": "Scanează un cod QR",
+  "scanQrHint": "Îndreaptă camera spre codul QR afișat în aplicația persoanei (meniul contului, „Codul meu QR”).",
+  "orEnterCode": "Sau introdu codul de 6 cifre",
+  "qrInvalid": "Acesta nu este un cod QR Staff Flow.",
+  "cameraUnavailable": "Camera nu este disponibilă ({error})."
 }

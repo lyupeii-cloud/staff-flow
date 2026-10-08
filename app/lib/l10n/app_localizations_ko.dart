@@ -540,4 +540,53 @@ class L10nKo extends L10n {
 
   @override
   String get pendingNotEditable => '이 근무는 아직 동기화되지 않았습니다. 온라인에서 다시 시도하세요.';
+
+  @override
+  String get myQrCode => '내 QR 코드';
+
+  @override
+  String get myQrCodeHint =>
+      '관리자가 이 코드를 스캔하면 회사에 추가되며, 이후 직접 확인합니다. 코드는 바뀌지 않습니다.';
+
+  @override
+  String get changeMyName => '내 이름 변경';
+
+  @override
+  String get nameShownToTeam => '동료에게는 Google 이름 대신 이 이름이 표시됩니다.';
+
+  @override
+  String googleName(String name) {
+    return 'Google 이름: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Google 이름 사용';
+
+  @override
+  String renameMemberTitle(String name) {
+    return '$name 이름 변경';
+  }
+
+  @override
+  String get renameMemberHint => '이 이름은 이 회사에서만 사용됩니다.';
+
+  @override
+  String get useOwnName => '본인 이름 사용';
+
+  @override
+  String get scanQrCode => 'QR 코드 스캔';
+
+  @override
+  String get scanQrHint => '상대방 앱에 표시된 QR 코드에 카메라를 맞추세요(계정 메뉴, ‘내 QR 코드’).';
+
+  @override
+  String get orEnterCode => '또는 6자리 코드를 입력하세요';
+
+  @override
+  String get qrInvalid => 'Staff Flow QR 코드가 아닙니다.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return '카메라를 사용할 수 없습니다($error).';
+  }
 }

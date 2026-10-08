@@ -549,4 +549,56 @@ class L10nSw extends L10n {
   @override
   String get pendingNotEditable =>
       'Zamu hii bado haijasawazishwa: jaribu tena ukiwa mtandaoni.';
+
+  @override
+  String get myQrCode => 'Msimbo wangu wa QR';
+
+  @override
+  String get myQrCodeHint =>
+      'Msimamizi huchanganua msimbo huu ili akuongeze kwenye kampuni yake; kisha wewe unathibitisha. Haubadiliki kamwe.';
+
+  @override
+  String get changeMyName => 'Badilisha jina langu';
+
+  @override
+  String get nameShownToTeam =>
+      'Jina hili linaonyeshwa kwa wenzako badala ya jina lako la Google.';
+
+  @override
+  String googleName(String name) {
+    return 'Jina la Google: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Tumia jina langu la Google';
+
+  @override
+  String renameMemberTitle(String name) {
+    return 'Badilisha jina la $name';
+  }
+
+  @override
+  String get renameMemberHint =>
+      'Jina hili linatumika katika kampuni hii pekee.';
+
+  @override
+  String get useOwnName => 'Tumia jina lake mwenyewe';
+
+  @override
+  String get scanQrCode => 'Changanua msimbo wa QR';
+
+  @override
+  String get scanQrHint =>
+      'Elekeza kamera kwenye msimbo wa QR ulio kwenye programu yake (menyu ya akaunti, “Msimbo wangu wa QR”).';
+
+  @override
+  String get orEnterCode => 'Au weka msimbo wake wa tarakimu 6';
+
+  @override
+  String get qrInvalid => 'Huu si msimbo wa QR wa Staff Flow.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'Kamera haipatikani ($error).';
+  }
 }

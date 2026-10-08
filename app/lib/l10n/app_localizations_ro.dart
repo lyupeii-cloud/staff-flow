@@ -552,4 +552,56 @@ class L10nRo extends L10n {
   @override
   String get pendingNotEditable =>
       'Această tură nu este încă sincronizată: încearcă din nou când ești online.';
+
+  @override
+  String get myQrCode => 'Codul meu QR';
+
+  @override
+  String get myQrCodeHint =>
+      'Un responsabil scanează acest cod pentru a te adăuga în firma sa; apoi confirmi tu. Nu se schimbă niciodată.';
+
+  @override
+  String get changeMyName => 'Schimbă-mi numele';
+
+  @override
+  String get nameShownToTeam =>
+      'Acest nume este afișat colegilor în locul numelui tău Google.';
+
+  @override
+  String googleName(String name) {
+    return 'Nume Google: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Folosește numele meu Google';
+
+  @override
+  String renameMemberTitle(String name) {
+    return 'Redenumește $name';
+  }
+
+  @override
+  String get renameMemberHint =>
+      'Acest nume este folosit doar în această firmă.';
+
+  @override
+  String get useOwnName => 'Folosește propriul nume';
+
+  @override
+  String get scanQrCode => 'Scanează un cod QR';
+
+  @override
+  String get scanQrHint =>
+      'Îndreaptă camera spre codul QR afișat în aplicația persoanei (meniul contului, „Codul meu QR”).';
+
+  @override
+  String get orEnterCode => 'Sau introdu codul de 6 cifre';
+
+  @override
+  String get qrInvalid => 'Acesta nu este un cod QR Staff Flow.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'Camera nu este disponibilă ($error).';
+  }
 }

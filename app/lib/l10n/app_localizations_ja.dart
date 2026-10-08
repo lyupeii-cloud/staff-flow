@@ -540,4 +540,54 @@ class L10nJa extends L10n {
 
   @override
   String get pendingNotEditable => 'このシフトはまだ同期されていません。オンラインで再度お試しください。';
+
+  @override
+  String get myQrCode => '自分のQRコード';
+
+  @override
+  String get myQrCodeHint =>
+      '管理者がこのコードを読み取ると、会社に追加されます。その後あなたが承認します。コードは変わりません。';
+
+  @override
+  String get changeMyName => '名前を変更';
+
+  @override
+  String get nameShownToTeam => '同僚にはGoogleの名前の代わりにこの名前が表示されます。';
+
+  @override
+  String googleName(String name) {
+    return 'Googleの名前：$name';
+  }
+
+  @override
+  String get useGoogleName => 'Googleの名前を使う';
+
+  @override
+  String renameMemberTitle(String name) {
+    return '$name の名前を変更';
+  }
+
+  @override
+  String get renameMemberHint => 'この名前はこの会社でのみ使われます。';
+
+  @override
+  String get useOwnName => '本人の名前を使う';
+
+  @override
+  String get scanQrCode => 'QRコードを読み取る';
+
+  @override
+  String get scanQrHint =>
+      '相手のアプリに表示されたQRコードにカメラを向けてください（アカウントメニュー「自分のQRコード」）。';
+
+  @override
+  String get orEnterCode => 'または6桁のコードを入力';
+
+  @override
+  String get qrInvalid => 'Staff FlowのQRコードではありません。';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'カメラを使用できません（$error）。';
+  }
 }

@@ -147,5 +147,19 @@
   "historyDelete": "કાઢી નાખ્યું",
   "historyUndo": "પાછું લીધું",
   "noHistory": "કોઈ ફેરફાર નથી.",
-  "pendingNotEditable": "આ શિફ્ટ હજી સિંક થઈ નથી: ઑનલાઇન હો ત્યારે ફરી પ્રયાસ કરો."
+  "pendingNotEditable": "આ શિફ્ટ હજી સિંક થઈ નથી: ઑનલાઇન હો ત્યારે ફરી પ્રયાસ કરો.",
+  "myQrCode": "મારો QR કોડ",
+  "myQrCodeHint": "મેનેજર આ કોડ સ્કેન કરીને તમને તેમની કંપનીમાં ઉમેરે છે; પછી તમે પુષ્ટિ કરો છો. તે ક્યારેય બદલાતો નથી.",
+  "changeMyName": "મારું નામ બદલો",
+  "nameShownToTeam": "તમારા સહકર્મીઓને તમારા Google નામને બદલે આ નામ દેખાશે.",
+  "googleName": "Google નામ: {name}",
+  "useGoogleName": "મારું Google નામ વાપરો",
+  "renameMemberTitle": "{name} નું નામ બદલો",
+  "renameMemberHint": "આ નામ ફક્ત આ કંપનીમાં વપરાય છે.",
+  "useOwnName": "તેમનું પોતાનું નામ વાપરો",
+  "scanQrCode": "QR કોડ સ્કેન કરો",
+  "scanQrHint": "તેમની એપમાં દેખાતા QR કોડ તરફ કેમેરા રાખો (એકાઉન્ટ મેનૂ, “મારો QR કોડ”).",
+  "orEnterCode": "અથવા તેમનો 6 અંકનો કોડ દાખલ કરો",
+  "qrInvalid": "આ Staff Flow QR કોડ નથી.",
+  "cameraUnavailable": "કેમેરા ઉપલબ્ધ નથી ({error})."
 }

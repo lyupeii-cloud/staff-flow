@@ -556,4 +556,55 @@ class L10nPl extends L10n {
   @override
   String get pendingNotEditable =>
       'Ta zmiana nie jest jeszcze zsynchronizowana: spróbuj ponownie online.';
+
+  @override
+  String get myQrCode => 'Mój kod QR';
+
+  @override
+  String get myQrCodeHint =>
+      'Kierownik skanuje ten kod, aby dodać cię do swojej firmy; potem potwierdzasz. Kod nigdy się nie zmienia.';
+
+  @override
+  String get changeMyName => 'Zmień moje imię';
+
+  @override
+  String get nameShownToTeam =>
+      'To imię widzą twoi współpracownicy zamiast imienia z Google.';
+
+  @override
+  String googleName(String name) {
+    return 'Imię w Google: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Użyj imienia z Google';
+
+  @override
+  String renameMemberTitle(String name) {
+    return 'Zmień nazwę: $name';
+  }
+
+  @override
+  String get renameMemberHint => 'To imię jest używane tylko w tej firmie.';
+
+  @override
+  String get useOwnName => 'Użyj własnego imienia';
+
+  @override
+  String get scanQrCode => 'Zeskanuj kod QR';
+
+  @override
+  String get scanQrHint =>
+      'Skieruj aparat na kod QR wyświetlony w aplikacji tej osoby (menu konta, „Mój kod QR”).';
+
+  @override
+  String get orEnterCode => 'Lub wpisz jej 6-cyfrowy kod';
+
+  @override
+  String get qrInvalid => 'To nie jest kod QR Staff Flow.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'Aparat niedostępny ($error).';
+  }
 }

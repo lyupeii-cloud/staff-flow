@@ -553,4 +553,55 @@ class L10nCs extends L10n {
   @override
   String get pendingNotEditable =>
       'Tato směna ještě není synchronizována: zkuste to znovu online.';
+
+  @override
+  String get myQrCode => 'Můj QR kód';
+
+  @override
+  String get myQrCodeHint =>
+      'Vedoucí naskenuje tento kód, aby vás přidal do své firmy; pak to potvrdíte. Kód se nikdy nemění.';
+
+  @override
+  String get changeMyName => 'Změnit mé jméno';
+
+  @override
+  String get nameShownToTeam =>
+      'Toto jméno uvidí kolegové místo vašeho jména z Googlu.';
+
+  @override
+  String googleName(String name) {
+    return 'Jméno z Googlu: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Použít jméno z Googlu';
+
+  @override
+  String renameMemberTitle(String name) {
+    return 'Přejmenovat: $name';
+  }
+
+  @override
+  String get renameMemberHint => 'Toto jméno se používá jen v této firmě.';
+
+  @override
+  String get useOwnName => 'Použít vlastní jméno';
+
+  @override
+  String get scanQrCode => 'Naskenovat QR kód';
+
+  @override
+  String get scanQrHint =>
+      'Namiřte fotoaparát na QR kód v jeho aplikaci (nabídka účtu, „Můj QR kód“).';
+
+  @override
+  String get orEnterCode => 'Nebo zadejte jeho 6místný kód';
+
+  @override
+  String get qrInvalid => 'Toto není QR kód Staff Flow.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'Fotoaparát není dostupný ($error).';
+  }
 }

@@ -12,7 +12,13 @@ class User {
   final String id;
   final String publicId;
   final String email;
+
+  /// Nom affiché (choisi par la personne, ou par un responsable dans une
+  /// entreprise) ; à défaut, celui de Google.
   final String name;
+
+  /// Nom du compte Google.
+  final String googleName;
   final String? photoUrl;
 
   /// Langue du compte Google (« uk », « fr »…), si Google l'a fournie.
@@ -23,6 +29,7 @@ class User {
         publicId = j['publicId'],
         email = j['email'],
         name = j['name'],
+        googleName = j['googleName'] ?? j['name'],
         photoUrl = j['photoUrl'],
         locale = j['locale'];
 }
@@ -53,9 +60,13 @@ class Member {
   final User user;
   final Role role;
 
+  /// Nom donné par un responsable, pour cette entreprise seulement.
+  final String? nameInCompany;
+
   Member.fromJson(Map<String, dynamic> j)
       : user = User.fromJson(j['user']),
-        role = Role.values.byName(j['role']);
+        role = Role.values.byName(j['role']),
+        nameInCompany = j['nameInCompany'];
 }
 
 class Transfer {

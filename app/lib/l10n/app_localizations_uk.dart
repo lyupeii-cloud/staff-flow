@@ -556,4 +556,56 @@ class L10nUk extends L10n {
   @override
   String get pendingNotEditable =>
       'Цю зміну ще не синхронізовано: спробуйте знову, коли буде з’єднання.';
+
+  @override
+  String get myQrCode => 'Мій QR-код';
+
+  @override
+  String get myQrCodeHint =>
+      'Керівник сканує цей код, щоб додати вас до своєї компанії; потім ви підтверджуєте. Код ніколи не змінюється.';
+
+  @override
+  String get changeMyName => 'Змінити моє ім\'я';
+
+  @override
+  String get nameShownToTeam =>
+      'Це ім\'я бачать ваші колеги замість імені з Google.';
+
+  @override
+  String googleName(String name) {
+    return 'Ім\'я в Google: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Повернути ім\'я з Google';
+
+  @override
+  String renameMemberTitle(String name) {
+    return 'Перейменувати: $name';
+  }
+
+  @override
+  String get renameMemberHint =>
+      'Це ім\'я використовується лише в цій компанії.';
+
+  @override
+  String get useOwnName => 'Повернути власне ім\'я';
+
+  @override
+  String get scanQrCode => 'Сканувати QR-код';
+
+  @override
+  String get scanQrHint =>
+      'Наведіть камеру на QR-код у його застосунку (меню облікового запису, «Мій QR-код»).';
+
+  @override
+  String get orEnterCode => 'Або введіть його 6-значний код';
+
+  @override
+  String get qrInvalid => 'Це не QR-код Staff Flow.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'Камера недоступна ($error).';
+  }
 }

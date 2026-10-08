@@ -550,4 +550,55 @@ class L10nFi extends L10n {
   @override
   String get pendingNotEditable =>
       'Tätä vuoroa ei ole vielä synkronoitu: yritä uudelleen verkossa.';
+
+  @override
+  String get myQrCode => 'Oma QR-koodi';
+
+  @override
+  String get myQrCodeHint =>
+      'Esihenkilö skannaa tämän koodin lisätäkseen sinut yritykseensä; sen jälkeen vahvistat. Koodi ei koskaan muutu.';
+
+  @override
+  String get changeMyName => 'Vaihda nimeni';
+
+  @override
+  String get nameShownToTeam =>
+      'Työkaverisi näkevät tämän nimen Google-nimesi sijaan.';
+
+  @override
+  String googleName(String name) {
+    return 'Google-nimi: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Käytä Google-nimeäni';
+
+  @override
+  String renameMemberTitle(String name) {
+    return 'Nimeä uudelleen: $name';
+  }
+
+  @override
+  String get renameMemberHint => 'Tätä nimeä käytetään vain tässä yrityksessä.';
+
+  @override
+  String get useOwnName => 'Käytä omaa nimeä';
+
+  @override
+  String get scanQrCode => 'Skannaa QR-koodi';
+
+  @override
+  String get scanQrHint =>
+      'Suuntaa kamera henkilön sovelluksessa näkyvään QR-koodiin (tilivalikko, ”Oma QR-koodi”).';
+
+  @override
+  String get orEnterCode => 'Tai syötä hänen 6-numeroinen koodinsa';
+
+  @override
+  String get qrInvalid => 'Tämä ei ole Staff Flow -QR-koodi.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'Kamera ei ole käytettävissä ($error).';
+  }
 }

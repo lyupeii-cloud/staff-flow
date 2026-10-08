@@ -190,4 +190,10 @@ CREATE TABLE idempotency_keys (
   PRIMARY KEY (user_id, key)
 );
 ''',
+  // 5 — noms personnalisés : par la personne (partout) et par un responsable
+  // (dans son entreprise). Le nom Google reste dans users.name.
+  '''
+ALTER TABLE users ADD COLUMN custom_name text;
+ALTER TABLE memberships ADD COLUMN display_name text;
+''',
 ];

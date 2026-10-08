@@ -538,4 +538,52 @@ class L10nZh extends L10n {
 
   @override
   String get pendingNotEditable => '此班次尚未同步：请联网后重试。';
+
+  @override
+  String get myQrCode => '我的二维码';
+
+  @override
+  String get myQrCodeHint => '负责人扫描此二维码即可将你加入其公司，随后由你确认。二维码永久不变。';
+
+  @override
+  String get changeMyName => '修改我的名字';
+
+  @override
+  String get nameShownToTeam => '同事看到的将是这个名字，而不是你的 Google 名字。';
+
+  @override
+  String googleName(String name) {
+    return 'Google 名字：$name';
+  }
+
+  @override
+  String get useGoogleName => '使用我的 Google 名字';
+
+  @override
+  String renameMemberTitle(String name) {
+    return '重命名 $name';
+  }
+
+  @override
+  String get renameMemberHint => '此名字仅在本公司使用。';
+
+  @override
+  String get useOwnName => '使用其本人名字';
+
+  @override
+  String get scanQrCode => '扫描二维码';
+
+  @override
+  String get scanQrHint => '将摄像头对准对方应用中显示的二维码（账户菜单“我的二维码”）。';
+
+  @override
+  String get orEnterCode => '或输入对方的 6 位数字代码';
+
+  @override
+  String get qrInvalid => '这不是 Staff Flow 二维码。';
+
+  @override
+  String cameraUnavailable(String error) {
+    return '摄像头不可用（$error）。';
+  }
 }

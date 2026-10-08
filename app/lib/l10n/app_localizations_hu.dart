@@ -545,4 +545,55 @@ class L10nHu extends L10n {
   @override
   String get pendingNotEditable =>
       'Ez a műszak még nincs szinkronizálva: próbáld újra online.';
+
+  @override
+  String get myQrCode => 'Saját QR-kódom';
+
+  @override
+  String get myQrCodeHint =>
+      'Egy vezető beolvassa ezt a kódot, hogy felvegyen a cégébe; ezután te megerősíted. Soha nem változik.';
+
+  @override
+  String get changeMyName => 'Nevem módosítása';
+
+  @override
+  String get nameShownToTeam =>
+      'A kollégáid ezt a nevet látják a Google-neved helyett.';
+
+  @override
+  String googleName(String name) {
+    return 'Google-név: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Google-nevem használata';
+
+  @override
+  String renameMemberTitle(String name) {
+    return '$name átnevezése';
+  }
+
+  @override
+  String get renameMemberHint => 'Ezt a nevet csak ebben a cégben használjuk.';
+
+  @override
+  String get useOwnName => 'Saját név használata';
+
+  @override
+  String get scanQrCode => 'QR-kód beolvasása';
+
+  @override
+  String get scanQrHint =>
+      'Irányítsd a kamerát az alkalmazásában látható QR-kódra (fiókmenü, „Saját QR-kódom”).';
+
+  @override
+  String get orEnterCode => 'Vagy írd be a 6 jegyű kódját';
+
+  @override
+  String get qrInvalid => 'Ez nem Staff Flow QR-kód.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'A kamera nem érhető el ($error).';
+  }
 }

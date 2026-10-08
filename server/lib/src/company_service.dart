@@ -166,6 +166,32 @@ class CompanyService {
     }
   }
 
+  /// Nom d'une personne dans l'entreprise, donné par un responsable : le
+  /// propriétaire renomme tout le monde, un responsable les salariés, les
+  /// extras et lui-même. Vide : on revient au nom choisi par la personne.
+  Future<void> renameMember(User actor, String companyId, String userId, String? name) async {
+    final (company, actorRole) = await open(actor, companyId);
+    _requireWritable(company);
+    final target = await store.roleOf(companyId, userId);
+    if (target == null) throw const ApiError.notFound('Membre introuvable.');
+    final allowed = actorRole == Role.owner ||
+        (actorRole == Role.manager &&
+            (userId == actor.id || target == Role.employee || target == Role.extra));
+    if (!allowed) throw const ApiError.forbidden();
+    final clean = personName(name);
+    await store.setMemberName(companyId, userId, clean);
+    await store.audit(
+      companyId: companyId,
+      actorId: actor.id,
+      action: 'member.name',
+      details: {'userId': userId, 'name': clean},
+    );
+  }
+
+  /// `null` ou vide : pas de nom personnalisé.
+  static String? personName(String? name) =>
+      name == null || name.trim().isEmpty ? null : _validName(name);
+
   static String _validName(String name) {
     final trimmed = name.trim();
     if (trimmed.isEmpty || trimmed.length > 120) {

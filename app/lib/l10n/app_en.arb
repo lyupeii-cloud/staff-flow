@@ -345,5 +345,40 @@
   "historyDelete": "Deleted",
   "historyUndo": "Undone",
   "noHistory": "No changes.",
-  "pendingNotEditable": "This shift is not synced yet: try again once online."
+  "pendingNotEditable": "This shift is not synced yet: try again once online.",
+  "myQrCode": "My QR code",
+  "myQrCodeHint": "A manager scans this code to add you to their company; you then confirm. It never changes.",
+  "changeMyName": "Change my name",
+  "nameShownToTeam": "This name is shown to your colleagues instead of your Google name.",
+  "googleName": "Google name: {name}",
+  "@googleName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "useGoogleName": "Use my Google name",
+  "renameMemberTitle": "Rename {name}",
+  "@renameMemberTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "renameMemberHint": "This name is only used in this company.",
+  "useOwnName": "Use their own name",
+  "scanQrCode": "Scan a QR code",
+  "scanQrHint": "Point the camera at the QR code shown in their app (account menu, “My QR code”).",
+  "orEnterCode": "Or enter their 6-digit code",
+  "qrInvalid": "This is not a Staff Flow QR code.",
+  "cameraUnavailable": "Camera unavailable ({error}).",
+  "@cameraUnavailable": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  }
 }

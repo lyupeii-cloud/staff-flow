@@ -147,5 +147,19 @@
   "historyDelete": "Dihapus",
   "historyUndo": "Dibatalkan",
   "noHistory": "Tidak ada perubahan.",
-  "pendingNotEditable": "Shift ini belum disinkronkan: coba lagi saat online."
+  "pendingNotEditable": "Shift ini belum disinkronkan: coba lagi saat online.",
+  "myQrCode": "Kode QR saya",
+  "myQrCodeHint": "Manajer memindai kode ini untuk menambahkan Anda ke perusahaannya; lalu Anda mengonfirmasi. Kode ini tidak pernah berubah.",
+  "changeMyName": "Ubah nama saya",
+  "nameShownToTeam": "Nama ini ditampilkan ke rekan kerja Anda sebagai pengganti nama Google.",
+  "googleName": "Nama Google: {name}",
+  "useGoogleName": "Gunakan nama Google saya",
+  "renameMemberTitle": "Ganti nama {name}",
+  "renameMemberHint": "Nama ini hanya digunakan di perusahaan ini.",
+  "useOwnName": "Gunakan namanya sendiri",
+  "scanQrCode": "Pindai kode QR",
+  "scanQrHint": "Arahkan kamera ke kode QR di aplikasinya (menu akun, “Kode QR saya”).",
+  "orEnterCode": "Atau masukkan kode 6 digitnya",
+  "qrInvalid": "Ini bukan kode QR Staff Flow.",
+  "cameraUnavailable": "Kamera tidak tersedia ({error})."
 }

@@ -543,4 +543,55 @@ class L10nVi extends L10n {
   @override
   String get pendingNotEditable =>
       'Ca này chưa được đồng bộ: hãy thử lại khi có mạng.';
+
+  @override
+  String get myQrCode => 'Mã QR của tôi';
+
+  @override
+  String get myQrCodeHint =>
+      'Quản lý quét mã này để thêm bạn vào công ty; sau đó bạn xác nhận. Mã không bao giờ thay đổi.';
+
+  @override
+  String get changeMyName => 'Đổi tên của tôi';
+
+  @override
+  String get nameShownToTeam =>
+      'Đồng nghiệp sẽ thấy tên này thay cho tên Google của bạn.';
+
+  @override
+  String googleName(String name) {
+    return 'Tên Google: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Dùng tên Google của tôi';
+
+  @override
+  String renameMemberTitle(String name) {
+    return 'Đổi tên $name';
+  }
+
+  @override
+  String get renameMemberHint => 'Tên này chỉ dùng trong công ty này.';
+
+  @override
+  String get useOwnName => 'Dùng tên của chính họ';
+
+  @override
+  String get scanQrCode => 'Quét mã QR';
+
+  @override
+  String get scanQrHint =>
+      'Hướng camera vào mã QR trong ứng dụng của họ (menu tài khoản, “Mã QR của tôi”).';
+
+  @override
+  String get orEnterCode => 'Hoặc nhập mã 6 chữ số của họ';
+
+  @override
+  String get qrInvalid => 'Đây không phải mã QR Staff Flow.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'Không dùng được camera ($error).';
+  }
 }

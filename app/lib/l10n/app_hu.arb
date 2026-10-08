@@ -147,5 +147,19 @@
   "historyDelete": "Törlés",
   "historyUndo": "Visszavonás",
   "noHistory": "Nincs módosítás.",
-  "pendingNotEditable": "Ez a műszak még nincs szinkronizálva: próbáld újra online."
+  "pendingNotEditable": "Ez a műszak még nincs szinkronizálva: próbáld újra online.",
+  "myQrCode": "Saját QR-kódom",
+  "myQrCodeHint": "Egy vezető beolvassa ezt a kódot, hogy felvegyen a cégébe; ezután te megerősíted. Soha nem változik.",
+  "changeMyName": "Nevem módosítása",
+  "nameShownToTeam": "A kollégáid ezt a nevet látják a Google-neved helyett.",
+  "googleName": "Google-név: {name}",
+  "useGoogleName": "Google-nevem használata",
+  "renameMemberTitle": "{name} átnevezése",
+  "renameMemberHint": "Ezt a nevet csak ebben a cégben használjuk.",
+  "useOwnName": "Saját név használata",
+  "scanQrCode": "QR-kód beolvasása",
+  "scanQrHint": "Irányítsd a kamerát az alkalmazásában látható QR-kódra (fiókmenü, „Saját QR-kódom”).",
+  "orEnterCode": "Vagy írd be a 6 jegyű kódját",
+  "qrInvalid": "Ez nem Staff Flow QR-kód.",
+  "cameraUnavailable": "A kamera nem érhető el ({error})."
 }

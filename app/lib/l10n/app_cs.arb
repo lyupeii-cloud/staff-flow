@@ -147,5 +147,19 @@
   "historyDelete": "Smazání",
   "historyUndo": "Vrácení",
   "noHistory": "Žádné změny.",
-  "pendingNotEditable": "Tato směna ještě není synchronizována: zkuste to znovu online."
+  "pendingNotEditable": "Tato směna ještě není synchronizována: zkuste to znovu online.",
+  "myQrCode": "Můj QR kód",
+  "myQrCodeHint": "Vedoucí naskenuje tento kód, aby vás přidal do své firmy; pak to potvrdíte. Kód se nikdy nemění.",
+  "changeMyName": "Změnit mé jméno",
+  "nameShownToTeam": "Toto jméno uvidí kolegové místo vašeho jména z Googlu.",
+  "googleName": "Jméno z Googlu: {name}",
+  "useGoogleName": "Použít jméno z Googlu",
+  "renameMemberTitle": "Přejmenovat: {name}",
+  "renameMemberHint": "Toto jméno se používá jen v této firmě.",
+  "useOwnName": "Použít vlastní jméno",
+  "scanQrCode": "Naskenovat QR kód",
+  "scanQrHint": "Namiřte fotoaparát na QR kód v jeho aplikaci (nabídka účtu, „Můj QR kód“).",
+  "orEnterCode": "Nebo zadejte jeho 6místný kód",
+  "qrInvalid": "Toto není QR kód Staff Flow.",
+  "cameraUnavailable": "Fotoaparát není dostupný ({error})."
 }

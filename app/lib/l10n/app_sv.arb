@@ -147,5 +147,19 @@
   "historyDelete": "Borttagen",
   "historyUndo": "Ångrad",
   "noHistory": "Inga ändringar.",
-  "pendingNotEditable": "Passet är inte synkroniserat ännu: försök igen när du är online."
+  "pendingNotEditable": "Passet är inte synkroniserat ännu: försök igen när du är online.",
+  "myQrCode": "Min QR-kod",
+  "myQrCodeHint": "En chef skannar koden för att lägga till dig i sitt företag; sedan bekräftar du. Den ändras aldrig.",
+  "changeMyName": "Ändra mitt namn",
+  "nameShownToTeam": "Det här namnet visas för dina kollegor i stället för ditt Google-namn.",
+  "googleName": "Google-namn: {name}",
+  "useGoogleName": "Använd mitt Google-namn",
+  "renameMemberTitle": "Byt namn på {name}",
+  "renameMemberHint": "Det här namnet används bara i det här företaget.",
+  "useOwnName": "Använd eget namn",
+  "scanQrCode": "Skanna en QR-kod",
+  "scanQrHint": "Rikta kameran mot QR-koden i personens app (kontomenyn, ”Min QR-kod”).",
+  "orEnterCode": "Eller ange personens sexsiffriga kod",
+  "qrInvalid": "Det här är inte en QR-kod från Staff Flow.",
+  "cameraUnavailable": "Kameran är inte tillgänglig ({error})."
 }

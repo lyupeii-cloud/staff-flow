@@ -25,7 +25,12 @@ class User {
   final String publicId;
   final String googleSub;
   final String email;
+
+  /// Nom affiché : celui choisi par la personne, sinon celui de Google.
   final String name;
+
+  /// Nom du compte Google, mis à jour à chaque connexion.
+  final String googleName;
   final String? photoUrl;
 
   /// Langue du compte Google, pour afficher le site dans cette langue.
@@ -38,16 +43,30 @@ class User {
     required this.googleSub,
     required this.email,
     required this.name,
+    String? googleName,
     this.photoUrl,
     this.locale,
     required this.createdAt,
-  });
+  }) : googleName = googleName ?? name;
+
+  User withName(String name) => User(
+        id: id,
+        publicId: publicId,
+        googleSub: googleSub,
+        email: email,
+        name: name,
+        googleName: googleName,
+        photoUrl: photoUrl,
+        locale: locale,
+        createdAt: createdAt,
+      );
 
   Map<String, Object?> toJson() => {
         'id': id,
         'publicId': publicId,
         'email': email,
         'name': name,
+        'googleName': googleName,
         'photoUrl': photoUrl,
         'locale': locale,
       };
@@ -96,14 +115,19 @@ class Membership {
 }
 
 class Member {
+  /// `user.name` est déjà le nom utilisé dans cette entreprise.
   final User user;
   final Role role;
   final DateTime joinedAt;
 
-  const Member(this.user, this.role, this.joinedAt);
+  /// Nom donné par un responsable pour cette entreprise seulement.
+  final String? nameInCompany;
+
+  const Member(this.user, this.role, this.joinedAt, {this.nameInCompany});
 
   Map<String, Object?> toJson() => {
         'user': user.toJson(),
+        'nameInCompany': nameInCompany,
         'role': role.name,
         'joinedAt': joinedAt.toUtc().toIso8601String(),
       };

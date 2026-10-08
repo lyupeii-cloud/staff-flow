@@ -1078,6 +1078,90 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'This shift is not synced yet: try again once online.'**
   String get pendingNotEditable;
+
+  /// No description provided for @myQrCode.
+  ///
+  /// In en, this message translates to:
+  /// **'My QR code'**
+  String get myQrCode;
+
+  /// No description provided for @myQrCodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'A manager scans this code to add you to their company; you then confirm. It never changes.'**
+  String get myQrCodeHint;
+
+  /// No description provided for @changeMyName.
+  ///
+  /// In en, this message translates to:
+  /// **'Change my name'**
+  String get changeMyName;
+
+  /// No description provided for @nameShownToTeam.
+  ///
+  /// In en, this message translates to:
+  /// **'This name is shown to your colleagues instead of your Google name.'**
+  String get nameShownToTeam;
+
+  /// No description provided for @googleName.
+  ///
+  /// In en, this message translates to:
+  /// **'Google name: {name}'**
+  String googleName(String name);
+
+  /// No description provided for @useGoogleName.
+  ///
+  /// In en, this message translates to:
+  /// **'Use my Google name'**
+  String get useGoogleName;
+
+  /// No description provided for @renameMemberTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename {name}'**
+  String renameMemberTitle(String name);
+
+  /// No description provided for @renameMemberHint.
+  ///
+  /// In en, this message translates to:
+  /// **'This name is only used in this company.'**
+  String get renameMemberHint;
+
+  /// No description provided for @useOwnName.
+  ///
+  /// In en, this message translates to:
+  /// **'Use their own name'**
+  String get useOwnName;
+
+  /// No description provided for @scanQrCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan a QR code'**
+  String get scanQrCode;
+
+  /// No description provided for @scanQrHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Point the camera at the QR code shown in their app (account menu, “My QR code”).'**
+  String get scanQrHint;
+
+  /// No description provided for @orEnterCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Or enter their 6-digit code'**
+  String get orEnterCode;
+
+  /// No description provided for @qrInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'This is not a Staff Flow QR code.'**
+  String get qrInvalid;
+
+  /// No description provided for @cameraUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera unavailable ({error}).'**
+  String cameraUnavailable(String error);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

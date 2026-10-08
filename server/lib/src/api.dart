@@ -46,11 +46,13 @@ class Api {
     final v1 = Router(notFoundHandler: _notFound)
       ..post('/auth/google', _loginGoogle)
       ..get('/me', _authed(_me))
+      ..patch('/me', _authed(_updateMe))
       ..post('/companies', _authed(_createCompany))
       ..get('/companies/<id>', _authed(_getCompany))
       ..patch('/companies/<id>', _authed(_updateCompany))
       ..get('/companies/<id>/members', _authed(_members))
       ..put('/companies/<id>/members/<userId>/role', _authed(_setRole))
+      ..put('/companies/<id>/members/<userId>/name', _authed(_renameMember))
       ..delete('/companies/<id>/members/<userId>', _authed(_removeMember))
       ..post('/companies/<id>/transfer', _authed(_proposeTransfer))
       ..delete('/companies/<id>/transfer', _authed(_cancelTransfer))
@@ -59,6 +61,7 @@ class Api {
       // Ajout par code à 6 chiffres
       ..post('/join-codes', _authed(_createJoinCode))
       ..post('/companies/<id>/join', _authed(_redeemJoinCode))
+      ..post('/companies/<id>/invite', _authed(_inviteByQr))
       ..post('/join-requests/<id>/accept', _authed((r, u) => _answerJoin(r, u, accept: true)))
       ..post('/join-requests/<id>/decline', _authed((r, u) => _answerJoin(r, u, accept: false)))
       // Planning
@@ -126,6 +129,16 @@ class Api {
         'unreadNotices': await notices.unreadCount(user.id),
       });
 
+  /// La personne choisit le nom affiché partout (vide : celui de Google).
+  Future<Response> _updateMe(Request req, User user) async {
+    final body = await _body(req);
+    final name = body['name'];
+    if (name is! String?) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    final updated = await store.setCustomName(user.id, CompanyService.personName(name));
+    await store.audit(actorId: user.id, action: 'user.name', details: {'name': updated.name});
+    return _json(updated.toJson());
+  }
+
   // --- Entreprises ---------------------------------------------------------
 
   Future<Response> _createCompany(Request req, User user) async {
@@ -155,6 +168,14 @@ class Api {
     final body = await _body(req);
     final role = _role(_string(body, 'role'));
     await companies.setRole(user, req.params['id']!, req.params['userId']!, role);
+    return Response(204);
+  }
+
+  Future<Response> _renameMember(Request req, User user) async {
+    final body = await _body(req);
+    final name = body['name'];
+    if (name is! String?) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    await companies.renameMember(user, req.params['id']!, req.params['userId']!, name);
     return Response(204);
   }
 
@@ -192,6 +213,15 @@ class Api {
     final body = await _body(req);
     final (request, invited) = await joins.redeem(user, req.params['id']!,
         code: _string(body, 'code'),
+        role: _role((body['role'] as String?) ?? 'employee'),
+        ip: _clientIp(req));
+    return _json({'request': request.toJson(), 'user': invited.toJson()}, status: 201);
+  }
+
+  Future<Response> _inviteByQr(Request req, User user) async {
+    final body = await _body(req);
+    final (request, invited) = await joins.inviteByQr(user, req.params['id']!,
+        qr: _string(body, 'qr'),
         role: _role((body['role'] as String?) ?? 'employee'),
         ip: _clientIp(req));
     return _json({'request': request.toJson(), 'user': invited.toJson()}, status: 201);

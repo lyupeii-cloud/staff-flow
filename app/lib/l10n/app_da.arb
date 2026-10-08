@@ -147,5 +147,19 @@
   "historyDelete": "Slettet",
   "historyUndo": "Fortrudt",
   "noHistory": "Ingen ændringer.",
-  "pendingNotEditable": "Vagten er ikke synkroniseret endnu: prøv igen, når du er online."
+  "pendingNotEditable": "Vagten er ikke synkroniseret endnu: prøv igen, når du er online.",
+  "myQrCode": "Min QR-kode",
+  "myQrCodeHint": "En leder scanner koden for at tilføje dig til sin virksomhed; derefter bekræfter du. Den ændres aldrig.",
+  "changeMyName": "Skift mit navn",
+  "nameShownToTeam": "Dette navn vises for dine kolleger i stedet for dit Google-navn.",
+  "googleName": "Google-navn: {name}",
+  "useGoogleName": "Brug mit Google-navn",
+  "renameMemberTitle": "Omdøb {name}",
+  "renameMemberHint": "Dette navn bruges kun i denne virksomhed.",
+  "useOwnName": "Brug eget navn",
+  "scanQrCode": "Scan en QR-kode",
+  "scanQrHint": "Ret kameraet mod QR-koden i personens app (kontomenuen, »Min QR-kode«).",
+  "orEnterCode": "Eller indtast personens 6-cifrede kode",
+  "qrInvalid": "Dette er ikke en Staff Flow-QR-kode.",
+  "cameraUnavailable": "Kameraet er ikke tilgængeligt ({error})."
 }

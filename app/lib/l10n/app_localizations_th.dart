@@ -543,4 +543,55 @@ class L10nTh extends L10n {
   @override
   String get pendingNotEditable =>
       'กะนี้ยังไม่ได้ซิงค์: ลองอีกครั้งเมื่อออนไลน์';
+
+  @override
+  String get myQrCode => 'คิวอาร์โค้ดของฉัน';
+
+  @override
+  String get myQrCodeHint =>
+      'ผู้จัดการสแกนโค้ดนี้เพื่อเพิ่มคุณเข้าบริษัท จากนั้นคุณยืนยัน โค้ดนี้ไม่มีวันเปลี่ยน';
+
+  @override
+  String get changeMyName => 'เปลี่ยนชื่อของฉัน';
+
+  @override
+  String get nameShownToTeam =>
+      'เพื่อนร่วมงานจะเห็นชื่อนี้แทนชื่อ Google ของคุณ';
+
+  @override
+  String googleName(String name) {
+    return 'ชื่อ Google: $name';
+  }
+
+  @override
+  String get useGoogleName => 'ใช้ชื่อ Google ของฉัน';
+
+  @override
+  String renameMemberTitle(String name) {
+    return 'เปลี่ยนชื่อ $name';
+  }
+
+  @override
+  String get renameMemberHint => 'ชื่อนี้ใช้เฉพาะในบริษัทนี้';
+
+  @override
+  String get useOwnName => 'ใช้ชื่อของเขาเอง';
+
+  @override
+  String get scanQrCode => 'สแกนคิวอาร์โค้ด';
+
+  @override
+  String get scanQrHint =>
+      'หันกล้องไปที่คิวอาร์โค้ดในแอปของเขา (เมนูบัญชี “คิวอาร์โค้ดของฉัน”)';
+
+  @override
+  String get orEnterCode => 'หรือป้อนรหัส 6 หลักของเขา';
+
+  @override
+  String get qrInvalid => 'นี่ไม่ใช่คิวอาร์โค้ดของ Staff Flow';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'ใช้กล้องไม่ได้ ($error)';
+  }
 }

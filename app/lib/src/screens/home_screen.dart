@@ -9,6 +9,7 @@ import '../session.dart';
 import 'company_tab.dart';
 import 'join_code_dialog.dart';
 import 'language_picker.dart';
+import 'people_widgets.dart';
 import 'sync_widgets.dart';
 
 /// Un onglet par entreprise dont l'utilisateur est membre (section 3).
@@ -238,7 +239,11 @@ class _ProfileMenu extends StatelessWidget {
         child: user.photoUrl == null ? Text(user.name.characters.first.toUpperCase()) : null,
       ),
       onSelected: (v) {
-        if (v == 'join') {
+        if (v == 'qr') {
+          showMyQrCode(context, user);
+        } else if (v == 'name') {
+          _changeName(context);
+        } else if (v == 'join') {
           showJoinCodeDialog(context, session);
         } else if (v == 'language') {
           showLanguagePicker(context, session);
@@ -251,12 +256,34 @@ class _ProfileMenu extends StatelessWidget {
       },
       itemBuilder: (_) => [
         PopupMenuItem(enabled: false, child: Text('${user.name}\n${user.email}')),
-        PopupMenuItem(value: 'join', child: Text(t.joinCompany)),
-        PopupMenuItem(value: 'copy', child: Text(t.myId(user.publicId))),
-        PopupMenuItem(value: 'language', child: Text(t.language)),
-        PopupMenuItem(value: 'logout', child: Text(t.signOut)),
+        _item('qr', Icons.qr_code_2, t.myQrCode),
+        _item('name', Icons.badge_outlined, t.changeMyName),
+        _item('join', Icons.pin_outlined, t.joinCompany),
+        _item('copy', Icons.copy, t.myId(user.publicId)),
+        _item('language', Icons.language, t.language),
+        _item('logout', Icons.logout, t.signOut),
       ],
     );
+  }
+
+  static PopupMenuItem<String> _item(String value, IconData icon, String label) => PopupMenuItem(
+        value: value,
+        child: Row(children: [Icon(icon, size: 20, color: Brand.blue), const SizedBox(width: 12), Flexible(child: Text(label))]),
+      );
+
+  Future<void> _changeName(BuildContext context) async {
+    final t = context.l10n;
+    final user = session.me!.user;
+    final name = await askName(
+      context,
+      title: t.changeMyName,
+      current: user.name,
+      hint: '${t.nameShownToTeam}\n${t.googleName(user.googleName)}',
+      resetLabel: t.useGoogleName,
+      canReset: user.name != user.googleName,
+    );
+    if (name == null || !context.mounted) return;
+    await runAction(context, session, () => session.api.setMyName(name.isEmpty ? null : name));
   }
 }
 

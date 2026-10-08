@@ -147,5 +147,19 @@
   "historyDelete": "삭제",
   "historyUndo": "취소",
   "noHistory": "변경 사항이 없습니다.",
-  "pendingNotEditable": "이 근무는 아직 동기화되지 않았습니다. 온라인에서 다시 시도하세요."
+  "pendingNotEditable": "이 근무는 아직 동기화되지 않았습니다. 온라인에서 다시 시도하세요.",
+  "myQrCode": "내 QR 코드",
+  "myQrCodeHint": "관리자가 이 코드를 스캔하면 회사에 추가되며, 이후 직접 확인합니다. 코드는 바뀌지 않습니다.",
+  "changeMyName": "내 이름 변경",
+  "nameShownToTeam": "동료에게는 Google 이름 대신 이 이름이 표시됩니다.",
+  "googleName": "Google 이름: {name}",
+  "useGoogleName": "Google 이름 사용",
+  "renameMemberTitle": "{name} 이름 변경",
+  "renameMemberHint": "이 이름은 이 회사에서만 사용됩니다.",
+  "useOwnName": "본인 이름 사용",
+  "scanQrCode": "QR 코드 스캔",
+  "scanQrHint": "상대방 앱에 표시된 QR 코드에 카메라를 맞추세요(계정 메뉴, ‘내 QR 코드’).",
+  "orEnterCode": "또는 6자리 코드를 입력하세요",
+  "qrInvalid": "Staff Flow QR 코드가 아닙니다.",
+  "cameraUnavailable": "카메라를 사용할 수 없습니다({error})."
 }

@@ -549,4 +549,55 @@ class L10nTe extends L10n {
   @override
   String get pendingNotEditable =>
       'ఈ షిఫ్ట్ ఇంకా సింక్ కాలేదు: ఆన్‌లైన్‌లో మళ్లీ ప్రయత్నించండి.';
+
+  @override
+  String get myQrCode => 'నా QR కోడ్';
+
+  @override
+  String get myQrCodeHint =>
+      'మేనేజర్ ఈ కోడ్‌ను స్కాన్ చేసి మిమ్మల్ని తమ కంపెనీలో చేరుస్తారు; ఆ తర్వాత మీరు నిర్ధారిస్తారు. ఇది ఎప్పటికీ మారదు.';
+
+  @override
+  String get changeMyName => 'నా పేరు మార్చు';
+
+  @override
+  String get nameShownToTeam =>
+      'మీ Google పేరుకు బదులుగా ఈ పేరు మీ సహోద్యోగులకు కనిపిస్తుంది.';
+
+  @override
+  String googleName(String name) {
+    return 'Google పేరు: $name';
+  }
+
+  @override
+  String get useGoogleName => 'నా Google పేరు వాడు';
+
+  @override
+  String renameMemberTitle(String name) {
+    return '$name పేరు మార్చు';
+  }
+
+  @override
+  String get renameMemberHint => 'ఈ పేరు ఈ కంపెనీలో మాత్రమే వాడబడుతుంది.';
+
+  @override
+  String get useOwnName => 'వారి స్వంత పేరు వాడు';
+
+  @override
+  String get scanQrCode => 'QR కోడ్ స్కాన్ చేయి';
+
+  @override
+  String get scanQrHint =>
+      'వారి యాప్‌లో చూపిన QR కోడ్ వైపు కెమెరా పెట్టండి (ఖాతా మెనూ, “నా QR కోడ్”).';
+
+  @override
+  String get orEnterCode => 'లేదా వారి 6 అంకెల కోడ్ నమోదు చేయండి';
+
+  @override
+  String get qrInvalid => 'ఇది Staff Flow QR కోడ్ కాదు.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'కెమెరా అందుబాటులో లేదు ($error).';
+  }
 }

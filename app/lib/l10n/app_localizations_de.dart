@@ -549,4 +549,56 @@ class L10nDe extends L10n {
   @override
   String get pendingNotEditable =>
       'Diese Schicht ist noch nicht synchronisiert: versuche es online erneut.';
+
+  @override
+  String get myQrCode => 'Mein QR-Code';
+
+  @override
+  String get myQrCodeHint =>
+      'Eine Führungskraft scannt diesen Code, um Sie zu ihrem Unternehmen hinzuzufügen; danach bestätigen Sie. Er ändert sich nie.';
+
+  @override
+  String get changeMyName => 'Meinen Namen ändern';
+
+  @override
+  String get nameShownToTeam =>
+      'Dieser Name wird Ihren Kollegen statt Ihres Google-Namens angezeigt.';
+
+  @override
+  String googleName(String name) {
+    return 'Google-Name: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Meinen Google-Namen verwenden';
+
+  @override
+  String renameMemberTitle(String name) {
+    return '$name umbenennen';
+  }
+
+  @override
+  String get renameMemberHint =>
+      'Dieser Name wird nur in diesem Unternehmen verwendet.';
+
+  @override
+  String get useOwnName => 'Eigenen Namen verwenden';
+
+  @override
+  String get scanQrCode => 'QR-Code scannen';
+
+  @override
+  String get scanQrHint =>
+      'Richten Sie die Kamera auf den QR-Code in der App der Person (Kontomenü, „Mein QR-Code“).';
+
+  @override
+  String get orEnterCode => 'Oder geben Sie den 6-stelligen Code ein';
+
+  @override
+  String get qrInvalid => 'Das ist kein Staff-Flow-QR-Code.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'Kamera nicht verfügbar ($error).';
+  }
 }

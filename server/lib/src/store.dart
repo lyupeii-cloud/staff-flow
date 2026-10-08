@@ -61,7 +61,8 @@ class Store {
         publicId: r['public_id'] as String,
         googleSub: r['google_sub'] as String,
         email: r['email'] as String,
-        name: r['name'] as String,
+        name: (r['custom_name'] as String?) ?? r['name'] as String,
+        googleName: r['name'] as String,
         photoUrl: r['photo_url'] as String?,
         locale: r['locale'] as String?,
         createdAt: r['created_at'] as DateTime,
@@ -162,13 +163,39 @@ class Store {
 
   Future<List<Member>> members(String companyId) async {
     final rows = await query(_db, '''
-      SELECT u.*, m.role, m.joined_at FROM memberships m JOIN users u ON u.id = m.user_id
+      SELECT u.*, m.role, m.joined_at, m.display_name FROM memberships m JOIN users u ON u.id = m.user_id
       WHERE m.company_id = @c::uuid AND m.left_at IS NULL
       ORDER BY m.joined_at''', {'c': companyId});
     return [
       for (final r in rows.map((r) => r.toColumnMap()))
-        Member(_user(r), Role.parse(r['role'] as String), r['joined_at'] as DateTime),
+        if (_user(r) case final u)
+          Member(
+            r['display_name'] == null ? u : u.withName(r['display_name'] as String),
+            Role.parse(r['role'] as String),
+            r['joined_at'] as DateTime,
+            nameInCompany: r['display_name'] as String?,
+          ),
     ];
+  }
+
+  Future<User?> findUserByPublicId(String publicId) async {
+    final rows = await query(_db, 'SELECT * FROM users WHERE public_id = @p', {'p': publicId});
+    return rows.isEmpty ? null : _user(rows.first.toColumnMap());
+  }
+
+  /// Nom choisi par la personne (`null` : reprendre celui de Google).
+  Future<User> setCustomName(String userId, String? name) async {
+    final rows = await query(_db, 'UPDATE users SET custom_name = @n WHERE id = @id::uuid RETURNING *',
+        {'id': userId, 'n': name});
+    return _user(rows.first.toColumnMap());
+  }
+
+  /// Nom donné par un responsable dans une entreprise (`null` : nom de la personne).
+  Future<void> setMemberName(String companyId, String userId, String? name) async {
+    await query(_db, '''
+      UPDATE memberships SET display_name = @n
+      WHERE company_id = @c::uuid AND user_id = @u::uuid AND left_at IS NULL''',
+        {'c': companyId, 'u': userId, 'n': name});
   }
 
   Future<void> addMember(String companyId, String userId, Role role) async {

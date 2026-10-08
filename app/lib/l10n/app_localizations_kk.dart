@@ -549,4 +549,55 @@ class L10nKk extends L10n {
   @override
   String get pendingNotEditable =>
       'Бұл ауысым әлі синхрондалмаған: желіде болғанда қайталаңыз.';
+
+  @override
+  String get myQrCode => 'Менің QR-кодым';
+
+  @override
+  String get myQrCodeHint =>
+      'Басшы сізді компаниясына қосу үшін осы кодты сканерлейді; содан кейін сіз растайсыз. Код ешқашан өзгермейді.';
+
+  @override
+  String get changeMyName => 'Атымды өзгерту';
+
+  @override
+  String get nameShownToTeam =>
+      'Әріптестеріңіз Google атыңыздың орнына осы атты көреді.';
+
+  @override
+  String googleName(String name) {
+    return 'Google аты: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Google атымды қолдану';
+
+  @override
+  String renameMemberTitle(String name) {
+    return 'Атын өзгерту: $name';
+  }
+
+  @override
+  String get renameMemberHint => 'Бұл ат тек осы компанияда қолданылады.';
+
+  @override
+  String get useOwnName => 'Өз атын қолдану';
+
+  @override
+  String get scanQrCode => 'QR-кодты сканерлеу';
+
+  @override
+  String get scanQrHint =>
+      'Камераны оның қолданбасындағы QR-кодқа бағыттаңыз (аккаунт мәзірі, «Менің QR-кодым»).';
+
+  @override
+  String get orEnterCode => 'Немесе оның 6 таңбалы кодын енгізіңіз';
+
+  @override
+  String get qrInvalid => 'Бұл Staff Flow QR-коды емес.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'Камера қолжетімсіз ($error).';
+  }
 }

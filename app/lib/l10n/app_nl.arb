@@ -147,5 +147,19 @@
   "historyDelete": "Verwijderd",
   "historyUndo": "Ongedaan gemaakt",
   "noHistory": "Geen wijzigingen.",
-  "pendingNotEditable": "Deze dienst is nog niet gesynchroniseerd: probeer het online opnieuw."
+  "pendingNotEditable": "Deze dienst is nog niet gesynchroniseerd: probeer het online opnieuw.",
+  "myQrCode": "Mijn QR-code",
+  "myQrCodeHint": "Een leidinggevende scant deze code om je aan het bedrijf toe te voegen; daarna bevestig je. De code verandert nooit.",
+  "changeMyName": "Mijn naam wijzigen",
+  "nameShownToTeam": "Deze naam zien je collega's in plaats van je Google-naam.",
+  "googleName": "Google-naam: {name}",
+  "useGoogleName": "Mijn Google-naam gebruiken",
+  "renameMemberTitle": "{name} hernoemen",
+  "renameMemberHint": "Deze naam wordt alleen in dit bedrijf gebruikt.",
+  "useOwnName": "Eigen naam gebruiken",
+  "scanQrCode": "QR-code scannen",
+  "scanQrHint": "Richt de camera op de QR-code in hun app (accountmenu, ‘Mijn QR-code’).",
+  "orEnterCode": "Of voer hun 6-cijferige code in",
+  "qrInvalid": "Dit is geen Staff Flow-QR-code.",
+  "cameraUnavailable": "Camera niet beschikbaar ({error})."
 }

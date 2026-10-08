@@ -550,4 +550,56 @@ class L10nEl extends L10n {
   @override
   String get pendingNotEditable =>
       'Αυτή η βάρδια δεν έχει συγχρονιστεί ακόμη: δοκιμάστε ξανά όταν είστε συνδεδεμένοι.';
+
+  @override
+  String get myQrCode => 'Ο κωδικός QR μου';
+
+  @override
+  String get myQrCodeHint =>
+      'Ένας υπεύθυνος σαρώνει αυτόν τον κωδικό για να σας προσθέσει στην εταιρεία του· μετά επιβεβαιώνετε. Δεν αλλάζει ποτέ.';
+
+  @override
+  String get changeMyName => 'Αλλαγή του ονόματός μου';
+
+  @override
+  String get nameShownToTeam =>
+      'Αυτό το όνομα εμφανίζεται στους συναδέλφους σας αντί για το όνομα Google.';
+
+  @override
+  String googleName(String name) {
+    return 'Όνομα Google: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Χρήση του ονόματος Google';
+
+  @override
+  String renameMemberTitle(String name) {
+    return 'Μετονομασία: $name';
+  }
+
+  @override
+  String get renameMemberHint =>
+      'Αυτό το όνομα χρησιμοποιείται μόνο σε αυτή την εταιρεία.';
+
+  @override
+  String get useOwnName => 'Χρήση του δικού του ονόματος';
+
+  @override
+  String get scanQrCode => 'Σάρωση κωδικού QR';
+
+  @override
+  String get scanQrHint =>
+      'Στρέψτε την κάμερα στον κωδικό QR της εφαρμογής του (μενού λογαριασμού, «Ο κωδικός QR μου»).';
+
+  @override
+  String get orEnterCode => 'Ή εισαγάγετε τον 6ψήφιο κωδικό του';
+
+  @override
+  String get qrInvalid => 'Αυτός δεν είναι κωδικός QR του Staff Flow.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'Η κάμερα δεν είναι διαθέσιμη ($error).';
+  }
 }

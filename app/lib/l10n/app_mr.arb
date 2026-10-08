@@ -147,5 +147,19 @@
   "historyDelete": "हटवणे",
   "historyUndo": "रद्द करणे",
   "noHistory": "कोणतेही बदल नाहीत.",
-  "pendingNotEditable": "ही शिफ्ट अजून सिंक झालेली नाही: ऑनलाइन असताना पुन्हा प्रयत्न करा."
+  "pendingNotEditable": "ही शिफ्ट अजून सिंक झालेली नाही: ऑनलाइन असताना पुन्हा प्रयत्न करा.",
+  "myQrCode": "माझा QR कोड",
+  "myQrCodeHint": "व्यवस्थापक हा कोड स्कॅन करून तुम्हाला त्यांच्या कंपनीत जोडतात; नंतर तुम्ही पुष्टी करता. तो कधीही बदलत नाही.",
+  "changeMyName": "माझे नाव बदला",
+  "nameShownToTeam": "तुमच्या सहकाऱ्यांना तुमच्या Google नावाऐवजी हे नाव दिसेल.",
+  "googleName": "Google नाव: {name}",
+  "useGoogleName": "माझे Google नाव वापरा",
+  "renameMemberTitle": "{name} चे नाव बदला",
+  "renameMemberHint": "हे नाव फक्त या कंपनीत वापरले जाते.",
+  "useOwnName": "त्यांचे स्वतःचे नाव वापरा",
+  "scanQrCode": "QR कोड स्कॅन करा",
+  "scanQrHint": "त्यांच्या अॅपमध्ये दिसणाऱ्या QR कोडकडे कॅमेरा धरा (खाते मेनू, “माझा QR कोड”).",
+  "orEnterCode": "किंवा त्यांचा ६ अंकी कोड टाका",
+  "qrInvalid": "हा Staff Flow QR कोड नाही.",
+  "cameraUnavailable": "कॅमेरा उपलब्ध नाही ({error})."
 }

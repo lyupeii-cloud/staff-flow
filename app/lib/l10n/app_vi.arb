@@ -147,5 +147,19 @@
   "historyDelete": "Xóa",
   "historyUndo": "Hoàn tác",
   "noHistory": "Không có thay đổi.",
-  "pendingNotEditable": "Ca này chưa được đồng bộ: hãy thử lại khi có mạng."
+  "pendingNotEditable": "Ca này chưa được đồng bộ: hãy thử lại khi có mạng.",
+  "myQrCode": "Mã QR của tôi",
+  "myQrCodeHint": "Quản lý quét mã này để thêm bạn vào công ty; sau đó bạn xác nhận. Mã không bao giờ thay đổi.",
+  "changeMyName": "Đổi tên của tôi",
+  "nameShownToTeam": "Đồng nghiệp sẽ thấy tên này thay cho tên Google của bạn.",
+  "googleName": "Tên Google: {name}",
+  "useGoogleName": "Dùng tên Google của tôi",
+  "renameMemberTitle": "Đổi tên {name}",
+  "renameMemberHint": "Tên này chỉ dùng trong công ty này.",
+  "useOwnName": "Dùng tên của chính họ",
+  "scanQrCode": "Quét mã QR",
+  "scanQrHint": "Hướng camera vào mã QR trong ứng dụng của họ (menu tài khoản, “Mã QR của tôi”).",
+  "orEnterCode": "Hoặc nhập mã 6 chữ số của họ",
+  "qrInvalid": "Đây không phải mã QR Staff Flow.",
+  "cameraUnavailable": "Không dùng được camera ({error})."
 }

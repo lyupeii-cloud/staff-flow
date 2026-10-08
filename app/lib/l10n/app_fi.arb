@@ -147,5 +147,19 @@
   "historyDelete": "Poistettu",
   "historyUndo": "Peruttu",
   "noHistory": "Ei muutoksia.",
-  "pendingNotEditable": "Tätä vuoroa ei ole vielä synkronoitu: yritä uudelleen verkossa."
+  "pendingNotEditable": "Tätä vuoroa ei ole vielä synkronoitu: yritä uudelleen verkossa.",
+  "myQrCode": "Oma QR-koodi",
+  "myQrCodeHint": "Esihenkilö skannaa tämän koodin lisätäkseen sinut yritykseensä; sen jälkeen vahvistat. Koodi ei koskaan muutu.",
+  "changeMyName": "Vaihda nimeni",
+  "nameShownToTeam": "Työkaverisi näkevät tämän nimen Google-nimesi sijaan.",
+  "googleName": "Google-nimi: {name}",
+  "useGoogleName": "Käytä Google-nimeäni",
+  "renameMemberTitle": "Nimeä uudelleen: {name}",
+  "renameMemberHint": "Tätä nimeä käytetään vain tässä yrityksessä.",
+  "useOwnName": "Käytä omaa nimeä",
+  "scanQrCode": "Skannaa QR-koodi",
+  "scanQrHint": "Suuntaa kamera henkilön sovelluksessa näkyvään QR-koodiin (tilivalikko, ”Oma QR-koodi”).",
+  "orEnterCode": "Tai syötä hänen 6-numeroinen koodinsa",
+  "qrInvalid": "Tämä ei ole Staff Flow -QR-koodi.",
+  "cameraUnavailable": "Kamera ei ole käytettävissä ({error})."
 }

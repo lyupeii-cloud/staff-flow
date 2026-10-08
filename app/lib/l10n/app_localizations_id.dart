@@ -546,4 +546,55 @@ class L10nId extends L10n {
   @override
   String get pendingNotEditable =>
       'Shift ini belum disinkronkan: coba lagi saat online.';
+
+  @override
+  String get myQrCode => 'Kode QR saya';
+
+  @override
+  String get myQrCodeHint =>
+      'Manajer memindai kode ini untuk menambahkan Anda ke perusahaannya; lalu Anda mengonfirmasi. Kode ini tidak pernah berubah.';
+
+  @override
+  String get changeMyName => 'Ubah nama saya';
+
+  @override
+  String get nameShownToTeam =>
+      'Nama ini ditampilkan ke rekan kerja Anda sebagai pengganti nama Google.';
+
+  @override
+  String googleName(String name) {
+    return 'Nama Google: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Gunakan nama Google saya';
+
+  @override
+  String renameMemberTitle(String name) {
+    return 'Ganti nama $name';
+  }
+
+  @override
+  String get renameMemberHint => 'Nama ini hanya digunakan di perusahaan ini.';
+
+  @override
+  String get useOwnName => 'Gunakan namanya sendiri';
+
+  @override
+  String get scanQrCode => 'Pindai kode QR';
+
+  @override
+  String get scanQrHint =>
+      'Arahkan kamera ke kode QR di aplikasinya (menu akun, “Kode QR saya”).';
+
+  @override
+  String get orEnterCode => 'Atau masukkan kode 6 digitnya';
+
+  @override
+  String get qrInvalid => 'Ini bukan kode QR Staff Flow.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'Kamera tidak tersedia ($error).';
+  }
 }

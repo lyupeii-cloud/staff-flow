@@ -147,5 +147,19 @@
   "historyDelete": "Usunięcie",
   "historyUndo": "Cofnięcie",
   "noHistory": "Brak zmian.",
-  "pendingNotEditable": "Ta zmiana nie jest jeszcze zsynchronizowana: spróbuj ponownie online."
+  "pendingNotEditable": "Ta zmiana nie jest jeszcze zsynchronizowana: spróbuj ponownie online.",
+  "myQrCode": "Mój kod QR",
+  "myQrCodeHint": "Kierownik skanuje ten kod, aby dodać cię do swojej firmy; potem potwierdzasz. Kod nigdy się nie zmienia.",
+  "changeMyName": "Zmień moje imię",
+  "nameShownToTeam": "To imię widzą twoi współpracownicy zamiast imienia z Google.",
+  "googleName": "Imię w Google: {name}",
+  "useGoogleName": "Użyj imienia z Google",
+  "renameMemberTitle": "Zmień nazwę: {name}",
+  "renameMemberHint": "To imię jest używane tylko w tej firmie.",
+  "useOwnName": "Użyj własnego imienia",
+  "scanQrCode": "Zeskanuj kod QR",
+  "scanQrHint": "Skieruj aparat na kod QR wyświetlony w aplikacji tej osoby (menu konta, „Mój kod QR”).",
+  "orEnterCode": "Lub wpisz jej 6-cyfrowy kod",
+  "qrInvalid": "To nie jest kod QR Staff Flow.",
+  "cameraUnavailable": "Aparat niedostępny ({error})."
 }

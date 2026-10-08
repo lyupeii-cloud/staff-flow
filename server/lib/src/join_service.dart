@@ -51,6 +51,43 @@ class JoinService {
     required Role role,
     required String ip,
   }) async {
+    final company = await _openForInvite(manager, companyId, role);
+    final at = await _checkLockout(manager, companyId, ip);
+    final found = await store.db.runTx((tx) async {
+      final rows = await store.query(tx, '''
+        UPDATE join_codes SET used_at = @at
+        WHERE code = @code AND used_at IS NULL AND expires_at > @at
+        RETURNING user_id::text''', {'code': code.trim(), 'at': at});
+      return rows.isEmpty ? null : rows.first[0] as String;
+    });
+    await _attempt(manager, companyId, ip, at, success: found != null);
+    if (found == null) throw const ApiError.notFound('Code invalide ou expiré.');
+    return _invite(manager, company, (await store.findUser(found))!, role);
+  }
+
+  static final _publicId = RegExp(r'SF-[A-Z2-9]{8}');
+
+  /// Le responsable scanne le QR code permanent de la personne (il contient
+  /// son identifiant SF-…). Comme pour le code, elle doit accepter. Les
+  /// identifiants inconnus comptent comme des codes erronés : on ne peut pas
+  /// en essayer au hasard.
+  Future<(JoinRequest, User)> inviteByQr(
+    User manager,
+    String companyId, {
+    required String qr,
+    required Role role,
+    required String ip,
+  }) async {
+    final company = await _openForInvite(manager, companyId, role);
+    final at = await _checkLockout(manager, companyId, ip);
+    final id = _publicId.firstMatch(qr.toUpperCase())?[0];
+    final user = id == null ? null : await store.findUserByPublicId(id);
+    await _attempt(manager, companyId, ip, at, success: user != null);
+    if (user == null) throw const ApiError.notFound('Compte introuvable.');
+    return _invite(manager, company, user, role);
+  }
+
+  Future<Company> _openForInvite(User manager, String companyId, Role role) async {
     final (company, actorRole) = await companies.open(manager, companyId);
     if (!actorRole.canManage) throw const ApiError.forbidden();
     if (company.status == CompanyStatus.readOnly) {
@@ -59,6 +96,11 @@ class JoinService {
     if (role != Role.employee && role != Role.extra) {
       throw const ApiError.badRequest('Rôle attendu : salarié ou extra.');
     }
+    return company;
+  }
+
+  /// Renvoie l'heure de la tentative, ou lève 429 pendant la suspension.
+  Future<DateTime> _checkLockout(User manager, String companyId, String ip) async {
     final at = now();
     final failures = await store.query(store.db, '''
       SELECT count(*) FROM join_attempts
@@ -70,18 +112,11 @@ class JoinService {
       throw const ApiError(429, 'too_many_attempts',
           'Trop de codes erronés : réessayez dans 2 minutes.');
     }
+    return at;
+  }
 
-    final found = await store.db.runTx((tx) async {
-      final rows = await store.query(tx, '''
-        UPDATE join_codes SET used_at = @at
-        WHERE code = @code AND used_at IS NULL AND expires_at > @at
-        RETURNING user_id::text''', {'code': code.trim(), 'at': at});
-      return rows.isEmpty ? null : rows.first[0] as String;
-    });
-    await _attempt(manager, companyId, ip, at, success: found != null);
-    if (found == null) throw const ApiError.notFound('Code invalide ou expiré.');
-
-    final user = (await store.findUser(found))!;
+  Future<(JoinRequest, User)> _invite(User manager, Company company, User user, Role role) async {
+    final companyId = company.id;
     if (await store.roleOf(companyId, user.id) != null) {
       throw ApiError.conflict('{name} fait déjà partie de l\'entreprise.', {'name': user.name});
     }

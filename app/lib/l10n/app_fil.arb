@@ -147,5 +147,19 @@
   "historyDelete": "Binura",
   "historyUndo": "Na-undo",
   "noHistory": "Walang pagbabago.",
-  "pendingNotEditable": "Hindi pa naka-sync ang shift na ito: subukan ulit kapag online."
+  "pendingNotEditable": "Hindi pa naka-sync ang shift na ito: subukan ulit kapag online.",
+  "myQrCode": "Ang QR code ko",
+  "myQrCodeHint": "Ini-scan ng manager ang code na ito para idagdag ka sa kanilang kumpanya; pagkatapos ay kukumpirmahin mo. Hindi ito nagbabago.",
+  "changeMyName": "Palitan ang pangalan ko",
+  "nameShownToTeam": "Ito ang pangalang makikita ng mga kasamahan mo sa halip na pangalan mo sa Google.",
+  "googleName": "Pangalan sa Google: {name}",
+  "useGoogleName": "Gamitin ang pangalan ko sa Google",
+  "renameMemberTitle": "Palitan ang pangalan ni {name}",
+  "renameMemberHint": "Sa kumpanyang ito lang ginagamit ang pangalang ito.",
+  "useOwnName": "Gamitin ang sarili niyang pangalan",
+  "scanQrCode": "Mag-scan ng QR code",
+  "scanQrHint": "Itapat ang camera sa QR code sa kanyang app (menu ng account, “Ang QR code ko”).",
+  "orEnterCode": "O ilagay ang kanyang 6-digit na code",
+  "qrInvalid": "Hindi ito QR code ng Staff Flow.",
+  "cameraUnavailable": "Hindi magamit ang camera ({error})."
 }

@@ -100,6 +100,13 @@ class Api {
   Future<void> setRole(String companyId, String userId, Role role) =>
       _send('PUT', '/companies/$companyId/members/$userId/role', {'role': role.name});
 
+  /// Nom de la personne dans l'entreprise ; `null` : son propre nom.
+  Future<void> renameMember(String companyId, String userId, String? name) =>
+      _send('PUT', '/companies/$companyId/members/$userId/name', {'name': name});
+
+  /// Nom affiché partout ; `null` : celui de Google.
+  Future<void> setMyName(String? name) => _send('PATCH', '/me', {'name': name});
+
   Future<void> removeMember(String companyId, String userId) =>
       _send('DELETE', '/companies/$companyId/members/$userId');
 
@@ -121,6 +128,12 @@ class Api {
   /// Renvoie le nom de la personne invitée.
   Future<String> redeemJoinCode(String companyId, String code, Role role) async {
     final j = await _send('POST', '/companies/$companyId/join', {'code': code, 'role': role.name});
+    return j['user']['name'] as String;
+  }
+
+  /// QR code permanent scanné par le responsable ; renvoie le nom de la personne.
+  Future<String> inviteByQr(String companyId, String qr, Role role) async {
+    final j = await _send('POST', '/companies/$companyId/invite', {'qr': qr, 'role': role.name});
     return j['user']['name'] as String;
   }
 

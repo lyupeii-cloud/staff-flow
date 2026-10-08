@@ -147,5 +147,19 @@
   "historyDelete": "Eliminazione",
   "historyUndo": "Annullamento",
   "noHistory": "Nessuna modifica.",
-  "pendingNotEditable": "Questo turno non è ancora sincronizzato: riprova quando sei online."
+  "pendingNotEditable": "Questo turno non è ancora sincronizzato: riprova quando sei online.",
+  "myQrCode": "Il mio codice QR",
+  "myQrCodeHint": "Un responsabile scansiona questo codice per aggiungerti alla sua azienda; poi confermi tu. Non cambia mai.",
+  "changeMyName": "Cambia il mio nome",
+  "nameShownToTeam": "Questo nome viene mostrato ai colleghi al posto del tuo nome Google.",
+  "googleName": "Nome Google: {name}",
+  "useGoogleName": "Usa il mio nome Google",
+  "renameMemberTitle": "Rinomina {name}",
+  "renameMemberHint": "Questo nome è usato solo in questa azienda.",
+  "useOwnName": "Usa il suo nome",
+  "scanQrCode": "Scansiona un codice QR",
+  "scanQrHint": "Inquadra il codice QR mostrato nella sua app (menu dell'account, «Il mio codice QR»).",
+  "orEnterCode": "Oppure inserisci il suo codice a 6 cifre",
+  "qrInvalid": "Questo non è un codice QR di Staff Flow.",
+  "cameraUnavailable": "Fotocamera non disponibile ({error})."
 }

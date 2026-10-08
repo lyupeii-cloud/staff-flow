@@ -550,4 +550,55 @@ class L10nEn extends L10n {
   @override
   String get pendingNotEditable =>
       'This shift is not synced yet: try again once online.';
+
+  @override
+  String get myQrCode => 'My QR code';
+
+  @override
+  String get myQrCodeHint =>
+      'A manager scans this code to add you to their company; you then confirm. It never changes.';
+
+  @override
+  String get changeMyName => 'Change my name';
+
+  @override
+  String get nameShownToTeam =>
+      'This name is shown to your colleagues instead of your Google name.';
+
+  @override
+  String googleName(String name) {
+    return 'Google name: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Use my Google name';
+
+  @override
+  String renameMemberTitle(String name) {
+    return 'Rename $name';
+  }
+
+  @override
+  String get renameMemberHint => 'This name is only used in this company.';
+
+  @override
+  String get useOwnName => 'Use their own name';
+
+  @override
+  String get scanQrCode => 'Scan a QR code';
+
+  @override
+  String get scanQrHint =>
+      'Point the camera at the QR code shown in their app (account menu, “My QR code”).';
+
+  @override
+  String get orEnterCode => 'Or enter their 6-digit code';
+
+  @override
+  String get qrInvalid => 'This is not a Staff Flow QR code.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'Camera unavailable ($error).';
+  }
 }

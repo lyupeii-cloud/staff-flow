@@ -147,5 +147,19 @@
   "historyDelete": "Gelöscht",
   "historyUndo": "Rückgängig gemacht",
   "noHistory": "Keine Änderungen.",
-  "pendingNotEditable": "Diese Schicht ist noch nicht synchronisiert: versuche es online erneut."
+  "pendingNotEditable": "Diese Schicht ist noch nicht synchronisiert: versuche es online erneut.",
+  "myQrCode": "Mein QR-Code",
+  "myQrCodeHint": "Eine Führungskraft scannt diesen Code, um Sie zu ihrem Unternehmen hinzuzufügen; danach bestätigen Sie. Er ändert sich nie.",
+  "changeMyName": "Meinen Namen ändern",
+  "nameShownToTeam": "Dieser Name wird Ihren Kollegen statt Ihres Google-Namens angezeigt.",
+  "googleName": "Google-Name: {name}",
+  "useGoogleName": "Meinen Google-Namen verwenden",
+  "renameMemberTitle": "{name} umbenennen",
+  "renameMemberHint": "Dieser Name wird nur in diesem Unternehmen verwendet.",
+  "useOwnName": "Eigenen Namen verwenden",
+  "scanQrCode": "QR-Code scannen",
+  "scanQrHint": "Richten Sie die Kamera auf den QR-Code in der App der Person (Kontomenü, „Mein QR-Code“).",
+  "orEnterCode": "Oder geben Sie den 6-stelligen Code ein",
+  "qrInvalid": "Das ist kein Staff-Flow-QR-Code.",
+  "cameraUnavailable": "Kamera nicht verfügbar ({error})."
 }

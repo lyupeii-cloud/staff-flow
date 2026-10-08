@@ -147,5 +147,19 @@
   "historyDelete": "ลบ",
   "historyUndo": "เลิกทำ",
   "noHistory": "ไม่มีการเปลี่ยนแปลง",
-  "pendingNotEditable": "กะนี้ยังไม่ได้ซิงค์: ลองอีกครั้งเมื่อออนไลน์"
+  "pendingNotEditable": "กะนี้ยังไม่ได้ซิงค์: ลองอีกครั้งเมื่อออนไลน์",
+  "myQrCode": "คิวอาร์โค้ดของฉัน",
+  "myQrCodeHint": "ผู้จัดการสแกนโค้ดนี้เพื่อเพิ่มคุณเข้าบริษัท จากนั้นคุณยืนยัน โค้ดนี้ไม่มีวันเปลี่ยน",
+  "changeMyName": "เปลี่ยนชื่อของฉัน",
+  "nameShownToTeam": "เพื่อนร่วมงานจะเห็นชื่อนี้แทนชื่อ Google ของคุณ",
+  "googleName": "ชื่อ Google: {name}",
+  "useGoogleName": "ใช้ชื่อ Google ของฉัน",
+  "renameMemberTitle": "เปลี่ยนชื่อ {name}",
+  "renameMemberHint": "ชื่อนี้ใช้เฉพาะในบริษัทนี้",
+  "useOwnName": "ใช้ชื่อของเขาเอง",
+  "scanQrCode": "สแกนคิวอาร์โค้ด",
+  "scanQrHint": "หันกล้องไปที่คิวอาร์โค้ดในแอปของเขา (เมนูบัญชี “คิวอาร์โค้ดของฉัน”)",
+  "orEnterCode": "หรือป้อนรหัส 6 หลักของเขา",
+  "qrInvalid": "นี่ไม่ใช่คิวอาร์โค้ดของ Staff Flow",
+  "cameraUnavailable": "ใช้กล้องไม่ได้ ({error})"
 }

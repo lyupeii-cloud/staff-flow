@@ -147,5 +147,19 @@
   "historyDelete": "हटाया गया",
   "historyUndo": "पूर्ववत",
   "noHistory": "कोई बदलाव नहीं।",
-  "pendingNotEditable": "यह शिफ़्ट अभी सिंक नहीं हुई: ऑनलाइन होने पर फिर कोशिश करें।"
+  "pendingNotEditable": "यह शिफ़्ट अभी सिंक नहीं हुई: ऑनलाइन होने पर फिर कोशिश करें।",
+  "myQrCode": "मेरा QR कोड",
+  "myQrCodeHint": "मैनेजर यह कोड स्कैन करके आपको अपनी कंपनी में जोड़ता है; फिर आप पुष्टि करते हैं। यह कभी नहीं बदलता।",
+  "changeMyName": "मेरा नाम बदलें",
+  "nameShownToTeam": "आपके सहकर्मियों को आपके Google नाम की जगह यह नाम दिखेगा।",
+  "googleName": "Google नाम: {name}",
+  "useGoogleName": "मेरा Google नाम इस्तेमाल करें",
+  "renameMemberTitle": "{name} का नाम बदलें",
+  "renameMemberHint": "यह नाम केवल इसी कंपनी में इस्तेमाल होता है।",
+  "useOwnName": "उनका अपना नाम इस्तेमाल करें",
+  "scanQrCode": "QR कोड स्कैन करें",
+  "scanQrHint": "उनके ऐप में दिख रहे QR कोड पर कैमरा रखें (खाता मेनू, “मेरा QR कोड”)।",
+  "orEnterCode": "या उनका 6 अंकों का कोड डालें",
+  "qrInvalid": "यह Staff Flow QR कोड नहीं है।",
+  "cameraUnavailable": "कैमरा उपलब्ध नहीं है ({error})।"
 }

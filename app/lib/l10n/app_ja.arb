@@ -147,5 +147,19 @@
   "historyDelete": "削除",
   "historyUndo": "取り消し",
   "noHistory": "変更はありません。",
-  "pendingNotEditable": "このシフトはまだ同期されていません。オンラインで再度お試しください。"
+  "pendingNotEditable": "このシフトはまだ同期されていません。オンラインで再度お試しください。",
+  "myQrCode": "自分のQRコード",
+  "myQrCodeHint": "管理者がこのコードを読み取ると、会社に追加されます。その後あなたが承認します。コードは変わりません。",
+  "changeMyName": "名前を変更",
+  "nameShownToTeam": "同僚にはGoogleの名前の代わりにこの名前が表示されます。",
+  "googleName": "Googleの名前：{name}",
+  "useGoogleName": "Googleの名前を使う",
+  "renameMemberTitle": "{name} の名前を変更",
+  "renameMemberHint": "この名前はこの会社でのみ使われます。",
+  "useOwnName": "本人の名前を使う",
+  "scanQrCode": "QRコードを読み取る",
+  "scanQrHint": "相手のアプリに表示されたQRコードにカメラを向けてください（アカウントメニュー「自分のQRコード」）。",
+  "orEnterCode": "または6桁のコードを入力",
+  "qrInvalid": "Staff FlowのQRコードではありません。",
+  "cameraUnavailable": "カメラを使用できません（{error}）。"
 }
