@@ -1,0 +1,186 @@
+import 'errors.dart';
+import 'models.dart';
+import 'store.dart';
+
+/// Règles des sections 2 et 3 du cahier des charges : rôles par entreprise,
+/// gestion des membres et transfert de propriété.
+class CompanyService {
+  final Store store;
+
+  CompanyService(this.store);
+
+  Future<Company> create(User actor, {required String name, required String timezone}) async {
+    final company = await store.createCompany(
+      ownerId: actor.id,
+      name: _validName(name),
+      timezone: validTimezone(timezone),
+    );
+    await store.audit(companyId: company.id, actorId: actor.id, action: 'company.create');
+    return company;
+  }
+
+  /// Entreprise vue par un membre actif ; 404 pour les autres, pour ne pas
+  /// révéler qu'elle existe.
+  Future<(Company, Role)> open(User actor, String companyId) async {
+    final role = await store.roleOf(companyId, actor.id);
+    final company = role == null ? null : await store.findCompany(companyId);
+    if (role == null || company == null) throw const ApiError.notFound('Entreprise introuvable.');
+    return (company, role);
+  }
+
+  Future<Company> update(User actor, String companyId, {String? name, String? timezone}) async {
+    final (company, role) = await open(actor, companyId);
+    _requireWritable(company);
+    if (!role.canManage) throw const ApiError.forbidden();
+    final updated = await store.updateCompany(company.copyWith(
+      name: name == null ? null : _validName(name),
+      timezone: timezone == null ? null : validTimezone(timezone),
+    ));
+    await store.audit(
+      companyId: companyId,
+      actorId: actor.id,
+      action: 'company.update',
+      details: {'name': name, 'timezone': timezone}..removeWhere((_, v) => v == null),
+    );
+    return updated;
+  }
+
+  Future<List<Member>> members(User actor, String companyId) async {
+    await open(actor, companyId);
+    return store.members(companyId);
+  }
+
+  /// Le propriétaire nomme ou retire les responsables ; un responsable peut
+  /// seulement faire passer quelqu'un de salarié à extra et inversement.
+  /// Le rôle de propriétaire ne change que par transfert.
+  Future<void> setRole(User actor, String companyId, String userId, Role newRole) async {
+    final (company, actorRole) = await open(actor, companyId);
+    _requireWritable(company);
+    final current = await store.roleOf(companyId, userId);
+    if (current == null) throw const ApiError.notFound('Membre introuvable.');
+    if (current == newRole) return;
+    if (current == Role.owner || newRole == Role.owner) {
+      throw const ApiError.conflict('La propriété se change par un transfert.');
+    }
+    final touchesManager = current == Role.manager || newRole == Role.manager;
+    final allowed = actorRole == Role.owner || (actorRole == Role.manager && !touchesManager);
+    if (!allowed) throw const ApiError.forbidden();
+    await store.setRole(companyId, userId, newRole);
+    await store.audit(
+      companyId: companyId,
+      actorId: actor.id,
+      action: 'member.role',
+      details: {'userId': userId, 'from': current.name, 'to': newRole.name},
+    );
+  }
+
+  /// Retire un membre, ou permet à un membre de quitter l'entreprise.
+  /// Le propriétaire ne peut pas partir sans avoir transféré la propriété.
+  Future<void> removeMember(User actor, String companyId, String userId) async {
+    final (company, actorRole) = await open(actor, companyId);
+    final target = await store.roleOf(companyId, userId);
+    if (target == null) throw const ApiError.notFound('Membre introuvable.');
+    if (target == Role.owner) {
+      throw const ApiError.conflict(
+          'Le propriétaire doit transférer l\'entreprise avant de la quitter.');
+    }
+    final leaving = userId == actor.id;
+    if (!leaving) {
+      _requireWritable(company);
+      final allowed = actorRole == Role.owner ||
+          (actorRole == Role.manager && (target == Role.employee || target == Role.extra));
+      if (!allowed) throw const ApiError.forbidden();
+    }
+    await store.removeMember(companyId, userId);
+    await store.audit(
+      companyId: companyId,
+      actorId: actor.id,
+      action: leaving ? 'member.leave' : 'member.remove',
+      details: {'userId': userId},
+    );
+  }
+
+  Future<OwnershipTransfer> proposeTransfer(User actor, String companyId, String toUserId) async {
+    final (company, role) = await open(actor, companyId);
+    _requireWritable(company);
+    if (role != Role.owner) throw const ApiError.forbidden('Seul le propriétaire peut transférer.');
+    if (await store.roleOf(companyId, toUserId) != Role.manager) {
+      throw const ApiError.badRequest('Le nouveau propriétaire doit être responsable de l\'entreprise.');
+    }
+    if (await store.pendingTransfer(companyId) != null) {
+      throw const ApiError.conflict('Un transfert est déjà en attente.');
+    }
+    final transfer = await store.createTransfer(
+        companyId: companyId, fromUserId: actor.id, toUserId: toUserId);
+    await store.audit(
+      companyId: companyId,
+      actorId: actor.id,
+      action: 'transfer.propose',
+      details: {'transferId': transfer.id, 'toUserId': toUserId},
+    );
+    return transfer;
+  }
+
+  Future<void> cancelTransfer(User actor, String companyId) async {
+    final (_, role) = await open(actor, companyId);
+    if (role != Role.owner) throw const ApiError.forbidden();
+    final pending = await store.pendingTransfer(companyId);
+    if (pending == null) throw const ApiError.notFound('Aucun transfert en attente.');
+    await store.closeTransfer(pending.id, TransferStatus.cancelled);
+    await store.audit(
+        companyId: companyId,
+        actorId: actor.id,
+        action: 'transfer.cancel',
+        details: {'transferId': pending.id});
+  }
+
+  /// Le destinataire accepte ou refuse. Si l'un des deux a quitté
+  /// l'entreprise ou changé de rôle entre-temps, le transfert est annulé.
+  Future<void> answerTransfer(User actor, String transferId, {required bool accept}) async {
+    final t = await store.findTransfer(transferId);
+    if (t == null || t.toUserId != actor.id || t.status != TransferStatus.pending) {
+      throw const ApiError.notFound('Transfert introuvable.');
+    }
+    final stillValid = await store.roleOf(t.companyId, t.fromUserId) == Role.owner &&
+        await store.roleOf(t.companyId, t.toUserId) == Role.manager;
+    if (!stillValid) {
+      await store.closeTransfer(t.id, TransferStatus.cancelled);
+      throw const ApiError.conflict('Ce transfert n\'est plus valable.');
+    }
+    if (accept) {
+      await store.completeTransfer(t);
+    } else {
+      await store.closeTransfer(t.id, TransferStatus.declined);
+    }
+    await store.audit(
+      companyId: t.companyId,
+      actorId: actor.id,
+      action: accept ? 'transfer.accept' : 'transfer.decline',
+      details: {'transferId': t.id},
+    );
+  }
+
+  void _requireWritable(Company company) {
+    if (company.status == CompanyStatus.readOnly) {
+      throw const ApiError.conflict('Cette entreprise est en lecture seule.');
+    }
+  }
+
+  static String _validName(String name) {
+    final trimmed = name.trim();
+    if (trimmed.isEmpty || trimmed.length > 120) {
+      throw const ApiError.badRequest('Le nom doit faire entre 1 et 120 caractères.');
+    }
+    return trimmed;
+  }
+}
+
+final _ianaZone = RegExp(r'^(UTC|[A-Z][A-Za-z_]+(/[A-Za-z0-9_+\-]+){1,2})$');
+
+/// Vérifie la forme d'un fuseau IANA (`Europe/Paris`, `America/Argentina/Buenos_Aires`).
+String validTimezone(String value) {
+  if (!_ianaZone.hasMatch(value)) {
+    throw ApiError.badRequest('Fuseau horaire invalide : $value');
+  }
+  return value;
+}
