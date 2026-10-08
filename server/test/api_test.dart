@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:io';
 
+import 'package:postgres/postgres.dart' show Pool, QueryMode, Sql;
 import 'package:shelf/shelf.dart';
 import 'package:staff_flow_server/staff_flow_server.dart';
 import 'package:test/test.dart';
@@ -44,11 +46,35 @@ class Client {
 }
 
 void main() {
-  late MemoryStore store;
+  // Avec TEST_DATABASE_URL, les mêmes tests tournent sur PostgreSQL
+  // (base dédiée aux tests : elle est vidée avant chaque test).
+  final pgUrl = Platform.environment['TEST_DATABASE_URL'];
+  Pool? pgAdmin;
+  PostgresStore? pg;
+
+  late Store store;
   late Handler handler;
 
-  setUp(() {
-    store = MemoryStore();
+  setUpAll(() {
+    if (pgUrl == null) return;
+    pgAdmin = Pool.withUrl(pgUrl);
+    pg = PostgresStore.connect(pgUrl);
+  });
+
+  tearDownAll(() async {
+    await pg?.close();
+    await pgAdmin?.close();
+  });
+
+  setUp(() async {
+    if (pg != null) {
+      await pgAdmin!.execute('DROP SCHEMA public CASCADE; CREATE SCHEMA public;',
+          queryMode: QueryMode.simple);
+      await pg!.migrate();
+      store = pg!;
+    } else {
+      store = MemoryStore();
+    }
     handler = Api(
       store: store,
       google: FakeGoogle(),
@@ -58,6 +84,18 @@ void main() {
   });
 
   Future<Client> login(String sub) => Client(handler).login(sub);
+
+  Future<(String, Map<String, Object?>)> lastAudit(String action) async {
+    final s = store;
+    if (s is MemoryStore) {
+      final e = s.auditLog.lastWhere((e) => e.action == action);
+      return (e.actorId, e.details);
+    }
+    final rows = await pgAdmin!.execute(
+        Sql.named('SELECT actor_id::text, details FROM audit_log WHERE action = @a ORDER BY id DESC LIMIT 1'),
+        parameters: {'a': action});
+    return (rows.first[0] as String, Map<String, Object?>.from(rows.first[1] as Map));
+  }
 
   Future<String> createCompany(Client c, [String name = 'Boulangerie']) async {
     final (status, body) =
@@ -204,9 +242,9 @@ void main() {
 
     test('les actions sensibles sont journalisées', () async {
       await setRole(owner, employee, 'manager');
-      final entry = store.auditLog.lastWhere((e) => e.action == 'member.role');
-      expect(entry.actorId, owner.id);
-      expect(entry.details, {'userId': employee.id, 'from': 'employee', 'to': 'manager'});
+      final (actorId, details) = await lastAudit('member.role');
+      expect(actorId, owner.id);
+      expect(details, {'userId': employee.id, 'from': 'employee', 'to': 'manager'});
     });
   });
 
