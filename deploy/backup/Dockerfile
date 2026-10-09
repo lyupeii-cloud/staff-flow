@@ -1,0 +1,5 @@
+FROM postgres:17-alpine
+RUN apk add --no-cache openssl
+COPY backup.sh /usr/local/bin/backup.sh
+RUN chmod +x /usr/local/bin/backup.sh
+CMD ["/usr/local/bin/backup.sh"]
