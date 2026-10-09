@@ -64,4 +64,5 @@ const hu = <String, String>{
   'Votre demande a été acceptée.': 'A kérésedet elfogadták.',
   'Votre demande a été refusée.': 'A kérésedet elutasították.',
   'Choisissez la personne qui reprend le service.': 'Válaszd ki, ki veszi át a műszakot.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Két műszakod különböző cégeknél átfedésben van ekkor: {day}.',
 };

@@ -64,4 +64,5 @@ const ro = <String, String>{
   'Votre demande a été acceptée.': 'Cererea ta a fost acceptată.',
   'Votre demande a été refusée.': 'Cererea ta a fost refuzată.',
   'Choisissez la personne qui reprend le service.': 'Alege cine preia tura.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Două dintre turele tale de la firme diferite se suprapun pe {day}.',
 };

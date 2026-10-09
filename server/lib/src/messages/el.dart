@@ -64,4 +64,5 @@ const el = <String, String>{
   'Votre demande a été acceptée.': 'Το αίτημά σας εγκρίθηκε.',
   'Votre demande a été refusée.': 'Το αίτημά σας απορρίφθηκε.',
   'Choisissez la personne qui reprend le service.': 'Επιλέξτε ποιος αναλαμβάνει τη βάρδια.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Δύο βάρδιές σας σε διαφορετικές εταιρείες επικαλύπτονται στις {day}.',
 };

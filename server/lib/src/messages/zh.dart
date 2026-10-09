@@ -64,4 +64,5 @@ const zh = <String, String>{
   'Votre demande a été acceptée.': '您的申请已获批准。',
   'Votre demande a été refusée.': '您的申请已被拒绝。',
   'Choisissez la personne qui reprend le service.': '请选择接班的人。',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': '您在不同公司的两个班次在 {day} 时间重叠。',
 };

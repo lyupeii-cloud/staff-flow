@@ -64,4 +64,5 @@ const de = <String, String>{
   'Votre demande a été acceptée.': 'Ihre Anfrage wurde genehmigt.',
   'Votre demande a été refusée.': 'Ihre Anfrage wurde abgelehnt.',
   'Choisissez la personne qui reprend le service.': 'Wählen Sie, wer die Schicht übernimmt.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Zwei Ihrer Schichten in verschiedenen Unternehmen überschneiden sich am {day}.',
 };

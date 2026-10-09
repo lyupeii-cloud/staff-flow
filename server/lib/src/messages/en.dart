@@ -85,4 +85,5 @@ const en = <String, String>{
   'Votre demande a été acceptée.': 'Your request has been approved.',
   'Votre demande a été refusée.': 'Your request has been refused.',
   'Choisissez la personne qui reprend le service.': 'Choose who takes over the shift.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Two of your shifts at different companies overlap on {day}.',
 };

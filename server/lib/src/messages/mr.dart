@@ -64,4 +64,5 @@ const mr = <String, String>{
   'Votre demande a été acceptée.': 'तुमची विनंती मंजूर झाली.',
   'Votre demande a été refusée.': 'तुमची विनंती नाकारली गेली.',
   'Choisissez la personne qui reprend le service.': 'शिफ्ट कोण घेईल ते निवडा.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': '{day} रोजी वेगवेगळ्या कंपन्यांमधील तुमच्या दोन शिफ्ट एकमेकांवर येतात.',
 };

@@ -64,4 +64,5 @@ const ta = <String, String>{
   'Votre demande a été acceptée.': 'உங்கள் கோரிக்கை ஏற்கப்பட்டது.',
   'Votre demande a été refusée.': 'உங்கள் கோரிக்கை நிராகரிக்கப்பட்டது.',
   'Choisissez la personne qui reprend le service.': 'ஷிஃப்டை யார் எடுப்பார் என்பதைத் தேர்ந்தெடுங்கள்.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': '{day} அன்று வெவ்வேறு நிறுவனங்களில் உங்கள் இரண்டு ஷிஃப்டுகள் ஒன்றோடொன்று மோதுகின்றன.',
 };

@@ -64,4 +64,5 @@ const id = <String, String>{
   'Votre demande a été acceptée.': 'Permintaan Anda disetujui.',
   'Votre demande a été refusée.': 'Permintaan Anda ditolak.',
   'Choisissez la personne qui reprend le service.': 'Pilih siapa yang mengambil alih shift.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Dua shift Anda di perusahaan berbeda bertabrakan pada {day}.',
 };

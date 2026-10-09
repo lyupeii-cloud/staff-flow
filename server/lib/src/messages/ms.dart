@@ -64,4 +64,5 @@ const ms = <String, String>{
   'Votre demande a été acceptée.': 'Permintaan anda telah diluluskan.',
   'Votre demande a été refusée.': 'Permintaan anda telah ditolak.',
   'Choisissez la personne qui reprend le service.': 'Pilih siapa yang mengambil alih syif.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Dua syif anda di syarikat berbeza bertindih pada {day}.',
 };

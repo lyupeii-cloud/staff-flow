@@ -84,4 +84,5 @@ const uk = <String, String>{
   'Votre demande a été acceptée.': 'Ваш запит схвалено.',
   'Votre demande a été refusée.': 'Ваш запит відхилено.',
   'Choisissez la personne qui reprend le service.': 'Оберіть, хто візьме зміну.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Дві ваші зміни в різних компаніях перетинаються {day}.',
 };

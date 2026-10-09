@@ -64,4 +64,5 @@ const sv = <String, String>{
   'Votre demande a été acceptée.': 'Din förfrågan har godkänts.',
   'Votre demande a été refusée.': 'Din förfrågan har avslagits.',
   'Choisissez la personne qui reprend le service.': 'Välj vem som tar över passet.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Två av dina pass hos olika företag överlappar den {day}.',
 };

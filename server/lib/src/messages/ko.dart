@@ -64,4 +64,5 @@ const ko = <String, String>{
   'Votre demande a été acceptée.': '요청이 승인되었습니다.',
   'Votre demande a été refusée.': '요청이 거절되었습니다.',
   'Choisissez la personne qui reprend le service.': '근무를 맡을 사람을 선택하세요.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': '{day}에 서로 다른 회사의 근무 두 개가 겹칩니다.',
 };

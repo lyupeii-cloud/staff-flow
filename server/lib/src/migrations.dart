@@ -326,4 +326,14 @@ ALTER TABLE shift_history DROP CONSTRAINT shift_history_action_check;
 ALTER TABLE shift_history ADD CONSTRAINT shift_history_action_check
   CHECK (action IN ('create', 'update', 'delete', 'undo', 'revert'));
 ''',
+  // 14 — chevauchements entre entreprises déjà signalés (une seule
+  // notification par paire de services).
+  '''
+CREATE TABLE overlap_alerts (
+  shift_a uuid NOT NULL REFERENCES shifts(id) ON DELETE CASCADE,
+  shift_b uuid NOT NULL REFERENCES shifts(id) ON DELETE CASCADE,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  PRIMARY KEY (shift_a, shift_b)
+);
+''',
 ];

@@ -64,4 +64,5 @@ const fil = <String, String>{
   'Votre demande a été acceptée.': 'Inaprubahan ang kahilingan mo.',
   'Votre demande a été refusée.': 'Tinanggihan ang kahilingan mo.',
   'Choisissez la personne qui reprend le service.': 'Piliin kung sino ang kukuha ng shift.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Nagsasabay ang dalawa mong shift sa magkaibang kumpanya sa {day}.',
 };

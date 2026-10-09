@@ -64,4 +64,5 @@ const pl = <String, String>{
   'Votre demande a été acceptée.': 'Twoja prośba została zaakceptowana.',
   'Votre demande a été refusée.': 'Twoja prośba została odrzucona.',
   'Choisissez la personne qui reprend le service.': 'Wybierz, kto przejmie zmianę.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Dwie twoje zmiany w różnych firmach nakładają się {day}.',
 };

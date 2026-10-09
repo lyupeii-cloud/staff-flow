@@ -64,4 +64,5 @@ const kk = <String, String>{
   'Votre demande a été acceptée.': 'Сұрауыңыз мақұлданды.',
   'Votre demande a été refusée.': 'Сұрауыңыз қабылданбады.',
   'Choisissez la personne qui reprend le service.': 'Ауысымды кім алатынын таңдаңыз.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': '{day} күні әртүрлі компаниялардағы екі ауысымыңыз бір-біріне сәйкес келеді.',
 };

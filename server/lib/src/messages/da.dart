@@ -64,4 +64,5 @@ const da = <String, String>{
   'Votre demande a été acceptée.': 'Din anmodning er godkendt.',
   'Votre demande a été refusée.': 'Din anmodning er afvist.',
   'Choisissez la personne qui reprend le service.': 'Vælg hvem der overtager vagten.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'To af dine vagter i forskellige virksomheder overlapper den {day}.',
 };

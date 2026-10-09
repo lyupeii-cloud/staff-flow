@@ -2,6 +2,7 @@ import 'company_service.dart';
 import 'errors.dart';
 import 'models.dart';
 import 'notifications.dart';
+import 'overlap_service.dart';
 import 'planning_service.dart';
 import 'store.dart';
 
@@ -17,7 +18,10 @@ class RequestService {
   final PlanningService planning;
   final NotificationService notifications;
 
-  RequestService(this.store, this.companies, this.planning, this.notifications);
+  /// Prévenue après un échange validé (chevauchement avec une autre entreprise).
+  final OverlapService? overlaps;
+
+  RequestService(this.store, this.companies, this.planning, this.notifications, {this.overlaps});
 
   static const kinds = {'swap', 'leave', 'unavailability'};
 
@@ -132,7 +136,7 @@ class RequestService {
     await expire(r.companyId);
     r = await _load(requestId);
     if (r.status != 'pending_peer') throw const ApiError.conflict('Cette demande n\'est plus en attente.');
-    if (!(await _candidates(r)).contains(actor.id)) throw const ApiError.forbidden();
+    if (!await _canTake(r, actor, await _viewer(actor, r.companyId))) throw const ApiError.forbidden();
     final changed = await store.query(store.db, '''
       UPDATE requests SET status = 'pending_manager', peer_id = @p::uuid, updated_at = now()
       WHERE id = @id::uuid AND status = 'pending_peer' RETURNING id''', {'id': requestId, 'p': actor.id});
@@ -175,6 +179,7 @@ class RequestService {
           UPDATE requests SET status = 'approved', peer_id = @p::uuid, decided_by = @a::uuid, updated_at = now()
           WHERE id = @id::uuid''', {'id': r.id, 'a': actor.id, 'p': to});
       });
+      await overlaps?.notifyNew(r.companyId, [to]);
     } else {
       await _setStatus(r, approve ? 'approved' : 'refused', actor);
     }
@@ -255,7 +260,7 @@ class RequestService {
   Future<Map<String, Object?>?> _visible(String id, User actor, ({Role role, Set<String>? sites}) viewer) async {
     final r = await _load(id);
     final mine = r.requesterId == actor.id || r.peerId == actor.id;
-    final offered = r.status == 'pending_peer' && (await _candidates(r)).contains(actor.id);
+    final offered = r.status == 'pending_peer' && await _canTake(r, actor, viewer);
     if (mine || offered || await _inScope(r, viewer)) return _json(r, actor, viewer, candidate: offered);
     return null;
   }
@@ -348,6 +353,15 @@ class RequestService {
   /// On ne valide pas sa propre demande (sauf le propriétaire).
   Future<bool> _canDecide(_Request r, User actor, ({Role role, Set<String>? sites}) viewer) async =>
       r.pending && (r.requesterId != actor.id || viewer.role == Role.owner) && await _inScope(r, viewer);
+
+  /// Peut reprendre le service : la personne choisie ; pour une offre à
+  /// toute l'équipe, les collègues prévenus, et aussi les responsables et le
+  /// patron (qui travaillent eux aussi).
+  Future<bool> _canTake(_Request r, User actor, ({Role role, Set<String>? sites}) viewer) async {
+    if (actor.id == r.requesterId) return false;
+    if (!r.openOffer) return r.peerId == actor.id;
+    return viewer.role.canManage || (await _candidates(r)).contains(actor.id);
+  }
 
   /// Collègues à qui l'échange est proposé : la personne choisie, ou pour une
   /// offre ouverte les salariés et extras de l'équipe du site du service ; à

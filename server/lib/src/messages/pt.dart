@@ -64,4 +64,5 @@ const pt = <String, String>{
   'Votre demande a été acceptée.': 'O seu pedido foi aceite.',
   'Votre demande a été refusée.': 'O seu pedido foi recusado.',
   'Choisissez la personne qui reprend le service.': 'Escolha quem fica com o turno.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Dois dos seus turnos em empresas diferentes sobrepõem-se a {day}.',
 };

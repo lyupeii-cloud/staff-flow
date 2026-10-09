@@ -64,4 +64,5 @@ const it = <String, String>{
   'Votre demande a été acceptée.': 'La tua richiesta è stata accettata.',
   'Votre demande a été refusée.': 'La tua richiesta è stata rifiutata.',
   'Choisissez la personne qui reprend le service.': 'Scegli chi prende il turno.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Due tuoi turni in aziende diverse si sovrappongono il {day}.',
 };

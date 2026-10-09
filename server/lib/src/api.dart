@@ -12,6 +12,7 @@ import 'join_service.dart';
 import 'messages.dart';
 import 'notice_service.dart';
 import 'notifications.dart';
+import 'overlap_service.dart';
 import 'models.dart';
 import 'planning_service.dart';
 import 'request_service.dart';
@@ -27,7 +28,9 @@ class Api {
   late final NotificationService notifications = NotificationService(store, push: push);
   late final PlanningService planning = PlanningService(store, companies, notifications, now: now);
   late final ChatService chat = ChatService(store, companies, notifications);
-  late final RequestService requests = RequestService(store, companies, planning, notifications);
+  late final OverlapService overlaps = OverlapService(store, companies, notifications, now: now);
+  late final RequestService requests =
+      RequestService(store, companies, planning, notifications, overlaps: overlaps);
   late final JoinService joins = JoinService(store, companies, now: now);
   late final NoticeService notices = NoticeService(store, now: now);
 
@@ -95,6 +98,9 @@ class Api {
       ..post('/companies/<id>/shifts/<shiftId>/revert', _authed((r, u) async =>
           _json({'reverted': await planning.revert(u, r.params['id']!, r.params['shiftId']!)})))
       ..put('/companies/<id>/notify-sites', _authed(_notifySites))
+      // Plusieurs employeurs : tous ses plannings, personnes déjà en service ailleurs
+      ..get('/me/shifts', _authed(_myShifts))
+      ..get('/companies/<id>/busy', _authed(_busy))
       // Historique, annulation, avis
       ..get('/companies/<id>/history', _authed(_history))
       ..post('/companies/<id>/history/<entryId>/undo', _authed(_undo))
@@ -458,6 +464,29 @@ class Api {
     });
   }
 
+  Future<Response> _myShifts(Request req, User user) async {
+    final q = req.url.queryParameters;
+    final from = q['from'], to = q['to'];
+    if (from == null || to == null) throw const ApiError.badRequest('Paramètres from et to requis.');
+    try {
+      return _json({'shifts': await overlaps.myShifts(user, from, to)});
+    } on FormatException {
+      throw const ApiError.badRequest('Dates invalides.');
+    }
+  }
+
+  Future<Response> _busy(Request req, User user) async {
+    final q = req.url.queryParameters;
+    final start = int.tryParse(q['start'] ?? ''), end = int.tryParse(q['end'] ?? '');
+    final days = (q['days'] ?? '').split(',').where((d) => d.isNotEmpty).toList();
+    if (start == null || end == null) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    try {
+      return _json({'userIds': await overlaps.busyElsewhere(user, req.params['id']!, days, start, end)});
+    } on FormatException {
+      throw const ApiError.badRequest('Dates invalides.');
+    }
+  }
+
   Future<Response> _notifySites(Request req, User user) async {
     final body = await _body(req);
     final sites = body['sites'];
@@ -556,6 +585,7 @@ class Api {
     // Une seule notification par personne concernée (section 4).
     await notifications.notify(users.where((u) => u != user.id),
         companyId: req.params['id'], kind: 'schedule_published');
+    await overlaps.notifyNew(req.params['id']!, users);
     return _json({'published': count, 'notifiedUsers': users.length});
   }
 

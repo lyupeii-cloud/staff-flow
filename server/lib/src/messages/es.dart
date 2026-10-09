@@ -64,4 +64,5 @@ const es = <String, String>{
   'Votre demande a été acceptée.': 'Tu solicitud ha sido aceptada.',
   'Votre demande a été refusée.': 'Tu solicitud ha sido rechazada.',
   'Choisissez la personne qui reprend le service.': 'Elige quién toma el turno.',
+  'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Dos de tus turnos en empresas distintas se solapan el {day}.',
 };
