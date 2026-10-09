@@ -2374,6 +2374,42 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Unmute this conversation'**
   String get unmuteConversation;
+
+  /// No description provided for @awaitingApproval.
+  ///
+  /// In en, this message translates to:
+  /// **'To approve'**
+  String get awaitingApproval;
+
+  /// No description provided for @placementNeedsApproval.
+  ///
+  /// In en, this message translates to:
+  /// **'! This person isn\'t on your sites: the shift will wait for approval from your superior or the owner before it can be published. Otherwise, pick someone else.'**
+  String get placementNeedsApproval;
+
+  /// No description provided for @placementAwaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for approval from a superior or the owner.'**
+  String get placementAwaiting;
+
+  /// No description provided for @noticePlacementToApprove.
+  ///
+  /// In en, this message translates to:
+  /// **'{by} wants to schedule {name}, from another site, on {date}: approval needed.'**
+  String noticePlacementToApprove(String by, String name, String date);
+
+  /// No description provided for @noticePlacementApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'{by} approved scheduling {name} on {date}.'**
+  String noticePlacementApproved(String by, String name, String date);
+
+  /// No description provided for @noticePlacementRefused.
+  ///
+  /// In en, this message translates to:
+  /// **'{by} refused scheduling {name} on {date}.'**
+  String noticePlacementRefused(String by, String name, String date);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

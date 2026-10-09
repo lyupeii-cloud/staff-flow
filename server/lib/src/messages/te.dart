@@ -91,4 +91,7 @@ const te = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'కంపెనీ సమూహం ఆపివేయబడింది.',
   'Préréglage invalide.': 'చెల్లని ప్రీసెట్.',
   'Image PNG de 1 Mo au plus attendue.': '1 MB వరకు ఉన్న PNG చిత్రం కావాలి.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} వేరే సైట్‌కు చెందిన {name}‌ను {day}న నియమించాలనుకుంటున్నారు: ఆమోదం అవసరం.',
+  '{by} a validé le placement de {name} le {day}.': '{by} {day}న {name} నియామకాన్ని ఆమోదించారు.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} {day}న {name} నియామకాన్ని తిరస్కరించారు.',
 };

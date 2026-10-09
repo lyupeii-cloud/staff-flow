@@ -103,7 +103,7 @@ class PlanningService {
     // Modifications que cette personne peut publier (ses sites pour un responsable de site).
     final mine = await companies.managedSites(companyId, actor, role);
     final pending = await store.query(store.db, '''
-      SELECT count(*) FROM shifts WHERE company_id = @c::uuid AND dirty
+      SELECT count(*) FROM shifts WHERE company_id = @c::uuid AND dirty AND approval_by IS NULL
         AND (@sites::text[] IS NULL OR site_id::text = ANY(@sites::text[]))''', {'c': companyId, 'sites': mine?.toList()});
     return ([for (final r in rows) Shift.fromRow(r.toColumnMap())], pending.first[0] as int);
   }
@@ -120,6 +120,7 @@ class PlanningService {
       throw const ApiError.badRequest('Trop de services d\'un coup (400 au plus).');
     }
     dates.forEach(_checkEditable);
+    final approval = await _approvalFor(store.db, actor, companyId, mine, input.userId);
     final created = await store.db.runTx((tx) async {
       String? seriesId;
       if (repeat != null) {
@@ -133,15 +134,16 @@ class PlanningService {
       for (final day in dates) {
         final rows = await store.query(tx, '''
           INSERT INTO shifts (company_id, series_id, day, start_min, end_min,
-                              user_id, site_id, position_id, note, updated_by)
+                              user_id, site_id, position_id, note, updated_by, approval_by)
           VALUES (@c::uuid, @s::uuid, @day::date, @start, @end,
-                  @user::uuid, @site::uuid, @pos::uuid, @note, @by::uuid)
+                  @user::uuid, @site::uuid, @pos::uuid, @note, @by::uuid, @approval::uuid)
           RETURNING *''', {
           'c': companyId,
           's': seriesId,
           'day': formatDay(day),
           ...input.params(),
           'by': actor.id,
+          'approval': approval,
         });
         final row = rows.first.toColumnMap();
         await _history(tx, companyId, row['id'] as String, actor, 'create', null, _snapshot(row));
@@ -155,7 +157,11 @@ class PlanningService {
           tx: tx);
       return created;
     });
-    await _notifyBorrowed(actor, companyId, input.userId, input.siteId, dates.first);
+    if (approval != null) {
+      await _askApproval(actor, companyId, input.userId!, input.siteId, dates.first);
+    } else {
+      await _notifyBorrowed(actor, companyId, input.userId, input.siteId, dates.first);
+    }
     return created;
   }
 
@@ -210,6 +216,8 @@ class PlanningService {
     await _checkRefs(companyId, merged);
     final series = scope == Scope.series && shift.seriesId != null;
     var overwritten = const <String>[];
+    final candidate = await _approvalFor(store.db, actor, companyId, mine, merged.userId);
+    var asked = false;
     final count = await store.db.runTx((tx) async {
       final rows = await _lock(tx, shift, series: series);
       for (final r in rows) {
@@ -217,13 +225,20 @@ class PlanningService {
       }
       overwritten = await _noticeIfOverwritten(tx, actor, companyId, rows, shift.id, baseVersion);
       for (final row in rows) {
+        // Même personne : la validation déjà demandée (ou obtenue) reste ;
+        // la personne déjà publiée sur ce service n'a pas à être validée.
+        final samePerson = mine != null && row['user_id'] == merged.userId;
+        final publishedUser = (row['published'] as Map<String, dynamic>?)?['userId'];
+        final approval = samePerson ? row['approval_by'] : (merged.userId == publishedUser ? null : candidate);
+        if (approval != null && !samePerson) asked = true;
         final after = await store.query(tx, '''
           UPDATE shifts SET start_min = @start, end_min = @end, user_id = @user::uuid,
             site_id = @site::uuid, position_id = @pos::uuid, note = @note,
-            day = @day::date, detached = @detached,
+            day = @day::date, detached = @detached, approval_by = @approval::uuid,
             dirty = true, version = version + 1, updated_by = @by::uuid, updated_at = now()
           WHERE id = @id::uuid RETURNING *''', {
           ...merged.params(),
+          'approval': approval,
           'id': row['id'],
           'day': series ? formatDay(row['day'] as DateTime) : formatDay(patch.day ?? shift.day),
           'detached': series ? row['detached'] : row['series_id'] != null,
@@ -235,7 +250,9 @@ class PlanningService {
       return rows.length;
     });
     notifications.deliver(overwritten);
-    if (merged.userId != shift.userId || merged.siteId != shift.siteId) {
+    if (asked) {
+      await _askApproval(actor, companyId, merged.userId!, merged.siteId, patch.day ?? shift.day);
+    } else if (merged.userId != shift.userId || merged.siteId != shift.siteId) {
       await _notifyBorrowed(actor, companyId, merged.userId, merged.siteId, patch.day ?? shift.day);
     }
     await store.audit(
@@ -282,6 +299,9 @@ class PlanningService {
     if (await store.roleOf(companyId, toUserId) == null) {
       throw const ApiError.badRequest('Le remplaçant ne fait pas partie de l\'entreprise.');
     }
+    final candidate = await _approvalFor(store.db, actor, companyId, mine, toUserId);
+    DateTime? askedDay;
+    String? askedSite;
     final count = await store.db.runTx((tx) async {
       final rows = await store.query(tx, '''
         SELECT * FROM shifts
@@ -298,10 +318,16 @@ class PlanningService {
         'end': formatDay(parseDay(to)),
       });
       for (final row in rows.map((r) => r.toColumnMap())) {
+        final publishedUser = (row['published'] as Map<String, dynamic>?)?['userId'];
+        final approval = toUserId == publishedUser ? null : candidate;
+        if (approval != null && askedDay == null) {
+          askedDay = row['day'] as DateTime;
+          askedSite = row['site_id'] as String?;
+        }
         final after = await store.query(tx, '''
-          UPDATE shifts SET user_id = @to::uuid, dirty = true, version = version + 1,
+          UPDATE shifts SET user_id = @to::uuid, approval_by = @approval::uuid, dirty = true, version = version + 1,
             updated_by = @by::uuid, updated_at = now()
-          WHERE id = @id::uuid RETURNING *''', {'id': row['id'], 'to': toUserId, 'by': actor.id});
+          WHERE id = @id::uuid RETURNING *''', {'id': row['id'], 'to': toUserId, 'by': actor.id, 'approval': approval});
         await _history(tx, companyId, row['id'] as String, actor, 'update', _snapshot(row),
             _snapshot(after.first.toColumnMap()));
       }
@@ -312,6 +338,7 @@ class PlanningService {
         actorId: actor.id,
         action: 'shift.replace',
         details: {'fromUserId': fromUserId, 'toUserId': toUserId, 'count': count});
+    if (askedDay != null) await _askApproval(actor, companyId, toUserId, askedSite, askedDay!);
     return count;
   }
 
@@ -361,10 +388,16 @@ class PlanningService {
         // Brouillon effacé : on le recrée tel quel, avec le même identifiant.
         final inserted = await store.query(tx, '''
           INSERT INTO shifts (id, company_id, series_id, day, start_min, end_min, user_id,
-                              site_id, position_id, note, detached, updated_by)
+                              site_id, position_id, note, detached, updated_by, approval_by)
           VALUES (@id::uuid, @c::uuid, @series::uuid, @day::date, @start, @end, @user::uuid,
-                  @site::uuid, @pos::uuid, @note, @detached, @by::uuid)
-          RETURNING *''', {..._fields(target), 'id': shiftId, 'c': companyId, 'by': actor.id});
+                  @site::uuid, @pos::uuid, @note, @detached, @by::uuid, @approval::uuid)
+          RETURNING *''', {
+          ..._fields(target),
+          'id': shiftId,
+          'c': companyId,
+          'by': actor.id,
+          'approval': await _approvalFor(tx, actor, companyId, mine, target['userId'] as String?),
+        });
         await _history(tx, companyId, shiftId, actor, 'undo', null, _snapshot(inserted.first.toColumnMap()));
         return true;
       }
@@ -372,9 +405,16 @@ class PlanningService {
       final updated = await store.query(tx, '''
         UPDATE shifts SET series_id = @series::uuid, day = @day::date, start_min = @start,
           end_min = @end, user_id = @user::uuid, site_id = @site::uuid, position_id = @pos::uuid,
-          note = @note, detached = @detached, deleted = false, dirty = true,
+          note = @note, detached = @detached, deleted = false, dirty = true, approval_by = @approval::uuid,
           version = version + 1, updated_by = @by::uuid, updated_at = now()
-        WHERE id = @id::uuid RETURNING *''', {..._fields(target), 'id': shiftId, 'by': actor.id});
+        WHERE id = @id::uuid RETURNING *''', {
+        ..._fields(target),
+        'id': shiftId,
+        'by': actor.id,
+        'approval': target['userId'] == (row['published'] as Map<String, dynamic>?)?['userId']
+            ? null
+            : await _approvalFor(tx, actor, companyId, mine, target['userId'] as String?),
+      });
       await _history(tx, companyId, shiftId, actor, 'undo', _snapshot(row), _snapshot(updated.first.toColumnMap()));
       return true;
     });
@@ -433,7 +473,7 @@ class PlanningService {
       UPDATE shifts SET day = (published->>'day')::date, start_min = (published->>'start')::int,
         end_min = (published->>'end')::int, user_id = (published->>'userId')::uuid,
         site_id = (published->>'siteId')::uuid, position_id = (published->>'positionId')::uuid,
-        note = published->>'note', deleted = false, dirty = false, version = version + 1,
+        note = published->>'note', deleted = false, dirty = false, approval_by = NULL, version = version + 1,
         updated_by = @by::uuid, updated_at = now()
       WHERE id = @id::uuid RETURNING *''', {'id': row['id'], 'by': actor.id});
     await _history(tx, companyId, row['id'] as String, actor, 'revert', _snapshot(row), _snapshot(after.first.toColumnMap()));
@@ -477,7 +517,7 @@ class PlanningService {
       await store.query(tx, 'DELETE FROM shifts WHERE id = @id::uuid', {'id': row['id']});
     } else {
       final updated = await store.query(tx, '''
-        UPDATE shifts SET deleted = true, dirty = true, version = version + 1,
+        UPDATE shifts SET deleted = true, dirty = true, approval_by = NULL, version = version + 1,
           updated_by = @by::uuid, updated_at = now()
         WHERE id = @id::uuid RETURNING *''', {'id': row['id'], 'by': actor.id});
       after = _snapshot(updated.first.toColumnMap());
@@ -538,7 +578,7 @@ class PlanningService {
       final affected = await store.query(tx, '''
         SELECT DISTINCT u FROM shifts,
           LATERAL (VALUES (user_id::text), (published->>'userId')) AS v(u)
-        WHERE company_id = @c::uuid AND dirty AND u IS NOT NULL
+        WHERE company_id = @c::uuid AND dirty AND u IS NOT NULL AND approval_by IS NULL
           AND (@sites::text[] IS NULL OR site_id::text = ANY(@sites::text[]))''', {'c': companyId, 'sites': sites});
       final removed = await store.query(tx,
           '''DELETE FROM shifts WHERE company_id = @c::uuid AND dirty AND deleted
@@ -548,7 +588,7 @@ class PlanningService {
         UPDATE shifts SET dirty = false, published = jsonb_build_object(
           'day', day, 'start', start_min, 'end', end_min, 'userId', user_id,
           'siteId', site_id, 'positionId', position_id, 'note', note)
-        WHERE company_id = @c::uuid AND dirty
+        WHERE company_id = @c::uuid AND dirty AND approval_by IS NULL
           AND (@sites::text[] IS NULL OR site_id::text = ANY(@sites::text[])) RETURNING id''',
           {'c': companyId, 'sites': sites});
       return (removed.length + updated.length, {for (final r in affected) r[0] as String});
@@ -581,6 +621,93 @@ class PlanningService {
         published = CASE WHEN published IS NULL THEN NULL ELSE jsonb_set(published, '{userId}', to_jsonb(@u::text)) END
       WHERE id = @id::uuid RETURNING *''', {'u': toUserId, 'by': actor.id, 'id': shiftId});
     await _history(tx, companyId, shiftId, actor, 'update', _snapshot(row), _snapshot(after.first.toColumnMap()));
+  }
+
+  // --- Placement d'un salarié d'un autre site ------------------------------
+
+  /// Un responsable de site place un salarié (ou un extra) dont l'équipe
+  /// n'est sur aucun de ses sites : le service attend la validation d'un
+  /// supérieur. Renvoie le responsable qui demande, ou `null`.
+  Future<String?> _approvalFor(Session s, User actor, String companyId, Set<String>? mine, String? userId) async {
+    if (mine == null || userId == null) return null;
+    final rows = await store.query(s, '''
+      SELECT role, sites::text[] FROM memberships
+      WHERE company_id = @c::uuid AND user_id = @u::uuid AND left_at IS NULL''', {'c': companyId, 'u': userId});
+    if (rows.isEmpty) return null;
+    final role = rows.first[0] as String;
+    final team = [for (final x in (rows.first[1] as List?) ?? const []) x as String];
+    if (role != 'employee' && role != 'extra') return null;
+    if (team.isEmpty || team.any(mine.contains)) return null;
+    return actor.id;
+  }
+
+  /// Qui valide : le patron, les responsables de toute l'entreprise, et le
+  /// responsable qui a nommé celui qui demande.
+  static List<String> _approvers(List<Member> members, String requesterId) {
+    final requester = members.where((m) => m.user.id == requesterId).firstOrNull;
+    return [
+      for (final m in members)
+        if (m.user.id != requesterId &&
+            (m.role == Role.owner ||
+                (m.role == Role.manager && m.sites == null) ||
+                (m.role == Role.manager && m.user.id == requester?.appointedBy)))
+          m.user.id,
+    ];
+  }
+
+  Future<void> _askApproval(User actor, String companyId, String userId, String? siteId, DateTime day) async {
+    final members = await store.members(companyId);
+    final person = members.where((m) => m.user.id == userId).firstOrNull;
+    final site = siteId == null
+        ? const []
+        : await store.query(store.db, 'SELECT name FROM sites WHERE id = @s::uuid', {'s': siteId});
+    await notifications.notify(_approvers(members, actor.id), companyId: companyId, kind: 'placement_to_approve', data: {
+      'byName': actor.name,
+      'name': person?.user.name,
+      'day': formatDay(day),
+      'siteName': site.isEmpty ? null : site.first[0],
+    });
+  }
+
+  /// Supérieur ou patron : valide le placement (le service pourra être
+  /// publié) ou le refuse (le service reste sans personne).
+  Future<void> decidePlacement(User actor, String companyId, String shiftId, {required bool approve}) async {
+    final (company, _) = await companies.open(actor, companyId);
+    if (company.status == CompanyStatus.readOnly) {
+      throw const ApiError.conflict('Cette entreprise est en lecture seule.');
+    }
+    final rows = await store.query(store.db,
+        'SELECT * FROM shifts WHERE id = @id::uuid AND company_id = @c::uuid AND NOT deleted', {'id': shiftId, 'c': companyId});
+    if (rows.isEmpty) throw const ApiError.notFound('Service introuvable.');
+    final row = rows.first.toColumnMap();
+    final requester = row['approval_by'] as String?;
+    if (requester == null) throw const ApiError.conflict('Ce service a changé depuis la demande.');
+    final members = await store.members(companyId);
+    if (!_approvers(members, requester).contains(actor.id)) throw const ApiError.forbidden();
+    await store.db.runTx((tx) async {
+      final updated = await store.query(tx, '''
+        UPDATE shifts SET approval_by = NULL, version = version + 1
+          ${approve ? '' : ', user_id = NULL, dirty = true, updated_by = @by::uuid, updated_at = now()'}
+        WHERE id = @id::uuid AND approval_by = @r::uuid RETURNING *''', {'id': shiftId, 'r': requester, 'by': actor.id});
+      if (updated.isEmpty) throw const ApiError.conflict('Ce service a changé depuis la demande.');
+      if (!approve) {
+        await _history(tx, companyId, shiftId, actor, 'update', _snapshot(row), _snapshot(updated.first.toColumnMap()));
+      }
+    });
+    await store.audit(
+        companyId: companyId,
+        actorId: actor.id,
+        action: approve ? 'shift.placement_approved' : 'shift.placement_refused',
+        details: {'shiftId': shiftId});
+    final person = members.where((m) => m.user.id == row['user_id']).firstOrNull;
+    await notifications.notify([requester], companyId: companyId, kind: approve ? 'placement_approved' : 'placement_refused', data: {
+      'byName': actor.name,
+      'name': person?.user.name,
+      'day': formatDay(row['day'] as DateTime),
+    });
+    if (approve) {
+      await _notifyBorrowed(actor, companyId, row['user_id'] as String?, row['site_id'] as String?, row['day'] as DateTime);
+    }
   }
 
   /// Responsable (ou propriétaire) d'une entreprise modifiable. Renvoie ses
@@ -789,6 +916,9 @@ class Shift {
   /// deleted (publié, supprimé à la prochaine publication).
   final String status;
 
+  /// Placement à valider : le responsable de site qui l'a demandé.
+  final String? approvalBy;
+
   const Shift({
     required this.id,
     this.seriesId,
@@ -802,6 +932,7 @@ class Shift {
     this.version = 1,
     this.detached = false,
     required this.status,
+    this.approvalBy,
   });
 
   factory Shift.fromRow(Map<String, dynamic> r) => Shift(
@@ -816,6 +947,7 @@ class Shift {
         note: r['note'] as String?,
         version: r['version'] as int,
         detached: r['detached'] as bool,
+        approvalBy: r['approval_by'] as String?,
         status: r['published'] == null
             ? 'draft'
             : r['deleted'] == true
@@ -856,6 +988,7 @@ class Shift {
         'version': version,
         'detached': detached,
         'status': status,
+        if (approvalBy != null) 'approvalBy': approvalBy,
       };
 }
 

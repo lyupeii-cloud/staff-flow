@@ -1309,4 +1309,30 @@ class L10nEl extends L10n {
   @override
   String get unmuteConversation =>
       'Ενεργοποίηση ειδοποιήσεων αυτής της συνομιλίας';
+
+  @override
+  String get awaitingApproval => 'Προς έγκριση';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Αυτό το άτομο δεν ανήκει στα σημεία σας: η βάρδια θα περιμένει έγκριση από τον προϊστάμενό σας ή τον ιδιοκτήτη πριν δημοσιευτεί. Αλλιώς επιλέξτε άλλον.';
+
+  @override
+  String get placementAwaiting =>
+      'Αναμένει έγκριση από προϊστάμενο ή τον ιδιοκτήτη.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return 'Ο/Η $by θέλει να προγραμματίσει τον/την $name από άλλο σημείο στις $date: απαιτείται έγκριση.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return 'Ο/Η $by ενέκρινε τον προγραμματισμό του/της $name στις $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return 'Ο/Η $by απέρριψε τον προγραμματισμό του/της $name στις $date.';
+  }
 }

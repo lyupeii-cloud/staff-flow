@@ -1295,4 +1295,29 @@ class L10nMr extends L10n {
 
   @override
   String get unmuteConversation => 'या संभाषणाच्या सूचना सुरू करा';
+
+  @override
+  String get awaitingApproval => 'मंजुरी बाकी';
+
+  @override
+  String get placementNeedsApproval =>
+      '! ही व्यक्ती तुमच्या साइटची नाही: प्रकाशित होण्यापूर्वी शिफ्ट तुमच्या वरिष्ठांच्या किंवा मालकाच्या मंजुरीची वाट पाहील. नाहीतर दुसरी व्यक्ती निवडा.';
+
+  @override
+  String get placementAwaiting => 'वरिष्ठ किंवा मालकाच्या मंजुरीची प्रतीक्षा.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by दुसऱ्या साइटवरील $name यांना $date रोजी नेमू इच्छितात: मंजुरी हवी.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by यांनी $date रोजी $name यांची नेमणूक मंजूर केली.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by यांनी $date रोजी $name यांची नेमणूक नाकारली.';
+  }
 }

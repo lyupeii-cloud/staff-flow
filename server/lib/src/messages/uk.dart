@@ -111,4 +111,7 @@ const uk = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Групу компанії вимкнено.',
   'Préréglage invalide.': 'Недійсний шаблон.',
   'Image PNG de 1 Mo au plus attendue.': 'Потрібне зображення PNG до 1 МБ.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} хоче поставити {name} з іншого об\'єкта на {day}: потрібне затвердження.',
+  '{by} a validé le placement de {name} le {day}.': '{by} затвердив(ла) призначення {name} на {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} відхилив(ла) призначення {name} на {day}.',
 };

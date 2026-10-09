@@ -91,4 +91,7 @@ const ko = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': '회사 그룹이 꺼져 있습니다.',
   'Préréglage invalide.': '프리셋이 올바르지 않습니다.',
   'Image PNG de 1 Mo au plus attendue.': '1MB 이하의 PNG 이미지가 필요합니다.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by}님이 다른 지점의 {name}님을 {day}에 배치하려고 합니다: 승인이 필요합니다.',
+  '{by} a validé le placement de {name} le {day}.': '{by}님이 {day} {name}님의 배치를 승인했습니다.',
+  '{by} a refusé le placement de {name} le {day}.': '{by}님이 {day} {name}님의 배치를 거절했습니다.',
 };

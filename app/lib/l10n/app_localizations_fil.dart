@@ -1306,4 +1306,30 @@ class L10nFil extends L10n {
 
   @override
   String get unmuteConversation => 'I-unmute ang usapang ito';
+
+  @override
+  String get awaitingApproval => 'Aaprubahan';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Hindi kabilang ang taong ito sa iyong mga site: maghihintay ang shift ng pag-apruba ng iyong superior o ng may-ari bago mailathala. Kung hindi, pumili ng iba.';
+
+  @override
+  String get placementAwaiting =>
+      'Naghihintay ng pag-apruba ng superior o ng may-ari.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return 'Gustong i-iskedyul ni $by si $name, mula sa ibang site, sa $date: kailangan ng pag-apruba.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return 'Inaprubahan ni $by ang pag-iskedyul kay $name sa $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return 'Tinanggihan ni $by ang pag-iskedyul kay $name sa $date.';
+  }
 }

@@ -363,5 +363,11 @@
   "themeDark": "深色",
   "themeLight": "浅色",
   "themeSystem": "跟随系统",
-  "unmuteConversation": "恢复此对话的通知"
+  "unmuteConversation": "恢复此对话的通知",
+  "awaitingApproval": "待审批",
+  "placementNeedsApproval": "！此人不属于您的站点：班次需等您的上级或老板审批后才能发布。否则请另选他人。",
+  "placementAwaiting": "等待上级或老板审批。",
+  "noticePlacementToApprove": "{by} 想在 {date} 安排其他站点的 {name}：需要审批。",
+  "noticePlacementApproved": "{by} 已批准在 {date} 安排 {name}。",
+  "noticePlacementRefused": "{by} 已拒绝在 {date} 安排 {name}。"
 }

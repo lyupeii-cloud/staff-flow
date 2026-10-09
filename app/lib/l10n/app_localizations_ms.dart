@@ -1296,4 +1296,29 @@ class L10nMs extends L10n {
 
   @override
   String get unmuteConversation => 'Hidupkan pemberitahuan perbualan ini';
+
+  @override
+  String get awaitingApproval => 'Perlu kelulusan';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Orang ini bukan dari tapak anda: syif akan menunggu kelulusan penyelia anda atau pemilik sebelum boleh diterbitkan. Jika tidak, pilih orang lain.';
+
+  @override
+  String get placementAwaiting => 'Menunggu kelulusan penyelia atau pemilik.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by mahu menjadualkan $name dari tapak lain pada $date: perlu kelulusan.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by meluluskan penjadualan $name pada $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by menolak penjadualan $name pada $date.';
+  }
 }

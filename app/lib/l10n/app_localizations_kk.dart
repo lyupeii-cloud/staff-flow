@@ -1297,4 +1297,29 @@ class L10nKk extends L10n {
 
   @override
   String get unmuteConversation => 'Бұл әңгіменің хабарландыруларын қосу';
+
+  @override
+  String get awaitingApproval => 'Бекітуді күтуде';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Бұл адам сіздің нысандарыңыздан емес: ауысым жарияланбас бұрын басшыңыздың немесе иесінің бекітуін күтеді. Әйтпесе басқа адамды таңдаңыз.';
+
+  @override
+  String get placementAwaiting => 'Басшының немесе иесінің бекітуін күтуде.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by басқа нысандағы $name қызметкерін $date күні қойғысы келеді: бекіту қажет.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by $date күні $name қызметкерін қоюды бекітті.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by $date күні $name қызметкерін қоюдан бас тартты.';
+  }
 }

@@ -1300,4 +1300,30 @@ class L10nFi extends L10n {
 
   @override
   String get unmuteConversation => 'Ota tämän keskustelun ilmoitukset käyttöön';
+
+  @override
+  String get awaitingApproval => 'Hyväksyttävänä';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Tämä henkilö ei kuulu toimipaikkoihisi: vuoro odottaa esihenkilösi tai omistajan hyväksyntää ennen julkaisua. Muuten valitse joku muu.';
+
+  @override
+  String get placementAwaiting =>
+      'Odottaa esihenkilön tai omistajan hyväksyntää.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by haluaa vuorottaa $name toiselta toimipaikalta $date: vaatii hyväksynnän.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by hyväksyi henkilön $name vuorotuksen $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by hylkäsi henkilön $name vuorotuksen $date.';
+  }
 }

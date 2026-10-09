@@ -91,4 +91,7 @@ const nb = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Bedriftens gruppe er slått av.',
   'Préréglage invalide.': 'Ugyldig forhåndsinnstilling.',
   'Image PNG de 1 Mo au plus attendue.': 'Et PNG-bilde på maks. 1 MB forventes.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} vil sette opp {name} fra et annet sted {day}: må godkjennes.',
+  '{by} a validé le placement de {name} le {day}.': '{by} godkjente oppsettet av {name} {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} avslo oppsettet av {name} {day}.',
 };

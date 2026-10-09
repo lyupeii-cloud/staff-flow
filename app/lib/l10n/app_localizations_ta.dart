@@ -1306,4 +1306,30 @@ class L10nTa extends L10n {
 
   @override
   String get unmuteConversation => 'இந்த உரையாடலின் அறிவிப்புகளை இயக்கு';
+
+  @override
+  String get awaitingApproval => 'ஒப்புதல் தேவை';
+
+  @override
+  String get placementNeedsApproval =>
+      '! இவர் உங்கள் தளங்களைச் சேர்ந்தவர் அல்ல: வெளியிடும் முன் ஷிஃப்ட் உங்கள் மேலதிகாரி அல்லது உரிமையாளரின் ஒப்புதலுக்காகக் காத்திருக்கும். இல்லையெனில் வேறொருவரைத் தேர்ந்தெடுக்கவும்.';
+
+  @override
+  String get placementAwaiting =>
+      'மேலதிகாரி அல்லது உரிமையாளரின் ஒப்புதலுக்காகக் காத்திருக்கிறது.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by வேறு தளத்தைச் சேர்ந்த $name-ஐ $date அன்று நியமிக்க விரும்புகிறார்: ஒப்புதல் தேவை.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by $date அன்று $name-இன் நியமனத்தை ஒப்புக்கொண்டார்.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by $date அன்று $name-இன் நியமனத்தை மறுத்தார்.';
+  }
 }

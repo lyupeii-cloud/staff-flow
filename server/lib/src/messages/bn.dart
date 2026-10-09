@@ -91,4 +91,7 @@ const bn = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'কোম্পানির গ্রুপ বন্ধ আছে।',
   'Préréglage invalide.': 'প্রিসেট বৈধ নয়।',
   'Image PNG de 1 Mo au plus attendue.': '১ MB পর্যন্ত PNG ছবি দরকার।',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} অন্য সাইটের {name}-কে {day} তারিখে রাখতে চান: অনুমোদন দরকার।',
+  '{by} a validé le placement de {name} le {day}.': '{by} {day} তারিখে {name}-এর নিয়োগ অনুমোদন করেছেন।',
+  '{by} a refusé le placement de {name} le {day}.': '{by} {day} তারিখে {name}-এর নিয়োগ প্রত্যাখ্যান করেছেন।',
 };

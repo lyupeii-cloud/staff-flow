@@ -91,4 +91,7 @@ const th = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'กลุ่มของบริษัทถูกปิดอยู่',
   'Préréglage invalide.': 'ค่าที่ตั้งไว้ไม่ถูกต้อง',
   'Image PNG de 1 Mo au plus attendue.': 'ต้องเป็นรูป PNG ขนาดไม่เกิน 1 MB',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} ต้องการจัด {name} จากสาขาอื่นในวันที่ {day}: ต้องได้รับการอนุมัติ',
+  '{by} a validé le placement de {name} le {day}.': '{by} อนุมัติการจัด {name} ในวันที่ {day} แล้ว',
+  '{by} a refusé le placement de {name} le {day}.': '{by} ปฏิเสธการจัด {name} ในวันที่ {day}',
 };

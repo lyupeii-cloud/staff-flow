@@ -367,5 +367,11 @@
   "themeDark": "Темний",
   "themeLight": "Світлий",
   "themeSystem": "Системний",
-  "unmuteConversation": "Увімкнути сповіщення цієї розмови"
+  "unmuteConversation": "Увімкнути сповіщення цієї розмови",
+  "awaitingApproval": "На затвердженні",
+  "placementNeedsApproval": "! Ця людина не з ваших об'єктів: зміна чекатиме затвердження вашого керівника або власника, перш ніж її можна буде опублікувати. Інакше оберіть іншого працівника.",
+  "placementAwaiting": "Очікує затвердження керівником або власником.",
+  "noticePlacementToApprove": "{by} хоче поставити {name} з іншого об'єкта на {date}: потрібне затвердження.",
+  "noticePlacementApproved": "{by} затвердив(ла) призначення {name} на {date}.",
+  "noticePlacementRefused": "{by} відхилив(ла) призначення {name} на {date}."
 }

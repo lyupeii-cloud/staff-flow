@@ -91,4 +91,7 @@ const zh = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': '公司群组已关闭。',
   'Préréglage invalide.': '预设无效。',
   'Image PNG de 1 Mo au plus attendue.': '需要不超过 1 MB 的 PNG 图片。',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} 想在 {day} 安排其他站点的 {name}：需要审批。',
+  '{by} a validé le placement de {name} le {day}.': '{by} 已批准在 {day} 安排 {name}。',
+  '{by} a refusé le placement de {name} le {day}.': '{by} 已拒绝在 {day} 安排 {name}。',
 };

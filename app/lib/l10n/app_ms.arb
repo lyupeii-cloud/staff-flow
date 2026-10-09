@@ -363,5 +363,11 @@
   "themeDark": "Gelap",
   "themeLight": "Cerah",
   "themeSystem": "Sistem",
-  "unmuteConversation": "Hidupkan pemberitahuan perbualan ini"
+  "unmuteConversation": "Hidupkan pemberitahuan perbualan ini",
+  "awaitingApproval": "Perlu kelulusan",
+  "placementNeedsApproval": "! Orang ini bukan dari tapak anda: syif akan menunggu kelulusan penyelia anda atau pemilik sebelum boleh diterbitkan. Jika tidak, pilih orang lain.",
+  "placementAwaiting": "Menunggu kelulusan penyelia atau pemilik.",
+  "noticePlacementToApprove": "{by} mahu menjadualkan {name} dari tapak lain pada {date}: perlu kelulusan.",
+  "noticePlacementApproved": "{by} meluluskan penjadualan {name} pada {date}.",
+  "noticePlacementRefused": "{by} menolak penjadualan {name} pada {date}."
 }

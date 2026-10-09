@@ -91,4 +91,7 @@ const hi = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'कंपनी का समूह बंद है।',
   'Préréglage invalide.': 'अमान्य प्रीसेट।',
   'Image PNG de 1 Mo au plus attendue.': '1 MB तक की PNG छवि चाहिए।',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} दूसरी साइट के {name} को {day} को लगाना चाहते हैं: मंज़ूरी चाहिए।',
+  '{by} a validé le placement de {name} le {day}.': '{by} ने {day} को {name} की नियुक्ति मंज़ूर की।',
+  '{by} a refusé le placement de {name} le {day}.': '{by} ने {day} को {name} की नियुक्ति अस्वीकार की।',
 };

@@ -363,5 +363,11 @@
   "themeDark": "ਗੂੜ੍ਹਾ",
   "themeLight": "ਹਲਕਾ",
   "themeSystem": "ਸਿਸਟਮ",
-  "unmuteConversation": "ਇਸ ਗੱਲਬਾਤ ਦੀਆਂ ਸੂਚਨਾਵਾਂ ਚਾਲੂ ਕਰੋ"
+  "unmuteConversation": "ਇਸ ਗੱਲਬਾਤ ਦੀਆਂ ਸੂਚਨਾਵਾਂ ਚਾਲੂ ਕਰੋ",
+  "awaitingApproval": "ਮਨਜ਼ੂਰੀ ਬਾਕੀ",
+  "placementNeedsApproval": "! ਇਹ ਵਿਅਕਤੀ ਤੁਹਾਡੀਆਂ ਸਾਈਟਾਂ ਦਾ ਨਹੀਂ ਹੈ: ਪ੍ਰਕਾਸ਼ਿਤ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਸ਼ਿਫਟ ਤੁਹਾਡੇ ਸੀਨੀਅਰ ਜਾਂ ਮਾਲਕ ਦੀ ਮਨਜ਼ੂਰੀ ਦੀ ਉਡੀਕ ਕਰੇਗੀ। ਨਹੀਂ ਤਾਂ ਕਿਸੇ ਹੋਰ ਨੂੰ ਚੁਣੋ।",
+  "placementAwaiting": "ਸੀਨੀਅਰ ਜਾਂ ਮਾਲਕ ਦੀ ਮਨਜ਼ੂਰੀ ਦੀ ਉਡੀਕ।",
+  "noticePlacementToApprove": "{by} ਹੋਰ ਸਾਈਟ ਦੇ {name} ਨੂੰ {date} ਨੂੰ ਲਗਾਉਣਾ ਚਾਹੁੰਦੇ ਹਨ: ਮਨਜ਼ੂਰੀ ਚਾਹੀਦੀ ਹੈ।",
+  "noticePlacementApproved": "{by} ਨੇ {date} ਨੂੰ {name} ਦੀ ਨਿਯੁਕਤੀ ਮਨਜ਼ੂਰ ਕੀਤੀ।",
+  "noticePlacementRefused": "{by} ਨੇ {date} ਨੂੰ {name} ਦੀ ਨਿਯੁਕਤੀ ਰੱਦ ਕੀਤੀ।"
 }

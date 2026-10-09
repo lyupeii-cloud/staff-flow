@@ -91,4 +91,7 @@ const vi = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Nhóm của công ty đã bị tắt.',
   'Préréglage invalide.': 'Mẫu giờ không hợp lệ.',
   'Image PNG de 1 Mo au plus attendue.': 'Cần ảnh PNG tối đa 1 MB.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} muốn xếp {name} từ địa điểm khác vào {day}: cần phê duyệt.',
+  '{by} a validé le placement de {name} le {day}.': '{by} đã duyệt việc xếp {name} vào {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} đã từ chối việc xếp {name} vào {day}.',
 };

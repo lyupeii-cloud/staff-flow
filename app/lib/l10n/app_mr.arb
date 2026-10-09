@@ -363,5 +363,11 @@
   "themeDark": "गडद",
   "themeLight": "फिकट",
   "themeSystem": "सिस्टम",
-  "unmuteConversation": "या संभाषणाच्या सूचना सुरू करा"
+  "unmuteConversation": "या संभाषणाच्या सूचना सुरू करा",
+  "awaitingApproval": "मंजुरी बाकी",
+  "placementNeedsApproval": "! ही व्यक्ती तुमच्या साइटची नाही: प्रकाशित होण्यापूर्वी शिफ्ट तुमच्या वरिष्ठांच्या किंवा मालकाच्या मंजुरीची वाट पाहील. नाहीतर दुसरी व्यक्ती निवडा.",
+  "placementAwaiting": "वरिष्ठ किंवा मालकाच्या मंजुरीची प्रतीक्षा.",
+  "noticePlacementToApprove": "{by} दुसऱ्या साइटवरील {name} यांना {date} रोजी नेमू इच्छितात: मंजुरी हवी.",
+  "noticePlacementApproved": "{by} यांनी {date} रोजी {name} यांची नेमणूक मंजूर केली.",
+  "noticePlacementRefused": "{by} यांनी {date} रोजी {name} यांची नेमणूक नाकारली."
 }

@@ -53,6 +53,15 @@ void main() {
       expect([(await member(bob.id))['role'], (await member(bob.id))['appointedBy']], ['employee', null]);
     });
 
+    test('celui qui l\'a nommé change ses sites : un ou plusieurs des siens', () async {
+      await north.ok('PUT', p('/members/${bob.id}/role'), {'role': 'manager', 'sites': [siteNorth]});
+      await north.ok('PUT', p('/members/${bob.id}/sites'), {'sites': [siteNorth, siteGare]});
+      expect((await member(bob.id))['sites'], unorderedEquals([siteNorth, siteGare]));
+      expect((await north('PUT', p('/members/${bob.id}/sites'), {'sites': [siteSouth]})).$1, 403);
+      expect((await north('PUT', p('/members/${bob.id}/sites'), {'sites': []})).$1, 400);
+      expect((await south('PUT', p('/members/${bob.id}/sites'), {'sites': [siteSouth]})).$1, 403);
+    });
+
     test('le propriétaire nomme toujours qui il veut ; un nommé par le propriétaire n\'a pas de parrain', () async {
       await owner.ok('PUT', p('/members/${bob.id}/role'), {'role': 'manager', 'sites': [siteSouth]});
       expect((await member(bob.id))['appointedBy'], isNull);
@@ -61,11 +70,29 @@ void main() {
   });
 
   group('salarié d\'un autre site', () {
-    test('placé par un autre responsable : les responsables de son équipe sont prévenus', () async {
+    test('placé par un responsable de site : à valider, puis l\'équipe est prévenue', () async {
       // Le responsable du Sud place Bob (équipe Nord) sur le site Sud.
-      await south.ok('POST', p('/shifts'),
-          {'days': ['2026-10-07'], 'start': 480, 'end': 960, 'siteId': siteSouth, 'userId': bob.id});
+      final id = (await south.ok('POST', p('/shifts'),
+          {'days': ['2026-10-07'], 'start': 480, 'end': 960, 'siteId': siteSouth, 'userId': bob.id}))['shifts'].single['id'];
       await env.api.notifications.settle();
+      expect([for (final n in (await owner.ok('GET', '/notices'))['notices']) n['kind']], ['placement_to_approve']);
+      expect((await north.ok('GET', '/notices'))['notices'], isEmpty, reason: 'prévenu une fois validé');
+      // En attente : ne se publie pas.
+      final before = await south.ok('GET', p('/shifts?from=2026-10-05&to=2026-10-11'));
+      expect([before['pending'], before['shifts'].single['approvalBy']], [0, south.id]);
+      await south.ok('POST', p('/publish'));
+      expect((await bob.ok('GET', p('/shifts?from=2026-10-05&to=2026-10-11')))['shifts'], isEmpty);
+      // Ni lui-même ni un autre responsable de site ne valident.
+      expect((await south('POST', p('/shifts/$id/approval'), {'approve': true})).$1, 403);
+      expect((await north('POST', p('/shifts/$id/approval'), {'approve': true})).$1, 403);
+      await owner.ok('POST', p('/shifts/$id/approval'), {'approve': true});
+      await env.api.notifications.settle();
+      expect([for (final n in (await south.ok('GET', '/notices'))['notices']) n['kind']], contains('placement_approved'));
+      await south.ok('POST', p('/publish'));
+      expect((await bob.ok('GET', p('/shifts?from=2026-10-05&to=2026-10-11')))['shifts'], hasLength(1));
+      // Changer l'heure de ce service publié ne redemande rien.
+      await south.ok('PATCH', p('/shifts/$id?scope=one'), {'start': 540});
+      expect((await south.ok('GET', p('/shifts?from=2026-10-05&to=2026-10-11')))['shifts'].single['approvalBy'], isNull);
       final notices = (await north.ok('GET', '/notices'))['notices'] as List;
       final n = notices.singleWhere((n) => n['kind'] == 'staff_borrowed');
       expect([n['data']['name'], n['data']['siteName'], n['data']['day']], ['bob', 'Sud', '2026-10-07']);
@@ -77,15 +104,40 @@ void main() {
       await env.store.addMember(company, zoe.id, Role.employee);
       await owner.ok('PUT', p('/members/${zoe.id}/sites'), {'sites': [siteGare]});
       await owner.ok('PUT', p('/members/${north.id}/sites'), {'sites': [siteNorth]});
-      await south.ok('POST', p('/shifts'),
+      await owner.ok('POST', p('/shifts'),
           {'days': ['2026-10-09'], 'start': 480, 'end': 960, 'siteId': siteSouth, 'userId': zoe.id});
       await env.api.notifications.settle();
-      expect([for (final n in (await owner.ok('GET', '/notices'))['notices']) n['kind']], contains('staff_borrowed'));
+      expect([for (final n in (await owner.ok('GET', '/notices'))['notices']) n['kind']], isNot(contains('staff_borrowed')),
+          reason: 'le patron l\'a placée lui-même');
+      final z = (await south.ok('POST', p('/shifts'),
+          {'days': ['2026-10-10'], 'start': 480, 'end': 960, 'siteId': siteSouth, 'userId': zoe.id}))['shifts'].single['id'];
+      await owner.ok('POST', p('/shifts/$z/approval'), {'approve': true});
+      await env.api.notifications.settle();
+      expect([for (final n in (await north.ok('GET', '/notices'))['notices']) n['kind']], isNot(contains('placement_to_approve')));
       // Sur son propre site : personne n'est prévenu.
       await north.ok('POST', p('/shifts'),
           {'days': ['2026-10-08'], 'start': 480, 'end': 960, 'siteId': siteNorth, 'userId': bob.id});
       await env.api.notifications.settle();
       expect((await north.ok('GET', '/notices'))['notices'].where((n) => n['kind'] == 'staff_borrowed'), hasLength(1));
+    });
+
+    test('refusé : le service reste sans personne ; le supérieur qui a nommé valide aussi', () async {
+      final id = (await south.ok('POST', p('/shifts'),
+          {'days': ['2026-10-07'], 'start': 480, 'end': 960, 'siteId': siteSouth, 'userId': bob.id}))['shifts'].single['id'];
+      await owner.ok('POST', p('/shifts/$id/approval'), {'approve': false});
+      final s = (await south.ok('GET', p('/shifts?from=2026-10-05&to=2026-10-11')))['shifts'].single;
+      expect([s['userId'], s['approvalBy']], [null, null]);
+      expect((await owner('POST', p('/shifts/$id/approval'), {'approve': true})).$1, 409);
+      // Sous-responsable nommé par le Nord, sur la Gare : le Nord valide ses placements.
+      final zoe = await env.login('zoe');
+      await env.store.addMember(company, zoe.id, Role.employee);
+      await owner.ok('PUT', p('/members/${zoe.id}/sites'), {'sites': [siteNorth]});
+      await north.ok('PUT', p('/members/${zoe.id}/role'), {'role': 'manager', 'sites': [siteGare]});
+      final g = (await zoe.ok('POST', p('/shifts'),
+          {'days': ['2026-10-08'], 'start': 480, 'end': 960, 'siteId': siteGare, 'userId': eva.id}))['shifts'].single['id'];
+      await env.api.notifications.settle();
+      expect([for (final n in (await north.ok('GET', '/notices'))['notices']) n['kind']], contains('placement_to_approve'));
+      await north.ok('POST', p('/shifts/$g/approval'), {'approve': true});
     });
 
     test('déjà en service dans l\'entreprise sur ce créneau : signalé, sans blocage', () async {

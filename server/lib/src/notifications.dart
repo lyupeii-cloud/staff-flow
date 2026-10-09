@@ -137,6 +137,9 @@ class NotificationService {
     'shift_overlap': NotifyCategory.overlap,
     'reinforcement_added': NotifyCategory.planning,
     'staff_borrowed': NotifyCategory.planning,
+    'placement_to_approve': NotifyCategory.requests,
+    'placement_approved': NotifyCategory.requests,
+    'placement_refused': NotifyCategory.requests,
   };
 
   /// Crée un avis par personne ([s] : la transaction en cours, s'il y en a
@@ -267,6 +270,21 @@ class NotificationService {
               {'by': name, 'name': '${data['name'] ?? '?'}', 'day': '${data['day'] ?? ''}'})
         ),
       'reinforcement_added' => (title, t('Vous avez été ajouté à cette entreprise comme renfort.')),
+      'placement_to_approve' => (
+          title,
+          t('{by} veut placer {name}, d\'un autre site, le {day} : à valider.',
+              {'by': name, 'name': '${data['name'] ?? '?'}', 'day': '${data['day'] ?? ''}'})
+        ),
+      'placement_approved' => (
+          title,
+          t('{by} a validé le placement de {name} le {day}.',
+              {'by': name, 'name': '${data['name'] ?? '?'}', 'day': '${data['day'] ?? ''}'})
+        ),
+      'placement_refused' => (
+          title,
+          t('{by} a refusé le placement de {name} le {day}.',
+              {'by': name, 'name': '${data['name'] ?? '?'}', 'day': '${data['day'] ?? ''}'})
+        ),
       'shift_overlap' => (
           title,
           t('Deux de vos services dans des entreprises différentes se chevauchent le {day}.', {'day': '${data['day']}'})

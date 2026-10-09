@@ -363,5 +363,11 @@
   "themeDark": "Mørkt",
   "themeLight": "Lyst",
   "themeSystem": "System",
-  "unmuteConversation": "Slå notifikationer til for denne samtale"
+  "unmuteConversation": "Slå notifikationer til for denne samtale",
+  "awaitingApproval": "Til godkendelse",
+  "placementNeedsApproval": "! Denne person hører ikke til dine steder: vagten venter på godkendelse fra din overordnede eller ejeren, før den kan offentliggøres. Ellers vælg en anden.",
+  "placementAwaiting": "Venter på godkendelse fra en overordnet eller ejeren.",
+  "noticePlacementToApprove": "{by} vil planlægge {name} fra et andet sted den {date}: kræver godkendelse.",
+  "noticePlacementApproved": "{by} godkendte planlægningen af {name} den {date}.",
+  "noticePlacementRefused": "{by} afviste planlægningen af {name} den {date}."
 }

@@ -1299,4 +1299,30 @@ class L10nSv extends L10n {
 
   @override
   String get unmuteConversation => 'Slå på aviseringar för konversationen';
+
+  @override
+  String get awaitingApproval => 'Att godkänna';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Den här personen hör inte till dina platser: passet väntar på godkännande från din chef eller ägaren innan det kan publiceras. Välj annars någon annan.';
+
+  @override
+  String get placementAwaiting =>
+      'Väntar på godkännande från en chef eller ägaren.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by vill schemalägga $name från en annan plats den $date: kräver godkännande.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by godkände schemaläggningen av $name den $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by avslog schemaläggningen av $name den $date.';
+  }
 }

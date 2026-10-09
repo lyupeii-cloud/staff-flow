@@ -1309,4 +1309,30 @@ class L10nPl extends L10n {
 
   @override
   String get unmuteConversation => 'Włącz powiadomienia z tej rozmowy';
+
+  @override
+  String get awaitingApproval => 'Do zatwierdzenia';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Ta osoba nie należy do Twoich placówek: zmiana poczeka na zatwierdzenie przez przełożonego lub właściciela, zanim będzie można ją opublikować. W przeciwnym razie wybierz kogoś innego.';
+
+  @override
+  String get placementAwaiting =>
+      'Czeka na zatwierdzenie przez przełożonego lub właściciela.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by chce zaplanować $name z innej placówki na $date: wymaga zatwierdzenia.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by zatwierdził(a) zaplanowanie $name na $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by odrzucił(a) zaplanowanie $name na $date.';
+  }
 }

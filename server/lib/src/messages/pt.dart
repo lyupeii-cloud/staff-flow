@@ -91,4 +91,7 @@ const pt = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'O grupo da empresa está desativado.',
   'Préréglage invalide.': 'Predefinição inválida.',
   'Image PNG de 1 Mo au plus attendue.': 'É esperada uma imagem PNG de 1 MB no máximo.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} quer escalar {name}, de outro local, em {day}: requer aprovação.',
+  '{by} a validé le placement de {name} le {day}.': '{by} aprovou a escala de {name} em {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} recusou a escala de {name} em {day}.',
 };

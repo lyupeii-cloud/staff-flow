@@ -1268,4 +1268,29 @@ class L10nJa extends L10n {
 
   @override
   String get unmuteConversation => 'この会話のミュートを解除';
+
+  @override
+  String get awaitingApproval => '承認待ち';
+
+  @override
+  String get placementNeedsApproval =>
+      '! この人はあなたの拠点の所属ではありません：公開する前に、上司またはオーナーの承認を待ちます。承認を待たない場合は、別の人を選んでください。';
+
+  @override
+  String get placementAwaiting => '上司またはオーナーの承認待ちです。';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$byさんが別の拠点の$nameさんを$dateに配置しようとしています：承認が必要です。';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$byさんが$dateの$nameさんの配置を承認しました。';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$byさんが$dateの$nameさんの配置を却下しました。';
+  }
 }

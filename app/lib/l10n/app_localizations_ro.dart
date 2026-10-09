@@ -1307,4 +1307,30 @@ class L10nRo extends L10n {
   @override
   String get unmuteConversation =>
       'Repornește notificările acestei conversații';
+
+  @override
+  String get awaitingApproval => 'De aprobat';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Această persoană nu este din punctele dvs. de lucru: tura va aștepta aprobarea superiorului sau a proprietarului înainte de a putea fi publicată. Altfel, alegeți pe altcineva.';
+
+  @override
+  String get placementAwaiting =>
+      'Așteaptă aprobarea unui superior sau a proprietarului.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by vrea să programeze pe $name, de la alt punct de lucru, pe $date: necesită aprobare.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by a aprobat programarea lui $name pe $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by a refuzat programarea lui $name pe $date.';
+  }
 }

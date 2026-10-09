@@ -144,10 +144,12 @@ class CompanyService {
       clean = img.encodePng(resized);
     }
     final rows = await store.query(store.db, '''
-      UPDATE companies SET logo = @l, logo_version = CASE WHEN @l::bytea IS NULL THEN 0 ELSE logo_version + 1 END
+      UPDATE companies SET logo = @l, logo_version = logo_version + 1
       WHERE id = @c::uuid RETURNING logo_version''', {'c': companyId, 'l': clean == null ? null : Uint8List.fromList(clean)});
     await store.audit(companyId: companyId, actorId: actor.id, action: 'company.logo', details: {'set': clean != null});
-    return rows.first[0] as int;
+    // Le numéro ne revient jamais en arrière : une nouvelle image n'a jamais
+    // le numéro d'une ancienne (gardée en cache par les appareils).
+    return clean == null ? 0 : rows.first[0] as int;
   }
 
   /// Image de l'entreprise, pour ses membres.
@@ -181,8 +183,19 @@ class CompanyService {
       case Role.owner:
         throw const ApiError.forbidden();
       case Role.manager:
-        if (actorRole != Role.owner) throw const ApiError.forbidden();
-        result = requested == null || requested.isEmpty ? null : requested;
+        if (actorRole == Role.owner) {
+          result = requested == null || requested.isEmpty ? null : requested;
+        } else {
+          // Un responsable change les sites du sous-responsable qu'il a nommé :
+          // un ou plusieurs des siens.
+          if (actorRole != Role.manager || await store.appointedBy(companyId, userId) != actor.id) {
+            throw const ApiError.forbidden();
+          }
+          if (requested == null || requested.isEmpty) throw const ApiError.badRequest('Choisissez au moins un site.');
+          final mine = await managedSites(companyId, actor, actorRole);
+          if (mine != null && !requested.every(mine.contains)) throw const ApiError.forbidden();
+          result = requested;
+        }
       case Role.employee || Role.extra:
         if (!actorRole.canManage) throw const ApiError.forbidden();
         final mine = await managedSites(companyId, actor, actorRole);

@@ -91,4 +91,7 @@ const sk = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Skupina firmy je vypnutá.',
   'Préréglage invalide.': 'Neplatná predvoľba.',
   'Image PNG de 1 Mo au plus attendue.': 'Očakáva sa obrázok PNG do 1 MB.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} chce naplánovať {name} z iného miesta na {day}: treba schváliť.',
+  '{by} a validé le placement de {name} le {day}.': '{by} schválil(a) naplánovanie {name} na {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} zamietol(a) naplánovanie {name} na {day}.',
 };

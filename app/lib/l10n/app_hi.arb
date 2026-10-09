@@ -363,5 +363,11 @@
   "themeDark": "गहरा",
   "themeLight": "हल्का",
   "themeSystem": "सिस्टम",
-  "unmuteConversation": "इस बातचीत की सूचनाएँ फिर चालू करें"
+  "unmuteConversation": "इस बातचीत की सूचनाएँ फिर चालू करें",
+  "awaitingApproval": "मंज़ूरी बाकी",
+  "placementNeedsApproval": "! यह व्यक्ति आपकी साइटों का नहीं है: प्रकाशित होने से पहले शिफ्ट आपके वरिष्ठ या मालिक की मंज़ूरी का इंतज़ार करेगी। वरना किसी और को चुनें।",
+  "placementAwaiting": "वरिष्ठ या मालिक की मंज़ूरी का इंतज़ार।",
+  "noticePlacementToApprove": "{by} दूसरी साइट के {name} को {date} को लगाना चाहते हैं: मंज़ूरी चाहिए।",
+  "noticePlacementApproved": "{by} ने {date} को {name} की नियुक्ति मंज़ूर की।",
+  "noticePlacementRefused": "{by} ने {date} को {name} की नियुक्ति अस्वीकार की।"
 }

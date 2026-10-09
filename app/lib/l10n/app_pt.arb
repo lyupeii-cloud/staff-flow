@@ -363,5 +363,11 @@
   "themeDark": "Escuro",
   "themeLight": "Claro",
   "themeSystem": "Sistema",
-  "unmuteConversation": "Reativar as notificações desta conversa"
+  "unmuteConversation": "Reativar as notificações desta conversa",
+  "awaitingApproval": "Por aprovar",
+  "placementNeedsApproval": "! Esta pessoa não é dos seus locais: o turno aguardará a aprovação do seu superior ou do dono antes de poder ser publicado. Caso contrário, escolha outra pessoa.",
+  "placementAwaiting": "Aguardando aprovação de um superior ou do dono.",
+  "noticePlacementToApprove": "{by} quer escalar {name}, de outro local, em {date}: requer aprovação.",
+  "noticePlacementApproved": "{by} aprovou a escala de {name} em {date}.",
+  "noticePlacementRefused": "{by} recusou a escala de {name} em {date}."
 }

@@ -123,6 +123,48 @@ class _ShiftEditorState extends State<_ShiftEditor> {
         !team.contains(_siteId);
   }
 
+  /// Responsable de site qui choisit un salarié d'un autre site : le service
+  /// attendra la validation d'un supérieur ou du patron.
+  bool get _needsApproval {
+    final mine = widget.onlySites;
+    if (mine == null || _userId == null || (editing && _userId == s!.userId)) return false;
+    final m = widget.data.members.where((m) => m.user.id == _userId).firstOrNull;
+    final team = m?.sites;
+    return m != null &&
+        (m.role == Role.employee || m.role == Role.extra) &&
+        team != null &&
+        team.isNotEmpty &&
+        !team.any(mine.contains);
+  }
+
+  /// Valider ce placement : le patron, un responsable de toute l'entreprise,
+  /// ou le responsable qui a nommé celui qui le demande.
+  bool get _canApprove {
+    final me = widget.session.me;
+    final by = s?.approvalBy;
+    final mm = me?.companies.where((m) => m.company.id == widget.company.id).firstOrNull;
+    if (me == null || mm == null || by == null || by == me.user.id || widget.company.readOnly) return false;
+    if (mm.managesAll) return true;
+    final requester = widget.data.members.where((m) => m.user.id == by).firstOrNull;
+    return mm.role == Role.manager && requester?.appointedBy == me.user.id;
+  }
+
+  Future<void> _decide(bool approve) async {
+    final messenger = ScaffoldMessenger.of(context);
+    setState(() => _saving = true);
+    try {
+      await widget.session.api.send('POST', '/companies/${widget.company.id}/shifts/${s!.id}/approval',
+          body: {'approve': approve});
+      if (mounted) Navigator.pop(context, true);
+    } on OfflineException {
+      messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+    } on ApiException catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text(e.describe(t))));
+    } finally {
+      if (mounted) setState(() => _saving = false);
+    }
+  }
+
   /// Personne choisie dans une autre entreprise : pas encore membre de celle-ci.
   Map<String, dynamic>? get _reinforcement =>
       widget.data.members.any((m) => m.user.id == _userId) ? null : _others.where((p) => p['userId'] == _userId).firstOrNull;
@@ -191,6 +233,25 @@ class _ShiftEditorState extends State<_ShiftEditor> {
               ],
             ),
             const SizedBox(height: 12),
+            if (editing && s!.approvalBy != null)
+              Card(
+                color: theme.colorScheme.tertiaryContainer,
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                    Row(children: [
+                      const Icon(Icons.hourglass_top, size: 20),
+                      const SizedBox(width: 8),
+                      Expanded(child: Text(t.placementAwaiting)),
+                    ]),
+                    if (_canApprove)
+                      Wrap(alignment: WrapAlignment.end, spacing: 8, children: [
+                        TextButton(onPressed: _saving ? null : () => _decide(false), child: Text(t.decline)),
+                        FilledButton(onPressed: _saving ? null : () => _decide(true), child: Text(t.approve)),
+                      ]),
+                  ]),
+                ),
+              ),
             if (editing && s!.seriesId != null) ...[
               SegmentedButton<bool>(
                 segments: [
@@ -321,7 +382,12 @@ class _ShiftEditorState extends State<_ShiftEditor> {
                 padding: const EdgeInsets.only(top: 4),
                 child: Text('! ${t.busyHere}', style: TextStyle(color: theme.colorScheme.error)),
               ),
-            if (_reinforcement == null && _otherSite)
+            if (_reinforcement == null && _needsApproval)
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text(t.placementNeedsApproval, style: TextStyle(color: theme.colorScheme.error)),
+              )
+            else if (_reinforcement == null && _otherSite)
               Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Text(t.otherSiteHint, style: theme.textTheme.bodySmall),

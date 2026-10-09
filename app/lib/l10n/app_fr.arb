@@ -367,5 +367,11 @@
   "themeDark": "Foncé",
   "themeLight": "Clair",
   "themeSystem": "Système",
-  "unmuteConversation": "Rétablir les notifications de cette conversation"
+  "unmuteConversation": "Rétablir les notifications de cette conversation",
+  "awaitingApproval": "À valider",
+  "placementNeedsApproval": "! Cette personne n'est pas de vos sites : le service attendra la validation de votre supérieur ou du patron avant de pouvoir être publié. Sinon, choisissez quelqu'un d'autre.",
+  "placementAwaiting": "En attente de validation par un supérieur ou le patron.",
+  "noticePlacementToApprove": "{by} veut placer {name}, d'un autre site, le {date} : à valider.",
+  "noticePlacementApproved": "{by} a validé le placement de {name} le {date}.",
+  "noticePlacementRefused": "{by} a refusé le placement de {name} le {date}."
 }

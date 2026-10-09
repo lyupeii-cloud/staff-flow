@@ -91,4 +91,7 @@ const fi = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Yrityksen ryhmä on poistettu käytöstä.',
   'Préréglage invalide.': 'Virheellinen esiasetus.',
   'Image PNG de 1 Mo au plus attendue.': 'Odotetaan enintään 1 Mt:n PNG-kuvaa.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} haluaa vuorottaa {name} toiselta toimipaikalta {day}: vaatii hyväksynnän.',
+  '{by} a validé le placement de {name} le {day}.': '{by} hyväksyi henkilön {name} vuorotuksen {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} hylkäsi henkilön {name} vuorotuksen {day}.',
 };

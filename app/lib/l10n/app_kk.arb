@@ -363,5 +363,11 @@
   "themeDark": "Қараңғы",
   "themeLight": "Ашық",
   "themeSystem": "Жүйелік",
-  "unmuteConversation": "Бұл әңгіменің хабарландыруларын қосу"
+  "unmuteConversation": "Бұл әңгіменің хабарландыруларын қосу",
+  "awaitingApproval": "Бекітуді күтуде",
+  "placementNeedsApproval": "! Бұл адам сіздің нысандарыңыздан емес: ауысым жарияланбас бұрын басшыңыздың немесе иесінің бекітуін күтеді. Әйтпесе басқа адамды таңдаңыз.",
+  "placementAwaiting": "Басшының немесе иесінің бекітуін күтуде.",
+  "noticePlacementToApprove": "{by} басқа нысандағы {name} қызметкерін {date} күні қойғысы келеді: бекіту қажет.",
+  "noticePlacementApproved": "{by} {date} күні {name} қызметкерін қоюды бекітті.",
+  "noticePlacementRefused": "{by} {date} күні {name} қызметкерін қоюдан бас тартты."
 }

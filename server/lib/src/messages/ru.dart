@@ -91,4 +91,7 @@ const ru = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Группа компании отключена.',
   'Préréglage invalide.': 'Недопустимый шаблон.',
   'Image PNG de 1 Mo au plus attendue.': 'Нужно изображение PNG не более 1 МБ.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} хочет поставить {name} с другого объекта на {day}: нужно утверждение.',
+  '{by} a validé le placement de {name} le {day}.': '{by} утвердил(а) назначение {name} на {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} отклонил(а) назначение {name} на {day}.',
 };

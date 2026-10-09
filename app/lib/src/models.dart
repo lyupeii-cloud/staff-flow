@@ -243,6 +243,10 @@ class Shift {
   /// Modification faite sur l'appareil, pas encore envoyée au serveur.
   final bool pending;
 
+  /// Salarié d'un autre site placé par un responsable de site : celui-ci,
+  /// en attendant la validation d'un supérieur ou du patron.
+  final String? approvalBy;
+
   const Shift({
     required this.id,
     this.seriesId,
@@ -257,6 +261,7 @@ class Shift {
     this.version = 1,
     this.detached = false,
     this.pending = false,
+    this.approvalBy,
   });
 
   Shift.fromJson(Map<String, dynamic> j)
@@ -272,7 +277,8 @@ class Shift {
         status = ShiftStatus.values.byName(j['status']),
         version = j['version'] ?? 1,
         detached = j['detached'] ?? false,
-        pending = j['pending'] ?? false;
+        pending = j['pending'] ?? false,
+        approvalBy = j['approvalBy'];
 
   Map<String, Object?> toJson() => {
         'id': id,
@@ -288,6 +294,7 @@ class Shift {
         'version': version,
         'detached': detached,
         if (pending) 'pending': true,
+        if (approvalBy != null) 'approvalBy': approvalBy,
       };
 
   /// Créé hors connexion : il n'a pas encore d'identifiant sur le serveur.

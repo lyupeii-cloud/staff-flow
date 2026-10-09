@@ -1296,4 +1296,29 @@ class L10nPa extends L10n {
 
   @override
   String get unmuteConversation => 'ਇਸ ਗੱਲਬਾਤ ਦੀਆਂ ਸੂਚਨਾਵਾਂ ਚਾਲੂ ਕਰੋ';
+
+  @override
+  String get awaitingApproval => 'ਮਨਜ਼ੂਰੀ ਬਾਕੀ';
+
+  @override
+  String get placementNeedsApproval =>
+      '! ਇਹ ਵਿਅਕਤੀ ਤੁਹਾਡੀਆਂ ਸਾਈਟਾਂ ਦਾ ਨਹੀਂ ਹੈ: ਪ੍ਰਕਾਸ਼ਿਤ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਸ਼ਿਫਟ ਤੁਹਾਡੇ ਸੀਨੀਅਰ ਜਾਂ ਮਾਲਕ ਦੀ ਮਨਜ਼ੂਰੀ ਦੀ ਉਡੀਕ ਕਰੇਗੀ। ਨਹੀਂ ਤਾਂ ਕਿਸੇ ਹੋਰ ਨੂੰ ਚੁਣੋ।';
+
+  @override
+  String get placementAwaiting => 'ਸੀਨੀਅਰ ਜਾਂ ਮਾਲਕ ਦੀ ਮਨਜ਼ੂਰੀ ਦੀ ਉਡੀਕ।';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by ਹੋਰ ਸਾਈਟ ਦੇ $name ਨੂੰ $date ਨੂੰ ਲਗਾਉਣਾ ਚਾਹੁੰਦੇ ਹਨ: ਮਨਜ਼ੂਰੀ ਚਾਹੀਦੀ ਹੈ।';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by ਨੇ $date ਨੂੰ $name ਦੀ ਨਿਯੁਕਤੀ ਮਨਜ਼ੂਰ ਕੀਤੀ।';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by ਨੇ $date ਨੂੰ $name ਦੀ ਨਿਯੁਕਤੀ ਰੱਦ ਕੀਤੀ।';
+  }
 }

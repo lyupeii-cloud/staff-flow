@@ -91,4 +91,7 @@ const da = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Virksomhedens gruppe er slået fra.',
   'Préréglage invalide.': 'Ugyldig forudindstilling.',
   'Image PNG de 1 Mo au plus attendue.': 'Der forventes et PNG-billede på højst 1 MB.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} vil planlægge {name} fra et andet sted den {day}: kræver godkendelse.',
+  '{by} a validé le placement de {name} le {day}.': '{by} godkendte planlægningen af {name} den {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} afviste planlægningen af {name} den {day}.',
 };

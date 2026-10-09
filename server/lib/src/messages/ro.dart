@@ -91,4 +91,7 @@ const ro = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Grupul firmei este dezactivat.',
   'Préréglage invalide.': 'Presetare nevalidă.',
   'Image PNG de 1 Mo au plus attendue.': 'Se așteaptă o imagine PNG de cel mult 1 MB.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} vrea să programeze pe {name}, de la alt punct de lucru, pe {day}: necesită aprobare.',
+  '{by} a validé le placement de {name} le {day}.': '{by} a aprobat programarea lui {name} pe {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} a refuzat programarea lui {name} pe {day}.',
 };

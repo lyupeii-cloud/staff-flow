@@ -1287,4 +1287,29 @@ class L10nTh extends L10n {
 
   @override
   String get unmuteConversation => 'เปิดการแจ้งเตือนของการสนทนานี้';
+
+  @override
+  String get awaitingApproval => 'รออนุมัติ';
+
+  @override
+  String get placementNeedsApproval =>
+      '! บุคคลนี้ไม่ได้อยู่ในสาขาของคุณ: กะนี้จะรอการอนุมัติจากหัวหน้าของคุณหรือเจ้าของก่อนจึงจะเผยแพร่ได้ หรือเลือกคนอื่นแทน';
+
+  @override
+  String get placementAwaiting => 'รอการอนุมัติจากหัวหน้าหรือเจ้าของ';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by ต้องการจัด $name จากสาขาอื่นในวันที่ $date: ต้องได้รับการอนุมัติ';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by อนุมัติการจัด $name ในวันที่ $date แล้ว';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by ปฏิเสธการจัด $name ในวันที่ $date';
+  }
 }

@@ -91,4 +91,7 @@ const sv = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Företagets grupp är avstängd.',
   'Préréglage invalide.': 'Ogiltig förinställning.',
   'Image PNG de 1 Mo au plus attendue.': 'En PNG-bild på högst 1 MB förväntas.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} vill schemalägga {name} från en annan plats den {day}: kräver godkännande.',
+  '{by} a validé le placement de {name} le {day}.': '{by} godkände schemaläggningen av {name} den {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} avslog schemaläggningen av {name} den {day}.',
 };

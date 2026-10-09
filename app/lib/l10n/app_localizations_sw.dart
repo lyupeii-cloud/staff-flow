@@ -1300,4 +1300,29 @@ class L10nSw extends L10n {
 
   @override
   String get unmuteConversation => 'Washa arifa za mazungumzo haya';
+
+  @override
+  String get awaitingApproval => 'Inasubiri idhini';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Mtu huyu si wa tovuti zako: zamu itasubiri idhini ya msimamizi wako au mmiliki kabla ya kuchapishwa. Vinginevyo, chagua mtu mwingine.';
+
+  @override
+  String get placementAwaiting => 'Inasubiri idhini ya msimamizi au mmiliki.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by anataka kumpangia $name, wa tovuti nyingine, tarehe $date: idhini inahitajika.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by ameidhinisha kumpangia $name tarehe $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by amekataa kumpangia $name tarehe $date.';
+  }
 }

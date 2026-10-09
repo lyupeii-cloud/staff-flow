@@ -91,4 +91,7 @@ const sw = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Kikundi cha kampuni kimezimwa.',
   'Préréglage invalide.': 'Mpangilio uliowekwa awali si sahihi.',
   'Image PNG de 1 Mo au plus attendue.': 'Picha ya PNG ya hadi MB 1 inahitajika.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} anataka kumpangia {name}, wa tovuti nyingine, tarehe {day}: idhini inahitajika.',
+  '{by} a validé le placement de {name} le {day}.': '{by} ameidhinisha kumpangia {name} tarehe {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} amekataa kumpangia {name} tarehe {day}.',
 };

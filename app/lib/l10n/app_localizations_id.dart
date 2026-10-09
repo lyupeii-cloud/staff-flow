@@ -1296,4 +1296,29 @@ class L10nId extends L10n {
 
   @override
   String get unmuteConversation => 'Aktifkan notifikasi percakapan ini';
+
+  @override
+  String get awaitingApproval => 'Perlu disetujui';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Orang ini bukan dari lokasi Anda: shift akan menunggu persetujuan atasan Anda atau pemilik sebelum bisa diterbitkan. Jika tidak, pilih orang lain.';
+
+  @override
+  String get placementAwaiting => 'Menunggu persetujuan atasan atau pemilik.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by ingin menjadwalkan $name dari lokasi lain pada $date: perlu persetujuan.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by menyetujui penjadwalan $name pada $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by menolak penjadwalan $name pada $date.';
+  }
 }

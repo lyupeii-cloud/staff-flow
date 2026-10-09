@@ -363,5 +363,11 @@
   "themeDark": "Madilim",
   "themeLight": "Maliwanag",
   "themeSystem": "System",
-  "unmuteConversation": "I-unmute ang usapang ito"
+  "unmuteConversation": "I-unmute ang usapang ito",
+  "awaitingApproval": "Aaprubahan",
+  "placementNeedsApproval": "! Hindi kabilang ang taong ito sa iyong mga site: maghihintay ang shift ng pag-apruba ng iyong superior o ng may-ari bago mailathala. Kung hindi, pumili ng iba.",
+  "placementAwaiting": "Naghihintay ng pag-apruba ng superior o ng may-ari.",
+  "noticePlacementToApprove": "Gustong i-iskedyul ni {by} si {name}, mula sa ibang site, sa {date}: kailangan ng pag-apruba.",
+  "noticePlacementApproved": "Inaprubahan ni {by} ang pag-iskedyul kay {name} sa {date}.",
+  "noticePlacementRefused": "Tinanggihan ni {by} ang pag-iskedyul kay {name} sa {date}."
 }

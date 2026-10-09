@@ -91,4 +91,7 @@ const fil = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Naka-off ang grupo ng kumpanya.',
   'Préréglage invalide.': 'Di-wastong preset.',
   'Image PNG de 1 Mo au plus attendue.': 'Inaasahan ang PNG na larawan na hanggang 1 MB.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': 'Gustong i-iskedyul ni {by} si {name}, mula sa ibang site, sa {day}: kailangan ng pag-apruba.',
+  '{by} a validé le placement de {name} le {day}.': 'Inaprubahan ni {by} ang pag-iskedyul kay {name} sa {day}.',
+  '{by} a refusé le placement de {name} le {day}.': 'Tinanggihan ni {by} ang pag-iskedyul kay {name} sa {day}.',
 };

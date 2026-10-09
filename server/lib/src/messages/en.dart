@@ -112,4 +112,7 @@ const en = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'The company group is turned off.',
   'Préréglage invalide.': 'Invalid preset.',
   'Image PNG de 1 Mo au plus attendue.': 'A PNG image of 1 MB or less is expected.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} wants to schedule {name}, from another site, on {day}: approval needed.',
+  '{by} a validé le placement de {name} le {day}.': '{by} approved scheduling {name} on {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} refused scheduling {name} on {day}.',
 };

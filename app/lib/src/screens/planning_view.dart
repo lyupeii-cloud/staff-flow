@@ -577,6 +577,8 @@ class _PlanningViewState extends State<PlanningView> {
     final deleted = s.status == ShiftStatus.deleted;
     final badge = s.pending
         ? t.pendingBadge
+        : s.approvalBy != null
+        ? t.awaitingApproval
         : switch (s.status) {
             ShiftStatus.draft => t.statusDraft,
             ShiftStatus.modified => t.statusModified,

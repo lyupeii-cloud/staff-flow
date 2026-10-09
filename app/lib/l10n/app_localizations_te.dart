@@ -1295,4 +1295,30 @@ class L10nTe extends L10n {
 
   @override
   String get unmuteConversation => 'ఈ సంభాషణ నోటిఫికేషన్లను ఆన్ చేయి';
+
+  @override
+  String get awaitingApproval => 'ఆమోదం అవసరం';
+
+  @override
+  String get placementNeedsApproval =>
+      '! ఈ వ్యక్తి మీ సైట్‌లకు చెందినవారు కాదు: ప్రచురించే ముందు షిఫ్ట్ మీ పై అధికారి లేదా యజమాని ఆమోదం కోసం వేచి ఉంటుంది. లేకపోతే వేరొకరిని ఎంచుకోండి.';
+
+  @override
+  String get placementAwaiting =>
+      'పై అధికారి లేదా యజమాని ఆమోదం కోసం వేచి ఉంది.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by వేరే సైట్‌కు చెందిన $name‌ను $dateన నియమించాలనుకుంటున్నారు: ఆమోదం అవసరం.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by $dateన $name నియామకాన్ని ఆమోదించారు.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by $dateన $name నియామకాన్ని తిరస్కరించారు.';
+  }
 }

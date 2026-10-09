@@ -363,5 +363,11 @@
   "themeDark": "Tumma",
   "themeLight": "Vaalea",
   "themeSystem": "Järjestelmä",
-  "unmuteConversation": "Ota tämän keskustelun ilmoitukset käyttöön"
+  "unmuteConversation": "Ota tämän keskustelun ilmoitukset käyttöön",
+  "awaitingApproval": "Hyväksyttävänä",
+  "placementNeedsApproval": "! Tämä henkilö ei kuulu toimipaikkoihisi: vuoro odottaa esihenkilösi tai omistajan hyväksyntää ennen julkaisua. Muuten valitse joku muu.",
+  "placementAwaiting": "Odottaa esihenkilön tai omistajan hyväksyntää.",
+  "noticePlacementToApprove": "{by} haluaa vuorottaa {name} toiselta toimipaikalta {date}: vaatii hyväksynnän.",
+  "noticePlacementApproved": "{by} hyväksyi henkilön {name} vuorotuksen {date}.",
+  "noticePlacementRefused": "{by} hylkäsi henkilön {name} vuorotuksen {date}."
 }

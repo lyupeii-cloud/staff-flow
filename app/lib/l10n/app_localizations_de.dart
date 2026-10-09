@@ -1311,4 +1311,30 @@ class L10nDe extends L10n {
   @override
   String get unmuteConversation =>
       'Benachrichtigungen dieser Unterhaltung wieder einschalten';
+
+  @override
+  String get awaitingApproval => 'Freizugeben';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Diese Person gehört nicht zu Ihren Standorten: Die Schicht wartet auf die Freigabe Ihres Vorgesetzten oder des Inhabers, bevor sie veröffentlicht werden kann. Sonst wählen Sie jemand anderen.';
+
+  @override
+  String get placementAwaiting =>
+      'Wartet auf Freigabe durch einen Vorgesetzten oder den Inhaber.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by möchte $name von einem anderen Standort am $date einplanen: Freigabe nötig.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by hat die Einplanung von $name am $date freigegeben.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by hat die Einplanung von $name am $date abgelehnt.';
+  }
 }

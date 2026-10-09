@@ -1297,4 +1297,30 @@ class L10nNb extends L10n {
 
   @override
   String get unmuteConversation => 'Slå på varsler for denne samtalen';
+
+  @override
+  String get awaitingApproval => 'Til godkjenning';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Denne personen hører ikke til dine steder: vakten venter på godkjenning fra din overordnede eller eieren før den kan publiseres. Ellers velg en annen.';
+
+  @override
+  String get placementAwaiting =>
+      'Venter på godkjenning fra en overordnet eller eieren.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by vil sette opp $name fra et annet sted $date: må godkjennes.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by godkjente oppsettet av $name $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by avslo oppsettet av $name $date.';
+  }
 }

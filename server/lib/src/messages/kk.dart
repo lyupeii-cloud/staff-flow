@@ -91,4 +91,7 @@ const kk = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Компания тобы өшірулі.',
   'Préréglage invalide.': 'Үлгі жарамсыз.',
   'Image PNG de 1 Mo au plus attendue.': 'Көлемі 1 МБ-тан аспайтын PNG сурет қажет.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} басқа нысандағы {name} қызметкерін {day} күні қойғысы келеді: бекіту қажет.',
+  '{by} a validé le placement de {name} le {day}.': '{by} {day} күні {name} қызметкерін қоюды бекітті.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} {day} күні {name} қызметкерін қоюдан бас тартты.',
 };

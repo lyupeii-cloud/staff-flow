@@ -1293,4 +1293,29 @@ class L10nBn extends L10n {
 
   @override
   String get unmuteConversation => 'এই কথোপকথনের বিজ্ঞপ্তি চালু করুন';
+
+  @override
+  String get awaitingApproval => 'অনুমোদন বাকি';
+
+  @override
+  String get placementNeedsApproval =>
+      '! এই ব্যক্তি আপনার সাইটের নন: প্রকাশের আগে শিফটটি আপনার ঊর্ধ্বতন বা মালিকের অনুমোদনের অপেক্ষায় থাকবে। নইলে অন্য কাউকে বেছে নিন।';
+
+  @override
+  String get placementAwaiting => 'ঊর্ধ্বতন বা মালিকের অনুমোদনের অপেক্ষায়।';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by অন্য সাইটের $name-কে $date তারিখে রাখতে চান: অনুমোদন দরকার।';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by $date তারিখে $name-এর নিয়োগ অনুমোদন করেছেন।';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by $date তারিখে $name-এর নিয়োগ প্রত্যাখ্যান করেছেন।';
+  }
 }

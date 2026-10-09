@@ -91,4 +91,7 @@ const nl = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'De bedrijfsgroep staat uit.',
   'Préréglage invalide.': 'Ongeldige voorinstelling.',
   'Image PNG de 1 Mo au plus attendue.': 'Er wordt een PNG-afbeelding van maximaal 1 MB verwacht.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} wil {name} van een andere vestiging inplannen op {day}: goedkeuring nodig.',
+  '{by} a validé le placement de {name} le {day}.': '{by} heeft het inplannen van {name} op {day} goedgekeurd.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} heeft het inplannen van {name} op {day} geweigerd.',
 };

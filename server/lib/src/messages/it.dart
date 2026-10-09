@@ -91,4 +91,7 @@ const it = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Il gruppo dell\'azienda è disattivato.',
   'Préréglage invalide.': 'Preimpostazione non valida.',
   'Image PNG de 1 Mo au plus attendue.': 'È richiesta un\'immagine PNG di massimo 1 MB.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} vuole pianificare {name}, di un\'altra sede, il {day}: serve l\'approvazione.',
+  '{by} a validé le placement de {name} le {day}.': '{by} ha approvato la pianificazione di {name} il {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} ha rifiutato la pianificazione di {name} il {day}.',
 };

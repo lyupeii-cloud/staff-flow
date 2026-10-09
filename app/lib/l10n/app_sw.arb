@@ -363,5 +363,11 @@
   "themeDark": "Giza",
   "themeLight": "Mwanga",
   "themeSystem": "Mfumo",
-  "unmuteConversation": "Washa arifa za mazungumzo haya"
+  "unmuteConversation": "Washa arifa za mazungumzo haya",
+  "awaitingApproval": "Inasubiri idhini",
+  "placementNeedsApproval": "! Mtu huyu si wa tovuti zako: zamu itasubiri idhini ya msimamizi wako au mmiliki kabla ya kuchapishwa. Vinginevyo, chagua mtu mwingine.",
+  "placementAwaiting": "Inasubiri idhini ya msimamizi au mmiliki.",
+  "noticePlacementToApprove": "{by} anataka kumpangia {name}, wa tovuti nyingine, tarehe {date}: idhini inahitajika.",
+  "noticePlacementApproved": "{by} ameidhinisha kumpangia {name} tarehe {date}.",
+  "noticePlacementRefused": "{by} amekataa kumpangia {name} tarehe {date}."
 }

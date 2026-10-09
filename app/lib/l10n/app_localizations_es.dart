@@ -1306,4 +1306,30 @@ class L10nEs extends L10n {
   @override
   String get unmuteConversation =>
       'Reactivar las notificaciones de esta conversación';
+
+  @override
+  String get awaitingApproval => 'Por validar';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Esta persona no es de tus centros: el turno esperará la validación de tu superior o del dueño antes de poder publicarse. Si no, elige a otra persona.';
+
+  @override
+  String get placementAwaiting =>
+      'Pendiente de validación por un superior o el dueño.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by quiere programar a $name, de otro centro, el $date: requiere validación.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by validó la programación de $name el $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by rechazó la programación de $name el $date.';
+  }
 }

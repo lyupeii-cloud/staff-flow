@@ -1291,4 +1291,30 @@ class L10nVi extends L10n {
 
   @override
   String get unmuteConversation => 'Bật lại thông báo cuộc trò chuyện này';
+
+  @override
+  String get awaitingApproval => 'Chờ duyệt';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Người này không thuộc địa điểm của bạn: ca sẽ chờ cấp trên hoặc chủ sở hữu phê duyệt trước khi có thể công bố. Nếu không, hãy chọn người khác.';
+
+  @override
+  String get placementAwaiting =>
+      'Đang chờ cấp trên hoặc chủ sở hữu phê duyệt.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by muốn xếp $name từ địa điểm khác vào $date: cần phê duyệt.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by đã duyệt việc xếp $name vào $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by đã từ chối việc xếp $name vào $date.';
+  }
 }

@@ -175,7 +175,7 @@ class _TeamViewState extends State<TeamView> {
       if (isManager && mineToo && hasSites) _MemberAction.makeDeputy,
       if ((isOwner && m.role == Role.manager) || myDeputy) _MemberAction.makeEmployee,
       if (isOwner || mineToo) _MemberAction.toggleExtra,
-      if (hasSites && ((isOwner && m.role == Role.manager) || ((isOwner || isManager) && targetIsStaff)))
+      if (hasSites && ((isOwner && m.role == Role.manager) || myDeputy || ((isOwner || isManager) && targetIsStaff)))
         _MemberAction.sites,
       if (isOwner && m.role == Role.manager) _MemberAction.transfer,
       if (isOwner || mineToo || myDeputy) _MemberAction.remove,
@@ -217,9 +217,11 @@ class _TeamViewState extends State<TeamView> {
         final chosen = await _pickSites(
           m.role == Role.manager ? t.managerOf(m.user.name) : t.teamSitesOf(m.user.name),
           m.sites ?? const [],
-          allowWhole: m.role == Role.manager,
+          allowWhole: m.role == Role.manager && role == Role.owner,
         );
-        if (chosen != null) {
+        if (chosen != null && m.role == Role.manager && role != Role.owner && (chosen.sites ?? const []).isEmpty) {
+          if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.chooseYourSite)));
+        } else if (chosen != null) {
           await _act(() => api.setMemberSites(company.id, m.user.id, chosen.sites));
         }
       case _MemberAction.makeEmployee:

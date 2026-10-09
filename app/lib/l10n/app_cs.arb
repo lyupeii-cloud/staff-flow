@@ -363,5 +363,11 @@
   "themeDark": "Tmavý",
   "themeLight": "Světlý",
   "themeSystem": "Systémový",
-  "unmuteConversation": "Zapnout oznámení této konverzace"
+  "unmuteConversation": "Zapnout oznámení této konverzace",
+  "awaitingApproval": "Ke schválení",
+  "placementNeedsApproval": "! Tato osoba není z vašich míst: směna počká na schválení nadřízeným nebo majitelem, než ji bude možné zveřejnit. Jinak vyberte někoho jiného.",
+  "placementAwaiting": "Čeká na schválení nadřízeným nebo majitelem.",
+  "noticePlacementToApprove": "{by} chce naplánovat {name} z jiného místa na {date}: je třeba schválit.",
+  "noticePlacementApproved": "{by} schválil(a) naplánování {name} na {date}.",
+  "noticePlacementRefused": "{by} odmítl(a) naplánování {name} na {date}."
 }

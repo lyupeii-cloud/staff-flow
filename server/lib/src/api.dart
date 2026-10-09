@@ -97,6 +97,13 @@ class Api {
       ..post('/companies/<id>/publish', _authed(_publish))
       ..post('/companies/<id>/discard', _authed((r, u) async =>
           _json({'discarded': await planning.discard(u, r.params['id']!)})))
+      // Supérieur ou patron : placement d'un salarié d'un autre site.
+      ..post('/companies/<id>/shifts/<shiftId>/approval', _authed((r, u) async {
+        final body = await _body(r);
+        if (body['approve'] is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        await planning.decidePlacement(u, r.params['id']!, r.params['shiftId']!, approve: body['approve'] as bool);
+        return Response(204);
+      }))
       ..post('/companies/<id>/shifts/<shiftId>/revert', _authed((r, u) async =>
           _json({'reverted': await planning.revert(u, r.params['id']!, r.params['shiftId']!)})))
       ..put('/companies/<id>/notify-sites', _authed(_notifySites))

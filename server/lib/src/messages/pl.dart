@@ -91,4 +91,7 @@ const pl = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Grupa firmy jest wyłączona.',
   'Préréglage invalide.': 'Nieprawidłowy szablon.',
   'Image PNG de 1 Mo au plus attendue.': 'Oczekiwany obraz PNG o rozmiarze do 1 MB.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} chce zaplanować {name} z innej placówki na {day}: wymaga zatwierdzenia.',
+  '{by} a validé le placement de {name} le {day}.': '{by} zatwierdził(a) zaplanowanie {name} na {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} odrzucił(a) zaplanowanie {name} na {day}.',
 };

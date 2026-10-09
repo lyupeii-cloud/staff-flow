@@ -91,4 +91,7 @@ const ja = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': '会社のグループはオフになっています。',
   'Préréglage invalide.': 'プリセットが無効です。',
   'Image PNG de 1 Mo au plus attendue.': '1 MB 以下の PNG 画像が必要です。',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by}さんが別の拠点の{name}さんを{day}に配置しようとしています：承認が必要です。',
+  '{by} a validé le placement de {name} le {day}.': '{by}さんが{day}の{name}さんの配置を承認しました。',
+  '{by} a refusé le placement de {name} le {day}.': '{by}さんが{day}の{name}さんの配置を却下しました。',
 };

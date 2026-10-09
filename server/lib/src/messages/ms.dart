@@ -91,4 +91,7 @@ const ms = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Kumpulan syarikat dimatikan.',
   'Préréglage invalide.': 'Pratetap tidak sah.',
   'Image PNG de 1 Mo au plus attendue.': 'Imej PNG maksimum 1 MB diperlukan.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} mahu menjadualkan {name} dari tapak lain pada {day}: perlu kelulusan.',
+  '{by} a validé le placement de {name} le {day}.': '{by} meluluskan penjadualan {name} pada {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} menolak penjadualan {name} pada {day}.',
 };

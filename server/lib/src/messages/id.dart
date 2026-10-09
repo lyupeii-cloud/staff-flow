@@ -91,4 +91,7 @@ const id = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Grup perusahaan dinonaktifkan.',
   'Préréglage invalide.': 'Prasetel tidak valid.',
   'Image PNG de 1 Mo au plus attendue.': 'Diperlukan gambar PNG maksimal 1 MB.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} ingin menjadwalkan {name} dari lokasi lain pada {day}: perlu persetujuan.',
+  '{by} a validé le placement de {name} le {day}.': '{by} menyetujui penjadwalan {name} pada {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} menolak penjadwalan {name} pada {day}.',
 };

@@ -91,4 +91,7 @@ const el = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Η ομάδα της εταιρείας είναι απενεργοποιημένη.',
   'Préréglage invalide.': 'Μη έγκυρη προρρύθμιση.',
   'Image PNG de 1 Mo au plus attendue.': 'Αναμένεται εικόνα PNG έως 1 MB.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': 'Ο/Η {by} θέλει να προγραμματίσει τον/την {name} από άλλο σημείο στις {day}: απαιτείται έγκριση.',
+  '{by} a validé le placement de {name} le {day}.': 'Ο/Η {by} ενέκρινε τον προγραμματισμό του/της {name} στις {day}.',
+  '{by} a refusé le placement de {name} le {day}.': 'Ο/Η {by} απέρριψε τον προγραμματισμό του/της {name} στις {day}.',
 };

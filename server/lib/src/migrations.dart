@@ -369,4 +369,9 @@ CREATE TABLE conversation_mutes (
   PRIMARY KEY (conversation_id, user_id)
 );
 ''',
+  // 20 — salarié d'un autre site placé par un responsable de site : le
+  // service attend la validation de son supérieur ou du patron.
+  '''
+ALTER TABLE shifts ADD COLUMN approval_by uuid REFERENCES users(id) ON DELETE SET NULL;
+''',
 ];

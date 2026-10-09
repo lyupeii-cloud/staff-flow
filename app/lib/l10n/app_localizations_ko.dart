@@ -1268,4 +1268,29 @@ class L10nKo extends L10n {
 
   @override
   String get unmuteConversation => '이 대화 알림 다시 켜기';
+
+  @override
+  String get awaitingApproval => '승인 필요';
+
+  @override
+  String get placementNeedsApproval =>
+      '! 이 사람은 내 지점 소속이 아닙니다: 게시하기 전에 상급자나 대표의 승인을 기다립니다. 아니면 다른 사람을 선택하세요.';
+
+  @override
+  String get placementAwaiting => '상급자나 대표의 승인을 기다리는 중입니다.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by님이 다른 지점의 $name님을 $date에 배치하려고 합니다: 승인이 필요합니다.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by님이 $date $name님의 배치를 승인했습니다.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by님이 $date $name님의 배치를 거절했습니다.';
+  }
 }

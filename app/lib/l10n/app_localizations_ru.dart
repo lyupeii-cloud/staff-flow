@@ -1303,4 +1303,30 @@ class L10nRu extends L10n {
 
   @override
   String get unmuteConversation => 'Включить уведомления этого разговора';
+
+  @override
+  String get awaitingApproval => 'На утверждении';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Этот человек не из ваших объектов: смена будет ждать утверждения вашего руководителя или владельца, прежде чем её можно будет опубликовать. Иначе выберите другого сотрудника.';
+
+  @override
+  String get placementAwaiting =>
+      'Ожидает утверждения руководителем или владельцем.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by хочет поставить $name с другого объекта на $date: нужно утверждение.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by утвердил(а) назначение $name на $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by отклонил(а) назначение $name на $date.';
+  }
 }

@@ -91,4 +91,7 @@ const de = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'Die Unternehmensgruppe ist deaktiviert.',
   'Préréglage invalide.': 'Ungültige Vorlage.',
   'Image PNG de 1 Mo au plus attendue.': 'Erwartet wird ein PNG-Bild von höchstens 1 MB.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} möchte {name} von einem anderen Standort am {day} einplanen: Freigabe nötig.',
+  '{by} a validé le placement de {name} le {day}.': '{by} hat die Einplanung von {name} am {day} freigegeben.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} hat die Einplanung von {name} am {day} abgelehnt.',
 };

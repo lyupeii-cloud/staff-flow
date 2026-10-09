@@ -363,5 +363,11 @@
   "themeDark": "Dunkel",
   "themeLight": "Hell",
   "themeSystem": "System",
-  "unmuteConversation": "Benachrichtigungen dieser Unterhaltung wieder einschalten"
+  "unmuteConversation": "Benachrichtigungen dieser Unterhaltung wieder einschalten",
+  "awaitingApproval": "Freizugeben",
+  "placementNeedsApproval": "! Diese Person gehört nicht zu Ihren Standorten: Die Schicht wartet auf die Freigabe Ihres Vorgesetzten oder des Inhabers, bevor sie veröffentlicht werden kann. Sonst wählen Sie jemand anderen.",
+  "placementAwaiting": "Wartet auf Freigabe durch einen Vorgesetzten oder den Inhaber.",
+  "noticePlacementToApprove": "{by} möchte {name} von einem anderen Standort am {date} einplanen: Freigabe nötig.",
+  "noticePlacementApproved": "{by} hat die Einplanung von {name} am {date} freigegeben.",
+  "noticePlacementRefused": "{by} hat die Einplanung von {name} am {date} abgelehnt."
 }

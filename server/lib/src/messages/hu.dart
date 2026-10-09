@@ -91,4 +91,7 @@ const hu = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'A cég csoportja ki van kapcsolva.',
   'Préréglage invalide.': 'Érvénytelen előbeállítás.',
   'Image PNG de 1 Mo au plus attendue.': 'Legfeljebb 1 MB-os PNG-képet várunk.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} be szeretné osztani {name} munkatársat egy másik telephelyről ekkor: {day} – jóváhagyás szükséges.',
+  '{by} a validé le placement de {name} le {day}.': '{by} jóváhagyta {name} beosztását ekkor: {day}.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} elutasította {name} beosztását ekkor: {day}.',
 };

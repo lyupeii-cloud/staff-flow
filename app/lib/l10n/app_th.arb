@@ -363,5 +363,11 @@
   "themeDark": "มืด",
   "themeLight": "สว่าง",
   "themeSystem": "ตามระบบ",
-  "unmuteConversation": "เปิดการแจ้งเตือนของการสนทนานี้"
+  "unmuteConversation": "เปิดการแจ้งเตือนของการสนทนานี้",
+  "awaitingApproval": "รออนุมัติ",
+  "placementNeedsApproval": "! บุคคลนี้ไม่ได้อยู่ในสาขาของคุณ: กะนี้จะรอการอนุมัติจากหัวหน้าของคุณหรือเจ้าของก่อนจึงจะเผยแพร่ได้ หรือเลือกคนอื่นแทน",
+  "placementAwaiting": "รอการอนุมัติจากหัวหน้าหรือเจ้าของ",
+  "noticePlacementToApprove": "{by} ต้องการจัด {name} จากสาขาอื่นในวันที่ {date}: ต้องได้รับการอนุมัติ",
+  "noticePlacementApproved": "{by} อนุมัติการจัด {name} ในวันที่ {date} แล้ว",
+  "noticePlacementRefused": "{by} ปฏิเสธการจัด {name} ในวันที่ {date}"
 }

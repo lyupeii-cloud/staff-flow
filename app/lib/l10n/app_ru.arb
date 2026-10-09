@@ -363,5 +363,11 @@
   "themeDark": "Тёмное",
   "themeLight": "Светлое",
   "themeSystem": "Системное",
-  "unmuteConversation": "Включить уведомления этого разговора"
+  "unmuteConversation": "Включить уведомления этого разговора",
+  "awaitingApproval": "На утверждении",
+  "placementNeedsApproval": "! Этот человек не из ваших объектов: смена будет ждать утверждения вашего руководителя или владельца, прежде чем её можно будет опубликовать. Иначе выберите другого сотрудника.",
+  "placementAwaiting": "Ожидает утверждения руководителем или владельцем.",
+  "noticePlacementToApprove": "{by} хочет поставить {name} с другого объекта на {date}: нужно утверждение.",
+  "noticePlacementApproved": "{by} утвердил(а) назначение {name} на {date}.",
+  "noticePlacementRefused": "{by} отклонил(а) назначение {name} на {date}."
 }

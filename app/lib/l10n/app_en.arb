@@ -864,5 +864,50 @@
   "themeDark": "Dark",
   "themeLight": "Light",
   "themeSystem": "System",
-  "unmuteConversation": "Unmute this conversation"
+  "unmuteConversation": "Unmute this conversation",
+  "awaitingApproval": "To approve",
+  "placementNeedsApproval": "! This person isn't on your sites: the shift will wait for approval from your superior or the owner before it can be published. Otherwise, pick someone else.",
+  "placementAwaiting": "Waiting for approval from a superior or the owner.",
+  "noticePlacementToApprove": "{by} wants to schedule {name}, from another site, on {date}: approval needed.",
+  "@noticePlacementToApprove": {
+    "placeholders": {
+      "by": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noticePlacementApproved": "{by} approved scheduling {name} on {date}.",
+  "@noticePlacementApproved": {
+    "placeholders": {
+      "by": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noticePlacementRefused": "{by} refused scheduling {name} on {date}.",
+  "@noticePlacementRefused": {
+    "placeholders": {
+      "by": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -91,4 +91,7 @@ const mr = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'कंपनीचा गट बंद आहे.',
   'Préréglage invalide.': 'अवैध प्रीसेट.',
   'Image PNG de 1 Mo au plus attendue.': '1 MB पर्यंतची PNG प्रतिमा अपेक्षित आहे.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} दुसऱ्या साइटवरील {name} यांना {day} रोजी नेमू इच्छितात: मंजुरी हवी.',
+  '{by} a validé le placement de {name} le {day}.': '{by} यांनी {day} रोजी {name} यांची नेमणूक मंजूर केली.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} यांनी {day} रोजी {name} यांची नेमणूक नाकारली.',
 };

@@ -91,4 +91,7 @@ const gu = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'કંપનીનું જૂથ બંધ છે.',
   'Préréglage invalide.': 'અમાન્ય પ્રીસેટ.',
   'Image PNG de 1 Mo au plus attendue.': '1 MB સુધીની PNG છબી જોઈએ.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} બીજી સાઇટના {name}ને {day}એ ગોઠવવા માંગે છે: મંજૂરી જરૂરી.',
+  '{by} a validé le placement de {name} le {day}.': '{by}એ {day}એ {name}ની ગોઠવણ મંજૂર કરી.',
+  '{by} a refusé le placement de {name} le {day}.': '{by}એ {day}એ {name}ની ગોઠવણ નકારી.',
 };

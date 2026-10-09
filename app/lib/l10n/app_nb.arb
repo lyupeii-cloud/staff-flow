@@ -363,5 +363,11 @@
   "themeDark": "Mørkt",
   "themeLight": "Lyst",
   "themeSystem": "System",
-  "unmuteConversation": "Slå på varsler for denne samtalen"
+  "unmuteConversation": "Slå på varsler for denne samtalen",
+  "awaitingApproval": "Til godkjenning",
+  "placementNeedsApproval": "! Denne personen hører ikke til dine steder: vakten venter på godkjenning fra din overordnede eller eieren før den kan publiseres. Ellers velg en annen.",
+  "placementAwaiting": "Venter på godkjenning fra en overordnet eller eieren.",
+  "noticePlacementToApprove": "{by} vil sette opp {name} fra et annet sted {date}: må godkjennes.",
+  "noticePlacementApproved": "{by} godkjente oppsettet av {name} {date}.",
+  "noticePlacementRefused": "{by} avslo oppsettet av {name} {date}."
 }

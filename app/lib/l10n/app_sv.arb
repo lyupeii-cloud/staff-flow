@@ -363,5 +363,11 @@
   "themeDark": "Mörkt",
   "themeLight": "Ljust",
   "themeSystem": "System",
-  "unmuteConversation": "Slå på aviseringar för konversationen"
+  "unmuteConversation": "Slå på aviseringar för konversationen",
+  "awaitingApproval": "Att godkänna",
+  "placementNeedsApproval": "! Den här personen hör inte till dina platser: passet väntar på godkännande från din chef eller ägaren innan det kan publiceras. Välj annars någon annan.",
+  "placementAwaiting": "Väntar på godkännande från en chef eller ägaren.",
+  "noticePlacementToApprove": "{by} vill schemalägga {name} från en annan plats den {date}: kräver godkännande.",
+  "noticePlacementApproved": "{by} godkände schemaläggningen av {name} den {date}.",
+  "noticePlacementRefused": "{by} avslog schemaläggningen av {name} den {date}."
 }

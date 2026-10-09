@@ -1294,4 +1294,30 @@ class L10nHu extends L10n {
   @override
   String get unmuteConversation =>
       'Beszélgetés értesítéseinek visszakapcsolása';
+
+  @override
+  String get awaitingApproval => 'Jóváhagyandó';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Ez a személy nem az Ön telephelyeihez tartozik: a műszak a felettese vagy a tulajdonos jóváhagyására vár, mielőtt közzétehető. Különben válasszon mást.';
+
+  @override
+  String get placementAwaiting =>
+      'Felettes vagy a tulajdonos jóváhagyására vár.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by be szeretné osztani $name munkatársat egy másik telephelyről ekkor: $date – jóváhagyás szükséges.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by jóváhagyta $name beosztását ekkor: $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by elutasította $name beosztását ekkor: $date.';
+  }
 }

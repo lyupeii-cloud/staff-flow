@@ -1258,4 +1258,28 @@ class L10nZh extends L10n {
 
   @override
   String get unmuteConversation => '恢复此对话的通知';
+
+  @override
+  String get awaitingApproval => '待审批';
+
+  @override
+  String get placementNeedsApproval => '！此人不属于您的站点：班次需等您的上级或老板审批后才能发布。否则请另选他人。';
+
+  @override
+  String get placementAwaiting => '等待上级或老板审批。';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by 想在 $date 安排其他站点的 $name：需要审批。';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by 已批准在 $date 安排 $name。';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by 已拒绝在 $date 安排 $name。';
+  }
 }

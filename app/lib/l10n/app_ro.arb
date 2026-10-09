@@ -363,5 +363,11 @@
   "themeDark": "Întunecat",
   "themeLight": "Luminos",
   "themeSystem": "Sistem",
-  "unmuteConversation": "Repornește notificările acestei conversații"
+  "unmuteConversation": "Repornește notificările acestei conversații",
+  "awaitingApproval": "De aprobat",
+  "placementNeedsApproval": "! Această persoană nu este din punctele dvs. de lucru: tura va aștepta aprobarea superiorului sau a proprietarului înainte de a putea fi publicată. Altfel, alegeți pe altcineva.",
+  "placementAwaiting": "Așteaptă aprobarea unui superior sau a proprietarului.",
+  "noticePlacementToApprove": "{by} vrea să programeze pe {name}, de la alt punct de lucru, pe {date}: necesită aprobare.",
+  "noticePlacementApproved": "{by} a aprobat programarea lui {name} pe {date}.",
+  "noticePlacementRefused": "{by} a refuzat programarea lui {name} pe {date}."
 }

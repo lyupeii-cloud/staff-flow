@@ -1296,4 +1296,29 @@ class L10nHi extends L10n {
 
   @override
   String get unmuteConversation => 'इस बातचीत की सूचनाएँ फिर चालू करें';
+
+  @override
+  String get awaitingApproval => 'मंज़ूरी बाकी';
+
+  @override
+  String get placementNeedsApproval =>
+      '! यह व्यक्ति आपकी साइटों का नहीं है: प्रकाशित होने से पहले शिफ्ट आपके वरिष्ठ या मालिक की मंज़ूरी का इंतज़ार करेगी। वरना किसी और को चुनें।';
+
+  @override
+  String get placementAwaiting => 'वरिष्ठ या मालिक की मंज़ूरी का इंतज़ार।';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by दूसरी साइट के $name को $date को लगाना चाहते हैं: मंज़ूरी चाहिए।';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by ने $date को $name की नियुक्ति मंज़ूर की।';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by ने $date को $name की नियुक्ति अस्वीकार की।';
+  }
 }

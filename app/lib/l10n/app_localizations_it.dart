@@ -1305,4 +1305,30 @@ class L10nIt extends L10n {
   @override
   String get unmuteConversation =>
       'Riattiva le notifiche di questa conversazione';
+
+  @override
+  String get awaitingApproval => 'Da approvare';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Questa persona non è delle tue sedi: il turno attenderà l\'approvazione del tuo superiore o del titolare prima di poter essere pubblicato. Altrimenti scegli qualcun altro.';
+
+  @override
+  String get placementAwaiting =>
+      'In attesa di approvazione da un superiore o dal titolare.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by vuole pianificare $name, di un\'altra sede, il $date: serve l\'approvazione.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by ha approvato la pianificazione di $name il $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by ha rifiutato la pianificazione di $name il $date.';
+  }
 }

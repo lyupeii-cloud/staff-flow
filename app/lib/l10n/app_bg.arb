@@ -363,5 +363,11 @@
   "themeDark": "Тъмен",
   "themeLight": "Светъл",
   "themeSystem": "Системен",
-  "unmuteConversation": "Включи известията за този разговор"
+  "unmuteConversation": "Включи известията за този разговор",
+  "awaitingApproval": "За одобрение",
+  "placementNeedsApproval": "! Този човек не е от вашите обекти: смяната ще чака одобрение от вашия началник или собственика, преди да бъде публикувана. Иначе изберете друг.",
+  "placementAwaiting": "Чака одобрение от началник или собственика.",
+  "noticePlacementToApprove": "{by} иска да планира {name} от друг обект на {date}: нужно е одобрение.",
+  "noticePlacementApproved": "{by} одобри планирането на {name} на {date}.",
+  "noticePlacementRefused": "{by} отказа планирането на {name} на {date}."
 }

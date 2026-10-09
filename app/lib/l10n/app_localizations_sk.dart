@@ -1300,4 +1300,30 @@ class L10nSk extends L10n {
 
   @override
   String get unmuteConversation => 'Zapnúť oznámenia tejto konverzácie';
+
+  @override
+  String get awaitingApproval => 'Na schválenie';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Táto osoba nie je z vašich miest: zmena počká na schválenie nadriadeným alebo majiteľom, kým ju bude možné zverejniť. Inak vyberte niekoho iného.';
+
+  @override
+  String get placementAwaiting =>
+      'Čaká na schválenie nadriadeným alebo majiteľom.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by chce naplánovať $name z iného miesta na $date: treba schváliť.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by schválil(a) naplánovanie $name na $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by zamietol(a) naplánovanie $name na $date.';
+  }
 }

@@ -113,6 +113,10 @@ void main() {
       await owner.ok('PUT', p('/logo'), {'png': png(50, 50)});
       await owner.ok('PUT', p('/logo'), {'png': null});
       expect((await myCompany(bob))['logoVersion'], 0);
+      // Une nouvelle image ne reprend jamais le numéro d'une ancienne (cache des appareils).
+      expect((await owner.ok('PUT', p('/logo'), {'png': png(20, 20)}))['logoVersion'], 3);
+      expect((await myCompany(bob))['logoVersion'], 3);
+      await owner.ok('PUT', p('/logo'), {'png': null});
       expect((await bob('GET', p('/logo'))).$1, 404);
       final outsider = await env.login('outsider');
       expect((await outsider('GET', p('/logo'))).$1, 404);

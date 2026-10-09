@@ -1298,4 +1298,30 @@ class L10nEn extends L10n {
 
   @override
   String get unmuteConversation => 'Unmute this conversation';
+
+  @override
+  String get awaitingApproval => 'To approve';
+
+  @override
+  String get placementNeedsApproval =>
+      '! This person isn\'t on your sites: the shift will wait for approval from your superior or the owner before it can be published. Otherwise, pick someone else.';
+
+  @override
+  String get placementAwaiting =>
+      'Waiting for approval from a superior or the owner.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by wants to schedule $name, from another site, on $date: approval needed.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by approved scheduling $name on $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by refused scheduling $name on $date.';
+  }
 }

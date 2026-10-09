@@ -363,5 +363,11 @@
   "themeDark": "Donker",
   "themeLight": "Licht",
   "themeSystem": "Systeem",
-  "unmuteConversation": "Meldingen van dit gesprek weer aanzetten"
+  "unmuteConversation": "Meldingen van dit gesprek weer aanzetten",
+  "awaitingApproval": "Goed te keuren",
+  "placementNeedsApproval": "! Deze persoon hoort niet bij uw vestigingen: de dienst wacht op goedkeuring van uw leidinggevende of de eigenaar voordat hij gepubliceerd kan worden. Kies anders iemand anders.",
+  "placementAwaiting": "Wacht op goedkeuring van een leidinggevende of de eigenaar.",
+  "noticePlacementToApprove": "{by} wil {name} van een andere vestiging inplannen op {date}: goedkeuring nodig.",
+  "noticePlacementApproved": "{by} heeft het inplannen van {name} op {date} goedgekeurd.",
+  "noticePlacementRefused": "{by} heeft het inplannen van {name} op {date} geweigerd."
 }

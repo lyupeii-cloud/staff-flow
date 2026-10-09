@@ -1296,4 +1296,29 @@ class L10nBg extends L10n {
 
   @override
   String get unmuteConversation => 'Включи известията за този разговор';
+
+  @override
+  String get awaitingApproval => 'За одобрение';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Този човек не е от вашите обекти: смяната ще чака одобрение от вашия началник или собственика, преди да бъде публикувана. Иначе изберете друг.';
+
+  @override
+  String get placementAwaiting => 'Чака одобрение от началник или собственика.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by иска да планира $name от друг обект на $date: нужно е одобрение.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by одобри планирането на $name на $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by отказа планирането на $name на $date.';
+  }
 }

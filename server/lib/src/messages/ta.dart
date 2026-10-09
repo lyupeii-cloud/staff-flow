@@ -91,4 +91,7 @@ const ta = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'நிறுவனக் குழு அணைக்கப்பட்டுள்ளது.',
   'Préréglage invalide.': 'தவறான முன்னமைவு.',
   'Image PNG de 1 Mo au plus attendue.': '1 MB வரையிலான PNG படம் தேவை.',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} வேறு தளத்தைச் சேர்ந்த {name}-ஐ {day} அன்று நியமிக்க விரும்புகிறார்: ஒப்புதல் தேவை.',
+  '{by} a validé le placement de {name} le {day}.': '{by} {day} அன்று {name}-இன் நியமனத்தை ஒப்புக்கொண்டார்.',
+  '{by} a refusé le placement de {name} le {day}.': '{by} {day} அன்று {name}-இன் நியமனத்தை மறுத்தார்.',
 };

@@ -363,5 +363,11 @@
   "themeDark": "Scuro",
   "themeLight": "Chiaro",
   "themeSystem": "Sistema",
-  "unmuteConversation": "Riattiva le notifiche di questa conversazione"
+  "unmuteConversation": "Riattiva le notifiche di questa conversazione",
+  "awaitingApproval": "Da approvare",
+  "placementNeedsApproval": "! Questa persona non è delle tue sedi: il turno attenderà l'approvazione del tuo superiore o del titolare prima di poter essere pubblicato. Altrimenti scegli qualcun altro.",
+  "placementAwaiting": "In attesa di approvazione da un superiore o dal titolare.",
+  "noticePlacementToApprove": "{by} vuole pianificare {name}, di un'altra sede, il {date}: serve l'approvazione.",
+  "noticePlacementApproved": "{by} ha approvato la pianificazione di {name} il {date}.",
+  "noticePlacementRefused": "{by} ha rifiutato la pianificazione di {name} il {date}."
 }

@@ -1301,4 +1301,30 @@ class L10nNl extends L10n {
 
   @override
   String get unmuteConversation => 'Meldingen van dit gesprek weer aanzetten';
+
+  @override
+  String get awaitingApproval => 'Goed te keuren';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Deze persoon hoort niet bij uw vestigingen: de dienst wacht op goedkeuring van uw leidinggevende of de eigenaar voordat hij gepubliceerd kan worden. Kies anders iemand anders.';
+
+  @override
+  String get placementAwaiting =>
+      'Wacht op goedkeuring van een leidinggevende of de eigenaar.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by wil $name van een andere vestiging inplannen op $date: goedkeuring nodig.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by heeft het inplannen van $name op $date goedgekeurd.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by heeft het inplannen van $name op $date geweigerd.';
+  }
 }

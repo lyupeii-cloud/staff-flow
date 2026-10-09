@@ -363,5 +363,11 @@
   "themeDark": "Ciemny",
   "themeLight": "Jasny",
   "themeSystem": "Systemowy",
-  "unmuteConversation": "Włącz powiadomienia z tej rozmowy"
+  "unmuteConversation": "Włącz powiadomienia z tej rozmowy",
+  "awaitingApproval": "Do zatwierdzenia",
+  "placementNeedsApproval": "! Ta osoba nie należy do Twoich placówek: zmiana poczeka na zatwierdzenie przez przełożonego lub właściciela, zanim będzie można ją opublikować. W przeciwnym razie wybierz kogoś innego.",
+  "placementAwaiting": "Czeka na zatwierdzenie przez przełożonego lub właściciela.",
+  "noticePlacementToApprove": "{by} chce zaplanować {name} z innej placówki na {date}: wymaga zatwierdzenia.",
+  "noticePlacementApproved": "{by} zatwierdził(a) zaplanowanie {name} na {date}.",
+  "noticePlacementRefused": "{by} odrzucił(a) zaplanowanie {name} na {date}."
 }

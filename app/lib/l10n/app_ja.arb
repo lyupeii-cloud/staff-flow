@@ -363,5 +363,11 @@
   "themeDark": "ダーク",
   "themeLight": "ライト",
   "themeSystem": "システム",
-  "unmuteConversation": "この会話のミュートを解除"
+  "unmuteConversation": "この会話のミュートを解除",
+  "awaitingApproval": "承認待ち",
+  "placementNeedsApproval": "! この人はあなたの拠点の所属ではありません：公開する前に、上司またはオーナーの承認を待ちます。承認を待たない場合は、別の人を選んでください。",
+  "placementAwaiting": "上司またはオーナーの承認待ちです。",
+  "noticePlacementToApprove": "{by}さんが別の拠点の{name}さんを{date}に配置しようとしています：承認が必要です。",
+  "noticePlacementApproved": "{by}さんが{date}の{name}さんの配置を承認しました。",
+  "noticePlacementRefused": "{by}さんが{date}の{name}さんの配置を却下しました。"
 }

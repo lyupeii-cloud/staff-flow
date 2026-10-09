@@ -363,5 +363,11 @@
   "themeDark": "ముదురు",
   "themeLight": "లేత",
   "themeSystem": "సిస్టమ్",
-  "unmuteConversation": "ఈ సంభాషణ నోటిఫికేషన్లను ఆన్ చేయి"
+  "unmuteConversation": "ఈ సంభాషణ నోటిఫికేషన్లను ఆన్ చేయి",
+  "awaitingApproval": "ఆమోదం అవసరం",
+  "placementNeedsApproval": "! ఈ వ్యక్తి మీ సైట్‌లకు చెందినవారు కాదు: ప్రచురించే ముందు షిఫ్ట్ మీ పై అధికారి లేదా యజమాని ఆమోదం కోసం వేచి ఉంటుంది. లేకపోతే వేరొకరిని ఎంచుకోండి.",
+  "placementAwaiting": "పై అధికారి లేదా యజమాని ఆమోదం కోసం వేచి ఉంది.",
+  "noticePlacementToApprove": "{by} వేరే సైట్‌కు చెందిన {name}‌ను {date}న నియమించాలనుకుంటున్నారు: ఆమోదం అవసరం.",
+  "noticePlacementApproved": "{by} {date}న {name} నియామకాన్ని ఆమోదించారు.",
+  "noticePlacementRefused": "{by} {date}న {name} నియామకాన్ని తిరస్కరించారు."
 }

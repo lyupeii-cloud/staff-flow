@@ -363,5 +363,11 @@
   "themeDark": "Oscuro",
   "themeLight": "Claro",
   "themeSystem": "Sistema",
-  "unmuteConversation": "Reactivar las notificaciones de esta conversación"
+  "unmuteConversation": "Reactivar las notificaciones de esta conversación",
+  "awaitingApproval": "Por validar",
+  "placementNeedsApproval": "! Esta persona no es de tus centros: el turno esperará la validación de tu superior o del dueño antes de poder publicarse. Si no, elige a otra persona.",
+  "placementAwaiting": "Pendiente de validación por un superior o el dueño.",
+  "noticePlacementToApprove": "{by} quiere programar a {name}, de otro centro, el {date}: requiere validación.",
+  "noticePlacementApproved": "{by} validó la programación de {name} el {date}.",
+  "noticePlacementRefused": "{by} rechazó la programación de {name} el {date}."
 }

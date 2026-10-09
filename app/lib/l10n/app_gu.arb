@@ -363,5 +363,11 @@
   "themeDark": "ઘાટો",
   "themeLight": "આછો",
   "themeSystem": "સિસ્ટમ",
-  "unmuteConversation": "આ વાતચીતની સૂચનાઓ ચાલુ કરો"
+  "unmuteConversation": "આ વાતચીતની સૂચનાઓ ચાલુ કરો",
+  "awaitingApproval": "મંજૂરી બાકી",
+  "placementNeedsApproval": "! આ વ્યક્તિ તમારી સાઇટની નથી: પ્રકાશિત થાય તે પહેલાં શિફ્ટ તમારા ઉપરી અથવા માલિકની મંજૂરીની રાહ જોશે. નહીં તો બીજા કોઈને પસંદ કરો.",
+  "placementAwaiting": "ઉપરી અથવા માલિકની મંજૂરીની રાહ.",
+  "noticePlacementToApprove": "{by} બીજી સાઇટના {name}ને {date}એ ગોઠવવા માંગે છે: મંજૂરી જરૂરી.",
+  "noticePlacementApproved": "{by}એ {date}એ {name}ની ગોઠવણ મંજૂર કરી.",
+  "noticePlacementRefused": "{by}એ {date}એ {name}ની ગોઠવણ નકારી."
 }

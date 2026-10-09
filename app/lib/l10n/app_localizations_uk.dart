@@ -1304,4 +1304,30 @@ class L10nUk extends L10n {
 
   @override
   String get unmuteConversation => 'Увімкнути сповіщення цієї розмови';
+
+  @override
+  String get awaitingApproval => 'На затвердженні';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Ця людина не з ваших об\'єктів: зміна чекатиме затвердження вашого керівника або власника, перш ніж її можна буде опублікувати. Інакше оберіть іншого працівника.';
+
+  @override
+  String get placementAwaiting =>
+      'Очікує затвердження керівником або власником.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by хоче поставити $name з іншого об\'єкта на $date: потрібне затвердження.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by затвердив(ла) призначення $name на $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by відхилив(ла) призначення $name на $date.';
+  }
 }

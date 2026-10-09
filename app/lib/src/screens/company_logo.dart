@@ -27,7 +27,7 @@ class LogoCache {
       return _memory[memoKey] = base64Decode(stored.substring(stored.indexOf(':') + 1));
     }
     try {
-      final bytes = await session.api.bytes('/companies/${company.id}/logo');
+      final bytes = await session.api.bytes('/companies/${company.id}/logo?v=${company.logoVersion}');
       if (bytes == null) return null;
       final data = Uint8List.fromList(bytes);
       await prefs.setString(_key(company), '${company.logoVersion}:${base64Encode(data)}');
@@ -51,6 +51,8 @@ class CompanyLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     if (company.logoVersion == 0) return const SizedBox.shrink();
     return FutureBuilder(
+      // Nouvelle version : on repart de zéro (jamais l'ancienne image en attendant).
+      key: ValueKey('${company.id}:${company.logoVersion}'),
       future: LogoCache.get(session, company),
       builder: (context, snap) => snap.data == null
           ? SizedBox(width: size, height: size)

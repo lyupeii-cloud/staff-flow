@@ -1311,4 +1311,30 @@ class L10nFr extends L10n {
   @override
   String get unmuteConversation =>
       'Rétablir les notifications de cette conversation';
+
+  @override
+  String get awaitingApproval => 'À valider';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Cette personne n\'est pas de vos sites : le service attendra la validation de votre supérieur ou du patron avant de pouvoir être publié. Sinon, choisissez quelqu\'un d\'autre.';
+
+  @override
+  String get placementAwaiting =>
+      'En attente de validation par un supérieur ou le patron.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by veut placer $name, d\'un autre site, le $date : à valider.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by a validé le placement de $name le $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by a refusé le placement de $name le $date.';
+  }
 }

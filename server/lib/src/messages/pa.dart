@@ -91,4 +91,7 @@ const pa = <String, String>{
   'Le groupe de l\'entreprise est désactivé.': 'ਕੰਪਨੀ ਦਾ ਸਮੂਹ ਬੰਦ ਹੈ।',
   'Préréglage invalide.': 'ਗਲਤ ਪ੍ਰੀਸੈੱਟ।',
   'Image PNG de 1 Mo au plus attendue.': '1 MB ਤੱਕ ਦੀ PNG ਤਸਵੀਰ ਚਾਹੀਦੀ ਹੈ।',
+  '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} ਹੋਰ ਸਾਈਟ ਦੇ {name} ਨੂੰ {day} ਨੂੰ ਲਗਾਉਣਾ ਚਾਹੁੰਦੇ ਹਨ: ਮਨਜ਼ੂਰੀ ਚਾਹੀਦੀ ਹੈ।',
+  '{by} a validé le placement de {name} le {day}.': '{by} ਨੇ {day} ਨੂੰ {name} ਦੀ ਨਿਯੁਕਤੀ ਮਨਜ਼ੂਰ ਕੀਤੀ।',
+  '{by} a refusé le placement de {name} le {day}.': '{by} ਨੇ {day} ਨੂੰ {name} ਦੀ ਨਿਯੁਕਤੀ ਰੱਦ ਕੀਤੀ।',
 };

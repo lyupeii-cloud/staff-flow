@@ -1302,4 +1302,30 @@ class L10nPt extends L10n {
 
   @override
   String get unmuteConversation => 'Reativar as notificações desta conversa';
+
+  @override
+  String get awaitingApproval => 'Por aprovar';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Esta pessoa não é dos seus locais: o turno aguardará a aprovação do seu superior ou do dono antes de poder ser publicado. Caso contrário, escolha outra pessoa.';
+
+  @override
+  String get placementAwaiting =>
+      'Aguardando aprovação de um superior ou do dono.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by quer escalar $name, de outro local, em $date: requer aprovação.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by aprovou a escala de $name em $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by recusou a escala de $name em $date.';
+  }
 }

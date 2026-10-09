@@ -156,6 +156,12 @@ class NoticesButton extends StatelessWidget {
       'staff_borrowed' => t.noticeBorrowed(
           data['byName'] ?? '?', data['name'] ?? '?', data['siteName'] ?? '?', longDate(parseDay(data['day']), loc)),
       'reinforcement_added' => t.noticeReinforcement(company),
+      'placement_to_approve' =>
+        t.noticePlacementToApprove(data['byName'] ?? '?', data['name'] ?? '?', longDate(parseDay(data['day']), loc)),
+      'placement_approved' =>
+        t.noticePlacementApproved(data['byName'] ?? '?', data['name'] ?? '?', longDate(parseDay(data['day']), loc)),
+      'placement_refused' =>
+        t.noticePlacementRefused(data['byName'] ?? '?', data['name'] ?? '?', longDate(parseDay(data['day']), loc)),
       _ => n['kind'] as String,
     };
   }
@@ -173,6 +179,9 @@ class NoticesButton extends StatelessWidget {
         'shift_overlap' => Icons.warning_amber,
         'staff_borrowed' => Icons.transfer_within_a_station,
         'reinforcement_added' => Icons.group_add,
+        'placement_to_approve' => Icons.hourglass_top,
+        'placement_approved' => Icons.check_circle,
+        'placement_refused' => Icons.cancel,
         _ => Icons.edit_note,
       };
 }

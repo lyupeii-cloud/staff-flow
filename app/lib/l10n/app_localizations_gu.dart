@@ -1292,4 +1292,29 @@ class L10nGu extends L10n {
 
   @override
   String get unmuteConversation => 'આ વાતચીતની સૂચનાઓ ચાલુ કરો';
+
+  @override
+  String get awaitingApproval => 'મંજૂરી બાકી';
+
+  @override
+  String get placementNeedsApproval =>
+      '! આ વ્યક્તિ તમારી સાઇટની નથી: પ્રકાશિત થાય તે પહેલાં શિફ્ટ તમારા ઉપરી અથવા માલિકની મંજૂરીની રાહ જોશે. નહીં તો બીજા કોઈને પસંદ કરો.';
+
+  @override
+  String get placementAwaiting => 'ઉપરી અથવા માલિકની મંજૂરીની રાહ.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by બીજી સાઇટના $nameને $dateએ ગોઠવવા માંગે છે: મંજૂરી જરૂરી.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$byએ $dateએ $nameની ગોઠવણ મંજૂર કરી.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$byએ $dateએ $nameની ગોઠવણ નકારી.';
+  }
 }

@@ -1300,4 +1300,30 @@ class L10nDa extends L10n {
 
   @override
   String get unmuteConversation => 'Slå notifikationer til for denne samtale';
+
+  @override
+  String get awaitingApproval => 'Til godkendelse';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Denne person hører ikke til dine steder: vagten venter på godkendelse fra din overordnede eller ejeren, før den kan offentliggøres. Ellers vælg en anden.';
+
+  @override
+  String get placementAwaiting =>
+      'Venter på godkendelse fra en overordnet eller ejeren.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by vil planlægge $name fra et andet sted den $date: kræver godkendelse.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by godkendte planlægningen af $name den $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by afviste planlægningen af $name den $date.';
+  }
 }
