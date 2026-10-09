@@ -63,7 +63,9 @@ class Api {
     if (body != null) req.body = jsonEncode(body);
     final http.Response res;
     try {
-      res = await http.Response.fromStream(await _http.send(req)).timeout(const Duration(seconds: 20));
+      // Délai sur toute la requête (envoi compris) : une connexion qui perd des
+      // paquets ne bloque pas la synchronisation.
+      res = await _http.send(req).then(http.Response.fromStream).timeout(const Duration(seconds: 20));
     } on TimeoutException {
       throw OfflineException();
     } on http.ClientException {

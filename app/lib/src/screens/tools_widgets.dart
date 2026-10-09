@@ -347,73 +347,68 @@ class _CalendarDialog extends StatefulWidget {
 }
 
 class _CalendarDialogState extends State<_CalendarDialog> {
-  late String? _path = widget.session.me?.calendarPath;
+  bool? _on;
   bool _busy = false;
 
-  /// Android : agenda du téléphone où les services sont écrits.
-  String? _device;
+  /// Sur le web : lien à ajouter dans Google Agenda.
+  String? get _path => widget.session.me?.calendarPath;
 
   @override
   void initState() {
     super.initState();
-    CalendarSync.calendarId().then((id) {
-      if (mounted) setState(() => _device = id);
-    });
-  }
-
-  Future<void> _setDevice(bool enabled) async {
-    final t = context.l10n;
-    final messenger = ScaffoldMessenger.of(context);
-    setState(() => _busy = true);
-    try {
-      if (!enabled) {
-        await CalendarSync.disable();
-        setState(() => _device = null);
-        return;
-      }
-      final calendars = await CalendarSync.calendars();
-      if (!mounted) return;
-      if (calendars == null || calendars.isEmpty) {
-        messenger.showSnackBar(SnackBar(content: Text(calendars == null ? t.calendarDenied : t.calendarNone)));
-        return;
-      }
-      // Plusieurs agendas : on choisit (celui du compte Google en premier).
-      final chosen = calendars.length == 1
-          ? calendars.single.id
-          : await showDialog<String>(
-              context: context,
-              builder: (context) => SimpleDialog(
-                title: Text(t.chooseCalendar),
-                children: [
-                  for (final c in calendars)
-                    SimpleDialogOption(
-                      onPressed: () => Navigator.pop(context, c.id),
-                      child: Text(CalendarSync.label(c)),
-                    ),
-                ],
-              ),
-            );
-      if (chosen == null) return;
-      final count = await CalendarSync.enable(widget.session.api, chosen);
-      setState(() => _device = chosen);
-      messenger.showSnackBar(SnackBar(content: Text(t.calendarSynced('$count'))));
-    } on OfflineException {
-      messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
-    } on ApiException catch (e) {
-      messenger.showSnackBar(SnackBar(content: Text(e.describe(t))));
-    } finally {
-      if (mounted) setState(() => _busy = false);
+    if (CalendarSync.supported) {
+      CalendarSync.calendarId().then((id) {
+        if (mounted) setState(() => _on = id != null);
+      });
+    } else {
+      _on = _path != null;
     }
   }
 
-  Future<void> _set(bool enabled) async {
+  /// Un seul interrupteur : sur Android, les services sont écrits dans
+  /// l'agenda Google du téléphone ; sur le web, un lien d'agenda est créé.
+  Future<void> _toggle(bool on) async {
     final t = context.l10n;
     final messenger = ScaffoldMessenger.of(context);
     setState(() => _busy = true);
     try {
-      final r = await widget.session.api.send('PUT', '/me/calendar', body: {'enabled': enabled});
-      setState(() => _path = r['path'] as String?);
-      await widget.session.refresh();
+      if (CalendarSync.supported) {
+        if (!on) {
+          await CalendarSync.disable();
+        } else {
+          final calendars = await CalendarSync.calendars();
+          if (!mounted) return;
+          if (calendars == null || calendars.isEmpty) {
+            messenger.showSnackBar(SnackBar(content: Text(calendars == null ? t.calendarDenied : t.calendarNone)));
+            return;
+          }
+          // Plusieurs comptes Google : on demande lequel ; sinon le premier.
+          final google = [for (final c in calendars) if (c.isGoogle && c.primary) c];
+          final choices = google.isNotEmpty ? google : calendars;
+          final chosen = choices.length == 1
+              ? choices.single.id
+              : await showDialog<String>(
+                  context: context,
+                  builder: (context) => SimpleDialog(
+                    title: Text(t.chooseCalendar),
+                    children: [
+                      for (final c in choices)
+                        SimpleDialogOption(
+                          onPressed: () => Navigator.pop(context, c.id),
+                          child: Text(CalendarSync.label(c)),
+                        ),
+                    ],
+                  ),
+                );
+          if (chosen == null) return;
+          final count = await CalendarSync.enable(widget.session.api, chosen);
+          messenger.showSnackBar(SnackBar(content: Text(t.calendarSynced('$count'))));
+        }
+      } else {
+        await widget.session.api.send('PUT', '/me/calendar', body: {'enabled': on});
+        await widget.session.refresh();
+      }
+      if (mounted) setState(() => _on = on);
     } on OfflineException {
       messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
     } on ApiException catch (e) {
@@ -427,49 +422,26 @@ class _CalendarDialogState extends State<_CalendarDialog> {
   Widget build(BuildContext context) {
     final t = context.l10n;
     final path = _path;
-    final url = path == null ? null : serverUrl(path);
+    final webLink = !CalendarSync.supported && _on == true && path != null;
     return AlertDialog(
       title: Text(t.googleCalendar),
-      content: SingleChildScrollView(child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        Text(t.calendarHint),
-        // Android : écrit directement dans l'agenda Google du téléphone.
-        if (CalendarSync.supported) ...[
-          SwitchListTile(
-            contentPadding: EdgeInsets.zero,
-            value: _device != null,
-            title: Text(t.calendarOnPhone),
-            subtitle: Text(t.calendarOnPhoneHint),
-            onChanged: _busy ? null : _setDevice,
-          ),
-          const Divider(),
-          Text(t.calendarByLink, style: Theme.of(context).textTheme.titleSmall),
-        ],
+      content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         SwitchListTile(
           contentPadding: EdgeInsets.zero,
-          value: path != null,
+          value: _on ?? false,
           title: Text(t.calendarEnabled),
-          subtitle: Text(t.calendarLinkHint),
-          onChanged: _busy ? null : _set,
+          subtitle: Text(CalendarSync.supported ? t.calendarOnPhoneHint : t.calendarLinkHint),
+          onChanged: _busy || _on == null ? null : _toggle,
         ),
-        if (url != null) ...[
+        // Sur le web, Google Agenda doit encore accepter le lien (une fois).
+        if (webLink)
           FilledButton.icon(
             onPressed: () => _open(context,
-                'https://calendar.google.com/calendar/render?cid=${Uri.encodeComponent(url.replaceFirst(RegExp('^https?'), 'webcal'))}'),
+                'https://calendar.google.com/calendar/render?cid=${Uri.encodeComponent(serverUrl(path).replaceFirst(RegExp('^https?'), 'webcal'))}'),
             icon: const Icon(Icons.event),
             label: Text(t.addToGoogle),
           ),
-          TextButton.icon(
-            onPressed: () async {
-              await Clipboard.setData(ClipboardData(text: url));
-              if (context.mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.linkCopied)));
-              }
-            },
-            icon: const Icon(Icons.copy, size: 18),
-            label: Text(t.copyCalendarLink),
-          ),
-        ],
-      ])),
+      ]),
       actions: [TextButton(onPressed: () => Navigator.pop(context), child: Text(t.close))],
     );
   }

@@ -145,10 +145,12 @@ class _PlanningViewState extends State<PlanningView> {
     _seenQueue = sync.queue.length;
     setState(() => _loading = true);
     try {
+      // En parallèle : le serveur est loin (chaque aller-retour compte).
+      final absencesF = _loadAbsences(), requestsF = _loadRequests(), alertsF = _loadAlerts();
       final r = await sync.shifts(company.id, _from, _to);
-      final absences = await _loadAbsences();
-      final requests = await _loadRequests();
-      final alerts = await _loadAlerts();
+      final absences = await absencesF;
+      final requests = await requestsF;
+      final alerts = await alertsF;
       if (!mounted) return;
       setState(() {
         _alerts = alerts;

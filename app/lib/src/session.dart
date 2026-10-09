@@ -119,6 +119,7 @@ class Session extends ChangeNotifier {
       onShow: () async {
         await BackgroundSync.cancel();
         await sync.resume(reload: true);
+        unawaited(CalendarSync.sync(api).then((_) {}, onError: (_) {}));
       },
     );
   }

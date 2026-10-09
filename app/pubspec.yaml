@@ -52,9 +52,6 @@ dependencies:
   firebase_messaging: ^16.7.0
   flutter_timezone: ^5.1.1
   url_launcher: ^6.3.3
-  device_calendar: ^4.3.3
-  timezone: ^0.9.4
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

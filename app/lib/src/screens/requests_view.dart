@@ -72,8 +72,10 @@ class _RequestsViewState extends State<RequestsView> {
     _seenSync = widget.session.sync.synced;
     final sync = widget.session.sync;
     try {
-      final pending = _parse(await sync.read('requests-pending:${company.id}', '$_base?pending=1'));
-      final first = _parse(await sync.read('requests:${company.id}', '$_base?limit=$_page'));
+      final pendingF = sync.read('requests-pending:${company.id}', '$_base?pending=1');
+      final firstF = sync.read('requests:${company.id}', '$_base?limit=$_page');
+      final pending = _parse(await pendingF);
+      final first = _parse(await firstF);
       StaffRequest? focused;
       final focus = widget.focus;
       if (focus != null) {
