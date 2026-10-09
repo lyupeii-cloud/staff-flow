@@ -767,4 +767,138 @@ class L10nId extends L10n {
 
   @override
   String get chooseYourSite => 'Pilih setidaknya satu lokasi.';
+
+  @override
+  String get viewRequests => 'Permintaan';
+
+  @override
+  String get newRequest => 'Permintaan baru';
+
+  @override
+  String get requestLeave => 'Cuti';
+
+  @override
+  String get requestUnavailability => 'Tidak tersedia';
+
+  @override
+  String get requestSwap => 'Tukar shift';
+
+  @override
+  String get swapHint =>
+      'Untuk menawarkan tukar shift, ketuk salah satu shift mendatang Anda di jadwal.';
+
+  @override
+  String get noRequests => 'Belum ada permintaan.';
+
+  @override
+  String get requestsToHandle => 'Perlu ditangani';
+
+  @override
+  String get myRequests => 'Permintaan saya';
+
+  @override
+  String get otherRequests => 'Permintaan tim';
+
+  @override
+  String get statusPendingPeer => 'Menunggu rekan';
+
+  @override
+  String get statusPendingManager => 'Menunggu manajer';
+
+  @override
+  String get statusApproved => 'Disetujui';
+
+  @override
+  String get statusRefused => 'Ditolak';
+
+  @override
+  String get statusCancelled => 'Dibatalkan';
+
+  @override
+  String get cancelRequest => 'Batalkan permintaan';
+
+  @override
+  String get acceptSwap => 'Ambil shift ini';
+
+  @override
+  String get approve => 'Setujui';
+
+  @override
+  String periodLabel(String from, String to) {
+    return 'Dari $from sampai $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Ditawarkan ke $name';
+  }
+
+  @override
+  String get swapToTeam => 'Seluruh tim';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'Setiap minggu: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'Hari Anda tidak pernah tersedia:';
+
+  @override
+  String get choosePeriod => 'Pilih tanggal';
+
+  @override
+  String get choosePeriodOptional => 'Batasi ke suatu periode (opsional)';
+
+  @override
+  String get clearPeriod => 'Tanpa periode';
+
+  @override
+  String get sendRequest => 'Kirim permintaan';
+
+  @override
+  String get proposeSwap => 'Tawarkan tukar shift';
+
+  @override
+  String get swapWith => 'Tawarkan ke';
+
+  @override
+  String get swapSteps =>
+      'Rekan menerima, lalu manajer menyetujui. Jadwal baru berubah setelah itu.';
+
+  @override
+  String get absentThatDay => 'Ketidakhadiran disetujui pada hari itu';
+
+  @override
+  String get requestSent => 'Permintaan terkirim.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name menawarkan salah satu shift-nya kepada Anda.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name menolak tawaran tukar Anda.';
+  }
+
+  @override
+  String get noticeSwapToApprove =>
+      'Pertukaran shift menunggu persetujuan Anda.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name mengajukan cuti.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name menyatakan tidak tersedia.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Permintaan Anda disetujui.';
+
+  @override
+  String get noticeRequestRefused => 'Permintaan Anda ditolak.';
 }

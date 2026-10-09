@@ -773,4 +773,138 @@ class L10nTa extends L10n {
 
   @override
   String get chooseYourSite => 'குறைந்தது ஒரு தளத்தைத் தேர்ந்தெடுங்கள்.';
+
+  @override
+  String get viewRequests => 'கோரிக்கைகள்';
+
+  @override
+  String get newRequest => 'புதிய கோரிக்கை';
+
+  @override
+  String get requestLeave => 'விடுப்பு';
+
+  @override
+  String get requestUnavailability => 'கிடைக்காமை';
+
+  @override
+  String get requestSwap => 'ஷிஃப்ட் மாற்றம்';
+
+  @override
+  String get swapHint =>
+      'மாற்றத்தை முன்மொழிய, அட்டவணையில் உங்கள் வரவிருக்கும் ஷிஃப்ட் ஒன்றைத் தட்டுங்கள்.';
+
+  @override
+  String get noRequests => 'இன்னும் கோரிக்கைகள் இல்லை.';
+
+  @override
+  String get requestsToHandle => 'கையாள வேண்டியவை';
+
+  @override
+  String get myRequests => 'என் கோரிக்கைகள்';
+
+  @override
+  String get otherRequests => 'குழுவின் கோரிக்கைகள்';
+
+  @override
+  String get statusPendingPeer => 'சக ஊழியருக்காகக் காத்திருக்கிறது';
+
+  @override
+  String get statusPendingManager => 'மேலாளருக்காகக் காத்திருக்கிறது';
+
+  @override
+  String get statusApproved => 'ஏற்கப்பட்டது';
+
+  @override
+  String get statusRefused => 'நிராகரிக்கப்பட்டது';
+
+  @override
+  String get statusCancelled => 'ரத்துசெய்யப்பட்டது';
+
+  @override
+  String get cancelRequest => 'கோரிக்கையை ரத்துசெய்';
+
+  @override
+  String get acceptSwap => 'இந்த ஷிஃப்டை எடு';
+
+  @override
+  String get approve => 'ஒப்புதல் அளி';
+
+  @override
+  String periodLabel(String from, String to) {
+    return '$from முதல் $to வரை';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return '$name அவர்களுக்கு முன்மொழியப்பட்டது';
+  }
+
+  @override
+  String get swapToTeam => 'முழுக் குழு';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'ஒவ்வொரு வாரமும்: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'நீங்கள் ஒருபோதும் கிடைக்காத நாட்கள்:';
+
+  @override
+  String get choosePeriod => 'தேதிகளைத் தேர்ந்தெடு';
+
+  @override
+  String get choosePeriodOptional => 'ஒரு காலத்திற்கு மட்டும் (விருப்பம்)';
+
+  @override
+  String get clearPeriod => 'காலம் இல்லை';
+
+  @override
+  String get sendRequest => 'கோரிக்கையை அனுப்பு';
+
+  @override
+  String get proposeSwap => 'மாற்றத்தை முன்மொழி';
+
+  @override
+  String get swapWith => 'முன்மொழி';
+
+  @override
+  String get swapSteps =>
+      'சக ஊழியர் ஏற்கிறார், பின்னர் மேலாளர் ஒப்புதல் அளிக்கிறார். அதன் பிறகே அட்டவணை மாறும்.';
+
+  @override
+  String get absentThatDay => 'அன்று ஒப்புதல் பெற்ற விடுப்பு';
+
+  @override
+  String get requestSent => 'கோரிக்கை அனுப்பப்பட்டது.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name தன் ஷிஃப்டுகளில் ஒன்றை உங்களுக்கு வழங்குகிறார்.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name உங்கள் மாற்றுக் கோரிக்கையை நிராகரித்தார்.';
+  }
+
+  @override
+  String get noticeSwapToApprove =>
+      'ஒரு ஷிஃப்ட் மாற்றம் உங்கள் ஒப்புதலுக்காகக் காத்திருக்கிறது.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name விடுப்பு கேட்கிறார்.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name தான் இல்லாததைத் தெரிவித்தார்.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'உங்கள் கோரிக்கை ஏற்கப்பட்டது.';
+
+  @override
+  String get noticeRequestRefused => 'உங்கள் கோரிக்கை நிராகரிக்கப்பட்டது.';
 }

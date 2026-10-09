@@ -767,4 +767,137 @@ class L10nMs extends L10n {
 
   @override
   String get chooseYourSite => 'Pilih sekurang-kurangnya satu lokasi.';
+
+  @override
+  String get viewRequests => 'Permintaan';
+
+  @override
+  String get newRequest => 'Permintaan baharu';
+
+  @override
+  String get requestLeave => 'Cuti';
+
+  @override
+  String get requestUnavailability => 'Tidak tersedia';
+
+  @override
+  String get requestSwap => 'Tukar syif';
+
+  @override
+  String get swapHint =>
+      'Untuk menawarkan pertukaran, ketik salah satu syif akan datang anda dalam jadual.';
+
+  @override
+  String get noRequests => 'Belum ada permintaan.';
+
+  @override
+  String get requestsToHandle => 'Perlu diuruskan';
+
+  @override
+  String get myRequests => 'Permintaan saya';
+
+  @override
+  String get otherRequests => 'Permintaan pasukan';
+
+  @override
+  String get statusPendingPeer => 'Menunggu rakan sekerja';
+
+  @override
+  String get statusPendingManager => 'Menunggu pengurus';
+
+  @override
+  String get statusApproved => 'Diluluskan';
+
+  @override
+  String get statusRefused => 'Ditolak';
+
+  @override
+  String get statusCancelled => 'Dibatalkan';
+
+  @override
+  String get cancelRequest => 'Batalkan permintaan';
+
+  @override
+  String get acceptSwap => 'Ambil syif ini';
+
+  @override
+  String get approve => 'Luluskan';
+
+  @override
+  String periodLabel(String from, String to) {
+    return 'Dari $from hingga $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Ditawarkan kepada $name';
+  }
+
+  @override
+  String get swapToTeam => 'Seluruh pasukan';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'Setiap minggu: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'Hari anda tidak pernah tersedia:';
+
+  @override
+  String get choosePeriod => 'Pilih tarikh';
+
+  @override
+  String get choosePeriodOptional => 'Hadkan kepada satu tempoh (pilihan)';
+
+  @override
+  String get clearPeriod => 'Tiada tempoh';
+
+  @override
+  String get sendRequest => 'Hantar permintaan';
+
+  @override
+  String get proposeSwap => 'Tawarkan pertukaran';
+
+  @override
+  String get swapWith => 'Tawarkan kepada';
+
+  @override
+  String get swapSteps =>
+      'Rakan sekerja menerima, kemudian pengurus meluluskan. Jadual hanya berubah selepas itu.';
+
+  @override
+  String get absentThatDay => 'Ketidakhadiran diluluskan pada hari itu';
+
+  @override
+  String get requestSent => 'Permintaan dihantar.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name menawarkan salah satu syifnya kepada anda.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name menolak tawaran tukar anda.';
+  }
+
+  @override
+  String get noticeSwapToApprove => 'Pertukaran syif menunggu pengesahan anda.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name memohon cuti.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name memaklumkan tidak tersedia.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Permintaan anda telah diluluskan.';
+
+  @override
+  String get noticeRequestRefused => 'Permintaan anda telah ditolak.';
 }

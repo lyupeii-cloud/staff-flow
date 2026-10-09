@@ -762,4 +762,137 @@ class L10nTh extends L10n {
 
   @override
   String get chooseYourSite => 'เลือกอย่างน้อยหนึ่งสาขา';
+
+  @override
+  String get viewRequests => 'คำขอ';
+
+  @override
+  String get newRequest => 'คำขอใหม่';
+
+  @override
+  String get requestLeave => 'ลางาน';
+
+  @override
+  String get requestUnavailability => 'ไม่สะดวกทำงาน';
+
+  @override
+  String get requestSwap => 'แลกกะ';
+
+  @override
+  String get swapHint =>
+      'หากต้องการเสนอแลกกะ ให้แตะกะที่กำลังจะมาถึงของคุณในตารางงาน';
+
+  @override
+  String get noRequests => 'ยังไม่มีคำขอ';
+
+  @override
+  String get requestsToHandle => 'รอดำเนินการ';
+
+  @override
+  String get myRequests => 'คำขอของฉัน';
+
+  @override
+  String get otherRequests => 'คำขอของทีม';
+
+  @override
+  String get statusPendingPeer => 'รอเพื่อนร่วมงาน';
+
+  @override
+  String get statusPendingManager => 'รอหัวหน้า';
+
+  @override
+  String get statusApproved => 'อนุมัติแล้ว';
+
+  @override
+  String get statusRefused => 'ถูกปฏิเสธ';
+
+  @override
+  String get statusCancelled => 'ยกเลิกแล้ว';
+
+  @override
+  String get cancelRequest => 'ยกเลิกคำขอ';
+
+  @override
+  String get acceptSwap => 'รับกะนี้';
+
+  @override
+  String get approve => 'อนุมัติ';
+
+  @override
+  String periodLabel(String from, String to) {
+    return 'ตั้งแต่ $from ถึง $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'เสนอให้ $name';
+  }
+
+  @override
+  String get swapToTeam => 'ทั้งทีม';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'ทุกสัปดาห์: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'วันที่คุณไม่สะดวกทำงานเลย:';
+
+  @override
+  String get choosePeriod => 'เลือกวันที่';
+
+  @override
+  String get choosePeriodOptional => 'จำกัดเป็นช่วงเวลา (ไม่บังคับ)';
+
+  @override
+  String get clearPeriod => 'ไม่มีช่วงเวลา';
+
+  @override
+  String get sendRequest => 'ส่งคำขอ';
+
+  @override
+  String get proposeSwap => 'เสนอแลกกะ';
+
+  @override
+  String get swapWith => 'เสนอให้';
+
+  @override
+  String get swapSteps =>
+      'เพื่อนร่วมงานตอบรับ แล้วหัวหน้าอนุมัติ ตารางงานจะเปลี่ยนหลังจากนั้นเท่านั้น';
+
+  @override
+  String get absentThatDay => 'มีการลาที่อนุมัติแล้วในวันนั้น';
+
+  @override
+  String get requestSent => 'ส่งคำขอแล้ว';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name เสนอกะหนึ่งของเขาให้คุณ';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name ปฏิเสธข้อเสนอแลกกะของคุณ';
+  }
+
+  @override
+  String get noticeSwapToApprove => 'มีการแลกกะรอให้คุณอนุมัติ';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name ขอลางาน';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name แจ้งว่าไม่สะดวกทำงาน';
+  }
+
+  @override
+  String get noticeRequestApproved => 'คำขอของคุณได้รับการอนุมัติ';
+
+  @override
+  String get noticeRequestRefused => 'คำขอของคุณถูกปฏิเสธ';
 }

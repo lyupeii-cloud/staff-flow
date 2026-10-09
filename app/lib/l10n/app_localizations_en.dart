@@ -771,4 +771,138 @@ class L10nEn extends L10n {
 
   @override
   String get chooseYourSite => 'Choose at least one site.';
+
+  @override
+  String get viewRequests => 'Requests';
+
+  @override
+  String get newRequest => 'New request';
+
+  @override
+  String get requestLeave => 'Leave';
+
+  @override
+  String get requestUnavailability => 'Unavailability';
+
+  @override
+  String get requestSwap => 'Shift swap';
+
+  @override
+  String get swapHint =>
+      'To offer a swap, tap one of your upcoming shifts in the schedule.';
+
+  @override
+  String get noRequests => 'No requests yet.';
+
+  @override
+  String get requestsToHandle => 'To handle';
+
+  @override
+  String get myRequests => 'My requests';
+
+  @override
+  String get otherRequests => 'Team requests';
+
+  @override
+  String get statusPendingPeer => 'Waiting for the colleague';
+
+  @override
+  String get statusPendingManager => 'Waiting for a manager';
+
+  @override
+  String get statusApproved => 'Approved';
+
+  @override
+  String get statusRefused => 'Refused';
+
+  @override
+  String get statusCancelled => 'Cancelled';
+
+  @override
+  String get cancelRequest => 'Cancel request';
+
+  @override
+  String get acceptSwap => 'Take this shift';
+
+  @override
+  String get approve => 'Approve';
+
+  @override
+  String periodLabel(String from, String to) {
+    return 'From $from to $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Offered to $name';
+  }
+
+  @override
+  String get swapToTeam => 'Whole team';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'Every week: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'Days you are never available:';
+
+  @override
+  String get choosePeriod => 'Choose dates';
+
+  @override
+  String get choosePeriodOptional => 'Limit to a period (optional)';
+
+  @override
+  String get clearPeriod => 'No period';
+
+  @override
+  String get sendRequest => 'Send request';
+
+  @override
+  String get proposeSwap => 'Offer a swap';
+
+  @override
+  String get swapWith => 'Offer to';
+
+  @override
+  String get swapSteps =>
+      'The colleague accepts, then a manager approves. The schedule only changes after that.';
+
+  @override
+  String get absentThatDay => 'Approved absence that day';
+
+  @override
+  String get requestSent => 'Request sent.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name offers you one of their shifts.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name declined your swap offer.';
+  }
+
+  @override
+  String get noticeSwapToApprove =>
+      'A shift swap is waiting for your approval.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name is asking for leave.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name reports being unavailable.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Your request has been approved.';
+
+  @override
+  String get noticeRequestRefused => 'Your request has been refused.';
 }

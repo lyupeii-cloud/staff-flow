@@ -771,4 +771,139 @@ class L10nFil extends L10n {
 
   @override
   String get chooseYourSite => 'Pumili ng kahit isang lugar.';
+
+  @override
+  String get viewRequests => 'Mga kahilingan';
+
+  @override
+  String get newRequest => 'Bagong kahilingan';
+
+  @override
+  String get requestLeave => 'Leave';
+
+  @override
+  String get requestUnavailability => 'Hindi available';
+
+  @override
+  String get requestSwap => 'Palitan ng shift';
+
+  @override
+  String get swapHint =>
+      'Para mag-alok ng palitan, i-tap ang isa sa mga paparating mong shift sa iskedyul.';
+
+  @override
+  String get noRequests => 'Wala pang kahilingan.';
+
+  @override
+  String get requestsToHandle => 'Aasikasuhin';
+
+  @override
+  String get myRequests => 'Mga kahilingan ko';
+
+  @override
+  String get otherRequests => 'Mga kahilingan ng team';
+
+  @override
+  String get statusPendingPeer => 'Naghihintay sa kasamahan';
+
+  @override
+  String get statusPendingManager => 'Naghihintay sa manager';
+
+  @override
+  String get statusApproved => 'Inaprubahan';
+
+  @override
+  String get statusRefused => 'Tinanggihan';
+
+  @override
+  String get statusCancelled => 'Kinansela';
+
+  @override
+  String get cancelRequest => 'Kanselahin ang kahilingan';
+
+  @override
+  String get acceptSwap => 'Kunin ang shift na ito';
+
+  @override
+  String get approve => 'Aprubahan';
+
+  @override
+  String periodLabel(String from, String to) {
+    return 'Mula $from hanggang $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Inalok kay $name';
+  }
+
+  @override
+  String get swapToTeam => 'Buong team';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'Bawat linggo: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek =>
+      'Mga araw na hindi ka kailanman available:';
+
+  @override
+  String get choosePeriod => 'Pumili ng mga petsa';
+
+  @override
+  String get choosePeriodOptional => 'Limitahan sa isang panahon (opsyonal)';
+
+  @override
+  String get clearPeriod => 'Walang panahon';
+
+  @override
+  String get sendRequest => 'Ipadala ang kahilingan';
+
+  @override
+  String get proposeSwap => 'Mag-alok ng palitan';
+
+  @override
+  String get swapWith => 'Ialok kay';
+
+  @override
+  String get swapSteps =>
+      'Tatanggapin ng kasamahan, saka aaprubahan ng manager. Saka lang magbabago ang iskedyul.';
+
+  @override
+  String get absentThatDay => 'Aprubadong pagliban sa araw na iyon';
+
+  @override
+  String get requestSent => 'Naipadala ang kahilingan.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return 'Inaalok sa iyo ni $name ang isa sa kanyang mga shift.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return 'Tinanggihan ni $name ang alok mong palitan.';
+  }
+
+  @override
+  String get noticeSwapToApprove =>
+      'May palitan ng shift na naghihintay ng pag-apruba mo.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return 'Humihingi ng leave si $name.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return 'Sinabi ni $name na hindi siya available.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Inaprubahan ang kahilingan mo.';
+
+  @override
+  String get noticeRequestRefused => 'Tinanggihan ang kahilingan mo.';
 }

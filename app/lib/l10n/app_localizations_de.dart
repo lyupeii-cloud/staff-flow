@@ -776,4 +776,138 @@ class L10nDe extends L10n {
 
   @override
   String get chooseYourSite => 'Wählen Sie mindestens einen Standort.';
+
+  @override
+  String get viewRequests => 'Anfragen';
+
+  @override
+  String get newRequest => 'Neue Anfrage';
+
+  @override
+  String get requestLeave => 'Urlaub';
+
+  @override
+  String get requestUnavailability => 'Nichtverfügbarkeit';
+
+  @override
+  String get requestSwap => 'Schichttausch';
+
+  @override
+  String get swapHint =>
+      'Um einen Tausch anzubieten, tippen Sie im Plan auf eine Ihrer kommenden Schichten.';
+
+  @override
+  String get noRequests => 'Noch keine Anfragen.';
+
+  @override
+  String get requestsToHandle => 'Zu bearbeiten';
+
+  @override
+  String get myRequests => 'Meine Anfragen';
+
+  @override
+  String get otherRequests => 'Anfragen des Teams';
+
+  @override
+  String get statusPendingPeer => 'Wartet auf Kollegen';
+
+  @override
+  String get statusPendingManager => 'Wartet auf Verantwortliche';
+
+  @override
+  String get statusApproved => 'Genehmigt';
+
+  @override
+  String get statusRefused => 'Abgelehnt';
+
+  @override
+  String get statusCancelled => 'Storniert';
+
+  @override
+  String get cancelRequest => 'Anfrage zurückziehen';
+
+  @override
+  String get acceptSwap => 'Schicht übernehmen';
+
+  @override
+  String get approve => 'Genehmigen';
+
+  @override
+  String periodLabel(String from, String to) {
+    return 'Vom $from bis $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Angeboten an $name';
+  }
+
+  @override
+  String get swapToTeam => 'Ganzes Team';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'Jede Woche: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'Tage, an denen Sie nie verfügbar sind:';
+
+  @override
+  String get choosePeriod => 'Daten wählen';
+
+  @override
+  String get choosePeriodOptional => 'Auf einen Zeitraum begrenzen (optional)';
+
+  @override
+  String get clearPeriod => 'Ohne Zeitraum';
+
+  @override
+  String get sendRequest => 'Anfrage senden';
+
+  @override
+  String get proposeSwap => 'Tausch anbieten';
+
+  @override
+  String get swapWith => 'Anbieten an';
+
+  @override
+  String get swapSteps =>
+      'Der Kollege nimmt an, dann genehmigt ein Verantwortlicher. Erst danach ändert sich der Plan.';
+
+  @override
+  String get absentThatDay => 'Genehmigte Abwesenheit an diesem Tag';
+
+  @override
+  String get requestSent => 'Anfrage gesendet.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name bietet Ihnen eine Schicht an.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name hat Ihr Tauschangebot abgelehnt.';
+  }
+
+  @override
+  String get noticeSwapToApprove =>
+      'Ein Schichttausch wartet auf Ihre Freigabe.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name beantragt Urlaub.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name meldet sich als nicht verfügbar.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Ihre Anfrage wurde genehmigt.';
+
+  @override
+  String get noticeRequestRefused => 'Ihre Anfrage wurde abgelehnt.';
 }

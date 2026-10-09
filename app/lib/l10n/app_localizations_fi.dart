@@ -771,4 +771,138 @@ class L10nFi extends L10n {
 
   @override
   String get chooseYourSite => 'Valitse vähintään yksi toimipiste.';
+
+  @override
+  String get viewRequests => 'Pyynnöt';
+
+  @override
+  String get newRequest => 'Uusi pyyntö';
+
+  @override
+  String get requestLeave => 'Loma';
+
+  @override
+  String get requestUnavailability => 'Estyneisyys';
+
+  @override
+  String get requestSwap => 'Vuoronvaihto';
+
+  @override
+  String get swapHint =>
+      'Tarjotaksesi vaihtoa napauta jotakin tulevaa vuoroasi työvuorolistassa.';
+
+  @override
+  String get noRequests => 'Ei vielä pyyntöjä.';
+
+  @override
+  String get requestsToHandle => 'Käsiteltävät';
+
+  @override
+  String get myRequests => 'Omat pyyntöni';
+
+  @override
+  String get otherRequests => 'Tiimin pyynnöt';
+
+  @override
+  String get statusPendingPeer => 'Odottaa työkaveria';
+
+  @override
+  String get statusPendingManager => 'Odottaa esihenkilöä';
+
+  @override
+  String get statusApproved => 'Hyväksytty';
+
+  @override
+  String get statusRefused => 'Hylätty';
+
+  @override
+  String get statusCancelled => 'Peruttu';
+
+  @override
+  String get cancelRequest => 'Peru pyyntö';
+
+  @override
+  String get acceptSwap => 'Ota tämä vuoro';
+
+  @override
+  String get approve => 'Hyväksy';
+
+  @override
+  String periodLabel(String from, String to) {
+    return '$from – $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Tarjottu: $name';
+  }
+
+  @override
+  String get swapToTeam => 'Koko tiimi';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'Joka viikko: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek =>
+      'Päivät, joina et ole koskaan käytettävissä:';
+
+  @override
+  String get choosePeriod => 'Valitse päivät';
+
+  @override
+  String get choosePeriodOptional => 'Rajaa ajanjaksoon (valinnainen)';
+
+  @override
+  String get clearPeriod => 'Ei ajanjaksoa';
+
+  @override
+  String get sendRequest => 'Lähetä pyyntö';
+
+  @override
+  String get proposeSwap => 'Tarjoa vaihtoa';
+
+  @override
+  String get swapWith => 'Tarjoa henkilölle';
+
+  @override
+  String get swapSteps =>
+      'Työkaveri hyväksyy, sitten esihenkilö vahvistaa. Työvuorolista muuttuu vasta sen jälkeen.';
+
+  @override
+  String get absentThatDay => 'Hyväksytty poissaolo sinä päivänä';
+
+  @override
+  String get requestSent => 'Pyyntö lähetetty.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name tarjoaa sinulle yhtä vuoroistaan.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name hylkäsi vaihtoehdotuksesi.';
+  }
+
+  @override
+  String get noticeSwapToApprove => 'Vuoronvaihto odottaa hyväksyntääsi.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name pyytää lomaa.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name ilmoittaa olevansa estynyt.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Pyyntösi on hyväksytty.';
+
+  @override
+  String get noticeRequestRefused => 'Pyyntösi on hylätty.';
 }

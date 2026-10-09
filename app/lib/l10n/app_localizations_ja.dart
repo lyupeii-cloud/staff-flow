@@ -755,4 +755,135 @@ class L10nJa extends L10n {
 
   @override
   String get chooseYourSite => '拠点を少なくとも1つ選んでください。';
+
+  @override
+  String get viewRequests => '申請';
+
+  @override
+  String get newRequest => '新しい申請';
+
+  @override
+  String get requestLeave => '休暇';
+
+  @override
+  String get requestUnavailability => '勤務不可';
+
+  @override
+  String get requestSwap => 'シフト交代';
+
+  @override
+  String get swapHint => '交代を提案するには、勤務表で今後の自分のシフトをタップしてください。';
+
+  @override
+  String get noRequests => 'まだ申請はありません。';
+
+  @override
+  String get requestsToHandle => '対応待ち';
+
+  @override
+  String get myRequests => '自分の申請';
+
+  @override
+  String get otherRequests => 'チームの申請';
+
+  @override
+  String get statusPendingPeer => '同僚の返答待ち';
+
+  @override
+  String get statusPendingManager => '責任者の承認待ち';
+
+  @override
+  String get statusApproved => '承認済み';
+
+  @override
+  String get statusRefused => '却下';
+
+  @override
+  String get statusCancelled => '取り消し済み';
+
+  @override
+  String get cancelRequest => '申請を取り消す';
+
+  @override
+  String get acceptSwap => 'このシフトを引き受ける';
+
+  @override
+  String get approve => '承認';
+
+  @override
+  String periodLabel(String from, String to) {
+    return '$from〜$to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return '$name さんに提案';
+  }
+
+  @override
+  String get swapToTeam => 'チーム全員';
+
+  @override
+  String everyWeekdays(String days) {
+    return '毎週：$days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'いつも勤務できない曜日：';
+
+  @override
+  String get choosePeriod => '日付を選ぶ';
+
+  @override
+  String get choosePeriodOptional => '期間を限定する（任意）';
+
+  @override
+  String get clearPeriod => '期間なし';
+
+  @override
+  String get sendRequest => '申請を送信';
+
+  @override
+  String get proposeSwap => '交代を提案';
+
+  @override
+  String get swapWith => '提案先';
+
+  @override
+  String get swapSteps => '同僚が承諾し、その後責任者が承認します。勤務表はその後に変わります。';
+
+  @override
+  String get absentThatDay => 'この日は承認済みの不在';
+
+  @override
+  String get requestSent => '申請を送信しました。';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name さんがシフトを1つ譲ろうとしています。';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name さんが交代の提案を断りました。';
+  }
+
+  @override
+  String get noticeSwapToApprove => 'シフト交代があなたの承認を待っています。';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name さんが休暇を申請しています。';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name さんが勤務不可を申告しました。';
+  }
+
+  @override
+  String get noticeRequestApproved => '申請が承認されました。';
+
+  @override
+  String get noticeRequestRefused => '申請が却下されました。';
 }

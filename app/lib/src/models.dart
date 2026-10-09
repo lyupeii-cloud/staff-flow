@@ -337,3 +337,63 @@ class Mention {
 
   const Mention(this.id, this.name);
 }
+
+enum RequestKind { swap, leave, unavailability }
+
+/// Demande d'un salarié : échange de service, congé ou indisponibilité.
+/// Les champs `can…` disent ce que la personne connectée peut en faire.
+class StaffRequest {
+  final String id;
+  final RequestKind kind;
+
+  /// pending_peer, pending_manager, approved, refused ou cancelled.
+  final String status;
+  final String requesterId, requesterName;
+  final String? peerId, peerName;
+
+  /// Échange proposé à toute l'équipe plutôt qu'à une personne.
+  final bool openOffer;
+  final DateTime? shiftDay;
+  final int? shiftStart, shiftEnd;
+  final String? siteId;
+  final DateTime? startDay, endDay;
+
+  /// Indisponibilité chaque semaine : 1 = lundi … 7 = dimanche.
+  final List<int>? weekdays;
+  final String? note;
+  final DateTime createdAt;
+  final bool canAnswer, canDecline, canDecide, canCancel;
+
+  StaffRequest.fromJson(Map<String, dynamic> j)
+      : id = j['id'],
+        kind = RequestKind.values.byName(j['kind']),
+        status = j['status'],
+        requesterId = j['requester']['id'],
+        requesterName = j['requester']['name'],
+        peerId = j['peer']?['id'],
+        peerName = j['peer']?['name'],
+        openOffer = j['openOffer'] == true,
+        shiftDay = j['shift'] == null ? null : parseDay(j['shift']['day']),
+        shiftStart = j['shift']?['start'],
+        shiftEnd = j['shift']?['end'],
+        siteId = j['shift']?['siteId'],
+        startDay = j['startDay'] == null ? null : parseDay(j['startDay']),
+        endDay = j['endDay'] == null ? null : parseDay(j['endDay']),
+        weekdays = (j['weekdays'] as List?)?.cast<int>(),
+        note = j['note'],
+        createdAt = DateTime.parse(j['createdAt']),
+        canAnswer = j['canAnswer'] == true,
+        canDecline = j['canDecline'] == true,
+        canDecide = j['canDecide'] == true,
+        canCancel = j['canCancel'] == true;
+
+  bool get pending => status.startsWith('pending');
+
+  /// Absence validée qui touche ce jour.
+  bool covers(DateTime day) {
+    final d = DateTime(day.year, day.month, day.day);
+    if (startDay != null && d.isBefore(startDay!)) return false;
+    if (endDay != null && d.isAfter(endDay!)) return false;
+    return weekdays == null || weekdays!.contains(d.weekday);
+  }
+}

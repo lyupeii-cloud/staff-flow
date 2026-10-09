@@ -767,4 +767,137 @@ class L10nHu extends L10n {
 
   @override
   String get chooseYourSite => 'Válassz legalább egy telephelyet.';
+
+  @override
+  String get viewRequests => 'Kérések';
+
+  @override
+  String get newRequest => 'Új kérés';
+
+  @override
+  String get requestLeave => 'Szabadság';
+
+  @override
+  String get requestUnavailability => 'Nem elérhető';
+
+  @override
+  String get requestSwap => 'Műszakcsere';
+
+  @override
+  String get swapHint =>
+      'Csere felajánlásához koppints egyik közelgő műszakodra a beosztásban.';
+
+  @override
+  String get noRequests => 'Még nincs kérés.';
+
+  @override
+  String get requestsToHandle => 'Teendő';
+
+  @override
+  String get myRequests => 'Saját kéréseim';
+
+  @override
+  String get otherRequests => 'A csapat kérései';
+
+  @override
+  String get statusPendingPeer => 'A kollégára vár';
+
+  @override
+  String get statusPendingManager => 'A vezetőre vár';
+
+  @override
+  String get statusApproved => 'Elfogadva';
+
+  @override
+  String get statusRefused => 'Elutasítva';
+
+  @override
+  String get statusCancelled => 'Visszavonva';
+
+  @override
+  String get cancelRequest => 'Kérés visszavonása';
+
+  @override
+  String get acceptSwap => 'Átveszem a műszakot';
+
+  @override
+  String get approve => 'Jóváhagyás';
+
+  @override
+  String periodLabel(String from, String to) {
+    return '$from – $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Felajánlva neki: $name';
+  }
+
+  @override
+  String get swapToTeam => 'Az egész csapat';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'Minden héten: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'Napok, amikor soha nem vagy elérhető:';
+
+  @override
+  String get choosePeriod => 'Dátumok kiválasztása';
+
+  @override
+  String get choosePeriodOptional => 'Időszakra korlátozás (nem kötelező)';
+
+  @override
+  String get clearPeriod => 'Időszak nélkül';
+
+  @override
+  String get sendRequest => 'Kérés elküldése';
+
+  @override
+  String get proposeSwap => 'Csere felajánlása';
+
+  @override
+  String get swapWith => 'Felajánlás neki';
+
+  @override
+  String get swapSteps =>
+      'A kolléga elfogadja, majd egy vezető jóváhagyja. A beosztás csak ezután változik.';
+
+  @override
+  String get absentThatDay => 'Jóváhagyott távollét aznap';
+
+  @override
+  String get requestSent => 'Kérés elküldve.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name felajánlja neked egyik műszakját.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name elutasította a cserére vonatkozó ajánlatodat.';
+  }
+
+  @override
+  String get noticeSwapToApprove => 'Egy műszakcsere a jóváhagyásodra vár.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name szabadságot kér.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name jelzi, hogy nem elérhető.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'A kérésedet elfogadták.';
+
+  @override
+  String get noticeRequestRefused => 'A kérésedet elutasították.';
 }

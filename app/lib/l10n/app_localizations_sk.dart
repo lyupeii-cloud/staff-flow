@@ -774,4 +774,137 @@ class L10nSk extends L10n {
 
   @override
   String get chooseYourSite => 'Vyberte aspoň jedno pracovisko.';
+
+  @override
+  String get viewRequests => 'Žiadosti';
+
+  @override
+  String get newRequest => 'Nová žiadosť';
+
+  @override
+  String get requestLeave => 'Dovolenka';
+
+  @override
+  String get requestUnavailability => 'Nedostupnosť';
+
+  @override
+  String get requestSwap => 'Výmena zmeny';
+
+  @override
+  String get swapHint =>
+      'Ak chcete ponúknuť výmenu, ťuknite v pláne na jednu zo svojich nadchádzajúcich zmien.';
+
+  @override
+  String get noRequests => 'Zatiaľ žiadne žiadosti.';
+
+  @override
+  String get requestsToHandle => 'Na vybavenie';
+
+  @override
+  String get myRequests => 'Moje žiadosti';
+
+  @override
+  String get otherRequests => 'Žiadosti tímu';
+
+  @override
+  String get statusPendingPeer => 'Čaká na kolegu';
+
+  @override
+  String get statusPendingManager => 'Čaká na vedúceho';
+
+  @override
+  String get statusApproved => 'Schválená';
+
+  @override
+  String get statusRefused => 'Zamietnutá';
+
+  @override
+  String get statusCancelled => 'Zrušená';
+
+  @override
+  String get cancelRequest => 'Zrušiť žiadosť';
+
+  @override
+  String get acceptSwap => 'Prevziať túto zmenu';
+
+  @override
+  String get approve => 'Schváliť';
+
+  @override
+  String periodLabel(String from, String to) {
+    return 'Od $from do $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Ponúknuté: $name';
+  }
+
+  @override
+  String get swapToTeam => 'Celý tím';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'Každý týždeň: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'Dni, keď nikdy nie ste k dispozícii:';
+
+  @override
+  String get choosePeriod => 'Vybrať dátumy';
+
+  @override
+  String get choosePeriodOptional => 'Obmedziť na obdobie (voliteľné)';
+
+  @override
+  String get clearPeriod => 'Bez obdobia';
+
+  @override
+  String get sendRequest => 'Odoslať žiadosť';
+
+  @override
+  String get proposeSwap => 'Ponúknuť výmenu';
+
+  @override
+  String get swapWith => 'Ponúknuť';
+
+  @override
+  String get swapSteps =>
+      'Kolega prijme, potom vedúci schváli. Plán sa zmení až potom.';
+
+  @override
+  String get absentThatDay => 'Schválená neprítomnosť v tento deň';
+
+  @override
+  String get requestSent => 'Žiadosť odoslaná.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name vám ponúka jednu zo svojich zmien.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name odmietol vašu ponuku výmeny.';
+  }
+
+  @override
+  String get noticeSwapToApprove => 'Výmena zmeny čaká na vaše schválenie.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name žiada o dovolenku.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name hlási nedostupnosť.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Vaša žiadosť bola schválená.';
+
+  @override
+  String get noticeRequestRefused => 'Vaša žiadosť bola zamietnutá.';
 }

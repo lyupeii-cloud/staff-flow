@@ -775,4 +775,138 @@ class L10nEl extends L10n {
 
   @override
   String get chooseYourSite => 'Επιλέξτε τουλάχιστον ένα κατάστημα.';
+
+  @override
+  String get viewRequests => 'Αιτήματα';
+
+  @override
+  String get newRequest => 'Νέο αίτημα';
+
+  @override
+  String get requestLeave => 'Άδεια';
+
+  @override
+  String get requestUnavailability => 'Μη διαθεσιμότητα';
+
+  @override
+  String get requestSwap => 'Ανταλλαγή βάρδιας';
+
+  @override
+  String get swapHint =>
+      'Για να προτείνετε ανταλλαγή, πατήστε μία από τις επόμενες βάρδιές σας στο πρόγραμμα.';
+
+  @override
+  String get noRequests => 'Δεν υπάρχουν αιτήματα ακόμα.';
+
+  @override
+  String get requestsToHandle => 'Προς διεκπεραίωση';
+
+  @override
+  String get myRequests => 'Τα αιτήματά μου';
+
+  @override
+  String get otherRequests => 'Αιτήματα της ομάδας';
+
+  @override
+  String get statusPendingPeer => 'Αναμονή συναδέλφου';
+
+  @override
+  String get statusPendingManager => 'Αναμονή υπευθύνου';
+
+  @override
+  String get statusApproved => 'Εγκρίθηκε';
+
+  @override
+  String get statusRefused => 'Απορρίφθηκε';
+
+  @override
+  String get statusCancelled => 'Ακυρώθηκε';
+
+  @override
+  String get cancelRequest => 'Ακύρωση αιτήματος';
+
+  @override
+  String get acceptSwap => 'Αναλαμβάνω τη βάρδια';
+
+  @override
+  String get approve => 'Έγκριση';
+
+  @override
+  String periodLabel(String from, String to) {
+    return 'Από $from έως $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Προτάθηκε σε: $name';
+  }
+
+  @override
+  String get swapToTeam => 'Όλη η ομάδα';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'Κάθε εβδομάδα: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'Ημέρες που δεν είστε ποτέ διαθέσιμοι:';
+
+  @override
+  String get choosePeriod => 'Επιλογή ημερομηνιών';
+
+  @override
+  String get choosePeriodOptional => 'Περιορισμός σε περίοδο (προαιρετικό)';
+
+  @override
+  String get clearPeriod => 'Χωρίς περίοδο';
+
+  @override
+  String get sendRequest => 'Αποστολή αιτήματος';
+
+  @override
+  String get proposeSwap => 'Πρόταση ανταλλαγής';
+
+  @override
+  String get swapWith => 'Πρόταση σε';
+
+  @override
+  String get swapSteps =>
+      'Ο συνάδελφος αποδέχεται και μετά ένας υπεύθυνος εγκρίνει. Το πρόγραμμα αλλάζει μόνο τότε.';
+
+  @override
+  String get absentThatDay => 'Εγκεκριμένη απουσία εκείνη την ημέρα';
+
+  @override
+  String get requestSent => 'Το αίτημα στάλθηκε.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return 'Ο/Η $name σας προτείνει μία από τις βάρδιές του/της.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return 'Ο/Η $name απέρριψε την πρόταση ανταλλαγής σας.';
+  }
+
+  @override
+  String get noticeSwapToApprove =>
+      'Μια ανταλλαγή βάρδιας περιμένει την έγκρισή σας.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return 'Ο/Η $name ζητά άδεια.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return 'Ο/Η $name δηλώνει μη διαθεσιμότητα.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Το αίτημά σας εγκρίθηκε.';
+
+  @override
+  String get noticeRequestRefused => 'Το αίτημά σας απορρίφθηκε.';
 }

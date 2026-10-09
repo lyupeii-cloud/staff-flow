@@ -501,5 +501,96 @@
     }
   },
   "notYourSite": "This site is not under your responsibility.",
-  "chooseYourSite": "Choose at least one site."
+  "chooseYourSite": "Choose at least one site.",
+  "viewRequests": "Requests",
+  "newRequest": "New request",
+  "requestLeave": "Leave",
+  "requestUnavailability": "Unavailability",
+  "requestSwap": "Shift swap",
+  "swapHint": "To offer a swap, tap one of your upcoming shifts in the schedule.",
+  "noRequests": "No requests yet.",
+  "requestsToHandle": "To handle",
+  "myRequests": "My requests",
+  "otherRequests": "Team requests",
+  "statusPendingPeer": "Waiting for the colleague",
+  "statusPendingManager": "Waiting for a manager",
+  "statusApproved": "Approved",
+  "statusRefused": "Refused",
+  "statusCancelled": "Cancelled",
+  "cancelRequest": "Cancel request",
+  "acceptSwap": "Take this shift",
+  "approve": "Approve",
+  "periodLabel": "From {from} to {to}",
+  "@periodLabel": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "swapToPeer": "Offered to {name}",
+  "@swapToPeer": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "swapToTeam": "Whole team",
+  "everyWeekdays": "Every week: {days}",
+  "@everyWeekdays": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "unavailableEveryWeek": "Days you are never available:",
+  "choosePeriod": "Choose dates",
+  "choosePeriodOptional": "Limit to a period (optional)",
+  "clearPeriod": "No period",
+  "sendRequest": "Send request",
+  "proposeSwap": "Offer a swap",
+  "swapWith": "Offer to",
+  "swapSteps": "The colleague accepts, then a manager approves. The schedule only changes after that.",
+  "absentThatDay": "Approved absence that day",
+  "requestSent": "Request sent.",
+  "noticeSwapOffer": "{name} offers you one of their shifts.",
+  "@noticeSwapOffer": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeSwapDeclined": "{name} declined your swap offer.",
+  "@noticeSwapDeclined": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeSwapToApprove": "A shift swap is waiting for your approval.",
+  "noticeLeaveToApprove": "{name} is asking for leave.",
+  "@noticeLeaveToApprove": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeUnavailabilityToApprove": "{name} reports being unavailable.",
+  "@noticeUnavailabilityToApprove": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeRequestApproved": "Your request has been approved.",
+  "noticeRequestRefused": "Your request has been refused."
 }

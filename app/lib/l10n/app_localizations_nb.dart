@@ -770,4 +770,137 @@ class L10nNb extends L10n {
 
   @override
   String get chooseYourSite => 'Velg minst ett sted.';
+
+  @override
+  String get viewRequests => 'Forespørsler';
+
+  @override
+  String get newRequest => 'Ny forespørsel';
+
+  @override
+  String get requestLeave => 'Fri';
+
+  @override
+  String get requestUnavailability => 'Utilgjengelighet';
+
+  @override
+  String get requestSwap => 'Vaktbytte';
+
+  @override
+  String get swapHint =>
+      'Trykk på en av dine kommende vakter i vaktplanen for å tilby et bytte.';
+
+  @override
+  String get noRequests => 'Ingen forespørsler ennå.';
+
+  @override
+  String get requestsToHandle => 'Til behandling';
+
+  @override
+  String get myRequests => 'Mine forespørsler';
+
+  @override
+  String get otherRequests => 'Teamets forespørsler';
+
+  @override
+  String get statusPendingPeer => 'Venter på kollegaen';
+
+  @override
+  String get statusPendingManager => 'Venter på en leder';
+
+  @override
+  String get statusApproved => 'Godkjent';
+
+  @override
+  String get statusRefused => 'Avslått';
+
+  @override
+  String get statusCancelled => 'Avbrutt';
+
+  @override
+  String get cancelRequest => 'Avbryt forespørselen';
+
+  @override
+  String get acceptSwap => 'Ta denne vakten';
+
+  @override
+  String get approve => 'Godkjenn';
+
+  @override
+  String periodLabel(String from, String to) {
+    return 'Fra $from til $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Tilbudt til $name';
+  }
+
+  @override
+  String get swapToTeam => 'Hele teamet';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'Hver uke: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'Dager du aldri er tilgjengelig:';
+
+  @override
+  String get choosePeriod => 'Velg datoer';
+
+  @override
+  String get choosePeriodOptional => 'Begrens til en periode (valgfritt)';
+
+  @override
+  String get clearPeriod => 'Ingen periode';
+
+  @override
+  String get sendRequest => 'Send forespørselen';
+
+  @override
+  String get proposeSwap => 'Tilby et bytte';
+
+  @override
+  String get swapWith => 'Tilby til';
+
+  @override
+  String get swapSteps =>
+      'Kollegaen godtar, deretter godkjenner en leder. Vaktplanen endres først da.';
+
+  @override
+  String get absentThatDay => 'Godkjent fravær den dagen';
+
+  @override
+  String get requestSent => 'Forespørselen er sendt.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name tilbyr deg en av sine vakter.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name avslo byttetilbudet ditt.';
+  }
+
+  @override
+  String get noticeSwapToApprove => 'Et vaktbytte venter på godkjenningen din.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name ber om fri.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name melder at hen ikke er tilgjengelig.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Forespørselen din er godkjent.';
+
+  @override
+  String get noticeRequestRefused => 'Forespørselen din er avslått.';
 }

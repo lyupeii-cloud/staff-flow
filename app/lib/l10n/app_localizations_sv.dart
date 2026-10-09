@@ -772,4 +772,137 @@ class L10nSv extends L10n {
 
   @override
   String get chooseYourSite => 'Välj minst en arbetsplats.';
+
+  @override
+  String get viewRequests => 'Förfrågningar';
+
+  @override
+  String get newRequest => 'Ny förfrågan';
+
+  @override
+  String get requestLeave => 'Ledighet';
+
+  @override
+  String get requestUnavailability => 'Ej tillgänglig';
+
+  @override
+  String get requestSwap => 'Passbyte';
+
+  @override
+  String get swapHint =>
+      'Tryck på ett av dina kommande pass i schemat för att erbjuda ett byte.';
+
+  @override
+  String get noRequests => 'Inga förfrågningar än.';
+
+  @override
+  String get requestsToHandle => 'Att hantera';
+
+  @override
+  String get myRequests => 'Mina förfrågningar';
+
+  @override
+  String get otherRequests => 'Teamets förfrågningar';
+
+  @override
+  String get statusPendingPeer => 'Väntar på kollegan';
+
+  @override
+  String get statusPendingManager => 'Väntar på ansvarig';
+
+  @override
+  String get statusApproved => 'Godkänd';
+
+  @override
+  String get statusRefused => 'Avslagen';
+
+  @override
+  String get statusCancelled => 'Avbruten';
+
+  @override
+  String get cancelRequest => 'Avbryt förfrågan';
+
+  @override
+  String get acceptSwap => 'Ta det här passet';
+
+  @override
+  String get approve => 'Godkänn';
+
+  @override
+  String periodLabel(String from, String to) {
+    return 'Från $from till $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Erbjudet till $name';
+  }
+
+  @override
+  String get swapToTeam => 'Hela teamet';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'Varje vecka: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'Dagar då du aldrig är tillgänglig:';
+
+  @override
+  String get choosePeriod => 'Välj datum';
+
+  @override
+  String get choosePeriodOptional => 'Begränsa till en period (valfritt)';
+
+  @override
+  String get clearPeriod => 'Ingen period';
+
+  @override
+  String get sendRequest => 'Skicka förfrågan';
+
+  @override
+  String get proposeSwap => 'Erbjud ett byte';
+
+  @override
+  String get swapWith => 'Erbjud till';
+
+  @override
+  String get swapSteps =>
+      'Kollegan accepterar, sedan godkänner en ansvarig. Schemat ändras först då.';
+
+  @override
+  String get absentThatDay => 'Godkänd frånvaro den dagen';
+
+  @override
+  String get requestSent => 'Förfrågan skickad.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name erbjuder dig ett av sina pass.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name avböjde ditt bytesförslag.';
+  }
+
+  @override
+  String get noticeSwapToApprove => 'Ett passbyte väntar på ditt godkännande.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name ansöker om ledighet.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name anmäler att hen inte är tillgänglig.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Din förfrågan har godkänts.';
+
+  @override
+  String get noticeRequestRefused => 'Din förfrågan har avslagits.';
 }

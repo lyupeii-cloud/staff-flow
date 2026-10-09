@@ -751,4 +751,135 @@ class L10nZh extends L10n {
 
   @override
   String get chooseYourSite => '请至少选择一个地点。';
+
+  @override
+  String get viewRequests => '申请';
+
+  @override
+  String get newRequest => '新申请';
+
+  @override
+  String get requestLeave => '休假';
+
+  @override
+  String get requestUnavailability => '无法上班';
+
+  @override
+  String get requestSwap => '换班';
+
+  @override
+  String get swapHint => '要提出换班，请在排班表中点按您即将到来的一个班次。';
+
+  @override
+  String get noRequests => '暂无申请。';
+
+  @override
+  String get requestsToHandle => '待处理';
+
+  @override
+  String get myRequests => '我的申请';
+
+  @override
+  String get otherRequests => '团队申请';
+
+  @override
+  String get statusPendingPeer => '等待同事回应';
+
+  @override
+  String get statusPendingManager => '等待负责人审批';
+
+  @override
+  String get statusApproved => '已批准';
+
+  @override
+  String get statusRefused => '已拒绝';
+
+  @override
+  String get statusCancelled => '已取消';
+
+  @override
+  String get cancelRequest => '取消申请';
+
+  @override
+  String get acceptSwap => '接下这个班次';
+
+  @override
+  String get approve => '批准';
+
+  @override
+  String periodLabel(String from, String to) {
+    return '$from 至 $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return '已提给 $name';
+  }
+
+  @override
+  String get swapToTeam => '整个团队';
+
+  @override
+  String everyWeekdays(String days) {
+    return '每周：$days';
+  }
+
+  @override
+  String get unavailableEveryWeek => '您总是无法上班的日子：';
+
+  @override
+  String get choosePeriod => '选择日期';
+
+  @override
+  String get choosePeriodOptional => '限定在某个时段（可选）';
+
+  @override
+  String get clearPeriod => '不限时段';
+
+  @override
+  String get sendRequest => '发送申请';
+
+  @override
+  String get proposeSwap => '提出换班';
+
+  @override
+  String get swapWith => '提给';
+
+  @override
+  String get swapSteps => '同事接受后，由负责人批准。排班表随后才会更改。';
+
+  @override
+  String get absentThatDay => '当天有已批准的缺勤';
+
+  @override
+  String get requestSent => '申请已发送。';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name 想把一个班次让给您。';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name 拒绝了您的换班提议。';
+  }
+
+  @override
+  String get noticeSwapToApprove => '有一个换班申请等待您审批。';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name 申请休假。';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name 申报无法上班。';
+  }
+
+  @override
+  String get noticeRequestApproved => '您的申请已获批准。';
+
+  @override
+  String get noticeRequestRefused => '您的申请已被拒绝。';
 }

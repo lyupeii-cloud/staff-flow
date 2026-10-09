@@ -777,4 +777,137 @@ class L10nUk extends L10n {
 
   @override
   String get chooseYourSite => 'Оберіть щонайменше один підрозділ.';
+
+  @override
+  String get viewRequests => 'Запити';
+
+  @override
+  String get newRequest => 'Новий запит';
+
+  @override
+  String get requestLeave => 'Відпустка';
+
+  @override
+  String get requestUnavailability => 'Недоступність';
+
+  @override
+  String get requestSwap => 'Обмін змінами';
+
+  @override
+  String get swapHint =>
+      'Щоб запропонувати обмін, торкніться однієї зі своїх майбутніх змін у графіку.';
+
+  @override
+  String get noRequests => 'Запитів поки немає.';
+
+  @override
+  String get requestsToHandle => 'Потребують дії';
+
+  @override
+  String get myRequests => 'Мої запити';
+
+  @override
+  String get otherRequests => 'Запити команди';
+
+  @override
+  String get statusPendingPeer => 'Очікує колегу';
+
+  @override
+  String get statusPendingManager => 'Очікує керівника';
+
+  @override
+  String get statusApproved => 'Схвалено';
+
+  @override
+  String get statusRefused => 'Відхилено';
+
+  @override
+  String get statusCancelled => 'Скасовано';
+
+  @override
+  String get cancelRequest => 'Скасувати запит';
+
+  @override
+  String get acceptSwap => 'Взяти цю зміну';
+
+  @override
+  String get approve => 'Схвалити';
+
+  @override
+  String periodLabel(String from, String to) {
+    return 'З $from по $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Запропоновано: $name';
+  }
+
+  @override
+  String get swapToTeam => 'Уся команда';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'Щотижня: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'Дні, коли ви ніколи не доступні:';
+
+  @override
+  String get choosePeriod => 'Вибрати дати';
+
+  @override
+  String get choosePeriodOptional => 'Обмежити періодом (необов\'язково)';
+
+  @override
+  String get clearPeriod => 'Без періоду';
+
+  @override
+  String get sendRequest => 'Надіслати запит';
+
+  @override
+  String get proposeSwap => 'Запропонувати обмін';
+
+  @override
+  String get swapWith => 'Запропонувати';
+
+  @override
+  String get swapSteps =>
+      'Колега погоджується, потім керівник схвалює. Графік змінюється лише після цього.';
+
+  @override
+  String get absentThatDay => 'Схвалена відсутність цього дня';
+
+  @override
+  String get requestSent => 'Запит надіслано.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name пропонує вам одну зі своїх змін.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name відхилив вашу пропозицію обміну.';
+  }
+
+  @override
+  String get noticeSwapToApprove => 'Обмін змінами чекає вашого підтвердження.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name просить відпустку.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name повідомляє про недоступність.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Ваш запит схвалено.';
+
+  @override
+  String get noticeRequestRefused => 'Ваш запит відхилено.';
 }

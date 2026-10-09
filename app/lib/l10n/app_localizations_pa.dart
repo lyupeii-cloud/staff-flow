@@ -769,4 +769,138 @@ class L10nPa extends L10n {
 
   @override
   String get chooseYourSite => 'ਘੱਟੋ-ਘੱਟ ਇੱਕ ਸਾਈਟ ਚੁਣੋ।';
+
+  @override
+  String get viewRequests => 'ਬੇਨਤੀਆਂ';
+
+  @override
+  String get newRequest => 'ਨਵੀਂ ਬੇਨਤੀ';
+
+  @override
+  String get requestLeave => 'ਛੁੱਟੀ';
+
+  @override
+  String get requestUnavailability => 'ਅਣਉਪਲਬਧਤਾ';
+
+  @override
+  String get requestSwap => 'ਸ਼ਿਫ਼ਟ ਅਦਲਾ-ਬਦਲੀ';
+
+  @override
+  String get swapHint =>
+      'ਅਦਲਾ-ਬਦਲੀ ਦੀ ਪੇਸ਼ਕਸ਼ ਲਈ, ਸਮਾਂ-ਸਾਰਣੀ ਵਿੱਚ ਆਪਣੀ ਕਿਸੇ ਆਉਣ ਵਾਲੀ ਸ਼ਿਫ਼ਟ \'ਤੇ ਟੈਪ ਕਰੋ।';
+
+  @override
+  String get noRequests => 'ਅਜੇ ਕੋਈ ਬੇਨਤੀ ਨਹੀਂ।';
+
+  @override
+  String get requestsToHandle => 'ਨਿਪਟਾਉਣੀਆਂ';
+
+  @override
+  String get myRequests => 'ਮੇਰੀਆਂ ਬੇਨਤੀਆਂ';
+
+  @override
+  String get otherRequests => 'ਟੀਮ ਦੀਆਂ ਬੇਨਤੀਆਂ';
+
+  @override
+  String get statusPendingPeer => 'ਸਾਥੀ ਦੀ ਉਡੀਕ';
+
+  @override
+  String get statusPendingManager => 'ਮੈਨੇਜਰ ਦੀ ਉਡੀਕ';
+
+  @override
+  String get statusApproved => 'ਮਨਜ਼ੂਰ';
+
+  @override
+  String get statusRefused => 'ਨਾਮਨਜ਼ੂਰ';
+
+  @override
+  String get statusCancelled => 'ਰੱਦ';
+
+  @override
+  String get cancelRequest => 'ਬੇਨਤੀ ਰੱਦ ਕਰੋ';
+
+  @override
+  String get acceptSwap => 'ਇਹ ਸ਼ਿਫ਼ਟ ਲਓ';
+
+  @override
+  String get approve => 'ਮਨਜ਼ੂਰ ਕਰੋ';
+
+  @override
+  String periodLabel(String from, String to) {
+    return '$from ਤੋਂ $to ਤੱਕ';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return '$name ਨੂੰ ਪੇਸ਼ ਕੀਤੀ';
+  }
+
+  @override
+  String get swapToTeam => 'ਪੂਰੀ ਟੀਮ';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'ਹਰ ਹਫ਼ਤੇ: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'ਉਹ ਦਿਨ ਜਦੋਂ ਤੁਸੀਂ ਕਦੇ ਉਪਲਬਧ ਨਹੀਂ ਹੁੰਦੇ:';
+
+  @override
+  String get choosePeriod => 'ਤਾਰੀਖਾਂ ਚੁਣੋ';
+
+  @override
+  String get choosePeriodOptional => 'ਕਿਸੇ ਸਮੇਂ ਤੱਕ ਸੀਮਤ ਕਰੋ (ਵਿਕਲਪਿਕ)';
+
+  @override
+  String get clearPeriod => 'ਕੋਈ ਸਮਾਂ ਨਹੀਂ';
+
+  @override
+  String get sendRequest => 'ਬੇਨਤੀ ਭੇਜੋ';
+
+  @override
+  String get proposeSwap => 'ਅਦਲਾ-ਬਦਲੀ ਦੀ ਪੇਸ਼ਕਸ਼';
+
+  @override
+  String get swapWith => 'ਪੇਸ਼ ਕਰੋ';
+
+  @override
+  String get swapSteps =>
+      'ਸਾਥੀ ਮੰਨਦਾ ਹੈ, ਫਿਰ ਮੈਨੇਜਰ ਮਨਜ਼ੂਰ ਕਰਦਾ ਹੈ। ਸਮਾਂ-ਸਾਰਣੀ ਉਸ ਤੋਂ ਬਾਅਦ ਹੀ ਬਦਲਦੀ ਹੈ।';
+
+  @override
+  String get absentThatDay => 'ਉਸ ਦਿਨ ਮਨਜ਼ੂਰ ਗੈਰਹਾਜ਼ਰੀ';
+
+  @override
+  String get requestSent => 'ਬੇਨਤੀ ਭੇਜੀ ਗਈ।';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name ਤੁਹਾਨੂੰ ਆਪਣੀ ਇੱਕ ਸ਼ਿਫ਼ਟ ਦੇਣਾ ਚਾਹੁੰਦੇ ਹਨ।';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name ਨੇ ਤੁਹਾਡਾ ਅਦਲਾ-ਬਦਲੀ ਦਾ ਪ੍ਰਸਤਾਵ ਠੁਕਰਾ ਦਿੱਤਾ।';
+  }
+
+  @override
+  String get noticeSwapToApprove =>
+      'ਇੱਕ ਸ਼ਿਫ਼ਟ ਅਦਲਾ-ਬਦਲੀ ਤੁਹਾਡੀ ਮਨਜ਼ੂਰੀ ਦੀ ਉਡੀਕ ਕਰ ਰਹੀ ਹੈ।';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name ਛੁੱਟੀ ਮੰਗ ਰਹੇ ਹਨ।';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name ਨੇ ਅਣਉਪਲਬਧਤਾ ਦੱਸੀ ਹੈ।';
+  }
+
+  @override
+  String get noticeRequestApproved => 'ਤੁਹਾਡੀ ਬੇਨਤੀ ਮਨਜ਼ੂਰ ਹੋ ਗਈ।';
+
+  @override
+  String get noticeRequestRefused => 'ਤੁਹਾਡੀ ਬੇਨਤੀ ਨਾਮਨਜ਼ੂਰ ਹੋ ਗਈ।';
 }

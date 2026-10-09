@@ -754,4 +754,135 @@ class L10nKo extends L10n {
 
   @override
   String get chooseYourSite => '지점을 하나 이상 선택하세요.';
+
+  @override
+  String get viewRequests => '요청';
+
+  @override
+  String get newRequest => '새 요청';
+
+  @override
+  String get requestLeave => '휴가';
+
+  @override
+  String get requestUnavailability => '근무 불가';
+
+  @override
+  String get requestSwap => '근무 교대';
+
+  @override
+  String get swapHint => '교대를 제안하려면 근무표에서 앞으로의 내 근무를 누르세요.';
+
+  @override
+  String get noRequests => '아직 요청이 없습니다.';
+
+  @override
+  String get requestsToHandle => '처리할 요청';
+
+  @override
+  String get myRequests => '내 요청';
+
+  @override
+  String get otherRequests => '팀 요청';
+
+  @override
+  String get statusPendingPeer => '동료 응답 대기';
+
+  @override
+  String get statusPendingManager => '관리자 승인 대기';
+
+  @override
+  String get statusApproved => '승인됨';
+
+  @override
+  String get statusRefused => '거절됨';
+
+  @override
+  String get statusCancelled => '취소됨';
+
+  @override
+  String get cancelRequest => '요청 취소';
+
+  @override
+  String get acceptSwap => '이 근무 맡기';
+
+  @override
+  String get approve => '승인';
+
+  @override
+  String periodLabel(String from, String to) {
+    return '$from부터 $to까지';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return '$name님에게 제안';
+  }
+
+  @override
+  String get swapToTeam => '팀 전체';
+
+  @override
+  String everyWeekdays(String days) {
+    return '매주: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => '항상 근무할 수 없는 요일:';
+
+  @override
+  String get choosePeriod => '날짜 선택';
+
+  @override
+  String get choosePeriodOptional => '기간으로 제한(선택)';
+
+  @override
+  String get clearPeriod => '기간 없음';
+
+  @override
+  String get sendRequest => '요청 보내기';
+
+  @override
+  String get proposeSwap => '교대 제안';
+
+  @override
+  String get swapWith => '제안 대상';
+
+  @override
+  String get swapSteps => '동료가 수락한 뒤 관리자가 승인합니다. 근무표는 그 후에만 바뀝니다.';
+
+  @override
+  String get absentThatDay => '이 날 승인된 부재';
+
+  @override
+  String get requestSent => '요청을 보냈습니다.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name님이 근무 하나를 넘기려고 합니다.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name님이 교대 제안을 거절했습니다.';
+  }
+
+  @override
+  String get noticeSwapToApprove => '근무 교대가 승인을 기다리고 있습니다.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name님이 휴가를 요청했습니다.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name님이 근무 불가를 알렸습니다.';
+  }
+
+  @override
+  String get noticeRequestApproved => '요청이 승인되었습니다.';
+
+  @override
+  String get noticeRequestRefused => '요청이 거절되었습니다.';
 }

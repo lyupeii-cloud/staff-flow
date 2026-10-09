@@ -1456,6 +1456,240 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Choose at least one site.'**
   String get chooseYourSite;
+
+  /// No description provided for @viewRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Requests'**
+  String get viewRequests;
+
+  /// No description provided for @newRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'New request'**
+  String get newRequest;
+
+  /// No description provided for @requestLeave.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave'**
+  String get requestLeave;
+
+  /// No description provided for @requestUnavailability.
+  ///
+  /// In en, this message translates to:
+  /// **'Unavailability'**
+  String get requestUnavailability;
+
+  /// No description provided for @requestSwap.
+  ///
+  /// In en, this message translates to:
+  /// **'Shift swap'**
+  String get requestSwap;
+
+  /// No description provided for @swapHint.
+  ///
+  /// In en, this message translates to:
+  /// **'To offer a swap, tap one of your upcoming shifts in the schedule.'**
+  String get swapHint;
+
+  /// No description provided for @noRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'No requests yet.'**
+  String get noRequests;
+
+  /// No description provided for @requestsToHandle.
+  ///
+  /// In en, this message translates to:
+  /// **'To handle'**
+  String get requestsToHandle;
+
+  /// No description provided for @myRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'My requests'**
+  String get myRequests;
+
+  /// No description provided for @otherRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Team requests'**
+  String get otherRequests;
+
+  /// No description provided for @statusPendingPeer.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for the colleague'**
+  String get statusPendingPeer;
+
+  /// No description provided for @statusPendingManager.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for a manager'**
+  String get statusPendingManager;
+
+  /// No description provided for @statusApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved'**
+  String get statusApproved;
+
+  /// No description provided for @statusRefused.
+  ///
+  /// In en, this message translates to:
+  /// **'Refused'**
+  String get statusRefused;
+
+  /// No description provided for @statusCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get statusCancelled;
+
+  /// No description provided for @cancelRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel request'**
+  String get cancelRequest;
+
+  /// No description provided for @acceptSwap.
+  ///
+  /// In en, this message translates to:
+  /// **'Take this shift'**
+  String get acceptSwap;
+
+  /// No description provided for @approve.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve'**
+  String get approve;
+
+  /// No description provided for @periodLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'From {from} to {to}'**
+  String periodLabel(String from, String to);
+
+  /// No description provided for @swapToPeer.
+  ///
+  /// In en, this message translates to:
+  /// **'Offered to {name}'**
+  String swapToPeer(String name);
+
+  /// No description provided for @swapToTeam.
+  ///
+  /// In en, this message translates to:
+  /// **'Whole team'**
+  String get swapToTeam;
+
+  /// No description provided for @everyWeekdays.
+  ///
+  /// In en, this message translates to:
+  /// **'Every week: {days}'**
+  String everyWeekdays(String days);
+
+  /// No description provided for @unavailableEveryWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Days you are never available:'**
+  String get unavailableEveryWeek;
+
+  /// No description provided for @choosePeriod.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose dates'**
+  String get choosePeriod;
+
+  /// No description provided for @choosePeriodOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Limit to a period (optional)'**
+  String get choosePeriodOptional;
+
+  /// No description provided for @clearPeriod.
+  ///
+  /// In en, this message translates to:
+  /// **'No period'**
+  String get clearPeriod;
+
+  /// No description provided for @sendRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Send request'**
+  String get sendRequest;
+
+  /// No description provided for @proposeSwap.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer a swap'**
+  String get proposeSwap;
+
+  /// No description provided for @swapWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer to'**
+  String get swapWith;
+
+  /// No description provided for @swapSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'The colleague accepts, then a manager approves. The schedule only changes after that.'**
+  String get swapSteps;
+
+  /// No description provided for @absentThatDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved absence that day'**
+  String get absentThatDay;
+
+  /// No description provided for @requestSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Request sent.'**
+  String get requestSent;
+
+  /// No description provided for @noticeSwapOffer.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} offers you one of their shifts.'**
+  String noticeSwapOffer(String name);
+
+  /// No description provided for @noticeSwapDeclined.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} declined your swap offer.'**
+  String noticeSwapDeclined(String name);
+
+  /// No description provided for @noticeSwapToApprove.
+  ///
+  /// In en, this message translates to:
+  /// **'A shift swap is waiting for your approval.'**
+  String get noticeSwapToApprove;
+
+  /// No description provided for @noticeLeaveToApprove.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is asking for leave.'**
+  String noticeLeaveToApprove(String name);
+
+  /// No description provided for @noticeUnavailabilityToApprove.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} reports being unavailable.'**
+  String noticeUnavailabilityToApprove(String name);
+
+  /// No description provided for @noticeRequestApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Your request has been approved.'**
+  String get noticeRequestApproved;
+
+  /// No description provided for @noticeRequestRefused.
+  ///
+  /// In en, this message translates to:
+  /// **'Your request has been refused.'**
+  String get noticeRequestRefused;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

@@ -776,4 +776,138 @@ class L10nRo extends L10n {
 
   @override
   String get chooseYourSite => 'Alege cel puțin un punct de lucru.';
+
+  @override
+  String get viewRequests => 'Cereri';
+
+  @override
+  String get newRequest => 'Cerere nouă';
+
+  @override
+  String get requestLeave => 'Concediu';
+
+  @override
+  String get requestUnavailability => 'Indisponibilitate';
+
+  @override
+  String get requestSwap => 'Schimb de tură';
+
+  @override
+  String get swapHint =>
+      'Pentru a propune un schimb, atinge una dintre turele tale viitoare din planificare.';
+
+  @override
+  String get noRequests => 'Încă nu există cereri.';
+
+  @override
+  String get requestsToHandle => 'De rezolvat';
+
+  @override
+  String get myRequests => 'Cererile mele';
+
+  @override
+  String get otherRequests => 'Cererile echipei';
+
+  @override
+  String get statusPendingPeer => 'Așteaptă colegul';
+
+  @override
+  String get statusPendingManager => 'Așteaptă responsabilul';
+
+  @override
+  String get statusApproved => 'Acceptată';
+
+  @override
+  String get statusRefused => 'Refuzată';
+
+  @override
+  String get statusCancelled => 'Anulată';
+
+  @override
+  String get cancelRequest => 'Anulează cererea';
+
+  @override
+  String get acceptSwap => 'Preia această tură';
+
+  @override
+  String get approve => 'Validează';
+
+  @override
+  String periodLabel(String from, String to) {
+    return 'De la $from până la $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Propus lui $name';
+  }
+
+  @override
+  String get swapToTeam => 'Toată echipa';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'În fiecare săptămână: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek =>
+      'Zile în care nu ești niciodată disponibil:';
+
+  @override
+  String get choosePeriod => 'Alege datele';
+
+  @override
+  String get choosePeriodOptional => 'Limitează la o perioadă (opțional)';
+
+  @override
+  String get clearPeriod => 'Fără perioadă';
+
+  @override
+  String get sendRequest => 'Trimite cererea';
+
+  @override
+  String get proposeSwap => 'Propune un schimb';
+
+  @override
+  String get swapWith => 'Propune lui';
+
+  @override
+  String get swapSteps =>
+      'Colegul acceptă, apoi un responsabil validează. Planificarea se schimbă doar după aceea.';
+
+  @override
+  String get absentThatDay => 'Absență validată în acea zi';
+
+  @override
+  String get requestSent => 'Cerere trimisă.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name îți propune una dintre turele sale.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name a refuzat propunerea ta de schimb.';
+  }
+
+  @override
+  String get noticeSwapToApprove => 'Un schimb de tură așteaptă validarea ta.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name cere concediu.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name anunță că nu este disponibil.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Cererea ta a fost acceptată.';
+
+  @override
+  String get noticeRequestRefused => 'Cererea ta a fost refuzată.';
 }

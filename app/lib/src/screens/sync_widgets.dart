@@ -136,6 +136,13 @@ class NoticesButton extends StatelessWidget {
       'join_invite' => t.noticeJoinInvite(company),
       'transfer_offer' => t.noticeTransferOffer(data['byName'] ?? '?', company),
       'member_joined' => t.noticeMemberJoined(data['name'] ?? '?', company),
+      'swap_offer' => t.noticeSwapOffer(data['byName'] ?? '?'),
+      'swap_declined' => t.noticeSwapDeclined(data['byName'] ?? '?'),
+      'swap_to_approve' => t.noticeSwapToApprove,
+      'leave_to_approve' => t.noticeLeaveToApprove(data['requesterName'] ?? '?'),
+      'unavailability_to_approve' => t.noticeUnavailabilityToApprove(data['requesterName'] ?? '?'),
+      'request_approved' => t.noticeRequestApproved,
+      'request_refused' => t.noticeRequestRefused,
       _ => n['kind'] as String,
     };
   }
@@ -145,6 +152,11 @@ class NoticesButton extends StatelessWidget {
         'join_invite' => Icons.group_add,
         'transfer_offer' => Icons.key,
         'member_joined' => Icons.person_add,
+        'swap_offer' || 'swap_declined' || 'swap_to_approve' => Icons.swap_horiz,
+        'leave_to_approve' => Icons.beach_access,
+        'unavailability_to_approve' => Icons.event_busy,
+        'request_approved' => Icons.check_circle,
+        'request_refused' => Icons.cancel,
         _ => Icons.edit_note,
       };
 }

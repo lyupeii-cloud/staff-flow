@@ -6,6 +6,7 @@ import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
 import 'company_tab.dart';
+import 'requests_view.dart';
 import 'shift_editor.dart';
 import 'sync_widgets.dart';
 
@@ -32,6 +33,9 @@ class _PlanningViewState extends State<PlanningView> {
   late bool _mineOnly = !widget.membership.role.canManage;
 
   List<Shift> _shifts = const [];
+
+  /// Congés et indisponibilités validés de la période.
+  List<StaffRequest> _absences = const [];
   int _pending = 0;
   bool _loading = true;
   Localized? _error;
@@ -77,9 +81,11 @@ class _PlanningViewState extends State<PlanningView> {
     setState(() => _loading = true);
     try {
       final r = await sync.shifts(company.id, _from, _to);
+      final absences = await _loadAbsences();
       if (!mounted) return;
       setState(() {
         _shifts = r.shifts;
+        _absences = absences;
         _pending = r.pending;
         _stale = r.stale;
         _error = null;
@@ -92,6 +98,31 @@ class _PlanningViewState extends State<PlanningView> {
       if (mounted) setState(() => _error = (t) => t.serverUnreachable);
     } finally {
       if (mounted) setState(() => _loading = false);
+    }
+  }
+
+  Future<List<StaffRequest>> _loadAbsences() async {
+    final from = formatDay(_from), to = formatDay(_to);
+    try {
+      final json = await widget.session.sync
+          .read('absences:${company.id}:$from:$to', '/companies/${company.id}/absences?from=$from&to=$to');
+      return [for (final a in json['absences']) StaffRequest.fromJson(a)];
+    } catch (_) {
+      return _absences;
+    }
+  }
+
+  List<StaffRequest> _absentOn(DateTime day) => _absences.where((a) => a.covers(day)).toList();
+
+  bool _isAbsent(String? userId, DateTime day) =>
+      userId != null && _absences.any((a) => a.requesterId == userId && a.covers(day));
+
+  /// Salarié : proposer un de ses services publiés à venir.
+  Future<void> _offer(Shift s) async {
+    final sent = await showSwapOffer(context,
+        session: widget.session, membership: widget.membership, data: widget.data, shift: s);
+    if (sent == true && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.requestSent)));
     }
   }
 
@@ -137,6 +168,7 @@ class _PlanningViewState extends State<PlanningView> {
       shift: shift,
       day: day ?? _selected,
       onlySites: widget.membership.managedSites,
+      absences: _absences,
     );
     if (changed == true) _load();
   }
@@ -297,6 +329,20 @@ class _PlanningViewState extends State<PlanningView> {
           ],
         ),
       ),
+      for (final a in _absentOn(day))
+        Padding(
+          padding: const EdgeInsets.only(bottom: 2),
+          child: Row(
+            children: [
+              Icon(requestIcon(a.kind), size: 16, color: theme.colorScheme.tertiary),
+              const SizedBox(width: 6),
+              Expanded(
+                child: Text('${a.requesterName} · ${requestKindLabel(t, a.kind)}',
+                    style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.tertiary)),
+              ),
+            ],
+          ),
+        ),
       if (shifts.isEmpty)
         Text(t.noShift, style: theme.textTheme.bodySmall?.copyWith(color: theme.disabledColor)),
       for (final s in shifts) _shiftCard(s),
@@ -322,6 +368,9 @@ class _PlanningViewState extends State<PlanningView> {
             ShiftStatus.published => null,
           };
     final mine = s.userId == myId;
+    final absent = !deleted && _isAbsent(s.userId, s.day);
+    final canOffer = !canEdit && mine && !s.pending && s.status == ShiftStatus.published &&
+        !dateOnly(s.day).isBefore(dateOnly(DateTime.now())) && !company.readOnly;
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 3),
       color: mine ? theme.colorScheme.primaryContainer : null,
@@ -338,6 +387,19 @@ class _PlanningViewState extends State<PlanningView> {
                 : isEditableDay(s.day)
                     ? _openEditor(shift: s)
                     : ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.readOnlyPastDays)))
+            : canOffer
+                ? () => _offer(s)
+                : null,
+        leading: absent
+            ? Tooltip(
+                message: t.absentThatDay,
+                triggerMode: TooltipTriggerMode.tap,
+                child: CircleAvatar(
+                  radius: 12,
+                  backgroundColor: theme.colorScheme.error,
+                  child: Text('!', style: TextStyle(color: theme.colorScheme.onError, fontWeight: FontWeight.bold)),
+                ),
+              )
             : null,
         title: Text(
           '${timeLabel(s.start)} – ${timeLabel(s.end)}${s.end > 1440 ? ' (+1)' : ''}  ·  $who',
@@ -345,7 +407,11 @@ class _PlanningViewState extends State<PlanningView> {
         ),
         subtitle: details.isEmpty ? null : Text(details),
         trailing: badge == null
-            ? (s.seriesId != null ? const Icon(Icons.repeat, size: 18) : null)
+            ? (canOffer
+                ? Tooltip(message: t.proposeSwap, child: const Icon(Icons.swap_horiz, size: 18))
+                : s.seriesId != null
+                    ? const Icon(Icons.repeat, size: 18)
+                    : null)
             : Chip(
                 label: Text(badge),
                 visualDensity: VisualDensity.compact,
@@ -386,6 +452,7 @@ class _PlanningViewState extends State<PlanningView> {
     final theme = Theme.of(context);
     final inMonth = day.month == _anchor.month;
     final count = inMonth ? _onDay(day).length : 0;
+    final away = inMonth && _absentOn(day).isNotEmpty;
     final isSelected = sameDay(day, _selected);
     final today = sameDay(day, DateTime.now());
     return InkWell(
@@ -406,6 +473,7 @@ class _PlanningViewState extends State<PlanningView> {
               '${day.day}',
               style: TextStyle(color: inMonth ? null : theme.disabledColor.withValues(alpha: 0.3)),
             ),
+            if (away) Icon(Icons.event_busy, size: 10, color: theme.colorScheme.tertiary),
             if (count > 0)
               Text(
                 count > 3 ? '•••+' : '•' * count,

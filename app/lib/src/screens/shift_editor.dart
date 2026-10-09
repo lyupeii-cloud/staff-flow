@@ -18,12 +18,14 @@ Future<bool?> showShiftEditor(
   Shift? shift,
   required DateTime day,
   Set<String>? onlySites,
+  List<StaffRequest> absences = const [],
 }) => showModalBottomSheet<bool>(
   context: context,
   isScrollControlled: true,
   useSafeArea: true,
   builder: (_) =>
-      _ShiftEditor(session: session, company: company, data: data, shift: shift, day: day, onlySites: onlySites),
+      _ShiftEditor(
+          session: session, company: company, data: data, shift: shift, day: day, onlySites: onlySites, absences: absences),
 );
 
 enum _Repeat { none, daily, weekly }
@@ -40,6 +42,10 @@ class _ShiftEditor extends StatefulWidget {
   /// Responsable de site : sites qu'il peut choisir.
   final Set<String>? onlySites;
 
+  /// Congés et indisponibilités validés : signalés par « ! » dans le choix
+  /// de la personne (rien n'est bloqué).
+  final List<StaffRequest> absences;
+
   const _ShiftEditor({
     required this.session,
     required this.company,
@@ -47,6 +53,7 @@ class _ShiftEditor extends StatefulWidget {
     this.shift,
     required this.day,
     this.onlySites,
+    this.absences = const [],
   });
 
   @override
@@ -80,6 +87,10 @@ class _ShiftEditorState extends State<_ShiftEditor> {
 
   L10n get t => context.l10n;
   String get loc => context.localeName;
+
+  /// Absence validée de [userId] un des jours choisis.
+  bool _absent(String? userId) =>
+      userId != null && widget.absences.any((a) => a.requesterId == userId && _days.any(a.covers));
 
   @override
   Widget build(BuildContext context) {
@@ -156,10 +167,19 @@ class _ShiftEditorState extends State<_ShiftEditor> {
               items: [
                 DropdownMenuItem(value: null, child: Text(t.unassigned)),
                 for (final m in members)
-                  DropdownMenuItem(value: m.user.id, child: Text('${m.user.name} · ${m.role.label(t)}')),
+                  DropdownMenuItem(
+                    value: m.user.id,
+                    child: Text('${_absent(m.user.id) ? '! ' : ''}${m.user.name} · ${m.role.label(t)}',
+                        style: _absent(m.user.id) ? TextStyle(color: theme.colorScheme.error) : null),
+                  ),
               ],
               onChanged: (v) => setState(() => _userId = v),
             ),
+            if (_absent(_userId))
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text('! ${t.absentThatDay}', style: TextStyle(color: theme.colorScheme.error)),
+              ),
             if (positions.isNotEmpty)
               DropdownButtonFormField<String?>(
                 initialValue: _positionId,

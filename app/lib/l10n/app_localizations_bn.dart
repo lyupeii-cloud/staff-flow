@@ -766,4 +766,138 @@ class L10nBn extends L10n {
 
   @override
   String get chooseYourSite => 'অন্তত একটি সাইট বেছে নিন।';
+
+  @override
+  String get viewRequests => 'অনুরোধ';
+
+  @override
+  String get newRequest => 'নতুন অনুরোধ';
+
+  @override
+  String get requestLeave => 'ছুটি';
+
+  @override
+  String get requestUnavailability => 'অনুপলব্ধতা';
+
+  @override
+  String get requestSwap => 'শিফট অদলবদল';
+
+  @override
+  String get swapHint =>
+      'অদলবদলের প্রস্তাব দিতে সময়সূচিতে আপনার আসন্ন কোনো শিফটে ট্যাপ করুন।';
+
+  @override
+  String get noRequests => 'এখনও কোনো অনুরোধ নেই।';
+
+  @override
+  String get requestsToHandle => 'করণীয়';
+
+  @override
+  String get myRequests => 'আমার অনুরোধ';
+
+  @override
+  String get otherRequests => 'দলের অনুরোধ';
+
+  @override
+  String get statusPendingPeer => 'সহকর্মীর অপেক্ষায়';
+
+  @override
+  String get statusPendingManager => 'ব্যবস্থাপকের অপেক্ষায়';
+
+  @override
+  String get statusApproved => 'গৃহীত';
+
+  @override
+  String get statusRefused => 'প্রত্যাখ্যাত';
+
+  @override
+  String get statusCancelled => 'বাতিল';
+
+  @override
+  String get cancelRequest => 'অনুরোধ বাতিল করুন';
+
+  @override
+  String get acceptSwap => 'এই শিফট নিন';
+
+  @override
+  String get approve => 'অনুমোদন';
+
+  @override
+  String periodLabel(String from, String to) {
+    return '$from থেকে $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return '$name-কে প্রস্তাবিত';
+  }
+
+  @override
+  String get swapToTeam => 'পুরো দল';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'প্রতি সপ্তাহে: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'যেসব দিনে আপনি কখনও উপলব্ধ নন:';
+
+  @override
+  String get choosePeriod => 'তারিখ বাছুন';
+
+  @override
+  String get choosePeriodOptional => 'একটি সময়কালে সীমিত করুন (ঐচ্ছিক)';
+
+  @override
+  String get clearPeriod => 'কোনো সময়কাল নেই';
+
+  @override
+  String get sendRequest => 'অনুরোধ পাঠান';
+
+  @override
+  String get proposeSwap => 'অদলবদলের প্রস্তাব দিন';
+
+  @override
+  String get swapWith => 'প্রস্তাব দিন';
+
+  @override
+  String get swapSteps =>
+      'সহকর্মী গ্রহণ করেন, তারপর ব্যবস্থাপক অনুমোদন দেন। এরপরই সময়সূচি বদলায়।';
+
+  @override
+  String get absentThatDay => 'সেদিন অনুমোদিত অনুপস্থিতি';
+
+  @override
+  String get requestSent => 'অনুরোধ পাঠানো হয়েছে।';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name আপনাকে তাঁর একটি শিফট দিতে চান।';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name আপনার অদলবদলের প্রস্তাব প্রত্যাখ্যান করেছেন।';
+  }
+
+  @override
+  String get noticeSwapToApprove =>
+      'একটি শিফট অদলবদল আপনার অনুমোদনের অপেক্ষায়।';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name ছুটি চাইছেন।';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name অনুপলব্ধতা জানিয়েছেন।';
+  }
+
+  @override
+  String get noticeRequestApproved => 'আপনার অনুরোধ গৃহীত হয়েছে।';
+
+  @override
+  String get noticeRequestRefused => 'আপনার অনুরোধ প্রত্যাখ্যাত হয়েছে।';
 }

@@ -763,4 +763,138 @@ class L10nVi extends L10n {
 
   @override
   String get chooseYourSite => 'Chọn ít nhất một địa điểm.';
+
+  @override
+  String get viewRequests => 'Yêu cầu';
+
+  @override
+  String get newRequest => 'Yêu cầu mới';
+
+  @override
+  String get requestLeave => 'Nghỉ phép';
+
+  @override
+  String get requestUnavailability => 'Không thể làm';
+
+  @override
+  String get requestSwap => 'Đổi ca';
+
+  @override
+  String get swapHint =>
+      'Để đề xuất đổi ca, hãy chạm vào một ca sắp tới của bạn trong lịch.';
+
+  @override
+  String get noRequests => 'Chưa có yêu cầu nào.';
+
+  @override
+  String get requestsToHandle => 'Cần xử lý';
+
+  @override
+  String get myRequests => 'Yêu cầu của tôi';
+
+  @override
+  String get otherRequests => 'Yêu cầu của nhóm';
+
+  @override
+  String get statusPendingPeer => 'Chờ đồng nghiệp';
+
+  @override
+  String get statusPendingManager => 'Chờ quản lý';
+
+  @override
+  String get statusApproved => 'Đã chấp nhận';
+
+  @override
+  String get statusRefused => 'Đã từ chối';
+
+  @override
+  String get statusCancelled => 'Đã hủy';
+
+  @override
+  String get cancelRequest => 'Hủy yêu cầu';
+
+  @override
+  String get acceptSwap => 'Nhận ca này';
+
+  @override
+  String get approve => 'Duyệt';
+
+  @override
+  String periodLabel(String from, String to) {
+    return 'Từ $from đến $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Đề xuất cho $name';
+  }
+
+  @override
+  String get swapToTeam => 'Cả nhóm';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'Hằng tuần: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'Những ngày bạn không bao giờ làm được:';
+
+  @override
+  String get choosePeriod => 'Chọn ngày';
+
+  @override
+  String get choosePeriodOptional =>
+      'Giới hạn trong một khoảng thời gian (tùy chọn)';
+
+  @override
+  String get clearPeriod => 'Không giới hạn';
+
+  @override
+  String get sendRequest => 'Gửi yêu cầu';
+
+  @override
+  String get proposeSwap => 'Đề xuất đổi ca';
+
+  @override
+  String get swapWith => 'Đề xuất cho';
+
+  @override
+  String get swapSteps =>
+      'Đồng nghiệp chấp nhận, sau đó quản lý duyệt. Lịch chỉ thay đổi sau đó.';
+
+  @override
+  String get absentThatDay => 'Vắng mặt đã duyệt vào ngày này';
+
+  @override
+  String get requestSent => 'Đã gửi yêu cầu.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name đề nghị bạn nhận một ca của họ.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name đã từ chối đề nghị đổi ca của bạn.';
+  }
+
+  @override
+  String get noticeSwapToApprove => 'Một yêu cầu đổi ca đang chờ bạn duyệt.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name xin nghỉ phép.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name báo không thể làm việc.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Yêu cầu của bạn đã được chấp nhận.';
+
+  @override
+  String get noticeRequestRefused => 'Yêu cầu của bạn đã bị từ chối.';
 }

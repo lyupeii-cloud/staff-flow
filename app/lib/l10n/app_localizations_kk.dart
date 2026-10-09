@@ -769,4 +769,138 @@ class L10nKk extends L10n {
 
   @override
   String get chooseYourSite => 'Кемінде бір нысанды таңдаңыз.';
+
+  @override
+  String get viewRequests => 'Сұраулар';
+
+  @override
+  String get newRequest => 'Жаңа сұрау';
+
+  @override
+  String get requestLeave => 'Демалыс';
+
+  @override
+  String get requestUnavailability => 'Қолжетімсіздік';
+
+  @override
+  String get requestSwap => 'Ауысым алмасу';
+
+  @override
+  String get swapHint =>
+      'Алмасуды ұсыну үшін кестеден алдағы ауысымдарыңыздың біреуін түртіңіз.';
+
+  @override
+  String get noRequests => 'Әзірге сұраулар жоқ.';
+
+  @override
+  String get requestsToHandle => 'Өңдеу керек';
+
+  @override
+  String get myRequests => 'Менің сұрауларым';
+
+  @override
+  String get otherRequests => 'Команданың сұраулары';
+
+  @override
+  String get statusPendingPeer => 'Әріптесті күтуде';
+
+  @override
+  String get statusPendingManager => 'Басшыны күтуде';
+
+  @override
+  String get statusApproved => 'Мақұлданды';
+
+  @override
+  String get statusRefused => 'Қабылданбады';
+
+  @override
+  String get statusCancelled => 'Бас тартылды';
+
+  @override
+  String get cancelRequest => 'Сұраудан бас тарту';
+
+  @override
+  String get acceptSwap => 'Бұл ауысымды алу';
+
+  @override
+  String get approve => 'Мақұлдау';
+
+  @override
+  String periodLabel(String from, String to) {
+    return '$from – $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Ұсынылды: $name';
+  }
+
+  @override
+  String get swapToTeam => 'Бүкіл команда';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'Әр апта: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'Сіз ешқашан қолжетімді емес күндер:';
+
+  @override
+  String get choosePeriod => 'Күндерді таңдау';
+
+  @override
+  String get choosePeriodOptional => 'Кезеңмен шектеу (міндетті емес)';
+
+  @override
+  String get clearPeriod => 'Кезеңсіз';
+
+  @override
+  String get sendRequest => 'Сұрауды жіберу';
+
+  @override
+  String get proposeSwap => 'Алмасуды ұсыну';
+
+  @override
+  String get swapWith => 'Кімге ұсыну';
+
+  @override
+  String get swapSteps =>
+      'Әріптес келіседі, содан кейін басшы мақұлдайды. Кесте тек содан кейін өзгереді.';
+
+  @override
+  String get absentThatDay => 'Сол күні мақұлданған болмау';
+
+  @override
+  String get requestSent => 'Сұрау жіберілді.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name сізге өз ауысымдарының бірін ұсынады.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name ауысу ұсынысыңызды қабылдамады.';
+  }
+
+  @override
+  String get noticeSwapToApprove =>
+      'Ауысым алмасуы сіздің мақұлдауыңызды күтуде.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name демалыс сұрайды.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name қолжетімсіз екенін хабарлады.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Сұрауыңыз мақұлданды.';
+
+  @override
+  String get noticeRequestRefused => 'Сұрауыңыз қабылданбады.';
 }

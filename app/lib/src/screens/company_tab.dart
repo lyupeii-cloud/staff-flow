@@ -6,6 +6,7 @@ import '../session.dart';
 import 'catalog_view.dart';
 import 'messages_view.dart';
 import 'planning_view.dart';
+import 'requests_view.dart';
 import 'team_view.dart';
 
 /// Données partagées par les vues d'une entreprise : membres, sites, postes.
@@ -39,7 +40,7 @@ class CompanyData {
   String? positionName(String? id) => positions.where((p) => p.id == id).firstOrNull?.name;
 }
 
-enum _View { planning, messages, team, catalog }
+enum _View { planning, requests, messages, team, catalog }
 
 /// Onglet d'une entreprise : planning, équipe, et pour les responsables,
 /// sites et postes.
@@ -120,6 +121,7 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
                   selected: _view,
                   items: [
                     (_View.planning, const Icon(Icons.calendar_month), t.viewPlanning),
+                    (_View.requests, const Icon(Icons.swap_horiz), t.viewRequests),
                     (
                       _View.messages,
                       Badge(isLabelVisible: unread > 0, label: Text('$unread'), child: const Icon(Icons.forum)),
@@ -161,6 +163,8 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
               return switch (_view) {
                 _View.planning =>
                   PlanningView(session: widget.session, membership: widget.membership, data: data),
+                _View.requests =>
+                  RequestsView(session: widget.session, membership: widget.membership, data: data),
                 _View.messages =>
                   MessagesView(session: widget.session, membership: widget.membership, data: data),
                 _View.team => TeamView(

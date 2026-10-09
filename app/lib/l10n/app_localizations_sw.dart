@@ -771,4 +771,138 @@ class L10nSw extends L10n {
 
   @override
   String get chooseYourSite => 'Chagua angalau eneo moja.';
+
+  @override
+  String get viewRequests => 'Maombi';
+
+  @override
+  String get newRequest => 'Ombi jipya';
+
+  @override
+  String get requestLeave => 'Likizo';
+
+  @override
+  String get requestUnavailability => 'Kutopatikana';
+
+  @override
+  String get requestSwap => 'Kubadilishana zamu';
+
+  @override
+  String get swapHint =>
+      'Ili kupendekeza kubadilishana, gusa mojawapo ya zamu zako zijazo kwenye ratiba.';
+
+  @override
+  String get noRequests => 'Bado hakuna maombi.';
+
+  @override
+  String get requestsToHandle => 'Ya kushughulikia';
+
+  @override
+  String get myRequests => 'Maombi yangu';
+
+  @override
+  String get otherRequests => 'Maombi ya timu';
+
+  @override
+  String get statusPendingPeer => 'Inamsubiri mwenzako';
+
+  @override
+  String get statusPendingManager => 'Inamsubiri msimamizi';
+
+  @override
+  String get statusApproved => 'Imekubaliwa';
+
+  @override
+  String get statusRefused => 'Imekataliwa';
+
+  @override
+  String get statusCancelled => 'Imeghairiwa';
+
+  @override
+  String get cancelRequest => 'Ghairi ombi';
+
+  @override
+  String get acceptSwap => 'Chukua zamu hii';
+
+  @override
+  String get approve => 'Idhinisha';
+
+  @override
+  String periodLabel(String from, String to) {
+    return 'Kuanzia $from hadi $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Imependekezwa kwa $name';
+  }
+
+  @override
+  String get swapToTeam => 'Timu nzima';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'Kila wiki: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'Siku ambazo hupatikani kamwe:';
+
+  @override
+  String get choosePeriod => 'Chagua tarehe';
+
+  @override
+  String get choosePeriodOptional => 'Weka kikomo cha kipindi (hiari)';
+
+  @override
+  String get clearPeriod => 'Bila kipindi';
+
+  @override
+  String get sendRequest => 'Tuma ombi';
+
+  @override
+  String get proposeSwap => 'Pendekeza kubadilishana';
+
+  @override
+  String get swapWith => 'Pendekeza kwa';
+
+  @override
+  String get swapSteps =>
+      'Mwenzako anakubali, kisha msimamizi anaidhinisha. Ratiba hubadilika baada ya hapo tu.';
+
+  @override
+  String get absentThatDay => 'Kutokuwepo kulikoidhinishwa siku hiyo';
+
+  @override
+  String get requestSent => 'Ombi limetumwa.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name anakupa moja ya zamu zake.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name amekataa pendekezo lako la kubadilishana.';
+  }
+
+  @override
+  String get noticeSwapToApprove =>
+      'Ubadilishanaji wa zamu unasubiri idhini yako.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name anaomba likizo.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name ametangaza kutopatikana.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Ombi lako limekubaliwa.';
+
+  @override
+  String get noticeRequestRefused => 'Ombi lako limekataliwa.';
 }

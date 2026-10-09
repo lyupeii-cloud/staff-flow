@@ -768,4 +768,138 @@ class L10nMr extends L10n {
 
   @override
   String get chooseYourSite => 'किमान एक साइट निवडा.';
+
+  @override
+  String get viewRequests => 'विनंत्या';
+
+  @override
+  String get newRequest => 'नवीन विनंती';
+
+  @override
+  String get requestLeave => 'रजा';
+
+  @override
+  String get requestUnavailability => 'अनुपलब्धता';
+
+  @override
+  String get requestSwap => 'शिफ्ट अदलाबदल';
+
+  @override
+  String get swapHint =>
+      'अदलाबदल सुचवण्यासाठी वेळापत्रकातील तुमच्या आगामी शिफ्टवर टॅप करा.';
+
+  @override
+  String get noRequests => 'अद्याप कोणतीही विनंती नाही.';
+
+  @override
+  String get requestsToHandle => 'हाताळायच्या';
+
+  @override
+  String get myRequests => 'माझ्या विनंत्या';
+
+  @override
+  String get otherRequests => 'टीमच्या विनंत्या';
+
+  @override
+  String get statusPendingPeer => 'सहकाऱ्याची प्रतीक्षा';
+
+  @override
+  String get statusPendingManager => 'व्यवस्थापकाची प्रतीक्षा';
+
+  @override
+  String get statusApproved => 'मंजूर';
+
+  @override
+  String get statusRefused => 'नाकारली';
+
+  @override
+  String get statusCancelled => 'रद्द';
+
+  @override
+  String get cancelRequest => 'विनंती रद्द करा';
+
+  @override
+  String get acceptSwap => 'ही शिफ्ट घ्या';
+
+  @override
+  String get approve => 'मंजूर करा';
+
+  @override
+  String periodLabel(String from, String to) {
+    return '$from ते $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return '$name यांना सुचवले';
+  }
+
+  @override
+  String get swapToTeam => 'संपूर्ण टीम';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'दर आठवड्याला: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'ज्या दिवशी तुम्ही कधीच उपलब्ध नसता:';
+
+  @override
+  String get choosePeriod => 'तारखा निवडा';
+
+  @override
+  String get choosePeriodOptional => 'कालावधीपुरते मर्यादित करा (ऐच्छिक)';
+
+  @override
+  String get clearPeriod => 'कालावधी नाही';
+
+  @override
+  String get sendRequest => 'विनंती पाठवा';
+
+  @override
+  String get proposeSwap => 'अदलाबदल सुचवा';
+
+  @override
+  String get swapWith => 'यांना सुचवा';
+
+  @override
+  String get swapSteps =>
+      'सहकारी स्वीकारतो, नंतर व्यवस्थापक मंजूर करतो. त्यानंतरच वेळापत्रक बदलते.';
+
+  @override
+  String get absentThatDay => 'त्या दिवशी मंजूर अनुपस्थिती';
+
+  @override
+  String get requestSent => 'विनंती पाठवली.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name तुम्हाला त्यांची एक शिफ्ट देऊ इच्छितात.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name यांनी तुमचा अदलाबदलीचा प्रस्ताव नाकारला.';
+  }
+
+  @override
+  String get noticeSwapToApprove =>
+      'एक शिफ्ट अदलाबदल तुमच्या मंजुरीची वाट पाहत आहे.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name रजा मागत आहेत.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name यांनी अनुपलब्धता कळवली आहे.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'तुमची विनंती मंजूर झाली.';
+
+  @override
+  String get noticeRequestRefused => 'तुमची विनंती नाकारली गेली.';
 }

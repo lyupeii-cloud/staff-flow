@@ -775,4 +775,137 @@ class L10nNl extends L10n {
 
   @override
   String get chooseYourSite => 'Kies minstens één vestiging.';
+
+  @override
+  String get viewRequests => 'Verzoeken';
+
+  @override
+  String get newRequest => 'Nieuw verzoek';
+
+  @override
+  String get requestLeave => 'Verlof';
+
+  @override
+  String get requestUnavailability => 'Niet beschikbaar';
+
+  @override
+  String get requestSwap => 'Dienstruil';
+
+  @override
+  String get swapHint =>
+      'Tik op een van je komende diensten in het rooster om een ruil aan te bieden.';
+
+  @override
+  String get noRequests => 'Nog geen verzoeken.';
+
+  @override
+  String get requestsToHandle => 'Te behandelen';
+
+  @override
+  String get myRequests => 'Mijn verzoeken';
+
+  @override
+  String get otherRequests => 'Verzoeken van het team';
+
+  @override
+  String get statusPendingPeer => 'Wacht op collega';
+
+  @override
+  String get statusPendingManager => 'Wacht op leidinggevende';
+
+  @override
+  String get statusApproved => 'Goedgekeurd';
+
+  @override
+  String get statusRefused => 'Geweigerd';
+
+  @override
+  String get statusCancelled => 'Geannuleerd';
+
+  @override
+  String get cancelRequest => 'Verzoek annuleren';
+
+  @override
+  String get acceptSwap => 'Deze dienst overnemen';
+
+  @override
+  String get approve => 'Goedkeuren';
+
+  @override
+  String periodLabel(String from, String to) {
+    return 'Van $from tot $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Aangeboden aan $name';
+  }
+
+  @override
+  String get swapToTeam => 'Hele team';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'Elke week: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek => 'Dagen waarop je nooit beschikbaar bent:';
+
+  @override
+  String get choosePeriod => 'Datums kiezen';
+
+  @override
+  String get choosePeriodOptional => 'Beperken tot een periode (optioneel)';
+
+  @override
+  String get clearPeriod => 'Geen periode';
+
+  @override
+  String get sendRequest => 'Verzoek versturen';
+
+  @override
+  String get proposeSwap => 'Ruil aanbieden';
+
+  @override
+  String get swapWith => 'Aanbieden aan';
+
+  @override
+  String get swapSteps =>
+      'De collega accepteert, daarna keurt een leidinggevende goed. Pas dan verandert het rooster.';
+
+  @override
+  String get absentThatDay => 'Goedgekeurde afwezigheid die dag';
+
+  @override
+  String get requestSent => 'Verzoek verstuurd.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name biedt je een van zijn diensten aan.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name heeft je ruilvoorstel geweigerd.';
+  }
+
+  @override
+  String get noticeSwapToApprove => 'Een dienstruil wacht op je goedkeuring.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name vraagt verlof aan.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name meldt niet beschikbaar te zijn.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Je verzoek is goedgekeurd.';
+
+  @override
+  String get noticeRequestRefused => 'Je verzoek is geweigerd.';
 }
