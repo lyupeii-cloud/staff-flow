@@ -203,5 +203,12 @@
   "retentionWeek": "1 viikon jälkeen",
   "retentionMonth": "1 kuukauden jälkeen",
   "billingOwnersOnly": "Käytössä vain, jos omistat yrityksen.",
-  "readOnlyPastDays": "Yli kuukauden takaiset päivät ovat vain luku -tilassa."
+  "readOnlyPastDays": "Yli kuukauden takaiset päivät ovat vain luku -tilassa.",
+  "wholeCompany": "Koko yritys",
+  "sitesLabel": "Toimipisteet",
+  "actionSites": "Toimipisteet…",
+  "managerOf": "{name} vastaa",
+  "teamSitesOf": "Tiimi: {name}",
+  "notYourSite": "Tämä toimipiste ei ole vastuullasi.",
+  "chooseYourSite": "Valitse vähintään yksi toimipiste."
 }

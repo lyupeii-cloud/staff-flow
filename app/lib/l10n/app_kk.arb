@@ -203,5 +203,12 @@
   "retentionWeek": "1 апта",
   "retentionMonth": "1 ай",
   "billingOwnersOnly": "Тек компанияңыз болса ғана қосулы.",
-  "readOnlyPastDays": "Бір айдан асқан күндерді тек қарауға болады."
+  "readOnlyPastDays": "Бір айдан асқан күндерді тек қарауға болады.",
+  "wholeCompany": "Бүкіл компания",
+  "sitesLabel": "Нысандар",
+  "actionSites": "Нысандар…",
+  "managerOf": "{name} жауапты",
+  "teamSitesOf": "{name} командасы",
+  "notYourSite": "Бұл нысан сіздің жауапкершілігіңізде емес.",
+  "chooseYourSite": "Кемінде бір нысанды таңдаңыз."
 }

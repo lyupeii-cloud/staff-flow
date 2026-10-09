@@ -742,4 +742,29 @@ class L10nId extends L10n {
   @override
   String get readOnlyPastDays =>
       'Hari yang lewat lebih dari sebulan hanya bisa dibaca.';
+
+  @override
+  String get wholeCompany => 'Seluruh perusahaan';
+
+  @override
+  String get sitesLabel => 'Lokasi';
+
+  @override
+  String get actionSites => 'Lokasi…';
+
+  @override
+  String managerOf(String name) {
+    return '$name bertanggung jawab atas';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Tim $name';
+  }
+
+  @override
+  String get notYourSite => 'Lokasi ini bukan tanggung jawab Anda.';
+
+  @override
+  String get chooseYourSite => 'Pilih setidaknya satu lokasi.';
 }

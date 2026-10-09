@@ -203,5 +203,12 @@
   "retentionWeek": "1 hét",
   "retentionMonth": "1 hónap",
   "billingOwnersOnly": "Csak akkor aktív, ha van saját céged.",
-  "readOnlyPastDays": "Az egy hónapnál régebbi napok csak olvashatók."
+  "readOnlyPastDays": "Az egy hónapnál régebbi napok csak olvashatók.",
+  "wholeCompany": "Az egész cég",
+  "sitesLabel": "Telephelyek",
+  "actionSites": "Telephelyek…",
+  "managerOf": "{name} felelős ezekért:",
+  "teamSitesOf": "{name} csapata",
+  "notYourSite": "Ez a telephely nem a te felelősséged.",
+  "chooseYourSite": "Válassz legalább egy telephelyet."
 }

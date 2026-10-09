@@ -203,5 +203,12 @@
   "retentionWeek": "1週間",
   "retentionMonth": "1か月",
   "billingOwnersOnly": "会社のオーナーの場合のみ有効です。",
-  "readOnlyPastDays": "1か月以上前の日は閲覧のみです。"
+  "readOnlyPastDays": "1か月以上前の日は閲覧のみです。",
+  "wholeCompany": "会社全体",
+  "sitesLabel": "拠点",
+  "actionSites": "拠点…",
+  "managerOf": "{name} さんの担当",
+  "teamSitesOf": "{name} さんのチーム",
+  "notYourSite": "この拠点はあなたの担当ではありません。",
+  "chooseYourSite": "拠点を少なくとも1つ選んでください。"
 }

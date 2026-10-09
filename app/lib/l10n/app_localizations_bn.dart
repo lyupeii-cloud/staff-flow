@@ -741,4 +741,29 @@ class L10nBn extends L10n {
 
   @override
   String get readOnlyPastDays => 'এক মাসের বেশি পুরোনো দিন শুধু দেখা যাবে।';
+
+  @override
+  String get wholeCompany => 'পুরো কোম্পানি';
+
+  @override
+  String get sitesLabel => 'সাইট';
+
+  @override
+  String get actionSites => 'সাইট…';
+
+  @override
+  String managerOf(String name) {
+    return '$name-এর দায়িত্বে';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return '$name-এর দল';
+  }
+
+  @override
+  String get notYourSite => 'এই সাইটটি আপনার দায়িত্বে নেই।';
+
+  @override
+  String get chooseYourSite => 'অন্তত একটি সাইট বেছে নিন।';
 }

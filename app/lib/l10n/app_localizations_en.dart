@@ -746,4 +746,29 @@ class L10nEn extends L10n {
 
   @override
   String get readOnlyPastDays => 'Days more than a month old are read-only.';
+
+  @override
+  String get wholeCompany => 'Whole company';
+
+  @override
+  String get sitesLabel => 'Sites';
+
+  @override
+  String get actionSites => 'Sites…';
+
+  @override
+  String managerOf(String name) {
+    return '$name manages';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return '$name\'s team';
+  }
+
+  @override
+  String get notYourSite => 'This site is not under your responsibility.';
+
+  @override
+  String get chooseYourSite => 'Choose at least one site.';
 }

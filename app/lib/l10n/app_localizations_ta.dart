@@ -748,4 +748,29 @@ class L10nTa extends L10n {
   @override
   String get readOnlyPastDays =>
       'ஒரு மாதத்துக்கு மேல் பழைய நாட்கள் படிக்க மட்டுமே.';
+
+  @override
+  String get wholeCompany => 'முழு நிறுவனம்';
+
+  @override
+  String get sitesLabel => 'தளங்கள்';
+
+  @override
+  String get actionSites => 'தளங்கள்…';
+
+  @override
+  String managerOf(String name) {
+    return '$name பொறுப்பில்';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return '$name அவர்களின் குழு';
+  }
+
+  @override
+  String get notYourSite => 'இந்தத் தளம் உங்கள் பொறுப்பில் இல்லை.';
+
+  @override
+  String get chooseYourSite => 'குறைந்தது ஒரு தளத்தைத் தேர்ந்தெடுங்கள்.';
 }

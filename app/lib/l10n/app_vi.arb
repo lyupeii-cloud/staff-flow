@@ -203,5 +203,12 @@
   "retentionWeek": "1 tuần",
   "retentionMonth": "1 tháng",
   "billingOwnersOnly": "Chỉ bật khi bạn sở hữu một công ty.",
-  "readOnlyPastDays": "Các ngày đã qua hơn một tháng chỉ có thể xem."
+  "readOnlyPastDays": "Các ngày đã qua hơn một tháng chỉ có thể xem.",
+  "wholeCompany": "Toàn công ty",
+  "sitesLabel": "Địa điểm",
+  "actionSites": "Địa điểm…",
+  "managerOf": "{name} phụ trách",
+  "teamSitesOf": "Nhóm của {name}",
+  "notYourSite": "Địa điểm này không thuộc trách nhiệm của bạn.",
+  "chooseYourSite": "Chọn ít nhất một địa điểm."
 }

@@ -1414,6 +1414,48 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Days more than a month old are read-only.'**
   String get readOnlyPastDays;
+
+  /// No description provided for @wholeCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'Whole company'**
+  String get wholeCompany;
+
+  /// No description provided for @sitesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Sites'**
+  String get sitesLabel;
+
+  /// No description provided for @actionSites.
+  ///
+  /// In en, this message translates to:
+  /// **'Sites…'**
+  String get actionSites;
+
+  /// No description provided for @managerOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} manages'**
+  String managerOf(String name);
+
+  /// No description provided for @teamSitesOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}\'s team'**
+  String teamSitesOf(String name);
+
+  /// No description provided for @notYourSite.
+  ///
+  /// In en, this message translates to:
+  /// **'This site is not under your responsibility.'**
+  String get notYourSite;
+
+  /// No description provided for @chooseYourSite.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose at least one site.'**
+  String get chooseYourSite;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

@@ -203,5 +203,12 @@
   "retentionWeek": "Wiki 1",
   "retentionMonth": "Mwezi 1",
   "billingOwnersOnly": "Inafanya kazi tu ukimiliki kampuni.",
-  "readOnlyPastDays": "Siku zilizopita zaidi ya mwezi ni za kusoma tu."
+  "readOnlyPastDays": "Siku zilizopita zaidi ya mwezi ni za kusoma tu.",
+  "wholeCompany": "Kampuni nzima",
+  "sitesLabel": "Maeneo",
+  "actionSites": "Maeneo…",
+  "managerOf": "{name} anasimamia",
+  "teamSitesOf": "Timu ya {name}",
+  "notYourSite": "Eneo hili haliko chini ya jukumu lako.",
+  "chooseYourSite": "Chagua angalau eneo moja."
 }

@@ -203,5 +203,12 @@
   "retentionWeek": "1 minggu",
   "retentionMonth": "1 bulan",
   "billingOwnersOnly": "Hanya aktif jika Anda memiliki perusahaan.",
-  "readOnlyPastDays": "Hari yang lewat lebih dari sebulan hanya bisa dibaca."
+  "readOnlyPastDays": "Hari yang lewat lebih dari sebulan hanya bisa dibaca.",
+  "wholeCompany": "Seluruh perusahaan",
+  "sitesLabel": "Lokasi",
+  "actionSites": "Lokasi…",
+  "managerOf": "{name} bertanggung jawab atas",
+  "teamSitesOf": "Tim {name}",
+  "notYourSite": "Lokasi ini bukan tanggung jawab Anda.",
+  "chooseYourSite": "Pilih setidaknya satu lokasi."
 }

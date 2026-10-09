@@ -750,4 +750,29 @@ class L10nEl extends L10n {
   @override
   String get readOnlyPastDays =>
       'Οι ημέρες πριν από περισσότερο από έναν μήνα είναι μόνο για ανάγνωση.';
+
+  @override
+  String get wholeCompany => 'Όλη η εταιρεία';
+
+  @override
+  String get sitesLabel => 'Καταστήματα';
+
+  @override
+  String get actionSites => 'Καταστήματα…';
+
+  @override
+  String managerOf(String name) {
+    return 'Ο/Η $name είναι υπεύθυνος/η για';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Ομάδα του/της $name';
+  }
+
+  @override
+  String get notYourSite => 'Αυτό το κατάστημα δεν είναι στην ευθύνη σας.';
+
+  @override
+  String get chooseYourSite => 'Επιλέξτε τουλάχιστον ένα κατάστημα.';
 }

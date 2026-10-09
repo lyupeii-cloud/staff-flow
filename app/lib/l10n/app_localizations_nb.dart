@@ -745,4 +745,29 @@ class L10nNb extends L10n {
   @override
   String get readOnlyPastDays =>
       'Dager som er mer enn en måned gamle, er skrivebeskyttet.';
+
+  @override
+  String get wholeCompany => 'Hele bedriften';
+
+  @override
+  String get sitesLabel => 'Steder';
+
+  @override
+  String get actionSites => 'Steder…';
+
+  @override
+  String managerOf(String name) {
+    return '$name har ansvaret for';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Teamet til $name';
+  }
+
+  @override
+  String get notYourSite => 'Dette stedet er ikke ditt ansvar.';
+
+  @override
+  String get chooseYourSite => 'Velg minst ett sted.';
 }

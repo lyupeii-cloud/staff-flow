@@ -480,5 +480,26 @@
   "retentionWeek": "1 week",
   "retentionMonth": "1 month",
   "billingOwnersOnly": "Only active when you own a company.",
-  "readOnlyPastDays": "Days more than a month old are read-only."
+  "readOnlyPastDays": "Days more than a month old are read-only.",
+  "wholeCompany": "Whole company",
+  "sitesLabel": "Sites",
+  "actionSites": "Sites…",
+  "managerOf": "{name} manages",
+  "@managerOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "teamSitesOf": "{name}'s team",
+  "@teamSitesOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notYourSite": "This site is not under your responsibility.",
+  "chooseYourSite": "Choose at least one site."
 }

@@ -750,4 +750,30 @@ class L10nDe extends L10n {
   @override
   String get readOnlyPastDays =>
       'Tage, die mehr als einen Monat zurückliegen, sind schreibgeschützt.';
+
+  @override
+  String get wholeCompany => 'Ganzes Unternehmen';
+
+  @override
+  String get sitesLabel => 'Standorte';
+
+  @override
+  String get actionSites => 'Standorte…';
+
+  @override
+  String managerOf(String name) {
+    return '$name verantwortet';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Team von $name';
+  }
+
+  @override
+  String get notYourSite =>
+      'Dieser Standort liegt nicht in Ihrer Verantwortung.';
+
+  @override
+  String get chooseYourSite => 'Wählen Sie mindestens einen Standort.';
 }

@@ -207,5 +207,12 @@
   "retentionWeek": "1 semaine",
   "retentionMonth": "1 mois",
   "billingOwnersOnly": "Actif uniquement si vous possédez une entreprise.",
-  "readOnlyPastDays": "Les jours de plus d'un mois sont en lecture seule."
+  "readOnlyPastDays": "Les jours de plus d'un mois sont en lecture seule.",
+  "wholeCompany": "Toute l'entreprise",
+  "sitesLabel": "Sites",
+  "actionSites": "Sites…",
+  "managerOf": "{name} est responsable de",
+  "teamSitesOf": "Équipe de {name}",
+  "notYourSite": "Ce site n'est pas sous votre responsabilité.",
+  "chooseYourSite": "Choisissez au moins un site."
 }

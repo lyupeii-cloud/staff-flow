@@ -752,4 +752,29 @@ class L10nUk extends L10n {
   @override
   String get readOnlyPastDays =>
       'Дні, що минули понад місяць тому, доступні лише для перегляду.';
+
+  @override
+  String get wholeCompany => 'Уся компанія';
+
+  @override
+  String get sitesLabel => 'Підрозділи';
+
+  @override
+  String get actionSites => 'Підрозділи…';
+
+  @override
+  String managerOf(String name) {
+    return '$name керує';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Команда: $name';
+  }
+
+  @override
+  String get notYourSite => 'Цей підрозділ не у вашому віданні.';
+
+  @override
+  String get chooseYourSite => 'Оберіть щонайменше один підрозділ.';
 }

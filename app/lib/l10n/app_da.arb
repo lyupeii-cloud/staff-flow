@@ -203,5 +203,12 @@
   "retentionWeek": "1 uge",
   "retentionMonth": "1 måned",
   "billingOwnersOnly": "Kun aktiv, hvis du ejer en virksomhed.",
-  "readOnlyPastDays": "Dage, der er mere end en måned gamle, er skrivebeskyttede."
+  "readOnlyPastDays": "Dage, der er mere end en måned gamle, er skrivebeskyttede.",
+  "wholeCompany": "Hele virksomheden",
+  "sitesLabel": "Steder",
+  "actionSites": "Steder…",
+  "managerOf": "{name} har ansvaret for",
+  "teamSitesOf": "{name}s team",
+  "notYourSite": "Dette sted er ikke dit ansvar.",
+  "chooseYourSite": "Vælg mindst ét sted."
 }

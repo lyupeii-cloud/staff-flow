@@ -746,4 +746,30 @@ class L10nSv extends L10n {
 
   @override
   String get readOnlyPastDays => 'Dagar äldre än en månad är skrivskyddade.';
+
+  @override
+  String get wholeCompany => 'Hela företaget';
+
+  @override
+  String get sitesLabel => 'Arbetsplatser';
+
+  @override
+  String get actionSites => 'Arbetsplatser…';
+
+  @override
+  String managerOf(String name) {
+    return '$name ansvarar för';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return '${name}s team';
+  }
+
+  @override
+  String get notYourSite =>
+      'Den här arbetsplatsen ligger inte under ditt ansvar.';
+
+  @override
+  String get chooseYourSite => 'Välj minst en arbetsplats.';
 }

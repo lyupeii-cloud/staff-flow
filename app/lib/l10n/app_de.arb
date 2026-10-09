@@ -203,5 +203,12 @@
   "retentionWeek": "1 Woche",
   "retentionMonth": "1 Monat",
   "billingOwnersOnly": "Nur aktiv, wenn Ihnen ein Unternehmen gehört.",
-  "readOnlyPastDays": "Tage, die mehr als einen Monat zurückliegen, sind schreibgeschützt."
+  "readOnlyPastDays": "Tage, die mehr als einen Monat zurückliegen, sind schreibgeschützt.",
+  "wholeCompany": "Ganzes Unternehmen",
+  "sitesLabel": "Standorte",
+  "actionSites": "Standorte…",
+  "managerOf": "{name} verantwortet",
+  "teamSitesOf": "Team von {name}",
+  "notYourSite": "Dieser Standort liegt nicht in Ihrer Verantwortung.",
+  "chooseYourSite": "Wählen Sie mindestens einen Standort."
 }

@@ -203,5 +203,12 @@
   "retentionWeek": "1 周",
   "retentionMonth": "1 个月",
   "billingOwnersOnly": "仅在您拥有公司时生效。",
-  "readOnlyPastDays": "超过一个月的日期为只读。"
+  "readOnlyPastDays": "超过一个月的日期为只读。",
+  "wholeCompany": "整个公司",
+  "sitesLabel": "地点",
+  "actionSites": "地点…",
+  "managerOf": "{name} 负责",
+  "teamSitesOf": "{name} 的团队",
+  "notYourSite": "该地点不归您负责。",
+  "chooseYourSite": "请至少选择一个地点。"
 }

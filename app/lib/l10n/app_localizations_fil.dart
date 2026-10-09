@@ -746,4 +746,29 @@ class L10nFil extends L10n {
   @override
   String get readOnlyPastDays =>
       'Pagbasa lang ang mga araw na lampas isang buwan na.';
+
+  @override
+  String get wholeCompany => 'Buong kumpanya';
+
+  @override
+  String get sitesLabel => 'Mga lugar';
+
+  @override
+  String get actionSites => 'Mga lugar…';
+
+  @override
+  String managerOf(String name) {
+    return 'Hawak ni $name ang';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Team ni $name';
+  }
+
+  @override
+  String get notYourSite => 'Hindi mo sakop ang lugar na ito.';
+
+  @override
+  String get chooseYourSite => 'Pumili ng kahit isang lugar.';
 }

@@ -729,4 +729,29 @@ class L10nKo extends L10n {
 
   @override
   String get readOnlyPastDays => '한 달이 지난 날짜는 읽기 전용입니다.';
+
+  @override
+  String get wholeCompany => '회사 전체';
+
+  @override
+  String get sitesLabel => '지점';
+
+  @override
+  String get actionSites => '지점…';
+
+  @override
+  String managerOf(String name) {
+    return '$name님 담당';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return '$name님의 팀';
+  }
+
+  @override
+  String get notYourSite => '이 지점은 담당 지점이 아닙니다.';
+
+  @override
+  String get chooseYourSite => '지점을 하나 이상 선택하세요.';
 }

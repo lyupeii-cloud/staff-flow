@@ -203,5 +203,12 @@
   "retentionWeek": "1 săptămână",
   "retentionMonth": "1 lună",
   "billingOwnersOnly": "Activ doar dacă deții o firmă.",
-  "readOnlyPastDays": "Zilele mai vechi de o lună sunt doar pentru citire."
+  "readOnlyPastDays": "Zilele mai vechi de o lună sunt doar pentru citire.",
+  "wholeCompany": "Toată firma",
+  "sitesLabel": "Puncte de lucru",
+  "actionSites": "Puncte de lucru…",
+  "managerOf": "{name} răspunde de",
+  "teamSitesOf": "Echipa lui {name}",
+  "notYourSite": "Acest punct de lucru nu este în responsabilitatea ta.",
+  "chooseYourSite": "Alege cel puțin un punct de lucru."
 }

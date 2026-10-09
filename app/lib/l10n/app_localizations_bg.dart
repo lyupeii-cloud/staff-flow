@@ -743,4 +743,29 @@ class L10nBg extends L10n {
   @override
   String get readOnlyPastDays =>
       'Дните отпреди повече от месец са само за четене.';
+
+  @override
+  String get wholeCompany => 'Цялата фирма';
+
+  @override
+  String get sitesLabel => 'Обекти';
+
+  @override
+  String get actionSites => 'Обекти…';
+
+  @override
+  String managerOf(String name) {
+    return '$name отговаря за';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Екипът на $name';
+  }
+
+  @override
+  String get notYourSite => 'Този обект не е под ваша отговорност.';
+
+  @override
+  String get chooseYourSite => 'Изберете поне един обект.';
 }

@@ -726,4 +726,29 @@ class L10nZh extends L10n {
 
   @override
   String get readOnlyPastDays => '超过一个月的日期为只读。';
+
+  @override
+  String get wholeCompany => '整个公司';
+
+  @override
+  String get sitesLabel => '地点';
+
+  @override
+  String get actionSites => '地点…';
+
+  @override
+  String managerOf(String name) {
+    return '$name 负责';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return '$name 的团队';
+  }
+
+  @override
+  String get notYourSite => '该地点不归您负责。';
+
+  @override
+  String get chooseYourSite => '请至少选择一个地点。';
 }

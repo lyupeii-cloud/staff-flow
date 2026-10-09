@@ -203,5 +203,12 @@
   "retentionWeek": "1 седмица",
   "retentionMonth": "1 месец",
   "billingOwnersOnly": "Активно само ако притежавате фирма.",
-  "readOnlyPastDays": "Дните отпреди повече от месец са само за четене."
+  "readOnlyPastDays": "Дните отпреди повече от месец са само за четене.",
+  "wholeCompany": "Цялата фирма",
+  "sitesLabel": "Обекти",
+  "actionSites": "Обекти…",
+  "managerOf": "{name} отговаря за",
+  "teamSitesOf": "Екипът на {name}",
+  "notYourSite": "Този обект не е под ваша отговорност.",
+  "chooseYourSite": "Изберете поне един обект."
 }

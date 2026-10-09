@@ -749,4 +749,29 @@ class L10nSk extends L10n {
 
   @override
   String get readOnlyPastDays => 'Dni staršie ako mesiac sú iba na čítanie.';
+
+  @override
+  String get wholeCompany => 'Celá firma';
+
+  @override
+  String get sitesLabel => 'Pracoviská';
+
+  @override
+  String get actionSites => 'Pracoviská…';
+
+  @override
+  String managerOf(String name) {
+    return '$name má na starosti';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Tím: $name';
+  }
+
+  @override
+  String get notYourSite => 'Toto pracovisko nemáte na starosti.';
+
+  @override
+  String get chooseYourSite => 'Vyberte aspoň jedno pracovisko.';
 }

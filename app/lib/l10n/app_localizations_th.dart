@@ -737,4 +737,29 @@ class L10nTh extends L10n {
 
   @override
   String get readOnlyPastDays => 'วันที่ผ่านมาเกินหนึ่งเดือนดูได้อย่างเดียว';
+
+  @override
+  String get wholeCompany => 'ทั้งบริษัท';
+
+  @override
+  String get sitesLabel => 'สาขา';
+
+  @override
+  String get actionSites => 'สาขา…';
+
+  @override
+  String managerOf(String name) {
+    return '$name ดูแล';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'ทีมของ $name';
+  }
+
+  @override
+  String get notYourSite => 'สาขานี้ไม่อยู่ในความรับผิดชอบของคุณ';
+
+  @override
+  String get chooseYourSite => 'เลือกอย่างน้อยหนึ่งสาขา';
 }

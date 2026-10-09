@@ -746,4 +746,29 @@ class L10nFi extends L10n {
   @override
   String get readOnlyPastDays =>
       'Yli kuukauden takaiset päivät ovat vain luku -tilassa.';
+
+  @override
+  String get wholeCompany => 'Koko yritys';
+
+  @override
+  String get sitesLabel => 'Toimipisteet';
+
+  @override
+  String get actionSites => 'Toimipisteet…';
+
+  @override
+  String managerOf(String name) {
+    return '$name vastaa';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Tiimi: $name';
+  }
+
+  @override
+  String get notYourSite => 'Tämä toimipiste ei ole vastuullasi.';
+
+  @override
+  String get chooseYourSite => 'Valitse vähintään yksi toimipiste.';
 }

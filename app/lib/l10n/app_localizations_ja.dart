@@ -730,4 +730,29 @@ class L10nJa extends L10n {
 
   @override
   String get readOnlyPastDays => '1か月以上前の日は閲覧のみです。';
+
+  @override
+  String get wholeCompany => '会社全体';
+
+  @override
+  String get sitesLabel => '拠点';
+
+  @override
+  String get actionSites => '拠点…';
+
+  @override
+  String managerOf(String name) {
+    return '$name さんの担当';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return '$name さんのチーム';
+  }
+
+  @override
+  String get notYourSite => 'この拠点はあなたの担当ではありません。';
+
+  @override
+  String get chooseYourSite => '拠点を少なくとも1つ選んでください。';
 }

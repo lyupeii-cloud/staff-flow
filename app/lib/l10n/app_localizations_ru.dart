@@ -751,4 +751,29 @@ class L10nRu extends L10n {
   @override
   String get readOnlyPastDays =>
       'Дни, прошедшие более месяца назад, доступны только для просмотра.';
+
+  @override
+  String get wholeCompany => 'Вся компания';
+
+  @override
+  String get sitesLabel => 'Объекты';
+
+  @override
+  String get actionSites => 'Объекты…';
+
+  @override
+  String managerOf(String name) {
+    return '$name руководит';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Команда: $name';
+  }
+
+  @override
+  String get notYourSite => 'Этот объект не находится в вашем ведении.';
+
+  @override
+  String get chooseYourSite => 'Выберите хотя бы один объект.';
 }

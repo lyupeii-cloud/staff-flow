@@ -746,4 +746,29 @@ class L10nSw extends L10n {
   @override
   String get readOnlyPastDays =>
       'Siku zilizopita zaidi ya mwezi ni za kusoma tu.';
+
+  @override
+  String get wholeCompany => 'Kampuni nzima';
+
+  @override
+  String get sitesLabel => 'Maeneo';
+
+  @override
+  String get actionSites => 'Maeneo…';
+
+  @override
+  String managerOf(String name) {
+    return '$name anasimamia';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Timu ya $name';
+  }
+
+  @override
+  String get notYourSite => 'Eneo hili haliko chini ya jukumu lako.';
+
+  @override
+  String get chooseYourSite => 'Chagua angalau eneo moja.';
 }

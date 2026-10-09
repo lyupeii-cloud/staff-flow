@@ -203,5 +203,12 @@
   "retentionWeek": "1 สัปดาห์",
   "retentionMonth": "1 เดือน",
   "billingOwnersOnly": "ใช้งานได้เฉพาะเมื่อคุณเป็นเจ้าของบริษัท",
-  "readOnlyPastDays": "วันที่ผ่านมาเกินหนึ่งเดือนดูได้อย่างเดียว"
+  "readOnlyPastDays": "วันที่ผ่านมาเกินหนึ่งเดือนดูได้อย่างเดียว",
+  "wholeCompany": "ทั้งบริษัท",
+  "sitesLabel": "สาขา",
+  "actionSites": "สาขา…",
+  "managerOf": "{name} ดูแล",
+  "teamSitesOf": "ทีมของ {name}",
+  "notYourSite": "สาขานี้ไม่อยู่ในความรับผิดชอบของคุณ",
+  "chooseYourSite": "เลือกอย่างน้อยหนึ่งสาขา"
 }

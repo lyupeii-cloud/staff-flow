@@ -203,5 +203,12 @@
   "retentionWeek": "1 vecka",
   "retentionMonth": "1 månad",
   "billingOwnersOnly": "Bara aktivt om du äger ett företag.",
-  "readOnlyPastDays": "Dagar äldre än en månad är skrivskyddade."
+  "readOnlyPastDays": "Dagar äldre än en månad är skrivskyddade.",
+  "wholeCompany": "Hela företaget",
+  "sitesLabel": "Arbetsplatser",
+  "actionSites": "Arbetsplatser…",
+  "managerOf": "{name} ansvarar för",
+  "teamSitesOf": "{name}s team",
+  "notYourSite": "Den här arbetsplatsen ligger inte under ditt ansvar.",
+  "chooseYourSite": "Välj minst en arbetsplats."
 }

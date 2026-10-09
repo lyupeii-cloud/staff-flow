@@ -136,6 +136,7 @@ class _PlanningViewState extends State<PlanningView> {
       data: widget.data,
       shift: shift,
       day: day ?? _selected,
+      onlySites: widget.membership.managedSites,
     );
     if (changed == true) _load();
   }
@@ -332,9 +333,11 @@ class _PlanningViewState extends State<PlanningView> {
             ),
       child: ListTile(
         onTap: canEdit && !deleted
-            ? () => isEditableDay(s.day)
-                ? _openEditor(shift: s)
-                : ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.readOnlyPastDays)))
+            ? () => !widget.membership.canEditSite(s.siteId)
+                ? ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.notYourSite)))
+                : isEditableDay(s.day)
+                    ? _openEditor(shift: s)
+                    : ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.readOnlyPastDays)))
             : null,
         title: Text(
           '${timeLabel(s.start)} – ${timeLabel(s.end)}${s.end > 1440 ? ' (+1)' : ''}  ·  $who',

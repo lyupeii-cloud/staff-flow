@@ -203,5 +203,12 @@
   "retentionWeek": "1 week",
   "retentionMonth": "1 maand",
   "billingOwnersOnly": "Alleen actief als je eigenaar bent van een bedrijf.",
-  "readOnlyPastDays": "Dagen van meer dan een maand geleden zijn alleen-lezen."
+  "readOnlyPastDays": "Dagen van meer dan een maand geleden zijn alleen-lezen.",
+  "wholeCompany": "Hele bedrijf",
+  "sitesLabel": "Vestigingen",
+  "actionSites": "Vestigingen…",
+  "managerOf": "{name} is verantwoordelijk voor",
+  "teamSitesOf": "Team van {name}",
+  "notYourSite": "Deze vestiging valt niet onder jouw verantwoordelijkheid.",
+  "chooseYourSite": "Kies minstens één vestiging."
 }

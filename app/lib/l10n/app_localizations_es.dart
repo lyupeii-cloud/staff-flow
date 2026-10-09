@@ -750,4 +750,29 @@ class L10nEs extends L10n {
   @override
   String get readOnlyPastDays =>
       'Los días de hace más de un mes son de solo lectura.';
+
+  @override
+  String get wholeCompany => 'Toda la empresa';
+
+  @override
+  String get sitesLabel => 'Centros';
+
+  @override
+  String get actionSites => 'Centros…';
+
+  @override
+  String managerOf(String name) {
+    return '$name es responsable de';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Equipo de $name';
+  }
+
+  @override
+  String get notYourSite => 'Este centro no está bajo tu responsabilidad.';
+
+  @override
+  String get chooseYourSite => 'Elige al menos un centro.';
 }

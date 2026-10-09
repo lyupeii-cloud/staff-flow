@@ -203,5 +203,12 @@
   "retentionWeek": "1 týždni",
   "retentionMonth": "1 mesiaci",
   "billingOwnersOnly": "Aktívne, len ak vlastníte firmu.",
-  "readOnlyPastDays": "Dni staršie ako mesiac sú iba na čítanie."
+  "readOnlyPastDays": "Dni staršie ako mesiac sú iba na čítanie.",
+  "wholeCompany": "Celá firma",
+  "sitesLabel": "Pracoviská",
+  "actionSites": "Pracoviská…",
+  "managerOf": "{name} má na starosti",
+  "teamSitesOf": "Tím: {name}",
+  "notYourSite": "Toto pracovisko nemáte na starosti.",
+  "chooseYourSite": "Vyberte aspoň jedno pracovisko."
 }

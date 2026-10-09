@@ -203,5 +203,12 @@
   "retentionWeek": "1 અઠવાડિયું",
   "retentionMonth": "1 મહિનો",
   "billingOwnersOnly": "ફક્ત તમારી માલિકીની કંપની હોય ત્યારે જ સક્રિય.",
-  "readOnlyPastDays": "એક મહિનાથી જૂના દિવસો ફક્ત જોઈ શકાય છે."
+  "readOnlyPastDays": "એક મહિનાથી જૂના દિવસો ફક્ત જોઈ શકાય છે.",
+  "wholeCompany": "આખી કંપની",
+  "sitesLabel": "સાઇટ્સ",
+  "actionSites": "સાઇટ્સ…",
+  "managerOf": "{name} ની જવાબદારી",
+  "teamSitesOf": "{name} ની ટીમ",
+  "notYourSite": "આ સાઇટ તમારી જવાબદારીમાં નથી.",
+  "chooseYourSite": "ઓછામાં ઓછી એક સાઇટ પસંદ કરો."
 }

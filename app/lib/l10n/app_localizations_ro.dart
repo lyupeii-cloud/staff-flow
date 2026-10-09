@@ -750,4 +750,30 @@ class L10nRo extends L10n {
   @override
   String get readOnlyPastDays =>
       'Zilele mai vechi de o lună sunt doar pentru citire.';
+
+  @override
+  String get wholeCompany => 'Toată firma';
+
+  @override
+  String get sitesLabel => 'Puncte de lucru';
+
+  @override
+  String get actionSites => 'Puncte de lucru…';
+
+  @override
+  String managerOf(String name) {
+    return '$name răspunde de';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Echipa lui $name';
+  }
+
+  @override
+  String get notYourSite =>
+      'Acest punct de lucru nu este în responsabilitatea ta.';
+
+  @override
+  String get chooseYourSite => 'Alege cel puțin un punct de lucru.';
 }

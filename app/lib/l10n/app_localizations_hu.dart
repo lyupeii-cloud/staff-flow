@@ -742,4 +742,29 @@ class L10nHu extends L10n {
   @override
   String get readOnlyPastDays =>
       'Az egy hónapnál régebbi napok csak olvashatók.';
+
+  @override
+  String get wholeCompany => 'Az egész cég';
+
+  @override
+  String get sitesLabel => 'Telephelyek';
+
+  @override
+  String get actionSites => 'Telephelyek…';
+
+  @override
+  String managerOf(String name) {
+    return '$name felelős ezekért:';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return '$name csapata';
+  }
+
+  @override
+  String get notYourSite => 'Ez a telephely nem a te felelősséged.';
+
+  @override
+  String get chooseYourSite => 'Válassz legalább egy telephelyet.';
 }

@@ -203,5 +203,12 @@
   "retentionWeek": "1 semana",
   "retentionMonth": "1 mes",
   "billingOwnersOnly": "Solo activo si eres propietario de una empresa.",
-  "readOnlyPastDays": "Los días de hace más de un mes son de solo lectura."
+  "readOnlyPastDays": "Los días de hace más de un mes son de solo lectura.",
+  "wholeCompany": "Toda la empresa",
+  "sitesLabel": "Centros",
+  "actionSites": "Centros…",
+  "managerOf": "{name} es responsable de",
+  "teamSitesOf": "Equipo de {name}",
+  "notYourSite": "Este centro no está bajo tu responsabilidad.",
+  "chooseYourSite": "Elige al menos un centro."
 }

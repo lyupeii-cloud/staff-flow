@@ -747,4 +747,29 @@ class L10nPt extends L10n {
   @override
   String get readOnlyPastDays =>
       'Os dias com mais de um mês são só de leitura.';
+
+  @override
+  String get wholeCompany => 'Toda a empresa';
+
+  @override
+  String get sitesLabel => 'Locais';
+
+  @override
+  String get actionSites => 'Locais…';
+
+  @override
+  String managerOf(String name) {
+    return '$name é responsável por';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Equipa de $name';
+  }
+
+  @override
+  String get notYourSite => 'Este local não está sob a sua responsabilidade.';
+
+  @override
+  String get chooseYourSite => 'Escolha pelo menos um local.';
 }

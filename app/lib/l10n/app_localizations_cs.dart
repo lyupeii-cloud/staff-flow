@@ -747,4 +747,29 @@ class L10nCs extends L10n {
 
   @override
   String get readOnlyPastDays => 'Dny starší než měsíc jsou jen pro čtení.';
+
+  @override
+  String get wholeCompany => 'Celá firma';
+
+  @override
+  String get sitesLabel => 'Pracoviště';
+
+  @override
+  String get actionSites => 'Pracoviště…';
+
+  @override
+  String managerOf(String name) {
+    return '$name má na starosti';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Tým: $name';
+  }
+
+  @override
+  String get notYourSite => 'Toto pracoviště nemáte na starosti.';
+
+  @override
+  String get chooseYourSite => 'Vyberte alespoň jedno pracoviště.';
 }

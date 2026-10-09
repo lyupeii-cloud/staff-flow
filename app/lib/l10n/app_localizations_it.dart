@@ -746,4 +746,29 @@ class L10nIt extends L10n {
   @override
   String get readOnlyPastDays =>
       'I giorni di oltre un mese fa sono di sola lettura.';
+
+  @override
+  String get wholeCompany => 'Tutta l\'azienda';
+
+  @override
+  String get sitesLabel => 'Sedi';
+
+  @override
+  String get actionSites => 'Sedi…';
+
+  @override
+  String managerOf(String name) {
+    return '$name è responsabile di';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Team di $name';
+  }
+
+  @override
+  String get notYourSite => 'Questa sede non è sotto la tua responsabilità.';
+
+  @override
+  String get chooseYourSite => 'Scegli almeno una sede.';
 }

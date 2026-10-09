@@ -203,5 +203,12 @@
   "retentionWeek": "1주 후",
   "retentionMonth": "1개월 후",
   "billingOwnersOnly": "회사를 소유한 경우에만 활성화됩니다.",
-  "readOnlyPastDays": "한 달이 지난 날짜는 읽기 전용입니다."
+  "readOnlyPastDays": "한 달이 지난 날짜는 읽기 전용입니다.",
+  "wholeCompany": "회사 전체",
+  "sitesLabel": "지점",
+  "actionSites": "지점…",
+  "managerOf": "{name}님 담당",
+  "teamSitesOf": "{name}님의 팀",
+  "notYourSite": "이 지점은 담당 지점이 아닙니다.",
+  "chooseYourSite": "지점을 하나 이상 선택하세요."
 }

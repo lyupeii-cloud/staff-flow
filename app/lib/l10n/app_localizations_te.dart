@@ -743,4 +743,29 @@ class L10nTe extends L10n {
 
   @override
   String get readOnlyPastDays => 'ఒక నెల కంటే పాత రోజులు చదవడానికి మాత్రమే.';
+
+  @override
+  String get wholeCompany => 'మొత్తం కంపెనీ';
+
+  @override
+  String get sitesLabel => 'సైట్‌లు';
+
+  @override
+  String get actionSites => 'సైట్‌లు…';
+
+  @override
+  String managerOf(String name) {
+    return '$name బాధ్యతలో';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return '$name టీమ్';
+  }
+
+  @override
+  String get notYourSite => 'ఈ సైట్ మీ బాధ్యతలో లేదు.';
+
+  @override
+  String get chooseYourSite => 'కనీసం ఒక సైట్‌ను ఎంచుకోండి.';
 }

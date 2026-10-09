@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
+import 'company_tab.dart';
 import 'home_screen.dart';
 import 'people_widgets.dart';
 
@@ -11,11 +12,14 @@ class TeamView extends StatefulWidget {
   final Session session;
   final Membership membership;
 
+  /// Sites et postes de l'entreprise.
+  final CompanyData data;
+
   /// Appelé quand la liste des membres a pu changer.
   final VoidCallback onChanged;
 
   const TeamView(
-      {super.key, required this.session, required this.membership, required this.onChanged});
+      {super.key, required this.session, required this.membership, required this.data, required this.onChanged});
 
   @override
   State<TeamView> createState() => _TeamViewState();
@@ -26,6 +30,22 @@ class _TeamViewState extends State<TeamView> {
 
   Company get company => widget.membership.company;
   Role get role => widget.membership.role;
+
+  /// Sites que je gère (`null` : toute l'entreprise).
+  Set<String>? get mine => widget.membership.managedSites;
+
+  /// Sites actifs de l'entreprise que je peux attribuer.
+  List<CatalogItem> get _assignable => [
+        for (final s in widget.data.sites)
+          if (!s.archived && (mine == null || mine!.contains(s.id))) s,
+      ];
+
+  /// Un responsable de site gère les salariés et extras de ses sites.
+  bool _inMySites(Member m) => mine == null || (m.sites ?? const []).any(mine!.contains);
+
+  String _siteNames(List<String>? ids) => [
+        for (final id in ids ?? const <String>[]) widget.data.siteName(id) ?? '?',
+      ].join(', ');
   L10n get t => context.l10n;
 
   @override
@@ -71,7 +91,7 @@ class _TeamViewState extends State<TeamView> {
                   icon: const Icon(Icons.person_add, size: 18),
                   label: Text(t.add),
                 ),
-              if (role.canManage && !company.readOnly)
+              if (widget.membership.managesAll && !company.readOnly)
                 TextButton.icon(
                   onPressed: _rename,
                   icon: const Icon(Icons.edit, size: 18),
@@ -114,7 +134,12 @@ class _TeamViewState extends State<TeamView> {
         child: m.user.photoUrl == null ? Text(m.user.name.characters.first.toUpperCase()) : null,
       ),
       title: Text(isMe ? t.meSuffix(m.user.name) : m.user.name),
-      subtitle: Text('${m.role.label(t)} · ${m.user.publicId}'),
+      subtitle: Text([
+        m.role.label(t),
+        if (m.role == Role.manager) m.sites == null ? t.wholeCompany : _siteNames(m.sites),
+        if (m.role != Role.manager && m.sites != null) _siteNames(m.sites),
+        m.user.publicId,
+      ].join(' · ')),
       trailing: actions.isEmpty
           ? null
           : PopupMenuButton<_MemberAction>(
@@ -133,13 +158,18 @@ class _TeamViewState extends State<TeamView> {
     final isOwner = role == Role.owner;
     final isManager = role == Role.manager;
     final targetIsStaff = m.role == Role.employee || m.role == Role.extra;
+    // Responsable de site : seulement les salariés et extras de ses sites.
+    final mineToo = isManager && targetIsStaff && _inMySites(m);
+    final hasSites = widget.data.sites.any((s) => !s.archived);
     return [
-      if (isOwner || (isManager && targetIsStaff)) _MemberAction.rename,
+      if (isOwner || mineToo) _MemberAction.rename,
       if (isOwner && targetIsStaff) _MemberAction.makeManager,
       if (isOwner && m.role == Role.manager) _MemberAction.makeEmployee,
-      if ((isOwner || isManager) && targetIsStaff) _MemberAction.toggleExtra,
+      if (isOwner || mineToo) _MemberAction.toggleExtra,
+      if (hasSites && ((isOwner && m.role == Role.manager) || ((isOwner || isManager) && targetIsStaff)))
+        _MemberAction.sites,
       if (isOwner && m.role == Role.manager) _MemberAction.transfer,
-      if (isOwner || (isManager && targetIsStaff)) _MemberAction.remove,
+      if (isOwner || mineToo) _MemberAction.remove,
     ];
   }
 
@@ -159,7 +189,22 @@ class _TeamViewState extends State<TeamView> {
           await _act(() => api.renameMember(company.id, m.user.id, name.isEmpty ? null : name));
         }
       case _MemberAction.makeManager:
-        await _act(() => api.setRole(company.id, m.user.id, Role.manager));
+        // Responsable de toute l'entreprise, ou de certains sites.
+        final scope = widget.data.sites.any((s) => !s.archived)
+            ? await _pickSites(t.managerOf(m.user.name), const [], allowWhole: true)
+            : (sites: null,);
+        if (scope != null) {
+          await _act(() => api.setRole(company.id, m.user.id, Role.manager, sites: scope.sites ?? const []));
+        }
+      case _MemberAction.sites:
+        final chosen = await _pickSites(
+          m.role == Role.manager ? t.managerOf(m.user.name) : t.teamSitesOf(m.user.name),
+          m.sites ?? const [],
+          allowWhole: m.role == Role.manager,
+        );
+        if (chosen != null) {
+          await _act(() => api.setMemberSites(company.id, m.user.id, chosen.sites));
+        }
       case _MemberAction.makeEmployee:
         await _act(() => api.setRole(company.id, m.user.id, Role.employee));
       case _MemberAction.toggleExtra:
@@ -177,12 +222,73 @@ class _TeamViewState extends State<TeamView> {
     }
   }
 
+  /// Choix de sites. [allowWhole] : pour un responsable, « toute l'entreprise ».
+  /// Renvoie `null` si l'on annule ; `sites: null` pour toute l'entreprise
+  /// (responsable) ou aucun site (salarié).
+  Future<({List<String>? sites})?> _pickSites(String title, List<String> current, {required bool allowWhole}) {
+    final options = _assignable;
+    var whole = allowWhole && current.isEmpty;
+    final chosen = {...current.where((id) => options.any((s) => s.id == id))};
+    return showDialog<({List<String>? sites})>(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setState) => AlertDialog(
+          title: Text(title),
+          content: SizedBox(
+            width: 360,
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                if (allowWhole)
+                  RadioGroup<bool>(
+                    groupValue: whole,
+                    onChanged: (v) => setState(() => whole = v ?? whole),
+                    child: Column(
+                      children: [
+                        RadioListTile<bool>(value: true, title: Text(t.wholeCompany)),
+                        RadioListTile<bool>(value: false, title: Text(t.sitesLabel)),
+                      ],
+                    ),
+                  ),
+                for (final s in options)
+                  CheckboxListTile(
+                    enabled: !whole,
+                    value: !whole && chosen.contains(s.id),
+                    onChanged: (v) => setState(() => v == true ? chosen.add(s.id) : chosen.remove(s.id)),
+                    title: Text(s.name),
+                    contentPadding: EdgeInsets.only(left: allowWhole ? 32 : 16, right: 16),
+                  ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(context), child: Text(t.cancel)),
+            FilledButton(
+              onPressed: () {
+                if (allowWhole && !whole && chosen.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.chooseYourSite)));
+                  return;
+                }
+                Navigator.pop(context, (sites: whole || chosen.isEmpty ? null : chosen.toList()));
+              },
+              child: Text(t.save),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   /// Ajout d'une personne : le responsable scanne son QR code permanent
   /// (menu du compte, « Mon QR code »), ou saisit le code à 6 chiffres
   /// qu'elle a généré. Elle doit ensuite accepter l'invitation.
   Future<void> _addWithCode() async {
     final code = TextEditingController();
     var role = Role.employee;
+    // Sites de son équipe : obligatoire pour un responsable de site.
+    final siteOptions = _assignable;
+    final chosenSites = <String>{if (mine != null && siteOptions.length == 1) siteOptions.single.id};
+    bool sitesMissing() => mine != null && chosenSites.isEmpty;
     final choice = await showDialog<_AddWith>(
       context: context,
       builder: (context) => StatefulBuilder(
@@ -201,11 +307,28 @@ class _TeamViewState extends State<TeamView> {
                   selected: {role},
                   onSelectionChanged: (s) => setState(() => role = s.first),
                 ),
+                if (siteOptions.isNotEmpty) ...[
+                  const SizedBox(height: 12),
+                  Text(t.sitesLabel, style: Theme.of(context).textTheme.titleSmall),
+                  Wrap(
+                    spacing: 6,
+                    children: [
+                      for (final s in siteOptions)
+                        FilterChip(
+                          label: Text(s.name),
+                          selected: chosenSites.contains(s.id),
+                          onSelected: (v) => setState(() => v ? chosenSites.add(s.id) : chosenSites.remove(s.id)),
+                        ),
+                    ],
+                  ),
+                ],
                 const SizedBox(height: 16),
                 // Le plus simple avec les mains occupées : un grand bouton.
                 FilledButton.icon(
                   style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(64)),
-                  onPressed: () => Navigator.pop(context, _AddWith.qr),
+                  onPressed: () => sitesMissing()
+                      ? ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.chooseYourSite)))
+                      : Navigator.pop(context, _AddWith.qr),
                   icon: const Icon(Icons.qr_code_scanner, size: 32),
                   label: Text(t.scanQrCode, style: const TextStyle(fontSize: 18)),
                 ),
@@ -226,20 +349,25 @@ class _TeamViewState extends State<TeamView> {
           ),
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: Text(t.cancel)),
-            FilledButton(onPressed: () => Navigator.pop(context, _AddWith.code), child: Text(t.validate)),
+            FilledButton(
+                onPressed: () => sitesMissing()
+                    ? ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.chooseYourSite)))
+                    : Navigator.pop(context, _AddWith.code),
+                child: Text(t.validate)),
           ],
         ),
       ),
     );
     if (choice == null || !mounted) return;
     final api = widget.session.api;
+    final sites = chosenSites.isEmpty ? null : chosenSites.toList();
     String? name;
     if (choice == _AddWith.qr) {
       final qr = await scanQrCode(context);
       if (qr == null || !mounted) return;
-      await _act(() async => name = await api.inviteByQr(company.id, qr, role));
+      await _act(() async => name = await api.inviteByQr(company.id, qr, role, sites: sites));
     } else {
-      await _act(() async => name = await api.redeemJoinCode(company.id, code.text, role));
+      await _act(() async => name = await api.redeemJoinCode(company.id, code.text, role, sites: sites));
     }
     if (name != null && mounted) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.invitationSent(name!))));
@@ -285,6 +413,7 @@ class _TeamViewState extends State<TeamView> {
 
 enum _MemberAction {
   rename,
+  sites,
   makeManager,
   makeEmployee,
   toggleExtra,
@@ -293,6 +422,7 @@ enum _MemberAction {
 
   String label(L10n t, Member m) => switch (this) {
         rename => t.rename,
+        sites => t.actionSites,
         makeManager => t.actionMakeManager,
         makeEmployee => t.actionMakeEmployee,
         toggleExtra => m.role == Role.extra ? t.actionToEmployee : t.actionToExtra,

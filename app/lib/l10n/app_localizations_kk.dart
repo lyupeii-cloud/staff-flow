@@ -744,4 +744,29 @@ class L10nKk extends L10n {
 
   @override
   String get readOnlyPastDays => 'Бір айдан асқан күндерді тек қарауға болады.';
+
+  @override
+  String get wholeCompany => 'Бүкіл компания';
+
+  @override
+  String get sitesLabel => 'Нысандар';
+
+  @override
+  String get actionSites => 'Нысандар…';
+
+  @override
+  String managerOf(String name) {
+    return '$name жауапты';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return '$name командасы';
+  }
+
+  @override
+  String get notYourSite => 'Бұл нысан сіздің жауапкершілігіңізде емес.';
+
+  @override
+  String get chooseYourSite => 'Кемінде бір нысанды таңдаңыз.';
 }

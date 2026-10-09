@@ -51,10 +51,32 @@ class Membership {
   final Company company;
   final Role role;
 
+  /// Responsable : ses sites (`null` : toute l'entreprise). Salarié ou
+  /// extra : les sites de son équipe.
+  final List<String>? sites;
+
   Membership.fromJson(Map<String, dynamic> j)
       : company = Company.fromJson(j['company']),
-        role = Role.values.byName(j['role']);
+        role = Role.values.byName(j['role']),
+        sites = _sites(j['sites']);
+
+  /// Sites que cette personne gère : `null` pour toute l'entreprise
+  /// (propriétaire, responsable général), vide si elle ne gère rien.
+  Set<String>? get managedSites =>
+      role == Role.owner ? null : (role == Role.manager ? sites?.toSet() : const {});
+
+  /// Gère-t-elle toute l'entreprise (sites, postes, nom) ?
+  bool get managesAll => role.canManage && managedSites == null;
+
+  /// Peut-elle modifier un service de ce site ?
+  bool canEditSite(String? siteId) {
+    if (!role.canManage) return false;
+    final mine = managedSites;
+    return mine == null || (siteId != null && mine.contains(siteId));
+  }
 }
+
+List<String>? _sites(Object? v) => v == null ? null : [for (final s in v as List) s as String];
 
 class Member {
   final User user;
@@ -63,10 +85,14 @@ class Member {
   /// Nom donné par un responsable, pour cette entreprise seulement.
   final String? nameInCompany;
 
+  /// Voir [Membership.sites].
+  final List<String>? sites;
+
   Member.fromJson(Map<String, dynamic> j)
       : user = User.fromJson(j['user']),
         role = Role.values.byName(j['role']),
-        nameInCompany = j['nameInCompany'];
+        nameInCompany = j['nameInCompany'],
+        sites = _sites(j['sites']);
 }
 
 class Transfer {

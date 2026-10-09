@@ -17,11 +17,13 @@ Future<bool?> showShiftEditor(
   required CompanyData data,
   Shift? shift,
   required DateTime day,
+  Set<String>? onlySites,
 }) => showModalBottomSheet<bool>(
   context: context,
   isScrollControlled: true,
   useSafeArea: true,
-  builder: (_) => _ShiftEditor(session: session, company: company, data: data, shift: shift, day: day),
+  builder: (_) =>
+      _ShiftEditor(session: session, company: company, data: data, shift: shift, day: day, onlySites: onlySites),
 );
 
 enum _Repeat { none, daily, weekly }
@@ -35,12 +37,16 @@ class _ShiftEditor extends StatefulWidget {
   final Shift? shift;
   final DateTime day;
 
+  /// Responsable de site : sites qu'il peut choisir.
+  final Set<String>? onlySites;
+
   const _ShiftEditor({
     required this.session,
     required this.company,
     required this.data,
     this.shift,
     required this.day,
+    this.onlySites,
   });
 
   @override
@@ -55,7 +61,8 @@ class _ShiftEditorState extends State<_ShiftEditor> {
   late int _start = s?.start ?? 9 * 60;
   late int _end = (s?.end ?? 17 * 60) % 1440;
   late String? _userId = s?.userId;
-  late String? _siteId = s?.siteId;
+  // Responsable de site : un de ses sites, obligatoirement.
+  late String? _siteId = s?.siteId ?? widget.onlySites?.firstOrNull;
   late String? _positionId = s?.positionId;
   late final _note = TextEditingController(text: s?.note);
 
@@ -78,7 +85,10 @@ class _ShiftEditorState extends State<_ShiftEditor> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final members = widget.data.members;
-    final sites = widget.data.sites.where((i) => !i.archived || i.id == _siteId).toList();
+    final only = widget.onlySites;
+    final sites = widget.data.sites
+        .where((i) => (!i.archived || i.id == _siteId) && (only == null || only.contains(i.id)))
+        .toList();
     final positions = widget.data.positions.where((i) => !i.archived || i.id == _positionId).toList();
     return Padding(
       padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
@@ -165,7 +175,7 @@ class _ShiftEditorState extends State<_ShiftEditor> {
                 initialValue: _siteId,
                 decoration: InputDecoration(labelText: t.site),
                 items: [
-                  const DropdownMenuItem(value: null, child: Text('—')),
+                  if (only == null) const DropdownMenuItem(value: null, child: Text('—')),
                   for (final p in sites) DropdownMenuItem(value: p.id, child: Text(p.name)),
                 ],
                 onChanged: (v) => setState(() => _siteId = v),

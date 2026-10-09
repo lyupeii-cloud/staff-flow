@@ -126,7 +126,7 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
                       t.messagesTab
                     ),
                     (_View.team, const Icon(Icons.group), t.viewTeam),
-                    if (role.canManage) (_View.catalog, const Icon(Icons.store), t.viewPositions),
+                    if (widget.membership.managesAll) (_View.catalog, const Icon(Icons.store), t.viewPositions),
                   ],
                   onSelected: (v) {
                     // L'équipe a pu changer : le planning repart de la liste à jour.
@@ -164,7 +164,7 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
                 _View.messages =>
                   MessagesView(session: widget.session, membership: widget.membership, data: data),
                 _View.team => TeamView(
-                    session: widget.session, membership: widget.membership, onChanged: _reload),
+                    session: widget.session, membership: widget.membership, data: data, onChanged: _reload),
                 _View.catalog => CatalogView(
                     session: widget.session, company: company, data: data, onChanged: _reload),
               };

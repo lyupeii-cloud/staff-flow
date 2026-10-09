@@ -744,4 +744,29 @@ class L10nHi extends L10n {
   @override
   String get readOnlyPastDays =>
       'एक महीने से पुराने दिन केवल देखे जा सकते हैं।';
+
+  @override
+  String get wholeCompany => 'पूरी कंपनी';
+
+  @override
+  String get sitesLabel => 'साइटें';
+
+  @override
+  String get actionSites => 'साइटें…';
+
+  @override
+  String managerOf(String name) {
+    return '$name की ज़िम्मेदारी';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return '$name की टीम';
+  }
+
+  @override
+  String get notYourSite => 'यह साइट आपकी ज़िम्मेदारी में नहीं है।';
+
+  @override
+  String get chooseYourSite => 'कम से कम एक साइट चुनें।';
 }

@@ -207,5 +207,12 @@
   "retentionWeek": "1 тиждень",
   "retentionMonth": "1 місяць",
   "billingOwnersOnly": "Діє лише, якщо ви власник компанії.",
-  "readOnlyPastDays": "Дні, що минули понад місяць тому, доступні лише для перегляду."
+  "readOnlyPastDays": "Дні, що минули понад місяць тому, доступні лише для перегляду.",
+  "wholeCompany": "Уся компанія",
+  "sitesLabel": "Підрозділи",
+  "actionSites": "Підрозділи…",
+  "managerOf": "{name} керує",
+  "teamSitesOf": "Команда: {name}",
+  "notYourSite": "Цей підрозділ не у вашому віданні.",
+  "chooseYourSite": "Оберіть щонайменше один підрозділ."
 }

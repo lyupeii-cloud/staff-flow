@@ -97,8 +97,14 @@ class Api {
       _send('PATCH', '/companies/$id', {'name': ?name, 'timezone': ?timezone});
 
 
-  Future<void> setRole(String companyId, String userId, Role role) =>
-      _send('PUT', '/companies/$companyId/members/$userId/role', {'role': role.name});
+  /// [sites] : pour un nouveau responsable, ses sites (`null` : toute l'entreprise).
+  Future<void> setRole(String companyId, String userId, Role role, {List<String>? sites}) =>
+      _send('PUT', '/companies/$companyId/members/$userId/role', {'role': role.name, 'sites': ?sites});
+
+  /// Sites d'un responsable, ou de l'équipe d'un salarié (`null` : toute
+  /// l'entreprise pour un responsable, aucun site pour un salarié).
+  Future<void> setMemberSites(String companyId, String userId, List<String>? sites) =>
+      _send('PUT', '/companies/$companyId/members/$userId/sites', {'sites': sites});
 
   /// Nom de la personne dans l'entreprise ; `null` : son propre nom.
   Future<void> renameMember(String companyId, String userId, String? name) =>
@@ -126,14 +132,14 @@ class Api {
   }
 
   /// Renvoie le nom de la personne invitée.
-  Future<String> redeemJoinCode(String companyId, String code, Role role) async {
-    final j = await _send('POST', '/companies/$companyId/join', {'code': code, 'role': role.name});
+  Future<String> redeemJoinCode(String companyId, String code, Role role, {List<String>? sites}) async {
+    final j = await _send('POST', '/companies/$companyId/join', {'code': code, 'role': role.name, 'sites': ?sites});
     return j['user']['name'] as String;
   }
 
   /// QR code permanent scanné par le responsable ; renvoie le nom de la personne.
-  Future<String> inviteByQr(String companyId, String qr, Role role) async {
-    final j = await _send('POST', '/companies/$companyId/invite', {'qr': qr, 'role': role.name});
+  Future<String> inviteByQr(String companyId, String qr, Role role, {List<String>? sites}) async {
+    final j = await _send('POST', '/companies/$companyId/invite', {'qr': qr, 'role': role.name, 'sites': ?sites});
     return j['user']['name'] as String;
   }
 

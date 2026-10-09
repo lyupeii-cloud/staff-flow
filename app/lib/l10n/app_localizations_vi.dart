@@ -738,4 +738,29 @@ class L10nVi extends L10n {
   @override
   String get readOnlyPastDays =>
       'Các ngày đã qua hơn một tháng chỉ có thể xem.';
+
+  @override
+  String get wholeCompany => 'Toàn công ty';
+
+  @override
+  String get sitesLabel => 'Địa điểm';
+
+  @override
+  String get actionSites => 'Địa điểm…';
+
+  @override
+  String managerOf(String name) {
+    return '$name phụ trách';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Nhóm của $name';
+  }
+
+  @override
+  String get notYourSite => 'Địa điểm này không thuộc trách nhiệm của bạn.';
+
+  @override
+  String get chooseYourSite => 'Chọn ít nhất một địa điểm.';
 }

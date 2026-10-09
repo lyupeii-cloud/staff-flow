@@ -749,4 +749,30 @@ class L10nNl extends L10n {
   @override
   String get readOnlyPastDays =>
       'Dagen van meer dan een maand geleden zijn alleen-lezen.';
+
+  @override
+  String get wholeCompany => 'Hele bedrijf';
+
+  @override
+  String get sitesLabel => 'Vestigingen';
+
+  @override
+  String get actionSites => 'Vestigingen…';
+
+  @override
+  String managerOf(String name) {
+    return '$name is verantwoordelijk voor';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Team van $name';
+  }
+
+  @override
+  String get notYourSite =>
+      'Deze vestiging valt niet onder jouw verantwoordelijkheid.';
+
+  @override
+  String get chooseYourSite => 'Kies minstens één vestiging.';
 }

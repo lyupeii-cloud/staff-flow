@@ -203,5 +203,12 @@
   "retentionWeek": "1 వారం",
   "retentionMonth": "1 నెల",
   "billingOwnersOnly": "మీకు కంపెనీ ఉంటేనే సక్రియం.",
-  "readOnlyPastDays": "ఒక నెల కంటే పాత రోజులు చదవడానికి మాత్రమే."
+  "readOnlyPastDays": "ఒక నెల కంటే పాత రోజులు చదవడానికి మాత్రమే.",
+  "wholeCompany": "మొత్తం కంపెనీ",
+  "sitesLabel": "సైట్‌లు",
+  "actionSites": "సైట్‌లు…",
+  "managerOf": "{name} బాధ్యతలో",
+  "teamSitesOf": "{name} టీమ్",
+  "notYourSite": "ఈ సైట్ మీ బాధ్యతలో లేదు.",
+  "chooseYourSite": "కనీసం ఒక సైట్‌ను ఎంచుకోండి."
 }
