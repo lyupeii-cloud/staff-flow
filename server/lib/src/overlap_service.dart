@@ -43,7 +43,7 @@ class OverlapService {
       WITH p AS ($_published AND s.published->>'userId' = @u)
       SELECT a.id::text, a.company_id::text, c.name, a.day, a.st, a.en, si.name, po.name,
         EXISTS (SELECT 1 FROM p b WHERE b.company_id <> a.company_id AND b.t0 < a.t1 AND a.t0 < b.t1),
-        a.t0, a.t1
+        a.t0, a.t1, c.timezone
       FROM p a
       JOIN companies c ON c.id = a.company_id
       LEFT JOIN sites si ON si.id::text = a.site_id
@@ -65,6 +65,7 @@ class OverlapService {
           // Début et fin en heure réelle (agenda du téléphone).
           'startsAt': (r[9] as DateTime).toUtc().toIso8601String(),
           'endsAt': (r[10] as DateTime).toUtc().toIso8601String(),
+          'timezone': r[11],
         },
     ];
   }

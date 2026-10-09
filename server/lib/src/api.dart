@@ -100,6 +100,21 @@ class Api {
       ..post('/companies/<id>/shifts/<shiftId>/revert', _authed((r, u) async =>
           _json({'reverted': await planning.revert(u, r.params['id']!, r.params['shiftId']!)})))
       ..put('/companies/<id>/notify-sites', _authed(_notifySites))
+      ..put('/companies/<id>/notifications', _authed((r, u) async {
+        final body = await _body(r);
+        if (body['enabled'] is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        await companies.open(u, r.params['id']!);
+        await store.setNotificationsOn(r.params['id']!, u.id, body['enabled'] as bool);
+        return Response(204);
+      }))
+      // Fuseaux horaires du monde (base IANA de PostgreSQL), avec leur décalage actuel.
+      ..get('/timezones', _authed((r, u) async {
+        final rows = await store.query(store.db, '''
+          SELECT name, extract(epoch FROM utc_offset)::int / 60 FROM pg_timezone_names
+          WHERE name ~ '^(Africa|America|Antarctica|Asia|Atlantic|Australia|Europe|Indian|Pacific)/' AND name !~ '^posix'
+          ORDER BY name''', const {});
+        return _json({'timezones': [for (final row in rows) {'name': row[0], 'offset': row[1]}]});
+      }))
       // Plusieurs employeurs : tous ses plannings, personnes déjà en service ailleurs
       ..get('/me/shifts', _authed(_myShifts))
       // Outils du responsable : alertes légales, totaux, exports, agenda

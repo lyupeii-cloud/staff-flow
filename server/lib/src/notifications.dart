@@ -181,7 +181,9 @@ class NotificationService {
       JOIN users u ON u.id = n.user_id
       JOIN push_devices d ON d.user_id = n.user_id
       LEFT JOIN companies c ON c.id = n.company_id
-      WHERE n.id = ANY(@ids::uuid[])''', {'ids': noticeIds});
+      WHERE n.id = ANY(@ids::uuid[])
+        AND NOT EXISTS (SELECT 1 FROM memberships m WHERE m.company_id = n.company_id AND m.user_id = n.user_id
+                          AND m.left_at IS NULL AND m.notifications_off)''', {'ids': noticeIds});
     await Future.wait([
       for (final r in rows)
         if (wants(r[5] as Map<String, dynamic>, r[1] as String))
@@ -202,7 +204,9 @@ class NotificationService {
     Future<void> run() async {
       final rows = await store.query(store.db, '''
         SELECT d.token, u.notification_prefs FROM push_devices d JOIN users u ON u.id = d.user_id
-        WHERE d.user_id = ANY(@ids::uuid[])''', {'ids': ids});
+        WHERE d.user_id = ANY(@ids::uuid[])
+          AND NOT EXISTS (SELECT 1 FROM memberships m WHERE m.company_id::text = @c AND m.user_id = d.user_id
+                            AND m.left_at IS NULL AND m.notifications_off)''', {'ids': ids, 'c': data['companyId']});
       await Future.wait([
         for (final r in rows)
           if ((r[1] as Map<String, dynamic>)[category.name] != false) _sendRaw(r[0] as String, title, body, data),

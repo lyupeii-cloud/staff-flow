@@ -153,13 +153,16 @@ class Store {
 
   Future<List<Membership>> membershipsOf(String userId) async {
     final rows = await query(_db, '''
-      SELECT c.*, m.role, m.sites::text[] AS member_sites, m.notify_sites::text[] AS notify_sites FROM memberships m JOIN companies c ON c.id = m.company_id
+      SELECT c.*, m.role, m.sites::text[] AS member_sites, m.notify_sites::text[] AS notify_sites, m.notifications_off,
+        (extract(epoch FROM (now() AT TIME ZONE c.timezone) - (now() AT TIME ZONE 'UTC')) / 60)::int AS utc_offset
+      FROM memberships m JOIN companies c ON c.id = m.company_id
       WHERE m.user_id = @u::uuid AND m.left_at IS NULL
       ORDER BY c.created_at''', {'u': userId});
     return [
       for (final r in rows)
         Membership(companyFromRow(r.toColumnMap()), Role.parse(r.toColumnMap()['role'] as String),
-            _sites(r.toColumnMap()['member_sites']), _sites(r.toColumnMap()['notify_sites'])),
+            _sites(r.toColumnMap()['member_sites']), _sites(r.toColumnMap()['notify_sites']),
+            r.toColumnMap()['notifications_off'] != true, r.toColumnMap()['utc_offset'] as int?),
     ];
   }
 
@@ -239,6 +242,12 @@ class Store {
       SELECT notify_sites::text[] FROM memberships
       WHERE company_id = @c::uuid AND user_id = @u::uuid AND left_at IS NULL''', {'c': companyId, 'u': userId});
     return rows.isEmpty ? null : _sites(rows.first[0]);
+  }
+
+  Future<void> setNotificationsOn(String companyId, String userId, bool on) async {
+    await query(_db, '''
+      UPDATE memberships SET notifications_off = @off
+      WHERE company_id = @c::uuid AND user_id = @u::uuid AND left_at IS NULL''', {'c': companyId, 'u': userId, 'off': !on});
   }
 
   Future<void> setNotifySites(String companyId, String userId, List<String>? sites) async {

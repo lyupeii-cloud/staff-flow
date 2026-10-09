@@ -352,4 +352,8 @@ ALTER TABLE users ADD COLUMN calendar_token text UNIQUE;
   '''
 ALTER TABLE memberships ADD COLUMN appointed_by uuid REFERENCES users(id) ON DELETE SET NULL;
 ''',
+  // 18 — notifications coupées pour une entreprise (l'avis reste dans la cloche).
+  '''
+ALTER TABLE memberships ADD COLUMN notifications_off boolean NOT NULL DEFAULT false;
+''',
 ];

@@ -129,10 +129,23 @@ class Membership {
   /// Responsable : sites dont il reçoit les notifications (`null` : tous).
   final List<String>? notifySites;
 
-  const Membership(this.company, this.role, [this.sites, this.notifySites]);
+  /// Notifications de cette entreprise sur le téléphone.
+  final bool notificationsOn;
 
-  Map<String, Object?> toJson() =>
-      {'company': company.toJson(), 'role': role.name, 'sites': sites, 'notifySites': notifySites};
+  /// Décalage actuel de l'heure de l'entreprise avec UTC, en minutes
+  /// (heure d'été comprise).
+  final int? utcOffset;
+
+  const Membership(this.company, this.role, [this.sites, this.notifySites, this.notificationsOn = true, this.utcOffset]);
+
+  Map<String, Object?> toJson() => {
+        'company': company.toJson(),
+        'role': role.name,
+        'sites': sites,
+        'notifySites': notifySites,
+        'notificationsOn': notificationsOn,
+        'utcOffset': utcOffset,
+      };
 }
 
 class Member {

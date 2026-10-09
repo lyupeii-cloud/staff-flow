@@ -31,6 +31,35 @@ void main() {
   Future<void> shift(Client c, String? userId, {String day = '2026-10-06'}) =>
       c.ok('POST', '/companies/$company/shifts', {'days': [day], 'start': 480, 'end': 960, 'userId': userId});
 
+  group('par entreprise', () {
+    test('notifications coupées pour une entreprise : rien sur le téléphone, l\'avis reste dans la cloche', () async {
+      await device(bob, 'tel-bob');
+      await bob.ok('PUT', '/companies/$company/notifications', {'enabled': false});
+      final mine = (await bob.ok('GET', '/me'))['companies'].single;
+      expect([mine['notificationsOn'], mine['utcOffset']], [false, anyOf(60, 120)], reason: 'Paris');
+      await shift(owner, bob.id);
+      await owner.ok('POST', '/companies/$company/publish');
+      expect(await sent(), isEmpty);
+      expect((await bob.ok('GET', '/notices'))['notices'], hasLength(1));
+      // Les messages de cette entreprise non plus.
+      final group = (await bob.ok('GET', '/companies/$company/conversations'))['conversations'].first['id'];
+      await owner.ok('POST', '/conversations/$group/messages', {'body': 'Bonjour'});
+      expect(await sent(), isEmpty);
+      await bob.ok('PUT', '/companies/$company/notifications', {'enabled': true});
+      await owner.ok('POST', '/conversations/$group/messages', {'body': 'Re'});
+      expect((await sent()).map((m) => m.token), ['tel-bob']);
+      expect((await bob('PUT', '/companies/$company/notifications', {'enabled': 'non'})).$1, 400);
+    });
+
+    test('la liste des fuseaux horaires du monde, avec leur décalage', () async {
+      final zones = (await bob.ok('GET', '/timezones'))['timezones'] as List;
+      final kyiv = zones.firstWhere((z) => z['name'] == 'Europe/Kyiv');
+      expect(kyiv['offset'], anyOf(120, 180));
+      expect(zones.any((z) => z['name'] == 'America/New_York'), isTrue);
+      expect(zones.any((z) => (z['name'] as String).startsWith('posix')), isFalse);
+    });
+  });
+
   group('publication du planning', () {
     test('une seule notification par salarié concerné, dans sa langue', () async {
       await device(bob, 'tel-bob');
