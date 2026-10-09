@@ -310,5 +310,21 @@
   "alertRest": "{name}: mapumziko ya {value} tu (kiwango cha chini {limit})",
   "alertWeek": "{name}: {value} kwa wiki (kiwango cha juu {limit})",
   "legalAlertsCount": "Tahadhari za kisheria: {count}",
-  "shiftsCount": "Zamu: {count}"
+  "shiftsCount": "Zamu: {count}",
+  "actionMakeDeputy": "Teua kuwa naibu msimamizi",
+  "actionRemoveDeputy": "Ondoa jukumu la naibu",
+  "busyHere": "Tayari yuko kazini katika kampuni hii wakati huu",
+  "calendarByLink": "Kwa kiungo (Kalenda ya Google kwenye kompyuta)",
+  "calendarDenied": "Ufikiaji wa kalenda umekataliwa. Uruhusu katika mipangilio ya simu.",
+  "calendarLinkHint": "Ongeza kutoka Kalenda ya Google kwenye kompyuta; Google huisasisha ndani ya saa chache.",
+  "calendarNone": "Hakuna kalenda inayoweza kuhaririwa kwenye simu hii.",
+  "calendarOnPhone": "Ongeza zamu zangu kwenye kalenda ya simu",
+  "calendarOnPhoneHint": "Kwenye kalenda yako ya Google: inaonekana mara moja, kwenye simu na Kalenda ya Google.",
+  "chooseCalendar": "Chagua kalenda",
+  "otherSiteHint": "Mfanyakazi wa eneo lingine: wasimamizi wake wataarifiwa.",
+  "subManager": "Naibu msimamizi",
+  "calendarSynced": "Zamu kwenye kalenda: {count}",
+  "deputyOf": "Naibu msimamizi: {name}",
+  "noticeBorrowed": "{by} amempanga {name} katika {site} tarehe {date}.",
+  "noticeReinforcement": "{company} imekuongeza kama msaidizi."
 }

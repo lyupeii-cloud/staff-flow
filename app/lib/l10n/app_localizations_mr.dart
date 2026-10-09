@@ -1113,4 +1113,64 @@ class L10nMr extends L10n {
   String shiftsCount(String count) {
     return 'शिफ्ट: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'उप-व्यवस्थापक नेमा';
+
+  @override
+  String get actionRemoveDeputy => 'उप-व्यवस्थापकाची भूमिका काढा';
+
+  @override
+  String get busyHere => 'या वेळी आधीच या कंपनीत कामावर';
+
+  @override
+  String get calendarByLink => 'लिंकद्वारे (संगणकावर Google कॅलेंडर)';
+
+  @override
+  String get calendarDenied =>
+      'कॅलेंडरचा प्रवेश नाकारला. फोनच्या सेटिंग्जमध्ये परवानगी द्या.';
+
+  @override
+  String get calendarLinkHint =>
+      'संगणकावरील Google कॅलेंडरमधून जोडा; Google काही तासांत अद्ययावत करते.';
+
+  @override
+  String get calendarNone => 'या फोनवर बदलता येणारे कॅलेंडर नाही.';
+
+  @override
+  String get calendarOnPhone => 'माझ्या शिफ्ट फोनच्या कॅलेंडरमध्ये जोडा';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'तुमच्या Google कॅलेंडरमध्ये: फोनवर आणि Google कॅलेंडरमध्ये लगेच दिसेल.';
+
+  @override
+  String get chooseCalendar => 'कॅलेंडर निवडा';
+
+  @override
+  String get otherSiteHint =>
+      'दुसऱ्या ठिकाणचा कर्मचारी: त्याच्या व्यवस्थापकांना कळवले जाईल.';
+
+  @override
+  String get subManager => 'उप-व्यवस्थापक';
+
+  @override
+  String calendarSynced(String count) {
+    return 'कॅलेंडरमधील शिफ्ट: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'उप-व्यवस्थापक: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by यांनी $date रोजी $name यांना $site येथे नेमले.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company ने तुम्हाला मदतनीस म्हणून जोडले.';
+  }
 }

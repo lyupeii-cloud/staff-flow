@@ -1117,4 +1117,65 @@ class L10nSw extends L10n {
   String shiftsCount(String count) {
     return 'Zamu: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Teua kuwa naibu msimamizi';
+
+  @override
+  String get actionRemoveDeputy => 'Ondoa jukumu la naibu';
+
+  @override
+  String get busyHere => 'Tayari yuko kazini katika kampuni hii wakati huu';
+
+  @override
+  String get calendarByLink => 'Kwa kiungo (Kalenda ya Google kwenye kompyuta)';
+
+  @override
+  String get calendarDenied =>
+      'Ufikiaji wa kalenda umekataliwa. Uruhusu katika mipangilio ya simu.';
+
+  @override
+  String get calendarLinkHint =>
+      'Ongeza kutoka Kalenda ya Google kwenye kompyuta; Google huisasisha ndani ya saa chache.';
+
+  @override
+  String get calendarNone =>
+      'Hakuna kalenda inayoweza kuhaririwa kwenye simu hii.';
+
+  @override
+  String get calendarOnPhone => 'Ongeza zamu zangu kwenye kalenda ya simu';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'Kwenye kalenda yako ya Google: inaonekana mara moja, kwenye simu na Kalenda ya Google.';
+
+  @override
+  String get chooseCalendar => 'Chagua kalenda';
+
+  @override
+  String get otherSiteHint =>
+      'Mfanyakazi wa eneo lingine: wasimamizi wake wataarifiwa.';
+
+  @override
+  String get subManager => 'Naibu msimamizi';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Zamu kwenye kalenda: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Naibu msimamizi: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by amempanga $name katika $site tarehe $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company imekuongeza kama msaidizi.';
+  }
 }

@@ -127,7 +127,11 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
           bottom: companies.isEmpty
               ? null
-              : TabBar(
+              : PreferredSize(
+                  preferredSize: const Size.fromHeight(kTextTabBarHeight),
+                  child: Row(children: [
+                    Flexible(
+                      child: TabBar(
                   isScrollable: true,
                   tabAlignment: TabAlignment.start,
                   tabs: [
@@ -150,6 +154,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             )
                           : Tab(text: m.company.name),
                   ],
+                      ),
+                    ),
+                    // Nouvelle entreprise : un onglet de plus.
+                    IconButton(
+                      tooltip: context.l10n.newCompany,
+                      color: Colors.white,
+                      onPressed: () => createCompany(context, session),
+                      icon: const Icon(Icons.add_circle_outline),
+                    ),
+                  ]),
                 ),
         ),
         body: Column(
@@ -354,7 +368,6 @@ class _ProfileMenu extends StatelessWidget {
         _item('notifications', Icons.notifications_outlined, t.notificationsTitle),
         _item('calendar', Icons.event, t.googleCalendar),
         _item('join', Icons.pin_outlined, t.joinCompany),
-        _item('create', Icons.add_business, t.newCompany),
         _item('copy', Icons.copy, t.myId(user.publicId)),
         _item('language', Icons.language, t.language),
         _item('logout', Icons.logout, t.signOut),

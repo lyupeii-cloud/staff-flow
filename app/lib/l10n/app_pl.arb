@@ -310,5 +310,21 @@
   "alertRest": "{name}: tylko {value} odpoczynku (minimum {limit})",
   "alertWeek": "{name}: {value} w tygodniu (maksymalnie {limit})",
   "legalAlertsCount": "Ostrzeżenia prawne: {count}",
-  "shiftsCount": "Zmiany: {count}"
+  "shiftsCount": "Zmiany: {count}",
+  "actionMakeDeputy": "Mianuj zastępcą kierownika",
+  "actionRemoveDeputy": "Odbierz rolę zastępcy",
+  "busyHere": "Pracuje już w firmie w tym czasie",
+  "calendarByLink": "Przez link (Kalendarz Google na komputerze)",
+  "calendarDenied": "Odmówiono dostępu do kalendarza. Zezwól na niego w ustawieniach telefonu.",
+  "calendarLinkHint": "Dodaj z Kalendarza Google na komputerze; Google aktualizuje go w ciągu kilku godzin.",
+  "calendarNone": "Brak edytowalnego kalendarza na tym telefonie.",
+  "calendarOnPhone": "Dodaj moje zmiany do kalendarza telefonu",
+  "calendarOnPhoneHint": "W twoim kalendarzu Google: widoczne od razu, w telefonie i w Kalendarzu Google.",
+  "chooseCalendar": "Wybierz kalendarz",
+  "otherSiteHint": "Pracownik innej lokalizacji: jego kierownicy zostaną powiadomieni.",
+  "subManager": "Zastępca kierownika",
+  "calendarSynced": "Zmiany w kalendarzu: {count}",
+  "deputyOf": "Zastępca kierownika: {name}",
+  "noticeBorrowed": "{by} przydzielił {name} do lokalizacji {site} {date}.",
+  "noticeReinforcement": "{company} dodała cię jako wsparcie."
 }

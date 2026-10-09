@@ -1112,4 +1112,64 @@ class L10nMs extends L10n {
   String shiftsCount(String count) {
     return 'Syif: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Lantik sebagai timbalan pengurus';
+
+  @override
+  String get actionRemoveDeputy => 'Tarik balik peranan timbalan';
+
+  @override
+  String get busyHere => 'Sudah bekerja di syarikat ini pada waktu ini';
+
+  @override
+  String get calendarByLink => 'Melalui pautan (Kalendar Google di komputer)';
+
+  @override
+  String get calendarDenied =>
+      'Akses kalendar ditolak. Benarkan dalam tetapan telefon.';
+
+  @override
+  String get calendarLinkHint =>
+      'Tambah dari Kalendar Google di komputer; Google mengemas kininya dalam beberapa jam.';
+
+  @override
+  String get calendarNone => 'Tiada kalendar boleh disunting pada telefon ini.';
+
+  @override
+  String get calendarOnPhone => 'Tambah syif saya ke kalendar telefon';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'Dalam kalendar Google anda: kelihatan serta-merta, di telefon dan di Kalendar Google.';
+
+  @override
+  String get chooseCalendar => 'Pilih kalendar';
+
+  @override
+  String get otherSiteHint =>
+      'Pekerja dari lokasi lain: pengurusnya akan dimaklumkan.';
+
+  @override
+  String get subManager => 'Timbalan pengurus';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Syif dalam kalendar: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Timbalan pengurus: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by menempatkan $name di lokasi $site pada $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company menambah anda sebagai tenaga bantuan.';
+  }
 }

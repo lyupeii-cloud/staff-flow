@@ -310,5 +310,21 @@
   "alertRest": "{name}: chỉ nghỉ {value} (tối thiểu {limit})",
   "alertWeek": "{name}: {value} trong tuần (tối đa {limit})",
   "legalAlertsCount": "Cảnh báo theo luật: {count}",
-  "shiftsCount": "Ca làm: {count}"
+  "shiftsCount": "Ca làm: {count}",
+  "actionMakeDeputy": "Bổ nhiệm phó quản lý",
+  "actionRemoveDeputy": "Gỡ vai trò phó quản lý",
+  "busyHere": "Đã làm ở công ty này vào khung giờ này",
+  "calendarByLink": "Qua liên kết (Google Lịch trên máy tính)",
+  "calendarDenied": "Quyền truy cập lịch bị từ chối. Hãy cho phép trong cài đặt điện thoại.",
+  "calendarLinkHint": "Thêm từ Google Lịch trên máy tính; Google cập nhật trong vài giờ.",
+  "calendarNone": "Không có lịch nào chỉnh sửa được trên điện thoại này.",
+  "calendarOnPhone": "Thêm ca làm của tôi vào lịch điện thoại",
+  "calendarOnPhoneHint": "Trong lịch Google của bạn: thấy ngay, trên điện thoại và trên Google Lịch.",
+  "chooseCalendar": "Chọn lịch",
+  "otherSiteHint": "Nhân viên của địa điểm khác: quản lý của họ sẽ được báo.",
+  "subManager": "Phó quản lý",
+  "calendarSynced": "Ca trong lịch: {count}",
+  "deputyOf": "Phó quản lý: {name}",
+  "noticeBorrowed": "{by} đã xếp {name} vào địa điểm {site} ngày {date}.",
+  "noticeReinforcement": "{company} đã thêm bạn làm nhân sự hỗ trợ."
 }

@@ -1105,4 +1105,63 @@ class L10nTh extends L10n {
   String shiftsCount(String count) {
     return 'กะ: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'แต่งตั้งเป็นรองหัวหน้า';
+
+  @override
+  String get actionRemoveDeputy => 'ถอนบทบาทรองหัวหน้า';
+
+  @override
+  String get busyHere => 'มีกะในบริษัทนี้ช่วงเวลานี้แล้ว';
+
+  @override
+  String get calendarByLink => 'ผ่านลิงก์ (Google ปฏิทินบนคอมพิวเตอร์)';
+
+  @override
+  String get calendarDenied =>
+      'ถูกปฏิเสธการเข้าถึงปฏิทิน อนุญาตได้ในการตั้งค่าโทรศัพท์';
+
+  @override
+  String get calendarLinkHint =>
+      'เพิ่มจาก Google ปฏิทินบนคอมพิวเตอร์ Google จะอัปเดตภายในไม่กี่ชั่วโมง';
+
+  @override
+  String get calendarNone => 'ไม่มีปฏิทินที่แก้ไขได้ในโทรศัพท์นี้';
+
+  @override
+  String get calendarOnPhone => 'เพิ่มกะของฉันลงในปฏิทินของโทรศัพท์';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'ในปฏิทิน Google ของคุณ: เห็นได้ทันที ทั้งในโทรศัพท์และ Google ปฏิทิน';
+
+  @override
+  String get chooseCalendar => 'เลือกปฏิทิน';
+
+  @override
+  String get otherSiteHint => 'พนักงานจากสาขาอื่น: หัวหน้าของเขาจะได้รับแจ้ง';
+
+  @override
+  String get subManager => 'รองหัวหน้า';
+
+  @override
+  String calendarSynced(String count) {
+    return 'กะในปฏิทิน: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'รองหัวหน้า: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by จัด $name ไปที่สาขา $site ในวันที่ $date';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company เพิ่มคุณเป็นกำลังเสริม';
+  }
 }

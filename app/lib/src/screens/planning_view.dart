@@ -235,6 +235,17 @@ class _PlanningViewState extends State<PlanningView> {
     _load();
   }
 
+  /// La même personne a un autre service qui chevauche celui-ci.
+  bool _doubleBooked(Shift s) {
+    if (s.userId == null || s.status == ShiftStatus.deleted) return false;
+    final start = s.day.millisecondsSinceEpoch ~/ 60000 + s.start, end = start + s.minutes;
+    return _shifts.any((o) {
+      if (o.id == s.id || o.userId != s.userId || o.status == ShiftStatus.deleted) return false;
+      final os = o.day.millisecondsSinceEpoch ~/ 60000 + o.start;
+      return os < end && start < os + o.minutes;
+    });
+  }
+
   List<StaffRequest> _absentOn(DateTime day) => _absences.where((a) => a.covers(day)).toList();
 
   bool _isAbsent(String? userId, DateTime day) =>
@@ -565,7 +576,7 @@ class _PlanningViewState extends State<PlanningView> {
     final request = _requests.where((r) => r.shiftId == s.id).firstOrNull;
     final legal = deleted ? const <Map<String, dynamic>>[] : _alertsFor(s);
     final revertable = canEdit && badge != null && !s.pending && widget.membership.canEditSite(s.siteId);
-    final absent = !deleted && _isAbsent(s.userId, s.day);
+    final absent = !deleted && (_isAbsent(s.userId, s.day) || _doubleBooked(s));
     final canOffer = !canEdit && mine && !s.pending && s.status == ShiftStatus.published &&
         !dateOnly(s.day).isBefore(dateOnly(DateTime.now())) && !company.readOnly;
     return Card(
@@ -589,7 +600,7 @@ class _PlanningViewState extends State<PlanningView> {
                 : null,
         leading: absent
             ? Tooltip(
-                message: t.absentThatDay,
+                message: _doubleBooked(s) ? t.busyHere : t.absentThatDay,
                 triggerMode: TooltipTriggerMode.tap,
                 child: CircleAvatar(
                   radius: 12,

@@ -135,7 +135,7 @@ class _TeamViewState extends State<TeamView> {
       ),
       title: Text(isMe ? t.meSuffix(m.user.name) : m.user.name),
       subtitle: Text([
-        m.role.label(t),
+        if (m.appointedBy != null) t.subManager else m.role.label(t),
         if (m.role == Role.manager) m.sites == null ? t.wholeCompany : _siteNames(m.sites),
         if (m.role != Role.manager && m.sites != null) _siteNames(m.sites),
         m.user.publicId,
@@ -161,15 +161,18 @@ class _TeamViewState extends State<TeamView> {
     // Responsable de site : seulement les salariés et extras de ses sites.
     final mineToo = isManager && targetIsStaff && _inMySites(m);
     final hasSites = widget.data.sites.any((s) => !s.archived);
+    // Sous-responsable qu'il a nommé lui-même.
+    final myDeputy = isManager && m.role == Role.manager && m.appointedBy == widget.session.me?.user.id;
     return [
       if (isOwner || mineToo) _MemberAction.rename,
       if (isOwner && targetIsStaff) _MemberAction.makeManager,
-      if (isOwner && m.role == Role.manager) _MemberAction.makeEmployee,
+      if (isManager && mineToo && hasSites) _MemberAction.makeDeputy,
+      if ((isOwner && m.role == Role.manager) || myDeputy) _MemberAction.makeEmployee,
       if (isOwner || mineToo) _MemberAction.toggleExtra,
       if (hasSites && ((isOwner && m.role == Role.manager) || ((isOwner || isManager) && targetIsStaff)))
         _MemberAction.sites,
       if (isOwner && m.role == Role.manager) _MemberAction.transfer,
-      if (isOwner || mineToo) _MemberAction.remove,
+      if (isOwner || mineToo || myDeputy) _MemberAction.remove,
     ];
   }
 
@@ -195,6 +198,14 @@ class _TeamViewState extends State<TeamView> {
             : (sites: null,);
         if (scope != null) {
           await _act(() => api.setRole(company.id, m.user.id, Role.manager, sites: scope.sites ?? const []));
+        }
+      case _MemberAction.makeDeputy:
+        // Sous-responsable : un ou plusieurs de ses propres sites.
+        final scope = await _pickSites(t.deputyOf(m.user.name), const [], allowWhole: false);
+        if (scope != null && (scope.sites ?? const []).isNotEmpty) {
+          await _act(() => api.setRole(company.id, m.user.id, Role.manager, sites: scope.sites));
+        } else if (scope != null && mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.chooseYourSite)));
         }
       case _MemberAction.sites:
         final chosen = await _pickSites(
@@ -415,6 +426,7 @@ enum _MemberAction {
   rename,
   sites,
   makeManager,
+  makeDeputy,
   makeEmployee,
   toggleExtra,
   transfer,
@@ -424,7 +436,8 @@ enum _MemberAction {
         rename => t.rename,
         sites => t.actionSites,
         makeManager => t.actionMakeManager,
-        makeEmployee => t.actionMakeEmployee,
+        makeDeputy => t.actionMakeDeputy,
+        makeEmployee => m.appointedBy != null ? t.actionRemoveDeputy : t.actionMakeEmployee,
         toggleExtra => m.role == Role.extra ? t.actionToEmployee : t.actionToExtra,
         transfer => t.actionTransfer,
         remove => t.actionRemove,

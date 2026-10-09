@@ -310,5 +310,21 @@
   "alertRest": "{name}: মাত্র {value} বিশ্রাম (ন্যূনতম {limit})",
   "alertWeek": "{name}: সপ্তাহে {value} (সর্বোচ্চ {limit})",
   "legalAlertsCount": "আইনি সতর্কতা: {count}",
-  "shiftsCount": "শিফট: {count}"
+  "shiftsCount": "শিফট: {count}",
+  "actionMakeDeputy": "উপ-ব্যবস্থাপক নিযুক্ত করুন",
+  "actionRemoveDeputy": "উপ-ব্যবস্থাপকের ভূমিকা সরান",
+  "busyHere": "এই সময়ে ইতিমধ্যে এই কোম্পানিতে কাজে আছেন",
+  "calendarByLink": "লিংকের মাধ্যমে (কম্পিউটারে Google ক্যালেন্ডার)",
+  "calendarDenied": "ক্যালেন্ডারের অনুমতি দেওয়া হয়নি। ফোনের সেটিংসে অনুমতি দিন।",
+  "calendarLinkHint": "কম্পিউটারে Google ক্যালেন্ডার থেকে যোগ করুন; Google কয়েক ঘণ্টায় হালনাগাদ করে।",
+  "calendarNone": "এই ফোনে সম্পাদনযোগ্য কোনো ক্যালেন্ডার নেই।",
+  "calendarOnPhone": "আমার শিফট ফোনের ক্যালেন্ডারে যোগ করুন",
+  "calendarOnPhoneHint": "আপনার Google ক্যালেন্ডারে: ফোন ও Google ক্যালেন্ডারে সঙ্গে সঙ্গে দেখা যাবে।",
+  "chooseCalendar": "ক্যালেন্ডার বাছুন",
+  "otherSiteHint": "অন্য স্থানের কর্মী: তাঁর ব্যবস্থাপকদের জানানো হবে।",
+  "subManager": "উপ-ব্যবস্থাপক",
+  "calendarSynced": "ক্যালেন্ডারে শিফট: {count}",
+  "deputyOf": "উপ-ব্যবস্থাপক: {name}",
+  "noticeBorrowed": "{by} {date} তারিখে {name}-কে {site}-এ রেখেছেন।",
+  "noticeReinforcement": "{company} আপনাকে সহায়ক কর্মী হিসেবে যোগ করেছে।"
 }

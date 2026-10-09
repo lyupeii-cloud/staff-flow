@@ -310,5 +310,21 @@
   "alertRest": "{name}: μόνο {value} ανάπαυση (ελάχιστο {limit})",
   "alertWeek": "{name}: {value} μέσα στην εβδομάδα (μέγιστο {limit})",
   "legalAlertsCount": "Νομικές προειδοποιήσεις: {count}",
-  "shiftsCount": "Βάρδιες: {count}"
+  "shiftsCount": "Βάρδιες: {count}",
+  "actionMakeDeputy": "Ορισμός αναπληρωτή υπευθύνου",
+  "actionRemoveDeputy": "Αφαίρεση ρόλου αναπληρωτή",
+  "busyHere": "Εργάζεται ήδη στην εταιρεία αυτή την ώρα",
+  "calendarByLink": "Με σύνδεσμο (Google Calendar σε υπολογιστή)",
+  "calendarDenied": "Η πρόσβαση στο ημερολόγιο απορρίφθηκε. Επιτρέψτε την στις ρυθμίσεις του τηλεφώνου.",
+  "calendarLinkHint": "Προσθέστε το από το Google Calendar σε υπολογιστή· η Google το ενημερώνει μέσα σε λίγες ώρες.",
+  "calendarNone": "Δεν υπάρχει επεξεργάσιμο ημερολόγιο σε αυτό το τηλέφωνο.",
+  "calendarOnPhone": "Προσθήκη των βαρδιών μου στο ημερολόγιο του τηλεφώνου",
+  "calendarOnPhoneHint": "Στο ημερολόγιο Google σας: ορατό αμέσως, στο τηλέφωνο και στο Google Calendar.",
+  "chooseCalendar": "Επιλογή ημερολογίου",
+  "otherSiteHint": "Υπάλληλος άλλου καταστήματος: οι υπεύθυνοί του θα ειδοποιηθούν.",
+  "subManager": "Αναπληρωτής υπευθύνου",
+  "calendarSynced": "Βάρδιες στο ημερολόγιο: {count}",
+  "deputyOf": "Αναπληρωτής υπευθύνου: {name}",
+  "noticeBorrowed": "Ο/Η {by} έβαλε τον/την {name} στο κατάστημα {site} στις {date}.",
+  "noticeReinforcement": "Η {company} σας πρόσθεσε ως ενίσχυση."
 }

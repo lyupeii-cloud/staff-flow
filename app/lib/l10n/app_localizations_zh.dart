@@ -1087,4 +1087,60 @@ class L10nZh extends L10n {
   String shiftsCount(String count) {
     return '班次：$count';
   }
+
+  @override
+  String get actionMakeDeputy => '任命为副负责人';
+
+  @override
+  String get actionRemoveDeputy => '撤销副负责人角色';
+
+  @override
+  String get busyHere => '该时段已在本公司上班';
+
+  @override
+  String get calendarByLink => '通过链接（电脑上的 Google 日历）';
+
+  @override
+  String get calendarDenied => '日历访问被拒绝。请在手机设置中允许。';
+
+  @override
+  String get calendarLinkHint => '请在电脑上的 Google 日历中添加；Google 会在几小时内更新。';
+
+  @override
+  String get calendarNone => '此手机上没有可编辑的日历。';
+
+  @override
+  String get calendarOnPhone => '将我的班次添加到手机日历';
+
+  @override
+  String get calendarOnPhoneHint => '在您的 Google 日历中：手机和 Google 日历上立即可见。';
+
+  @override
+  String get chooseCalendar => '选择日历';
+
+  @override
+  String get otherSiteHint => '其他门店的员工：将通知其负责人。';
+
+  @override
+  String get subManager => '副负责人';
+
+  @override
+  String calendarSynced(String count) {
+    return '日历中的班次：$count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return '副负责人：$name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by 在 $date 将 $name 安排到了 $site。';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company 已将您添加为支援人员。';
+  }
 }

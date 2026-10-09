@@ -310,5 +310,21 @@
   "alertRest": "{name}: ਸਿਰਫ਼ {value} ਆਰਾਮ (ਘੱਟੋ-ਘੱਟ {limit})",
   "alertWeek": "{name}: ਹਫ਼ਤੇ ਵਿੱਚ {value} (ਵੱਧ ਤੋਂ ਵੱਧ {limit})",
   "legalAlertsCount": "ਕਾਨੂੰਨੀ ਚੇਤਾਵਨੀਆਂ: {count}",
-  "shiftsCount": "ਸ਼ਿਫ਼ਟਾਂ: {count}"
+  "shiftsCount": "ਸ਼ਿਫ਼ਟਾਂ: {count}",
+  "actionMakeDeputy": "ਉਪ-ਮੈਨੇਜਰ ਨਿਯੁਕਤ ਕਰੋ",
+  "actionRemoveDeputy": "ਉਪ-ਮੈਨੇਜਰ ਦੀ ਭੂਮਿਕਾ ਹਟਾਓ",
+  "busyHere": "ਇਸ ਸਮੇਂ ਪਹਿਲਾਂ ਹੀ ਇਸ ਕੰਪਨੀ ਵਿੱਚ ਡਿਊਟੀ 'ਤੇ",
+  "calendarByLink": "ਲਿੰਕ ਰਾਹੀਂ (ਕੰਪਿਊਟਰ 'ਤੇ Google ਕੈਲੰਡਰ)",
+  "calendarDenied": "ਕੈਲੰਡਰ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਮਿਲੀ। ਫ਼ੋਨ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਇਜਾਜ਼ਤ ਦਿਓ।",
+  "calendarLinkHint": "ਕੰਪਿਊਟਰ 'ਤੇ Google ਕੈਲੰਡਰ ਤੋਂ ਜੋੜੋ; Google ਕੁਝ ਘੰਟਿਆਂ ਵਿੱਚ ਅੱਪਡੇਟ ਕਰਦਾ ਹੈ।",
+  "calendarNone": "ਇਸ ਫ਼ੋਨ 'ਤੇ ਬਦਲਣਯੋਗ ਕੋਈ ਕੈਲੰਡਰ ਨਹੀਂ।",
+  "calendarOnPhone": "ਮੇਰੀਆਂ ਸ਼ਿਫ਼ਟਾਂ ਫ਼ੋਨ ਦੇ ਕੈਲੰਡਰ ਵਿੱਚ ਜੋੜੋ",
+  "calendarOnPhoneHint": "ਤੁਹਾਡੇ Google ਕੈਲੰਡਰ ਵਿੱਚ: ਫ਼ੋਨ ਅਤੇ Google ਕੈਲੰਡਰ 'ਤੇ ਤੁਰੰਤ ਦਿਸੇਗਾ।",
+  "chooseCalendar": "ਕੈਲੰਡਰ ਚੁਣੋ",
+  "otherSiteHint": "ਕਿਸੇ ਹੋਰ ਥਾਂ ਦਾ ਕਰਮਚਾਰੀ: ਉਸਦੇ ਮੈਨੇਜਰਾਂ ਨੂੰ ਸੂਚਿਤ ਕੀਤਾ ਜਾਵੇਗਾ।",
+  "subManager": "ਉਪ-ਮੈਨੇਜਰ",
+  "calendarSynced": "ਕੈਲੰਡਰ ਵਿੱਚ ਸ਼ਿਫ਼ਟਾਂ: {count}",
+  "deputyOf": "ਉਪ-ਮੈਨੇਜਰ: {name}",
+  "noticeBorrowed": "{by} ਨੇ {date} ਨੂੰ {name} ਨੂੰ {site} 'ਤੇ ਲਾਇਆ।",
+  "noticeReinforcement": "{company} ਨੇ ਤੁਹਾਨੂੰ ਸਹਾਇਕ ਵਜੋਂ ਜੋੜਿਆ ਹੈ।"
 }

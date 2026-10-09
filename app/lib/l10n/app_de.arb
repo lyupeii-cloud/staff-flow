@@ -310,5 +310,21 @@
   "alertRest": "{name}: nur {value} Ruhezeit (mindestens {limit})",
   "alertWeek": "{name}: {value} in der Woche (höchstens {limit})",
   "legalAlertsCount": "Gesetzliche Warnungen: {count}",
-  "shiftsCount": "Schichten: {count}"
+  "shiftsCount": "Schichten: {count}",
+  "actionMakeDeputy": "Zur stellvertretenden Leitung ernennen",
+  "actionRemoveDeputy": "Stellvertretung entziehen",
+  "busyHere": "Arbeitet zu dieser Zeit schon in diesem Unternehmen",
+  "calendarByLink": "Per Link (Google Kalender am Computer)",
+  "calendarDenied": "Kalenderzugriff verweigert. Erlauben Sie ihn in den Telefoneinstellungen.",
+  "calendarLinkHint": "Am Computer in Google Kalender hinzufügen; Google aktualisiert ihn innerhalb einiger Stunden.",
+  "calendarNone": "Kein bearbeitbarer Kalender auf diesem Telefon.",
+  "calendarOnPhone": "Meine Schichten in den Telefonkalender eintragen",
+  "calendarOnPhoneHint": "In Ihrem Google-Kalender: sofort sichtbar, auf dem Telefon und in Google Kalender.",
+  "chooseCalendar": "Kalender wählen",
+  "otherSiteHint": "Angestellte/r eines anderen Standorts: die Verantwortlichen werden benachrichtigt.",
+  "subManager": "Stellvertretende Leitung",
+  "calendarSynced": "Schichten im Kalender: {count}",
+  "deputyOf": "Stellvertretende Leitung: {name}",
+  "noticeBorrowed": "{by} hat {name} am {date} am Standort {site} eingeplant.",
+  "noticeReinforcement": "{company} hat Sie als Verstärkung hinzugefügt."
 }

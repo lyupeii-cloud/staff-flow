@@ -1126,4 +1126,64 @@ class L10nPl extends L10n {
   String shiftsCount(String count) {
     return 'Zmiany: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Mianuj zastępcą kierownika';
+
+  @override
+  String get actionRemoveDeputy => 'Odbierz rolę zastępcy';
+
+  @override
+  String get busyHere => 'Pracuje już w firmie w tym czasie';
+
+  @override
+  String get calendarByLink => 'Przez link (Kalendarz Google na komputerze)';
+
+  @override
+  String get calendarDenied =>
+      'Odmówiono dostępu do kalendarza. Zezwól na niego w ustawieniach telefonu.';
+
+  @override
+  String get calendarLinkHint =>
+      'Dodaj z Kalendarza Google na komputerze; Google aktualizuje go w ciągu kilku godzin.';
+
+  @override
+  String get calendarNone => 'Brak edytowalnego kalendarza na tym telefonie.';
+
+  @override
+  String get calendarOnPhone => 'Dodaj moje zmiany do kalendarza telefonu';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'W twoim kalendarzu Google: widoczne od razu, w telefonie i w Kalendarzu Google.';
+
+  @override
+  String get chooseCalendar => 'Wybierz kalendarz';
+
+  @override
+  String get otherSiteHint =>
+      'Pracownik innej lokalizacji: jego kierownicy zostaną powiadomieni.';
+
+  @override
+  String get subManager => 'Zastępca kierownika';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Zmiany w kalendarzu: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Zastępca kierownika: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by przydzielił $name do lokalizacji $site $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company dodała cię jako wsparcie.';
+  }
 }

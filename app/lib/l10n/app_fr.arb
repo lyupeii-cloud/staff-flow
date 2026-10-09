@@ -314,5 +314,21 @@
   "alertRest": "{name} : {value} de repos seulement (minimum {limit})",
   "alertWeek": "{name} : {value} dans la semaine (maximum {limit})",
   "legalAlertsCount": "Alertes légales : {count}",
-  "shiftsCount": "Services : {count}"
+  "shiftsCount": "Services : {count}",
+  "actionMakeDeputy": "Nommer sous-responsable",
+  "actionRemoveDeputy": "Retirer le rôle de sous-responsable",
+  "busyHere": "Déjà en service dans l'entreprise sur ce créneau",
+  "calendarByLink": "Par lien (Google Agenda sur ordinateur)",
+  "calendarDenied": "Accès à l'agenda refusé. Autorisez-le dans les réglages du téléphone.",
+  "calendarLinkHint": "À ajouter depuis Google Agenda sur un ordinateur ; Google le met à jour en quelques heures.",
+  "calendarNone": "Aucun agenda modifiable sur ce téléphone.",
+  "calendarOnPhone": "Ajouter mes services à l'agenda du téléphone",
+  "calendarOnPhoneHint": "Dans votre agenda Google : visible tout de suite, sur le téléphone et sur Google Agenda.",
+  "chooseCalendar": "Choisir l'agenda",
+  "otherSiteHint": "Salarié d'un autre site : ses responsables seront prévenus.",
+  "subManager": "Sous-responsable",
+  "calendarSynced": "Services dans l'agenda : {count}",
+  "deputyOf": "Sous-responsable : {name}",
+  "noticeBorrowed": "{by} a placé {name} sur le site {site} le {date}.",
+  "noticeReinforcement": "{company} vous a ajouté comme renfort."
 }

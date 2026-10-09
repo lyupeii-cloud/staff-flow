@@ -314,5 +314,21 @@
   "alertRest": "{name}: лише {value} відпочинку (мінімум {limit})",
   "alertWeek": "{name}: {value} за тиждень (максимум {limit})",
   "legalAlertsCount": "Попередження за законом: {count}",
-  "shiftsCount": "Змін: {count}"
+  "shiftsCount": "Змін: {count}",
+  "actionMakeDeputy": "Призначити заступником керівника",
+  "actionRemoveDeputy": "Зняти роль заступника",
+  "busyHere": "Уже працює в компанії в цей час",
+  "calendarByLink": "За посиланням (Google Календар на комп'ютері)",
+  "calendarDenied": "Доступ до календаря заборонено. Дозвольте його в налаштуваннях телефона.",
+  "calendarLinkHint": "Додайте з Google Календаря на комп'ютері; Google оновлює його за кілька годин.",
+  "calendarNone": "На цьому телефоні немає календаря для запису.",
+  "calendarOnPhone": "Додати мої зміни в календар телефона",
+  "calendarOnPhoneHint": "У вашому календарі Google: одразу видно на телефоні та в Google Календарі.",
+  "chooseCalendar": "Вибрати календар",
+  "otherSiteHint": "Працівник іншої локації: його керівників буде повідомлено.",
+  "subManager": "Заступник керівника",
+  "calendarSynced": "Змін у календарі: {count}",
+  "deputyOf": "Заступник керівника: {name}",
+  "noticeBorrowed": "{by} поставив {name} на локацію {site} {date}.",
+  "noticeReinforcement": "{company} додала вас як підсилення."
 }

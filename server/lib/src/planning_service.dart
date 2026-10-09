@@ -168,10 +168,18 @@ class PlanningService {
     final team = person?.sites;
     if (person == null || team == null || team.isEmpty || team.contains(siteId)) return;
     if (person.role != Role.employee && person.role != Role.extra) return;
-    final managers = [
+    var managers = [
       for (final m in members)
         if (m.role == Role.manager && m.user.id != actor.id && (m.sites ?? const []).any(team.contains)) m.user.id,
     ];
+    // Pas de responsable pour son équipe : le patron et les responsables de toute l'entreprise.
+    if (managers.isEmpty) {
+      managers = [
+        for (final m in members)
+          if (m.user.id != actor.id && (m.role == Role.owner || (m.role == Role.manager && m.sites == null)))
+            m.user.id,
+      ];
+    }
     final site = await store.query(store.db, 'SELECT name FROM sites WHERE id = @s::uuid', {'s': siteId});
     await notifications.notify(managers, companyId: companyId, kind: 'staff_borrowed', data: {
       'byName': actor.name,

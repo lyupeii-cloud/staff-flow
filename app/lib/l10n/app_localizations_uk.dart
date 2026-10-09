@@ -1121,4 +1121,64 @@ class L10nUk extends L10n {
   String shiftsCount(String count) {
     return 'Змін: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Призначити заступником керівника';
+
+  @override
+  String get actionRemoveDeputy => 'Зняти роль заступника';
+
+  @override
+  String get busyHere => 'Уже працює в компанії в цей час';
+
+  @override
+  String get calendarByLink => 'За посиланням (Google Календар на комп\'ютері)';
+
+  @override
+  String get calendarDenied =>
+      'Доступ до календаря заборонено. Дозвольте його в налаштуваннях телефона.';
+
+  @override
+  String get calendarLinkHint =>
+      'Додайте з Google Календаря на комп\'ютері; Google оновлює його за кілька годин.';
+
+  @override
+  String get calendarNone => 'На цьому телефоні немає календаря для запису.';
+
+  @override
+  String get calendarOnPhone => 'Додати мої зміни в календар телефона';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'У вашому календарі Google: одразу видно на телефоні та в Google Календарі.';
+
+  @override
+  String get chooseCalendar => 'Вибрати календар';
+
+  @override
+  String get otherSiteHint =>
+      'Працівник іншої локації: його керівників буде повідомлено.';
+
+  @override
+  String get subManager => 'Заступник керівника';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Змін у календарі: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Заступник керівника: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by поставив $name на локацію $site $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company додала вас як підсилення.';
+  }
 }

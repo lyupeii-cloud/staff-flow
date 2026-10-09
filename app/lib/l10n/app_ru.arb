@@ -310,5 +310,21 @@
   "alertRest": "{name}: всего {value} отдыха (минимум {limit})",
   "alertWeek": "{name}: {value} за неделю (максимум {limit})",
   "legalAlertsCount": "Предупреждения по закону: {count}",
-  "shiftsCount": "Смен: {count}"
+  "shiftsCount": "Смен: {count}",
+  "actionMakeDeputy": "Назначить заместителем руководителя",
+  "actionRemoveDeputy": "Снять роль заместителя",
+  "busyHere": "Уже работает в компании в это время",
+  "calendarByLink": "По ссылке (Google Календарь на компьютере)",
+  "calendarDenied": "Доступ к календарю запрещён. Разрешите его в настройках телефона.",
+  "calendarLinkHint": "Добавьте из Google Календаря на компьютере; Google обновляет его за несколько часов.",
+  "calendarNone": "На этом телефоне нет календаря для записи.",
+  "calendarOnPhone": "Добавить мои смены в календарь телефона",
+  "calendarOnPhoneHint": "В вашем календаре Google: сразу видно на телефоне и в Google Календаре.",
+  "chooseCalendar": "Выбрать календарь",
+  "otherSiteHint": "Сотрудник другой площадки: его руководители будут уведомлены.",
+  "subManager": "Заместитель руководителя",
+  "calendarSynced": "Смен в календаре: {count}",
+  "deputyOf": "Заместитель руководителя: {name}",
+  "noticeBorrowed": "{by} поставил {name} на площадку {site} {date}.",
+  "noticeReinforcement": "{company} добавила вас как подкрепление."
 }

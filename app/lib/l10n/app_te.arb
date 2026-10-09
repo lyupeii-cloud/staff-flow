@@ -310,5 +310,21 @@
   "alertRest": "{name}: కేవలం {value} విశ్రాంతి (కనీసం {limit})",
   "alertWeek": "{name}: వారంలో {value} (గరిష్ఠం {limit})",
   "legalAlertsCount": "చట్టపరమైన హెచ్చరికలు: {count}",
-  "shiftsCount": "షిఫ్టులు: {count}"
+  "shiftsCount": "షిఫ్టులు: {count}",
+  "actionMakeDeputy": "ఉప-మేనేజర్‌గా నియమించు",
+  "actionRemoveDeputy": "ఉప-మేనేజర్ పాత్రను తొలగించు",
+  "busyHere": "ఈ సమయంలో ఇప్పటికే ఈ కంపెనీలో పనిలో ఉన్నారు",
+  "calendarByLink": "లింక్ ద్వారా (కంప్యూటర్‌లో Google Calendar)",
+  "calendarDenied": "క్యాలెండర్ యాక్సెస్ నిరాకరించబడింది. ఫోన్ సెట్టింగ్‌లలో అనుమతించండి.",
+  "calendarLinkHint": "కంప్యూటర్‌లో Google Calendar నుండి జోడించండి; Google కొన్ని గంటల్లో అప్‌డేట్ చేస్తుంది.",
+  "calendarNone": "ఈ ఫోన్‌లో మార్చగల క్యాలెండర్ లేదు.",
+  "calendarOnPhone": "నా షిఫ్టులను ఫోన్ క్యాలెండర్‌కి జోడించు",
+  "calendarOnPhoneHint": "మీ Google క్యాలెండర్‌లో: ఫోన్‌లోనూ Google Calendarలోనూ వెంటనే కనిపిస్తుంది.",
+  "chooseCalendar": "క్యాలెండర్‌ను ఎంచుకోండి",
+  "otherSiteHint": "వేరే స్థలం ఉద్యోగి: వారి మేనేజర్లకు తెలియజేయబడుతుంది.",
+  "subManager": "ఉప-మేనేజర్",
+  "calendarSynced": "క్యాలెండర్‌లో షిఫ్టులు: {count}",
+  "deputyOf": "ఉప-మేనేజర్: {name}",
+  "noticeBorrowed": "{by} {date}న {name}ని {site}లో కేటాయించారు.",
+  "noticeReinforcement": "{company} మిమ్మల్ని సహాయ సిబ్బందిగా చేర్చింది."
 }

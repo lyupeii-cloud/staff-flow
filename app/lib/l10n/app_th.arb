@@ -310,5 +310,21 @@
   "alertRest": "{name}: พักเพียง {value} (ขั้นต่ำ {limit})",
   "alertWeek": "{name}: {value} ในหนึ่งสัปดาห์ (สูงสุด {limit})",
   "legalAlertsCount": "การแจ้งเตือนตามกฎหมาย: {count}",
-  "shiftsCount": "กะ: {count}"
+  "shiftsCount": "กะ: {count}",
+  "actionMakeDeputy": "แต่งตั้งเป็นรองหัวหน้า",
+  "actionRemoveDeputy": "ถอนบทบาทรองหัวหน้า",
+  "busyHere": "มีกะในบริษัทนี้ช่วงเวลานี้แล้ว",
+  "calendarByLink": "ผ่านลิงก์ (Google ปฏิทินบนคอมพิวเตอร์)",
+  "calendarDenied": "ถูกปฏิเสธการเข้าถึงปฏิทิน อนุญาตได้ในการตั้งค่าโทรศัพท์",
+  "calendarLinkHint": "เพิ่มจาก Google ปฏิทินบนคอมพิวเตอร์ Google จะอัปเดตภายในไม่กี่ชั่วโมง",
+  "calendarNone": "ไม่มีปฏิทินที่แก้ไขได้ในโทรศัพท์นี้",
+  "calendarOnPhone": "เพิ่มกะของฉันลงในปฏิทินของโทรศัพท์",
+  "calendarOnPhoneHint": "ในปฏิทิน Google ของคุณ: เห็นได้ทันที ทั้งในโทรศัพท์และ Google ปฏิทิน",
+  "chooseCalendar": "เลือกปฏิทิน",
+  "otherSiteHint": "พนักงานจากสาขาอื่น: หัวหน้าของเขาจะได้รับแจ้ง",
+  "subManager": "รองหัวหน้า",
+  "calendarSynced": "กะในปฏิทิน: {count}",
+  "deputyOf": "รองหัวหน้า: {name}",
+  "noticeBorrowed": "{by} จัด {name} ไปที่สาขา {site} ในวันที่ {date}",
+  "noticeReinforcement": "{company} เพิ่มคุณเป็นกำลังเสริม"
 }

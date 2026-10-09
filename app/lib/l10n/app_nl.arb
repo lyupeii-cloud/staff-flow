@@ -310,5 +310,21 @@
   "alertRest": "{name}: slechts {value} rust (minimaal {limit})",
   "alertWeek": "{name}: {value} in de week (maximaal {limit})",
   "legalAlertsCount": "Wettelijke waarschuwingen: {count}",
-  "shiftsCount": "Diensten: {count}"
+  "shiftsCount": "Diensten: {count}",
+  "actionMakeDeputy": "Benoemen tot plaatsvervangend leidinggevende",
+  "actionRemoveDeputy": "Rol als plaatsvervanger intrekken",
+  "busyHere": "Werkt op dit tijdstip al in dit bedrijf",
+  "calendarByLink": "Via link (Google Agenda op een computer)",
+  "calendarDenied": "Toegang tot de agenda geweigerd. Sta het toe in de telefooninstellingen.",
+  "calendarLinkHint": "Toevoegen via Google Agenda op een computer; Google werkt het binnen enkele uren bij.",
+  "calendarNone": "Geen bewerkbare agenda op deze telefoon.",
+  "calendarOnPhone": "Mijn diensten in de telefoonagenda zetten",
+  "calendarOnPhoneHint": "In je Google-agenda: meteen zichtbaar, op de telefoon en in Google Agenda.",
+  "chooseCalendar": "Agenda kiezen",
+  "otherSiteHint": "Werknemer van een andere locatie: de leidinggevenden worden ingelicht.",
+  "subManager": "Plaatsvervangend leidinggevende",
+  "calendarSynced": "Diensten in de agenda: {count}",
+  "deputyOf": "Plaatsvervangend leidinggevende: {name}",
+  "noticeBorrowed": "{by} heeft {name} op {date} ingepland op locatie {site}.",
+  "noticeReinforcement": "{company} heeft je toegevoegd als versterking."
 }

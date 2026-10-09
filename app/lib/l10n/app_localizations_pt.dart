@@ -1117,4 +1117,65 @@ class L10nPt extends L10n {
   String shiftsCount(String count) {
     return 'Turnos: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Nomear sub-responsável';
+
+  @override
+  String get actionRemoveDeputy => 'Retirar o papel de sub-responsável';
+
+  @override
+  String get busyHere => 'Já está de serviço na empresa neste horário';
+
+  @override
+  String get calendarByLink => 'Por ligação (Google Calendar num computador)';
+
+  @override
+  String get calendarDenied =>
+      'Acesso ao calendário recusado. Permita-o nas definições do telefone.';
+
+  @override
+  String get calendarLinkHint =>
+      'Adicione a partir do Google Calendar num computador; o Google atualiza-o em algumas horas.';
+
+  @override
+  String get calendarNone => 'Nenhum calendário editável neste telefone.';
+
+  @override
+  String get calendarOnPhone =>
+      'Adicionar os meus turnos ao calendário do telefone';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'No seu calendário Google: visível de imediato, no telefone e no Google Calendar.';
+
+  @override
+  String get chooseCalendar => 'Escolher o calendário';
+
+  @override
+  String get otherSiteHint =>
+      'Funcionário de outro local: os responsáveis dele serão avisados.';
+
+  @override
+  String get subManager => 'Sub-responsável';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Turnos no calendário: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Sub-responsável: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by colocou $name no local $site a $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company adicionou-o como reforço.';
+  }
 }

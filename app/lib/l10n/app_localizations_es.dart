@@ -1119,4 +1119,65 @@ class L10nEs extends L10n {
   String shiftsCount(String count) {
     return 'Turnos: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Nombrar subresponsable';
+
+  @override
+  String get actionRemoveDeputy => 'Quitar el rol de subresponsable';
+
+  @override
+  String get busyHere => 'Ya trabaja en la empresa en este horario';
+
+  @override
+  String get calendarByLink => 'Por enlace (Google Calendar en un ordenador)';
+
+  @override
+  String get calendarDenied =>
+      'Acceso al calendario denegado. Permítelo en los ajustes del teléfono.';
+
+  @override
+  String get calendarLinkHint =>
+      'Añádelo desde Google Calendar en un ordenador; Google lo actualiza en unas horas.';
+
+  @override
+  String get calendarNone =>
+      'No hay ningún calendario editable en este teléfono.';
+
+  @override
+  String get calendarOnPhone => 'Añadir mis turnos al calendario del teléfono';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'En tu calendario de Google: visible al instante, en el teléfono y en Google Calendar.';
+
+  @override
+  String get chooseCalendar => 'Elegir el calendario';
+
+  @override
+  String get otherSiteHint =>
+      'Empleado de otro sitio: se avisará a sus responsables.';
+
+  @override
+  String get subManager => 'Subresponsable';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Turnos en el calendario: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Subresponsable: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by ha asignado a $name al sitio $site el $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company te ha añadido como refuerzo.';
+  }
 }

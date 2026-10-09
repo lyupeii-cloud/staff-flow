@@ -1117,4 +1117,64 @@ class L10nFi extends L10n {
   String shiftsCount(String count) {
     return 'Vuorot: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Nimeä varaesihenkilöksi';
+
+  @override
+  String get actionRemoveDeputy => 'Poista varaesihenkilön rooli';
+
+  @override
+  String get busyHere => 'On jo töissä tässä yrityksessä tähän aikaan';
+
+  @override
+  String get calendarByLink => 'Linkillä (Google Kalenteri tietokoneella)';
+
+  @override
+  String get calendarDenied =>
+      'Kalenterin käyttö estetty. Salli se puhelimen asetuksista.';
+
+  @override
+  String get calendarLinkHint =>
+      'Lisää Google Kalenterista tietokoneella; Google päivittää sen muutamassa tunnissa.';
+
+  @override
+  String get calendarNone => 'Puhelimessa ei ole muokattavaa kalenteria.';
+
+  @override
+  String get calendarOnPhone => 'Lisää vuoroni puhelimen kalenteriin';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'Google-kalenterissasi: näkyy heti puhelimessa ja Google Kalenterissa.';
+
+  @override
+  String get chooseCalendar => 'Valitse kalenteri';
+
+  @override
+  String get otherSiteHint =>
+      'Toisen toimipaikan työntekijä: hänen esihenkilöilleen ilmoitetaan.';
+
+  @override
+  String get subManager => 'Varaesihenkilö';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Vuoroja kalenterissa: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Varaesihenkilö: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by merkitsi henkilön $name toimipaikkaan $site $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company lisäsi sinut vahvistukseksi.';
+  }
 }

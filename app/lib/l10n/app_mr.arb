@@ -310,5 +310,21 @@
   "alertRest": "{name}: फक्त {value} विश्रांती (किमान {limit})",
   "alertWeek": "{name}: आठवड्यात {value} (कमाल {limit})",
   "legalAlertsCount": "कायदेशीर सूचना: {count}",
-  "shiftsCount": "शिफ्ट: {count}"
+  "shiftsCount": "शिफ्ट: {count}",
+  "actionMakeDeputy": "उप-व्यवस्थापक नेमा",
+  "actionRemoveDeputy": "उप-व्यवस्थापकाची भूमिका काढा",
+  "busyHere": "या वेळी आधीच या कंपनीत कामावर",
+  "calendarByLink": "लिंकद्वारे (संगणकावर Google कॅलेंडर)",
+  "calendarDenied": "कॅलेंडरचा प्रवेश नाकारला. फोनच्या सेटिंग्जमध्ये परवानगी द्या.",
+  "calendarLinkHint": "संगणकावरील Google कॅलेंडरमधून जोडा; Google काही तासांत अद्ययावत करते.",
+  "calendarNone": "या फोनवर बदलता येणारे कॅलेंडर नाही.",
+  "calendarOnPhone": "माझ्या शिफ्ट फोनच्या कॅलेंडरमध्ये जोडा",
+  "calendarOnPhoneHint": "तुमच्या Google कॅलेंडरमध्ये: फोनवर आणि Google कॅलेंडरमध्ये लगेच दिसेल.",
+  "chooseCalendar": "कॅलेंडर निवडा",
+  "otherSiteHint": "दुसऱ्या ठिकाणचा कर्मचारी: त्याच्या व्यवस्थापकांना कळवले जाईल.",
+  "subManager": "उप-व्यवस्थापक",
+  "calendarSynced": "कॅलेंडरमधील शिफ्ट: {count}",
+  "deputyOf": "उप-व्यवस्थापक: {name}",
+  "noticeBorrowed": "{by} यांनी {date} रोजी {name} यांना {site} येथे नेमले.",
+  "noticeReinforcement": "{company} ने तुम्हाला मदतनीस म्हणून जोडले."
 }

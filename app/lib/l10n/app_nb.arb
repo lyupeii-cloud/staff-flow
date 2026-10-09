@@ -310,5 +310,21 @@
   "alertRest": "{name}: bare {value} hvile (minst {limit})",
   "alertWeek": "{name}: {value} i uken (høyst {limit})",
   "legalAlertsCount": "Lovpålagte varsler: {count}",
-  "shiftsCount": "Vakter: {count}"
+  "shiftsCount": "Vakter: {count}",
+  "actionMakeDeputy": "Utnevn til stedfortredende leder",
+  "actionRemoveDeputy": "Fjern rollen som stedfortreder",
+  "busyHere": "Jobber allerede i bedriften på dette tidspunktet",
+  "calendarByLink": "Via lenke (Google Kalender på en datamaskin)",
+  "calendarDenied": "Tilgang til kalenderen avslått. Tillat den i telefoninnstillingene.",
+  "calendarLinkHint": "Legg til fra Google Kalender på en datamaskin; Google oppdaterer innen noen timer.",
+  "calendarNone": "Ingen redigerbar kalender på denne telefonen.",
+  "calendarOnPhone": "Legg til vaktene mine i telefonkalenderen",
+  "calendarOnPhoneHint": "I Google-kalenderen din: synlig med en gang, på telefonen og i Google Kalender.",
+  "chooseCalendar": "Velg kalender",
+  "otherSiteHint": "Ansatt fra et annet sted: lederne der blir varslet.",
+  "subManager": "Stedfortredende leder",
+  "calendarSynced": "Vakter i kalenderen: {count}",
+  "deputyOf": "Stedfortredende leder: {name}",
+  "noticeBorrowed": "{by} har satt opp {name} på {site} {date}.",
+  "noticeReinforcement": "{company} har lagt deg til som forsterkning."
 }

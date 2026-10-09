@@ -310,5 +310,21 @@
   "alertRest": "{name}: 휴식 {value}뿐(최소 {limit})",
   "alertWeek": "{name}: 주 {value}(최대 {limit})",
   "legalAlertsCount": "법정 알림: {count}",
-  "shiftsCount": "근무: {count}"
+  "shiftsCount": "근무: {count}",
+  "actionMakeDeputy": "부관리자로 지정",
+  "actionRemoveDeputy": "부관리자 역할 해제",
+  "busyHere": "이 시간에 이미 이 회사에서 근무 중입니다",
+  "calendarByLink": "링크로 추가(컴퓨터의 Google 캘린더)",
+  "calendarDenied": "캘린더 접근이 거부되었습니다. 휴대전화 설정에서 허용하세요.",
+  "calendarLinkHint": "컴퓨터의 Google 캘린더에서 추가하세요. Google이 몇 시간 안에 업데이트합니다.",
+  "calendarNone": "이 휴대전화에 편집 가능한 캘린더가 없습니다.",
+  "calendarOnPhone": "내 근무를 휴대전화 캘린더에 추가",
+  "calendarOnPhoneHint": "Google 캘린더에 바로 표시됩니다(휴대전화와 Google 캘린더 모두).",
+  "chooseCalendar": "캘린더 선택",
+  "otherSiteHint": "다른 지점의 직원입니다. 해당 관리자에게 알림이 갑니다.",
+  "subManager": "부관리자",
+  "calendarSynced": "캘린더의 근무: {count}",
+  "deputyOf": "부관리자: {name}",
+  "noticeBorrowed": "{by}님이 {date}에 {name}님을 {site} 지점에 배치했습니다.",
+  "noticeReinforcement": "{company}에서 귀하를 지원 인력으로 추가했습니다."
 }

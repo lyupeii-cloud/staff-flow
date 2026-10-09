@@ -1115,4 +1115,64 @@ class L10nPa extends L10n {
   String shiftsCount(String count) {
     return 'ਸ਼ਿਫ਼ਟਾਂ: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'ਉਪ-ਮੈਨੇਜਰ ਨਿਯੁਕਤ ਕਰੋ';
+
+  @override
+  String get actionRemoveDeputy => 'ਉਪ-ਮੈਨੇਜਰ ਦੀ ਭੂਮਿਕਾ ਹਟਾਓ';
+
+  @override
+  String get busyHere => 'ਇਸ ਸਮੇਂ ਪਹਿਲਾਂ ਹੀ ਇਸ ਕੰਪਨੀ ਵਿੱਚ ਡਿਊਟੀ \'ਤੇ';
+
+  @override
+  String get calendarByLink => 'ਲਿੰਕ ਰਾਹੀਂ (ਕੰਪਿਊਟਰ \'ਤੇ Google ਕੈਲੰਡਰ)';
+
+  @override
+  String get calendarDenied =>
+      'ਕੈਲੰਡਰ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਮਿਲੀ। ਫ਼ੋਨ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਇਜਾਜ਼ਤ ਦਿਓ।';
+
+  @override
+  String get calendarLinkHint =>
+      'ਕੰਪਿਊਟਰ \'ਤੇ Google ਕੈਲੰਡਰ ਤੋਂ ਜੋੜੋ; Google ਕੁਝ ਘੰਟਿਆਂ ਵਿੱਚ ਅੱਪਡੇਟ ਕਰਦਾ ਹੈ।';
+
+  @override
+  String get calendarNone => 'ਇਸ ਫ਼ੋਨ \'ਤੇ ਬਦਲਣਯੋਗ ਕੋਈ ਕੈਲੰਡਰ ਨਹੀਂ।';
+
+  @override
+  String get calendarOnPhone => 'ਮੇਰੀਆਂ ਸ਼ਿਫ਼ਟਾਂ ਫ਼ੋਨ ਦੇ ਕੈਲੰਡਰ ਵਿੱਚ ਜੋੜੋ';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'ਤੁਹਾਡੇ Google ਕੈਲੰਡਰ ਵਿੱਚ: ਫ਼ੋਨ ਅਤੇ Google ਕੈਲੰਡਰ \'ਤੇ ਤੁਰੰਤ ਦਿਸੇਗਾ।';
+
+  @override
+  String get chooseCalendar => 'ਕੈਲੰਡਰ ਚੁਣੋ';
+
+  @override
+  String get otherSiteHint =>
+      'ਕਿਸੇ ਹੋਰ ਥਾਂ ਦਾ ਕਰਮਚਾਰੀ: ਉਸਦੇ ਮੈਨੇਜਰਾਂ ਨੂੰ ਸੂਚਿਤ ਕੀਤਾ ਜਾਵੇਗਾ।';
+
+  @override
+  String get subManager => 'ਉਪ-ਮੈਨੇਜਰ';
+
+  @override
+  String calendarSynced(String count) {
+    return 'ਕੈਲੰਡਰ ਵਿੱਚ ਸ਼ਿਫ਼ਟਾਂ: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'ਉਪ-ਮੈਨੇਜਰ: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by ਨੇ $date ਨੂੰ $name ਨੂੰ $site \'ਤੇ ਲਾਇਆ।';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company ਨੇ ਤੁਹਾਨੂੰ ਸਹਾਇਕ ਵਜੋਂ ਜੋੜਿਆ ਹੈ।';
+  }
 }

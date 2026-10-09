@@ -153,6 +153,9 @@ class NoticesButton extends StatelessWidget {
       'request_approved' => t.noticeRequestApproved,
       'request_refused' => t.noticeRequestRefused,
       'shift_overlap' => t.noticeOverlap(longDate(parseDay(data['day']), loc)),
+      'staff_borrowed' => t.noticeBorrowed(
+          data['byName'] ?? '?', data['name'] ?? '?', data['siteName'] ?? '?', longDate(parseDay(data['day']), loc)),
+      'reinforcement_added' => t.noticeReinforcement(company),
       _ => n['kind'] as String,
     };
   }
@@ -168,6 +171,8 @@ class NoticesButton extends StatelessWidget {
         'request_approved' => Icons.check_circle,
         'request_refused' => Icons.cancel,
         'shift_overlap' => Icons.warning_amber,
+        'staff_borrowed' => Icons.transfer_within_a_station,
+        'reinforcement_added' => Icons.group_add,
         _ => Icons.edit_note,
       };
 }

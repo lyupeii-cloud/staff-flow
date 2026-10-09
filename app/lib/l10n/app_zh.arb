@@ -310,5 +310,21 @@
   "alertRest": "{name}：仅休息 {value}（至少 {limit}）",
   "alertWeek": "{name}：一周 {value}（上限 {limit}）",
   "legalAlertsCount": "法定提醒：{count}",
-  "shiftsCount": "班次：{count}"
+  "shiftsCount": "班次：{count}",
+  "actionMakeDeputy": "任命为副负责人",
+  "actionRemoveDeputy": "撤销副负责人角色",
+  "busyHere": "该时段已在本公司上班",
+  "calendarByLink": "通过链接（电脑上的 Google 日历）",
+  "calendarDenied": "日历访问被拒绝。请在手机设置中允许。",
+  "calendarLinkHint": "请在电脑上的 Google 日历中添加；Google 会在几小时内更新。",
+  "calendarNone": "此手机上没有可编辑的日历。",
+  "calendarOnPhone": "将我的班次添加到手机日历",
+  "calendarOnPhoneHint": "在您的 Google 日历中：手机和 Google 日历上立即可见。",
+  "chooseCalendar": "选择日历",
+  "otherSiteHint": "其他门店的员工：将通知其负责人。",
+  "subManager": "副负责人",
+  "calendarSynced": "日历中的班次：{count}",
+  "deputyOf": "副负责人：{name}",
+  "noticeBorrowed": "{by} 在 {date} 将 {name} 安排到了 {site}。",
+  "noticeReinforcement": "{company} 已将您添加为支援人员。"
 }

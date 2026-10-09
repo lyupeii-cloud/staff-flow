@@ -1116,4 +1116,64 @@ class L10nCs extends L10n {
   String shiftsCount(String count) {
     return 'Směny: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Jmenovat zástupcem vedoucího';
+
+  @override
+  String get actionRemoveDeputy => 'Odebrat roli zástupce';
+
+  @override
+  String get busyHere => 'V tuto dobu už pracuje v této firmě';
+
+  @override
+  String get calendarByLink => 'Odkazem (Kalendář Google na počítači)';
+
+  @override
+  String get calendarDenied =>
+      'Přístup ke kalendáři byl odepřen. Povolte ho v nastavení telefonu.';
+
+  @override
+  String get calendarLinkHint =>
+      'Přidejte z Kalendáře Google na počítači; Google ho aktualizuje během několika hodin.';
+
+  @override
+  String get calendarNone => 'V telefonu není žádný upravitelný kalendář.';
+
+  @override
+  String get calendarOnPhone => 'Přidat mé směny do kalendáře telefonu';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'Ve vašem kalendáři Google: hned vidět v telefonu i v Kalendáři Google.';
+
+  @override
+  String get chooseCalendar => 'Vybrat kalendář';
+
+  @override
+  String get otherSiteHint =>
+      'Zaměstnanec jiné pobočky: jeho vedoucí budou upozorněni.';
+
+  @override
+  String get subManager => 'Zástupce vedoucího';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Směny v kalendáři: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Zástupce vedoucího: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by zařadil $name na pobočku $site $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company vás přidala jako posilu.';
+  }
 }

@@ -1120,4 +1120,65 @@ class L10nFil extends L10n {
   String shiftsCount(String count) {
     return 'Mga shift: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Italaga bilang deputy manager';
+
+  @override
+  String get actionRemoveDeputy => 'Alisin ang tungkulin bilang deputy';
+
+  @override
+  String get busyHere => 'May shift na sa kumpanyang ito sa oras na ito';
+
+  @override
+  String get calendarByLink => 'Sa link (Google Calendar sa computer)';
+
+  @override
+  String get calendarDenied =>
+      'Tinanggihan ang access sa kalendaryo. Payagan ito sa settings ng telepono.';
+
+  @override
+  String get calendarLinkHint =>
+      'Idagdag mula sa Google Calendar sa computer; ina-update ito ng Google sa loob ng ilang oras.';
+
+  @override
+  String get calendarNone => 'Walang nae-edit na kalendaryo sa teleponong ito.';
+
+  @override
+  String get calendarOnPhone =>
+      'Idagdag ang mga shift ko sa kalendaryo ng telepono';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'Sa Google calendar mo: makikita agad, sa telepono at sa Google Calendar.';
+
+  @override
+  String get chooseCalendar => 'Piliin ang kalendaryo';
+
+  @override
+  String get otherSiteHint =>
+      'Empleyado mula sa ibang site: aabisuhan ang mga manager niya.';
+
+  @override
+  String get subManager => 'Deputy manager';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Mga shift sa kalendaryo: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Deputy manager: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return 'Inilagay ni $by si $name sa site na $site sa $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return 'Idinagdag ka ng $company bilang dagdag na tauhan.';
+  }
 }

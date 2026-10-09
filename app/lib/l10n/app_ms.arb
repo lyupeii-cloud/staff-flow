@@ -310,5 +310,21 @@
   "alertRest": "{name}: hanya {value} rehat (minimum {limit})",
   "alertWeek": "{name}: {value} dalam seminggu (maksimum {limit})",
   "legalAlertsCount": "Amaran undang-undang: {count}",
-  "shiftsCount": "Syif: {count}"
+  "shiftsCount": "Syif: {count}",
+  "actionMakeDeputy": "Lantik sebagai timbalan pengurus",
+  "actionRemoveDeputy": "Tarik balik peranan timbalan",
+  "busyHere": "Sudah bekerja di syarikat ini pada waktu ini",
+  "calendarByLink": "Melalui pautan (Kalendar Google di komputer)",
+  "calendarDenied": "Akses kalendar ditolak. Benarkan dalam tetapan telefon.",
+  "calendarLinkHint": "Tambah dari Kalendar Google di komputer; Google mengemas kininya dalam beberapa jam.",
+  "calendarNone": "Tiada kalendar boleh disunting pada telefon ini.",
+  "calendarOnPhone": "Tambah syif saya ke kalendar telefon",
+  "calendarOnPhoneHint": "Dalam kalendar Google anda: kelihatan serta-merta, di telefon dan di Kalendar Google.",
+  "chooseCalendar": "Pilih kalendar",
+  "otherSiteHint": "Pekerja dari lokasi lain: pengurusnya akan dimaklumkan.",
+  "subManager": "Timbalan pengurus",
+  "calendarSynced": "Syif dalam kalendar: {count}",
+  "deputyOf": "Timbalan pengurus: {name}",
+  "noticeBorrowed": "{by} menempatkan {name} di lokasi {site} pada {date}.",
+  "noticeReinforcement": "{company} menambah anda sebagai tenaga bantuan."
 }

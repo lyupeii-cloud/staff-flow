@@ -310,5 +310,21 @@
   "alertRest": "{name}: bara {value} vila (minst {limit})",
   "alertWeek": "{name}: {value} under veckan (högst {limit})",
   "legalAlertsCount": "Lagstadgade varningar: {count}",
-  "shiftsCount": "Pass: {count}"
+  "shiftsCount": "Pass: {count}",
+  "actionMakeDeputy": "Utse till biträdande ansvarig",
+  "actionRemoveDeputy": "Ta bort rollen som biträdande",
+  "busyHere": "Arbetar redan i företaget vid den här tiden",
+  "calendarByLink": "Via länk (Google Kalender på en dator)",
+  "calendarDenied": "Åtkomst till kalendern nekades. Tillåt den i telefonens inställningar.",
+  "calendarLinkHint": "Lägg till via Google Kalender på en dator; Google uppdaterar inom några timmar.",
+  "calendarNone": "Ingen redigerbar kalender på den här telefonen.",
+  "calendarOnPhone": "Lägg till mina pass i telefonens kalender",
+  "calendarOnPhoneHint": "I din Google-kalender: syns direkt, i telefonen och i Google Kalender.",
+  "chooseCalendar": "Välj kalender",
+  "otherSiteHint": "Anställd från en annan arbetsplats: hens ansvariga får ett meddelande.",
+  "subManager": "Biträdande ansvarig",
+  "calendarSynced": "Pass i kalendern: {count}",
+  "deputyOf": "Biträdande ansvarig: {name}",
+  "noticeBorrowed": "{by} har schemalagt {name} på {site} den {date}.",
+  "noticeReinforcement": "{company} har lagt till dig som förstärkning."
 }

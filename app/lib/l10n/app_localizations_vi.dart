@@ -1107,4 +1107,65 @@ class L10nVi extends L10n {
   String shiftsCount(String count) {
     return 'Ca làm: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Bổ nhiệm phó quản lý';
+
+  @override
+  String get actionRemoveDeputy => 'Gỡ vai trò phó quản lý';
+
+  @override
+  String get busyHere => 'Đã làm ở công ty này vào khung giờ này';
+
+  @override
+  String get calendarByLink => 'Qua liên kết (Google Lịch trên máy tính)';
+
+  @override
+  String get calendarDenied =>
+      'Quyền truy cập lịch bị từ chối. Hãy cho phép trong cài đặt điện thoại.';
+
+  @override
+  String get calendarLinkHint =>
+      'Thêm từ Google Lịch trên máy tính; Google cập nhật trong vài giờ.';
+
+  @override
+  String get calendarNone =>
+      'Không có lịch nào chỉnh sửa được trên điện thoại này.';
+
+  @override
+  String get calendarOnPhone => 'Thêm ca làm của tôi vào lịch điện thoại';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'Trong lịch Google của bạn: thấy ngay, trên điện thoại và trên Google Lịch.';
+
+  @override
+  String get chooseCalendar => 'Chọn lịch';
+
+  @override
+  String get otherSiteHint =>
+      'Nhân viên của địa điểm khác: quản lý của họ sẽ được báo.';
+
+  @override
+  String get subManager => 'Phó quản lý';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Ca trong lịch: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Phó quản lý: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by đã xếp $name vào địa điểm $site ngày $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company đã thêm bạn làm nhân sự hỗ trợ.';
+  }
 }

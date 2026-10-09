@@ -310,5 +310,21 @@
   "alertRest": "{name}: solo {value} di riposo (minimo {limit})",
   "alertWeek": "{name}: {value} nella settimana (massimo {limit})",
   "legalAlertsCount": "Avvisi legali: {count}",
-  "shiftsCount": "Turni: {count}"
+  "shiftsCount": "Turni: {count}",
+  "actionMakeDeputy": "Nomina vice responsabile",
+  "actionRemoveDeputy": "Togli il ruolo di vice responsabile",
+  "busyHere": "Già in servizio nell'azienda in questa fascia",
+  "calendarByLink": "Tramite link (Google Calendar da computer)",
+  "calendarDenied": "Accesso al calendario negato. Consentilo nelle impostazioni del telefono.",
+  "calendarLinkHint": "Aggiungilo da Google Calendar su un computer; Google lo aggiorna entro qualche ora.",
+  "calendarNone": "Nessun calendario modificabile su questo telefono.",
+  "calendarOnPhone": "Aggiungi i miei turni al calendario del telefono",
+  "calendarOnPhoneHint": "Nel tuo calendario Google: visibile subito, sul telefono e in Google Calendar.",
+  "chooseCalendar": "Scegli il calendario",
+  "otherSiteHint": "Dipendente di un'altra sede: i suoi responsabili saranno avvisati.",
+  "subManager": "Vice responsabile",
+  "calendarSynced": "Turni nel calendario: {count}",
+  "deputyOf": "Vice responsabile: {name}",
+  "noticeBorrowed": "{by} ha assegnato {name} alla sede {site} il {date}.",
+  "noticeReinforcement": "{company} ti ha aggiunto come rinforzo."
 }

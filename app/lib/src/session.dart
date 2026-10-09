@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api.dart';
+import 'calendar_sync.dart';
 import 'config.dart';
 import 'i18n.dart';
 import 'models.dart';
@@ -180,6 +181,8 @@ class Session extends ChangeNotifier {
   Future<void> refresh() async {
     me = Me.fromJson(await sync.read('me', '/me'));
     _set(SessionState.signedIn);
+    // Agenda du téléphone (Google Agenda), s'il est activé.
+    unawaited(CalendarSync.sync(api).then((_) {}, onError: (_) {}));
   }
 
   Future<void> signOut() async {

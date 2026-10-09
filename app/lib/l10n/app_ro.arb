@@ -310,5 +310,21 @@
   "alertRest": "{name}: doar {value} de repaus (minimum {limit})",
   "alertWeek": "{name}: {value} într-o săptămână (maximum {limit})",
   "legalAlertsCount": "Alerte legale: {count}",
-  "shiftsCount": "Ture: {count}"
+  "shiftsCount": "Ture: {count}",
+  "actionMakeDeputy": "Numește adjunct al responsabilului",
+  "actionRemoveDeputy": "Retrage rolul de adjunct",
+  "busyHere": "Lucrează deja în firmă în acest interval",
+  "calendarByLink": "Prin link (Google Calendar pe calculator)",
+  "calendarDenied": "Accesul la calendar a fost refuzat. Permite-l din setările telefonului.",
+  "calendarLinkHint": "Adaugă-l din Google Calendar pe un calculator; Google îl actualizează în câteva ore.",
+  "calendarNone": "Niciun calendar editabil pe acest telefon.",
+  "calendarOnPhone": "Adaugă turele mele în calendarul telefonului",
+  "calendarOnPhoneHint": "În calendarul tău Google: vizibil imediat, pe telefon și în Google Calendar.",
+  "chooseCalendar": "Alege calendarul",
+  "otherSiteHint": "Angajat de la altă locație: responsabilii lui vor fi anunțați.",
+  "subManager": "Adjunct al responsabilului",
+  "calendarSynced": "Ture în calendar: {count}",
+  "deputyOf": "Adjunct al responsabilului: {name}",
+  "noticeBorrowed": "{by} l-a programat pe {name} la locația {site} pe {date}.",
+  "noticeReinforcement": "{company} te-a adăugat ca întăritură."
 }

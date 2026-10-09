@@ -1115,4 +1115,64 @@ class L10nEn extends L10n {
   String shiftsCount(String count) {
     return 'Shifts: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Appoint as deputy manager';
+
+  @override
+  String get actionRemoveDeputy => 'Remove deputy manager role';
+
+  @override
+  String get busyHere => 'Already working at this company at this time';
+
+  @override
+  String get calendarByLink => 'By link (Google Calendar on a computer)';
+
+  @override
+  String get calendarDenied =>
+      'Calendar access denied. Allow it in the phone settings.';
+
+  @override
+  String get calendarLinkHint =>
+      'Add it from Google Calendar on a computer; Google updates it within a few hours.';
+
+  @override
+  String get calendarNone => 'No editable calendar on this phone.';
+
+  @override
+  String get calendarOnPhone => 'Add my shifts to the phone calendar';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'In your Google calendar: visible right away, on the phone and in Google Calendar.';
+
+  @override
+  String get chooseCalendar => 'Choose the calendar';
+
+  @override
+  String get otherSiteHint =>
+      'Employee from another site: their managers will be notified.';
+
+  @override
+  String get subManager => 'Deputy manager';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Shifts in the calendar: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Deputy manager: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by scheduled $name at $site on $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company added you as backup staff.';
+  }
 }

@@ -1119,4 +1119,64 @@ class L10nNl extends L10n {
   String shiftsCount(String count) {
     return 'Diensten: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Benoemen tot plaatsvervangend leidinggevende';
+
+  @override
+  String get actionRemoveDeputy => 'Rol als plaatsvervanger intrekken';
+
+  @override
+  String get busyHere => 'Werkt op dit tijdstip al in dit bedrijf';
+
+  @override
+  String get calendarByLink => 'Via link (Google Agenda op een computer)';
+
+  @override
+  String get calendarDenied =>
+      'Toegang tot de agenda geweigerd. Sta het toe in de telefooninstellingen.';
+
+  @override
+  String get calendarLinkHint =>
+      'Toevoegen via Google Agenda op een computer; Google werkt het binnen enkele uren bij.';
+
+  @override
+  String get calendarNone => 'Geen bewerkbare agenda op deze telefoon.';
+
+  @override
+  String get calendarOnPhone => 'Mijn diensten in de telefoonagenda zetten';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'In je Google-agenda: meteen zichtbaar, op de telefoon en in Google Agenda.';
+
+  @override
+  String get chooseCalendar => 'Agenda kiezen';
+
+  @override
+  String get otherSiteHint =>
+      'Werknemer van een andere locatie: de leidinggevenden worden ingelicht.';
+
+  @override
+  String get subManager => 'Plaatsvervangend leidinggevende';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Diensten in de agenda: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Plaatsvervangend leidinggevende: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by heeft $name op $date ingepland op locatie $site.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company heeft je toegevoegd als versterking.';
+  }
 }

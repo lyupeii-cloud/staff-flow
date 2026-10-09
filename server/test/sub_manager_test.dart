@@ -70,6 +70,17 @@ void main() {
       final n = notices.singleWhere((n) => n['kind'] == 'staff_borrowed');
       expect([n['data']['name'], n['data']['siteName'], n['data']['day']], ['bob', 'Sud', '2026-10-07']);
       expect([for (final n in (await south.ok('GET', '/notices'))['notices']) n['kind']], isNot(contains('staff_borrowed')));
+      expect([for (final n in (await owner.ok('GET', '/notices'))['notices']) n['kind']], isNot(contains('staff_borrowed')),
+          reason: 'l\'équipe du Nord a son responsable');
+      // Équipe sans responsable de site : le patron est prévenu.
+      final zoe = await env.login('zoe');
+      await env.store.addMember(company, zoe.id, Role.employee);
+      await owner.ok('PUT', p('/members/${zoe.id}/sites'), {'sites': [siteGare]});
+      await owner.ok('PUT', p('/members/${north.id}/sites'), {'sites': [siteNorth]});
+      await south.ok('POST', p('/shifts'),
+          {'days': ['2026-10-09'], 'start': 480, 'end': 960, 'siteId': siteSouth, 'userId': zoe.id});
+      await env.api.notifications.settle();
+      expect([for (final n in (await owner.ok('GET', '/notices'))['notices']) n['kind']], contains('staff_borrowed'));
       // Sur son propre site : personne n'est prévenu.
       await north.ok('POST', p('/shifts'),
           {'days': ['2026-10-08'], 'start': 480, 'end': 960, 'siteId': siteNorth, 'userId': bob.id});

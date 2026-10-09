@@ -310,5 +310,21 @@
   "alertRest": "{name}: само {value} почивка (минимум {limit})",
   "alertWeek": "{name}: {value} за седмицата (максимум {limit})",
   "legalAlertsCount": "Законови предупреждения: {count}",
-  "shiftsCount": "Смени: {count}"
+  "shiftsCount": "Смени: {count}",
+  "actionMakeDeputy": "Назначи за заместник-ръководител",
+  "actionRemoveDeputy": "Премахни ролята на заместник",
+  "busyHere": "Вече е на смяна във фирмата по това време",
+  "calendarByLink": "Чрез връзка (Google Календар на компютър)",
+  "calendarDenied": "Достъпът до календара е отказан. Разрешете го в настройките на телефона.",
+  "calendarLinkHint": "Добавете го от Google Календар на компютър; Google го обновява до няколко часа.",
+  "calendarNone": "Няма календар за редактиране на този телефон.",
+  "calendarOnPhone": "Добави смените ми в календара на телефона",
+  "calendarOnPhoneHint": "Във вашия Google календар: видимо веднага, на телефона и в Google Календар.",
+  "chooseCalendar": "Избери календар",
+  "otherSiteHint": "Служител от друг обект: ръководителите му ще бъдат уведомени.",
+  "subManager": "Заместник-ръководител",
+  "calendarSynced": "Смени в календара: {count}",
+  "deputyOf": "Заместник-ръководител: {name}",
+  "noticeBorrowed": "{by} постави {name} на обект {site} на {date}.",
+  "noticeReinforcement": "{company} ви добави като подкрепление."
 }

@@ -754,5 +754,58 @@
         "type": "String"
       }
     }
+  },
+  "actionMakeDeputy": "Appoint as deputy manager",
+  "actionRemoveDeputy": "Remove deputy manager role",
+  "busyHere": "Already working at this company at this time",
+  "calendarByLink": "By link (Google Calendar on a computer)",
+  "calendarDenied": "Calendar access denied. Allow it in the phone settings.",
+  "calendarLinkHint": "Add it from Google Calendar on a computer; Google updates it within a few hours.",
+  "calendarNone": "No editable calendar on this phone.",
+  "calendarOnPhone": "Add my shifts to the phone calendar",
+  "calendarOnPhoneHint": "In your Google calendar: visible right away, on the phone and in Google Calendar.",
+  "chooseCalendar": "Choose the calendar",
+  "otherSiteHint": "Employee from another site: their managers will be notified.",
+  "subManager": "Deputy manager",
+  "calendarSynced": "Shifts in the calendar: {count}",
+  "@calendarSynced": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "deputyOf": "Deputy manager: {name}",
+  "@deputyOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeBorrowed": "{by} scheduled {name} at {site} on {date}.",
+  "@noticeBorrowed": {
+    "placeholders": {
+      "by": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "site": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeReinforcement": "{company} added you as backup staff.",
+  "@noticeReinforcement": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
   }
 }

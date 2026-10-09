@@ -1124,4 +1124,65 @@ class L10nDe extends L10n {
   String shiftsCount(String count) {
     return 'Schichten: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Zur stellvertretenden Leitung ernennen';
+
+  @override
+  String get actionRemoveDeputy => 'Stellvertretung entziehen';
+
+  @override
+  String get busyHere => 'Arbeitet zu dieser Zeit schon in diesem Unternehmen';
+
+  @override
+  String get calendarByLink => 'Per Link (Google Kalender am Computer)';
+
+  @override
+  String get calendarDenied =>
+      'Kalenderzugriff verweigert. Erlauben Sie ihn in den Telefoneinstellungen.';
+
+  @override
+  String get calendarLinkHint =>
+      'Am Computer in Google Kalender hinzufügen; Google aktualisiert ihn innerhalb einiger Stunden.';
+
+  @override
+  String get calendarNone => 'Kein bearbeitbarer Kalender auf diesem Telefon.';
+
+  @override
+  String get calendarOnPhone =>
+      'Meine Schichten in den Telefonkalender eintragen';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'In Ihrem Google-Kalender: sofort sichtbar, auf dem Telefon und in Google Kalender.';
+
+  @override
+  String get chooseCalendar => 'Kalender wählen';
+
+  @override
+  String get otherSiteHint =>
+      'Angestellte/r eines anderen Standorts: die Verantwortlichen werden benachrichtigt.';
+
+  @override
+  String get subManager => 'Stellvertretende Leitung';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Schichten im Kalender: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Stellvertretende Leitung: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by hat $name am $date am Standort $site eingeplant.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company hat Sie als Verstärkung hinzugefügt.';
+  }
 }

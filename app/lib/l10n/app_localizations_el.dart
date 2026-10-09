@@ -1120,4 +1120,66 @@ class L10nEl extends L10n {
   String shiftsCount(String count) {
     return 'Βάρδιες: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Ορισμός αναπληρωτή υπευθύνου';
+
+  @override
+  String get actionRemoveDeputy => 'Αφαίρεση ρόλου αναπληρωτή';
+
+  @override
+  String get busyHere => 'Εργάζεται ήδη στην εταιρεία αυτή την ώρα';
+
+  @override
+  String get calendarByLink => 'Με σύνδεσμο (Google Calendar σε υπολογιστή)';
+
+  @override
+  String get calendarDenied =>
+      'Η πρόσβαση στο ημερολόγιο απορρίφθηκε. Επιτρέψτε την στις ρυθμίσεις του τηλεφώνου.';
+
+  @override
+  String get calendarLinkHint =>
+      'Προσθέστε το από το Google Calendar σε υπολογιστή· η Google το ενημερώνει μέσα σε λίγες ώρες.';
+
+  @override
+  String get calendarNone =>
+      'Δεν υπάρχει επεξεργάσιμο ημερολόγιο σε αυτό το τηλέφωνο.';
+
+  @override
+  String get calendarOnPhone =>
+      'Προσθήκη των βαρδιών μου στο ημερολόγιο του τηλεφώνου';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'Στο ημερολόγιο Google σας: ορατό αμέσως, στο τηλέφωνο και στο Google Calendar.';
+
+  @override
+  String get chooseCalendar => 'Επιλογή ημερολογίου';
+
+  @override
+  String get otherSiteHint =>
+      'Υπάλληλος άλλου καταστήματος: οι υπεύθυνοί του θα ειδοποιηθούν.';
+
+  @override
+  String get subManager => 'Αναπληρωτής υπευθύνου';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Βάρδιες στο ημερολόγιο: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Αναπληρωτής υπευθύνου: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return 'Ο/Η $by έβαλε τον/την $name στο κατάστημα $site στις $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return 'Η $company σας πρόσθεσε ως ενίσχυση.';
+  }
 }

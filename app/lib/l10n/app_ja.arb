@@ -310,5 +310,21 @@
   "alertRest": "{name}：休息が {value} のみ（最低 {limit}）",
   "alertWeek": "{name}：1週間 {value}（上限 {limit}）",
   "legalAlertsCount": "法定アラート：{count}",
-  "shiftsCount": "シフト：{count}"
+  "shiftsCount": "シフト：{count}",
+  "actionMakeDeputy": "副責任者に任命",
+  "actionRemoveDeputy": "副責任者の役割を外す",
+  "busyHere": "この時間帯はすでにこの会社で勤務中です",
+  "calendarByLink": "リンクで追加（パソコンの Google カレンダー）",
+  "calendarDenied": "カレンダーへのアクセスが拒否されました。電話の設定で許可してください。",
+  "calendarLinkHint": "パソコンの Google カレンダーから追加してください。Google が数時間以内に更新します。",
+  "calendarNone": "この電話には編集できるカレンダーがありません。",
+  "calendarOnPhone": "シフトを電話のカレンダーに追加",
+  "calendarOnPhoneHint": "Google カレンダーにすぐ表示されます（電話と Google カレンダーの両方）。",
+  "chooseCalendar": "カレンダーを選択",
+  "otherSiteHint": "別の店舗の従業員です。その責任者に通知されます。",
+  "subManager": "副責任者",
+  "calendarSynced": "カレンダーのシフト：{count}",
+  "deputyOf": "副責任者：{name}",
+  "noticeBorrowed": "{by} さんが {date} に {name} さんを {site} に配置しました。",
+  "noticeReinforcement": "{company} があなたを応援スタッフとして追加しました。"
 }

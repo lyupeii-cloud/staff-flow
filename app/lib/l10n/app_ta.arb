@@ -310,5 +310,21 @@
   "alertRest": "{name}: {value} ஓய்வு மட்டுமே (குறைந்தபட்சம் {limit})",
   "alertWeek": "{name}: ஒரு வாரத்தில் {value} (அதிகபட்சம் {limit})",
   "legalAlertsCount": "சட்ட எச்சரிக்கைகள்: {count}",
-  "shiftsCount": "ஷிஃப்டுகள்: {count}"
+  "shiftsCount": "ஷிஃப்டுகள்: {count}",
+  "actionMakeDeputy": "துணை மேலாளராக நியமி",
+  "actionRemoveDeputy": "துணை மேலாளர் பங்கை நீக்கு",
+  "busyHere": "இந்த நேரத்தில் ஏற்கனவே இந்த நிறுவனத்தில் பணியில்",
+  "calendarByLink": "இணைப்பு மூலம் (கணினியில் Google Calendar)",
+  "calendarDenied": "நாட்காட்டி அணுகல் மறுக்கப்பட்டது. தொலைபேசி அமைப்புகளில் அனுமதியுங்கள்.",
+  "calendarLinkHint": "கணினியில் Google Calendar-இலிருந்து சேருங்கள்; Google சில மணிநேரத்தில் புதுப்பிக்கும்.",
+  "calendarNone": "இந்தத் தொலைபேசியில் திருத்தக்கூடிய நாட்காட்டி இல்லை.",
+  "calendarOnPhone": "என் ஷிஃப்டுகளைத் தொலைபேசி நாட்காட்டியில் சேர்",
+  "calendarOnPhoneHint": "உங்கள் Google நாட்காட்டியில்: தொலைபேசியிலும் Google Calendar-இலும் உடனே தெரியும்.",
+  "chooseCalendar": "நாட்காட்டியைத் தேர்ந்தெடு",
+  "otherSiteHint": "வேறு இடத்தின் பணியாளர்: அவரது மேலாளர்களுக்கு அறிவிக்கப்படும்.",
+  "subManager": "துணை மேலாளர்",
+  "calendarSynced": "நாட்காட்டியில் ஷிஃப்டுகள்: {count}",
+  "deputyOf": "துணை மேலாளர்: {name}",
+  "noticeBorrowed": "{by} {date} அன்று {name} அவர்களை {site} இடத்தில் பணியமர்த்தினார்.",
+  "noticeReinforcement": "{company} உங்களை உதவிப் பணியாளராகச் சேர்த்தது."
 }

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../api.dart';
+import '../calendar_sync.dart';
 import '../config.dart';
 import '../dates.dart';
 import '../i18n.dart';
@@ -349,6 +350,62 @@ class _CalendarDialogState extends State<_CalendarDialog> {
   late String? _path = widget.session.me?.calendarPath;
   bool _busy = false;
 
+  /// Android : agenda du téléphone où les services sont écrits.
+  String? _device;
+
+  @override
+  void initState() {
+    super.initState();
+    CalendarSync.calendarId().then((id) {
+      if (mounted) setState(() => _device = id);
+    });
+  }
+
+  Future<void> _setDevice(bool enabled) async {
+    final t = context.l10n;
+    final messenger = ScaffoldMessenger.of(context);
+    setState(() => _busy = true);
+    try {
+      if (!enabled) {
+        await CalendarSync.disable();
+        setState(() => _device = null);
+        return;
+      }
+      final calendars = await CalendarSync.calendars();
+      if (!mounted) return;
+      if (calendars == null || calendars.isEmpty) {
+        messenger.showSnackBar(SnackBar(content: Text(calendars == null ? t.calendarDenied : t.calendarNone)));
+        return;
+      }
+      // Plusieurs agendas : on choisit (celui du compte Google en premier).
+      final chosen = calendars.length == 1
+          ? calendars.single.id
+          : await showDialog<String>(
+              context: context,
+              builder: (context) => SimpleDialog(
+                title: Text(t.chooseCalendar),
+                children: [
+                  for (final c in calendars)
+                    SimpleDialogOption(
+                      onPressed: () => Navigator.pop(context, c.id),
+                      child: Text(CalendarSync.label(c)),
+                    ),
+                ],
+              ),
+            );
+      if (chosen == null) return;
+      final count = await CalendarSync.enable(widget.session.api, chosen);
+      setState(() => _device = chosen);
+      messenger.showSnackBar(SnackBar(content: Text(t.calendarSynced('$count'))));
+    } on OfflineException {
+      messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+    } on ApiException catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text(e.describe(t))));
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
   Future<void> _set(bool enabled) async {
     final t = context.l10n;
     final messenger = ScaffoldMessenger.of(context);
@@ -373,12 +430,25 @@ class _CalendarDialogState extends State<_CalendarDialog> {
     final url = path == null ? null : serverUrl(path);
     return AlertDialog(
       title: Text(t.googleCalendar),
-      content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      content: SingleChildScrollView(child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         Text(t.calendarHint),
+        // Android : écrit directement dans l'agenda Google du téléphone.
+        if (CalendarSync.supported) ...[
+          SwitchListTile(
+            contentPadding: EdgeInsets.zero,
+            value: _device != null,
+            title: Text(t.calendarOnPhone),
+            subtitle: Text(t.calendarOnPhoneHint),
+            onChanged: _busy ? null : _setDevice,
+          ),
+          const Divider(),
+          Text(t.calendarByLink, style: Theme.of(context).textTheme.titleSmall),
+        ],
         SwitchListTile(
           contentPadding: EdgeInsets.zero,
           value: path != null,
           title: Text(t.calendarEnabled),
+          subtitle: Text(t.calendarLinkHint),
           onChanged: _busy ? null : _set,
         ),
         if (url != null) ...[
@@ -399,7 +469,7 @@ class _CalendarDialogState extends State<_CalendarDialog> {
             label: Text(t.copyCalendarLink),
           ),
         ],
-      ]),
+      ])),
       actions: [TextButton(onPressed: () => Navigator.pop(context), child: Text(t.close))],
     );
   }

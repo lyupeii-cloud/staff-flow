@@ -1113,4 +1113,64 @@ class L10nBg extends L10n {
   String shiftsCount(String count) {
     return 'Смени: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Назначи за заместник-ръководител';
+
+  @override
+  String get actionRemoveDeputy => 'Премахни ролята на заместник';
+
+  @override
+  String get busyHere => 'Вече е на смяна във фирмата по това време';
+
+  @override
+  String get calendarByLink => 'Чрез връзка (Google Календар на компютър)';
+
+  @override
+  String get calendarDenied =>
+      'Достъпът до календара е отказан. Разрешете го в настройките на телефона.';
+
+  @override
+  String get calendarLinkHint =>
+      'Добавете го от Google Календар на компютър; Google го обновява до няколко часа.';
+
+  @override
+  String get calendarNone => 'Няма календар за редактиране на този телефон.';
+
+  @override
+  String get calendarOnPhone => 'Добави смените ми в календара на телефона';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'Във вашия Google календар: видимо веднага, на телефона и в Google Календар.';
+
+  @override
+  String get chooseCalendar => 'Избери календар';
+
+  @override
+  String get otherSiteHint =>
+      'Служител от друг обект: ръководителите му ще бъдат уведомени.';
+
+  @override
+  String get subManager => 'Заместник-ръководител';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Смени в календара: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Заместник-ръководител: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by постави $name на обект $site на $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company ви добави като подкрепление.';
+  }
 }

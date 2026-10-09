@@ -1120,4 +1120,65 @@ class L10nTa extends L10n {
   String shiftsCount(String count) {
     return 'ஷிஃப்டுகள்: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'துணை மேலாளராக நியமி';
+
+  @override
+  String get actionRemoveDeputy => 'துணை மேலாளர் பங்கை நீக்கு';
+
+  @override
+  String get busyHere => 'இந்த நேரத்தில் ஏற்கனவே இந்த நிறுவனத்தில் பணியில்';
+
+  @override
+  String get calendarByLink => 'இணைப்பு மூலம் (கணினியில் Google Calendar)';
+
+  @override
+  String get calendarDenied =>
+      'நாட்காட்டி அணுகல் மறுக்கப்பட்டது. தொலைபேசி அமைப்புகளில் அனுமதியுங்கள்.';
+
+  @override
+  String get calendarLinkHint =>
+      'கணினியில் Google Calendar-இலிருந்து சேருங்கள்; Google சில மணிநேரத்தில் புதுப்பிக்கும்.';
+
+  @override
+  String get calendarNone =>
+      'இந்தத் தொலைபேசியில் திருத்தக்கூடிய நாட்காட்டி இல்லை.';
+
+  @override
+  String get calendarOnPhone => 'என் ஷிஃப்டுகளைத் தொலைபேசி நாட்காட்டியில் சேர்';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'உங்கள் Google நாட்காட்டியில்: தொலைபேசியிலும் Google Calendar-இலும் உடனே தெரியும்.';
+
+  @override
+  String get chooseCalendar => 'நாட்காட்டியைத் தேர்ந்தெடு';
+
+  @override
+  String get otherSiteHint =>
+      'வேறு இடத்தின் பணியாளர்: அவரது மேலாளர்களுக்கு அறிவிக்கப்படும்.';
+
+  @override
+  String get subManager => 'துணை மேலாளர்';
+
+  @override
+  String calendarSynced(String count) {
+    return 'நாட்காட்டியில் ஷிஃப்டுகள்: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'துணை மேலாளர்: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by $date அன்று $name அவர்களை $site இடத்தில் பணியமர்த்தினார்.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company உங்களை உதவிப் பணியாளராகச் சேர்த்தது.';
+  }
 }

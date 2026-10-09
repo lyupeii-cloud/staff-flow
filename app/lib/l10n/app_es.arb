@@ -310,5 +310,21 @@
   "alertRest": "{name}: solo {value} de descanso (mínimo {limit})",
   "alertWeek": "{name}: {value} en la semana (máximo {limit})",
   "legalAlertsCount": "Alertas legales: {count}",
-  "shiftsCount": "Turnos: {count}"
+  "shiftsCount": "Turnos: {count}",
+  "actionMakeDeputy": "Nombrar subresponsable",
+  "actionRemoveDeputy": "Quitar el rol de subresponsable",
+  "busyHere": "Ya trabaja en la empresa en este horario",
+  "calendarByLink": "Por enlace (Google Calendar en un ordenador)",
+  "calendarDenied": "Acceso al calendario denegado. Permítelo en los ajustes del teléfono.",
+  "calendarLinkHint": "Añádelo desde Google Calendar en un ordenador; Google lo actualiza en unas horas.",
+  "calendarNone": "No hay ningún calendario editable en este teléfono.",
+  "calendarOnPhone": "Añadir mis turnos al calendario del teléfono",
+  "calendarOnPhoneHint": "En tu calendario de Google: visible al instante, en el teléfono y en Google Calendar.",
+  "chooseCalendar": "Elegir el calendario",
+  "otherSiteHint": "Empleado de otro sitio: se avisará a sus responsables.",
+  "subManager": "Subresponsable",
+  "calendarSynced": "Turnos en el calendario: {count}",
+  "deputyOf": "Subresponsable: {name}",
+  "noticeBorrowed": "{by} ha asignado a {name} al sitio {site} el {date}.",
+  "noticeReinforcement": "{company} te ha añadido como refuerzo."
 }

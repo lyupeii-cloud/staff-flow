@@ -110,6 +110,18 @@ class _ShiftEditorState extends State<_ShiftEditor> {
     }
   }
 
+  /// Salarié d'une autre équipe (site) : ses responsables seront prévenus.
+  bool get _otherSite {
+    final m = widget.data.members.where((m) => m.user.id == _userId).firstOrNull;
+    final team = m?.sites;
+    return m != null &&
+        (m.role == Role.employee || m.role == Role.extra) &&
+        _siteId != null &&
+        team != null &&
+        team.isNotEmpty &&
+        !team.contains(_siteId);
+  }
+
   /// Personne choisie dans une autre entreprise : pas encore membre de celle-ci.
   Map<String, dynamic>? get _reinforcement =>
       widget.data.members.any((m) => m.user.id == _userId) ? null : _others.where((p) => p['userId'] == _userId).firstOrNull;
@@ -117,6 +129,9 @@ class _ShiftEditorState extends State<_ShiftEditor> {
   /// Personnes déjà en service dans une autre entreprise sur ce créneau
   /// (le serveur ne dit rien de plus).
   Set<String> _busy = const {};
+
+  /// Personnes qui ont déjà un autre service dans cette entreprise sur ce créneau.
+  Set<String> _busyHere = const {};
   String? _busyChecked;
 
   /// Relit [_busy] quand les jours ou l'horaire changent.
@@ -127,8 +142,14 @@ class _ShiftEditorState extends State<_ShiftEditor> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       try {
         final r = await widget.session.api.send('GET',
-            '/companies/${widget.company.id}/busy?days=${_days.map(formatDay).join(',')}&start=$_start&end=$_end');
-        if (mounted && key == _busyChecked) setState(() => _busy = {for (final u in r['userIds']) u as String});
+            '/companies/${widget.company.id}/busy?days=${_days.map(formatDay).join(',')}&start=$_start&end=$_end'
+            '${s == null || s!.isLocal ? '' : '&exclude=${s!.id}'}');
+        if (mounted && key == _busyChecked) {
+          setState(() {
+            _busy = {for (final u in r['userIds']) u as String};
+            _busyHere = {for (final u in r['here'] ?? const []) u as String};
+          });
+        }
       } catch (_) {
         // Hors connexion : pas d'indication.
       }
@@ -242,8 +263,8 @@ class _ShiftEditorState extends State<_ShiftEditor> {
                   DropdownMenuItem(
                     value: m.user.id,
                     child: Text(
-                        '${_absent(m.user.id) || _busy.contains(m.user.id) ? '! ' : ''}${m.user.name} · ${m.role.label(t)}',
-                        style: _absent(m.user.id) || _busy.contains(m.user.id)
+                        '${_absent(m.user.id) || _busy.contains(m.user.id) || _busyHere.contains(m.user.id) ? '! ' : ''}${m.user.name} · ${m.role.label(t)}',
+                        style: _absent(m.user.id) || _busy.contains(m.user.id) || _busyHere.contains(m.user.id)
                             ? TextStyle(color: theme.colorScheme.error)
                             : null),
                   ),
@@ -271,6 +292,16 @@ class _ShiftEditorState extends State<_ShiftEditor> {
               Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Text('! ${t.absentThatDay}', style: TextStyle(color: theme.colorScheme.error)),
+              ),
+            if (_busyHere.contains(_userId))
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text('! ${t.busyHere}', style: TextStyle(color: theme.colorScheme.error)),
+              ),
+            if (_reinforcement == null && _otherSite)
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text(t.otherSiteHint, style: theme.textTheme.bodySmall),
               ),
             if (_busy.contains(_userId))
               Padding(

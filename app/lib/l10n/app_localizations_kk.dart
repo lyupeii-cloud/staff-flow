@@ -1114,4 +1114,64 @@ class L10nKk extends L10n {
   String shiftsCount(String count) {
     return 'Ауысымдар: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Басшы орынбасары етіп тағайындау';
+
+  @override
+  String get actionRemoveDeputy => 'Орынбасар рөлін алып тастау';
+
+  @override
+  String get busyHere => 'Бұл уақытта осы компанияда жұмыста';
+
+  @override
+  String get calendarByLink => 'Сілтеме арқылы (компьютердегі Google Күнтізбе)';
+
+  @override
+  String get calendarDenied =>
+      'Күнтізбеге кіруге рұқсат жоқ. Телефон баптауларында рұқсат етіңіз.';
+
+  @override
+  String get calendarLinkHint =>
+      'Компьютердегі Google Күнтізбеден қосыңыз; Google оны бірнеше сағатта жаңартады.';
+
+  @override
+  String get calendarNone => 'Бұл телефонда өзгертуге болатын күнтізбе жоқ.';
+
+  @override
+  String get calendarOnPhone => 'Ауысымдарымды телефон күнтізбесіне қосу';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'Google күнтізбеңізде: телефонда да, Google Күнтізбеде де бірден көрінеді.';
+
+  @override
+  String get chooseCalendar => 'Күнтізбені таңдау';
+
+  @override
+  String get otherSiteHint =>
+      'Басқа нысанның қызметкері: оның басшыларына хабарланады.';
+
+  @override
+  String get subManager => 'Басшы орынбасары';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Күнтізбедегі ауысымдар: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Басшы орынбасары: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by $date күні $name қызметкерін $site нысанына қойды.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company сізді қосымша қызметкер ретінде қосты.';
+  }
 }

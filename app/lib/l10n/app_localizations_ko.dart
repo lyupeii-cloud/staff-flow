@@ -1091,4 +1091,62 @@ class L10nKo extends L10n {
   String shiftsCount(String count) {
     return '근무: $count';
   }
+
+  @override
+  String get actionMakeDeputy => '부관리자로 지정';
+
+  @override
+  String get actionRemoveDeputy => '부관리자 역할 해제';
+
+  @override
+  String get busyHere => '이 시간에 이미 이 회사에서 근무 중입니다';
+
+  @override
+  String get calendarByLink => '링크로 추가(컴퓨터의 Google 캘린더)';
+
+  @override
+  String get calendarDenied => '캘린더 접근이 거부되었습니다. 휴대전화 설정에서 허용하세요.';
+
+  @override
+  String get calendarLinkHint =>
+      '컴퓨터의 Google 캘린더에서 추가하세요. Google이 몇 시간 안에 업데이트합니다.';
+
+  @override
+  String get calendarNone => '이 휴대전화에 편집 가능한 캘린더가 없습니다.';
+
+  @override
+  String get calendarOnPhone => '내 근무를 휴대전화 캘린더에 추가';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'Google 캘린더에 바로 표시됩니다(휴대전화와 Google 캘린더 모두).';
+
+  @override
+  String get chooseCalendar => '캘린더 선택';
+
+  @override
+  String get otherSiteHint => '다른 지점의 직원입니다. 해당 관리자에게 알림이 갑니다.';
+
+  @override
+  String get subManager => '부관리자';
+
+  @override
+  String calendarSynced(String count) {
+    return '캘린더의 근무: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return '부관리자: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by님이 $date에 $name님을 $site 지점에 배치했습니다.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company에서 귀하를 지원 인력으로 추가했습니다.';
+  }
 }

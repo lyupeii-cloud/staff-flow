@@ -1122,4 +1122,64 @@ class L10nRo extends L10n {
   String shiftsCount(String count) {
     return 'Ture: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Numește adjunct al responsabilului';
+
+  @override
+  String get actionRemoveDeputy => 'Retrage rolul de adjunct';
+
+  @override
+  String get busyHere => 'Lucrează deja în firmă în acest interval';
+
+  @override
+  String get calendarByLink => 'Prin link (Google Calendar pe calculator)';
+
+  @override
+  String get calendarDenied =>
+      'Accesul la calendar a fost refuzat. Permite-l din setările telefonului.';
+
+  @override
+  String get calendarLinkHint =>
+      'Adaugă-l din Google Calendar pe un calculator; Google îl actualizează în câteva ore.';
+
+  @override
+  String get calendarNone => 'Niciun calendar editabil pe acest telefon.';
+
+  @override
+  String get calendarOnPhone => 'Adaugă turele mele în calendarul telefonului';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'În calendarul tău Google: vizibil imediat, pe telefon și în Google Calendar.';
+
+  @override
+  String get chooseCalendar => 'Alege calendarul';
+
+  @override
+  String get otherSiteHint =>
+      'Angajat de la altă locație: responsabilii lui vor fi anunțați.';
+
+  @override
+  String get subManager => 'Adjunct al responsabilului';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Ture în calendar: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Adjunct al responsabilului: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by l-a programat pe $name la locația $site pe $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company te-a adăugat ca întăritură.';
+  }
 }

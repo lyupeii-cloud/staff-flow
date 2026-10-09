@@ -1110,4 +1110,64 @@ class L10nHu extends L10n {
   String shiftsCount(String count) {
     return 'Műszakok: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Kinevezés helyettes vezetőnek';
+
+  @override
+  String get actionRemoveDeputy => 'Helyettesi szerep visszavonása';
+
+  @override
+  String get busyHere => 'Ebben az időben már dolgozik ennél a cégnél';
+
+  @override
+  String get calendarByLink => 'Hivatkozással (Google Naptár számítógépen)';
+
+  @override
+  String get calendarDenied =>
+      'A naptárhozzáférés megtagadva. Engedélyezd a telefon beállításaiban.';
+
+  @override
+  String get calendarLinkHint =>
+      'Számítógépen add hozzá a Google Naptárban; a Google néhány órán belül frissíti.';
+
+  @override
+  String get calendarNone => 'Nincs szerkeszthető naptár ezen a telefonon.';
+
+  @override
+  String get calendarOnPhone => 'Műszakjaim hozzáadása a telefon naptárához';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'A Google-naptáradban: azonnal látható a telefonon és a Google Naptárban.';
+
+  @override
+  String get chooseCalendar => 'Naptár kiválasztása';
+
+  @override
+  String get otherSiteHint =>
+      'Másik telephely munkavállalója: a vezetőit értesítjük.';
+
+  @override
+  String get subManager => 'Helyettes vezető';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Műszakok a naptárban: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Helyettes vezető: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by beosztotta $name személyt a(z) $site telephelyre ekkor: $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company kisegítőként hozzáadott.';
+  }
 }

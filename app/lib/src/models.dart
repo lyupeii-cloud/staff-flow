@@ -100,11 +100,15 @@ class Member {
   /// Voir [Membership.sites].
   final List<String>? sites;
 
+  /// Sous-responsable : le responsable qui l'a nommé.
+  final String? appointedBy;
+
   Member.fromJson(Map<String, dynamic> j)
       : user = User.fromJson(j['user']),
         role = Role.values.byName(j['role']),
         nameInCompany = j['nameInCompany'],
-        sites = _sites(j['sites']);
+        sites = _sites(j['sites']),
+        appointedBy = j['appointedBy'];
 }
 
 class Transfer {

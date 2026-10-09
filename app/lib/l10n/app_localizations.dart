@@ -2056,6 +2056,102 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Shifts: {count}'**
   String shiftsCount(String count);
+
+  /// No description provided for @actionMakeDeputy.
+  ///
+  /// In en, this message translates to:
+  /// **'Appoint as deputy manager'**
+  String get actionMakeDeputy;
+
+  /// No description provided for @actionRemoveDeputy.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove deputy manager role'**
+  String get actionRemoveDeputy;
+
+  /// No description provided for @busyHere.
+  ///
+  /// In en, this message translates to:
+  /// **'Already working at this company at this time'**
+  String get busyHere;
+
+  /// No description provided for @calendarByLink.
+  ///
+  /// In en, this message translates to:
+  /// **'By link (Google Calendar on a computer)'**
+  String get calendarByLink;
+
+  /// No description provided for @calendarDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Calendar access denied. Allow it in the phone settings.'**
+  String get calendarDenied;
+
+  /// No description provided for @calendarLinkHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add it from Google Calendar on a computer; Google updates it within a few hours.'**
+  String get calendarLinkHint;
+
+  /// No description provided for @calendarNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No editable calendar on this phone.'**
+  String get calendarNone;
+
+  /// No description provided for @calendarOnPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Add my shifts to the phone calendar'**
+  String get calendarOnPhone;
+
+  /// No description provided for @calendarOnPhoneHint.
+  ///
+  /// In en, this message translates to:
+  /// **'In your Google calendar: visible right away, on the phone and in Google Calendar.'**
+  String get calendarOnPhoneHint;
+
+  /// No description provided for @chooseCalendar.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the calendar'**
+  String get chooseCalendar;
+
+  /// No description provided for @otherSiteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Employee from another site: their managers will be notified.'**
+  String get otherSiteHint;
+
+  /// No description provided for @subManager.
+  ///
+  /// In en, this message translates to:
+  /// **'Deputy manager'**
+  String get subManager;
+
+  /// No description provided for @calendarSynced.
+  ///
+  /// In en, this message translates to:
+  /// **'Shifts in the calendar: {count}'**
+  String calendarSynced(String count);
+
+  /// No description provided for @deputyOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Deputy manager: {name}'**
+  String deputyOf(String name);
+
+  /// No description provided for @noticeBorrowed.
+  ///
+  /// In en, this message translates to:
+  /// **'{by} scheduled {name} at {site} on {date}.'**
+  String noticeBorrowed(String by, String name, String site, String date);
+
+  /// No description provided for @noticeReinforcement.
+  ///
+  /// In en, this message translates to:
+  /// **'{company} added you as backup staff.'**
+  String noticeReinforcement(String company);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

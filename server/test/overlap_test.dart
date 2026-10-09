@@ -42,6 +42,7 @@ void main() {
     final all = await mine();
     expect([for (final s in all) s['companyName']], ['Boulangerie', 'Café']);
     expect([for (final s in all) s['overlap']], [false, false]);
+    expect([all.first['startsAt'], all.first['endsAt']], ['2026-10-07T07:00:00.000Z', '2026-10-07T15:00:00.000Z']);
     expect(await kinds(bob), isNot(contains('shift_overlap')));
     // Personne d'autre ne voit ces services.
     expect((await claire.ok('GET', '/me/shifts?from=2026-10-05&to=2026-10-11'))['shifts'], isEmpty);

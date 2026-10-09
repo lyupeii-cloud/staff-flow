@@ -310,5 +310,21 @@
   "alertRest": "{name}: len {value} odpočinku (najmenej {limit})",
   "alertWeek": "{name}: {value} za týždeň (najviac {limit})",
   "legalAlertsCount": "Zákonné upozornenia: {count}",
-  "shiftsCount": "Zmeny: {count}"
+  "shiftsCount": "Zmeny: {count}",
+  "actionMakeDeputy": "Vymenovať za zástupcu vedúceho",
+  "actionRemoveDeputy": "Odobrať rolu zástupcu",
+  "busyHere": "V tomto čase už pracuje v tejto firme",
+  "calendarByLink": "Odkazom (Kalendár Google na počítači)",
+  "calendarDenied": "Prístup ku kalendáru bol zamietnutý. Povoľte ho v nastaveniach telefónu.",
+  "calendarLinkHint": "Pridajte z Kalendára Google na počítači; Google ho aktualizuje do niekoľkých hodín.",
+  "calendarNone": "V telefóne nie je žiadny upraviteľný kalendár.",
+  "calendarOnPhone": "Pridať moje zmeny do kalendára telefónu",
+  "calendarOnPhoneHint": "Vo vašom kalendári Google: hneď viditeľné v telefóne aj v Kalendári Google.",
+  "chooseCalendar": "Vybrať kalendár",
+  "otherSiteHint": "Zamestnanec inej pobočky: jeho vedúci budú upozornení.",
+  "subManager": "Zástupca vedúceho",
+  "calendarSynced": "Zmeny v kalendári: {count}",
+  "deputyOf": "Zástupca vedúceho: {name}",
+  "noticeBorrowed": "{by} zaradil {name} na pobočku {site} {date}.",
+  "noticeReinforcement": "{company} vás pridala ako posilu."
 }

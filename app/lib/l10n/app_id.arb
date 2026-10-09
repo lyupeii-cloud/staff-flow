@@ -310,5 +310,21 @@
   "alertRest": "{name}: hanya {value} istirahat (minimum {limit})",
   "alertWeek": "{name}: {value} dalam seminggu (maksimum {limit})",
   "legalAlertsCount": "Peringatan hukum: {count}",
-  "shiftsCount": "Shift: {count}"
+  "shiftsCount": "Shift: {count}",
+  "actionMakeDeputy": "Angkat sebagai wakil manajer",
+  "actionRemoveDeputy": "Cabut peran wakil manajer",
+  "busyHere": "Sudah bekerja di perusahaan ini pada jam ini",
+  "calendarByLink": "Lewat tautan (Google Kalender di komputer)",
+  "calendarDenied": "Akses kalender ditolak. Izinkan di pengaturan ponsel.",
+  "calendarLinkHint": "Tambahkan dari Google Kalender di komputer; Google memperbaruinya dalam beberapa jam.",
+  "calendarNone": "Tidak ada kalender yang bisa diubah di ponsel ini.",
+  "calendarOnPhone": "Tambahkan shift saya ke kalender ponsel",
+  "calendarOnPhoneHint": "Di kalender Google Anda: langsung terlihat, di ponsel dan di Google Kalender.",
+  "chooseCalendar": "Pilih kalender",
+  "otherSiteHint": "Karyawan dari lokasi lain: manajernya akan diberi tahu.",
+  "subManager": "Wakil manajer",
+  "calendarSynced": "Shift di kalender: {count}",
+  "deputyOf": "Wakil manajer: {name}",
+  "noticeBorrowed": "{by} menempatkan {name} di lokasi {site} pada {date}.",
+  "noticeReinforcement": "{company} menambahkan Anda sebagai tenaga bantuan."
 }

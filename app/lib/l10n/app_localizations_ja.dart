@@ -1092,4 +1092,62 @@ class L10nJa extends L10n {
   String shiftsCount(String count) {
     return 'シフト：$count';
   }
+
+  @override
+  String get actionMakeDeputy => '副責任者に任命';
+
+  @override
+  String get actionRemoveDeputy => '副責任者の役割を外す';
+
+  @override
+  String get busyHere => 'この時間帯はすでにこの会社で勤務中です';
+
+  @override
+  String get calendarByLink => 'リンクで追加（パソコンの Google カレンダー）';
+
+  @override
+  String get calendarDenied => 'カレンダーへのアクセスが拒否されました。電話の設定で許可してください。';
+
+  @override
+  String get calendarLinkHint =>
+      'パソコンの Google カレンダーから追加してください。Google が数時間以内に更新します。';
+
+  @override
+  String get calendarNone => 'この電話には編集できるカレンダーがありません。';
+
+  @override
+  String get calendarOnPhone => 'シフトを電話のカレンダーに追加';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'Google カレンダーにすぐ表示されます（電話と Google カレンダーの両方）。';
+
+  @override
+  String get chooseCalendar => 'カレンダーを選択';
+
+  @override
+  String get otherSiteHint => '別の店舗の従業員です。その責任者に通知されます。';
+
+  @override
+  String get subManager => '副責任者';
+
+  @override
+  String calendarSynced(String count) {
+    return 'カレンダーのシフト：$count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return '副責任者：$name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by さんが $date に $name さんを $site に配置しました。';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company があなたを応援スタッフとして追加しました。';
+  }
 }

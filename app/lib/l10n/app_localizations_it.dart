@@ -1117,4 +1117,66 @@ class L10nIt extends L10n {
   String shiftsCount(String count) {
     return 'Turni: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Nomina vice responsabile';
+
+  @override
+  String get actionRemoveDeputy => 'Togli il ruolo di vice responsabile';
+
+  @override
+  String get busyHere => 'Già in servizio nell\'azienda in questa fascia';
+
+  @override
+  String get calendarByLink => 'Tramite link (Google Calendar da computer)';
+
+  @override
+  String get calendarDenied =>
+      'Accesso al calendario negato. Consentilo nelle impostazioni del telefono.';
+
+  @override
+  String get calendarLinkHint =>
+      'Aggiungilo da Google Calendar su un computer; Google lo aggiorna entro qualche ora.';
+
+  @override
+  String get calendarNone =>
+      'Nessun calendario modificabile su questo telefono.';
+
+  @override
+  String get calendarOnPhone =>
+      'Aggiungi i miei turni al calendario del telefono';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'Nel tuo calendario Google: visibile subito, sul telefono e in Google Calendar.';
+
+  @override
+  String get chooseCalendar => 'Scegli il calendario';
+
+  @override
+  String get otherSiteHint =>
+      'Dipendente di un\'altra sede: i suoi responsabili saranno avvisati.';
+
+  @override
+  String get subManager => 'Vice responsabile';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Turni nel calendario: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Vice responsabile: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by ha assegnato $name alla sede $site il $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company ti ha aggiunto come rinforzo.';
+  }
 }

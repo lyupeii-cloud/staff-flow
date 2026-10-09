@@ -310,5 +310,21 @@
   "alertRest": "{name}: vain {value} lepoa (vähintään {limit})",
   "alertWeek": "{name}: {value} viikossa (enintään {limit})",
   "legalAlertsCount": "Lakisääteiset hälytykset: {count}",
-  "shiftsCount": "Vuorot: {count}"
+  "shiftsCount": "Vuorot: {count}",
+  "actionMakeDeputy": "Nimeä varaesihenkilöksi",
+  "actionRemoveDeputy": "Poista varaesihenkilön rooli",
+  "busyHere": "On jo töissä tässä yrityksessä tähän aikaan",
+  "calendarByLink": "Linkillä (Google Kalenteri tietokoneella)",
+  "calendarDenied": "Kalenterin käyttö estetty. Salli se puhelimen asetuksista.",
+  "calendarLinkHint": "Lisää Google Kalenterista tietokoneella; Google päivittää sen muutamassa tunnissa.",
+  "calendarNone": "Puhelimessa ei ole muokattavaa kalenteria.",
+  "calendarOnPhone": "Lisää vuoroni puhelimen kalenteriin",
+  "calendarOnPhoneHint": "Google-kalenterissasi: näkyy heti puhelimessa ja Google Kalenterissa.",
+  "chooseCalendar": "Valitse kalenteri",
+  "otherSiteHint": "Toisen toimipaikan työntekijä: hänen esihenkilöilleen ilmoitetaan.",
+  "subManager": "Varaesihenkilö",
+  "calendarSynced": "Vuoroja kalenterissa: {count}",
+  "deputyOf": "Varaesihenkilö: {name}",
+  "noticeBorrowed": "{by} merkitsi henkilön {name} toimipaikkaan {site} {date}.",
+  "noticeReinforcement": "{company} lisäsi sinut vahvistukseksi."
 }

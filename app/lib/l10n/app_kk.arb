@@ -310,5 +310,21 @@
   "alertRest": "{name}: тек {value} демалыс (ең азы {limit})",
   "alertWeek": "{name}: бір аптада {value} (ең көбі {limit})",
   "legalAlertsCount": "Заңды ескертулер: {count}",
-  "shiftsCount": "Ауысымдар: {count}"
+  "shiftsCount": "Ауысымдар: {count}",
+  "actionMakeDeputy": "Басшы орынбасары етіп тағайындау",
+  "actionRemoveDeputy": "Орынбасар рөлін алып тастау",
+  "busyHere": "Бұл уақытта осы компанияда жұмыста",
+  "calendarByLink": "Сілтеме арқылы (компьютердегі Google Күнтізбе)",
+  "calendarDenied": "Күнтізбеге кіруге рұқсат жоқ. Телефон баптауларында рұқсат етіңіз.",
+  "calendarLinkHint": "Компьютердегі Google Күнтізбеден қосыңыз; Google оны бірнеше сағатта жаңартады.",
+  "calendarNone": "Бұл телефонда өзгертуге болатын күнтізбе жоқ.",
+  "calendarOnPhone": "Ауысымдарымды телефон күнтізбесіне қосу",
+  "calendarOnPhoneHint": "Google күнтізбеңізде: телефонда да, Google Күнтізбеде де бірден көрінеді.",
+  "chooseCalendar": "Күнтізбені таңдау",
+  "otherSiteHint": "Басқа нысанның қызметкері: оның басшыларына хабарланады.",
+  "subManager": "Басшы орынбасары",
+  "calendarSynced": "Күнтізбедегі ауысымдар: {count}",
+  "deputyOf": "Басшы орынбасары: {name}",
+  "noticeBorrowed": "{by} {date} күні {name} қызметкерін {site} нысанына қойды.",
+  "noticeReinforcement": "{company} сізді қосымша қызметкер ретінде қосты."
 }

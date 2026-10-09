@@ -310,5 +310,21 @@
   "alertRest": "{name}: केवल {value} आराम (न्यूनतम {limit})",
   "alertWeek": "{name}: सप्ताह में {value} (अधिकतम {limit})",
   "legalAlertsCount": "कानूनी चेतावनियाँ: {count}",
-  "shiftsCount": "शिफ़्ट: {count}"
+  "shiftsCount": "शिफ़्ट: {count}",
+  "actionMakeDeputy": "उप-प्रबंधक नियुक्त करें",
+  "actionRemoveDeputy": "उप-प्रबंधक की भूमिका हटाएँ",
+  "busyHere": "इस समय पहले से इस कंपनी में ड्यूटी पर",
+  "calendarByLink": "लिंक से (कंप्यूटर पर Google कैलेंडर)",
+  "calendarDenied": "कैलेंडर की अनुमति नहीं मिली। फ़ोन की सेटिंग में अनुमति दें।",
+  "calendarLinkHint": "कंप्यूटर पर Google कैलेंडर से जोड़ें; Google कुछ घंटों में अपडेट करता है।",
+  "calendarNone": "इस फ़ोन पर कोई बदलने योग्य कैलेंडर नहीं है।",
+  "calendarOnPhone": "मेरी शिफ़्ट फ़ोन के कैलेंडर में जोड़ें",
+  "calendarOnPhoneHint": "आपके Google कैलेंडर में: फ़ोन और Google कैलेंडर पर तुरंत दिखेगा।",
+  "chooseCalendar": "कैलेंडर चुनें",
+  "otherSiteHint": "दूसरे स्थान का कर्मचारी: उसके प्रबंधकों को सूचित किया जाएगा।",
+  "subManager": "उप-प्रबंधक",
+  "calendarSynced": "कैलेंडर में शिफ़्ट: {count}",
+  "deputyOf": "उप-प्रबंधक: {name}",
+  "noticeBorrowed": "{by} ने {date} को {name} को {site} पर लगाया है।",
+  "noticeReinforcement": "{company} ने आपको सहायक कर्मी के रूप में जोड़ा है।"
 }

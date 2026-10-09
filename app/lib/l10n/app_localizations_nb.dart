@@ -1115,4 +1115,64 @@ class L10nNb extends L10n {
   String shiftsCount(String count) {
     return 'Vakter: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Utnevn til stedfortredende leder';
+
+  @override
+  String get actionRemoveDeputy => 'Fjern rollen som stedfortreder';
+
+  @override
+  String get busyHere => 'Jobber allerede i bedriften på dette tidspunktet';
+
+  @override
+  String get calendarByLink => 'Via lenke (Google Kalender på en datamaskin)';
+
+  @override
+  String get calendarDenied =>
+      'Tilgang til kalenderen avslått. Tillat den i telefoninnstillingene.';
+
+  @override
+  String get calendarLinkHint =>
+      'Legg til fra Google Kalender på en datamaskin; Google oppdaterer innen noen timer.';
+
+  @override
+  String get calendarNone => 'Ingen redigerbar kalender på denne telefonen.';
+
+  @override
+  String get calendarOnPhone => 'Legg til vaktene mine i telefonkalenderen';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'I Google-kalenderen din: synlig med en gang, på telefonen og i Google Kalender.';
+
+  @override
+  String get chooseCalendar => 'Velg kalender';
+
+  @override
+  String get otherSiteHint =>
+      'Ansatt fra et annet sted: lederne der blir varslet.';
+
+  @override
+  String get subManager => 'Stedfortredende leder';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Vakter i kalenderen: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Stedfortredende leder: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by har satt opp $name på $site $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company har lagt deg til som forsterkning.';
+  }
 }

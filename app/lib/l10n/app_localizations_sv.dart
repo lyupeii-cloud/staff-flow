@@ -1116,4 +1116,64 @@ class L10nSv extends L10n {
   String shiftsCount(String count) {
     return 'Pass: $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Utse till biträdande ansvarig';
+
+  @override
+  String get actionRemoveDeputy => 'Ta bort rollen som biträdande';
+
+  @override
+  String get busyHere => 'Arbetar redan i företaget vid den här tiden';
+
+  @override
+  String get calendarByLink => 'Via länk (Google Kalender på en dator)';
+
+  @override
+  String get calendarDenied =>
+      'Åtkomst till kalendern nekades. Tillåt den i telefonens inställningar.';
+
+  @override
+  String get calendarLinkHint =>
+      'Lägg till via Google Kalender på en dator; Google uppdaterar inom några timmar.';
+
+  @override
+  String get calendarNone => 'Ingen redigerbar kalender på den här telefonen.';
+
+  @override
+  String get calendarOnPhone => 'Lägg till mina pass i telefonens kalender';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'I din Google-kalender: syns direkt, i telefonen och i Google Kalender.';
+
+  @override
+  String get chooseCalendar => 'Välj kalender';
+
+  @override
+  String get otherSiteHint =>
+      'Anställd från en annan arbetsplats: hens ansvariga får ett meddelande.';
+
+  @override
+  String get subManager => 'Biträdande ansvarig';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Pass i kalendern: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Biträdande ansvarig: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by har schemalagt $name på $site den $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company har lagt till dig som förstärkning.';
+  }
 }

@@ -310,5 +310,21 @@
   "alertRest": "{name}: csak {value} pihenő (legalább {limit})",
   "alertWeek": "{name}: {value} egy héten (legfeljebb {limit})",
   "legalAlertsCount": "Jogszabályi figyelmeztetések: {count}",
-  "shiftsCount": "Műszakok: {count}"
+  "shiftsCount": "Műszakok: {count}",
+  "actionMakeDeputy": "Kinevezés helyettes vezetőnek",
+  "actionRemoveDeputy": "Helyettesi szerep visszavonása",
+  "busyHere": "Ebben az időben már dolgozik ennél a cégnél",
+  "calendarByLink": "Hivatkozással (Google Naptár számítógépen)",
+  "calendarDenied": "A naptárhozzáférés megtagadva. Engedélyezd a telefon beállításaiban.",
+  "calendarLinkHint": "Számítógépen add hozzá a Google Naptárban; a Google néhány órán belül frissíti.",
+  "calendarNone": "Nincs szerkeszthető naptár ezen a telefonon.",
+  "calendarOnPhone": "Műszakjaim hozzáadása a telefon naptárához",
+  "calendarOnPhoneHint": "A Google-naptáradban: azonnal látható a telefonon és a Google Naptárban.",
+  "chooseCalendar": "Naptár kiválasztása",
+  "otherSiteHint": "Másik telephely munkavállalója: a vezetőit értesítjük.",
+  "subManager": "Helyettes vezető",
+  "calendarSynced": "Műszakok a naptárban: {count}",
+  "deputyOf": "Helyettes vezető: {name}",
+  "noticeBorrowed": "{by} beosztotta {name} személyt a(z) {site} telephelyre ekkor: {date}.",
+  "noticeReinforcement": "{company} kisegítőként hozzáadott."
 }

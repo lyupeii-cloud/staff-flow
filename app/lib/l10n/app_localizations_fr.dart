@@ -1124,4 +1124,64 @@ class L10nFr extends L10n {
   String shiftsCount(String count) {
     return 'Services : $count';
   }
+
+  @override
+  String get actionMakeDeputy => 'Nommer sous-responsable';
+
+  @override
+  String get actionRemoveDeputy => 'Retirer le rôle de sous-responsable';
+
+  @override
+  String get busyHere => 'Déjà en service dans l\'entreprise sur ce créneau';
+
+  @override
+  String get calendarByLink => 'Par lien (Google Agenda sur ordinateur)';
+
+  @override
+  String get calendarDenied =>
+      'Accès à l\'agenda refusé. Autorisez-le dans les réglages du téléphone.';
+
+  @override
+  String get calendarLinkHint =>
+      'À ajouter depuis Google Agenda sur un ordinateur ; Google le met à jour en quelques heures.';
+
+  @override
+  String get calendarNone => 'Aucun agenda modifiable sur ce téléphone.';
+
+  @override
+  String get calendarOnPhone => 'Ajouter mes services à l\'agenda du téléphone';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'Dans votre agenda Google : visible tout de suite, sur le téléphone et sur Google Agenda.';
+
+  @override
+  String get chooseCalendar => 'Choisir l\'agenda';
+
+  @override
+  String get otherSiteHint =>
+      'Salarié d\'un autre site : ses responsables seront prévenus.';
+
+  @override
+  String get subManager => 'Sous-responsable';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Services dans l\'agenda : $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Sous-responsable : $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by a placé $name sur le site $site le $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company vous a ajouté comme renfort.';
+  }
 }
