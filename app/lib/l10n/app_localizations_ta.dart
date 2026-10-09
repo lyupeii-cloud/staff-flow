@@ -1181,4 +1181,38 @@ class L10nTa extends L10n {
   String noticeReinforcement(String company) {
     return '$company உங்களை உதவிப் பணியாளராகச் சேர்த்தது.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'அணைக்கப்பட்டது: இந்தத் தொலைபேசியில் எதுவும் ஒலிக்காது, ஆனால் எல்லாம் மணியில் இருக்கும்.';
+
+  @override
+  String get companyNotificationsOn => 'இந்த நிறுவனத்தின் அறிவிப்புகளைப் பெறு';
+
+  @override
+  String get companyTimezone => 'நிறுவனத்தின் நேர மண்டலம்';
+
+  @override
+  String get companyTimezoneHint =>
+      'இந்த நிறுவனத்தின் எல்லா நேரங்களும் இந்த நேர மண்டலத்தில் உள்ளன (பகல் சேமிப்பு நேரம் உட்பட). நாட்காட்டிகள் தானாக மாற்றும்.';
+
+  @override
+  String get iosInstallHint =>
+      'iPhone-இல்: பகிர் என்பதைத் தட்டி, “முகப்புத் திரையில் சேர்” மூலம் Staff Flow-ஐ நிறுவுங்கள்.';
+
+  @override
+  String get searchCity => 'நகரத்தைத் தேடு';
+
+  @override
+  String get thisPhone => 'இந்தச் சாதனம்';
+
+  @override
+  String companyNotifications(String name) {
+    return 'அறிவிப்புகள்: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'நேரங்கள் $zone நேரப்படி ($company). உங்கள் சாதனம்: $here.';
+  }
 }

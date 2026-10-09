@@ -330,5 +330,14 @@
   "calendarSynced": "Змін у календарі: {count}",
   "deputyOf": "Заступник керівника: {name}",
   "noticeBorrowed": "{by} поставив {name} на локацію {site} {date}.",
-  "noticeReinforcement": "{company} додала вас як підсилення."
+  "noticeReinforcement": "{company} додала вас як підсилення.",
+  "companyNotificationsHint": "Вимкнено: на цьому телефоні нічого не дзвенить, але все лишається в дзвіночку.",
+  "companyNotificationsOn": "Отримувати сповіщення від цієї компанії",
+  "companyTimezone": "Часовий пояс компанії",
+  "companyTimezoneHint": "Усі години цієї компанії — за цим часом (з урахуванням літнього часу). Календарі перераховують їх автоматично.",
+  "iosInstallHint": "На iPhone: торкніться «Поділитися», потім «На початковий екран», щоб установити Staff Flow.",
+  "searchCity": "Шукати місто",
+  "thisPhone": "Цей пристрій",
+  "companyNotifications": "Сповіщення: {name}",
+  "timezoneDiffers": "Години за часом {zone} ({company}). Ваш пристрій: {here}."
 }

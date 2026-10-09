@@ -1180,4 +1180,38 @@ class L10nRu extends L10n {
   String noticeReinforcement(String company) {
     return '$company добавила вас как подкрепление.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Выключено: на этом телефоне ничего не звучит, но всё остаётся в колокольчике.';
+
+  @override
+  String get companyNotificationsOn => 'Получать уведомления от этой компании';
+
+  @override
+  String get companyTimezone => 'Часовой пояс компании';
+
+  @override
+  String get companyTimezoneHint =>
+      'Все часы этой компании указаны по этому времени (с учётом летнего времени). Календари пересчитывают их автоматически.';
+
+  @override
+  String get iosInstallHint =>
+      'На iPhone: нажмите «Поделиться», затем «На экран „Домой“», чтобы установить Staff Flow.';
+
+  @override
+  String get searchCity => 'Найти город';
+
+  @override
+  String get thisPhone => 'Это устройство';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Уведомления: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Часы по времени $zone ($company). Ваше устройство: $here.';
+  }
 }

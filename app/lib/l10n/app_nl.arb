@@ -326,5 +326,14 @@
   "calendarSynced": "Diensten in de agenda: {count}",
   "deputyOf": "Plaatsvervangend leidinggevende: {name}",
   "noticeBorrowed": "{by} heeft {name} op {date} ingepland op locatie {site}.",
-  "noticeReinforcement": "{company} heeft je toegevoegd als versterking."
+  "noticeReinforcement": "{company} heeft je toegevoegd als versterking.",
+  "companyNotificationsHint": "Uit: op deze telefoon gaat niets af, maar alles blijft in de bel.",
+  "companyNotificationsOn": "Meldingen van dit bedrijf ontvangen",
+  "companyTimezone": "Tijdzone van het bedrijf",
+  "companyTimezoneHint": "Alle tijden van dit bedrijf zijn in deze tijdzone (zomertijd inbegrepen). Agenda's rekenen ze automatisch om.",
+  "iosInstallHint": "Op iPhone: tik op Deel en daarna op ‘Zet op beginscherm’ om Staff Flow te installeren.",
+  "searchCity": "Zoek een stad",
+  "thisPhone": "Dit apparaat",
+  "companyNotifications": "Meldingen: {name}",
+  "timezoneDiffers": "Tijden in de tijd van {zone} ({company}). Je apparaat: {here}."
 }

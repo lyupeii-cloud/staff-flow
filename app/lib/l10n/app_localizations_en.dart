@@ -1175,4 +1175,38 @@ class L10nEn extends L10n {
   String noticeReinforcement(String company) {
     return '$company added you as backup staff.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Off: nothing rings on this phone, but everything stays in the bell.';
+
+  @override
+  String get companyNotificationsOn => 'Get notifications from this company';
+
+  @override
+  String get companyTimezone => 'Company time zone';
+
+  @override
+  String get companyTimezoneHint =>
+      'All of this company\'s times are in this time zone (daylight saving included). Calendars convert them automatically.';
+
+  @override
+  String get iosInstallHint =>
+      'On iPhone: tap Share, then “Add to Home Screen” to install Staff Flow.';
+
+  @override
+  String get searchCity => 'Search for a city';
+
+  @override
+  String get thisPhone => 'This device';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Notifications: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Times are in $zone time ($company). Your device: $here.';
+  }
 }

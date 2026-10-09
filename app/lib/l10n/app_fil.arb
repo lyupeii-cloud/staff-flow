@@ -326,5 +326,14 @@
   "calendarSynced": "Mga shift sa kalendaryo: {count}",
   "deputyOf": "Deputy manager: {name}",
   "noticeBorrowed": "Inilagay ni {by} si {name} sa site na {site} sa {date}.",
-  "noticeReinforcement": "Idinagdag ka ng {company} bilang dagdag na tauhan."
+  "noticeReinforcement": "Idinagdag ka ng {company} bilang dagdag na tauhan.",
+  "companyNotificationsHint": "Naka-off: walang tutunog sa teleponong ito, pero mananatili ang lahat sa kampana.",
+  "companyNotificationsOn": "Tumanggap ng mga notification mula sa kumpanyang ito",
+  "companyTimezone": "Time zone ng kumpanya",
+  "companyTimezoneHint": "Lahat ng oras ng kumpanyang ito ay nasa time zone na ito (kasama ang daylight saving). Awtomatikong kino-convert ito ng mga kalendaryo.",
+  "iosInstallHint": "Sa iPhone: i-tap ang Share, saka ang “Add to Home Screen” para i-install ang Staff Flow.",
+  "searchCity": "Maghanap ng lungsod",
+  "thisPhone": "Ang device na ito",
+  "companyNotifications": "Mga notification: {name}",
+  "timezoneDiffers": "Mga oras ayon sa oras sa {zone} ({company}). Ang device mo: {here}."
 }

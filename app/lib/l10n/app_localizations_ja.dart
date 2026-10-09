@@ -1150,4 +1150,37 @@ class L10nJa extends L10n {
   String noticeReinforcement(String company) {
     return '$company があなたを応援スタッフとして追加しました。';
   }
+
+  @override
+  String get companyNotificationsHint => 'オフ：この電話では鳴りませんが、すべてベルに残ります。';
+
+  @override
+  String get companyNotificationsOn => 'この会社の通知を受け取る';
+
+  @override
+  String get companyTimezone => '会社のタイムゾーン';
+
+  @override
+  String get companyTimezoneHint =>
+      'この会社の時刻はすべてこのタイムゾーンです（夏時間を含む）。カレンダーが自動で変換します。';
+
+  @override
+  String get iosInstallHint =>
+      'iPhone では「共有」をタップし、「ホーム画面に追加」で Staff Flow をインストールできます。';
+
+  @override
+  String get searchCity => '都市を検索';
+
+  @override
+  String get thisPhone => 'このデバイス';
+
+  @override
+  String companyNotifications(String name) {
+    return '通知：$name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return '時刻は $zone 時間（$company）です。お使いのデバイス：$here。';
+  }
 }

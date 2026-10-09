@@ -326,5 +326,14 @@
   "calendarSynced": "Күнтізбедегі ауысымдар: {count}",
   "deputyOf": "Басшы орынбасары: {name}",
   "noticeBorrowed": "{by} {date} күні {name} қызметкерін {site} нысанына қойды.",
-  "noticeReinforcement": "{company} сізді қосымша қызметкер ретінде қосты."
+  "noticeReinforcement": "{company} сізді қосымша қызметкер ретінде қосты.",
+  "companyNotificationsHint": "Өшірулі: бұл телефонда ештеңе дыбыс бермейді, бірақ бәрі қоңырауда қалады.",
+  "companyNotificationsOn": "Осы компанияның хабарландыруларын алу",
+  "companyTimezone": "Компанияның уақыт белдеуі",
+  "companyTimezoneHint": "Осы компанияның барлық уақыттары осы белдеу бойынша (жазғы уақытты қоса). Күнтізбелер оларды өздігінен түрлендіреді.",
+  "iosInstallHint": "iPhone-да: «Бөлісу» түймесін, содан кейін «Басты экранға қосу» түймесін басып, Staff Flow-ды орнатыңыз.",
+  "searchCity": "Қала іздеу",
+  "thisPhone": "Осы құрылғы",
+  "companyNotifications": "Хабарландырулар: {name}",
+  "timezoneDiffers": "Уақыттар {zone} уақыты бойынша ({company}). Құрылғыңыз: {here}."
 }

@@ -1176,4 +1176,39 @@ class L10nDa extends L10n {
   String noticeReinforcement(String company) {
     return '$company har tilføjet dig som forstærkning.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Slået fra: intet ringer på denne telefon, men alt bliver i klokken.';
+
+  @override
+  String get companyNotificationsOn =>
+      'Modtag notifikationer fra denne virksomhed';
+
+  @override
+  String get companyTimezone => 'Virksomhedens tidszone';
+
+  @override
+  String get companyTimezoneHint =>
+      'Alle tider for denne virksomhed er i denne tidszone (sommertid medregnet). Kalendere omregner dem automatisk.';
+
+  @override
+  String get iosInstallHint =>
+      'På iPhone: tryk på Del og derefter ”Føj til hjemmeskærm” for at installere Staff Flow.';
+
+  @override
+  String get searchCity => 'Søg efter en by';
+
+  @override
+  String get thisPhone => 'Denne enhed';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Notifikationer: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Tider efter tiden i $zone ($company). Din enhed: $here.';
+  }
 }

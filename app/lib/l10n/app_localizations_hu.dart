@@ -1170,4 +1170,38 @@ class L10nHu extends L10n {
   String noticeReinforcement(String company) {
     return '$company kisegítőként hozzáadott.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Kikapcsolva: ezen a telefonon semmi sem szól, de minden megmarad a csengőben.';
+
+  @override
+  String get companyNotificationsOn => 'Értesítések fogadása ettől a cégtől';
+
+  @override
+  String get companyTimezone => 'A cég időzónája';
+
+  @override
+  String get companyTimezoneHint =>
+      'A cég minden időpontja ebben az időzónában van (nyári időszámítással). A naptárak automatikusan átszámítják.';
+
+  @override
+  String get iosInstallHint =>
+      'iPhone-on: koppints a Megosztás gombra, majd a „Főképernyőhöz adás” lehetőségre a Staff Flow telepítéséhez.';
+
+  @override
+  String get searchCity => 'Város keresése';
+
+  @override
+  String get thisPhone => 'Ez az eszköz';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Értesítések: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Időpontok $zone idő szerint ($company). Az eszközöd: $here.';
+  }
 }

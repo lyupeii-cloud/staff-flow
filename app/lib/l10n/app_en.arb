@@ -807,5 +807,34 @@
         "type": "String"
       }
     }
+  },
+  "companyNotificationsHint": "Off: nothing rings on this phone, but everything stays in the bell.",
+  "companyNotificationsOn": "Get notifications from this company",
+  "companyTimezone": "Company time zone",
+  "companyTimezoneHint": "All of this company's times are in this time zone (daylight saving included). Calendars convert them automatically.",
+  "iosInstallHint": "On iPhone: tap Share, then “Add to Home Screen” to install Staff Flow.",
+  "searchCity": "Search for a city",
+  "thisPhone": "This device",
+  "companyNotifications": "Notifications: {name}",
+  "@companyNotifications": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "timezoneDiffers": "Times are in {zone} time ({company}). Your device: {here}.",
+  "@timezoneDiffers": {
+    "placeholders": {
+      "zone": {
+        "type": "String"
+      },
+      "company": {
+        "type": "String"
+      },
+      "here": {
+        "type": "String"
+      }
+    }
   }
 }

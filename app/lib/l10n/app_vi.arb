@@ -326,5 +326,14 @@
   "calendarSynced": "Ca trong lịch: {count}",
   "deputyOf": "Phó quản lý: {name}",
   "noticeBorrowed": "{by} đã xếp {name} vào địa điểm {site} ngày {date}.",
-  "noticeReinforcement": "{company} đã thêm bạn làm nhân sự hỗ trợ."
+  "noticeReinforcement": "{company} đã thêm bạn làm nhân sự hỗ trợ.",
+  "companyNotificationsHint": "Đã tắt: điện thoại này không đổ chuông, nhưng mọi thứ vẫn ở trong chuông thông báo.",
+  "companyNotificationsOn": "Nhận thông báo của công ty này",
+  "companyTimezone": "Múi giờ của công ty",
+  "companyTimezoneHint": "Mọi giờ của công ty này theo múi giờ này (đã tính giờ mùa hè). Lịch sẽ tự quy đổi.",
+  "iosInstallHint": "Trên iPhone: chạm Chia sẻ, rồi “Thêm vào MH chính” để cài Staff Flow.",
+  "searchCity": "Tìm thành phố",
+  "thisPhone": "Thiết bị này",
+  "companyNotifications": "Thông báo: {name}",
+  "timezoneDiffers": "Giờ theo giờ {zone} ({company}). Thiết bị của bạn: {here}."
 }

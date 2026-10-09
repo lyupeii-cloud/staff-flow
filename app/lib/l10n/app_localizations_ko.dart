@@ -1149,4 +1149,38 @@ class L10nKo extends L10n {
   String noticeReinforcement(String company) {
     return '$company에서 귀하를 지원 인력으로 추가했습니다.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      '꺼짐: 이 휴대전화에서는 울리지 않지만 모두 종 아이콘에 남습니다.';
+
+  @override
+  String get companyNotificationsOn => '이 회사의 알림 받기';
+
+  @override
+  String get companyTimezone => '회사 시간대';
+
+  @override
+  String get companyTimezoneHint =>
+      '이 회사의 모든 시간은 이 시간대 기준입니다(일광 절약 시간 포함). 캘린더가 자동으로 변환합니다.';
+
+  @override
+  String get iosInstallHint =>
+      'iPhone에서는 공유를 누른 다음 ‘홈 화면에 추가’를 눌러 Staff Flow를 설치하세요.';
+
+  @override
+  String get searchCity => '도시 검색';
+
+  @override
+  String get thisPhone => '이 기기';
+
+  @override
+  String companyNotifications(String name) {
+    return '알림: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return '시간은 $zone 기준($company)입니다. 내 기기: $here.';
+  }
 }

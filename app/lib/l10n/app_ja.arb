@@ -326,5 +326,14 @@
   "calendarSynced": "カレンダーのシフト：{count}",
   "deputyOf": "副責任者：{name}",
   "noticeBorrowed": "{by} さんが {date} に {name} さんを {site} に配置しました。",
-  "noticeReinforcement": "{company} があなたを応援スタッフとして追加しました。"
+  "noticeReinforcement": "{company} があなたを応援スタッフとして追加しました。",
+  "companyNotificationsHint": "オフ：この電話では鳴りませんが、すべてベルに残ります。",
+  "companyNotificationsOn": "この会社の通知を受け取る",
+  "companyTimezone": "会社のタイムゾーン",
+  "companyTimezoneHint": "この会社の時刻はすべてこのタイムゾーンです（夏時間を含む）。カレンダーが自動で変換します。",
+  "iosInstallHint": "iPhone では「共有」をタップし、「ホーム画面に追加」で Staff Flow をインストールできます。",
+  "searchCity": "都市を検索",
+  "thisPhone": "このデバイス",
+  "companyNotifications": "通知：{name}",
+  "timezoneDiffers": "時刻は {zone} 時間（{company}）です。お使いのデバイス：{here}。"
 }

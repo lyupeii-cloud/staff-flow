@@ -1182,4 +1182,38 @@ class L10nRo extends L10n {
   String noticeReinforcement(String company) {
     return '$company te-a adăugat ca întăritură.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Oprite: nu sună nimic pe acest telefon, dar totul rămâne în clopoțel.';
+
+  @override
+  String get companyNotificationsOn => 'Primește notificările acestei firme';
+
+  @override
+  String get companyTimezone => 'Fusul orar al firmei';
+
+  @override
+  String get companyTimezoneHint =>
+      'Toate orele acestei firme sunt în acest fus (inclusiv ora de vară). Calendarele le convertesc automat.';
+
+  @override
+  String get iosInstallHint =>
+      'Pe iPhone: atinge Partajează, apoi „Adaugă pe ecranul principal” pentru a instala Staff Flow.';
+
+  @override
+  String get searchCity => 'Caută un oraș';
+
+  @override
+  String get thisPhone => 'Acest dispozitiv';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Notificări: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Ore după ora din $zone ($company). Dispozitivul tău: $here.';
+  }
 }

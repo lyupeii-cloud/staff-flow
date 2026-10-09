@@ -326,5 +326,14 @@
   "calendarSynced": "ক্যালেন্ডারে শিফট: {count}",
   "deputyOf": "উপ-ব্যবস্থাপক: {name}",
   "noticeBorrowed": "{by} {date} তারিখে {name}-কে {site}-এ রেখেছেন।",
-  "noticeReinforcement": "{company} আপনাকে সহায়ক কর্মী হিসেবে যোগ করেছে।"
+  "noticeReinforcement": "{company} আপনাকে সহায়ক কর্মী হিসেবে যোগ করেছে।",
+  "companyNotificationsHint": "বন্ধ: এই ফোনে কিছু বাজবে না, তবে সব ঘণ্টায় থেকে যাবে।",
+  "companyNotificationsOn": "এই কোম্পানির বিজ্ঞপ্তি পান",
+  "companyTimezone": "কোম্পানির সময় অঞ্চল",
+  "companyTimezoneHint": "এই কোম্পানির সব সময় এই সময় অঞ্চলে (দিবালোক সংরক্ষণ সহ)। ক্যালেন্ডার নিজে থেকে রূপান্তর করে।",
+  "iosInstallHint": "iPhone-এ: শেয়ার ট্যাপ করুন, তারপর “হোম স্ক্রিনে যোগ করুন” দিয়ে Staff Flow ইনস্টল করুন।",
+  "searchCity": "শহর খুঁজুন",
+  "thisPhone": "এই ডিভাইস",
+  "companyNotifications": "বিজ্ঞপ্তি: {name}",
+  "timezoneDiffers": "সময় {zone}-এর সময় অনুযায়ী ({company})। আপনার ডিভাইস: {here}।"
 }

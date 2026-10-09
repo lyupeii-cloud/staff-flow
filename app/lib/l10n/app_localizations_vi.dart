@@ -1168,4 +1168,38 @@ class L10nVi extends L10n {
   String noticeReinforcement(String company) {
     return '$company đã thêm bạn làm nhân sự hỗ trợ.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Đã tắt: điện thoại này không đổ chuông, nhưng mọi thứ vẫn ở trong chuông thông báo.';
+
+  @override
+  String get companyNotificationsOn => 'Nhận thông báo của công ty này';
+
+  @override
+  String get companyTimezone => 'Múi giờ của công ty';
+
+  @override
+  String get companyTimezoneHint =>
+      'Mọi giờ của công ty này theo múi giờ này (đã tính giờ mùa hè). Lịch sẽ tự quy đổi.';
+
+  @override
+  String get iosInstallHint =>
+      'Trên iPhone: chạm Chia sẻ, rồi “Thêm vào MH chính” để cài Staff Flow.';
+
+  @override
+  String get searchCity => 'Tìm thành phố';
+
+  @override
+  String get thisPhone => 'Thiết bị này';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Thông báo: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Giờ theo giờ $zone ($company). Thiết bị của bạn: $here.';
+  }
 }

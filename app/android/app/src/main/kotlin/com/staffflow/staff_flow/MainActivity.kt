@@ -100,7 +100,7 @@ class MainActivity : FlutterActivity() {
             put(Events.EVENT_LOCATION, e["location"] as String?)
             put(Events.DTSTART, (e["start"] as Number).toLong())
             put(Events.DTEND, (e["end"] as Number).toLong())
-            put(Events.EVENT_TIMEZONE, TimeZone.getDefault().id)
+            put(Events.EVENT_TIMEZONE, (e["timezone"] as String?) ?: TimeZone.getDefault().id)
             put(Events.ALL_DAY, 0)
             put(Events.HAS_ALARM, 0)
         }

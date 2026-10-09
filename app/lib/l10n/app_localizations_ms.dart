@@ -1172,4 +1172,39 @@ class L10nMs extends L10n {
   String noticeReinforcement(String company) {
     return '$company menambah anda sebagai tenaga bantuan.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Dimatikan: tiada apa-apa berbunyi pada telefon ini, tetapi semuanya kekal dalam loceng.';
+
+  @override
+  String get companyNotificationsOn =>
+      'Terima pemberitahuan daripada syarikat ini';
+
+  @override
+  String get companyTimezone => 'Zon waktu syarikat';
+
+  @override
+  String get companyTimezoneHint =>
+      'Semua waktu syarikat ini dalam zon waktu ini (termasuk waktu musim panas). Kalendar menukarnya secara automatik.';
+
+  @override
+  String get iosInstallHint =>
+      'Pada iPhone: ketik Kongsi, kemudian “Tambah ke Skrin Utama” untuk memasang Staff Flow.';
+
+  @override
+  String get searchCity => 'Cari bandar';
+
+  @override
+  String get thisPhone => 'Peranti ini';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Pemberitahuan: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Waktu mengikut waktu $zone ($company). Peranti anda: $here.';
+  }
 }

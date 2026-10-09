@@ -1174,4 +1174,38 @@ class L10nKk extends L10n {
   String noticeReinforcement(String company) {
     return '$company сізді қосымша қызметкер ретінде қосты.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Өшірулі: бұл телефонда ештеңе дыбыс бермейді, бірақ бәрі қоңырауда қалады.';
+
+  @override
+  String get companyNotificationsOn => 'Осы компанияның хабарландыруларын алу';
+
+  @override
+  String get companyTimezone => 'Компанияның уақыт белдеуі';
+
+  @override
+  String get companyTimezoneHint =>
+      'Осы компанияның барлық уақыттары осы белдеу бойынша (жазғы уақытты қоса). Күнтізбелер оларды өздігінен түрлендіреді.';
+
+  @override
+  String get iosInstallHint =>
+      'iPhone-да: «Бөлісу» түймесін, содан кейін «Басты экранға қосу» түймесін басып, Staff Flow-ды орнатыңыз.';
+
+  @override
+  String get searchCity => 'Қала іздеу';
+
+  @override
+  String get thisPhone => 'Осы құрылғы';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Хабарландырулар: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Уақыттар $zone уақыты бойынша ($company). Құрылғыңыз: $here.';
+  }
 }

@@ -326,5 +326,14 @@
   "calendarSynced": "Syif dalam kalendar: {count}",
   "deputyOf": "Timbalan pengurus: {name}",
   "noticeBorrowed": "{by} menempatkan {name} di lokasi {site} pada {date}.",
-  "noticeReinforcement": "{company} menambah anda sebagai tenaga bantuan."
+  "noticeReinforcement": "{company} menambah anda sebagai tenaga bantuan.",
+  "companyNotificationsHint": "Dimatikan: tiada apa-apa berbunyi pada telefon ini, tetapi semuanya kekal dalam loceng.",
+  "companyNotificationsOn": "Terima pemberitahuan daripada syarikat ini",
+  "companyTimezone": "Zon waktu syarikat",
+  "companyTimezoneHint": "Semua waktu syarikat ini dalam zon waktu ini (termasuk waktu musim panas). Kalendar menukarnya secara automatik.",
+  "iosInstallHint": "Pada iPhone: ketik Kongsi, kemudian “Tambah ke Skrin Utama” untuk memasang Staff Flow.",
+  "searchCity": "Cari bandar",
+  "thisPhone": "Peranti ini",
+  "companyNotifications": "Pemberitahuan: {name}",
+  "timezoneDiffers": "Waktu mengikut waktu {zone} ({company}). Peranti anda: {here}."
 }

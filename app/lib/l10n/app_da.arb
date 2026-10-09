@@ -326,5 +326,14 @@
   "calendarSynced": "Vagter i kalenderen: {count}",
   "deputyOf": "Stedfortrædende leder: {name}",
   "noticeBorrowed": "{by} har sat {name} på {site} den {date}.",
-  "noticeReinforcement": "{company} har tilføjet dig som forstærkning."
+  "noticeReinforcement": "{company} har tilføjet dig som forstærkning.",
+  "companyNotificationsHint": "Slået fra: intet ringer på denne telefon, men alt bliver i klokken.",
+  "companyNotificationsOn": "Modtag notifikationer fra denne virksomhed",
+  "companyTimezone": "Virksomhedens tidszone",
+  "companyTimezoneHint": "Alle tider for denne virksomhed er i denne tidszone (sommertid medregnet). Kalendere omregner dem automatisk.",
+  "iosInstallHint": "På iPhone: tryk på Del og derefter ”Føj til hjemmeskærm” for at installere Staff Flow.",
+  "searchCity": "Søg efter en by",
+  "thisPhone": "Denne enhed",
+  "companyNotifications": "Notifikationer: {name}",
+  "timezoneDiffers": "Tider efter tiden i {zone} ({company}). Din enhed: {here}."
 }

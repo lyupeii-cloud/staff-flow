@@ -1173,4 +1173,38 @@ class L10nMr extends L10n {
   String noticeReinforcement(String company) {
     return '$company ने तुम्हाला मदतनीस म्हणून जोडले.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'बंद: या फोनवर काही वाजणार नाही, पण सगळे घंटीत राहील.';
+
+  @override
+  String get companyNotificationsOn => 'या कंपनीच्या सूचना मिळवा';
+
+  @override
+  String get companyTimezone => 'कंपनीचा वेळ क्षेत्र';
+
+  @override
+  String get companyTimezoneHint =>
+      'या कंपनीच्या सर्व वेळा याच वेळ क्षेत्रात आहेत (उन्हाळी वेळेसह). कॅलेंडर त्या आपोआप बदलतात.';
+
+  @override
+  String get iosInstallHint =>
+      'iPhone वर: शेअर टॅप करा, मग “होम स्क्रीनवर जोडा” निवडून Staff Flow इंस्टॉल करा.';
+
+  @override
+  String get searchCity => 'शहर शोधा';
+
+  @override
+  String get thisPhone => 'हे उपकरण';
+
+  @override
+  String companyNotifications(String name) {
+    return 'सूचना: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'वेळा $zone च्या वेळेनुसार ($company). तुमचे उपकरण: $here.';
+  }
 }

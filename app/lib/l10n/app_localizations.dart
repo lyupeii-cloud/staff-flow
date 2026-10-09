@@ -2152,6 +2152,60 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'{company} added you as backup staff.'**
   String noticeReinforcement(String company);
+
+  /// No description provided for @companyNotificationsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Off: nothing rings on this phone, but everything stays in the bell.'**
+  String get companyNotificationsHint;
+
+  /// No description provided for @companyNotificationsOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Get notifications from this company'**
+  String get companyNotificationsOn;
+
+  /// No description provided for @companyTimezone.
+  ///
+  /// In en, this message translates to:
+  /// **'Company time zone'**
+  String get companyTimezone;
+
+  /// No description provided for @companyTimezoneHint.
+  ///
+  /// In en, this message translates to:
+  /// **'All of this company\'s times are in this time zone (daylight saving included). Calendars convert them automatically.'**
+  String get companyTimezoneHint;
+
+  /// No description provided for @iosInstallHint.
+  ///
+  /// In en, this message translates to:
+  /// **'On iPhone: tap Share, then “Add to Home Screen” to install Staff Flow.'**
+  String get iosInstallHint;
+
+  /// No description provided for @searchCity.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for a city'**
+  String get searchCity;
+
+  /// No description provided for @thisPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'This device'**
+  String get thisPhone;
+
+  /// No description provided for @companyNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications: {name}'**
+  String companyNotifications(String name);
+
+  /// No description provided for @timezoneDiffers.
+  ///
+  /// In en, this message translates to:
+  /// **'Times are in {zone} time ({company}). Your device: {here}.'**
+  String timezoneDiffers(String zone, String company, String here);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

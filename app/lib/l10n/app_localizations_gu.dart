@@ -1171,4 +1171,38 @@ class L10nGu extends L10n {
   String noticeReinforcement(String company) {
     return '$company એ તમને મદદનીશ તરીકે ઉમેર્યા.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'બંધ: આ ફોન પર કંઈ વાગશે નહીં, પણ બધું ઘંટડીમાં રહેશે.';
+
+  @override
+  String get companyNotificationsOn => 'આ કંપનીની સૂચનાઓ મેળવો';
+
+  @override
+  String get companyTimezone => 'કંપનીનો સમય વિસ્તાર';
+
+  @override
+  String get companyTimezoneHint =>
+      'આ કંપનીના બધા સમય આ સમય વિસ્તારમાં છે (ઉનાળુ સમય સહિત). કૅલેન્ડર તેને આપમેળે બદલે છે.';
+
+  @override
+  String get iosInstallHint =>
+      'iPhone પર: શેર ટૅપ કરો, પછી “હોમ સ્ક્રીન પર ઉમેરો” થી Staff Flow ઇન્સ્ટોલ કરો.';
+
+  @override
+  String get searchCity => 'શહેર શોધો';
+
+  @override
+  String get thisPhone => 'આ ઉપકરણ';
+
+  @override
+  String companyNotifications(String name) {
+    return 'સૂચનાઓ: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'સમય $zone ના સમય મુજબ ($company). તમારું ઉપકરણ: $here.';
+  }
 }

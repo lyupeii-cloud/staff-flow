@@ -326,5 +326,14 @@
   "calendarSynced": "క్యాలెండర్‌లో షిఫ్టులు: {count}",
   "deputyOf": "ఉప-మేనేజర్: {name}",
   "noticeBorrowed": "{by} {date}న {name}ని {site}లో కేటాయించారు.",
-  "noticeReinforcement": "{company} మిమ్మల్ని సహాయ సిబ్బందిగా చేర్చింది."
+  "noticeReinforcement": "{company} మిమ్మల్ని సహాయ సిబ్బందిగా చేర్చింది.",
+  "companyNotificationsHint": "ఆపివేయబడింది: ఈ ఫోన్‌లో ఏదీ మోగదు, కానీ అన్నీ గంటలో ఉంటాయి.",
+  "companyNotificationsOn": "ఈ కంపెనీ నోటిఫికేషన్లను పొందు",
+  "companyTimezone": "కంపెనీ సమయ మండలం",
+  "companyTimezoneHint": "ఈ కంపెనీ అన్ని సమయాలు ఈ సమయ మండలంలో ఉంటాయి (డేలైట్ సేవింగ్‌తో సహా). క్యాలెండర్‌లు వాటిని తామే మార్చుతాయి.",
+  "iosInstallHint": "iPhoneలో: షేర్ నొక్కి, “హోమ్ స్క్రీన్‌కు జోడించు” ద్వారా Staff Flow ఇన్‌స్టాల్ చేయండి.",
+  "searchCity": "నగరాన్ని వెతకండి",
+  "thisPhone": "ఈ పరికరం",
+  "companyNotifications": "నోటిఫికేషన్లు: {name}",
+  "timezoneDiffers": "సమయాలు {zone} సమయం ప్రకారం ({company}). మీ పరికరం: {here}."
 }

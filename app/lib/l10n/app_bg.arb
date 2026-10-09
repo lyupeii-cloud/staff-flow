@@ -326,5 +326,14 @@
   "calendarSynced": "Смени в календара: {count}",
   "deputyOf": "Заместник-ръководител: {name}",
   "noticeBorrowed": "{by} постави {name} на обект {site} на {date}.",
-  "noticeReinforcement": "{company} ви добави като подкрепление."
+  "noticeReinforcement": "{company} ви добави като подкрепление.",
+  "companyNotificationsHint": "Изключени: на този телефон нищо не звъни, но всичко остава в звънчето.",
+  "companyNotificationsOn": "Получавай известия от тази фирма",
+  "companyTimezone": "Часова зона на фирмата",
+  "companyTimezoneHint": "Всички часове на тази фирма са в тази зона (с лятното време). Календарите ги преобразуват автоматично.",
+  "iosInstallHint": "На iPhone: докоснете „Сподели“, после „Добави към началния екран“, за да инсталирате Staff Flow.",
+  "searchCity": "Търси град",
+  "thisPhone": "Това устройство",
+  "companyNotifications": "Известия: {name}",
+  "timezoneDiffers": "Часове по времето в {zone} ({company}). Вашето устройство: {here}."
 }

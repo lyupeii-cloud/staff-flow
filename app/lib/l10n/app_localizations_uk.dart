@@ -1181,4 +1181,39 @@ class L10nUk extends L10n {
   String noticeReinforcement(String company) {
     return '$company додала вас як підсилення.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Вимкнено: на цьому телефоні нічого не дзвенить, але все лишається в дзвіночку.';
+
+  @override
+  String get companyNotificationsOn =>
+      'Отримувати сповіщення від цієї компанії';
+
+  @override
+  String get companyTimezone => 'Часовий пояс компанії';
+
+  @override
+  String get companyTimezoneHint =>
+      'Усі години цієї компанії — за цим часом (з урахуванням літнього часу). Календарі перераховують їх автоматично.';
+
+  @override
+  String get iosInstallHint =>
+      'На iPhone: торкніться «Поділитися», потім «На початковий екран», щоб установити Staff Flow.';
+
+  @override
+  String get searchCity => 'Шукати місто';
+
+  @override
+  String get thisPhone => 'Цей пристрій';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Сповіщення: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Години за часом $zone ($company). Ваш пристрій: $here.';
+  }
 }

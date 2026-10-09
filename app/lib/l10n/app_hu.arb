@@ -326,5 +326,14 @@
   "calendarSynced": "Műszakok a naptárban: {count}",
   "deputyOf": "Helyettes vezető: {name}",
   "noticeBorrowed": "{by} beosztotta {name} személyt a(z) {site} telephelyre ekkor: {date}.",
-  "noticeReinforcement": "{company} kisegítőként hozzáadott."
+  "noticeReinforcement": "{company} kisegítőként hozzáadott.",
+  "companyNotificationsHint": "Kikapcsolva: ezen a telefonon semmi sem szól, de minden megmarad a csengőben.",
+  "companyNotificationsOn": "Értesítések fogadása ettől a cégtől",
+  "companyTimezone": "A cég időzónája",
+  "companyTimezoneHint": "A cég minden időpontja ebben az időzónában van (nyári időszámítással). A naptárak automatikusan átszámítják.",
+  "iosInstallHint": "iPhone-on: koppints a Megosztás gombra, majd a „Főképernyőhöz adás” lehetőségre a Staff Flow telepítéséhez.",
+  "searchCity": "Város keresése",
+  "thisPhone": "Ez az eszköz",
+  "companyNotifications": "Értesítések: {name}",
+  "timezoneDiffers": "Időpontok {zone} idő szerint ({company}). Az eszközöd: {here}."
 }

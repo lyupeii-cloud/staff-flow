@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../brand.dart';
 import '../config.dart';
+import '../platform/standalone.dart';
 import '../google/button.dart';
 import '../i18n.dart';
 import '../session.dart';
@@ -105,6 +106,21 @@ class _LoginScreenState extends State<LoginScreen> {
                         icon: const Icon(Icons.login),
                         label: Text(t.signInWithGoogle),
                       ),
+                    // iPhone (pas d'application iOS pour l'instant) : l'installer depuis Safari.
+                    if (kIsWeb && defaultTargetPlatform == TargetPlatform.iOS && !isStandalone) ...[
+                      const SizedBox(height: 28),
+                      Card(
+                        color: Colors.white.withValues(alpha: 0.08),
+                        child: Padding(
+                          padding: const EdgeInsets.all(14),
+                          child: Row(children: [
+                            const Icon(Icons.ios_share, color: Colors.white),
+                            const SizedBox(width: 12),
+                            Expanded(child: Text(t.iosInstallHint, style: const TextStyle(color: Colors.white))),
+                          ]),
+                        ),
+                      ),
+                    ],
                     if (Config.devLogin) ...[
                       const SizedBox(height: 32),
                       const Divider(),

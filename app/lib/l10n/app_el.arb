@@ -326,5 +326,14 @@
   "calendarSynced": "Βάρδιες στο ημερολόγιο: {count}",
   "deputyOf": "Αναπληρωτής υπευθύνου: {name}",
   "noticeBorrowed": "Ο/Η {by} έβαλε τον/την {name} στο κατάστημα {site} στις {date}.",
-  "noticeReinforcement": "Η {company} σας πρόσθεσε ως ενίσχυση."
+  "noticeReinforcement": "Η {company} σας πρόσθεσε ως ενίσχυση.",
+  "companyNotificationsHint": "Απενεργοποιημένες: τίποτα δεν χτυπά σε αυτό το τηλέφωνο, αλλά όλα μένουν στο καμπανάκι.",
+  "companyNotificationsOn": "Λήψη ειδοποιήσεων από αυτή την εταιρεία",
+  "companyTimezone": "Ζώνη ώρας της εταιρείας",
+  "companyTimezoneHint": "Όλες οι ώρες αυτής της εταιρείας είναι σε αυτή τη ζώνη (με τη θερινή ώρα). Τα ημερολόγια τις μετατρέπουν αυτόματα.",
+  "iosInstallHint": "Σε iPhone: πατήστε Κοινοποίηση και μετά «Προσθήκη στην οθόνη Αφετηρίας» για να εγκαταστήσετε το Staff Flow.",
+  "searchCity": "Αναζήτηση πόλης",
+  "thisPhone": "Αυτή η συσκευή",
+  "companyNotifications": "Ειδοποιήσεις: {name}",
+  "timezoneDiffers": "Ώρες κατά την ώρα {zone} ({company}). Η συσκευή σας: {here}."
 }

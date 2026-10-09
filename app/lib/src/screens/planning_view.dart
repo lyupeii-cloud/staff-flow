@@ -506,7 +506,8 @@ class _PlanningViewState extends State<PlanningView> {
                 fontWeight: today ? FontWeight.bold : null,
               ),
             ),
-            const Spacer(),
+            // Le « + » à côté de la date (pas à l'autre bout de l'écran).
+            const SizedBox(width: 6),
             if (canEdit && !isEditableDay(day))
               Tooltip(
                 message: t.readOnlyPastDays,
@@ -517,11 +518,12 @@ class _PlanningViewState extends State<PlanningView> {
                 ),
               )
             else if (canEdit)
-              IconButton(
+              IconButton.filledTonal(
                 visualDensity: VisualDensity.compact,
+                iconSize: 18,
                 tooltip: t.addShiftThisDay,
                 onPressed: () => _openEditor(day: day),
-                icon: const Icon(Icons.add, size: 20),
+                icon: const Icon(Icons.add),
               ),
           ],
         ),

@@ -1178,4 +1178,38 @@ class L10nSk extends L10n {
   String noticeReinforcement(String company) {
     return '$company vás pridala ako posilu.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Vypnuté: v tomto telefóne nič nezvoní, ale všetko zostáva v zvončeku.';
+
+  @override
+  String get companyNotificationsOn => 'Dostávať oznámenia tejto firmy';
+
+  @override
+  String get companyTimezone => 'Časové pásmo firmy';
+
+  @override
+  String get companyTimezoneHint =>
+      'Všetky časy tejto firmy sú v tomto pásme (vrátane letného času). Kalendáre ich prepočítajú automaticky.';
+
+  @override
+  String get iosInstallHint =>
+      'Na iPhone: ťuknite na Zdieľať a potom na „Pridať na plochu“ a nainštalujte Staff Flow.';
+
+  @override
+  String get searchCity => 'Hľadať mesto';
+
+  @override
+  String get thisPhone => 'Toto zariadenie';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Oznámenia: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Časy podľa času $zone ($company). Vaše zariadenie: $here.';
+  }
 }

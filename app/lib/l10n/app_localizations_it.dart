@@ -1179,4 +1179,38 @@ class L10nIt extends L10n {
   String noticeReinforcement(String company) {
     return '$company ti ha aggiunto come rinforzo.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Disattivate: su questo telefono non suona nulla, ma tutto resta nella campanella.';
+
+  @override
+  String get companyNotificationsOn => 'Ricevi le notifiche di questa azienda';
+
+  @override
+  String get companyTimezone => 'Fuso orario dell\'azienda';
+
+  @override
+  String get companyTimezoneHint =>
+      'Tutti gli orari di questa azienda sono in questo fuso (ora legale compresa). I calendari li convertono automaticamente.';
+
+  @override
+  String get iosInstallHint =>
+      'Su iPhone: tocca Condividi, poi «Aggiungi alla schermata Home» per installare Staff Flow.';
+
+  @override
+  String get searchCity => 'Cerca una città';
+
+  @override
+  String get thisPhone => 'Questo dispositivo';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Notifiche: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Orari all\'ora di $zone ($company). Il tuo dispositivo: $here.';
+  }
 }

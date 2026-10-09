@@ -326,5 +326,14 @@
   "calendarSynced": "Смен в календаре: {count}",
   "deputyOf": "Заместитель руководителя: {name}",
   "noticeBorrowed": "{by} поставил {name} на площадку {site} {date}.",
-  "noticeReinforcement": "{company} добавила вас как подкрепление."
+  "noticeReinforcement": "{company} добавила вас как подкрепление.",
+  "companyNotificationsHint": "Выключено: на этом телефоне ничего не звучит, но всё остаётся в колокольчике.",
+  "companyNotificationsOn": "Получать уведомления от этой компании",
+  "companyTimezone": "Часовой пояс компании",
+  "companyTimezoneHint": "Все часы этой компании указаны по этому времени (с учётом летнего времени). Календари пересчитывают их автоматически.",
+  "iosInstallHint": "На iPhone: нажмите «Поделиться», затем «На экран „Домой“», чтобы установить Staff Flow.",
+  "searchCity": "Найти город",
+  "thisPhone": "Это устройство",
+  "companyNotifications": "Уведомления: {name}",
+  "timezoneDiffers": "Часы по времени {zone} ({company}). Ваше устройство: {here}."
 }

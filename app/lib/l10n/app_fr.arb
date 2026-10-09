@@ -330,5 +330,14 @@
   "calendarSynced": "Services dans l'agenda : {count}",
   "deputyOf": "Sous-responsable : {name}",
   "noticeBorrowed": "{by} a placé {name} sur le site {site} le {date}.",
-  "noticeReinforcement": "{company} vous a ajouté comme renfort."
+  "noticeReinforcement": "{company} vous a ajouté comme renfort.",
+  "companyNotificationsHint": "Coupées : rien ne sonne sur ce téléphone, mais tout reste dans la cloche.",
+  "companyNotificationsOn": "Recevoir les notifications de cette entreprise",
+  "companyTimezone": "Fuseau horaire de l'entreprise",
+  "companyTimezoneHint": "Tous les horaires de cette entreprise sont à cette heure-là (heure d'été comprise). Les agendas les convertissent automatiquement.",
+  "iosInstallHint": "Sur iPhone : touchez Partager, puis « Sur l'écran d'accueil » pour installer Staff Flow.",
+  "searchCity": "Rechercher une ville",
+  "thisPhone": "Cet appareil",
+  "companyNotifications": "Notifications : {name}",
+  "timezoneDiffers": "Horaires à l'heure de {zone} ({company}). Votre appareil : {here}."
 }

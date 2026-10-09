@@ -1171,4 +1171,38 @@ class L10nBn extends L10n {
   String noticeReinforcement(String company) {
     return '$company আপনাকে সহায়ক কর্মী হিসেবে যোগ করেছে।';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'বন্ধ: এই ফোনে কিছু বাজবে না, তবে সব ঘণ্টায় থেকে যাবে।';
+
+  @override
+  String get companyNotificationsOn => 'এই কোম্পানির বিজ্ঞপ্তি পান';
+
+  @override
+  String get companyTimezone => 'কোম্পানির সময় অঞ্চল';
+
+  @override
+  String get companyTimezoneHint =>
+      'এই কোম্পানির সব সময় এই সময় অঞ্চলে (দিবালোক সংরক্ষণ সহ)। ক্যালেন্ডার নিজে থেকে রূপান্তর করে।';
+
+  @override
+  String get iosInstallHint =>
+      'iPhone-এ: শেয়ার ট্যাপ করুন, তারপর “হোম স্ক্রিনে যোগ করুন” দিয়ে Staff Flow ইনস্টল করুন।';
+
+  @override
+  String get searchCity => 'শহর খুঁজুন';
+
+  @override
+  String get thisPhone => 'এই ডিভাইস';
+
+  @override
+  String companyNotifications(String name) {
+    return 'বিজ্ঞপ্তি: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'সময় $zone-এর সময় অনুযায়ী ($company)। আপনার ডিভাইস: $here।';
+  }
 }

@@ -326,5 +326,14 @@
   "calendarSynced": "กะในปฏิทิน: {count}",
   "deputyOf": "รองหัวหน้า: {name}",
   "noticeBorrowed": "{by} จัด {name} ไปที่สาขา {site} ในวันที่ {date}",
-  "noticeReinforcement": "{company} เพิ่มคุณเป็นกำลังเสริม"
+  "noticeReinforcement": "{company} เพิ่มคุณเป็นกำลังเสริม",
+  "companyNotificationsHint": "ปิดอยู่: โทรศัพท์เครื่องนี้จะไม่มีเสียงแจ้ง แต่ทุกอย่างยังอยู่ในกระดิ่ง",
+  "companyNotificationsOn": "รับการแจ้งเตือนจากบริษัทนี้",
+  "companyTimezone": "เขตเวลาของบริษัท",
+  "companyTimezoneHint": "เวลาทั้งหมดของบริษัทนี้ใช้เขตเวลานี้ (รวมเวลาออมแสง) ปฏิทินจะแปลงให้อัตโนมัติ",
+  "iosInstallHint": "บน iPhone: แตะแชร์ แล้วแตะ “เพิ่มไปยังหน้าจอโฮม” เพื่อติดตั้ง Staff Flow",
+  "searchCity": "ค้นหาเมือง",
+  "thisPhone": "อุปกรณ์นี้",
+  "companyNotifications": "การแจ้งเตือน: {name}",
+  "timezoneDiffers": "เวลาตามเวลา {zone} ({company}) อุปกรณ์ของคุณ: {here}"
 }

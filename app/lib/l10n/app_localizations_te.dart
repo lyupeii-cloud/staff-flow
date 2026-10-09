@@ -1173,4 +1173,38 @@ class L10nTe extends L10n {
   String noticeReinforcement(String company) {
     return '$company మిమ్మల్ని సహాయ సిబ్బందిగా చేర్చింది.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'ఆపివేయబడింది: ఈ ఫోన్‌లో ఏదీ మోగదు, కానీ అన్నీ గంటలో ఉంటాయి.';
+
+  @override
+  String get companyNotificationsOn => 'ఈ కంపెనీ నోటిఫికేషన్లను పొందు';
+
+  @override
+  String get companyTimezone => 'కంపెనీ సమయ మండలం';
+
+  @override
+  String get companyTimezoneHint =>
+      'ఈ కంపెనీ అన్ని సమయాలు ఈ సమయ మండలంలో ఉంటాయి (డేలైట్ సేవింగ్‌తో సహా). క్యాలెండర్‌లు వాటిని తామే మార్చుతాయి.';
+
+  @override
+  String get iosInstallHint =>
+      'iPhoneలో: షేర్ నొక్కి, “హోమ్ స్క్రీన్‌కు జోడించు” ద్వారా Staff Flow ఇన్‌స్టాల్ చేయండి.';
+
+  @override
+  String get searchCity => 'నగరాన్ని వెతకండి';
+
+  @override
+  String get thisPhone => 'ఈ పరికరం';
+
+  @override
+  String companyNotifications(String name) {
+    return 'నోటిఫికేషన్లు: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'సమయాలు $zone సమయం ప్రకారం ($company). మీ పరికరం: $here.';
+  }
 }

@@ -326,5 +326,14 @@
   "calendarSynced": "Pass i kalendern: {count}",
   "deputyOf": "Biträdande ansvarig: {name}",
   "noticeBorrowed": "{by} har schemalagt {name} på {site} den {date}.",
-  "noticeReinforcement": "{company} har lagt till dig som förstärkning."
+  "noticeReinforcement": "{company} har lagt till dig som förstärkning.",
+  "companyNotificationsHint": "Av: inget låter på den här telefonen, men allt finns kvar i klockan.",
+  "companyNotificationsOn": "Få aviseringar från det här företaget",
+  "companyTimezone": "Företagets tidszon",
+  "companyTimezoneHint": "Alla tider för det här företaget är i den här tidszonen (sommartid inräknad). Kalendrar räknar om dem automatiskt.",
+  "iosInstallHint": "På iPhone: tryck på Dela och sedan ”Lägg till på hemskärmen” för att installera Staff Flow.",
+  "searchCity": "Sök en stad",
+  "thisPhone": "Den här enheten",
+  "companyNotifications": "Aviseringar: {name}",
+  "timezoneDiffers": "Tider enligt tiden i {zone} ({company}). Din enhet: {here}."
 }

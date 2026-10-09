@@ -66,11 +66,19 @@ class Membership {
   /// Responsable : sites dont il reçoit les notifications (`null` : tous).
   final List<String>? notifySites;
 
+  /// Notifications de cette entreprise sur le téléphone.
+  final bool notificationsOn;
+
+  /// Décalage actuel de l'heure de l'entreprise avec UTC, en minutes.
+  final int? utcOffset;
+
   Membership.fromJson(Map<String, dynamic> j)
       : company = Company.fromJson(j['company']),
         role = Role.values.byName(j['role']),
         sites = _sites(j['sites']),
-        notifySites = _sites(j['notifySites']);
+        notifySites = _sites(j['notifySites']),
+        notificationsOn = j['notificationsOn'] != false,
+        utcOffset = j['utcOffset'];
 
   /// Sites que cette personne gère : `null` pour toute l'entreprise
   /// (propriétaire, responsable général), vide si elle ne gère rien.

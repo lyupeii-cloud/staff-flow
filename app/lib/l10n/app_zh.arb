@@ -326,5 +326,14 @@
   "calendarSynced": "日历中的班次：{count}",
   "deputyOf": "副负责人：{name}",
   "noticeBorrowed": "{by} 在 {date} 将 {name} 安排到了 {site}。",
-  "noticeReinforcement": "{company} 已将您添加为支援人员。"
+  "noticeReinforcement": "{company} 已将您添加为支援人员。",
+  "companyNotificationsHint": "已关闭：这台手机不会响，但所有通知仍保留在铃铛中。",
+  "companyNotificationsOn": "接收这家公司的通知",
+  "companyTimezone": "公司时区",
+  "companyTimezoneHint": "这家公司的所有时间都按此时区计算（含夏令时）。日历会自动换算。",
+  "iosInstallHint": "在 iPhone 上：点按“共享”，再点“添加到主屏幕”即可安装 Staff Flow。",
+  "searchCity": "搜索城市",
+  "thisPhone": "此设备",
+  "companyNotifications": "通知：{name}",
+  "timezoneDiffers": "时间按 {zone} 时间（{company}）。您的设备：{here}。"
 }

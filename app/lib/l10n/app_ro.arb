@@ -326,5 +326,14 @@
   "calendarSynced": "Ture în calendar: {count}",
   "deputyOf": "Adjunct al responsabilului: {name}",
   "noticeBorrowed": "{by} l-a programat pe {name} la locația {site} pe {date}.",
-  "noticeReinforcement": "{company} te-a adăugat ca întăritură."
+  "noticeReinforcement": "{company} te-a adăugat ca întăritură.",
+  "companyNotificationsHint": "Oprite: nu sună nimic pe acest telefon, dar totul rămâne în clopoțel.",
+  "companyNotificationsOn": "Primește notificările acestei firme",
+  "companyTimezone": "Fusul orar al firmei",
+  "companyTimezoneHint": "Toate orele acestei firme sunt în acest fus (inclusiv ora de vară). Calendarele le convertesc automat.",
+  "iosInstallHint": "Pe iPhone: atinge Partajează, apoi „Adaugă pe ecranul principal” pentru a instala Staff Flow.",
+  "searchCity": "Caută un oraș",
+  "thisPhone": "Acest dispozitiv",
+  "companyNotifications": "Notificări: {name}",
+  "timezoneDiffers": "Ore după ora din {zone} ({company}). Dispozitivul tău: {here}."
 }

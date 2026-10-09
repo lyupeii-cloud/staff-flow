@@ -326,5 +326,14 @@
   "calendarSynced": "Zmeny v kalendári: {count}",
   "deputyOf": "Zástupca vedúceho: {name}",
   "noticeBorrowed": "{by} zaradil {name} na pobočku {site} {date}.",
-  "noticeReinforcement": "{company} vás pridala ako posilu."
+  "noticeReinforcement": "{company} vás pridala ako posilu.",
+  "companyNotificationsHint": "Vypnuté: v tomto telefóne nič nezvoní, ale všetko zostáva v zvončeku.",
+  "companyNotificationsOn": "Dostávať oznámenia tejto firmy",
+  "companyTimezone": "Časové pásmo firmy",
+  "companyTimezoneHint": "Všetky časy tejto firmy sú v tomto pásme (vrátane letného času). Kalendáre ich prepočítajú automaticky.",
+  "iosInstallHint": "Na iPhone: ťuknite na Zdieľať a potom na „Pridať na plochu“ a nainštalujte Staff Flow.",
+  "searchCity": "Hľadať mesto",
+  "thisPhone": "Toto zariadenie",
+  "companyNotifications": "Oznámenia: {name}",
+  "timezoneDiffers": "Časy podľa času {zone} ({company}). Vaše zariadenie: {here}."
 }

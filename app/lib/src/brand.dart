@@ -1,4 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import 'platform/standalone.dart';
 
 /// Couleurs et lettrage de l'icône Staff Flow.
 class Brand {
@@ -92,10 +95,16 @@ class FramedApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final media = MediaQuery.of(context);
+    var media = MediaQuery.of(context);
+    var app = child;
+    if (kIsWeb && defaultTargetPlatform == TargetPlatform.iOS && isStandalone && media.padding.bottom == 0) {
+      // Barre d'accueil de l'iPhone : le contenu s'arrête au-dessus.
+      media = media.copyWith(padding: media.padding.copyWith(bottom: 20), viewPadding: media.viewPadding.copyWith(bottom: 20));
+      app = MediaQuery(data: media, child: Padding(padding: const EdgeInsets.only(bottom: 20), child: child));
+    }
     final width = media.size.width;
-    if (width <= 1000) return child;
-    final inner = (width * 0.6).clamp(900.0, 1100.0);
+    if (width <= 820) return app;
+    final inner = (width * 0.5).clamp(760.0, 880.0);
     return DecoratedBox(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -113,7 +122,7 @@ class FramedApp extends StatelessWidget {
           // Les écrans calculent leurs tailles sur la colonne, pas sur la fenêtre.
           child: MediaQuery(
             data: media.copyWith(size: Size(inner, media.size.height)),
-            child: child,
+            child: app,
           ),
         ),
       ),

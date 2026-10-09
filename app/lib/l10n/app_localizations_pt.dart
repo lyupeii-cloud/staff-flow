@@ -1178,4 +1178,38 @@ class L10nPt extends L10n {
   String noticeReinforcement(String company) {
     return '$company adicionou-o como reforço.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Desativadas: nada toca neste telefone, mas tudo fica no sino.';
+
+  @override
+  String get companyNotificationsOn => 'Receber as notificações desta empresa';
+
+  @override
+  String get companyTimezone => 'Fuso horário da empresa';
+
+  @override
+  String get companyTimezoneHint =>
+      'Todos os horários desta empresa estão neste fuso (hora de verão incluída). Os calendários convertem-nos automaticamente.';
+
+  @override
+  String get iosInstallHint =>
+      'No iPhone: toque em Partilhar e depois em «Adicionar ao ecrã principal» para instalar o Staff Flow.';
+
+  @override
+  String get searchCity => 'Procurar uma cidade';
+
+  @override
+  String get thisPhone => 'Este dispositivo';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Notificações: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Horários na hora de $zone ($company). O seu dispositivo: $here.';
+  }
 }

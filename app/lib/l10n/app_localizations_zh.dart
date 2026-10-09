@@ -1143,4 +1143,35 @@ class L10nZh extends L10n {
   String noticeReinforcement(String company) {
     return '$company 已将您添加为支援人员。';
   }
+
+  @override
+  String get companyNotificationsHint => '已关闭：这台手机不会响，但所有通知仍保留在铃铛中。';
+
+  @override
+  String get companyNotificationsOn => '接收这家公司的通知';
+
+  @override
+  String get companyTimezone => '公司时区';
+
+  @override
+  String get companyTimezoneHint => '这家公司的所有时间都按此时区计算（含夏令时）。日历会自动换算。';
+
+  @override
+  String get iosInstallHint => '在 iPhone 上：点按“共享”，再点“添加到主屏幕”即可安装 Staff Flow。';
+
+  @override
+  String get searchCity => '搜索城市';
+
+  @override
+  String get thisPhone => '此设备';
+
+  @override
+  String companyNotifications(String name) {
+    return '通知：$name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return '时间按 $zone 时间（$company）。您的设备：$here。';
+  }
 }

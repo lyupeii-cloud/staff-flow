@@ -9,6 +9,7 @@ import 'messages_view.dart';
 import 'planning_view.dart';
 import 'requests_view.dart';
 import 'team_view.dart';
+import 'tools_widgets.dart';
 
 /// Données partagées par les vues d'une entreprise : membres, sites, postes.
 class CompanyData {
@@ -107,31 +108,72 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
   }
 
   /// Responsable : sites dont il veut recevoir les notifications.
-  Future<void> _chooseNotifySites(CompanyData data) async {
+  /// Les horaires sont toujours à l'heure de l'entreprise (heure d'été
+  /// comprise). Si le téléphone n'est pas à la même heure, un bandeau le dit.
+  Widget? _timezoneNotice(BuildContext context) {
+    final offset = widget.membership.utcOffset;
+    final here = DateTime.now().timeZoneOffset.inMinutes;
+    if (offset == null || offset == here) return null;
+    final t = context.l10n;
+    final theme = Theme.of(context);
+    String utc(int m) => 'UTC${m < 0 ? '−' : '+'}${m.abs() ~/ 60}${m.abs() % 60 == 0 ? '' : ':${(m.abs() % 60).toString().padLeft(2, '0')}'}';
+    return Card(
+      margin: const EdgeInsets.only(top: 6),
+      color: theme.colorScheme.tertiaryContainer,
+      child: ListTile(
+        dense: true,
+        leading: const Icon(Icons.schedule),
+        title: Text(t.timezoneDiffers(company.timezone.split('/').last.replaceAll('_', ' '), utc(offset), utc(here))),
+        trailing: widget.membership.managesAll && !company.readOnly
+            ? TextButton(
+                onPressed: () => chooseTimezone(context, widget.session, company),
+                child: Text(t.changeSettings),
+              )
+            : null,
+      ),
+    );
+  }
+
+  /// Notifications de cette entreprise : un interrupteur pour tous ; pour
+  /// un responsable de plusieurs sites, le choix des sites en plus.
+  Future<void> _chooseNotifications(CompanyData? data) async {
     final t = context.l10n;
     final messenger = ScaffoldMessenger.of(context);
     final mine = widget.membership.managedSites;
-    final sites = [for (final s in data.sites) if (!s.archived && (mine == null || mine.contains(s.id))) s];
+    final sites = !role.canManage || data == null
+        ? const <CatalogItem>[]
+        : [for (final s in data.sites) if (!s.archived && (mine == null || mine.contains(s.id))) s];
     final current = widget.membership.notifySites;
     final chosen = {for (final s in sites) if (current == null || current.contains(s.id)) s.id};
+    var on = widget.membership.notificationsOn;
     final ok = await showDialog<bool>(
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setDialog) => AlertDialog(
-          title: Text(t.notifySitesTitle),
+          title: Text(t.companyNotifications(company.name)),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(t.notifySitesHint),
-                for (final s in sites)
-                  CheckboxListTile(
-                    contentPadding: EdgeInsets.zero,
-                    value: chosen.contains(s.id),
-                    title: Text(s.name),
-                    onChanged: (on) => setDialog(() => on == true ? chosen.add(s.id) : chosen.remove(s.id)),
-                  ),
+                SwitchListTile(
+                  contentPadding: EdgeInsets.zero,
+                  value: on,
+                  title: Text(t.companyNotificationsOn),
+                  subtitle: Text(t.companyNotificationsHint),
+                  onChanged: (v) => setDialog(() => on = v),
+                ),
+                if (sites.length >= 2) ...[
+                  const Divider(),
+                  Text(t.notifySitesHint),
+                  for (final s in sites)
+                    CheckboxListTile(
+                      contentPadding: EdgeInsets.zero,
+                      value: on && chosen.contains(s.id),
+                      title: Text(s.name),
+                      onChanged: on ? (v) => setDialog(() => v == true ? chosen.add(s.id) : chosen.remove(s.id)) : null,
+                    ),
+                ],
               ],
             ),
           ),
@@ -143,10 +185,13 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
       ),
     );
     if (ok != true) return;
-    final all = sites.every((s) => chosen.contains(s.id));
     try {
-      await widget.session.api.send('PUT', '/companies/${company.id}/notify-sites',
-          body: {'sites': all ? null : chosen.toList()});
+      await widget.session.api.send('PUT', '/companies/${company.id}/notifications', body: {'enabled': on});
+      if (sites.length >= 2) {
+        final all = sites.every((s) => chosen.contains(s.id));
+        await widget.session.api.send('PUT', '/companies/${company.id}/notify-sites',
+            body: {'sites': all ? null : chosen.toList()});
+      }
       await widget.session.refresh();
     } on OfflineException {
       messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
@@ -186,29 +231,29 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
               Row(
                 children: [
                   Expanded(child: Text('${role.label(t)} · ${company.timezone}', style: theme.textTheme.bodySmall)),
-                  // Responsable d'au moins deux sites : choisir ceux dont il est prévenu.
-                  if (role.canManage)
-                    FutureBuilder(
-                      future: _data,
-                      builder: (context, snap) {
-                        final data = snap.data;
-                        final mine = widget.membership.managedSites;
-                        final count = data == null
-                            ? 0
-                            : data.sites.where((s) => !s.archived && (mine == null || mine.contains(s.id))).length;
-                        if (data == null || count < 2) return const SizedBox(height: 32);
-                        final filtered = widget.membership.notifySites != null;
-                        return IconButton(
-                          visualDensity: VisualDensity.compact,
-                          tooltip: t.notifySitesTitle,
-                          onPressed: () => _chooseNotifySites(data),
-                          icon: Icon(filtered ? Icons.notifications_paused : Icons.notifications_active,
-                              size: 20, color: filtered ? theme.colorScheme.tertiary : null),
-                        );
-                      },
-                    ),
+                  // Notifications de cette entreprise (et de ses sites pour un responsable).
+                  FutureBuilder(
+                    future: _data,
+                    builder: (context, snap) {
+                      final off = !widget.membership.notificationsOn;
+                      final filtered = widget.membership.notifySites != null;
+                      return IconButton(
+                        visualDensity: VisualDensity.compact,
+                        tooltip: t.companyNotifications(company.name),
+                        onPressed: () => _chooseNotifications(snap.data),
+                        icon: Icon(
+                            off
+                                ? Icons.notifications_off
+                                : (filtered ? Icons.notifications_paused : Icons.notifications_active),
+                            size: 20,
+                            color: off || filtered ? theme.colorScheme.tertiary : null),
+                      );
+                    },
+                  ),
                 ],
               ),
+              // L'heure de l'entreprise n'est pas celle du téléphone : on le dit.
+              ?_timezoneNotice(context),
               const SizedBox(height: 8),
               Builder(builder: (context) {
                 final unread = widget.session.me?.unreadMessages[company.id] ?? 0;

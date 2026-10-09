@@ -326,5 +326,14 @@
   "calendarSynced": "Vuoroja kalenterissa: {count}",
   "deputyOf": "Varaesihenkilö: {name}",
   "noticeBorrowed": "{by} merkitsi henkilön {name} toimipaikkaan {site} {date}.",
-  "noticeReinforcement": "{company} lisäsi sinut vahvistukseksi."
+  "noticeReinforcement": "{company} lisäsi sinut vahvistukseksi.",
+  "companyNotificationsHint": "Pois: tässä puhelimessa ei soi mikään, mutta kaikki jää kelloon.",
+  "companyNotificationsOn": "Vastaanota tämän yrityksen ilmoitukset",
+  "companyTimezone": "Yrityksen aikavyöhyke",
+  "companyTimezoneHint": "Kaikki tämän yrityksen ajat ovat tällä vyöhykkeellä (kesäaika mukaan lukien). Kalenterit muuntavat ne automaattisesti.",
+  "iosInstallHint": "iPhonessa: napauta Jaa ja sitten ”Lisää Koti-valikkoon” asentaaksesi Staff Flow’n.",
+  "searchCity": "Hae kaupunkia",
+  "thisPhone": "Tämä laite",
+  "companyNotifications": "Ilmoitukset: {name}",
+  "timezoneDiffers": "Ajat aikavyöhykkeellä {zone} ({company}). Laitteesi: {here}."
 }

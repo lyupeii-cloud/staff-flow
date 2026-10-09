@@ -1181,4 +1181,39 @@ class L10nFil extends L10n {
   String noticeReinforcement(String company) {
     return 'Idinagdag ka ng $company bilang dagdag na tauhan.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Naka-off: walang tutunog sa teleponong ito, pero mananatili ang lahat sa kampana.';
+
+  @override
+  String get companyNotificationsOn =>
+      'Tumanggap ng mga notification mula sa kumpanyang ito';
+
+  @override
+  String get companyTimezone => 'Time zone ng kumpanya';
+
+  @override
+  String get companyTimezoneHint =>
+      'Lahat ng oras ng kumpanyang ito ay nasa time zone na ito (kasama ang daylight saving). Awtomatikong kino-convert ito ng mga kalendaryo.';
+
+  @override
+  String get iosInstallHint =>
+      'Sa iPhone: i-tap ang Share, saka ang “Add to Home Screen” para i-install ang Staff Flow.';
+
+  @override
+  String get searchCity => 'Maghanap ng lungsod';
+
+  @override
+  String get thisPhone => 'Ang device na ito';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Mga notification: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Mga oras ayon sa oras sa $zone ($company). Ang device mo: $here.';
+  }
 }

@@ -23,18 +23,43 @@
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Staff Flow">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
   <title>Staff Flow</title>
   <link rel="manifest" href="manifest.json">
-  <style>html, body { background: #061440; }</style>
+  <style>
+    html, body { background: #061440; margin: 0; height: 100%; }
+    /* Écran de chargement : visible tout de suite, le temps que l'application arrive. */
+    #sf-loading { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 22px; font-family: -apple-system, system-ui, sans-serif; color: #fff;
+      background: radial-gradient(circle at 50% 35%, #0B2A6B, #061440 70%); }
+    #sf-loading img { width: 132px; height: 132px; border-radius: 30px; box-shadow: 0 12px 40px rgba(0,0,0,.45); }
+    #sf-loading .bar { width: 140px; height: 4px; border-radius: 2px; background: rgba(255,255,255,.15); overflow: hidden; }
+    #sf-loading .bar::after { content: ""; display: block; width: 40%; height: 100%; border-radius: 2px;
+      background: linear-gradient(90deg, #1A8CFC, #2DEDD5); animation: sf-slide 1.1s ease-in-out infinite; }
+    @keyframes sf-slide { from { transform: translateX(-100%); } to { transform: translateX(260%); } }
+  </style>
+  <script>
+    // Ouvert depuis l'icône de l'écran d'accueil (iPhone ou Android) ?
+    window.sfStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    // Première image de l'application : l'écran de chargement s'efface.
+    window.addEventListener('flutter-first-frame', function () {
+      var el = document.getElementById('sf-loading');
+      if (el) el.remove();
+    });
+  </script>
 </head>
 <body>
+  <div id="sf-loading" aria-label="Staff Flow">
+    <img src="icons/Icon-192.png" alt="Staff Flow">
+    <div class="bar"></div>
+  </div>
   <!--
     You can customize the "flutter_bootstrap.js" script.
     This is useful to provide a custom configuration to the Flutter loader

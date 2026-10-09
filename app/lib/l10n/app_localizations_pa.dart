@@ -1175,4 +1175,38 @@ class L10nPa extends L10n {
   String noticeReinforcement(String company) {
     return '$company ਨੇ ਤੁਹਾਨੂੰ ਸਹਾਇਕ ਵਜੋਂ ਜੋੜਿਆ ਹੈ।';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'ਬੰਦ: ਇਸ ਫ਼ੋਨ \'ਤੇ ਕੁਝ ਨਹੀਂ ਵੱਜੇਗਾ, ਪਰ ਸਭ ਕੁਝ ਘੰਟੀ ਵਿੱਚ ਰਹੇਗਾ।';
+
+  @override
+  String get companyNotificationsOn => 'ਇਸ ਕੰਪਨੀ ਦੀਆਂ ਸੂਚਨਾਵਾਂ ਲਓ';
+
+  @override
+  String get companyTimezone => 'ਕੰਪਨੀ ਦਾ ਸਮਾਂ ਖੇਤਰ';
+
+  @override
+  String get companyTimezoneHint =>
+      'ਇਸ ਕੰਪਨੀ ਦੇ ਸਾਰੇ ਸਮੇਂ ਇਸ ਸਮਾਂ ਖੇਤਰ ਵਿੱਚ ਹਨ (ਗਰਮੀਆਂ ਦੇ ਸਮੇਂ ਸਮੇਤ)। ਕੈਲੰਡਰ ਇਹਨਾਂ ਨੂੰ ਆਪਣੇ-ਆਪ ਬਦਲਦੇ ਹਨ।';
+
+  @override
+  String get iosInstallHint =>
+      'iPhone \'ਤੇ: ਸ਼ੇਅਰ \'ਤੇ ਟੈਪ ਕਰੋ, ਫਿਰ “ਹੋਮ ਸਕ੍ਰੀਨ \'ਤੇ ਜੋੜੋ” ਨਾਲ Staff Flow ਇੰਸਟਾਲ ਕਰੋ।';
+
+  @override
+  String get searchCity => 'ਸ਼ਹਿਰ ਲੱਭੋ';
+
+  @override
+  String get thisPhone => 'ਇਹ ਡਿਵਾਈਸ';
+
+  @override
+  String companyNotifications(String name) {
+    return 'ਸੂਚਨਾਵਾਂ: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'ਸਮੇਂ $zone ਦੇ ਸਮੇਂ ਮੁਤਾਬਕ ($company)। ਤੁਹਾਡੀ ਡਿਵਾਈਸ: $here।';
+  }
 }

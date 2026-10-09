@@ -326,5 +326,14 @@
   "calendarSynced": "Turnos en el calendario: {count}",
   "deputyOf": "Subresponsable: {name}",
   "noticeBorrowed": "{by} ha asignado a {name} al sitio {site} el {date}.",
-  "noticeReinforcement": "{company} te ha añadido como refuerzo."
+  "noticeReinforcement": "{company} te ha añadido como refuerzo.",
+  "companyNotificationsHint": "Desactivadas: no suena nada en este teléfono, pero todo queda en la campana.",
+  "companyNotificationsOn": "Recibir las notificaciones de esta empresa",
+  "companyTimezone": "Zona horaria de la empresa",
+  "companyTimezoneHint": "Todos los horarios de esta empresa están en esta zona (horario de verano incluido). Los calendarios los convierten automáticamente.",
+  "iosInstallHint": "En iPhone: toca Compartir y luego «Añadir a pantalla de inicio» para instalar Staff Flow.",
+  "searchCity": "Buscar una ciudad",
+  "thisPhone": "Este dispositivo",
+  "companyNotifications": "Notificaciones: {name}",
+  "timezoneDiffers": "Horarios en la hora de {zone} ({company}). Tu dispositivo: {here}."
 }

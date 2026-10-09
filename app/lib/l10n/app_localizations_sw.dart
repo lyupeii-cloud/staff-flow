@@ -1178,4 +1178,38 @@ class L10nSw extends L10n {
   String noticeReinforcement(String company) {
     return '$company imekuongeza kama msaidizi.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Zimezimwa: hakuna kitakacholia kwenye simu hii, lakini kila kitu kinabaki kwenye kengele.';
+
+  @override
+  String get companyNotificationsOn => 'Pokea arifa za kampuni hii';
+
+  @override
+  String get companyTimezone => 'Saa za eneo za kampuni';
+
+  @override
+  String get companyTimezoneHint =>
+      'Saa zote za kampuni hii ziko kwenye saa hizi za eneo (pamoja na saa za majira ya joto). Kalenda huzibadilisha zenyewe.';
+
+  @override
+  String get iosInstallHint =>
+      'Kwenye iPhone: gusa Shiriki, kisha “Ongeza kwenye Skrini ya Kwanza” ili kusakinisha Staff Flow.';
+
+  @override
+  String get searchCity => 'Tafuta jiji';
+
+  @override
+  String get thisPhone => 'Kifaa hiki';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Arifa: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Saa kulingana na saa za $zone ($company). Kifaa chako: $here.';
+  }
 }

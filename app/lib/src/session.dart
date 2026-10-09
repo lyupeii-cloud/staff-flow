@@ -100,6 +100,8 @@ class Session extends ChangeNotifier {
       if (e.kind == 'schedule_published' || e.kind == 'member_joined' || e.data['requestId'] != null) {
         sync.markChanged();
       }
+      // Planning changé : l'agenda du téléphone suivra dans 2 minutes.
+      if (e.kind == 'schedule_published' || e.kind == 'request_approved') CalendarSync.schedule(api);
       await refresh().catchError((_) {});
     });
     if (state == SessionState.signedIn) await push.signedIn();
@@ -119,7 +121,8 @@ class Session extends ChangeNotifier {
       onShow: () async {
         await BackgroundSync.cancel();
         await sync.resume(reload: true);
-        unawaited(CalendarSync.sync(api).then((_) {}, onError: (_) {}));
+        // Retour dans l'application : l'agenda est revérifié (au plus toutes les 10 minutes).
+        unawaited(CalendarSync.sync(api, minInterval: const Duration(minutes: 10)).then((_) {}, onError: (_) {}));
       },
     );
   }
@@ -182,8 +185,6 @@ class Session extends ChangeNotifier {
   Future<void> refresh() async {
     me = Me.fromJson(await sync.read('me', '/me'));
     _set(SessionState.signedIn);
-    // Agenda du téléphone (Google Agenda), s'il est activé.
-    unawaited(CalendarSync.sync(api).then((_) {}, onError: (_) {}));
   }
 
   Future<void> signOut() async {
@@ -217,7 +218,11 @@ class Session extends ChangeNotifier {
   }
 
   void _set(SessionState s) {
-    if (s == SessionState.signedIn && state != SessionState.signedIn) unawaited(push.signedIn());
+    if (s == SessionState.signedIn && state != SessionState.signedIn) {
+      unawaited(push.signedIn());
+      // Ouverture de l'application : l'agenda du téléphone est mis à jour.
+      unawaited(CalendarSync.sync(api).then((_) {}, onError: (_) {}));
+    }
     state = s;
     notifyListeners();
   }

@@ -326,5 +326,14 @@
   "calendarSynced": "Zamu kwenye kalenda: {count}",
   "deputyOf": "Naibu msimamizi: {name}",
   "noticeBorrowed": "{by} amempanga {name} katika {site} tarehe {date}.",
-  "noticeReinforcement": "{company} imekuongeza kama msaidizi."
+  "noticeReinforcement": "{company} imekuongeza kama msaidizi.",
+  "companyNotificationsHint": "Zimezimwa: hakuna kitakacholia kwenye simu hii, lakini kila kitu kinabaki kwenye kengele.",
+  "companyNotificationsOn": "Pokea arifa za kampuni hii",
+  "companyTimezone": "Saa za eneo za kampuni",
+  "companyTimezoneHint": "Saa zote za kampuni hii ziko kwenye saa hizi za eneo (pamoja na saa za majira ya joto). Kalenda huzibadilisha zenyewe.",
+  "iosInstallHint": "Kwenye iPhone: gusa Shiriki, kisha “Ongeza kwenye Skrini ya Kwanza” ili kusakinisha Staff Flow.",
+  "searchCity": "Tafuta jiji",
+  "thisPhone": "Kifaa hiki",
+  "companyNotifications": "Arifa: {name}",
+  "timezoneDiffers": "Saa kulingana na saa za {zone} ({company}). Kifaa chako: {here}."
 }

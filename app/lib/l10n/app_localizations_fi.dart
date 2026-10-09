@@ -1177,4 +1177,38 @@ class L10nFi extends L10n {
   String noticeReinforcement(String company) {
     return '$company lisäsi sinut vahvistukseksi.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Pois: tässä puhelimessa ei soi mikään, mutta kaikki jää kelloon.';
+
+  @override
+  String get companyNotificationsOn => 'Vastaanota tämän yrityksen ilmoitukset';
+
+  @override
+  String get companyTimezone => 'Yrityksen aikavyöhyke';
+
+  @override
+  String get companyTimezoneHint =>
+      'Kaikki tämän yrityksen ajat ovat tällä vyöhykkeellä (kesäaika mukaan lukien). Kalenterit muuntavat ne automaattisesti.';
+
+  @override
+  String get iosInstallHint =>
+      'iPhonessa: napauta Jaa ja sitten ”Lisää Koti-valikkoon” asentaaksesi Staff Flow’n.';
+
+  @override
+  String get searchCity => 'Hae kaupunkia';
+
+  @override
+  String get thisPhone => 'Tämä laite';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Ilmoitukset: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Ajat aikavyöhykkeellä $zone ($company). Laitteesi: $here.';
+  }
 }

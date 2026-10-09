@@ -1182,4 +1182,39 @@ class L10nEl extends L10n {
   String noticeReinforcement(String company) {
     return 'Η $company σας πρόσθεσε ως ενίσχυση.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Απενεργοποιημένες: τίποτα δεν χτυπά σε αυτό το τηλέφωνο, αλλά όλα μένουν στο καμπανάκι.';
+
+  @override
+  String get companyNotificationsOn =>
+      'Λήψη ειδοποιήσεων από αυτή την εταιρεία';
+
+  @override
+  String get companyTimezone => 'Ζώνη ώρας της εταιρείας';
+
+  @override
+  String get companyTimezoneHint =>
+      'Όλες οι ώρες αυτής της εταιρείας είναι σε αυτή τη ζώνη (με τη θερινή ώρα). Τα ημερολόγια τις μετατρέπουν αυτόματα.';
+
+  @override
+  String get iosInstallHint =>
+      'Σε iPhone: πατήστε Κοινοποίηση και μετά «Προσθήκη στην οθόνη Αφετηρίας» για να εγκαταστήσετε το Staff Flow.';
+
+  @override
+  String get searchCity => 'Αναζήτηση πόλης';
+
+  @override
+  String get thisPhone => 'Αυτή η συσκευή';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Ειδοποιήσεις: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Ώρες κατά την ώρα $zone ($company). Η συσκευή σας: $here.';
+  }
 }

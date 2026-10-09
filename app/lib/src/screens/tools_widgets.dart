@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../api.dart';
@@ -149,6 +150,18 @@ class ToolsSettings extends StatelessWidget {
         const SizedBox(height: 6),
         for (final l in lines) Text('• $l'),
         const SizedBox(height: 24),
+        Row(children: [
+          Expanded(child: Text(t.companyTimezone, style: theme.textTheme.titleMedium)),
+          if (!company.readOnly)
+            TextButton.icon(
+              onPressed: () => chooseTimezone(context, session, company),
+              icon: const Icon(Icons.public, size: 18),
+              label: Text(t.changeSettings),
+            ),
+        ]),
+        Text(company.timezone),
+        Text(t.companyTimezoneHint, style: theme.textTheme.bodySmall),
+        const SizedBox(height: 24),
         Text(t.printRights, style: theme.textTheme.titleMedium),
         RadioGroup<String>(
           groupValue: company.printScope,
@@ -246,6 +259,101 @@ class _RulesDialogState extends State<_RulesDialog> {
         TextButton(onPressed: () => Navigator.pop(context), child: Text(t.cancel)),
         FilledButton(onPressed: () => Navigator.pop(context, (rules: _rules())), child: Text(t.save)),
       ],
+    );
+  }
+}
+
+// --- Fuseau horaire ---------------------------------------------------------------
+
+/// Choix du fuseau de l'entreprise parmi ceux du monde (base IANA du
+/// serveur, heure d'été comprise) ; celui du téléphone est proposé en tête.
+Future<void> chooseTimezone(BuildContext context, Session session, Company company) async {
+  final t = context.l10n;
+  final messenger = ScaffoldMessenger.of(context);
+  final List<Map<String, dynamic>> zones;
+  try {
+    zones = [for (final z in (await session.api.send('GET', '/timezones'))['timezones']) (z as Map).cast<String, dynamic>()];
+  } on OfflineException {
+    messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+    return;
+  }
+  if (!context.mounted) return;
+  final device = await deviceTimezone();
+  if (!context.mounted) return;
+  final chosen = await showDialog<String>(
+    context: context,
+    builder: (context) => _TimezoneDialog(zones: zones, current: company.timezone, device: device),
+  );
+  if (chosen == null || chosen == company.timezone) return;
+  try {
+    await session.api.send('PATCH', '/companies/${company.id}', body: {'timezone': chosen});
+    await session.refresh();
+  } on OfflineException {
+    messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+  } on ApiException catch (e) {
+    messenger.showSnackBar(SnackBar(content: Text(e.describe(t))));
+  }
+}
+
+class _TimezoneDialog extends StatefulWidget {
+  final List<Map<String, dynamic>> zones;
+  final String current;
+  final String? device;
+
+  const _TimezoneDialog({required this.zones, required this.current, this.device});
+
+  @override
+  State<_TimezoneDialog> createState() => _TimezoneDialogState();
+}
+
+class _TimezoneDialogState extends State<_TimezoneDialog> {
+  var _query = '';
+
+  static String _utc(int m) =>
+      'UTC${m < 0 ? '−' : '+'}${m.abs() ~/ 60}${m.abs() % 60 == 0 ? '' : ':${(m.abs() % 60).toString().padLeft(2, '0')}'}';
+
+  @override
+  Widget build(BuildContext context) {
+    final t = context.l10n;
+    final q = _query.toLowerCase().replaceAll(' ', '_');
+    final device = widget.device;
+    final list = [
+      for (final z in widget.zones)
+        if (q.isEmpty || (z['name'] as String).toLowerCase().contains(q)) z,
+    ];
+    // Celui du téléphone en premier.
+    list.sort((a, b) => (a['name'] == device ? 0 : 1).compareTo(b['name'] == device ? 0 : 1));
+    return AlertDialog(
+      title: Text(t.companyTimezone),
+      content: SizedBox(
+        width: 400,
+        height: 420,
+        child: Column(children: [
+          TextField(
+            autofocus: true,
+            decoration: InputDecoration(prefixIcon: const Icon(Icons.search), hintText: t.searchCity),
+            onChanged: (v) => setState(() => _query = v),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: list.length,
+              itemBuilder: (context, i) {
+                final z = list[i];
+                final name = z['name'] as String;
+                return ListTile(
+                  dense: true,
+                  selected: name == widget.current,
+                  title: Text(name.replaceAll('_', ' ')),
+                  subtitle: name == device ? Text(t.thisPhone) : null,
+                  trailing: Text(_utc(z['offset'] as int)),
+                  onTap: () => Navigator.pop(context, name),
+                );
+              },
+            ),
+          ),
+        ]),
+      ),
+      actions: [TextButton(onPressed: () => Navigator.pop(context), child: Text(t.cancel))],
     );
   }
 }
@@ -444,5 +552,14 @@ class _CalendarDialogState extends State<_CalendarDialog> {
       ]),
       actions: [TextButton(onPressed: () => Navigator.pop(context), child: Text(t.close))],
     );
+  }
+}
+
+/// Fuseau IANA du téléphone ou de l'ordinateur (`null` si inconnu).
+Future<String?> deviceTimezone() async {
+  try {
+    return (await FlutterTimezone.getLocalTimezone()).identifier;
+  } catch (_) {
+    return null;
   }
 }

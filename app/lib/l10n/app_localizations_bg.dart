@@ -1173,4 +1173,38 @@ class L10nBg extends L10n {
   String noticeReinforcement(String company) {
     return '$company ви добави като подкрепление.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Изключени: на този телефон нищо не звъни, но всичко остава в звънчето.';
+
+  @override
+  String get companyNotificationsOn => 'Получавай известия от тази фирма';
+
+  @override
+  String get companyTimezone => 'Часова зона на фирмата';
+
+  @override
+  String get companyTimezoneHint =>
+      'Всички часове на тази фирма са в тази зона (с лятното време). Календарите ги преобразуват автоматично.';
+
+  @override
+  String get iosInstallHint =>
+      'На iPhone: докоснете „Сподели“, после „Добави към началния екран“, за да инсталирате Staff Flow.';
+
+  @override
+  String get searchCity => 'Търси град';
+
+  @override
+  String get thisPhone => 'Това устройство';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Известия: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Часове по времето в $zone ($company). Вашето устройство: $here.';
+  }
 }

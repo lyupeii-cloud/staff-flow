@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
@@ -39,6 +40,19 @@ class CalendarSync {
 
   static DateTime? _lastSync;
   static Future<int>? _running;
+  static Timer? _pending;
+
+  /// Planning modifié : mise à jour de l'agenda 2 minutes après la dernière
+  /// modification reçue (plusieurs changements d'affilée = une seule mise à
+  /// jour, sans multiplier les écritures vers Google).
+  static void schedule(Api api) {
+    if (!supported) return;
+    _pending?.cancel();
+    _pending = Timer(const Duration(minutes: 2), () {
+      _pending = null;
+      sync(api, force: true).then((_) {}, onError: (_) {});
+    });
+  }
 
   /// Agenda choisi, ou `null` si la synchronisation est coupée.
   static Future<String?> calendarId() async =>
@@ -89,13 +103,13 @@ class CalendarSync {
 
   /// Met l'agenda à jour (au plus une fois toutes les 30 secondes, sauf
   /// [force]). Renvoie le nombre de services à venir dans l'agenda.
-  static Future<int> sync(Api api, {bool force = false}) async {
+  static Future<int> sync(Api api, {bool force = false, Duration minInterval = const Duration(seconds: 30)}) async {
     if (!supported) return 0;
     // Une seule mise à jour à la fois.
     final running = _running;
     if (running != null) return running;
     final now = DateTime.now();
-    if (!force && _lastSync != null && now.difference(_lastSync!) < const Duration(seconds: 30)) return 0;
+    if (!force && _lastSync != null && now.difference(_lastSync!) < minInterval) return 0;
     final future = _sync(api);
     _running = future;
     try {
@@ -126,6 +140,8 @@ class CalendarSync {
           'start': DateTime.parse(s['startsAt'] as String).millisecondsSinceEpoch,
           'end': DateTime.parse(s['endsAt'] as String).millisecondsSinceEpoch,
           'location': s['siteName'],
+          // Fuseau de l'entreprise : Google affiche la bonne heure partout.
+          'timezone': s['timezone'],
           'description': 'Staff Flow',
         },
       });

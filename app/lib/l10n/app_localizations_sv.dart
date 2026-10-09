@@ -1176,4 +1176,38 @@ class L10nSv extends L10n {
   String noticeReinforcement(String company) {
     return '$company har lagt till dig som förstärkning.';
   }
+
+  @override
+  String get companyNotificationsHint =>
+      'Av: inget låter på den här telefonen, men allt finns kvar i klockan.';
+
+  @override
+  String get companyNotificationsOn => 'Få aviseringar från det här företaget';
+
+  @override
+  String get companyTimezone => 'Företagets tidszon';
+
+  @override
+  String get companyTimezoneHint =>
+      'Alla tider för det här företaget är i den här tidszonen (sommartid inräknad). Kalendrar räknar om dem automatiskt.';
+
+  @override
+  String get iosInstallHint =>
+      'På iPhone: tryck på Dela och sedan ”Lägg till på hemskärmen” för att installera Staff Flow.';
+
+  @override
+  String get searchCity => 'Sök en stad';
+
+  @override
+  String get thisPhone => 'Den här enheten';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Aviseringar: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Tider enligt tiden i $zone ($company). Din enhet: $here.';
+  }
 }
