@@ -65,4 +65,5 @@ const vi = <String, String>{
   'Votre demande a été refusée.': 'Yêu cầu của bạn đã bị từ chối.',
   'Choisissez la personne qui reprend le service.': 'Chọn người nhận ca.',
   'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Hai ca làm của bạn ở hai công ty khác nhau bị trùng vào ngày {day}.',
+  'Vous avez été ajouté à cette entreprise comme renfort.': 'Bạn đã được thêm vào công ty này với vai trò hỗ trợ.',
 };

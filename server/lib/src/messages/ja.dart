@@ -65,4 +65,5 @@ const ja = <String, String>{
   'Votre demande a été refusée.': '申請が却下されました。',
   'Choisissez la personne qui reprend le service.': 'シフトを引き受ける人を選んでください。',
   'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': '{day} に、別々の会社の2つのシフトが重なっています。',
+  'Vous avez été ajouté à cette entreprise comme renfort.': '応援スタッフとしてこの会社に追加されました。',
 };

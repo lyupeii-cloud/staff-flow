@@ -65,4 +65,5 @@ const cs = <String, String>{
   'Votre demande a été refusée.': 'Vaše žádost byla zamítnuta.',
   'Choisissez la personne qui reprend le service.': 'Vyberte, kdo směnu převezme.',
   'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Dvě vaše směny v různých firmách se překrývají {day}.',
+  'Vous avez été ajouté à cette entreprise comme renfort.': 'Byli jste přidáni do této firmy jako posila.',
 };

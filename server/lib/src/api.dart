@@ -30,7 +30,7 @@ class Api {
   late final ChatService chat = ChatService(store, companies, notifications);
   late final OverlapService overlaps = OverlapService(store, companies, notifications, now: now);
   late final RequestService requests =
-      RequestService(store, companies, planning, notifications, overlaps: overlaps);
+      RequestService(store, companies, planning, notifications, overlaps: overlaps, chat: chat);
   late final JoinService joins = JoinService(store, companies, now: now);
   late final NoticeService notices = NoticeService(store, now: now);
 
@@ -141,7 +141,15 @@ class Api {
         await requests.cancel(u, r.params['id']!);
         return Response(204);
       }))
-      ..patch('/conversations/<id>', _authed(_updateGroup));
+      ..patch('/conversations/<id>', _authed(_updateGroup))
+      ..delete('/conversations/<id>', _authed((r, u) async {
+        await chat.deleteTeam(u, r.params['id']!);
+        return Response(204);
+      }))
+      // Renforts : salariés et extras de ses autres entreprises
+      ..get('/companies/<id>/reinforcements', _authed((r, u) async =>
+          _json({'people': await companies.reinforcements(u, r.params['id']!)})))
+      ..post('/companies/<id>/reinforcements', _authed(_addReinforcement));
     if (devLogin) v1.post('/auth/dev', _loginDev);
 
     final root = Router(notFoundHandler: _notFound)
@@ -424,10 +432,28 @@ class Api {
   Future<Response> _messages(Request req, User user) async {
     final q = req.url.queryParameters;
     final limit = int.tryParse(q['limit'] ?? '');
-    return _json({
-      'messages': await chat.messages(user, req.params['id']!,
-          before: int.tryParse(q['before'] ?? ''), author: q['author'], limit: limit ?? 50),
-    });
+    final messages = await chat.messages(user, req.params['id']!,
+        before: int.tryParse(q['before'] ?? ''), author: q['author'], limit: limit ?? 50);
+    // Carte d'une demande : son état et ce que la personne peut en faire.
+    for (final m in messages) {
+      final id = m['requestId'] as String?;
+      if (id == null) continue;
+      try {
+        m['request'] = await requests.one(user, id);
+      } on ApiError {
+        m['request'] = null;
+      }
+    }
+    return _json({'messages': messages});
+  }
+
+  Future<Response> _addReinforcement(Request req, User user) async {
+    final body = await _body(req);
+    final companyId = req.params['id']!;
+    final userId = _string(body, 'userId');
+    await companies.addReinforcement(user, companyId, userId);
+    await notifications.notify([userId], companyId: companyId, kind: 'reinforcement_added', data: {'byName': user.name});
+    return Response(204);
   }
 
   Future<Response> _sendMessage(Request req, User user) async {

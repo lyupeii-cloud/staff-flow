@@ -65,4 +65,5 @@ const bg = <String, String>{
   'Votre demande a été refusée.': 'Заявката ви е отказана.',
   'Choisissez la personne qui reprend le service.': 'Изберете кой поема смяната.',
   'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Две ваши смени в различни фирми се застъпват на {day}.',
+  'Vous avez été ajouté à cette entreprise comme renfort.': 'Добавени сте към тази фирма като подкрепление.',
 };

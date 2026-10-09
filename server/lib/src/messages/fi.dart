@@ -65,4 +65,5 @@ const fi = <String, String>{
   'Votre demande a été refusée.': 'Pyyntösi on hylätty.',
   'Choisissez la personne qui reprend le service.': 'Valitse, kuka ottaa vuoron.',
   'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Kaksi vuoroasi eri yrityksissä menee päällekkäin {day}.',
+  'Vous avez été ajouté à cette entreprise comme renfort.': 'Sinut on lisätty tähän yritykseen vahvistukseksi.',
 };

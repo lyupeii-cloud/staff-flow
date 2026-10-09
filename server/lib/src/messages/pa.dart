@@ -65,4 +65,5 @@ const pa = <String, String>{
   'Votre demande a été refusée.': 'ਤੁਹਾਡੀ ਬੇਨਤੀ ਨਾਮਨਜ਼ੂਰ ਹੋ ਗਈ।',
   'Choisissez la personne qui reprend le service.': 'ਚੁਣੋ ਕਿ ਸ਼ਿਫ਼ਟ ਕੌਣ ਲਵੇਗਾ।',
   'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': '{day} ਨੂੰ ਵੱਖ-ਵੱਖ ਕੰਪਨੀਆਂ ਵਿੱਚ ਤੁਹਾਡੀਆਂ ਦੋ ਸ਼ਿਫ਼ਟਾਂ ਆਪਸ ਵਿੱਚ ਟਕਰਾਉਂਦੀਆਂ ਹਨ।',
+  'Vous avez été ajouté à cette entreprise comme renfort.': 'ਤੁਹਾਨੂੰ ਇਸ ਕੰਪਨੀ ਵਿੱਚ ਸਹਾਇਕ ਵਜੋਂ ਜੋੜਿਆ ਗਿਆ ਹੈ।',
 };

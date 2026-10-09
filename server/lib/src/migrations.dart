@@ -336,4 +336,8 @@ CREATE TABLE overlap_alerts (
   PRIMARY KEY (shift_a, shift_b)
 );
 ''',
+  // 15 — demandes affichées dans les conversations, avec leurs boutons.
+  '''
+ALTER TABLE messages ADD COLUMN request_id uuid REFERENCES requests(id) ON DELETE SET NULL;
+''',
 ];

@@ -54,6 +54,39 @@ class CompanyService {
     return wanted;
   }
 
+  /// Renforts possibles : les salariés et extras des autres entreprises
+  /// actives où [actor] est responsable, qui ne sont pas déjà dans celle-ci.
+  Future<List<Map<String, Object?>>> reinforcements(User actor, String companyId) async {
+    final (company, role) = await open(actor, companyId);
+    if (!role.canManage) throw const ApiError.forbidden();
+    final rows = await store.query(store.db, '''
+      SELECT DISTINCT ON (u.id) u.id::text, coalesce(m.display_name, u.custom_name, u.name), m.role, c.id::text, c.name
+      FROM memberships mine
+      JOIN companies c ON c.id = mine.company_id AND c.status = 'active'
+      JOIN memberships m ON m.company_id = c.id AND m.left_at IS NULL AND m.role IN ('employee', 'extra')
+      JOIN users u ON u.id = m.user_id
+      WHERE mine.user_id = @u::uuid AND mine.left_at IS NULL AND mine.role IN ('owner', 'manager')
+        AND c.id <> @c::uuid
+        AND NOT EXISTS (SELECT 1 FROM memberships x WHERE x.company_id = @c::uuid AND x.user_id = u.id AND x.left_at IS NULL)
+      ORDER BY u.id, c.created_at''', {'u': actor.id, 'c': company.id});
+    final people = [
+      for (final r in rows) {'userId': r[0], 'name': r[1], 'role': r[2], 'companyId': r[3], 'companyName': r[4]},
+    ];
+    people.sort((a, b) => (a['name'] as String).toLowerCase().compareTo((b['name'] as String).toLowerCase()));
+    return people;
+  }
+
+  /// Ajoute comme renfort (extra) une personne d'une autre de ses entreprises.
+  Future<void> addReinforcement(User actor, String companyId, String userId) async {
+    final (company, _) = await open(actor, companyId);
+    _requireWritable(company);
+    if (!(await reinforcements(actor, companyId)).any((p) => p['userId'] == userId)) {
+      throw const ApiError.notFound('Membre introuvable.');
+    }
+    await store.addMember(companyId, userId, Role.extra);
+    await store.audit(companyId: companyId, actorId: actor.id, action: 'member.reinforcement', details: {'userId': userId});
+  }
+
   /// Responsable : sites dont il veut recevoir les notifications de
   /// demandes (`null` : tous ; liste vide : aucun).
   Future<void> setNotifySites(User actor, String companyId, List<String>? sites) async {

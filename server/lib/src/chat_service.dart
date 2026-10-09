@@ -195,6 +195,56 @@ class ChatService {
     });
   }
 
+  /// Supprimer un groupe créé par un responsable (n'importe quel
+  /// responsable de l'entreprise), avec ses messages.
+  Future<void> deleteTeam(User actor, String conversationId) async {
+    final rows = await store.query(store.db,
+        "SELECT company_id::text FROM conversations WHERE id = @id::uuid AND kind = 'team'", {'id': conversationId});
+    if (rows.isEmpty) throw const ApiError.notFound('Conversation introuvable.');
+    final companyId = rows.first[0] as String;
+    final (_, role) = await companies.open(actor, companyId);
+    if (!role.canManage) throw const ApiError.forbidden();
+    await store.query(store.db, 'DELETE FROM conversations WHERE id = @id::uuid', {'id': conversationId});
+    await store.audit(companyId: companyId, actorId: actor.id, action: 'group.delete', details: {'id': conversationId});
+  }
+
+  /// Carte d'une demande dans une conversation : dans le groupe de
+  /// l'entreprise ([others] vide), sinon dans la conversation privée entre
+  /// [authorId] et chacune des [others]. Pas de notification de message :
+  /// la demande a déjà la sienne.
+  Future<void> postRequest(String companyId, String requestId, String authorId, List<String> others) async {
+    final conversations = <String>[];
+    if (others.isEmpty) {
+      await store.query(store.db, '''
+        INSERT INTO conversations (company_id, kind) VALUES (@c::uuid, 'group')
+        ON CONFLICT (company_id) WHERE kind = 'group' DO NOTHING''', {'c': companyId});
+      final rows = await store.query(store.db,
+          "SELECT id::text FROM conversations WHERE company_id = @c::uuid AND kind = 'group'", {'c': companyId});
+      conversations.add(rows.first[0] as String);
+    }
+    for (final other in others.toSet()) {
+      if (other == authorId) continue;
+      final (a, b) = authorId.compareTo(other) < 0 ? (authorId, other) : (other, authorId);
+      await store.query(store.db, '''
+        INSERT INTO conversations (company_id, kind, user_a, user_b)
+        VALUES (@c::uuid, 'private', @a::uuid, @b::uuid)
+        ON CONFLICT (company_id, user_a, user_b) WHERE kind = 'private' DO NOTHING''', {'c': companyId, 'a': a, 'b': b});
+      final rows = await store.query(store.db, '''
+        SELECT id::text FROM conversations
+        WHERE company_id = @c::uuid AND kind = 'private' AND user_a = @a::uuid AND user_b = @b::uuid''',
+          {'c': companyId, 'a': a, 'b': b});
+      conversations.add(rows.first[0] as String);
+    }
+    for (final id in conversations) {
+      await store.query(store.db, '''
+        INSERT INTO messages (conversation_id, author_id, body, request_id)
+        VALUES (@id::uuid, @a::uuid, @body, @r::uuid)''', {'id': id, 'a': authorId, 'body': requestMarker, 'r': requestId});
+    }
+  }
+
+  /// Texte d'une carte de demande (aperçu de la conversation).
+  static const requestMarker = '📋';
+
   /// Les personnes doivent toutes être membres actuels de l'entreprise.
   Future<Set<String>> _checkMembers(String companyId, Set<String> userIds) async {
     for (final u in userIds) {
@@ -211,7 +261,7 @@ class ChatService {
       {int? before, String? author, int limit = 50}) async {
     final conv = await _open(actor, conversationId);
     final rows = await store.query(store.db, '''
-      SELECT m.id, m.author_id::text, $_name AS author_name, m.body, m.created_at, m.mentions,
+      SELECT m.id, m.author_id::text, $_name AS author_name, m.body, m.created_at, m.mentions, m.request_id::text,
         m.reply_to, rm.author_id::text AS reply_author_id, rm.body AS reply_body,
         coalesce(rms.display_name, ru.custom_name, ru.name) AS reply_author
       FROM messages m
@@ -239,6 +289,7 @@ class ChatService {
         'body': r['body'],
         'createdAt': (r['created_at'] as DateTime).toUtc().toIso8601String(),
         'mentions': r['mentions'] ?? const [],
+        'requestId': r['request_id'],
         'replyTo': r['reply_to'] == null
             ? null
             : {

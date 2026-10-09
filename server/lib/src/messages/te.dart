@@ -65,4 +65,5 @@ const te = <String, String>{
   'Votre demande a été refusée.': 'మీ అభ్యర్థన తిరస్కరించబడింది.',
   'Choisissez la personne qui reprend le service.': 'షిఫ్ట్‌ను ఎవరు తీసుకుంటారో ఎంచుకోండి.',
   'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': '{day}న వేర్వేరు కంపెనీల్లో మీ రెండు షిఫ్టులు ఒకదానిపై ఒకటి పడుతున్నాయి.',
+  'Vous avez été ajouté à cette entreprise comme renfort.': 'మిమ్మల్ని ఈ కంపెనీలో సహాయ సిబ్బందిగా చేర్చారు.',
 };

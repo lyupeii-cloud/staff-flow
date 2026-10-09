@@ -1,3 +1,4 @@
+import 'chat_service.dart';
 import 'company_service.dart';
 import 'errors.dart';
 import 'models.dart';
@@ -21,7 +22,10 @@ class RequestService {
   /// Prévenue après un échange validé (chevauchement avec une autre entreprise).
   final OverlapService? overlaps;
 
-  RequestService(this.store, this.companies, this.planning, this.notifications, {this.overlaps});
+  /// Cartes des demandes dans les conversations.
+  final ChatService? chat;
+
+  RequestService(this.store, this.companies, this.planning, this.notifications, {this.overlaps, this.chat});
 
   static const kinds = {'swap', 'leave', 'unavailability'};
 
@@ -64,6 +68,22 @@ class RequestService {
       await notifications.notify(await _candidates(request),
           companyId: companyId, kind: 'swap_offer', data: _noticeData(request, actor.name));
     }
+    // La demande apparaît aussi dans la messagerie : échange proposé à tous
+    // dans le groupe, à un collègue dans la conversation privée avec lui ;
+    // congé ou indisponibilité dans la conversation avec chaque responsable concerné.
+    await chat?.postRequest(
+        companyId,
+        id,
+        actor.id,
+        request.kind == 'swap'
+            ? [?request.peerId]
+            : [
+                for (final m in await store.members(companyId))
+                  if (m.role.canManage &&
+                      m.user.id != actor.id &&
+                      await _inScope(request, (role: m.role, sites: m.role == Role.owner ? null : m.sites?.toSet())))
+                    m.user.id,
+              ]);
     return _json(request, actor, await _viewer(actor, companyId));
   }
 

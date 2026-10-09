@@ -65,4 +65,5 @@ const bn = <String, String>{
   'Votre demande a été refusée.': 'আপনার অনুরোধ প্রত্যাখ্যাত হয়েছে।',
   'Choisissez la personne qui reprend le service.': 'কে শিফটটি নেবেন তা বেছে নিন।',
   'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': '{day} তারিখে ভিন্ন কোম্পানিতে আপনার দুটি শিফট একে অপরের সঙ্গে মিলে যাচ্ছে।',
+  'Vous avez été ajouté à cette entreprise comme renfort.': 'আপনাকে এই কোম্পানিতে সহায়ক কর্মী হিসেবে যোগ করা হয়েছে।',
 };

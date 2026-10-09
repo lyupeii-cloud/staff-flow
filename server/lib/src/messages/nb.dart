@@ -65,4 +65,5 @@ const nb = <String, String>{
   'Votre demande a été refusée.': 'Forespørselen din er avslått.',
   'Choisissez la personne qui reprend le service.': 'Velg hvem som tar over vakten.',
   'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'To av vaktene dine i ulike bedrifter overlapper {day}.',
+  'Vous avez été ajouté à cette entreprise comme renfort.': 'Du er lagt til i denne bedriften som forsterkning.',
 };

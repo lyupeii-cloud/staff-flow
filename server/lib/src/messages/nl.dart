@@ -65,4 +65,5 @@ const nl = <String, String>{
   'Votre demande a été refusée.': 'Je verzoek is geweigerd.',
   'Choisissez la personne qui reprend le service.': 'Kies wie de dienst overneemt.',
   'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Twee van je diensten bij verschillende bedrijven overlappen op {day}.',
+  'Vous avez été ajouté à cette entreprise comme renfort.': 'Je bent als versterking aan dit bedrijf toegevoegd.',
 };

@@ -65,4 +65,5 @@ const sk = <String, String>{
   'Votre demande a été refusée.': 'Vaša žiadosť bola zamietnutá.',
   'Choisissez la personne qui reprend le service.': 'Vyberte, kto zmenu prevezme.',
   'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Dve vaše zmeny v rôznych firmách sa prekrývajú {day}.',
+  'Vous avez été ajouté à cette entreprise comme renfort.': 'Boli ste pridaní do tejto firmy ako posila.',
 };

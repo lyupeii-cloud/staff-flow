@@ -65,4 +65,5 @@ const sw = <String, String>{
   'Votre demande a été refusée.': 'Ombi lako limekataliwa.',
   'Choisissez la personne qui reprend le service.': 'Chagua nani atachukua zamu.',
   'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Zamu zako mbili katika kampuni tofauti zinaingiliana tarehe {day}.',
+  'Vous avez été ajouté à cette entreprise comme renfort.': 'Umeongezwa kwenye kampuni hii kama msaidizi.',
 };

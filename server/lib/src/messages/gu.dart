@@ -65,4 +65,5 @@ const gu = <String, String>{
   'Votre demande a été refusée.': 'તમારી વિનંતી નકારાઈ.',
   'Choisissez la personne qui reprend le service.': 'શિફ્ટ કોણ લેશે તે પસંદ કરો.',
   'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': '{day} ના રોજ અલગ કંપનીઓમાં તમારી બે શિફ્ટ એકબીજા પર આવે છે.',
+  'Vous avez été ajouté à cette entreprise comme renfort.': 'તમને આ કંપનીમાં મદદનીશ તરીકે ઉમેરવામાં આવ્યા છે.',
 };

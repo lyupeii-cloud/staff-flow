@@ -65,4 +65,5 @@ const ru = <String, String>{
   'Votre demande a été refusée.': 'Ваш запрос отклонён.',
   'Choisissez la personne qui reprend le service.': 'Выберите, кто возьмёт смену.',
   'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'Две ваши смены в разных компаниях пересекаются {day}.',
+  'Vous avez été ajouté à cette entreprise comme renfort.': 'Вас добавили в эту компанию в качестве подкрепления.',
 };

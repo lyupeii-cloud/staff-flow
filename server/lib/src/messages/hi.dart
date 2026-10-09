@@ -65,4 +65,5 @@ const hi = <String, String>{
   'Votre demande a été refusée.': 'आपका अनुरोध अस्वीकार हो गया।',
   'Choisissez la personne qui reprend le service.': 'चुनें कि शिफ़्ट कौन लेगा।',
   'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': '{day} को अलग-अलग कंपनियों में आपकी दो शिफ़्ट आपस में टकरा रही हैं।',
+  'Vous avez été ajouté à cette entreprise comme renfort.': 'आपको इस कंपनी में सहायक कर्मी के रूप में जोड़ा गया है।',
 };

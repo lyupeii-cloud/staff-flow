@@ -65,4 +65,5 @@ const th = <String, String>{
   'Votre demande a été refusée.': 'คำขอของคุณถูกปฏิเสธ',
   'Choisissez la personne qui reprend le service.': 'เลือกผู้ที่จะรับกะนี้',
   'Deux de vos services dans des entreprises différentes se chevauchent le {day}.': 'กะสองกะของคุณในบริษัทต่างกันทับซ้อนกันในวันที่ {day}',
+  'Vous avez été ajouté à cette entreprise comme renfort.': 'คุณถูกเพิ่มเข้าบริษัทนี้ในฐานะกำลังเสริม',
 };
