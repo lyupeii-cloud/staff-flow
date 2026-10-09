@@ -960,4 +960,29 @@ class L10nPa extends L10n {
   String noticeOverlap(String date) {
     return '$date ਨੂੰ ਵੱਖ-ਵੱਖ ਕੰਪਨੀਆਂ ਵਿੱਚ ਤੁਹਾਡੀਆਂ ਦੋ ਸ਼ਿਫ਼ਟਾਂ ਆਪਸ ਵਿੱਚ ਟਕਰਾਉਂਦੀਆਂ ਹਨ।';
   }
+
+  @override
+  String get allMyCompanies => 'ਮੇਰੀਆਂ ਸਾਰੀਆਂ ਕੰਪਨੀਆਂ';
+
+  @override
+  String get deleteGroup => 'ਸਮੂਹ ਮਿਟਾਓ';
+
+  @override
+  String get openRequest => 'ਬੇਨਤੀ ਵੇਖੋ';
+
+  @override
+  String get thisCompany => 'ਇਹ ਕੰਪਨੀ';
+
+  @override
+  String get withExtras => 'ਆਰਜ਼ੀ ਕਰਮਚਾਰੀਆਂ ਸਮੇਤ';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'ਸਭ ਲਈ “$name” ਅਤੇ ਇਸਦੇ ਸਾਰੇ ਸੁਨੇਹੇ ਮਿਟਾਉਣੇ ਹਨ?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return '$company ਤੋਂ: ਸਹਾਇਕ ਵਜੋਂ ਜੋੜਿਆ ਜਾਵੇਗਾ ਅਤੇ ਸੂਚਿਤ ਕੀਤਾ ਜਾਵੇਗਾ।';
+  }
 }

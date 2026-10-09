@@ -265,5 +265,12 @@
   "busyElsewhere": "该时段已在另一家公司上班",
   "overlapTooltip": "与另一家公司的班次重叠",
   "overlapWarning": "您在两家公司的部分班次时间重叠。",
-  "noticeOverlap": "您在不同公司的两个班次在 {date} 时间重叠。"
+  "noticeOverlap": "您在不同公司的两个班次在 {date} 时间重叠。",
+  "allMyCompanies": "我的所有公司",
+  "deleteGroup": "删除群组",
+  "openRequest": "查看申请",
+  "thisCompany": "本公司",
+  "withExtras": "包括临时工",
+  "deleteGroupConfirm": "为所有人删除“{name}”及其全部消息？",
+  "reinforcementHint": "来自 {company}：将作为支援人员加入并收到通知。"
 }

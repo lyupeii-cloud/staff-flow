@@ -961,4 +961,29 @@ class L10nCs extends L10n {
   String noticeOverlap(String date) {
     return 'Dvě vaše směny v různých firmách se překrývají $date.';
   }
+
+  @override
+  String get allMyCompanies => 'Všechny moje firmy';
+
+  @override
+  String get deleteGroup => 'Smazat skupinu';
+
+  @override
+  String get openRequest => 'Zobrazit žádost';
+
+  @override
+  String get thisCompany => 'Tato firma';
+
+  @override
+  String get withExtras => 'Včetně brigádníků';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'Smazat „$name“ a všechny zprávy pro všechny?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'Z firmy $company: bude přidán jako posila a upozorněn.';
+  }
 }

@@ -958,4 +958,29 @@ class L10nId extends L10n {
   String noticeOverlap(String date) {
     return 'Dua shift Anda di perusahaan berbeda bertabrakan pada $date.';
   }
+
+  @override
+  String get allMyCompanies => 'Semua perusahaan saya';
+
+  @override
+  String get deleteGroup => 'Hapus grup';
+
+  @override
+  String get openRequest => 'Lihat permintaan';
+
+  @override
+  String get thisCompany => 'Perusahaan ini';
+
+  @override
+  String get withExtras => 'Termasuk pekerja lepas';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'Hapus “$name” dan semua pesannya untuk semua orang?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'Dari $company: akan ditambahkan sebagai tenaga bantuan dan diberi tahu.';
+  }
 }

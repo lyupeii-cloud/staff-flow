@@ -9,6 +9,7 @@ import '../models.dart';
 import '../push.dart';
 import '../session.dart';
 import 'group_editor.dart';
+import 'requests_view.dart';
 
 /// Une conversation : messages du plus ancien au plus récent, envoi en bas.
 /// On peut répondre à un message précis, traduire un message dans sa
@@ -323,6 +324,34 @@ class _ChatScreenState extends State<ChatScreen> {
   late Conversation _conversation = widget.conversation;
 
   /// Groupe créé par un responsable : changer son nom ou ses membres.
+  /// Responsable : supprimer le groupe et ses messages, pour tout le monde.
+  Future<void> _deleteGroup() async {
+    final t = context.l10n;
+    final messenger = ScaffoldMessenger.of(context);
+    final navigator = Navigator.of(context);
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(t.deleteGroup),
+        content: Text(t.deleteGroupConfirm(_conversation.name ?? '')),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
+          FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.deleteGroup)),
+        ],
+      ),
+    );
+    if (ok != true) return;
+    try {
+      await session.api.send('DELETE', '/conversations/$id');
+      session.sync.markChanged();
+      navigator.pop();
+    } on OfflineException {
+      messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+    } on ApiException catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text(e.describe(t))));
+    }
+  }
+
   Future<void> _editGroup() async {
     final companyId = widget.company.id;
     final messenger = ScaffoldMessenger.of(context);
@@ -377,6 +406,8 @@ class _ChatScreenState extends State<ChatScreen> {
         actions: [
           if (c.isTeam && canManage && !widget.company.readOnly)
             IconButton(tooltip: t.editGroup, icon: const Icon(Icons.group), onPressed: _editGroup),
+          if (c.isTeam && canManage)
+            IconButton(tooltip: t.deleteGroup, icon: const Icon(Icons.delete_outline), onPressed: _deleteGroup),
         ],
       ),
       body: Column(
@@ -410,6 +441,15 @@ class _ChatScreenState extends State<ChatScreen> {
                                   child: Text(dayLabel(m.createdAt, loc),
                                       style: Theme.of(context).textTheme.labelSmall),
                                 ),
+                              if (m.requestId != null)
+                                _RequestCard(
+                                  request: m.request,
+                                  session: session,
+                                  companyId: widget.company.id,
+                                  mine: mine,
+                                  onChanged: _refresh,
+                                )
+                              else
                               _Bubble(
                                 message: m,
                                 mine: mine,
@@ -539,6 +579,107 @@ String _fold(String s) {
     out.write(i < 0 ? ch : to[i]);
   }
   return out.toString();
+}
+
+/// Demande dans la conversation, avec ses boutons.
+class _RequestCard extends StatelessWidget {
+  final StaffRequest? request;
+  final Session session;
+  final String companyId;
+  final bool mine;
+  final Future<void> Function() onChanged;
+
+  const _RequestCard(
+      {required this.request, required this.session, required this.companyId, required this.mine, required this.onChanged});
+
+  @override
+  Widget build(BuildContext context) {
+    final t = context.l10n;
+    final theme = Theme.of(context);
+    final r = request;
+    if (r == null) return const SizedBox.shrink();
+    final messenger = ScaffoldMessenger.of(context);
+    final navigator = Navigator.of(context);
+    Future<void> act(String action, [Map<String, dynamic>? body]) async {
+      try {
+        await session.api.send('POST', '/requests/${r.id}/$action', body: body);
+      } on OfflineException {
+        messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+      } on ApiException catch (e) {
+        messenger.showSnackBar(SnackBar(content: Text(e.describe(t))));
+      }
+      await onChanged();
+    }
+
+    // Choisir qui reprend un échange : depuis la liste des demandes.
+    void open() {
+      navigator.popUntil((route) => route.isFirst);
+      session.openRequest.value = (companyId: companyId, requestId: r.id);
+    }
+
+    final status = switch (r.status) {
+      'pending_peer' => t.statusPendingPeer,
+      'pending_manager' => t.statusPendingManager,
+      'approved' => t.statusApproved,
+      'refused' => t.statusRefused,
+      'expired' => t.statusExpired,
+      _ => t.statusCancelled,
+    };
+    return Align(
+      alignment: mine ? Alignment.centerRight : Alignment.centerLeft,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 420),
+        child: Card(
+          margin: const EdgeInsets.symmetric(vertical: 4),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+            side: BorderSide(color: theme.colorScheme.primary),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(12, 10, 8, 6),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Icon(requestIcon(r.kind), color: theme.colorScheme.primary, size: 20),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text('${r.requesterName} · ${requestKindLabel(t, r.kind)}', style: theme.textTheme.titleSmall),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  [...requestDetails(t, context.localeName, r, null), if (r.note != null) '« ${r.note} »'].join('\n'),
+                  style: theme.textTheme.bodySmall,
+                ),
+                const SizedBox(height: 4),
+                Text(status, style: theme.textTheme.labelSmall?.copyWith(color: theme.colorScheme.tertiary)),
+                Wrap(
+                  alignment: WrapAlignment.end,
+                  spacing: 6,
+                  children: [
+                    TextButton(onPressed: open, child: Text(t.openRequest)),
+                    if (r.canCancel) TextButton(onPressed: () => act('cancel'), child: Text(t.cancelRequest)),
+                    if (r.canDecline) TextButton(onPressed: () => act('decline'), child: Text(t.decline)),
+                    if (r.canAnswer)
+                      FilledButton(
+                        onPressed: () => r.canDecide ? act('approve', {'peerId': session.me!.user.id}) : act('accept'),
+                        child: Text(t.acceptSwap),
+                      ),
+                    if (r.canDecide && !r.canAnswer) TextButton(onPressed: () => act('refuse'), child: Text(t.decline)),
+                    if (r.canDecide && !r.canAnswer)
+                      FilledButton(onPressed: r.needsPeer ? open : () => act('approve'), child: Text(t.approve)),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class _Bubble extends StatelessWidget {

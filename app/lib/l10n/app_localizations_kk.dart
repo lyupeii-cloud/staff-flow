@@ -959,4 +959,29 @@ class L10nKk extends L10n {
   String noticeOverlap(String date) {
     return '$date күні әртүрлі компаниялардағы екі ауысымыңыз бір-біріне сәйкес келеді.';
   }
+
+  @override
+  String get allMyCompanies => 'Барлық компанияларым';
+
+  @override
+  String get deleteGroup => 'Топты жою';
+
+  @override
+  String get openRequest => 'Сұрауды көру';
+
+  @override
+  String get thisCompany => 'Осы компания';
+
+  @override
+  String get withExtras => 'Уақытша қызметкерлермен';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'Барлығы үшін «$name» тобын және барлық хабарламаларын жою керек пе?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return '$company компаниясынан: қосымша қызметкер ретінде қосылып, хабарланады.';
+  }
 }

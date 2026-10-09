@@ -962,4 +962,29 @@ class L10nSw extends L10n {
   String noticeOverlap(String date) {
     return 'Zamu zako mbili katika kampuni tofauti zinaingiliana tarehe $date.';
   }
+
+  @override
+  String get allMyCompanies => 'Kampuni zangu zote';
+
+  @override
+  String get deleteGroup => 'Futa kikundi';
+
+  @override
+  String get openRequest => 'Tazama ombi';
+
+  @override
+  String get thisCompany => 'Kampuni hii';
+
+  @override
+  String get withExtras => 'Pamoja na vibarua';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'Futa “$name” na jumbe zake zote kwa kila mtu?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'Kutoka $company: ataongezwa kama msaidizi na kuarifiwa.';
+  }
 }

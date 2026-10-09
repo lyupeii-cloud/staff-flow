@@ -967,4 +967,29 @@ class L10nRo extends L10n {
   String noticeOverlap(String date) {
     return 'Două dintre turele tale de la firme diferite se suprapun pe $date.';
   }
+
+  @override
+  String get allMyCompanies => 'Toate firmele mele';
+
+  @override
+  String get deleteGroup => 'Șterge grupul';
+
+  @override
+  String get openRequest => 'Vezi cererea';
+
+  @override
+  String get thisCompany => 'Această firmă';
+
+  @override
+  String get withExtras => 'Cu colaboratorii';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'Ștergi „$name” și toate mesajele pentru toți?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'De la $company: va fi adăugat ca întăritură și anunțat.';
+  }
 }

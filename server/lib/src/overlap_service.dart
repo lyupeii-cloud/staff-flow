@@ -82,7 +82,12 @@ class OverlapService {
         FROM unnest(@days::text[]) AS d)
       SELECT DISTINCT p.user_id::text FROM p, slot
       WHERE p.company_id <> @c::uuid AND p.t0 < slot.t1 AND slot.t0 < p.t1
-        AND p.user_id IN (SELECT user_id FROM memberships WHERE company_id = @c::uuid AND left_at IS NULL)''', {
+        AND (p.user_id IN (SELECT user_id FROM memberships WHERE company_id = @c::uuid AND left_at IS NULL)
+          -- Renforts possibles : les personnes de ses autres entreprises.
+          OR p.user_id IN (SELECT m.user_id FROM memberships mine
+            JOIN memberships m ON m.company_id = mine.company_id AND m.left_at IS NULL
+            WHERE mine.user_id = @u::uuid AND mine.left_at IS NULL AND mine.role IN ('owner', 'manager')))''', {
+      'u': actor.id,
       'c': companyId,
       'tz': company.timezone,
       'days': valid,

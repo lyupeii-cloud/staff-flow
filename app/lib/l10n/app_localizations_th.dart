@@ -950,4 +950,29 @@ class L10nTh extends L10n {
   String noticeOverlap(String date) {
     return 'กะสองกะของคุณในบริษัทต่างกันทับซ้อนกันในวันที่ $date';
   }
+
+  @override
+  String get allMyCompanies => 'บริษัททั้งหมดของฉัน';
+
+  @override
+  String get deleteGroup => 'ลบกลุ่ม';
+
+  @override
+  String get openRequest => 'ดูคำขอ';
+
+  @override
+  String get thisCompany => 'บริษัทนี้';
+
+  @override
+  String get withExtras => 'รวมพนักงานชั่วคราว';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'ลบ “$name” และข้อความทั้งหมดสำหรับทุกคนใช่ไหม';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'จาก $company: จะถูกเพิ่มเป็นกำลังเสริมและได้รับแจ้ง';
+  }
 }

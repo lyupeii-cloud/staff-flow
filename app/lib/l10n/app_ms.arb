@@ -265,5 +265,12 @@
   "busyElsewhere": "Sudah bekerja di syarikat lain pada waktu ini",
   "overlapTooltip": "Bertindih dengan syif di syarikat lain",
   "overlapWarning": "Sebahagian syif anda di dua syarikat bertindih.",
-  "noticeOverlap": "Dua syif anda di syarikat berbeza bertindih pada {date}."
+  "noticeOverlap": "Dua syif anda di syarikat berbeza bertindih pada {date}.",
+  "allMyCompanies": "Semua syarikat saya",
+  "deleteGroup": "Padam kumpulan",
+  "openRequest": "Lihat permintaan",
+  "thisCompany": "Syarikat ini",
+  "withExtras": "Termasuk pekerja sambilan",
+  "deleteGroupConfirm": "Padam “{name}” dan semua mesejnya untuk semua orang?",
+  "reinforcementHint": "Dari {company}: akan ditambah sebagai tenaga bantuan dan dimaklumkan."
 }

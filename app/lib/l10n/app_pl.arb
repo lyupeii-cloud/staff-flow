@@ -265,5 +265,12 @@
   "busyElsewhere": "Pracuje już w tym czasie w innej firmie",
   "overlapTooltip": "Nakłada się na zmianę w innej firmie",
   "overlapWarning": "Niektóre twoje zmiany w dwóch firmach nakładają się.",
-  "noticeOverlap": "Dwie twoje zmiany w różnych firmach nakładają się {date}."
+  "noticeOverlap": "Dwie twoje zmiany w różnych firmach nakładają się {date}.",
+  "allMyCompanies": "Wszystkie moje firmy",
+  "deleteGroup": "Usuń grupę",
+  "openRequest": "Zobacz prośbę",
+  "thisCompany": "Ta firma",
+  "withExtras": "Z pracownikami dorywczymi",
+  "deleteGroupConfirm": "Usunąć „{name}” i wszystkie wiadomości dla wszystkich?",
+  "reinforcementHint": "Z firmy {company}: zostanie dodany jako wsparcie i powiadomiony."
 }

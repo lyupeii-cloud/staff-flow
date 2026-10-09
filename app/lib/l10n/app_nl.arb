@@ -265,5 +265,12 @@
   "busyElsewhere": "Werkt op dit tijdstip al bij een ander bedrijf",
   "overlapTooltip": "Overlapt met een dienst bij een ander bedrijf",
   "overlapWarning": "Sommige van je diensten bij twee bedrijven overlappen.",
-  "noticeOverlap": "Twee van je diensten bij verschillende bedrijven overlappen op {date}."
+  "noticeOverlap": "Twee van je diensten bij verschillende bedrijven overlappen op {date}.",
+  "allMyCompanies": "Al mijn bedrijven",
+  "deleteGroup": "Groep verwijderen",
+  "openRequest": "Verzoek bekijken",
+  "thisCompany": "Dit bedrijf",
+  "withExtras": "Met invalkrachten",
+  "deleteGroupConfirm": "„{name}” en alle berichten voor iedereen verwijderen?",
+  "reinforcementHint": "Van {company}: wordt als versterking toegevoegd en op de hoogte gebracht."
 }

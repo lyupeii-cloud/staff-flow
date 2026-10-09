@@ -939,4 +939,29 @@ class L10nKo extends L10n {
   String noticeOverlap(String date) {
     return '$date에 서로 다른 회사의 근무 두 개가 겹칩니다.';
   }
+
+  @override
+  String get allMyCompanies => '내 모든 회사';
+
+  @override
+  String get deleteGroup => '그룹 삭제';
+
+  @override
+  String get openRequest => '요청 보기';
+
+  @override
+  String get thisCompany => '이 회사';
+
+  @override
+  String get withExtras => '임시 직원 포함';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return '모든 사람에게서 “$name”과(와) 모든 메시지를 삭제할까요?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return '$company 소속: 지원 인력으로 추가되고 알림을 받습니다.';
+  }
 }

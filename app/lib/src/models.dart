@@ -299,6 +299,11 @@ class ChatMessage {
   /// Personnes citées avec « # ».
   final List<Mention> mentions;
 
+  /// Carte d'une demande (échange, congé, indisponibilité) ; [request] est
+  /// `null` si la personne ne peut plus la voir.
+  final String? requestId;
+  final StaffRequest? request;
+
   const ChatMessage(
       {this.id,
       this.authorId,
@@ -306,7 +311,9 @@ class ChatMessage {
       required this.body,
       required this.createdAt,
       this.replyTo,
-      this.mentions = const []});
+      this.mentions = const [],
+      this.requestId,
+      this.request});
 
   bool get pending => id == null;
 
@@ -317,7 +324,9 @@ class ChatMessage {
         body = j['body'],
         createdAt = DateTime.parse(j['createdAt']).toLocal(),
         replyTo = j['replyTo'] == null ? null : ChatReply.fromJson(j['replyTo']),
-        mentions = [for (final m in j['mentions'] ?? const []) Mention(m['id'], m['name'])];
+        mentions = [for (final m in j['mentions'] ?? const []) Mention(m['id'], m['name'])],
+        requestId = j['requestId'],
+        request = j['request'] == null ? null : StaffRequest.fromJson((j['request'] as Map).cast<String, dynamic>());
 }
 
 /// Extrait du message auquel on répond.

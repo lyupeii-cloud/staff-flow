@@ -322,7 +322,7 @@ String requestKindLabel(L10n t, RequestKind kind) => switch (kind) {
 
 /// Détails d'une demande : le service proposé et à qui, ou la période et
 /// les jours d'absence.
-List<String> requestDetails(L10n t, String loc, StaffRequest r, CompanyData data) {
+List<String> requestDetails(L10n t, String loc, StaffRequest r, CompanyData? data) {
   final period = r.startDay == null || r.endDay == null
       ? null
       : sameDay(r.startDay!, r.endDay!)
@@ -333,7 +333,7 @@ List<String> requestDetails(L10n t, String loc, StaffRequest r, CompanyData data
         if (r.shiftDay != null)
           [
             '${dayLabel(r.shiftDay!, loc)}  ${timeLabel(r.shiftStart ?? 0)} – ${timeLabel(r.shiftEnd ?? 0)}',
-            ?data.siteName(r.siteId),
+            ?data?.siteName(r.siteId),
           ].join(' · '),
         r.peerName != null ? t.swapToPeer(r.peerName!) : t.swapToTeam,
       ],

@@ -940,4 +940,29 @@ class L10nJa extends L10n {
   String noticeOverlap(String date) {
     return '$date に、別々の会社の2つのシフトが重なっています。';
   }
+
+  @override
+  String get allMyCompanies => 'すべての会社';
+
+  @override
+  String get deleteGroup => 'グループを削除';
+
+  @override
+  String get openRequest => '申請を見る';
+
+  @override
+  String get thisCompany => 'この会社';
+
+  @override
+  String get withExtras => '臨時スタッフを含める';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return '「$name」とすべてのメッセージを全員から削除しますか？';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return '$company から：応援スタッフとして追加され、通知されます。';
+  }
 }

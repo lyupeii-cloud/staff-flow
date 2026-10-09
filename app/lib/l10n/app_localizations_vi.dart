@@ -952,4 +952,29 @@ class L10nVi extends L10n {
   String noticeOverlap(String date) {
     return 'Hai ca làm của bạn ở hai công ty khác nhau bị trùng vào ngày $date.';
   }
+
+  @override
+  String get allMyCompanies => 'Tất cả công ty của tôi';
+
+  @override
+  String get deleteGroup => 'Xóa nhóm';
+
+  @override
+  String get openRequest => 'Xem yêu cầu';
+
+  @override
+  String get thisCompany => 'Công ty này';
+
+  @override
+  String get withExtras => 'Gồm cả nhân viên thời vụ';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'Xóa “$name” và mọi tin nhắn với tất cả mọi người?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'Từ $company: sẽ được thêm làm nhân sự hỗ trợ và được thông báo.';
+  }
 }

@@ -958,4 +958,29 @@ class L10nBg extends L10n {
   String noticeOverlap(String date) {
     return 'Две ваши смени в различни фирми се застъпват на $date.';
   }
+
+  @override
+  String get allMyCompanies => 'Всички мои фирми';
+
+  @override
+  String get deleteGroup => 'Изтрий групата';
+
+  @override
+  String get openRequest => 'Виж заявката';
+
+  @override
+  String get thisCompany => 'Тази фирма';
+
+  @override
+  String get withExtras => 'С допълнителните служители';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'Да се изтрие ли „$name“ и всички съобщения за всички?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'От $company: ще бъде добавен като подкрепление и уведомен.';
+  }
 }

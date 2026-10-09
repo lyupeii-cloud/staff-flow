@@ -265,5 +265,12 @@
   "busyElsewhere": "Arbeitet zu dieser Zeit schon in einem anderen Unternehmen",
   "overlapTooltip": "Überschneidet sich mit einer Schicht in einem anderen Unternehmen",
   "overlapWarning": "Einige Ihrer Schichten in zwei Unternehmen überschneiden sich.",
-  "noticeOverlap": "Zwei Ihrer Schichten in verschiedenen Unternehmen überschneiden sich am {date}."
+  "noticeOverlap": "Zwei Ihrer Schichten in verschiedenen Unternehmen überschneiden sich am {date}.",
+  "allMyCompanies": "Alle meine Unternehmen",
+  "deleteGroup": "Gruppe löschen",
+  "openRequest": "Anfrage ansehen",
+  "thisCompany": "Dieses Unternehmen",
+  "withExtras": "Mit Aushilfen",
+  "deleteGroupConfirm": "„{name}“ und alle Nachrichten für alle löschen?",
+  "reinforcementHint": "Aus {company}: wird als Verstärkung hinzugefügt und benachrichtigt."
 }

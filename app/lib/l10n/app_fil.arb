@@ -265,5 +265,12 @@
   "busyElsewhere": "May shift na sa ibang kumpanya sa oras na ito",
   "overlapTooltip": "Sumasabay sa shift sa ibang kumpanya",
   "overlapWarning": "Nagsasabay ang ilan sa mga shift mo sa dalawang kumpanya.",
-  "noticeOverlap": "Nagsasabay ang dalawa mong shift sa magkaibang kumpanya sa {date}."
+  "noticeOverlap": "Nagsasabay ang dalawa mong shift sa magkaibang kumpanya sa {date}.",
+  "allMyCompanies": "Lahat ng kumpanya ko",
+  "deleteGroup": "Burahin ang grupo",
+  "openRequest": "Tingnan ang kahilingan",
+  "thisCompany": "Ang kumpanyang ito",
+  "withExtras": "Kasama ang mga extra",
+  "deleteGroupConfirm": "Burahin ang “{name}” at lahat ng mensahe nito para sa lahat?",
+  "reinforcementHint": "Mula sa {company}: idadagdag bilang dagdag na tauhan at aabisuhan."
 }

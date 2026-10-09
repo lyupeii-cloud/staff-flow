@@ -265,5 +265,12 @@
   "busyElsewhere": "Jobber allerede i en annen bedrift på dette tidspunktet",
   "overlapTooltip": "Overlapper en vakt i en annen bedrift",
   "overlapWarning": "Noen av vaktene dine i to bedrifter overlapper.",
-  "noticeOverlap": "To av vaktene dine i ulike bedrifter overlapper {date}."
+  "noticeOverlap": "To av vaktene dine i ulike bedrifter overlapper {date}.",
+  "allMyCompanies": "Alle bedriftene mine",
+  "deleteGroup": "Slett gruppen",
+  "openRequest": "Se forespørselen",
+  "thisCompany": "Denne bedriften",
+  "withExtras": "Med ekstrahjelp",
+  "deleteGroupConfirm": "Slette «{name}» og alle meldingene for alle?",
+  "reinforcementHint": "Fra {company}: legges til som forsterkning og varsles."
 }

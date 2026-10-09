@@ -936,4 +936,29 @@ class L10nZh extends L10n {
   String noticeOverlap(String date) {
     return '您在不同公司的两个班次在 $date 时间重叠。';
   }
+
+  @override
+  String get allMyCompanies => '我的所有公司';
+
+  @override
+  String get deleteGroup => '删除群组';
+
+  @override
+  String get openRequest => '查看申请';
+
+  @override
+  String get thisCompany => '本公司';
+
+  @override
+  String get withExtras => '包括临时工';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return '为所有人删除“$name”及其全部消息？';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return '来自 $company：将作为支援人员加入并收到通知。';
+  }
 }

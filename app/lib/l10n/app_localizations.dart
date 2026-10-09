@@ -1786,6 +1786,48 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Two of your shifts at different companies overlap on {date}.'**
   String noticeOverlap(String date);
+
+  /// No description provided for @allMyCompanies.
+  ///
+  /// In en, this message translates to:
+  /// **'All my companies'**
+  String get allMyCompanies;
+
+  /// No description provided for @deleteGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete group'**
+  String get deleteGroup;
+
+  /// No description provided for @openRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'View request'**
+  String get openRequest;
+
+  /// No description provided for @thisCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'This company'**
+  String get thisCompany;
+
+  /// No description provided for @withExtras.
+  ///
+  /// In en, this message translates to:
+  /// **'Include extras'**
+  String get withExtras;
+
+  /// No description provided for @deleteGroupConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete “{name}” and all its messages for everyone?'**
+  String deleteGroupConfirm(String name);
+
+  /// No description provided for @reinforcementHint.
+  ///
+  /// In en, this message translates to:
+  /// **'From {company}: will be added as backup staff and notified.'**
+  String reinforcementHint(String company);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

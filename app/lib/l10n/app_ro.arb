@@ -265,5 +265,12 @@
   "busyElsewhere": "Lucrează deja la altă firmă în acest interval",
   "overlapTooltip": "Se suprapune cu o tură de la altă firmă",
   "overlapWarning": "Unele dintre turele tale de la două firme se suprapun.",
-  "noticeOverlap": "Două dintre turele tale de la firme diferite se suprapun pe {date}."
+  "noticeOverlap": "Două dintre turele tale de la firme diferite se suprapun pe {date}.",
+  "allMyCompanies": "Toate firmele mele",
+  "deleteGroup": "Șterge grupul",
+  "openRequest": "Vezi cererea",
+  "thisCompany": "Această firmă",
+  "withExtras": "Cu colaboratorii",
+  "deleteGroupConfirm": "Ștergi „{name}” și toate mesajele pentru toți?",
+  "reinforcementHint": "De la {company}: va fi adăugat ca întăritură și anunțat."
 }

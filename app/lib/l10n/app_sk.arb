@@ -265,5 +265,12 @@
   "busyElsewhere": "V tomto čase už pracuje v inej firme",
   "overlapTooltip": "Prekrýva sa so zmenou v inej firme",
   "overlapWarning": "Niektoré vaše zmeny v dvoch firmách sa prekrývajú.",
-  "noticeOverlap": "Dve vaše zmeny v rôznych firmách sa prekrývajú {date}."
+  "noticeOverlap": "Dve vaše zmeny v rôznych firmách sa prekrývajú {date}.",
+  "allMyCompanies": "Všetky moje firmy",
+  "deleteGroup": "Odstrániť skupinu",
+  "openRequest": "Zobraziť žiadosť",
+  "thisCompany": "Táto firma",
+  "withExtras": "Vrátane brigádnikov",
+  "deleteGroupConfirm": "Odstrániť „{name}“ a všetky správy pre všetkých?",
+  "reinforcementHint": "Z firmy {company}: bude pridaný ako posila a upozornený."
 }

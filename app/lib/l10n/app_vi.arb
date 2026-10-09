@@ -265,5 +265,12 @@
   "busyElsewhere": "Đã làm ở công ty khác vào khung giờ này",
   "overlapTooltip": "Trùng với một ca ở công ty khác",
   "overlapWarning": "Một số ca của bạn ở hai công ty bị trùng nhau.",
-  "noticeOverlap": "Hai ca làm của bạn ở hai công ty khác nhau bị trùng vào ngày {date}."
+  "noticeOverlap": "Hai ca làm của bạn ở hai công ty khác nhau bị trùng vào ngày {date}.",
+  "allMyCompanies": "Tất cả công ty của tôi",
+  "deleteGroup": "Xóa nhóm",
+  "openRequest": "Xem yêu cầu",
+  "thisCompany": "Công ty này",
+  "withExtras": "Gồm cả nhân viên thời vụ",
+  "deleteGroupConfirm": "Xóa “{name}” và mọi tin nhắn với tất cả mọi người?",
+  "reinforcementHint": "Từ {company}: sẽ được thêm làm nhân sự hỗ trợ và được thông báo."
 }

@@ -956,4 +956,29 @@ class L10nBn extends L10n {
   String noticeOverlap(String date) {
     return '$date তারিখে ভিন্ন কোম্পানিতে আপনার দুটি শিফট একে অপরের সঙ্গে মিলে যাচ্ছে।';
   }
+
+  @override
+  String get allMyCompanies => 'আমার সব কোম্পানি';
+
+  @override
+  String get deleteGroup => 'গ্রুপ মুছুন';
+
+  @override
+  String get openRequest => 'অনুরোধ দেখুন';
+
+  @override
+  String get thisCompany => 'এই কোম্পানি';
+
+  @override
+  String get withExtras => 'অস্থায়ী কর্মীসহ';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'সবার জন্য “$name” ও এর সব বার্তা মুছবেন?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return '$company থেকে: সহায়ক কর্মী হিসেবে যোগ করা হবে ও জানানো হবে।';
+  }
 }

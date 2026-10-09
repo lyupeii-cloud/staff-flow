@@ -965,4 +965,29 @@ class L10nEl extends L10n {
   String noticeOverlap(String date) {
     return 'Δύο βάρδιές σας σε διαφορετικές εταιρείες επικαλύπτονται στις $date.';
   }
+
+  @override
+  String get allMyCompanies => 'Όλες οι εταιρείες μου';
+
+  @override
+  String get deleteGroup => 'Διαγραφή ομάδας';
+
+  @override
+  String get openRequest => 'Προβολή αιτήματος';
+
+  @override
+  String get thisCompany => 'Αυτή η εταιρεία';
+
+  @override
+  String get withExtras => 'Μαζί με τους έκτακτους';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'Διαγραφή της «$name» και όλων των μηνυμάτων για όλους;';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'Από $company: θα προστεθεί ως ενίσχυση και θα ειδοποιηθεί.';
+  }
 }

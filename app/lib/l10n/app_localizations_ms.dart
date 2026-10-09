@@ -957,4 +957,29 @@ class L10nMs extends L10n {
   String noticeOverlap(String date) {
     return 'Dua syif anda di syarikat berbeza bertindih pada $date.';
   }
+
+  @override
+  String get allMyCompanies => 'Semua syarikat saya';
+
+  @override
+  String get deleteGroup => 'Padam kumpulan';
+
+  @override
+  String get openRequest => 'Lihat permintaan';
+
+  @override
+  String get thisCompany => 'Syarikat ini';
+
+  @override
+  String get withExtras => 'Termasuk pekerja sambilan';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'Padam “$name” dan semua mesejnya untuk semua orang?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'Dari $company: akan ditambah sebagai tenaga bantuan dan dimaklumkan.';
+  }
 }

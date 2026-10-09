@@ -51,7 +51,20 @@ class _PlanningViewState extends State<PlanningView> {
   String get myId => widget.session.me!.user.id;
 
   DateTime get _from => _mode == _Mode.week ? startOfWeek(_anchor) : startOfMonth(_anchor);
-  DateTime get _to => _mode == _Mode.week ? addDays(_from, 6) : endOfMonth(_anchor);
+  DateTime get _to => _mode == _Mode.week ? addDays(_from, 7 * (1 + _extraWeeks) - 1) : endOfMonth(_anchor);
+
+  /// Vue par semaine : semaines ajoutées en faisant défiler vers le bas
+  /// (8 semaines au plus à la fois).
+  int _extraWeeks = 0;
+  final _weekScroll = ScrollController();
+
+  void _onWeekScroll() {
+    if (_mode != _Mode.week || _loading || _extraWeeks >= 7) return;
+    if (_weekScroll.position.extentAfter < 200) {
+      setState(() => _extraWeeks++);
+      _load();
+    }
+  }
 
   /// Hors connexion : planning tiré des dernières données gardées.
   bool _stale = false;
@@ -62,12 +75,14 @@ class _PlanningViewState extends State<PlanningView> {
   void initState() {
     super.initState();
     widget.session.sync.addListener(_onSync);
+    _weekScroll.addListener(_onWeekScroll);
     _load();
   }
 
   @override
   void dispose() {
     widget.session.sync.removeListener(_onSync);
+    _weekScroll.dispose();
     super.dispose();
   }
 
@@ -188,6 +203,7 @@ class _PlanningViewState extends State<PlanningView> {
 
   void _move(int direction) {
     setState(() {
+      _extraWeeks = 0;
       _anchor = _mode == _Mode.week
           ? addDays(_anchor, 7 * direction)
           : DateTime(_anchor.year, _anchor.month + direction, 1);
@@ -277,10 +293,16 @@ class _PlanningViewState extends State<PlanningView> {
                   onSelected: (v) {
                     switch (v) {
                       case 'week' || 'month':
-                        setState(() => _mode = v == 'week' ? _Mode.week : _Mode.month);
+                        setState(() {
+                          _mode = v == 'week' ? _Mode.week : _Mode.month;
+                          _extraWeeks = 0;
+                        });
                         _load();
                       case 'today':
-                        setState(() => _anchor = _selected = dateOnly(DateTime.now()));
+                        setState(() {
+                          _anchor = _selected = dateOnly(DateTime.now());
+                          _extraWeeks = 0;
+                        });
                         _load();
                       case 'mine':
                         setState(() => _mineOnly = !_mineOnly);
@@ -361,8 +383,32 @@ class _PlanningViewState extends State<PlanningView> {
   }
 
   Widget _weekList() => ListView(
+    controller: _weekScroll,
+    physics: const AlwaysScrollableScrollPhysics(),
     padding: const EdgeInsets.fromLTRB(16, 4, 16, 96),
-    children: [for (var i = 0; i < 7; i++) ..._daySection(addDays(_from, i))],
+    children: [
+      for (var i = 0; i < 7 * (1 + _extraWeeks); i++) ...[
+        // Début d'une semaine ajoutée en défilant.
+        if (i > 0 && i % 7 == 0)
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Row(children: [
+              const Expanded(child: Divider()),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Text(t.weekOf(dayLabel(addDays(_from, i), loc)), style: Theme.of(context).textTheme.labelLarge),
+              ),
+              const Expanded(child: Divider()),
+            ]),
+          ),
+        ..._daySection(addDays(_from, i)),
+      ],
+      if (_extraWeeks < 7)
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: Center(child: Icon(Icons.keyboard_double_arrow_down, color: Theme.of(context).disabledColor)),
+        ),
+    ],
   );
 
   List<Widget> _daySection(DateTime day) {

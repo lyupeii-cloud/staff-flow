@@ -962,4 +962,29 @@ class L10nPt extends L10n {
   String noticeOverlap(String date) {
     return 'Dois dos seus turnos em empresas diferentes sobrepõem-se a $date.';
   }
+
+  @override
+  String get allMyCompanies => 'Todas as minhas empresas';
+
+  @override
+  String get deleteGroup => 'Eliminar o grupo';
+
+  @override
+  String get openRequest => 'Ver o pedido';
+
+  @override
+  String get thisCompany => 'Esta empresa';
+
+  @override
+  String get withExtras => 'Com os extras';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'Eliminar «$name» e todas as mensagens para todos?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'Vem de $company: será adicionado como reforço e avisado.';
+  }
 }

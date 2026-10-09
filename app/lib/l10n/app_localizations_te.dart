@@ -958,4 +958,29 @@ class L10nTe extends L10n {
   String noticeOverlap(String date) {
     return '$dateన వేర్వేరు కంపెనీల్లో మీ రెండు షిఫ్టులు ఒకదానిపై ఒకటి పడుతున్నాయి.';
   }
+
+  @override
+  String get allMyCompanies => 'నా అన్ని కంపెనీలు';
+
+  @override
+  String get deleteGroup => 'సమూహాన్ని తొలగించు';
+
+  @override
+  String get openRequest => 'అభ్యర్థనను చూడు';
+
+  @override
+  String get thisCompany => 'ఈ కంపెనీ';
+
+  @override
+  String get withExtras => 'తాత్కాలిక సిబ్బందితో';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'అందరికీ “$name” మరియు దాని అన్ని సందేశాలను తొలగించాలా?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return '$company నుండి: సహాయ సిబ్బందిగా చేర్చబడి తెలియజేయబడతారు.';
+  }
 }

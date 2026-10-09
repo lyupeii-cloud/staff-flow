@@ -962,4 +962,29 @@ class L10nFi extends L10n {
   String noticeOverlap(String date) {
     return 'Kaksi vuoroasi eri yrityksissä menee päällekkäin $date.';
   }
+
+  @override
+  String get allMyCompanies => 'Kaikki yritykseni';
+
+  @override
+  String get deleteGroup => 'Poista ryhmä';
+
+  @override
+  String get openRequest => 'Näytä pyyntö';
+
+  @override
+  String get thisCompany => 'Tämä yritys';
+
+  @override
+  String get withExtras => 'Keikkalaiset mukaan';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'Poistetaanko ”$name” ja kaikki viestit kaikilta?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'Yrityksestä $company: lisätään vahvistukseksi ja hänelle ilmoitetaan.';
+  }
 }

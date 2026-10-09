@@ -265,5 +265,12 @@
   "busyElsewhere": "On jo töissä toisessa yrityksessä tähän aikaan",
   "overlapTooltip": "Menee päällekkäin toisen yrityksen vuoron kanssa",
   "overlapWarning": "Osa vuoroistasi kahdessa yrityksessä menee päällekkäin.",
-  "noticeOverlap": "Kaksi vuoroasi eri yrityksissä menee päällekkäin {date}."
+  "noticeOverlap": "Kaksi vuoroasi eri yrityksissä menee päällekkäin {date}.",
+  "allMyCompanies": "Kaikki yritykseni",
+  "deleteGroup": "Poista ryhmä",
+  "openRequest": "Näytä pyyntö",
+  "thisCompany": "Tämä yritys",
+  "withExtras": "Keikkalaiset mukaan",
+  "deleteGroupConfirm": "Poistetaanko ”{name}” ja kaikki viestit kaikilta?",
+  "reinforcementHint": "Yrityksestä {company}: lisätään vahvistukseksi ja hänelle ilmoitetaan."
 }

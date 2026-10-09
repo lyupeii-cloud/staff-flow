@@ -88,6 +88,32 @@ class _ShiftEditorState extends State<_ShiftEditor> {
   L10n get t => context.l10n;
   String get loc => context.localeName;
 
+  /// Filtre du choix de la personne : avec ou sans les extras, et pour un
+  /// responsable de plusieurs entreprises, les salariés de toutes (renforts).
+  bool _withExtras = true;
+  bool _allCompanies = false;
+  List<Map<String, dynamic>> _others = const [];
+
+  bool get _multi =>
+      (widget.session.me?.companies.where((m) => m.role.canManage && !m.company.readOnly).length ?? 0) >= 2;
+
+  Future<void> _setAllCompanies(bool all) async {
+    setState(() => _allCompanies = all);
+    if (!all || _others.isNotEmpty) return;
+    try {
+      final r = await widget.session.api.send('GET', '/companies/${widget.company.id}/reinforcements');
+      if (mounted) setState(() => _others = [for (final p in r['people']) (p as Map).cast<String, dynamic>()]);
+    } on OfflineException {
+      if (mounted) setState(() => _error = (t) => t.offlineUnavailable);
+    } on ApiException catch (e) {
+      if (mounted) setState(() => _error = e.describe);
+    }
+  }
+
+  /// Personne choisie dans une autre entreprise : pas encore membre de celle-ci.
+  Map<String, dynamic>? get _reinforcement =>
+      widget.data.members.any((m) => m.user.id == _userId) ? null : _others.where((p) => p['userId'] == _userId).firstOrNull;
+
   /// Personnes déjà en service dans une autre entreprise sur ce créneau
   /// (le serveur ne dit rien de plus).
   Set<String> _busy = const {};
@@ -183,12 +209,36 @@ class _ShiftEditorState extends State<_ShiftEditor> {
             ),
             if (_end <= _start) Text(t.endsNextDay, style: theme.textTheme.bodySmall),
             const SizedBox(height: 12),
+            Wrap(
+              spacing: 8,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                if (_multi)
+                  SegmentedButton<bool>(
+                    showSelectedIcon: false,
+                    segments: [
+                      ButtonSegment(value: false, label: Text(t.thisCompany)),
+                      ButtonSegment(value: true, label: Text(t.allMyCompanies)),
+                    ],
+                    selected: {_allCompanies},
+                    onSelectionChanged: (v) => _setAllCompanies(v.first),
+                  ),
+                FilterChip(
+                  label: Text(t.withExtras),
+                  selected: _withExtras,
+                  onSelected: (v) => setState(() => _withExtras = v),
+                ),
+              ],
+            ),
             DropdownButtonFormField<String?>(
+              key: ValueKey('$_allCompanies$_withExtras${_others.length}'),
               initialValue: _userId,
+              isExpanded: true,
               decoration: InputDecoration(labelText: t.person),
               items: [
                 DropdownMenuItem(value: null, child: Text(t.unassigned)),
                 for (final m in members)
+                  if (_withExtras || m.role != Role.extra || m.user.id == _userId)
                   DropdownMenuItem(
                     value: m.user.id,
                     child: Text(
@@ -197,9 +247,26 @@ class _ShiftEditorState extends State<_ShiftEditor> {
                             ? TextStyle(color: theme.colorScheme.error)
                             : null),
                   ),
+                // Renforts : salariés et extras de ses autres entreprises.
+                if (_allCompanies)
+                  for (final p in _others)
+                    if (_withExtras || p['role'] != 'extra' || p['userId'] == _userId)
+                      DropdownMenuItem(
+                        value: p['userId'] as String,
+                        child: Text(
+                          '${_busy.contains(p['userId']) ? '! ' : ''}${p['name']} · ${p['companyName']}',
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
               ],
               onChanged: (v) => setState(() => _userId = v),
             ),
+            if (_reinforcement != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text(t.reinforcementHint(_reinforcement!['companyName'] as String),
+                    style: theme.textTheme.bodySmall),
+              ),
             if (_absent(_userId))
               Padding(
                 padding: const EdgeInsets.only(top: 4),
@@ -383,7 +450,14 @@ class _ShiftEditorState extends State<_ShiftEditor> {
   Future<void> _save() async {
     final sync = widget.session.sync;
     final companyId = widget.company.id;
+    final reinforcement = _reinforcement;
     await _run(() async {
+      // Personne d'une autre entreprise : ajoutée d'abord comme renfort.
+      if (reinforcement != null) {
+        await widget.session.api.send('POST', '/companies/$companyId/reinforcements',
+            body: {'userId': reinforcement['userId']});
+        sync.markChanged();
+      }
       if (editing) {
         final patch = _fields();
         if (!_series && !sameDay(_days.first, s!.day)) patch['day'] = formatDay(_days.first);

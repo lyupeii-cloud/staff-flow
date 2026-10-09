@@ -265,5 +265,12 @@
   "busyElsewhere": "Ya trabaja en otra empresa en este horario",
   "overlapTooltip": "Se solapa con un turno de otra empresa",
   "overlapWarning": "Algunos de tus turnos en dos empresas se solapan.",
-  "noticeOverlap": "Dos de tus turnos en empresas distintas se solapan el {date}."
+  "noticeOverlap": "Dos de tus turnos en empresas distintas se solapan el {date}.",
+  "allMyCompanies": "Todas mis empresas",
+  "deleteGroup": "Eliminar el grupo",
+  "openRequest": "Ver la solicitud",
+  "thisCompany": "Esta empresa",
+  "withExtras": "Con los extras",
+  "deleteGroupConfirm": "¿Eliminar «{name}» y todos sus mensajes para todos?",
+  "reinforcementHint": "Viene de {company}: se añadirá como refuerzo y será avisado."
 }

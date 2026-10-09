@@ -964,4 +964,29 @@ class L10nTa extends L10n {
   String noticeOverlap(String date) {
     return '$date அன்று வெவ்வேறு நிறுவனங்களில் உங்கள் இரண்டு ஷிஃப்டுகள் ஒன்றோடொன்று மோதுகின்றன.';
   }
+
+  @override
+  String get allMyCompanies => 'என் எல்லா நிறுவனங்களும்';
+
+  @override
+  String get deleteGroup => 'குழுவை நீக்கு';
+
+  @override
+  String get openRequest => 'கோரிக்கையைப் பார்';
+
+  @override
+  String get thisCompany => 'இந்த நிறுவனம்';
+
+  @override
+  String get withExtras => 'தற்காலிகப் பணியாளர்களுடன்';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'அனைவருக்கும் “$name” மற்றும் அதன் எல்லாச் செய்திகளையும் நீக்கவா?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return '$company இலிருந்து: உதவிப் பணியாளராகச் சேர்க்கப்பட்டு அறிவிக்கப்படுவார்.';
+  }
 }

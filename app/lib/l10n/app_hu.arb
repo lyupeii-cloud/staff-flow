@@ -265,5 +265,12 @@
   "busyElsewhere": "Ebben az időben már egy másik cégnél dolgozik",
   "overlapTooltip": "Átfedésben van egy másik cég műszakjával",
   "overlapWarning": "Néhány műszakod két cégnél átfedésben van.",
-  "noticeOverlap": "Két műszakod különböző cégeknél átfedésben van ekkor: {date}."
+  "noticeOverlap": "Két műszakod különböző cégeknél átfedésben van ekkor: {date}.",
+  "allMyCompanies": "Összes cégem",
+  "deleteGroup": "Csoport törlése",
+  "openRequest": "Kérés megnyitása",
+  "thisCompany": "Ez a cég",
+  "withExtras": "Kisegítőkkel együtt",
+  "deleteGroupConfirm": "Törlöd a(z) „{name}” csoportot és minden üzenetét mindenkinél?",
+  "reinforcementHint": "Innen: {company} – kisegítőként hozzáadjuk és értesítjük."
 }

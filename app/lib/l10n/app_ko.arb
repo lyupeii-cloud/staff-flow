@@ -265,5 +265,12 @@
   "busyElsewhere": "이 시간에 이미 다른 회사에서 근무 중입니다",
   "overlapTooltip": "다른 회사의 근무와 겹칩니다",
   "overlapWarning": "두 회사의 근무 중 일부가 겹칩니다.",
-  "noticeOverlap": "{date}에 서로 다른 회사의 근무 두 개가 겹칩니다."
+  "noticeOverlap": "{date}에 서로 다른 회사의 근무 두 개가 겹칩니다.",
+  "allMyCompanies": "내 모든 회사",
+  "deleteGroup": "그룹 삭제",
+  "openRequest": "요청 보기",
+  "thisCompany": "이 회사",
+  "withExtras": "임시 직원 포함",
+  "deleteGroupConfirm": "모든 사람에게서 “{name}”과(와) 모든 메시지를 삭제할까요?",
+  "reinforcementHint": "{company} 소속: 지원 인력으로 추가되고 알림을 받습니다."
 }

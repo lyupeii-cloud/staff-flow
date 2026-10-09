@@ -971,4 +971,29 @@ class L10nPl extends L10n {
   String noticeOverlap(String date) {
     return 'Dwie twoje zmiany w różnych firmach nakładają się $date.';
   }
+
+  @override
+  String get allMyCompanies => 'Wszystkie moje firmy';
+
+  @override
+  String get deleteGroup => 'Usuń grupę';
+
+  @override
+  String get openRequest => 'Zobacz prośbę';
+
+  @override
+  String get thisCompany => 'Ta firma';
+
+  @override
+  String get withExtras => 'Z pracownikami dorywczymi';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'Usunąć „$name” i wszystkie wiadomości dla wszystkich?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'Z firmy $company: zostanie dodany jako wsparcie i powiadomiony.';
+  }
 }

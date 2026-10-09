@@ -958,4 +958,29 @@ class L10nMr extends L10n {
   String noticeOverlap(String date) {
     return '$date रोजी वेगवेगळ्या कंपन्यांमधील तुमच्या दोन शिफ्ट एकमेकांवर येतात.';
   }
+
+  @override
+  String get allMyCompanies => 'माझ्या सर्व कंपन्या';
+
+  @override
+  String get deleteGroup => 'गट हटवा';
+
+  @override
+  String get openRequest => 'विनंती पाहा';
+
+  @override
+  String get thisCompany => 'ही कंपनी';
+
+  @override
+  String get withExtras => 'तात्पुरत्या कर्मचाऱ्यांसह';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'सर्वांसाठी “$name” आणि त्याचे सर्व संदेश हटवायचे?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return '$company मधून: मदतनीस म्हणून जोडले जाईल आणि कळवले जाईल.';
+  }
 }

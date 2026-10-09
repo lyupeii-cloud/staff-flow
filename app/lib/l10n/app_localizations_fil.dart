@@ -963,4 +963,29 @@ class L10nFil extends L10n {
   String noticeOverlap(String date) {
     return 'Nagsasabay ang dalawa mong shift sa magkaibang kumpanya sa $date.';
   }
+
+  @override
+  String get allMyCompanies => 'Lahat ng kumpanya ko';
+
+  @override
+  String get deleteGroup => 'Burahin ang grupo';
+
+  @override
+  String get openRequest => 'Tingnan ang kahilingan';
+
+  @override
+  String get thisCompany => 'Ang kumpanyang ito';
+
+  @override
+  String get withExtras => 'Kasama ang mga extra';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'Burahin ang “$name” at lahat ng mensahe nito para sa lahat?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'Mula sa $company: idadagdag bilang dagdag na tauhan at aabisuhan.';
+  }
 }

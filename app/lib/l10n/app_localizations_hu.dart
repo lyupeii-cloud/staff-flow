@@ -955,4 +955,29 @@ class L10nHu extends L10n {
   String noticeOverlap(String date) {
     return 'Két műszakod különböző cégeknél átfedésben van ekkor: $date.';
   }
+
+  @override
+  String get allMyCompanies => 'Összes cégem';
+
+  @override
+  String get deleteGroup => 'Csoport törlése';
+
+  @override
+  String get openRequest => 'Kérés megnyitása';
+
+  @override
+  String get thisCompany => 'Ez a cég';
+
+  @override
+  String get withExtras => 'Kisegítőkkel együtt';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'Törlöd a(z) „$name” csoportot és minden üzenetét mindenkinél?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'Innen: $company – kisegítőként hozzáadjuk és értesítjük.';
+  }
 }

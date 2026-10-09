@@ -265,5 +265,12 @@
   "busyElsewhere": "V tuto dobu už pracuje v jiné firmě",
   "overlapTooltip": "Překrývá se se směnou v jiné firmě",
   "overlapWarning": "Některé vaše směny ve dvou firmách se překrývají.",
-  "noticeOverlap": "Dvě vaše směny v různých firmách se překrývají {date}."
+  "noticeOverlap": "Dvě vaše směny v různých firmách se překrývají {date}.",
+  "allMyCompanies": "Všechny moje firmy",
+  "deleteGroup": "Smazat skupinu",
+  "openRequest": "Zobrazit žádost",
+  "thisCompany": "Tato firma",
+  "withExtras": "Včetně brigádníků",
+  "deleteGroupConfirm": "Smazat „{name}“ a všechny zprávy pro všechny?",
+  "reinforcementHint": "Z firmy {company}: bude přidán jako posila a upozorněn."
 }

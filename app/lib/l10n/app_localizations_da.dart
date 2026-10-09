@@ -961,4 +961,29 @@ class L10nDa extends L10n {
   String noticeOverlap(String date) {
     return 'To af dine vagter i forskellige virksomheder overlapper den $date.';
   }
+
+  @override
+  String get allMyCompanies => 'Alle mine virksomheder';
+
+  @override
+  String get deleteGroup => 'Slet gruppen';
+
+  @override
+  String get openRequest => 'Se anmodningen';
+
+  @override
+  String get thisCompany => 'Denne virksomhed';
+
+  @override
+  String get withExtras => 'Med afløsere';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'Slet “$name” og alle beskeder for alle?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'Fra $company: tilføjes som forstærkning og får besked.';
+  }
 }

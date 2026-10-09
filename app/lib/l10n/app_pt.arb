@@ -265,5 +265,12 @@
   "busyElsewhere": "Já está de serviço noutra empresa neste horário",
   "overlapTooltip": "Sobrepõe-se a um turno de outra empresa",
   "overlapWarning": "Alguns dos seus turnos em duas empresas sobrepõem-se.",
-  "noticeOverlap": "Dois dos seus turnos em empresas diferentes sobrepõem-se a {date}."
+  "noticeOverlap": "Dois dos seus turnos em empresas diferentes sobrepõem-se a {date}.",
+  "allMyCompanies": "Todas as minhas empresas",
+  "deleteGroup": "Eliminar o grupo",
+  "openRequest": "Ver o pedido",
+  "thisCompany": "Esta empresa",
+  "withExtras": "Com os extras",
+  "deleteGroupConfirm": "Eliminar «{name}» e todas as mensagens para todos?",
+  "reinforcementHint": "Vem de {company}: será adicionado como reforço e avisado."
 }

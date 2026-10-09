@@ -629,5 +629,26 @@
         "type": "String"
       }
     }
+  },
+  "allMyCompanies": "All my companies",
+  "deleteGroup": "Delete group",
+  "openRequest": "View request",
+  "thisCompany": "This company",
+  "withExtras": "Include extras",
+  "deleteGroupConfirm": "Delete “{name}” and all its messages for everyone?",
+  "@deleteGroupConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "reinforcementHint": "From {company}: will be added as backup staff and notified.",
+  "@reinforcementHint": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
   }
 }

@@ -964,4 +964,29 @@ class L10nEs extends L10n {
   String noticeOverlap(String date) {
     return 'Dos de tus turnos en empresas distintas se solapan el $date.';
   }
+
+  @override
+  String get allMyCompanies => 'Todas mis empresas';
+
+  @override
+  String get deleteGroup => 'Eliminar el grupo';
+
+  @override
+  String get openRequest => 'Ver la solicitud';
+
+  @override
+  String get thisCompany => 'Esta empresa';
+
+  @override
+  String get withExtras => 'Con los extras';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return '¿Eliminar «$name» y todos sus mensajes para todos?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'Viene de $company: se añadirá como refuerzo y será avisado.';
+  }
 }

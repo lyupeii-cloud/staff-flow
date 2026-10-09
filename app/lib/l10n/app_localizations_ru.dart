@@ -965,4 +965,29 @@ class L10nRu extends L10n {
   String noticeOverlap(String date) {
     return 'Две ваши смены в разных компаниях пересекаются $date.';
   }
+
+  @override
+  String get allMyCompanies => 'Все мои компании';
+
+  @override
+  String get deleteGroup => 'Удалить группу';
+
+  @override
+  String get openRequest => 'Открыть запрос';
+
+  @override
+  String get thisCompany => 'Эта компания';
+
+  @override
+  String get withExtras => 'Вместе с внештатными';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'Удалить «$name» и все сообщения для всех?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return 'Из компании $company: будет добавлен как подкрепление и уведомлён.';
+  }
 }

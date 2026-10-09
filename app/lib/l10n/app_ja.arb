@@ -265,5 +265,12 @@
   "busyElsewhere": "この時間帯は別の会社で勤務中です",
   "overlapTooltip": "別の会社のシフトと重なっています",
   "overlapWarning": "2つの会社のシフトの一部が重なっています。",
-  "noticeOverlap": "{date} に、別々の会社の2つのシフトが重なっています。"
+  "noticeOverlap": "{date} に、別々の会社の2つのシフトが重なっています。",
+  "allMyCompanies": "すべての会社",
+  "deleteGroup": "グループを削除",
+  "openRequest": "申請を見る",
+  "thisCompany": "この会社",
+  "withExtras": "臨時スタッフを含める",
+  "deleteGroupConfirm": "「{name}」とすべてのメッセージを全員から削除しますか？",
+  "reinforcementHint": "{company} から：応援スタッフとして追加され、通知されます。"
 }

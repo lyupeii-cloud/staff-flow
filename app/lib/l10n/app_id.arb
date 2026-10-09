@@ -265,5 +265,12 @@
   "busyElsewhere": "Sudah bekerja di perusahaan lain pada jam ini",
   "overlapTooltip": "Bertabrakan dengan shift di perusahaan lain",
   "overlapWarning": "Beberapa shift Anda di dua perusahaan bertabrakan.",
-  "noticeOverlap": "Dua shift Anda di perusahaan berbeda bertabrakan pada {date}."
+  "noticeOverlap": "Dua shift Anda di perusahaan berbeda bertabrakan pada {date}.",
+  "allMyCompanies": "Semua perusahaan saya",
+  "deleteGroup": "Hapus grup",
+  "openRequest": "Lihat permintaan",
+  "thisCompany": "Perusahaan ini",
+  "withExtras": "Termasuk pekerja lepas",
+  "deleteGroupConfirm": "Hapus “{name}” dan semua pesannya untuk semua orang?",
+  "reinforcementHint": "Dari {company}: akan ditambahkan sebagai tenaga bantuan dan diberi tahu."
 }

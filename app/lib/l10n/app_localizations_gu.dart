@@ -957,4 +957,29 @@ class L10nGu extends L10n {
   String noticeOverlap(String date) {
     return '$date ના રોજ અલગ કંપનીઓમાં તમારી બે શિફ્ટ એકબીજા પર આવે છે.';
   }
+
+  @override
+  String get allMyCompanies => 'મારી બધી કંપનીઓ';
+
+  @override
+  String get deleteGroup => 'જૂથ કાઢી નાખો';
+
+  @override
+  String get openRequest => 'વિનંતી જુઓ';
+
+  @override
+  String get thisCompany => 'આ કંપની';
+
+  @override
+  String get withExtras => 'હંગામી કર્મચારીઓ સહિત';
+
+  @override
+  String deleteGroupConfirm(String name) {
+    return 'બધા માટે “$name” અને તેના બધા સંદેશા કાઢી નાખવા છે?';
+  }
+
+  @override
+  String reinforcementHint(String company) {
+    return '$company માંથી: મદદનીશ તરીકે ઉમેરાશે અને જાણ કરાશે.';
+  }
 }
