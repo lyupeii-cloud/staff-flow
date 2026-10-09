@@ -260,5 +260,10 @@
   "statusExpired": "Fără obiect",
   "swapWithHint": "Atinge pentru a alege un anumit coleg",
   "changesDiscarded": "Modificări anulate: {count}",
-  "discardConfirm": "Anulezi cele {count} modificări nepublicate?"
+  "discardConfirm": "Anulezi cele {count} modificări nepublicate?",
+  "allSchedules": "Toate planificările mele",
+  "busyElsewhere": "Lucrează deja la altă firmă în acest interval",
+  "overlapTooltip": "Se suprapune cu o tură de la altă firmă",
+  "overlapWarning": "Unele dintre turele tale de la două firme se suprapun.",
+  "noticeOverlap": "Două dintre turele tale de la firme diferite se suprapun pe {date}."
 }

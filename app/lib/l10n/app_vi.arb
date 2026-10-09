@@ -260,5 +260,10 @@
   "statusExpired": "Không còn hiệu lực",
   "swapWithHint": "Chạm để chọn một đồng nghiệp cụ thể",
   "changesDiscarded": "Đã hủy thay đổi: {count}",
-  "discardConfirm": "Hủy {count} thay đổi chưa công bố?"
+  "discardConfirm": "Hủy {count} thay đổi chưa công bố?",
+  "allSchedules": "Tất cả lịch của tôi",
+  "busyElsewhere": "Đã làm ở công ty khác vào khung giờ này",
+  "overlapTooltip": "Trùng với một ca ở công ty khác",
+  "overlapWarning": "Một số ca của bạn ở hai công ty bị trùng nhau.",
+  "noticeOverlap": "Hai ca làm của bạn ở hai công ty khác nhau bị trùng vào ngày {date}."
 }

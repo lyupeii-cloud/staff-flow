@@ -260,5 +260,10 @@
   "statusExpired": "Tárgytalan",
   "swapWithHint": "Koppints egy adott kolléga kiválasztásához",
   "changesDiscarded": "Elvetett módosítások: {count}",
-  "discardConfirm": "Elveted a(z) {count} közzé nem tett módosítást?"
+  "discardConfirm": "Elveted a(z) {count} közzé nem tett módosítást?",
+  "allSchedules": "Összes beosztásom",
+  "busyElsewhere": "Ebben az időben már egy másik cégnél dolgozik",
+  "overlapTooltip": "Átfedésben van egy másik cég műszakjával",
+  "overlapWarning": "Néhány műszakod két cégnél átfedésben van.",
+  "noticeOverlap": "Két műszakod különböző cégeknél átfedésben van ekkor: {date}."
 }

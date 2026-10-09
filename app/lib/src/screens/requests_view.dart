@@ -288,7 +288,14 @@ class _RequestsViewState extends State<RequestsView> {
                 children: [
                   if (r.canCancel) TextButton(onPressed: () => _act(r, 'cancel'), child: Text(t.cancelRequest)),
                   if (r.canDecline) TextButton(onPressed: () => _act(r, 'decline'), child: Text(t.decline)),
-                  if (r.canAnswer) FilledButton(onPressed: () => _act(r, 'accept'), child: Text(t.acceptSwap)),
+                  // Un responsable qui reprend le service valide l'échange du même coup.
+                  if (r.canAnswer)
+                    FilledButton(
+                      onPressed: () => r.canDecide
+                          ? _act(r, 'approve', {'peerId': widget.session.me!.user.id})
+                          : _act(r, 'accept'),
+                      child: Text(t.acceptSwap),
+                    ),
                   if (r.canDecide && !r.canAnswer)
                     TextButton(onPressed: () => _act(r, 'refuse'), child: Text(t.decline)),
                   if (r.canDecide) FilledButton(onPressed: () => _approve(r), child: Text(t.approve)),

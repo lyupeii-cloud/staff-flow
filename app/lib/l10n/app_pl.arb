@@ -260,5 +260,10 @@
   "statusExpired": "Nieaktualna",
   "swapWithHint": "Dotknij, aby wybrać konkretnego współpracownika",
   "changesDiscarded": "Anulowane zmiany: {count}",
-  "discardConfirm": "Anulować {count} nieopublikowanych zmian?"
+  "discardConfirm": "Anulować {count} nieopublikowanych zmian?",
+  "allSchedules": "Wszystkie moje grafiki",
+  "busyElsewhere": "Pracuje już w tym czasie w innej firmie",
+  "overlapTooltip": "Nakłada się na zmianę w innej firmie",
+  "overlapWarning": "Niektóre twoje zmiany w dwóch firmach nakładają się.",
+  "noticeOverlap": "Dwie twoje zmiany w różnych firmach nakładają się {date}."
 }

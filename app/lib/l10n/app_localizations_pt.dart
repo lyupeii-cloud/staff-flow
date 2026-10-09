@@ -944,4 +944,22 @@ class L10nPt extends L10n {
   String discardConfirm(String count) {
     return 'Anular as $count alterações não publicadas?';
   }
+
+  @override
+  String get allSchedules => 'Todos os meus planeamentos';
+
+  @override
+  String get busyElsewhere => 'Já está de serviço noutra empresa neste horário';
+
+  @override
+  String get overlapTooltip => 'Sobrepõe-se a um turno de outra empresa';
+
+  @override
+  String get overlapWarning =>
+      'Alguns dos seus turnos em duas empresas sobrepõem-se.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Dois dos seus turnos em empresas diferentes sobrepõem-se a $date.';
+  }
 }

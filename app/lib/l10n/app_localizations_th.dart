@@ -933,4 +933,21 @@ class L10nTh extends L10n {
   String discardConfirm(String count) {
     return 'ยกเลิกการเปลี่ยนแปลงที่ยังไม่เผยแพร่ $count รายการใช่ไหม';
   }
+
+  @override
+  String get allSchedules => 'ตารางงานทั้งหมดของฉัน';
+
+  @override
+  String get busyElsewhere => 'มีกะที่บริษัทอื่นในช่วงเวลานี้แล้ว';
+
+  @override
+  String get overlapTooltip => 'ทับซ้อนกับกะของบริษัทอื่น';
+
+  @override
+  String get overlapWarning => 'กะบางกะของคุณในสองบริษัททับซ้อนกัน';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'กะสองกะของคุณในบริษัทต่างกันทับซ้อนกันในวันที่ $date';
+  }
 }

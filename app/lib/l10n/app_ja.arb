@@ -260,5 +260,10 @@
   "statusExpired": "対象外",
   "swapWithHint": "タップして同僚を指定",
   "changesDiscarded": "取り消した変更：{count}",
-  "discardConfirm": "未公開の変更 {count} 件を取り消しますか？"
+  "discardConfirm": "未公開の変更 {count} 件を取り消しますか？",
+  "allSchedules": "すべての勤務表",
+  "busyElsewhere": "この時間帯は別の会社で勤務中です",
+  "overlapTooltip": "別の会社のシフトと重なっています",
+  "overlapWarning": "2つの会社のシフトの一部が重なっています。",
+  "noticeOverlap": "{date} に、別々の会社の2つのシフトが重なっています。"
 }

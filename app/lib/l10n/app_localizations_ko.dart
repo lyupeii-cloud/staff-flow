@@ -922,4 +922,21 @@ class L10nKo extends L10n {
   String discardConfirm(String count) {
     return '게시되지 않은 변경 $count건을 취소할까요?';
   }
+
+  @override
+  String get allSchedules => '내 모든 근무표';
+
+  @override
+  String get busyElsewhere => '이 시간에 이미 다른 회사에서 근무 중입니다';
+
+  @override
+  String get overlapTooltip => '다른 회사의 근무와 겹칩니다';
+
+  @override
+  String get overlapWarning => '두 회사의 근무 중 일부가 겹칩니다.';
+
+  @override
+  String noticeOverlap(String date) {
+    return '$date에 서로 다른 회사의 근무 두 개가 겹칩니다.';
+  }
 }

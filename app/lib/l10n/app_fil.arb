@@ -260,5 +260,10 @@
   "statusExpired": "Hindi na naaangkop",
   "swapWithHint": "I-tap para pumili ng partikular na kasamahan",
   "changesDiscarded": "Mga kinanselang pagbabago: {count}",
-  "discardConfirm": "Kanselahin ang {count} hindi pa na-publish na pagbabago?"
+  "discardConfirm": "Kanselahin ang {count} hindi pa na-publish na pagbabago?",
+  "allSchedules": "Lahat ng iskedyul ko",
+  "busyElsewhere": "May shift na sa ibang kumpanya sa oras na ito",
+  "overlapTooltip": "Sumasabay sa shift sa ibang kumpanya",
+  "overlapWarning": "Nagsasabay ang ilan sa mga shift mo sa dalawang kumpanya.",
+  "noticeOverlap": "Nagsasabay ang dalawa mong shift sa magkaibang kumpanya sa {date}."
 }

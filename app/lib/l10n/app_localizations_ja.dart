@@ -923,4 +923,21 @@ class L10nJa extends L10n {
   String discardConfirm(String count) {
     return '未公開の変更 $count 件を取り消しますか？';
   }
+
+  @override
+  String get allSchedules => 'すべての勤務表';
+
+  @override
+  String get busyElsewhere => 'この時間帯は別の会社で勤務中です';
+
+  @override
+  String get overlapTooltip => '別の会社のシフトと重なっています';
+
+  @override
+  String get overlapWarning => '2つの会社のシフトの一部が重なっています。';
+
+  @override
+  String noticeOverlap(String date) {
+    return '$date に、別々の会社の2つのシフトが重なっています。';
+  }
 }

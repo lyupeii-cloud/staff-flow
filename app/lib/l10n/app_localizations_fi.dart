@@ -943,4 +943,23 @@ class L10nFi extends L10n {
   String discardConfirm(String count) {
     return 'Perutaanko $count julkaisematonta muutosta?';
   }
+
+  @override
+  String get allSchedules => 'Kaikki työvuoroni';
+
+  @override
+  String get busyElsewhere => 'On jo töissä toisessa yrityksessä tähän aikaan';
+
+  @override
+  String get overlapTooltip =>
+      'Menee päällekkäin toisen yrityksen vuoron kanssa';
+
+  @override
+  String get overlapWarning =>
+      'Osa vuoroistasi kahdessa yrityksessä menee päällekkäin.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Kaksi vuoroasi eri yrityksissä menee päällekkäin $date.';
+  }
 }

@@ -260,5 +260,10 @@
   "statusExpired": "હવે લાગુ નથી",
   "swapWithHint": "ચોક્કસ સહકર્મી પસંદ કરવા ટૅપ કરો",
   "changesDiscarded": "રદ કરેલા ફેરફારો: {count}",
-  "discardConfirm": "{count} અપ્રકાશિત ફેરફારો રદ કરવા છે?"
+  "discardConfirm": "{count} અપ્રકાશિત ફેરફારો રદ કરવા છે?",
+  "allSchedules": "મારાં બધાં સમયપત્રક",
+  "busyElsewhere": "આ સમયે પહેલેથી બીજી કંપનીમાં ફરજ પર",
+  "overlapTooltip": "બીજી કંપનીની શિફ્ટ સાથે ટકરાય છે",
+  "overlapWarning": "બે કંપનીઓમાં તમારી કેટલીક શિફ્ટ એકબીજા પર આવે છે.",
+  "noticeOverlap": "{date} ના રોજ અલગ કંપનીઓમાં તમારી બે શિફ્ટ એકબીજા પર આવે છે."
 }

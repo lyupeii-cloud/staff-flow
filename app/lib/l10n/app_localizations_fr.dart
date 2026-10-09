@@ -950,4 +950,23 @@ class L10nFr extends L10n {
   String discardConfirm(String count) {
     return 'Annuler les $count modifications non publiées ?';
   }
+
+  @override
+  String get allSchedules => 'Tous mes plannings';
+
+  @override
+  String get busyElsewhere =>
+      'Déjà en service dans une autre entreprise sur ce créneau';
+
+  @override
+  String get overlapTooltip => 'Chevauche un service d\'une autre entreprise';
+
+  @override
+  String get overlapWarning =>
+      'Certains de vos services se chevauchent entre deux entreprises.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Deux de vos services dans des entreprises différentes se chevauchent le $date.';
+  }
 }

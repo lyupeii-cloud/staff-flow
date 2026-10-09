@@ -946,4 +946,22 @@ class L10nNl extends L10n {
   String discardConfirm(String count) {
     return 'De $count niet-gepubliceerde wijzigingen annuleren?';
   }
+
+  @override
+  String get allSchedules => 'Al mijn roosters';
+
+  @override
+  String get busyElsewhere => 'Werkt op dit tijdstip al bij een ander bedrijf';
+
+  @override
+  String get overlapTooltip => 'Overlapt met een dienst bij een ander bedrijf';
+
+  @override
+  String get overlapWarning =>
+      'Sommige van je diensten bij twee bedrijven overlappen.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Twee van je diensten bij verschillende bedrijven overlappen op $date.';
+  }
 }

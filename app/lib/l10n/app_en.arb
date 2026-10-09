@@ -617,5 +617,17 @@
         "type": "String"
       }
     }
+  },
+  "allSchedules": "All my schedules",
+  "busyElsewhere": "Already working at another company at this time",
+  "overlapTooltip": "Overlaps a shift at another company",
+  "overlapWarning": "Some of your shifts at two companies overlap.",
+  "noticeOverlap": "Two of your shifts at different companies overlap on {date}.",
+  "@noticeOverlap": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   }
 }

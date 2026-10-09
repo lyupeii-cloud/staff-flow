@@ -943,4 +943,23 @@ class L10nSw extends L10n {
   String discardConfirm(String count) {
     return 'Ghairi mabadiliko $count ambayo hayajachapishwa?';
   }
+
+  @override
+  String get allSchedules => 'Ratiba zangu zote';
+
+  @override
+  String get busyElsewhere =>
+      'Tayari yuko kazini katika kampuni nyingine wakati huu';
+
+  @override
+  String get overlapTooltip => 'Inaingiliana na zamu ya kampuni nyingine';
+
+  @override
+  String get overlapWarning =>
+      'Baadhi ya zamu zako katika kampuni mbili zinaingiliana.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Zamu zako mbili katika kampuni tofauti zinaingiliana tarehe $date.';
+  }
 }

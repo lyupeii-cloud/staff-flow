@@ -941,4 +941,22 @@ class L10nHi extends L10n {
   String discardConfirm(String count) {
     return '$count अप्रकाशित बदलाव रद्द करें?';
   }
+
+  @override
+  String get allSchedules => 'मेरे सभी शेड्यूल';
+
+  @override
+  String get busyElsewhere => 'इस समय पहले से किसी दूसरी कंपनी में ड्यूटी पर';
+
+  @override
+  String get overlapTooltip => 'किसी दूसरी कंपनी की शिफ़्ट से टकराती है';
+
+  @override
+  String get overlapWarning =>
+      'दो कंपनियों में आपकी कुछ शिफ़्ट आपस में टकरा रही हैं।';
+
+  @override
+  String noticeOverlap(String date) {
+    return '$date को अलग-अलग कंपनियों में आपकी दो शिफ़्ट आपस में टकरा रही हैं।';
+  }
 }

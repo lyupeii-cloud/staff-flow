@@ -941,4 +941,22 @@ class L10nKk extends L10n {
   String discardConfirm(String count) {
     return 'Жарияланбаған $count өзгерісті болдырмау керек пе?';
   }
+
+  @override
+  String get allSchedules => 'Барлық кестелерім';
+
+  @override
+  String get busyElsewhere => 'Бұл уақытта басқа компанияда жұмыста';
+
+  @override
+  String get overlapTooltip => 'Басқа компаниядағы ауысыммен сәйкес келеді';
+
+  @override
+  String get overlapWarning =>
+      'Екі компаниядағы кейбір ауысымдарыңыз бір-біріне сәйкес келеді.';
+
+  @override
+  String noticeOverlap(String date) {
+    return '$date күні әртүрлі компаниялардағы екі ауысымыңыз бір-біріне сәйкес келеді.';
+  }
 }

@@ -953,4 +953,22 @@ class L10nPl extends L10n {
   String discardConfirm(String count) {
     return 'Anulować $count nieopublikowanych zmian?';
   }
+
+  @override
+  String get allSchedules => 'Wszystkie moje grafiki';
+
+  @override
+  String get busyElsewhere => 'Pracuje już w tym czasie w innej firmie';
+
+  @override
+  String get overlapTooltip => 'Nakłada się na zmianę w innej firmie';
+
+  @override
+  String get overlapWarning =>
+      'Niektóre twoje zmiany w dwóch firmach nakładają się.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Dwie twoje zmiany w różnych firmach nakładają się $date.';
+  }
 }

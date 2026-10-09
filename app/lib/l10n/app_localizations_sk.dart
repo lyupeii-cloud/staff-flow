@@ -945,4 +945,22 @@ class L10nSk extends L10n {
   String discardConfirm(String count) {
     return 'Zrušiť $count nezverejnených zmien?';
   }
+
+  @override
+  String get allSchedules => 'Všetky moje plány';
+
+  @override
+  String get busyElsewhere => 'V tomto čase už pracuje v inej firme';
+
+  @override
+  String get overlapTooltip => 'Prekrýva sa so zmenou v inej firme';
+
+  @override
+  String get overlapWarning =>
+      'Niektoré vaše zmeny v dvoch firmách sa prekrývajú.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Dve vaše zmeny v rôznych firmách sa prekrývajú $date.';
+  }
 }

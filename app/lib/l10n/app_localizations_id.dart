@@ -940,4 +940,22 @@ class L10nId extends L10n {
   String discardConfirm(String count) {
     return 'Batalkan $count perubahan yang belum diterbitkan?';
   }
+
+  @override
+  String get allSchedules => 'Semua jadwal saya';
+
+  @override
+  String get busyElsewhere => 'Sudah bekerja di perusahaan lain pada jam ini';
+
+  @override
+  String get overlapTooltip => 'Bertabrakan dengan shift di perusahaan lain';
+
+  @override
+  String get overlapWarning =>
+      'Beberapa shift Anda di dua perusahaan bertabrakan.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Dua shift Anda di perusahaan berbeda bertabrakan pada $date.';
+  }
 }

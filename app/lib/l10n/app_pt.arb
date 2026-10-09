@@ -260,5 +260,10 @@
   "statusExpired": "Sem efeito",
   "swapWithHint": "Toque para escolher um colega específico",
   "changesDiscarded": "Alterações anuladas: {count}",
-  "discardConfirm": "Anular as {count} alterações não publicadas?"
+  "discardConfirm": "Anular as {count} alterações não publicadas?",
+  "allSchedules": "Todos os meus planeamentos",
+  "busyElsewhere": "Já está de serviço noutra empresa neste horário",
+  "overlapTooltip": "Sobrepõe-se a um turno de outra empresa",
+  "overlapWarning": "Alguns dos seus turnos em duas empresas sobrepõem-se.",
+  "noticeOverlap": "Dois dos seus turnos em empresas diferentes sobrepõem-se a {date}."
 }

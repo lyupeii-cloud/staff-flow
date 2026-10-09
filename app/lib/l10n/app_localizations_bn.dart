@@ -938,4 +938,22 @@ class L10nBn extends L10n {
   String discardConfirm(String count) {
     return '$countটি অপ্রকাশিত পরিবর্তন বাতিল করবেন?';
   }
+
+  @override
+  String get allSchedules => 'আমার সব সময়সূচি';
+
+  @override
+  String get busyElsewhere => 'এই সময়ে ইতিমধ্যে অন্য কোম্পানিতে কাজে আছেন';
+
+  @override
+  String get overlapTooltip => 'অন্য কোম্পানির শিফটের সঙ্গে মিলে যায়';
+
+  @override
+  String get overlapWarning =>
+      'দুটি কোম্পানিতে আপনার কিছু শিফট একে অপরের সঙ্গে মিলে যাচ্ছে।';
+
+  @override
+  String noticeOverlap(String date) {
+    return '$date তারিখে ভিন্ন কোম্পানিতে আপনার দুটি শিফট একে অপরের সঙ্গে মিলে যাচ্ছে।';
+  }
 }

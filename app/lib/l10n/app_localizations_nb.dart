@@ -941,4 +941,23 @@ class L10nNb extends L10n {
   String discardConfirm(String count) {
     return 'Angre de $count upubliserte endringene?';
   }
+
+  @override
+  String get allSchedules => 'Alle vaktplanene mine';
+
+  @override
+  String get busyElsewhere =>
+      'Jobber allerede i en annen bedrift på dette tidspunktet';
+
+  @override
+  String get overlapTooltip => 'Overlapper en vakt i en annen bedrift';
+
+  @override
+  String get overlapWarning =>
+      'Noen av vaktene dine i to bedrifter overlapper.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'To av vaktene dine i ulike bedrifter overlapper $date.';
+  }
 }

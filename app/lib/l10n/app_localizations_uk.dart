@@ -948,4 +948,22 @@ class L10nUk extends L10n {
   String discardConfirm(String count) {
     return 'Скасувати $count неопублікованих змін?';
   }
+
+  @override
+  String get allSchedules => 'Усі мої графіки';
+
+  @override
+  String get busyElsewhere => 'Уже працює в іншій компанії в цей час';
+
+  @override
+  String get overlapTooltip => 'Перетинається зі зміною в іншій компанії';
+
+  @override
+  String get overlapWarning =>
+      'Деякі ваші зміни у двох компаніях перетинаються.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Дві ваші зміни в різних компаніях перетинаються $date.';
+  }
 }

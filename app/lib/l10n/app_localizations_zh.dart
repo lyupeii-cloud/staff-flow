@@ -919,4 +919,21 @@ class L10nZh extends L10n {
   String discardConfirm(String count) {
     return '撤销 $count 项未发布的更改？';
   }
+
+  @override
+  String get allSchedules => '我的所有排班';
+
+  @override
+  String get busyElsewhere => '该时段已在另一家公司上班';
+
+  @override
+  String get overlapTooltip => '与另一家公司的班次重叠';
+
+  @override
+  String get overlapWarning => '您在两家公司的部分班次时间重叠。';
+
+  @override
+  String noticeOverlap(String date) {
+    return '您在不同公司的两个班次在 $date 时间重叠。';
+  }
 }

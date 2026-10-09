@@ -943,4 +943,21 @@ class L10nEn extends L10n {
   String discardConfirm(String count) {
     return 'Discard the $count unpublished changes?';
   }
+
+  @override
+  String get allSchedules => 'All my schedules';
+
+  @override
+  String get busyElsewhere => 'Already working at another company at this time';
+
+  @override
+  String get overlapTooltip => 'Overlaps a shift at another company';
+
+  @override
+  String get overlapWarning => 'Some of your shifts at two companies overlap.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Two of your shifts at different companies overlap on $date.';
+  }
 }

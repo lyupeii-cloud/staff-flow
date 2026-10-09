@@ -1756,6 +1756,36 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Discard the {count} unpublished changes?'**
   String discardConfirm(String count);
+
+  /// No description provided for @allSchedules.
+  ///
+  /// In en, this message translates to:
+  /// **'All my schedules'**
+  String get allSchedules;
+
+  /// No description provided for @busyElsewhere.
+  ///
+  /// In en, this message translates to:
+  /// **'Already working at another company at this time'**
+  String get busyElsewhere;
+
+  /// No description provided for @overlapTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Overlaps a shift at another company'**
+  String get overlapTooltip;
+
+  /// No description provided for @overlapWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Some of your shifts at two companies overlap.'**
+  String get overlapWarning;
+
+  /// No description provided for @noticeOverlap.
+  ///
+  /// In en, this message translates to:
+  /// **'Two of your shifts at different companies overlap on {date}.'**
+  String noticeOverlap(String date);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

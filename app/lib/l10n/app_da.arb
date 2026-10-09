@@ -260,5 +260,10 @@
   "statusExpired": "Ikke længere aktuel",
   "swapWithHint": "Tryk for at vælge en bestemt kollega",
   "changesDiscarded": "Fortrudte ændringer: {count}",
-  "discardConfirm": "Fortryd de {count} ikke-offentliggjorte ændringer?"
+  "discardConfirm": "Fortryd de {count} ikke-offentliggjorte ændringer?",
+  "allSchedules": "Alle mine vagtplaner",
+  "busyElsewhere": "Arbejder allerede i en anden virksomhed på dette tidspunkt",
+  "overlapTooltip": "Overlapper en vagt i en anden virksomhed",
+  "overlapWarning": "Nogle af dine vagter i to virksomheder overlapper.",
+  "noticeOverlap": "To af dine vagter i forskellige virksomheder overlapper den {date}."
 }

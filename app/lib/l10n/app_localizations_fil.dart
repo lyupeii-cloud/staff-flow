@@ -945,4 +945,22 @@ class L10nFil extends L10n {
   String discardConfirm(String count) {
     return 'Kanselahin ang $count hindi pa na-publish na pagbabago?';
   }
+
+  @override
+  String get allSchedules => 'Lahat ng iskedyul ko';
+
+  @override
+  String get busyElsewhere => 'May shift na sa ibang kumpanya sa oras na ito';
+
+  @override
+  String get overlapTooltip => 'Sumasabay sa shift sa ibang kumpanya';
+
+  @override
+  String get overlapWarning =>
+      'Nagsasabay ang ilan sa mga shift mo sa dalawang kumpanya.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Nagsasabay ang dalawa mong shift sa magkaibang kumpanya sa $date.';
+  }
 }

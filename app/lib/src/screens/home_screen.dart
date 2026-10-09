@@ -10,6 +10,7 @@ import '../i18n.dart';
 import '../models.dart';
 import '../push.dart';
 import '../session.dart';
+import 'all_schedules_view.dart';
 import 'company_tab.dart';
 import 'join_code_dialog.dart';
 import 'language_picker.dart';
@@ -36,6 +37,9 @@ class _HomeScreenState extends State<HomeScreen> {
   /// Onglets des entreprises (pour aller à celle d'une demande).
   TabController? _tabs;
 
+  /// « Tous mes plannings » : utile dès deux entreprises.
+  bool get _showAll => (session.me?.companies.length ?? 0) >= 2;
+
   @override
   void initState() {
     super.initState();
@@ -58,7 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
     final wanted = session.openRequest.value;
     if (wanted == null) return;
     final index = session.me?.companies.indexWhere((m) => m.company.id == wanted.companyId) ?? -1;
-    if (index >= 0) _tabs?.animateTo(index);
+    // L'onglet « Tous mes plannings » vient en premier s'il est affiché.
+    if (index >= 0) _tabs?.animateTo(index + (_showAll ? 1 : 0));
   }
 
   /// Notification reçue pendant que l'application est à l'écran : Android
@@ -101,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final companies = me.companies;
     return DefaultTabController(
       key: ValueKey(companies.map((m) => m.company.id).join(',')),
-      length: companies.length,
+      length: companies.length + (_showAll ? 1 : 0),
       child: Builder(builder: (context) {
         _tabs = companies.isEmpty ? null : DefaultTabController.of(context);
         return Scaffold(
@@ -124,7 +129,26 @@ class _HomeScreenState extends State<HomeScreen> {
               : TabBar(
                   isScrollable: true,
                   tabAlignment: TabAlignment.start,
-                  tabs: [for (final m in companies) Tab(text: m.company.name)],
+                  tabs: [
+                    if (_showAll)
+                      Tab(
+                        child: Row(mainAxisSize: MainAxisSize.min, children: [
+                          const Icon(Icons.calendar_view_week, size: 18),
+                          const SizedBox(width: 6),
+                          Text(context.l10n.allSchedules),
+                        ]),
+                      ),
+                    for (final (i, m) in companies.indexed)
+                      _showAll
+                          ? Tab(
+                              child: Row(mainAxisSize: MainAxisSize.min, children: [
+                                CircleAvatar(radius: 5, backgroundColor: companyColor(i)),
+                                const SizedBox(width: 6),
+                                Text(m.company.name),
+                              ]),
+                            )
+                          : Tab(text: m.company.name),
+                  ],
                 ),
         ),
         body: Column(
@@ -136,6 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ? _NoCompany(session: session)
                   : TabBarView(
                       children: [
+                        if (_showAll) AllSchedulesView(session: session),
                         for (final m in companies)
                           CompanyTab(key: ValueKey(m.company.id), session: session, membership: m),
                       ],

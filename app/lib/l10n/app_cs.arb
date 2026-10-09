@@ -260,5 +260,10 @@
   "statusExpired": "Neaktuální",
   "swapWithHint": "Klepnutím vyberte konkrétního kolegu",
   "changesDiscarded": "Zrušené změny: {count}",
-  "discardConfirm": "Zrušit {count} nezveřejněných změn?"
+  "discardConfirm": "Zrušit {count} nezveřejněných změn?",
+  "allSchedules": "Všechny moje plány",
+  "busyElsewhere": "V tuto dobu už pracuje v jiné firmě",
+  "overlapTooltip": "Překrývá se se směnou v jiné firmě",
+  "overlapWarning": "Některé vaše směny ve dvou firmách se překrývají.",
+  "noticeOverlap": "Dvě vaše směny v různých firmách se překrývají {date}."
 }

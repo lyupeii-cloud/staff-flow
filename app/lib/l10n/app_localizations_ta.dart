@@ -945,4 +945,23 @@ class L10nTa extends L10n {
   String discardConfirm(String count) {
     return 'வெளியிடப்படாத $count மாற்றங்களை ரத்துசெய்யவா?';
   }
+
+  @override
+  String get allSchedules => 'என் எல்லா அட்டவணைகளும்';
+
+  @override
+  String get busyElsewhere =>
+      'இந்த நேரத்தில் ஏற்கனவே வேறு நிறுவனத்தில் பணியில்';
+
+  @override
+  String get overlapTooltip => 'வேறு நிறுவனத்தின் ஷிஃப்டுடன் மோதுகிறது';
+
+  @override
+  String get overlapWarning =>
+      'இரண்டு நிறுவனங்களில் உங்கள் சில ஷிஃப்டுகள் ஒன்றோடொன்று மோதுகின்றன.';
+
+  @override
+  String noticeOverlap(String date) {
+    return '$date அன்று வெவ்வேறு நிறுவனங்களில் உங்கள் இரண்டு ஷிஃப்டுகள் ஒன்றோடொன்று மோதுகின்றன.';
+  }
 }

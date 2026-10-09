@@ -260,5 +260,10 @@
   "statusExpired": "Inaktuell",
   "swapWithHint": "Tryck för att välja en viss kollega",
   "changesDiscarded": "Ångrade ändringar: {count}",
-  "discardConfirm": "Ångra de {count} opublicerade ändringarna?"
+  "discardConfirm": "Ångra de {count} opublicerade ändringarna?",
+  "allSchedules": "Alla mina scheman",
+  "busyElsewhere": "Arbetar redan hos ett annat företag vid den här tiden",
+  "overlapTooltip": "Överlappar ett pass hos ett annat företag",
+  "overlapWarning": "Några av dina pass hos två företag överlappar.",
+  "noticeOverlap": "Två av dina pass hos olika företag överlappar den {date}."
 }

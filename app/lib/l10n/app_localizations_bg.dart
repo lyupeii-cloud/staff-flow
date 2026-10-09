@@ -941,4 +941,21 @@ class L10nBg extends L10n {
   String discardConfirm(String count) {
     return 'Да се отменят ли $count непубликувани промени?';
   }
+
+  @override
+  String get allSchedules => 'Всички мои графици';
+
+  @override
+  String get busyElsewhere => 'Вече е на смяна в друга фирма по това време';
+
+  @override
+  String get overlapTooltip => 'Застъпва се със смяна в друга фирма';
+
+  @override
+  String get overlapWarning => 'Някои ваши смени в две фирми се застъпват.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Две ваши смени в различни фирми се застъпват на $date.';
+  }
 }

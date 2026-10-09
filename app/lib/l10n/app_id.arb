@@ -260,5 +260,10 @@
   "statusExpired": "Tidak berlaku lagi",
   "swapWithHint": "Ketuk untuk memilih rekan tertentu",
   "changesDiscarded": "Perubahan dibatalkan: {count}",
-  "discardConfirm": "Batalkan {count} perubahan yang belum diterbitkan?"
+  "discardConfirm": "Batalkan {count} perubahan yang belum diterbitkan?",
+  "allSchedules": "Semua jadwal saya",
+  "busyElsewhere": "Sudah bekerja di perusahaan lain pada jam ini",
+  "overlapTooltip": "Bertabrakan dengan shift di perusahaan lain",
+  "overlapWarning": "Beberapa shift Anda di dua perusahaan bertabrakan.",
+  "noticeOverlap": "Dua shift Anda di perusahaan berbeda bertabrakan pada {date}."
 }

@@ -260,5 +260,10 @@
   "statusExpired": "Ikke lenger aktuell",
   "swapWithHint": "Trykk for å velge en bestemt kollega",
   "changesDiscarded": "Angrede endringer: {count}",
-  "discardConfirm": "Angre de {count} upubliserte endringene?"
+  "discardConfirm": "Angre de {count} upubliserte endringene?",
+  "allSchedules": "Alle vaktplanene mine",
+  "busyElsewhere": "Jobber allerede i en annen bedrift på dette tidspunktet",
+  "overlapTooltip": "Overlapper en vakt i en annen bedrift",
+  "overlapWarning": "Noen av vaktene dine i to bedrifter overlapper.",
+  "noticeOverlap": "To av vaktene dine i ulike bedrifter overlapper {date}."
 }

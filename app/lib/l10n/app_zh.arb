@@ -260,5 +260,10 @@
   "statusExpired": "已失效",
   "swapWithHint": "点按选择指定同事",
   "changesDiscarded": "已撤销更改：{count}",
-  "discardConfirm": "撤销 {count} 项未发布的更改？"
+  "discardConfirm": "撤销 {count} 项未发布的更改？",
+  "allSchedules": "我的所有排班",
+  "busyElsewhere": "该时段已在另一家公司上班",
+  "overlapTooltip": "与另一家公司的班次重叠",
+  "overlapWarning": "您在两家公司的部分班次时间重叠。",
+  "noticeOverlap": "您在不同公司的两个班次在 {date} 时间重叠。"
 }

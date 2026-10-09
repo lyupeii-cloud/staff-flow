@@ -88,6 +88,27 @@ class _ShiftEditorState extends State<_ShiftEditor> {
   L10n get t => context.l10n;
   String get loc => context.localeName;
 
+  /// Personnes déjà en service dans une autre entreprise sur ce créneau
+  /// (le serveur ne dit rien de plus).
+  Set<String> _busy = const {};
+  String? _busyChecked;
+
+  /// Relit [_busy] quand les jours ou l'horaire changent.
+  void _checkBusy() {
+    final key = '${_days.map(formatDay).join(',')}|$_start|$_end';
+    if (key == _busyChecked) return;
+    _busyChecked = key;
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      try {
+        final r = await widget.session.api.send('GET',
+            '/companies/${widget.company.id}/busy?days=${_days.map(formatDay).join(',')}&start=$_start&end=$_end');
+        if (mounted && key == _busyChecked) setState(() => _busy = {for (final u in r['userIds']) u as String});
+      } catch (_) {
+        // Hors connexion : pas d'indication.
+      }
+    });
+  }
+
   /// Absence validée de [userId] un des jours choisis.
   bool _absent(String? userId) =>
       userId != null && widget.absences.any((a) => a.requesterId == userId && _days.any(a.covers));
@@ -96,6 +117,7 @@ class _ShiftEditorState extends State<_ShiftEditor> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final members = widget.data.members;
+    _checkBusy();
     final only = widget.onlySites;
     final sites = widget.data.sites
         .where((i) => (!i.archived || i.id == _siteId) && (only == null || only.contains(i.id)))
@@ -169,8 +191,11 @@ class _ShiftEditorState extends State<_ShiftEditor> {
                 for (final m in members)
                   DropdownMenuItem(
                     value: m.user.id,
-                    child: Text('${_absent(m.user.id) ? '! ' : ''}${m.user.name} · ${m.role.label(t)}',
-                        style: _absent(m.user.id) ? TextStyle(color: theme.colorScheme.error) : null),
+                    child: Text(
+                        '${_absent(m.user.id) || _busy.contains(m.user.id) ? '! ' : ''}${m.user.name} · ${m.role.label(t)}',
+                        style: _absent(m.user.id) || _busy.contains(m.user.id)
+                            ? TextStyle(color: theme.colorScheme.error)
+                            : null),
                   ),
               ],
               onChanged: (v) => setState(() => _userId = v),
@@ -179,6 +204,11 @@ class _ShiftEditorState extends State<_ShiftEditor> {
               Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Text('! ${t.absentThatDay}', style: TextStyle(color: theme.colorScheme.error)),
+              ),
+            if (_busy.contains(_userId))
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text('! ${t.busyElsewhere}', style: TextStyle(color: theme.colorScheme.error)),
               ),
             if (positions.isNotEmpty)
               DropdownButtonFormField<String?>(

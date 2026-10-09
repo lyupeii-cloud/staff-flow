@@ -949,4 +949,22 @@ class L10nRo extends L10n {
   String discardConfirm(String count) {
     return 'Anulezi cele $count modificări nepublicate?';
   }
+
+  @override
+  String get allSchedules => 'Toate planificările mele';
+
+  @override
+  String get busyElsewhere => 'Lucrează deja la altă firmă în acest interval';
+
+  @override
+  String get overlapTooltip => 'Se suprapune cu o tură de la altă firmă';
+
+  @override
+  String get overlapWarning =>
+      'Unele dintre turele tale de la două firme se suprapun.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Două dintre turele tale de la firme diferite se suprapun pe $date.';
+  }
 }

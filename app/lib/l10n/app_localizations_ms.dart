@@ -939,4 +939,22 @@ class L10nMs extends L10n {
   String discardConfirm(String count) {
     return 'Batalkan $count perubahan yang belum diterbitkan?';
   }
+
+  @override
+  String get allSchedules => 'Semua jadual saya';
+
+  @override
+  String get busyElsewhere => 'Sudah bekerja di syarikat lain pada waktu ini';
+
+  @override
+  String get overlapTooltip => 'Bertindih dengan syif di syarikat lain';
+
+  @override
+  String get overlapWarning =>
+      'Sebahagian syif anda di dua syarikat bertindih.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Dua syif anda di syarikat berbeza bertindih pada $date.';
+  }
 }

@@ -260,5 +260,10 @@
   "statusExpired": "Halitumiki tena",
   "swapWithHint": "Gusa ili kuchagua mwenzako fulani",
   "changesDiscarded": "Mabadiliko yaliyoghairiwa: {count}",
-  "discardConfirm": "Ghairi mabadiliko {count} ambayo hayajachapishwa?"
+  "discardConfirm": "Ghairi mabadiliko {count} ambayo hayajachapishwa?",
+  "allSchedules": "Ratiba zangu zote",
+  "busyElsewhere": "Tayari yuko kazini katika kampuni nyingine wakati huu",
+  "overlapTooltip": "Inaingiliana na zamu ya kampuni nyingine",
+  "overlapWarning": "Baadhi ya zamu zako katika kampuni mbili zinaingiliana.",
+  "noticeOverlap": "Zamu zako mbili katika kampuni tofauti zinaingiliana tarehe {date}."
 }

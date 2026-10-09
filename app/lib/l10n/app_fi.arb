@@ -260,5 +260,10 @@
   "statusExpired": "Ei enää ajankohtainen",
   "swapWithHint": "Napauta valitaksesi tietyn työkaverin",
   "changesDiscarded": "Perutut muutokset: {count}",
-  "discardConfirm": "Perutaanko {count} julkaisematonta muutosta?"
+  "discardConfirm": "Perutaanko {count} julkaisematonta muutosta?",
+  "allSchedules": "Kaikki työvuoroni",
+  "busyElsewhere": "On jo töissä toisessa yrityksessä tähän aikaan",
+  "overlapTooltip": "Menee päällekkäin toisen yrityksen vuoron kanssa",
+  "overlapWarning": "Osa vuoroistasi kahdessa yrityksessä menee päällekkäin.",
+  "noticeOverlap": "Kaksi vuoroasi eri yrityksissä menee päällekkäin {date}."
 }

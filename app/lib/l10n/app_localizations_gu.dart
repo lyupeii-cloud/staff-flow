@@ -939,4 +939,22 @@ class L10nGu extends L10n {
   String discardConfirm(String count) {
     return '$count અપ્રકાશિત ફેરફારો રદ કરવા છે?';
   }
+
+  @override
+  String get allSchedules => 'મારાં બધાં સમયપત્રક';
+
+  @override
+  String get busyElsewhere => 'આ સમયે પહેલેથી બીજી કંપનીમાં ફરજ પર';
+
+  @override
+  String get overlapTooltip => 'બીજી કંપનીની શિફ્ટ સાથે ટકરાય છે';
+
+  @override
+  String get overlapWarning =>
+      'બે કંપનીઓમાં તમારી કેટલીક શિફ્ટ એકબીજા પર આવે છે.';
+
+  @override
+  String noticeOverlap(String date) {
+    return '$date ના રોજ અલગ કંપનીઓમાં તમારી બે શિફ્ટ એકબીજા પર આવે છે.';
+  }
 }

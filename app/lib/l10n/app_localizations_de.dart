@@ -949,4 +949,24 @@ class L10nDe extends L10n {
   String discardConfirm(String count) {
     return 'Die $count nicht veröffentlichten Änderungen verwerfen?';
   }
+
+  @override
+  String get allSchedules => 'Alle meine Pläne';
+
+  @override
+  String get busyElsewhere =>
+      'Arbeitet zu dieser Zeit schon in einem anderen Unternehmen';
+
+  @override
+  String get overlapTooltip =>
+      'Überschneidet sich mit einer Schicht in einem anderen Unternehmen';
+
+  @override
+  String get overlapWarning =>
+      'Einige Ihrer Schichten in zwei Unternehmen überschneiden sich.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Zwei Ihrer Schichten in verschiedenen Unternehmen überschneiden sich am $date.';
+  }
 }

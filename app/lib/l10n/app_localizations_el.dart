@@ -947,4 +947,22 @@ class L10nEl extends L10n {
   String discardConfirm(String count) {
     return 'Ακύρωση των $count μη δημοσιευμένων αλλαγών;';
   }
+
+  @override
+  String get allSchedules => 'Όλα τα προγράμματά μου';
+
+  @override
+  String get busyElsewhere => 'Εργάζεται ήδη σε άλλη εταιρεία αυτή την ώρα';
+
+  @override
+  String get overlapTooltip => 'Επικαλύπτεται με βάρδια άλλης εταιρείας';
+
+  @override
+  String get overlapWarning =>
+      'Ορισμένες βάρδιές σας σε δύο εταιρείες επικαλύπτονται.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Δύο βάρδιές σας σε διαφορετικές εταιρείες επικαλύπτονται στις $date.';
+  }
 }

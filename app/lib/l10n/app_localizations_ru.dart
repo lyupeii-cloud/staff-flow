@@ -947,4 +947,22 @@ class L10nRu extends L10n {
   String discardConfirm(String count) {
     return 'Отменить $count неопубликованных изменений?';
   }
+
+  @override
+  String get allSchedules => 'Все мои графики';
+
+  @override
+  String get busyElsewhere => 'Уже работает в другой компании в это время';
+
+  @override
+  String get overlapTooltip => 'Пересекается со сменой в другой компании';
+
+  @override
+  String get overlapWarning =>
+      'Некоторые ваши смены в двух компаниях пересекаются.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Две ваши смены в разных компаниях пересекаются $date.';
+  }
 }

@@ -152,6 +152,7 @@ class NoticesButton extends StatelessWidget {
       'unavailability_to_approve' => t.noticeUnavailabilityToApprove(data['requesterName'] ?? '?'),
       'request_approved' => t.noticeRequestApproved,
       'request_refused' => t.noticeRequestRefused,
+      'shift_overlap' => t.noticeOverlap(longDate(parseDay(data['day']), loc)),
       _ => n['kind'] as String,
     };
   }
@@ -166,6 +167,7 @@ class NoticesButton extends StatelessWidget {
         'unavailability_to_approve' => Icons.event_busy,
         'request_approved' => Icons.check_circle,
         'request_refused' => Icons.cancel,
+        'shift_overlap' => Icons.warning_amber,
         _ => Icons.edit_note,
       };
 }

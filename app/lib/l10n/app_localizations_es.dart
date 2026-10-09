@@ -946,4 +946,22 @@ class L10nEs extends L10n {
   String discardConfirm(String count) {
     return '¿Anular los $count cambios no publicados?';
   }
+
+  @override
+  String get allSchedules => 'Todos mis plannings';
+
+  @override
+  String get busyElsewhere => 'Ya trabaja en otra empresa en este horario';
+
+  @override
+  String get overlapTooltip => 'Se solapa con un turno de otra empresa';
+
+  @override
+  String get overlapWarning =>
+      'Algunos de tus turnos en dos empresas se solapan.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Dos de tus turnos en empresas distintas se solapan el $date.';
+  }
 }

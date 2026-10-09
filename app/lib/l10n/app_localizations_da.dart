@@ -942,4 +942,23 @@ class L10nDa extends L10n {
   String discardConfirm(String count) {
     return 'Fortryd de $count ikke-offentliggjorte ændringer?';
   }
+
+  @override
+  String get allSchedules => 'Alle mine vagtplaner';
+
+  @override
+  String get busyElsewhere =>
+      'Arbejder allerede i en anden virksomhed på dette tidspunkt';
+
+  @override
+  String get overlapTooltip => 'Overlapper en vagt i en anden virksomhed';
+
+  @override
+  String get overlapWarning =>
+      'Nogle af dine vagter i to virksomheder overlapper.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'To af dine vagter i forskellige virksomheder overlapper den $date.';
+  }
 }

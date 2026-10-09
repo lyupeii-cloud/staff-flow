@@ -935,4 +935,21 @@ class L10nVi extends L10n {
   String discardConfirm(String count) {
     return 'Hủy $count thay đổi chưa công bố?';
   }
+
+  @override
+  String get allSchedules => 'Tất cả lịch của tôi';
+
+  @override
+  String get busyElsewhere => 'Đã làm ở công ty khác vào khung giờ này';
+
+  @override
+  String get overlapTooltip => 'Trùng với một ca ở công ty khác';
+
+  @override
+  String get overlapWarning => 'Một số ca của bạn ở hai công ty bị trùng nhau.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Hai ca làm của bạn ở hai công ty khác nhau bị trùng vào ngày $date.';
+  }
 }

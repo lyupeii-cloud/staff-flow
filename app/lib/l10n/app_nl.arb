@@ -260,5 +260,10 @@
   "statusExpired": "Vervallen",
   "swapWithHint": "Tik om een specifieke collega te kiezen",
   "changesDiscarded": "Geannuleerde wijzigingen: {count}",
-  "discardConfirm": "De {count} niet-gepubliceerde wijzigingen annuleren?"
+  "discardConfirm": "De {count} niet-gepubliceerde wijzigingen annuleren?",
+  "allSchedules": "Al mijn roosters",
+  "busyElsewhere": "Werkt op dit tijdstip al bij een ander bedrijf",
+  "overlapTooltip": "Overlapt met een dienst bij een ander bedrijf",
+  "overlapWarning": "Sommige van je diensten bij twee bedrijven overlappen.",
+  "noticeOverlap": "Twee van je diensten bij verschillende bedrijven overlappen op {date}."
 }

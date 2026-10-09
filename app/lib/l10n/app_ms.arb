@@ -260,5 +260,10 @@
   "statusExpired": "Tidak lagi berkenaan",
   "swapWithHint": "Ketik untuk memilih rakan sekerja tertentu",
   "changesDiscarded": "Perubahan dibatalkan: {count}",
-  "discardConfirm": "Batalkan {count} perubahan yang belum diterbitkan?"
+  "discardConfirm": "Batalkan {count} perubahan yang belum diterbitkan?",
+  "allSchedules": "Semua jadual saya",
+  "busyElsewhere": "Sudah bekerja di syarikat lain pada waktu ini",
+  "overlapTooltip": "Bertindih dengan syif di syarikat lain",
+  "overlapWarning": "Sebahagian syif anda di dua syarikat bertindih.",
+  "noticeOverlap": "Dua syif anda di syarikat berbeza bertindih pada {date}."
 }

@@ -940,4 +940,22 @@ class L10nTe extends L10n {
   String discardConfirm(String count) {
     return 'ప్రచురించని $count మార్పులను రద్దు చేయాలా?';
   }
+
+  @override
+  String get allSchedules => 'నా అన్ని షెడ్యూళ్లు';
+
+  @override
+  String get busyElsewhere => 'ఈ సమయంలో ఇప్పటికే వేరే కంపెనీలో పనిలో ఉన్నారు';
+
+  @override
+  String get overlapTooltip => 'వేరే కంపెనీ షిఫ్ట్‌తో ఢీకొంటుంది';
+
+  @override
+  String get overlapWarning =>
+      'రెండు కంపెనీల్లో మీ కొన్ని షిఫ్టులు ఒకదానిపై ఒకటి పడుతున్నాయి.';
+
+  @override
+  String noticeOverlap(String date) {
+    return '$dateన వేర్వేరు కంపెనీల్లో మీ రెండు షిఫ్టులు ఒకదానిపై ఒకటి పడుతున్నాయి.';
+  }
 }

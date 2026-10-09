@@ -260,5 +260,10 @@
   "statusExpired": "Hinfällig",
   "swapWithHint": "Tippen, um einen bestimmten Kollegen zu wählen",
   "changesDiscarded": "Verworfene Änderungen: {count}",
-  "discardConfirm": "Die {count} nicht veröffentlichten Änderungen verwerfen?"
+  "discardConfirm": "Die {count} nicht veröffentlichten Änderungen verwerfen?",
+  "allSchedules": "Alle meine Pläne",
+  "busyElsewhere": "Arbeitet zu dieser Zeit schon in einem anderen Unternehmen",
+  "overlapTooltip": "Überschneidet sich mit einer Schicht in einem anderen Unternehmen",
+  "overlapWarning": "Einige Ihrer Schichten in zwei Unternehmen überschneiden sich.",
+  "noticeOverlap": "Zwei Ihrer Schichten in verschiedenen Unternehmen überschneiden sich am {date}."
 }

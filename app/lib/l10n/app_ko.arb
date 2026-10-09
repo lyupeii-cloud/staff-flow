@@ -260,5 +260,10 @@
   "statusExpired": "해당 없음",
   "swapWithHint": "눌러서 특정 동료 선택",
   "changesDiscarded": "취소된 변경: {count}",
-  "discardConfirm": "게시되지 않은 변경 {count}건을 취소할까요?"
+  "discardConfirm": "게시되지 않은 변경 {count}건을 취소할까요?",
+  "allSchedules": "내 모든 근무표",
+  "busyElsewhere": "이 시간에 이미 다른 회사에서 근무 중입니다",
+  "overlapTooltip": "다른 회사의 근무와 겹칩니다",
+  "overlapWarning": "두 회사의 근무 중 일부가 겹칩니다.",
+  "noticeOverlap": "{date}에 서로 다른 회사의 근무 두 개가 겹칩니다."
 }

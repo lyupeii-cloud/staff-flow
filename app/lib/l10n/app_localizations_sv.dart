@@ -943,4 +943,22 @@ class L10nSv extends L10n {
   String discardConfirm(String count) {
     return 'Ångra de $count opublicerade ändringarna?';
   }
+
+  @override
+  String get allSchedules => 'Alla mina scheman';
+
+  @override
+  String get busyElsewhere =>
+      'Arbetar redan hos ett annat företag vid den här tiden';
+
+  @override
+  String get overlapTooltip => 'Överlappar ett pass hos ett annat företag';
+
+  @override
+  String get overlapWarning => 'Några av dina pass hos två företag överlappar.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Två av dina pass hos olika företag överlappar den $date.';
+  }
 }

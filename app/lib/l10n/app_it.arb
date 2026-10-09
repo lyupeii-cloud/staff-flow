@@ -260,5 +260,10 @@
   "statusExpired": "Non più valida",
   "swapWithHint": "Tocca per scegliere un collega preciso",
   "changesDiscarded": "Modifiche annullate: {count}",
-  "discardConfirm": "Annullare le {count} modifiche non pubblicate?"
+  "discardConfirm": "Annullare le {count} modifiche non pubblicate?",
+  "allSchedules": "Tutti i miei planning",
+  "busyElsewhere": "Già in servizio in un'altra azienda in questa fascia",
+  "overlapTooltip": "Si sovrappone a un turno di un'altra azienda",
+  "overlapWarning": "Alcuni tuoi turni in due aziende si sovrappongono.",
+  "noticeOverlap": "Due tuoi turni in aziende diverse si sovrappongono il {date}."
 }

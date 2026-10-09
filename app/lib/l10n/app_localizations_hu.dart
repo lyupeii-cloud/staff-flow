@@ -938,4 +938,21 @@ class L10nHu extends L10n {
   String discardConfirm(String count) {
     return 'Elveted a(z) $count közzé nem tett módosítást?';
   }
+
+  @override
+  String get allSchedules => 'Összes beosztásom';
+
+  @override
+  String get busyElsewhere => 'Ebben az időben már egy másik cégnél dolgozik';
+
+  @override
+  String get overlapTooltip => 'Átfedésben van egy másik cég műszakjával';
+
+  @override
+  String get overlapWarning => 'Néhány műszakod két cégnél átfedésben van.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Két műszakod különböző cégeknél átfedésben van ekkor: $date.';
+  }
 }
