@@ -202,5 +202,6 @@
   "retentionDay": "1 ਦਿਨ",
   "retentionWeek": "1 ਹਫ਼ਤਾ",
   "retentionMonth": "1 ਮਹੀਨਾ",
-  "billingOwnersOnly": "ਸਿਰਫ਼ ਤਾਂ ਹੀ ਚਾਲੂ ਜੇ ਤੁਸੀਂ ਕਿਸੇ ਕੰਪਨੀ ਦੇ ਮਾਲਕ ਹੋ।"
+  "billingOwnersOnly": "ਸਿਰਫ਼ ਤਾਂ ਹੀ ਚਾਲੂ ਜੇ ਤੁਸੀਂ ਕਿਸੇ ਕੰਪਨੀ ਦੇ ਮਾਲਕ ਹੋ।",
+  "readOnlyPastDays": "ਇੱਕ ਮਹੀਨੇ ਤੋਂ ਪੁਰਾਣੇ ਦਿਨ ਸਿਰਫ਼ ਦੇਖੇ ਜਾ ਸਕਦੇ ਹਨ।"
 }

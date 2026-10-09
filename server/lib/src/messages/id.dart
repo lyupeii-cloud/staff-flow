@@ -46,4 +46,5 @@ const id = <String, String>{
   'Message introuvable.': 'Pesan tidak ditemukan.',
   'Traduction momentanément indisponible.': 'Terjemahan sementara tidak tersedia.',
   'Traduction indisponible pour cette langue.': 'Terjemahan tidak tersedia untuk bahasa ini.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Hari yang sudah lewat lebih dari sebulan tidak dapat diubah lagi.',
 };

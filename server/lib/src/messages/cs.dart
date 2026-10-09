@@ -46,4 +46,5 @@ const cs = <String, String>{
   'Message introuvable.': 'Zpráva nenalezena.',
   'Traduction momentanément indisponible.': 'Překlad je dočasně nedostupný.',
   'Traduction indisponible pour cette langue.': 'Překlad do tohoto jazyka není dostupný.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Dny starší než měsíc už nelze měnit.',
 };

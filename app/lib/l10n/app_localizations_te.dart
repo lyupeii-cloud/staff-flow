@@ -740,4 +740,7 @@ class L10nTe extends L10n {
 
   @override
   String get billingOwnersOnly => 'మీకు కంపెనీ ఉంటేనే సక్రియం.';
+
+  @override
+  String get readOnlyPastDays => 'ఒక నెల కంటే పాత రోజులు చదవడానికి మాత్రమే.';
 }

@@ -230,6 +230,45 @@ void main() {
     });
   });
 
+  group('jours de plus d\'un mois en lecture seule', () {
+    // Aujourd'hui (horloge de test) : 5 octobre 2026 → modifiable à partir du 5 septembre.
+    test('création refusée avant la limite, acceptée à partir de la limite', () async {
+      expect((await boss('POST', p('/shifts'), shift(['2026-09-04'], user: bob.id))).$1, 409);
+      expect((await boss('POST', p('/shifts'), shift(['2026-09-05'], user: bob.id))).$1, 201);
+    });
+
+    test('un service devenu trop ancien ne se modifie, ne se supprime ni ne s\'annule plus', () async {
+      final s = (await create(shift(['2026-09-20'], user: bob.id))).single;
+      await boss.ok('POST', p('/publish'));
+      env.clock.advance(const Duration(days: 40));
+      expect((await boss('PATCH', p('/shifts/${s['id']}'), {'start': 540})).$1, 409);
+      expect((await boss('DELETE', p('/shifts/${s['id']}'))).$1, 409);
+      final history = (await boss.ok('GET', p('/history?shiftId=${s['id']}')))['entries'];
+      expect((await boss('POST', p('/history/${history.first['id']}/undo'))).$1, 409);
+      // Il reste visible.
+      expect((await week(bob, '2026-09-20', '2026-09-20'))['shifts'], hasLength(1));
+    });
+
+    test('déplacer un service vers un jour trop ancien est refusé', () async {
+      final s = (await create(shift(['2026-10-06'], user: bob.id))).single;
+      expect((await boss('PATCH', p('/shifts/${s['id']}'), {'day': '2026-08-01'})).$1, 409);
+    });
+
+    test('le remplacement épargne les jours trop anciens', () async {
+      // Créés il y a deux mois, quand ces jours étaient encore modifiables.
+      env.clock.advance(const Duration(days: -60));
+      await create(shift(['2026-08-01'], user: bob.id));
+      await create(shift(['2026-09-01'], user: bob.id));
+      await create(shift(['2026-09-10'], user: bob.id));
+      env.clock.advance(const Duration(days: 60));
+      await boss.ok('POST', p('/shifts/replace'),
+          {'fromUserId': bob.id, 'toUserId': carol.id, 'from': '2026-08-01', 'to': '2026-09-30'});
+      final all = (await week(boss, '2026-08-01', '2026-09-30'))['shifts'];
+      expect({for (final s in all) s['day']: s['userId']},
+          {'2026-08-01': bob.id, '2026-09-01': bob.id, '2026-09-10': carol.id});
+    });
+  });
+
   group('consultation', () {
     test('période trop longue ou à l\'envers : 400', () async {
       expect((await boss('GET', p('/shifts?from=2026-10-01&to=2026-12-31'))).$1, 400);

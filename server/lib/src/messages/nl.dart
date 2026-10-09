@@ -46,4 +46,5 @@ const nl = <String, String>{
   'Message introuvable.': 'Bericht niet gevonden.',
   'Traduction momentanément indisponible.': 'Vertaling tijdelijk niet beschikbaar.',
   'Traduction indisponible pour cette langue.': 'Vertaling niet beschikbaar voor deze taal.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Dagen van meer dan een maand geleden kunnen niet meer worden gewijzigd.',
 };

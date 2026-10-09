@@ -741,4 +741,8 @@ class L10nNb extends L10n {
 
   @override
   String get billingOwnersOnly => 'Bare aktiv hvis du eier en bedrift.';
+
+  @override
+  String get readOnlyPastDays =>
+      'Dager som er mer enn en måned gamle, er skrivebeskyttet.';
 }

@@ -46,4 +46,5 @@ const ro = <String, String>{
   'Message introuvable.': 'Mesajul nu a fost găsit.',
   'Traduction momentanément indisponible.': 'Traducere momentan indisponibilă.',
   'Traduction indisponible pour cette langue.': 'Traducere indisponibilă pentru această limbă.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Zilele mai vechi de o lună nu mai pot fi modificate.',
 };

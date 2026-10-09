@@ -202,5 +202,6 @@
   "retentionDay": "1 araw",
   "retentionWeek": "1 linggo",
   "retentionMonth": "1 buwan",
-  "billingOwnersOnly": "Aktibo lang kung may-ari ka ng kumpanya."
+  "billingOwnersOnly": "Aktibo lang kung may-ari ka ng kumpanya.",
+  "readOnlyPastDays": "Pagbasa lang ang mga araw na lampas isang buwan na."
 }

@@ -46,4 +46,5 @@ const mr = <String, String>{
   'Message introuvable.': 'संदेश सापडला नाही.',
   'Traduction momentanément indisponible.': 'भाषांतर तात्पुरते उपलब्ध नाही.',
   'Traduction indisponible pour cette langue.': 'या भाषेसाठी भाषांतर उपलब्ध नाही.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'एक महिन्यापेक्षा जुने दिवस आता बदलता येणार नाहीत.',
 };

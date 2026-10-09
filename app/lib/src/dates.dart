@@ -43,3 +43,12 @@ String timeLabel(int minutes) {
   final m = minutes % 1440;
   return '${(m ~/ 60).toString().padLeft(2, '0')}:${(m % 60).toString().padLeft(2, '0')}';
 }
+
+/// Premier jour encore modifiable : les jours de plus d'un mois restent en
+/// lecture seule (même règle que le serveur).
+DateTime editableFrom() {
+  final n = DateTime.now();
+  return DateTime(n.year, n.month - 1, n.day);
+}
+
+bool isEditableDay(DateTime d) => !dateOnly(d).isBefore(editableFrom());

@@ -734,4 +734,8 @@ class L10nVi extends L10n {
 
   @override
   String get billingOwnersOnly => 'Chỉ bật khi bạn sở hữu một công ty.';
+
+  @override
+  String get readOnlyPastDays =>
+      'Các ngày đã qua hơn một tháng chỉ có thể xem.';
 }

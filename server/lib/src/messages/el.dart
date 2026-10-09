@@ -46,4 +46,5 @@ const el = <String, String>{
   'Message introuvable.': 'Το μήνυμα δεν βρέθηκε.',
   'Traduction momentanément indisponible.': 'Η μετάφραση δεν είναι προσωρινά διαθέσιμη.',
   'Traduction indisponible pour cette langue.': 'Η μετάφραση δεν είναι διαθέσιμη για αυτή τη γλώσσα.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Οι ημέρες πριν από περισσότερο από έναν μήνα δεν μπορούν πλέον να αλλάξουν.',
 };

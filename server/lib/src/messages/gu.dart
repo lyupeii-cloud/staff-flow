@@ -46,4 +46,5 @@ const gu = <String, String>{
   'Message introuvable.': 'સંદેશો મળ્યો નથી.',
   'Traduction momentanément indisponible.': 'અનુવાદ હાલ ઉપલબ્ધ નથી.',
   'Traduction indisponible pour cette langue.': 'આ ભાષા માટે અનુવાદ ઉપલબ્ધ નથી.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'એક મહિનાથી જૂના દિવસો હવે બદલી શકાતા નથી.',
 };

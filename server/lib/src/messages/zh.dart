@@ -46,4 +46,5 @@ const zh = <String, String>{
   'Message introuvable.': '找不到该消息。',
   'Traduction momentanément indisponible.': '翻译暂时不可用。',
   'Traduction indisponible pour cette langue.': '暂不支持翻译成此语言。',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': '超过一个月的日期已不能修改。',
 };

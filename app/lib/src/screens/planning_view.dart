@@ -277,7 +277,16 @@ class _PlanningViewState extends State<PlanningView> {
               ),
             ),
             const Spacer(),
-            if (canEdit)
+            if (canEdit && !isEditableDay(day))
+              Tooltip(
+                message: t.readOnlyPastDays,
+                triggerMode: TooltipTriggerMode.tap,
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Icon(Icons.lock_outline, size: 18, color: theme.disabledColor),
+                ),
+              )
+            else if (canEdit)
               IconButton(
                 visualDensity: VisualDensity.compact,
                 tooltip: t.addShiftThisDay,
@@ -322,7 +331,11 @@ class _PlanningViewState extends State<PlanningView> {
               side: BorderSide(color: theme.colorScheme.tertiary, style: BorderStyle.solid),
             ),
       child: ListTile(
-        onTap: canEdit && !deleted ? () => _openEditor(shift: s) : null,
+        onTap: canEdit && !deleted
+            ? () => isEditableDay(s.day)
+                ? _openEditor(shift: s)
+                : ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.readOnlyPastDays)))
+            : null,
         title: Text(
           '${timeLabel(s.start)} – ${timeLabel(s.end)}${s.end > 1440 ? ' (+1)' : ''}  ·  $who',
           style: deleted ? const TextStyle(decoration: TextDecoration.lineThrough) : null,

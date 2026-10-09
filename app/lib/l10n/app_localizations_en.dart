@@ -743,4 +743,7 @@ class L10nEn extends L10n {
 
   @override
   String get billingOwnersOnly => 'Only active when you own a company.';
+
+  @override
+  String get readOnlyPastDays => 'Days more than a month old are read-only.';
 }

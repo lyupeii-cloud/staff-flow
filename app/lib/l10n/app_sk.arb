@@ -202,5 +202,6 @@
   "retentionDay": "1 dni",
   "retentionWeek": "1 týždni",
   "retentionMonth": "1 mesiaci",
-  "billingOwnersOnly": "Aktívne, len ak vlastníte firmu."
+  "billingOwnersOnly": "Aktívne, len ak vlastníte firmu.",
+  "readOnlyPastDays": "Dni staršie ako mesiac sú iba na čítanie."
 }

@@ -748,4 +748,8 @@ class L10nUk extends L10n {
 
   @override
   String get billingOwnersOnly => 'Діє лише, якщо ви власник компанії.';
+
+  @override
+  String get readOnlyPastDays =>
+      'Дні, що минули понад місяць тому, доступні лише для перегляду.';
 }

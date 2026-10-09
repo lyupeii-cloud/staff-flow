@@ -46,4 +46,5 @@ const sk = <String, String>{
   'Message introuvable.': 'Správa sa nenašla.',
   'Traduction momentanément indisponible.': 'Preklad je dočasne nedostupný.',
   'Traduction indisponible pour cette langue.': 'Preklad do tohto jazyka nie je dostupný.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Dni staršie ako mesiac už nemožno meniť.',
 };

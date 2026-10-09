@@ -46,4 +46,5 @@ const vi = <String, String>{
   'Message introuvable.': 'Không tìm thấy tin nhắn.',
   'Traduction momentanément indisponible.': 'Tạm thời không dịch được.',
   'Traduction indisponible pour cette langue.': 'Không có bản dịch cho ngôn ngữ này.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Không thể sửa các ngày đã qua hơn một tháng.',
 };

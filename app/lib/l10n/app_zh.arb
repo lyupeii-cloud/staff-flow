@@ -202,5 +202,6 @@
   "retentionDay": "1 天",
   "retentionWeek": "1 周",
   "retentionMonth": "1 个月",
-  "billingOwnersOnly": "仅在您拥有公司时生效。"
+  "billingOwnersOnly": "仅在您拥有公司时生效。",
+  "readOnlyPastDays": "超过一个月的日期为只读。"
 }

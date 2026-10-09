@@ -46,4 +46,5 @@ const ta = <String, String>{
   'Message introuvable.': 'செய்தி கிடைக்கவில்லை.',
   'Traduction momentanément indisponible.': 'மொழிபெயர்ப்பு தற்காலிகமாகக் கிடைக்கவில்லை.',
   'Traduction indisponible pour cette langue.': 'இந்த மொழிக்கு மொழிபெயர்ப்பு இல்லை.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'ஒரு மாதத்துக்கு மேல் பழைய நாட்களை இனி மாற்ற முடியாது.',
 };

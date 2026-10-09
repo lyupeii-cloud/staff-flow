@@ -67,4 +67,5 @@ const en = <String, String>{
   'Message introuvable.': 'Message not found.',
   'Traduction momentanément indisponible.': 'Translation temporarily unavailable.',
   'Traduction indisponible pour cette langue.': 'Translation not available for this language.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Days more than a month old can no longer be changed.',
 };

@@ -747,4 +747,8 @@ class L10nFr extends L10n {
   @override
   String get billingOwnersOnly =>
       'Actif uniquement si vous possédez une entreprise.';
+
+  @override
+  String get readOnlyPastDays =>
+      'Les jours de plus d\'un mois sont en lecture seule.';
 }

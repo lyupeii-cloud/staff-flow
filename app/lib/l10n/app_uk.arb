@@ -206,5 +206,6 @@
   "retentionDay": "1 день",
   "retentionWeek": "1 тиждень",
   "retentionMonth": "1 місяць",
-  "billingOwnersOnly": "Діє лише, якщо ви власник компанії."
+  "billingOwnersOnly": "Діє лише, якщо ви власник компанії.",
+  "readOnlyPastDays": "Дні, що минули понад місяць тому, доступні лише для перегляду."
 }

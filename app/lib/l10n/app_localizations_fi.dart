@@ -742,4 +742,8 @@ class L10nFi extends L10n {
 
   @override
   String get billingOwnersOnly => 'Käytössä vain, jos omistat yrityksen.';
+
+  @override
+  String get readOnlyPastDays =>
+      'Yli kuukauden takaiset päivät ovat vain luku -tilassa.';
 }

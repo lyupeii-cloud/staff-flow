@@ -46,4 +46,5 @@ const hi = <String, String>{
   'Message introuvable.': 'संदेश नहीं मिला।',
   'Traduction momentanément indisponible.': 'अनुवाद अभी उपलब्ध नहीं है।',
   'Traduction indisponible pour cette langue.': 'इस भाषा के लिए अनुवाद उपलब्ध नहीं है।',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'एक महीने से पुराने दिन अब बदले नहीं जा सकते।',
 };

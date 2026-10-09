@@ -744,4 +744,8 @@ class L10nTa extends L10n {
   @override
   String get billingOwnersOnly =>
       'நீங்கள் ஒரு நிறுவனத்தின் உரிமையாளராக இருந்தால் மட்டுமே செயல்படும்.';
+
+  @override
+  String get readOnlyPastDays =>
+      'ஒரு மாதத்துக்கு மேல் பழைய நாட்கள் படிக்க மட்டுமே.';
 }

@@ -202,5 +202,6 @@
   "retentionDay": "Siku 1",
   "retentionWeek": "Wiki 1",
   "retentionMonth": "Mwezi 1",
-  "billingOwnersOnly": "Inafanya kazi tu ukimiliki kampuni."
+  "billingOwnersOnly": "Inafanya kazi tu ukimiliki kampuni.",
+  "readOnlyPastDays": "Siku zilizopita zaidi ya mwezi ni za kusoma tu."
 }

@@ -202,5 +202,6 @@
   "retentionDay": "1 hari",
   "retentionWeek": "1 minggu",
   "retentionMonth": "1 bulan",
-  "billingOwnersOnly": "Hanya aktif jika Anda memiliki perusahaan."
+  "billingOwnersOnly": "Hanya aktif jika Anda memiliki perusahaan.",
+  "readOnlyPastDays": "Hari yang lewat lebih dari sebulan hanya bisa dibaca."
 }

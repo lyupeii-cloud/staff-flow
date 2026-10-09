@@ -202,5 +202,6 @@
   "retentionDay": "1 วัน",
   "retentionWeek": "1 สัปดาห์",
   "retentionMonth": "1 เดือน",
-  "billingOwnersOnly": "ใช้งานได้เฉพาะเมื่อคุณเป็นเจ้าของบริษัท"
+  "billingOwnersOnly": "ใช้งานได้เฉพาะเมื่อคุณเป็นเจ้าของบริษัท",
+  "readOnlyPastDays": "วันที่ผ่านมาเกินหนึ่งเดือนดูได้อย่างเดียว"
 }

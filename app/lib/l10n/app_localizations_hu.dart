@@ -738,4 +738,8 @@ class L10nHu extends L10n {
 
   @override
   String get billingOwnersOnly => 'Csak akkor aktív, ha van saját céged.';
+
+  @override
+  String get readOnlyPastDays =>
+      'Az egy hónapnál régebbi napok csak olvashatók.';
 }

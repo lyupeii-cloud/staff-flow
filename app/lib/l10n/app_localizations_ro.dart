@@ -746,4 +746,8 @@ class L10nRo extends L10n {
 
   @override
   String get billingOwnersOnly => 'Activ doar dacă deții o firmă.';
+
+  @override
+  String get readOnlyPastDays =>
+      'Zilele mai vechi de o lună sunt doar pentru citire.';
 }

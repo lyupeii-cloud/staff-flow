@@ -46,4 +46,5 @@ const te = <String, String>{
   'Message introuvable.': 'సందేశం కనుగొనబడలేదు.',
   'Traduction momentanément indisponible.': 'అనువాదం తాత్కాలికంగా అందుబాటులో లేదు.',
   'Traduction indisponible pour cette langue.': 'ఈ భాషకు అనువాదం అందుబాటులో లేదు.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'ఒక నెల కంటే పాత రోజులను ఇక మార్చలేరు.',
 };

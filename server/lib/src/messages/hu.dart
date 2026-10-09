@@ -46,4 +46,5 @@ const hu = <String, String>{
   'Message introuvable.': 'Az üzenet nem található.',
   'Traduction momentanément indisponible.': 'A fordítás átmenetileg nem érhető el.',
   'Traduction indisponible pour cette langue.': 'Erre a nyelvre nem érhető el fordítás.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Az egy hónapnál régebbi napok már nem módosíthatók.',
 };

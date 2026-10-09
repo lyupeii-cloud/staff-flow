@@ -741,4 +741,7 @@ class L10nKk extends L10n {
 
   @override
   String get billingOwnersOnly => 'Тек компанияңыз болса ғана қосулы.';
+
+  @override
+  String get readOnlyPastDays => 'Бір айдан асқан күндерді тек қарауға болады.';
 }

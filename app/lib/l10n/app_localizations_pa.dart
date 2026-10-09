@@ -740,4 +740,8 @@ class L10nPa extends L10n {
   @override
   String get billingOwnersOnly =>
       'ਸਿਰਫ਼ ਤਾਂ ਹੀ ਚਾਲੂ ਜੇ ਤੁਸੀਂ ਕਿਸੇ ਕੰਪਨੀ ਦੇ ਮਾਲਕ ਹੋ।';
+
+  @override
+  String get readOnlyPastDays =>
+      'ਇੱਕ ਮਹੀਨੇ ਤੋਂ ਪੁਰਾਣੇ ਦਿਨ ਸਿਰਫ਼ ਦੇਖੇ ਜਾ ਸਕਦੇ ਹਨ।';
 }

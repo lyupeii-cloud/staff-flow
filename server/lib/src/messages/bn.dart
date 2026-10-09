@@ -46,4 +46,5 @@ const bn = <String, String>{
   'Message introuvable.': 'বার্তা পাওয়া যায়নি।',
   'Traduction momentanément indisponible.': 'অনুবাদ সাময়িকভাবে অনুপলব্ধ।',
   'Traduction indisponible pour cette langue.': 'এই ভাষার জন্য অনুবাদ উপলব্ধ নয়।',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'এক মাসের বেশি পুরোনো দিন আর পরিবর্তন করা যাবে না।',
 };

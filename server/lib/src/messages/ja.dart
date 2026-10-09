@@ -46,4 +46,5 @@ const ja = <String, String>{
   'Message introuvable.': 'メッセージが見つかりません。',
   'Traduction momentanément indisponible.': '翻訳は一時的に利用できません。',
   'Traduction indisponible pour cette langue.': 'この言語への翻訳は利用できません。',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': '1か月以上前の日は変更できません。',
 };

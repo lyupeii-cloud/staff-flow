@@ -738,4 +738,8 @@ class L10nMs extends L10n {
 
   @override
   String get billingOwnersOnly => 'Hanya aktif jika anda memiliki syarikat.';
+
+  @override
+  String get readOnlyPastDays =>
+      'Hari yang lebih sebulan lalu hanya boleh dibaca.';
 }

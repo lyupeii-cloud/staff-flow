@@ -46,4 +46,5 @@ const fil = <String, String>{
   'Message introuvable.': 'Hindi nakita ang mensahe.',
   'Traduction momentanément indisponible.': 'Pansamantalang hindi available ang pagsasalin.',
   'Traduction indisponible pour cette langue.': 'Walang pagsasalin para sa wikang ito.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Hindi na mababago ang mga araw na lampas isang buwan na.',
 };

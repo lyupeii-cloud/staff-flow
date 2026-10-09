@@ -46,4 +46,5 @@ const th = <String, String>{
   'Message introuvable.': 'ไม่พบข้อความ',
   'Traduction momentanément indisponible.': 'การแปลไม่พร้อมใช้งานชั่วคราว',
   'Traduction indisponible pour cette langue.': 'ไม่มีการแปลสำหรับภาษานี้',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'วันที่ผ่านมาเกินหนึ่งเดือนแก้ไขไม่ได้แล้ว',
 };

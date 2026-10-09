@@ -46,4 +46,5 @@ const nb = <String, String>{
   'Message introuvable.': 'Fant ikke meldingen.',
   'Traduction momentanément indisponible.': 'Oversettelse er midlertidig utilgjengelig.',
   'Traduction indisponible pour cette langue.': 'Oversettelse er ikke tilgjengelig for dette språket.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Dager som er mer enn en måned gamle, kan ikke lenger endres.',
 };

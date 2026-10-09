@@ -202,5 +202,6 @@
   "retentionDay": "1 dag",
   "retentionWeek": "1 vecka",
   "retentionMonth": "1 månad",
-  "billingOwnersOnly": "Bara aktivt om du äger ett företag."
+  "billingOwnersOnly": "Bara aktivt om du äger ett företag.",
+  "readOnlyPastDays": "Dagar äldre än en månad är skrivskyddade."
 }

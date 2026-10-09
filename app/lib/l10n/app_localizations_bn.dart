@@ -738,4 +738,7 @@ class L10nBn extends L10n {
 
   @override
   String get billingOwnersOnly => 'শুধু আপনি কোনো কোম্পানির মালিক হলে সক্রিয়।';
+
+  @override
+  String get readOnlyPastDays => 'এক মাসের বেশি পুরোনো দিন শুধু দেখা যাবে।';
 }

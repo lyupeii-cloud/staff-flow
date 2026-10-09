@@ -740,4 +740,7 @@ class L10nMr extends L10n {
 
   @override
   String get billingOwnersOnly => 'तुमची कंपनी असेल तरच सक्रिय.';
+
+  @override
+  String get readOnlyPastDays => 'एक महिन्यापेक्षा जुने दिवस फक्त वाचता येतात.';
 }

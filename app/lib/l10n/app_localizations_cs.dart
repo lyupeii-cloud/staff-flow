@@ -744,4 +744,7 @@ class L10nCs extends L10n {
 
   @override
   String get billingOwnersOnly => 'Aktivní, jen pokud vlastníte firmu.';
+
+  @override
+  String get readOnlyPastDays => 'Dny starší než měsíc jsou jen pro čtení.';
 }

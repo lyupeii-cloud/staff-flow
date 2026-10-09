@@ -202,5 +202,6 @@
   "retentionDay": "1 nap",
   "retentionWeek": "1 hét",
   "retentionMonth": "1 hónap",
-  "billingOwnersOnly": "Csak akkor aktív, ha van saját céged."
+  "billingOwnersOnly": "Csak akkor aktív, ha van saját céged.",
+  "readOnlyPastDays": "Az egy hónapnál régebbi napok csak olvashatók."
 }

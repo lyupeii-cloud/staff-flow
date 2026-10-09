@@ -202,5 +202,6 @@
   "retentionDay": "১ দিন",
   "retentionWeek": "১ সপ্তাহ",
   "retentionMonth": "১ মাস",
-  "billingOwnersOnly": "শুধু আপনি কোনো কোম্পানির মালিক হলে সক্রিয়।"
+  "billingOwnersOnly": "শুধু আপনি কোনো কোম্পানির মালিক হলে সক্রিয়।",
+  "readOnlyPastDays": "এক মাসের বেশি পুরোনো দিন শুধু দেখা যাবে।"
 }

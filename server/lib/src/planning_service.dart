@@ -20,7 +20,24 @@ class PlanningService {
   final CompanyService companies;
   final NotificationService notifications;
 
-  PlanningService(this.store, this.companies, this.notifications);
+  /// Horloge (UTC), remplaçable dans les tests.
+  final DateTime Function() now;
+
+  PlanningService(this.store, this.companies, this.notifications, {DateTime Function()? now})
+      : now = now ?? (() => DateTime.now().toUtc());
+
+  /// Premier jour encore modifiable : les jours de plus d'un mois restent
+  /// en lecture seule (la paie a pu être faite).
+  DateTime get editableFrom {
+    final n = now();
+    return DateTime.utc(n.year, n.month - 1, n.day);
+  }
+
+  void _checkEditable(DateTime day) {
+    if (DateTime.utc(day.year, day.month, day.day).isBefore(editableFrom)) {
+      throw const ApiError.conflict('Les jours de plus d\'un mois ne sont plus modifiables.');
+    }
+  }
 
   static const maxRangeDays = 62;
   static const maxOccurrences = 400;
@@ -98,6 +115,7 @@ class PlanningService {
     if (dates.length > maxOccurrences) {
       throw const ApiError.badRequest('Trop de services d\'un coup (400 au plus).');
     }
+    dates.forEach(_checkEditable);
     return store.db.runTx((tx) async {
       String? seriesId;
       if (repeat != null) {
@@ -146,6 +164,8 @@ class PlanningService {
       {required Scope scope, int? baseVersion}) async {
     await _manager(actor, companyId);
     final shift = await _find(companyId, shiftId);
+    _checkEditable(shift.day);
+    if (patch.day != null) _checkEditable(patch.day!);
     if (scope == Scope.series && patch.day != null) {
       throw const ApiError.badRequest('Le jour se change service par service.');
     }
@@ -189,6 +209,7 @@ class PlanningService {
       {required Scope scope, int? baseVersion}) async {
     await _manager(actor, companyId);
     final shift = await _find(companyId, shiftId);
+    _checkEditable(shift.day);
     final series = scope == Scope.series && shift.seriesId != null;
     var overwritten = const <String>[];
     final count = await store.db.runTx((tx) async {
@@ -220,8 +241,10 @@ class PlanningService {
         SELECT * FROM shifts
         WHERE company_id = @c::uuid AND user_id = @from::uuid AND NOT deleted
           AND day BETWEEN @start::date AND @end::date
+          AND day >= @editable::date
         FOR UPDATE''', {
         'c': companyId,
+        'editable': formatDay(editableFrom),
         'from': fromUserId,
         'start': formatDay(parseDay(from)),
         'end': formatDay(parseDay(to)),
@@ -274,6 +297,8 @@ class PlanningService {
       final target = entries.first[1] as Map<String, dynamic>?;
       final current = await store.query(tx, 'SELECT * FROM shifts WHERE id = @id::uuid FOR UPDATE', {'id': shiftId});
       final row = current.isEmpty ? null : current.first.toColumnMap();
+      if (row != null) _checkEditable(row['day'] as DateTime);
+      if (target != null) _checkEditable(DateTime.parse(target['day'] as String));
       final alive = row != null && row['deleted'] != true;
 
       if (target == null) {

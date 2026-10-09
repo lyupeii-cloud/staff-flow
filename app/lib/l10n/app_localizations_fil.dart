@@ -742,4 +742,8 @@ class L10nFil extends L10n {
 
   @override
   String get billingOwnersOnly => 'Aktibo lang kung may-ari ka ng kumpanya.';
+
+  @override
+  String get readOnlyPastDays =>
+      'Pagbasa lang ang mga araw na lampas isang buwan na.';
 }

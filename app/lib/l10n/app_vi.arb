@@ -202,5 +202,6 @@
   "retentionDay": "1 ngày",
   "retentionWeek": "1 tuần",
   "retentionMonth": "1 tháng",
-  "billingOwnersOnly": "Chỉ bật khi bạn sở hữu một công ty."
+  "billingOwnersOnly": "Chỉ bật khi bạn sở hữu một công ty.",
+  "readOnlyPastDays": "Các ngày đã qua hơn một tháng chỉ có thể xem."
 }

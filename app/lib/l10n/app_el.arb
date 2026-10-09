@@ -202,5 +202,6 @@
   "retentionDay": "1 ημέρα",
   "retentionWeek": "1 εβδομάδα",
   "retentionMonth": "1 μήνα",
-  "billingOwnersOnly": "Ενεργό μόνο αν έχετε δική σας εταιρεία."
+  "billingOwnersOnly": "Ενεργό μόνο αν έχετε δική σας εταιρεία.",
+  "readOnlyPastDays": "Οι ημέρες πριν από περισσότερο από έναν μήνα είναι μόνο για ανάγνωση."
 }

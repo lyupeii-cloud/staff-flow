@@ -723,4 +723,7 @@ class L10nZh extends L10n {
 
   @override
   String get billingOwnersOnly => '仅在您拥有公司时生效。';
+
+  @override
+  String get readOnlyPastDays => '超过一个月的日期为只读。';
 }

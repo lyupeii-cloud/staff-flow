@@ -726,4 +726,7 @@ class L10nKo extends L10n {
 
   @override
   String get billingOwnersOnly => '회사를 소유한 경우에만 활성화됩니다.';
+
+  @override
+  String get readOnlyPastDays => '한 달이 지난 날짜는 읽기 전용입니다.';
 }

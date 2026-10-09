@@ -24,7 +24,7 @@ class Api {
   final SessionTokens tokens;
   final CompanyService companies;
   late final NotificationService notifications = NotificationService(store, push: push);
-  late final PlanningService planning = PlanningService(store, companies, notifications);
+  late final PlanningService planning = PlanningService(store, companies, notifications, now: now);
   late final ChatService chat = ChatService(store, companies, notifications);
   late final JoinService joins = JoinService(store, companies, now: now);
   late final NoticeService notices = NoticeService(store, now: now);

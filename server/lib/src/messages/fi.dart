@@ -46,4 +46,5 @@ const fi = <String, String>{
   'Message introuvable.': 'Viestiä ei löytynyt.',
   'Traduction momentanément indisponible.': 'Käännös ei ole tilapäisesti käytettävissä.',
   'Traduction indisponible pour cette langue.': 'Käännöstä ei ole saatavilla tälle kielelle.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Yli kuukauden takaisia päiviä ei voi enää muuttaa.',
 };

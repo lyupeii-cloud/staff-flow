@@ -738,4 +738,8 @@ class L10nId extends L10n {
 
   @override
   String get billingOwnersOnly => 'Hanya aktif jika Anda memiliki perusahaan.';
+
+  @override
+  String get readOnlyPastDays =>
+      'Hari yang lewat lebih dari sebulan hanya bisa dibaca.';
 }

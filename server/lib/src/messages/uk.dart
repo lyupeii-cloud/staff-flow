@@ -66,4 +66,5 @@ const uk = <String, String>{
   'Message introuvable.': 'Повідомлення не знайдено.',
   'Traduction momentanément indisponible.': 'Переклад тимчасово недоступний.',
   'Traduction indisponible pour cette langue.': 'Переклад цією мовою недоступний.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Дні, що минули понад місяць тому, більше не можна змінювати.',
 };

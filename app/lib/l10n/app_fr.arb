@@ -206,5 +206,6 @@
   "retentionDay": "1 jour",
   "retentionWeek": "1 semaine",
   "retentionMonth": "1 mois",
-  "billingOwnersOnly": "Actif uniquement si vous possédez une entreprise."
+  "billingOwnersOnly": "Actif uniquement si vous possédez une entreprise.",
+  "readOnlyPastDays": "Les jours de plus d'un mois sont en lecture seule."
 }

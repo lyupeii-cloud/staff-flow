@@ -1408,6 +1408,12 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Only active when you own a company.'**
   String get billingOwnersOnly;
+
+  /// No description provided for @readOnlyPastDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Days more than a month old are read-only.'**
+  String get readOnlyPastDays;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

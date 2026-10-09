@@ -202,5 +202,6 @@
   "retentionDay": "1 päivän jälkeen",
   "retentionWeek": "1 viikon jälkeen",
   "retentionMonth": "1 kuukauden jälkeen",
-  "billingOwnersOnly": "Käytössä vain, jos omistat yrityksen."
+  "billingOwnersOnly": "Käytössä vain, jos omistat yrityksen.",
+  "readOnlyPastDays": "Yli kuukauden takaiset päivät ovat vain luku -tilassa."
 }

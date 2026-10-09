@@ -46,4 +46,5 @@ const ko = <String, String>{
   'Message introuvable.': '메시지를 찾을 수 없습니다.',
   'Traduction momentanément indisponible.': '번역을 일시적으로 사용할 수 없습니다.',
   'Traduction indisponible pour cette langue.': '이 언어로는 번역할 수 없습니다.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': '한 달이 지난 날짜는 더 이상 변경할 수 없습니다.',
 };

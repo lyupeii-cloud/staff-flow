@@ -746,4 +746,8 @@ class L10nDe extends L10n {
   @override
   String get billingOwnersOnly =>
       'Nur aktiv, wenn Ihnen ein Unternehmen gehört.';
+
+  @override
+  String get readOnlyPastDays =>
+      'Tage, die mehr als einen Monat zurückliegen, sind schreibgeschützt.';
 }

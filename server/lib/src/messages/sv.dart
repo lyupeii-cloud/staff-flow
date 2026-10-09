@@ -46,4 +46,5 @@ const sv = <String, String>{
   'Message introuvable.': 'Meddelandet hittades inte.',
   'Traduction momentanément indisponible.': 'Översättning tillfälligt otillgänglig.',
   'Traduction indisponible pour cette langue.': 'Översättning finns inte för det här språket.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Dagar äldre än en månad kan inte längre ändras.',
 };

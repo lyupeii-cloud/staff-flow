@@ -300,8 +300,8 @@ class _ShiftEditorState extends State<_ShiftEditor> {
   Future<void> _pickDay({DateTime? replace}) async {
     final d = await showDatePicker(
       context: context,
-      initialDate: replace ?? _days.last,
-      firstDate: DateTime(2020),
+      initialDate: _notBefore(replace ?? _days.last, editableFrom()),
+      firstDate: editableFrom(),
       lastDate: DateTime(DateTime.now().year + 3),
     );
     if (d == null) return;
@@ -409,8 +409,10 @@ Future<bool?> showReplaceDialog(
                 onPressed: () async {
                   final r = await showDateRangePicker(
                     context: context,
-                    initialDateRange: range,
-                    firstDate: DateTime(2020),
+                    initialDateRange: DateTimeRange(
+                        start: _notBefore(range.start, editableFrom()),
+                        end: _notBefore(range.end, editableFrom())),
+                    firstDate: editableFrom(),
                     lastDate: DateTime(DateTime.now().year + 3),
                   );
                   if (r != null) setState(() => range = r);
@@ -455,3 +457,6 @@ Future<bool?> showReplaceDialog(
     ),
   );
 }
+
+/// Le calendrier refuse une date initiale avant la première date permise.
+DateTime _notBefore(DateTime d, DateTime first) => d.isBefore(first) ? first : d;

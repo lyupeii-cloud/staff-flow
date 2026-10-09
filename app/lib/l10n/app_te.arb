@@ -202,5 +202,6 @@
   "retentionDay": "1 రోజు",
   "retentionWeek": "1 వారం",
   "retentionMonth": "1 నెల",
-  "billingOwnersOnly": "మీకు కంపెనీ ఉంటేనే సక్రియం."
+  "billingOwnersOnly": "మీకు కంపెనీ ఉంటేనే సక్రియం.",
+  "readOnlyPastDays": "ఒక నెల కంటే పాత రోజులు చదవడానికి మాత్రమే."
 }

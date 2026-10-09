@@ -743,4 +743,8 @@ class L10nPt extends L10n {
   @override
   String get billingOwnersOnly =>
       'Só ativo se for proprietário de uma empresa.';
+
+  @override
+  String get readOnlyPastDays =>
+      'Os dias com mais de um mês são só de leitura.';
 }

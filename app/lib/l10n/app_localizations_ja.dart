@@ -727,4 +727,7 @@ class L10nJa extends L10n {
 
   @override
   String get billingOwnersOnly => '会社のオーナーの場合のみ有効です。';
+
+  @override
+  String get readOnlyPastDays => '1か月以上前の日は閲覧のみです。';
 }

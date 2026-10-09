@@ -742,4 +742,8 @@ class L10nSw extends L10n {
 
   @override
   String get billingOwnersOnly => 'Inafanya kazi tu ukimiliki kampuni.';
+
+  @override
+  String get readOnlyPastDays =>
+      'Siku zilizopita zaidi ya mwezi ni za kusoma tu.';
 }

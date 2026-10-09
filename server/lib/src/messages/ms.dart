@@ -46,4 +46,5 @@ const ms = <String, String>{
   'Message introuvable.': 'Mesej tidak ditemui.',
   'Traduction momentanément indisponible.': 'Terjemahan tidak tersedia buat sementara waktu.',
   'Traduction indisponible pour cette langue.': 'Terjemahan tidak tersedia untuk bahasa ini.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Hari yang lebih sebulan lalu tidak boleh diubah lagi.',
 };

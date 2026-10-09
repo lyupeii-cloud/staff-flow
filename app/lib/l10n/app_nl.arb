@@ -202,5 +202,6 @@
   "retentionDay": "1 dag",
   "retentionWeek": "1 week",
   "retentionMonth": "1 maand",
-  "billingOwnersOnly": "Alleen actief als je eigenaar bent van een bedrijf."
+  "billingOwnersOnly": "Alleen actief als je eigenaar bent van een bedrijf.",
+  "readOnlyPastDays": "Dagen van meer dan een maand geleden zijn alleen-lezen."
 }

@@ -734,4 +734,7 @@ class L10nTh extends L10n {
 
   @override
   String get billingOwnersOnly => 'ใช้งานได้เฉพาะเมื่อคุณเป็นเจ้าของบริษัท';
+
+  @override
+  String get readOnlyPastDays => 'วันที่ผ่านมาเกินหนึ่งเดือนดูได้อย่างเดียว';
 }

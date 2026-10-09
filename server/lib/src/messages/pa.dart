@@ -46,4 +46,5 @@ const pa = <String, String>{
   'Message introuvable.': 'ਸੁਨੇਹਾ ਨਹੀਂ ਮਿਲਿਆ।',
   'Traduction momentanément indisponible.': 'ਅਨੁਵਾਦ ਫ਼ਿਲਹਾਲ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।',
   'Traduction indisponible pour cette langue.': 'ਇਸ ਭਾਸ਼ਾ ਲਈ ਅਨੁਵਾਦ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'ਇੱਕ ਮਹੀਨੇ ਤੋਂ ਪੁਰਾਣੇ ਦਿਨ ਹੁਣ ਬਦਲੇ ਨਹੀਂ ਜਾ ਸਕਦੇ।',
 };

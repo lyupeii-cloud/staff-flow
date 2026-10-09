@@ -746,4 +746,8 @@ class L10nEl extends L10n {
 
   @override
   String get billingOwnersOnly => 'Ενεργό μόνο αν έχετε δική σας εταιρεία.';
+
+  @override
+  String get readOnlyPastDays =>
+      'Οι ημέρες πριν από περισσότερο από έναν μήνα είναι μόνο για ανάγνωση.';
 }

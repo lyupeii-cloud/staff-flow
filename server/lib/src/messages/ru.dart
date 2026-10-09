@@ -46,4 +46,5 @@ const ru = <String, String>{
   'Message introuvable.': 'Сообщение не найдено.',
   'Traduction momentanément indisponible.': 'Перевод временно недоступен.',
   'Traduction indisponible pour cette langue.': 'Перевод на этот язык недоступен.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Дни, прошедшие более месяца назад, больше нельзя изменять.',
 };

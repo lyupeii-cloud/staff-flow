@@ -46,4 +46,5 @@ const kk = <String, String>{
   'Message introuvable.': 'Хабар табылмады.',
   'Traduction momentanément indisponible.': 'Аударма уақытша қолжетімсіз.',
   'Traduction indisponible pour cette langue.': 'Бұл тілге аударма қолжетімсіз.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Бір айдан асқан күндерді енді өзгерту мүмкін емес.',
 };

@@ -202,5 +202,6 @@
   "retentionDay": "1日",
   "retentionWeek": "1週間",
   "retentionMonth": "1か月",
-  "billingOwnersOnly": "会社のオーナーの場合のみ有効です。"
+  "billingOwnersOnly": "会社のオーナーの場合のみ有効です。",
+  "readOnlyPastDays": "1か月以上前の日は閲覧のみです。"
 }

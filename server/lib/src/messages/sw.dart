@@ -46,4 +46,5 @@ const sw = <String, String>{
   'Message introuvable.': 'Ujumbe haujapatikana.',
   'Traduction momentanément indisponible.': 'Tafsiri haipatikani kwa sasa.',
   'Traduction indisponible pour cette langue.': 'Tafsiri haipatikani kwa lugha hii.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Siku zilizopita zaidi ya mwezi mmoja haziwezi kubadilishwa tena.',
 };

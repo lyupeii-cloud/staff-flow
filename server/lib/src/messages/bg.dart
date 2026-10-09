@@ -46,4 +46,5 @@ const bg = <String, String>{
   'Message introuvable.': 'Съобщението не е намерено.',
   'Traduction momentanément indisponible.': 'Преводът временно не е достъпен.',
   'Traduction indisponible pour cette langue.': 'Превод на този език не е достъпен.',
+  'Les jours de plus d\'un mois ne sont plus modifiables.': 'Дни отпреди повече от месец вече не могат да се променят.',
 };
