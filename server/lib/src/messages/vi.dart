@@ -41,4 +41,6 @@ const vi = <String, String>{
   'Un autre responsable a modifié ce planning': 'Một quản lý khác đã thay đổi lịch này',
   '{name} a remplacé votre modification.': '{name} đã thay thế thay đổi của bạn.',
   '{name} a rejoint l\'entreprise.': '{name} đã tham gia công ty.',
+  'Conversation introuvable.': 'Không tìm thấy cuộc trò chuyện.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Người này không còn thuộc công ty.',
 };

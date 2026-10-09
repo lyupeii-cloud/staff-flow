@@ -41,4 +41,6 @@ const fi = <String, String>{
   'Un autre responsable a modifié ce planning': 'Toinen esihenkilö muutti tätä työvuorolistaa',
   '{name} a remplacé votre modification.': '{name} korvasi muutoksesi.',
   '{name} a rejoint l\'entreprise.': '{name} liittyi yritykseen.',
+  'Conversation introuvable.': 'Keskustelua ei löytynyt.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Tämä henkilö ei enää kuulu yritykseen.',
 };

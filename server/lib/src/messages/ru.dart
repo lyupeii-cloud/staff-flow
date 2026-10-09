@@ -41,4 +41,6 @@ const ru = <String, String>{
   'Un autre responsable a modifié ce planning': 'Другой руководитель изменил этот график',
   '{name} a remplacé votre modification.': '{name} заменил ваше изменение.',
   '{name} a rejoint l\'entreprise.': '{name} присоединился к компании.',
+  'Conversation introuvable.': 'Беседа не найдена.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Этот человек больше не состоит в компании.',
 };

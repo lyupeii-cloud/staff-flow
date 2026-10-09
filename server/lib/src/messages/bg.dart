@@ -41,4 +41,6 @@ const bg = <String, String>{
   'Un autre responsable a modifié ce planning': 'Друг ръководител промени този график',
   '{name} a remplacé votre modification.': '{name} замени вашата промяна.',
   '{name} a rejoint l\'entreprise.': '{name} се присъедини към фирмата.',
+  'Conversation introuvable.': 'Разговорът не е намерен.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Този човек вече не е част от фирмата.',
 };

@@ -41,4 +41,6 @@ const pt = <String, String>{
   'Un autre responsable a modifié ce planning': 'Outro responsável alterou este horário',
   '{name} a remplacé votre modification.': '{name} substituiu a sua alteração.',
   '{name} a rejoint l\'entreprise.': '{name} juntou-se à empresa.',
+  'Conversation introuvable.': 'Conversa não encontrada.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Esta pessoa já não faz parte da empresa.',
 };

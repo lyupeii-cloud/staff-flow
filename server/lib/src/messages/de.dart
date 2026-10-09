@@ -41,4 +41,6 @@ const de = <String, String>{
   'Un autre responsable a modifié ce planning': 'Eine andere Führungskraft hat diesen Dienstplan geändert',
   '{name} a remplacé votre modification.': '{name} hat Ihre Änderung ersetzt.',
   '{name} a rejoint l\'entreprise.': '{name} ist dem Unternehmen beigetreten.',
+  'Conversation introuvable.': 'Unterhaltung nicht gefunden.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Diese Person gehört nicht mehr zum Unternehmen.',
 };

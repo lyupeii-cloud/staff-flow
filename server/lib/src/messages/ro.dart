@@ -41,4 +41,6 @@ const ro = <String, String>{
   'Un autre responsable a modifié ce planning': 'Un alt responsabil a modificat acest program',
   '{name} a remplacé votre modification.': '{name} a înlocuit modificarea ta.',
   '{name} a rejoint l\'entreprise.': '{name} s-a alăturat firmei.',
+  'Conversation introuvable.': 'Conversația nu a fost găsită.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Această persoană nu mai face parte din firmă.',
 };

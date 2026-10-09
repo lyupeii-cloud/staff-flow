@@ -41,4 +41,6 @@ const pl = <String, String>{
   'Un autre responsable a modifié ce planning': 'Inny kierownik zmienił ten grafik',
   '{name} a remplacé votre modification.': '{name} zastąpił twoją zmianę.',
   '{name} a rejoint l\'entreprise.': '{name} dołączył do firmy.',
+  'Conversation introuvable.': 'Nie znaleziono rozmowy.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Ta osoba nie należy już do firmy.',
 };

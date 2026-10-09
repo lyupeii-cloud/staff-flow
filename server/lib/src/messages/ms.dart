@@ -41,4 +41,6 @@ const ms = <String, String>{
   'Un autre responsable a modifié ce planning': 'Pengurus lain telah mengubah jadual ini',
   '{name} a remplacé votre modification.': '{name} telah menggantikan perubahan anda.',
   '{name} a rejoint l\'entreprise.': '{name} telah menyertai syarikat.',
+  'Conversation introuvable.': 'Perbualan tidak ditemui.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Orang ini bukan lagi sebahagian daripada syarikat.',
 };

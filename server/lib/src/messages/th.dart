@@ -41,4 +41,6 @@ const th = <String, String>{
   'Un autre responsable a modifié ce planning': 'ผู้จัดการคนอื่นแก้ไขตารางงานนี้',
   '{name} a remplacé votre modification.': '{name} แทนที่การแก้ไขของคุณ',
   '{name} a rejoint l\'entreprise.': '{name} เข้าร่วมบริษัทแล้ว',
+  'Conversation introuvable.': 'ไม่พบการสนทนา',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'บุคคลนี้ไม่ได้อยู่ในบริษัทแล้ว',
 };

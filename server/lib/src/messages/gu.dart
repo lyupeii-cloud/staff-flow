@@ -41,4 +41,6 @@ const gu = <String, String>{
   'Un autre responsable a modifié ce planning': 'બીજા મેનેજરે આ સમયપત્રક બદલ્યું',
   '{name} a remplacé votre modification.': '{name} એ તમારો ફેરફાર બદલી નાખ્યો.',
   '{name} a rejoint l\'entreprise.': '{name} કંપનીમાં જોડાયા.',
+  'Conversation introuvable.': 'વાતચીત મળી નથી.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'આ વ્યક્તિ હવે કંપનીનો ભાગ નથી.',
 };

@@ -41,4 +41,6 @@ const nl = <String, String>{
   'Un autre responsable a modifié ce planning': 'Een andere leidinggevende heeft dit rooster gewijzigd',
   '{name} a remplacé votre modification.': '{name} heeft je wijziging vervangen.',
   '{name} a rejoint l\'entreprise.': '{name} is bij het bedrijf gekomen.',
+  'Conversation introuvable.': 'Gesprek niet gevonden.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Deze persoon hoort niet meer bij het bedrijf.',
 };

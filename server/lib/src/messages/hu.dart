@@ -41,4 +41,6 @@ const hu = <String, String>{
   'Un autre responsable a modifié ce planning': 'Egy másik vezető módosította ezt a beosztást',
   '{name} a remplacé votre modification.': '{name} felülírta a módosításodat.',
   '{name} a rejoint l\'entreprise.': '{name} csatlakozott a céghez.',
+  'Conversation introuvable.': 'A beszélgetés nem található.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Ez a személy már nem tagja a cégnek.',
 };

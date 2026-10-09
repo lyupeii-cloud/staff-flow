@@ -41,4 +41,6 @@ const it = <String, String>{
   'Un autre responsable a modifié ce planning': 'Un altro responsabile ha modificato questo planning',
   '{name} a remplacé votre modification.': '{name} ha sostituito la tua modifica.',
   '{name} a rejoint l\'entreprise.': '{name} si è unito all\'azienda.',
+  'Conversation introuvable.': 'Conversazione non trovata.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Questa persona non fa più parte dell\'azienda.',
 };

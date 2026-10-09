@@ -41,4 +41,6 @@ const mr = <String, String>{
   'Un autre responsable a modifié ce planning': 'दुसऱ्या व्यवस्थापकाने हे वेळापत्रक बदलले',
   '{name} a remplacé votre modification.': '{name} यांनी तुमचा बदल बदलला.',
   '{name} a rejoint l\'entreprise.': '{name} कंपनीत सामील झाले.',
+  'Conversation introuvable.': 'संभाषण सापडले नाही.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'ही व्यक्ती आता कंपनीचा भाग नाही.',
 };

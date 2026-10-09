@@ -5,6 +5,7 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
 import 'auth.dart';
+import 'chat_service.dart';
 import 'company_service.dart';
 import 'errors.dart';
 import 'join_service.dart';
@@ -23,6 +24,7 @@ class Api {
   final CompanyService companies;
   late final NotificationService notifications = NotificationService(store, push: push);
   late final PlanningService planning = PlanningService(store, companies, notifications);
+  late final ChatService chat = ChatService(store, companies, notifications);
   late final JoinService joins = JoinService(store, companies, now: now);
   late final NoticeService notices = NoticeService(store);
 
@@ -89,7 +91,13 @@ class Api {
       ..put('/devices', _authed(_registerDevice))
       ..post('/devices/forget', _authed(_forgetDevice))
       ..get('/me/notifications', _authed(_getPrefs))
-      ..patch('/me/notifications', _authed(_setPrefs));
+      ..patch('/me/notifications', _authed(_setPrefs))
+      // Messagerie
+      ..get('/companies/<id>/conversations', _authed(_conversations))
+      ..post('/companies/<id>/conversations', _authed(_openConversation))
+      ..get('/conversations/<id>/messages', _authed(_messages))
+      ..post('/conversations/<id>/messages', _authed(_sendMessage))
+      ..post('/conversations/<id>/read', _authed(_readMessages));
     if (devLogin) v1.post('/auth/dev', _loginDev);
 
     final root = Router(notFoundHandler: _notFound)
@@ -139,6 +147,7 @@ class Api {
         'pendingJoinRequests': [for (final j in await joins.pendingFor(user)) j.toJson()],
         'unreadNotices': await notices.unreadCount(user.id),
         'notificationPrefs': await notifications.prefs(user.id),
+        'unreadMessages': await chat.unreadByCompany(user.id),
       });
 
   /// La personne choisit le nom affiché partout (vide : celui de Google).
@@ -341,6 +350,37 @@ class Api {
 
   Future<Response> _readNotices(Request req, User user) async {
     await notices.markAllRead(user.id);
+    return Response(204);
+  }
+
+  // --- Messagerie ------------------------------------------------------------
+
+  Future<Response> _conversations(Request req, User user) async =>
+      _json({'conversations': await chat.conversations(user, req.params['id']!)});
+
+  Future<Response> _openConversation(Request req, User user) async {
+    final body = await _body(req);
+    final id = await chat.openPrivate(user, req.params['id']!, _string(body, 'userId'));
+    return _json({'id': id});
+  }
+
+  Future<Response> _messages(Request req, User user) async {
+    final before = req.url.queryParameters['before'];
+    return _json({
+      'messages': await chat.messages(user, req.params['id']!,
+          before: before == null ? null : int.tryParse(before)),
+    });
+  }
+
+  Future<Response> _sendMessage(Request req, User user) async {
+    final body = await _body(req);
+    return _json(await chat.send(user, req.params['id']!, _string(body, 'body')), status: 201);
+  }
+
+  Future<Response> _readMessages(Request req, User user) async {
+    final last = (await _body(req))['lastId'];
+    if (last is! int) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    await chat.markRead(user, req.params['id']!, last);
     return Response(204);
   }
 

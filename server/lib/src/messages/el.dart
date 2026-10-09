@@ -41,4 +41,6 @@ const el = <String, String>{
   'Un autre responsable a modifié ce planning': 'Άλλος υπεύθυνος άλλαξε αυτό το πρόγραμμα',
   '{name} a remplacé votre modification.': 'Ο/Η {name} αντικατέστησε την αλλαγή σας.',
   '{name} a rejoint l\'entreprise.': 'Ο/Η {name} μπήκε στην εταιρεία.',
+  'Conversation introuvable.': 'Η συνομιλία δεν βρέθηκε.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Αυτό το άτομο δεν ανήκει πλέον στην εταιρεία.',
 };

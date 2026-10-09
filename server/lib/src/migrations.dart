@@ -209,4 +209,36 @@ CREATE TABLE push_devices (
 CREATE INDEX push_devices_user ON push_devices (user_id);
 ALTER TABLE users ADD COLUMN notification_prefs jsonb NOT NULL DEFAULT '{}';
 ''',
+  // 7 — messagerie : un groupe par entreprise, des conversations privées
+  // (une par paire de personnes), les messages et ce que chacun a lu.
+  '''
+CREATE TABLE conversations (
+  id          uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  company_id  uuid NOT NULL REFERENCES companies(id) ON DELETE CASCADE,
+  kind        text NOT NULL CHECK (kind IN ('group', 'private')),
+  -- Conversation privée : les deux personnes, dans l'ordre (user_a < user_b).
+  user_a      uuid REFERENCES users(id) ON DELETE CASCADE,
+  user_b      uuid REFERENCES users(id) ON DELETE CASCADE,
+  created_at  timestamptz NOT NULL DEFAULT now(),
+  CHECK ((kind = 'group') = (user_a IS NULL AND user_b IS NULL))
+);
+CREATE UNIQUE INDEX conversations_group ON conversations (company_id) WHERE kind = 'group';
+CREATE UNIQUE INDEX conversations_pair ON conversations (company_id, user_a, user_b) WHERE kind = 'private';
+
+CREATE TABLE messages (
+  id               bigserial PRIMARY KEY,
+  conversation_id  uuid NOT NULL REFERENCES conversations(id) ON DELETE CASCADE,
+  author_id        uuid REFERENCES users(id) ON DELETE SET NULL,
+  body             text NOT NULL,
+  created_at       timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX messages_conversation ON messages (conversation_id, id DESC);
+
+CREATE TABLE conversation_reads (
+  conversation_id  uuid NOT NULL REFERENCES conversations(id) ON DELETE CASCADE,
+  user_id          uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  last_read_id     bigint NOT NULL DEFAULT 0,
+  PRIMARY KEY (conversation_id, user_id)
+);
+''',
 ];

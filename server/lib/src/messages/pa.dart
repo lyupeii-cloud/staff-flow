@@ -41,4 +41,6 @@ const pa = <String, String>{
   'Un autre responsable a modifié ce planning': 'ਕਿਸੇ ਹੋਰ ਮੈਨੇਜਰ ਨੇ ਇਹ ਸ਼ਡਿਊਲ ਬਦਲਿਆ',
   '{name} a remplacé votre modification.': '{name} ਨੇ ਤੁਹਾਡੀ ਤਬਦੀਲੀ ਬਦਲ ਦਿੱਤੀ।',
   '{name} a rejoint l\'entreprise.': '{name} ਕੰਪਨੀ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋ ਗਏ।',
+  'Conversation introuvable.': 'ਗੱਲਬਾਤ ਨਹੀਂ ਮਿਲੀ।',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'ਇਹ ਵਿਅਕਤੀ ਹੁਣ ਕੰਪਨੀ ਦਾ ਹਿੱਸਾ ਨਹੀਂ ਹੈ।',
 };

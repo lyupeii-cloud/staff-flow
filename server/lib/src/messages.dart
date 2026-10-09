@@ -78,6 +78,7 @@ const technicalMessages = {
   'Heures invalides.',
   'Le jour se change service par service.',
   'Indiquez une date de fin ou un nombre de répétitions.',
+  'Message vide ou trop long (2000 caractères au plus).',
 };
 
 /// Langue de réponse d'après l'en-tête `Accept-Language` (`uk-UA,uk;q=0.9,en;q=0.8`).

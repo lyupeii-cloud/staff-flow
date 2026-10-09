@@ -41,4 +41,6 @@ const fil = <String, String>{
   'Un autre responsable a modifié ce planning': 'Binago ng ibang manager ang iskedyul na ito',
   '{name} a remplacé votre modification.': 'Pinalitan ni {name} ang binago mo.',
   '{name} a rejoint l\'entreprise.': 'Sumali si {name} sa kumpanya.',
+  'Conversation introuvable.': 'Hindi nakita ang usapan.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Hindi na bahagi ng kumpanya ang taong ito.',
 };

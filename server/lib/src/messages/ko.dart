@@ -41,4 +41,6 @@ const ko = <String, String>{
   'Un autre responsable a modifié ce planning': '다른 관리자가 이 근무표를 변경했습니다',
   '{name} a remplacé votre modification.': '{name}님이 회원님의 변경 내용을 대체했습니다.',
   '{name} a rejoint l\'entreprise.': '{name}님이 회사에 합류했습니다.',
+  'Conversation introuvable.': '대화를 찾을 수 없습니다.',
+  'Cette personne ne fait plus partie de l\'entreprise.': '이 사람은 더 이상 회사 소속이 아닙니다.',
 };

@@ -41,4 +41,6 @@ const sw = <String, String>{
   'Un autre responsable a modifié ce planning': 'Msimamizi mwingine amebadilisha ratiba hii',
   '{name} a remplacé votre modification.': '{name} amebadilisha mabadiliko yako.',
   '{name} a rejoint l\'entreprise.': '{name} amejiunga na kampuni.',
+  'Conversation introuvable.': 'Mazungumzo hayajapatikana.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Mtu huyu si sehemu ya kampuni tena.',
 };

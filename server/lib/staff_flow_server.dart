@@ -1,5 +1,6 @@
 export 'src/api.dart';
 export 'src/auth.dart';
+export 'src/chat_service.dart';
 export 'src/company_service.dart';
 export 'src/errors.dart';
 export 'src/join_service.dart';

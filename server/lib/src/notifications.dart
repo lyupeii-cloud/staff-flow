@@ -180,6 +180,36 @@ class NotificationService {
     ]);
   }
 
+  /// Notification sans avis dans la cloche (un message a déjà sa place dans
+  /// la messagerie). Texte déjà prêt : c'est celui que la personne a écrit.
+  void pushDirect(Iterable<String> userIds,
+      {required NotifyCategory category,
+      required String title,
+      required String body,
+      required Map<String, String> data}) {
+    final ids = userIds.toSet().toList();
+    if (push == null || ids.isEmpty) return;
+    Future<void> run() async {
+      final rows = await store.query(store.db, '''
+        SELECT d.token, u.notification_prefs FROM push_devices d JOIN users u ON u.id = d.user_id
+        WHERE d.user_id = ANY(@ids::uuid[])''', {'ids': ids});
+      await Future.wait([
+        for (final r in rows)
+          if ((r[1] as Map<String, dynamic>)[category.name] != false) _sendRaw(r[0] as String, title, body, data),
+      ]);
+    }
+
+    late final Future<void> f;
+    f = run().catchError((Object e) => print('Notifications : $e')).whenComplete(() => _inflight.remove(f));
+    _inflight.add(f);
+  }
+
+  Future<void> _sendRaw(String token, String title, String body, Map<String, String> data) async {
+    if (await push!.send(PushMessage(token, title, body, data)) == PushOutcome.invalidToken) {
+      await store.query(store.db, 'DELETE FROM push_devices WHERE token = @t', {'t': token});
+    }
+  }
+
   /// La personne veut-elle être prévenue pour cet avis ?
   static bool wants(Map<String, dynamic> prefs, String kind) => prefs[kinds[kind]!.name] != false;
 

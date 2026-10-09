@@ -41,4 +41,6 @@ const ja = <String, String>{
   'Un autre responsable a modifié ce planning': '別の管理者がこのシフトを変更しました',
   '{name} a remplacé votre modification.': '{name} さんがあなたの変更を置き換えました。',
   '{name} a rejoint l\'entreprise.': '{name} さんが会社に参加しました。',
+  'Conversation introuvable.': '会話が見つかりません。',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'この人はもう会社のメンバーではありません。',
 };

@@ -41,4 +41,6 @@ const sv = <String, String>{
   'Un autre responsable a modifié ce planning': 'En annan chef har ändrat det här schemat',
   '{name} a remplacé votre modification.': '{name} ersatte din ändring.',
   '{name} a rejoint l\'entreprise.': '{name} har gått med i företaget.',
+  'Conversation introuvable.': 'Konversationen hittades inte.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Den här personen tillhör inte längre företaget.',
 };

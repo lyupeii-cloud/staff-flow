@@ -41,4 +41,6 @@ const zh = <String, String>{
   'Un autre responsable a modifié ce planning': '另一位负责人修改了此排班',
   '{name} a remplacé votre modification.': '{name} 替换了你的修改。',
   '{name} a rejoint l\'entreprise.': '{name} 已加入公司。',
+  'Conversation introuvable.': '找不到该对话。',
+  'Cette personne ne fait plus partie de l\'entreprise.': '此人已不再是公司成员。',
 };

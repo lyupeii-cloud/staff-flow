@@ -49,6 +49,7 @@ const en = <String, String>{
   'Heures invalides.': 'Invalid times.',
   'Répétition inconnue.': 'Unknown repetition.',
   'Indiquez une date de fin ou un nombre de répétitions.': 'Give an end date or a number of repetitions.',
+  'Message vide ou trop long (2000 caractères au plus).': 'Empty or too long message (2,000 characters at most).',
   'Nombre de répétitions entre 1 et 366.': 'Number of repetitions between 1 and 366.',
   'Jour de semaine invalide.': 'Invalid day of the week.',
   'Le jour se change service par service.': 'The day can only be changed one shift at a time.',
@@ -61,4 +62,6 @@ const en = <String, String>{
   'Un autre responsable a modifié ce planning': 'Another manager changed this schedule',
   '{name} a remplacé votre modification.': '{name} replaced your change.',
   '{name} a rejoint l\'entreprise.': '{name} joined the company.',
+  'Conversation introuvable.': 'Conversation not found.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'This person is no longer part of the company.',
 };

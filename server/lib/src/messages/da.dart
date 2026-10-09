@@ -41,4 +41,6 @@ const da = <String, String>{
   'Un autre responsable a modifié ce planning': 'En anden leder har ændret denne vagtplan',
   '{name} a remplacé votre modification.': '{name} erstattede din ændring.',
   '{name} a rejoint l\'entreprise.': '{name} er blevet en del af virksomheden.',
+  'Conversation introuvable.': 'Samtalen blev ikke fundet.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Denne person er ikke længere en del af virksomheden.',
 };

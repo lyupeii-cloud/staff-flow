@@ -41,4 +41,6 @@ const te = <String, String>{
   'Un autre responsable a modifié ce planning': 'మరో మేనేజర్ ఈ షెడ్యూల్‌ను మార్చారు',
   '{name} a remplacé votre modification.': '{name} మీ మార్పును భర్తీ చేశారు.',
   '{name} a rejoint l\'entreprise.': '{name} కంపెనీలో చేరారు.',
+  'Conversation introuvable.': 'సంభాషణ కనుగొనబడలేదు.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'ఈ వ్యక్తి ఇక కంపెనీలో భాగం కాదు.',
 };

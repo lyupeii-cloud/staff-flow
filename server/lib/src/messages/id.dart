@@ -41,4 +41,6 @@ const id = <String, String>{
   'Un autre responsable a modifié ce planning': 'Manajer lain mengubah jadwal ini',
   '{name} a remplacé votre modification.': '{name} menggantikan perubahan Anda.',
   '{name} a rejoint l\'entreprise.': '{name} telah bergabung dengan perusahaan.',
+  'Conversation introuvable.': 'Percakapan tidak ditemukan.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Orang ini sudah tidak lagi menjadi bagian dari perusahaan.',
 };

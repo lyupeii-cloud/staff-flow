@@ -41,4 +41,6 @@ const sk = <String, String>{
   'Un autre responsable a modifié ce planning': 'Iný vedúci zmenil tento rozpis',
   '{name} a remplacé votre modification.': '{name} nahradil vašu zmenu.',
   '{name} a rejoint l\'entreprise.': '{name} sa pripojil k firme.',
+  'Conversation introuvable.': 'Konverzácia sa nenašla.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Táto osoba už vo firme nie je.',
 };

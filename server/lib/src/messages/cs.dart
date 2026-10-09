@@ -41,4 +41,6 @@ const cs = <String, String>{
   'Un autre responsable a modifié ce planning': 'Jiný vedoucí změnil tento rozpis',
   '{name} a remplacé votre modification.': '{name} nahradil vaši změnu.',
   '{name} a rejoint l\'entreprise.': '{name} se připojil k firmě.',
+  'Conversation introuvable.': 'Konverzace nenalezena.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Tato osoba už ve firmě není.',
 };

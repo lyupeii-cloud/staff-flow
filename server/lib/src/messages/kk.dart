@@ -41,4 +41,6 @@ const kk = <String, String>{
   'Un autre responsable a modifié ce planning': 'Басқа басшы осы кестені өзгертті',
   '{name} a remplacé votre modification.': '{name} сіздің өзгерісіңізді ауыстырды.',
   '{name} a rejoint l\'entreprise.': '{name} компанияға қосылды.',
+  'Conversation introuvable.': 'Әңгіме табылмады.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Бұл адам енді компанияда емес.',
 };

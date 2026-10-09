@@ -41,4 +41,6 @@ const ta = <String, String>{
   'Un autre responsable a modifié ce planning': 'மற்றொரு மேலாளர் இந்த அட்டவணையை மாற்றினார்',
   '{name} a remplacé votre modification.': '{name} உங்கள் மாற்றத்தை மாற்றியமைத்தார்.',
   '{name} a rejoint l\'entreprise.': '{name} நிறுவனத்தில் சேர்ந்தார்.',
+  'Conversation introuvable.': 'உரையாடல் கிடைக்கவில்லை.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'இவர் இப்போது நிறுவனத்தில் இல்லை.',
 };

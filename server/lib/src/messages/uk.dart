@@ -61,4 +61,6 @@ const uk = <String, String>{
   'Un autre responsable a modifié ce planning': 'Інший керівник змінив цей графік',
   '{name} a remplacé votre modification.': '{name} замінив вашу зміну.',
   '{name} a rejoint l\'entreprise.': '{name} приєднався до компанії.',
+  'Conversation introuvable.': 'Розмову не знайдено.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Ця особа більше не є учасником компанії.',
 };

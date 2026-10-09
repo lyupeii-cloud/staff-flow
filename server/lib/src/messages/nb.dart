@@ -41,4 +41,6 @@ const nb = <String, String>{
   'Un autre responsable a modifié ce planning': 'En annen leder har endret denne vaktplanen',
   '{name} a remplacé votre modification.': '{name} erstattet endringen din.',
   '{name} a rejoint l\'entreprise.': '{name} har blitt med i bedriften.',
+  'Conversation introuvable.': 'Fant ikke samtalen.',
+  'Cette personne ne fait plus partie de l\'entreprise.': 'Denne personen er ikke lenger en del av bedriften.',
 };
