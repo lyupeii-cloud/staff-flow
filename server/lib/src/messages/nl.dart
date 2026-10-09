@@ -86,4 +86,6 @@ const nl = <String, String>{
   'Services': 'Diensten',
   'Imprimer ou enregistrer en PDF': 'Afdrukken of opslaan als pdf',
   'Aucun service sur cette période.': 'Geen diensten in deze periode.',
+  'Choisissez au moins un site.': 'Kies ten minste één locatie.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} heeft {name} op {day} op een andere locatie ingepland.',
 };

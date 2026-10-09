@@ -86,4 +86,6 @@ const bn = <String, String>{
   'Services': 'শিফট',
   'Imprimer ou enregistrer en PDF': 'প্রিন্ট বা PDF হিসেবে সংরক্ষণ',
   'Aucun service sur cette période.': 'এই সময়ে কোনো শিফট নেই।',
+  'Choisissez au moins un site.': 'অন্তত একটি স্থান বেছে নিন।',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} {day} তারিখে {name}-কে অন্য স্থানে রেখেছেন।',
 };

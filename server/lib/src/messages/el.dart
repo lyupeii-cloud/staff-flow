@@ -86,4 +86,6 @@ const el = <String, String>{
   'Services': 'Βάρδιες',
   'Imprimer ou enregistrer en PDF': 'Εκτύπωση ή αποθήκευση ως PDF',
   'Aucun service sur cette période.': 'Δεν υπάρχουν βάρδιες σε αυτή την περίοδο.',
+  'Choisissez au moins un site.': 'Επιλέξτε τουλάχιστον ένα κατάστημα.',
+  '{by} a placé {name} sur un autre site le {day}.': 'Ο/Η {by} έβαλε τον/την {name} σε άλλο κατάστημα στις {day}.',
 };

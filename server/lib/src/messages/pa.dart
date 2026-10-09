@@ -86,4 +86,6 @@ const pa = <String, String>{
   'Services': 'ਸ਼ਿਫ਼ਟਾਂ',
   'Imprimer ou enregistrer en PDF': 'ਪ੍ਰਿੰਟ ਕਰੋ ਜਾਂ PDF ਵਜੋਂ ਸੰਭਾਲੋ',
   'Aucun service sur cette période.': 'ਇਸ ਮਿਆਦ ਵਿੱਚ ਕੋਈ ਸ਼ਿਫ਼ਟ ਨਹੀਂ।',
+  'Choisissez au moins un site.': 'ਘੱਟੋ-ਘੱਟ ਇੱਕ ਥਾਂ ਚੁਣੋ।',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} ਨੇ {day} ਨੂੰ {name} ਨੂੰ ਕਿਸੇ ਹੋਰ ਥਾਂ ਲਾਇਆ ਹੈ।',
 };

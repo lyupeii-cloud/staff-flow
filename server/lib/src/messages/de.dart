@@ -86,4 +86,6 @@ const de = <String, String>{
   'Services': 'Schichten',
   'Imprimer ou enregistrer en PDF': 'Drucken oder als PDF speichern',
   'Aucun service sur cette période.': 'Keine Schichten in diesem Zeitraum.',
+  'Choisissez au moins un site.': 'Wählen Sie mindestens einen Standort.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} hat {name} am {day} an einem anderen Standort eingeplant.',
 };

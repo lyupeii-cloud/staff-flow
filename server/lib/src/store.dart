@@ -173,7 +173,7 @@ class Store {
 
   Future<List<Member>> members(String companyId) async {
     final rows = await query(_db, '''
-      SELECT u.*, m.role, m.joined_at, m.display_name, m.sites::text[] AS member_sites
+      SELECT u.*, m.role, m.joined_at, m.display_name, m.sites::text[] AS member_sites, m.appointed_by::text AS appointed_by
       FROM memberships m JOIN users u ON u.id = m.user_id
       WHERE m.company_id = @c::uuid AND m.left_at IS NULL
       ORDER BY m.joined_at''', {'c': companyId});
@@ -186,6 +186,7 @@ class Store {
             r['joined_at'] as DateTime,
             nameInCompany: r['display_name'] as String?,
             sites: _sites(r['member_sites']),
+            appointedBy: r['appointed_by'] as String?,
           ),
     ];
   }
@@ -249,11 +250,19 @@ class Store {
 
   static List<String>? _sites(Object? value) => value == null ? null : [for (final s in value as List) s as String];
 
-  Future<void> setRole(String companyId, String userId, Role role) async {
+  /// [appointedBy] : responsable qui nomme un sous-responsable.
+  Future<void> setRole(String companyId, String userId, Role role, {String? appointedBy}) async {
     await query(_db, '''
-      UPDATE memberships SET role = @r
+      UPDATE memberships SET role = @r, appointed_by = @a::uuid
       WHERE company_id = @c::uuid AND user_id = @u::uuid AND left_at IS NULL''',
-        {'c': companyId, 'u': userId, 'r': role.name});
+        {'c': companyId, 'u': userId, 'r': role.name, 'a': appointedBy});
+  }
+
+  Future<String?> appointedBy(String companyId, String userId) async {
+    final rows = await query(_db, '''
+      SELECT appointed_by::text FROM memberships
+      WHERE company_id = @c::uuid AND user_id = @u::uuid AND left_at IS NULL''', {'c': companyId, 'u': userId});
+    return rows.isEmpty ? null : rows.first[0] as String?;
   }
 
   Future<void> removeMember(String companyId, String userId) async {

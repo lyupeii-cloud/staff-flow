@@ -86,4 +86,6 @@ const gu = <String, String>{
   'Services': 'શિફ્ટ',
   'Imprimer ou enregistrer en PDF': 'પ્રિન્ટ કરો અથવા PDF તરીકે સાચવો',
   'Aucun service sur cette période.': 'આ સમયગાળામાં કોઈ શિફ્ટ નથી.',
+  'Choisissez au moins un site.': 'ઓછામાં ઓછું એક સ્થળ પસંદ કરો.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} એ {day} ના રોજ {name} ને બીજા સ્થળે મૂક્યા.',
 };

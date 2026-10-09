@@ -86,4 +86,6 @@ const zh = <String, String>{
   'Services': '班次',
   'Imprimer ou enregistrer en PDF': '打印或保存为 PDF',
   'Aucun service sur cette période.': '此期间没有班次。',
+  'Choisissez au moins un site.': '请至少选择一个门店。',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} 在 {day} 将 {name} 安排到了其他门店。',
 };

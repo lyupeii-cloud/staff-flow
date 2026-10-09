@@ -86,4 +86,6 @@ const pt = <String, String>{
   'Services': 'Turnos',
   'Imprimer ou enregistrer en PDF': 'Imprimir ou guardar em PDF',
   'Aucun service sur cette période.': 'Não há turnos neste período.',
+  'Choisissez au moins un site.': 'Escolha pelo menos um local.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} colocou {name} noutro local a {day}.',
 };

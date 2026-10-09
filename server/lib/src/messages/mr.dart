@@ -86,4 +86,6 @@ const mr = <String, String>{
   'Services': 'शिफ्ट',
   'Imprimer ou enregistrer en PDF': 'प्रिंट करा किंवा PDF म्हणून जतन करा',
   'Aucun service sur cette période.': 'या कालावधीत कोणतीही शिफ्ट नाही.',
+  'Choisissez au moins un site.': 'किमान एक ठिकाण निवडा.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} यांनी {day} रोजी {name} यांना दुसऱ्या ठिकाणी नेमले.',
 };

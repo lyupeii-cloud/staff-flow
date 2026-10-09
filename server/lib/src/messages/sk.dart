@@ -86,4 +86,6 @@ const sk = <String, String>{
   'Services': 'Zmeny',
   'Imprimer ou enregistrer en PDF': 'Vytlačiť alebo uložiť ako PDF',
   'Aucun service sur cette période.': 'V tomto období nie sú žiadne zmeny.',
+  'Choisissez au moins un site.': 'Vyberte aspoň jednu pobočku.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} zaradil {name} na inú pobočku {day}.',
 };

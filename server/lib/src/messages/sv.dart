@@ -86,4 +86,6 @@ const sv = <String, String>{
   'Services': 'Pass',
   'Imprimer ou enregistrer en PDF': 'Skriv ut eller spara som PDF',
   'Aucun service sur cette période.': 'Inga pass under perioden.',
+  'Choisissez au moins un site.': 'Välj minst en arbetsplats.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} har schemalagt {name} på en annan arbetsplats den {day}.',
 };

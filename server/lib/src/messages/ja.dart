@@ -86,4 +86,6 @@ const ja = <String, String>{
   'Services': 'シフト',
   'Imprimer ou enregistrer en PDF': '印刷または PDF で保存',
   'Aucun service sur cette période.': 'この期間のシフトはありません。',
+  'Choisissez au moins un site.': '店舗を1つ以上選んでください。',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} さんが {day} に {name} さんを別の店舗に配置しました。',
 };

@@ -86,4 +86,6 @@ const ru = <String, String>{
   'Services': 'Смены',
   'Imprimer ou enregistrer en PDF': 'Печать или сохранение в PDF',
   'Aucun service sur cette période.': 'Нет смен за этот период.',
+  'Choisissez au moins un site.': 'Выберите хотя бы одну площадку.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} поставил {name} на другую площадку {day}.',
 };

@@ -86,4 +86,6 @@ const pl = <String, String>{
   'Services': 'Zmiany',
   'Imprimer ou enregistrer en PDF': 'Drukuj lub zapisz jako PDF',
   'Aucun service sur cette période.': 'Brak zmian w tym okresie.',
+  'Choisissez au moins un site.': 'Wybierz co najmniej jedną lokalizację.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} przydzielił {name} do innej lokalizacji {day}.',
 };

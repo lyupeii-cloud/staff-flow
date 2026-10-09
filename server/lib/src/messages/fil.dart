@@ -86,4 +86,6 @@ const fil = <String, String>{
   'Services': 'Mga shift',
   'Imprimer ou enregistrer en PDF': 'I-print o i-save bilang PDF',
   'Aucun service sur cette période.': 'Walang shift sa panahong ito.',
+  'Choisissez au moins un site.': 'Pumili ng kahit isang site.',
+  '{by} a placé {name} sur un autre site le {day}.': 'Inilagay ni {by} si {name} sa ibang site sa {day}.',
 };

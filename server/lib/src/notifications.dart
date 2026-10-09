@@ -136,6 +136,7 @@ class NotificationService {
     'shift_overwritten': NotifyCategory.conflicts,
     'shift_overlap': NotifyCategory.overlap,
     'reinforcement_added': NotifyCategory.planning,
+    'staff_borrowed': NotifyCategory.planning,
   };
 
   /// Crée un avis par personne ([s] : la transaction en cours, s'il y en a
@@ -256,6 +257,11 @@ class NotificationService {
       'member_joined' => (title, t('{name} a rejoint l\'entreprise.', {'name': '${data['name'] ?? '?'}'})),
       'transfer_offer' =>
         (title, t('{name} vous propose de devenir propriétaire de l\'entreprise.', {'name': name})),
+      'staff_borrowed' => (
+          title,
+          t('{by} a placé {name} sur un autre site le {day}.',
+              {'by': name, 'name': '${data['name'] ?? '?'}', 'day': '${data['day'] ?? ''}'})
+        ),
       'reinforcement_added' => (title, t('Vous avez été ajouté à cette entreprise comme renfort.')),
       'shift_overlap' => (
           title,

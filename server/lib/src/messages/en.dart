@@ -107,4 +107,6 @@ const en = <String, String>{
   'Services': 'Shifts',
   'Imprimer ou enregistrer en PDF': 'Print or save as PDF',
   'Aucun service sur cette période.': 'No shifts in this period.',
+  'Choisissez au moins un site.': 'Choose at least one site.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} scheduled {name} at another site on {day}.',
 };

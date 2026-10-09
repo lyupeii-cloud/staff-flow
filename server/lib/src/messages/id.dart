@@ -86,4 +86,6 @@ const id = <String, String>{
   'Services': 'Shift',
   'Imprimer ou enregistrer en PDF': 'Cetak atau simpan sebagai PDF',
   'Aucun service sur cette période.': 'Tidak ada shift pada periode ini.',
+  'Choisissez au moins un site.': 'Pilih setidaknya satu lokasi.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} menempatkan {name} di lokasi lain pada {day}.',
 };

@@ -86,4 +86,6 @@ const kk = <String, String>{
   'Services': 'Ауысымдар',
   'Imprimer ou enregistrer en PDF': 'Басып шығару немесе PDF ретінде сақтау',
   'Aucun service sur cette période.': 'Бұл кезеңде ауысымдар жоқ.',
+  'Choisissez au moins un site.': 'Кемінде бір нысанды таңдаңыз.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} {day} күні {name} қызметкерін басқа нысанға қойды.',
 };

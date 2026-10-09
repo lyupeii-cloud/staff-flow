@@ -125,8 +125,8 @@ void main() {
     Future<int> setRole(Client actor, Client target, String role) async =>
         (await actor('PUT', '/companies/$id/members/${target.id}/role', {'role': role})).$1;
 
-    test('seul le propriétaire nomme un responsable', () async {
-      expect(await setRole(manager, employee, 'manager'), 403);
+    test('un responsable nomme un sous-responsable seulement avec des sites ; le propriétaire librement', () async {
+      expect(await setRole(manager, employee, 'manager'), 400);
       expect(await setRole(owner, employee, 'manager'), 204);
       expect(await env.store.roleOf(id, employee.id), Role.manager);
     });

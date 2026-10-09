@@ -106,4 +106,6 @@ const uk = <String, String>{
   'Services': 'Зміни',
   'Imprimer ou enregistrer en PDF': 'Друкувати або зберегти в PDF',
   'Aucun service sur cette période.': 'Немає змін за цей період.',
+  'Choisissez au moins un site.': 'Оберіть принаймні одну локацію.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} поставив {name} на іншу локацію {day}.',
 };

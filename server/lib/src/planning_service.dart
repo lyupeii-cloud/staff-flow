@@ -120,7 +120,7 @@ class PlanningService {
       throw const ApiError.badRequest('Trop de services d\'un coup (400 au plus).');
     }
     dates.forEach(_checkEditable);
-    return store.db.runTx((tx) async {
+    final created = await store.db.runTx((tx) async {
       String? seriesId;
       if (repeat != null) {
         final rows = await store.query(tx, '''
@@ -154,6 +154,30 @@ class PlanningService {
           details: {'count': created.length, 'seriesId': seriesId},
           tx: tx);
       return created;
+    });
+    await _notifyBorrowed(actor, companyId, input.userId, input.siteId, dates.first);
+    return created;
+  }
+
+  /// Un salarié placé sur un site qui n'est pas celui de son équipe : les
+  /// responsables de son équipe sont prévenus (le service n'est pas bloqué).
+  Future<void> _notifyBorrowed(User actor, String companyId, String? userId, String? siteId, DateTime day) async {
+    if (userId == null || siteId == null) return;
+    final members = await store.members(companyId);
+    final person = members.where((m) => m.user.id == userId).firstOrNull;
+    final team = person?.sites;
+    if (person == null || team == null || team.isEmpty || team.contains(siteId)) return;
+    if (person.role != Role.employee && person.role != Role.extra) return;
+    final managers = [
+      for (final m in members)
+        if (m.role == Role.manager && m.user.id != actor.id && (m.sites ?? const []).any(team.contains)) m.user.id,
+    ];
+    final site = await store.query(store.db, 'SELECT name FROM sites WHERE id = @s::uuid', {'s': siteId});
+    await notifications.notify(managers, companyId: companyId, kind: 'staff_borrowed', data: {
+      'byName': actor.name,
+      'name': person.user.name,
+      'day': formatDay(day),
+      'siteName': site.isEmpty ? null : site.first[0],
     });
   }
 
@@ -203,6 +227,9 @@ class PlanningService {
       return rows.length;
     });
     notifications.deliver(overwritten);
+    if (merged.userId != shift.userId || merged.siteId != shift.siteId) {
+      await _notifyBorrowed(actor, companyId, merged.userId, merged.siteId, patch.day ?? shift.day);
+    }
     await store.audit(
         companyId: companyId,
         actorId: actor.id,

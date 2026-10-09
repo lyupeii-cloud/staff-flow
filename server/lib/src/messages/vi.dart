@@ -86,4 +86,6 @@ const vi = <String, String>{
   'Services': 'Ca làm',
   'Imprimer ou enregistrer en PDF': 'In hoặc lưu thành PDF',
   'Aucun service sur cette période.': 'Không có ca nào trong khoảng thời gian này.',
+  'Choisissez au moins un site.': 'Chọn ít nhất một địa điểm.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} đã xếp {name} vào địa điểm khác ngày {day}.',
 };

@@ -86,4 +86,6 @@ const th = <String, String>{
   'Services': 'กะ',
   'Imprimer ou enregistrer en PDF': 'พิมพ์หรือบันทึกเป็น PDF',
   'Aucun service sur cette période.': 'ไม่มีกะในช่วงเวลานี้',
+  'Choisissez au moins un site.': 'เลือกอย่างน้อยหนึ่งสาขา',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} จัด {name} ไปทำงานที่สาขาอื่นในวันที่ {day}',
 };

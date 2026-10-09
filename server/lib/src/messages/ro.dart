@@ -86,4 +86,6 @@ const ro = <String, String>{
   'Services': 'Ture',
   'Imprimer ou enregistrer en PDF': 'Tipărește sau salvează ca PDF',
   'Aucun service sur cette période.': 'Nicio tură în această perioadă.',
+  'Choisissez au moins un site.': 'Alege cel puțin o locație.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} l-a programat pe {name} la altă locație pe {day}.',
 };

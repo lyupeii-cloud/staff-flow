@@ -86,4 +86,6 @@ const cs = <String, String>{
   'Services': 'Směny',
   'Imprimer ou enregistrer en PDF': 'Vytisknout nebo uložit jako PDF',
   'Aucun service sur cette période.': 'V tomto období nejsou žádné směny.',
+  'Choisissez au moins un site.': 'Vyberte alespoň jednu pobočku.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} zařadil {name} na jinou pobočku {day}.',
 };

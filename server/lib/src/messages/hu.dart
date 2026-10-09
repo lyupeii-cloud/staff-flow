@@ -86,4 +86,6 @@ const hu = <String, String>{
   'Services': 'Műszakok',
   'Imprimer ou enregistrer en PDF': 'Nyomtatás vagy mentés PDF-be',
   'Aucun service sur cette période.': 'Nincs műszak ebben az időszakban.',
+  'Choisissez au moins un site.': 'Válassz legalább egy telephelyet.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} másik telephelyre osztotta be {name} személyt ekkor: {day}.',
 };

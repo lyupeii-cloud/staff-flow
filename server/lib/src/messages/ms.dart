@@ -86,4 +86,6 @@ const ms = <String, String>{
   'Services': 'Syif',
   'Imprimer ou enregistrer en PDF': 'Cetak atau simpan sebagai PDF',
   'Aucun service sur cette période.': 'Tiada syif dalam tempoh ini.',
+  'Choisissez au moins un site.': 'Pilih sekurang-kurangnya satu lokasi.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} menempatkan {name} di lokasi lain pada {day}.',
 };

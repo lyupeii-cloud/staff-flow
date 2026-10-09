@@ -86,4 +86,6 @@ const ta = <String, String>{
   'Services': 'ஷிஃப்டுகள்',
   'Imprimer ou enregistrer en PDF': 'அச்சிடு அல்லது PDF ஆகச் சேமி',
   'Aucun service sur cette période.': 'இந்தக் காலத்தில் ஷிஃப்டுகள் இல்லை.',
+  'Choisissez au moins un site.': 'குறைந்தது ஒரு இடத்தைத் தேர்ந்தெடுங்கள்.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} {day} அன்று {name} அவர்களை வேறு இடத்தில் பணியமர்த்தினார்.',
 };

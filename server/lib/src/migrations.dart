@@ -347,4 +347,9 @@ ALTER TABLE companies ADD COLUMN legal_rules jsonb;
 ALTER TABLE companies ADD COLUMN print_scope text NOT NULL DEFAULT 'team' CHECK (print_scope IN ('own', 'team'));
 ALTER TABLE users ADD COLUMN calendar_token text UNIQUE;
 ''',
+  // 17 — sous-responsable : responsable de site nommé par un autre
+  // responsable (qui peut le retirer).
+  '''
+ALTER TABLE memberships ADD COLUMN appointed_by uuid REFERENCES users(id) ON DELETE SET NULL;
+''',
 ];

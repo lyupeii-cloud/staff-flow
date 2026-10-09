@@ -67,6 +67,26 @@ class OverlapService {
 
   /// Responsable : membres de son entreprise déjà en service dans une autre
   /// entreprise sur ce créneau, un des [days] (sans aucun détail).
+  /// Personnes qui ont déjà un service dans cette entreprise sur ce créneau
+  /// (version de travail), sauf le service [exclude] en cours de modification.
+  Future<List<String>> busyHere(User actor, String companyId, List<String> days, int start, int end, String? exclude) async {
+    final (_, role) = await companies.open(actor, companyId);
+    if (!role.canManage) throw const ApiError.forbidden();
+    final valid = [for (final d in days) formatDay(parseDay(d))];
+    final rows = await store.query(store.db, '''
+      SELECT DISTINCT s.user_id::text FROM shifts s, unnest(@days::text[]) AS d
+      WHERE s.company_id = @c::uuid AND NOT s.deleted AND s.user_id IS NOT NULL
+        AND (@x::text IS NULL OR s.id::text <> @x::text)
+        AND (s.day - d::date) * 1440 + s.start_min < @en AND @st < (s.day - d::date) * 1440 + s.end_min''', {
+      'c': companyId,
+      'days': valid,
+      'st': start,
+      'en': end <= start ? end + 1440 : end,
+      'x': exclude,
+    });
+    return [for (final r in rows) r[0] as String];
+  }
+
   Future<List<String>> busyElsewhere(User actor, String companyId, List<String> days, int start, int end) async {
     final (company, role) = await companies.open(actor, companyId);
     if (!role.canManage) throw const ApiError.forbidden();

@@ -86,4 +86,6 @@ const ko = <String, String>{
   'Services': '근무',
   'Imprimer ou enregistrer en PDF': '인쇄 또는 PDF로 저장',
   'Aucun service sur cette période.': '이 기간에 근무가 없습니다.',
+  'Choisissez au moins un site.': '지점을 하나 이상 선택하세요.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by}님이 {day}에 {name}님을 다른 지점에 배치했습니다.',
 };

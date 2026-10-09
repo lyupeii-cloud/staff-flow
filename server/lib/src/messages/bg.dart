@@ -86,4 +86,6 @@ const bg = <String, String>{
   'Services': 'Смени',
   'Imprimer ou enregistrer en PDF': 'Печат или запис като PDF',
   'Aucun service sur cette période.': 'Няма смени за този период.',
+  'Choisissez au moins un site.': 'Изберете поне един обект.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} постави {name} на друг обект на {day}.',
 };

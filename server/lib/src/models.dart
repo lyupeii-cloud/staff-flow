@@ -147,12 +147,16 @@ class Member {
   /// Nom donné par un responsable pour cette entreprise seulement.
   final String? nameInCompany;
 
-  const Member(this.user, this.role, this.joinedAt, {this.nameInCompany, this.sites});
+  /// Sous-responsable : le responsable qui l'a nommé.
+  final String? appointedBy;
+
+  const Member(this.user, this.role, this.joinedAt, {this.nameInCompany, this.sites, this.appointedBy});
 
   Map<String, Object?> toJson() => {
         'user': user.toJson(),
         'nameInCompany': nameInCompany,
         'sites': sites,
+        'appointedBy': appointedBy,
         'role': role.name,
         'joinedAt': joinedAt.toUtc().toIso8601String(),
       };

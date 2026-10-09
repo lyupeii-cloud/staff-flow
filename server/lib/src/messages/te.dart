@@ -86,4 +86,6 @@ const te = <String, String>{
   'Services': 'షిఫ్టులు',
   'Imprimer ou enregistrer en PDF': 'ముద్రించు లేదా PDFగా సేవ్ చేయి',
   'Aucun service sur cette période.': 'ఈ వ్యవధిలో షిఫ్టులు లేవు.',
+  'Choisissez au moins un site.': 'కనీసం ఒక స్థలాన్ని ఎంచుకోండి.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} {day}న {name}ని వేరే స్థలంలో కేటాయించారు.',
 };

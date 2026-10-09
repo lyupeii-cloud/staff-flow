@@ -86,4 +86,6 @@ const fi = <String, String>{
   'Services': 'Vuorot',
   'Imprimer ou enregistrer en PDF': 'Tulosta tai tallenna PDF:nä',
   'Aucun service sur cette période.': 'Ei vuoroja tällä jaksolla.',
+  'Choisissez au moins un site.': 'Valitse vähintään yksi toimipaikka.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} merkitsi henkilön {name} toiseen toimipaikkaan {day}.',
 };

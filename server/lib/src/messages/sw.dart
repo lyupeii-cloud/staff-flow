@@ -86,4 +86,6 @@ const sw = <String, String>{
   'Services': 'Zamu',
   'Imprimer ou enregistrer en PDF': 'Chapisha au hifadhi kama PDF',
   'Aucun service sur cette période.': 'Hakuna zamu katika kipindi hiki.',
+  'Choisissez au moins un site.': 'Chagua angalau eneo moja.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} amempanga {name} katika eneo lingine tarehe {day}.',
 };

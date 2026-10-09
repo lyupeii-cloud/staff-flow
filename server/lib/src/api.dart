@@ -560,7 +560,10 @@ class Api {
     final days = (q['days'] ?? '').split(',').where((d) => d.isNotEmpty).toList();
     if (start == null || end == null) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
     try {
-      return _json({'userIds': await overlaps.busyElsewhere(user, req.params['id']!, days, start, end)});
+      return _json({
+        'userIds': await overlaps.busyElsewhere(user, req.params['id']!, days, start, end),
+        'here': await overlaps.busyHere(user, req.params['id']!, days, start, end, q['exclude']),
+      });
     } on FormatException {
       throw const ApiError.badRequest('Dates invalides.');
     }

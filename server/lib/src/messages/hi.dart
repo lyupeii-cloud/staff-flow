@@ -86,4 +86,6 @@ const hi = <String, String>{
   'Services': 'शिफ़्ट',
   'Imprimer ou enregistrer en PDF': 'प्रिंट करें या PDF के रूप में सहेजें',
   'Aucun service sur cette période.': 'इस अवधि में कोई शिफ़्ट नहीं।',
+  'Choisissez au moins un site.': 'कम से कम एक स्थान चुनें।',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} ने {day} को {name} को दूसरे स्थान पर लगाया है।',
 };

@@ -174,16 +174,32 @@ class CompanyService {
     if (current == Role.owner || newRole == Role.owner) {
       throw const ApiError.conflict('La propriété se change par un transfert.');
     }
-    final touchesManager = current == Role.manager || newRole == Role.manager;
-    final allowed = actorRole == Role.owner ||
-        (actorRole == Role.manager &&
-            !touchesManager &&
-            await inSites(companyId, userId, await managedSites(companyId, actor, actorRole)));
-    if (!allowed) throw const ApiError.forbidden();
-    await store.setRole(companyId, userId, newRole);
+    final mine = await managedSites(companyId, actor, actorRole);
+    List<String>? chosen = sites == null ? null : await validSites(companyId, sites);
+    if (chosen != null && chosen.isEmpty) chosen = null;
+    String? appointer;
+    if (actorRole == Role.owner) {
+      // Le propriétaire nomme et retire tous les responsables.
+    } else if (actorRole != Role.manager) {
+      throw const ApiError.forbidden();
+    } else if (newRole == Role.manager) {
+      // Un responsable nomme un sous-responsable parmi les salariés de ses
+      // sites, limité à un ou plusieurs de ses propres sites.
+      if (!await inSites(companyId, userId, mine)) throw const ApiError.forbidden();
+      if (chosen == null) throw const ApiError.badRequest('Choisissez au moins un site.');
+      if (mine != null && !chosen.every(mine.contains)) throw const ApiError.forbidden();
+      appointer = actor.id;
+    } else if (current == Role.manager) {
+      // Il ne retire que les sous-responsables qu'il a nommés.
+      if (await store.appointedBy(companyId, userId) != actor.id) throw const ApiError.forbidden();
+    } else if (!await inSites(companyId, userId, mine)) {
+      throw const ApiError.forbidden();
+    }
+    await store.setRole(companyId, userId, newRole, appointedBy: newRole == Role.manager ? appointer : null);
     if (newRole == Role.manager) {
-      final chosen = sites == null ? null : await validSites(companyId, sites);
-      await store.setSites(companyId, userId, chosen == null || chosen.isEmpty ? null : chosen);
+      await store.setSites(companyId, userId, chosen);
+    } else if (current == Role.manager) {
+      // Redevenu salarié : il garde ses sites comme équipe.
     }
     await store.audit(
       companyId: companyId,
@@ -209,7 +225,9 @@ class CompanyService {
       final allowed = actorRole == Role.owner ||
           (actorRole == Role.manager &&
               (target == Role.employee || target == Role.extra) &&
-              await inSites(companyId, userId, await managedSites(companyId, actor, actorRole)));
+              await inSites(companyId, userId, await managedSites(companyId, actor, actorRole))) ||
+          // Un responsable retire un sous-responsable qu'il a nommé.
+          (actorRole == Role.manager && target == Role.manager && await store.appointedBy(companyId, userId) == actor.id);
       if (!allowed) throw const ApiError.forbidden();
     }
     await store.removeMember(companyId, userId);

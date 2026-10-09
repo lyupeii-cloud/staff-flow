@@ -86,4 +86,6 @@ const nb = <String, String>{
   'Services': 'Vakter',
   'Imprimer ou enregistrer en PDF': 'Skriv ut eller lagre som PDF',
   'Aucun service sur cette période.': 'Ingen vakter i denne perioden.',
+  'Choisissez au moins un site.': 'Velg minst ett sted.',
+  '{by} a placé {name} sur un autre site le {day}.': '{by} har satt opp {name} på et annet sted {day}.',
 };
