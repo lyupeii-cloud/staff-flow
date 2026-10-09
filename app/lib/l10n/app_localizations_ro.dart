@@ -910,4 +910,43 @@ class L10nRo extends L10n {
 
   @override
   String get noticeRequestRefused => 'Cererea ta a fost refuzată.';
+
+  @override
+  String get choosePeer => 'Cine preia această tură?';
+
+  @override
+  String get discardAll => 'Anulează tot';
+
+  @override
+  String get notifySitesHint =>
+      'Alege locațiile pentru care primești notificări despre cereri. Toate cererile rămân vizibile în listă.';
+
+  @override
+  String get notifySitesTitle => 'Notificări pe locație';
+
+  @override
+  String get pendingRequestTooltip =>
+      'Cerere în așteptare: atinge pentru a o deschide';
+
+  @override
+  String get requestsHistory => 'Toate cererile';
+
+  @override
+  String get revertChange => 'Anulează această modificare';
+
+  @override
+  String get statusExpired => 'Fără obiect';
+
+  @override
+  String get swapWithHint => 'Atinge pentru a alege un anumit coleg';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Modificări anulate: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Anulezi cele $count modificări nepublicate?';
+  }
 }

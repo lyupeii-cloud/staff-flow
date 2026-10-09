@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} prosi o urlop.",
   "noticeUnavailabilityToApprove": "{name} zgłasza niedostępność.",
   "noticeRequestApproved": "Twoja prośba została zaakceptowana.",
-  "noticeRequestRefused": "Twoja prośba została odrzucona."
+  "noticeRequestRefused": "Twoja prośba została odrzucona.",
+  "choosePeer": "Kto przejmie tę zmianę?",
+  "discardAll": "Anuluj wszystko",
+  "notifySitesHint": "Wybierz lokalizacje, z których otrzymujesz powiadomienia o prośbach. Wszystkie prośby pozostają widoczne na liście.",
+  "notifySitesTitle": "Powiadomienia według lokalizacji",
+  "pendingRequestTooltip": "Oczekująca prośba: dotknij, aby otworzyć",
+  "requestsHistory": "Wszystkie prośby",
+  "revertChange": "Cofnij tę zmianę",
+  "statusExpired": "Nieaktualna",
+  "swapWithHint": "Dotknij, aby wybrać konkretnego współpracownika",
+  "changesDiscarded": "Anulowane zmiany: {count}",
+  "discardConfirm": "Anulować {count} nieopublikowanych zmian?"
 }

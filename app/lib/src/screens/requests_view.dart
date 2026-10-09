@@ -7,38 +7,53 @@ import '../models.dart';
 import '../session.dart';
 import 'company_tab.dart';
 
-/// Demandes de l'entreprise : celles qui attendent une réponse de la personne
-/// connectée, les siennes, et pour un responsable celles de son périmètre.
+/// Demandes de l'entreprise : d'abord celles qui attendent une réponse de la
+/// personne connectée, puis toutes les autres (les siennes, et pour un
+/// responsable celles de son périmètre), 10 par 10 en faisant défiler.
 class RequestsView extends StatefulWidget {
   final Session session;
   final Membership membership;
   final CompanyData data;
 
-  const RequestsView({super.key, required this.session, required this.membership, required this.data});
+  /// Demande à mettre en évidence (notification touchée, icône du planning).
+  final String? focus;
+
+  const RequestsView({super.key, required this.session, required this.membership, required this.data, this.focus});
 
   @override
   State<RequestsView> createState() => _RequestsViewState();
 }
 
 class _RequestsViewState extends State<RequestsView> {
-  List<StaffRequest>? _requests;
+  /// En attente et à traiter par la personne connectée.
+  List<StaffRequest> _toHandle = const [];
+
+  /// Toutes les autres, les plus récentes d'abord, page par page.
+  final List<StaffRequest> _history = [];
+  StaffRequest? _focused;
+  bool _loaded = false, _hasMore = true, _loadingMore = false;
   Localized? _error;
   int _seenSync = 0;
+  final _scroll = ScrollController();
+
+  static const _page = 10;
 
   L10n get t => context.l10n;
   Company get company => widget.membership.company;
-  String get myId => widget.session.me!.user.id;
+  String get _base => '/companies/${company.id}/requests';
 
   @override
   void initState() {
     super.initState();
     widget.session.sync.addListener(_onSync);
+    _scroll.addListener(_onScroll);
     _load();
   }
 
   @override
   void dispose() {
     widget.session.sync.removeListener(_onSync);
+    _scroll.dispose();
     super.dispose();
   }
 
@@ -46,13 +61,34 @@ class _RequestsViewState extends State<RequestsView> {
     if (widget.session.sync.synced != _seenSync) _load();
   }
 
+  /// Près du bas de la liste : les 10 suivantes.
+  void _onScroll() {
+    if (_scroll.position.extentAfter < 300) _more();
+  }
+
+  List<StaffRequest> _parse(dynamic json) => [for (final r in json['requests']) StaffRequest.fromJson(r)];
+
   Future<void> _load() async {
     _seenSync = widget.session.sync.synced;
+    final sync = widget.session.sync;
     try {
-      final json = await widget.session.sync.read('requests:${company.id}', '/companies/${company.id}/requests');
+      final pending = _parse(await sync.read('requests-pending:${company.id}', '$_base?pending=1'));
+      final first = _parse(await sync.read('requests:${company.id}', '$_base?limit=$_page'));
+      StaffRequest? focused;
+      final focus = widget.focus;
+      if (focus != null) {
+        focused = [...pending, ...first].where((r) => r.id == focus).firstOrNull ??
+            StaffRequest.fromJson(await widget.session.api.send('GET', '/requests/$focus'));
+      }
       if (!mounted) return;
       setState(() {
-        _requests = [for (final r in json['requests']) StaffRequest.fromJson(r)];
+        _focused = focused;
+        _toHandle = [for (final r in pending) if ((r.canAnswer || r.canDecide) && r.id != focused?.id) r];
+        _history
+          ..clear()
+          ..addAll(_withoutShown(first));
+        _hasMore = first.length == _page;
+        _loaded = true;
         _error = null;
       });
     } on OfflineException {
@@ -62,16 +98,61 @@ class _RequestsViewState extends State<RequestsView> {
     }
   }
 
-  Future<void> _act(StaffRequest r, String action) async {
+  Iterable<StaffRequest> _withoutShown(List<StaffRequest> page) {
+    final shown = {?_focused?.id, for (final r in _toHandle) r.id, for (final r in _history) r.id};
+    return page.where((r) => !shown.contains(r.id));
+  }
+
+  Future<void> _more() async {
+    if (!_loaded || !_hasMore || _loadingMore) return;
+    final before = _history.isEmpty ? null : _history.last.createdAt.toUtc().toIso8601String();
+    setState(() => _loadingMore = true);
+    try {
+      final page = _parse(await widget.session.api
+          .send('GET', '$_base?limit=$_page${before == null ? '' : '&before=${Uri.encodeQueryComponent(before)}'}'));
+      if (!mounted) return;
+      setState(() {
+        _history.addAll(_withoutShown(page));
+        _hasMore = page.length == _page;
+      });
+    } catch (_) {
+      // Réessayé au prochain défilement.
+    } finally {
+      if (mounted) setState(() => _loadingMore = false);
+    }
+  }
+
+  Future<void> _act(StaffRequest r, String action, [Map<String, dynamic>? body]) async {
     final messenger = ScaffoldMessenger.of(context);
     try {
-      await widget.session.api.send('POST', '/requests/${r.id}/$action');
+      await widget.session.api.send('POST', '/requests/${r.id}/$action', body: body);
     } on OfflineException {
       messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
     } on ApiException catch (e) {
       messenger.showSnackBar(SnackBar(content: Text(e.describe(t))));
     }
     await _load();
+  }
+
+  /// Valider un échange : sans collègue désigné, le responsable choisit qui
+  /// reprend le service.
+  Future<void> _approve(StaffRequest r) async {
+    if (!r.needsPeer) return _act(r, 'approve');
+    final people = [for (final m in widget.data.members) if (m.user.id != r.requesterId) m];
+    final peer = await showDialog<String>(
+      context: context,
+      builder: (context) => SimpleDialog(
+        title: Text(t.choosePeer),
+        children: [
+          for (final m in people)
+            SimpleDialogOption(
+              onPressed: () => Navigator.pop(context, m.user.id),
+              child: Text('${m.user.name} · ${m.role.label(t)}'),
+            ),
+        ],
+      ),
+    );
+    if (peer != null) await _act(r, 'approve', {'peerId': peer});
   }
 
   Future<void> _new() async {
@@ -109,14 +190,12 @@ class _RequestsViewState extends State<RequestsView> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final all = _requests;
-    final toHandle = [for (final r in all ?? <StaffRequest>[]) if (r.canAnswer || r.canDecide) r];
-    final mine = [for (final r in all ?? <StaffRequest>[]) if (!toHandle.contains(r) && r.requesterId == myId) r];
-    final others = [for (final r in all ?? <StaffRequest>[]) if (!toHandle.contains(r) && !mine.contains(r)) r];
     Widget title(String text) => Padding(
           padding: const EdgeInsets.only(top: 16, bottom: 4),
           child: Text(text, style: theme.textTheme.titleSmall),
         );
+    final focused = _focused;
+    final empty = _loaded && focused == null && _toHandle.isEmpty && _history.isEmpty;
     return Scaffold(
       backgroundColor: Colors.transparent,
       floatingActionButton: company.readOnly
@@ -129,6 +208,8 @@ class _RequestsViewState extends State<RequestsView> {
       body: RefreshIndicator(
         onRefresh: _load,
         child: ListView(
+          controller: _scroll,
+          physics: const AlwaysScrollableScrollPhysics(),
           padding: const EdgeInsets.fromLTRB(16, 4, 16, 96),
           children: [
             if (_error != null)
@@ -136,25 +217,26 @@ class _RequestsViewState extends State<RequestsView> {
                 padding: const EdgeInsets.all(16),
                 child: Text(_error!(t), style: TextStyle(color: theme.colorScheme.error)),
               ),
-            if (all == null && _error == null) const Padding(padding: EdgeInsets.all(32), child: Center(child: CircularProgressIndicator())),
-            if (all != null && all.isEmpty)
+            if (!_loaded && _error == null)
+              const Padding(padding: EdgeInsets.all(32), child: Center(child: CircularProgressIndicator())),
+            if (empty)
               Padding(
                 padding: const EdgeInsets.all(24),
                 child: Text('${t.noRequests}\n\n${t.swapHint}', textAlign: TextAlign.center),
               ),
-            if (toHandle.isNotEmpty) title(t.requestsToHandle),
-            for (final r in toHandle) _card(r),
-            if (mine.isNotEmpty) title(t.myRequests),
-            for (final r in mine) _card(r),
-            if (others.isNotEmpty) title(t.otherRequests),
-            for (final r in others) _card(r),
+            if (focused != null) ...[const SizedBox(height: 8), _card(focused, highlight: true)],
+            if (_toHandle.isNotEmpty) title(t.requestsToHandle),
+            for (final r in _toHandle) _card(r),
+            if (_history.isNotEmpty) title(t.requestsHistory),
+            for (final r in _history) _card(r),
+            if (_loadingMore) const Padding(padding: EdgeInsets.all(16), child: Center(child: CircularProgressIndicator())),
           ],
         ),
       ),
     );
   }
 
-  Widget _card(StaffRequest r) {
+  Widget _card(StaffRequest r, {bool highlight = false}) {
     final theme = Theme.of(context);
     final loc = context.localeName;
     final lines = <String>[
@@ -166,10 +248,17 @@ class _RequestsViewState extends State<RequestsView> {
       'pending_manager' => (t.statusPendingManager, theme.colorScheme.tertiary),
       'approved' => (t.statusApproved, Colors.green.shade700),
       'refused' => (t.statusRefused, theme.colorScheme.error),
+      'expired' => (t.statusExpired, theme.disabledColor),
       _ => (t.statusCancelled, theme.disabledColor),
     };
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 4),
+      shape: highlight
+          ? RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+              side: BorderSide(color: theme.colorScheme.primary, width: 2),
+            )
+          : null,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(16, 12, 8, 8),
         child: Column(
@@ -182,7 +271,10 @@ class _RequestsViewState extends State<RequestsView> {
                 Expanded(
                   child: Text('${r.requesterName} · ${requestKindLabel(t, r.kind)}', style: theme.textTheme.titleSmall),
                 ),
-                Text(statusText, style: theme.textTheme.labelSmall?.copyWith(color: statusColor)),
+                Flexible(
+                  child: Text(statusText,
+                      textAlign: TextAlign.end, style: theme.textTheme.labelSmall?.copyWith(color: statusColor)),
+                ),
               ],
             ),
             Padding(
@@ -197,8 +289,9 @@ class _RequestsViewState extends State<RequestsView> {
                   if (r.canCancel) TextButton(onPressed: () => _act(r, 'cancel'), child: Text(t.cancelRequest)),
                   if (r.canDecline) TextButton(onPressed: () => _act(r, 'decline'), child: Text(t.decline)),
                   if (r.canAnswer) FilledButton(onPressed: () => _act(r, 'accept'), child: Text(t.acceptSwap)),
-                  if (r.canDecide) TextButton(onPressed: () => _act(r, 'refuse'), child: Text(t.decline)),
-                  if (r.canDecide) FilledButton(onPressed: () => _act(r, 'approve'), child: Text(t.approve)),
+                  if (r.canDecide && !r.canAnswer)
+                    TextButton(onPressed: () => _act(r, 'refuse'), child: Text(t.decline)),
+                  if (r.canDecide) FilledButton(onPressed: () => _approve(r), child: Text(t.approve)),
                 ],
               ),
           ],
@@ -444,7 +537,7 @@ class _SwapFormState extends State<_SwapForm> {
     final me = widget.session.me!.user.id;
     final colleagues = [
       for (final m in widget.data.members)
-        if (m.user.id != me && (m.role == Role.employee || m.role == Role.extra)) m,
+        if (m.user.id != me) m,
     ];
     return Padding(
       padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
@@ -465,10 +558,11 @@ class _SwapFormState extends State<_SwapForm> {
             const SizedBox(height: 12),
             DropdownButtonFormField<String?>(
               initialValue: _peer,
-              decoration: InputDecoration(labelText: t.swapWith),
+              decoration: InputDecoration(labelText: t.swapWith, helperText: t.swapWithHint),
               items: [
                 DropdownMenuItem(value: null, child: Text(t.swapToTeam)),
-                for (final m in colleagues) DropdownMenuItem(value: m.user.id, child: Text(m.user.name)),
+                for (final m in colleagues)
+                  DropdownMenuItem(value: m.user.id, child: Text('${m.user.name} · ${m.role.label(t)}')),
               ],
               onChanged: (v) => setState(() => _peer = v),
             ),

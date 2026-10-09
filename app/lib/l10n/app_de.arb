@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} beantragt Urlaub.",
   "noticeUnavailabilityToApprove": "{name} meldet sich als nicht verfügbar.",
   "noticeRequestApproved": "Ihre Anfrage wurde genehmigt.",
-  "noticeRequestRefused": "Ihre Anfrage wurde abgelehnt."
+  "noticeRequestRefused": "Ihre Anfrage wurde abgelehnt.",
+  "choosePeer": "Wer übernimmt diese Schicht?",
+  "discardAll": "Alles verwerfen",
+  "notifySitesHint": "Wählen Sie die Standorte, für die Sie Benachrichtigungen zu Anfragen erhalten. Alle Anfragen bleiben in der Liste sichtbar.",
+  "notifySitesTitle": "Benachrichtigungen nach Standort",
+  "pendingRequestTooltip": "Offene Anfrage: tippen, um sie zu öffnen",
+  "requestsHistory": "Alle Anfragen",
+  "revertChange": "Diese Änderung rückgängig machen",
+  "statusExpired": "Hinfällig",
+  "swapWithHint": "Tippen, um einen bestimmten Kollegen zu wählen",
+  "changesDiscarded": "Verworfene Änderungen: {count}",
+  "discardConfirm": "Die {count} nicht veröffentlichten Änderungen verwerfen?"
 }

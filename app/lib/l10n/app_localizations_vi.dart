@@ -897,4 +897,42 @@ class L10nVi extends L10n {
 
   @override
   String get noticeRequestRefused => 'Yêu cầu của bạn đã bị từ chối.';
+
+  @override
+  String get choosePeer => 'Ai nhận ca này?';
+
+  @override
+  String get discardAll => 'Hủy tất cả';
+
+  @override
+  String get notifySitesHint =>
+      'Chọn các địa điểm bạn muốn nhận thông báo về yêu cầu. Mọi yêu cầu vẫn hiển thị trong danh sách.';
+
+  @override
+  String get notifySitesTitle => 'Thông báo theo địa điểm';
+
+  @override
+  String get pendingRequestTooltip => 'Yêu cầu đang chờ: chạm để mở';
+
+  @override
+  String get requestsHistory => 'Tất cả yêu cầu';
+
+  @override
+  String get revertChange => 'Hủy thay đổi này';
+
+  @override
+  String get statusExpired => 'Không còn hiệu lực';
+
+  @override
+  String get swapWithHint => 'Chạm để chọn một đồng nghiệp cụ thể';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Đã hủy thay đổi: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Hủy $count thay đổi chưa công bố?';
+  }
 }

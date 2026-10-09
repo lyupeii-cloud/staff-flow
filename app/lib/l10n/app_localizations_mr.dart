@@ -902,4 +902,42 @@ class L10nMr extends L10n {
 
   @override
   String get noticeRequestRefused => 'तुमची विनंती नाकारली गेली.';
+
+  @override
+  String get choosePeer => 'ही शिफ्ट कोण घेईल?';
+
+  @override
+  String get discardAll => 'सर्व रद्द करा';
+
+  @override
+  String get notifySitesHint =>
+      'ज्या ठिकाणांच्या विनंत्यांच्या सूचना हव्यात ती निवडा. सर्व विनंत्या यादीत दिसत राहतील.';
+
+  @override
+  String get notifySitesTitle => 'ठिकाणानुसार सूचना';
+
+  @override
+  String get pendingRequestTooltip => 'प्रलंबित विनंती: उघडण्यासाठी टॅप करा';
+
+  @override
+  String get requestsHistory => 'सर्व विनंत्या';
+
+  @override
+  String get revertChange => 'हा बदल रद्द करा';
+
+  @override
+  String get statusExpired => 'आता लागू नाही';
+
+  @override
+  String get swapWithHint => 'विशिष्ट सहकारी निवडण्यासाठी टॅप करा';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'रद्द केलेले बदल: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return '$count अप्रकाशित बदल रद्द करायचे?';
+  }
 }

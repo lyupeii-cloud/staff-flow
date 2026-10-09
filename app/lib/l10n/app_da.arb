@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} beder om fri.",
   "noticeUnavailabilityToApprove": "{name} melder sig utilgængelig.",
   "noticeRequestApproved": "Din anmodning er godkendt.",
-  "noticeRequestRefused": "Din anmodning er afvist."
+  "noticeRequestRefused": "Din anmodning er afvist.",
+  "choosePeer": "Hvem overtager vagten?",
+  "discardAll": "Fortryd alt",
+  "notifySitesHint": "Vælg de steder, du får notifikationer om anmodninger fra. Alle anmodninger er stadig synlige på listen.",
+  "notifySitesTitle": "Notifikationer pr. sted",
+  "pendingRequestTooltip": "Ventende anmodning: tryk for at åbne",
+  "requestsHistory": "Alle anmodninger",
+  "revertChange": "Fortryd denne ændring",
+  "statusExpired": "Ikke længere aktuel",
+  "swapWithHint": "Tryk for at vælge en bestemt kollega",
+  "changesDiscarded": "Fortrudte ændringer: {count}",
+  "discardConfirm": "Fortryd de {count} ikke-offentliggjorte ændringer?"
 }

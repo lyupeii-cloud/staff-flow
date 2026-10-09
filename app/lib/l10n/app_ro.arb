@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} cere concediu.",
   "noticeUnavailabilityToApprove": "{name} anunță că nu este disponibil.",
   "noticeRequestApproved": "Cererea ta a fost acceptată.",
-  "noticeRequestRefused": "Cererea ta a fost refuzată."
+  "noticeRequestRefused": "Cererea ta a fost refuzată.",
+  "choosePeer": "Cine preia această tură?",
+  "discardAll": "Anulează tot",
+  "notifySitesHint": "Alege locațiile pentru care primești notificări despre cereri. Toate cererile rămân vizibile în listă.",
+  "notifySitesTitle": "Notificări pe locație",
+  "pendingRequestTooltip": "Cerere în așteptare: atinge pentru a o deschide",
+  "requestsHistory": "Toate cererile",
+  "revertChange": "Anulează această modificare",
+  "statusExpired": "Fără obiect",
+  "swapWithHint": "Atinge pentru a alege un anumit coleg",
+  "changesDiscarded": "Modificări anulate: {count}",
+  "discardConfirm": "Anulezi cele {count} modificări nepublicate?"
 }

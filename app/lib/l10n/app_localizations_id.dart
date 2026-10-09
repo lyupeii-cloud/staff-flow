@@ -901,4 +901,43 @@ class L10nId extends L10n {
 
   @override
   String get noticeRequestRefused => 'Permintaan Anda ditolak.';
+
+  @override
+  String get choosePeer => 'Siapa yang mengambil alih shift ini?';
+
+  @override
+  String get discardAll => 'Batalkan semua';
+
+  @override
+  String get notifySitesHint =>
+      'Pilih lokasi yang notifikasi permintaannya Anda terima. Semua permintaan tetap terlihat di daftar.';
+
+  @override
+  String get notifySitesTitle => 'Notifikasi per lokasi';
+
+  @override
+  String get pendingRequestTooltip =>
+      'Permintaan menunggu: ketuk untuk membuka';
+
+  @override
+  String get requestsHistory => 'Semua permintaan';
+
+  @override
+  String get revertChange => 'Batalkan perubahan ini';
+
+  @override
+  String get statusExpired => 'Tidak berlaku lagi';
+
+  @override
+  String get swapWithHint => 'Ketuk untuk memilih rekan tertentu';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Perubahan dibatalkan: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Batalkan $count perubahan yang belum diterbitkan?';
+  }
 }

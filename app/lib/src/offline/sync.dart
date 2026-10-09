@@ -113,16 +113,26 @@ class Sync extends ChangeNotifier {
   // --- Lecture --------------------------------------------------------------
 
   /// Lit [path] sur le serveur, ou la dernière réponse gardée sous [key].
-  Future<dynamic> read(String key, String path) async {
+  ///
+  /// [maxAge] : une copie gardée plus récente que cela est utilisée sans
+  /// interroger le serveur (données qui changent rarement : moins de
+  /// requêtes au lancement de l'application).
+  Future<dynamic> read(String key, String path, {Duration? maxAge}) async {
     // Déjà hors connexion : la copie gardée tout de suite, sans attendre
     // l'échec d'une requête (le retour du réseau est guetté à part).
     if (!online) {
       final cached = await _cache.record(key).get(_db);
       if (cached != null) return cached;
     }
+    if (maxAge != null) {
+      final at = DateTime.tryParse(await _cache.record('$key@at').get(_db) as String? ?? '');
+      final cached = at != null && DateTime.now().difference(at) < maxAge ? await _cache.record(key).get(_db) : null;
+      if (cached != null) return cached;
+    }
     try {
       final json = await api.send('GET', path);
       await _cache.record(key).put(_db, json);
+      await _cache.record('$key@at').put(_db, DateTime.now().toIso8601String());
       _setOnline(true);
       unawaited(flush());
       return json;
@@ -133,6 +143,9 @@ class Sync extends ChangeNotifier {
       return cached;
     }
   }
+
+  /// Dernière réponse gardée sous [key], sans interroger le serveur.
+  Future<dynamic> cached(String key) => _cache.record(key).get(_db);
 
   /// Services de la période, modifications en attente comprises. [stale] :
   /// le serveur n'a pas répondu, ce sont les dernières données gardées.
@@ -226,6 +239,12 @@ class Sync extends ChangeNotifier {
       'DELETE',
       '/companies/$companyId/shifts/${shift.id}?scope=${series ? 'series' : 'one'}&baseVersion=${shift.version}',
       args: {'shiftId': shift.id, 'series': series});
+
+  /// Annule les modifications en attente d'un service, ou de tous.
+  Future<dynamic> revert(String companyId, String shiftId) =>
+      submit(companyId, 'revert', 'POST', '/companies/$companyId/shifts/$shiftId/revert');
+
+  Future<dynamic> discard(String companyId) => submit(companyId, 'discard', 'POST', '/companies/$companyId/discard');
 
   Future<dynamic> publish(String companyId) => submit(companyId, 'publish', 'POST', '/companies/$companyId/publish');
 

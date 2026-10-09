@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} žiada o dovolenku.",
   "noticeUnavailabilityToApprove": "{name} hlási nedostupnosť.",
   "noticeRequestApproved": "Vaša žiadosť bola schválená.",
-  "noticeRequestRefused": "Vaša žiadosť bola zamietnutá."
+  "noticeRequestRefused": "Vaša žiadosť bola zamietnutá.",
+  "choosePeer": "Kto prevezme túto zmenu?",
+  "discardAll": "Zrušiť všetko",
+  "notifySitesHint": "Vyberte pobočky, z ktorých dostávate oznámenia o žiadostiach. Všetky žiadosti zostávajú viditeľné v zozname.",
+  "notifySitesTitle": "Oznámenia podľa pobočky",
+  "pendingRequestTooltip": "Čakajúca žiadosť: ťuknutím otvoríte",
+  "requestsHistory": "Všetky žiadosti",
+  "revertChange": "Vrátiť túto zmenu",
+  "statusExpired": "Neaktuálna",
+  "swapWithHint": "Ťuknutím vyberte konkrétneho kolegu",
+  "changesDiscarded": "Zrušené zmeny: {count}",
+  "discardConfirm": "Zrušiť {count} nezverejnených zmien?"
 }

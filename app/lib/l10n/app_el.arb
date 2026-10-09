@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "Ο/Η {name} ζητά άδεια.",
   "noticeUnavailabilityToApprove": "Ο/Η {name} δηλώνει μη διαθεσιμότητα.",
   "noticeRequestApproved": "Το αίτημά σας εγκρίθηκε.",
-  "noticeRequestRefused": "Το αίτημά σας απορρίφθηκε."
+  "noticeRequestRefused": "Το αίτημά σας απορρίφθηκε.",
+  "choosePeer": "Ποιος αναλαμβάνει αυτή τη βάρδια;",
+  "discardAll": "Ακύρωση όλων",
+  "notifySitesHint": "Επιλέξτε τα καταστήματα για τα οποία λαμβάνετε ειδοποιήσεις αιτημάτων. Όλα τα αιτήματα παραμένουν ορατά στη λίστα.",
+  "notifySitesTitle": "Ειδοποιήσεις ανά κατάστημα",
+  "pendingRequestTooltip": "Εκκρεμές αίτημα: πατήστε για άνοιγμα",
+  "requestsHistory": "Όλα τα αιτήματα",
+  "revertChange": "Αναίρεση αυτής της αλλαγής",
+  "statusExpired": "Άνευ αντικειμένου",
+  "swapWithHint": "Πατήστε για να επιλέξετε συγκεκριμένο συνάδελφο",
+  "changesDiscarded": "Αλλαγές που ακυρώθηκαν: {count}",
+  "discardConfirm": "Ακύρωση των {count} μη δημοσιευμένων αλλαγών;"
 }

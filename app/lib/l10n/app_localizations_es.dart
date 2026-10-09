@@ -908,4 +908,42 @@ class L10nEs extends L10n {
 
   @override
   String get noticeRequestRefused => 'Tu solicitud ha sido rechazada.';
+
+  @override
+  String get choosePeer => '¿Quién toma este turno?';
+
+  @override
+  String get discardAll => 'Anular todo';
+
+  @override
+  String get notifySitesHint =>
+      'Elige los sitios de los que recibes notificaciones de solicitudes. Todas las solicitudes siguen visibles en la lista.';
+
+  @override
+  String get notifySitesTitle => 'Notificaciones por sitio';
+
+  @override
+  String get pendingRequestTooltip => 'Solicitud pendiente: toca para abrirla';
+
+  @override
+  String get requestsHistory => 'Todas las solicitudes';
+
+  @override
+  String get revertChange => 'Anular este cambio';
+
+  @override
+  String get statusExpired => 'Sin efecto';
+
+  @override
+  String get swapWithHint => 'Toca para elegir un compañero concreto';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Cambios anulados: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return '¿Anular los $count cambios no publicados?';
+  }
 }

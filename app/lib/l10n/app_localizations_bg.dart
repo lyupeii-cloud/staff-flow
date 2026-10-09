@@ -902,4 +902,43 @@ class L10nBg extends L10n {
 
   @override
   String get noticeRequestRefused => 'Заявката ви е отказана.';
+
+  @override
+  String get choosePeer => 'Кой поема тази смяна?';
+
+  @override
+  String get discardAll => 'Отмени всичко';
+
+  @override
+  String get notifySitesHint =>
+      'Изберете обектите, за които получавате известия за заявки. Всички заявки остават видими в списъка.';
+
+  @override
+  String get notifySitesTitle => 'Известия по обект';
+
+  @override
+  String get pendingRequestTooltip =>
+      'Чакаща заявка: докоснете, за да я отворите';
+
+  @override
+  String get requestsHistory => 'Всички заявки';
+
+  @override
+  String get revertChange => 'Отмени тази промяна';
+
+  @override
+  String get statusExpired => 'Неактуална';
+
+  @override
+  String get swapWithHint => 'Докоснете, за да изберете конкретен колега';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Отменени промени: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Да се отменят ли $count непубликувани промени?';
+  }
 }

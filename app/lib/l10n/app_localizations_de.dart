@@ -910,4 +910,43 @@ class L10nDe extends L10n {
 
   @override
   String get noticeRequestRefused => 'Ihre Anfrage wurde abgelehnt.';
+
+  @override
+  String get choosePeer => 'Wer übernimmt diese Schicht?';
+
+  @override
+  String get discardAll => 'Alles verwerfen';
+
+  @override
+  String get notifySitesHint =>
+      'Wählen Sie die Standorte, für die Sie Benachrichtigungen zu Anfragen erhalten. Alle Anfragen bleiben in der Liste sichtbar.';
+
+  @override
+  String get notifySitesTitle => 'Benachrichtigungen nach Standort';
+
+  @override
+  String get pendingRequestTooltip =>
+      'Offene Anfrage: tippen, um sie zu öffnen';
+
+  @override
+  String get requestsHistory => 'Alle Anfragen';
+
+  @override
+  String get revertChange => 'Diese Änderung rückgängig machen';
+
+  @override
+  String get statusExpired => 'Hinfällig';
+
+  @override
+  String get swapWithHint => 'Tippen, um einen bestimmten Kollegen zu wählen';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Verworfene Änderungen: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Die $count nicht veröffentlichten Änderungen verwerfen?';
+  }
 }

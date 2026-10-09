@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} ansöker om ledighet.",
   "noticeUnavailabilityToApprove": "{name} anmäler att hen inte är tillgänglig.",
   "noticeRequestApproved": "Din förfrågan har godkänts.",
-  "noticeRequestRefused": "Din förfrågan har avslagits."
+  "noticeRequestRefused": "Din förfrågan har avslagits.",
+  "choosePeer": "Vem tar över passet?",
+  "discardAll": "Ångra allt",
+  "notifySitesHint": "Välj de arbetsplatser du får aviseringar om förfrågningar för. Alla förfrågningar syns fortfarande i listan.",
+  "notifySitesTitle": "Aviseringar per arbetsplats",
+  "pendingRequestTooltip": "Väntande förfrågan: tryck för att öppna",
+  "requestsHistory": "Alla förfrågningar",
+  "revertChange": "Ångra ändringen",
+  "statusExpired": "Inaktuell",
+  "swapWithHint": "Tryck för att välja en viss kollega",
+  "changesDiscarded": "Ångrade ändringar: {count}",
+  "discardConfirm": "Ångra de {count} opublicerade ändringarna?"
 }

@@ -908,4 +908,42 @@ class L10nNl extends L10n {
 
   @override
   String get noticeRequestRefused => 'Je verzoek is geweigerd.';
+
+  @override
+  String get choosePeer => 'Wie neemt deze dienst over?';
+
+  @override
+  String get discardAll => 'Alles annuleren';
+
+  @override
+  String get notifySitesHint =>
+      'Kies de locaties waarvan je meldingen over verzoeken krijgt. Alle verzoeken blijven zichtbaar in de lijst.';
+
+  @override
+  String get notifySitesTitle => 'Meldingen per locatie';
+
+  @override
+  String get pendingRequestTooltip => 'Openstaand verzoek: tik om te openen';
+
+  @override
+  String get requestsHistory => 'Alle verzoeken';
+
+  @override
+  String get revertChange => 'Deze wijziging ongedaan maken';
+
+  @override
+  String get statusExpired => 'Vervallen';
+
+  @override
+  String get swapWithHint => 'Tik om een specifieke collega te kiezen';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Geannuleerde wijzigingen: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'De $count niet-gepubliceerde wijzigingen annuleren?';
+  }
 }

@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} ber om fri.",
   "noticeUnavailabilityToApprove": "{name} melder at hen ikke er tilgjengelig.",
   "noticeRequestApproved": "Forespørselen din er godkjent.",
-  "noticeRequestRefused": "Forespørselen din er avslått."
+  "noticeRequestRefused": "Forespørselen din er avslått.",
+  "choosePeer": "Hvem tar over vakten?",
+  "discardAll": "Angre alt",
+  "notifySitesHint": "Velg stedene du får varsler om forespørsler fra. Alle forespørsler er fortsatt synlige i listen.",
+  "notifySitesTitle": "Varsler per sted",
+  "pendingRequestTooltip": "Ventende forespørsel: trykk for å åpne",
+  "requestsHistory": "Alle forespørsler",
+  "revertChange": "Angre denne endringen",
+  "statusExpired": "Ikke lenger aktuell",
+  "swapWithHint": "Trykk for å velge en bestemt kollega",
+  "changesDiscarded": "Angrede endringer: {count}",
+  "discardConfirm": "Angre de {count} upubliserte endringene?"
 }

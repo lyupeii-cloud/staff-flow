@@ -900,4 +900,42 @@ class L10nHu extends L10n {
 
   @override
   String get noticeRequestRefused => 'A kérésedet elutasították.';
+
+  @override
+  String get choosePeer => 'Ki veszi át ezt a műszakot?';
+
+  @override
+  String get discardAll => 'Összes elvetése';
+
+  @override
+  String get notifySitesHint =>
+      'Válaszd ki, mely telephelyekről kapsz értesítést a kérésekről. Minden kérés látható marad a listában.';
+
+  @override
+  String get notifySitesTitle => 'Értesítések telephelyenként';
+
+  @override
+  String get pendingRequestTooltip => 'Függő kérés: koppints a megnyitáshoz';
+
+  @override
+  String get requestsHistory => 'Összes kérés';
+
+  @override
+  String get revertChange => 'Módosítás visszavonása';
+
+  @override
+  String get statusExpired => 'Tárgytalan';
+
+  @override
+  String get swapWithHint => 'Koppints egy adott kolléga kiválasztásához';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Elvetett módosítások: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Elveted a(z) $count közzé nem tett módosítást?';
+  }
 }

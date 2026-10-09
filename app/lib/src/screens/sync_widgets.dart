@@ -116,6 +116,15 @@ class NoticesButton extends StatelessWidget {
                   color: n['read'] == true ? Theme.of(context).disabledColor : Theme.of(context).colorScheme.primary),
               title: Text(_noticeText(t, loc, n)),
               subtitle: Text(_when(loc, DateTime.parse(n['createdAt']).toLocal())),
+              // Avis d'une demande : le toucher ouvre la demande.
+              trailing: n['data']?['requestId'] != null && n['companyId'] != null ? const Icon(Icons.chevron_right) : null,
+              onTap: n['data']?['requestId'] != null && n['companyId'] != null
+                  ? () {
+                      Navigator.pop(context);
+                      session.openRequest.value =
+                          (companyId: n['companyId'] as String, requestId: n['data']['requestId'] as String);
+                    }
+                  : null,
             ),
         ],
       ),

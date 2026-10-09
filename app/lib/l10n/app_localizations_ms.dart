@@ -900,4 +900,43 @@ class L10nMs extends L10n {
 
   @override
   String get noticeRequestRefused => 'Permintaan anda telah ditolak.';
+
+  @override
+  String get choosePeer => 'Siapa yang mengambil alih syif ini?';
+
+  @override
+  String get discardAll => 'Batalkan semua';
+
+  @override
+  String get notifySitesHint =>
+      'Pilih lokasi yang anda terima pemberitahuan permintaan. Semua permintaan masih kelihatan dalam senarai.';
+
+  @override
+  String get notifySitesTitle => 'Pemberitahuan mengikut lokasi';
+
+  @override
+  String get pendingRequestTooltip =>
+      'Permintaan menunggu: ketik untuk membuka';
+
+  @override
+  String get requestsHistory => 'Semua permintaan';
+
+  @override
+  String get revertChange => 'Batalkan perubahan ini';
+
+  @override
+  String get statusExpired => 'Tidak lagi berkenaan';
+
+  @override
+  String get swapWithHint => 'Ketik untuk memilih rakan sekerja tertentu';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Perubahan dibatalkan: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Batalkan $count perubahan yang belum diterbitkan?';
+  }
 }

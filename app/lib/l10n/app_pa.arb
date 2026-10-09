@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} ਛੁੱਟੀ ਮੰਗ ਰਹੇ ਹਨ।",
   "noticeUnavailabilityToApprove": "{name} ਨੇ ਅਣਉਪਲਬਧਤਾ ਦੱਸੀ ਹੈ।",
   "noticeRequestApproved": "ਤੁਹਾਡੀ ਬੇਨਤੀ ਮਨਜ਼ੂਰ ਹੋ ਗਈ।",
-  "noticeRequestRefused": "ਤੁਹਾਡੀ ਬੇਨਤੀ ਨਾਮਨਜ਼ੂਰ ਹੋ ਗਈ।"
+  "noticeRequestRefused": "ਤੁਹਾਡੀ ਬੇਨਤੀ ਨਾਮਨਜ਼ੂਰ ਹੋ ਗਈ।",
+  "choosePeer": "ਇਹ ਸ਼ਿਫ਼ਟ ਕੌਣ ਲਵੇਗਾ?",
+  "discardAll": "ਸਭ ਰੱਦ ਕਰੋ",
+  "notifySitesHint": "ਉਹ ਥਾਵਾਂ ਚੁਣੋ ਜਿਨ੍ਹਾਂ ਦੀਆਂ ਬੇਨਤੀਆਂ ਦੀਆਂ ਸੂਚਨਾਵਾਂ ਤੁਹਾਨੂੰ ਮਿਲਣ। ਸਾਰੀਆਂ ਬੇਨਤੀਆਂ ਸੂਚੀ ਵਿੱਚ ਦਿਸਦੀਆਂ ਰਹਿਣਗੀਆਂ।",
+  "notifySitesTitle": "ਥਾਂ ਮੁਤਾਬਕ ਸੂਚਨਾਵਾਂ",
+  "pendingRequestTooltip": "ਬਕਾਇਆ ਬੇਨਤੀ: ਖੋਲ੍ਹਣ ਲਈ ਟੈਪ ਕਰੋ",
+  "requestsHistory": "ਸਾਰੀਆਂ ਬੇਨਤੀਆਂ",
+  "revertChange": "ਇਹ ਬਦਲਾਅ ਰੱਦ ਕਰੋ",
+  "statusExpired": "ਹੁਣ ਲਾਗੂ ਨਹੀਂ",
+  "swapWithHint": "ਕਿਸੇ ਖ਼ਾਸ ਸਾਥੀ ਨੂੰ ਚੁਣਨ ਲਈ ਟੈਪ ਕਰੋ",
+  "changesDiscarded": "ਰੱਦ ਕੀਤੇ ਬਦਲਾਅ: {count}",
+  "discardConfirm": "{count} ਅਪ੍ਰਕਾਸ਼ਿਤ ਬਦਲਾਅ ਰੱਦ ਕਰਨੇ ਹਨ?"
 }

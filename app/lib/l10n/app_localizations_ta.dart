@@ -907,4 +907,42 @@ class L10nTa extends L10n {
 
   @override
   String get noticeRequestRefused => 'உங்கள் கோரிக்கை நிராகரிக்கப்பட்டது.';
+
+  @override
+  String get choosePeer => 'இந்த ஷிஃப்டை யார் எடுப்பார்?';
+
+  @override
+  String get discardAll => 'அனைத்தையும் ரத்துசெய்';
+
+  @override
+  String get notifySitesHint =>
+      'கோரிக்கை அறிவிப்புகளைப் பெற வேண்டிய இடங்களைத் தேர்ந்தெடுங்கள். அனைத்துக் கோரிக்கைகளும் பட்டியலில் தெரியும்.';
+
+  @override
+  String get notifySitesTitle => 'இட வாரியான அறிவிப்புகள்';
+
+  @override
+  String get pendingRequestTooltip => 'நிலுவைக் கோரிக்கை: திறக்கத் தட்டுங்கள்';
+
+  @override
+  String get requestsHistory => 'அனைத்துக் கோரிக்கைகள்';
+
+  @override
+  String get revertChange => 'இந்த மாற்றத்தை ரத்துசெய்';
+
+  @override
+  String get statusExpired => 'இனி பொருந்தாது';
+
+  @override
+  String get swapWithHint => 'குறிப்பிட்ட சக ஊழியரைத் தேர்வுசெய்யத் தட்டுங்கள்';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'ரத்துசெய்த மாற்றங்கள்: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'வெளியிடப்படாத $count மாற்றங்களை ரத்துசெய்யவா?';
+  }
 }

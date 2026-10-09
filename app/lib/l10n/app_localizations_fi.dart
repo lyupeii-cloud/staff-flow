@@ -905,4 +905,42 @@ class L10nFi extends L10n {
 
   @override
   String get noticeRequestRefused => 'Pyyntösi on hylätty.';
+
+  @override
+  String get choosePeer => 'Kuka ottaa tämän vuoron?';
+
+  @override
+  String get discardAll => 'Peru kaikki';
+
+  @override
+  String get notifySitesHint =>
+      'Valitse toimipaikat, joista saat ilmoituksia pyynnöistä. Kaikki pyynnöt näkyvät edelleen listassa.';
+
+  @override
+  String get notifySitesTitle => 'Ilmoitukset toimipaikoittain';
+
+  @override
+  String get pendingRequestTooltip => 'Odottava pyyntö: avaa napauttamalla';
+
+  @override
+  String get requestsHistory => 'Kaikki pyynnöt';
+
+  @override
+  String get revertChange => 'Peru tämä muutos';
+
+  @override
+  String get statusExpired => 'Ei enää ajankohtainen';
+
+  @override
+  String get swapWithHint => 'Napauta valitaksesi tietyn työkaverin';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Perutut muutokset: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Perutaanko $count julkaisematonta muutosta?';
+  }
 }

@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} xin nghỉ phép.",
   "noticeUnavailabilityToApprove": "{name} báo không thể làm việc.",
   "noticeRequestApproved": "Yêu cầu của bạn đã được chấp nhận.",
-  "noticeRequestRefused": "Yêu cầu của bạn đã bị từ chối."
+  "noticeRequestRefused": "Yêu cầu của bạn đã bị từ chối.",
+  "choosePeer": "Ai nhận ca này?",
+  "discardAll": "Hủy tất cả",
+  "notifySitesHint": "Chọn các địa điểm bạn muốn nhận thông báo về yêu cầu. Mọi yêu cầu vẫn hiển thị trong danh sách.",
+  "notifySitesTitle": "Thông báo theo địa điểm",
+  "pendingRequestTooltip": "Yêu cầu đang chờ: chạm để mở",
+  "requestsHistory": "Tất cả yêu cầu",
+  "revertChange": "Hủy thay đổi này",
+  "statusExpired": "Không còn hiệu lực",
+  "swapWithHint": "Chạm để chọn một đồng nghiệp cụ thể",
+  "changesDiscarded": "Đã hủy thay đổi: {count}",
+  "discardConfirm": "Hủy {count} thay đổi chưa công bố?"
 }

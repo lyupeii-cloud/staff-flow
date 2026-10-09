@@ -905,4 +905,42 @@ class L10nSv extends L10n {
 
   @override
   String get noticeRequestRefused => 'Din förfrågan har avslagits.';
+
+  @override
+  String get choosePeer => 'Vem tar över passet?';
+
+  @override
+  String get discardAll => 'Ångra allt';
+
+  @override
+  String get notifySitesHint =>
+      'Välj de arbetsplatser du får aviseringar om förfrågningar för. Alla förfrågningar syns fortfarande i listan.';
+
+  @override
+  String get notifySitesTitle => 'Aviseringar per arbetsplats';
+
+  @override
+  String get pendingRequestTooltip => 'Väntande förfrågan: tryck för att öppna';
+
+  @override
+  String get requestsHistory => 'Alla förfrågningar';
+
+  @override
+  String get revertChange => 'Ångra ändringen';
+
+  @override
+  String get statusExpired => 'Inaktuell';
+
+  @override
+  String get swapWithHint => 'Tryck för att välja en viss kollega';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Ångrade ändringar: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Ångra de $count opublicerade ändringarna?';
+  }
 }

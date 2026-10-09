@@ -895,4 +895,42 @@ class L10nTh extends L10n {
 
   @override
   String get noticeRequestRefused => 'คำขอของคุณถูกปฏิเสธ';
+
+  @override
+  String get choosePeer => 'ใครจะรับกะนี้';
+
+  @override
+  String get discardAll => 'ยกเลิกทั้งหมด';
+
+  @override
+  String get notifySitesHint =>
+      'เลือกสาขาที่คุณต้องการรับการแจ้งเตือนคำขอ คำขอทั้งหมดยังคงแสดงในรายการ';
+
+  @override
+  String get notifySitesTitle => 'การแจ้งเตือนตามสาขา';
+
+  @override
+  String get pendingRequestTooltip => 'คำขอที่รออยู่: แตะเพื่อเปิด';
+
+  @override
+  String get requestsHistory => 'คำขอทั้งหมด';
+
+  @override
+  String get revertChange => 'ยกเลิกการเปลี่ยนแปลงนี้';
+
+  @override
+  String get statusExpired => 'ไม่มีผลแล้ว';
+
+  @override
+  String get swapWithHint => 'แตะเพื่อเลือกเพื่อนร่วมงานที่ต้องการ';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'ยกเลิกการเปลี่ยนแปลงแล้ว: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'ยกเลิกการเปลี่ยนแปลงที่ยังไม่เผยแพร่ $count รายการใช่ไหม';
+  }
 }

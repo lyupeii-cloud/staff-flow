@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../api.dart';
 import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
@@ -18,12 +19,15 @@ class CompanyData {
   const CompanyData(this.members, this.sites, this.positions);
 
   /// Depuis le serveur, ou hors connexion depuis la dernière copie gardée.
-  static Future<CompanyData> load(Session session, String companyId) async {
+  /// Sauf [fresh], une copie de moins de 10 minutes suffit : ces données
+  /// changent rarement, et chaque changement connu force une relecture.
+  static Future<CompanyData> load(Session session, String companyId, {bool fresh = false}) async {
     final sync = session.sync;
+    final age = fresh ? null : const Duration(minutes: 10);
     final r = await Future.wait([
-      sync.read('members:$companyId', '/companies/$companyId/members'),
-      sync.read('sites:$companyId', '/companies/$companyId/sites'),
-      sync.read('positions:$companyId', '/companies/$companyId/positions'),
+      sync.read('members:$companyId', '/companies/$companyId/members', maxAge: age),
+      sync.read('sites:$companyId', '/companies/$companyId/sites', maxAge: age),
+      sync.read('positions:$companyId', '/companies/$companyId/positions', maxAge: age),
     ]);
     return CompanyData(
       [for (final m in r[0]['members']) Member.fromJson(m)],
@@ -66,16 +70,22 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
 
   late int _synced = widget.session.sync.synced;
 
+  /// Demande à mettre en évidence dans la vue « Demandes ».
+  String? _focusRequest;
+
   @override
   void initState() {
     super.initState();
-    _reload();
+    _data = CompanyData.load(widget.session, company.id);
     widget.session.sync.addListener(_onSync);
+    widget.session.openRequest.addListener(_onOpenRequest);
+    _onOpenRequest();
   }
 
   @override
   void dispose() {
     widget.session.sync.removeListener(_onSync);
+    widget.session.openRequest.removeListener(_onOpenRequest);
     super.dispose();
   }
 
@@ -83,6 +93,66 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
   void didUpdateWidget(CompanyTab old) {
     super.didUpdateWidget(old);
     if (old.membership.role != role) _reload();
+  }
+
+  /// Notification touchée, ou icône d'une demande dans le planning.
+  void _onOpenRequest() {
+    final wanted = widget.session.openRequest.value;
+    if (wanted == null || wanted.companyId != company.id) return;
+    widget.session.openRequest.value = null;
+    setState(() {
+      _view = _View.requests;
+      _focusRequest = wanted.requestId;
+    });
+  }
+
+  /// Responsable : sites dont il veut recevoir les notifications.
+  Future<void> _chooseNotifySites(CompanyData data) async {
+    final t = context.l10n;
+    final messenger = ScaffoldMessenger.of(context);
+    final mine = widget.membership.managedSites;
+    final sites = [for (final s in data.sites) if (!s.archived && (mine == null || mine.contains(s.id))) s];
+    final current = widget.membership.notifySites;
+    final chosen = {for (final s in sites) if (current == null || current.contains(s.id)) s.id};
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setDialog) => AlertDialog(
+          title: Text(t.notifySitesTitle),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(t.notifySitesHint),
+                for (final s in sites)
+                  CheckboxListTile(
+                    contentPadding: EdgeInsets.zero,
+                    value: chosen.contains(s.id),
+                    title: Text(s.name),
+                    onChanged: (on) => setDialog(() => on == true ? chosen.add(s.id) : chosen.remove(s.id)),
+                  ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
+            FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.save)),
+          ],
+        ),
+      ),
+    );
+    if (ok != true) return;
+    final all = sites.every((s) => chosen.contains(s.id));
+    try {
+      await widget.session.api.send('PUT', '/companies/${company.id}/notify-sites',
+          body: {'sites': all ? null : chosen.toList()});
+      await widget.session.refresh();
+    } on OfflineException {
+      messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+    } on ApiException catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text(e.describe(t))));
+    }
   }
 
   /// Retour du réseau, retour dans l'application, quelqu'un a rejoint
@@ -97,7 +167,7 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
 
   // Pendant le rechargement, l'écran garde les données précédentes.
   void _reload() => setState(() {
-        _data = CompanyData.load(widget.session, company.id);
+        _data = CompanyData.load(widget.session, company.id, fresh: true);
       });
 
   @override
@@ -113,7 +183,32 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text('${role.label(t)} · ${company.timezone}', style: theme.textTheme.bodySmall),
+              Row(
+                children: [
+                  Expanded(child: Text('${role.label(t)} · ${company.timezone}', style: theme.textTheme.bodySmall)),
+                  // Responsable d'au moins deux sites : choisir ceux dont il est prévenu.
+                  if (role.canManage)
+                    FutureBuilder(
+                      future: _data,
+                      builder: (context, snap) {
+                        final data = snap.data;
+                        final mine = widget.membership.managedSites;
+                        final count = data == null
+                            ? 0
+                            : data.sites.where((s) => !s.archived && (mine == null || mine.contains(s.id))).length;
+                        if (data == null || count < 2) return const SizedBox(height: 32);
+                        final filtered = widget.membership.notifySites != null;
+                        return IconButton(
+                          visualDensity: VisualDensity.compact,
+                          tooltip: t.notifySitesTitle,
+                          onPressed: () => _chooseNotifySites(data),
+                          icon: Icon(filtered ? Icons.notifications_paused : Icons.notifications_active,
+                              size: 20, color: filtered ? theme.colorScheme.tertiary : null),
+                        );
+                      },
+                    ),
+                ],
+              ),
               const SizedBox(height: 8),
               Builder(builder: (context) {
                 final unread = widget.session.me?.unreadMessages[company.id] ?? 0;
@@ -133,7 +228,10 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
                   onSelected: (v) {
                     // L'équipe a pu changer : le planning repart de la liste à jour.
                     if (v == _View.planning && _view != _View.planning) _reload();
-                    setState(() => _view = v);
+                    setState(() {
+                      _view = v;
+                      _focusRequest = null;
+                    });
                   },
                 );
               }),
@@ -163,8 +261,12 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
               return switch (_view) {
                 _View.planning =>
                   PlanningView(session: widget.session, membership: widget.membership, data: data),
-                _View.requests =>
-                  RequestsView(session: widget.session, membership: widget.membership, data: data),
+                _View.requests => RequestsView(
+                    key: ValueKey(_focusRequest),
+                    session: widget.session,
+                    membership: widget.membership,
+                    data: data,
+                    focus: _focusRequest),
                 _View.messages =>
                   MessagesView(session: widget.session, membership: widget.membership, data: data),
                 _View.team => TeamView(

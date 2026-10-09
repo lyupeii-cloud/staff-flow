@@ -905,4 +905,42 @@ class L10nSw extends L10n {
 
   @override
   String get noticeRequestRefused => 'Ombi lako limekataliwa.';
+
+  @override
+  String get choosePeer => 'Nani atachukua zamu hii?';
+
+  @override
+  String get discardAll => 'Ghairi zote';
+
+  @override
+  String get notifySitesHint =>
+      'Chagua maeneo unayopokea arifa za maombi. Maombi yote yanabaki kuonekana kwenye orodha.';
+
+  @override
+  String get notifySitesTitle => 'Arifa kwa eneo';
+
+  @override
+  String get pendingRequestTooltip => 'Ombi linalosubiri: gusa ili kulifungua';
+
+  @override
+  String get requestsHistory => 'Maombi yote';
+
+  @override
+  String get revertChange => 'Tendua badiliko hili';
+
+  @override
+  String get statusExpired => 'Halitumiki tena';
+
+  @override
+  String get swapWithHint => 'Gusa ili kuchagua mwenzako fulani';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Mabadiliko yaliyoghairiwa: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Ghairi mabadiliko $count ambayo hayajachapishwa?';
+  }
 }

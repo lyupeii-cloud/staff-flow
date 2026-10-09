@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} anaomba likizo.",
   "noticeUnavailabilityToApprove": "{name} ametangaza kutopatikana.",
   "noticeRequestApproved": "Ombi lako limekubaliwa.",
-  "noticeRequestRefused": "Ombi lako limekataliwa."
+  "noticeRequestRefused": "Ombi lako limekataliwa.",
+  "choosePeer": "Nani atachukua zamu hii?",
+  "discardAll": "Ghairi zote",
+  "notifySitesHint": "Chagua maeneo unayopokea arifa za maombi. Maombi yote yanabaki kuonekana kwenye orodha.",
+  "notifySitesTitle": "Arifa kwa eneo",
+  "pendingRequestTooltip": "Ombi linalosubiri: gusa ili kulifungua",
+  "requestsHistory": "Maombi yote",
+  "revertChange": "Tendua badiliko hili",
+  "statusExpired": "Halitumiki tena",
+  "swapWithHint": "Gusa ili kuchagua mwenzako fulani",
+  "changesDiscarded": "Mabadiliko yaliyoghairiwa: {count}",
+  "discardConfirm": "Ghairi mabadiliko {count} ambayo hayajachapishwa?"
 }

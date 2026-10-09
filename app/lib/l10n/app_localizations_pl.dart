@@ -914,4 +914,43 @@ class L10nPl extends L10n {
 
   @override
   String get noticeRequestRefused => 'Twoja prośba została odrzucona.';
+
+  @override
+  String get choosePeer => 'Kto przejmie tę zmianę?';
+
+  @override
+  String get discardAll => 'Anuluj wszystko';
+
+  @override
+  String get notifySitesHint =>
+      'Wybierz lokalizacje, z których otrzymujesz powiadomienia o prośbach. Wszystkie prośby pozostają widoczne na liście.';
+
+  @override
+  String get notifySitesTitle => 'Powiadomienia według lokalizacji';
+
+  @override
+  String get pendingRequestTooltip =>
+      'Oczekująca prośba: dotknij, aby otworzyć';
+
+  @override
+  String get requestsHistory => 'Wszystkie prośby';
+
+  @override
+  String get revertChange => 'Cofnij tę zmianę';
+
+  @override
+  String get statusExpired => 'Nieaktualna';
+
+  @override
+  String get swapWithHint => 'Dotknij, aby wybrać konkretnego współpracownika';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Anulowane zmiany: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Anulować $count nieopublikowanych zmian?';
+  }
 }

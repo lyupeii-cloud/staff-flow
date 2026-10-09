@@ -253,5 +253,16 @@
   "noticeLeaveToApprove": "{name} demande un congé.",
   "noticeUnavailabilityToApprove": "{name} déclare une indisponibilité.",
   "noticeRequestApproved": "Votre demande a été acceptée.",
-  "noticeRequestRefused": "Votre demande a été refusée."
+  "noticeRequestRefused": "Votre demande a été refusée.",
+  "choosePeer": "Qui reprend ce service ?",
+  "discardAll": "Tout annuler",
+  "notifySitesHint": "Choisissez les sites dont vous recevez les notifications de demandes. Toutes les demandes restent visibles dans la liste.",
+  "notifySitesTitle": "Notifications par site",
+  "pendingRequestTooltip": "Demande en attente : touchez pour l'ouvrir",
+  "requestsHistory": "Toutes les demandes",
+  "revertChange": "Annuler cette modification",
+  "statusExpired": "Sans objet",
+  "swapWithHint": "Touchez pour choisir un collègue précis",
+  "changesDiscarded": "Modifications annulées : {count}",
+  "discardConfirm": "Annuler les {count} modifications non publiées ?"
 }

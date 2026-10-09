@@ -901,4 +901,42 @@ class L10nGu extends L10n {
 
   @override
   String get noticeRequestRefused => 'તમારી વિનંતી નકારાઈ.';
+
+  @override
+  String get choosePeer => 'આ શિફ્ટ કોણ લેશે?';
+
+  @override
+  String get discardAll => 'બધું રદ કરો';
+
+  @override
+  String get notifySitesHint =>
+      'જે સ્થળોની વિનંતીઓની સૂચનાઓ જોઈએ તે પસંદ કરો. બધી વિનંતીઓ યાદીમાં દેખાતી રહેશે.';
+
+  @override
+  String get notifySitesTitle => 'સ્થળ પ્રમાણે સૂચનાઓ';
+
+  @override
+  String get pendingRequestTooltip => 'બાકી વિનંતી: ખોલવા ટૅપ કરો';
+
+  @override
+  String get requestsHistory => 'બધી વિનંતીઓ';
+
+  @override
+  String get revertChange => 'આ ફેરફાર રદ કરો';
+
+  @override
+  String get statusExpired => 'હવે લાગુ નથી';
+
+  @override
+  String get swapWithHint => 'ચોક્કસ સહકર્મી પસંદ કરવા ટૅપ કરો';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'રદ કરેલા ફેરફારો: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return '$count અપ્રકાશિત ફેરફારો રદ કરવા છે?';
+  }
 }

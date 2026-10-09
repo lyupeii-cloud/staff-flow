@@ -906,4 +906,43 @@ class L10nFil extends L10n {
 
   @override
   String get noticeRequestRefused => 'Tinanggihan ang kahilingan mo.';
+
+  @override
+  String get choosePeer => 'Sino ang kukuha ng shift na ito?';
+
+  @override
+  String get discardAll => 'Kanselahin lahat';
+
+  @override
+  String get notifySitesHint =>
+      'Piliin ang mga site na makakatanggap ka ng notification ng kahilingan. Makikita pa rin ang lahat ng kahilingan sa listahan.';
+
+  @override
+  String get notifySitesTitle => 'Mga notification ayon sa site';
+
+  @override
+  String get pendingRequestTooltip =>
+      'Nakabinbing kahilingan: i-tap para buksan';
+
+  @override
+  String get requestsHistory => 'Lahat ng kahilingan';
+
+  @override
+  String get revertChange => 'I-undo ang pagbabagong ito';
+
+  @override
+  String get statusExpired => 'Hindi na naaangkop';
+
+  @override
+  String get swapWithHint => 'I-tap para pumili ng partikular na kasamahan';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Mga kinanselang pagbabago: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Kanselahin ang $count hindi pa na-publish na pagbabago?';
+  }
 }

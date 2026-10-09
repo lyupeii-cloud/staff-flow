@@ -903,4 +903,42 @@ class L10nKk extends L10n {
 
   @override
   String get noticeRequestRefused => 'Сұрауыңыз қабылданбады.';
+
+  @override
+  String get choosePeer => 'Бұл ауысымды кім алады?';
+
+  @override
+  String get discardAll => 'Барлығын болдырмау';
+
+  @override
+  String get notifySitesHint =>
+      'Сұраулар туралы хабарландыру алатын нысандарды таңдаңыз. Барлық сұраулар тізімде көрініп тұрады.';
+
+  @override
+  String get notifySitesTitle => 'Нысан бойынша хабарландырулар';
+
+  @override
+  String get pendingRequestTooltip => 'Күтудегі сұрау: ашу үшін түртіңіз';
+
+  @override
+  String get requestsHistory => 'Барлық сұраулар';
+
+  @override
+  String get revertChange => 'Бұл өзгерісті болдырмау';
+
+  @override
+  String get statusExpired => 'Өзектілігін жойды';
+
+  @override
+  String get swapWithHint => 'Нақты әріптесті таңдау үшін түртіңіз';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Болдырылмаған өзгерістер: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Жарияланбаған $count өзгерісті болдырмау керек пе?';
+  }
 }

@@ -909,4 +909,42 @@ class L10nEl extends L10n {
 
   @override
   String get noticeRequestRefused => 'Το αίτημά σας απορρίφθηκε.';
+
+  @override
+  String get choosePeer => 'Ποιος αναλαμβάνει αυτή τη βάρδια;';
+
+  @override
+  String get discardAll => 'Ακύρωση όλων';
+
+  @override
+  String get notifySitesHint =>
+      'Επιλέξτε τα καταστήματα για τα οποία λαμβάνετε ειδοποιήσεις αιτημάτων. Όλα τα αιτήματα παραμένουν ορατά στη λίστα.';
+
+  @override
+  String get notifySitesTitle => 'Ειδοποιήσεις ανά κατάστημα';
+
+  @override
+  String get pendingRequestTooltip => 'Εκκρεμές αίτημα: πατήστε για άνοιγμα';
+
+  @override
+  String get requestsHistory => 'Όλα τα αιτήματα';
+
+  @override
+  String get revertChange => 'Αναίρεση αυτής της αλλαγής';
+
+  @override
+  String get statusExpired => 'Άνευ αντικειμένου';
+
+  @override
+  String get swapWithHint => 'Πατήστε για να επιλέξετε συγκεκριμένο συνάδελφο';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Αλλαγές που ακυρώθηκαν: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Ακύρωση των $count μη δημοσιευμένων αλλαγών;';
+  }
 }

@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} иска отпуск.",
   "noticeUnavailabilityToApprove": "{name} съобщава, че не е на разположение.",
   "noticeRequestApproved": "Заявката ви е одобрена.",
-  "noticeRequestRefused": "Заявката ви е отказана."
+  "noticeRequestRefused": "Заявката ви е отказана.",
+  "choosePeer": "Кой поема тази смяна?",
+  "discardAll": "Отмени всичко",
+  "notifySitesHint": "Изберете обектите, за които получавате известия за заявки. Всички заявки остават видими в списъка.",
+  "notifySitesTitle": "Известия по обект",
+  "pendingRequestTooltip": "Чакаща заявка: докоснете, за да я отворите",
+  "requestsHistory": "Всички заявки",
+  "revertChange": "Отмени тази промяна",
+  "statusExpired": "Неактуална",
+  "swapWithHint": "Докоснете, за да изберете конкретен колега",
+  "changesDiscarded": "Отменени промени: {count}",
+  "discardConfirm": "Да се отменят ли {count} непубликувани промени?"
 }

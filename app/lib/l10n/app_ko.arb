@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name}님이 휴가를 요청했습니다.",
   "noticeUnavailabilityToApprove": "{name}님이 근무 불가를 알렸습니다.",
   "noticeRequestApproved": "요청이 승인되었습니다.",
-  "noticeRequestRefused": "요청이 거절되었습니다."
+  "noticeRequestRefused": "요청이 거절되었습니다.",
+  "choosePeer": "이 근무를 누가 맡나요?",
+  "discardAll": "모두 취소",
+  "notifySitesHint": "요청 알림을 받을 지점을 선택하세요. 모든 요청은 목록에 계속 표시됩니다.",
+  "notifySitesTitle": "지점별 알림",
+  "pendingRequestTooltip": "대기 중인 요청: 눌러서 열기",
+  "requestsHistory": "모든 요청",
+  "revertChange": "이 변경 취소",
+  "statusExpired": "해당 없음",
+  "swapWithHint": "눌러서 특정 동료 선택",
+  "changesDiscarded": "취소된 변경: {count}",
+  "discardConfirm": "게시되지 않은 변경 {count}건을 취소할까요?"
 }

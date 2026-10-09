@@ -903,4 +903,42 @@ class L10nHi extends L10n {
 
   @override
   String get noticeRequestRefused => 'आपका अनुरोध अस्वीकार हो गया।';
+
+  @override
+  String get choosePeer => 'यह शिफ़्ट कौन लेगा?';
+
+  @override
+  String get discardAll => 'सब रद्द करें';
+
+  @override
+  String get notifySitesHint =>
+      'वे स्थान चुनें जिनके अनुरोधों की सूचनाएँ आपको मिलें। सभी अनुरोध सूची में दिखते रहेंगे।';
+
+  @override
+  String get notifySitesTitle => 'स्थान के अनुसार सूचनाएँ';
+
+  @override
+  String get pendingRequestTooltip => 'लंबित अनुरोध: खोलने के लिए टैप करें';
+
+  @override
+  String get requestsHistory => 'सभी अनुरोध';
+
+  @override
+  String get revertChange => 'यह बदलाव रद्द करें';
+
+  @override
+  String get statusExpired => 'अब लागू नहीं';
+
+  @override
+  String get swapWithHint => 'किसी खास सहकर्मी को चुनने के लिए टैप करें';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'रद्द किए गए बदलाव: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return '$count अप्रकाशित बदलाव रद्द करें?';
+  }
 }

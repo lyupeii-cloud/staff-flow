@@ -905,4 +905,42 @@ class L10nIt extends L10n {
 
   @override
   String get noticeRequestRefused => 'La tua richiesta è stata rifiutata.';
+
+  @override
+  String get choosePeer => 'Chi prende questo turno?';
+
+  @override
+  String get discardAll => 'Annulla tutto';
+
+  @override
+  String get notifySitesHint =>
+      'Scegli le sedi di cui ricevi le notifiche delle richieste. Tutte le richieste restano visibili nell\'elenco.';
+
+  @override
+  String get notifySitesTitle => 'Notifiche per sede';
+
+  @override
+  String get pendingRequestTooltip => 'Richiesta in attesa: tocca per aprirla';
+
+  @override
+  String get requestsHistory => 'Tutte le richieste';
+
+  @override
+  String get revertChange => 'Annulla questa modifica';
+
+  @override
+  String get statusExpired => 'Non più valida';
+
+  @override
+  String get swapWithHint => 'Tocca per scegliere un collega preciso';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Modifiche annullate: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Annullare le $count modifiche non pubblicate?';
+  }
 }

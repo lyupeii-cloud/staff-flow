@@ -885,4 +885,41 @@ class L10nKo extends L10n {
 
   @override
   String get noticeRequestRefused => '요청이 거절되었습니다.';
+
+  @override
+  String get choosePeer => '이 근무를 누가 맡나요?';
+
+  @override
+  String get discardAll => '모두 취소';
+
+  @override
+  String get notifySitesHint => '요청 알림을 받을 지점을 선택하세요. 모든 요청은 목록에 계속 표시됩니다.';
+
+  @override
+  String get notifySitesTitle => '지점별 알림';
+
+  @override
+  String get pendingRequestTooltip => '대기 중인 요청: 눌러서 열기';
+
+  @override
+  String get requestsHistory => '모든 요청';
+
+  @override
+  String get revertChange => '이 변경 취소';
+
+  @override
+  String get statusExpired => '해당 없음';
+
+  @override
+  String get swapWithHint => '눌러서 특정 동료 선택';
+
+  @override
+  String changesDiscarded(String count) {
+    return '취소된 변경: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return '게시되지 않은 변경 $count건을 취소할까요?';
+  }
 }

@@ -55,10 +55,14 @@ class Membership {
   /// extra : les sites de son équipe.
   final List<String>? sites;
 
+  /// Responsable : sites dont il reçoit les notifications (`null` : tous).
+  final List<String>? notifySites;
+
   Membership.fromJson(Map<String, dynamic> j)
       : company = Company.fromJson(j['company']),
         role = Role.values.byName(j['role']),
-        sites = _sites(j['sites']);
+        sites = _sites(j['sites']),
+        notifySites = _sites(j['notifySites']);
 
   /// Sites que cette personne gère : `null` pour toute l'entreprise
   /// (propriétaire, responsable général), vide si elle ne gère rien.
@@ -346,7 +350,8 @@ class StaffRequest {
   final String id;
   final RequestKind kind;
 
-  /// pending_peer, pending_manager, approved, refused ou cancelled.
+  /// pending_peer, pending_manager, approved, refused, cancelled ou expired
+  /// (sans objet : service changé, période passée).
   final String status;
   final String requesterId, requesterName;
   final String? peerId, peerName;
@@ -363,6 +368,9 @@ class StaffRequest {
   final String? note;
   final DateTime createdAt;
   final bool canAnswer, canDecline, canDecide, canCancel;
+
+  /// Échange sans collègue désigné : le responsable choisit qui le reprend.
+  final bool needsPeer;
 
   StaffRequest.fromJson(Map<String, dynamic> j)
       : id = j['id'],
@@ -385,7 +393,12 @@ class StaffRequest {
         canAnswer = j['canAnswer'] == true,
         canDecline = j['canDecline'] == true,
         canDecide = j['canDecide'] == true,
-        canCancel = j['canCancel'] == true;
+        canCancel = j['canCancel'] == true,
+        needsPeer = j['needsPeer'] == true,
+        shiftId = j['shift']?['id'];
+
+  /// Échange : le service proposé.
+  final String? shiftId;
 
   bool get pending => status.startsWith('pending');
 

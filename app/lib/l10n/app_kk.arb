@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} демалыс сұрайды.",
   "noticeUnavailabilityToApprove": "{name} қолжетімсіз екенін хабарлады.",
   "noticeRequestApproved": "Сұрауыңыз мақұлданды.",
-  "noticeRequestRefused": "Сұрауыңыз қабылданбады."
+  "noticeRequestRefused": "Сұрауыңыз қабылданбады.",
+  "choosePeer": "Бұл ауысымды кім алады?",
+  "discardAll": "Барлығын болдырмау",
+  "notifySitesHint": "Сұраулар туралы хабарландыру алатын нысандарды таңдаңыз. Барлық сұраулар тізімде көрініп тұрады.",
+  "notifySitesTitle": "Нысан бойынша хабарландырулар",
+  "pendingRequestTooltip": "Күтудегі сұрау: ашу үшін түртіңіз",
+  "requestsHistory": "Барлық сұраулар",
+  "revertChange": "Бұл өзгерісті болдырмау",
+  "statusExpired": "Өзектілігін жойды",
+  "swapWithHint": "Нақты әріптесті таңдау үшін түртіңіз",
+  "changesDiscarded": "Болдырылмаған өзгерістер: {count}",
+  "discardConfirm": "Жарияланбаған {count} өзгерісті болдырмау керек пе?"
 }

@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} छुट्टी माँग रहे हैं।",
   "noticeUnavailabilityToApprove": "{name} ने अनुपलब्धता बताई है।",
   "noticeRequestApproved": "आपका अनुरोध स्वीकार हो गया।",
-  "noticeRequestRefused": "आपका अनुरोध अस्वीकार हो गया।"
+  "noticeRequestRefused": "आपका अनुरोध अस्वीकार हो गया।",
+  "choosePeer": "यह शिफ़्ट कौन लेगा?",
+  "discardAll": "सब रद्द करें",
+  "notifySitesHint": "वे स्थान चुनें जिनके अनुरोधों की सूचनाएँ आपको मिलें। सभी अनुरोध सूची में दिखते रहेंगे।",
+  "notifySitesTitle": "स्थान के अनुसार सूचनाएँ",
+  "pendingRequestTooltip": "लंबित अनुरोध: खोलने के लिए टैप करें",
+  "requestsHistory": "सभी अनुरोध",
+  "revertChange": "यह बदलाव रद्द करें",
+  "statusExpired": "अब लागू नहीं",
+  "swapWithHint": "किसी खास सहकर्मी को चुनने के लिए टैप करें",
+  "changesDiscarded": "रद्द किए गए बदलाव: {count}",
+  "discardConfirm": "{count} अप्रकाशित बदलाव रद्द करें?"
 }

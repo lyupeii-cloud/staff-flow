@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} mengajukan cuti.",
   "noticeUnavailabilityToApprove": "{name} menyatakan tidak tersedia.",
   "noticeRequestApproved": "Permintaan Anda disetujui.",
-  "noticeRequestRefused": "Permintaan Anda ditolak."
+  "noticeRequestRefused": "Permintaan Anda ditolak.",
+  "choosePeer": "Siapa yang mengambil alih shift ini?",
+  "discardAll": "Batalkan semua",
+  "notifySitesHint": "Pilih lokasi yang notifikasi permintaannya Anda terima. Semua permintaan tetap terlihat di daftar.",
+  "notifySitesTitle": "Notifikasi per lokasi",
+  "pendingRequestTooltip": "Permintaan menunggu: ketuk untuk membuka",
+  "requestsHistory": "Semua permintaan",
+  "revertChange": "Batalkan perubahan ini",
+  "statusExpired": "Tidak berlaku lagi",
+  "swapWithHint": "Ketuk untuk memilih rekan tertentu",
+  "changesDiscarded": "Perubahan dibatalkan: {count}",
+  "discardConfirm": "Batalkan {count} perubahan yang belum diterbitkan?"
 }

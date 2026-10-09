@@ -903,4 +903,42 @@ class L10nPa extends L10n {
 
   @override
   String get noticeRequestRefused => 'ਤੁਹਾਡੀ ਬੇਨਤੀ ਨਾਮਨਜ਼ੂਰ ਹੋ ਗਈ।';
+
+  @override
+  String get choosePeer => 'ਇਹ ਸ਼ਿਫ਼ਟ ਕੌਣ ਲਵੇਗਾ?';
+
+  @override
+  String get discardAll => 'ਸਭ ਰੱਦ ਕਰੋ';
+
+  @override
+  String get notifySitesHint =>
+      'ਉਹ ਥਾਵਾਂ ਚੁਣੋ ਜਿਨ੍ਹਾਂ ਦੀਆਂ ਬੇਨਤੀਆਂ ਦੀਆਂ ਸੂਚਨਾਵਾਂ ਤੁਹਾਨੂੰ ਮਿਲਣ। ਸਾਰੀਆਂ ਬੇਨਤੀਆਂ ਸੂਚੀ ਵਿੱਚ ਦਿਸਦੀਆਂ ਰਹਿਣਗੀਆਂ।';
+
+  @override
+  String get notifySitesTitle => 'ਥਾਂ ਮੁਤਾਬਕ ਸੂਚਨਾਵਾਂ';
+
+  @override
+  String get pendingRequestTooltip => 'ਬਕਾਇਆ ਬੇਨਤੀ: ਖੋਲ੍ਹਣ ਲਈ ਟੈਪ ਕਰੋ';
+
+  @override
+  String get requestsHistory => 'ਸਾਰੀਆਂ ਬੇਨਤੀਆਂ';
+
+  @override
+  String get revertChange => 'ਇਹ ਬਦਲਾਅ ਰੱਦ ਕਰੋ';
+
+  @override
+  String get statusExpired => 'ਹੁਣ ਲਾਗੂ ਨਹੀਂ';
+
+  @override
+  String get swapWithHint => 'ਕਿਸੇ ਖ਼ਾਸ ਸਾਥੀ ਨੂੰ ਚੁਣਨ ਲਈ ਟੈਪ ਕਰੋ';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'ਰੱਦ ਕੀਤੇ ਬਦਲਾਅ: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return '$count ਅਪ੍ਰਕਾਸ਼ਿਤ ਬਦਲਾਅ ਰੱਦ ਕਰਨੇ ਹਨ?';
+  }
 }

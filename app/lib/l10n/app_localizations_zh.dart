@@ -882,4 +882,41 @@ class L10nZh extends L10n {
 
   @override
   String get noticeRequestRefused => '您的申请已被拒绝。';
+
+  @override
+  String get choosePeer => '谁来接这个班次？';
+
+  @override
+  String get discardAll => '全部撤销';
+
+  @override
+  String get notifySitesHint => '选择您接收申请通知的门店。所有申请仍会显示在列表中。';
+
+  @override
+  String get notifySitesTitle => '按门店通知';
+
+  @override
+  String get pendingRequestTooltip => '待处理申请：点按打开';
+
+  @override
+  String get requestsHistory => '全部申请';
+
+  @override
+  String get revertChange => '撤销此更改';
+
+  @override
+  String get statusExpired => '已失效';
+
+  @override
+  String get swapWithHint => '点按选择指定同事';
+
+  @override
+  String changesDiscarded(String count) {
+    return '已撤销更改：$count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return '撤销 $count 项未发布的更改？';
+  }
 }

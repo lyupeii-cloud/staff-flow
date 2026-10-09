@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} ছুটি চাইছেন।",
   "noticeUnavailabilityToApprove": "{name} অনুপলব্ধতা জানিয়েছেন।",
   "noticeRequestApproved": "আপনার অনুরোধ গৃহীত হয়েছে।",
-  "noticeRequestRefused": "আপনার অনুরোধ প্রত্যাখ্যাত হয়েছে।"
+  "noticeRequestRefused": "আপনার অনুরোধ প্রত্যাখ্যাত হয়েছে।",
+  "choosePeer": "এই শিফট কে নেবেন?",
+  "discardAll": "সব বাতিল করুন",
+  "notifySitesHint": "যেসব স্থানের অনুরোধের বিজ্ঞপ্তি পেতে চান সেগুলো বেছে নিন। সব অনুরোধ তালিকায় দেখা যাবে।",
+  "notifySitesTitle": "স্থান অনুযায়ী বিজ্ঞপ্তি",
+  "pendingRequestTooltip": "অপেক্ষমাণ অনুরোধ: খুলতে ট্যাপ করুন",
+  "requestsHistory": "সব অনুরোধ",
+  "revertChange": "এই পরিবর্তন বাতিল করুন",
+  "statusExpired": "আর প্রযোজ্য নয়",
+  "swapWithHint": "নির্দিষ্ট সহকর্মী বাছতে ট্যাপ করুন",
+  "changesDiscarded": "বাতিল পরিবর্তন: {count}",
+  "discardConfirm": "{count}টি অপ্রকাশিত পরিবর্তন বাতিল করবেন?"
 }

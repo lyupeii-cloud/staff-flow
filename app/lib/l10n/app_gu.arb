@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} રજા માંગે છે.",
   "noticeUnavailabilityToApprove": "{name} એ અનુપલબ્ધતા જણાવી છે.",
   "noticeRequestApproved": "તમારી વિનંતી મંજૂર થઈ.",
-  "noticeRequestRefused": "તમારી વિનંતી નકારાઈ."
+  "noticeRequestRefused": "તમારી વિનંતી નકારાઈ.",
+  "choosePeer": "આ શિફ્ટ કોણ લેશે?",
+  "discardAll": "બધું રદ કરો",
+  "notifySitesHint": "જે સ્થળોની વિનંતીઓની સૂચનાઓ જોઈએ તે પસંદ કરો. બધી વિનંતીઓ યાદીમાં દેખાતી રહેશે.",
+  "notifySitesTitle": "સ્થળ પ્રમાણે સૂચનાઓ",
+  "pendingRequestTooltip": "બાકી વિનંતી: ખોલવા ટૅપ કરો",
+  "requestsHistory": "બધી વિનંતીઓ",
+  "revertChange": "આ ફેરફાર રદ કરો",
+  "statusExpired": "હવે લાગુ નથી",
+  "swapWithHint": "ચોક્કસ સહકર્મી પસંદ કરવા ટૅપ કરો",
+  "changesDiscarded": "રદ કરેલા ફેરફારો: {count}",
+  "discardConfirm": "{count} અપ્રકાશિત ફેરફારો રદ કરવા છે?"
 }

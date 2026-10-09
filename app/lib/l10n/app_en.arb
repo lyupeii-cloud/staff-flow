@@ -592,5 +592,30 @@
     }
   },
   "noticeRequestApproved": "Your request has been approved.",
-  "noticeRequestRefused": "Your request has been refused."
+  "noticeRequestRefused": "Your request has been refused.",
+  "choosePeer": "Who takes over this shift?",
+  "discardAll": "Discard all",
+  "notifySitesHint": "Choose the sites you get request notifications for. All requests stay visible in the list.",
+  "notifySitesTitle": "Notifications by site",
+  "pendingRequestTooltip": "Pending request: tap to open it",
+  "requestsHistory": "All requests",
+  "revertChange": "Undo this change",
+  "statusExpired": "No longer applies",
+  "swapWithHint": "Tap to choose a specific colleague",
+  "changesDiscarded": "Changes discarded: {count}",
+  "@changesDiscarded": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "discardConfirm": "Discard the {count} unpublished changes?",
+  "@discardConfirm": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} pide vacaciones.",
   "noticeUnavailabilityToApprove": "{name} indica que no está disponible.",
   "noticeRequestApproved": "Tu solicitud ha sido aceptada.",
-  "noticeRequestRefused": "Tu solicitud ha sido rechazada."
+  "noticeRequestRefused": "Tu solicitud ha sido rechazada.",
+  "choosePeer": "¿Quién toma este turno?",
+  "discardAll": "Anular todo",
+  "notifySitesHint": "Elige los sitios de los que recibes notificaciones de solicitudes. Todas las solicitudes siguen visibles en la lista.",
+  "notifySitesTitle": "Notificaciones por sitio",
+  "pendingRequestTooltip": "Solicitud pendiente: toca para abrirla",
+  "requestsHistory": "Todas las solicitudes",
+  "revertChange": "Anular este cambio",
+  "statusExpired": "Sin efecto",
+  "swapWithHint": "Toca para elegir un compañero concreto",
+  "changesDiscarded": "Cambios anulados: {count}",
+  "discardConfirm": "¿Anular los {count} cambios no publicados?"
 }

@@ -907,4 +907,42 @@ class L10nSk extends L10n {
 
   @override
   String get noticeRequestRefused => 'Vaša žiadosť bola zamietnutá.';
+
+  @override
+  String get choosePeer => 'Kto prevezme túto zmenu?';
+
+  @override
+  String get discardAll => 'Zrušiť všetko';
+
+  @override
+  String get notifySitesHint =>
+      'Vyberte pobočky, z ktorých dostávate oznámenia o žiadostiach. Všetky žiadosti zostávajú viditeľné v zozname.';
+
+  @override
+  String get notifySitesTitle => 'Oznámenia podľa pobočky';
+
+  @override
+  String get pendingRequestTooltip => 'Čakajúca žiadosť: ťuknutím otvoríte';
+
+  @override
+  String get requestsHistory => 'Všetky žiadosti';
+
+  @override
+  String get revertChange => 'Vrátiť túto zmenu';
+
+  @override
+  String get statusExpired => 'Neaktuálna';
+
+  @override
+  String get swapWithHint => 'Ťuknutím vyberte konkrétneho kolegu';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Zrušené zmeny: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Zrušiť $count nezverejnených zmien?';
+  }
 }

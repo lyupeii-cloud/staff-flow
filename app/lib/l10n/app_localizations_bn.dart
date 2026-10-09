@@ -900,4 +900,42 @@ class L10nBn extends L10n {
 
   @override
   String get noticeRequestRefused => 'আপনার অনুরোধ প্রত্যাখ্যাত হয়েছে।';
+
+  @override
+  String get choosePeer => 'এই শিফট কে নেবেন?';
+
+  @override
+  String get discardAll => 'সব বাতিল করুন';
+
+  @override
+  String get notifySitesHint =>
+      'যেসব স্থানের অনুরোধের বিজ্ঞপ্তি পেতে চান সেগুলো বেছে নিন। সব অনুরোধ তালিকায় দেখা যাবে।';
+
+  @override
+  String get notifySitesTitle => 'স্থান অনুযায়ী বিজ্ঞপ্তি';
+
+  @override
+  String get pendingRequestTooltip => 'অপেক্ষমাণ অনুরোধ: খুলতে ট্যাপ করুন';
+
+  @override
+  String get requestsHistory => 'সব অনুরোধ';
+
+  @override
+  String get revertChange => 'এই পরিবর্তন বাতিল করুন';
+
+  @override
+  String get statusExpired => 'আর প্রযোজ্য নয়';
+
+  @override
+  String get swapWithHint => 'নির্দিষ্ট সহকর্মী বাছতে ট্যাপ করুন';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'বাতিল পরিবর্তন: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return '$countটি অপ্রকাশিত পরিবর্তন বাতিল করবেন?';
+  }
 }

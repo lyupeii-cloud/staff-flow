@@ -36,6 +36,10 @@ class _PlanningViewState extends State<PlanningView> {
 
   /// Congés et indisponibilités validés de la période.
   List<StaffRequest> _absences = const [];
+
+  /// Demandes en attente (échanges, congés, indisponibilités) : signalées
+  /// par une icône qui ouvre la demande.
+  List<StaffRequest> _requests = const [];
   int _pending = 0;
   bool _loading = true;
   Localized? _error;
@@ -82,10 +86,12 @@ class _PlanningViewState extends State<PlanningView> {
     try {
       final r = await sync.shifts(company.id, _from, _to);
       final absences = await _loadAbsences();
+      final requests = await _loadRequests();
       if (!mounted) return;
       setState(() {
         _shifts = r.shifts;
         _absences = absences;
+        _requests = requests;
         _pending = r.pending;
         _stale = r.stale;
         _error = null;
@@ -110,6 +116,60 @@ class _PlanningViewState extends State<PlanningView> {
     } catch (_) {
       return _absences;
     }
+  }
+
+  Future<List<StaffRequest>> _loadRequests() async {
+    try {
+      final json = await widget.session.sync
+          .read('requests-pending:${company.id}', '/companies/${company.id}/requests?pending=1');
+      return [for (final r in json['requests']) StaffRequest.fromJson(r)];
+    } catch (_) {
+      return _requests;
+    }
+  }
+
+  void _openRequest(StaffRequest r) =>
+      widget.session.openRequest.value = (companyId: company.id, requestId: r.id);
+
+  /// Icône d'une demande en attente : la touche ouvre la demande.
+  Widget _requestIcon(StaffRequest r) => IconButton(
+        visualDensity: VisualDensity.compact,
+        tooltip: t.pendingRequestTooltip,
+        onPressed: () => _openRequest(r),
+        icon: Icon(Icons.pending_actions, size: 20, color: Theme.of(context).colorScheme.tertiary),
+      );
+
+  Future<void> _discardAll() async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        content: Text(t.discardConfirm('$_pending')),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
+          FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.discardAll)),
+        ],
+      ),
+    );
+    if (ok != true || !mounted) return;
+    final messenger = ScaffoldMessenger.of(context);
+    try {
+      final r = await widget.session.sync.discard(company.id);
+      messenger.showSnackBar(SnackBar(
+          content: Text(r == null ? t.savedOffline : t.changesDiscarded('${r['discarded']}'))));
+    } on ApiException catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text(e.describe(t))));
+    }
+    _load();
+  }
+
+  Future<void> _revert(Shift s) async {
+    final messenger = ScaffoldMessenger.of(context);
+    try {
+      await widget.session.sync.revert(company.id, s.id);
+    } on ApiException catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text(e.describe(t))));
+    }
+    _load();
   }
 
   List<StaffRequest> _absentOn(DateTime day) => _absences.where((a) => a.covers(day)).toList();
@@ -269,6 +329,18 @@ class _PlanningViewState extends State<PlanningView> {
                 trailing: FilledButton(onPressed: _publish, child: Text(t.publish)),
               ),
             ),
+          if (canEdit && _pending > 0)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: TextButton.icon(
+                  onPressed: _discardAll,
+                  icon: const Icon(Icons.undo, size: 18),
+                  label: Text(t.discardAll),
+                ),
+              ),
+            ),
           if (myMinutes > 0)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
@@ -343,6 +415,16 @@ class _PlanningViewState extends State<PlanningView> {
             ],
           ),
         ),
+      for (final r in _requests.where((r) => r.kind != RequestKind.swap && r.covers(day)))
+        Row(
+          children: [
+            Expanded(
+              child: Text('${r.requesterName} · ${requestKindLabel(t, r.kind)} · ${t.statusPendingManager}',
+                  style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.tertiary)),
+            ),
+            _requestIcon(r),
+          ],
+        ),
       if (shifts.isEmpty)
         Text(t.noShift, style: theme.textTheme.bodySmall?.copyWith(color: theme.disabledColor)),
       for (final s in shifts) _shiftCard(s),
@@ -368,6 +450,8 @@ class _PlanningViewState extends State<PlanningView> {
             ShiftStatus.published => null,
           };
     final mine = s.userId == myId;
+    final request = _requests.where((r) => r.shiftId == s.id).firstOrNull;
+    final revertable = canEdit && badge != null && !s.pending && widget.membership.canEditSite(s.siteId);
     final absent = !deleted && _isAbsent(s.userId, s.day);
     final canOffer = !canEdit && mine && !s.pending && s.status == ShiftStatus.published &&
         !dateOnly(s.day).isBefore(dateOnly(DateTime.now())) && !company.readOnly;
@@ -388,7 +472,7 @@ class _PlanningViewState extends State<PlanningView> {
                     ? _openEditor(shift: s)
                     : ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.readOnlyPastDays)))
             : canOffer
-                ? () => _offer(s)
+                ? () => request != null ? _openRequest(request) : _offer(s)
                 : null,
         leading: absent
             ? Tooltip(
@@ -406,17 +490,31 @@ class _PlanningViewState extends State<PlanningView> {
           style: deleted ? const TextStyle(decoration: TextDecoration.lineThrough) : null,
         ),
         subtitle: details.isEmpty ? null : Text(details),
-        trailing: badge == null
-            ? (canOffer
-                ? Tooltip(message: t.proposeSwap, child: const Icon(Icons.swap_horiz, size: 18))
-                : s.seriesId != null
-                    ? const Icon(Icons.repeat, size: 18)
-                    : null)
-            : Chip(
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ?(request == null ? null : _requestIcon(request)),
+            if (badge == null)
+              ?(canOffer && request == null
+                  ? Tooltip(message: t.proposeSwap, child: const Icon(Icons.swap_horiz, size: 18))
+                  : s.seriesId != null
+                      ? const Icon(Icons.repeat, size: 18)
+                      : null)
+            else
+              Chip(
                 label: Text(badge),
                 visualDensity: VisualDensity.compact,
                 labelStyle: theme.textTheme.labelSmall,
               ),
+            if (revertable)
+              IconButton(
+                visualDensity: VisualDensity.compact,
+                tooltip: t.revertChange,
+                onPressed: () => _revert(s),
+                icon: const Icon(Icons.undo, size: 20),
+              ),
+          ],
+        ),
       ),
     );
   }

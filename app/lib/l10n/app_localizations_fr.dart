@@ -911,4 +911,43 @@ class L10nFr extends L10n {
 
   @override
   String get noticeRequestRefused => 'Votre demande a été refusée.';
+
+  @override
+  String get choosePeer => 'Qui reprend ce service ?';
+
+  @override
+  String get discardAll => 'Tout annuler';
+
+  @override
+  String get notifySitesHint =>
+      'Choisissez les sites dont vous recevez les notifications de demandes. Toutes les demandes restent visibles dans la liste.';
+
+  @override
+  String get notifySitesTitle => 'Notifications par site';
+
+  @override
+  String get pendingRequestTooltip =>
+      'Demande en attente : touchez pour l\'ouvrir';
+
+  @override
+  String get requestsHistory => 'Toutes les demandes';
+
+  @override
+  String get revertChange => 'Annuler cette modification';
+
+  @override
+  String get statusExpired => 'Sans objet';
+
+  @override
+  String get swapWithHint => 'Touchez pour choisir un collègue précis';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Modifications annulées : $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Annuler les $count modifications non publiées ?';
+  }
 }

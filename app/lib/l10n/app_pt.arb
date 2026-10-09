@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} pede férias.",
   "noticeUnavailabilityToApprove": "{name} indica que está indisponível.",
   "noticeRequestApproved": "O seu pedido foi aceite.",
-  "noticeRequestRefused": "O seu pedido foi recusado."
+  "noticeRequestRefused": "O seu pedido foi recusado.",
+  "choosePeer": "Quem fica com este turno?",
+  "discardAll": "Anular tudo",
+  "notifySitesHint": "Escolha os locais dos quais recebe notificações de pedidos. Todos os pedidos continuam visíveis na lista.",
+  "notifySitesTitle": "Notificações por local",
+  "pendingRequestTooltip": "Pedido pendente: toque para abrir",
+  "requestsHistory": "Todos os pedidos",
+  "revertChange": "Anular esta alteração",
+  "statusExpired": "Sem efeito",
+  "swapWithHint": "Toque para escolher um colega específico",
+  "changesDiscarded": "Alterações anuladas: {count}",
+  "discardConfirm": "Anular as {count} alterações não publicadas?"
 }

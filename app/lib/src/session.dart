@@ -30,6 +30,10 @@ class Session extends ChangeNotifier {
   /// Conversation affichée à l'écran : ses notifications ne s'affichent pas en plus.
   String? openConversation;
 
+  /// Demande à montrer (notification touchée, icône du planning) : l'onglet
+  /// de l'entreprise passe à « Demandes » et la met en évidence.
+  final openRequest = ValueNotifier<({String companyId, String requestId})?>(null);
+
   static const tokenKey = 'session_token';
 
   SessionState state = SessionState.loading;
@@ -65,6 +69,17 @@ class Session extends ChangeNotifier {
       _watchLifecycle();
       api.token = prefs.getString(tokenKey);
       if (api.token == null) return _set(SessionState.signedOut);
+      // Lancement : l'écran s'affiche tout de suite avec les données de la
+      // dernière utilisation, puis se met à jour.
+      final cached = await sync.cached('me');
+      if (cached != null) {
+        me = Me.fromJson((cached as Map).cast<String, dynamic>());
+        _set(SessionState.signedIn);
+        unawaited(refresh().catchError((Object e) {
+          if (e is ApiException && e.status == 401) signOut();
+        }));
+        return;
+      }
       await refresh();
     } on ApiException catch (e) {
       if (e.status == 401) return signOut();
@@ -81,7 +96,9 @@ class Session extends ChangeNotifier {
     push.events.listen((e) async {
       // Nouvel avis : la cloche se met à jour ; planning publié : il se recharge.
       if (state != SessionState.signedIn) return;
-      if (e.kind == 'schedule_published' || e.kind == 'member_joined') sync.markChanged();
+      if (e.kind == 'schedule_published' || e.kind == 'member_joined' || e.data['requestId'] != null) {
+        sync.markChanged();
+      }
       await refresh().catchError((_) {});
     });
     if (state == SessionState.signedIn) await push.signedIn();

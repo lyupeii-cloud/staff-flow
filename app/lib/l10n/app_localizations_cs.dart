@@ -905,4 +905,42 @@ class L10nCs extends L10n {
 
   @override
   String get noticeRequestRefused => 'Vaše žádost byla zamítnuta.';
+
+  @override
+  String get choosePeer => 'Kdo převezme tuto směnu?';
+
+  @override
+  String get discardAll => 'Zrušit vše';
+
+  @override
+  String get notifySitesHint =>
+      'Vyberte pobočky, ze kterých dostáváte oznámení o žádostech. Všechny žádosti zůstávají vidět v seznamu.';
+
+  @override
+  String get notifySitesTitle => 'Oznámení podle pobočky';
+
+  @override
+  String get pendingRequestTooltip => 'Čekající žádost: klepnutím otevřete';
+
+  @override
+  String get requestsHistory => 'Všechny žádosti';
+
+  @override
+  String get revertChange => 'Vrátit tuto změnu';
+
+  @override
+  String get statusExpired => 'Neaktuální';
+
+  @override
+  String get swapWithHint => 'Klepnutím vyberte konkrétního kolegu';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Zrušené změny: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Zrušit $count nezveřejněných změn?';
+  }
 }

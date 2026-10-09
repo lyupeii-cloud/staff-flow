@@ -903,4 +903,42 @@ class L10nNb extends L10n {
 
   @override
   String get noticeRequestRefused => 'Forespørselen din er avslått.';
+
+  @override
+  String get choosePeer => 'Hvem tar over vakten?';
+
+  @override
+  String get discardAll => 'Angre alt';
+
+  @override
+  String get notifySitesHint =>
+      'Velg stedene du får varsler om forespørsler fra. Alle forespørsler er fortsatt synlige i listen.';
+
+  @override
+  String get notifySitesTitle => 'Varsler per sted';
+
+  @override
+  String get pendingRequestTooltip => 'Ventende forespørsel: trykk for å åpne';
+
+  @override
+  String get requestsHistory => 'Alle forespørsler';
+
+  @override
+  String get revertChange => 'Angre denne endringen';
+
+  @override
+  String get statusExpired => 'Ikke lenger aktuell';
+
+  @override
+  String get swapWithHint => 'Trykk for å velge en bestemt kollega';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Angrede endringer: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Angre de $count upubliserte endringene?';
+  }
 }

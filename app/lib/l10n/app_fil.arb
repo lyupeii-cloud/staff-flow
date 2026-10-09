@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "Humihingi ng leave si {name}.",
   "noticeUnavailabilityToApprove": "Sinabi ni {name} na hindi siya available.",
   "noticeRequestApproved": "Inaprubahan ang kahilingan mo.",
-  "noticeRequestRefused": "Tinanggihan ang kahilingan mo."
+  "noticeRequestRefused": "Tinanggihan ang kahilingan mo.",
+  "choosePeer": "Sino ang kukuha ng shift na ito?",
+  "discardAll": "Kanselahin lahat",
+  "notifySitesHint": "Piliin ang mga site na makakatanggap ka ng notification ng kahilingan. Makikita pa rin ang lahat ng kahilingan sa listahan.",
+  "notifySitesTitle": "Mga notification ayon sa site",
+  "pendingRequestTooltip": "Nakabinbing kahilingan: i-tap para buksan",
+  "requestsHistory": "Lahat ng kahilingan",
+  "revertChange": "I-undo ang pagbabagong ito",
+  "statusExpired": "Hindi na naaangkop",
+  "swapWithHint": "I-tap para pumili ng partikular na kasamahan",
+  "changesDiscarded": "Mga kinanselang pagbabago: {count}",
+  "discardConfirm": "Kanselahin ang {count} hindi pa na-publish na pagbabago?"
 }

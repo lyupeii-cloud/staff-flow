@@ -33,18 +33,32 @@ class _HomeScreenState extends State<HomeScreen> {
 
   StreamSubscription<PushEvent>? _push;
 
+  /// Onglets des entreprises (pour aller à celle d'une demande).
+  TabController? _tabs;
+
   @override
   void initState() {
     super.initState();
     session.sync.addListener(_onSync);
+    session.openRequest.addListener(_onOpenRequest);
     _push = session.push.events.listen(_onPush);
   }
 
   @override
   void dispose() {
     session.sync.removeListener(_onSync);
+    session.openRequest.removeListener(_onOpenRequest);
     _push?.cancel();
     super.dispose();
+  }
+
+  /// Une demande est à montrer : on passe à l'onglet de son entreprise
+  /// (qui affiche alors la vue « Demandes »).
+  void _onOpenRequest() {
+    final wanted = session.openRequest.value;
+    if (wanted == null) return;
+    final index = session.me?.companies.indexWhere((m) => m.company.id == wanted.companyId) ?? -1;
+    if (index >= 0) _tabs?.animateTo(index);
   }
 
   /// Notification reçue pendant que l'application est à l'écran : Android
@@ -56,6 +70,13 @@ class _HomeScreenState extends State<HomeScreen> {
       // Notification de message touchée : on ouvre la conversation.
       if (e.kind == 'message' && conversation != null) {
         openConversationFromPush(context, session, e.data['companyId'] as String, conversation);
+      }
+      // Notification d'une demande touchée : on ouvre la demande.
+      final request = e.data['requestId'] as String?;
+      final company = e.data['companyId'] as String?;
+      if (request != null && company != null) {
+        Navigator.of(context).popUntil((r) => r.isFirst);
+        session.openRequest.value = (companyId: company, requestId: request);
       }
       return;
     }
@@ -81,7 +102,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return DefaultTabController(
       key: ValueKey(companies.map((m) => m.company.id).join(',')),
       length: companies.length,
-      child: Scaffold(
+      child: Builder(builder: (context) {
+        _tabs = companies.isEmpty ? null : DefaultTabController.of(context);
+        return Scaffold(
         appBar: AppBar(
           // Sur un très petit écran, le titre rétrécit au lieu de cacher les boutons.
           title: const FittedBox(fit: BoxFit.scaleDown, child: BrandTitle(size: 22)),
@@ -120,7 +143,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-      ),
+      );
+      }),
     );
   }
 }

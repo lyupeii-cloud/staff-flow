@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} vraagt verlof aan.",
   "noticeUnavailabilityToApprove": "{name} meldt niet beschikbaar te zijn.",
   "noticeRequestApproved": "Je verzoek is goedgekeurd.",
-  "noticeRequestRefused": "Je verzoek is geweigerd."
+  "noticeRequestRefused": "Je verzoek is geweigerd.",
+  "choosePeer": "Wie neemt deze dienst over?",
+  "discardAll": "Alles annuleren",
+  "notifySitesHint": "Kies de locaties waarvan je meldingen over verzoeken krijgt. Alle verzoeken blijven zichtbaar in de lijst.",
+  "notifySitesTitle": "Meldingen per locatie",
+  "pendingRequestTooltip": "Openstaand verzoek: tik om te openen",
+  "requestsHistory": "Alle verzoeken",
+  "revertChange": "Deze wijziging ongedaan maken",
+  "statusExpired": "Vervallen",
+  "swapWithHint": "Tik om een specifieke collega te kiezen",
+  "changesDiscarded": "Geannuleerde wijzigingen: {count}",
+  "discardConfirm": "De {count} niet-gepubliceerde wijzigingen annuleren?"
 }

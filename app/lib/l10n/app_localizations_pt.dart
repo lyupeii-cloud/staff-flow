@@ -906,4 +906,42 @@ class L10nPt extends L10n {
 
   @override
   String get noticeRequestRefused => 'O seu pedido foi recusado.';
+
+  @override
+  String get choosePeer => 'Quem fica com este turno?';
+
+  @override
+  String get discardAll => 'Anular tudo';
+
+  @override
+  String get notifySitesHint =>
+      'Escolha os locais dos quais recebe notificações de pedidos. Todos os pedidos continuam visíveis na lista.';
+
+  @override
+  String get notifySitesTitle => 'Notificações por local';
+
+  @override
+  String get pendingRequestTooltip => 'Pedido pendente: toque para abrir';
+
+  @override
+  String get requestsHistory => 'Todos os pedidos';
+
+  @override
+  String get revertChange => 'Anular esta alteração';
+
+  @override
+  String get statusExpired => 'Sem efeito';
+
+  @override
+  String get swapWithHint => 'Toque para escolher um colega específico';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Alterações anuladas: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Anular as $count alterações não publicadas?';
+  }
 }

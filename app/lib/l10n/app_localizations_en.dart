@@ -905,4 +905,42 @@ class L10nEn extends L10n {
 
   @override
   String get noticeRequestRefused => 'Your request has been refused.';
+
+  @override
+  String get choosePeer => 'Who takes over this shift?';
+
+  @override
+  String get discardAll => 'Discard all';
+
+  @override
+  String get notifySitesHint =>
+      'Choose the sites you get request notifications for. All requests stay visible in the list.';
+
+  @override
+  String get notifySitesTitle => 'Notifications by site';
+
+  @override
+  String get pendingRequestTooltip => 'Pending request: tap to open it';
+
+  @override
+  String get requestsHistory => 'All requests';
+
+  @override
+  String get revertChange => 'Undo this change';
+
+  @override
+  String get statusExpired => 'No longer applies';
+
+  @override
+  String get swapWithHint => 'Tap to choose a specific colleague';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Changes discarded: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Discard the $count unpublished changes?';
+  }
 }

@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} ขอลางาน",
   "noticeUnavailabilityToApprove": "{name} แจ้งว่าไม่สะดวกทำงาน",
   "noticeRequestApproved": "คำขอของคุณได้รับการอนุมัติ",
-  "noticeRequestRefused": "คำขอของคุณถูกปฏิเสธ"
+  "noticeRequestRefused": "คำขอของคุณถูกปฏิเสธ",
+  "choosePeer": "ใครจะรับกะนี้",
+  "discardAll": "ยกเลิกทั้งหมด",
+  "notifySitesHint": "เลือกสาขาที่คุณต้องการรับการแจ้งเตือนคำขอ คำขอทั้งหมดยังคงแสดงในรายการ",
+  "notifySitesTitle": "การแจ้งเตือนตามสาขา",
+  "pendingRequestTooltip": "คำขอที่รออยู่: แตะเพื่อเปิด",
+  "requestsHistory": "คำขอทั้งหมด",
+  "revertChange": "ยกเลิกการเปลี่ยนแปลงนี้",
+  "statusExpired": "ไม่มีผลแล้ว",
+  "swapWithHint": "แตะเพื่อเลือกเพื่อนร่วมงานที่ต้องการ",
+  "changesDiscarded": "ยกเลิกการเปลี่ยนแปลงแล้ว: {count}",
+  "discardConfirm": "ยกเลิกการเปลี่ยนแปลงที่ยังไม่เผยแพร่ {count} รายการใช่ไหม"
 }

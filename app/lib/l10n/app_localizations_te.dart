@@ -902,4 +902,42 @@ class L10nTe extends L10n {
 
   @override
   String get noticeRequestRefused => 'మీ అభ్యర్థన తిరస్కరించబడింది.';
+
+  @override
+  String get choosePeer => 'ఈ షిఫ్ట్‌ను ఎవరు తీసుకుంటారు?';
+
+  @override
+  String get discardAll => 'అన్నీ రద్దు చేయి';
+
+  @override
+  String get notifySitesHint =>
+      'అభ్యర్థన నోటిఫికేషన్లు రావాల్సిన స్థలాలను ఎంచుకోండి. అన్ని అభ్యర్థనలు జాబితాలో కనిపిస్తాయి.';
+
+  @override
+  String get notifySitesTitle => 'స్థలం వారీగా నోటిఫికేషన్లు';
+
+  @override
+  String get pendingRequestTooltip => 'పెండింగ్ అభ్యర్థన: తెరవడానికి నొక్కండి';
+
+  @override
+  String get requestsHistory => 'అన్ని అభ్యర్థనలు';
+
+  @override
+  String get revertChange => 'ఈ మార్పును రద్దు చేయి';
+
+  @override
+  String get statusExpired => 'ఇక వర్తించదు';
+
+  @override
+  String get swapWithHint => 'నిర్దిష్ట సహోద్యోగిని ఎంచుకోవడానికి నొక్కండి';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'రద్దు చేసిన మార్పులు: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'ప్రచురించని $count మార్పులను రద్దు చేయాలా?';
+  }
 }

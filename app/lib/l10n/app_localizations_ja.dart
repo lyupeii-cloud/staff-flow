@@ -886,4 +886,41 @@ class L10nJa extends L10n {
 
   @override
   String get noticeRequestRefused => '申請が却下されました。';
+
+  @override
+  String get choosePeer => 'このシフトを誰が引き受けますか？';
+
+  @override
+  String get discardAll => 'すべて取り消す';
+
+  @override
+  String get notifySitesHint => '申請の通知を受け取る店舗を選んでください。すべての申請は一覧に表示されたままです。';
+
+  @override
+  String get notifySitesTitle => '店舗ごとの通知';
+
+  @override
+  String get pendingRequestTooltip => '保留中の申請：タップして開く';
+
+  @override
+  String get requestsHistory => 'すべての申請';
+
+  @override
+  String get revertChange => 'この変更を取り消す';
+
+  @override
+  String get statusExpired => '対象外';
+
+  @override
+  String get swapWithHint => 'タップして同僚を指定';
+
+  @override
+  String changesDiscarded(String count) {
+    return '取り消した変更：$count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return '未公開の変更 $count 件を取り消しますか？';
+  }
 }

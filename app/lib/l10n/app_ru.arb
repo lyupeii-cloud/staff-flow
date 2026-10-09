@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} просит отпуск.",
   "noticeUnavailabilityToApprove": "{name} сообщает о недоступности.",
   "noticeRequestApproved": "Ваш запрос одобрен.",
-  "noticeRequestRefused": "Ваш запрос отклонён."
+  "noticeRequestRefused": "Ваш запрос отклонён.",
+  "choosePeer": "Кто возьмёт эту смену?",
+  "discardAll": "Отменить всё",
+  "notifySitesHint": "Выберите площадки, по которым вы получаете уведомления о запросах. Все запросы остаются видны в списке.",
+  "notifySitesTitle": "Уведомления по площадкам",
+  "pendingRequestTooltip": "Запрос ожидает: нажмите, чтобы открыть",
+  "requestsHistory": "Все запросы",
+  "revertChange": "Отменить это изменение",
+  "statusExpired": "Неактуально",
+  "swapWithHint": "Нажмите, чтобы выбрать конкретного коллегу",
+  "changesDiscarded": "Отменено изменений: {count}",
+  "discardConfirm": "Отменить {count} неопубликованных изменений?"
 }

@@ -1690,6 +1690,72 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Your request has been refused.'**
   String get noticeRequestRefused;
+
+  /// No description provided for @choosePeer.
+  ///
+  /// In en, this message translates to:
+  /// **'Who takes over this shift?'**
+  String get choosePeer;
+
+  /// No description provided for @discardAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Discard all'**
+  String get discardAll;
+
+  /// No description provided for @notifySitesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the sites you get request notifications for. All requests stay visible in the list.'**
+  String get notifySitesHint;
+
+  /// No description provided for @notifySitesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications by site'**
+  String get notifySitesTitle;
+
+  /// No description provided for @pendingRequestTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending request: tap to open it'**
+  String get pendingRequestTooltip;
+
+  /// No description provided for @requestsHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'All requests'**
+  String get requestsHistory;
+
+  /// No description provided for @revertChange.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo this change'**
+  String get revertChange;
+
+  /// No description provided for @statusExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'No longer applies'**
+  String get statusExpired;
+
+  /// No description provided for @swapWithHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to choose a specific colleague'**
+  String get swapWithHint;
+
+  /// No description provided for @changesDiscarded.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes discarded: {count}'**
+  String changesDiscarded(String count);
+
+  /// No description provided for @discardConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Discard the {count} unpublished changes?'**
+  String discardConfirm(String count);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

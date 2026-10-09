@@ -253,5 +253,16 @@
   "noticeLeaveToApprove": "{name} просить відпустку.",
   "noticeUnavailabilityToApprove": "{name} повідомляє про недоступність.",
   "noticeRequestApproved": "Ваш запит схвалено.",
-  "noticeRequestRefused": "Ваш запит відхилено."
+  "noticeRequestRefused": "Ваш запит відхилено.",
+  "choosePeer": "Хто візьме цю зміну?",
+  "discardAll": "Скасувати все",
+  "notifySitesHint": "Оберіть локації, з яких ви отримуєте сповіщення про запити. Усі запити залишаються видимими у списку.",
+  "notifySitesTitle": "Сповіщення за локаціями",
+  "pendingRequestTooltip": "Запит очікує: торкніться, щоб відкрити",
+  "requestsHistory": "Усі запити",
+  "revertChange": "Скасувати цю зміну",
+  "statusExpired": "Неактуально",
+  "swapWithHint": "Торкніться, щоб обрати конкретного колегу",
+  "changesDiscarded": "Скасовано змін: {count}",
+  "discardConfirm": "Скасувати {count} неопублікованих змін?"
 }

@@ -68,8 +68,9 @@ class _ChatScreenState extends State<ChatScreen> {
     _loadPeople();
     session.openConversation = id;
     // Temps réel : la notification prévient tout de suite ; la relecture
-    // régulière rattrape ce qui aurait été manqué.
-    _poll = Timer.periodic(const Duration(seconds: 10), (_) => _refresh());
+    // régulière (toutes les 30 s, pour ménager le serveur) rattrape ce qui
+    // aurait été manqué.
+    _poll = Timer.periodic(const Duration(seconds: 30), (_) => _refresh());
     _push = session.push.events.listen((e) {
       if (e.data['conversationId'] == id) _refresh();
     });

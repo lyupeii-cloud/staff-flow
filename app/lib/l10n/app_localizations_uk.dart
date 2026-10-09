@@ -910,4 +910,42 @@ class L10nUk extends L10n {
 
   @override
   String get noticeRequestRefused => 'Ваш запит відхилено.';
+
+  @override
+  String get choosePeer => 'Хто візьме цю зміну?';
+
+  @override
+  String get discardAll => 'Скасувати все';
+
+  @override
+  String get notifySitesHint =>
+      'Оберіть локації, з яких ви отримуєте сповіщення про запити. Усі запити залишаються видимими у списку.';
+
+  @override
+  String get notifySitesTitle => 'Сповіщення за локаціями';
+
+  @override
+  String get pendingRequestTooltip => 'Запит очікує: торкніться, щоб відкрити';
+
+  @override
+  String get requestsHistory => 'Усі запити';
+
+  @override
+  String get revertChange => 'Скасувати цю зміну';
+
+  @override
+  String get statusExpired => 'Неактуально';
+
+  @override
+  String get swapWithHint => 'Торкніться, щоб обрати конкретного колегу';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Скасовано змін: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Скасувати $count неопублікованих змін?';
+  }
 }

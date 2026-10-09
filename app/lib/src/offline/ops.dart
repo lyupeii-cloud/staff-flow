@@ -49,7 +49,7 @@ class PendingOp {
 }
 
 /// Modifications du planning (les autres : messages…).
-const planningKinds = {'create', 'update', 'delete', 'publish', 'replace'};
+const planningKinds = {'create', 'update', 'delete', 'publish', 'replace', 'revert', 'discard'};
 
 /// Planning affiché = services du serveur + modifications en attente, dans
 /// l'ordre où elles ont été faites. Chaque service touché est marqué « en attente ».

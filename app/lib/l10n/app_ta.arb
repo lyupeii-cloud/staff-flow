@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} விடுப்பு கேட்கிறார்.",
   "noticeUnavailabilityToApprove": "{name} தான் இல்லாததைத் தெரிவித்தார்.",
   "noticeRequestApproved": "உங்கள் கோரிக்கை ஏற்கப்பட்டது.",
-  "noticeRequestRefused": "உங்கள் கோரிக்கை நிராகரிக்கப்பட்டது."
+  "noticeRequestRefused": "உங்கள் கோரிக்கை நிராகரிக்கப்பட்டது.",
+  "choosePeer": "இந்த ஷிஃப்டை யார் எடுப்பார்?",
+  "discardAll": "அனைத்தையும் ரத்துசெய்",
+  "notifySitesHint": "கோரிக்கை அறிவிப்புகளைப் பெற வேண்டிய இடங்களைத் தேர்ந்தெடுங்கள். அனைத்துக் கோரிக்கைகளும் பட்டியலில் தெரியும்.",
+  "notifySitesTitle": "இட வாரியான அறிவிப்புகள்",
+  "pendingRequestTooltip": "நிலுவைக் கோரிக்கை: திறக்கத் தட்டுங்கள்",
+  "requestsHistory": "அனைத்துக் கோரிக்கைகள்",
+  "revertChange": "இந்த மாற்றத்தை ரத்துசெய்",
+  "statusExpired": "இனி பொருந்தாது",
+  "swapWithHint": "குறிப்பிட்ட சக ஊழியரைத் தேர்வுசெய்யத் தட்டுங்கள்",
+  "changesDiscarded": "ரத்துசெய்த மாற்றங்கள்: {count}",
+  "discardConfirm": "வெளியிடப்படாத {count} மாற்றங்களை ரத்துசெய்யவா?"
 }

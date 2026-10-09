@@ -909,4 +909,42 @@ class L10nRu extends L10n {
 
   @override
   String get noticeRequestRefused => 'Ваш запрос отклонён.';
+
+  @override
+  String get choosePeer => 'Кто возьмёт эту смену?';
+
+  @override
+  String get discardAll => 'Отменить всё';
+
+  @override
+  String get notifySitesHint =>
+      'Выберите площадки, по которым вы получаете уведомления о запросах. Все запросы остаются видны в списке.';
+
+  @override
+  String get notifySitesTitle => 'Уведомления по площадкам';
+
+  @override
+  String get pendingRequestTooltip => 'Запрос ожидает: нажмите, чтобы открыть';
+
+  @override
+  String get requestsHistory => 'Все запросы';
+
+  @override
+  String get revertChange => 'Отменить это изменение';
+
+  @override
+  String get statusExpired => 'Неактуально';
+
+  @override
+  String get swapWithHint => 'Нажмите, чтобы выбрать конкретного коллегу';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Отменено изменений: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Отменить $count неопубликованных изменений?';
+  }
 }

@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} chiede ferie.",
   "noticeUnavailabilityToApprove": "{name} segnala un'indisponibilità.",
   "noticeRequestApproved": "La tua richiesta è stata accettata.",
-  "noticeRequestRefused": "La tua richiesta è stata rifiutata."
+  "noticeRequestRefused": "La tua richiesta è stata rifiutata.",
+  "choosePeer": "Chi prende questo turno?",
+  "discardAll": "Annulla tutto",
+  "notifySitesHint": "Scegli le sedi di cui ricevi le notifiche delle richieste. Tutte le richieste restano visibili nell'elenco.",
+  "notifySitesTitle": "Notifiche per sede",
+  "pendingRequestTooltip": "Richiesta in attesa: tocca per aprirla",
+  "requestsHistory": "Tutte le richieste",
+  "revertChange": "Annulla questa modifica",
+  "statusExpired": "Non più valida",
+  "swapWithHint": "Tocca per scegliere un collega preciso",
+  "changesDiscarded": "Modifiche annullate: {count}",
+  "discardConfirm": "Annullare le {count} modifiche non pubblicate?"
 }

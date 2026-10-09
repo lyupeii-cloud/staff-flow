@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} szabadságot kér.",
   "noticeUnavailabilityToApprove": "{name} jelzi, hogy nem elérhető.",
   "noticeRequestApproved": "A kérésedet elfogadták.",
-  "noticeRequestRefused": "A kérésedet elutasították."
+  "noticeRequestRefused": "A kérésedet elutasították.",
+  "choosePeer": "Ki veszi át ezt a műszakot?",
+  "discardAll": "Összes elvetése",
+  "notifySitesHint": "Válaszd ki, mely telephelyekről kapsz értesítést a kérésekről. Minden kérés látható marad a listában.",
+  "notifySitesTitle": "Értesítések telephelyenként",
+  "pendingRequestTooltip": "Függő kérés: koppints a megnyitáshoz",
+  "requestsHistory": "Összes kérés",
+  "revertChange": "Módosítás visszavonása",
+  "statusExpired": "Tárgytalan",
+  "swapWithHint": "Koppints egy adott kolléga kiválasztásához",
+  "changesDiscarded": "Elvetett módosítások: {count}",
+  "discardConfirm": "Elveted a(z) {count} közzé nem tett módosítást?"
 }

@@ -904,4 +904,42 @@ class L10nDa extends L10n {
 
   @override
   String get noticeRequestRefused => 'Din anmodning er afvist.';
+
+  @override
+  String get choosePeer => 'Hvem overtager vagten?';
+
+  @override
+  String get discardAll => 'Fortryd alt';
+
+  @override
+  String get notifySitesHint =>
+      'Vælg de steder, du får notifikationer om anmodninger fra. Alle anmodninger er stadig synlige på listen.';
+
+  @override
+  String get notifySitesTitle => 'Notifikationer pr. sted';
+
+  @override
+  String get pendingRequestTooltip => 'Ventende anmodning: tryk for at åbne';
+
+  @override
+  String get requestsHistory => 'Alle anmodninger';
+
+  @override
+  String get revertChange => 'Fortryd denne ændring';
+
+  @override
+  String get statusExpired => 'Ikke længere aktuel';
+
+  @override
+  String get swapWithHint => 'Tryk for at vælge en bestemt kollega';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Fortrudte ændringer: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Fortryd de $count ikke-offentliggjorte ændringer?';
+  }
 }

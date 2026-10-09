@@ -249,5 +249,16 @@
   "noticeLeaveToApprove": "{name} memohon cuti.",
   "noticeUnavailabilityToApprove": "{name} memaklumkan tidak tersedia.",
   "noticeRequestApproved": "Permintaan anda telah diluluskan.",
-  "noticeRequestRefused": "Permintaan anda telah ditolak."
+  "noticeRequestRefused": "Permintaan anda telah ditolak.",
+  "choosePeer": "Siapa yang mengambil alih syif ini?",
+  "discardAll": "Batalkan semua",
+  "notifySitesHint": "Pilih lokasi yang anda terima pemberitahuan permintaan. Semua permintaan masih kelihatan dalam senarai.",
+  "notifySitesTitle": "Pemberitahuan mengikut lokasi",
+  "pendingRequestTooltip": "Permintaan menunggu: ketik untuk membuka",
+  "requestsHistory": "Semua permintaan",
+  "revertChange": "Batalkan perubahan ini",
+  "statusExpired": "Tidak lagi berkenaan",
+  "swapWithHint": "Ketik untuk memilih rakan sekerja tertentu",
+  "changesDiscarded": "Perubahan dibatalkan: {count}",
+  "discardConfirm": "Batalkan {count} perubahan yang belum diterbitkan?"
 }
