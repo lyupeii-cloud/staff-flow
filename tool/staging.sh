@@ -19,9 +19,12 @@ up)
     $D network create sf-stg >/dev/null
     $D run -d --name sf-stg-db --network sf-stg -e POSTGRES_PASSWORD=stg -e POSTGRES_DB=stg postgres:17-alpine >/dev/null
     until $D exec sf-stg-db pg_isready -U postgres -d stg >/dev/null 2>&1; do sleep 1; done
+    # Notifications : le même compte de service Firebase que la production, s il est configuré.
+    FCM=$(sed -n "s/^FCM_CREDENTIALS_B64=//p" ~/staff-flow/deploy/.env 2>/dev/null || true)
     $D run -d --name sf-stg-api --network sf-stg -p 127.0.0.1:18099:8080 -v $W:/src -w /src \
       -e DATABASE_URL="postgresql://postgres:stg@sf-stg-db:5432/stg?sslmode=disable" \
       -e SESSION_SECRET=staging-only-secret-0123456789abcdef -e DEV_LOGIN=true \
+      -e FCM_CREDENTIALS_B64="$FCM" \
       -e ALLOWED_ORIGINS=http://localhost:5050 \
       dart:3.13.5 sh -c "dart pub get >/dev/null && dart run bin/server.dart" >/dev/null
     for i in $(seq 1 60); do curl -s 127.0.0.1:18099/health && exit 0; sleep 2; done; exit 1'
