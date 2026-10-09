@@ -88,4 +88,7 @@ const zh = <String, String>{
   'Aucun service sur cette période.': '此期间没有班次。',
   'Choisissez au moins un site.': '请至少选择一个门店。',
   '{by} a placé {name} sur un autre site le {day}.': '{by} 在 {day} 将 {name} 安排到了其他门店。',
+  'Le groupe de l\'entreprise est désactivé.': '公司群组已关闭。',
+  'Préréglage invalide.': '预设无效。',
+  'Image PNG de 1 Mo au plus attendue.': '需要不超过 1 MB 的 PNG 图片。',
 };

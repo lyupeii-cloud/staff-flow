@@ -88,4 +88,7 @@ const id = <String, String>{
   'Aucun service sur cette période.': 'Tidak ada shift pada periode ini.',
   'Choisissez au moins un site.': 'Pilih setidaknya satu lokasi.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} menempatkan {name} di lokasi lain pada {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Grup perusahaan dinonaktifkan.',
+  'Préréglage invalide.': 'Prasetel tidak valid.',
+  'Image PNG de 1 Mo au plus attendue.': 'Diperlukan gambar PNG maksimal 1 MB.',
 };

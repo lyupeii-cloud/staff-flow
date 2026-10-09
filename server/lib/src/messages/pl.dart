@@ -88,4 +88,7 @@ const pl = <String, String>{
   'Aucun service sur cette période.': 'Brak zmian w tym okresie.',
   'Choisissez au moins un site.': 'Wybierz co najmniej jedną lokalizację.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} przydzielił {name} do innej lokalizacji {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Grupa firmy jest wyłączona.',
+  'Préréglage invalide.': 'Nieprawidłowy szablon.',
+  'Image PNG de 1 Mo au plus attendue.': 'Oczekiwany obraz PNG o rozmiarze do 1 MB.',
 };

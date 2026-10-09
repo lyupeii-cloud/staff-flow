@@ -87,6 +87,15 @@ class Company {
   /// Ce que les salariés peuvent imprimer : `own` (leur planning) ou `team`.
   final String printScope;
 
+  /// Préréglages d'horaires : [{name, start, end}] en minutes.
+  final List<Map<String, Object?>> shiftPresets;
+
+  /// Groupe de messagerie de toute l'entreprise (le patron peut le couper).
+  final bool groupEnabled;
+
+  /// Image de l'entreprise : 0 = aucune ; augmente à chaque changement.
+  final int logoVersion;
+
   const Company({
     required this.id,
     required this.name,
@@ -95,6 +104,9 @@ class Company {
     required this.createdAt,
     this.legalRules,
     this.printScope = 'team',
+    this.shiftPresets = const [],
+    this.groupEnabled = true,
+    this.logoVersion = 0,
   });
 
   Company copyWith({String? name, String? timezone, Map<String, int>? Function()? legalRules, String? printScope}) =>
@@ -106,6 +118,9 @@ class Company {
         createdAt: createdAt,
         legalRules: legalRules == null ? this.legalRules : legalRules(),
         printScope: printScope ?? this.printScope,
+        shiftPresets: shiftPresets,
+        groupEnabled: groupEnabled,
+        logoVersion: logoVersion,
       );
 
   Map<String, Object?> toJson() => {
@@ -115,6 +130,9 @@ class Company {
         'status': status.name,
         'legalRules': legalRules,
         'printScope': printScope,
+        'shiftPresets': shiftPresets,
+        'groupEnabled': groupEnabled,
+        'logoVersion': logoVersion,
       };
 }
 

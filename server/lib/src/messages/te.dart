@@ -88,4 +88,7 @@ const te = <String, String>{
   'Aucun service sur cette période.': 'ఈ వ్యవధిలో షిఫ్టులు లేవు.',
   'Choisissez au moins un site.': 'కనీసం ఒక స్థలాన్ని ఎంచుకోండి.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} {day}న {name}ని వేరే స్థలంలో కేటాయించారు.',
+  'Le groupe de l\'entreprise est désactivé.': 'కంపెనీ సమూహం ఆపివేయబడింది.',
+  'Préréglage invalide.': 'చెల్లని ప్రీసెట్.',
+  'Image PNG de 1 Mo au plus attendue.': '1 MB వరకు ఉన్న PNG చిత్రం కావాలి.',
 };

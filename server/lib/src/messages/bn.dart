@@ -88,4 +88,7 @@ const bn = <String, String>{
   'Aucun service sur cette période.': 'এই সময়ে কোনো শিফট নেই।',
   'Choisissez au moins un site.': 'অন্তত একটি স্থান বেছে নিন।',
   '{by} a placé {name} sur un autre site le {day}.': '{by} {day} তারিখে {name}-কে অন্য স্থানে রেখেছেন।',
+  'Le groupe de l\'entreprise est désactivé.': 'কোম্পানির গ্রুপ বন্ধ আছে।',
+  'Préréglage invalide.': 'প্রিসেট বৈধ নয়।',
+  'Image PNG de 1 Mo au plus attendue.': '১ MB পর্যন্ত PNG ছবি দরকার।',
 };

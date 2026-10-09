@@ -88,4 +88,7 @@ const el = <String, String>{
   'Aucun service sur cette période.': 'Δεν υπάρχουν βάρδιες σε αυτή την περίοδο.',
   'Choisissez au moins un site.': 'Επιλέξτε τουλάχιστον ένα κατάστημα.',
   '{by} a placé {name} sur un autre site le {day}.': 'Ο/Η {by} έβαλε τον/την {name} σε άλλο κατάστημα στις {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Η ομάδα της εταιρείας είναι απενεργοποιημένη.',
+  'Préréglage invalide.': 'Μη έγκυρη προρρύθμιση.',
+  'Image PNG de 1 Mo au plus attendue.': 'Αναμένεται εικόνα PNG έως 1 MB.',
 };

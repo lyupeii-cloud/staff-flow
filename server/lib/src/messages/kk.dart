@@ -88,4 +88,7 @@ const kk = <String, String>{
   'Aucun service sur cette période.': 'Бұл кезеңде ауысымдар жоқ.',
   'Choisissez au moins un site.': 'Кемінде бір нысанды таңдаңыз.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} {day} күні {name} қызметкерін басқа нысанға қойды.',
+  'Le groupe de l\'entreprise est désactivé.': 'Компания тобы өшірулі.',
+  'Préréglage invalide.': 'Үлгі жарамсыз.',
+  'Image PNG de 1 Mo au plus attendue.': 'Көлемі 1 МБ-тан аспайтын PNG сурет қажет.',
 };

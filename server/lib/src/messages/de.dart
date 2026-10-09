@@ -88,4 +88,7 @@ const de = <String, String>{
   'Aucun service sur cette période.': 'Keine Schichten in diesem Zeitraum.',
   'Choisissez au moins un site.': 'Wählen Sie mindestens einen Standort.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} hat {name} am {day} an einem anderen Standort eingeplant.',
+  'Le groupe de l\'entreprise est désactivé.': 'Die Unternehmensgruppe ist deaktiviert.',
+  'Préréglage invalide.': 'Ungültige Vorlage.',
+  'Image PNG de 1 Mo au plus attendue.': 'Erwartet wird ein PNG-Bild von höchstens 1 MB.',
 };

@@ -88,4 +88,7 @@ const fil = <String, String>{
   'Aucun service sur cette période.': 'Walang shift sa panahong ito.',
   'Choisissez au moins un site.': 'Pumili ng kahit isang site.',
   '{by} a placé {name} sur un autre site le {day}.': 'Inilagay ni {by} si {name} sa ibang site sa {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Naka-off ang grupo ng kumpanya.',
+  'Préréglage invalide.': 'Di-wastong preset.',
+  'Image PNG de 1 Mo au plus attendue.': 'Inaasahan ang PNG na larawan na hanggang 1 MB.',
 };

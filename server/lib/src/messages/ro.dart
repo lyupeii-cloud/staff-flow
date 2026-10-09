@@ -88,4 +88,7 @@ const ro = <String, String>{
   'Aucun service sur cette période.': 'Nicio tură în această perioadă.',
   'Choisissez au moins un site.': 'Alege cel puțin o locație.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} l-a programat pe {name} la altă locație pe {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Grupul firmei este dezactivat.',
+  'Préréglage invalide.': 'Presetare nevalidă.',
+  'Image PNG de 1 Mo au plus attendue.': 'Se așteaptă o imagine PNG de cel mult 1 MB.',
 };

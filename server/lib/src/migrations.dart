@@ -356,4 +356,17 @@ ALTER TABLE memberships ADD COLUMN appointed_by uuid REFERENCES users(id) ON DEL
   '''
 ALTER TABLE memberships ADD COLUMN notifications_off boolean NOT NULL DEFAULT false;
 ''',
+  // 19 — préréglages d'horaires, groupe de l'entreprise activable par le
+  // patron, image de l'entreprise, groupes de messagerie en sourdine.
+  '''
+ALTER TABLE companies ADD COLUMN shift_presets jsonb;
+ALTER TABLE companies ADD COLUMN group_enabled boolean NOT NULL DEFAULT true;
+ALTER TABLE companies ADD COLUMN logo bytea;
+ALTER TABLE companies ADD COLUMN logo_version int NOT NULL DEFAULT 0;
+CREATE TABLE conversation_mutes (
+  conversation_id uuid NOT NULL REFERENCES conversations(id) ON DELETE CASCADE,
+  user_id         uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  PRIMARY KEY (conversation_id, user_id)
+);
+''',
 ];

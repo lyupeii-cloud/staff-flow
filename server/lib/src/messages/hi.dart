@@ -88,4 +88,7 @@ const hi = <String, String>{
   'Aucun service sur cette période.': 'इस अवधि में कोई शिफ़्ट नहीं।',
   'Choisissez au moins un site.': 'कम से कम एक स्थान चुनें।',
   '{by} a placé {name} sur un autre site le {day}.': '{by} ने {day} को {name} को दूसरे स्थान पर लगाया है।',
+  'Le groupe de l\'entreprise est désactivé.': 'कंपनी का समूह बंद है।',
+  'Préréglage invalide.': 'अमान्य प्रीसेट।',
+  'Image PNG de 1 Mo au plus attendue.': '1 MB तक की PNG छवि चाहिए।',
 };

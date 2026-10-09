@@ -88,4 +88,7 @@ const it = <String, String>{
   'Aucun service sur cette période.': 'Nessun turno in questo periodo.',
   'Choisissez au moins un site.': 'Scegli almeno una sede.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} ha assegnato {name} a un\'altra sede il {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Il gruppo dell\'azienda è disattivato.',
+  'Préréglage invalide.': 'Preimpostazione non valida.',
+  'Image PNG de 1 Mo au plus attendue.': 'È richiesta un\'immagine PNG di massimo 1 MB.',
 };

@@ -88,4 +88,7 @@ const th = <String, String>{
   'Aucun service sur cette période.': 'ไม่มีกะในช่วงเวลานี้',
   'Choisissez au moins un site.': 'เลือกอย่างน้อยหนึ่งสาขา',
   '{by} a placé {name} sur un autre site le {day}.': '{by} จัด {name} ไปทำงานที่สาขาอื่นในวันที่ {day}',
+  'Le groupe de l\'entreprise est désactivé.': 'กลุ่มของบริษัทถูกปิดอยู่',
+  'Préréglage invalide.': 'ค่าที่ตั้งไว้ไม่ถูกต้อง',
+  'Image PNG de 1 Mo au plus attendue.': 'ต้องเป็นรูป PNG ขนาดไม่เกิน 1 MB',
 };

@@ -88,4 +88,7 @@ const ja = <String, String>{
   'Aucun service sur cette période.': 'この期間のシフトはありません。',
   'Choisissez au moins un site.': '店舗を1つ以上選んでください。',
   '{by} a placé {name} sur un autre site le {day}.': '{by} さんが {day} に {name} さんを別の店舗に配置しました。',
+  'Le groupe de l\'entreprise est désactivé.': '会社のグループはオフになっています。',
+  'Préréglage invalide.': 'プリセットが無効です。',
+  'Image PNG de 1 Mo au plus attendue.': '1 MB 以下の PNG 画像が必要です。',
 };

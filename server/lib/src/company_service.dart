@@ -1,3 +1,8 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
+import 'package:image/image.dart' as img;
+
 import 'errors.dart';
 import 'models.dart';
 import 'store.dart';
@@ -85,6 +90,71 @@ class CompanyService {
     }
     await store.addMember(companyId, userId, Role.extra);
     await store.audit(companyId: companyId, actorId: actor.id, action: 'member.reinforcement', details: {'userId': userId});
+  }
+
+  /// Préréglages d'horaires (matin, soir, nuit…), choisis par les responsables.
+  Future<List<Map<String, Object?>>> setPresets(User actor, String companyId, Object? presets) async {
+    final (company, role) = await open(actor, companyId);
+    _requireWritable(company);
+    if (!role.canManage) throw const ApiError.forbidden();
+    if (presets is! List || presets.length > 20) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    final clean = <Map<String, Object?>>[];
+    for (final p in presets) {
+      final name = p is Map && p['name'] is String ? personName(p['name'] as String) : null;
+      final start = p is Map ? p['start'] : null, end = p is Map ? p['end'] : null;
+      if (name == null || name.length > 40 || start is! int || end is! int || start < 0 || start > 1439 || end < 0 || end > 1439) {
+        throw const ApiError.badRequest('Préréglage invalide.');
+      }
+      clean.add({'name': name, 'start': start, 'end': end});
+    }
+    await store.query(store.db, 'UPDATE companies SET shift_presets = @p::jsonb WHERE id = @c::uuid',
+        {'c': companyId, 'p': jsonEncode(clean)});
+    return clean;
+  }
+
+  /// Patron : image de l'entreprise (PNG seulement). Elle est décodée puis
+  /// réencodée en 192 × 192 au plus : rien d'autre que les pixels n'est gardé.
+  Future<int> setLogo(User actor, String companyId, List<int>? png) async {
+    final (company, role) = await open(actor, companyId);
+    _requireWritable(company);
+    if (role != Role.owner) throw const ApiError.forbidden();
+    List<int>? clean;
+    if (png != null) {
+      const signature = [0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A];
+      if (png.length > 1024 * 1024 || png.length < 8 || [for (var i = 0; i < 8; i++) png[i]].join() != signature.join()) {
+        throw const ApiError.badRequest('Image PNG de 1 Mo au plus attendue.');
+      }
+      // Fichier abîmé ou piégé : le décodeur échoue, on refuse proprement.
+      img.Image? image;
+      try {
+        final decoder = img.PngDecoder();
+        final info = decoder.startDecode(Uint8List.fromList(png));
+        if (info != null && info.width <= 4096 && info.height <= 4096) image = decoder.decode(Uint8List.fromList(png));
+      } catch (_) {
+        image = null;
+      }
+      if (image == null) throw const ApiError.badRequest('Image PNG de 1 Mo au plus attendue.');
+      final side = image.width > image.height ? image.width : image.height;
+      final resized = side > 192
+          ? img.copyResize(image,
+              width: image.width >= image.height ? 192 : null,
+              height: image.height > image.width ? 192 : null,
+              interpolation: img.Interpolation.average)
+          : image;
+      clean = img.encodePng(resized);
+    }
+    final rows = await store.query(store.db, '''
+      UPDATE companies SET logo = @l, logo_version = CASE WHEN @l::bytea IS NULL THEN 0 ELSE logo_version + 1 END
+      WHERE id = @c::uuid RETURNING logo_version''', {'c': companyId, 'l': clean == null ? null : Uint8List.fromList(clean)});
+    await store.audit(companyId: companyId, actorId: actor.id, action: 'company.logo', details: {'set': clean != null});
+    return rows.first[0] as int;
+  }
+
+  /// Image de l'entreprise, pour ses membres.
+  Future<List<int>?> logo(User actor, String companyId) async {
+    await open(actor, companyId);
+    final rows = await store.query(store.db, 'SELECT logo FROM companies WHERE id = @c::uuid', {'c': companyId});
+    return rows.isEmpty ? null : rows.first[0] as List<int>?;
   }
 
   /// Responsable : sites dont il veut recevoir les notifications de

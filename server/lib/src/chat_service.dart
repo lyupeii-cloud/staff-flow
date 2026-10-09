@@ -24,7 +24,7 @@ class ChatService {
   static const _name = 'coalesce(ms.display_name, u.custom_name, u.name)';
 
   /// La conversation `c` est-elle visible par `@u` (membre actuel de l'entreprise) ?
-  static const _visible = '''(c.kind = 'group'
+  static const _visible = '''((c.kind = 'group' AND (SELECT group_enabled FROM companies WHERE id = c.company_id))
     OR (c.kind = 'private' AND @u::uuid IN (c.user_a, c.user_b))
     OR (c.kind = 'team' AND EXISTS (SELECT 1 FROM conversation_members cm
           WHERE cm.conversation_id = c.id AND cm.user_id = @u::uuid)))''';
@@ -49,7 +49,8 @@ class ChatService {
            WHERE m.conversation_id = c.id AND m.author_id IS DISTINCT FROM @u::uuid
              AND m.id > coalesce(r.last_read_id, 0) AND m.created_at > $_since) AS unread,
         c.name AS team_name,
-        (SELECT array_agg(cm.user_id::text) FROM conversation_members cm WHERE cm.conversation_id = c.id) AS member_ids
+        (SELECT array_agg(cm.user_id::text) FROM conversation_members cm WHERE cm.conversation_id = c.id) AS member_ids,
+        EXISTS (SELECT 1 FROM conversation_mutes mu WHERE mu.conversation_id = c.id AND mu.user_id = @u::uuid) AS muted
       FROM conversations c
       JOIN memberships me ON me.company_id = c.company_id AND me.user_id = @u::uuid AND me.left_at IS NULL
       LEFT JOIN conversation_reads r ON r.conversation_id = c.id AND r.user_id = @u::uuid
@@ -91,8 +92,38 @@ class ChatService {
                   'createdAt': (r['last_at'] as DateTime).toUtc().toIso8601String(),
                 },
           'unread': r['unread'],
+          'muted': r['muted'],
         },
     ];
+  }
+
+  /// Notifications d'une conversation coupées (ou rétablies) pour [actor].
+  Future<void> setMuted(User actor, String conversationId, bool muted) async {
+    await _open(actor, conversationId);
+    await store.query(
+        store.db,
+        muted
+            ? 'INSERT INTO conversation_mutes VALUES (@c::uuid, @u::uuid) ON CONFLICT DO NOTHING'
+            : 'DELETE FROM conversation_mutes WHERE conversation_id = @c::uuid AND user_id = @u::uuid',
+        {'c': conversationId, 'u': actor.id});
+  }
+
+  /// Patron : groupe de toute l'entreprise activé ou coupé (caché pour tous).
+  Future<void> setGroupEnabled(User actor, String companyId, bool enabled) async {
+    final (_, role) = await companies.open(actor, companyId);
+    if (role != Role.owner) throw const ApiError.forbidden();
+    await store.query(store.db, 'UPDATE companies SET group_enabled = @e WHERE id = @c::uuid', {'c': companyId, 'e': enabled});
+    await store.audit(companyId: companyId, actorId: actor.id, action: 'group.enabled', details: {'enabled': enabled});
+  }
+
+  /// Patron : efface tous les messages du groupe de l'entreprise.
+  Future<void> resetGroup(User actor, String companyId) async {
+    final (_, role) = await companies.open(actor, companyId);
+    if (role != Role.owner) throw const ApiError.forbidden();
+    await store.query(store.db, '''
+      DELETE FROM messages WHERE conversation_id IN
+        (SELECT id FROM conversations WHERE company_id = @c::uuid AND kind = 'group')''', {'c': companyId});
+    await store.audit(companyId: companyId, actorId: actor.id, action: 'group.reset', details: const {});
   }
 
   /// Conversation privée avec [userId] (créée au besoin). Un salarié ne
@@ -215,6 +246,9 @@ class ChatService {
   Future<void> postRequest(String companyId, String requestId, String authorId, List<String> others) async {
     final conversations = <String>[];
     if (others.isEmpty) {
+      // Groupe de l'entreprise coupé : la demande reste dans la liste des demandes.
+      final enabled = await store.query(store.db, 'SELECT group_enabled FROM companies WHERE id = @c::uuid', {'c': companyId});
+      if (enabled.isEmpty || enabled.first[0] != true) return;
       await store.query(store.db, '''
         INSERT INTO conversations (company_id, kind) VALUES (@c::uuid, 'group')
         ON CONFLICT (company_id) WHERE kind = 'group' DO NOTHING''', {'c': companyId});
@@ -359,6 +393,9 @@ class ChatService {
     if (conv.company.status == CompanyStatus.readOnly) {
       throw const ApiError.conflict('Cette entreprise est en lecture seule.');
     }
+    if (conv.kind == 'group' && !conv.company.groupEnabled) {
+      throw const ApiError.conflict('Le groupe de l\'entreprise est désactivé.');
+    }
     final text = body.trim();
     if (text.isEmpty || text.length > maxLength) {
       throw const ApiError.badRequest('Message vide ou trop long (2000 caractères au plus).');
@@ -388,8 +425,14 @@ class ChatService {
     final message = (await messages(actor, conversationId, before: id + 1, limit: 1)).single;
     final authorName = message['authorName'] as String;
 
+    // Conversation mise en sourdine : pas de notification pour ces personnes.
+    final muted = {
+      for (final r in await store.query(store.db,
+          'SELECT user_id::text FROM conversation_mutes WHERE conversation_id = @c::uuid', {'c': conversationId}))
+        r[0] as String,
+    };
     notifications.pushDirect(
-      participants.where((u) => u != actor.id),
+      participants.where((u) => u != actor.id && !muted.contains(u)),
       category: NotifyCategory.messages,
       title: switch (conv.kind) {
         'private' => '$authorName · ${conv.company.name}',

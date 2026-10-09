@@ -88,4 +88,7 @@ const gu = <String, String>{
   'Aucun service sur cette période.': 'આ સમયગાળામાં કોઈ શિફ્ટ નથી.',
   'Choisissez au moins un site.': 'ઓછામાં ઓછું એક સ્થળ પસંદ કરો.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} એ {day} ના રોજ {name} ને બીજા સ્થળે મૂક્યા.',
+  'Le groupe de l\'entreprise est désactivé.': 'કંપનીનું જૂથ બંધ છે.',
+  'Préréglage invalide.': 'અમાન્ય પ્રીસેટ.',
+  'Image PNG de 1 Mo au plus attendue.': '1 MB સુધીની PNG છબી જોઈએ.',
 };

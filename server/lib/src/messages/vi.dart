@@ -88,4 +88,7 @@ const vi = <String, String>{
   'Aucun service sur cette période.': 'Không có ca nào trong khoảng thời gian này.',
   'Choisissez au moins un site.': 'Chọn ít nhất một địa điểm.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} đã xếp {name} vào địa điểm khác ngày {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Nhóm của công ty đã bị tắt.',
+  'Préréglage invalide.': 'Mẫu giờ không hợp lệ.',
+  'Image PNG de 1 Mo au plus attendue.': 'Cần ảnh PNG tối đa 1 MB.',
 };

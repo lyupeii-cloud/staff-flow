@@ -109,4 +109,7 @@ const en = <String, String>{
   'Aucun service sur cette période.': 'No shifts in this period.',
   'Choisissez au moins un site.': 'Choose at least one site.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} scheduled {name} at another site on {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'The company group is turned off.',
+  'Préréglage invalide.': 'Invalid preset.',
+  'Image PNG de 1 Mo au plus attendue.': 'A PNG image of 1 MB or less is expected.',
 };

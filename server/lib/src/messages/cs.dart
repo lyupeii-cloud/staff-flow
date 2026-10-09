@@ -88,4 +88,7 @@ const cs = <String, String>{
   'Aucun service sur cette période.': 'V tomto období nejsou žádné směny.',
   'Choisissez au moins un site.': 'Vyberte alespoň jednu pobočku.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} zařadil {name} na jinou pobočku {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Skupina firmy je vypnutá.',
+  'Préréglage invalide.': 'Neplatná předvolba.',
+  'Image PNG de 1 Mo au plus attendue.': 'Očekává se obrázek PNG do 1 MB.',
 };

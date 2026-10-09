@@ -88,4 +88,7 @@ const nl = <String, String>{
   'Aucun service sur cette période.': 'Geen diensten in deze periode.',
   'Choisissez au moins un site.': 'Kies ten minste één locatie.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} heeft {name} op {day} op een andere locatie ingepland.',
+  'Le groupe de l\'entreprise est désactivé.': 'De bedrijfsgroep staat uit.',
+  'Préréglage invalide.': 'Ongeldige voorinstelling.',
+  'Image PNG de 1 Mo au plus attendue.': 'Er wordt een PNG-afbeelding van maximaal 1 MB verwacht.',
 };

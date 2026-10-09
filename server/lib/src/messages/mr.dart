@@ -88,4 +88,7 @@ const mr = <String, String>{
   'Aucun service sur cette période.': 'या कालावधीत कोणतीही शिफ्ट नाही.',
   'Choisissez au moins un site.': 'किमान एक ठिकाण निवडा.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} यांनी {day} रोजी {name} यांना दुसऱ्या ठिकाणी नेमले.',
+  'Le groupe de l\'entreprise est désactivé.': 'कंपनीचा गट बंद आहे.',
+  'Préréglage invalide.': 'अवैध प्रीसेट.',
+  'Image PNG de 1 Mo au plus attendue.': '1 MB पर्यंतची PNG प्रतिमा अपेक्षित आहे.',
 };

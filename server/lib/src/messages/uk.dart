@@ -108,4 +108,7 @@ const uk = <String, String>{
   'Aucun service sur cette période.': 'Немає змін за цей період.',
   'Choisissez au moins un site.': 'Оберіть принаймні одну локацію.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} поставив {name} на іншу локацію {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Групу компанії вимкнено.',
+  'Préréglage invalide.': 'Недійсний шаблон.',
+  'Image PNG de 1 Mo au plus attendue.': 'Потрібне зображення PNG до 1 МБ.',
 };

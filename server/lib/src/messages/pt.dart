@@ -88,4 +88,7 @@ const pt = <String, String>{
   'Aucun service sur cette période.': 'Não há turnos neste período.',
   'Choisissez au moins un site.': 'Escolha pelo menos um local.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} colocou {name} noutro local a {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'O grupo da empresa está desativado.',
+  'Préréglage invalide.': 'Predefinição inválida.',
+  'Image PNG de 1 Mo au plus attendue.': 'É esperada uma imagem PNG de 1 MB no máximo.',
 };

@@ -88,4 +88,7 @@ const da = <String, String>{
   'Aucun service sur cette période.': 'Ingen vagter i perioden.',
   'Choisissez au moins un site.': 'Vælg mindst ét sted.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} har sat {name} på et andet sted den {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Virksomhedens gruppe er slået fra.',
+  'Préréglage invalide.': 'Ugyldig forudindstilling.',
+  'Image PNG de 1 Mo au plus attendue.': 'Der forventes et PNG-billede på højst 1 MB.',
 };

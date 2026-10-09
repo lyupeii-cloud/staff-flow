@@ -88,4 +88,7 @@ const ta = <String, String>{
   'Aucun service sur cette période.': 'இந்தக் காலத்தில் ஷிஃப்டுகள் இல்லை.',
   'Choisissez au moins un site.': 'குறைந்தது ஒரு இடத்தைத் தேர்ந்தெடுங்கள்.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} {day} அன்று {name} அவர்களை வேறு இடத்தில் பணியமர்த்தினார்.',
+  'Le groupe de l\'entreprise est désactivé.': 'நிறுவனக் குழு அணைக்கப்பட்டுள்ளது.',
+  'Préréglage invalide.': 'தவறான முன்னமைவு.',
+  'Image PNG de 1 Mo au plus attendue.': '1 MB வரையிலான PNG படம் தேவை.',
 };

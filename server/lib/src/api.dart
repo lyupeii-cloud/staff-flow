@@ -100,6 +100,42 @@ class Api {
       ..post('/companies/<id>/shifts/<shiftId>/revert', _authed((r, u) async =>
           _json({'reverted': await planning.revert(u, r.params['id']!, r.params['shiftId']!)})))
       ..put('/companies/<id>/notify-sites', _authed(_notifySites))
+      ..put('/companies/<id>/presets', _authed((r, u) async =>
+          _json({'presets': await companies.setPresets(u, r.params['id']!, (await _body(r))['presets'])})))
+      ..put('/companies/<id>/group', _authed((r, u) async {
+        final body = await _body(r);
+        if (body['enabled'] is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        await chat.setGroupEnabled(u, r.params['id']!, body['enabled'] as bool);
+        return Response(204);
+      }))
+      ..post('/companies/<id>/group/reset', _authed((r, u) async {
+        await chat.resetGroup(u, r.params['id']!);
+        return Response(204);
+      }))
+      ..put('/conversations/<id>/mute', _authed((r, u) async {
+        final body = await _body(r);
+        if (body['muted'] is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        await chat.setMuted(u, r.params['id']!, body['muted'] as bool);
+        return Response(204);
+      }))
+      // Image de l'entreprise : PNG envoyé en base64 (null pour l'enlever).
+      ..put('/companies/<id>/logo', _authed((r, u) async {
+        final body = await _body(r);
+        final png = body['png'];
+        if (png != null && png is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        List<int>? bytes;
+        try {
+          bytes = png == null ? null : base64Decode(png as String);
+        } on FormatException {
+          throw const ApiError.badRequest('Image PNG de 1 Mo au plus attendue.');
+        }
+        return _json({'logoVersion': await companies.setLogo(u, r.params['id']!, bytes)});
+      }))
+      ..get('/companies/<id>/logo', _authed((r, u) async {
+        final png = await companies.logo(u, r.params['id']!);
+        if (png == null) throw const ApiError.notFound();
+        return Response.ok(png, headers: {'content-type': 'image/png', 'cache-control': 'private, max-age=31536000'});
+      }))
       ..put('/companies/<id>/notifications', _authed((r, u) async {
         final body = await _body(r);
         if (body['enabled'] is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');

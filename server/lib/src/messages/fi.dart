@@ -88,4 +88,7 @@ const fi = <String, String>{
   'Aucun service sur cette période.': 'Ei vuoroja tällä jaksolla.',
   'Choisissez au moins un site.': 'Valitse vähintään yksi toimipaikka.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} merkitsi henkilön {name} toiseen toimipaikkaan {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Yrityksen ryhmä on poistettu käytöstä.',
+  'Préréglage invalide.': 'Virheellinen esiasetus.',
+  'Image PNG de 1 Mo au plus attendue.': 'Odotetaan enintään 1 Mt:n PNG-kuvaa.',
 };

@@ -88,4 +88,7 @@ const bg = <String, String>{
   'Aucun service sur cette période.': 'Няма смени за този период.',
   'Choisissez au moins un site.': 'Изберете поне един обект.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} постави {name} на друг обект на {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Групата на фирмата е изключена.',
+  'Préréglage invalide.': 'Невалиден шаблон.',
+  'Image PNG de 1 Mo au plus attendue.': 'Очаква се PNG изображение до 1 MB.',
 };

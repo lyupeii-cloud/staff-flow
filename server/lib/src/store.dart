@@ -76,6 +76,9 @@ class Store {
         createdAt: r['created_at'] as DateTime,
         legalRules: (r['legal_rules'] as Map?)?.map((k, v) => MapEntry(k as String, v as int)),
         printScope: r['print_scope'] as String? ?? 'team',
+        shiftPresets: [for (final p in (r['shift_presets'] as List?) ?? const []) (p as Map).cast<String, Object?>()],
+        groupEnabled: r['group_enabled'] as bool? ?? true,
+        logoVersion: r['logo_version'] as int? ?? 0,
       );
 
   static OwnershipTransfer _transfer(Map<String, dynamic> r) => OwnershipTransfer(

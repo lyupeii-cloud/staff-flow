@@ -88,4 +88,7 @@ const ru = <String, String>{
   'Aucun service sur cette période.': 'Нет смен за этот период.',
   'Choisissez au moins un site.': 'Выберите хотя бы одну площадку.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} поставил {name} на другую площадку {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Группа компании отключена.',
+  'Préréglage invalide.': 'Недопустимый шаблон.',
+  'Image PNG de 1 Mo au plus attendue.': 'Нужно изображение PNG не более 1 МБ.',
 };

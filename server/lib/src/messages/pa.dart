@@ -88,4 +88,7 @@ const pa = <String, String>{
   'Aucun service sur cette période.': 'ਇਸ ਮਿਆਦ ਵਿੱਚ ਕੋਈ ਸ਼ਿਫ਼ਟ ਨਹੀਂ।',
   'Choisissez au moins un site.': 'ਘੱਟੋ-ਘੱਟ ਇੱਕ ਥਾਂ ਚੁਣੋ।',
   '{by} a placé {name} sur un autre site le {day}.': '{by} ਨੇ {day} ਨੂੰ {name} ਨੂੰ ਕਿਸੇ ਹੋਰ ਥਾਂ ਲਾਇਆ ਹੈ।',
+  'Le groupe de l\'entreprise est désactivé.': 'ਕੰਪਨੀ ਦਾ ਸਮੂਹ ਬੰਦ ਹੈ।',
+  'Préréglage invalide.': 'ਗਲਤ ਪ੍ਰੀਸੈੱਟ।',
+  'Image PNG de 1 Mo au plus attendue.': '1 MB ਤੱਕ ਦੀ PNG ਤਸਵੀਰ ਚਾਹੀਦੀ ਹੈ।',
 };

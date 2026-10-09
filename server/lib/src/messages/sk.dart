@@ -88,4 +88,7 @@ const sk = <String, String>{
   'Aucun service sur cette période.': 'V tomto období nie sú žiadne zmeny.',
   'Choisissez au moins un site.': 'Vyberte aspoň jednu pobočku.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} zaradil {name} na inú pobočku {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Skupina firmy je vypnutá.',
+  'Préréglage invalide.': 'Neplatná predvoľba.',
+  'Image PNG de 1 Mo au plus attendue.': 'Očakáva sa obrázok PNG do 1 MB.',
 };

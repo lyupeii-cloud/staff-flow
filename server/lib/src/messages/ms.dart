@@ -88,4 +88,7 @@ const ms = <String, String>{
   'Aucun service sur cette période.': 'Tiada syif dalam tempoh ini.',
   'Choisissez au moins un site.': 'Pilih sekurang-kurangnya satu lokasi.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} menempatkan {name} di lokasi lain pada {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Kumpulan syarikat dimatikan.',
+  'Préréglage invalide.': 'Pratetap tidak sah.',
+  'Image PNG de 1 Mo au plus attendue.': 'Imej PNG maksimum 1 MB diperlukan.',
 };

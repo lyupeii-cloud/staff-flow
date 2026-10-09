@@ -88,4 +88,7 @@ const sv = <String, String>{
   'Aucun service sur cette période.': 'Inga pass under perioden.',
   'Choisissez au moins un site.': 'Välj minst en arbetsplats.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} har schemalagt {name} på en annan arbetsplats den {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Företagets grupp är avstängd.',
+  'Préréglage invalide.': 'Ogiltig förinställning.',
+  'Image PNG de 1 Mo au plus attendue.': 'En PNG-bild på högst 1 MB förväntas.',
 };

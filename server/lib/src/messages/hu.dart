@@ -88,4 +88,7 @@ const hu = <String, String>{
   'Aucun service sur cette période.': 'Nincs műszak ebben az időszakban.',
   'Choisissez au moins un site.': 'Válassz legalább egy telephelyet.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} másik telephelyre osztotta be {name} személyt ekkor: {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'A cég csoportja ki van kapcsolva.',
+  'Préréglage invalide.': 'Érvénytelen előbeállítás.',
+  'Image PNG de 1 Mo au plus attendue.': 'Legfeljebb 1 MB-os PNG-képet várunk.',
 };

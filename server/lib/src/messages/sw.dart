@@ -88,4 +88,7 @@ const sw = <String, String>{
   'Aucun service sur cette période.': 'Hakuna zamu katika kipindi hiki.',
   'Choisissez au moins un site.': 'Chagua angalau eneo moja.',
   '{by} a placé {name} sur un autre site le {day}.': '{by} amempanga {name} katika eneo lingine tarehe {day}.',
+  'Le groupe de l\'entreprise est désactivé.': 'Kikundi cha kampuni kimezimwa.',
+  'Préréglage invalide.': 'Mpangilio uliowekwa awali si sahihi.',
+  'Image PNG de 1 Mo au plus attendue.': 'Picha ya PNG ya hadi MB 1 inahitajika.',
 };
