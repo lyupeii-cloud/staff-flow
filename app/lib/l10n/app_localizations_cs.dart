@@ -660,4 +660,9 @@ class L10nCs extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name vám nabízí, abyste se stali vlastníkem $company.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name se připojil k $company.';
+  }
 }

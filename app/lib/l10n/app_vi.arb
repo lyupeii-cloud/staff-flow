@@ -177,5 +177,6 @@
   "enablePush": "Bật",
   "noticeSchedulePublished": "{company}: lịch làm việc của bạn đã được công bố hoặc thay đổi.",
   "noticeJoinInvite": "{company} muốn thêm bạn vào nhóm.",
-  "noticeTransferOffer": "{name} đề nghị bạn trở thành chủ sở hữu {company}."
+  "noticeTransferOffer": "{name} đề nghị bạn trở thành chủ sở hữu {company}.",
+  "noticeMemberJoined": "{name} đã tham gia {company}."
 }

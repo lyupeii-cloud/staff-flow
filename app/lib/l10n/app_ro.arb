@@ -177,5 +177,6 @@
   "enablePush": "Activează",
   "noticeSchedulePublished": "{company}: programul tău a fost publicat sau modificat.",
   "noticeJoinInvite": "{company} vrea să te adauge în echipa sa.",
-  "noticeTransferOffer": "{name} îți propune să devii proprietarul {company}."
+  "noticeTransferOffer": "{name} îți propune să devii proprietarul {company}.",
+  "noticeMemberJoined": "{name} s-a alăturat {company}."
 }

@@ -654,4 +654,9 @@ class L10nGu extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name તમને $company ના માલિક બનવાનો પ્રસ્તાવ આપે છે.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name $company માં જોડાયા.';
+  }
 }

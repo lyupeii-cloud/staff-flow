@@ -644,4 +644,9 @@ class L10nJa extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name さんがあなたを $company のオーナーにすることを提案しています。';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name さんが $company に参加しました。';
+  }
 }

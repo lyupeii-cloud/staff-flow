@@ -40,4 +40,5 @@ const hi = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} आपको कंपनी का मालिक बनाने का प्रस्ताव दे रहे हैं।',
   'Un autre responsable a modifié ce planning': 'किसी दूसरे मैनेजर ने यह शेड्यूल बदला है',
   '{name} a remplacé votre modification.': '{name} ने आपका बदलाव बदल दिया।',
+  '{name} a rejoint l\'entreprise.': '{name} कंपनी में शामिल हो गए।',
 };

@@ -177,5 +177,6 @@
   "enablePush": "Washa",
   "noticeSchedulePublished": "{company}: ratiba yako imechapishwa au kubadilishwa.",
   "noticeJoinInvite": "{company} inataka kukuongeza kwenye timu yake.",
-  "noticeTransferOffer": "{name} anapendekeza uwe mmiliki wa {company}."
+  "noticeTransferOffer": "{name} anapendekeza uwe mmiliki wa {company}.",
+  "noticeMemberJoined": "{name} amejiunga na {company}."
 }

@@ -658,4 +658,9 @@ class L10nSw extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name anapendekeza uwe mmiliki wa $company.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name amejiunga na $company.';
+  }
 }

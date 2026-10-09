@@ -177,5 +177,6 @@
   "enablePush": "켜기",
   "noticeSchedulePublished": "{company}: 근무표가 게시되었거나 변경되었습니다.",
   "noticeJoinInvite": "{company}에서 회원님을 팀에 추가하려고 합니다.",
-  "noticeTransferOffer": "{name}님이 회원님에게 {company} 소유권을 넘기려고 합니다."
+  "noticeTransferOffer": "{name}님이 회원님에게 {company} 소유권을 넘기려고 합니다.",
+  "noticeMemberJoined": "{name}님이 {company}에 합류했습니다."
 }

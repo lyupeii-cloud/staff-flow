@@ -151,7 +151,8 @@ class JoinService {
     ];
   }
 
-  Future<void> answer(User user, String requestId, {required bool accept}) async {
+  /// Renvoie l'entreprise concernée.
+  Future<String> answer(User user, String requestId, {required bool accept}) async {
     final rows = await store.query(store.db, '''
       UPDATE join_requests SET status = @s, resolved_at = now()
       WHERE id = @id::uuid AND user_id = @u::uuid AND status = 'pending'
@@ -162,6 +163,7 @@ class JoinService {
     if (accept) await store.addMember(companyId, user.id, Role.parse(rows.first[1] as String));
     await store.audit(
         companyId: companyId, actorId: user.id, action: accept ? 'join.accept' : 'join.decline');
+    return companyId;
   }
 
   Future<void> _attempt(User manager, String companyId, String ip, DateTime at,

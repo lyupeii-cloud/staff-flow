@@ -40,4 +40,5 @@ const ko = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name}님이 회원님에게 회사 소유권을 넘기려고 합니다.',
   'Un autre responsable a modifié ce planning': '다른 관리자가 이 근무표를 변경했습니다',
   '{name} a remplacé votre modification.': '{name}님이 회원님의 변경 내용을 대체했습니다.',
+  '{name} a rejoint l\'entreprise.': '{name}님이 회사에 합류했습니다.',
 };

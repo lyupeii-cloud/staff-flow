@@ -177,5 +177,6 @@
   "enablePush": "Қосу",
   "noticeSchedulePublished": "{company}: кестеңіз жарияланды немесе өзгертілді.",
   "noticeJoinInvite": "{company} сізді командасына қосқысы келеді.",
-  "noticeTransferOffer": "{name} сізге {company} иесі болуды ұсынады."
+  "noticeTransferOffer": "{name} сізге {company} иесі болуды ұсынады.",
+  "noticeMemberJoined": "{name} {company} компаниясына қосылды."
 }

@@ -40,4 +40,5 @@ const gu = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} તમને કંપનીના માલિક બનવાનો પ્રસ્તાવ આપે છે.',
   'Un autre responsable a modifié ce planning': 'બીજા મેનેજરે આ સમયપત્રક બદલ્યું',
   '{name} a remplacé votre modification.': '{name} એ તમારો ફેરફાર બદલી નાખ્યો.',
+  '{name} a rejoint l\'entreprise.': '{name} કંપનીમાં જોડાયા.',
 };

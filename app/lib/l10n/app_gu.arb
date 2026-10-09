@@ -177,5 +177,6 @@
   "enablePush": "ચાલુ કરો",
   "noticeSchedulePublished": "{company}: તમારું સમયપત્રક પ્રકાશિત થયું છે અથવા બદલાયું છે.",
   "noticeJoinInvite": "{company} તમને તેની ટીમમાં ઉમેરવા માંગે છે.",
-  "noticeTransferOffer": "{name} તમને {company} ના માલિક બનવાનો પ્રસ્તાવ આપે છે."
+  "noticeTransferOffer": "{name} તમને {company} ના માલિક બનવાનો પ્રસ્તાવ આપે છે.",
+  "noticeMemberJoined": "{name} {company} માં જોડાયા."
 }

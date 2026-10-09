@@ -177,5 +177,6 @@
   "enablePush": "Włącz",
   "noticeSchedulePublished": "{company}: twój grafik został opublikowany lub zmieniony.",
   "noticeJoinInvite": "{company} chce dodać cię do swojego zespołu.",
-  "noticeTransferOffer": "{name} proponuje, abyś został właścicielem {company}."
+  "noticeTransferOffer": "{name} proponuje, abyś został właścicielem {company}.",
+  "noticeMemberJoined": "{name} dołączył do {company}."
 }

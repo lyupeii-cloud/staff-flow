@@ -181,5 +181,6 @@
   "enablePush": "Activer",
   "noticeSchedulePublished": "{company} : votre planning a été publié ou modifié.",
   "noticeJoinInvite": "{company} veut vous ajouter à son équipe.",
-  "noticeTransferOffer": "{name} vous propose de devenir propriétaire de {company}."
+  "noticeTransferOffer": "{name} vous propose de devenir propriétaire de {company}.",
+  "noticeMemberJoined": "{name} a rejoint {company}."
 }

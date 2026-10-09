@@ -659,4 +659,9 @@ class L10nTa extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name உங்களை $company உரிமையாளராக்க முன்மொழிகிறார்.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name $company இல் சேர்ந்தார்.';
+  }
 }

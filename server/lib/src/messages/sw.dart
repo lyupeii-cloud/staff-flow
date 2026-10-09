@@ -40,4 +40,5 @@ const sw = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} anapendekeza uwe mmiliki wa kampuni.',
   'Un autre responsable a modifié ce planning': 'Msimamizi mwingine amebadilisha ratiba hii',
   '{name} a remplacé votre modification.': '{name} amebadilisha mabadiliko yako.',
+  '{name} a rejoint l\'entreprise.': '{name} amejiunga na kampuni.',
 };

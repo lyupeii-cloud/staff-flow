@@ -1258,6 +1258,12 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'{name} offers to make you the owner of {company}.'**
   String noticeTransferOffer(String name, String company);
+
+  /// No description provided for @noticeMemberJoined.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} joined {company}.'**
+  String noticeMemberJoined(String name, String company);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

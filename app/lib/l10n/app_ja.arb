@@ -177,5 +177,6 @@
   "enablePush": "オンにする",
   "noticeSchedulePublished": "{company}：シフトが公開または変更されました。",
   "noticeJoinInvite": "{company} があなたをチームに追加しようとしています。",
-  "noticeTransferOffer": "{name} さんがあなたを {company} のオーナーにすることを提案しています。"
+  "noticeTransferOffer": "{name} さんがあなたを {company} のオーナーにすることを提案しています。",
+  "noticeMemberJoined": "{name} さんが {company} に参加しました。"
 }

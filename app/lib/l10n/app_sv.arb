@@ -177,5 +177,6 @@
   "enablePush": "Slå på",
   "noticeSchedulePublished": "{company}: ditt schema har publicerats eller ändrats.",
   "noticeJoinInvite": "{company} vill lägga till dig i sitt team.",
-  "noticeTransferOffer": "{name} föreslår att du blir ägare till {company}."
+  "noticeTransferOffer": "{name} föreslår att du blir ägare till {company}.",
+  "noticeMemberJoined": "{name} har gått med i {company}."
 }

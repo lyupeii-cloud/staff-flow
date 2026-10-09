@@ -40,4 +40,5 @@ const pl = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} proponuje, abyś został właścicielem firmy.',
   'Un autre responsable a modifié ce planning': 'Inny kierownik zmienił ten grafik',
   '{name} a remplacé votre modification.': '{name} zastąpił twoją zmianę.',
+  '{name} a rejoint l\'entreprise.': '{name} dołączył do firmy.',
 };

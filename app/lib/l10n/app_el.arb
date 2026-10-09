@@ -177,5 +177,6 @@
   "enablePush": "Ενεργοποίηση",
   "noticeSchedulePublished": "{company}: το πρόγραμμά σας δημοσιεύτηκε ή άλλαξε.",
   "noticeJoinInvite": "Η εταιρεία {company} θέλει να σας προσθέσει στην ομάδα της.",
-  "noticeTransferOffer": "Ο/Η {name} σας προτείνει να γίνετε ιδιοκτήτης της {company}."
+  "noticeTransferOffer": "Ο/Η {name} σας προτείνει να γίνετε ιδιοκτήτης της {company}.",
+  "noticeMemberJoined": "Ο/Η {name} μπήκε στην {company}."
 }

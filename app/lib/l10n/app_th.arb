@@ -177,5 +177,6 @@
   "enablePush": "เปิด",
   "noticeSchedulePublished": "{company}: ตารางงานของคุณได้รับการเผยแพร่หรือแก้ไขแล้ว",
   "noticeJoinInvite": "{company} ต้องการเพิ่มคุณเข้าทีม",
-  "noticeTransferOffer": "{name} เสนอให้คุณเป็นเจ้าของ {company}"
+  "noticeTransferOffer": "{name} เสนอให้คุณเป็นเจ้าของ {company}",
+  "noticeMemberJoined": "{name} เข้าร่วม {company} แล้ว"
 }

@@ -60,4 +60,5 @@ const uk = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} пропонує вам стати власником компанії.',
   'Un autre responsable a modifié ce planning': 'Інший керівник змінив цей графік',
   '{name} a remplacé votre modification.': '{name} замінив вашу зміну.',
+  '{name} a rejoint l\'entreprise.': '{name} приєднався до компанії.',
 };

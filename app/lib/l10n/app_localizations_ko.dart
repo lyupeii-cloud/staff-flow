@@ -643,4 +643,9 @@ class L10nKo extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name님이 회원님에게 $company 소유권을 넘기려고 합니다.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name님이 $company에 합류했습니다.';
+  }
 }

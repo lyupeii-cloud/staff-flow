@@ -654,4 +654,9 @@ class L10nHu extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name felajánlja, hogy te legyél a(z) $company tulajdonosa.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name csatlakozott: $company.';
+  }
 }

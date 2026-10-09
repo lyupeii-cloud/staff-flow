@@ -250,7 +250,16 @@ class Api {
           data: {'requestId': request.id, 'role': request.role.name, 'byName': manager.name});
 
   Future<Response> _answerJoin(Request req, User user, {required bool accept}) async {
-    await joins.answer(user, req.params['id']!, accept: accept);
+    final companyId = await joins.answer(user, req.params['id']!, accept: accept);
+    if (accept) {
+      // Les responsables le voient tout de suite (et peuvent le placer au planning).
+      final managers = [
+        for (final m in await store.members(companyId))
+          if (m.role.canManage && m.user.id != user.id) m.user.id,
+      ];
+      await notifications.notify(managers,
+          companyId: companyId, kind: 'member_joined', data: {'name': user.name});
+    }
     return Response(204);
   }
 

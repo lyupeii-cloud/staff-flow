@@ -40,4 +40,5 @@ const nl = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} stelt voor dat jij eigenaar van het bedrijf wordt.',
   'Un autre responsable a modifié ce planning': 'Een andere leidinggevende heeft dit rooster gewijzigd',
   '{name} a remplacé votre modification.': '{name} heeft je wijziging vervangen.',
+  '{name} a rejoint l\'entreprise.': '{name} is bij het bedrijf gekomen.',
 };

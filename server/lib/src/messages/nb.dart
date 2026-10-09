@@ -40,4 +40,5 @@ const nb = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} foreslår at du blir eier av bedriften.',
   'Un autre responsable a modifié ce planning': 'En annen leder har endret denne vaktplanen',
   '{name} a remplacé votre modification.': '{name} erstattet endringen din.',
+  '{name} a rejoint l\'entreprise.': '{name} har blitt med i bedriften.',
 };

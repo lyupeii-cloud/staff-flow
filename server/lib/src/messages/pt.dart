@@ -40,4 +40,5 @@ const pt = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} propõe que se torne proprietário da empresa.',
   'Un autre responsable a modifié ce planning': 'Outro responsável alterou este horário',
   '{name} a remplacé votre modification.': '{name} substituiu a sua alteração.',
+  '{name} a rejoint l\'entreprise.': '{name} juntou-se à empresa.',
 };

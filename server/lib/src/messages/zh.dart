@@ -40,4 +40,5 @@ const zh = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} 提议由你成为公司所有者。',
   'Un autre responsable a modifié ce planning': '另一位负责人修改了此排班',
   '{name} a remplacé votre modification.': '{name} 替换了你的修改。',
+  '{name} a rejoint l\'entreprise.': '{name} 已加入公司。',
 };

@@ -177,5 +177,6 @@
   "enablePush": "Attiva",
   "noticeSchedulePublished": "{company}: i tuoi turni sono stati pubblicati o modificati.",
   "noticeJoinInvite": "{company} vuole aggiungerti al suo team.",
-  "noticeTransferOffer": "{name} ti propone di diventare proprietario di {company}."
+  "noticeTransferOffer": "{name} ti propone di diventare proprietario di {company}.",
+  "noticeMemberJoined": "{name} si è unito a {company}."
 }

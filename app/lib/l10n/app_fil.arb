@@ -177,5 +177,6 @@
   "enablePush": "I-on",
   "noticeSchedulePublished": "{company}: na-publish o nabago ang iskedyul mo.",
   "noticeJoinInvite": "Gusto kang idagdag ng {company} sa kanilang team.",
-  "noticeTransferOffer": "Inaalok ni {name} na ikaw ang maging may-ari ng {company}."
+  "noticeTransferOffer": "Inaalok ni {name} na ikaw ang maging may-ari ng {company}.",
+  "noticeMemberJoined": "Sumali si {name} sa {company}."
 }

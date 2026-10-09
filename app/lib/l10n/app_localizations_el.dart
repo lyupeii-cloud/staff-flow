@@ -661,4 +661,9 @@ class L10nEl extends L10n {
   String noticeTransferOffer(String name, String company) {
     return 'Ο/Η $name σας προτείνει να γίνετε ιδιοκτήτης της $company.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return 'Ο/Η $name μπήκε στην $company.';
+  }
 }

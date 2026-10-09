@@ -40,4 +40,5 @@ const el = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': 'Ο/Η {name} σας προτείνει να γίνετε ιδιοκτήτης της εταιρείας.',
   'Un autre responsable a modifié ce planning': 'Άλλος υπεύθυνος άλλαξε αυτό το πρόγραμμα',
   '{name} a remplacé votre modification.': 'Ο/Η {name} αντικατέστησε την αλλαγή σας.',
+  '{name} a rejoint l\'entreprise.': 'Ο/Η {name} μπήκε στην εταιρεία.',
 };

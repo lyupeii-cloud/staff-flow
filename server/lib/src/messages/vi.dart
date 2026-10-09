@@ -40,4 +40,5 @@ const vi = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} đề nghị bạn trở thành chủ sở hữu công ty.',
   'Un autre responsable a modifié ce planning': 'Một quản lý khác đã thay đổi lịch này',
   '{name} a remplacé votre modification.': '{name} đã thay thế thay đổi của bạn.',
+  '{name} a rejoint l\'entreprise.': '{name} đã tham gia công ty.',
 };

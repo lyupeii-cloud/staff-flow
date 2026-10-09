@@ -662,4 +662,9 @@ class L10nSk extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name vám ponúka, aby ste sa stali vlastníkom $company.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name sa pripojil k $company.';
+  }
 }

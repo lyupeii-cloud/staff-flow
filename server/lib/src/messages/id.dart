@@ -40,4 +40,5 @@ const id = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} menawarkan Anda menjadi pemilik perusahaan.',
   'Un autre responsable a modifié ce planning': 'Manajer lain mengubah jadwal ini',
   '{name} a remplacé votre modification.': '{name} menggantikan perubahan Anda.',
+  '{name} a rejoint l\'entreprise.': '{name} telah bergabung dengan perusahaan.',
 };

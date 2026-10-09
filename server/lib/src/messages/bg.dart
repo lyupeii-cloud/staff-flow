@@ -40,4 +40,5 @@ const bg = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} ви предлага да станете собственик на фирмата.',
   'Un autre responsable a modifié ce planning': 'Друг ръководител промени този график',
   '{name} a remplacé votre modification.': '{name} замени вашата промяна.',
+  '{name} a rejoint l\'entreprise.': '{name} се присъедини към фирмата.',
 };

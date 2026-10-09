@@ -40,4 +40,5 @@ const cs = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} vám nabízí, abyste se stali vlastníkem firmy.',
   'Un autre responsable a modifié ce planning': 'Jiný vedoucí změnil tento rozpis',
   '{name} a remplacé votre modification.': '{name} nahradil vaši změnu.',
+  '{name} a rejoint l\'entreprise.': '{name} se připojil k firmě.',
 };

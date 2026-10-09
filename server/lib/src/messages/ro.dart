@@ -40,4 +40,5 @@ const ro = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} îți propune să devii proprietarul firmei.',
   'Un autre responsable a modifié ce planning': 'Un alt responsabil a modificat acest program',
   '{name} a remplacé votre modification.': '{name} a înlocuit modificarea ta.',
+  '{name} a rejoint l\'entreprise.': '{name} s-a alăturat firmei.',
 };

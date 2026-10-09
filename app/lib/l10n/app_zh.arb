@@ -177,5 +177,6 @@
   "enablePush": "开启",
   "noticeSchedulePublished": "{company}：你的排班已发布或更改。",
   "noticeJoinInvite": "{company} 想把你加入团队。",
-  "noticeTransferOffer": "{name} 提议由你成为 {company} 的所有者。"
+  "noticeTransferOffer": "{name} 提议由你成为 {company} 的所有者。",
+  "noticeMemberJoined": "{name} 已加入 {company}。"
 }

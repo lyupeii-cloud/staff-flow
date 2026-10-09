@@ -62,10 +62,19 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
   @override
   bool get wantKeepAlive => true;
 
+  late int _synced = widget.session.sync.synced;
+
   @override
   void initState() {
     super.initState();
     _reload();
+    widget.session.sync.addListener(_onSync);
+  }
+
+  @override
+  void dispose() {
+    widget.session.sync.removeListener(_onSync);
+    super.dispose();
   }
 
   @override
@@ -74,6 +83,17 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
     if (old.membership.role != role) _reload();
   }
 
+  /// Retour du réseau, retour dans l'application, quelqu'un a rejoint
+  /// l'entreprise… : membres, sites et postes sont relus, pour qu'une
+  /// nouvelle personne puisse tout de suite être placée au planning.
+  void _onSync() {
+    final synced = widget.session.sync.synced;
+    if (synced == _synced || !mounted) return;
+    _synced = synced;
+    _reload();
+  }
+
+  // Pendant le rechargement, l'écran garde les données précédentes.
   void _reload() => setState(() {
         _data = CompanyData.load(widget.session, company.id);
       });
@@ -106,7 +126,11 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
                         value: _View.catalog, icon: const Icon(Icons.store), label: Text(t.viewPositions)),
                 ],
                 selected: {_view},
-                onSelectionChanged: (s) => setState(() => _view = s.first),
+                onSelectionChanged: (s) {
+                  // L'équipe a pu changer : le planning repart de la liste à jour.
+                  if (s.first == _View.planning && _view != _View.planning) _reload();
+                  setState(() => _view = s.first);
+                },
               ),
             ],
           ),

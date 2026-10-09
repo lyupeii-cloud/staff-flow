@@ -40,4 +40,5 @@ const th = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} เสนอให้คุณเป็นเจ้าของบริษัท',
   'Un autre responsable a modifié ce planning': 'ผู้จัดการคนอื่นแก้ไขตารางงานนี้',
   '{name} a remplacé votre modification.': '{name} แทนที่การแก้ไขของคุณ',
+  '{name} a rejoint l\'entreprise.': '{name} เข้าร่วมบริษัทแล้ว',
 };

@@ -40,4 +40,5 @@ const ru = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} предлагает вам стать владельцем компании.',
   'Un autre responsable a modifié ce planning': 'Другой руководитель изменил этот график',
   '{name} a remplacé votre modification.': '{name} заменил ваше изменение.',
+  '{name} a rejoint l\'entreprise.': '{name} присоединился к компании.',
 };

@@ -40,4 +40,5 @@ const ja = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} さんがあなたを会社のオーナーにすることを提案しています。',
   'Un autre responsable a modifié ce planning': '別の管理者がこのシフトを変更しました',
   '{name} a remplacé votre modification.': '{name} さんがあなたの変更を置き換えました。',
+  '{name} a rejoint l\'entreprise.': '{name} さんが会社に参加しました。',
 };

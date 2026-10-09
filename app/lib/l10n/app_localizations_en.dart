@@ -658,4 +658,9 @@ class L10nEn extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name offers to make you the owner of $company.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name joined $company.';
+  }
 }

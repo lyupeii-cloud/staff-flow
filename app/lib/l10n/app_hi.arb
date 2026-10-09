@@ -177,5 +177,6 @@
   "enablePush": "चालू करें",
   "noticeSchedulePublished": "{company}: आपका शेड्यूल प्रकाशित या बदला गया है।",
   "noticeJoinInvite": "{company} आपको अपनी टीम में जोड़ना चाहती है।",
-  "noticeTransferOffer": "{name} आपको {company} का मालिक बनाने का प्रस्ताव दे रहे हैं।"
+  "noticeTransferOffer": "{name} आपको {company} का मालिक बनाने का प्रस्ताव दे रहे हैं।",
+  "noticeMemberJoined": "{name} {company} में शामिल हो गए।"
 }

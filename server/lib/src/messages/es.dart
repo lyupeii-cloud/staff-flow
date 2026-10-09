@@ -40,4 +40,5 @@ const es = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} te propone ser el propietario de la empresa.',
   'Un autre responsable a modifié ce planning': 'Otro responsable ha modificado este horario',
   '{name} a remplacé votre modification.': '{name} ha sustituido tu cambio.',
+  '{name} a rejoint l\'entreprise.': '{name} se ha unido a la empresa.',
 };

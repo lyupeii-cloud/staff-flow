@@ -656,4 +656,9 @@ class L10nKk extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name сізге $company иесі болуды ұсынады.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name $company компаниясына қосылды.';
+  }
 }

@@ -40,4 +40,5 @@ const fi = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} ehdottaa, että sinusta tulee yrityksen omistaja.',
   'Un autre responsable a modifié ce planning': 'Toinen esihenkilö muutti tätä työvuorolistaa',
   '{name} a remplacé votre modification.': '{name} korvasi muutoksesi.',
+  '{name} a rejoint l\'entreprise.': '{name} liittyi yritykseen.',
 };

@@ -177,5 +177,6 @@
   "enablePush": "Hidupkan",
   "noticeSchedulePublished": "{company}: jadual anda telah diterbitkan atau diubah.",
   "noticeJoinInvite": "{company} mahu menambah anda ke dalam pasukannya.",
-  "noticeTransferOffer": "{name} menawarkan anda menjadi pemilik {company}."
+  "noticeTransferOffer": "{name} menawarkan anda menjadi pemilik {company}.",
+  "noticeMemberJoined": "{name} telah menyertai {company}."
 }

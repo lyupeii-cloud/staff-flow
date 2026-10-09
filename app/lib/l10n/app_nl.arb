@@ -177,5 +177,6 @@
   "enablePush": "Aanzetten",
   "noticeSchedulePublished": "{company}: je rooster is gepubliceerd of gewijzigd.",
   "noticeJoinInvite": "{company} wil je aan het team toevoegen.",
-  "noticeTransferOffer": "{name} stelt voor dat jij eigenaar van {company} wordt."
+  "noticeTransferOffer": "{name} stelt voor dat jij eigenaar van {company} wordt.",
+  "noticeMemberJoined": "{name} is bij {company} gekomen."
 }

@@ -40,4 +40,5 @@ const mr = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} तुम्हाला कंपनीचे मालक होण्याचा प्रस्ताव देत आहेत.',
   'Un autre responsable a modifié ce planning': 'दुसऱ्या व्यवस्थापकाने हे वेळापत्रक बदलले',
   '{name} a remplacé votre modification.': '{name} यांनी तुमचा बदल बदलला.',
+  '{name} a rejoint l\'entreprise.': '{name} कंपनीत सामील झाले.',
 };

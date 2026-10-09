@@ -177,5 +177,6 @@
   "enablePush": "Zapnout",
   "noticeSchedulePublished": "{company}: váš rozpis byl zveřejněn nebo změněn.",
   "noticeJoinInvite": "{company} vás chce přidat do svého týmu.",
-  "noticeTransferOffer": "{name} vám nabízí, abyste se stali vlastníkem {company}."
+  "noticeTransferOffer": "{name} vám nabízí, abyste se stali vlastníkem {company}.",
+  "noticeMemberJoined": "{name} se připojil k {company}."
 }

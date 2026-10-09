@@ -60,4 +60,5 @@ const en = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} offers to make you the owner of the company.',
   'Un autre responsable a modifié ce planning': 'Another manager changed this schedule',
   '{name} a remplacé votre modification.': '{name} replaced your change.',
+  '{name} a rejoint l\'entreprise.': '{name} joined the company.',
 };

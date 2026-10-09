@@ -177,5 +177,6 @@
   "enablePush": "Slå på",
   "noticeSchedulePublished": "{company}: vaktplanen din er publisert eller endret.",
   "noticeJoinInvite": "{company} vil legge deg til i teamet sitt.",
-  "noticeTransferOffer": "{name} foreslår at du blir eier av {company}."
+  "noticeTransferOffer": "{name} foreslår at du blir eier av {company}.",
+  "noticeMemberJoined": "{name} har blitt med i {company}."
 }

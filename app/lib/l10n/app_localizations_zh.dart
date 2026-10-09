@@ -640,4 +640,9 @@ class L10nZh extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name 提议由你成为 $company 的所有者。';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name 已加入 $company。';
+  }
 }

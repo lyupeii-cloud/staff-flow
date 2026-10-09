@@ -420,5 +420,16 @@
         "type": "String"
       }
     }
+  },
+  "noticeMemberJoined": "{name} joined {company}.",
+  "@noticeMemberJoined": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "company": {
+        "type": "String"
+      }
+    }
   }
 }

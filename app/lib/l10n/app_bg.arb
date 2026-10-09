@@ -177,5 +177,6 @@
   "enablePush": "Включване",
   "noticeSchedulePublished": "{company}: графикът ви е публикуван или променен.",
   "noticeJoinInvite": "{company} иска да ви добави към екипа си.",
-  "noticeTransferOffer": "{name} ви предлага да станете собственик на {company}."
+  "noticeTransferOffer": "{name} ви предлага да станете собственик на {company}.",
+  "noticeMemberJoined": "{name} се присъедини към {company}."
 }

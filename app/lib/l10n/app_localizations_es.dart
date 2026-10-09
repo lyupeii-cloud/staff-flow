@@ -660,4 +660,9 @@ class L10nEs extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name te propone ser el propietario de $company.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name se ha unido a $company.';
+  }
 }

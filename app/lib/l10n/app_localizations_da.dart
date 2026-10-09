@@ -657,4 +657,9 @@ class L10nDa extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name foreslår, at du bliver ejer af $company.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name er blevet en del af $company.';
+  }
 }

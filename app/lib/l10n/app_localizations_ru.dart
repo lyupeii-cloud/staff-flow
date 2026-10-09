@@ -662,4 +662,9 @@ class L10nRu extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name предлагает вам стать владельцем $company.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name присоединился к $company.';
+  }
 }

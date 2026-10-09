@@ -40,4 +40,5 @@ const ta = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} உங்களை நிறுவனத்தின் உரிமையாளராக்க முன்மொழிகிறார்.',
   'Un autre responsable a modifié ce planning': 'மற்றொரு மேலாளர் இந்த அட்டவணையை மாற்றினார்',
   '{name} a remplacé votre modification.': '{name} உங்கள் மாற்றத்தை மாற்றியமைத்தார்.',
+  '{name} a rejoint l\'entreprise.': '{name} நிறுவனத்தில் சேர்ந்தார்.',
 };

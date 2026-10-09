@@ -181,5 +181,6 @@
   "enablePush": "Увімкнути",
   "noticeSchedulePublished": "{company}: ваш графік опубліковано або змінено.",
   "noticeJoinInvite": "{company} хоче додати вас до своєї команди.",
-  "noticeTransferOffer": "{name} пропонує вам стати власником {company}."
+  "noticeTransferOffer": "{name} пропонує вам стати власником {company}.",
+  "noticeMemberJoined": "{name} приєднався до {company}."
 }

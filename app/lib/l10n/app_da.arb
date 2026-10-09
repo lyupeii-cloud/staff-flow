@@ -177,5 +177,6 @@
   "enablePush": "Slå til",
   "noticeSchedulePublished": "{company}: din vagtplan er offentliggjort eller ændret.",
   "noticeJoinInvite": "{company} vil tilføje dig til sit team.",
-  "noticeTransferOffer": "{name} foreslår, at du bliver ejer af {company}."
+  "noticeTransferOffer": "{name} foreslår, at du bliver ejer af {company}.",
+  "noticeMemberJoined": "{name} er blevet en del af {company}."
 }

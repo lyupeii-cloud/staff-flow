@@ -656,4 +656,9 @@ class L10nTe extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name మిమ్మల్ని $company యజమానిగా చేయాలని ప్రతిపాదిస్తున్నారు.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name $companyలో చేరారు.';
+  }
 }

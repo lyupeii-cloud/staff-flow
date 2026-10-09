@@ -40,4 +40,5 @@ const fil = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': 'Inaalok ni {name} na ikaw ang maging may-ari ng kumpanya.',
   'Un autre responsable a modifié ce planning': 'Binago ng ibang manager ang iskedyul na ito',
   '{name} a remplacé votre modification.': 'Pinalitan ni {name} ang binago mo.',
+  '{name} a rejoint l\'entreprise.': 'Sumali si {name} sa kumpanya.',
 };

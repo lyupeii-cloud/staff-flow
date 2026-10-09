@@ -40,4 +40,5 @@ const te = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} మిమ్మల్ని కంపెనీ యజమానిగా చేయాలని ప్రతిపాదిస్తున్నారు.',
   'Un autre responsable a modifié ce planning': 'మరో మేనేజర్ ఈ షెడ్యూల్‌ను మార్చారు',
   '{name} a remplacé votre modification.': '{name} మీ మార్పును భర్తీ చేశారు.',
+  '{name} a rejoint l\'entreprise.': '{name} కంపెనీలో చేరారు.',
 };

@@ -177,5 +177,6 @@
   "enablePush": "Aktivieren",
   "noticeSchedulePublished": "{company}: Ihr Dienstplan wurde veröffentlicht oder geändert.",
   "noticeJoinInvite": "{company} möchte Sie in sein Team aufnehmen.",
-  "noticeTransferOffer": "{name} bietet Ihnen an, Inhaber von {company} zu werden."
+  "noticeTransferOffer": "{name} bietet Ihnen an, Inhaber von {company} zu werden.",
+  "noticeMemberJoined": "{name} ist {company} beigetreten."
 }

@@ -650,4 +650,9 @@ class L10nTh extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name เสนอให้คุณเป็นเจ้าของ $company';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name เข้าร่วม $company แล้ว';
+  }
 }

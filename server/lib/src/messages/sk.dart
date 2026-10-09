@@ -40,4 +40,5 @@ const sk = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} vám ponúka, aby ste sa stali vlastníkom firmy.',
   'Un autre responsable a modifié ce planning': 'Iný vedúci zmenil tento rozpis',
   '{name} a remplacé votre modification.': '{name} nahradil vašu zmenu.',
+  '{name} a rejoint l\'entreprise.': '{name} sa pripojil k firme.',
 };

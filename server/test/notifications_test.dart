@@ -143,6 +143,29 @@ void main() {
           ['Boulangerie', 'Cette entreprise veut vous ajouter à son équipe.', 'join_invite']);
     });
 
+    test('la personne accepte l\'invitation : les responsables sont prévenus', () async {
+      final newcomer = await env.login('zoe');
+      await device(owner, 'tel-owner');
+      await device(manager, 'tel-manager');
+      await device(bob, 'tel-bob');
+      await owner.ok('POST', '/companies/$company/invite', {'qr': newcomer.user['publicId']});
+      final invite = (await newcomer.ok('GET', '/me'))['pendingJoinRequests'].single;
+      await newcomer.ok('POST', '/join-requests/${invite['id']}/accept');
+      final messages = await sent();
+      expect(messages.map((m) => m.token), unorderedEquals(['tel-owner', 'tel-manager']));
+      expect(messages.first.body, 'zoe a rejoint l\'entreprise.');
+      expect(messages.first.data['kind'], 'member_joined');
+    });
+
+    test('un refus ne prévient personne', () async {
+      final newcomer = await env.login('zoe');
+      await device(owner, 'tel-owner');
+      await owner.ok('POST', '/companies/$company/invite', {'qr': newcomer.user['publicId']});
+      final invite = (await newcomer.ok('GET', '/me'))['pendingJoinRequests'].single;
+      await newcomer.ok('POST', '/join-requests/${invite['id']}/decline');
+      expect(await sent(), isEmpty);
+    });
+
     test('proposition de transfert de propriété', () async {
       await device(manager, 'tel-manager', language: 'en');
       await owner.ok('POST', '/companies/$company/transfer', {'toUserId': manager.id});

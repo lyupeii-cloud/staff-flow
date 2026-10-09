@@ -40,4 +40,5 @@ const pa = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} ਤੁਹਾਨੂੰ ਕੰਪਨੀ ਦਾ ਮਾਲਕ ਬਣਨ ਦੀ ਪੇਸ਼ਕਸ਼ ਕਰ ਰਹੇ ਹਨ।',
   'Un autre responsable a modifié ce planning': 'ਕਿਸੇ ਹੋਰ ਮੈਨੇਜਰ ਨੇ ਇਹ ਸ਼ਡਿਊਲ ਬਦਲਿਆ',
   '{name} a remplacé votre modification.': '{name} ਨੇ ਤੁਹਾਡੀ ਤਬਦੀਲੀ ਬਦਲ ਦਿੱਤੀ।',
+  '{name} a rejoint l\'entreprise.': '{name} ਕੰਪਨੀ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋ ਗਏ।',
 };

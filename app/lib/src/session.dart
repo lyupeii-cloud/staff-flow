@@ -78,7 +78,7 @@ class Session extends ChangeNotifier {
     push.events.listen((e) async {
       // Nouvel avis : la cloche se met à jour ; planning publié : il se recharge.
       if (state != SessionState.signedIn) return;
-      if (e.kind == 'schedule_published') sync.markChanged();
+      if (e.kind == 'schedule_published' || e.kind == 'member_joined') sync.markChanged();
       await refresh().catchError((_) {});
     });
     if (state == SessionState.signedIn) await push.signedIn();

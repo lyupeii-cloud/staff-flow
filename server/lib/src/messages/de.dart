@@ -40,4 +40,5 @@ const de = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} bietet Ihnen an, Inhaber des Unternehmens zu werden.',
   'Un autre responsable a modifié ce planning': 'Eine andere Führungskraft hat diesen Dienstplan geändert',
   '{name} a remplacé votre modification.': '{name} hat Ihre Änderung ersetzt.',
+  '{name} a rejoint l\'entreprise.': '{name} ist dem Unternehmen beigetreten.',
 };

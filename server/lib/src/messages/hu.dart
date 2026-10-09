@@ -40,4 +40,5 @@ const hu = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} felajánlja, hogy te legyél a cég tulajdonosa.',
   'Un autre responsable a modifié ce planning': 'Egy másik vezető módosította ezt a beosztást',
   '{name} a remplacé votre modification.': '{name} felülírta a módosításodat.',
+  '{name} a rejoint l\'entreprise.': '{name} csatlakozott a céghez.',
 };

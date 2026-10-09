@@ -650,4 +650,9 @@ class L10nVi extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name đề nghị bạn trở thành chủ sở hữu $company.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name đã tham gia $company.';
+  }
 }

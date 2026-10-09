@@ -658,4 +658,9 @@ class L10nFil extends L10n {
   String noticeTransferOffer(String name, String company) {
     return 'Inaalok ni $name na ikaw ang maging may-ari ng $company.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return 'Sumali si $name sa $company.';
+  }
 }

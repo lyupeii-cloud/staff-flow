@@ -104,6 +104,7 @@ class NoticesButton extends StatelessWidget {
       'schedule_published' => t.noticeSchedulePublished(company),
       'join_invite' => t.noticeJoinInvite(company),
       'transfer_offer' => t.noticeTransferOffer(data['byName'] ?? '?', company),
+      'member_joined' => t.noticeMemberJoined(data['name'] ?? '?', company),
       _ => n['kind'] as String,
     };
   }
@@ -112,6 +113,7 @@ class NoticesButton extends StatelessWidget {
         'schedule_published' => Icons.calendar_month,
         'join_invite' => Icons.group_add,
         'transfer_offer' => Icons.key,
+        'member_joined' => Icons.person_add,
         _ => Icons.edit_note,
       };
 }

@@ -658,4 +658,9 @@ class L10nFi extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name ehdottaa, että sinusta tulee yrityksen $company omistaja.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name liittyi yritykseen $company.';
+  }
 }

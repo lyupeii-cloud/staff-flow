@@ -40,4 +40,5 @@ const bn = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} আপনাকে কোম্পানির মালিক হওয়ার প্রস্তাব দিচ্ছেন।',
   'Un autre responsable a modifié ce planning': 'অন্য একজন ম্যানেজার এই সময়সূচি পরিবর্তন করেছেন',
   '{name} a remplacé votre modification.': '{name} আপনার পরিবর্তনটি প্রতিস্থাপন করেছেন।',
+  '{name} a rejoint l\'entreprise.': '{name} কোম্পানিতে যোগ দিয়েছেন।',
 };

@@ -40,4 +40,5 @@ const kk = <String, String>{
   '{name} vous propose de devenir propriétaire de l\'entreprise.': '{name} сізге компанияның иесі болуды ұсынады.',
   'Un autre responsable a modifié ce planning': 'Басқа басшы осы кестені өзгертті',
   '{name} a remplacé votre modification.': '{name} сіздің өзгерісіңізді ауыстырды.',
+  '{name} a rejoint l\'entreprise.': '{name} компанияға қосылды.',
 };

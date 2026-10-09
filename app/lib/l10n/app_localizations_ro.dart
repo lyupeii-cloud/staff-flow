@@ -661,4 +661,9 @@ class L10nRo extends L10n {
   String noticeTransferOffer(String name, String company) {
     return '$name îți propune să devii proprietarul $company.';
   }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name s-a alăturat $company.';
+  }
 }

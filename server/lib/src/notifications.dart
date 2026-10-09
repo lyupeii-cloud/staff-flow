@@ -125,6 +125,7 @@ class NotificationService {
     'schedule_published': NotifyCategory.planning,
     'join_invite': NotifyCategory.requests,
     'transfer_offer': NotifyCategory.requests,
+    'member_joined': NotifyCategory.requests,
     'shift_overwritten': NotifyCategory.conflicts,
   };
 
@@ -205,6 +206,7 @@ class NotificationService {
     return switch (kind) {
       'schedule_published' => (title, t('Votre planning a été publié ou modifié.')),
       'join_invite' => (title, t('Cette entreprise veut vous ajouter à son équipe.')),
+      'member_joined' => (title, t('{name} a rejoint l\'entreprise.', {'name': '${data['name'] ?? '?'}'})),
       'transfer_offer' =>
         (title, t('{name} vous propose de devenir propriétaire de l\'entreprise.', {'name': name})),
       'shift_overwritten' => (
