@@ -63,4 +63,5 @@ const te = <String, String>{
   '{name} déclare une indisponibilité.': '{name} అందుబాటులో లేనని తెలిపారు.',
   'Votre demande a été acceptée.': 'మీ అభ్యర్థన ఆమోదించబడింది.',
   'Votre demande a été refusée.': 'మీ అభ్యర్థన తిరస్కరించబడింది.',
+  'Choisissez la personne qui reprend le service.': 'షిఫ్ట్‌ను ఎవరు తీసుకుంటారో ఎంచుకోండి.',
 };

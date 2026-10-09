@@ -63,4 +63,5 @@ const el = <String, String>{
   '{name} déclare une indisponibilité.': 'Ο/Η {name} δηλώνει μη διαθεσιμότητα.',
   'Votre demande a été acceptée.': 'Το αίτημά σας εγκρίθηκε.',
   'Votre demande a été refusée.': 'Το αίτημά σας απορρίφθηκε.',
+  'Choisissez la personne qui reprend le service.': 'Επιλέξτε ποιος αναλαμβάνει τη βάρδια.',
 };

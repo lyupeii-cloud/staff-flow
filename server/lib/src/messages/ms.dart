@@ -63,4 +63,5 @@ const ms = <String, String>{
   '{name} déclare une indisponibilité.': '{name} memaklumkan tidak tersedia.',
   'Votre demande a été acceptée.': 'Permintaan anda telah diluluskan.',
   'Votre demande a été refusée.': 'Permintaan anda telah ditolak.',
+  'Choisissez la personne qui reprend le service.': 'Pilih siapa yang mengambil alih syif.',
 };

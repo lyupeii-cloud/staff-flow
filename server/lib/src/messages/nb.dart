@@ -63,4 +63,5 @@ const nb = <String, String>{
   '{name} déclare une indisponibilité.': '{name} melder at hen ikke er tilgjengelig.',
   'Votre demande a été acceptée.': 'Forespørselen din er godkjent.',
   'Votre demande a été refusée.': 'Forespørselen din er avslått.',
+  'Choisissez la personne qui reprend le service.': 'Velg hvem som tar over vakten.',
 };

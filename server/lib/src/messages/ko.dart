@@ -63,4 +63,5 @@ const ko = <String, String>{
   '{name} déclare une indisponibilité.': '{name}님이 근무 불가를 알렸습니다.',
   'Votre demande a été acceptée.': '요청이 승인되었습니다.',
   'Votre demande a été refusée.': '요청이 거절되었습니다.',
+  'Choisissez la personne qui reprend le service.': '근무를 맡을 사람을 선택하세요.',
 };

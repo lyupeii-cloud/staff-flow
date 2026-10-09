@@ -63,4 +63,5 @@ const vi = <String, String>{
   '{name} déclare une indisponibilité.': '{name} báo không thể làm việc.',
   'Votre demande a été acceptée.': 'Yêu cầu của bạn đã được chấp nhận.',
   'Votre demande a été refusée.': 'Yêu cầu của bạn đã bị từ chối.',
+  'Choisissez la personne qui reprend le service.': 'Chọn người nhận ca.',
 };

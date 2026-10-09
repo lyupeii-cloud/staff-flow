@@ -63,4 +63,5 @@ const bn = <String, String>{
   '{name} déclare une indisponibilité.': '{name} অনুপলব্ধতা জানিয়েছেন।',
   'Votre demande a été acceptée.': 'আপনার অনুরোধ গৃহীত হয়েছে।',
   'Votre demande a été refusée.': 'আপনার অনুরোধ প্রত্যাখ্যাত হয়েছে।',
+  'Choisissez la personne qui reprend le service.': 'কে শিফটটি নেবেন তা বেছে নিন।',
 };

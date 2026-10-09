@@ -63,4 +63,5 @@ const ja = <String, String>{
   '{name} déclare une indisponibilité.': '{name} さんが勤務不可を申告しました。',
   'Votre demande a été acceptée.': '申請が承認されました。',
   'Votre demande a été refusée.': '申請が却下されました。',
+  'Choisissez la personne qui reprend le service.': 'シフトを引き受ける人を選んでください。',
 };

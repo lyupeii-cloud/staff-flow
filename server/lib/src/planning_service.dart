@@ -348,6 +348,63 @@ class PlanningService {
     return changed;
   }
 
+  /// Annule la modification en attente d'un service : il revient à sa
+  /// version publiée (un brouillon jamais publié disparaît). Renvoie `false`
+  /// s'il n'y avait rien à annuler.
+  Future<bool> revert(User actor, String companyId, String shiftId) async {
+    final mine = await _manager(actor, companyId);
+    final changed = await store.db.runTx((tx) async {
+      final rows = await store.query(tx,
+          'SELECT * FROM shifts WHERE id = @id::uuid AND company_id = @c::uuid FOR UPDATE', {'id': shiftId, 'c': companyId});
+      if (rows.isEmpty) throw const ApiError.notFound();
+      return _revertRow(tx, actor, companyId, rows.first.toColumnMap(), mine);
+    });
+    if (changed) {
+      await store.audit(companyId: companyId, actorId: actor.id, action: 'shift.revert', details: {'shiftId': shiftId});
+    }
+    return changed;
+  }
+
+  /// Annule toutes les modifications en attente (de ses sites, pour un
+  /// responsable de site). Renvoie le nombre de services remis en l'état.
+  Future<int> discard(User actor, String companyId) async {
+    final mine = await _manager(actor, companyId);
+    final count = await store.db.runTx((tx) async {
+      final rows = await store.query(tx, '''
+        SELECT * FROM shifts WHERE company_id = @c::uuid AND dirty
+          AND (@sites::text[] IS NULL OR site_id::text = ANY(@sites::text[]))
+        FOR UPDATE''', {'c': companyId, 'sites': mine?.toList()});
+      var n = 0;
+      for (final r in rows) {
+        if (await _revertRow(tx, actor, companyId, r.toColumnMap(), mine)) n++;
+      }
+      return n;
+    });
+    await store.audit(companyId: companyId, actorId: actor.id, action: 'planning.discard', details: {'count': count});
+    return count;
+  }
+
+  Future<bool> _revertRow(TxSession tx, User actor, String companyId, Map<String, dynamic> row, Set<String>? mine) async {
+    if (row['dirty'] != true) return false;
+    final published = row['published'] as Map<String, dynamic>?;
+    _checkSite(mine, row['site_id'] as String?);
+    if (published != null) _checkSite(mine, published['siteId'] as String?);
+    if (published == null) {
+      await store.query(tx, 'DELETE FROM shifts WHERE id = @id::uuid', {'id': row['id']});
+      await _history(tx, companyId, row['id'] as String, actor, 'revert', _snapshot(row), null);
+      return true;
+    }
+    final after = await store.query(tx, '''
+      UPDATE shifts SET day = (published->>'day')::date, start_min = (published->>'start')::int,
+        end_min = (published->>'end')::int, user_id = (published->>'userId')::uuid,
+        site_id = (published->>'siteId')::uuid, position_id = (published->>'positionId')::uuid,
+        note = published->>'note', deleted = false, dirty = false, version = version + 1,
+        updated_by = @by::uuid, updated_at = now()
+      WHERE id = @id::uuid RETURNING *''', {'id': row['id'], 'by': actor.id});
+    await _history(tx, companyId, row['id'] as String, actor, 'revert', _snapshot(row), _snapshot(after.first.toColumnMap()));
+    return true;
+  }
+
   // --- Outils des modifications ---------------------------------------------
 
   /// Verrouille, pour la transaction, le service et (série) ceux qui suivent.
@@ -471,14 +528,16 @@ class PlanningService {
 
   // --- Outils ---------------------------------------------------------------
 
-  /// Échange validé : le service passe à [toUserId], directement dans le
-  /// planning publié (les deux personnes sont prévenues par la demande).
-  /// 409 si le service a changé depuis la demande.
-  Future<void> applySwap(TxSession tx, User actor, String companyId, String shiftId, int version, String toUserId) async {
+  /// Échange validé : le service de [fromUserId] passe à [toUserId],
+  /// directement dans le planning publié (les deux personnes sont prévenues
+  /// par la demande). 409 si le service n'est plus à [fromUserId] (supprimé,
+  /// ou donné à quelqu'un d'autre entre-temps).
+  Future<void> applySwap(TxSession tx, User actor, String companyId, String shiftId, String fromUserId, String toUserId) async {
     final rows = await store.query(tx,
         'SELECT * FROM shifts WHERE id = @id::uuid AND company_id = @c::uuid FOR UPDATE', {'id': shiftId, 'c': companyId});
     final row = rows.isEmpty ? null : rows.first.toColumnMap();
-    if (row == null || row['deleted'] == true || row['version'] != version) {
+    final published = row?['published'] as Map<String, dynamic>?;
+    if (row == null || row['deleted'] == true || row['user_id'] != fromUserId || published?['userId'] != fromUserId) {
       throw const ApiError.conflict('Ce service a changé depuis la demande.');
     }
     _checkEditable(row['day'] as DateTime);

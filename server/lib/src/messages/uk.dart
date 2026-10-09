@@ -83,4 +83,5 @@ const uk = <String, String>{
   '{name} déclare une indisponibilité.': '{name} повідомляє про недоступність.',
   'Votre demande a été acceptée.': 'Ваш запит схвалено.',
   'Votre demande a été refusée.': 'Ваш запит відхилено.',
+  'Choisissez la personne qui reprend le service.': 'Оберіть, хто візьме зміну.',
 };

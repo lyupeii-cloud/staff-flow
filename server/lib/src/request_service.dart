@@ -82,7 +82,7 @@ class RequestService {
     final peer = body['peerId'];
     if (peer != null) {
       final role = peer is String ? await store.roleOf(companyId, peer) : null;
-      if (role == null || peer == actor.id || !(role == Role.employee || role == Role.extra)) {
+      if (role == null || peer == actor.id) {
         throw const ApiError.notFound('Membre introuvable.');
       }
     }
@@ -127,8 +127,10 @@ class RequestService {
   /// Étape 2 de l'échange : le collègue (ou un des collègues d'une offre
   /// ouverte) accepte ; la demande passe aux responsables.
   Future<Map<String, Object?>> accept(User actor, String requestId) async {
-    final r = await _load(requestId);
+    var r = await _load(requestId);
     await companies.open(actor, r.companyId);
+    await expire(r.companyId);
+    r = await _load(requestId);
     if (r.status != 'pending_peer') throw const ApiError.conflict('Cette demande n\'est plus en attente.');
     if (!(await _candidates(r)).contains(actor.id)) throw const ApiError.forbidden();
     final changed = await store.query(store.db, '''
@@ -149,23 +151,34 @@ class RequestService {
         companyId: r.companyId, kind: 'swap_declined', data: _noticeData(r, actor.name));
   }
 
-  /// Étape 3 : un responsable valide ou refuse.
-  Future<Map<String, Object?>> decide(User actor, String requestId, {required bool approve}) async {
-    final r = await _load(requestId);
+  /// Étape 3 : un responsable valide ou refuse. Il peut aussi trancher sans
+  /// attendre le collègue : pour un échange, [peerId] choisit (ou change) la
+  /// personne qui reprend le service.
+  Future<Map<String, Object?>> decide(User actor, String requestId, {required bool approve, String? peerId}) async {
+    var r = await _load(requestId);
     final viewer = await _viewer(actor, r.companyId);
-    if (r.status != 'pending_manager') throw const ApiError.conflict('Cette demande n\'est plus en attente.');
+    await expire(r.companyId);
+    r = await _load(requestId);
+    if (!r.pending) throw const ApiError.conflict('Cette demande n\'est plus en attente.');
     if (!await _canDecide(r, actor, viewer)) throw const ApiError.forbidden();
+    var peer = r.peerId;
     if (approve && r.kind == 'swap') {
+      final to = peerId ?? r.peerId;
+      if (to == null) throw const ApiError.badRequest('Choisissez la personne qui reprend le service.');
+      if (to == r.requesterId || await store.roleOf(r.companyId, to) == null) {
+        throw const ApiError.notFound('Membre introuvable.');
+      }
+      peer = to;
       await store.db.runTx((tx) async {
-        await planning.applySwap(tx, actor, r.companyId, r.shiftId ?? '', r.shiftVersion ?? -1, r.peerId!);
+        await planning.applySwap(tx, actor, r.companyId, r.shiftId ?? '', r.requesterId, to);
         await store.query(tx, '''
-          UPDATE requests SET status = 'approved', decided_by = @a::uuid, updated_at = now() WHERE id = @id::uuid''',
-            {'id': r.id, 'a': actor.id});
+          UPDATE requests SET status = 'approved', peer_id = @p::uuid, decided_by = @a::uuid, updated_at = now()
+          WHERE id = @id::uuid''', {'id': r.id, 'a': actor.id, 'p': to});
       });
     } else {
       await _setStatus(r, approve ? 'approved' : 'refused', actor);
     }
-    final people = [r.requesterId, if (r.kind == 'swap' && r.peerId != null) r.peerId!];
+    final people = [r.requesterId, if (r.kind == 'swap' && peer != null) peer];
     await notifications.notify(people.where((u) => u != actor.id),
         companyId: r.companyId, kind: approve ? 'request_approved' : 'request_refused', data: _noticeData(r, actor.name));
     return _json(await _load(requestId), actor, viewer);
@@ -189,21 +202,75 @@ class RequestService {
   // --- Lecture ------------------------------------------------------------------
 
   /// Demandes visibles : les siennes, celles qui attendent sa réponse, et pour
-  /// un responsable celles de son périmètre (ses sites).
-  Future<List<Map<String, Object?>>> list(User actor, String companyId) async {
+  /// un responsable celles de son périmètre (ses sites). Les plus récentes
+  /// d'abord, [limit] à la fois ; [before] : date de création de la dernière
+  /// demande déjà affichée (page suivante).
+  Future<List<Map<String, Object?>>> list(User actor, String companyId, {String? before, int limit = 10}) async {
     final viewer = await _viewer(actor, companyId);
-    final rows = await store.query(store.db, '''
-      SELECT id::text FROM requests WHERE company_id = @c::uuid
-        AND (status LIKE 'pending%' OR updated_at > now() - interval '60 days')
-      ORDER BY created_at DESC LIMIT 200''', {'c': companyId});
+    await expire(companyId);
+    final wanted = limit.clamp(1, 50);
     final out = <Map<String, Object?>>[];
-    for (final row in rows) {
-      final r = await _load(row[0] as String);
-      final mine = r.requesterId == actor.id || r.peerId == actor.id;
-      final offered = r.status == 'pending_peer' && (await _candidates(r)).contains(actor.id);
-      if (mine || offered || await _inScope(r, viewer)) out.add(_json(r, actor, viewer, candidate: offered));
+    var cursor = before;
+    while (out.length < wanted) {
+      final rows = await store.query(store.db, '''
+        SELECT id::text, created_at FROM requests WHERE company_id = @c::uuid
+          AND (@before::timestamptz IS NULL OR created_at < @before::timestamptz)
+        ORDER BY created_at DESC LIMIT 50''', {'c': companyId, 'before': cursor});
+      if (rows.isEmpty) break;
+      for (final row in rows) {
+        final json = await _visible(row[0] as String, actor, viewer);
+        if (json != null && out.length < wanted) out.add(json);
+      }
+      cursor = (rows.last[1] as DateTime).toUtc().toIso8601String();
+      if (rows.length < 50) break;
     }
     return out;
+  }
+
+  /// Toutes les demandes en attente visibles (pour le planning et « À traiter »).
+  Future<List<Map<String, Object?>>> pending(User actor, String companyId) async {
+    final viewer = await _viewer(actor, companyId);
+    await expire(companyId);
+    final rows = await store.query(store.db, '''
+      SELECT id::text FROM requests WHERE company_id = @c::uuid AND status IN ('pending_peer', 'pending_manager')
+      ORDER BY created_at DESC LIMIT 500''', {'c': companyId});
+    final out = <Map<String, Object?>>[];
+    for (final row in rows) {
+      final json = await _visible(row[0] as String, actor, viewer);
+      if (json != null) out.add(json);
+    }
+    return out;
+  }
+
+  /// Une demande (ouverte depuis une notification ou le planning).
+  Future<Map<String, Object?>> one(User actor, String requestId) async {
+    final r = await _load(requestId);
+    final viewer = await _viewer(actor, r.companyId);
+    await expire(r.companyId);
+    final json = await _visible(requestId, actor, viewer);
+    if (json == null) throw const ApiError.notFound('Demande introuvable.');
+    return json;
+  }
+
+  Future<Map<String, Object?>?> _visible(String id, User actor, ({Role role, Set<String>? sites}) viewer) async {
+    final r = await _load(id);
+    final mine = r.requesterId == actor.id || r.peerId == actor.id;
+    final offered = r.status == 'pending_peer' && (await _candidates(r)).contains(actor.id);
+    if (mine || offered || await _inScope(r, viewer)) return _json(r, actor, viewer, candidate: offered);
+    return null;
+  }
+
+  /// Demandes devenues sans objet : service supprimé, donné à quelqu'un
+  /// d'autre ou passé ; congé ou indisponibilité dont la période est finie.
+  Future<void> expire(String companyId) async {
+    await store.query(store.db, '''
+      UPDATE requests r SET status = 'expired', updated_at = now()
+      WHERE r.company_id = @c::uuid AND r.status IN ('pending_peer', 'pending_manager') AND (
+        (r.kind = 'swap' AND NOT EXISTS (
+          SELECT 1 FROM shifts s WHERE s.id = r.shift_id AND NOT s.deleted AND s.user_id = r.requester_id
+            AND s.published->>'userId' = r.requester_id::text AND s.day >= @today::date))
+        OR (r.kind <> 'swap' AND r.end_day IS NOT NULL AND r.end_day < @today::date))''',
+        {'c': companyId, 'today': formatDay(_today())});
   }
 
   /// Congés et indisponibilités validés qui touchent la période : tous pour
@@ -280,30 +347,36 @@ class RequestService {
 
   /// On ne valide pas sa propre demande (sauf le propriétaire).
   Future<bool> _canDecide(_Request r, User actor, ({Role role, Set<String>? sites}) viewer) async =>
-      (r.requesterId != actor.id || viewer.role == Role.owner) && await _inScope(r, viewer);
+      r.pending && (r.requesterId != actor.id || viewer.role == Role.owner) && await _inScope(r, viewer);
 
   /// Collègues à qui l'échange est proposé : la personne choisie, ou pour une
-  /// offre ouverte les salariés et extras de l'équipe du site du service (à
-  /// défaut, tous), sauf le demandeur.
+  /// offre ouverte les salariés et extras de l'équipe du site du service ; à
+  /// défaut tous les salariés et extras ; à défaut tous les autres membres.
   Future<List<String>> _candidates(_Request r) async {
     if (!r.openOffer) return [if (r.peerId != null) r.peerId!];
-    final staff = [
-      for (final m in await store.members(r.companyId))
-        if ((m.role == Role.employee || m.role == Role.extra) && m.user.id != r.requesterId) m,
-    ];
+    final others = [for (final m in await store.members(r.companyId)) if (m.user.id != r.requesterId) m];
+    final staff = [for (final m in others) if (m.role == Role.employee || m.role == Role.extra) m];
     final team = [for (final m in staff) if (r.siteId != null && (m.sites ?? const []).contains(r.siteId)) m];
-    return [for (final m in team.isEmpty ? staff : team) m.user.id];
+    final chosen = team.isNotEmpty ? team : (staff.isNotEmpty ? staff : others);
+    return [for (final m in chosen) m.user.id];
   }
 
   /// Responsables qui peuvent valider : ceux du site du service (échange) ou
   /// de l'équipe de la personne (absence), et ceux de toute l'entreprise.
   Future<void> _notifyDeciders(_Request r, User actor) async {
     final deciders = <String>[];
+    final concerned = r.kind == 'swap'
+        ? {?r.siteId}
+        : (await store.sitesOf(r.companyId, r.requesterId) ?? const []).toSet();
     for (final m in await store.members(r.companyId)) {
       if (!m.role.canManage || m.user.id == actor.id) continue;
       if (m.user.id == r.requesterId && m.role != Role.owner) continue;
       final sites = m.role == Role.owner ? null : m.sites?.toSet();
-      if (await _inScope(r, (role: m.role, sites: sites))) deciders.add(m.user.id);
+      if (!await _inScope(r, (role: m.role, sites: sites))) continue;
+      // Sites dont ce responsable a choisi de recevoir les notifications.
+      final wanted = await store.notifySitesOf(r.companyId, m.user.id);
+      if (wanted != null && concerned.isNotEmpty && !concerned.any(wanted.contains)) continue;
+      deciders.add(m.user.id);
     }
     final kind = switch (r.kind) {
       'swap' => 'swap_to_approve',
@@ -351,11 +424,13 @@ class RequestService {
       // Ce que la personne qui regarde peut faire.
       'canAnswer': pendingPeer && r.requesterId != actor.id && (r.peerId == actor.id || candidate),
       'canDecline': pendingPeer && r.peerId == actor.id,
-      'canDecide': r.status == 'pending_manager' &&
+      'canDecide': r.pending &&
           viewer.role.canManage &&
           (r.requesterId != actor.id || viewer.role == Role.owner) &&
           _scopeSync(r, viewer),
       'canCancel': r.requesterId == actor.id && r.status.startsWith('pending'),
+      // Échange sans collègue encore désigné : le responsable choisit qui le reprend.
+      'needsPeer': r.kind == 'swap' && r.peerId == null,
     };
   }
 
@@ -420,4 +495,6 @@ class _Request {
     this.siteId,
     this.positionId,
   });
+
+  bool get pending => status == 'pending_peer' || status == 'pending_manager';
 }

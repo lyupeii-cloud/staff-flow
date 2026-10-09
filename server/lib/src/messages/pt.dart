@@ -63,4 +63,5 @@ const pt = <String, String>{
   '{name} déclare une indisponibilité.': '{name} indica que está indisponível.',
   'Votre demande a été acceptée.': 'O seu pedido foi aceite.',
   'Votre demande a été refusée.': 'O seu pedido foi recusado.',
+  'Choisissez la personne qui reprend le service.': 'Escolha quem fica com o turno.',
 };

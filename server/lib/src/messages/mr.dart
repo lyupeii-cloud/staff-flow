@@ -63,4 +63,5 @@ const mr = <String, String>{
   '{name} déclare une indisponibilité.': '{name} यांनी अनुपलब्धता कळवली आहे.',
   'Votre demande a été acceptée.': 'तुमची विनंती मंजूर झाली.',
   'Votre demande a été refusée.': 'तुमची विनंती नाकारली गेली.',
+  'Choisissez la personne qui reprend le service.': 'शिफ्ट कोण घेईल ते निवडा.',
 };

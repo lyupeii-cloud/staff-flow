@@ -63,4 +63,5 @@ const fi = <String, String>{
   '{name} déclare une indisponibilité.': '{name} ilmoittaa olevansa estynyt.',
   'Votre demande a été acceptée.': 'Pyyntösi on hyväksytty.',
   'Votre demande a été refusée.': 'Pyyntösi on hylätty.',
+  'Choisissez la personne qui reprend le service.': 'Valitse, kuka ottaa vuoron.',
 };

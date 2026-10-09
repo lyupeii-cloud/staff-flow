@@ -63,4 +63,5 @@ const pa = <String, String>{
   '{name} déclare une indisponibilité.': '{name} ਨੇ ਅਣਉਪਲਬਧਤਾ ਦੱਸੀ ਹੈ।',
   'Votre demande a été acceptée.': 'ਤੁਹਾਡੀ ਬੇਨਤੀ ਮਨਜ਼ੂਰ ਹੋ ਗਈ।',
   'Votre demande a été refusée.': 'ਤੁਹਾਡੀ ਬੇਨਤੀ ਨਾਮਨਜ਼ੂਰ ਹੋ ਗਈ।',
+  'Choisissez la personne qui reprend le service.': 'ਚੁਣੋ ਕਿ ਸ਼ਿਫ਼ਟ ਕੌਣ ਲਵੇਗਾ।',
 };

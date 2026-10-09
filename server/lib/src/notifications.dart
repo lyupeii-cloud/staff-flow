@@ -227,6 +227,7 @@ class NotificationService {
       'kind': kind,
       'noticeId': noticeId,
       'companyId': ?companyId,
+      'requestId': ?(data['requestId'] as String?),
       // Une seule notification « planning » par entreprise à l'écran.
       'tag': kind == 'schedule_published' ? 'planning-$companyId' : noticeId,
     }));

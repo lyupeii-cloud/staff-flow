@@ -63,4 +63,5 @@ const hi = <String, String>{
   '{name} déclare une indisponibilité.': '{name} ने अनुपलब्धता बताई है।',
   'Votre demande a été acceptée.': 'आपका अनुरोध स्वीकार हो गया।',
   'Votre demande a été refusée.': 'आपका अनुरोध अस्वीकार हो गया।',
+  'Choisissez la personne qui reprend le service.': 'चुनें कि शिफ़्ट कौन लेगा।',
 };

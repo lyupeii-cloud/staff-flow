@@ -84,4 +84,5 @@ const en = <String, String>{
   '{name} déclare une indisponibilité.': '{name} reports being unavailable.',
   'Votre demande a été acceptée.': 'Your request has been approved.',
   'Votre demande a été refusée.': 'Your request has been refused.',
+  'Choisissez la personne qui reprend le service.': 'Choose who takes over the shift.',
 };

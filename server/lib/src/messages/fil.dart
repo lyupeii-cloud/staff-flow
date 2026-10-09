@@ -63,4 +63,5 @@ const fil = <String, String>{
   '{name} déclare une indisponibilité.': 'Sinabi ni {name} na hindi siya available.',
   'Votre demande a été acceptée.': 'Inaprubahan ang kahilingan mo.',
   'Votre demande a été refusée.': 'Tinanggihan ang kahilingan mo.',
+  'Choisissez la personne qui reprend le service.': 'Piliin kung sino ang kukuha ng shift.',
 };

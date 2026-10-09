@@ -90,6 +90,11 @@ class Api {
       ..patch('/companies/<id>/shifts/<shiftId>', _authed(_updateShift))
       ..delete('/companies/<id>/shifts/<shiftId>', _authed(_deleteShift))
       ..post('/companies/<id>/publish', _authed(_publish))
+      ..post('/companies/<id>/discard', _authed((r, u) async =>
+          _json({'discarded': await planning.discard(u, r.params['id']!)})))
+      ..post('/companies/<id>/shifts/<shiftId>/revert', _authed((r, u) async =>
+          _json({'reverted': await planning.revert(u, r.params['id']!, r.params['shiftId']!)})))
+      ..put('/companies/<id>/notify-sites', _authed(_notifySites))
       // Historique, annulation, avis
       ..get('/companies/<id>/history', _authed(_history))
       ..post('/companies/<id>/history/<entryId>/undo', _authed(_undo))
@@ -111,7 +116,8 @@ class Api {
       ..post('/messages/<id>/translate', _authed(_translateMessage))
       ..post('/companies/<id>/groups', _authed(_createGroup))
       // Demandes : échange, congé, indisponibilité
-      ..get('/companies/<id>/requests', _authed((r, u) async => _json({'requests': await requests.list(u, r.params['id']!)})))
+      ..get('/companies/<id>/requests', _authed(_requests))
+      ..get('/requests/<id>', _authed((r, u) async => _json(await requests.one(u, r.params['id']!))))
       ..post('/companies/<id>/requests', _authed(_createRequest))
       ..get('/companies/<id>/absences', _authed(_absences))
       ..post('/requests/<id>/accept', _authed((r, u) async => _json(await requests.accept(u, r.params['id']!))))
@@ -119,7 +125,11 @@ class Api {
         await requests.decline(u, r.params['id']!);
         return Response(204);
       }))
-      ..post('/requests/<id>/approve', _authed((r, u) async => _json(await requests.decide(u, r.params['id']!, approve: true))))
+      ..post('/requests/<id>/approve', _authed((r, u) async {
+        final text = await r.readAsString();
+        final peer = text.trim().isEmpty ? null : (jsonDecode(text) as Map?)?['peerId'];
+        return _json(await requests.decide(u, r.params['id']!, approve: true, peerId: peer is String ? peer : null));
+      }))
       ..post('/requests/<id>/refuse', _authed((r, u) async => _json(await requests.decide(u, r.params['id']!, approve: false))))
       ..post('/requests/<id>/cancel', _authed((r, u) async {
         await requests.cancel(u, r.params['id']!);
@@ -433,6 +443,29 @@ class Api {
     final lang = (await _body(req))['lang'];
     if (lang is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
     return _json({'text': await chat.translate(user, id, lang, t)});
+  }
+
+  /// `?pending=1` : toutes les demandes en attente ; sinon une page de
+  /// l'historique (`limit`, `before`).
+  Future<Response> _requests(Request req, User user) async {
+    final q = req.url.queryParameters;
+    final id = req.params['id']!;
+    if (q['pending'] == '1') return _json({'requests': await requests.pending(user, id)});
+    final before = q['before'];
+    if (before != null && DateTime.tryParse(before) == null) throw const ApiError.badRequest('Dates invalides.');
+    return _json({
+      'requests': await requests.list(user, id, before: before, limit: int.tryParse(q['limit'] ?? '') ?? 10),
+    });
+  }
+
+  Future<Response> _notifySites(Request req, User user) async {
+    final body = await _body(req);
+    final sites = body['sites'];
+    if (sites != null && (sites is! List || sites.any((s) => s is! String))) {
+      throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    }
+    await companies.setNotifySites(user, req.params['id']!, sites == null ? null : (sites as List).cast<String>());
+    return Response(204);
   }
 
   Future<Response> _createRequest(Request req, User user) async =>

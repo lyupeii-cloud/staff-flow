@@ -63,4 +63,5 @@ const hu = <String, String>{
   '{name} déclare une indisponibilité.': '{name} jelzi, hogy nem elérhető.',
   'Votre demande a été acceptée.': 'A kérésedet elfogadták.',
   'Votre demande a été refusée.': 'A kérésedet elutasították.',
+  'Choisissez la personne qui reprend le service.': 'Válaszd ki, ki veszi át a műszakot.',
 };

@@ -63,4 +63,5 @@ const cs = <String, String>{
   '{name} déclare une indisponibilité.': '{name} hlásí nedostupnost.',
   'Votre demande a été acceptée.': 'Vaše žádost byla schválena.',
   'Votre demande a été refusée.': 'Vaše žádost byla zamítnuta.',
+  'Choisissez la personne qui reprend le service.': 'Vyberte, kdo směnu převezme.',
 };

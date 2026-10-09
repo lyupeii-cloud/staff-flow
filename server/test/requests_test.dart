@@ -57,8 +57,6 @@ void main() {
       expect(await kinds(eva), contains('swap_offer'));
       final seen = (await eva.ok('GET', p('/requests')))['requests'].single;
       expect([seen['canAnswer'], seen['canDecline']], [true, true]);
-      // Le responsable ne peut pas encore valider.
-      expect((await north('POST', '/requests/${r['id']}/approve')).$1, 409);
 
       final accepted = await eva.ok('POST', '/requests/${r['id']}/accept');
       expect(accepted['status'], 'pending_manager');
@@ -115,18 +113,47 @@ void main() {
       expect((await eva('POST', '/requests/${r['id']}/cancel')).$1, 404);
       expect((await bob('POST', '/requests/${r['id']}/cancel')).$1, 204);
       expect((await eva('POST', '/requests/${r['id']}/accept')).$1, 409);
-      // Un responsable n'est pas un collègue à qui proposer.
-      expect((await bob('POST', p('/requests'), {'kind': 'swap', 'shiftId': shift, 'peerId': owner.id})).$1, 404);
+      // On ne se propose pas son propre service.
+      expect((await bob('POST', p('/requests'), {'kind': 'swap', 'shiftId': shift, 'peerId': bob.id})).$1, 404);
+      // Un responsable peut reprendre un service.
+      expect((await bob('POST', p('/requests'), {'kind': 'swap', 'shiftId': shift, 'peerId': north.id})).$1, 201);
     });
 
-    test('service modifié entre-temps : la validation est refusée', () async {
+    test('service donné à quelqu\'un d\'autre entre-temps : la demande devient sans objet', () async {
       final shift = await published(bob.id, '2026-10-07', siteNorth);
       final r = await bob.ok('POST', p('/requests'), {'kind': 'swap', 'shiftId': shift, 'peerId': eva.id});
       await eva.ok('POST', '/requests/${r['id']}/accept');
+      // Un horaire changé ne gêne pas l'échange.
       await owner.ok('PATCH', p('/shifts/$shift'), {'start': 540});
-      await owner.ok('POST', p('/publish'));
+      expect((await bob.ok('GET', '/requests/${r['id']}'))['status'], 'pending_manager');
+      await owner.ok('PATCH', p('/shifts/$shift'), {'userId': zoe.id});
       expect((await north('POST', '/requests/${r['id']}/approve')).$1, 409);
-      expect((await shiftOf(owner, shift))['userId'], bob.id);
+      expect((await bob.ok('GET', '/requests/${r['id']}'))['status'], 'expired');
+      expect((await north.ok('GET', p('/requests?pending=1')))['requests'], isEmpty);
+    });
+
+    test('le responsable tranche sans attendre le collègue, et choisit qui reprend une offre ouverte', () async {
+      final shift = await published(bob.id, '2026-10-07', siteNorth);
+      final r = await bob.ok('POST', p('/requests'), {'kind': 'swap', 'shiftId': shift});
+      final seen = (await north.ok('GET', p('/requests?pending=1')))['requests'].single;
+      expect([seen['canDecide'], seen['needsPeer']], [true, true]);
+      expect((await north('POST', '/requests/${r['id']}/approve')).$1, 400);
+      expect((await north('POST', '/requests/${r['id']}/approve', {'peerId': bob.id})).$1, 404);
+      final done = await north.ok('POST', '/requests/${r['id']}/approve', {'peerId': zoe.id});
+      expect([done['status'], done['peer']['id']], ['approved', zoe.id]);
+      expect((await shiftOf(owner, shift))['userId'], zoe.id);
+      expect(await kinds(zoe), contains('request_approved'));
+    });
+
+    test('offre ouverte sans salarié dans l\'équipe : proposée aux autres membres', () async {
+      for (final c in [eva, zoe]) {
+        await owner.ok('DELETE', p('/members/${c.id}'));
+      }
+      await owner.ok('PUT', p('/members/${north.id}/sites'), {'sites': null});
+      final shift = await published(bob.id, '2026-10-07', siteNorth);
+      final r = await bob.ok('POST', p('/requests'), {'kind': 'swap', 'shiftId': shift});
+      expect(await kinds(north), contains('swap_offer'));
+      expect((await north.ok('POST', '/requests/${r['id']}/accept'))['status'], 'pending_manager');
     });
 
     test('un responsable de site ne valide pas un échange d\'un autre site', () async {
@@ -138,6 +165,77 @@ void main() {
       expect((await north.ok('GET', p('/requests')))['requests'], isEmpty);
       expect((await north('POST', '/requests/${r['id']}/approve')).$1, 403);
       expect((await owner.ok('POST', '/requests/${r['id']}/approve'))['status'], 'approved');
+    });
+  });
+
+  group('liste', () {
+    test('par pages de 10, la plus récente d\'abord', () async {
+      for (var i = 0; i < 12; i++) {
+        await bob.ok('POST', p('/requests'), {'kind': 'unavailability', 'weekdays': [1 + i % 7], 'note': 'n$i'});
+        env.clock.advance(const Duration(seconds: 1));
+      }
+      await eva.ok('POST', p('/requests'), {'kind': 'unavailability', 'weekdays': [2]});
+      final first = (await bob.ok('GET', p('/requests')))['requests'] as List;
+      expect(first, hasLength(10));
+      expect(first.first['note'], 'n11');
+      final next = (await bob.ok('GET', p('/requests?before=${first.last['createdAt']}')))['requests'] as List;
+      expect([for (final r in next) r['note']], ['n1', 'n0']);
+      expect((await owner.ok('GET', p('/requests?limit=50')))['requests'], hasLength(13));
+    });
+
+    test('une demande d\'un autre n\'est pas lisible', () async {
+      final r = await bob.ok('POST', p('/requests'), {'kind': 'unavailability', 'weekdays': [1]});
+      expect((await zoe('GET', '/requests/${r['id']}')).$1, 404);
+      expect((await north('GET', '/requests/${r['id']}')).$1, 200);
+    });
+  });
+
+  group('notifications par site', () {
+    test('un responsable choisit les sites dont il est prévenu', () async {
+      await owner.ok('PUT', p('/members/${north.id}/sites'), {'sites': null});
+      expect((await north('PUT', p('/notify-sites'), {'sites': ['x']})).$1, 400);
+      expect((await bob('PUT', p('/notify-sites'), {'sites': [siteSouth]})).$1, 403);
+      expect((await north('PUT', p('/notify-sites'), {'sites': [siteSouth]})).$1, 204);
+      expect((await north.ok('GET', '/me'))['companies'].single['notifySites'], [siteSouth]);
+      await bob.ok('POST', p('/requests'), {'kind': 'leave', 'startDay': '2026-10-08', 'endDay': '2026-10-08'});
+      await zoe.ok('POST', p('/requests'), {'kind': 'leave', 'startDay': '2026-10-08', 'endDay': '2026-10-08'});
+      expect(await kinds(north), ['leave_to_approve'], reason: 'Zoé (Sud) seulement');
+      // Il voit et traite quand même toutes les demandes de son périmètre.
+      expect((await north.ok('GET', p('/requests?pending=1')))['requests'], hasLength(2));
+      await north.ok('PUT', p('/notify-sites'), {'sites': null});
+      expect((await north.ok('GET', '/me'))['companies'].single['notifySites'], isNull);
+    });
+  });
+
+  group('annuler des modifications', () {
+    Future<List<dynamic>> week() async => (await owner.ok('GET', p('/shifts?from=2026-10-05&to=2026-10-11')))['shifts'];
+
+    test('annuler une modification ou tout annuler avant de publier', () async {
+      final kept = await published(bob.id, '2026-10-07', siteNorth);
+      await owner.ok('PATCH', p('/shifts/$kept'), {'start': 600, 'userId': eva.id});
+      await owner.ok('POST', p('/shifts'),
+          {'days': ['2026-10-08'], 'start': 480, 'end': 960, 'siteId': siteNorth});
+      expect((await owner.ok('GET', p('/shifts?from=2026-10-05&to=2026-10-11')))['pending'], 2);
+
+      expect((await owner.ok('POST', p('/shifts/$kept/revert')))['reverted'], true);
+      final s = (await week()).firstWhere((s) => s['id'] == kept);
+      expect([s['start'], s['userId'], s['status']], [480, bob.id, 'published']);
+      expect((await owner.ok('POST', p('/shifts/$kept/revert')))['reverted'], false);
+
+      await owner.ok('DELETE', p('/shifts/$kept'));
+      expect((await owner.ok('POST', p('/discard')))['discarded'], 2);
+      expect([for (final s in await week()) s['id']], [kept], reason: 'le brouillon disparaît, la suppression est annulée');
+      expect((await owner.ok('GET', p('/shifts?from=2026-10-05&to=2026-10-11')))['pending'], 0);
+      expect((await bob('POST', p('/discard'))).$1, 403);
+    });
+
+    test('un responsable de site n\'annule que ses sites', () async {
+      await owner.ok('POST', p('/shifts'), {'days': ['2026-10-08'], 'start': 480, 'end': 960, 'siteId': siteNorth});
+      final south = (await owner.ok('POST', p('/shifts'),
+          {'days': ['2026-10-08'], 'start': 480, 'end': 960, 'siteId': siteSouth}))['shifts'].single['id'];
+      expect((await north('POST', p('/shifts/$south/revert'))).$1, 403);
+      expect((await north.ok('POST', p('/discard')))['discarded'], 1);
+      expect([for (final s in await week()) s['id']], [south]);
     });
   });
 

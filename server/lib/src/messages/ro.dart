@@ -63,4 +63,5 @@ const ro = <String, String>{
   '{name} déclare une indisponibilité.': '{name} anunță că nu este disponibil.',
   'Votre demande a été acceptée.': 'Cererea ta a fost acceptată.',
   'Votre demande a été refusée.': 'Cererea ta a fost refuzată.',
+  'Choisissez la personne qui reprend le service.': 'Alege cine preia tura.',
 };

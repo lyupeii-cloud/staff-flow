@@ -54,6 +54,15 @@ class CompanyService {
     return wanted;
   }
 
+  /// Responsable : sites dont il veut recevoir les notifications de
+  /// demandes (`null` : tous ; liste vide : aucun).
+  Future<void> setNotifySites(User actor, String companyId, List<String>? sites) async {
+    final (_, role) = await open(actor, companyId);
+    if (!role.canManage) throw const ApiError.forbidden();
+    final chosen = sites == null ? null : await validSites(companyId, sites);
+    await store.setNotifySites(companyId, actor.id, chosen);
+  }
+
   /// Sites d'une personne. Le propriétaire choisit ceux d'un responsable
   /// (`null` : toute l'entreprise). Pour un salarié ou un extra : un
   /// responsable de toute l'entreprise choisit librement ; un responsable de

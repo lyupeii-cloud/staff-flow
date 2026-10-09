@@ -63,4 +63,5 @@ const da = <String, String>{
   '{name} déclare une indisponibilité.': '{name} melder sig utilgængelig.',
   'Votre demande a été acceptée.': 'Din anmodning er godkendt.',
   'Votre demande a été refusée.': 'Din anmodning er afvist.',
+  'Choisissez la personne qui reprend le service.': 'Vælg hvem der overtager vagten.',
 };

@@ -63,4 +63,5 @@ const nl = <String, String>{
   '{name} déclare une indisponibilité.': '{name} meldt niet beschikbaar te zijn.',
   'Votre demande a été acceptée.': 'Je verzoek is goedgekeurd.',
   'Votre demande a été refusée.': 'Je verzoek is geweigerd.',
+  'Choisissez la personne qui reprend le service.': 'Kies wie de dienst overneemt.',
 };

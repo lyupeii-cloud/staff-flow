@@ -63,4 +63,5 @@ const de = <String, String>{
   '{name} déclare une indisponibilité.': '{name} meldet sich als nicht verfügbar.',
   'Votre demande a été acceptée.': 'Ihre Anfrage wurde genehmigt.',
   'Votre demande a été refusée.': 'Ihre Anfrage wurde abgelehnt.',
+  'Choisissez la personne qui reprend le service.': 'Wählen Sie, wer die Schicht übernimmt.',
 };

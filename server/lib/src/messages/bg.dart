@@ -63,4 +63,5 @@ const bg = <String, String>{
   '{name} déclare une indisponibilité.': '{name} съобщава, че не е на разположение.',
   'Votre demande a été acceptée.': 'Заявката ви е одобрена.',
   'Votre demande a été refusée.': 'Заявката ви е отказана.',
+  'Choisissez la personne qui reprend le service.': 'Изберете кой поема смяната.',
 };

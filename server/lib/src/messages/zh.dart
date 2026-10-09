@@ -63,4 +63,5 @@ const zh = <String, String>{
   '{name} déclare une indisponibilité.': '{name} 申报无法上班。',
   'Votre demande a été acceptée.': '您的申请已获批准。',
   'Votre demande a été refusée.': '您的申请已被拒绝。',
+  'Choisissez la personne qui reprend le service.': '请选择接班的人。',
 };

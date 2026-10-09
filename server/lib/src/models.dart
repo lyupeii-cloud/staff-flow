@@ -113,9 +113,13 @@ class Membership {
   /// Salarié ou extra : sites de son équipe (`null` : aucun en particulier).
   final List<String>? sites;
 
-  const Membership(this.company, this.role, [this.sites]);
+  /// Responsable : sites dont il reçoit les notifications (`null` : tous).
+  final List<String>? notifySites;
 
-  Map<String, Object?> toJson() => {'company': company.toJson(), 'role': role.name, 'sites': sites};
+  const Membership(this.company, this.role, [this.sites, this.notifySites]);
+
+  Map<String, Object?> toJson() =>
+      {'company': company.toJson(), 'role': role.name, 'sites': sites, 'notifySites': notifySites};
 }
 
 class Member {

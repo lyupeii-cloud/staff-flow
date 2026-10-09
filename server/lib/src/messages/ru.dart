@@ -63,4 +63,5 @@ const ru = <String, String>{
   '{name} déclare une indisponibilité.': '{name} сообщает о недоступности.',
   'Votre demande a été acceptée.': 'Ваш запрос одобрен.',
   'Votre demande a été refusée.': 'Ваш запрос отклонён.',
+  'Choisissez la personne qui reprend le service.': 'Выберите, кто возьмёт смену.',
 };

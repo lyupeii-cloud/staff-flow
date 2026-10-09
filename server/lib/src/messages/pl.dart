@@ -63,4 +63,5 @@ const pl = <String, String>{
   '{name} déclare une indisponibilité.': '{name} zgłasza niedostępność.',
   'Votre demande a été acceptée.': 'Twoja prośba została zaakceptowana.',
   'Votre demande a été refusée.': 'Twoja prośba została odrzucona.',
+  'Choisissez la personne qui reprend le service.': 'Wybierz, kto przejmie zmianę.',
 };

@@ -63,4 +63,5 @@ const th = <String, String>{
   '{name} déclare une indisponibilité.': '{name} แจ้งว่าไม่สะดวกทำงาน',
   'Votre demande a été acceptée.': 'คำขอของคุณได้รับการอนุมัติ',
   'Votre demande a été refusée.': 'คำขอของคุณถูกปฏิเสธ',
+  'Choisissez la personne qui reprend le service.': 'เลือกผู้ที่จะรับกะนี้',
 };

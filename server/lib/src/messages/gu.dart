@@ -63,4 +63,5 @@ const gu = <String, String>{
   '{name} déclare une indisponibilité.': '{name} એ અનુપલબ્ધતા જણાવી છે.',
   'Votre demande a été acceptée.': 'તમારી વિનંતી મંજૂર થઈ.',
   'Votre demande a été refusée.': 'તમારી વિનંતી નકારાઈ.',
+  'Choisissez la personne qui reprend le service.': 'શિફ્ટ કોણ લેશે તે પસંદ કરો.',
 };

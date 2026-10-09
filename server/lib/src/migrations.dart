@@ -314,4 +314,16 @@ CREATE TABLE requests (
 );
 CREATE INDEX requests_company ON requests (company_id, status);
 ''',
+  // 13 — demande devenue sans objet (service changé, période passée) ;
+  // sites dont un responsable veut recevoir les notifications (null : tous).
+  '''
+ALTER TABLE requests DROP CONSTRAINT requests_status_check;
+ALTER TABLE requests ADD CONSTRAINT requests_status_check
+  CHECK (status IN ('pending_peer', 'pending_manager', 'approved', 'refused', 'cancelled', 'expired'));
+CREATE INDEX requests_list ON requests (company_id, created_at DESC);
+ALTER TABLE memberships ADD COLUMN notify_sites uuid[];
+ALTER TABLE shift_history DROP CONSTRAINT shift_history_action_check;
+ALTER TABLE shift_history ADD CONSTRAINT shift_history_action_check
+  CHECK (action IN ('create', 'update', 'delete', 'undo', 'revert'));
+''',
 ];

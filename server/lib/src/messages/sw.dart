@@ -63,4 +63,5 @@ const sw = <String, String>{
   '{name} déclare une indisponibilité.': '{name} ametangaza kutopatikana.',
   'Votre demande a été acceptée.': 'Ombi lako limekubaliwa.',
   'Votre demande a été refusée.': 'Ombi lako limekataliwa.',
+  'Choisissez la personne qui reprend le service.': 'Chagua nani atachukua zamu.',
 };

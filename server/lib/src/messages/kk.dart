@@ -63,4 +63,5 @@ const kk = <String, String>{
   '{name} déclare une indisponibilité.': '{name} қолжетімсіз екенін хабарлады.',
   'Votre demande a été acceptée.': 'Сұрауыңыз мақұлданды.',
   'Votre demande a été refusée.': 'Сұрауыңыз қабылданбады.',
+  'Choisissez la personne qui reprend le service.': 'Ауысымды кім алатынын таңдаңыз.',
 };

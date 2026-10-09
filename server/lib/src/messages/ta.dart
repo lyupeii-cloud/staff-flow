@@ -63,4 +63,5 @@ const ta = <String, String>{
   '{name} déclare une indisponibilité.': '{name} தான் இல்லாததைத் தெரிவித்தார்.',
   'Votre demande a été acceptée.': 'உங்கள் கோரிக்கை ஏற்கப்பட்டது.',
   'Votre demande a été refusée.': 'உங்கள் கோரிக்கை நிராகரிக்கப்பட்டது.',
+  'Choisissez la personne qui reprend le service.': 'ஷிஃப்டை யார் எடுப்பார் என்பதைத் தேர்ந்தெடுங்கள்.',
 };

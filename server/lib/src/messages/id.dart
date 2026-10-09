@@ -63,4 +63,5 @@ const id = <String, String>{
   '{name} déclare une indisponibilité.': '{name} menyatakan tidak tersedia.',
   'Votre demande a été acceptée.': 'Permintaan Anda disetujui.',
   'Votre demande a été refusée.': 'Permintaan Anda ditolak.',
+  'Choisissez la personne qui reprend le service.': 'Pilih siapa yang mengambil alih shift.',
 };

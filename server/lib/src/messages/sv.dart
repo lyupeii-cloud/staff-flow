@@ -63,4 +63,5 @@ const sv = <String, String>{
   '{name} déclare une indisponibilité.': '{name} anmäler att hen inte är tillgänglig.',
   'Votre demande a été acceptée.': 'Din förfrågan har godkänts.',
   'Votre demande a été refusée.': 'Din förfrågan har avslagits.',
+  'Choisissez la personne qui reprend le service.': 'Välj vem som tar över passet.',
 };
