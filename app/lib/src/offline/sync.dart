@@ -167,7 +167,7 @@ class Sync extends ChangeNotifier {
       server = [for (final r in records) Shift.fromJson(r.value.cast())];
       serverPending = (await _cache.record('pending:$companyId').get(_db) as int?) ?? 0;
     }
-    final ops = [for (final op in queue) if (op.companyId == companyId) op];
+    final ops = [for (final op in queue) if (op.companyId == companyId && planningKinds.contains(op.kind)) op];
     final lastPublish = ops.lastIndexWhere((op) => op.kind == 'publish');
     final queuedChanges = ops.skip(lastPublish + 1).where((op) => op.kind != 'publish').length;
     return (

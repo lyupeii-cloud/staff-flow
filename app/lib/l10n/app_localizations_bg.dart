@@ -660,4 +660,30 @@ class L10nBg extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name се присъедини към $company.';
   }
+
+  @override
+  String get messagesTab => 'Съобщения';
+
+  @override
+  String get wholeTeam => 'Целият екип';
+
+  @override
+  String get newConversation => 'Нов разговор';
+
+  @override
+  String get noMessages => 'Все още няма съобщения.';
+
+  @override
+  String get messageHint => 'Напишете съобщение';
+
+  @override
+  String get earlierMessages => 'По-стари съобщения';
+
+  @override
+  String get personLeftCompany => 'Този човек вече не е част от фирмата.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

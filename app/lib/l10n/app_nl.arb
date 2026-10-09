@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: je rooster is gepubliceerd of gewijzigd.",
   "noticeJoinInvite": "{company} wil je aan het team toevoegen.",
   "noticeTransferOffer": "{name} stelt voor dat jij eigenaar van {company} wordt.",
-  "noticeMemberJoined": "{name} is bij {company} gekomen."
+  "noticeMemberJoined": "{name} is bij {company} gekomen.",
+  "messagesTab": "Berichten",
+  "wholeTeam": "Hele team",
+  "newConversation": "Nieuw gesprek",
+  "noMessages": "Nog geen berichten.",
+  "messageHint": "Schrijf een bericht",
+  "earlierMessages": "Eerdere berichten",
+  "personLeftCompany": "Deze persoon hoort niet meer bij het bedrijf.",
+  "messagePreview": "{name}: {text}"
 }

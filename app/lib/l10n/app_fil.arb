@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: na-publish o nabago ang iskedyul mo.",
   "noticeJoinInvite": "Gusto kang idagdag ng {company} sa kanilang team.",
   "noticeTransferOffer": "Inaalok ni {name} na ikaw ang maging may-ari ng {company}.",
-  "noticeMemberJoined": "Sumali si {name} sa {company}."
+  "noticeMemberJoined": "Sumali si {name} sa {company}.",
+  "messagesTab": "Mga mensahe",
+  "wholeTeam": "Buong team",
+  "newConversation": "Bagong usapan",
+  "noMessages": "Wala pang mensahe.",
+  "messageHint": "Sumulat ng mensahe",
+  "earlierMessages": "Mga naunang mensahe",
+  "personLeftCompany": "Hindi na bahagi ng kumpanya ang taong ito.",
+  "messagePreview": "{name}: {text}"
 }

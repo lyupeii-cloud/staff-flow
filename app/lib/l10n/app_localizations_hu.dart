@@ -659,4 +659,30 @@ class L10nHu extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name csatlakozott: $company.';
   }
+
+  @override
+  String get messagesTab => 'Üzenetek';
+
+  @override
+  String get wholeTeam => 'Az egész csapat';
+
+  @override
+  String get newConversation => 'Új beszélgetés';
+
+  @override
+  String get noMessages => 'Még nincs üzenet.';
+
+  @override
+  String get messageHint => 'Írj üzenetet';
+
+  @override
+  String get earlierMessages => 'Korábbi üzenetek';
+
+  @override
+  String get personLeftCompany => 'Ez a személy már nem tagja a cégnek.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

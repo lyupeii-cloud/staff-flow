@@ -666,4 +666,31 @@ class L10nRo extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name s-a alăturat $company.';
   }
+
+  @override
+  String get messagesTab => 'Mesaje';
+
+  @override
+  String get wholeTeam => 'Toată echipa';
+
+  @override
+  String get newConversation => 'Conversație nouă';
+
+  @override
+  String get noMessages => 'Încă nu există mesaje.';
+
+  @override
+  String get messageHint => 'Scrie un mesaj';
+
+  @override
+  String get earlierMessages => 'Mesaje anterioare';
+
+  @override
+  String get personLeftCompany =>
+      'Această persoană nu mai face parte din firmă.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

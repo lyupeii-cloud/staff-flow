@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: tu horario se ha publicado o modificado.",
   "noticeJoinInvite": "{company} quiere añadirte a su equipo.",
   "noticeTransferOffer": "{name} te propone ser el propietario de {company}.",
-  "noticeMemberJoined": "{name} se ha unido a {company}."
+  "noticeMemberJoined": "{name} se ha unido a {company}.",
+  "messagesTab": "Mensajes",
+  "wholeTeam": "Todo el equipo",
+  "newConversation": "Nueva conversación",
+  "noMessages": "Aún no hay mensajes.",
+  "messageHint": "Escribe un mensaje",
+  "earlierMessages": "Mensajes anteriores",
+  "personLeftCompany": "Esta persona ya no forma parte de la empresa.",
+  "messagePreview": "{name}: {text}"
 }

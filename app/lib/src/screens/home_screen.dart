@@ -12,6 +12,7 @@ import '../session.dart';
 import 'company_tab.dart';
 import 'join_code_dialog.dart';
 import 'language_picker.dart';
+import 'messages_view.dart';
 import 'notification_settings.dart';
 import 'people_widgets.dart';
 import 'sync_widgets.dart';
@@ -48,7 +49,17 @@ class _HomeScreenState extends State<HomeScreen> {
   /// Notification reçue pendant que l'application est à l'écran : Android
   /// ne l'affiche pas lui-même, on la montre ici.
   void _onPush(PushEvent e) {
-    if (e.opened || !mounted || e.body == null) return;
+    if (!mounted) return;
+    final conversation = e.data['conversationId'] as String?;
+    if (e.opened) {
+      // Notification de message touchée : on ouvre la conversation.
+      if (e.kind == 'message' && conversation != null) {
+        openConversationFromPush(context, session, e.data['companyId'] as String, conversation);
+      }
+      return;
+    }
+    // Message de la conversation déjà à l'écran : rien à signaler.
+    if (e.body == null || (conversation != null && conversation == session.openConversation)) return;
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(e.title == null ? e.body! : '${e.title} · ${e.body}')));
   }

@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: ratiba yako imechapishwa au kubadilishwa.",
   "noticeJoinInvite": "{company} inataka kukuongeza kwenye timu yake.",
   "noticeTransferOffer": "{name} anapendekeza uwe mmiliki wa {company}.",
-  "noticeMemberJoined": "{name} amejiunga na {company}."
+  "noticeMemberJoined": "{name} amejiunga na {company}.",
+  "messagesTab": "Ujumbe",
+  "wholeTeam": "Timu nzima",
+  "newConversation": "Mazungumzo mapya",
+  "noMessages": "Bado hakuna ujumbe.",
+  "messageHint": "Andika ujumbe",
+  "earlierMessages": "Ujumbe wa awali",
+  "personLeftCompany": "Mtu huyu si sehemu ya kampuni tena.",
+  "messagePreview": "{name}: {text}"
 }

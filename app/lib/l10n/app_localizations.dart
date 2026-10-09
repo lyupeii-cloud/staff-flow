@@ -1264,6 +1264,54 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'{name} joined {company}.'**
   String noticeMemberJoined(String name, String company);
+
+  /// No description provided for @messagesTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Messages'**
+  String get messagesTab;
+
+  /// No description provided for @wholeTeam.
+  ///
+  /// In en, this message translates to:
+  /// **'Whole team'**
+  String get wholeTeam;
+
+  /// No description provided for @newConversation.
+  ///
+  /// In en, this message translates to:
+  /// **'New conversation'**
+  String get newConversation;
+
+  /// No description provided for @noMessages.
+  ///
+  /// In en, this message translates to:
+  /// **'No messages yet.'**
+  String get noMessages;
+
+  /// No description provided for @messageHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a message'**
+  String get messageHint;
+
+  /// No description provided for @earlierMessages.
+  ///
+  /// In en, this message translates to:
+  /// **'Earlier messages'**
+  String get earlierMessages;
+
+  /// No description provided for @personLeftCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'This person is no longer part of the company.'**
+  String get personLeftCompany;
+
+  /// No description provided for @messagePreview.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}: {text}'**
+  String messagePreview(String name, String text);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: Ihr Dienstplan wurde veröffentlicht oder geändert.",
   "noticeJoinInvite": "{company} möchte Sie in sein Team aufnehmen.",
   "noticeTransferOffer": "{name} bietet Ihnen an, Inhaber von {company} zu werden.",
-  "noticeMemberJoined": "{name} ist {company} beigetreten."
+  "noticeMemberJoined": "{name} ist {company} beigetreten.",
+  "messagesTab": "Nachrichten",
+  "wholeTeam": "Ganzes Team",
+  "newConversation": "Neue Unterhaltung",
+  "noMessages": "Noch keine Nachrichten.",
+  "messageHint": "Nachricht schreiben",
+  "earlierMessages": "Frühere Nachrichten",
+  "personLeftCompany": "Diese Person gehört nicht mehr zum Unternehmen.",
+  "messagePreview": "{name}: {text}"
 }

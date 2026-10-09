@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: உங்கள் அட்டவணை வெளியிடப்பட்டது அல்லது மாற்றப்பட்டது.",
   "noticeJoinInvite": "{company} உங்களைத் தன் குழுவில் சேர்க்க விரும்புகிறது.",
   "noticeTransferOffer": "{name} உங்களை {company} உரிமையாளராக்க முன்மொழிகிறார்.",
-  "noticeMemberJoined": "{name} {company} இல் சேர்ந்தார்."
+  "noticeMemberJoined": "{name} {company} இல் சேர்ந்தார்.",
+  "messagesTab": "செய்திகள்",
+  "wholeTeam": "முழுக் குழு",
+  "newConversation": "புதிய உரையாடல்",
+  "noMessages": "இன்னும் செய்திகள் இல்லை.",
+  "messageHint": "செய்தியை எழுதுங்கள்",
+  "earlierMessages": "முந்தைய செய்திகள்",
+  "personLeftCompany": "இவர் இப்போது நிறுவனத்தில் இல்லை.",
+  "messagePreview": "{name}: {text}"
 }

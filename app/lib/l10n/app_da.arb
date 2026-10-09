@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: din vagtplan er offentliggjort eller ændret.",
   "noticeJoinInvite": "{company} vil tilføje dig til sit team.",
   "noticeTransferOffer": "{name} foreslår, at du bliver ejer af {company}.",
-  "noticeMemberJoined": "{name} er blevet en del af {company}."
+  "noticeMemberJoined": "{name} er blevet en del af {company}.",
+  "messagesTab": "Beskeder",
+  "wholeTeam": "Hele teamet",
+  "newConversation": "Ny samtale",
+  "noMessages": "Ingen beskeder endnu.",
+  "messageHint": "Skriv en besked",
+  "earlierMessages": "Tidligere beskeder",
+  "personLeftCompany": "Denne person er ikke længere en del af virksomheden.",
+  "messagePreview": "{name}: {text}"
 }

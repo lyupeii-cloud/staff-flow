@@ -27,6 +27,9 @@ class Session extends ChangeNotifier {
   /// Notifications sur l'appareil.
   late final Push push = Push(api);
 
+  /// Conversation affichée à l'écran : ses notifications ne s'affichent pas en plus.
+  String? openConversation;
+
   static const tokenKey = 'session_token';
 
   SessionState state = SessionState.loading;

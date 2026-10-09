@@ -665,4 +665,30 @@ class L10nCs extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name se připojil k $company.';
   }
+
+  @override
+  String get messagesTab => 'Zprávy';
+
+  @override
+  String get wholeTeam => 'Celý tým';
+
+  @override
+  String get newConversation => 'Nová konverzace';
+
+  @override
+  String get noMessages => 'Zatím žádné zprávy.';
+
+  @override
+  String get messageHint => 'Napište zprávu';
+
+  @override
+  String get earlierMessages => 'Starší zprávy';
+
+  @override
+  String get personLeftCompany => 'Tato osoba už ve firmě není.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

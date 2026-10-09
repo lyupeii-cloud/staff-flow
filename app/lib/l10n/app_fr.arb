@@ -182,5 +182,13 @@
   "noticeSchedulePublished": "{company} : votre planning a été publié ou modifié.",
   "noticeJoinInvite": "{company} veut vous ajouter à son équipe.",
   "noticeTransferOffer": "{name} vous propose de devenir propriétaire de {company}.",
-  "noticeMemberJoined": "{name} a rejoint {company}."
+  "noticeMemberJoined": "{name} a rejoint {company}.",
+  "messagesTab": "Messages",
+  "wholeTeam": "Toute l'équipe",
+  "newConversation": "Nouvelle conversation",
+  "noMessages": "Pas encore de message.",
+  "messageHint": "Écrire un message",
+  "earlierMessages": "Messages précédents",
+  "personLeftCompany": "Cette personne ne fait plus partie de l'entreprise.",
+  "messagePreview": "{name} : {text}"
 }

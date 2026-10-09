@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: twój grafik został opublikowany lub zmieniony.",
   "noticeJoinInvite": "{company} chce dodać cię do swojego zespołu.",
   "noticeTransferOffer": "{name} proponuje, abyś został właścicielem {company}.",
-  "noticeMemberJoined": "{name} dołączył do {company}."
+  "noticeMemberJoined": "{name} dołączył do {company}.",
+  "messagesTab": "Wiadomości",
+  "wholeTeam": "Cały zespół",
+  "newConversation": "Nowa rozmowa",
+  "noMessages": "Brak wiadomości.",
+  "messageHint": "Napisz wiadomość",
+  "earlierMessages": "Wcześniejsze wiadomości",
+  "personLeftCompany": "Ta osoba nie należy już do firmy.",
+  "messagePreview": "{name}: {text}"
 }

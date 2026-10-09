@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: váš rozpis byl zveřejněn nebo změněn.",
   "noticeJoinInvite": "{company} vás chce přidat do svého týmu.",
   "noticeTransferOffer": "{name} vám nabízí, abyste se stali vlastníkem {company}.",
-  "noticeMemberJoined": "{name} se připojil k {company}."
+  "noticeMemberJoined": "{name} se připojil k {company}.",
+  "messagesTab": "Zprávy",
+  "wholeTeam": "Celý tým",
+  "newConversation": "Nová konverzace",
+  "noMessages": "Zatím žádné zprávy.",
+  "messageHint": "Napište zprávu",
+  "earlierMessages": "Starší zprávy",
+  "personLeftCompany": "Tato osoba už ve firmě není.",
+  "messagePreview": "{name}: {text}"
 }

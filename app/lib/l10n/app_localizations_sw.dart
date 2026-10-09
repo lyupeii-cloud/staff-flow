@@ -663,4 +663,30 @@ class L10nSw extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name amejiunga na $company.';
   }
+
+  @override
+  String get messagesTab => 'Ujumbe';
+
+  @override
+  String get wholeTeam => 'Timu nzima';
+
+  @override
+  String get newConversation => 'Mazungumzo mapya';
+
+  @override
+  String get noMessages => 'Bado hakuna ujumbe.';
+
+  @override
+  String get messageHint => 'Andika ujumbe';
+
+  @override
+  String get earlierMessages => 'Ujumbe wa awali';
+
+  @override
+  String get personLeftCompany => 'Mtu huyu si sehemu ya kampuni tena.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

@@ -667,4 +667,30 @@ class L10nRu extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name присоединился к $company.';
   }
+
+  @override
+  String get messagesTab => 'Сообщения';
+
+  @override
+  String get wholeTeam => 'Вся команда';
+
+  @override
+  String get newConversation => 'Новая беседа';
+
+  @override
+  String get noMessages => 'Сообщений пока нет.';
+
+  @override
+  String get messageHint => 'Напишите сообщение';
+
+  @override
+  String get earlierMessages => 'Предыдущие сообщения';
+
+  @override
+  String get personLeftCompany => 'Этот человек больше не состоит в компании.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

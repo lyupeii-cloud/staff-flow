@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}：シフトが公開または変更されました。",
   "noticeJoinInvite": "{company} があなたをチームに追加しようとしています。",
   "noticeTransferOffer": "{name} さんがあなたを {company} のオーナーにすることを提案しています。",
-  "noticeMemberJoined": "{name} さんが {company} に参加しました。"
+  "noticeMemberJoined": "{name} さんが {company} に参加しました。",
+  "messagesTab": "メッセージ",
+  "wholeTeam": "チーム全員",
+  "newConversation": "新しい会話",
+  "noMessages": "まだメッセージはありません。",
+  "messageHint": "メッセージを入力",
+  "earlierMessages": "以前のメッセージ",
+  "personLeftCompany": "この人はもう会社のメンバーではありません。",
+  "messagePreview": "{name}：{text}"
 }

@@ -663,4 +663,30 @@ class L10nFil extends L10n {
   String noticeMemberJoined(String name, String company) {
     return 'Sumali si $name sa $company.';
   }
+
+  @override
+  String get messagesTab => 'Mga mensahe';
+
+  @override
+  String get wholeTeam => 'Buong team';
+
+  @override
+  String get newConversation => 'Bagong usapan';
+
+  @override
+  String get noMessages => 'Wala pang mensahe.';
+
+  @override
+  String get messageHint => 'Sumulat ng mensahe';
+
+  @override
+  String get earlierMessages => 'Mga naunang mensahe';
+
+  @override
+  String get personLeftCompany => 'Hindi na bahagi ng kumpanya ang taong ito.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

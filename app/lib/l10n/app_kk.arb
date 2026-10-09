@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: кестеңіз жарияланды немесе өзгертілді.",
   "noticeJoinInvite": "{company} сізді командасына қосқысы келеді.",
   "noticeTransferOffer": "{name} сізге {company} иесі болуды ұсынады.",
-  "noticeMemberJoined": "{name} {company} компаниясына қосылды."
+  "noticeMemberJoined": "{name} {company} компаниясына қосылды.",
+  "messagesTab": "Хабарлар",
+  "wholeTeam": "Бүкіл команда",
+  "newConversation": "Жаңа әңгіме",
+  "noMessages": "Әзірге хабар жоқ.",
+  "messageHint": "Хабар жазыңыз",
+  "earlierMessages": "Бұрынғы хабарлар",
+  "personLeftCompany": "Бұл адам енді компанияда емес.",
+  "messagePreview": "{name}: {text}"
 }

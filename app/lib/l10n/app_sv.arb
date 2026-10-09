@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: ditt schema har publicerats eller ändrats.",
   "noticeJoinInvite": "{company} vill lägga till dig i sitt team.",
   "noticeTransferOffer": "{name} föreslår att du blir ägare till {company}.",
-  "noticeMemberJoined": "{name} har gått med i {company}."
+  "noticeMemberJoined": "{name} har gått med i {company}.",
+  "messagesTab": "Meddelanden",
+  "wholeTeam": "Hela teamet",
+  "newConversation": "Ny konversation",
+  "noMessages": "Inga meddelanden än.",
+  "messageHint": "Skriv ett meddelande",
+  "earlierMessages": "Tidigare meddelanden",
+  "personLeftCompany": "Den här personen tillhör inte längre företaget.",
+  "messagePreview": "{name}: {text}"
 }

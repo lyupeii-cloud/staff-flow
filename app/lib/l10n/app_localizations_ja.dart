@@ -649,4 +649,30 @@ class L10nJa extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name さんが $company に参加しました。';
   }
+
+  @override
+  String get messagesTab => 'メッセージ';
+
+  @override
+  String get wholeTeam => 'チーム全員';
+
+  @override
+  String get newConversation => '新しい会話';
+
+  @override
+  String get noMessages => 'まだメッセージはありません。';
+
+  @override
+  String get messageHint => 'メッセージを入力';
+
+  @override
+  String get earlierMessages => '以前のメッセージ';
+
+  @override
+  String get personLeftCompany => 'この人はもう会社のメンバーではありません。';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name：$text';
+  }
 }

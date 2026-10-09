@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: programul tău a fost publicat sau modificat.",
   "noticeJoinInvite": "{company} vrea să te adauge în echipa sa.",
   "noticeTransferOffer": "{name} îți propune să devii proprietarul {company}.",
-  "noticeMemberJoined": "{name} s-a alăturat {company}."
+  "noticeMemberJoined": "{name} s-a alăturat {company}.",
+  "messagesTab": "Mesaje",
+  "wholeTeam": "Toată echipa",
+  "newConversation": "Conversație nouă",
+  "noMessages": "Încă nu există mesaje.",
+  "messageHint": "Scrie un mesaj",
+  "earlierMessages": "Mesaje anterioare",
+  "personLeftCompany": "Această persoană nu mai face parte din firmă.",
+  "messagePreview": "{name}: {text}"
 }

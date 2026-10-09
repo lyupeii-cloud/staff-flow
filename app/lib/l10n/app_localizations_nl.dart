@@ -664,4 +664,31 @@ class L10nNl extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name is bij $company gekomen.';
   }
+
+  @override
+  String get messagesTab => 'Berichten';
+
+  @override
+  String get wholeTeam => 'Hele team';
+
+  @override
+  String get newConversation => 'Nieuw gesprek';
+
+  @override
+  String get noMessages => 'Nog geen berichten.';
+
+  @override
+  String get messageHint => 'Schrijf een bericht';
+
+  @override
+  String get earlierMessages => 'Eerdere berichten';
+
+  @override
+  String get personLeftCompany =>
+      'Deze persoon hoort niet meer bij het bedrijf.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

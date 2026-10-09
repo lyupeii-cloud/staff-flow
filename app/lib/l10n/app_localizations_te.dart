@@ -661,4 +661,30 @@ class L10nTe extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name $companyలో చేరారు.';
   }
+
+  @override
+  String get messagesTab => 'సందేశాలు';
+
+  @override
+  String get wholeTeam => 'మొత్తం టీమ్';
+
+  @override
+  String get newConversation => 'కొత్త సంభాషణ';
+
+  @override
+  String get noMessages => 'ఇంకా సందేశాలు లేవు.';
+
+  @override
+  String get messageHint => 'సందేశం రాయండి';
+
+  @override
+  String get earlierMessages => 'మునుపటి సందేశాలు';
+
+  @override
+  String get personLeftCompany => 'ఈ వ్యక్తి ఇక కంపెనీలో భాగం కాదు.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

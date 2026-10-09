@@ -658,4 +658,31 @@ class L10nMs extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name telah menyertai $company.';
   }
+
+  @override
+  String get messagesTab => 'Mesej';
+
+  @override
+  String get wholeTeam => 'Seluruh pasukan';
+
+  @override
+  String get newConversation => 'Perbualan baharu';
+
+  @override
+  String get noMessages => 'Belum ada mesej.';
+
+  @override
+  String get messageHint => 'Tulis mesej';
+
+  @override
+  String get earlierMessages => 'Mesej terdahulu';
+
+  @override
+  String get personLeftCompany =>
+      'Orang ini bukan lagi sebahagian daripada syarikat.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

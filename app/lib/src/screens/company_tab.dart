@@ -4,6 +4,7 @@ import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
 import 'catalog_view.dart';
+import 'messages_view.dart';
 import 'planning_view.dart';
 import 'team_view.dart';
 
@@ -38,7 +39,7 @@ class CompanyData {
   String? positionName(String? id) => positions.where((p) => p.id == id).firstOrNull?.name;
 }
 
-enum _View { planning, team, catalog }
+enum _View { planning, messages, team, catalog }
 
 /// Onglet d'une entreprise : planning, équipe, et pour les responsables,
 /// sites et postes.
@@ -113,25 +114,27 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
             children: [
               Text('${role.label(t)} · ${company.timezone}', style: theme.textTheme.bodySmall),
               const SizedBox(height: 8),
-              SegmentedButton<_View>(
-                showSelectedIcon: false,
-                segments: [
-                  ButtonSegment(
-                      value: _View.planning,
-                      icon: const Icon(Icons.calendar_month),
-                      label: Text(t.viewPlanning)),
-                  ButtonSegment(value: _View.team, icon: const Icon(Icons.group), label: Text(t.viewTeam)),
-                  if (role.canManage)
-                    ButtonSegment(
-                        value: _View.catalog, icon: const Icon(Icons.store), label: Text(t.viewPositions)),
-                ],
-                selected: {_view},
-                onSelectionChanged: (s) {
-                  // L'équipe a pu changer : le planning repart de la liste à jour.
-                  if (s.first == _View.planning && _view != _View.planning) _reload();
-                  setState(() => _view = s.first);
-                },
-              ),
+              Builder(builder: (context) {
+                final unread = widget.session.me?.unreadMessages[company.id] ?? 0;
+                return _ViewSwitcher(
+                  selected: _view,
+                  items: [
+                    (_View.planning, const Icon(Icons.calendar_month), t.viewPlanning),
+                    (
+                      _View.messages,
+                      Badge(isLabelVisible: unread > 0, label: Text('$unread'), child: const Icon(Icons.forum)),
+                      t.messagesTab
+                    ),
+                    (_View.team, const Icon(Icons.group), t.viewTeam),
+                    if (role.canManage) (_View.catalog, const Icon(Icons.store), t.viewPositions),
+                  ],
+                  onSelected: (v) {
+                    // L'équipe a pu changer : le planning repart de la liste à jour.
+                    if (v == _View.planning && _view != _View.planning) _reload();
+                    setState(() => _view = v);
+                  },
+                );
+              }),
             ],
           ),
         ),
@@ -158,6 +161,8 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
               return switch (_view) {
                 _View.planning =>
                   PlanningView(session: widget.session, membership: widget.membership, data: data),
+                _View.messages =>
+                  MessagesView(session: widget.session, membership: widget.membership, data: data),
                 _View.team => TeamView(
                     session: widget.session, membership: widget.membership, onChanged: _reload),
                 _View.catalog => CatalogView(
@@ -168,5 +173,65 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
         ),
       ],
     );
+  }
+}
+
+/// Choix de la vue. Sur un écran étroit, l'onglet choisi prend plus de place
+/// pour afficher son nom en entier ; les autres gardent leur icône.
+class _ViewSwitcher extends StatelessWidget {
+  final _View selected;
+  final List<(_View, Widget, String)> items;
+  final ValueChanged<_View> onSelected;
+
+  const _ViewSwitcher({required this.selected, required this.items, required this.onSelected});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return LayoutBuilder(builder: (context, box) {
+      final compact = box.maxWidth < 520;
+      return Container(
+        height: 44,
+        decoration: BoxDecoration(
+          border: Border.all(color: scheme.outline),
+          borderRadius: BorderRadius.circular(22),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: Row(
+          children: [
+            for (final (i, (view, icon, label)) in items.indexed)
+              Expanded(
+                flex: compact && view == selected ? 3 : 2,
+                child: Tooltip(
+                  message: label,
+                  child: InkWell(
+                    onTap: () => onSelected(view),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: view == selected ? scheme.secondaryContainer : null,
+                        border: i == 0 ? null : Border(left: BorderSide(color: scheme.outline)),
+                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 6),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconTheme.merge(data: const IconThemeData(size: 20), child: icon),
+                          if (!compact || view == selected) ...[
+                            const SizedBox(width: 6),
+                            Flexible(
+                              child: Text(label,
+                                  maxLines: 1, overflow: TextOverflow.ellipsis, style: Theme.of(context).textTheme.labelLarge),
+                            ),
+                          ],
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        ),
+      );
+    });
   }
 }

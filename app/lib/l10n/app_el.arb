@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: το πρόγραμμά σας δημοσιεύτηκε ή άλλαξε.",
   "noticeJoinInvite": "Η εταιρεία {company} θέλει να σας προσθέσει στην ομάδα της.",
   "noticeTransferOffer": "Ο/Η {name} σας προτείνει να γίνετε ιδιοκτήτης της {company}.",
-  "noticeMemberJoined": "Ο/Η {name} μπήκε στην {company}."
+  "noticeMemberJoined": "Ο/Η {name} μπήκε στην {company}.",
+  "messagesTab": "Μηνύματα",
+  "wholeTeam": "Όλη η ομάδα",
+  "newConversation": "Νέα συνομιλία",
+  "noMessages": "Δεν υπάρχουν ακόμη μηνύματα.",
+  "messageHint": "Γράψτε ένα μήνυμα",
+  "earlierMessages": "Παλαιότερα μηνύματα",
+  "personLeftCompany": "Αυτό το άτομο δεν ανήκει πλέον στην εταιρεία.",
+  "messagePreview": "{name}: {text}"
 }

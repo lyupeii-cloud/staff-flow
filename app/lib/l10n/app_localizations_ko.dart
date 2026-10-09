@@ -648,4 +648,30 @@ class L10nKo extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name님이 $company에 합류했습니다.';
   }
+
+  @override
+  String get messagesTab => '메시지';
+
+  @override
+  String get wholeTeam => '팀 전체';
+
+  @override
+  String get newConversation => '새 대화';
+
+  @override
+  String get noMessages => '아직 메시지가 없습니다.';
+
+  @override
+  String get messageHint => '메시지 입력';
+
+  @override
+  String get earlierMessages => '이전 메시지';
+
+  @override
+  String get personLeftCompany => '이 사람은 더 이상 회사 소속이 아닙니다.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

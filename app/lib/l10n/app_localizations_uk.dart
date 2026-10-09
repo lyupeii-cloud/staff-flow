@@ -669,4 +669,30 @@ class L10nUk extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name приєднався до $company.';
   }
+
+  @override
+  String get messagesTab => 'Повідомлення';
+
+  @override
+  String get wholeTeam => 'Уся команда';
+
+  @override
+  String get newConversation => 'Нова розмова';
+
+  @override
+  String get noMessages => 'Ще немає повідомлень.';
+
+  @override
+  String get messageHint => 'Напишіть повідомлення';
+
+  @override
+  String get earlierMessages => 'Попередні повідомлення';
+
+  @override
+  String get personLeftCompany => 'Ця особа більше не є учасником компанії.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

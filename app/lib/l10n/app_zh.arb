@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}：你的排班已发布或更改。",
   "noticeJoinInvite": "{company} 想把你加入团队。",
   "noticeTransferOffer": "{name} 提议由你成为 {company} 的所有者。",
-  "noticeMemberJoined": "{name} 已加入 {company}。"
+  "noticeMemberJoined": "{name} 已加入 {company}。",
+  "messagesTab": "消息",
+  "wholeTeam": "全体成员",
+  "newConversation": "新对话",
+  "noMessages": "还没有消息。",
+  "messageHint": "输入消息",
+  "earlierMessages": "更早的消息",
+  "personLeftCompany": "此人已不再是公司成员。",
+  "messagePreview": "{name}：{text}"
 }

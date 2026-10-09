@@ -662,4 +662,31 @@ class L10nDa extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name er blevet en del af $company.';
   }
+
+  @override
+  String get messagesTab => 'Beskeder';
+
+  @override
+  String get wholeTeam => 'Hele teamet';
+
+  @override
+  String get newConversation => 'Ny samtale';
+
+  @override
+  String get noMessages => 'Ingen beskeder endnu.';
+
+  @override
+  String get messageHint => 'Skriv en besked';
+
+  @override
+  String get earlierMessages => 'Tidligere beskeder';
+
+  @override
+  String get personLeftCompany =>
+      'Denne person er ikke længere en del af virksomheden.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

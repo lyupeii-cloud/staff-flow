@@ -431,5 +431,23 @@
         "type": "String"
       }
     }
+  },
+  "messagesTab": "Messages",
+  "wholeTeam": "Whole team",
+  "newConversation": "New conversation",
+  "noMessages": "No messages yet.",
+  "messageHint": "Write a message",
+  "earlierMessages": "Earlier messages",
+  "personLeftCompany": "This person is no longer part of the company.",
+  "messagePreview": "{name}: {text}",
+  "@messagePreview": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "text": {
+        "type": "String"
+      }
+    }
   }
 }

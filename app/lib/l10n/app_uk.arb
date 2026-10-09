@@ -182,5 +182,13 @@
   "noticeSchedulePublished": "{company}: ваш графік опубліковано або змінено.",
   "noticeJoinInvite": "{company} хоче додати вас до своєї команди.",
   "noticeTransferOffer": "{name} пропонує вам стати власником {company}.",
-  "noticeMemberJoined": "{name} приєднався до {company}."
+  "noticeMemberJoined": "{name} приєднався до {company}.",
+  "messagesTab": "Повідомлення",
+  "wholeTeam": "Уся команда",
+  "newConversation": "Нова розмова",
+  "noMessages": "Ще немає повідомлень.",
+  "messageHint": "Напишіть повідомлення",
+  "earlierMessages": "Попередні повідомлення",
+  "personLeftCompany": "Ця особа більше не є учасником компанії.",
+  "messagePreview": "{name}: {text}"
 }

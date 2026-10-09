@@ -664,4 +664,30 @@ class L10nTa extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name $company இல் சேர்ந்தார்.';
   }
+
+  @override
+  String get messagesTab => 'செய்திகள்';
+
+  @override
+  String get wholeTeam => 'முழுக் குழு';
+
+  @override
+  String get newConversation => 'புதிய உரையாடல்';
+
+  @override
+  String get noMessages => 'இன்னும் செய்திகள் இல்லை.';
+
+  @override
+  String get messageHint => 'செய்தியை எழுதுங்கள்';
+
+  @override
+  String get earlierMessages => 'முந்தைய செய்திகள்';
+
+  @override
+  String get personLeftCompany => 'இவர் இப்போது நிறுவனத்தில் இல்லை.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

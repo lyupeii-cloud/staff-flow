@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: lịch làm việc của bạn đã được công bố hoặc thay đổi.",
   "noticeJoinInvite": "{company} muốn thêm bạn vào nhóm.",
   "noticeTransferOffer": "{name} đề nghị bạn trở thành chủ sở hữu {company}.",
-  "noticeMemberJoined": "{name} đã tham gia {company}."
+  "noticeMemberJoined": "{name} đã tham gia {company}.",
+  "messagesTab": "Tin nhắn",
+  "wholeTeam": "Cả nhóm",
+  "newConversation": "Cuộc trò chuyện mới",
+  "noMessages": "Chưa có tin nhắn.",
+  "messageHint": "Viết tin nhắn",
+  "earlierMessages": "Tin nhắn trước",
+  "personLeftCompany": "Người này không còn thuộc công ty.",
+  "messagePreview": "{name}: {text}"
 }

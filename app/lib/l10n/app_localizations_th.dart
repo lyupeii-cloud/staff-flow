@@ -655,4 +655,30 @@ class L10nTh extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name เข้าร่วม $company แล้ว';
   }
+
+  @override
+  String get messagesTab => 'ข้อความ';
+
+  @override
+  String get wholeTeam => 'ทั้งทีม';
+
+  @override
+  String get newConversation => 'การสนทนาใหม่';
+
+  @override
+  String get noMessages => 'ยังไม่มีข้อความ';
+
+  @override
+  String get messageHint => 'เขียนข้อความ';
+
+  @override
+  String get earlierMessages => 'ข้อความก่อนหน้า';
+
+  @override
+  String get personLeftCompany => 'บุคคลนี้ไม่ได้อยู่ในบริษัทแล้ว';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

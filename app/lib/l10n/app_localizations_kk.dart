@@ -661,4 +661,30 @@ class L10nKk extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name $company компаниясына қосылды.';
   }
+
+  @override
+  String get messagesTab => 'Хабарлар';
+
+  @override
+  String get wholeTeam => 'Бүкіл команда';
+
+  @override
+  String get newConversation => 'Жаңа әңгіме';
+
+  @override
+  String get noMessages => 'Әзірге хабар жоқ.';
+
+  @override
+  String get messageHint => 'Хабар жазыңыз';
+
+  @override
+  String get earlierMessages => 'Бұрынғы хабарлар';
+
+  @override
+  String get personLeftCompany => 'Бұл адам енді компанияда емес.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

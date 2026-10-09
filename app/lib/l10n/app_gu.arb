@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: તમારું સમયપત્રક પ્રકાશિત થયું છે અથવા બદલાયું છે.",
   "noticeJoinInvite": "{company} તમને તેની ટીમમાં ઉમેરવા માંગે છે.",
   "noticeTransferOffer": "{name} તમને {company} ના માલિક બનવાનો પ્રસ્તાવ આપે છે.",
-  "noticeMemberJoined": "{name} {company} માં જોડાયા."
+  "noticeMemberJoined": "{name} {company} માં જોડાયા.",
+  "messagesTab": "સંદેશા",
+  "wholeTeam": "આખી ટીમ",
+  "newConversation": "નવી વાતચીત",
+  "noMessages": "હજુ કોઈ સંદેશો નથી.",
+  "messageHint": "સંદેશો લખો",
+  "earlierMessages": "અગાઉના સંદેશા",
+  "personLeftCompany": "આ વ્યક્તિ હવે કંપનીનો ભાગ નથી.",
+  "messagePreview": "{name}: {text}"
 }

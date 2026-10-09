@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: ваш график опубликован или изменён.",
   "noticeJoinInvite": "{company} хочет добавить вас в свою команду.",
   "noticeTransferOffer": "{name} предлагает вам стать владельцем {company}.",
-  "noticeMemberJoined": "{name} присоединился к {company}."
+  "noticeMemberJoined": "{name} присоединился к {company}.",
+  "messagesTab": "Сообщения",
+  "wholeTeam": "Вся команда",
+  "newConversation": "Новая беседа",
+  "noMessages": "Сообщений пока нет.",
+  "messageHint": "Напишите сообщение",
+  "earlierMessages": "Предыдущие сообщения",
+  "personLeftCompany": "Этот человек больше не состоит в компании.",
+  "messagePreview": "{name}: {text}"
 }

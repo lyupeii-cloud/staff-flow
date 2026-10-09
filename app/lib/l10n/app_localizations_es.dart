@@ -665,4 +665,31 @@ class L10nEs extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name se ha unido a $company.';
   }
+
+  @override
+  String get messagesTab => 'Mensajes';
+
+  @override
+  String get wholeTeam => 'Todo el equipo';
+
+  @override
+  String get newConversation => 'Nueva conversación';
+
+  @override
+  String get noMessages => 'Aún no hay mensajes.';
+
+  @override
+  String get messageHint => 'Escribe un mensaje';
+
+  @override
+  String get earlierMessages => 'Mensajes anteriores';
+
+  @override
+  String get personLeftCompany =>
+      'Esta persona ya no forma parte de la empresa.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

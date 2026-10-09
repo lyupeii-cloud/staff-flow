@@ -667,4 +667,30 @@ class L10nSk extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name sa pripojil k $company.';
   }
+
+  @override
+  String get messagesTab => 'Správy';
+
+  @override
+  String get wholeTeam => 'Celý tím';
+
+  @override
+  String get newConversation => 'Nová konverzácia';
+
+  @override
+  String get noMessages => 'Zatiaľ žiadne správy.';
+
+  @override
+  String get messageHint => 'Napíšte správu';
+
+  @override
+  String get earlierMessages => 'Staršie správy';
+
+  @override
+  String get personLeftCompany => 'Táto osoba už vo firme nie je.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

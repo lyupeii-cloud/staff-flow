@@ -645,4 +645,30 @@ class L10nZh extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name 已加入 $company。';
   }
+
+  @override
+  String get messagesTab => '消息';
+
+  @override
+  String get wholeTeam => '全体成员';
+
+  @override
+  String get newConversation => '新对话';
+
+  @override
+  String get noMessages => '还没有消息。';
+
+  @override
+  String get messageHint => '输入消息';
+
+  @override
+  String get earlierMessages => '更早的消息';
+
+  @override
+  String get personLeftCompany => '此人已不再是公司成员。';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name：$text';
+  }
 }

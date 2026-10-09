@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: vaktplanen din er publisert eller endret.",
   "noticeJoinInvite": "{company} vil legge deg til i teamet sitt.",
   "noticeTransferOffer": "{name} foreslår at du blir eier av {company}.",
-  "noticeMemberJoined": "{name} har blitt med i {company}."
+  "noticeMemberJoined": "{name} har blitt med i {company}.",
+  "messagesTab": "Meldinger",
+  "wholeTeam": "Hele teamet",
+  "newConversation": "Ny samtale",
+  "noMessages": "Ingen meldinger ennå.",
+  "messageHint": "Skriv en melding",
+  "earlierMessages": "Tidligere meldinger",
+  "personLeftCompany": "Denne personen er ikke lenger en del av bedriften.",
+  "messagePreview": "{name}: {text}"
 }

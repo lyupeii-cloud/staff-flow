@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: 근무표가 게시되었거나 변경되었습니다.",
   "noticeJoinInvite": "{company}에서 회원님을 팀에 추가하려고 합니다.",
   "noticeTransferOffer": "{name}님이 회원님에게 {company} 소유권을 넘기려고 합니다.",
-  "noticeMemberJoined": "{name}님이 {company}에 합류했습니다."
+  "noticeMemberJoined": "{name}님이 {company}에 합류했습니다.",
+  "messagesTab": "메시지",
+  "wholeTeam": "팀 전체",
+  "newConversation": "새 대화",
+  "noMessages": "아직 메시지가 없습니다.",
+  "messageHint": "메시지 입력",
+  "earlierMessages": "이전 메시지",
+  "personLeftCompany": "이 사람은 더 이상 회사 소속이 아닙니다.",
+  "messagePreview": "{name}: {text}"
 }

@@ -659,4 +659,30 @@ class L10nBn extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name $company-এ যোগ দিয়েছেন।';
   }
+
+  @override
+  String get messagesTab => 'বার্তা';
+
+  @override
+  String get wholeTeam => 'পুরো দল';
+
+  @override
+  String get newConversation => 'নতুন কথোপকথন';
+
+  @override
+  String get noMessages => 'এখনও কোনো বার্তা নেই।';
+
+  @override
+  String get messageHint => 'একটি বার্তা লিখুন';
+
+  @override
+  String get earlierMessages => 'আগের বার্তা';
+
+  @override
+  String get personLeftCompany => 'এই ব্যক্তি আর কোম্পানির অংশ নন।';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

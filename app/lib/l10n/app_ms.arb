@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: jadual anda telah diterbitkan atau diubah.",
   "noticeJoinInvite": "{company} mahu menambah anda ke dalam pasukannya.",
   "noticeTransferOffer": "{name} menawarkan anda menjadi pemilik {company}.",
-  "noticeMemberJoined": "{name} telah menyertai {company}."
+  "noticeMemberJoined": "{name} telah menyertai {company}.",
+  "messagesTab": "Mesej",
+  "wholeTeam": "Seluruh pasukan",
+  "newConversation": "Perbualan baharu",
+  "noMessages": "Belum ada mesej.",
+  "messageHint": "Tulis mesej",
+  "earlierMessages": "Mesej terdahulu",
+  "personLeftCompany": "Orang ini bukan lagi sebahagian daripada syarikat.",
+  "messagePreview": "{name}: {text}"
 }

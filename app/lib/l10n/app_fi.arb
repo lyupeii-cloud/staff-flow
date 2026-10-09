@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: työvuorolistasi on julkaistu tai sitä on muutettu.",
   "noticeJoinInvite": "{company} haluaa lisätä sinut tiimiinsä.",
   "noticeTransferOffer": "{name} ehdottaa, että sinusta tulee yrityksen {company} omistaja.",
-  "noticeMemberJoined": "{name} liittyi yritykseen {company}."
+  "noticeMemberJoined": "{name} liittyi yritykseen {company}.",
+  "messagesTab": "Viestit",
+  "wholeTeam": "Koko tiimi",
+  "newConversation": "Uusi keskustelu",
+  "noMessages": "Ei vielä viestejä.",
+  "messageHint": "Kirjoita viesti",
+  "earlierMessages": "Aiemmat viestit",
+  "personLeftCompany": "Tämä henkilö ei enää kuulu yritykseen.",
+  "messagePreview": "{name}: {text}"
 }

@@ -659,4 +659,30 @@ class L10nGu extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name $company માં જોડાયા.';
   }
+
+  @override
+  String get messagesTab => 'સંદેશા';
+
+  @override
+  String get wholeTeam => 'આખી ટીમ';
+
+  @override
+  String get newConversation => 'નવી વાતચીત';
+
+  @override
+  String get noMessages => 'હજુ કોઈ સંદેશો નથી.';
+
+  @override
+  String get messageHint => 'સંદેશો લખો';
+
+  @override
+  String get earlierMessages => 'અગાઉના સંદેશા';
+
+  @override
+  String get personLeftCompany => 'આ વ્યક્તિ હવે કંપનીનો ભાગ નથી.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

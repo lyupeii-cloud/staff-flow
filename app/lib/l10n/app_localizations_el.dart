@@ -666,4 +666,31 @@ class L10nEl extends L10n {
   String noticeMemberJoined(String name, String company) {
     return 'Ο/Η $name μπήκε στην $company.';
   }
+
+  @override
+  String get messagesTab => 'Μηνύματα';
+
+  @override
+  String get wholeTeam => 'Όλη η ομάδα';
+
+  @override
+  String get newConversation => 'Νέα συνομιλία';
+
+  @override
+  String get noMessages => 'Δεν υπάρχουν ακόμη μηνύματα.';
+
+  @override
+  String get messageHint => 'Γράψτε ένα μήνυμα';
+
+  @override
+  String get earlierMessages => 'Παλαιότερα μηνύματα';
+
+  @override
+  String get personLeftCompany =>
+      'Αυτό το άτομο δεν ανήκει πλέον στην εταιρεία.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

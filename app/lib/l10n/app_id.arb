@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: jadwal Anda telah diterbitkan atau diubah.",
   "noticeJoinInvite": "{company} ingin menambahkan Anda ke timnya.",
   "noticeTransferOffer": "{name} menawarkan Anda menjadi pemilik {company}.",
-  "noticeMemberJoined": "{name} telah bergabung dengan {company}."
+  "noticeMemberJoined": "{name} telah bergabung dengan {company}.",
+  "messagesTab": "Pesan",
+  "wholeTeam": "Seluruh tim",
+  "newConversation": "Percakapan baru",
+  "noMessages": "Belum ada pesan.",
+  "messageHint": "Tulis pesan",
+  "earlierMessages": "Pesan sebelumnya",
+  "personLeftCompany": "Orang ini sudah tidak lagi menjadi bagian dari perusahaan.",
+  "messagePreview": "{name}: {text}"
 }

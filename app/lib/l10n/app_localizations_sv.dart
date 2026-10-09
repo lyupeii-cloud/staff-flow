@@ -663,4 +663,31 @@ class L10nSv extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name har gått med i $company.';
   }
+
+  @override
+  String get messagesTab => 'Meddelanden';
+
+  @override
+  String get wholeTeam => 'Hela teamet';
+
+  @override
+  String get newConversation => 'Ny konversation';
+
+  @override
+  String get noMessages => 'Inga meddelanden än.';
+
+  @override
+  String get messageHint => 'Skriv ett meddelande';
+
+  @override
+  String get earlierMessages => 'Tidigare meddelanden';
+
+  @override
+  String get personLeftCompany =>
+      'Den här personen tillhör inte längre företaget.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

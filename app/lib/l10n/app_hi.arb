@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: आपका शेड्यूल प्रकाशित या बदला गया है।",
   "noticeJoinInvite": "{company} आपको अपनी टीम में जोड़ना चाहती है।",
   "noticeTransferOffer": "{name} आपको {company} का मालिक बनाने का प्रस्ताव दे रहे हैं।",
-  "noticeMemberJoined": "{name} {company} में शामिल हो गए।"
+  "noticeMemberJoined": "{name} {company} में शामिल हो गए।",
+  "messagesTab": "संदेश",
+  "wholeTeam": "पूरी टीम",
+  "newConversation": "नई बातचीत",
+  "noMessages": "अभी कोई संदेश नहीं।",
+  "messageHint": "संदेश लिखें",
+  "earlierMessages": "पुराने संदेश",
+  "personLeftCompany": "यह व्यक्ति अब कंपनी का हिस्सा नहीं है।",
+  "messagePreview": "{name}: {text}"
 }

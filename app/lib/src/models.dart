@@ -88,6 +88,9 @@ class Me {
   /// Avis non lus (par exemple : une modification remplacée par un autre responsable).
   final int unreadNotices;
 
+  /// Messages non lus, par entreprise.
+  final Map<String, int> unreadMessages;
+
   /// Familles de notifications activées (planning, requests, messages…).
   final Map<String, bool> notificationPrefs;
 
@@ -99,6 +102,9 @@ class Me {
           for (final r in j['pendingJoinRequests'] ?? const []) JoinRequest.fromJson(r),
         ],
         unreadNotices = j['unreadNotices'] ?? 0,
+        unreadMessages = {
+          for (final e in ((j['unreadMessages'] ?? const {}) as Map).entries) e.key as String: e.value as int,
+        },
         notificationPrefs = {
           for (final e in ((j['notificationPrefs'] ?? const {}) as Map).entries) e.key as String: e.value == true,
         };
@@ -209,3 +215,48 @@ DateTime parseDay(String s) => DateTime.parse(s);
 
 String formatDay(DateTime d) =>
     '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
+
+/// Conversation de la messagerie : le groupe de l'entreprise, ou une
+/// conversation privée avec [withName].
+class Conversation {
+  final String id;
+  final bool isGroup;
+  final String? withId;
+  final String? withName;
+  final String? withPhotoUrl;
+
+  /// L'autre personne fait-elle encore partie de l'entreprise ?
+  final bool withActive;
+  final ChatMessage? last;
+  final int unread;
+
+  Conversation.fromJson(Map<String, dynamic> j)
+      : id = j['id'],
+        isGroup = j['kind'] == 'group',
+        withId = j['with']?['id'],
+        withName = j['with']?['name'],
+        withPhotoUrl = j['with']?['photoUrl'],
+        withActive = j['with']?['active'] ?? true,
+        last = j['lastMessage'] == null ? null : ChatMessage.fromJson(j['lastMessage']),
+        unread = j['unread'] ?? 0;
+}
+
+class ChatMessage {
+  /// `null` : message pas encore envoyé (file d'attente hors connexion).
+  final int? id;
+  final String? authorId;
+  final String? authorName;
+  final String body;
+  final DateTime createdAt;
+
+  const ChatMessage({this.id, this.authorId, this.authorName, required this.body, required this.createdAt});
+
+  bool get pending => id == null;
+
+  ChatMessage.fromJson(Map<String, dynamic> j)
+      : id = j['id'],
+        authorId = j['authorId'],
+        authorName = j['authorName'],
+        body = j['body'],
+        createdAt = DateTime.parse(j['createdAt']).toLocal();
+}

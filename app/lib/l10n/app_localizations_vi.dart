@@ -655,4 +655,30 @@ class L10nVi extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name đã tham gia $company.';
   }
+
+  @override
+  String get messagesTab => 'Tin nhắn';
+
+  @override
+  String get wholeTeam => 'Cả nhóm';
+
+  @override
+  String get newConversation => 'Cuộc trò chuyện mới';
+
+  @override
+  String get noMessages => 'Chưa có tin nhắn.';
+
+  @override
+  String get messageHint => 'Viết tin nhắn';
+
+  @override
+  String get earlierMessages => 'Tin nhắn trước';
+
+  @override
+  String get personLeftCompany => 'Người này không còn thuộc công ty.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

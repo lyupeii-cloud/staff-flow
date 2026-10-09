@@ -663,4 +663,30 @@ class L10nFi extends L10n {
   String noticeMemberJoined(String name, String company) {
     return '$name liittyi yritykseen $company.';
   }
+
+  @override
+  String get messagesTab => 'Viestit';
+
+  @override
+  String get wholeTeam => 'Koko tiimi';
+
+  @override
+  String get newConversation => 'Uusi keskustelu';
+
+  @override
+  String get noMessages => 'Ei vielä viestejä.';
+
+  @override
+  String get messageHint => 'Kirjoita viesti';
+
+  @override
+  String get earlierMessages => 'Aiemmat viestit';
+
+  @override
+  String get personLeftCompany => 'Tämä henkilö ei enää kuulu yritykseen.';
+
+  @override
+  String messagePreview(String name, String text) {
+    return '$name: $text';
+  }
 }

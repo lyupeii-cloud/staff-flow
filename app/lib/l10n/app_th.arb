@@ -178,5 +178,13 @@
   "noticeSchedulePublished": "{company}: ตารางงานของคุณได้รับการเผยแพร่หรือแก้ไขแล้ว",
   "noticeJoinInvite": "{company} ต้องการเพิ่มคุณเข้าทีม",
   "noticeTransferOffer": "{name} เสนอให้คุณเป็นเจ้าของ {company}",
-  "noticeMemberJoined": "{name} เข้าร่วม {company} แล้ว"
+  "noticeMemberJoined": "{name} เข้าร่วม {company} แล้ว",
+  "messagesTab": "ข้อความ",
+  "wholeTeam": "ทั้งทีม",
+  "newConversation": "การสนทนาใหม่",
+  "noMessages": "ยังไม่มีข้อความ",
+  "messageHint": "เขียนข้อความ",
+  "earlierMessages": "ข้อความก่อนหน้า",
+  "personLeftCompany": "บุคคลนี้ไม่ได้อยู่ในบริษัทแล้ว",
+  "messagePreview": "{name}: {text}"
 }
