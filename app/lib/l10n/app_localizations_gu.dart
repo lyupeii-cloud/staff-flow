@@ -717,4 +717,26 @@ class L10nGu extends L10n {
   String lastMessagesOf(String name) {
     return '$name ના તાજેતરના સંદેશા';
   }
+
+  @override
+  String get deleteAllNotices => 'બધું કાઢી નાખો';
+
+  @override
+  String get deleteAllNoticesConfirm => 'બધી સૂચનાઓ કાઢી નાખવી?';
+
+  @override
+  String get noticeRetention => 'વાંચેલી સૂચનાઓ આટલા સમય પછી કાઢો';
+
+  @override
+  String get retentionDay => '1 દિવસ';
+
+  @override
+  String get retentionWeek => '1 અઠવાડિયું';
+
+  @override
+  String get retentionMonth => '1 મહિનો';
+
+  @override
+  String get billingOwnersOnly =>
+      'ફક્ત તમારી માલિકીની કંપની હોય ત્યારે જ સક્રિય.';
 }

@@ -195,5 +195,12 @@
   "replyAction": "Odpovědět",
   "translateAction": "Přeložit",
   "replyingTo": "Odpověď pro: {name}",
-  "lastMessagesOf": "Poslední zprávy od: {name}"
+  "lastMessagesOf": "Poslední zprávy od: {name}",
+  "deleteAllNotices": "Smazat vše",
+  "deleteAllNoticesConfirm": "Smazat všechna oznámení?",
+  "noticeRetention": "Mazat přečtená oznámení po",
+  "retentionDay": "1 dni",
+  "retentionWeek": "1 týdnu",
+  "retentionMonth": "1 měsíci",
+  "billingOwnersOnly": "Aktivní, jen pokud vlastníte firmu."
 }

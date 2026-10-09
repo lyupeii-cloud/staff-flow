@@ -195,5 +195,12 @@
   "replyAction": "उत्तर द्या",
   "translateAction": "भाषांतर करा",
   "replyingTo": "{name} यांना उत्तर",
-  "lastMessagesOf": "{name} यांचे अलीकडील संदेश"
+  "lastMessagesOf": "{name} यांचे अलीकडील संदेश",
+  "deleteAllNotices": "सर्व हटवा",
+  "deleteAllNoticesConfirm": "सर्व सूचना हटवायच्या?",
+  "noticeRetention": "वाचलेल्या सूचना यानंतर हटवा",
+  "retentionDay": "1 दिवस",
+  "retentionWeek": "1 आठवडा",
+  "retentionMonth": "1 महिना",
+  "billingOwnersOnly": "तुमची कंपनी असेल तरच सक्रिय."
 }

@@ -195,5 +195,12 @@
   "replyAction": "Жауап беру",
   "translateAction": "Аудару",
   "replyingTo": "{name} үшін жауап",
-  "lastMessagesOf": "{name} соңғы хабарлары"
+  "lastMessagesOf": "{name} соңғы хабарлары",
+  "deleteAllNotices": "Бәрін жою",
+  "deleteAllNoticesConfirm": "Барлық хабарландыруларды жою керек пе?",
+  "noticeRetention": "Оқылған хабарландыруларды жою мерзімі",
+  "retentionDay": "1 күн",
+  "retentionWeek": "1 апта",
+  "retentionMonth": "1 ай",
+  "billingOwnersOnly": "Тек компанияңыз болса ғана қосулы."
 }

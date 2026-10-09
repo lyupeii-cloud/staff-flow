@@ -721,4 +721,25 @@ class L10nFi extends L10n {
   String lastMessagesOf(String name) {
     return 'Viimeisimmät viestit: $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Poista kaikki';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Poistetaanko kaikki ilmoitukset?';
+
+  @override
+  String get noticeRetention => 'Poista luetut ilmoitukset';
+
+  @override
+  String get retentionDay => '1 päivän jälkeen';
+
+  @override
+  String get retentionWeek => '1 viikon jälkeen';
+
+  @override
+  String get retentionMonth => '1 kuukauden jälkeen';
+
+  @override
+  String get billingOwnersOnly => 'Käytössä vain, jos omistat yrityksen.';
 }

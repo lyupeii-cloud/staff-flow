@@ -27,7 +27,7 @@ class Api {
   late final PlanningService planning = PlanningService(store, companies, notifications);
   late final ChatService chat = ChatService(store, companies, notifications);
   late final JoinService joins = JoinService(store, companies, now: now);
-  late final NoticeService notices = NoticeService(store);
+  late final NoticeService notices = NoticeService(store, now: now);
 
   /// Horloge (UTC), remplaçable dans les tests.
   final DateTime Function() now;
@@ -92,6 +92,8 @@ class Api {
       ..post('/companies/<id>/history/<entryId>/undo', _authed(_undo))
       ..get('/notices', _authed(_notices))
       ..post('/notices/read', _authed(_readNotices))
+      ..delete('/notices', _authed(_deleteNotices))
+      ..put('/me/notice-retention', _authed(_setRetention))
       // Notifications sur l'appareil
       ..put('/devices', _authed(_registerDevice))
       ..post('/devices/forget', _authed(_forgetDevice))
@@ -155,6 +157,7 @@ class Api {
         'pendingJoinRequests': [for (final j in await joins.pendingFor(user)) j.toJson()],
         'unreadNotices': await notices.unreadCount(user.id),
         'notificationPrefs': await notifications.prefs(user.id),
+        'noticeRetention': await notices.retention(user.id),
         'unreadMessages': await chat.unreadByCompany(user.id),
       });
 
@@ -358,6 +361,16 @@ class Api {
 
   Future<Response> _readNotices(Request req, User user) async {
     await notices.markAllRead(user.id);
+    return Response(204);
+  }
+
+  Future<Response> _deleteNotices(Request req, User user) async {
+    await notices.deleteAll(user.id);
+    return Response(204);
+  }
+
+  Future<Response> _setRetention(Request req, User user) async {
+    await notices.setRetention(user.id, _string(await _body(req), 'value'));
     return Response(204);
   }
 

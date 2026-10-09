@@ -195,5 +195,12 @@
   "replyAction": "返信",
   "translateAction": "翻訳",
   "replyingTo": "{name} さんへの返信",
-  "lastMessagesOf": "{name} さんの最近のメッセージ"
+  "lastMessagesOf": "{name} さんの最近のメッセージ",
+  "deleteAllNotices": "すべて削除",
+  "deleteAllNoticesConfirm": "すべてのお知らせを削除しますか？",
+  "noticeRetention": "既読のお知らせを削除するまで",
+  "retentionDay": "1日",
+  "retentionWeek": "1週間",
+  "retentionMonth": "1か月",
+  "billingOwnersOnly": "会社のオーナーの場合のみ有効です。"
 }

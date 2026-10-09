@@ -274,4 +274,9 @@ CREATE TABLE message_translations (
   PRIMARY KEY (message_id, lang)
 );
 ''',
+  // 10 — avis lus supprimés automatiquement après un jour, une semaine ou un mois
+  '''
+ALTER TABLE users ADD COLUMN notice_retention text NOT NULL DEFAULT 'week'
+  CHECK (notice_retention IN ('day', 'week', 'month'));
+''',
 ];

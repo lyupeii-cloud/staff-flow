@@ -713,4 +713,25 @@ class L10nTh extends L10n {
   String lastMessagesOf(String name) {
     return 'ข้อความล่าสุดจาก $name';
   }
+
+  @override
+  String get deleteAllNotices => 'ลบทั้งหมด';
+
+  @override
+  String get deleteAllNoticesConfirm => 'ลบการแจ้งเตือนทั้งหมดหรือไม่';
+
+  @override
+  String get noticeRetention => 'ลบการแจ้งเตือนที่อ่านแล้วหลังจาก';
+
+  @override
+  String get retentionDay => '1 วัน';
+
+  @override
+  String get retentionWeek => '1 สัปดาห์';
+
+  @override
+  String get retentionMonth => '1 เดือน';
+
+  @override
+  String get billingOwnersOnly => 'ใช้งานได้เฉพาะเมื่อคุณเป็นเจ้าของบริษัท';
 }

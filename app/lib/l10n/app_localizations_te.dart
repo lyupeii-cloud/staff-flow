@@ -719,4 +719,25 @@ class L10nTe extends L10n {
   String lastMessagesOf(String name) {
     return '$name ఇటీవలి సందేశాలు';
   }
+
+  @override
+  String get deleteAllNotices => 'అన్నీ తొలగించు';
+
+  @override
+  String get deleteAllNoticesConfirm => 'అన్ని నోటిఫికేషన్‌లను తొలగించాలా?';
+
+  @override
+  String get noticeRetention => 'చదివిన నోటిఫికేషన్‌లను తొలగించే వ్యవధి';
+
+  @override
+  String get retentionDay => '1 రోజు';
+
+  @override
+  String get retentionWeek => '1 వారం';
+
+  @override
+  String get retentionMonth => '1 నెల';
+
+  @override
+  String get billingOwnersOnly => 'మీకు కంపెనీ ఉంటేనే సక్రియం.';
 }

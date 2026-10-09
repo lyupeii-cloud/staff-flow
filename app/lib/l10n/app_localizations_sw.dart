@@ -721,4 +721,25 @@ class L10nSw extends L10n {
   String lastMessagesOf(String name) {
     return 'Ujumbe wa hivi karibuni wa $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Futa zote';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Futa arifa zote?';
+
+  @override
+  String get noticeRetention => 'Futa arifa zilizosomwa baada ya';
+
+  @override
+  String get retentionDay => 'Siku 1';
+
+  @override
+  String get retentionWeek => 'Wiki 1';
+
+  @override
+  String get retentionMonth => 'Mwezi 1';
+
+  @override
+  String get billingOwnersOnly => 'Inafanya kazi tu ukimiliki kampuni.';
 }

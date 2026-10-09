@@ -195,5 +195,12 @@
   "replyAction": "Beantwoorden",
   "translateAction": "Vertalen",
   "replyingTo": "Antwoord aan {name}",
-  "lastMessagesOf": "Laatste berichten van {name}"
+  "lastMessagesOf": "Laatste berichten van {name}",
+  "deleteAllNotices": "Alles verwijderen",
+  "deleteAllNoticesConfirm": "Alle meldingen verwijderen?",
+  "noticeRetention": "Gelezen meldingen verwijderen na",
+  "retentionDay": "1 dag",
+  "retentionWeek": "1 week",
+  "retentionMonth": "1 maand",
+  "billingOwnersOnly": "Alleen actief als je eigenaar bent van een bedrijf."
 }

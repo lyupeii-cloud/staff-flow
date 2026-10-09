@@ -727,4 +727,25 @@ class L10nUk extends L10n {
   String lastMessagesOf(String name) {
     return 'Останні повідомлення від $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Видалити все';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Видалити всі сповіщення?';
+
+  @override
+  String get noticeRetention => 'Видаляти прочитані сповіщення через';
+
+  @override
+  String get retentionDay => '1 день';
+
+  @override
+  String get retentionWeek => '1 тиждень';
+
+  @override
+  String get retentionMonth => '1 місяць';
+
+  @override
+  String get billingOwnersOnly => 'Діє лише, якщо ви власник компанії.';
 }

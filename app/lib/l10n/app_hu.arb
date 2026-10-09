@@ -195,5 +195,12 @@
   "replyAction": "Válasz",
   "translateAction": "Fordítás",
   "replyingTo": "Válasz neki: {name}",
-  "lastMessagesOf": "{name} legutóbbi üzenetei"
+  "lastMessagesOf": "{name} legutóbbi üzenetei",
+  "deleteAllNotices": "Összes törlése",
+  "deleteAllNoticesConfirm": "Törlöd az összes értesítést?",
+  "noticeRetention": "Olvasott értesítések törlése ennyi idő után",
+  "retentionDay": "1 nap",
+  "retentionWeek": "1 hét",
+  "retentionMonth": "1 hónap",
+  "billingOwnersOnly": "Csak akkor aktív, ha van saját céged."
 }

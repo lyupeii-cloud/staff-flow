@@ -718,4 +718,26 @@ class L10nPa extends L10n {
   String lastMessagesOf(String name) {
     return '$name ਦੇ ਹਾਲੀਆ ਸੁਨੇਹੇ';
   }
+
+  @override
+  String get deleteAllNotices => 'ਸਭ ਮਿਟਾਓ';
+
+  @override
+  String get deleteAllNoticesConfirm => 'ਸਾਰੀਆਂ ਸੂਚਨਾਵਾਂ ਮਿਟਾਉਣੀਆਂ ਹਨ?';
+
+  @override
+  String get noticeRetention => 'ਪੜ੍ਹੀਆਂ ਸੂਚਨਾਵਾਂ ਇਸ ਤੋਂ ਬਾਅਦ ਮਿਟਾਓ';
+
+  @override
+  String get retentionDay => '1 ਦਿਨ';
+
+  @override
+  String get retentionWeek => '1 ਹਫ਼ਤਾ';
+
+  @override
+  String get retentionMonth => '1 ਮਹੀਨਾ';
+
+  @override
+  String get billingOwnersOnly =>
+      'ਸਿਰਫ਼ ਤਾਂ ਹੀ ਚਾਲੂ ਜੇ ਤੁਸੀਂ ਕਿਸੇ ਕੰਪਨੀ ਦੇ ਮਾਲਕ ਹੋ।';
 }

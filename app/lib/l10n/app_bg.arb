@@ -195,5 +195,12 @@
   "replyAction": "Отговор",
   "translateAction": "Превод",
   "replyingTo": "Отговор на {name}",
-  "lastMessagesOf": "Последни съобщения от {name}"
+  "lastMessagesOf": "Последни съобщения от {name}",
+  "deleteAllNotices": "Изтрий всички",
+  "deleteAllNoticesConfirm": "Да се изтрият ли всички известия?",
+  "noticeRetention": "Изтриване на прочетените известия след",
+  "retentionDay": "1 ден",
+  "retentionWeek": "1 седмица",
+  "retentionMonth": "1 месец",
+  "billingOwnersOnly": "Активно само ако притежавате фирма."
 }

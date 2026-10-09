@@ -718,4 +718,25 @@ class L10nBg extends L10n {
   String lastMessagesOf(String name) {
     return 'Последни съобщения от $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Изтрий всички';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Да се изтрият ли всички известия?';
+
+  @override
+  String get noticeRetention => 'Изтриване на прочетените известия след';
+
+  @override
+  String get retentionDay => '1 ден';
+
+  @override
+  String get retentionWeek => '1 седмица';
+
+  @override
+  String get retentionMonth => '1 месец';
+
+  @override
+  String get billingOwnersOnly => 'Активно само ако притежавате фирма.';
 }

@@ -719,4 +719,25 @@ class L10nMr extends L10n {
   String lastMessagesOf(String name) {
     return '$name यांचे अलीकडील संदेश';
   }
+
+  @override
+  String get deleteAllNotices => 'सर्व हटवा';
+
+  @override
+  String get deleteAllNoticesConfirm => 'सर्व सूचना हटवायच्या?';
+
+  @override
+  String get noticeRetention => 'वाचलेल्या सूचना यानंतर हटवा';
+
+  @override
+  String get retentionDay => '1 दिवस';
+
+  @override
+  String get retentionWeek => '1 आठवडा';
+
+  @override
+  String get retentionMonth => '1 महिना';
+
+  @override
+  String get billingOwnersOnly => 'तुमची कंपनी असेल तरच सक्रिय.';
 }

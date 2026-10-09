@@ -195,5 +195,12 @@
   "replyAction": "Balas",
   "translateAction": "Terjemahkan",
   "replyingTo": "Membalas {name}",
-  "lastMessagesOf": "Pesan terakhir dari {name}"
+  "lastMessagesOf": "Pesan terakhir dari {name}",
+  "deleteAllNotices": "Hapus semua",
+  "deleteAllNoticesConfirm": "Hapus semua notifikasi?",
+  "noticeRetention": "Hapus notifikasi yang sudah dibaca setelah",
+  "retentionDay": "1 hari",
+  "retentionWeek": "1 minggu",
+  "retentionMonth": "1 bulan",
+  "billingOwnersOnly": "Hanya aktif jika Anda memiliki perusahaan."
 }

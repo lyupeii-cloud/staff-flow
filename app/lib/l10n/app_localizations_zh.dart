@@ -702,4 +702,25 @@ class L10nZh extends L10n {
   String lastMessagesOf(String name) {
     return '$name 的最近消息';
   }
+
+  @override
+  String get deleteAllNotices => '全部删除';
+
+  @override
+  String get deleteAllNoticesConfirm => '删除所有通知？';
+
+  @override
+  String get noticeRetention => '已读通知保留时间';
+
+  @override
+  String get retentionDay => '1 天';
+
+  @override
+  String get retentionWeek => '1 周';
+
+  @override
+  String get retentionMonth => '1 个月';
+
+  @override
+  String get billingOwnersOnly => '仅在您拥有公司时生效。';
 }

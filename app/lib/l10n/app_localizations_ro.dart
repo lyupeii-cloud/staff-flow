@@ -725,4 +725,25 @@ class L10nRo extends L10n {
   String lastMessagesOf(String name) {
     return 'Ultimele mesaje de la $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Șterge tot';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Ștergi toate avizele?';
+
+  @override
+  String get noticeRetention => 'Șterge avizele citite după';
+
+  @override
+  String get retentionDay => '1 zi';
+
+  @override
+  String get retentionWeek => '1 săptămână';
+
+  @override
+  String get retentionMonth => '1 lună';
+
+  @override
+  String get billingOwnersOnly => 'Activ doar dacă deții o firmă.';
 }

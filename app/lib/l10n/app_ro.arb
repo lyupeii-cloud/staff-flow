@@ -195,5 +195,12 @@
   "replyAction": "Răspunde",
   "translateAction": "Traduce",
   "replyingTo": "Răspuns pentru {name}",
-  "lastMessagesOf": "Ultimele mesaje de la {name}"
+  "lastMessagesOf": "Ultimele mesaje de la {name}",
+  "deleteAllNotices": "Șterge tot",
+  "deleteAllNoticesConfirm": "Ștergi toate avizele?",
+  "noticeRetention": "Șterge avizele citite după",
+  "retentionDay": "1 zi",
+  "retentionWeek": "1 săptămână",
+  "retentionMonth": "1 lună",
+  "billingOwnersOnly": "Activ doar dacă deții o firmă."
 }

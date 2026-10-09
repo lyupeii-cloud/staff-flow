@@ -88,6 +88,9 @@ class Me {
   /// Avis non lus (par exemple : une modification remplacée par un autre responsable).
   final int unreadNotices;
 
+  /// Avis lus supprimés après : « day », « week » ou « month ».
+  final String noticeRetention;
+
   /// Messages non lus, par entreprise.
   final Map<String, int> unreadMessages;
 
@@ -102,6 +105,7 @@ class Me {
           for (final r in j['pendingJoinRequests'] ?? const []) JoinRequest.fromJson(r),
         ],
         unreadNotices = j['unreadNotices'] ?? 0,
+        noticeRetention = j['noticeRetention'] ?? 'week',
         unreadMessages = {
           for (final e in ((j['unreadMessages'] ?? const {}) as Map).entries) e.key as String: e.value as int,
         },

@@ -48,7 +48,7 @@ class StaffFlowApp extends StatelessWidget {
           builder: (context, child) {
             // Le serveur répond dans la langue de l'écran.
             session.api.language = Localizations.localeOf(context).languageCode;
-            return child!;
+            return FramedApp(child: child!);
           },
           home: switch (session.state) {
             SessionState.loading => Scaffold(

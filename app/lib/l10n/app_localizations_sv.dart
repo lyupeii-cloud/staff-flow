@@ -722,4 +722,25 @@ class L10nSv extends L10n {
   String lastMessagesOf(String name) {
     return 'Senaste meddelanden från $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Radera alla';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Radera alla aviseringar?';
+
+  @override
+  String get noticeRetention => 'Radera lästa aviseringar efter';
+
+  @override
+  String get retentionDay => '1 dag';
+
+  @override
+  String get retentionWeek => '1 vecka';
+
+  @override
+  String get retentionMonth => '1 månad';
+
+  @override
+  String get billingOwnersOnly => 'Bara aktivt om du äger ett företag.';
 }

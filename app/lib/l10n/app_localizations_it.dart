@@ -721,4 +721,25 @@ class L10nIt extends L10n {
   String lastMessagesOf(String name) {
     return 'Ultimi messaggi di $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Elimina tutto';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Eliminare tutti gli avvisi?';
+
+  @override
+  String get noticeRetention => 'Elimina gli avvisi letti dopo';
+
+  @override
+  String get retentionDay => '1 giorno';
+
+  @override
+  String get retentionWeek => '1 settimana';
+
+  @override
+  String get retentionMonth => '1 mese';
+
+  @override
+  String get billingOwnersOnly => 'Attivo solo se possiedi un\'azienda.';
 }

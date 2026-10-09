@@ -725,4 +725,25 @@ class L10nSk extends L10n {
   String lastMessagesOf(String name) {
     return 'Posledné správy od: $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Vymazať všetko';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Vymazať všetky upozornenia?';
+
+  @override
+  String get noticeRetention => 'Mazať prečítané upozornenia po';
+
+  @override
+  String get retentionDay => '1 dni';
+
+  @override
+  String get retentionWeek => '1 týždni';
+
+  @override
+  String get retentionMonth => '1 mesiaci';
+
+  @override
+  String get billingOwnersOnly => 'Aktívne, len ak vlastníte firmu.';
 }

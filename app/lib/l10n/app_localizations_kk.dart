@@ -719,4 +719,26 @@ class L10nKk extends L10n {
   String lastMessagesOf(String name) {
     return '$name соңғы хабарлары';
   }
+
+  @override
+  String get deleteAllNotices => 'Бәрін жою';
+
+  @override
+  String get deleteAllNoticesConfirm =>
+      'Барлық хабарландыруларды жою керек пе?';
+
+  @override
+  String get noticeRetention => 'Оқылған хабарландыруларды жою мерзімі';
+
+  @override
+  String get retentionDay => '1 күн';
+
+  @override
+  String get retentionWeek => '1 апта';
+
+  @override
+  String get retentionMonth => '1 ай';
+
+  @override
+  String get billingOwnersOnly => 'Тек компанияңыз болса ғана қосулы.';
 }

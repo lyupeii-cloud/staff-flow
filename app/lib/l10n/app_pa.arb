@@ -195,5 +195,12 @@
   "replyAction": "ਜਵਾਬ ਦਿਓ",
   "translateAction": "ਅਨੁਵਾਦ ਕਰੋ",
   "replyingTo": "{name} ਨੂੰ ਜਵਾਬ",
-  "lastMessagesOf": "{name} ਦੇ ਹਾਲੀਆ ਸੁਨੇਹੇ"
+  "lastMessagesOf": "{name} ਦੇ ਹਾਲੀਆ ਸੁਨੇਹੇ",
+  "deleteAllNotices": "ਸਭ ਮਿਟਾਓ",
+  "deleteAllNoticesConfirm": "ਸਾਰੀਆਂ ਸੂਚਨਾਵਾਂ ਮਿਟਾਉਣੀਆਂ ਹਨ?",
+  "noticeRetention": "ਪੜ੍ਹੀਆਂ ਸੂਚਨਾਵਾਂ ਇਸ ਤੋਂ ਬਾਅਦ ਮਿਟਾਓ",
+  "retentionDay": "1 ਦਿਨ",
+  "retentionWeek": "1 ਹਫ਼ਤਾ",
+  "retentionMonth": "1 ਮਹੀਨਾ",
+  "billingOwnersOnly": "ਸਿਰਫ਼ ਤਾਂ ਹੀ ਚਾਲੂ ਜੇ ਤੁਸੀਂ ਕਿਸੇ ਕੰਪਨੀ ਦੇ ਮਾਲਕ ਹੋ।"
 }

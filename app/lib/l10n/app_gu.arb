@@ -195,5 +195,12 @@
   "replyAction": "જવાબ આપો",
   "translateAction": "અનુવાદ કરો",
   "replyingTo": "{name} ને જવાબ",
-  "lastMessagesOf": "{name} ના તાજેતરના સંદેશા"
+  "lastMessagesOf": "{name} ના તાજેતરના સંદેશા",
+  "deleteAllNotices": "બધું કાઢી નાખો",
+  "deleteAllNoticesConfirm": "બધી સૂચનાઓ કાઢી નાખવી?",
+  "noticeRetention": "વાંચેલી સૂચનાઓ આટલા સમય પછી કાઢો",
+  "retentionDay": "1 દિવસ",
+  "retentionWeek": "1 અઠવાડિયું",
+  "retentionMonth": "1 મહિનો",
+  "billingOwnersOnly": "ફક્ત તમારી માલિકીની કંપની હોય ત્યારે જ સક્રિય."
 }

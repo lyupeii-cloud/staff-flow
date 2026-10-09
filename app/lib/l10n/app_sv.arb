@@ -195,5 +195,12 @@
   "replyAction": "Svara",
   "translateAction": "Översätt",
   "replyingTo": "Svar till {name}",
-  "lastMessagesOf": "Senaste meddelanden från {name}"
+  "lastMessagesOf": "Senaste meddelanden från {name}",
+  "deleteAllNotices": "Radera alla",
+  "deleteAllNoticesConfirm": "Radera alla aviseringar?",
+  "noticeRetention": "Radera lästa aviseringar efter",
+  "retentionDay": "1 dag",
+  "retentionWeek": "1 vecka",
+  "retentionMonth": "1 månad",
+  "billingOwnersOnly": "Bara aktivt om du äger ett företag."
 }

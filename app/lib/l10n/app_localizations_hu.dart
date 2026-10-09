@@ -717,4 +717,25 @@ class L10nHu extends L10n {
   String lastMessagesOf(String name) {
     return '$name legutóbbi üzenetei';
   }
+
+  @override
+  String get deleteAllNotices => 'Összes törlése';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Törlöd az összes értesítést?';
+
+  @override
+  String get noticeRetention => 'Olvasott értesítések törlése ennyi idő után';
+
+  @override
+  String get retentionDay => '1 nap';
+
+  @override
+  String get retentionWeek => '1 hét';
+
+  @override
+  String get retentionMonth => '1 hónap';
+
+  @override
+  String get billingOwnersOnly => 'Csak akkor aktív, ha van saját céged.';
 }

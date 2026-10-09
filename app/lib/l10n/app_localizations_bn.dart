@@ -717,4 +717,25 @@ class L10nBn extends L10n {
   String lastMessagesOf(String name) {
     return '$name-এর সাম্প্রতিক বার্তা';
   }
+
+  @override
+  String get deleteAllNotices => 'সব মুছুন';
+
+  @override
+  String get deleteAllNoticesConfirm => 'সব বিজ্ঞপ্তি মুছবেন?';
+
+  @override
+  String get noticeRetention => 'পড়া বিজ্ঞপ্তি মুছুন এর পরে';
+
+  @override
+  String get retentionDay => '১ দিন';
+
+  @override
+  String get retentionWeek => '১ সপ্তাহ';
+
+  @override
+  String get retentionMonth => '১ মাস';
+
+  @override
+  String get billingOwnersOnly => 'শুধু আপনি কোনো কোম্পানির মালিক হলে সক্রিয়।';
 }

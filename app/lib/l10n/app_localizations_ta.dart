@@ -722,4 +722,26 @@ class L10nTa extends L10n {
   String lastMessagesOf(String name) {
     return '$name அவர்களின் சமீபத்திய செய்திகள்';
   }
+
+  @override
+  String get deleteAllNotices => 'அனைத்தையும் நீக்கு';
+
+  @override
+  String get deleteAllNoticesConfirm => 'எல்லா அறிவிப்புகளையும் நீக்கவா?';
+
+  @override
+  String get noticeRetention => 'படித்த அறிவிப்புகளை நீக்கும் காலம்';
+
+  @override
+  String get retentionDay => '1 நாள்';
+
+  @override
+  String get retentionWeek => '1 வாரம்';
+
+  @override
+  String get retentionMonth => '1 மாதம்';
+
+  @override
+  String get billingOwnersOnly =>
+      'நீங்கள் ஒரு நிறுவனத்தின் உரிமையாளராக இருந்தால் மட்டுமே செயல்படும்.';
 }

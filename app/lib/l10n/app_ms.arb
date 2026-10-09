@@ -195,5 +195,12 @@
   "replyAction": "Balas",
   "translateAction": "Terjemah",
   "replyingTo": "Membalas {name}",
-  "lastMessagesOf": "Mesej terakhir daripada {name}"
+  "lastMessagesOf": "Mesej terakhir daripada {name}",
+  "deleteAllNotices": "Padam semua",
+  "deleteAllNoticesConfirm": "Padam semua pemberitahuan?",
+  "noticeRetention": "Padam pemberitahuan yang dibaca selepas",
+  "retentionDay": "1 hari",
+  "retentionWeek": "1 minggu",
+  "retentionMonth": "1 bulan",
+  "billingOwnersOnly": "Hanya aktif jika anda memiliki syarikat."
 }

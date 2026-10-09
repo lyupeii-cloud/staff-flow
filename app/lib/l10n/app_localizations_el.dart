@@ -725,4 +725,25 @@ class L10nEl extends L10n {
   String lastMessagesOf(String name) {
     return 'Τελευταία μηνύματα από $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Διαγραφή όλων';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Διαγραφή όλων των ειδοποιήσεων;';
+
+  @override
+  String get noticeRetention => 'Διαγραφή αναγνωσμένων ειδοποιήσεων μετά από';
+
+  @override
+  String get retentionDay => '1 ημέρα';
+
+  @override
+  String get retentionWeek => '1 εβδομάδα';
+
+  @override
+  String get retentionMonth => '1 μήνα';
+
+  @override
+  String get billingOwnersOnly => 'Ενεργό μόνο αν έχετε δική σας εταιρεία.';
 }

@@ -195,5 +195,12 @@
   "replyAction": "జవాబు",
   "translateAction": "అనువదించు",
   "replyingTo": "{name}కు జవాబు",
-  "lastMessagesOf": "{name} ఇటీవలి సందేశాలు"
+  "lastMessagesOf": "{name} ఇటీవలి సందేశాలు",
+  "deleteAllNotices": "అన్నీ తొలగించు",
+  "deleteAllNoticesConfirm": "అన్ని నోటిఫికేషన్‌లను తొలగించాలా?",
+  "noticeRetention": "చదివిన నోటిఫికేషన్‌లను తొలగించే వ్యవధి",
+  "retentionDay": "1 రోజు",
+  "retentionWeek": "1 వారం",
+  "retentionMonth": "1 నెల",
+  "billingOwnersOnly": "మీకు కంపెనీ ఉంటేనే సక్రియం."
 }

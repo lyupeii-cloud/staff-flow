@@ -725,4 +725,26 @@ class L10nFr extends L10n {
   String lastMessagesOf(String name) {
     return 'Derniers messages de $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Tout supprimer';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Supprimer tous les avis ?';
+
+  @override
+  String get noticeRetention => 'Supprimer les avis lus après';
+
+  @override
+  String get retentionDay => '1 jour';
+
+  @override
+  String get retentionWeek => '1 semaine';
+
+  @override
+  String get retentionMonth => '1 mois';
+
+  @override
+  String get billingOwnersOnly =>
+      'Actif uniquement si vous possédez une entreprise.';
 }

@@ -195,5 +195,12 @@
   "replyAction": "Ответить",
   "translateAction": "Перевести",
   "replyingTo": "Ответ для {name}",
-  "lastMessagesOf": "Последние сообщения от {name}"
+  "lastMessagesOf": "Последние сообщения от {name}",
+  "deleteAllNotices": "Удалить всё",
+  "deleteAllNoticesConfirm": "Удалить все уведомления?",
+  "noticeRetention": "Удалять прочитанные уведомления через",
+  "retentionDay": "1 день",
+  "retentionWeek": "1 неделю",
+  "retentionMonth": "1 месяц",
+  "billingOwnersOnly": "Действует, только если вы владелец компании."
 }

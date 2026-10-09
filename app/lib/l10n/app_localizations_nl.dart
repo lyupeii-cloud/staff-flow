@@ -723,4 +723,26 @@ class L10nNl extends L10n {
   String lastMessagesOf(String name) {
     return 'Laatste berichten van $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Alles verwijderen';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Alle meldingen verwijderen?';
+
+  @override
+  String get noticeRetention => 'Gelezen meldingen verwijderen na';
+
+  @override
+  String get retentionDay => '1 dag';
+
+  @override
+  String get retentionWeek => '1 week';
+
+  @override
+  String get retentionMonth => '1 maand';
+
+  @override
+  String get billingOwnersOnly =>
+      'Alleen actief als je eigenaar bent van een bedrijf.';
 }

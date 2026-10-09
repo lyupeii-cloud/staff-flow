@@ -472,5 +472,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "deleteAllNotices": "Delete all",
+  "deleteAllNoticesConfirm": "Delete all notices?",
+  "noticeRetention": "Delete read notices after",
+  "retentionDay": "1 day",
+  "retentionWeek": "1 week",
+  "retentionMonth": "1 month",
+  "billingOwnersOnly": "Only active when you own a company."
 }

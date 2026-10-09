@@ -195,5 +195,12 @@
   "replyAction": "Jibu",
   "translateAction": "Tafsiri",
   "replyingTo": "Jibu kwa {name}",
-  "lastMessagesOf": "Ujumbe wa hivi karibuni wa {name}"
+  "lastMessagesOf": "Ujumbe wa hivi karibuni wa {name}",
+  "deleteAllNotices": "Futa zote",
+  "deleteAllNoticesConfirm": "Futa arifa zote?",
+  "noticeRetention": "Futa arifa zilizosomwa baada ya",
+  "retentionDay": "Siku 1",
+  "retentionWeek": "Wiki 1",
+  "retentionMonth": "Mwezi 1",
+  "billingOwnersOnly": "Inafanya kazi tu ukimiliki kampuni."
 }

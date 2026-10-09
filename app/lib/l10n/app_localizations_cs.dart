@@ -723,4 +723,25 @@ class L10nCs extends L10n {
   String lastMessagesOf(String name) {
     return 'Poslední zprávy od: $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Smazat vše';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Smazat všechna oznámení?';
+
+  @override
+  String get noticeRetention => 'Mazat přečtená oznámení po';
+
+  @override
+  String get retentionDay => '1 dni';
+
+  @override
+  String get retentionWeek => '1 týdnu';
+
+  @override
+  String get retentionMonth => '1 měsíci';
+
+  @override
+  String get billingOwnersOnly => 'Aktivní, jen pokud vlastníte firmu.';
 }

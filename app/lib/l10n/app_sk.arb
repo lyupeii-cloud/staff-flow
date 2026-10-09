@@ -195,5 +195,12 @@
   "replyAction": "Odpovedať",
   "translateAction": "Preložiť",
   "replyingTo": "Odpoveď pre: {name}",
-  "lastMessagesOf": "Posledné správy od: {name}"
+  "lastMessagesOf": "Posledné správy od: {name}",
+  "deleteAllNotices": "Vymazať všetko",
+  "deleteAllNoticesConfirm": "Vymazať všetky upozornenia?",
+  "noticeRetention": "Mazať prečítané upozornenia po",
+  "retentionDay": "1 dni",
+  "retentionWeek": "1 týždni",
+  "retentionMonth": "1 mesiaci",
+  "billingOwnersOnly": "Aktívne, len ak vlastníte firmu."
 }

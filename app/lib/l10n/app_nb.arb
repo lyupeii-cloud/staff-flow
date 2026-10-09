@@ -195,5 +195,12 @@
   "replyAction": "Svar",
   "translateAction": "Oversett",
   "replyingTo": "Svar til {name}",
-  "lastMessagesOf": "Siste meldinger fra {name}"
+  "lastMessagesOf": "Siste meldinger fra {name}",
+  "deleteAllNotices": "Slett alle",
+  "deleteAllNoticesConfirm": "Slette alle varsler?",
+  "noticeRetention": "Slett leste varsler etter",
+  "retentionDay": "1 dag",
+  "retentionWeek": "1 uke",
+  "retentionMonth": "1 måned",
+  "billingOwnersOnly": "Bare aktiv hvis du eier en bedrift."
 }

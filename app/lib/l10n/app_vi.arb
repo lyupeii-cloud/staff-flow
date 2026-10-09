@@ -195,5 +195,12 @@
   "replyAction": "Trả lời",
   "translateAction": "Dịch",
   "replyingTo": "Trả lời {name}",
-  "lastMessagesOf": "Tin nhắn gần đây của {name}"
+  "lastMessagesOf": "Tin nhắn gần đây của {name}",
+  "deleteAllNotices": "Xóa tất cả",
+  "deleteAllNoticesConfirm": "Xóa tất cả thông báo?",
+  "noticeRetention": "Xóa thông báo đã đọc sau",
+  "retentionDay": "1 ngày",
+  "retentionWeek": "1 tuần",
+  "retentionMonth": "1 tháng",
+  "billingOwnersOnly": "Chỉ bật khi bạn sở hữu một công ty."
 }

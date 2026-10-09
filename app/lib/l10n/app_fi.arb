@@ -195,5 +195,12 @@
   "replyAction": "Vastaa",
   "translateAction": "Käännä",
   "replyingTo": "Vastaus: {name}",
-  "lastMessagesOf": "Viimeisimmät viestit: {name}"
+  "lastMessagesOf": "Viimeisimmät viestit: {name}",
+  "deleteAllNotices": "Poista kaikki",
+  "deleteAllNoticesConfirm": "Poistetaanko kaikki ilmoitukset?",
+  "noticeRetention": "Poista luetut ilmoitukset",
+  "retentionDay": "1 päivän jälkeen",
+  "retentionWeek": "1 viikon jälkeen",
+  "retentionMonth": "1 kuukauden jälkeen",
+  "billingOwnersOnly": "Käytössä vain, jos omistat yrityksen."
 }

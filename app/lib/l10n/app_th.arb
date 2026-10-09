@@ -195,5 +195,12 @@
   "replyAction": "ตอบกลับ",
   "translateAction": "แปล",
   "replyingTo": "ตอบกลับ {name}",
-  "lastMessagesOf": "ข้อความล่าสุดจาก {name}"
+  "lastMessagesOf": "ข้อความล่าสุดจาก {name}",
+  "deleteAllNotices": "ลบทั้งหมด",
+  "deleteAllNoticesConfirm": "ลบการแจ้งเตือนทั้งหมดหรือไม่",
+  "noticeRetention": "ลบการแจ้งเตือนที่อ่านแล้วหลังจาก",
+  "retentionDay": "1 วัน",
+  "retentionWeek": "1 สัปดาห์",
+  "retentionMonth": "1 เดือน",
+  "billingOwnersOnly": "ใช้งานได้เฉพาะเมื่อคุณเป็นเจ้าของบริษัท"
 }

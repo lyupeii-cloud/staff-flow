@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 
 import '../api.dart';
 import '../brand.dart';
@@ -87,10 +88,11 @@ class _HomeScreenState extends State<HomeScreen> {
           actions: [
             SyncIndicator(session: session),
             NoticesButton(session: session),
+            // Son QR code toujours à portée de main (pour se faire ajouter).
             IconButton(
-              tooltip: context.l10n.newCompany,
-              icon: const Icon(Icons.add_business),
-              onPressed: () => createCompany(context, session),
+              tooltip: context.l10n.myQrCode,
+              icon: const Icon(Icons.qr_code_2),
+              onPressed: () => showMyQrCode(context, session.me!.user),
             ),
             _ProfileMenu(session: session),
           ],
@@ -126,8 +128,15 @@ class _HomeScreenState extends State<HomeScreen> {
 Future<void> createCompany(BuildContext context, Session session) async {
   final t = context.l10n;
   final name = TextEditingController();
-  final suggested = defaultTimezone(WidgetsBinding.instance.platformDispatcher.locale);
-  var timezone = timezones.contains(suggested) ? suggested : timezones.first;
+  // Fuseau de l'appareil (réglage du téléphone ou de l'ordinateur) ; à
+  // défaut, celui du pays de la langue. Modifiable dans la liste.
+  var suggested = defaultTimezone(WidgetsBinding.instance.platformDispatcher.locale);
+  try {
+    suggested = (await FlutterTimezone.getLocalTimezone()).identifier;
+  } catch (_) {}
+  final zones = [if (!timezones.contains(suggested) && suggested.contains('/')) suggested, ...timezones];
+  var timezone = zones.contains(suggested) ? suggested : zones.first;
+  if (!context.mounted) return;
   final created = await showDialog<bool>(
     context: context,
     builder: (context) => StatefulBuilder(
@@ -145,7 +154,7 @@ Future<void> createCompany(BuildContext context, Session session) async {
             DropdownButtonFormField<String>(
               initialValue: timezone,
               decoration: InputDecoration(labelText: t.timezone),
-              items: [for (final z in timezones) DropdownMenuItem(value: z, child: Text(z))],
+              items: [for (final z in zones) DropdownMenuItem(value: z, child: Text(z))],
               onChanged: (z) => setState(() => timezone = z!),
             ),
           ],
@@ -275,6 +284,8 @@ class _ProfileMenu extends StatelessWidget {
           NotificationSettingsPage.open(context, session);
         } else if (v == 'join') {
           showJoinCodeDialog(context, session);
+        } else if (v == 'create') {
+          createCompany(context, session);
         } else if (v == 'language') {
           showLanguagePicker(context, session);
         } else if (v == 'copy') {
@@ -290,6 +301,7 @@ class _ProfileMenu extends StatelessWidget {
         _item('name', Icons.badge_outlined, t.changeMyName),
         _item('notifications', Icons.notifications_outlined, t.notificationsTitle),
         _item('join', Icons.pin_outlined, t.joinCompany),
+        _item('create', Icons.add_business, t.newCompany),
         _item('copy', Icons.copy, t.myId(user.publicId)),
         _item('language', Icons.language, t.language),
         _item('logout', Icons.logout, t.signOut),

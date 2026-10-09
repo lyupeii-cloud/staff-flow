@@ -721,4 +721,25 @@ class L10nDa extends L10n {
   String lastMessagesOf(String name) {
     return 'Seneste beskeder fra $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Slet alle';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Slet alle notifikationer?';
+
+  @override
+  String get noticeRetention => 'Slet læste notifikationer efter';
+
+  @override
+  String get retentionDay => '1 dag';
+
+  @override
+  String get retentionWeek => '1 uge';
+
+  @override
+  String get retentionMonth => '1 måned';
+
+  @override
+  String get billingOwnersOnly => 'Kun aktiv, hvis du ejer en virksomhed.';
 }

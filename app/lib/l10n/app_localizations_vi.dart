@@ -713,4 +713,25 @@ class L10nVi extends L10n {
   String lastMessagesOf(String name) {
     return 'Tin nhắn gần đây của $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Xóa tất cả';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Xóa tất cả thông báo?';
+
+  @override
+  String get noticeRetention => 'Xóa thông báo đã đọc sau';
+
+  @override
+  String get retentionDay => '1 ngày';
+
+  @override
+  String get retentionWeek => '1 tuần';
+
+  @override
+  String get retentionMonth => '1 tháng';
+
+  @override
+  String get billingOwnersOnly => 'Chỉ bật khi bạn sở hữu một công ty.';
 }

@@ -80,3 +80,43 @@ class BrandTitle extends StatelessWidget {
     ],
   );
 }
+
+/// Sur un grand écran (site web), l'application devient une colonne centrée
+/// d'environ 60 % de la largeur, entre 900 et 1100 points, posée sur le fond
+/// bleu nuit de la marque : plus agréable à lire qu'une page étirée d'un bord
+/// à l'autre. Sur un téléphone, rien ne change.
+class FramedApp extends StatelessWidget {
+  final Widget child;
+
+  const FramedApp({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    final media = MediaQuery.of(context);
+    final width = media.size.width;
+    if (width <= 1000) return child;
+    final inner = (width * 0.6).clamp(900.0, 1100.0);
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Brand.navy, Color(0xFF0B2A6B)],
+        ),
+      ),
+      child: Center(
+        child: Container(
+          width: inner,
+          decoration: const BoxDecoration(
+            boxShadow: [BoxShadow(color: Color(0x66000000), blurRadius: 32)],
+          ),
+          // Les écrans calculent leurs tailles sur la colonne, pas sur la fenêtre.
+          child: MediaQuery(
+            data: media.copyWith(size: Size(inner, media.size.height)),
+            child: child,
+          ),
+        ),
+      ),
+    );
+  }
+}

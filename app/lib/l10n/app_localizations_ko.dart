@@ -705,4 +705,25 @@ class L10nKo extends L10n {
   String lastMessagesOf(String name) {
     return '$name님의 최근 메시지';
   }
+
+  @override
+  String get deleteAllNotices => '모두 삭제';
+
+  @override
+  String get deleteAllNoticesConfirm => '모든 알림을 삭제할까요?';
+
+  @override
+  String get noticeRetention => '읽은 알림 삭제 시점';
+
+  @override
+  String get retentionDay => '1일 후';
+
+  @override
+  String get retentionWeek => '1주 후';
+
+  @override
+  String get retentionMonth => '1개월 후';
+
+  @override
+  String get billingOwnersOnly => '회사를 소유한 경우에만 활성화됩니다.';
 }

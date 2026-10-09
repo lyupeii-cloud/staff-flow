@@ -195,5 +195,12 @@
   "replyAction": "Responder",
   "translateAction": "Traduzir",
   "replyingTo": "Resposta a {name}",
-  "lastMessagesOf": "Últimas mensagens de {name}"
+  "lastMessagesOf": "Últimas mensagens de {name}",
+  "deleteAllNotices": "Eliminar tudo",
+  "deleteAllNoticesConfirm": "Eliminar todos os avisos?",
+  "noticeRetention": "Eliminar avisos lidos após",
+  "retentionDay": "1 dia",
+  "retentionWeek": "1 semana",
+  "retentionMonth": "1 mês",
+  "billingOwnersOnly": "Só ativo se for proprietário de uma empresa."
 }

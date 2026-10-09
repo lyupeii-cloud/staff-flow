@@ -195,5 +195,12 @@
   "replyAction": "Απάντηση",
   "translateAction": "Μετάφραση",
   "replyingTo": "Απάντηση σε {name}",
-  "lastMessagesOf": "Τελευταία μηνύματα από {name}"
+  "lastMessagesOf": "Τελευταία μηνύματα από {name}",
+  "deleteAllNotices": "Διαγραφή όλων",
+  "deleteAllNoticesConfirm": "Διαγραφή όλων των ειδοποιήσεων;",
+  "noticeRetention": "Διαγραφή αναγνωσμένων ειδοποιήσεων μετά από",
+  "retentionDay": "1 ημέρα",
+  "retentionWeek": "1 εβδομάδα",
+  "retentionMonth": "1 μήνα",
+  "billingOwnersOnly": "Ενεργό μόνο αν έχετε δική σας εταιρεία."
 }

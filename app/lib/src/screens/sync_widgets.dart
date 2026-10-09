@@ -68,6 +68,7 @@ class NoticesButton extends StatelessWidget {
       return;
     }
     if (!context.mounted) return;
+    var cleared = false;
     await showModalBottomSheet(
       context: context,
       showDragHandle: true,
@@ -75,7 +76,37 @@ class NoticesButton extends StatelessWidget {
         shrinkWrap: true,
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
         children: [
-          Text(t.notices, style: Theme.of(context).textTheme.titleLarge),
+          Row(
+            children: [
+              Expanded(child: Text(t.notices, style: Theme.of(context).textTheme.titleLarge)),
+              if (notices.isNotEmpty)
+                TextButton.icon(
+                  icon: const Icon(Icons.delete_sweep),
+                  label: Text(t.deleteAllNotices),
+                  onPressed: () async {
+                    final sure = await showDialog<bool>(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: Text(t.deleteAllNoticesConfirm),
+                        actions: [
+                          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
+                          FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.confirm)),
+                        ],
+                      ),
+                    );
+                    if (sure != true || !context.mounted) return;
+                    final messenger = ScaffoldMessenger.of(context);
+                    try {
+                      await session.api.send('DELETE', '/notices');
+                      cleared = true;
+                      if (context.mounted) Navigator.pop(context);
+                    } on OfflineException {
+                      messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+                    }
+                  },
+                ),
+            ],
+          ),
           const SizedBox(height: 8),
           if (notices.isEmpty) Text(t.noNotices),
           for (final n in notices)
@@ -90,7 +121,7 @@ class NoticesButton extends StatelessWidget {
       ),
     );
     try {
-      await session.api.send('POST', '/notices/read');
+      if (!cleared) await session.api.send('POST', '/notices/read');
       await session.refresh();
     } catch (_) {}
   }

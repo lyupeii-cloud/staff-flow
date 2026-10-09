@@ -728,4 +728,26 @@ class L10nPl extends L10n {
   String lastMessagesOf(String name) {
     return 'Ostatnie wiadomości od: $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Usuń wszystko';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Usunąć wszystkie powiadomienia?';
+
+  @override
+  String get noticeRetention => 'Usuwaj przeczytane powiadomienia po';
+
+  @override
+  String get retentionDay => '1 dniu';
+
+  @override
+  String get retentionWeek => '1 tygodniu';
+
+  @override
+  String get retentionMonth => '1 miesiącu';
+
+  @override
+  String get billingOwnersOnly =>
+      'Działa tylko, jeśli jesteś właścicielem firmy.';
 }

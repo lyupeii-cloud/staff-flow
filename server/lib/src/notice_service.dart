@@ -1,3 +1,4 @@
+import 'errors.dart';
 import 'store.dart';
 
 /// Avis destinés à un utilisateur (par exemple : « un autre responsable a
@@ -30,10 +31,18 @@ class Notice {
 class NoticeService {
   final Store store;
 
-  NoticeService(this.store);
+  /// Horloge (UTC), remplaçable dans les tests.
+  final DateTime Function() now;
 
-  /// Avis non lus, puis les plus récents déjà lus (50 au plus).
+  NoticeService(this.store, {DateTime Function()? now}) : now = now ?? (() => DateTime.now().toUtc());
+
+  /// Durée de conservation d'un avis une fois lu, au choix de chacun.
+  static const retentions = {'day': Duration(days: 1), 'week': Duration(days: 7), 'month': Duration(days: 30)};
+
+  /// Avis non lus, puis les plus récents déjà lus (50 au plus). Les avis lus
+  /// depuis plus longtemps que la durée choisie sont d'abord supprimés.
   Future<List<Notice>> list(String userId) async {
+    await purge(userId);
     final rows = await store.query(store.db, '''
       SELECT n.id::text, n.company_id::text, c.name, n.kind, n.data, n.created_at, n.read_at IS NOT NULL
       FROM notices n LEFT JOIN companies c ON c.id = n.company_id
@@ -46,6 +55,15 @@ class NoticeService {
     ];
   }
 
+  Future<void> purge(String userId) async {
+    final rows = await store.query(
+        store.db, 'SELECT notice_retention FROM users WHERE id = @u::uuid', {'u': userId});
+    final keep = retentions[rows.first[0]] ?? retentions['week']!;
+    await store.query(store.db, '''
+      DELETE FROM notices WHERE user_id = @u::uuid AND read_at IS NOT NULL AND read_at < @limit''',
+        {'u': userId, 'limit': now().subtract(keep)});
+  }
+
   Future<int> unreadCount(String userId) async {
     final rows = await store.query(store.db,
         'SELECT count(*) FROM notices WHERE user_id = @u::uuid AND read_at IS NULL', {'u': userId});
@@ -54,6 +72,22 @@ class NoticeService {
 
   Future<void> markAllRead(String userId) async {
     await store.query(store.db,
-        'UPDATE notices SET read_at = now() WHERE user_id = @u::uuid AND read_at IS NULL', {'u': userId});
+        'UPDATE notices SET read_at = @now WHERE user_id = @u::uuid AND read_at IS NULL', {'u': userId, 'now': now()});
+  }
+
+  /// Bouton « Tout supprimer » de la cloche.
+  Future<void> deleteAll(String userId) async {
+    await store.query(store.db, 'DELETE FROM notices WHERE user_id = @u::uuid', {'u': userId});
+  }
+
+  Future<String> retention(String userId) async {
+    final rows = await store.query(
+        store.db, 'SELECT notice_retention FROM users WHERE id = @u::uuid', {'u': userId});
+    return rows.first[0] as String;
+  }
+
+  Future<void> setRetention(String userId, String value) async {
+    if (!retentions.containsKey(value)) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    await store.query(store.db, 'UPDATE users SET notice_retention = @v WHERE id = @u::uuid', {'u': userId, 'v': value});
   }
 }

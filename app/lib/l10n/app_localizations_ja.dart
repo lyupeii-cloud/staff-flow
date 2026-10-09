@@ -706,4 +706,25 @@ class L10nJa extends L10n {
   String lastMessagesOf(String name) {
     return '$name さんの最近のメッセージ';
   }
+
+  @override
+  String get deleteAllNotices => 'すべて削除';
+
+  @override
+  String get deleteAllNoticesConfirm => 'すべてのお知らせを削除しますか？';
+
+  @override
+  String get noticeRetention => '既読のお知らせを削除するまで';
+
+  @override
+  String get retentionDay => '1日';
+
+  @override
+  String get retentionWeek => '1週間';
+
+  @override
+  String get retentionMonth => '1か月';
+
+  @override
+  String get billingOwnersOnly => '会社のオーナーの場合のみ有効です。';
 }

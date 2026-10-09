@@ -720,4 +720,25 @@ class L10nNb extends L10n {
   String lastMessagesOf(String name) {
     return 'Siste meldinger fra $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Slett alle';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Slette alle varsler?';
+
+  @override
+  String get noticeRetention => 'Slett leste varsler etter';
+
+  @override
+  String get retentionDay => '1 dag';
+
+  @override
+  String get retentionWeek => '1 uke';
+
+  @override
+  String get retentionMonth => '1 måned';
+
+  @override
+  String get billingOwnersOnly => 'Bare aktiv hvis du eier en bedrift.';
 }

@@ -717,4 +717,25 @@ class L10nMs extends L10n {
   String lastMessagesOf(String name) {
     return 'Mesej terakhir daripada $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Padam semua';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Padam semua pemberitahuan?';
+
+  @override
+  String get noticeRetention => 'Padam pemberitahuan yang dibaca selepas';
+
+  @override
+  String get retentionDay => '1 hari';
+
+  @override
+  String get retentionWeek => '1 minggu';
+
+  @override
+  String get retentionMonth => '1 bulan';
+
+  @override
+  String get billingOwnersOnly => 'Hanya aktif jika anda memiliki syarikat.';
 }

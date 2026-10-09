@@ -721,4 +721,25 @@ class L10nFil extends L10n {
   String lastMessagesOf(String name) {
     return 'Mga huling mensahe ni $name';
   }
+
+  @override
+  String get deleteAllNotices => 'Burahin lahat';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Burahin ang lahat ng abiso?';
+
+  @override
+  String get noticeRetention => 'Burahin ang mga nabasang abiso pagkalipas ng';
+
+  @override
+  String get retentionDay => '1 araw';
+
+  @override
+  String get retentionWeek => '1 linggo';
+
+  @override
+  String get retentionMonth => '1 buwan';
+
+  @override
+  String get billingOwnersOnly => 'Aktibo lang kung may-ari ka ng kumpanya.';
 }

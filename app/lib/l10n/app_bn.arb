@@ -195,5 +195,12 @@
   "replyAction": "উত্তর দিন",
   "translateAction": "অনুবাদ করুন",
   "replyingTo": "{name}-কে উত্তর",
-  "lastMessagesOf": "{name}-এর সাম্প্রতিক বার্তা"
+  "lastMessagesOf": "{name}-এর সাম্প্রতিক বার্তা",
+  "deleteAllNotices": "সব মুছুন",
+  "deleteAllNoticesConfirm": "সব বিজ্ঞপ্তি মুছবেন?",
+  "noticeRetention": "পড়া বিজ্ঞপ্তি মুছুন এর পরে",
+  "retentionDay": "১ দিন",
+  "retentionWeek": "১ সপ্তাহ",
+  "retentionMonth": "১ মাস",
+  "billingOwnersOnly": "শুধু আপনি কোনো কোম্পানির মালিক হলে সক্রিয়।"
 }

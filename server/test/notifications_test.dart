@@ -78,6 +78,49 @@ void main() {
     });
   });
 
+  group('nettoyage de la cloche', () {
+    Future<void> twoNotices() async {
+      await shift(owner, bob.id);
+      await owner.ok('POST', '/companies/$company/publish');
+      await shift(owner, bob.id, day: '2026-10-07');
+      await owner.ok('POST', '/companies/$company/publish');
+    }
+
+    test('« Tout supprimer » vide la cloche de la personne seulement', () async {
+      await twoNotices();
+      await shift(owner, eva.id);
+      await owner.ok('POST', '/companies/$company/publish');
+      await bob.ok('DELETE', '/notices');
+      expect((await bob.ok('GET', '/notices'))['notices'], isEmpty);
+      expect((await bob.ok('GET', '/me'))['unreadNotices'], 0);
+      expect((await eva.ok('GET', '/notices'))['notices'], hasLength(1));
+    });
+
+    test('les avis lus partent après la durée choisie (une semaine par défaut) ; les non lus restent', () async {
+      await twoNotices();
+      expect((await bob.ok('GET', '/me'))['noticeRetention'], 'week');
+      await bob.ok('POST', '/notices/read');
+      await shift(owner, bob.id, day: '2026-10-08');
+      await owner.ok('POST', '/companies/$company/publish');
+      env.clock.advance(const Duration(days: 6));
+      expect((await bob.ok('GET', '/notices'))['notices'], hasLength(3));
+      env.clock.advance(const Duration(days: 2));
+      final left = (await bob.ok('GET', '/notices'))['notices'];
+      expect([for (final n in left) n['read']], [false]);
+    });
+
+    test('un jour ou un mois au choix ; autre valeur refusée', () async {
+      await twoNotices();
+      await bob.ok('POST', '/notices/read');
+      await bob.ok('PUT', '/me/notice-retention', {'value': 'day'});
+      env.clock.advance(const Duration(hours: 25));
+      expect((await bob.ok('GET', '/notices'))['notices'], isEmpty);
+      await bob.ok('PUT', '/me/notice-retention', {'value': 'month'});
+      expect((await bob.ok('GET', '/me'))['noticeRetention'], 'month');
+      expect((await bob('PUT', '/me/notice-retention', {'value': 'year'})).$1, 400);
+    });
+  });
+
   group('choix des notifications', () {
     test('toutes activées par défaut ; une famille coupée ne sonne plus', () async {
       expect((await bob.ok('GET', '/me'))['notificationPrefs']['planning'], isTrue);

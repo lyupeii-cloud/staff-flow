@@ -1366,6 +1366,48 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Last messages from {name}'**
   String lastMessagesOf(String name);
+
+  /// No description provided for @deleteAllNotices.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete all'**
+  String get deleteAllNotices;
+
+  /// No description provided for @deleteAllNoticesConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete all notices?'**
+  String get deleteAllNoticesConfirm;
+
+  /// No description provided for @noticeRetention.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete read notices after'**
+  String get noticeRetention;
+
+  /// No description provided for @retentionDay.
+  ///
+  /// In en, this message translates to:
+  /// **'1 day'**
+  String get retentionDay;
+
+  /// No description provided for @retentionWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'1 week'**
+  String get retentionWeek;
+
+  /// No description provided for @retentionMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'1 month'**
+  String get retentionMonth;
+
+  /// No description provided for @billingOwnersOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Only active when you own a company.'**
+  String get billingOwnersOnly;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {
