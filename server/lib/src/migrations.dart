@@ -340,4 +340,11 @@ CREATE TABLE overlap_alerts (
   '''
 ALTER TABLE messages ADD COLUMN request_id uuid REFERENCES requests(id) ON DELETE SET NULL;
 ''',
+  // 16 — outils du responsable : alertes légales choisies, droit
+  // d'impression des salariés ; lien d'agenda personnel.
+  '''
+ALTER TABLE companies ADD COLUMN legal_rules jsonb;
+ALTER TABLE companies ADD COLUMN print_scope text NOT NULL DEFAULT 'team' CHECK (print_scope IN ('own', 'team'));
+ALTER TABLE users ADD COLUMN calendar_token text UNIQUE;
+''',
 ];

@@ -62,12 +62,18 @@ class SessionTokens {
   final SecretKey _key;
   final Duration lifetime;
 
+  final String _secret;
+
   SessionTokens(String secret, {this.lifetime = const Duration(days: 30)})
-      : _key = SecretKey(secret) {
+      : _key = SecretKey(secret),
+        _secret = secret {
     if (secret.length < 32) {
       throw ArgumentError('Le secret de session doit faire au moins 32 caractères.');
     }
   }
+
+  /// Secret dérivé pour un autre usage (liens d'export…).
+  String derive(String purpose) => '$_secret:$purpose';
 
   String issue(String userId) =>
       JWT({}, subject: userId, issuer: 'staff-flow').sign(_key, expiresIn: lifetime);

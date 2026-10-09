@@ -12,4 +12,5 @@ export 'src/overlap_service.dart';
 export 'src/planning_service.dart';
 export 'src/request_service.dart';
 export 'src/store.dart';
+export 'src/tools_service.dart';
 export 'src/translator.dart';

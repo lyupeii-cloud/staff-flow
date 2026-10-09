@@ -130,21 +130,28 @@ class CompanyService {
         companyId: companyId, actorId: actor.id, action: 'member.sites', details: {'userId': userId, 'sites': result});
   }
 
-  Future<Company> update(User actor, String companyId, {String? name, String? timezone}) async {
+  Future<Company> update(User actor, String companyId,
+      {String? name, String? timezone, Map<String, int>? Function()? legalRules, String? printScope}) async {
     final (company, role) = await open(actor, companyId);
     _requireWritable(company);
     if (!role.canManage) throw const ApiError.forbidden();
     // Nom et fuseau de l'entreprise : pas pour un responsable de site.
     if (await managedSites(companyId, actor, role) != null) throw const ApiError.forbidden();
+    if (printScope != null && printScope != 'own' && printScope != 'team') {
+      throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    }
     final updated = await store.updateCompany(company.copyWith(
       name: name == null ? null : _validName(name),
       timezone: timezone == null ? null : validTimezone(timezone),
+      legalRules: legalRules,
+      printScope: printScope,
     ));
     await store.audit(
       companyId: companyId,
       actorId: actor.id,
       action: 'company.update',
-      details: {'name': name, 'timezone': timezone}..removeWhere((_, v) => v == null),
+      details: {'name': name, 'timezone': timezone, 'printScope': printScope, if (legalRules != null) 'legalRules': legalRules()}
+        ..removeWhere((_, v) => v == null),
     );
     return updated;
   }

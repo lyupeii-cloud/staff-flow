@@ -17,6 +17,7 @@ import 'models.dart';
 import 'planning_service.dart';
 import 'request_service.dart';
 import 'store.dart';
+import 'tools_service.dart';
 import 'translator.dart';
 
 /// Construit le gestionnaire HTTP de l'API, sous `/api/v1`.
@@ -28,6 +29,7 @@ class Api {
   late final NotificationService notifications = NotificationService(store, push: push);
   late final PlanningService planning = PlanningService(store, companies, notifications, now: now);
   late final ChatService chat = ChatService(store, companies, notifications);
+  late final ToolsService tools = ToolsService(store, companies, tokens.derive('exports'));
   late final OverlapService overlaps = OverlapService(store, companies, notifications, now: now);
   late final RequestService requests =
       RequestService(store, companies, planning, notifications, overlaps: overlaps, chat: chat);
@@ -100,6 +102,41 @@ class Api {
       ..put('/companies/<id>/notify-sites', _authed(_notifySites))
       // Plusieurs employeurs : tous ses plannings, personnes déjà en service ailleurs
       ..get('/me/shifts', _authed(_myShifts))
+      // Outils du responsable : alertes légales, totaux, exports, agenda
+      ..get('/companies/<id>/alerts', _authed((r, u) async {
+        final (from, to) = _period(r);
+        return _json({'alerts': await tools.alerts(u, r.params['id']!, from, to)});
+      }))
+      ..get('/companies/<id>/totals', _authed((r, u) async {
+        final (from, to) = _period(r);
+        return _json({
+          'totals': await tools.totals(u, r.params['id']!, from, to,
+              published: r.url.queryParameters['published'] == '1'),
+        });
+      }))
+      ..post('/companies/<id>/exports', _authed((r, u) async {
+        final token = await tools.exportLink(u, r.params['id']!, await _body(r), (r.url.queryParameters['lang'] ?? negotiateLanguage(r.headers['accept-language'])));
+        return _json({'path': '/api/v1/exports/$token'});
+      }))
+      ..get('/exports/<token>', (Request r) async {
+            final (type, name, bytes) = await tools.export(r.params['token']!);
+            return Response.ok(bytes, headers: {
+              'content-type': type,
+              if (!type.startsWith('text/html')) 'content-disposition': 'attachment; filename="$name"',
+              'cache-control': 'no-store',
+            });
+          })
+      ..put('/me/calendar', _authed((r, u) async {
+        final body = await _body(r);
+        if (body['enabled'] is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        final token = await tools.setCalendar(u, body['enabled'] as bool);
+        return _json({'path': token == null ? null : '/api/v1/calendar/$token.ics'});
+      }))
+      ..get('/calendar/<file>', (Request r) async {
+            final file = r.params['file']!;
+            final ics = await tools.calendar(file.endsWith('.ics') ? file.substring(0, file.length - 4) : file, now());
+            return Response.ok(ics, headers: {'content-type': 'text/calendar; charset=utf-8', 'cache-control': 'no-store'});
+          })
       ..get('/companies/<id>/busy', _authed(_busy))
       // Historique, annulation, avis
       ..get('/companies/<id>/history', _authed(_history))
@@ -201,6 +238,10 @@ class Api {
         'notificationPrefs': await notifications.prefs(user.id),
         'noticeRetention': await notices.retention(user.id),
         'unreadMessages': await chat.unreadByCompany(user.id),
+        'calendarPath': switch (await tools.calendarToken(user.id)) {
+          null => null,
+          final token => '/api/v1/calendar/$token.ics',
+        },
       });
 
   /// La personne choisit le nom affiché partout (vide : celui de Google).
@@ -229,8 +270,12 @@ class Api {
 
   Future<Response> _updateCompany(Request req, User user) async {
     final body = await _body(req);
+    final rules = body.containsKey('legalRules') ? ToolsService.cleanRules(body['legalRules']) : null;
     final company = await companies.update(user, req.params['id']!,
-        name: body['name'] as String?, timezone: body['timezone'] as String?);
+        name: body['name'] as String?,
+        timezone: body['timezone'] as String?,
+        legalRules: body.containsKey('legalRules') ? () => rules : null,
+        printScope: body['printScope'] as String?);
     return _json(company.toJson());
   }
 
@@ -488,6 +533,14 @@ class Api {
     return _json({
       'requests': await requests.list(user, id, before: before, limit: int.tryParse(q['limit'] ?? '') ?? 10),
     });
+  }
+
+  /// Période `from`–`to` d'une requête (jours AAAA-MM-JJ).
+  static (String, String) _period(Request r) {
+    final q = r.url.queryParameters;
+    final from = q['from'], to = q['to'];
+    if (from == null || to == null) throw const ApiError.badRequest('Paramètres from et to requis.');
+    return (from, to);
   }
 
   Future<Response> _myShifts(Request req, User user) async {

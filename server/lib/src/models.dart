@@ -81,20 +81,31 @@ class Company {
   final CompanyStatus status;
   final DateTime createdAt;
 
+  /// Alertes légales choisies (minutes, jours d'affilée) ; `null` : aucune.
+  final Map<String, int>? legalRules;
+
+  /// Ce que les salariés peuvent imprimer : `own` (leur planning) ou `team`.
+  final String printScope;
+
   const Company({
     required this.id,
     required this.name,
     required this.timezone,
     required this.status,
     required this.createdAt,
+    this.legalRules,
+    this.printScope = 'team',
   });
 
-  Company copyWith({String? name, String? timezone}) => Company(
+  Company copyWith({String? name, String? timezone, Map<String, int>? Function()? legalRules, String? printScope}) =>
+      Company(
         id: id,
         name: name ?? this.name,
         timezone: timezone ?? this.timezone,
         status: status,
         createdAt: createdAt,
+        legalRules: legalRules == null ? this.legalRules : legalRules(),
+        printScope: printScope ?? this.printScope,
       );
 
   Map<String, Object?> toJson() => {
@@ -102,6 +113,8 @@ class Company {
         'name': name,
         'timezone': timezone,
         'status': status.name,
+        'legalRules': legalRules,
+        'printScope': printScope,
       };
 }
 

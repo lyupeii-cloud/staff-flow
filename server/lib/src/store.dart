@@ -74,6 +74,8 @@ class Store {
         timezone: r['timezone'] as String,
         status: CompanyStatus.values.byName(r['status'] as String),
         createdAt: r['created_at'] as DateTime,
+        legalRules: (r['legal_rules'] as Map?)?.map((k, v) => MapEntry(k as String, v as int)),
+        printScope: r['print_scope'] as String? ?? 'team',
       );
 
   static OwnershipTransfer _transfer(Map<String, dynamic> r) => OwnershipTransfer(
@@ -137,8 +139,15 @@ class Store {
 
   Future<Company> updateCompany(Company company) async {
     final rows = await query(_db,
-        'UPDATE companies SET name = @name, timezone = @tz WHERE id = @id::uuid RETURNING *',
-        {'id': company.id, 'name': company.name, 'tz': company.timezone});
+        '''UPDATE companies SET name = @name, timezone = @tz, legal_rules = @rules::jsonb, print_scope = @print
+           WHERE id = @id::uuid RETURNING *''',
+        {
+          'id': company.id,
+          'name': company.name,
+          'tz': company.timezone,
+          'rules': company.legalRules == null ? null : jsonEncode(company.legalRules),
+          'print': company.printScope,
+        });
     return companyFromRow(rows.first.toColumnMap());
   }
 
