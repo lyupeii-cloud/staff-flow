@@ -43,4 +43,7 @@ const kk = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} компанияға қосылды.',
   'Conversation introuvable.': 'Әңгіме табылмады.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Бұл адам енді компанияда емес.',
+  'Message introuvable.': 'Хабар табылмады.',
+  'Traduction momentanément indisponible.': 'Аударма уақытша қолжетімсіз.',
+  'Traduction indisponible pour cette langue.': 'Бұл тілге аударма қолжетімсіз.',
 };

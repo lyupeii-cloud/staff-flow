@@ -703,4 +703,20 @@ class L10nMr extends L10n {
 
   @override
   String get chooseAtLeastOne => 'किमान एक व्यक्ती निवडा.';
+
+  @override
+  String get replyAction => 'उत्तर द्या';
+
+  @override
+  String get translateAction => 'भाषांतर करा';
+
+  @override
+  String replyingTo(String name) {
+    return '$name यांना उत्तर';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return '$name यांचे अलीकडील संदेश';
+  }
 }

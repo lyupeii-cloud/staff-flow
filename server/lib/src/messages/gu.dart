@@ -43,4 +43,7 @@ const gu = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} કંપનીમાં જોડાયા.',
   'Conversation introuvable.': 'વાતચીત મળી નથી.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'આ વ્યક્તિ હવે કંપનીનો ભાગ નથી.',
+  'Message introuvable.': 'સંદેશો મળ્યો નથી.',
+  'Traduction momentanément indisponible.': 'અનુવાદ હાલ ઉપલબ્ધ નથી.',
+  'Traduction indisponible pour cette langue.': 'આ ભાષા માટે અનુવાદ ઉપલબ્ધ નથી.',
 };

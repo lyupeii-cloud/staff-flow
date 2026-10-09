@@ -43,4 +43,7 @@ const ro = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} s-a alăturat firmei.',
   'Conversation introuvable.': 'Conversația nu a fost găsită.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Această persoană nu mai face parte din firmă.',
+  'Message introuvable.': 'Mesajul nu a fost găsit.',
+  'Traduction momentanément indisponible.': 'Traducere momentan indisponibilă.',
+  'Traduction indisponible pour cette langue.': 'Traducere indisponibilă pentru această limbă.',
 };

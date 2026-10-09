@@ -19,6 +19,24 @@ class FakeGoogle implements GoogleVerifier {
   }
 }
 
+/// Traducteur de test : « [fr] texte », et compte les appels.
+class FakeTranslator implements Translator {
+  int calls = 0;
+  bool down = false;
+
+  @override
+  Future<Set<String>> languages() async {
+    if (down) throw StateError('panne');
+    return {'en', 'fr', 'uk', 'zh-Hans', 'tl'};
+  }
+
+  @override
+  Future<String> translate(String text, String to) async {
+    calls++;
+    return '[$to] $text';
+  }
+}
+
 /// Garde les notifications au lieu de les envoyer à Firebase.
 class FakePush implements PushSender {
   final sent = <PushMessage>[];
@@ -92,6 +110,7 @@ class TestEnv {
 
   /// Notifications « envoyées » pendant le test.
   final push = FakePush();
+  final translator = FakeTranslator();
   late FakeClock clock;
 
   TestEnv() {
@@ -113,6 +132,9 @@ class TestEnv {
       await store.migrate();
       clock = FakeClock();
       push.sent.clear();
+      translator
+        ..calls = 0
+        ..down = false;
       api = Api(
         store: store,
         google: FakeGoogle(),
@@ -120,6 +142,7 @@ class TestEnv {
         allowedOrigins: {'http://localhost:5000'},
         now: () => clock.now,
         push: push,
+        translator: translator,
       );
       handler = api.handler;
     });

@@ -708,4 +708,20 @@ class L10nDe extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Wählen Sie mindestens eine Person.';
+
+  @override
+  String get replyAction => 'Antworten';
+
+  @override
+  String get translateAction => 'Übersetzen';
+
+  @override
+  String replyingTo(String name) {
+    return 'Antwort an $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Letzte Nachrichten von $name';
+  }
 }

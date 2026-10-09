@@ -43,4 +43,7 @@ const de = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} ist dem Unternehmen beigetreten.',
   'Conversation introuvable.': 'Unterhaltung nicht gefunden.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Diese Person gehört nicht mehr zum Unternehmen.',
+  'Message introuvable.': 'Nachricht nicht gefunden.',
+  'Traduction momentanément indisponible.': 'Übersetzung vorübergehend nicht verfügbar.',
+  'Traduction indisponible pour cette langue.': 'Übersetzung für diese Sprache nicht verfügbar.',
 };

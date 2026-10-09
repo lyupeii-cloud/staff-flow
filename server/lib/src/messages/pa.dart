@@ -43,4 +43,7 @@ const pa = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} ਕੰਪਨੀ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋ ਗਏ।',
   'Conversation introuvable.': 'ਗੱਲਬਾਤ ਨਹੀਂ ਮਿਲੀ।',
   'Cette personne ne fait plus partie de l\'entreprise.': 'ਇਹ ਵਿਅਕਤੀ ਹੁਣ ਕੰਪਨੀ ਦਾ ਹਿੱਸਾ ਨਹੀਂ ਹੈ।',
+  'Message introuvable.': 'ਸੁਨੇਹਾ ਨਹੀਂ ਮਿਲਿਆ।',
+  'Traduction momentanément indisponible.': 'ਅਨੁਵਾਦ ਫ਼ਿਲਹਾਲ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।',
+  'Traduction indisponible pour cette langue.': 'ਇਸ ਭਾਸ਼ਾ ਲਈ ਅਨੁਵਾਦ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।',
 };

@@ -191,5 +191,9 @@
   "editGroup": "ਗਰੁੱਪ ਸੋਧੋ",
   "groupName": "ਗਰੁੱਪ ਦਾ ਨਾਂ",
   "groupMembersHint": "ਇਸ ਗਰੁੱਪ ਦੇ ਲੋਕ ਚੁਣੋ। ਸਿਰਫ਼ ਉਹੀ ਇਸਦੇ ਸੁਨੇਹੇ ਦੇਖਣਗੇ।",
-  "chooseAtLeastOne": "ਘੱਟੋ-ਘੱਟ ਇੱਕ ਵਿਅਕਤੀ ਚੁਣੋ।"
+  "chooseAtLeastOne": "ਘੱਟੋ-ਘੱਟ ਇੱਕ ਵਿਅਕਤੀ ਚੁਣੋ।",
+  "replyAction": "ਜਵਾਬ ਦਿਓ",
+  "translateAction": "ਅਨੁਵਾਦ ਕਰੋ",
+  "replyingTo": "{name} ਨੂੰ ਜਵਾਬ",
+  "lastMessagesOf": "{name} ਦੇ ਹਾਲੀਆ ਸੁਨੇਹੇ"
 }

@@ -706,4 +706,20 @@ class L10nSv extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Välj minst en person.';
+
+  @override
+  String get replyAction => 'Svara';
+
+  @override
+  String get translateAction => 'Översätt';
+
+  @override
+  String replyingTo(String name) {
+    return 'Svar till $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Senaste meddelanden från $name';
+  }
 }

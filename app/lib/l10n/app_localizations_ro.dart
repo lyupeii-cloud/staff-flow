@@ -709,4 +709,20 @@ class L10nRo extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Alege cel puțin o persoană.';
+
+  @override
+  String get replyAction => 'Răspunde';
+
+  @override
+  String get translateAction => 'Traduce';
+
+  @override
+  String replyingTo(String name) {
+    return 'Răspuns pentru $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Ultimele mesaje de la $name';
+  }
 }

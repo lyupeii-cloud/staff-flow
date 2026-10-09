@@ -29,6 +29,8 @@ services:
       ALLOWED_ORIGINS: https://${DOMAIN}
       # Compte de service Firebase (JSON en base64) ; vide : pas de notifications sur les appareils.
       FCM_CREDENTIALS_B64: ${FCM_CREDENTIALS_B64:-}
+      # Traduction des messages, sur ce serveur (service « translate » ci-dessous).
+      TRANSLATE_URL: http://translate:5000
 
   web:
     build:
@@ -48,6 +50,16 @@ services:
       - caddy_data:/data
       - caddy_config:/config
 
+  # Traducteur libre (LibreTranslate) : les messages ne sortent pas du serveur.
+  # Pas de port publié : seule l'API y accède. Modèles gardés dans un volume.
+  translate:
+    image: libretranslate/libretranslate:v1.9.6
+    restart: unless-stopped
+    environment:
+      LT_LOAD_ONLY: en,fr,es,uk,ru,pt,de,it,nl,pl,cs,sk,ro,hu,bg,el,sv,da,nb,fi,id,ms,vi,tl,th,ja,ko,zh,hi,bn
+    volumes:
+      - translate-models:/home/libretranslate/.local
+
   backup:
     build: ./backup
     restart: unless-stopped
@@ -63,5 +75,7 @@ services:
 
 volumes:
   db:
+  translate-models:
+    name: staff-flow_translate-models
   caddy_data:
   caddy_config:

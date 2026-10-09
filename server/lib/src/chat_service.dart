@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'company_service.dart';
 import 'errors.dart';
 import 'models.dart';
 import 'notifications.dart';
 import 'store.dart';
+import 'translator.dart';
 
 /// Messagerie interne (section 7) : un groupe par entreprise avec tous ses
 /// membres, et des conversations privées entre un salarié et un responsable
@@ -202,17 +205,30 @@ class ChatService {
 
   /// Messages du plus ancien au plus récent ; [before] : pour remonter
   /// l'historique, 50 à la fois.
+  /// [author] : seulement les messages de cette personne (bulle d'une
+  /// personne citée : ses derniers messages).
   Future<List<Map<String, Object?>>> messages(User actor, String conversationId,
-      {int? before, int limit = 50}) async {
+      {int? before, String? author, int limit = 50}) async {
     final conv = await _open(actor, conversationId);
     final rows = await store.query(store.db, '''
-      SELECT m.id, m.author_id::text, $_name AS author_name, m.body, m.created_at
+      SELECT m.id, m.author_id::text, $_name AS author_name, m.body, m.created_at, m.mentions,
+        m.reply_to, rm.author_id::text AS reply_author_id, rm.body AS reply_body,
+        coalesce(rms.display_name, ru.custom_name, ru.name) AS reply_author
       FROM messages m
       LEFT JOIN users u ON u.id = m.author_id
       LEFT JOIN memberships ms ON ms.user_id = u.id AND ms.company_id = @c::uuid AND ms.left_at IS NULL
+      LEFT JOIN messages rm ON rm.id = m.reply_to
+      LEFT JOIN users ru ON ru.id = rm.author_id
+      LEFT JOIN memberships rms ON rms.user_id = ru.id AND rms.company_id = @c::uuid AND rms.left_at IS NULL
       WHERE m.conversation_id = @id::uuid AND (@before::bigint IS NULL OR m.id < @before::bigint)
-      ORDER BY m.id DESC LIMIT @limit''',
-        {'id': conversationId, 'c': conv.companyId, 'before': before, 'limit': limit.clamp(1, 100)});
+        AND (@author::uuid IS NULL OR m.author_id = @author::uuid)
+      ORDER BY m.id DESC LIMIT @limit''', {
+      'id': conversationId,
+      'c': conv.companyId,
+      'before': before,
+      'author': author,
+      'limit': limit.clamp(1, 100),
+    });
     return [for (final r in rows.reversed) _message(r.toColumnMap())];
   }
 
@@ -222,9 +238,72 @@ class ChatService {
         'authorName': r['author_name'],
         'body': r['body'],
         'createdAt': (r['created_at'] as DateTime).toUtc().toIso8601String(),
+        'mentions': r['mentions'] ?? const [],
+        'replyTo': r['reply_to'] == null
+            ? null
+            : {
+                'id': r['reply_to'],
+                'authorId': r['reply_author_id'],
+                'authorName': r['reply_author'],
+                'body': _excerpt(r['reply_body'] as String? ?? ''),
+              },
       };
 
-  Future<Map<String, Object?>> send(User actor, String conversationId, String body) async {
+  static String _excerpt(String text) => text.length > 140 ? '${text.substring(0, 139)}…' : text;
+
+  /// Personnes qui voient la conversation (membres actuels de l'entreprise).
+  Future<Set<String>> _participants(
+      ({String companyId, String kind, String? otherId, String? name, Company company, Role role}) conv,
+      String conversationId,
+      User actor) async {
+    final active = {for (final m in await store.members(conv.companyId)) m.user.id};
+    return switch (conv.kind) {
+      'private' => {actor.id, conv.otherId!}.intersection(active),
+      'team' => {
+          for (final r in await store.query(store.db,
+              'SELECT user_id::text FROM conversation_members WHERE conversation_id = @id::uuid', {'id': conversationId}))
+            if (active.contains(r[0])) r[0] as String,
+        },
+      _ => active,
+    };
+  }
+
+  /// Message traduit dans [lang] (langue de l'application de la personne).
+  Future<String> translate(User actor, int messageId, String lang, Translator translator) async {
+    final rows = await store.query(store.db,
+        'SELECT conversation_id::text, body FROM messages WHERE id = @id', {'id': messageId});
+    if (rows.isEmpty) throw const ApiError.notFound('Message introuvable.');
+    await _open(actor, rows.first[0] as String);
+    final body = rows.first[1] as String;
+    final Set<String> available;
+    try {
+      available = await translator.languages();
+    } catch (_) {
+      throw const ApiError(409, 'translation_unavailable', 'Traduction momentanément indisponible.');
+    }
+    final target = translatorLanguage(lang, available);
+    if (target == null) {
+      throw const ApiError(422, 'unsupported_language', 'Traduction indisponible pour cette langue.');
+    }
+    final cached = await store.query(store.db,
+        'SELECT body FROM message_translations WHERE message_id = @id AND lang = @l', {'id': messageId, 'l': target});
+    if (cached.isNotEmpty) return cached.first[0] as String;
+    final String text;
+    try {
+      text = await translator.translate(body, target);
+    } catch (_) {
+      throw const ApiError(409, 'translation_unavailable', 'Traduction momentanément indisponible.');
+    }
+    await store.query(store.db, '''
+      INSERT INTO message_translations (message_id, lang, body) VALUES (@id, @l, @b)
+      ON CONFLICT DO NOTHING''', {'id': messageId, 'l': target, 'b': text});
+    return text;
+  }
+
+  /// [replyTo] : message de la même conversation auquel on répond.
+  /// [mentions] : personnes citées avec « # » (elles doivent voir la conversation).
+  Future<Map<String, Object?>> send(User actor, String conversationId, String body,
+      {int? replyTo, List<String> mentions = const []}) async {
     final conv = await _open(actor, conversationId);
     if (conv.company.status == CompanyStatus.readOnly) {
       throw const ApiError.conflict('Cette entreprise est en lecture seule.');
@@ -236,27 +315,30 @@ class ChatService {
     if (conv.kind == 'private' && await store.roleOf(conv.companyId, conv.otherId!) == null) {
       throw const ApiError.conflict('Cette personne ne fait plus partie de l\'entreprise.');
     }
+    if (replyTo != null) {
+      final found = await store.query(store.db,
+          'SELECT 1 FROM messages WHERE id = @r AND conversation_id = @id::uuid', {'r': replyTo, 'id': conversationId});
+      if (found.isEmpty) throw const ApiError.notFound('Message introuvable.');
+    }
+    final participants = await _participants(conv, conversationId, actor);
+    final cited = <Map<String, String>>[];
+    for (final id in mentions.toSet()) {
+      if (!participants.contains(id)) throw const ApiError.notFound('Membre introuvable.');
+      final user = (await store.findUser(id))!;
+      cited.add({'id': id, 'name': await _nameIn(conv.companyId, user)});
+    }
     final rows = await store.query(store.db, '''
-      INSERT INTO messages (conversation_id, author_id, body) VALUES (@id::uuid, @u::uuid, @b)
-      RETURNING id, author_id::text, body, created_at''', {'id': conversationId, 'u': actor.id, 'b': text});
-    final row = rows.first.toColumnMap();
+      INSERT INTO messages (conversation_id, author_id, body, reply_to, mentions)
+      VALUES (@id::uuid, @u::uuid, @b, @r, @m::jsonb)
+      RETURNING id''', {'id': conversationId, 'u': actor.id, 'b': text, 'r': replyTo, 'm': jsonEncode(cited)});
+    final id = rows.first[0] as int;
     // L'auteur a forcément lu son propre message.
-    await markRead(actor, conversationId, row['id'] as int, checked: true);
-    final authorName = await _nameIn(conv.companyId, actor);
-    final message = _message({...row, 'author_name': authorName});
+    await markRead(actor, conversationId, id, checked: true);
+    final message = (await messages(actor, conversationId, before: id + 1, limit: 1)).single;
+    final authorName = message['authorName'] as String;
 
-    final active = {for (final m in await store.members(conv.companyId)) m.user.id};
-    final recipients = switch (conv.kind) {
-      'private' => [conv.otherId!],
-      'team' => [
-          for (final r in await store.query(store.db,
-              'SELECT user_id::text FROM conversation_members WHERE conversation_id = @id::uuid', {'id': conversationId}))
-            if (r[0] != actor.id && active.contains(r[0])) r[0] as String,
-        ],
-      _ => [for (final u in active) if (u != actor.id) u],
-    };
     notifications.pushDirect(
-      recipients,
+      participants.where((u) => u != actor.id),
       category: NotifyCategory.messages,
       title: switch (conv.kind) {
         'private' => '$authorName · ${conv.company.name}',

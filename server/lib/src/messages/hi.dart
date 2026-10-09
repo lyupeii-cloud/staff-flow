@@ -43,4 +43,7 @@ const hi = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} कंपनी में शामिल हो गए।',
   'Conversation introuvable.': 'बातचीत नहीं मिली।',
   'Cette personne ne fait plus partie de l\'entreprise.': 'यह व्यक्ति अब कंपनी का हिस्सा नहीं है।',
+  'Message introuvable.': 'संदेश नहीं मिला।',
+  'Traduction momentanément indisponible.': 'अनुवाद अभी उपलब्ध नहीं है।',
+  'Traduction indisponible pour cette langue.': 'इस भाषा के लिए अनुवाद उपलब्ध नहीं है।',
 };

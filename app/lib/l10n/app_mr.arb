@@ -191,5 +191,9 @@
   "editGroup": "गट संपादित करा",
   "groupName": "गटाचे नाव",
   "groupMembersHint": "या गटातील लोक निवडा. फक्त तेच त्याचे संदेश पाहतील.",
-  "chooseAtLeastOne": "किमान एक व्यक्ती निवडा."
+  "chooseAtLeastOne": "किमान एक व्यक्ती निवडा.",
+  "replyAction": "उत्तर द्या",
+  "translateAction": "भाषांतर करा",
+  "replyingTo": "{name} यांना उत्तर",
+  "lastMessagesOf": "{name} यांचे अलीकडील संदेश"
 }

@@ -43,4 +43,7 @@ const ja = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} さんが会社に参加しました。',
   'Conversation introuvable.': '会話が見つかりません。',
   'Cette personne ne fait plus partie de l\'entreprise.': 'この人はもう会社のメンバーではありません。',
+  'Message introuvable.': 'メッセージが見つかりません。',
+  'Traduction momentanément indisponible.': '翻訳は一時的に利用できません。',
+  'Traduction indisponible pour cette langue.': 'この言語への翻訳は利用できません。',
 };

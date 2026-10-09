@@ -709,4 +709,20 @@ class L10nSk extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Vyberte aspoň jednu osobu.';
+
+  @override
+  String get replyAction => 'Odpovedať';
+
+  @override
+  String get translateAction => 'Preložiť';
+
+  @override
+  String replyingTo(String name) {
+    return 'Odpoveď pre: $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Posledné správy od: $name';
+  }
 }

@@ -43,4 +43,7 @@ const sw = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} amejiunga na kampuni.',
   'Conversation introuvable.': 'Mazungumzo hayajapatikana.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Mtu huyu si sehemu ya kampuni tena.',
+  'Message introuvable.': 'Ujumbe haujapatikana.',
+  'Traduction momentanément indisponible.': 'Tafsiri haipatikani kwa sasa.',
+  'Traduction indisponible pour cette langue.': 'Tafsiri haipatikani kwa lugha hii.',
 };

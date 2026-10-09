@@ -701,4 +701,20 @@ class L10nId extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Pilih setidaknya satu orang.';
+
+  @override
+  String get replyAction => 'Balas';
+
+  @override
+  String get translateAction => 'Terjemahkan';
+
+  @override
+  String replyingTo(String name) {
+    return 'Membalas $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Pesan terakhir dari $name';
+  }
 }

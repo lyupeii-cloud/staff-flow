@@ -705,4 +705,20 @@ class L10nSw extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Chagua angalau mtu mmoja.';
+
+  @override
+  String get replyAction => 'Jibu';
+
+  @override
+  String get translateAction => 'Tafsiri';
+
+  @override
+  String replyingTo(String name) {
+    return 'Jibu kwa $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Ujumbe wa hivi karibuni wa $name';
+  }
 }

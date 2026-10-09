@@ -43,4 +43,7 @@ const el = <String, String>{
   '{name} a rejoint l\'entreprise.': 'Ο/Η {name} μπήκε στην εταιρεία.',
   'Conversation introuvable.': 'Η συνομιλία δεν βρέθηκε.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Αυτό το άτομο δεν ανήκει πλέον στην εταιρεία.',
+  'Message introuvable.': 'Το μήνυμα δεν βρέθηκε.',
+  'Traduction momentanément indisponible.': 'Η μετάφραση δεν είναι προσωρινά διαθέσιμη.',
+  'Traduction indisponible pour cette langue.': 'Η μετάφραση δεν είναι διαθέσιμη για αυτή τη γλώσσα.',
 };

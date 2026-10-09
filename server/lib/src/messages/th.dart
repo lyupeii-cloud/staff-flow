@@ -43,4 +43,7 @@ const th = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} เข้าร่วมบริษัทแล้ว',
   'Conversation introuvable.': 'ไม่พบการสนทนา',
   'Cette personne ne fait plus partie de l\'entreprise.': 'บุคคลนี้ไม่ได้อยู่ในบริษัทแล้ว',
+  'Message introuvable.': 'ไม่พบข้อความ',
+  'Traduction momentanément indisponible.': 'การแปลไม่พร้อมใช้งานชั่วคราว',
+  'Traduction indisponible pour cette langue.': 'ไม่มีการแปลสำหรับภาษานี้',
 };

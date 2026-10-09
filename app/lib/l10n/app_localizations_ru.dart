@@ -709,4 +709,20 @@ class L10nRu extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Выберите хотя бы одного человека.';
+
+  @override
+  String get replyAction => 'Ответить';
+
+  @override
+  String get translateAction => 'Перевести';
+
+  @override
+  String replyingTo(String name) {
+    return 'Ответ для $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Последние сообщения от $name';
+  }
 }

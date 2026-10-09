@@ -191,5 +191,9 @@
   "editGroup": "Топты өңдеу",
   "groupName": "Топ атауы",
   "groupMembersHint": "Осы топтағы адамдарды таңдаңыз. Хабарларын тек солар көреді.",
-  "chooseAtLeastOne": "Кемінде бір адамды таңдаңыз."
+  "chooseAtLeastOne": "Кемінде бір адамды таңдаңыз.",
+  "replyAction": "Жауап беру",
+  "translateAction": "Аудару",
+  "replyingTo": "{name} үшін жауап",
+  "lastMessagesOf": "{name} соңғы хабарлары"
 }

@@ -703,4 +703,20 @@ class L10nKk extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Кемінде бір адамды таңдаңыз.';
+
+  @override
+  String get replyAction => 'Жауап беру';
+
+  @override
+  String get translateAction => 'Аудару';
+
+  @override
+  String replyingTo(String name) {
+    return '$name үшін жауап';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return '$name соңғы хабарлары';
+  }
 }

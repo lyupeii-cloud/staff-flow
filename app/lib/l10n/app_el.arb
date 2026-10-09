@@ -191,5 +191,9 @@
   "editGroup": "Επεξεργασία ομάδας",
   "groupName": "Όνομα ομάδας",
   "groupMembersHint": "Επιλέξτε τα άτομα αυτής της ομάδας. Μόνο αυτά θα βλέπουν τα μηνύματά της.",
-  "chooseAtLeastOne": "Επιλέξτε τουλάχιστον ένα άτομο."
+  "chooseAtLeastOne": "Επιλέξτε τουλάχιστον ένα άτομο.",
+  "replyAction": "Απάντηση",
+  "translateAction": "Μετάφραση",
+  "replyingTo": "Απάντηση σε {name}",
+  "lastMessagesOf": "Τελευταία μηνύματα από {name}"
 }

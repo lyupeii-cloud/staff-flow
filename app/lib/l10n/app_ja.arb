@@ -191,5 +191,9 @@
   "editGroup": "グループを編集",
   "groupName": "グループ名",
   "groupMembersHint": "このグループのメンバーを選んでください。メッセージはメンバーだけに表示されます。",
-  "chooseAtLeastOne": "少なくとも1人選んでください。"
+  "chooseAtLeastOne": "少なくとも1人選んでください。",
+  "replyAction": "返信",
+  "translateAction": "翻訳",
+  "replyingTo": "{name} さんへの返信",
+  "lastMessagesOf": "{name} さんの最近のメッセージ"
 }

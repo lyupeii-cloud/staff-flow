@@ -191,5 +191,9 @@
   "editGroup": "Editează grupul",
   "groupName": "Numele grupului",
   "groupMembersHint": "Alege persoanele din acest grup. Doar ele vor vedea mesajele.",
-  "chooseAtLeastOne": "Alege cel puțin o persoană."
+  "chooseAtLeastOne": "Alege cel puțin o persoană.",
+  "replyAction": "Răspunde",
+  "translateAction": "Traduce",
+  "replyingTo": "Răspuns pentru {name}",
+  "lastMessagesOf": "Ultimele mesaje de la {name}"
 }

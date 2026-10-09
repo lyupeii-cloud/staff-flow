@@ -709,4 +709,20 @@ class L10nEl extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Επιλέξτε τουλάχιστον ένα άτομο.';
+
+  @override
+  String get replyAction => 'Απάντηση';
+
+  @override
+  String get translateAction => 'Μετάφραση';
+
+  @override
+  String replyingTo(String name) {
+    return 'Απάντηση σε $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Τελευταία μηνύματα από $name';
+  }
 }

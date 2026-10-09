@@ -43,4 +43,7 @@ const cs = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} se připojil k firmě.',
   'Conversation introuvable.': 'Konverzace nenalezena.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Tato osoba už ve firmě není.',
+  'Message introuvable.': 'Zpráva nenalezena.',
+  'Traduction momentanément indisponible.': 'Překlad je dočasně nedostupný.',
+  'Traduction indisponible pour cette langue.': 'Překlad do tohoto jazyka není dostupný.',
 };

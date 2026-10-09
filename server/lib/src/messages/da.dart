@@ -43,4 +43,7 @@ const da = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} er blevet en del af virksomheden.',
   'Conversation introuvable.': 'Samtalen blev ikke fundet.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Denne person er ikke længere en del af virksomheden.',
+  'Message introuvable.': 'Beskeden blev ikke fundet.',
+  'Traduction momentanément indisponible.': 'Oversættelse midlertidigt utilgængelig.',
+  'Traduction indisponible pour cette langue.': 'Oversættelse er ikke tilgængelig for dette sprog.',
 };

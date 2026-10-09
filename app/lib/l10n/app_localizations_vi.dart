@@ -697,4 +697,20 @@ class L10nVi extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Chọn ít nhất một người.';
+
+  @override
+  String get replyAction => 'Trả lời';
+
+  @override
+  String get translateAction => 'Dịch';
+
+  @override
+  String replyingTo(String name) {
+    return 'Trả lời $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Tin nhắn gần đây của $name';
+  }
 }

@@ -15,6 +15,7 @@ import 'notifications.dart';
 import 'models.dart';
 import 'planning_service.dart';
 import 'store.dart';
+import 'translator.dart';
 
 /// Construit le gestionnaire HTTP de l'API, sous `/api/v1`.
 class Api {
@@ -39,6 +40,9 @@ class Api {
   /// Envoi des notifications (Firebase) ; `null` : avis dans l'application seulement.
   final PushSender? push;
 
+  /// Traduction des messages (LibreTranslate) ; `null` : pas de traduction.
+  final Translator? translator;
+
   Api({
     required this.store,
     required this.google,
@@ -46,6 +50,7 @@ class Api {
     this.devLogin = false,
     this.allowedOrigins = const {},
     this.push,
+    this.translator,
     DateTime Function()? now,
   })  : companies = CompanyService(store),
         now = now ?? (() => DateTime.now().toUtc());
@@ -98,6 +103,7 @@ class Api {
       ..get('/conversations/<id>/messages', _authed(_messages))
       ..post('/conversations/<id>/messages', _authed(_sendMessage))
       ..post('/conversations/<id>/read', _authed(_readMessages))
+      ..post('/messages/<id>/translate', _authed(_translateMessage))
       ..post('/companies/<id>/groups', _authed(_createGroup))
       ..patch('/conversations/<id>', _authed(_updateGroup));
     if (devLogin) v1.post('/auth/dev', _loginDev);
@@ -367,16 +373,33 @@ class Api {
   }
 
   Future<Response> _messages(Request req, User user) async {
-    final before = req.url.queryParameters['before'];
+    final q = req.url.queryParameters;
+    final limit = int.tryParse(q['limit'] ?? '');
     return _json({
       'messages': await chat.messages(user, req.params['id']!,
-          before: before == null ? null : int.tryParse(before)),
+          before: int.tryParse(q['before'] ?? ''), author: q['author'], limit: limit ?? 50),
     });
   }
 
   Future<Response> _sendMessage(Request req, User user) async {
     final body = await _body(req);
-    return _json(await chat.send(user, req.params['id']!, _string(body, 'body')), status: 201);
+    final replyTo = body['replyTo'];
+    if (replyTo is! int?) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    return _json(
+        await chat.send(user, req.params['id']!, _string(body, 'body'),
+            replyTo: replyTo, mentions: body.containsKey('mentions') ? _ids(body['mentions']) : const []),
+        status: 201);
+  }
+
+  /// Traduction dans la langue demandée (celle de l'application).
+  Future<Response> _translateMessage(Request req, User user) async {
+    final id = int.tryParse(req.params['id']!);
+    if (id == null) throw const ApiError.notFound('Message introuvable.');
+    final t = translator;
+    if (t == null) throw const ApiError(409, 'translation_unavailable', 'Traduction momentanément indisponible.');
+    final lang = (await _body(req))['lang'];
+    if (lang is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    return _json({'text': await chat.translate(user, id, lang, t)});
   }
 
   static List<String> _ids(Object? value) {

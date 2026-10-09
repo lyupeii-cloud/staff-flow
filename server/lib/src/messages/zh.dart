@@ -43,4 +43,7 @@ const zh = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} 已加入公司。',
   'Conversation introuvable.': '找不到该对话。',
   'Cette personne ne fait plus partie de l\'entreprise.': '此人已不再是公司成员。',
+  'Message introuvable.': '找不到该消息。',
+  'Traduction momentanément indisponible.': '翻译暂时不可用。',
+  'Traduction indisponible pour cette langue.': '暂不支持翻译成此语言。',
 };

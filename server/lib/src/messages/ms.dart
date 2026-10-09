@@ -43,4 +43,7 @@ const ms = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} telah menyertai syarikat.',
   'Conversation introuvable.': 'Perbualan tidak ditemui.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Orang ini bukan lagi sebahagian daripada syarikat.',
+  'Message introuvable.': 'Mesej tidak ditemui.',
+  'Traduction momentanément indisponible.': 'Terjemahan tidak tersedia buat sementara waktu.',
+  'Traduction indisponible pour cette langue.': 'Terjemahan tidak tersedia untuk bahasa ini.',
 };

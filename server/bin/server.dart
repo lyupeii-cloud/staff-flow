@@ -12,6 +12,7 @@ import 'package:staff_flow_server/staff_flow_server.dart';
 /// - `ALLOWED_ORIGINS` : origines web autorisées (CORS), séparées par des virgules
 /// - `FCM_CREDENTIALS_B64` : compte de service Firebase (fichier JSON en base64), pour les
 ///   notifications sur les téléphones et navigateurs ; absent : avis dans l'application seulement
+/// - `TRANSLATE_URL` : adresse de LibreTranslate (ex. http://translate:5000) ; absent : pas de traduction
 /// - `DEV_LOGIN=true` : connexion sans Google, développement local uniquement
 /// - `PORT` : 8080 par défaut
 Future<void> main() async {
@@ -43,6 +44,9 @@ Future<void> main() async {
     print('Notifications Firebase actives.');
   }
 
+  final translateUrl = env['TRANSLATE_URL'] ?? '';
+  final translator = translateUrl.isEmpty ? null : LibreTranslator(translateUrl);
+
   final api = Api(
     store: store,
     google: TokenInfoGoogleVerifier(list('GOOGLE_CLIENT_IDS').toSet()),
@@ -50,6 +54,7 @@ Future<void> main() async {
     devLogin: devLogin,
     allowedOrigins: list('ALLOWED_ORIGINS').toSet(),
     push: push,
+    translator: translator,
   );
 
   final port = int.parse(env['PORT'] ?? '8080');

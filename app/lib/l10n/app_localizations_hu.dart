@@ -701,4 +701,20 @@ class L10nHu extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Válassz legalább egy személyt.';
+
+  @override
+  String get replyAction => 'Válasz';
+
+  @override
+  String get translateAction => 'Fordítás';
+
+  @override
+  String replyingTo(String name) {
+    return 'Válasz neki: $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return '$name legutóbbi üzenetei';
+  }
 }

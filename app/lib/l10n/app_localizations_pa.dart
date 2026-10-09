@@ -702,4 +702,20 @@ class L10nPa extends L10n {
 
   @override
   String get chooseAtLeastOne => 'ਘੱਟੋ-ਘੱਟ ਇੱਕ ਵਿਅਕਤੀ ਚੁਣੋ।';
+
+  @override
+  String get replyAction => 'ਜਵਾਬ ਦਿਓ';
+
+  @override
+  String get translateAction => 'ਅਨੁਵਾਦ ਕਰੋ';
+
+  @override
+  String replyingTo(String name) {
+    return '$name ਨੂੰ ਜਵਾਬ';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return '$name ਦੇ ਹਾਲੀਆ ਸੁਨੇਹੇ';
+  }
 }

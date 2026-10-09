@@ -43,4 +43,7 @@ const te = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} కంపెనీలో చేరారు.',
   'Conversation introuvable.': 'సంభాషణ కనుగొనబడలేదు.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'ఈ వ్యక్తి ఇక కంపెనీలో భాగం కాదు.',
+  'Message introuvable.': 'సందేశం కనుగొనబడలేదు.',
+  'Traduction momentanément indisponible.': 'అనువాదం తాత్కాలికంగా అందుబాటులో లేదు.',
+  'Traduction indisponible pour cette langue.': 'ఈ భాషకు అనువాదం అందుబాటులో లేదు.',
 };

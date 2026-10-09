@@ -191,5 +191,9 @@
   "editGroup": "编辑群组",
   "groupName": "群组名称",
   "groupMembersHint": "选择该群组的成员。只有他们能看到群组消息。",
-  "chooseAtLeastOne": "请至少选择一人。"
+  "chooseAtLeastOne": "请至少选择一人。",
+  "replyAction": "回复",
+  "translateAction": "翻译",
+  "replyingTo": "回复 {name}",
+  "lastMessagesOf": "{name} 的最近消息"
 }

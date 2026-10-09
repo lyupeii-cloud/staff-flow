@@ -191,5 +191,9 @@
   "editGroup": "Edit kumpulan",
   "groupName": "Nama kumpulan",
   "groupMembersHint": "Pilih orang dalam kumpulan ini. Hanya mereka yang melihat mesejnya.",
-  "chooseAtLeastOne": "Pilih sekurang-kurangnya seorang."
+  "chooseAtLeastOne": "Pilih sekurang-kurangnya seorang.",
+  "replyAction": "Balas",
+  "translateAction": "Terjemah",
+  "replyingTo": "Membalas {name}",
+  "lastMessagesOf": "Mesej terakhir daripada {name}"
 }

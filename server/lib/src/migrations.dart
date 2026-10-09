@@ -260,4 +260,18 @@ CREATE TABLE conversation_members (
 );
 CREATE INDEX conversation_members_user ON conversation_members (user_id);
 ''',
+  // 9 — messages : réponse à un message, personnes citées avec « # »,
+  // traductions gardées pour ne pas retraduire.
+  '''
+ALTER TABLE messages ADD COLUMN reply_to bigint REFERENCES messages(id) ON DELETE SET NULL;
+ALTER TABLE messages ADD COLUMN mentions jsonb NOT NULL DEFAULT '[]';
+CREATE INDEX messages_author ON messages (conversation_id, author_id, id DESC);
+
+CREATE TABLE message_translations (
+  message_id  bigint NOT NULL REFERENCES messages(id) ON DELETE CASCADE,
+  lang        text NOT NULL,
+  body        text NOT NULL,
+  PRIMARY KEY (message_id, lang)
+);
+''',
 ];

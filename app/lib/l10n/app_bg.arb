@@ -191,5 +191,9 @@
   "editGroup": "Редактиране на групата",
   "groupName": "Име на групата",
   "groupMembersHint": "Изберете хората в тази група. Само те ще виждат съобщенията ѝ.",
-  "chooseAtLeastOne": "Изберете поне един човек."
+  "chooseAtLeastOne": "Изберете поне един човек.",
+  "replyAction": "Отговор",
+  "translateAction": "Превод",
+  "replyingTo": "Отговор на {name}",
+  "lastMessagesOf": "Последни съобщения от {name}"
 }

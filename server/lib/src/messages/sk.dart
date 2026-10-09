@@ -43,4 +43,7 @@ const sk = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} sa pripojil k firme.',
   'Conversation introuvable.': 'Konverzácia sa nenašla.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Táto osoba už vo firme nie je.',
+  'Message introuvable.': 'Správa sa nenašla.',
+  'Traduction momentanément indisponible.': 'Preklad je dočasne nedostupný.',
+  'Traduction indisponible pour cette langue.': 'Preklad do tohto jazyka nie je dostupný.',
 };

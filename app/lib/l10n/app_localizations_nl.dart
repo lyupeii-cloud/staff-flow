@@ -707,4 +707,20 @@ class L10nNl extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Kies minstens één persoon.';
+
+  @override
+  String get replyAction => 'Beantwoorden';
+
+  @override
+  String get translateAction => 'Vertalen';
+
+  @override
+  String replyingTo(String name) {
+    return 'Antwoord aan $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Laatste berichten van $name';
+  }
 }

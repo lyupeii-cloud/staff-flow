@@ -43,4 +43,7 @@ const fil = <String, String>{
   '{name} a rejoint l\'entreprise.': 'Sumali si {name} sa kumpanya.',
   'Conversation introuvable.': 'Hindi nakita ang usapan.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Hindi na bahagi ng kumpanya ang taong ito.',
+  'Message introuvable.': 'Hindi nakita ang mensahe.',
+  'Traduction momentanément indisponible.': 'Pansamantalang hindi available ang pagsasalin.',
+  'Traduction indisponible pour cette langue.': 'Walang pagsasalin para sa wikang ito.',
 };

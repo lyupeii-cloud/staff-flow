@@ -64,4 +64,7 @@ const en = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} joined the company.',
   'Conversation introuvable.': 'Conversation not found.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'This person is no longer part of the company.',
+  'Message introuvable.': 'Message not found.',
+  'Traduction momentanément indisponible.': 'Translation temporarily unavailable.',
+  'Traduction indisponible pour cette langue.': 'Translation not available for this language.',
 };

@@ -43,4 +43,7 @@ const ko = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name}님이 회사에 합류했습니다.',
   'Conversation introuvable.': '대화를 찾을 수 없습니다.',
   'Cette personne ne fait plus partie de l\'entreprise.': '이 사람은 더 이상 회사 소속이 아닙니다.',
+  'Message introuvable.': '메시지를 찾을 수 없습니다.',
+  'Traduction momentanément indisponible.': '번역을 일시적으로 사용할 수 없습니다.',
+  'Traduction indisponible pour cette langue.': '이 언어로는 번역할 수 없습니다.',
 };

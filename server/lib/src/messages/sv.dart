@@ -43,4 +43,7 @@ const sv = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} har gått med i företaget.',
   'Conversation introuvable.': 'Konversationen hittades inte.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Den här personen tillhör inte längre företaget.',
+  'Message introuvable.': 'Meddelandet hittades inte.',
+  'Traduction momentanément indisponible.': 'Översättning tillfälligt otillgänglig.',
+  'Traduction indisponible pour cette langue.': 'Översättning finns inte för det här språket.',
 };

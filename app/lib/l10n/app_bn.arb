@@ -191,5 +191,9 @@
   "editGroup": "গ্রুপ সম্পাদনা",
   "groupName": "গ্রুপের নাম",
   "groupMembersHint": "এই গ্রুপের মানুষ বেছে নিন। শুধু তাঁরাই এর বার্তা দেখবেন।",
-  "chooseAtLeastOne": "অন্তত একজনকে বেছে নিন।"
+  "chooseAtLeastOne": "অন্তত একজনকে বেছে নিন।",
+  "replyAction": "উত্তর দিন",
+  "translateAction": "অনুবাদ করুন",
+  "replyingTo": "{name}-কে উত্তর",
+  "lastMessagesOf": "{name}-এর সাম্প্রতিক বার্তা"
 }

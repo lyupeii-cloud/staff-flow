@@ -43,4 +43,7 @@ const vi = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} đã tham gia công ty.',
   'Conversation introuvable.': 'Không tìm thấy cuộc trò chuyện.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Người này không còn thuộc công ty.',
+  'Message introuvable.': 'Không tìm thấy tin nhắn.',
+  'Traduction momentanément indisponible.': 'Tạm thời không dịch được.',
+  'Traduction indisponible pour cette langue.': 'Không có bản dịch cho ngôn ngữ này.',
 };

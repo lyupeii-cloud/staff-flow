@@ -191,5 +191,9 @@
   "editGroup": "Sửa nhóm",
   "groupName": "Tên nhóm",
   "groupMembersHint": "Chọn những người trong nhóm này. Chỉ họ mới thấy tin nhắn của nhóm.",
-  "chooseAtLeastOne": "Chọn ít nhất một người."
+  "chooseAtLeastOne": "Chọn ít nhất một người.",
+  "replyAction": "Trả lời",
+  "translateAction": "Dịch",
+  "replyingTo": "Trả lời {name}",
+  "lastMessagesOf": "Tin nhắn gần đây của {name}"
 }

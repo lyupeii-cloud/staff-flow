@@ -191,5 +191,9 @@
   "editGroup": "I-edit ang grupo",
   "groupName": "Pangalan ng grupo",
   "groupMembersHint": "Piliin ang mga tao sa grupong ito. Sila lang ang makakakita ng mga mensahe.",
-  "chooseAtLeastOne": "Pumili ng kahit isang tao."
+  "chooseAtLeastOne": "Pumili ng kahit isang tao.",
+  "replyAction": "Sumagot",
+  "translateAction": "Isalin",
+  "replyingTo": "Sagot kay {name}",
+  "lastMessagesOf": "Mga huling mensahe ni {name}"
 }

@@ -705,4 +705,20 @@ class L10nPt extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Escolha pelo menos uma pessoa.';
+
+  @override
+  String get replyAction => 'Responder';
+
+  @override
+  String get translateAction => 'Traduzir';
+
+  @override
+  String replyingTo(String name) {
+    return 'Resposta a $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Últimas mensagens de $name';
+  }
 }

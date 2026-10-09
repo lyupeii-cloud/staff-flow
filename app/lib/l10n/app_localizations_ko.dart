@@ -689,4 +689,20 @@ class L10nKo extends L10n {
 
   @override
   String get chooseAtLeastOne => '한 명 이상 선택하세요.';
+
+  @override
+  String get replyAction => '답장';
+
+  @override
+  String get translateAction => '번역';
+
+  @override
+  String replyingTo(String name) {
+    return '$name님에게 답장';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return '$name님의 최근 메시지';
+  }
 }

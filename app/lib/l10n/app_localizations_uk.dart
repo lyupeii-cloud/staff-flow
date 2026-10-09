@@ -711,4 +711,20 @@ class L10nUk extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Оберіть щонайменше одну людину.';
+
+  @override
+  String get replyAction => 'Відповісти';
+
+  @override
+  String get translateAction => 'Перекласти';
+
+  @override
+  String replyingTo(String name) {
+    return 'Відповідь для $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Останні повідомлення від $name';
+  }
 }

@@ -191,5 +191,9 @@
   "editGroup": "Hariri kikundi",
   "groupName": "Jina la kikundi",
   "groupMembersHint": "Chagua watu wa kikundi hiki. Wao pekee wataona ujumbe wake.",
-  "chooseAtLeastOne": "Chagua angalau mtu mmoja."
+  "chooseAtLeastOne": "Chagua angalau mtu mmoja.",
+  "replyAction": "Jibu",
+  "translateAction": "Tafsiri",
+  "replyingTo": "Jibu kwa {name}",
+  "lastMessagesOf": "Ujumbe wa hivi karibuni wa {name}"
 }

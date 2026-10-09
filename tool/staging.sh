@@ -21,15 +21,18 @@ up)
     until $D exec sf-stg-db pg_isready -U postgres -d stg >/dev/null 2>&1; do sleep 1; done
     # Notifications : le même compte de service Firebase que la production, s il est configuré.
     FCM=$(sed -n "s/^FCM_CREDENTIALS_B64=//p" ~/staff-flow/deploy/.env 2>/dev/null || true)
+    # Traduction : le traducteur de production (lecture seule, aucune donnée gardée).
+    TR=""
+    if $D network connect sf-stg staff-flow-translate-1 >/dev/null 2>&1; then TR=http://staff-flow-translate-1:5000; fi
     $D run -d --name sf-stg-api --network sf-stg -p 127.0.0.1:18099:8080 -v $W:/src -w /src \
       -e DATABASE_URL="postgresql://postgres:stg@sf-stg-db:5432/stg?sslmode=disable" \
       -e SESSION_SECRET=staging-only-secret-0123456789abcdef -e DEV_LOGIN=true \
-      -e FCM_CREDENTIALS_B64="$FCM" \
+      -e FCM_CREDENTIALS_B64="$FCM" -e TRANSLATE_URL="$TR" \
       -e ALLOWED_ORIGINS=http://localhost:5050 \
       dart:3.13.5 sh -c "dart pub get >/dev/null && dart run bin/server.dart" >/dev/null
     for i in $(seq 1 60); do curl -s 127.0.0.1:18099/health && exit 0; sleep 2; done; exit 1'
   echo " API de test prête." ;;
 down)
-  ssh -o BatchMode=yes "$HOST" 'sudo -n docker rm -f sf-stg-api sf-stg-db >/dev/null 2>&1; sudo -n docker network rm sf-stg >/dev/null 2>&1; sudo -n rm -rf /tmp/sf-staging; echo "API de test supprimée."' ;;
+  ssh -o BatchMode=yes "$HOST" 'sudo -n docker rm -f sf-stg-api sf-stg-db >/dev/null 2>&1; sudo -n docker network disconnect sf-stg staff-flow-translate-1 >/dev/null 2>&1; sudo -n docker network rm sf-stg >/dev/null 2>&1; sudo -n rm -rf /tmp/sf-staging; echo "API de test supprimée."' ;;
 *) echo "usage : $0 up|down" >&2; exit 2 ;;
 esac

@@ -43,4 +43,7 @@ const nl = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} is bij het bedrijf gekomen.',
   'Conversation introuvable.': 'Gesprek niet gevonden.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Deze persoon hoort niet meer bij het bedrijf.',
+  'Message introuvable.': 'Bericht niet gevonden.',
+  'Traduction momentanément indisponible.': 'Vertaling tijdelijk niet beschikbaar.',
+  'Traduction indisponible pour cette langue.': 'Vertaling niet beschikbaar voor deze taal.',
 };

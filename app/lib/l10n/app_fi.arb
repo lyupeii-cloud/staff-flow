@@ -191,5 +191,9 @@
   "editGroup": "Muokkaa ryhmää",
   "groupName": "Ryhmän nimi",
   "groupMembersHint": "Valitse ryhmän jäsenet. Vain he näkevät sen viestit.",
-  "chooseAtLeastOne": "Valitse vähintään yksi henkilö."
+  "chooseAtLeastOne": "Valitse vähintään yksi henkilö.",
+  "replyAction": "Vastaa",
+  "translateAction": "Käännä",
+  "replyingTo": "Vastaus: {name}",
+  "lastMessagesOf": "Viimeisimmät viestit: {name}"
 }

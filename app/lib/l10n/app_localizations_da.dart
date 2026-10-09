@@ -705,4 +705,20 @@ class L10nDa extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Vælg mindst én person.';
+
+  @override
+  String get replyAction => 'Svar';
+
+  @override
+  String get translateAction => 'Oversæt';
+
+  @override
+  String replyingTo(String name) {
+    return 'Svar til $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Seneste beskeder fra $name';
+  }
 }

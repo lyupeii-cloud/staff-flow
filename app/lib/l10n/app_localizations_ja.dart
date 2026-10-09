@@ -690,4 +690,20 @@ class L10nJa extends L10n {
 
   @override
   String get chooseAtLeastOne => '少なくとも1人選んでください。';
+
+  @override
+  String get replyAction => '返信';
+
+  @override
+  String get translateAction => '翻訳';
+
+  @override
+  String replyingTo(String name) {
+    return '$name さんへの返信';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return '$name さんの最近のメッセージ';
+  }
 }

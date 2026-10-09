@@ -686,4 +686,20 @@ class L10nZh extends L10n {
 
   @override
   String get chooseAtLeastOne => '请至少选择一人。';
+
+  @override
+  String get replyAction => '回复';
+
+  @override
+  String get translateAction => '翻译';
+
+  @override
+  String replyingTo(String name) {
+    return '回复 $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return '$name 的最近消息';
+  }
 }

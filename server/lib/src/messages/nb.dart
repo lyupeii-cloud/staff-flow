@@ -43,4 +43,7 @@ const nb = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} har blitt med i bedriften.',
   'Conversation introuvable.': 'Fant ikke samtalen.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Denne personen er ikke lenger en del av bedriften.',
+  'Message introuvable.': 'Fant ikke meldingen.',
+  'Traduction momentanément indisponible.': 'Oversettelse er midlertidig utilgjengelig.',
+  'Traduction indisponible pour cette langue.': 'Oversettelse er ikke tilgjengelig for dette språket.',
 };

@@ -712,4 +712,20 @@ class L10nPl extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Wybierz co najmniej jedną osobę.';
+
+  @override
+  String get replyAction => 'Odpowiedz';
+
+  @override
+  String get translateAction => 'Przetłumacz';
+
+  @override
+  String replyingTo(String name) {
+    return 'Odpowiedź do: $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Ostatnie wiadomości od: $name';
+  }
 }

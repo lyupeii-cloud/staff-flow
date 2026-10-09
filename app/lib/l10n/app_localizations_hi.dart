@@ -702,4 +702,20 @@ class L10nHi extends L10n {
 
   @override
   String get chooseAtLeastOne => 'कम से कम एक व्यक्ति चुनें।';
+
+  @override
+  String get replyAction => 'जवाब दें';
+
+  @override
+  String get translateAction => 'अनुवाद करें';
+
+  @override
+  String replyingTo(String name) {
+    return '$name को जवाब';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return '$name के हाल के संदेश';
+  }
 }

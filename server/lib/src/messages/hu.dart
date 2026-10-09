@@ -43,4 +43,7 @@ const hu = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} csatlakozott a céghez.',
   'Conversation introuvable.': 'A beszélgetés nem található.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Ez a személy már nem tagja a cégnek.',
+  'Message introuvable.': 'Az üzenet nem található.',
+  'Traduction momentanément indisponible.': 'A fordítás átmenetileg nem érhető el.',
+  'Traduction indisponible pour cette langue.': 'Erre a nyelvre nem érhető el fordítás.',
 };

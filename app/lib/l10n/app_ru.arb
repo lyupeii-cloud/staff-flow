@@ -191,5 +191,9 @@
   "editGroup": "Изменить группу",
   "groupName": "Название группы",
   "groupMembersHint": "Выберите людей для этой группы. Только они увидят её сообщения.",
-  "chooseAtLeastOne": "Выберите хотя бы одного человека."
+  "chooseAtLeastOne": "Выберите хотя бы одного человека.",
+  "replyAction": "Ответить",
+  "translateAction": "Перевести",
+  "replyingTo": "Ответ для {name}",
+  "lastMessagesOf": "Последние сообщения от {name}"
 }

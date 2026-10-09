@@ -12,7 +12,7 @@ import '../session.dart';
 import 'company_tab.dart';
 import 'join_code_dialog.dart';
 import 'language_picker.dart';
-import 'messages_view.dart';
+import 'chat_screen.dart';
 import 'notification_settings.dart';
 import 'people_widgets.dart';
 import 'sync_widgets.dart';

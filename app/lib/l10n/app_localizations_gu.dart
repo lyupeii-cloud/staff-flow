@@ -701,4 +701,20 @@ class L10nGu extends L10n {
 
   @override
   String get chooseAtLeastOne => 'ઓછામાં ઓછી એક વ્યક્તિ પસંદ કરો.';
+
+  @override
+  String get replyAction => 'જવાબ આપો';
+
+  @override
+  String get translateAction => 'અનુવાદ કરો';
+
+  @override
+  String replyingTo(String name) {
+    return '$name ને જવાબ';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return '$name ના તાજેતરના સંદેશા';
+  }
 }

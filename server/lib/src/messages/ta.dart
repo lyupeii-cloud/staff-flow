@@ -43,4 +43,7 @@ const ta = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} நிறுவனத்தில் சேர்ந்தார்.',
   'Conversation introuvable.': 'உரையாடல் கிடைக்கவில்லை.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'இவர் இப்போது நிறுவனத்தில் இல்லை.',
+  'Message introuvable.': 'செய்தி கிடைக்கவில்லை.',
+  'Traduction momentanément indisponible.': 'மொழிபெயர்ப்பு தற்காலிகமாகக் கிடைக்கவில்லை.',
+  'Traduction indisponible pour cette langue.': 'இந்த மொழிக்கு மொழிபெயர்ப்பு இல்லை.',
 };

@@ -43,4 +43,7 @@ const ru = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} присоединился к компании.',
   'Conversation introuvable.': 'Беседа не найдена.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Этот человек больше не состоит в компании.',
+  'Message introuvable.': 'Сообщение не найдено.',
+  'Traduction momentanément indisponible.': 'Перевод временно недоступен.',
+  'Traduction indisponible pour cette langue.': 'Перевод на этот язык недоступен.',
 };

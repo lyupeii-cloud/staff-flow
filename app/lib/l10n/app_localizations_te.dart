@@ -703,4 +703,20 @@ class L10nTe extends L10n {
 
   @override
   String get chooseAtLeastOne => 'కనీసం ఒకరిని ఎంచుకోండి.';
+
+  @override
+  String get replyAction => 'జవాబు';
+
+  @override
+  String get translateAction => 'అనువదించు';
+
+  @override
+  String replyingTo(String name) {
+    return '$nameకు జవాబు';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return '$name ఇటీవలి సందేశాలు';
+  }
 }

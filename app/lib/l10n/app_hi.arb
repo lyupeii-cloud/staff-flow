@@ -191,5 +191,9 @@
   "editGroup": "समूह संपादित करें",
   "groupName": "समूह का नाम",
   "groupMembersHint": "इस समूह के लोग चुनें। केवल वही इसके संदेश देखेंगे।",
-  "chooseAtLeastOne": "कम से कम एक व्यक्ति चुनें।"
+  "chooseAtLeastOne": "कम से कम एक व्यक्ति चुनें।",
+  "replyAction": "जवाब दें",
+  "translateAction": "अनुवाद करें",
+  "replyingTo": "{name} को जवाब",
+  "lastMessagesOf": "{name} के हाल के संदेश"
 }

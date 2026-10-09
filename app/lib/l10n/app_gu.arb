@@ -191,5 +191,9 @@
   "editGroup": "જૂથ સંપાદિત કરો",
   "groupName": "જૂથનું નામ",
   "groupMembersHint": "આ જૂથના લોકો પસંદ કરો. ફક્ત તેઓ જ તેના સંદેશા જોશે.",
-  "chooseAtLeastOne": "ઓછામાં ઓછી એક વ્યક્તિ પસંદ કરો."
+  "chooseAtLeastOne": "ઓછામાં ઓછી એક વ્યક્તિ પસંદ કરો.",
+  "replyAction": "જવાબ આપો",
+  "translateAction": "અનુવાદ કરો",
+  "replyingTo": "{name} ને જવાબ",
+  "lastMessagesOf": "{name} ના તાજેતરના સંદેશા"
 }

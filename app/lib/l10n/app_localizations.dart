@@ -1342,6 +1342,30 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Choose at least one person.'**
   String get chooseAtLeastOne;
+
+  /// No description provided for @replyAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Reply'**
+  String get replyAction;
+
+  /// No description provided for @translateAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Translate'**
+  String get translateAction;
+
+  /// No description provided for @replyingTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Replying to {name}'**
+  String replyingTo(String name);
+
+  /// No description provided for @lastMessagesOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Last messages from {name}'**
+  String lastMessagesOf(String name);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

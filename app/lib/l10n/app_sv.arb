@@ -191,5 +191,9 @@
   "editGroup": "Redigera grupp",
   "groupName": "Gruppnamn",
   "groupMembersHint": "Välj personerna i gruppen. Bara de ser dess meddelanden.",
-  "chooseAtLeastOne": "Välj minst en person."
+  "chooseAtLeastOne": "Välj minst en person.",
+  "replyAction": "Svara",
+  "translateAction": "Översätt",
+  "replyingTo": "Svar till {name}",
+  "lastMessagesOf": "Senaste meddelanden från {name}"
 }

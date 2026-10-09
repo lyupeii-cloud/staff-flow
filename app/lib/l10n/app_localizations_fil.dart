@@ -705,4 +705,20 @@ class L10nFil extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Pumili ng kahit isang tao.';
+
+  @override
+  String get replyAction => 'Sumagot';
+
+  @override
+  String get translateAction => 'Isalin';
+
+  @override
+  String replyingTo(String name) {
+    return 'Sagot kay $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Mga huling mensahe ni $name';
+  }
 }

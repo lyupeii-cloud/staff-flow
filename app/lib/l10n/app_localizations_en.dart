@@ -706,4 +706,20 @@ class L10nEn extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Choose at least one person.';
+
+  @override
+  String get replyAction => 'Reply';
+
+  @override
+  String get translateAction => 'Translate';
+
+  @override
+  String replyingTo(String name) {
+    return 'Replying to $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Last messages from $name';
+  }
 }

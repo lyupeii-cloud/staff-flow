@@ -191,5 +191,9 @@
   "editGroup": "Upravit skupinu",
   "groupName": "Název skupiny",
   "groupMembersHint": "Vyberte lidi do této skupiny. Jen oni uvidí její zprávy.",
-  "chooseAtLeastOne": "Vyberte alespoň jednu osobu."
+  "chooseAtLeastOne": "Vyberte alespoň jednu osobu.",
+  "replyAction": "Odpovědět",
+  "translateAction": "Přeložit",
+  "replyingTo": "Odpověď pro: {name}",
+  "lastMessagesOf": "Poslední zprávy od: {name}"
 }

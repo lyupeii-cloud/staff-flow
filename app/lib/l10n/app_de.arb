@@ -191,5 +191,9 @@
   "editGroup": "Gruppe bearbeiten",
   "groupName": "Gruppenname",
   "groupMembersHint": "Wählen Sie die Personen dieser Gruppe. Nur sie sehen die Nachrichten.",
-  "chooseAtLeastOne": "Wählen Sie mindestens eine Person."
+  "chooseAtLeastOne": "Wählen Sie mindestens eine Person.",
+  "replyAction": "Antworten",
+  "translateAction": "Übersetzen",
+  "replyingTo": "Antwort an {name}",
+  "lastMessagesOf": "Letzte Nachrichten von {name}"
 }

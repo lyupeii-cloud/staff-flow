@@ -191,5 +191,9 @@
   "editGroup": "Groep bewerken",
   "groupName": "Groepsnaam",
   "groupMembersHint": "Kies de mensen van deze groep. Alleen zij zien de berichten.",
-  "chooseAtLeastOne": "Kies minstens één persoon."
+  "chooseAtLeastOne": "Kies minstens één persoon.",
+  "replyAction": "Beantwoorden",
+  "translateAction": "Vertalen",
+  "replyingTo": "Antwoord aan {name}",
+  "lastMessagesOf": "Laatste berichten van {name}"
 }

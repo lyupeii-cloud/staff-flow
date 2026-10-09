@@ -702,4 +702,20 @@ class L10nBg extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Изберете поне един човек.';
+
+  @override
+  String get replyAction => 'Отговор';
+
+  @override
+  String get translateAction => 'Превод';
+
+  @override
+  String replyingTo(String name) {
+    return 'Отговор на $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Последни съобщения от $name';
+  }
 }

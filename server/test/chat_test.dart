@@ -152,6 +152,75 @@ void main() {
     });
   });
 
+  group('réponses, citations et traduction', () {
+    test('répondre à un message : l\'extrait du message d\'origine accompagne la réponse', () async {
+      final id = await groupId(bob);
+      final question = await say(bob, id, 'Qui peut me remplacer samedi ?');
+      final answer = await eva.ok('POST', '/conversations/$id/messages',
+          {'body': 'Moi !', 'replyTo': question['id']});
+      expect(answer['replyTo'], {
+        'id': question['id'],
+        'authorId': bob.id,
+        'authorName': 'bob',
+        'body': 'Qui peut me remplacer samedi ?',
+      });
+      expect((await messages(owner, id)).last['replyTo']['id'], question['id']);
+    });
+
+    test('on ne répond pas à un message d\'une autre conversation', () async {
+      final other = await say(bob, await private(bob, manager), 'Privé');
+      final (status, _) = await eva('POST', '/conversations/${await groupId(eva)}/messages',
+          {'body': 'x', 'replyTo': other['id']});
+      expect(status, 404);
+    });
+
+    test('citer une personne avec « # » : son nom dans l\'entreprise est gardé avec le message', () async {
+      await owner.ok('PUT', '/companies/$company/members/${bob.id}/name', {'name': 'Bob (cuisine)'});
+      final id = await groupId(eva);
+      final m = await eva.ok('POST', '/conversations/$id/messages',
+          {'body': '#Bob (cuisine) tu as vu ?', 'mentions': [bob.id]});
+      expect(m['mentions'], [
+        {'id': bob.id, 'name': 'Bob (cuisine)'}
+      ]);
+    });
+
+    test('on ne cite que quelqu\'un qui voit la conversation', () async {
+      final conv = await private(bob, manager);
+      expect((await bob('POST', '/conversations/$conv/messages', {'body': '#eva', 'mentions': [eva.id]})).$1, 404);
+    });
+
+    test('les derniers messages d\'une personne (bulle de la personne citée)', () async {
+      final id = await groupId(bob);
+      for (var i = 1; i <= 12; i++) {
+        await say(bob, id, 'Bob $i');
+        await say(eva, id, 'Eva $i');
+      }
+      final last = (await owner.ok('GET', '/conversations/$id/messages?author=${bob.id}&limit=10'))['messages'];
+      expect([for (final m in last) m['body']], [for (var i = 3; i <= 12; i++) 'Bob $i']);
+    });
+
+    test('traduction dans la langue demandée, gardée pour la fois suivante', () async {
+      final id = await groupId(bob);
+      final m = await say(bob, id, 'Я запізнюся');
+      final first = await eva.ok('POST', '/messages/${m['id']}/translate', {'lang': 'fr'});
+      expect(first['text'], '[fr] Я запізнюся');
+      await owner.ok('POST', '/messages/${m['id']}/translate', {'lang': 'fr-FR'});
+      expect(env.translator.calls, 1);
+      // Codes de l'application → codes du traducteur.
+      expect((await eva.ok('POST', '/messages/${m['id']}/translate', {'lang': 'zh'}))['text'], startsWith('[zh-Hans]'));
+      expect((await eva.ok('POST', '/messages/${m['id']}/translate', {'lang': 'fil'}))['text'], startsWith('[tl]'));
+    });
+
+    test('langue non prise en charge, traducteur en panne, message d\'une autre conversation', () async {
+      final m = await say(bob, await groupId(bob), 'Salut');
+      expect((await eva('POST', '/messages/${m['id']}/translate', {'lang': 'kk'})).$1, 422);
+      env.translator.down = true;
+      expect((await eva('POST', '/messages/${m['id']}/translate', {'lang': 'uk'})).$1, 409);
+      env.translator.down = false;
+      expect((await outsider('POST', '/messages/${m['id']}/translate', {'lang': 'uk'})).$1, 404);
+    });
+  });
+
   group('non lus', () {
     test('comptés par entreprise, remis à zéro à la lecture ; ses propres messages ne comptent pas', () async {
       final id = await groupId(bob);

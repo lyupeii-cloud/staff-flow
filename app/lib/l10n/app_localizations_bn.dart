@@ -701,4 +701,20 @@ class L10nBn extends L10n {
 
   @override
   String get chooseAtLeastOne => 'অন্তত একজনকে বেছে নিন।';
+
+  @override
+  String get replyAction => 'উত্তর দিন';
+
+  @override
+  String get translateAction => 'অনুবাদ করুন';
+
+  @override
+  String replyingTo(String name) {
+    return '$name-কে উত্তর';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return '$name-এর সাম্প্রতিক বার্তা';
+  }
 }

@@ -454,5 +454,23 @@
   "editGroup": "Edit group",
   "groupName": "Group name",
   "groupMembersHint": "Choose the people in this group. Only they will see its messages.",
-  "chooseAtLeastOne": "Choose at least one person."
+  "chooseAtLeastOne": "Choose at least one person.",
+  "replyAction": "Reply",
+  "translateAction": "Translate",
+  "replyingTo": "Replying to {name}",
+  "@replyingTo": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "lastMessagesOf": "Last messages from {name}",
+  "@lastMessagesOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  }
 }

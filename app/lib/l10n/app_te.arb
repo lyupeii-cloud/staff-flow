@@ -191,5 +191,9 @@
   "editGroup": "గ్రూప్‌ను సవరించు",
   "groupName": "గ్రూప్ పేరు",
   "groupMembersHint": "ఈ గ్రూప్‌లోని వ్యక్తులను ఎంచుకోండి. వారు మాత్రమే దాని సందేశాలను చూస్తారు.",
-  "chooseAtLeastOne": "కనీసం ఒకరిని ఎంచుకోండి."
+  "chooseAtLeastOne": "కనీసం ఒకరిని ఎంచుకోండి.",
+  "replyAction": "జవాబు",
+  "translateAction": "అనువదించు",
+  "replyingTo": "{name}కు జవాబు",
+  "lastMessagesOf": "{name} ఇటీవలి సందేశాలు"
 }

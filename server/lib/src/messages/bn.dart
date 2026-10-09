@@ -43,4 +43,7 @@ const bn = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} কোম্পানিতে যোগ দিয়েছেন।',
   'Conversation introuvable.': 'কথোপকথন পাওয়া যায়নি।',
   'Cette personne ne fait plus partie de l\'entreprise.': 'এই ব্যক্তি আর কোম্পানির অংশ নন।',
+  'Message introuvable.': 'বার্তা পাওয়া যায়নি।',
+  'Traduction momentanément indisponible.': 'অনুবাদ সাময়িকভাবে অনুপলব্ধ।',
+  'Traduction indisponible pour cette langue.': 'এই ভাষার জন্য অনুবাদ উপলব্ধ নয়।',
 };

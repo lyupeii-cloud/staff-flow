@@ -705,4 +705,20 @@ class L10nFi extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Valitse vähintään yksi henkilö.';
+
+  @override
+  String get replyAction => 'Vastaa';
+
+  @override
+  String get translateAction => 'Käännä';
+
+  @override
+  String replyingTo(String name) {
+    return 'Vastaus: $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Viimeisimmät viestit: $name';
+  }
 }

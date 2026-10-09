@@ -709,4 +709,20 @@ class L10nFr extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Choisissez au moins une personne.';
+
+  @override
+  String get replyAction => 'Répondre';
+
+  @override
+  String get translateAction => 'Traduire';
+
+  @override
+  String replyingTo(String name) {
+    return 'Réponse à $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Derniers messages de $name';
+  }
 }

@@ -63,4 +63,7 @@ const uk = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} приєднався до компанії.',
   'Conversation introuvable.': 'Розмову не знайдено.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Ця особа більше не є учасником компанії.',
+  'Message introuvable.': 'Повідомлення не знайдено.',
+  'Traduction momentanément indisponible.': 'Переклад тимчасово недоступний.',
+  'Traduction indisponible pour cette langue.': 'Переклад цією мовою недоступний.',
 };

@@ -43,4 +43,7 @@ const bg = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} се присъедини към фирмата.',
   'Conversation introuvable.': 'Разговорът не е намерен.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Този човек вече не е част от фирмата.',
+  'Message introuvable.': 'Съобщението не е намерено.',
+  'Traduction momentanément indisponible.': 'Преводът временно не е достъпен.',
+  'Traduction indisponible pour cette langue.': 'Превод на този език не е достъпен.',
 };

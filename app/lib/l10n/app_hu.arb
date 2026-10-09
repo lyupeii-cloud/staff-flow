@@ -191,5 +191,9 @@
   "editGroup": "Csoport szerkesztése",
   "groupName": "Csoport neve",
   "groupMembersHint": "Válaszd ki a csoport tagjait. Csak ők látják az üzeneteit.",
-  "chooseAtLeastOne": "Válassz legalább egy személyt."
+  "chooseAtLeastOne": "Válassz legalább egy személyt.",
+  "replyAction": "Válasz",
+  "translateAction": "Fordítás",
+  "replyingTo": "Válasz neki: {name}",
+  "lastMessagesOf": "{name} legutóbbi üzenetei"
 }

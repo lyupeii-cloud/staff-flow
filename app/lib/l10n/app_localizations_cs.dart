@@ -707,4 +707,20 @@ class L10nCs extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Vyberte alespoň jednu osobu.';
+
+  @override
+  String get replyAction => 'Odpovědět';
+
+  @override
+  String get translateAction => 'Přeložit';
+
+  @override
+  String replyingTo(String name) {
+    return 'Odpověď pro: $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Poslední zprávy od: $name';
+  }
 }

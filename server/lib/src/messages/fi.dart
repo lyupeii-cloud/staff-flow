@@ -43,4 +43,7 @@ const fi = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} liittyi yritykseen.',
   'Conversation introuvable.': 'Keskustelua ei löytynyt.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Tämä henkilö ei enää kuulu yritykseen.',
+  'Message introuvable.': 'Viestiä ei löytynyt.',
+  'Traduction momentanément indisponible.': 'Käännös ei ole tilapäisesti käytettävissä.',
+  'Traduction indisponible pour cette langue.': 'Käännöstä ei ole saatavilla tälle kielelle.',
 };

@@ -10,3 +10,4 @@ export 'src/notice_service.dart';
 export 'src/notifications.dart';
 export 'src/planning_service.dart';
 export 'src/store.dart';
+export 'src/translator.dart';

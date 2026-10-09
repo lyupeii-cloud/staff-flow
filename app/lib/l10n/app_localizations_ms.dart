@@ -701,4 +701,20 @@ class L10nMs extends L10n {
 
   @override
   String get chooseAtLeastOne => 'Pilih sekurang-kurangnya seorang.';
+
+  @override
+  String get replyAction => 'Balas';
+
+  @override
+  String get translateAction => 'Terjemah';
+
+  @override
+  String replyingTo(String name) {
+    return 'Membalas $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'Mesej terakhir daripada $name';
+  }
 }

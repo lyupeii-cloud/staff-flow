@@ -43,4 +43,7 @@ const id = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} telah bergabung dengan perusahaan.',
   'Conversation introuvable.': 'Percakapan tidak ditemukan.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'Orang ini sudah tidak lagi menjadi bagian dari perusahaan.',
+  'Message introuvable.': 'Pesan tidak ditemukan.',
+  'Traduction momentanément indisponible.': 'Terjemahan sementara tidak tersedia.',
+  'Traduction indisponible pour cette langue.': 'Terjemahan tidak tersedia untuk bahasa ini.',
 };

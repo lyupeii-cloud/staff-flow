@@ -697,4 +697,20 @@ class L10nTh extends L10n {
 
   @override
   String get chooseAtLeastOne => 'เลือกอย่างน้อยหนึ่งคน';
+
+  @override
+  String get replyAction => 'ตอบกลับ';
+
+  @override
+  String get translateAction => 'แปล';
+
+  @override
+  String replyingTo(String name) {
+    return 'ตอบกลับ $name';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return 'ข้อความล่าสุดจาก $name';
+  }
 }

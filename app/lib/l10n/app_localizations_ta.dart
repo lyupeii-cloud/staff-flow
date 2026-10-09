@@ -706,4 +706,20 @@ class L10nTa extends L10n {
 
   @override
   String get chooseAtLeastOne => 'குறைந்தது ஒருவரைத் தேர்ந்தெடுங்கள்.';
+
+  @override
+  String get replyAction => 'பதிலளி';
+
+  @override
+  String get translateAction => 'மொழிபெயர்';
+
+  @override
+  String replyingTo(String name) {
+    return '$name அவர்களுக்குப் பதில்';
+  }
+
+  @override
+  String lastMessagesOf(String name) {
+    return '$name அவர்களின் சமீபத்திய செய்திகள்';
+  }
 }

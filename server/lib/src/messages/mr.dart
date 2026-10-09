@@ -43,4 +43,7 @@ const mr = <String, String>{
   '{name} a rejoint l\'entreprise.': '{name} कंपनीत सामील झाले.',
   'Conversation introuvable.': 'संभाषण सापडले नाही.',
   'Cette personne ne fait plus partie de l\'entreprise.': 'ही व्यक्ती आता कंपनीचा भाग नाही.',
+  'Message introuvable.': 'संदेश सापडला नाही.',
+  'Traduction momentanément indisponible.': 'भाषांतर तात्पुरते उपलब्ध नाही.',
+  'Traduction indisponible pour cette langue.': 'या भाषेसाठी भाषांतर उपलब्ध नाही.',
 };

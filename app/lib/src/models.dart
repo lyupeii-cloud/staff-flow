@@ -259,7 +259,20 @@ class ChatMessage {
   final String body;
   final DateTime createdAt;
 
-  const ChatMessage({this.id, this.authorId, this.authorName, required this.body, required this.createdAt});
+  /// Message auquel celui-ci répond.
+  final ChatReply? replyTo;
+
+  /// Personnes citées avec « # ».
+  final List<Mention> mentions;
+
+  const ChatMessage(
+      {this.id,
+      this.authorId,
+      this.authorName,
+      required this.body,
+      required this.createdAt,
+      this.replyTo,
+      this.mentions = const []});
 
   bool get pending => id == null;
 
@@ -268,5 +281,29 @@ class ChatMessage {
         authorId = j['authorId'],
         authorName = j['authorName'],
         body = j['body'],
-        createdAt = DateTime.parse(j['createdAt']).toLocal();
+        createdAt = DateTime.parse(j['createdAt']).toLocal(),
+        replyTo = j['replyTo'] == null ? null : ChatReply.fromJson(j['replyTo']),
+        mentions = [for (final m in j['mentions'] ?? const []) Mention(m['id'], m['name'])];
+}
+
+/// Extrait du message auquel on répond.
+class ChatReply {
+  final int id;
+  final String? authorId;
+  final String? authorName;
+  final String body;
+
+  ChatReply.fromJson(Map<String, dynamic> j)
+      : id = j['id'],
+        authorId = j['authorId'],
+        authorName = j['authorName'],
+        body = j['body'];
+}
+
+/// Personne citée dans un message (« #Bob »).
+class Mention {
+  final String id;
+  final String name;
+
+  const Mention(this.id, this.name);
 }

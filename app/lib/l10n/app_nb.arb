@@ -191,5 +191,9 @@
   "editGroup": "Rediger gruppe",
   "groupName": "Gruppenavn",
   "groupMembersHint": "Velg personene i gruppen. Bare de ser meldingene.",
-  "chooseAtLeastOne": "Velg minst én person."
+  "chooseAtLeastOne": "Velg minst én person.",
+  "replyAction": "Svar",
+  "translateAction": "Oversett",
+  "replyingTo": "Svar til {name}",
+  "lastMessagesOf": "Siste meldinger fra {name}"
 }
