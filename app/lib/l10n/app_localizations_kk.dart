@@ -687,4 +687,20 @@ class L10nKk extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'Жаңа топ';
+
+  @override
+  String get editGroup => 'Топты өңдеу';
+
+  @override
+  String get groupName => 'Топ атауы';
+
+  @override
+  String get groupMembersHint =>
+      'Осы топтағы адамдарды таңдаңыз. Хабарларын тек солар көреді.';
+
+  @override
+  String get chooseAtLeastOne => 'Кемінде бір адамды таңдаңыз.';
 }

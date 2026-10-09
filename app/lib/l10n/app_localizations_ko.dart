@@ -674,4 +674,19 @@ class L10nKo extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => '새 그룹';
+
+  @override
+  String get editGroup => '그룹 편집';
+
+  @override
+  String get groupName => '그룹 이름';
+
+  @override
+  String get groupMembersHint => '이 그룹의 사람들을 선택하세요. 이들만 메시지를 볼 수 있습니다.';
+
+  @override
+  String get chooseAtLeastOne => '한 명 이상 선택하세요.';
 }

@@ -186,5 +186,10 @@
   "messageHint": "ਸੁਨੇਹਾ ਲਿਖੋ",
   "earlierMessages": "ਪਹਿਲਾਂ ਦੇ ਸੁਨੇਹੇ",
   "personLeftCompany": "ਇਹ ਵਿਅਕਤੀ ਹੁਣ ਕੰਪਨੀ ਦਾ ਹਿੱਸਾ ਨਹੀਂ ਹੈ।",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "ਨਵਾਂ ਗਰੁੱਪ",
+  "editGroup": "ਗਰੁੱਪ ਸੋਧੋ",
+  "groupName": "ਗਰੁੱਪ ਦਾ ਨਾਂ",
+  "groupMembersHint": "ਇਸ ਗਰੁੱਪ ਦੇ ਲੋਕ ਚੁਣੋ। ਸਿਰਫ਼ ਉਹੀ ਇਸਦੇ ਸੁਨੇਹੇ ਦੇਖਣਗੇ।",
+  "chooseAtLeastOne": "ਘੱਟੋ-ਘੱਟ ਇੱਕ ਵਿਅਕਤੀ ਚੁਣੋ।"
 }

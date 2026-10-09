@@ -221,6 +221,13 @@ String formatDay(DateTime d) =>
 class Conversation {
   final String id;
   final bool isGroup;
+
+  /// Groupe créé par un responsable avec des personnes choisies.
+  final bool isTeam;
+
+  /// Nom du groupe (pour [isTeam]).
+  final String? name;
+  final List<String> memberIds;
   final String? withId;
   final String? withName;
   final String? withPhotoUrl;
@@ -233,6 +240,9 @@ class Conversation {
   Conversation.fromJson(Map<String, dynamic> j)
       : id = j['id'],
         isGroup = j['kind'] == 'group',
+        isTeam = j['kind'] == 'team',
+        name = j['name'],
+        memberIds = [for (final m in j['memberIds'] ?? const []) m as String],
         withId = j['with']?['id'],
         withName = j['with']?['name'],
         withPhotoUrl = j['with']?['photoUrl'],

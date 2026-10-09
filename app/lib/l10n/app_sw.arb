@@ -186,5 +186,10 @@
   "messageHint": "Andika ujumbe",
   "earlierMessages": "Ujumbe wa awali",
   "personLeftCompany": "Mtu huyu si sehemu ya kampuni tena.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Kikundi kipya",
+  "editGroup": "Hariri kikundi",
+  "groupName": "Jina la kikundi",
+  "groupMembersHint": "Chagua watu wa kikundi hiki. Wao pekee wataona ujumbe wake.",
+  "chooseAtLeastOne": "Chagua angalau mtu mmoja."
 }

@@ -186,5 +186,10 @@
   "messageHint": "Kirjoita viesti",
   "earlierMessages": "Aiemmat viestit",
   "personLeftCompany": "Tämä henkilö ei enää kuulu yritykseen.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Uusi ryhmä",
+  "editGroup": "Muokkaa ryhmää",
+  "groupName": "Ryhmän nimi",
+  "groupMembersHint": "Valitse ryhmän jäsenet. Vain he näkevät sen viestit.",
+  "chooseAtLeastOne": "Valitse vähintään yksi henkilö."
 }

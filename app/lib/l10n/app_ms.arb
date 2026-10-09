@@ -186,5 +186,10 @@
   "messageHint": "Tulis mesej",
   "earlierMessages": "Mesej terdahulu",
   "personLeftCompany": "Orang ini bukan lagi sebahagian daripada syarikat.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Kumpulan baharu",
+  "editGroup": "Edit kumpulan",
+  "groupName": "Nama kumpulan",
+  "groupMembersHint": "Pilih orang dalam kumpulan ini. Hanya mereka yang melihat mesejnya.",
+  "chooseAtLeastOne": "Pilih sekurang-kurangnya seorang."
 }

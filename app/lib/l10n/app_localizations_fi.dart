@@ -689,4 +689,20 @@ class L10nFi extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'Uusi ryhmä';
+
+  @override
+  String get editGroup => 'Muokkaa ryhmää';
+
+  @override
+  String get groupName => 'Ryhmän nimi';
+
+  @override
+  String get groupMembersHint =>
+      'Valitse ryhmän jäsenet. Vain he näkevät sen viestit.';
+
+  @override
+  String get chooseAtLeastOne => 'Valitse vähintään yksi henkilö.';
 }

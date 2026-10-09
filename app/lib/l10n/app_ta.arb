@@ -186,5 +186,10 @@
   "messageHint": "செய்தியை எழுதுங்கள்",
   "earlierMessages": "முந்தைய செய்திகள்",
   "personLeftCompany": "இவர் இப்போது நிறுவனத்தில் இல்லை.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "புதிய குழு",
+  "editGroup": "குழுவைத் திருத்து",
+  "groupName": "குழுவின் பெயர்",
+  "groupMembersHint": "இந்தக் குழுவிலுள்ளவர்களைத் தேர்ந்தெடுங்கள். அவர்கள் மட்டுமே செய்திகளைப் பார்ப்பார்கள்.",
+  "chooseAtLeastOne": "குறைந்தது ஒருவரைத் தேர்ந்தெடுங்கள்."
 }

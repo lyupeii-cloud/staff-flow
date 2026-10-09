@@ -186,5 +186,10 @@
   "messageHint": "เขียนข้อความ",
   "earlierMessages": "ข้อความก่อนหน้า",
   "personLeftCompany": "บุคคลนี้ไม่ได้อยู่ในบริษัทแล้ว",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "กลุ่มใหม่",
+  "editGroup": "แก้ไขกลุ่ม",
+  "groupName": "ชื่อกลุ่ม",
+  "groupMembersHint": "เลือกคนในกลุ่มนี้ เฉพาะพวกเขาเท่านั้นที่จะเห็นข้อความ",
+  "chooseAtLeastOne": "เลือกอย่างน้อยหนึ่งคน"
 }

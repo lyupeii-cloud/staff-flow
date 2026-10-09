@@ -186,5 +186,10 @@
   "messageHint": "Napíšte správu",
   "earlierMessages": "Staršie správy",
   "personLeftCompany": "Táto osoba už vo firme nie je.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Nová skupina",
+  "editGroup": "Upraviť skupinu",
+  "groupName": "Názov skupiny",
+  "groupMembersHint": "Vyberte ľudí do tejto skupiny. Len oni uvidia jej správy.",
+  "chooseAtLeastOne": "Vyberte aspoň jednu osobu."
 }

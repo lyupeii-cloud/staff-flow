@@ -693,4 +693,20 @@ class L10nEl extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'Νέα ομάδα';
+
+  @override
+  String get editGroup => 'Επεξεργασία ομάδας';
+
+  @override
+  String get groupName => 'Όνομα ομάδας';
+
+  @override
+  String get groupMembersHint =>
+      'Επιλέξτε τα άτομα αυτής της ομάδας. Μόνο αυτά θα βλέπουν τα μηνύματά της.';
+
+  @override
+  String get chooseAtLeastOne => 'Επιλέξτε τουλάχιστον ένα άτομο.';
 }

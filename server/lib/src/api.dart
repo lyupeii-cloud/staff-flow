@@ -97,7 +97,9 @@ class Api {
       ..post('/companies/<id>/conversations', _authed(_openConversation))
       ..get('/conversations/<id>/messages', _authed(_messages))
       ..post('/conversations/<id>/messages', _authed(_sendMessage))
-      ..post('/conversations/<id>/read', _authed(_readMessages));
+      ..post('/conversations/<id>/read', _authed(_readMessages))
+      ..post('/companies/<id>/groups', _authed(_createGroup))
+      ..patch('/conversations/<id>', _authed(_updateGroup));
     if (devLogin) v1.post('/auth/dev', _loginDev);
 
     final root = Router(notFoundHandler: _notFound)
@@ -375,6 +377,28 @@ class Api {
   Future<Response> _sendMessage(Request req, User user) async {
     final body = await _body(req);
     return _json(await chat.send(user, req.params['id']!, _string(body, 'body')), status: 201);
+  }
+
+  static List<String> _ids(Object? value) {
+    if (value is! List || value.any((v) => v is! String)) {
+      throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    }
+    return value.cast<String>();
+  }
+
+  Future<Response> _createGroup(Request req, User user) async {
+    final body = await _body(req);
+    final id = await chat.createTeam(user, req.params['id']!, _string(body, 'name'), _ids(body['userIds']));
+    return _json({'id': id}, status: 201);
+  }
+
+  Future<Response> _updateGroup(Request req, User user) async {
+    final body = await _body(req);
+    final name = body['name'];
+    if (name is! String?) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    await chat.updateTeam(user, req.params['id']!,
+        name: name, userIds: body.containsKey('userIds') ? _ids(body['userIds']) : null);
+    return Response(204);
   }
 
   Future<Response> _readMessages(Request req, User user) async {

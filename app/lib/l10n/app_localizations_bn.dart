@@ -685,4 +685,20 @@ class L10nBn extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'নতুন গ্রুপ';
+
+  @override
+  String get editGroup => 'গ্রুপ সম্পাদনা';
+
+  @override
+  String get groupName => 'গ্রুপের নাম';
+
+  @override
+  String get groupMembersHint =>
+      'এই গ্রুপের মানুষ বেছে নিন। শুধু তাঁরাই এর বার্তা দেখবেন।';
+
+  @override
+  String get chooseAtLeastOne => 'অন্তত একজনকে বেছে নিন।';
 }

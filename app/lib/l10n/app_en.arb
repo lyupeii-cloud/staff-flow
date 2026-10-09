@@ -449,5 +449,10 @@
         "type": "String"
       }
     }
-  }
+  },
+  "newGroup": "New group",
+  "editGroup": "Edit group",
+  "groupName": "Group name",
+  "groupMembersHint": "Choose the people in this group. Only they will see its messages.",
+  "chooseAtLeastOne": "Choose at least one person."
 }

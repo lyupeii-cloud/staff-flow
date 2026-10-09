@@ -186,5 +186,10 @@
   "messageHint": "Напишите сообщение",
   "earlierMessages": "Предыдущие сообщения",
   "personLeftCompany": "Этот человек больше не состоит в компании.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Новая группа",
+  "editGroup": "Изменить группу",
+  "groupName": "Название группы",
+  "groupMembersHint": "Выберите людей для этой группы. Только они увидят её сообщения.",
+  "chooseAtLeastOne": "Выберите хотя бы одного человека."
 }

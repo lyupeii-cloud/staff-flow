@@ -685,4 +685,20 @@ class L10nId extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'Grup baru';
+
+  @override
+  String get editGroup => 'Edit grup';
+
+  @override
+  String get groupName => 'Nama grup';
+
+  @override
+  String get groupMembersHint =>
+      'Pilih orang-orang di grup ini. Hanya mereka yang melihat pesannya.';
+
+  @override
+  String get chooseAtLeastOne => 'Pilih setidaknya satu orang.';
 }

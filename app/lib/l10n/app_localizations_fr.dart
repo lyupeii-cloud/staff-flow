@@ -693,4 +693,20 @@ class L10nFr extends L10n {
   String messagePreview(String name, String text) {
     return '$name : $text';
   }
+
+  @override
+  String get newGroup => 'Nouveau groupe';
+
+  @override
+  String get editGroup => 'Modifier le groupe';
+
+  @override
+  String get groupName => 'Nom du groupe';
+
+  @override
+  String get groupMembersHint =>
+      'Choisissez les personnes de ce groupe. Elles seules verront ses messages.';
+
+  @override
+  String get chooseAtLeastOne => 'Choisissez au moins une personne.';
 }

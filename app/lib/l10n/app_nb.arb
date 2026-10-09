@@ -186,5 +186,10 @@
   "messageHint": "Skriv en melding",
   "earlierMessages": "Tidligere meldinger",
   "personLeftCompany": "Denne personen er ikke lenger en del av bedriften.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Ny gruppe",
+  "editGroup": "Rediger gruppe",
+  "groupName": "Gruppenavn",
+  "groupMembersHint": "Velg personene i gruppen. Bare de ser meldingene.",
+  "chooseAtLeastOne": "Velg minst én person."
 }

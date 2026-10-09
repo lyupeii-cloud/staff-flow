@@ -20,6 +20,17 @@ class ChatService {
   /// Nom affiché d'une personne dans l'entreprise `c` (alias `ms`, `u`).
   static const _name = 'coalesce(ms.display_name, u.custom_name, u.name)';
 
+  /// La conversation `c` est-elle visible par `@u` (membre actuel de l'entreprise) ?
+  static const _visible = '''(c.kind = 'group'
+    OR (c.kind = 'private' AND @u::uuid IN (c.user_a, c.user_b))
+    OR (c.kind = 'team' AND EXISTS (SELECT 1 FROM conversation_members cm
+          WHERE cm.conversation_id = c.id AND cm.user_id = @u::uuid)))''';
+
+  /// Les messages comptent comme non lus à partir de l'arrivée de `@u`
+  /// dans l'entreprise (`me`) ou dans le groupe.
+  static const _since = '''greatest(me.joined_at, coalesce((SELECT cm.added_at FROM conversation_members cm
+      WHERE cm.conversation_id = c.id AND cm.user_id = @u::uuid), me.joined_at))''';
+
   /// Conversations visibles par [actor] dans l'entreprise, groupe en premier.
   Future<List<Map<String, Object?>>> conversations(User actor, String companyId) async {
     final (_, _) = await companies.open(actor, companyId);
@@ -33,7 +44,9 @@ class ChatService {
         last.body AS last_body, last.author_name AS last_author, last.created_at AS last_at,
         (SELECT count(*) FROM messages m
            WHERE m.conversation_id = c.id AND m.author_id IS DISTINCT FROM @u::uuid
-             AND m.id > coalesce(r.last_read_id, 0) AND m.created_at > me.joined_at) AS unread
+             AND m.id > coalesce(r.last_read_id, 0) AND m.created_at > $_since) AS unread,
+        c.name AS team_name,
+        (SELECT array_agg(cm.user_id::text) FROM conversation_members cm WHERE cm.conversation_id = c.id) AS member_ids
       FROM conversations c
       JOIN memberships me ON me.company_id = c.company_id AND me.user_id = @u::uuid AND me.left_at IS NULL
       LEFT JOIN conversation_reads r ON r.conversation_id = c.id AND r.user_id = @u::uuid
@@ -50,7 +63,7 @@ class ChatService {
         LEFT JOIN memberships ms ON ms.user_id = u.id AND ms.company_id = c.company_id AND ms.left_at IS NULL
         WHERE m.conversation_id = c.id ORDER BY m.id DESC LIMIT 1
       ) last ON true
-      WHERE c.company_id = @c::uuid AND (c.kind = 'group' OR @u::uuid IN (c.user_a, c.user_b))
+      WHERE c.company_id = @c::uuid AND $_visible
       ORDER BY c.kind = 'group' DESC, last.created_at DESC NULLS LAST''',
         {'c': companyId, 'u': actor.id});
     return [
@@ -58,6 +71,7 @@ class ChatService {
         {
           'id': r['id'],
           'kind': r['kind'],
+          if (r['kind'] == 'team') ...{'name': r['team_name'], 'memberIds': r['member_ids'] ?? const []},
           if (r['kind'] == 'private')
             'with': {
               'id': r['other_id'],
@@ -99,18 +113,91 @@ class ChatService {
   }
 
   /// Ouvre la conversation pour [actor] ; 404 si elle ne le concerne pas.
-  Future<({String companyId, String kind, String? otherId, Company company})> _open(
+  Future<({String companyId, String kind, String? otherId, String? name, Company company, Role role})> _open(
       User actor, String conversationId) async {
     final rows = await store.query(store.db, '''
-      SELECT company_id::text, kind, user_a::text, user_b::text FROM conversations
-      WHERE id = @id::uuid''', {'id': conversationId});
+      SELECT c.company_id::text, c.kind, c.user_a::text, c.user_b::text, c.name,
+        EXISTS (SELECT 1 FROM conversation_members cm WHERE cm.conversation_id = c.id AND cm.user_id = @u::uuid)
+      FROM conversations c WHERE c.id = @id::uuid''', {'id': conversationId, 'u': actor.id});
     if (rows.isEmpty) throw const ApiError.notFound('Conversation introuvable.');
-    final [companyId as String, kind as String, a as String?, b as String?] = rows.first;
-    if (kind == 'private' && actor.id != a && actor.id != b) {
+    final [companyId as String, kind as String, a as String?, b as String?, name as String?, inTeam as bool] =
+        rows.first;
+    if ((kind == 'private' && actor.id != a && actor.id != b) || (kind == 'team' && !inTeam)) {
       throw const ApiError.notFound('Conversation introuvable.');
     }
-    final (company, _) = await companies.open(actor, companyId);
-    return (companyId: companyId, kind: kind, otherId: actor.id == a ? b : a, company: company);
+    final (company, role) = await companies.open(actor, companyId);
+    return (
+      companyId: companyId,
+      kind: kind,
+      otherId: actor.id == a ? b : a,
+      name: name,
+      company: company,
+      role: role,
+    );
+  }
+
+  /// Groupe de discussion créé par un responsable avec les personnes
+  /// choisies (le responsable en fait partie). Renvoie son identifiant.
+  Future<String> createTeam(User actor, String companyId, String name, List<String> userIds) async {
+    final (company, role) = await companies.open(actor, companyId);
+    if (!role.canManage) throw const ApiError.forbidden();
+    if (company.status == CompanyStatus.readOnly) {
+      throw const ApiError.conflict('Cette entreprise est en lecture seule.');
+    }
+    final clean = CompanyService.personName(name);
+    if (clean == null) throw const ApiError.badRequest('Le nom doit faire entre 1 et 120 caractères.');
+    final members = await _checkMembers(companyId, {...userIds, actor.id});
+    return store.db.runTx((tx) async {
+      final rows = await store.query(tx, '''
+        INSERT INTO conversations (company_id, kind, name, created_by)
+        VALUES (@c::uuid, 'team', @n, @u::uuid) RETURNING id::text''',
+          {'c': companyId, 'n': clean, 'u': actor.id});
+      final id = rows.first[0] as String;
+      for (final m in members) {
+        await store.query(tx, 'INSERT INTO conversation_members (conversation_id, user_id) VALUES (@id::uuid, @u::uuid)',
+            {'id': id, 'u': m});
+      }
+      return id;
+    });
+  }
+
+  /// Renommer le groupe ou changer ses membres (un responsable de l'entreprise).
+  Future<void> updateTeam(User actor, String conversationId, {String? name, List<String>? userIds}) async {
+    final rows = await store.query(store.db,
+        "SELECT company_id::text FROM conversations WHERE id = @id::uuid AND kind = 'team'", {'id': conversationId});
+    if (rows.isEmpty) throw const ApiError.notFound('Conversation introuvable.');
+    final companyId = rows.first[0] as String;
+    final (company, role) = await companies.open(actor, companyId);
+    if (!role.canManage) throw const ApiError.forbidden();
+    if (company.status == CompanyStatus.readOnly) {
+      throw const ApiError.conflict('Cette entreprise est en lecture seule.');
+    }
+    final clean = name == null ? null : CompanyService.personName(name);
+    if (name != null && clean == null) throw const ApiError.badRequest('Le nom doit faire entre 1 et 120 caractères.');
+    final members = userIds == null ? null : await _checkMembers(companyId, userIds.toSet());
+    await store.db.runTx((tx) async {
+      if (clean != null) {
+        await store.query(tx, 'UPDATE conversations SET name = @n WHERE id = @id::uuid', {'id': conversationId, 'n': clean});
+      }
+      if (members != null) {
+        await store.query(tx,
+            'DELETE FROM conversation_members WHERE conversation_id = @id::uuid AND NOT (user_id::text = ANY(@m))',
+            {'id': conversationId, 'm': members.toList()});
+        for (final m in members) {
+          await store.query(tx, '''
+            INSERT INTO conversation_members (conversation_id, user_id) VALUES (@id::uuid, @u::uuid)
+            ON CONFLICT DO NOTHING''', {'id': conversationId, 'u': m});
+        }
+      }
+    });
+  }
+
+  /// Les personnes doivent toutes être membres actuels de l'entreprise.
+  Future<Set<String>> _checkMembers(String companyId, Set<String> userIds) async {
+    for (final u in userIds) {
+      if (await store.roleOf(companyId, u) == null) throw const ApiError.notFound('Membre introuvable.');
+    }
+    return userIds;
   }
 
   /// Messages du plus ancien au plus récent ; [before] : pour remonter
@@ -158,13 +245,24 @@ class ChatService {
     final authorName = await _nameIn(conv.companyId, actor);
     final message = _message({...row, 'author_name': authorName});
 
-    final recipients = conv.kind == 'group'
-        ? [for (final m in await store.members(conv.companyId)) if (m.user.id != actor.id) m.user.id]
-        : [conv.otherId!];
+    final active = {for (final m in await store.members(conv.companyId)) m.user.id};
+    final recipients = switch (conv.kind) {
+      'private' => [conv.otherId!],
+      'team' => [
+          for (final r in await store.query(store.db,
+              'SELECT user_id::text FROM conversation_members WHERE conversation_id = @id::uuid', {'id': conversationId}))
+            if (r[0] != actor.id && active.contains(r[0])) r[0] as String,
+        ],
+      _ => [for (final u in active) if (u != actor.id) u],
+    };
     notifications.pushDirect(
       recipients,
       category: NotifyCategory.messages,
-      title: conv.kind == 'group' ? '${conv.company.name} · $authorName' : '$authorName · ${conv.company.name}',
+      title: switch (conv.kind) {
+        'private' => '$authorName · ${conv.company.name}',
+        'team' => '${conv.name} · $authorName',
+        _ => '${conv.company.name} · $authorName',
+      },
       body: text.length > 200 ? '${text.substring(0, 199)}…' : text,
       data: {'kind': 'message', 'companyId': conv.companyId, 'conversationId': conversationId, 'tag': 'conv-$conversationId'},
     );
@@ -195,9 +293,9 @@ class ChatService {
       JOIN conversations c ON c.id = m.conversation_id
       JOIN memberships me ON me.company_id = c.company_id AND me.user_id = @u::uuid AND me.left_at IS NULL
       LEFT JOIN conversation_reads r ON r.conversation_id = c.id AND r.user_id = @u::uuid
-      WHERE (c.kind = 'group' OR @u::uuid IN (c.user_a, c.user_b))
+      WHERE $_visible
         AND m.author_id IS DISTINCT FROM @u::uuid
-        AND m.id > coalesce(r.last_read_id, 0) AND m.created_at > me.joined_at
+        AND m.id > coalesce(r.last_read_id, 0) AND m.created_at > $_since
       GROUP BY c.company_id''', {'u': userId});
     return {for (final r in rows) r[0] as String: r[1] as int};
   }

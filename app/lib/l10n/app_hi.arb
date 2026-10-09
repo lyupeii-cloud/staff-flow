@@ -186,5 +186,10 @@
   "messageHint": "संदेश लिखें",
   "earlierMessages": "पुराने संदेश",
   "personLeftCompany": "यह व्यक्ति अब कंपनी का हिस्सा नहीं है।",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "नया समूह",
+  "editGroup": "समूह संपादित करें",
+  "groupName": "समूह का नाम",
+  "groupMembersHint": "इस समूह के लोग चुनें। केवल वही इसके संदेश देखेंगे।",
+  "chooseAtLeastOne": "कम से कम एक व्यक्ति चुनें।"
 }

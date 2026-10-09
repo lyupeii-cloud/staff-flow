@@ -190,5 +190,10 @@
   "messageHint": "Напишіть повідомлення",
   "earlierMessages": "Попередні повідомлення",
   "personLeftCompany": "Ця особа більше не є учасником компанії.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Нова група",
+  "editGroup": "Змінити групу",
+  "groupName": "Назва групи",
+  "groupMembersHint": "Оберіть людей для цієї групи. Лише вони бачитимуть її повідомлення.",
+  "chooseAtLeastOne": "Оберіть щонайменше одну людину."
 }

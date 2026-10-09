@@ -186,5 +186,10 @@
   "messageHint": "Γράψτε ένα μήνυμα",
   "earlierMessages": "Παλαιότερα μηνύματα",
   "personLeftCompany": "Αυτό το άτομο δεν ανήκει πλέον στην εταιρεία.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Νέα ομάδα",
+  "editGroup": "Επεξεργασία ομάδας",
+  "groupName": "Όνομα ομάδας",
+  "groupMembersHint": "Επιλέξτε τα άτομα αυτής της ομάδας. Μόνο αυτά θα βλέπουν τα μηνύματά της.",
+  "chooseAtLeastOne": "Επιλέξτε τουλάχιστον ένα άτομο."
 }

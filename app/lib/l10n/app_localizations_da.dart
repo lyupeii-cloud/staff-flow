@@ -689,4 +689,20 @@ class L10nDa extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'Ny gruppe';
+
+  @override
+  String get editGroup => 'Rediger gruppe';
+
+  @override
+  String get groupName => 'Gruppenavn';
+
+  @override
+  String get groupMembersHint =>
+      'Vælg personerne i gruppen. Kun de kan se dens beskeder.';
+
+  @override
+  String get chooseAtLeastOne => 'Vælg mindst én person.';
 }

@@ -186,5 +186,10 @@
   "messageHint": "Nachricht schreiben",
   "earlierMessages": "Frühere Nachrichten",
   "personLeftCompany": "Diese Person gehört nicht mehr zum Unternehmen.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Neue Gruppe",
+  "editGroup": "Gruppe bearbeiten",
+  "groupName": "Gruppenname",
+  "groupMembersHint": "Wählen Sie die Personen dieser Gruppe. Nur sie sehen die Nachrichten.",
+  "chooseAtLeastOne": "Wählen Sie mindestens eine Person."
 }

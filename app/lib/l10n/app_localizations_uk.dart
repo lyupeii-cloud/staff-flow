@@ -695,4 +695,20 @@ class L10nUk extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'Нова група';
+
+  @override
+  String get editGroup => 'Змінити групу';
+
+  @override
+  String get groupName => 'Назва групи';
+
+  @override
+  String get groupMembersHint =>
+      'Оберіть людей для цієї групи. Лише вони бачитимуть її повідомлення.';
+
+  @override
+  String get chooseAtLeastOne => 'Оберіть щонайменше одну людину.';
 }

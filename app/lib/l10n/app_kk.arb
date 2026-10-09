@@ -186,5 +186,10 @@
   "messageHint": "Хабар жазыңыз",
   "earlierMessages": "Бұрынғы хабарлар",
   "personLeftCompany": "Бұл адам енді компанияда емес.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Жаңа топ",
+  "editGroup": "Топты өңдеу",
+  "groupName": "Топ атауы",
+  "groupMembersHint": "Осы топтағы адамдарды таңдаңыз. Хабарларын тек солар көреді.",
+  "chooseAtLeastOne": "Кемінде бір адамды таңдаңыз."
 }

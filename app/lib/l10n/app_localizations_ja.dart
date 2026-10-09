@@ -675,4 +675,19 @@ class L10nJa extends L10n {
   String messagePreview(String name, String text) {
     return '$name：$text';
   }
+
+  @override
+  String get newGroup => '新しいグループ';
+
+  @override
+  String get editGroup => 'グループを編集';
+
+  @override
+  String get groupName => 'グループ名';
+
+  @override
+  String get groupMembersHint => 'このグループのメンバーを選んでください。メッセージはメンバーだけに表示されます。';
+
+  @override
+  String get chooseAtLeastOne => '少なくとも1人選んでください。';
 }

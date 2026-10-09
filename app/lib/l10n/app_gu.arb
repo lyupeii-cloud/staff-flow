@@ -186,5 +186,10 @@
   "messageHint": "સંદેશો લખો",
   "earlierMessages": "અગાઉના સંદેશા",
   "personLeftCompany": "આ વ્યક્તિ હવે કંપનીનો ભાગ નથી.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "નવું જૂથ",
+  "editGroup": "જૂથ સંપાદિત કરો",
+  "groupName": "જૂથનું નામ",
+  "groupMembersHint": "આ જૂથના લોકો પસંદ કરો. ફક્ત તેઓ જ તેના સંદેશા જોશે.",
+  "chooseAtLeastOne": "ઓછામાં ઓછી એક વ્યક્તિ પસંદ કરો."
 }

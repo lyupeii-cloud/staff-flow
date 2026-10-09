@@ -693,4 +693,20 @@ class L10nSk extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'Nová skupina';
+
+  @override
+  String get editGroup => 'Upraviť skupinu';
+
+  @override
+  String get groupName => 'Názov skupiny';
+
+  @override
+  String get groupMembersHint =>
+      'Vyberte ľudí do tejto skupiny. Len oni uvidia jej správy.';
+
+  @override
+  String get chooseAtLeastOne => 'Vyberte aspoň jednu osobu.';
 }

@@ -685,4 +685,20 @@ class L10nHu extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'Új csoport';
+
+  @override
+  String get editGroup => 'Csoport szerkesztése';
+
+  @override
+  String get groupName => 'Csoport neve';
+
+  @override
+  String get groupMembersHint =>
+      'Válaszd ki a csoport tagjait. Csak ők látják az üzeneteit.';
+
+  @override
+  String get chooseAtLeastOne => 'Válassz legalább egy személyt.';
 }

@@ -690,4 +690,20 @@ class L10nTa extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'புதிய குழு';
+
+  @override
+  String get editGroup => 'குழுவைத் திருத்து';
+
+  @override
+  String get groupName => 'குழுவின் பெயர்';
+
+  @override
+  String get groupMembersHint =>
+      'இந்தக் குழுவிலுள்ளவர்களைத் தேர்ந்தெடுங்கள். அவர்கள் மட்டுமே செய்திகளைப் பார்ப்பார்கள்.';
+
+  @override
+  String get chooseAtLeastOne => 'குறைந்தது ஒருவரைத் தேர்ந்தெடுங்கள்.';
 }

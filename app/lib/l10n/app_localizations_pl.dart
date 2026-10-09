@@ -696,4 +696,20 @@ class L10nPl extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'Nowa grupa';
+
+  @override
+  String get editGroup => 'Edytuj grupę';
+
+  @override
+  String get groupName => 'Nazwa grupy';
+
+  @override
+  String get groupMembersHint =>
+      'Wybierz osoby do tej grupy. Tylko one zobaczą jej wiadomości.';
+
+  @override
+  String get chooseAtLeastOne => 'Wybierz co najmniej jedną osobę.';
 }

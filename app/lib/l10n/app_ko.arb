@@ -186,5 +186,10 @@
   "messageHint": "메시지 입력",
   "earlierMessages": "이전 메시지",
   "personLeftCompany": "이 사람은 더 이상 회사 소속이 아닙니다.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "새 그룹",
+  "editGroup": "그룹 편집",
+  "groupName": "그룹 이름",
+  "groupMembersHint": "이 그룹의 사람들을 선택하세요. 이들만 메시지를 볼 수 있습니다.",
+  "chooseAtLeastOne": "한 명 이상 선택하세요."
 }

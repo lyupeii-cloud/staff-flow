@@ -1312,6 +1312,36 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'{name}: {text}'**
   String messagePreview(String name, String text);
+
+  /// No description provided for @newGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'New group'**
+  String get newGroup;
+
+  /// No description provided for @editGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit group'**
+  String get editGroup;
+
+  /// No description provided for @groupName.
+  ///
+  /// In en, this message translates to:
+  /// **'Group name'**
+  String get groupName;
+
+  /// No description provided for @groupMembersHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the people in this group. Only they will see its messages.'**
+  String get groupMembersHint;
+
+  /// No description provided for @chooseAtLeastOne.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose at least one person.'**
+  String get chooseAtLeastOne;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

@@ -687,4 +687,20 @@ class L10nTe extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'కొత్త గ్రూప్';
+
+  @override
+  String get editGroup => 'గ్రూప్‌ను సవరించు';
+
+  @override
+  String get groupName => 'గ్రూప్ పేరు';
+
+  @override
+  String get groupMembersHint =>
+      'ఈ గ్రూప్‌లోని వ్యక్తులను ఎంచుకోండి. వారు మాత్రమే దాని సందేశాలను చూస్తారు.';
+
+  @override
+  String get chooseAtLeastOne => 'కనీసం ఒకరిని ఎంచుకోండి.';
 }

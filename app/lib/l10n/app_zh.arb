@@ -186,5 +186,10 @@
   "messageHint": "输入消息",
   "earlierMessages": "更早的消息",
   "personLeftCompany": "此人已不再是公司成员。",
-  "messagePreview": "{name}：{text}"
+  "messagePreview": "{name}：{text}",
+  "newGroup": "新建群组",
+  "editGroup": "编辑群组",
+  "groupName": "群组名称",
+  "groupMembersHint": "选择该群组的成员。只有他们能看到群组消息。",
+  "chooseAtLeastOne": "请至少选择一人。"
 }

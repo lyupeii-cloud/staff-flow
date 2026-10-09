@@ -241,4 +241,23 @@ CREATE TABLE conversation_reads (
   PRIMARY KEY (conversation_id, user_id)
 );
 ''',
+  // 8 — groupes de discussion créés par un responsable, avec les personnes choisies
+  '''
+ALTER TABLE conversations DROP CONSTRAINT conversations_kind_check;
+ALTER TABLE conversations ADD CONSTRAINT conversations_kind_check CHECK (kind IN ('group', 'private', 'team'));
+-- Seule une conversation privée désigne ses deux personnes directement.
+ALTER TABLE conversations DROP CONSTRAINT conversations_check;
+ALTER TABLE conversations ADD CONSTRAINT conversations_pair_check
+  CHECK ((kind = 'private') = (user_a IS NOT NULL AND user_b IS NOT NULL));
+ALTER TABLE conversations ADD COLUMN name text;
+ALTER TABLE conversations ADD COLUMN created_by uuid REFERENCES users(id) ON DELETE SET NULL;
+
+CREATE TABLE conversation_members (
+  conversation_id  uuid NOT NULL REFERENCES conversations(id) ON DELETE CASCADE,
+  user_id          uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  added_at         timestamptz NOT NULL DEFAULT now(),
+  PRIMARY KEY (conversation_id, user_id)
+);
+CREATE INDEX conversation_members_user ON conversation_members (user_id);
+''',
 ];

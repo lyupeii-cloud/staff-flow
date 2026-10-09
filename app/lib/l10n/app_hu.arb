@@ -186,5 +186,10 @@
   "messageHint": "Írj üzenetet",
   "earlierMessages": "Korábbi üzenetek",
   "personLeftCompany": "Ez a személy már nem tagja a cégnek.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Új csoport",
+  "editGroup": "Csoport szerkesztése",
+  "groupName": "Csoport neve",
+  "groupMembersHint": "Válaszd ki a csoport tagjait. Csak ők látják az üzeneteit.",
+  "chooseAtLeastOne": "Válassz legalább egy személyt."
 }

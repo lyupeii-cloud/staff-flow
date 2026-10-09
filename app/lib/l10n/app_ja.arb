@@ -186,5 +186,10 @@
   "messageHint": "メッセージを入力",
   "earlierMessages": "以前のメッセージ",
   "personLeftCompany": "この人はもう会社のメンバーではありません。",
-  "messagePreview": "{name}：{text}"
+  "messagePreview": "{name}：{text}",
+  "newGroup": "新しいグループ",
+  "editGroup": "グループを編集",
+  "groupName": "グループ名",
+  "groupMembersHint": "このグループのメンバーを選んでください。メッセージはメンバーだけに表示されます。",
+  "chooseAtLeastOne": "少なくとも1人選んでください。"
 }

@@ -186,5 +186,10 @@
   "messageHint": "Skriv en besked",
   "earlierMessages": "Tidligere beskeder",
   "personLeftCompany": "Denne person er ikke længere en del af virksomheden.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Ny gruppe",
+  "editGroup": "Rediger gruppe",
+  "groupName": "Gruppenavn",
+  "groupMembersHint": "Vælg personerne i gruppen. Kun de kan se dens beskeder.",
+  "chooseAtLeastOne": "Vælg mindst én person."
 }

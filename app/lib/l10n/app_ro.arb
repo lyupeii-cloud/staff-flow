@@ -186,5 +186,10 @@
   "messageHint": "Scrie un mesaj",
   "earlierMessages": "Mesaje anterioare",
   "personLeftCompany": "Această persoană nu mai face parte din firmă.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Grup nou",
+  "editGroup": "Editează grupul",
+  "groupName": "Numele grupului",
+  "groupMembersHint": "Alege persoanele din acest grup. Doar ele vor vedea mesajele.",
+  "chooseAtLeastOne": "Alege cel puțin o persoană."
 }

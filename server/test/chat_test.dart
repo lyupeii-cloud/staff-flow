@@ -99,6 +99,59 @@ void main() {
     });
   });
 
+  group('groupes créés par un responsable', () {
+    Future<String> team(Client c, String name, List<Client> people) async =>
+        (await c.ok('POST', '/companies/$company/groups', {
+          'name': name,
+          'userIds': [for (final p in people) p.id],
+        }))['id'];
+
+    test('seules les personnes choisies (et le responsable) le voient et y écrivent', () async {
+      final id = await team(manager, 'Cuisine', [bob]);
+      final conv = (await conversations(bob)).firstWhere((c) => c['id'] == id);
+      expect([conv['kind'], conv['name']], ['team', 'Cuisine']);
+      expect(conv['memberIds'], unorderedEquals([manager.id, bob.id]));
+      await say(bob, id, 'Il manque des œufs');
+      expect((await messages(manager, id)).single['body'], 'Il manque des œufs');
+      // Eva n'en fait pas partie, le propriétaire non plus.
+      expect((await conversations(eva)).where((c) => c['id'] == id), isEmpty);
+      expect((await eva('GET', '/conversations/$id/messages')).$1, 404);
+      expect((await owner('POST', '/conversations/$id/messages', {'body': 'x'})).$1, 404);
+    });
+
+    test('un salarié ne crée pas de groupe ; une personne extérieure ne peut pas être ajoutée', () async {
+      expect((await bob('POST', '/companies/$company/groups', {'name': 'X', 'userIds': [eva.id]})).$1, 403);
+      expect((await manager('POST', '/companies/$company/groups', {'name': 'X', 'userIds': [outsider.id]})).$1, 404);
+      expect((await manager('POST', '/companies/$company/groups', {'name': ' ', 'userIds': [bob.id]})).$1, 400);
+    });
+
+    test('renommer, ajouter et retirer des personnes', () async {
+      final id = await team(manager, 'Cuisine', [bob]);
+      await say(bob, id, 'Avant l\'arrivée d\'Eva');
+      env.clock.advance(const Duration(seconds: 1));
+      await owner.ok('PATCH', '/conversations/$id', {'name': 'Équipe du matin', 'userIds': [manager.id, eva.id]});
+      final conv = (await conversations(eva)).firstWhere((c) => c['id'] == id);
+      expect(conv['name'], 'Équipe du matin');
+      // Eva lit l'historique, sans que les anciens messages comptent comme non lus.
+      expect((await messages(eva, id)).single['body'], 'Avant l\'arrivée d\'Eva');
+      expect(conv['unread'], 0);
+      // Bob a été retiré.
+      expect((await bob('GET', '/conversations/$id/messages')).$1, 404);
+      expect((await bob('PATCH', '/conversations/$id', {'name': 'Pirate'})).$1, 403);
+    });
+
+    test('notification aux membres du groupe seulement', () async {
+      await owner.ok('PUT', '/devices', {'token': 'tel-owner', 'platform': 'android', 'language': 'fr'});
+      await bob.ok('PUT', '/devices', {'token': 'tel-bob', 'platform': 'android', 'language': 'fr'});
+      await eva.ok('PUT', '/devices', {'token': 'tel-eva', 'platform': 'android', 'language': 'fr'});
+      final id = await team(manager, 'Cuisine', [bob, eva]);
+      await say(eva, id, 'Je suis là');
+      await env.api.notifications.settle();
+      expect(env.push.sent.map((m) => m.token), ['tel-bob']);
+      expect(env.push.sent.single.title, 'Cuisine · eva');
+    });
+  });
+
   group('non lus', () {
     test('comptés par entreprise, remis à zéro à la lecture ; ses propres messages ne comptent pas', () async {
       final id = await groupId(bob);

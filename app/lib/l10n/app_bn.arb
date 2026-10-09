@@ -186,5 +186,10 @@
   "messageHint": "একটি বার্তা লিখুন",
   "earlierMessages": "আগের বার্তা",
   "personLeftCompany": "এই ব্যক্তি আর কোম্পানির অংশ নন।",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "নতুন গ্রুপ",
+  "editGroup": "গ্রুপ সম্পাদনা",
+  "groupName": "গ্রুপের নাম",
+  "groupMembersHint": "এই গ্রুপের মানুষ বেছে নিন। শুধু তাঁরাই এর বার্তা দেখবেন।",
+  "chooseAtLeastOne": "অন্তত একজনকে বেছে নিন।"
 }

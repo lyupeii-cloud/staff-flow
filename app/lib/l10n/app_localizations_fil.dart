@@ -689,4 +689,20 @@ class L10nFil extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'Bagong grupo';
+
+  @override
+  String get editGroup => 'I-edit ang grupo';
+
+  @override
+  String get groupName => 'Pangalan ng grupo';
+
+  @override
+  String get groupMembersHint =>
+      'Piliin ang mga tao sa grupong ito. Sila lang ang makakakita ng mga mensahe.';
+
+  @override
+  String get chooseAtLeastOne => 'Pumili ng kahit isang tao.';
 }

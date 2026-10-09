@@ -186,5 +186,10 @@
   "messageHint": "Tulis pesan",
   "earlierMessages": "Pesan sebelumnya",
   "personLeftCompany": "Orang ini sudah tidak lagi menjadi bagian dari perusahaan.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Grup baru",
+  "editGroup": "Edit grup",
+  "groupName": "Nama grup",
+  "groupMembersHint": "Pilih orang-orang di grup ini. Hanya mereka yang melihat pesannya.",
+  "chooseAtLeastOne": "Pilih setidaknya satu orang."
 }

@@ -186,5 +186,10 @@
   "messageHint": "Schrijf een bericht",
   "earlierMessages": "Eerdere berichten",
   "personLeftCompany": "Deze persoon hoort niet meer bij het bedrijf.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Nieuwe groep",
+  "editGroup": "Groep bewerken",
+  "groupName": "Groepsnaam",
+  "groupMembersHint": "Kies de mensen van deze groep. Alleen zij zien de berichten.",
+  "chooseAtLeastOne": "Kies minstens één persoon."
 }

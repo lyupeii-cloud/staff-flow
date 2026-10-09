@@ -186,5 +186,10 @@
   "messageHint": "Skriv ett meddelande",
   "earlierMessages": "Tidigare meddelanden",
   "personLeftCompany": "Den här personen tillhör inte längre företaget.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Ny grupp",
+  "editGroup": "Redigera grupp",
+  "groupName": "Gruppnamn",
+  "groupMembersHint": "Välj personerna i gruppen. Bara de ser dess meddelanden.",
+  "chooseAtLeastOne": "Välj minst en person."
 }

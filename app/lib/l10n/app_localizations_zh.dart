@@ -671,4 +671,19 @@ class L10nZh extends L10n {
   String messagePreview(String name, String text) {
     return '$name：$text';
   }
+
+  @override
+  String get newGroup => '新建群组';
+
+  @override
+  String get editGroup => '编辑群组';
+
+  @override
+  String get groupName => '群组名称';
+
+  @override
+  String get groupMembersHint => '选择该群组的成员。只有他们能看到群组消息。';
+
+  @override
+  String get chooseAtLeastOne => '请至少选择一人。';
 }

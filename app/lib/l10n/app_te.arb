@@ -186,5 +186,10 @@
   "messageHint": "సందేశం రాయండి",
   "earlierMessages": "మునుపటి సందేశాలు",
   "personLeftCompany": "ఈ వ్యక్తి ఇక కంపెనీలో భాగం కాదు.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "కొత్త గ్రూప్",
+  "editGroup": "గ్రూప్‌ను సవరించు",
+  "groupName": "గ్రూప్ పేరు",
+  "groupMembersHint": "ఈ గ్రూప్‌లోని వ్యక్తులను ఎంచుకోండి. వారు మాత్రమే దాని సందేశాలను చూస్తారు.",
+  "chooseAtLeastOne": "కనీసం ఒకరిని ఎంచుకోండి."
 }

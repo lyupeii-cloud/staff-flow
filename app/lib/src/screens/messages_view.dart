@@ -9,6 +9,7 @@ import '../models.dart';
 import '../push.dart';
 import '../session.dart';
 import 'company_tab.dart';
+import 'group_editor.dart';
 
 /// Messagerie d'une entreprise (section 7) : le groupe de toute l'équipe,
 /// puis les conversations privées. Hors connexion : la dernière liste
@@ -56,9 +57,11 @@ class _MessagesViewState extends State<MessagesView> {
     setState(_load);
   }
 
-  void _load() => _list = session.sync
-      .read('convs:${company.id}', '/companies/${company.id}/conversations')
-      .then((j) => [for (final c in j['conversations']) Conversation.fromJson(c)]);
+  void _load() {
+    _list = session.sync
+        .read('convs:${company.id}', '/companies/${company.id}/conversations')
+        .then((j) => [for (final c in j['conversations']) Conversation.fromJson(c)]);
+  }
 
   Future<void> _open(Conversation c) async {
     await Navigator.of(context).push(MaterialPageRoute(
@@ -78,7 +81,7 @@ class _MessagesViewState extends State<MessagesView> {
       for (final m in widget.data.members)
         if (m.user.id != me && (canManage || m.role.canManage)) m,
     ];
-    final picked = await showModalBottomSheet<Member>(
+    final picked = await showModalBottomSheet<Object>(
       context: context,
       showDragHandle: true,
       builder: (context) => ListView(
@@ -88,6 +91,12 @@ class _MessagesViewState extends State<MessagesView> {
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
             child: Text(t.newConversation, style: Theme.of(context).textTheme.titleLarge),
           ),
+          if (canManage)
+            ListTile(
+              leading: const CircleAvatar(child: Icon(Icons.group_add)),
+              title: Text(t.newGroup),
+              onTap: () => Navigator.pop(context, _newGroup),
+            ),
           for (final m in people)
             ListTile(
               leading: _Avatar(name: m.user.name, photoUrl: m.user.photoUrl),
@@ -99,6 +108,17 @@ class _MessagesViewState extends State<MessagesView> {
       ),
     );
     if (picked == null || !mounted) return;
+    if (picked == _newGroup) {
+      final id = await GroupEditorPage.open(context,
+          session: session, company: company, members: widget.data.members);
+      if (id == null || !mounted) return;
+      setState(_load);
+      final list = await _list;
+      final created = list.where((c) => c.id == id).firstOrNull;
+      if (created != null && mounted) await _open(created);
+      return;
+    }
+    if (picked is! Member) return;
     final messenger = ScaffoldMessenger.of(context);
     try {
       final j = await session.api
@@ -149,8 +169,10 @@ class _MessagesViewState extends State<MessagesView> {
                   ListTile(
                     leading: c.isGroup
                         ? const CircleAvatar(child: Icon(Icons.groups))
+                        : c.isTeam
+                        ? const CircleAvatar(child: Icon(Icons.workspaces))
                         : _Avatar(name: c.withName ?? '?', photoUrl: c.withPhotoUrl),
-                    title: Text(c.isGroup ? t.wholeTeam : (c.withName ?? '?'),
+                    title: Text(c.isGroup ? t.wholeTeam : (c.isTeam ? c.name ?? '?' : c.withName ?? '?'),
                         style: c.unread > 0 ? const TextStyle(fontWeight: FontWeight.w700) : null),
                     subtitle: Text(
                       c.last == null ? t.noMessages : t.messagePreview(c.last!.authorName ?? '?', c.last!.body),
@@ -179,6 +201,9 @@ class _MessagesViewState extends State<MessagesView> {
     );
   }
 }
+
+/// Choix « nouveau groupe » dans la liste des personnes.
+const _newGroup = 'new-group';
 
 /// Heure si c'est aujourd'hui, sinon la date courte.
 String _shortWhen(DateTime at, String loc) {
@@ -324,6 +349,36 @@ class _ChatScreenState extends State<ChatScreen> {
     if (mounted) setState(() {});
   }
 
+  late Conversation _conversation = widget.conversation;
+
+  /// Groupe créé par un responsable : changer son nom ou ses membres.
+  Future<void> _editGroup() async {
+    final companyId = widget.company.id;
+    final messenger = ScaffoldMessenger.of(context);
+    final t = context.l10n;
+    try {
+      final j = await session.sync.read('members:$companyId', '/companies/$companyId/members');
+      if (!mounted) return;
+      final saved = await GroupEditorPage.open(context,
+          session: session,
+          company: widget.company,
+          members: [for (final m in j['members']) Member.fromJson(m)],
+          existing: _conversation);
+      if (saved == null) return;
+      final list = await session.sync.read('convs:$companyId', '/companies/$companyId/conversations');
+      final updated = [for (final c in list['conversations']) Conversation.fromJson(c)].where((c) => c.id == id);
+      if (!mounted) return;
+      if (updated.isEmpty) {
+        // Le responsable s'est retiré du groupe.
+        Navigator.pop(context);
+      } else {
+        setState(() => _conversation = updated.first);
+      }
+    } on OfflineException {
+      messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+    }
+  }
+
   /// Messages écrits hors connexion, pas encore envoyés.
   List<ChatMessage> get _pending => [
         for (final op in session.sync.queue)
@@ -340,13 +395,21 @@ class _ChatScreenState extends State<ChatScreen> {
     final t = context.l10n;
     final loc = context.localeName;
     final me = session.me?.user.id;
-    final c = widget.conversation;
+    final c = _conversation;
     final pending = _pending;
     final all = [..._messages, ...pending, ..._sending.where((s) => !pending.any((p) => p.body == s.body))];
-    final canWrite = !widget.company.readOnly && (c.isGroup || c.withActive);
+    final canWrite = !widget.company.readOnly && (c.isGroup || c.isTeam || c.withActive);
+    final canManage =
+        session.me?.companies.where((m) => m.company.id == widget.company.id).firstOrNull?.role.canManage ?? false;
     return Scaffold(
       appBar: AppBar(
-        title: Text(c.isGroup ? '${t.wholeTeam} · ${widget.company.name}' : (c.withName ?? '?')),
+        title: Text(c.isGroup
+            ? '${t.wholeTeam} · ${widget.company.name}'
+            : (c.isTeam ? c.name ?? '?' : c.withName ?? '?')),
+        actions: [
+          if (c.isTeam && canManage && !widget.company.readOnly)
+            IconButton(tooltip: t.editGroup, icon: const Icon(Icons.group), onPressed: _editGroup),
+        ],
       ),
       body: Column(
         children: [
@@ -381,7 +444,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               _Bubble(
                                 message: m,
                                 mine: m.authorId == me,
-                                showAuthor: c.isGroup && m.authorId != me && previous?.authorId != m.authorId,
+                                showAuthor: (c.isGroup || c.isTeam) && m.authorId != me && previous?.authorId != m.authorId,
                               ),
                             ],
                           );

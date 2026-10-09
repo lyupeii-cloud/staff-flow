@@ -186,5 +186,10 @@
   "messageHint": "Viết tin nhắn",
   "earlierMessages": "Tin nhắn trước",
   "personLeftCompany": "Người này không còn thuộc công ty.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Nhóm mới",
+  "editGroup": "Sửa nhóm",
+  "groupName": "Tên nhóm",
+  "groupMembersHint": "Chọn những người trong nhóm này. Chỉ họ mới thấy tin nhắn của nhóm.",
+  "chooseAtLeastOne": "Chọn ít nhất một người."
 }

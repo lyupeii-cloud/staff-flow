@@ -690,4 +690,20 @@ class L10nSv extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'Ny grupp';
+
+  @override
+  String get editGroup => 'Redigera grupp';
+
+  @override
+  String get groupName => 'Gruppnamn';
+
+  @override
+  String get groupMembersHint =>
+      'Välj personerna i gruppen. Bara de ser dess meddelanden.';
+
+  @override
+  String get chooseAtLeastOne => 'Välj minst en person.';
 }

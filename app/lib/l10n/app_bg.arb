@@ -186,5 +186,10 @@
   "messageHint": "Напишете съобщение",
   "earlierMessages": "По-стари съобщения",
   "personLeftCompany": "Този човек вече не е част от фирмата.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Нова група",
+  "editGroup": "Редактиране на групата",
+  "groupName": "Име на групата",
+  "groupMembersHint": "Изберете хората в тази група. Само те ще виждат съобщенията ѝ.",
+  "chooseAtLeastOne": "Изберете поне един човек."
 }

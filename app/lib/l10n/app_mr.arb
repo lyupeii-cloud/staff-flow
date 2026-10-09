@@ -186,5 +186,10 @@
   "messageHint": "संदेश लिहा",
   "earlierMessages": "आधीचे संदेश",
   "personLeftCompany": "ही व्यक्ती आता कंपनीचा भाग नाही.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "नवीन गट",
+  "editGroup": "गट संपादित करा",
+  "groupName": "गटाचे नाव",
+  "groupMembersHint": "या गटातील लोक निवडा. फक्त तेच त्याचे संदेश पाहतील.",
+  "chooseAtLeastOne": "किमान एक व्यक्ती निवडा."
 }

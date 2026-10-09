@@ -681,4 +681,20 @@ class L10nVi extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'Nhóm mới';
+
+  @override
+  String get editGroup => 'Sửa nhóm';
+
+  @override
+  String get groupName => 'Tên nhóm';
+
+  @override
+  String get groupMembersHint =>
+      'Chọn những người trong nhóm này. Chỉ họ mới thấy tin nhắn của nhóm.';
+
+  @override
+  String get chooseAtLeastOne => 'Chọn ít nhất một người.';
 }

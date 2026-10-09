@@ -186,5 +186,10 @@
   "messageHint": "Sumulat ng mensahe",
   "earlierMessages": "Mga naunang mensahe",
   "personLeftCompany": "Hindi na bahagi ng kumpanya ang taong ito.",
-  "messagePreview": "{name}: {text}"
+  "messagePreview": "{name}: {text}",
+  "newGroup": "Bagong grupo",
+  "editGroup": "I-edit ang grupo",
+  "groupName": "Pangalan ng grupo",
+  "groupMembersHint": "Piliin ang mga tao sa grupong ito. Sila lang ang makakakita ng mga mensahe.",
+  "chooseAtLeastOne": "Pumili ng kahit isang tao."
 }

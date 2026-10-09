@@ -689,4 +689,20 @@ class L10nSw extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'Kikundi kipya';
+
+  @override
+  String get editGroup => 'Hariri kikundi';
+
+  @override
+  String get groupName => 'Jina la kikundi';
+
+  @override
+  String get groupMembersHint =>
+      'Chagua watu wa kikundi hiki. Wao pekee wataona ujumbe wake.';
+
+  @override
+  String get chooseAtLeastOne => 'Chagua angalau mtu mmoja.';
 }

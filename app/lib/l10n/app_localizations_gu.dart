@@ -685,4 +685,20 @@ class L10nGu extends L10n {
   String messagePreview(String name, String text) {
     return '$name: $text';
   }
+
+  @override
+  String get newGroup => 'નવું જૂથ';
+
+  @override
+  String get editGroup => 'જૂથ સંપાદિત કરો';
+
+  @override
+  String get groupName => 'જૂથનું નામ';
+
+  @override
+  String get groupMembersHint =>
+      'આ જૂથના લોકો પસંદ કરો. ફક્ત તેઓ જ તેના સંદેશા જોશે.';
+
+  @override
+  String get chooseAtLeastOne => 'ઓછામાં ઓછી એક વ્યક્તિ પસંદ કરો.';
 }
