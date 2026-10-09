@@ -990,4 +990,134 @@ class L10nEl extends L10n {
   String reinforcementHint(String company) {
     return 'Από $company: θα προστεθεί ως ενίσχυση και θα ειδοποιηθεί.';
   }
+
+  @override
+  String get addToGoogle => 'Προσθήκη στο Google Calendar';
+
+  @override
+  String get calendarEnabled => 'Συγχρονισμός των βαρδιών μου';
+
+  @override
+  String get calendarHint =>
+      'Προσθέστε τις βάρδιές σας από όλες τις εταιρείες στο Google Calendar. Ενημερώνονται μόνες τους και μπορείτε να το απενεργοποιήσετε όποτε θέλετε.';
+
+  @override
+  String get changeSettings => 'Τροποποίηση';
+
+  @override
+  String get copyCalendarLink => 'Αντιγραφή συνδέσμου ημερολογίου';
+
+  @override
+  String get countryBelgium => 'Βέλγιο';
+
+  @override
+  String get countryCanada => 'Καναδάς';
+
+  @override
+  String get countryFrance => 'Γαλλία';
+
+  @override
+  String get countrySwitzerland => 'Ελβετία';
+
+  @override
+  String get employeesSection => 'Υπάλληλοι';
+
+  @override
+  String get emptyNoAlert => 'Κενό: χωρίς προειδοποίηση';
+
+  @override
+  String get extrasSection => 'Έκτακτοι';
+
+  @override
+  String get googleCalendar => 'Google Calendar';
+
+  @override
+  String get hoursTotals => 'Σύνολα ωρών';
+
+  @override
+  String get legalAlerts => 'Νομικές προειδοποιήσεις';
+
+  @override
+  String get legalAlertsHint =>
+      'Προειδοποιήσεις, ποτέ μπλοκαρίσματα. Επιλέξτε τους κανόνες που ισχύουν για εσάς ή κανέναν.';
+
+  @override
+  String get legalPreset => 'Πρότυπο χώρας';
+
+  @override
+  String get linkCopied => 'Ο σύνδεσμος αντιγράφηκε.';
+
+  @override
+  String get maxConsecutiveLabel => 'Μέγιστες συνεχόμενες εργάσιμες ημέρες';
+
+  @override
+  String get maxDayLabel => 'Μέγιστη διάρκεια ανά ημέρα (ώρες)';
+
+  @override
+  String get maxWeekLabel => 'Μέγιστη διάρκεια ανά εβδομάδα (ώρες)';
+
+  @override
+  String get minRestLabel => 'Ελάχιστη ανάπαυση μεταξύ βαρδιών (ώρες)';
+
+  @override
+  String get noLegalRules => 'Δεν επιλέχθηκε προειδοποίηση.';
+
+  @override
+  String get presetNone => 'Καμία';
+
+  @override
+  String get presetsCheck =>
+      'Τα πρότυπα είναι σημείο εκκίνησης: ελέγξτε τα με βάση τη χώρα σας και τη συλλογική σύμβαση.';
+
+  @override
+  String get printMine => 'Το πρόγραμμά μου';
+
+  @override
+  String get printOwn => 'Μόνο το δικό τους πρόγραμμα';
+
+  @override
+  String get printPdf => 'Εκτύπωση / PDF';
+
+  @override
+  String get printRights => 'Τι μπορούν να εκτυπώνουν οι υπάλληλοι';
+
+  @override
+  String get printTeam => 'Το πρόγραμμα όλης της ομάδας';
+
+  @override
+  String get printTeamOption => 'Το πρόγραμμα της ομάδας';
+
+  @override
+  String get totalsHint =>
+      'Μαζί με τα πρόχειρα. Οι εξαγωγές Excel και CSV χρησιμοποιούν το δημοσιευμένο πρόγραμμα.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value συνεχόμενες ημέρες (μέγιστο $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value μέσα στην ημέρα (μέγιστο $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: μόνο $value ανάπαυση (ελάχιστο $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value μέσα στην εβδομάδα (μέγιστο $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Νομικές προειδοποιήσεις: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Βάρδιες: $count';
+  }
 }

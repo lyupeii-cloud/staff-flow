@@ -67,8 +67,9 @@ void main() {
       final alerts = (await owner.ok('GET', p('/alerts?from=2026-10-05&to=2026-10-11')))['alerts'] as List;
       Set<String> on(String day) => {for (final a in alerts) if (a['day'] == day) a['kind'] as String};
       expect(on('2026-10-05'), {'day', 'week'});
-      expect(on('2026-10-06'), {'rest', 'week'});
-      expect(on('2026-10-10'), {'week', 'consecutive'});
+      expect(on('2026-10-06'), {'rest'});
+      expect(on('2026-10-10'), {'consecutive'});
+      expect(alerts.where((a) => a['kind'] == 'week'), hasLength(1), reason: 'une seule par semaine');
       expect(alerts.firstWhere((a) => a['kind'] == 'rest')['value'], 600);
       expect(alerts.every((a) => a['userId'] == bob.id), isTrue);
       expect((await bob('GET', p('/alerts?from=2026-10-05&to=2026-10-11'))).$1, 403);

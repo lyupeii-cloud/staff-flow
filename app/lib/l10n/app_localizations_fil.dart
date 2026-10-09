@@ -988,4 +988,136 @@ class L10nFil extends L10n {
   String reinforcementHint(String company) {
     return 'Mula sa $company: idadagdag bilang dagdag na tauhan at aabisuhan.';
   }
+
+  @override
+  String get addToGoogle => 'Idagdag sa Google Calendar';
+
+  @override
+  String get calendarEnabled => 'I-sync ang mga shift ko';
+
+  @override
+  String get calendarHint =>
+      'Idagdag sa Google Calendar ang mga shift mo mula sa lahat ng kumpanya. Kusa silang nag-a-update, at puwede mo itong i-off kahit kailan.';
+
+  @override
+  String get changeSettings => 'Baguhin';
+
+  @override
+  String get copyCalendarLink => 'Kopyahin ang link ng kalendaryo';
+
+  @override
+  String get countryBelgium => 'Belgium';
+
+  @override
+  String get countryCanada => 'Canada';
+
+  @override
+  String get countryFrance => 'France';
+
+  @override
+  String get countrySwitzerland => 'Switzerland';
+
+  @override
+  String get employeesSection => 'Mga empleyado';
+
+  @override
+  String get emptyNoAlert => 'Walang laman: walang babala';
+
+  @override
+  String get extrasSection => 'Mga extra';
+
+  @override
+  String get googleCalendar => 'Google Calendar';
+
+  @override
+  String get hoursTotals => 'Kabuuang oras';
+
+  @override
+  String get legalAlerts => 'Mga babala ayon sa batas';
+
+  @override
+  String get legalAlertsHint =>
+      'Mga babala lang, hindi kailanman pagharang. Piliin ang mga patakarang angkop sa iyo, o wala.';
+
+  @override
+  String get legalPreset => 'Template ng bansa';
+
+  @override
+  String get linkCopied => 'Nakopya ang link.';
+
+  @override
+  String get maxConsecutiveLabel =>
+      'Pinakamaraming sunod-sunod na araw ng trabaho';
+
+  @override
+  String get maxDayLabel => 'Pinakamahabang oras bawat araw';
+
+  @override
+  String get maxWeekLabel => 'Pinakamahabang oras bawat linggo';
+
+  @override
+  String get minRestLabel =>
+      'Pinakamaikling pahinga sa pagitan ng shift (oras)';
+
+  @override
+  String get noLegalRules => 'Walang napiling babala.';
+
+  @override
+  String get presetNone => 'Wala';
+
+  @override
+  String get presetsCheck =>
+      'Panimulang batayan lang ang mga template: suriin ayon sa batas ng bansa mo at sa kasunduang kolektibo.';
+
+  @override
+  String get printMine => 'Ang iskedyul ko';
+
+  @override
+  String get printOwn => 'Sariling iskedyul lang nila';
+
+  @override
+  String get printPdf => 'I-print / PDF';
+
+  @override
+  String get printRights => 'Ano ang puwedeng i-print ng mga empleyado';
+
+  @override
+  String get printTeam => 'Ang iskedyul ng buong team';
+
+  @override
+  String get printTeamOption => 'Ang iskedyul ng team';
+
+  @override
+  String get totalsHint =>
+      'Kasama ang mga draft. Ginagamit ng export sa Excel at CSV ang na-publish na iskedyul.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value sunod-sunod na araw (pinakamarami $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value sa isang araw (pinakamarami $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: $value lang na pahinga (pinakakaunti $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value sa isang linggo (pinakamarami $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Mga babala ayon sa batas: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Mga shift: $count';
+  }
 }

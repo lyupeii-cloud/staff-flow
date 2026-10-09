@@ -989,4 +989,135 @@ class L10nTa extends L10n {
   String reinforcementHint(String company) {
     return '$company இலிருந்து: உதவிப் பணியாளராகச் சேர்க்கப்பட்டு அறிவிக்கப்படுவார்.';
   }
+
+  @override
+  String get addToGoogle => 'Google Calendar-இல் சேர்';
+
+  @override
+  String get calendarEnabled => 'என் ஷிஃப்டுகளை ஒத்திசை';
+
+  @override
+  String get calendarHint =>
+      'உங்கள் எல்லா நிறுவனங்களின் ஷிஃப்டுகளையும் Google Calendar-இல் சேருங்கள். அவை தானாகப் புதுப்பிக்கப்படும்; எப்போது வேண்டுமானாலும் முடக்கலாம்.';
+
+  @override
+  String get changeSettings => 'மாற்று';
+
+  @override
+  String get copyCalendarLink => 'நாட்காட்டி இணைப்பை நகலெடு';
+
+  @override
+  String get countryBelgium => 'பெல்ஜியம்';
+
+  @override
+  String get countryCanada => 'கனடா';
+
+  @override
+  String get countryFrance => 'பிரான்ஸ்';
+
+  @override
+  String get countrySwitzerland => 'சுவிட்சர்லாந்து';
+
+  @override
+  String get employeesSection => 'பணியாளர்கள்';
+
+  @override
+  String get emptyNoAlert => 'காலி: எச்சரிக்கை இல்லை';
+
+  @override
+  String get extrasSection => 'தற்காலிகப் பணியாளர்கள்';
+
+  @override
+  String get googleCalendar => 'Google Calendar';
+
+  @override
+  String get hoursTotals => 'மொத்த மணிநேரம்';
+
+  @override
+  String get legalAlerts => 'சட்ட எச்சரிக்கைகள்';
+
+  @override
+  String get legalAlertsHint =>
+      'எச்சரிக்கைகள் மட்டுமே, ஒருபோதும் தடை இல்லை. உங்களுக்குப் பொருந்தும் விதிகளைத் தேர்ந்தெடுங்கள், அல்லது எதுவும் வேண்டாம்.';
+
+  @override
+  String get legalPreset => 'நாட்டு வார்ப்புரு';
+
+  @override
+  String get linkCopied => 'இணைப்பு நகலெடுக்கப்பட்டது.';
+
+  @override
+  String get maxConsecutiveLabel => 'தொடர்ச்சியான அதிகபட்ச வேலை நாட்கள்';
+
+  @override
+  String get maxDayLabel => 'ஒரு நாளுக்கு அதிகபட்ச நேரம் (மணிநேரம்)';
+
+  @override
+  String get maxWeekLabel => 'ஒரு வாரத்துக்கு அதிகபட்ச நேரம் (மணிநேரம்)';
+
+  @override
+  String get minRestLabel =>
+      'இரண்டு ஷிஃப்டுகளுக்கு இடையே குறைந்தபட்ச ஓய்வு (மணிநேரம்)';
+
+  @override
+  String get noLegalRules => 'எச்சரிக்கை எதுவும் தேர்ந்தெடுக்கப்படவில்லை.';
+
+  @override
+  String get presetNone => 'எதுவும் இல்லை';
+
+  @override
+  String get presetsCheck =>
+      'வார்ப்புருக்கள் தொடக்கப் புள்ளி மட்டுமே: உங்கள் நாட்டு விதிகள் மற்றும் கூட்டு ஒப்பந்தத்தின்படி சரிபாருங்கள்.';
+
+  @override
+  String get printMine => 'என் அட்டவணை';
+
+  @override
+  String get printOwn => 'தங்கள் சொந்த அட்டவணை மட்டும்';
+
+  @override
+  String get printPdf => 'அச்சிடு / PDF';
+
+  @override
+  String get printRights => 'பணியாளர்கள் எதை அச்சிடலாம்';
+
+  @override
+  String get printTeam => 'முழுக் குழுவின் அட்டவணை';
+
+  @override
+  String get printTeamOption => 'குழுவின் அட்டவணை';
+
+  @override
+  String get totalsHint =>
+      'வரைவுகள் உட்பட. Excel, CSV ஏற்றுமதிகள் வெளியிடப்பட்ட அட்டவணையைப் பயன்படுத்தும்.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: தொடர்ந்து $value நாட்கள் (அதிகபட்சம் $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: ஒரு நாளில் $value (அதிகபட்சம் $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: $value ஓய்வு மட்டுமே (குறைந்தபட்சம் $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: ஒரு வாரத்தில் $value (அதிகபட்சம் $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'சட்ட எச்சரிக்கைகள்: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'ஷிஃப்டுகள்: $count';
+  }
 }

@@ -107,7 +107,8 @@ class ToolsService {
           if (m > maxDay) add(user, day, 'day', m, maxDay);
         });
       }
-      // Durée par semaine (lundi à dimanche) : signalée sur chaque jour travaillé de la semaine.
+      // Durée par semaine (lundi à dimanche) : une alerte, sur le premier jour
+      // travaillé de la semaine dans la période.
       final maxWeek = rules['maxWeekMin'];
       if (maxWeek != null) {
         final perWeek = <DateTime, int>{};
@@ -117,9 +118,12 @@ class ToolsService {
         }
         perWeek.forEach((monday, m) {
           if (m <= maxWeek) return;
-          for (final day in {for (final s in list) if (!s.day.isBefore(monday) && s.day.difference(monday).inDays < 7) s.day}) {
-            add(user, day, 'week', m, maxWeek);
-          }
+          final days = [
+            for (final s in list)
+              if (!s.day.isBefore(monday) && s.day.difference(monday).inDays < 7 && !s.day.isBefore(a) && !s.day.isAfter(b))
+                s.day
+          ]..sort();
+          if (days.isNotEmpty) add(user, days.first, 'week', m, maxWeek);
         });
       }
       // Repos entre deux services.

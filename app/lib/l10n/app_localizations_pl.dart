@@ -996,4 +996,134 @@ class L10nPl extends L10n {
   String reinforcementHint(String company) {
     return 'Z firmy $company: zostanie dodany jako wsparcie i powiadomiony.';
   }
+
+  @override
+  String get addToGoogle => 'Dodaj do Kalendarza Google';
+
+  @override
+  String get calendarEnabled => 'Synchronizuj moje zmiany';
+
+  @override
+  String get calendarHint =>
+      'Dodaj swoje zmiany ze wszystkich firm do Kalendarza Google. Aktualizują się same, a wyłączyć możesz w każdej chwili.';
+
+  @override
+  String get changeSettings => 'Zmień';
+
+  @override
+  String get copyCalendarLink => 'Kopiuj link do kalendarza';
+
+  @override
+  String get countryBelgium => 'Belgia';
+
+  @override
+  String get countryCanada => 'Kanada';
+
+  @override
+  String get countryFrance => 'Francja';
+
+  @override
+  String get countrySwitzerland => 'Szwajcaria';
+
+  @override
+  String get employeesSection => 'Pracownicy';
+
+  @override
+  String get emptyNoAlert => 'Puste: bez ostrzeżenia';
+
+  @override
+  String get extrasSection => 'Dorywczy';
+
+  @override
+  String get googleCalendar => 'Kalendarz Google';
+
+  @override
+  String get hoursTotals => 'Sumy godzin';
+
+  @override
+  String get legalAlerts => 'Ostrzeżenia prawne';
+
+  @override
+  String get legalAlertsHint =>
+      'Tylko ostrzeżenia, nigdy blokady. Wybierz zasady, które cię dotyczą, albo żadne.';
+
+  @override
+  String get legalPreset => 'Szablon kraju';
+
+  @override
+  String get linkCopied => 'Link skopiowany.';
+
+  @override
+  String get maxConsecutiveLabel => 'Maksymalna liczba dni pracy z rzędu';
+
+  @override
+  String get maxDayLabel => 'Maksymalny czas dziennie (godziny)';
+
+  @override
+  String get maxWeekLabel => 'Maksymalny czas tygodniowo (godziny)';
+
+  @override
+  String get minRestLabel => 'Minimalny odpoczynek między zmianami (godziny)';
+
+  @override
+  String get noLegalRules => 'Nie wybrano ostrzeżeń.';
+
+  @override
+  String get presetNone => 'Brak';
+
+  @override
+  String get presetsCheck =>
+      'Szablony to punkt wyjścia: sprawdź je zgodnie z przepisami swojego kraju i układem zbiorowym.';
+
+  @override
+  String get printMine => 'Mój grafik';
+
+  @override
+  String get printOwn => 'Tylko własny grafik';
+
+  @override
+  String get printPdf => 'Drukuj / PDF';
+
+  @override
+  String get printRights => 'Co mogą drukować pracownicy';
+
+  @override
+  String get printTeam => 'Grafik całego zespołu';
+
+  @override
+  String get printTeamOption => 'Grafik zespołu';
+
+  @override
+  String get totalsHint =>
+      'Z wersjami roboczymi. Eksport do Excela i CSV używa opublikowanego grafiku.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value dni z rzędu (maksymalnie $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value w ciągu dnia (maksymalnie $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: tylko $value odpoczynku (minimum $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value w tygodniu (maksymalnie $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Ostrzeżenia prawne: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Zmiany: $count';
+  }
 }

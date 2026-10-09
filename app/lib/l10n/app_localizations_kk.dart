@@ -984,4 +984,134 @@ class L10nKk extends L10n {
   String reinforcementHint(String company) {
     return '$company компаниясынан: қосымша қызметкер ретінде қосылып, хабарланады.';
   }
+
+  @override
+  String get addToGoogle => 'Google Күнтізбеге қосу';
+
+  @override
+  String get calendarEnabled => 'Ауысымдарымды синхрондау';
+
+  @override
+  String get calendarHint =>
+      'Барлық компанияларыңыздағы ауысымдарды Google Күнтізбеге қосыңыз. Олар өздігінен жаңарады, кез келген уақытта өшіре аласыз.';
+
+  @override
+  String get changeSettings => 'Өзгерту';
+
+  @override
+  String get copyCalendarLink => 'Күнтізбе сілтемесін көшіру';
+
+  @override
+  String get countryBelgium => 'Бельгия';
+
+  @override
+  String get countryCanada => 'Канада';
+
+  @override
+  String get countryFrance => 'Франция';
+
+  @override
+  String get countrySwitzerland => 'Швейцария';
+
+  @override
+  String get employeesSection => 'Қызметкерлер';
+
+  @override
+  String get emptyNoAlert => 'Бос: ескерту жоқ';
+
+  @override
+  String get extrasSection => 'Уақытша қызметкерлер';
+
+  @override
+  String get googleCalendar => 'Google Күнтізбе';
+
+  @override
+  String get hoursTotals => 'Сағат жиыны';
+
+  @override
+  String get legalAlerts => 'Заңды ескертулер';
+
+  @override
+  String get legalAlertsHint =>
+      'Тек ескертулер, ешқашан бұғаттау емес. Сізге қатысты ережелерді таңдаңыз немесе ешқайсысын.';
+
+  @override
+  String get legalPreset => 'Ел үлгісі';
+
+  @override
+  String get linkCopied => 'Сілтеме көшірілді.';
+
+  @override
+  String get maxConsecutiveLabel => 'Қатарынан ең көп жұмыс күні';
+
+  @override
+  String get maxDayLabel => 'Күніне ең ұзақ уақыт (сағат)';
+
+  @override
+  String get maxWeekLabel => 'Аптасына ең ұзақ уақыт (сағат)';
+
+  @override
+  String get minRestLabel => 'Екі ауысым арасындағы ең аз демалыс (сағат)';
+
+  @override
+  String get noLegalRules => 'Ешқандай ескерту таңдалмаған.';
+
+  @override
+  String get presetNone => 'Ешқандай';
+
+  @override
+  String get presetsCheck =>
+      'Үлгілер тек бастама: еліңіздің ережелері мен ұжымдық шартқа сай тексеріңіз.';
+
+  @override
+  String get printMine => 'Менің кестем';
+
+  @override
+  String get printOwn => 'Тек өз кестесі';
+
+  @override
+  String get printPdf => 'Басып шығару / PDF';
+
+  @override
+  String get printRights => 'Қызметкерлер нені басып шығара алады';
+
+  @override
+  String get printTeam => 'Бүкіл команданың кестесі';
+
+  @override
+  String get printTeamOption => 'Команда кестесі';
+
+  @override
+  String get totalsHint =>
+      'Жобаларымен бірге. Excel және CSV экспорты жарияланған кестені пайдаланады.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: қатарынан $value күн (ең көбі $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: бір күнде $value (ең көбі $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: тек $value демалыс (ең азы $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: бір аптада $value (ең көбі $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Заңды ескертулер: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Ауысымдар: $count';
+  }
 }

@@ -985,4 +985,134 @@ class L10nEn extends L10n {
   String reinforcementHint(String company) {
     return 'From $company: will be added as backup staff and notified.';
   }
+
+  @override
+  String get addToGoogle => 'Add to Google Calendar';
+
+  @override
+  String get calendarEnabled => 'Sync my shifts';
+
+  @override
+  String get calendarHint =>
+      'Add your shifts from all your companies to Google Calendar. They update on their own, and you can turn this off at any time.';
+
+  @override
+  String get changeSettings => 'Edit';
+
+  @override
+  String get copyCalendarLink => 'Copy calendar link';
+
+  @override
+  String get countryBelgium => 'Belgium';
+
+  @override
+  String get countryCanada => 'Canada';
+
+  @override
+  String get countryFrance => 'France';
+
+  @override
+  String get countrySwitzerland => 'Switzerland';
+
+  @override
+  String get employeesSection => 'Employees';
+
+  @override
+  String get emptyNoAlert => 'Empty: no alert';
+
+  @override
+  String get extrasSection => 'Extras';
+
+  @override
+  String get googleCalendar => 'Google Calendar';
+
+  @override
+  String get hoursTotals => 'Hour totals';
+
+  @override
+  String get legalAlerts => 'Legal alerts';
+
+  @override
+  String get legalAlertsHint =>
+      'Warnings, never blocks. Choose the rules that apply to you, or none.';
+
+  @override
+  String get legalPreset => 'Country template';
+
+  @override
+  String get linkCopied => 'Link copied.';
+
+  @override
+  String get maxConsecutiveLabel => 'Maximum consecutive working days';
+
+  @override
+  String get maxDayLabel => 'Maximum hours per day';
+
+  @override
+  String get maxWeekLabel => 'Maximum hours per week';
+
+  @override
+  String get minRestLabel => 'Minimum rest between shifts (hours)';
+
+  @override
+  String get noLegalRules => 'No alerts chosen.';
+
+  @override
+  String get presetNone => 'None';
+
+  @override
+  String get presetsCheck =>
+      'Templates are starting points: check them against your country\'s rules and your collective agreement.';
+
+  @override
+  String get printMine => 'My schedule';
+
+  @override
+  String get printOwn => 'Their own schedule only';
+
+  @override
+  String get printPdf => 'Print / PDF';
+
+  @override
+  String get printRights => 'What employees can print';
+
+  @override
+  String get printTeam => 'The whole team\'s schedule';
+
+  @override
+  String get printTeamOption => 'The team\'s schedule';
+
+  @override
+  String get totalsHint =>
+      'Drafts included. Excel and CSV exports use the published schedule.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value days in a row (maximum $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value in the day (maximum $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: only $value of rest (minimum $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value in the week (maximum $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Legal alerts: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Shifts: $count';
+  }
 }

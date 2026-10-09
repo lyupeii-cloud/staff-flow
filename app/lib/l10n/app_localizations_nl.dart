@@ -989,4 +989,134 @@ class L10nNl extends L10n {
   String reinforcementHint(String company) {
     return 'Van $company: wordt als versterking toegevoegd en op de hoogte gebracht.';
   }
+
+  @override
+  String get addToGoogle => 'Toevoegen aan Google Agenda';
+
+  @override
+  String get calendarEnabled => 'Mijn diensten synchroniseren';
+
+  @override
+  String get calendarHint =>
+      'Zet je diensten van al je bedrijven in Google Agenda. Ze worden vanzelf bijgewerkt en je kunt dit altijd uitzetten.';
+
+  @override
+  String get changeSettings => 'Wijzigen';
+
+  @override
+  String get copyCalendarLink => 'Agendalink kopiëren';
+
+  @override
+  String get countryBelgium => 'België';
+
+  @override
+  String get countryCanada => 'Canada';
+
+  @override
+  String get countryFrance => 'Frankrijk';
+
+  @override
+  String get countrySwitzerland => 'Zwitserland';
+
+  @override
+  String get employeesSection => 'Werknemers';
+
+  @override
+  String get emptyNoAlert => 'Leeg: geen waarschuwing';
+
+  @override
+  String get extrasSection => 'Invalkrachten';
+
+  @override
+  String get googleCalendar => 'Google Agenda';
+
+  @override
+  String get hoursTotals => 'Urentotalen';
+
+  @override
+  String get legalAlerts => 'Wettelijke waarschuwingen';
+
+  @override
+  String get legalAlertsHint =>
+      'Waarschuwingen, nooit blokkades. Kies de regels die voor jou gelden, of geen.';
+
+  @override
+  String get legalPreset => 'Landsjabloon';
+
+  @override
+  String get linkCopied => 'Link gekopieerd.';
+
+  @override
+  String get maxConsecutiveLabel => 'Maximaal aantal opeenvolgende werkdagen';
+
+  @override
+  String get maxDayLabel => 'Maximale duur per dag (uren)';
+
+  @override
+  String get maxWeekLabel => 'Maximale duur per week (uren)';
+
+  @override
+  String get minRestLabel => 'Minimale rust tussen twee diensten (uren)';
+
+  @override
+  String get noLegalRules => 'Geen waarschuwing gekozen.';
+
+  @override
+  String get presetNone => 'Geen';
+
+  @override
+  String get presetsCheck =>
+      'Sjablonen zijn een vertrekpunt: controleer ze volgens je land en je cao.';
+
+  @override
+  String get printMine => 'Mijn rooster';
+
+  @override
+  String get printOwn => 'Alleen hun eigen rooster';
+
+  @override
+  String get printPdf => 'Afdrukken / pdf';
+
+  @override
+  String get printRights => 'Wat werknemers mogen afdrukken';
+
+  @override
+  String get printTeam => 'Het rooster van het hele team';
+
+  @override
+  String get printTeamOption => 'Het rooster van het team';
+
+  @override
+  String get totalsHint =>
+      'Concepten inbegrepen. Excel- en CSV-exports gebruiken het gepubliceerde rooster.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value dagen achter elkaar (maximaal $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value op de dag (maximaal $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: slechts $value rust (minimaal $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value in de week (maximaal $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Wettelijke waarschuwingen: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Diensten: $count';
+  }
 }

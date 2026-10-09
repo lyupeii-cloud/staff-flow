@@ -980,4 +980,134 @@ class L10nHu extends L10n {
   String reinforcementHint(String company) {
     return 'Innen: $company – kisegítőként hozzáadjuk és értesítjük.';
   }
+
+  @override
+  String get addToGoogle => 'Hozzáadás a Google Naptárhoz';
+
+  @override
+  String get calendarEnabled => 'Műszakjaim szinkronizálása';
+
+  @override
+  String get calendarHint =>
+      'Add hozzá az összes cégedben lévő műszakodat a Google Naptárhoz. Maguktól frissülnek, és bármikor kikapcsolhatod.';
+
+  @override
+  String get changeSettings => 'Módosítás';
+
+  @override
+  String get copyCalendarLink => 'Naptárhivatkozás másolása';
+
+  @override
+  String get countryBelgium => 'Belgium';
+
+  @override
+  String get countryCanada => 'Kanada';
+
+  @override
+  String get countryFrance => 'Franciaország';
+
+  @override
+  String get countrySwitzerland => 'Svájc';
+
+  @override
+  String get employeesSection => 'Munkavállalók';
+
+  @override
+  String get emptyNoAlert => 'Üres: nincs figyelmeztetés';
+
+  @override
+  String get extrasSection => 'Kisegítők';
+
+  @override
+  String get googleCalendar => 'Google Naptár';
+
+  @override
+  String get hoursTotals => 'Óraösszesítők';
+
+  @override
+  String get legalAlerts => 'Jogszabályi figyelmeztetések';
+
+  @override
+  String get legalAlertsHint =>
+      'Csak figyelmeztetések, soha nem tiltás. Válaszd ki a nálad érvényes szabályokat, vagy egyet se.';
+
+  @override
+  String get legalPreset => 'Országsablon';
+
+  @override
+  String get linkCopied => 'Hivatkozás másolva.';
+
+  @override
+  String get maxConsecutiveLabel => 'Legtöbb egymást követő munkanap';
+
+  @override
+  String get maxDayLabel => 'Napi legnagyobb időtartam (óra)';
+
+  @override
+  String get maxWeekLabel => 'Heti legnagyobb időtartam (óra)';
+
+  @override
+  String get minRestLabel => 'Legkisebb pihenőidő két műszak között (óra)';
+
+  @override
+  String get noLegalRules => 'Nincs kiválasztott figyelmeztetés.';
+
+  @override
+  String get presetNone => 'Egyik sem';
+
+  @override
+  String get presetsCheck =>
+      'A sablonok csak kiindulópontok: ellenőrizd őket országod szabályai és a kollektív szerződés szerint.';
+
+  @override
+  String get printMine => 'Saját beosztásom';
+
+  @override
+  String get printOwn => 'Csak a saját beosztásukat';
+
+  @override
+  String get printPdf => 'Nyomtatás / PDF';
+
+  @override
+  String get printRights => 'Mit nyomtathatnak a munkavállalók';
+
+  @override
+  String get printTeam => 'Az egész csapat beosztását';
+
+  @override
+  String get printTeamOption => 'A csapat beosztása';
+
+  @override
+  String get totalsHint =>
+      'Piszkozatokkal együtt. Az Excel- és CSV-export a közzétett beosztást használja.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value nap egymás után (legfeljebb $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value egy napon (legfeljebb $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: csak $value pihenő (legalább $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value egy héten (legfeljebb $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Jogszabályi figyelmeztetések: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Műszakok: $count';
+  }
 }

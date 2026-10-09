@@ -992,4 +992,134 @@ class L10nRo extends L10n {
   String reinforcementHint(String company) {
     return 'De la $company: va fi adăugat ca întăritură și anunțat.';
   }
+
+  @override
+  String get addToGoogle => 'Adaugă în Google Calendar';
+
+  @override
+  String get calendarEnabled => 'Sincronizează turele mele';
+
+  @override
+  String get calendarHint =>
+      'Adaugă turele din toate firmele tale în Google Calendar. Se actualizează singure și poți dezactiva oricând.';
+
+  @override
+  String get changeSettings => 'Modifică';
+
+  @override
+  String get copyCalendarLink => 'Copiază linkul calendarului';
+
+  @override
+  String get countryBelgium => 'Belgia';
+
+  @override
+  String get countryCanada => 'Canada';
+
+  @override
+  String get countryFrance => 'Franța';
+
+  @override
+  String get countrySwitzerland => 'Elveția';
+
+  @override
+  String get employeesSection => 'Angajați';
+
+  @override
+  String get emptyNoAlert => 'Gol: fără alertă';
+
+  @override
+  String get extrasSection => 'Colaboratori';
+
+  @override
+  String get googleCalendar => 'Google Calendar';
+
+  @override
+  String get hoursTotals => 'Totaluri de ore';
+
+  @override
+  String get legalAlerts => 'Alerte legale';
+
+  @override
+  String get legalAlertsHint =>
+      'Avertismente, niciodată blocări. Alege regulile care se aplică la tine, sau niciuna.';
+
+  @override
+  String get legalPreset => 'Model pe țară';
+
+  @override
+  String get linkCopied => 'Link copiat.';
+
+  @override
+  String get maxConsecutiveLabel => 'Maximum de zile lucrate la rând';
+
+  @override
+  String get maxDayLabel => 'Durată maximă pe zi (ore)';
+
+  @override
+  String get maxWeekLabel => 'Durată maximă pe săptămână (ore)';
+
+  @override
+  String get minRestLabel => 'Repaus minim între două ture (ore)';
+
+  @override
+  String get noLegalRules => 'Nicio alertă aleasă.';
+
+  @override
+  String get presetNone => 'Niciuna';
+
+  @override
+  String get presetsCheck =>
+      'Modelele sunt un punct de plecare: verifică-le după legislația țării tale și contractul colectiv.';
+
+  @override
+  String get printMine => 'Planificarea mea';
+
+  @override
+  String get printOwn => 'Doar propria planificare';
+
+  @override
+  String get printPdf => 'Tipărire / PDF';
+
+  @override
+  String get printRights => 'Ce pot tipări angajații';
+
+  @override
+  String get printTeam => 'Planificarea întregii echipe';
+
+  @override
+  String get printTeamOption => 'Planificarea echipei';
+
+  @override
+  String get totalsHint =>
+      'Inclusiv ciornele. Exporturile Excel și CSV folosesc planificarea publicată.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value zile la rând (maximum $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value într-o zi (maximum $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: doar $value de repaus (minimum $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value într-o săptămână (maximum $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Alerte legale: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Ture: $count';
+  }
 }

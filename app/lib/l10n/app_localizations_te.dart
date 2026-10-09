@@ -983,4 +983,134 @@ class L10nTe extends L10n {
   String reinforcementHint(String company) {
     return '$company నుండి: సహాయ సిబ్బందిగా చేర్చబడి తెలియజేయబడతారు.';
   }
+
+  @override
+  String get addToGoogle => 'Google Calendarకి జోడించు';
+
+  @override
+  String get calendarEnabled => 'నా షిఫ్టులను సింక్ చేయి';
+
+  @override
+  String get calendarHint =>
+      'మీ అన్ని కంపెనీల షిఫ్టులను Google Calendarకి జోడించండి. అవి తామే అప్‌డేట్ అవుతాయి, ఎప్పుడైనా ఆపివేయవచ్చు.';
+
+  @override
+  String get changeSettings => 'మార్చు';
+
+  @override
+  String get copyCalendarLink => 'క్యాలెండర్ లింక్‌ను కాపీ చేయి';
+
+  @override
+  String get countryBelgium => 'బెల్జియం';
+
+  @override
+  String get countryCanada => 'కెనడా';
+
+  @override
+  String get countryFrance => 'ఫ్రాన్స్';
+
+  @override
+  String get countrySwitzerland => 'స్విట్జర్లాండ్';
+
+  @override
+  String get employeesSection => 'ఉద్యోగులు';
+
+  @override
+  String get emptyNoAlert => 'ఖాళీ: హెచ్చరిక లేదు';
+
+  @override
+  String get extrasSection => 'తాత్కాలిక సిబ్బంది';
+
+  @override
+  String get googleCalendar => 'Google Calendar';
+
+  @override
+  String get hoursTotals => 'గంటల మొత్తం';
+
+  @override
+  String get legalAlerts => 'చట్టపరమైన హెచ్చరికలు';
+
+  @override
+  String get legalAlertsHint =>
+      'హెచ్చరికలు మాత్రమే, ఎప్పుడూ అడ్డుకోవు. మీకు వర్తించే నియమాలను ఎంచుకోండి, లేదా ఏదీ వద్దు.';
+
+  @override
+  String get legalPreset => 'దేశ నమూనా';
+
+  @override
+  String get linkCopied => 'లింక్ కాపీ అయింది.';
+
+  @override
+  String get maxConsecutiveLabel => 'వరుసగా గరిష్ఠ పని రోజులు';
+
+  @override
+  String get maxDayLabel => 'రోజుకు గరిష్ఠ వ్యవధి (గంటలు)';
+
+  @override
+  String get maxWeekLabel => 'వారానికి గరిష్ఠ వ్యవధి (గంటలు)';
+
+  @override
+  String get minRestLabel => 'రెండు షిఫ్టుల మధ్య కనీస విశ్రాంతి (గంటలు)';
+
+  @override
+  String get noLegalRules => 'ఏ హెచ్చరికనూ ఎంచుకోలేదు.';
+
+  @override
+  String get presetNone => 'ఏదీ లేదు';
+
+  @override
+  String get presetsCheck =>
+      'నమూనాలు ప్రారంభ బిందువు మాత్రమే: మీ దేశ నియమాలు, సమష్టి ఒప్పందం ప్రకారం సరిచూసుకోండి.';
+
+  @override
+  String get printMine => 'నా షెడ్యూల్';
+
+  @override
+  String get printOwn => 'తమ స్వంత షెడ్యూల్ మాత్రమే';
+
+  @override
+  String get printPdf => 'ముద్రించు / PDF';
+
+  @override
+  String get printRights => 'ఉద్యోగులు ఏమి ముద్రించవచ్చు';
+
+  @override
+  String get printTeam => 'మొత్తం బృందం షెడ్యూల్';
+
+  @override
+  String get printTeamOption => 'బృందం షెడ్యూల్';
+
+  @override
+  String get totalsHint =>
+      'డ్రాఫ్ట్‌లతో సహా. Excel, CSV ఎగుమతులు ప్రచురించిన షెడ్యూల్‌ను వాడతాయి.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: వరుసగా $value రోజులు (గరిష్ఠం $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: రోజులో $value (గరిష్ఠం $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: కేవలం $value విశ్రాంతి (కనీసం $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: వారంలో $value (గరిష్ఠం $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'చట్టపరమైన హెచ్చరికలు: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'షిఫ్టులు: $count';
+  }
 }

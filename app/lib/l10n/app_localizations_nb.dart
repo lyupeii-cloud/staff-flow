@@ -985,4 +985,134 @@ class L10nNb extends L10n {
   String reinforcementHint(String company) {
     return 'Fra $company: legges til som forsterkning og varsles.';
   }
+
+  @override
+  String get addToGoogle => 'Legg til i Google Kalender';
+
+  @override
+  String get calendarEnabled => 'Synkroniser vaktene mine';
+
+  @override
+  String get calendarHint =>
+      'Legg til vaktene dine fra alle bedriftene i Google Kalender. De oppdateres av seg selv, og du kan slå det av når du vil.';
+
+  @override
+  String get changeSettings => 'Endre';
+
+  @override
+  String get copyCalendarLink => 'Kopier kalenderlenken';
+
+  @override
+  String get countryBelgium => 'Belgia';
+
+  @override
+  String get countryCanada => 'Canada';
+
+  @override
+  String get countryFrance => 'Frankrike';
+
+  @override
+  String get countrySwitzerland => 'Sveits';
+
+  @override
+  String get employeesSection => 'Ansatte';
+
+  @override
+  String get emptyNoAlert => 'Tomt: ingen varsel';
+
+  @override
+  String get extrasSection => 'Ekstrahjelp';
+
+  @override
+  String get googleCalendar => 'Google Kalender';
+
+  @override
+  String get hoursTotals => 'Timesummer';
+
+  @override
+  String get legalAlerts => 'Lovpålagte varsler';
+
+  @override
+  String get legalAlertsHint =>
+      'Varsler, aldri sperrer. Velg reglene som gjelder hos deg, eller ingen.';
+
+  @override
+  String get legalPreset => 'Landsmal';
+
+  @override
+  String get linkCopied => 'Lenken er kopiert.';
+
+  @override
+  String get maxConsecutiveLabel => 'Høyeste antall arbeidsdager på rad';
+
+  @override
+  String get maxDayLabel => 'Lengste varighet per dag (timer)';
+
+  @override
+  String get maxWeekLabel => 'Lengste varighet per uke (timer)';
+
+  @override
+  String get minRestLabel => 'Korteste hvile mellom to vakter (timer)';
+
+  @override
+  String get noLegalRules => 'Ingen varsler valgt.';
+
+  @override
+  String get presetNone => 'Ingen';
+
+  @override
+  String get presetsCheck =>
+      'Malene er et utgangspunkt: sjekk dem mot reglene i landet ditt og tariffavtalen.';
+
+  @override
+  String get printMine => 'Min vaktplan';
+
+  @override
+  String get printOwn => 'Bare sin egen vaktplan';
+
+  @override
+  String get printPdf => 'Skriv ut / PDF';
+
+  @override
+  String get printRights => 'Hva ansatte kan skrive ut';
+
+  @override
+  String get printTeam => 'Hele teamets vaktplan';
+
+  @override
+  String get printTeamOption => 'Teamets vaktplan';
+
+  @override
+  String get totalsHint =>
+      'Utkast medregnet. Excel- og CSV-eksport bruker den publiserte vaktplanen.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value dager på rad (høyst $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value på dagen (høyst $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: bare $value hvile (minst $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value i uken (høyst $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Lovpålagte varsler: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Vakter: $count';
+  }
 }

@@ -986,4 +986,134 @@ class L10nCs extends L10n {
   String reinforcementHint(String company) {
     return 'Z firmy $company: bude přidán jako posila a upozorněn.';
   }
+
+  @override
+  String get addToGoogle => 'Přidat do Kalendáře Google';
+
+  @override
+  String get calendarEnabled => 'Synchronizovat mé směny';
+
+  @override
+  String get calendarHint =>
+      'Přidejte své směny ze všech firem do Kalendáře Google. Aktualizují se samy a vypnout to můžete kdykoli.';
+
+  @override
+  String get changeSettings => 'Upravit';
+
+  @override
+  String get copyCalendarLink => 'Kopírovat odkaz na kalendář';
+
+  @override
+  String get countryBelgium => 'Belgie';
+
+  @override
+  String get countryCanada => 'Kanada';
+
+  @override
+  String get countryFrance => 'Francie';
+
+  @override
+  String get countrySwitzerland => 'Švýcarsko';
+
+  @override
+  String get employeesSection => 'Zaměstnanci';
+
+  @override
+  String get emptyNoAlert => 'Prázdné: bez upozornění';
+
+  @override
+  String get extrasSection => 'Brigádníci';
+
+  @override
+  String get googleCalendar => 'Kalendář Google';
+
+  @override
+  String get hoursTotals => 'Součty hodin';
+
+  @override
+  String get legalAlerts => 'Zákonná upozornění';
+
+  @override
+  String get legalAlertsHint =>
+      'Jen upozornění, nikdy blokování. Zvolte pravidla, která u vás platí, nebo žádná.';
+
+  @override
+  String get legalPreset => 'Šablona země';
+
+  @override
+  String get linkCopied => 'Odkaz zkopírován.';
+
+  @override
+  String get maxConsecutiveLabel => 'Nejvíce pracovních dnů v řadě';
+
+  @override
+  String get maxDayLabel => 'Nejvyšší délka za den (hodiny)';
+
+  @override
+  String get maxWeekLabel => 'Nejvyšší délka za týden (hodiny)';
+
+  @override
+  String get minRestLabel => 'Nejmenší odpočinek mezi směnami (hodiny)';
+
+  @override
+  String get noLegalRules => 'Žádná upozornění nezvolena.';
+
+  @override
+  String get presetNone => 'Žádná';
+
+  @override
+  String get presetsCheck =>
+      'Šablony jsou výchozí bod: ověřte je podle předpisů své země a kolektivní smlouvy.';
+
+  @override
+  String get printMine => 'Můj rozpis';
+
+  @override
+  String get printOwn => 'Jen vlastní rozpis';
+
+  @override
+  String get printPdf => 'Tisk / PDF';
+
+  @override
+  String get printRights => 'Co mohou zaměstnanci tisknout';
+
+  @override
+  String get printTeam => 'Rozpis celého týmu';
+
+  @override
+  String get printTeamOption => 'Rozpis týmu';
+
+  @override
+  String get totalsHint =>
+      'Včetně konceptů. Exporty do Excelu a CSV berou zveřejněný rozpis.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value dní v řadě (nejvýše $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value za den (nejvýše $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: jen $value odpočinku (nejméně $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value za týden (nejvýše $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Zákonná upozornění: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Směny: $count';
+  }
 }

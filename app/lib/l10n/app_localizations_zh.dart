@@ -961,4 +961,130 @@ class L10nZh extends L10n {
   String reinforcementHint(String company) {
     return '来自 $company：将作为支援人员加入并收到通知。';
   }
+
+  @override
+  String get addToGoogle => '添加到 Google 日历';
+
+  @override
+  String get calendarEnabled => '同步我的班次';
+
+  @override
+  String get calendarHint => '将您所有公司的班次添加到 Google 日历。它们会自动更新，您可以随时关闭。';
+
+  @override
+  String get changeSettings => '修改';
+
+  @override
+  String get copyCalendarLink => '复制日历链接';
+
+  @override
+  String get countryBelgium => '比利时';
+
+  @override
+  String get countryCanada => '加拿大';
+
+  @override
+  String get countryFrance => '法国';
+
+  @override
+  String get countrySwitzerland => '瑞士';
+
+  @override
+  String get employeesSection => '员工';
+
+  @override
+  String get emptyNoAlert => '留空：不提醒';
+
+  @override
+  String get extrasSection => '临时工';
+
+  @override
+  String get googleCalendar => 'Google 日历';
+
+  @override
+  String get hoursTotals => '工时合计';
+
+  @override
+  String get legalAlerts => '法定提醒';
+
+  @override
+  String get legalAlertsHint => '只是提醒，绝不阻止。选择适用于您的规则，或不选。';
+
+  @override
+  String get legalPreset => '国家模板';
+
+  @override
+  String get linkCopied => '链接已复制。';
+
+  @override
+  String get maxConsecutiveLabel => '最多连续工作天数';
+
+  @override
+  String get maxDayLabel => '每天最长时长（小时）';
+
+  @override
+  String get maxWeekLabel => '每周最长时长（小时）';
+
+  @override
+  String get minRestLabel => '两班之间最短休息（小时）';
+
+  @override
+  String get noLegalRules => '未选择任何提醒。';
+
+  @override
+  String get presetNone => '无';
+
+  @override
+  String get presetsCheck => '模板仅作起点：请根据您所在国家的法律和集体协议进行核对。';
+
+  @override
+  String get printMine => '我的排班';
+
+  @override
+  String get printOwn => '仅限自己的排班';
+
+  @override
+  String get printPdf => '打印 / PDF';
+
+  @override
+  String get printRights => '员工可打印的内容';
+
+  @override
+  String get printTeam => '整个团队的排班';
+
+  @override
+  String get printTeamOption => '团队排班';
+
+  @override
+  String get totalsHint => '包括草稿。Excel 和 CSV 导出使用已发布的排班。';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name：连续 $value 天（上限 $limit）';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name：一天 $value（上限 $limit）';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name：仅休息 $value（至少 $limit）';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name：一周 $value（上限 $limit）';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return '法定提醒：$count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return '班次：$count';
+  }
 }

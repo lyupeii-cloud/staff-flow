@@ -40,11 +40,19 @@ class Company {
   final String timezone;
   final bool readOnly;
 
+  /// Alertes légales choisies par le responsable (minutes, jours d'affilée).
+  final Map<String, int>? legalRules;
+
+  /// Ce que les salariés peuvent imprimer : `own` ou `team`.
+  final String printScope;
+
   Company.fromJson(Map<String, dynamic> j)
       : id = j['id'],
         name = j['name'],
         timezone = j['timezone'],
-        readOnly = j['status'] == 'readOnly';
+        readOnly = j['status'] == 'readOnly',
+        legalRules = (j['legalRules'] as Map?)?.map((k, v) => MapEntry(k as String, v as int)),
+        printScope = j['printScope'] ?? 'team';
 }
 
 class Membership {
@@ -121,6 +129,9 @@ class Me {
   /// Avis lus supprimés après : « day », « week » ou « month ».
   final String noticeRetention;
 
+  /// Lien d'agenda personnel (Google Agenda) ; `null` : désactivé.
+  final String? calendarPath;
+
   /// Messages non lus, par entreprise.
   final Map<String, int> unreadMessages;
 
@@ -136,6 +147,7 @@ class Me {
         ],
         unreadNotices = j['unreadNotices'] ?? 0,
         noticeRetention = j['noticeRetention'] ?? 'week',
+        calendarPath = j['calendarPath'],
         unreadMessages = {
           for (final e in ((j['unreadMessages'] ?? const {}) as Map).entries) e.key as String: e.value as int,
         },

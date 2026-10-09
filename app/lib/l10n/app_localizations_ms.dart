@@ -982,4 +982,134 @@ class L10nMs extends L10n {
   String reinforcementHint(String company) {
     return 'Dari $company: akan ditambah sebagai tenaga bantuan dan dimaklumkan.';
   }
+
+  @override
+  String get addToGoogle => 'Tambah ke Kalendar Google';
+
+  @override
+  String get calendarEnabled => 'Segerakkan syif saya';
+
+  @override
+  String get calendarHint =>
+      'Tambah syif anda dari semua syarikat ke Kalendar Google. Ia dikemas kini sendiri dan anda boleh mematikannya bila-bila masa.';
+
+  @override
+  String get changeSettings => 'Ubah';
+
+  @override
+  String get copyCalendarLink => 'Salin pautan kalendar';
+
+  @override
+  String get countryBelgium => 'Belgium';
+
+  @override
+  String get countryCanada => 'Kanada';
+
+  @override
+  String get countryFrance => 'Perancis';
+
+  @override
+  String get countrySwitzerland => 'Switzerland';
+
+  @override
+  String get employeesSection => 'Pekerja';
+
+  @override
+  String get emptyNoAlert => 'Kosong: tiada amaran';
+
+  @override
+  String get extrasSection => 'Pekerja sambilan';
+
+  @override
+  String get googleCalendar => 'Kalendar Google';
+
+  @override
+  String get hoursTotals => 'Jumlah jam';
+
+  @override
+  String get legalAlerts => 'Amaran undang-undang';
+
+  @override
+  String get legalAlertsHint =>
+      'Amaran sahaja, tidak pernah menyekat. Pilih peraturan yang terpakai kepada anda, atau tiada.';
+
+  @override
+  String get legalPreset => 'Templat negara';
+
+  @override
+  String get linkCopied => 'Pautan disalin.';
+
+  @override
+  String get maxConsecutiveLabel => 'Maksimum hari bekerja berturut-turut';
+
+  @override
+  String get maxDayLabel => 'Tempoh maksimum sehari (jam)';
+
+  @override
+  String get maxWeekLabel => 'Tempoh maksimum seminggu (jam)';
+
+  @override
+  String get minRestLabel => 'Rehat minimum antara syif (jam)';
+
+  @override
+  String get noLegalRules => 'Tiada amaran dipilih.';
+
+  @override
+  String get presetNone => 'Tiada';
+
+  @override
+  String get presetsCheck =>
+      'Templat hanyalah titik permulaan: semak mengikut peraturan negara dan perjanjian kolektif anda.';
+
+  @override
+  String get printMine => 'Jadual saya';
+
+  @override
+  String get printOwn => 'Jadual sendiri sahaja';
+
+  @override
+  String get printPdf => 'Cetak / PDF';
+
+  @override
+  String get printRights => 'Perkara yang boleh dicetak pekerja';
+
+  @override
+  String get printTeam => 'Jadual seluruh pasukan';
+
+  @override
+  String get printTeamOption => 'Jadual pasukan';
+
+  @override
+  String get totalsHint =>
+      'Termasuk draf. Eksport Excel dan CSV menggunakan jadual yang diterbitkan.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value hari berturut-turut (maksimum $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value dalam sehari (maksimum $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: hanya $value rehat (minimum $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value dalam seminggu (maksimum $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Amaran undang-undang: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Syif: $count';
+  }
 }

@@ -5,6 +5,7 @@ import '../models.dart';
 import '../session.dart';
 import 'company_tab.dart';
 import 'home_screen.dart';
+import 'tools_widgets.dart';
 
 /// Sites (magasin A, entrepôt…) et postes (caisse, cuisine…) de l'entreprise.
 class CatalogView extends StatelessWidget {
@@ -25,6 +26,8 @@ class CatalogView extends StatelessWidget {
         _section(context, t.positions, 'positions', data.positions, t.positionsHint),
         const SizedBox(height: 24),
         _section(context, t.sites, 'sites', data.sites, t.sitesHint),
+        const SizedBox(height: 24),
+        ToolsSettings(session: session, company: company),
       ],
     );
   }

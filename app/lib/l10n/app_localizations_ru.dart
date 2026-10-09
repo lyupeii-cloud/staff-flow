@@ -990,4 +990,134 @@ class L10nRu extends L10n {
   String reinforcementHint(String company) {
     return 'Из компании $company: будет добавлен как подкрепление и уведомлён.';
   }
+
+  @override
+  String get addToGoogle => 'Добавить в Google Календарь';
+
+  @override
+  String get calendarEnabled => 'Синхронизировать мои смены';
+
+  @override
+  String get calendarHint =>
+      'Добавьте свои смены из всех компаний в Google Календарь. Они обновляются сами, и вы можете отключить это в любой момент.';
+
+  @override
+  String get changeSettings => 'Изменить';
+
+  @override
+  String get copyCalendarLink => 'Копировать ссылку на календарь';
+
+  @override
+  String get countryBelgium => 'Бельгия';
+
+  @override
+  String get countryCanada => 'Канада';
+
+  @override
+  String get countryFrance => 'Франция';
+
+  @override
+  String get countrySwitzerland => 'Швейцария';
+
+  @override
+  String get employeesSection => 'Сотрудники';
+
+  @override
+  String get emptyNoAlert => 'Пусто: без предупреждения';
+
+  @override
+  String get extrasSection => 'Внештатные';
+
+  @override
+  String get googleCalendar => 'Google Календарь';
+
+  @override
+  String get hoursTotals => 'Итоги часов';
+
+  @override
+  String get legalAlerts => 'Предупреждения по закону';
+
+  @override
+  String get legalAlertsHint =>
+      'Только предупреждения, без блокировок. Выберите правила, которые действуют у вас, или никакие.';
+
+  @override
+  String get legalPreset => 'Шаблон страны';
+
+  @override
+  String get linkCopied => 'Ссылка скопирована.';
+
+  @override
+  String get maxConsecutiveLabel => 'Максимум рабочих дней подряд';
+
+  @override
+  String get maxDayLabel => 'Максимум часов в день';
+
+  @override
+  String get maxWeekLabel => 'Максимум часов в неделю';
+
+  @override
+  String get minRestLabel => 'Минимальный отдых между сменами (часы)';
+
+  @override
+  String get noLegalRules => 'Предупреждения не выбраны.';
+
+  @override
+  String get presetNone => 'Нет';
+
+  @override
+  String get presetsCheck =>
+      'Шаблоны — лишь отправная точка: проверьте их по законам вашей страны и коллективному договору.';
+
+  @override
+  String get printMine => 'Мой график';
+
+  @override
+  String get printOwn => 'Только свой график';
+
+  @override
+  String get printPdf => 'Печать / PDF';
+
+  @override
+  String get printRights => 'Что могут печатать сотрудники';
+
+  @override
+  String get printTeam => 'График всей команды';
+
+  @override
+  String get printTeamOption => 'График команды';
+
+  @override
+  String get totalsHint =>
+      'С учётом черновиков. Экспорт в Excel и CSV берёт опубликованный график.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value дней подряд (максимум $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value за день (максимум $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: всего $value отдыха (минимум $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value за неделю (максимум $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Предупреждения по закону: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Смен: $count';
+  }
 }

@@ -987,4 +987,134 @@ class L10nIt extends L10n {
   String reinforcementHint(String company) {
     return 'Da $company: sarà aggiunto come rinforzo e avvisato.';
   }
+
+  @override
+  String get addToGoogle => 'Aggiungi a Google Calendar';
+
+  @override
+  String get calendarEnabled => 'Sincronizza i miei turni';
+
+  @override
+  String get calendarHint =>
+      'Aggiungi i turni di tutte le tue aziende a Google Calendar. Si aggiornano da soli e puoi disattivarlo quando vuoi.';
+
+  @override
+  String get changeSettings => 'Modifica';
+
+  @override
+  String get copyCalendarLink => 'Copia il link del calendario';
+
+  @override
+  String get countryBelgium => 'Belgio';
+
+  @override
+  String get countryCanada => 'Canada';
+
+  @override
+  String get countryFrance => 'Francia';
+
+  @override
+  String get countrySwitzerland => 'Svizzera';
+
+  @override
+  String get employeesSection => 'Dipendenti';
+
+  @override
+  String get emptyNoAlert => 'Vuoto: nessun avviso';
+
+  @override
+  String get extrasSection => 'Extra';
+
+  @override
+  String get googleCalendar => 'Google Calendar';
+
+  @override
+  String get hoursTotals => 'Totali ore';
+
+  @override
+  String get legalAlerts => 'Avvisi legali';
+
+  @override
+  String get legalAlertsHint =>
+      'Avvisi, mai blocchi. Scegli le regole che valgono per te, o nessuna.';
+
+  @override
+  String get legalPreset => 'Modello per paese';
+
+  @override
+  String get linkCopied => 'Link copiato.';
+
+  @override
+  String get maxConsecutiveLabel => 'Massimo di giorni lavorativi consecutivi';
+
+  @override
+  String get maxDayLabel => 'Durata massima al giorno (ore)';
+
+  @override
+  String get maxWeekLabel => 'Durata massima a settimana (ore)';
+
+  @override
+  String get minRestLabel => 'Riposo minimo tra due turni (ore)';
+
+  @override
+  String get noLegalRules => 'Nessun avviso scelto.';
+
+  @override
+  String get presetNone => 'Nessuno';
+
+  @override
+  String get presetsCheck =>
+      'I modelli sono un punto di partenza: verificali secondo il tuo paese e il tuo contratto collettivo.';
+
+  @override
+  String get printMine => 'Il mio planning';
+
+  @override
+  String get printOwn => 'Solo il proprio planning';
+
+  @override
+  String get printPdf => 'Stampa / PDF';
+
+  @override
+  String get printRights => 'Cosa possono stampare i dipendenti';
+
+  @override
+  String get printTeam => 'Il planning di tutto il team';
+
+  @override
+  String get printTeamOption => 'Il planning del team';
+
+  @override
+  String get totalsHint =>
+      'Bozze incluse. Gli export Excel e CSV usano il planning pubblicato.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value giorni di fila (massimo $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value nella giornata (massimo $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: solo $value di riposo (minimo $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value nella settimana (massimo $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Avvisi legali: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Turni: $count';
+  }
 }

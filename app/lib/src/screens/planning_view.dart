@@ -9,6 +9,7 @@ import 'company_tab.dart';
 import 'requests_view.dart';
 import 'shift_editor.dart';
 import 'sync_widgets.dart';
+import 'tools_widgets.dart';
 
 enum _Mode { week, month }
 
@@ -36,6 +37,51 @@ class _PlanningViewState extends State<PlanningView> {
 
   /// Congés et indisponibilités validés de la période.
   List<StaffRequest> _absences = const [];
+
+  /// Alertes légales de la période (responsables) : avertissements.
+  List<Map<String, dynamic>> _alerts = const [];
+
+  Future<List<Map<String, dynamic>>> _loadAlerts() async {
+    if (!canEdit || company.legalRules == null) return const [];
+    try {
+      final json = await widget.session.api
+          .send('GET', '/companies/${company.id}/alerts?from=${formatDay(_from)}&to=${formatDay(_to)}');
+      return [for (final a in json['alerts']) (a as Map).cast<String, dynamic>()];
+    } catch (_) {
+      return _alerts;
+    }
+  }
+
+  /// Alertes d'un service : celles de son jour, et celle de sa semaine.
+  List<Map<String, dynamic>> _alertsFor(Shift s) => [
+        for (final a in _alerts)
+          if (a['userId'] == s.userId &&
+              (a['day'] == formatDay(s.day) ||
+                  (a['kind'] == 'week' && sameDay(startOfWeek(parseDay(a['day'])), startOfWeek(s.day)))))
+            a
+      ];
+
+  void _showAlerts() => showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (context) => SafeArea(
+          child: ListView(
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(20),
+            children: [
+              Text(t.legalAlerts, style: Theme.of(context).textTheme.titleLarge),
+              Text(t.legalAlertsHint, style: Theme.of(context).textTheme.bodySmall),
+              for (final a in _alerts)
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: const Icon(Icons.warning_amber, color: Colors.orange),
+                  title: Text(legalAlertText(t, a, widget.data)),
+                  subtitle: Text(dayLabel(parseDay(a['day']), loc)),
+                ),
+            ],
+          ),
+        ),
+      );
 
   /// Demandes en attente (échanges, congés, indisponibilités) : signalées
   /// par une icône qui ouvre la demande.
@@ -102,8 +148,10 @@ class _PlanningViewState extends State<PlanningView> {
       final r = await sync.shifts(company.id, _from, _to);
       final absences = await _loadAbsences();
       final requests = await _loadRequests();
+      final alerts = await _loadAlerts();
       if (!mounted) return;
       setState(() {
+        _alerts = alerts;
         _shifts = r.shifts;
         _absences = absences;
         _requests = requests;
@@ -308,6 +356,10 @@ class _PlanningViewState extends State<PlanningView> {
                         setState(() => _mineOnly = !_mineOnly);
                       case 'replace':
                         _replace();
+                      case 'totals':
+                        showTotalsSheet(context, session: widget.session, membership: widget.membership, from: _from, to: _to);
+                      case 'print':
+                        choosePrint(context, widget.session, widget.membership, _from, _to);
                       case 'history':
                         showHistorySheet(
                           context,
@@ -323,6 +375,8 @@ class _PlanningViewState extends State<PlanningView> {
                     PopupMenuItem(value: 'today', child: Text(t.today)),
                     CheckedPopupMenuItem(value: 'mine', checked: _mineOnly, child: Text(t.onlyMine)),
                     if (canEdit) PopupMenuItem(value: 'replace', child: Text(t.replacePersonMenu)),
+                    if (widget.membership.role.canManage) PopupMenuItem(value: 'totals', child: Text(t.hoursTotals)),
+                    PopupMenuItem(value: 'print', child: Text(t.printPdf)),
                     if (canEdit) PopupMenuItem(value: 'history', child: Text(t.recentChanges)),
                   ],
                 ),
@@ -361,6 +415,18 @@ class _PlanningViewState extends State<PlanningView> {
                   icon: const Icon(Icons.undo, size: 18),
                   label: Text(t.discardAll),
                 ),
+              ),
+            ),
+          if (_alerts.isNotEmpty)
+            Card(
+              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+              color: Colors.orange.withValues(alpha: 0.15),
+              child: ListTile(
+                dense: true,
+                leading: const Icon(Icons.warning_amber, color: Colors.orange),
+                title: Text(t.legalAlertsCount('${_alerts.length}')),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: _showAlerts,
               ),
             ),
           if (myMinutes > 0)
@@ -497,6 +563,7 @@ class _PlanningViewState extends State<PlanningView> {
           };
     final mine = s.userId == myId;
     final request = _requests.where((r) => r.shiftId == s.id).firstOrNull;
+    final legal = deleted ? const <Map<String, dynamic>>[] : _alertsFor(s);
     final revertable = canEdit && badge != null && !s.pending && widget.membership.canEditSite(s.siteId);
     final absent = !deleted && _isAbsent(s.userId, s.day);
     final canOffer = !canEdit && mine && !s.pending && s.status == ShiftStatus.published &&
@@ -540,6 +607,15 @@ class _PlanningViewState extends State<PlanningView> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ?(request == null ? null : _requestIcon(request)),
+            if (legal.isNotEmpty)
+              Tooltip(
+                message: legal.map((a) => legalAlertText(t, a, widget.data)).join('\n'),
+                triggerMode: TooltipTriggerMode.tap,
+                child: const Padding(
+                  padding: EdgeInsets.all(6),
+                  child: Icon(Icons.warning_amber, size: 20, color: Colors.orange),
+                ),
+              ),
             if (badge == null)
               ?(canOffer && request == null
                   ? Tooltip(message: t.proposeSwap, child: const Icon(Icons.swap_horiz, size: 18))

@@ -975,4 +975,134 @@ class L10nTh extends L10n {
   String reinforcementHint(String company) {
     return 'จาก $company: จะถูกเพิ่มเป็นกำลังเสริมและได้รับแจ้ง';
   }
+
+  @override
+  String get addToGoogle => 'เพิ่มลงใน Google ปฏิทิน';
+
+  @override
+  String get calendarEnabled => 'ซิงค์กะของฉัน';
+
+  @override
+  String get calendarHint =>
+      'เพิ่มกะจากทุกบริษัทของคุณลงใน Google ปฏิทิน กะจะอัปเดตเอง และคุณปิดได้ทุกเมื่อ';
+
+  @override
+  String get changeSettings => 'แก้ไข';
+
+  @override
+  String get copyCalendarLink => 'คัดลอกลิงก์ปฏิทิน';
+
+  @override
+  String get countryBelgium => 'เบลเยียม';
+
+  @override
+  String get countryCanada => 'แคนาดา';
+
+  @override
+  String get countryFrance => 'ฝรั่งเศส';
+
+  @override
+  String get countrySwitzerland => 'สวิตเซอร์แลนด์';
+
+  @override
+  String get employeesSection => 'พนักงาน';
+
+  @override
+  String get emptyNoAlert => 'เว้นว่าง: ไม่มีการแจ้งเตือน';
+
+  @override
+  String get extrasSection => 'พนักงานชั่วคราว';
+
+  @override
+  String get googleCalendar => 'Google ปฏิทิน';
+
+  @override
+  String get hoursTotals => 'ยอดรวมชั่วโมง';
+
+  @override
+  String get legalAlerts => 'การแจ้งเตือนตามกฎหมาย';
+
+  @override
+  String get legalAlertsHint =>
+      'เป็นเพียงคำเตือน ไม่มีการบล็อก เลือกกฎที่ใช้กับคุณ หรือไม่เลือกเลย';
+
+  @override
+  String get legalPreset => 'แม่แบบตามประเทศ';
+
+  @override
+  String get linkCopied => 'คัดลอกลิงก์แล้ว';
+
+  @override
+  String get maxConsecutiveLabel => 'จำนวนวันทำงานติดต่อกันสูงสุด';
+
+  @override
+  String get maxDayLabel => 'ระยะเวลาสูงสุดต่อวัน (ชั่วโมง)';
+
+  @override
+  String get maxWeekLabel => 'ระยะเวลาสูงสุดต่อสัปดาห์ (ชั่วโมง)';
+
+  @override
+  String get minRestLabel => 'เวลาพักขั้นต่ำระหว่างกะ (ชั่วโมง)';
+
+  @override
+  String get noLegalRules => 'ยังไม่ได้เลือกการแจ้งเตือน';
+
+  @override
+  String get presetNone => 'ไม่มี';
+
+  @override
+  String get presetsCheck =>
+      'แม่แบบเป็นเพียงจุดเริ่มต้น: โปรดตรวจสอบตามกฎหมายของประเทศและข้อตกลงร่วมของคุณ';
+
+  @override
+  String get printMine => 'ตารางงานของฉัน';
+
+  @override
+  String get printOwn => 'เฉพาะตารางงานของตนเอง';
+
+  @override
+  String get printPdf => 'พิมพ์ / PDF';
+
+  @override
+  String get printRights => 'สิ่งที่พนักงานพิมพ์ได้';
+
+  @override
+  String get printTeam => 'ตารางงานของทั้งทีม';
+
+  @override
+  String get printTeamOption => 'ตารางงานของทีม';
+
+  @override
+  String get totalsHint =>
+      'รวมฉบับร่าง การส่งออก Excel และ CSV ใช้ตารางงานที่เผยแพร่แล้ว';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: ทำงาน $value วันติดต่อกัน (สูงสุด $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value ในหนึ่งวัน (สูงสุด $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: พักเพียง $value (ขั้นต่ำ $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value ในหนึ่งสัปดาห์ (สูงสุด $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'การแจ้งเตือนตามกฎหมาย: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'กะ: $count';
+  }
 }

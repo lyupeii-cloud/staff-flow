@@ -1828,6 +1828,234 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'From {company}: will be added as backup staff and notified.'**
   String reinforcementHint(String company);
+
+  /// No description provided for @addToGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Google Calendar'**
+  String get addToGoogle;
+
+  /// No description provided for @calendarEnabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync my shifts'**
+  String get calendarEnabled;
+
+  /// No description provided for @calendarHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add your shifts from all your companies to Google Calendar. They update on their own, and you can turn this off at any time.'**
+  String get calendarHint;
+
+  /// No description provided for @changeSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get changeSettings;
+
+  /// No description provided for @copyCalendarLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy calendar link'**
+  String get copyCalendarLink;
+
+  /// No description provided for @countryBelgium.
+  ///
+  /// In en, this message translates to:
+  /// **'Belgium'**
+  String get countryBelgium;
+
+  /// No description provided for @countryCanada.
+  ///
+  /// In en, this message translates to:
+  /// **'Canada'**
+  String get countryCanada;
+
+  /// No description provided for @countryFrance.
+  ///
+  /// In en, this message translates to:
+  /// **'France'**
+  String get countryFrance;
+
+  /// No description provided for @countrySwitzerland.
+  ///
+  /// In en, this message translates to:
+  /// **'Switzerland'**
+  String get countrySwitzerland;
+
+  /// No description provided for @employeesSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Employees'**
+  String get employeesSection;
+
+  /// No description provided for @emptyNoAlert.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty: no alert'**
+  String get emptyNoAlert;
+
+  /// No description provided for @extrasSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Extras'**
+  String get extrasSection;
+
+  /// No description provided for @googleCalendar.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Calendar'**
+  String get googleCalendar;
+
+  /// No description provided for @hoursTotals.
+  ///
+  /// In en, this message translates to:
+  /// **'Hour totals'**
+  String get hoursTotals;
+
+  /// No description provided for @legalAlerts.
+  ///
+  /// In en, this message translates to:
+  /// **'Legal alerts'**
+  String get legalAlerts;
+
+  /// No description provided for @legalAlertsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Warnings, never blocks. Choose the rules that apply to you, or none.'**
+  String get legalAlertsHint;
+
+  /// No description provided for @legalPreset.
+  ///
+  /// In en, this message translates to:
+  /// **'Country template'**
+  String get legalPreset;
+
+  /// No description provided for @linkCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Link copied.'**
+  String get linkCopied;
+
+  /// No description provided for @maxConsecutiveLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum consecutive working days'**
+  String get maxConsecutiveLabel;
+
+  /// No description provided for @maxDayLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum hours per day'**
+  String get maxDayLabel;
+
+  /// No description provided for @maxWeekLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum hours per week'**
+  String get maxWeekLabel;
+
+  /// No description provided for @minRestLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum rest between shifts (hours)'**
+  String get minRestLabel;
+
+  /// No description provided for @noLegalRules.
+  ///
+  /// In en, this message translates to:
+  /// **'No alerts chosen.'**
+  String get noLegalRules;
+
+  /// No description provided for @presetNone.
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get presetNone;
+
+  /// No description provided for @presetsCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'Templates are starting points: check them against your country\'s rules and your collective agreement.'**
+  String get presetsCheck;
+
+  /// No description provided for @printMine.
+  ///
+  /// In en, this message translates to:
+  /// **'My schedule'**
+  String get printMine;
+
+  /// No description provided for @printOwn.
+  ///
+  /// In en, this message translates to:
+  /// **'Their own schedule only'**
+  String get printOwn;
+
+  /// No description provided for @printPdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Print / PDF'**
+  String get printPdf;
+
+  /// No description provided for @printRights.
+  ///
+  /// In en, this message translates to:
+  /// **'What employees can print'**
+  String get printRights;
+
+  /// No description provided for @printTeam.
+  ///
+  /// In en, this message translates to:
+  /// **'The whole team\'s schedule'**
+  String get printTeam;
+
+  /// No description provided for @printTeamOption.
+  ///
+  /// In en, this message translates to:
+  /// **'The team\'s schedule'**
+  String get printTeamOption;
+
+  /// No description provided for @totalsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Drafts included. Excel and CSV exports use the published schedule.'**
+  String get totalsHint;
+
+  /// No description provided for @alertConsecutive.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}: {value} days in a row (maximum {limit})'**
+  String alertConsecutive(String name, String value, String limit);
+
+  /// No description provided for @alertDay.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}: {value} in the day (maximum {limit})'**
+  String alertDay(String name, String value, String limit);
+
+  /// No description provided for @alertRest.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}: only {value} of rest (minimum {limit})'**
+  String alertRest(String name, String value, String limit);
+
+  /// No description provided for @alertWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}: {value} in the week (maximum {limit})'**
+  String alertWeek(String name, String value, String limit);
+
+  /// No description provided for @legalAlertsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Legal alerts: {count}'**
+  String legalAlertsCount(String count);
+
+  /// No description provided for @shiftsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Shifts: {count}'**
+  String shiftsCount(String count);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

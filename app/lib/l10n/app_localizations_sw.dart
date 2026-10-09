@@ -987,4 +987,134 @@ class L10nSw extends L10n {
   String reinforcementHint(String company) {
     return 'Kutoka $company: ataongezwa kama msaidizi na kuarifiwa.';
   }
+
+  @override
+  String get addToGoogle => 'Ongeza kwenye Kalenda ya Google';
+
+  @override
+  String get calendarEnabled => 'Sawazisha zamu zangu';
+
+  @override
+  String get calendarHint =>
+      'Ongeza zamu zako kutoka kampuni zako zote kwenye Kalenda ya Google. Zinajisasisha zenyewe, na unaweza kuzima wakati wowote.';
+
+  @override
+  String get changeSettings => 'Badilisha';
+
+  @override
+  String get copyCalendarLink => 'Nakili kiungo cha kalenda';
+
+  @override
+  String get countryBelgium => 'Ubelgiji';
+
+  @override
+  String get countryCanada => 'Kanada';
+
+  @override
+  String get countryFrance => 'Ufaransa';
+
+  @override
+  String get countrySwitzerland => 'Uswisi';
+
+  @override
+  String get employeesSection => 'Wafanyakazi';
+
+  @override
+  String get emptyNoAlert => 'Tupu: hakuna tahadhari';
+
+  @override
+  String get extrasSection => 'Vibarua';
+
+  @override
+  String get googleCalendar => 'Kalenda ya Google';
+
+  @override
+  String get hoursTotals => 'Jumla ya saa';
+
+  @override
+  String get legalAlerts => 'Tahadhari za kisheria';
+
+  @override
+  String get legalAlertsHint =>
+      'Tahadhari tu, kamwe si kuzuia. Chagua kanuni zinazokuhusu, au hakuna.';
+
+  @override
+  String get legalPreset => 'Kiolezo cha nchi';
+
+  @override
+  String get linkCopied => 'Kiungo kimenakiliwa.';
+
+  @override
+  String get maxConsecutiveLabel => 'Siku nyingi zaidi za kazi mfululizo';
+
+  @override
+  String get maxDayLabel => 'Muda mrefu zaidi kwa siku (saa)';
+
+  @override
+  String get maxWeekLabel => 'Muda mrefu zaidi kwa wiki (saa)';
+
+  @override
+  String get minRestLabel => 'Mapumziko mafupi zaidi kati ya zamu (saa)';
+
+  @override
+  String get noLegalRules => 'Hakuna tahadhari iliyochaguliwa.';
+
+  @override
+  String get presetNone => 'Hakuna';
+
+  @override
+  String get presetsCheck =>
+      'Violezo ni mwanzo tu: vihakiki kulingana na sheria za nchi yako na makubaliano ya pamoja.';
+
+  @override
+  String get printMine => 'Ratiba yangu';
+
+  @override
+  String get printOwn => 'Ratiba yao wenyewe tu';
+
+  @override
+  String get printPdf => 'Chapisha / PDF';
+
+  @override
+  String get printRights => 'Kile wafanyakazi wanaweza kuchapisha';
+
+  @override
+  String get printTeam => 'Ratiba ya timu nzima';
+
+  @override
+  String get printTeamOption => 'Ratiba ya timu';
+
+  @override
+  String get totalsHint =>
+      'Pamoja na rasimu. Usafirishaji wa Excel na CSV hutumia ratiba iliyochapishwa.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: siku $value mfululizo (kiwango cha juu $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value kwa siku (kiwango cha juu $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: mapumziko ya $value tu (kiwango cha chini $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value kwa wiki (kiwango cha juu $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Tahadhari za kisheria: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Zamu: $count';
+  }
 }

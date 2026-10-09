@@ -18,6 +18,7 @@ import 'chat_screen.dart';
 import 'notification_settings.dart';
 import 'people_widgets.dart';
 import 'sync_widgets.dart';
+import 'tools_widgets.dart';
 
 /// Un onglet par entreprise dont l'utilisateur est membre (section 3).
 class HomeScreen extends StatefulWidget {
@@ -335,6 +336,8 @@ class _ProfileMenu extends StatelessWidget {
           showJoinCodeDialog(context, session);
         } else if (v == 'create') {
           createCompany(context, session);
+        } else if (v == 'calendar') {
+          showCalendarDialog(context, session);
         } else if (v == 'language') {
           showLanguagePicker(context, session);
         } else if (v == 'copy') {
@@ -349,6 +352,7 @@ class _ProfileMenu extends StatelessWidget {
         _item('qr', Icons.qr_code_2, t.myQrCode),
         _item('name', Icons.badge_outlined, t.changeMyName),
         _item('notifications', Icons.notifications_outlined, t.notificationsTitle),
+        _item('calendar', Icons.event, t.googleCalendar),
         _item('join', Icons.pin_outlined, t.joinCompany),
         _item('create', Icons.add_business, t.newCompany),
         _item('copy', Icons.copy, t.myId(user.publicId)),

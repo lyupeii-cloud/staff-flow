@@ -964,4 +964,131 @@ class L10nKo extends L10n {
   String reinforcementHint(String company) {
     return '$company 소속: 지원 인력으로 추가되고 알림을 받습니다.';
   }
+
+  @override
+  String get addToGoogle => 'Google 캘린더에 추가';
+
+  @override
+  String get calendarEnabled => '내 근무 동기화';
+
+  @override
+  String get calendarHint =>
+      '모든 회사의 근무를 Google 캘린더에 추가합니다. 자동으로 업데이트되며 언제든지 끌 수 있습니다.';
+
+  @override
+  String get changeSettings => '수정';
+
+  @override
+  String get copyCalendarLink => '캘린더 링크 복사';
+
+  @override
+  String get countryBelgium => '벨기에';
+
+  @override
+  String get countryCanada => '캐나다';
+
+  @override
+  String get countryFrance => '프랑스';
+
+  @override
+  String get countrySwitzerland => '스위스';
+
+  @override
+  String get employeesSection => '직원';
+
+  @override
+  String get emptyNoAlert => '비워 두면 알림 없음';
+
+  @override
+  String get extrasSection => '임시 직원';
+
+  @override
+  String get googleCalendar => 'Google 캘린더';
+
+  @override
+  String get hoursTotals => '근무 시간 합계';
+
+  @override
+  String get legalAlerts => '법정 알림';
+
+  @override
+  String get legalAlertsHint => '경고일 뿐 차단하지 않습니다. 해당되는 규칙을 선택하거나 선택하지 마세요.';
+
+  @override
+  String get legalPreset => '국가별 템플릿';
+
+  @override
+  String get linkCopied => '링크를 복사했습니다.';
+
+  @override
+  String get maxConsecutiveLabel => '최대 연속 근무일';
+
+  @override
+  String get maxDayLabel => '하루 최대 시간';
+
+  @override
+  String get maxWeekLabel => '주당 최대 시간';
+
+  @override
+  String get minRestLabel => '근무 사이 최소 휴식(시간)';
+
+  @override
+  String get noLegalRules => '선택한 알림이 없습니다.';
+
+  @override
+  String get presetNone => '없음';
+
+  @override
+  String get presetsCheck => '템플릿은 출발점일 뿐입니다. 국가 법률과 단체협약에 맞게 확인하세요.';
+
+  @override
+  String get printMine => '내 근무표';
+
+  @override
+  String get printOwn => '자신의 근무표만';
+
+  @override
+  String get printPdf => '인쇄 / PDF';
+
+  @override
+  String get printRights => '직원이 인쇄할 수 있는 범위';
+
+  @override
+  String get printTeam => '팀 전체 근무표';
+
+  @override
+  String get printTeamOption => '팀 근무표';
+
+  @override
+  String get totalsHint => '초안 포함. Excel 및 CSV 내보내기는 게시된 근무표를 사용합니다.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value일 연속(최대 $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: 하루 $value(최대 $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: 휴식 $value뿐(최소 $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: 주 $value(최대 $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return '법정 알림: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return '근무: $count';
+  }
 }

@@ -986,4 +986,134 @@ class L10nSv extends L10n {
   String reinforcementHint(String company) {
     return 'Från $company: läggs till som förstärkning och får ett meddelande.';
   }
+
+  @override
+  String get addToGoogle => 'Lägg till i Google Kalender';
+
+  @override
+  String get calendarEnabled => 'Synka mina pass';
+
+  @override
+  String get calendarHint =>
+      'Lägg till dina pass från alla dina företag i Google Kalender. De uppdateras av sig själva och du kan stänga av när du vill.';
+
+  @override
+  String get changeSettings => 'Ändra';
+
+  @override
+  String get copyCalendarLink => 'Kopiera kalenderlänken';
+
+  @override
+  String get countryBelgium => 'Belgien';
+
+  @override
+  String get countryCanada => 'Kanada';
+
+  @override
+  String get countryFrance => 'Frankrike';
+
+  @override
+  String get countrySwitzerland => 'Schweiz';
+
+  @override
+  String get employeesSection => 'Anställda';
+
+  @override
+  String get emptyNoAlert => 'Tomt: ingen varning';
+
+  @override
+  String get extrasSection => 'Extrapersonal';
+
+  @override
+  String get googleCalendar => 'Google Kalender';
+
+  @override
+  String get hoursTotals => 'Timsummor';
+
+  @override
+  String get legalAlerts => 'Lagstadgade varningar';
+
+  @override
+  String get legalAlertsHint =>
+      'Varningar, aldrig spärrar. Välj de regler som gäller hos dig, eller inga.';
+
+  @override
+  String get legalPreset => 'Landsmall';
+
+  @override
+  String get linkCopied => 'Länken har kopierats.';
+
+  @override
+  String get maxConsecutiveLabel => 'Högst antal arbetsdagar i följd';
+
+  @override
+  String get maxDayLabel => 'Längsta tid per dag (timmar)';
+
+  @override
+  String get maxWeekLabel => 'Längsta tid per vecka (timmar)';
+
+  @override
+  String get minRestLabel => 'Kortaste vila mellan två pass (timmar)';
+
+  @override
+  String get noLegalRules => 'Inga varningar valda.';
+
+  @override
+  String get presetNone => 'Inga';
+
+  @override
+  String get presetsCheck =>
+      'Mallarna är en utgångspunkt: kontrollera dem mot ditt lands regler och ditt kollektivavtal.';
+
+  @override
+  String get printMine => 'Mitt schema';
+
+  @override
+  String get printOwn => 'Bara sitt eget schema';
+
+  @override
+  String get printPdf => 'Skriv ut / PDF';
+
+  @override
+  String get printRights => 'Vad anställda får skriva ut';
+
+  @override
+  String get printTeam => 'Hela teamets schema';
+
+  @override
+  String get printTeamOption => 'Teamets schema';
+
+  @override
+  String get totalsHint =>
+      'Utkast inräknade. Excel- och CSV-exporter använder det publicerade schemat.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value dagar i följd (högst $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value under dagen (högst $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: bara $value vila (minst $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value under veckan (högst $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Lagstadgade varningar: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Pass: $count';
+  }
 }

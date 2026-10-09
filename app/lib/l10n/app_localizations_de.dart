@@ -994,4 +994,134 @@ class L10nDe extends L10n {
   String reinforcementHint(String company) {
     return 'Aus $company: wird als Verstärkung hinzugefügt und benachrichtigt.';
   }
+
+  @override
+  String get addToGoogle => 'Zu Google Kalender hinzufügen';
+
+  @override
+  String get calendarEnabled => 'Meine Schichten synchronisieren';
+
+  @override
+  String get calendarHint =>
+      'Fügen Sie Ihre Schichten aus allen Unternehmen zu Google Kalender hinzu. Sie aktualisieren sich selbst, und Sie können das jederzeit abschalten.';
+
+  @override
+  String get changeSettings => 'Ändern';
+
+  @override
+  String get copyCalendarLink => 'Kalenderlink kopieren';
+
+  @override
+  String get countryBelgium => 'Belgien';
+
+  @override
+  String get countryCanada => 'Kanada';
+
+  @override
+  String get countryFrance => 'Frankreich';
+
+  @override
+  String get countrySwitzerland => 'Schweiz';
+
+  @override
+  String get employeesSection => 'Angestellte';
+
+  @override
+  String get emptyNoAlert => 'Leer: keine Warnung';
+
+  @override
+  String get extrasSection => 'Aushilfen';
+
+  @override
+  String get googleCalendar => 'Google Kalender';
+
+  @override
+  String get hoursTotals => 'Stundensummen';
+
+  @override
+  String get legalAlerts => 'Gesetzliche Warnungen';
+
+  @override
+  String get legalAlertsHint =>
+      'Nur Warnungen, nie Sperren. Wählen Sie die Regeln, die bei Ihnen gelten, oder keine.';
+
+  @override
+  String get legalPreset => 'Ländervorlage';
+
+  @override
+  String get linkCopied => 'Link kopiert.';
+
+  @override
+  String get maxConsecutiveLabel => 'Maximal aufeinanderfolgende Arbeitstage';
+
+  @override
+  String get maxDayLabel => 'Höchstdauer pro Tag (Stunden)';
+
+  @override
+  String get maxWeekLabel => 'Höchstdauer pro Woche (Stunden)';
+
+  @override
+  String get minRestLabel => 'Mindestruhe zwischen zwei Schichten (Stunden)';
+
+  @override
+  String get noLegalRules => 'Keine Warnung gewählt.';
+
+  @override
+  String get presetNone => 'Keine';
+
+  @override
+  String get presetsCheck =>
+      'Vorlagen sind ein Ausgangspunkt: Prüfen Sie sie nach den Regeln Ihres Landes und Ihrem Tarifvertrag.';
+
+  @override
+  String get printMine => 'Mein Dienstplan';
+
+  @override
+  String get printOwn => 'Nur ihren eigenen Dienstplan';
+
+  @override
+  String get printPdf => 'Drucken / PDF';
+
+  @override
+  String get printRights => 'Was Angestellte drucken dürfen';
+
+  @override
+  String get printTeam => 'Den Dienstplan des ganzen Teams';
+
+  @override
+  String get printTeamOption => 'Den Dienstplan des Teams';
+
+  @override
+  String get totalsHint =>
+      'Entwürfe inbegriffen. Excel- und CSV-Exporte verwenden den veröffentlichten Plan.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value Tage am Stück (höchstens $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value am Tag (höchstens $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: nur $value Ruhezeit (mindestens $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value in der Woche (höchstens $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Gesetzliche Warnungen: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Schichten: $count';
+  }
 }

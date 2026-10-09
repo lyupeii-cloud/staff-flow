@@ -981,4 +981,134 @@ class L10nBn extends L10n {
   String reinforcementHint(String company) {
     return '$company থেকে: সহায়ক কর্মী হিসেবে যোগ করা হবে ও জানানো হবে।';
   }
+
+  @override
+  String get addToGoogle => 'Google ক্যালেন্ডারে যোগ করুন';
+
+  @override
+  String get calendarEnabled => 'আমার শিফট সিঙ্ক করুন';
+
+  @override
+  String get calendarHint =>
+      'আপনার সব কোম্পানির শিফট Google ক্যালেন্ডারে যোগ করুন। এগুলো নিজে থেকেই হালনাগাদ হয়, আর যেকোনো সময় বন্ধ করা যায়।';
+
+  @override
+  String get changeSettings => 'পরিবর্তন';
+
+  @override
+  String get copyCalendarLink => 'ক্যালেন্ডারের লিংক কপি করুন';
+
+  @override
+  String get countryBelgium => 'বেলজিয়াম';
+
+  @override
+  String get countryCanada => 'কানাডা';
+
+  @override
+  String get countryFrance => 'ফ্রান্স';
+
+  @override
+  String get countrySwitzerland => 'সুইজারল্যান্ড';
+
+  @override
+  String get employeesSection => 'কর্মী';
+
+  @override
+  String get emptyNoAlert => 'খালি: কোনো সতর্কতা নেই';
+
+  @override
+  String get extrasSection => 'অস্থায়ী কর্মী';
+
+  @override
+  String get googleCalendar => 'Google ক্যালেন্ডার';
+
+  @override
+  String get hoursTotals => 'মোট ঘণ্টা';
+
+  @override
+  String get legalAlerts => 'আইনি সতর্কতা';
+
+  @override
+  String get legalAlertsHint =>
+      'শুধু সতর্কতা, কখনো বাধা নয়। আপনার জন্য প্রযোজ্য নিয়ম বেছে নিন, বা কোনোটিই নয়।';
+
+  @override
+  String get legalPreset => 'দেশভিত্তিক টেমপ্লেট';
+
+  @override
+  String get linkCopied => 'লিংক কপি হয়েছে।';
+
+  @override
+  String get maxConsecutiveLabel => 'সর্বোচ্চ টানা কর্মদিবস';
+
+  @override
+  String get maxDayLabel => 'দিনে সর্বোচ্চ সময় (ঘণ্টা)';
+
+  @override
+  String get maxWeekLabel => 'সপ্তাহে সর্বোচ্চ সময় (ঘণ্টা)';
+
+  @override
+  String get minRestLabel => 'দুই শিফটের মাঝে ন্যূনতম বিশ্রাম (ঘণ্টা)';
+
+  @override
+  String get noLegalRules => 'কোনো সতর্কতা বেছে নেওয়া হয়নি।';
+
+  @override
+  String get presetNone => 'কোনোটি নয়';
+
+  @override
+  String get presetsCheck =>
+      'টেমপ্লেট শুধু শুরু: আপনার দেশের নিয়ম ও যৌথ চুক্তি অনুযায়ী যাচাই করুন।';
+
+  @override
+  String get printMine => 'আমার সময়সূচি';
+
+  @override
+  String get printOwn => 'শুধু নিজেদের সময়সূচি';
+
+  @override
+  String get printPdf => 'প্রিন্ট / PDF';
+
+  @override
+  String get printRights => 'কর্মীরা যা প্রিন্ট করতে পারেন';
+
+  @override
+  String get printTeam => 'পুরো দলের সময়সূচি';
+
+  @override
+  String get printTeamOption => 'দলের সময়সূচি';
+
+  @override
+  String get totalsHint =>
+      'খসড়া সহ। Excel ও CSV রপ্তানি প্রকাশিত সময়সূচি ব্যবহার করে।';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: টানা $value দিন (সর্বোচ্চ $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: দিনে $value (সর্বোচ্চ $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: মাত্র $value বিশ্রাম (ন্যূনতম $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: সপ্তাহে $value (সর্বোচ্চ $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'আইনি সতর্কতা: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'শিফট: $count';
+  }
 }

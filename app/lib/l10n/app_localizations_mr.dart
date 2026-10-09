@@ -983,4 +983,134 @@ class L10nMr extends L10n {
   String reinforcementHint(String company) {
     return '$company मधून: मदतनीस म्हणून जोडले जाईल आणि कळवले जाईल.';
   }
+
+  @override
+  String get addToGoogle => 'Google कॅलेंडरमध्ये जोडा';
+
+  @override
+  String get calendarEnabled => 'माझ्या शिफ्ट सिंक करा';
+
+  @override
+  String get calendarHint =>
+      'तुमच्या सर्व कंपन्यांच्या शिफ्ट Google कॅलेंडरमध्ये जोडा. त्या आपोआप अद्ययावत होतात आणि तुम्ही कधीही बंद करू शकता.';
+
+  @override
+  String get changeSettings => 'बदला';
+
+  @override
+  String get copyCalendarLink => 'कॅलेंडर लिंक कॉपी करा';
+
+  @override
+  String get countryBelgium => 'बेल्जियम';
+
+  @override
+  String get countryCanada => 'कॅनडा';
+
+  @override
+  String get countryFrance => 'फ्रान्स';
+
+  @override
+  String get countrySwitzerland => 'स्वित्झर्लंड';
+
+  @override
+  String get employeesSection => 'कर्मचारी';
+
+  @override
+  String get emptyNoAlert => 'रिकामे: सूचना नाही';
+
+  @override
+  String get extrasSection => 'तात्पुरते कर्मचारी';
+
+  @override
+  String get googleCalendar => 'Google कॅलेंडर';
+
+  @override
+  String get hoursTotals => 'तासांची बेरीज';
+
+  @override
+  String get legalAlerts => 'कायदेशीर सूचना';
+
+  @override
+  String get legalAlertsHint =>
+      'फक्त सूचना, कधीही अडथळा नाही. तुम्हाला लागू नियम निवडा, किंवा काहीच नाही.';
+
+  @override
+  String get legalPreset => 'देशाचा साचा';
+
+  @override
+  String get linkCopied => 'लिंक कॉपी झाली.';
+
+  @override
+  String get maxConsecutiveLabel => 'सलग कामाचे जास्तीत जास्त दिवस';
+
+  @override
+  String get maxDayLabel => 'दिवसाला जास्तीत जास्त वेळ (तास)';
+
+  @override
+  String get maxWeekLabel => 'आठवड्याला जास्तीत जास्त वेळ (तास)';
+
+  @override
+  String get minRestLabel => 'दोन शिफ्टमधील किमान विश्रांती (तास)';
+
+  @override
+  String get noLegalRules => 'कोणतीही सूचना निवडलेली नाही.';
+
+  @override
+  String get presetNone => 'काहीच नाही';
+
+  @override
+  String get presetsCheck =>
+      'साचे फक्त सुरुवात आहेत: तुमच्या देशाचे नियम व सामूहिक करारानुसार तपासा.';
+
+  @override
+  String get printMine => 'माझे वेळापत्रक';
+
+  @override
+  String get printOwn => 'फक्त स्वतःचे वेळापत्रक';
+
+  @override
+  String get printPdf => 'प्रिंट / PDF';
+
+  @override
+  String get printRights => 'कर्मचारी काय प्रिंट करू शकतात';
+
+  @override
+  String get printTeam => 'संपूर्ण टीमचे वेळापत्रक';
+
+  @override
+  String get printTeamOption => 'टीमचे वेळापत्रक';
+
+  @override
+  String get totalsHint =>
+      'मसुद्यांसह. Excel आणि CSV निर्यात प्रकाशित वेळापत्रक वापरते.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: सलग $value दिवस (कमाल $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: दिवसात $value (कमाल $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: फक्त $value विश्रांती (किमान $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: आठवड्यात $value (कमाल $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'कायदेशीर सूचना: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'शिफ्ट: $count';
+  }
 }

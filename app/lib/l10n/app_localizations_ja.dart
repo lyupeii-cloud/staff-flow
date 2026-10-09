@@ -965,4 +965,131 @@ class L10nJa extends L10n {
   String reinforcementHint(String company) {
     return '$company から：応援スタッフとして追加され、通知されます。';
   }
+
+  @override
+  String get addToGoogle => 'Google カレンダーに追加';
+
+  @override
+  String get calendarEnabled => 'シフトを同期';
+
+  @override
+  String get calendarHint =>
+      'すべての会社のシフトを Google カレンダーに追加します。自動で更新され、いつでもオフにできます。';
+
+  @override
+  String get changeSettings => '変更';
+
+  @override
+  String get copyCalendarLink => 'カレンダーのリンクをコピー';
+
+  @override
+  String get countryBelgium => 'ベルギー';
+
+  @override
+  String get countryCanada => 'カナダ';
+
+  @override
+  String get countryFrance => 'フランス';
+
+  @override
+  String get countrySwitzerland => 'スイス';
+
+  @override
+  String get employeesSection => '従業員';
+
+  @override
+  String get emptyNoAlert => '空欄：警告なし';
+
+  @override
+  String get extrasSection => '臨時スタッフ';
+
+  @override
+  String get googleCalendar => 'Google カレンダー';
+
+  @override
+  String get hoursTotals => '勤務時間の合計';
+
+  @override
+  String get legalAlerts => '法定アラート';
+
+  @override
+  String get legalAlertsHint => '警告のみで、ブロックはしません。適用されるルールを選ぶか、何も選ばないでください。';
+
+  @override
+  String get legalPreset => '国別テンプレート';
+
+  @override
+  String get linkCopied => 'リンクをコピーしました。';
+
+  @override
+  String get maxConsecutiveLabel => '連続勤務日数の上限';
+
+  @override
+  String get maxDayLabel => '1日の最長時間（時間）';
+
+  @override
+  String get maxWeekLabel => '1週間の最長時間（時間）';
+
+  @override
+  String get minRestLabel => 'シフト間の最短休息（時間）';
+
+  @override
+  String get noLegalRules => 'アラートは選択されていません。';
+
+  @override
+  String get presetNone => 'なし';
+
+  @override
+  String get presetsCheck => 'テンプレートは出発点です。国の法律と労働協約に合わせて確認してください。';
+
+  @override
+  String get printMine => '自分の勤務表';
+
+  @override
+  String get printOwn => '自分の勤務表のみ';
+
+  @override
+  String get printPdf => '印刷 / PDF';
+
+  @override
+  String get printRights => '従業員が印刷できる範囲';
+
+  @override
+  String get printTeam => 'チーム全員の勤務表';
+
+  @override
+  String get printTeamOption => 'チームの勤務表';
+
+  @override
+  String get totalsHint => '下書きを含みます。Excel と CSV の書き出しは公開済みの勤務表を使います。';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name：$value 日連続（上限 $limit）';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name：1日 $value（上限 $limit）';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name：休息が $value のみ（最低 $limit）';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name：1週間 $value（上限 $limit）';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return '法定アラート：$count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'シフト：$count';
+  }
 }

@@ -977,4 +977,134 @@ class L10nVi extends L10n {
   String reinforcementHint(String company) {
     return 'Từ $company: sẽ được thêm làm nhân sự hỗ trợ và được thông báo.';
   }
+
+  @override
+  String get addToGoogle => 'Thêm vào Google Lịch';
+
+  @override
+  String get calendarEnabled => 'Đồng bộ ca làm của tôi';
+
+  @override
+  String get calendarHint =>
+      'Thêm ca làm ở tất cả các công ty của bạn vào Google Lịch. Chúng tự cập nhật và bạn có thể tắt bất cứ lúc nào.';
+
+  @override
+  String get changeSettings => 'Sửa';
+
+  @override
+  String get copyCalendarLink => 'Sao chép liên kết lịch';
+
+  @override
+  String get countryBelgium => 'Bỉ';
+
+  @override
+  String get countryCanada => 'Canada';
+
+  @override
+  String get countryFrance => 'Pháp';
+
+  @override
+  String get countrySwitzerland => 'Thụy Sĩ';
+
+  @override
+  String get employeesSection => 'Nhân viên';
+
+  @override
+  String get emptyNoAlert => 'Để trống: không cảnh báo';
+
+  @override
+  String get extrasSection => 'Nhân viên thời vụ';
+
+  @override
+  String get googleCalendar => 'Google Lịch';
+
+  @override
+  String get hoursTotals => 'Tổng giờ';
+
+  @override
+  String get legalAlerts => 'Cảnh báo theo luật';
+
+  @override
+  String get legalAlertsHint =>
+      'Chỉ cảnh báo, không bao giờ chặn. Chọn các quy định áp dụng cho bạn, hoặc không chọn.';
+
+  @override
+  String get legalPreset => 'Mẫu theo quốc gia';
+
+  @override
+  String get linkCopied => 'Đã sao chép liên kết.';
+
+  @override
+  String get maxConsecutiveLabel => 'Số ngày làm liên tiếp tối đa';
+
+  @override
+  String get maxDayLabel => 'Thời lượng tối đa mỗi ngày (giờ)';
+
+  @override
+  String get maxWeekLabel => 'Thời lượng tối đa mỗi tuần (giờ)';
+
+  @override
+  String get minRestLabel => 'Nghỉ tối thiểu giữa hai ca (giờ)';
+
+  @override
+  String get noLegalRules => 'Chưa chọn cảnh báo nào.';
+
+  @override
+  String get presetNone => 'Không';
+
+  @override
+  String get presetsCheck =>
+      'Các mẫu chỉ là điểm khởi đầu: hãy kiểm tra theo luật nước bạn và thỏa ước tập thể.';
+
+  @override
+  String get printMine => 'Lịch của tôi';
+
+  @override
+  String get printOwn => 'Chỉ lịch của chính họ';
+
+  @override
+  String get printPdf => 'In / PDF';
+
+  @override
+  String get printRights => 'Nhân viên được in gì';
+
+  @override
+  String get printTeam => 'Lịch của cả nhóm';
+
+  @override
+  String get printTeamOption => 'Lịch của nhóm';
+
+  @override
+  String get totalsHint =>
+      'Gồm cả bản nháp. Xuất Excel và CSV dùng lịch đã công bố.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value ngày liên tiếp (tối đa $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value trong ngày (tối đa $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: chỉ nghỉ $value (tối thiểu $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value trong tuần (tối đa $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Cảnh báo theo luật: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Ca làm: $count';
+  }
 }

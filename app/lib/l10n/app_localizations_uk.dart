@@ -991,4 +991,134 @@ class L10nUk extends L10n {
   String reinforcementHint(String company) {
     return 'З компанії $company: буде додано як підсилення й повідомлено.';
   }
+
+  @override
+  String get addToGoogle => 'Додати в Google Календар';
+
+  @override
+  String get calendarEnabled => 'Синхронізувати мої зміни';
+
+  @override
+  String get calendarHint =>
+      'Додайте свої зміни з усіх компаній у Google Календар. Вони оновлюються самі, і ви можете вимкнути це будь-коли.';
+
+  @override
+  String get changeSettings => 'Змінити';
+
+  @override
+  String get copyCalendarLink => 'Копіювати посилання на календар';
+
+  @override
+  String get countryBelgium => 'Бельгія';
+
+  @override
+  String get countryCanada => 'Канада';
+
+  @override
+  String get countryFrance => 'Франція';
+
+  @override
+  String get countrySwitzerland => 'Швейцарія';
+
+  @override
+  String get employeesSection => 'Працівники';
+
+  @override
+  String get emptyNoAlert => 'Порожньо: без попередження';
+
+  @override
+  String get extrasSection => 'Позаштатні';
+
+  @override
+  String get googleCalendar => 'Google Календар';
+
+  @override
+  String get hoursTotals => 'Підсумки годин';
+
+  @override
+  String get legalAlerts => 'Попередження за законом';
+
+  @override
+  String get legalAlertsHint =>
+      'Лише попередження, без блокувань. Оберіть правила, що діють у вас, або жодних.';
+
+  @override
+  String get legalPreset => 'Шаблон країни';
+
+  @override
+  String get linkCopied => 'Посилання скопійовано.';
+
+  @override
+  String get maxConsecutiveLabel => 'Максимум робочих днів поспіль';
+
+  @override
+  String get maxDayLabel => 'Максимум годин на день';
+
+  @override
+  String get maxWeekLabel => 'Максимум годин на тиждень';
+
+  @override
+  String get minRestLabel => 'Мінімальний відпочинок між змінами (години)';
+
+  @override
+  String get noLegalRules => 'Попередження не вибрано.';
+
+  @override
+  String get presetNone => 'Жодного';
+
+  @override
+  String get presetsCheck =>
+      'Шаблони — лише відправна точка: перевірте їх за законами вашої країни та колективним договором.';
+
+  @override
+  String get printMine => 'Мій графік';
+
+  @override
+  String get printOwn => 'Лише власний графік';
+
+  @override
+  String get printPdf => 'Друк / PDF';
+
+  @override
+  String get printRights => 'Що можуть друкувати працівники';
+
+  @override
+  String get printTeam => 'Графік усієї команди';
+
+  @override
+  String get printTeamOption => 'Графік команди';
+
+  @override
+  String get totalsHint =>
+      'Разом із чернетками. Експорт в Excel і CSV бере опублікований графік.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value днів поспіль (максимум $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value за день (максимум $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: лише $value відпочинку (мінімум $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value за тиждень (максимум $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Попередження за законом: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Змін: $count';
+  }
 }

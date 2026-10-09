@@ -987,4 +987,134 @@ class L10nFi extends L10n {
   String reinforcementHint(String company) {
     return 'Yrityksestä $company: lisätään vahvistukseksi ja hänelle ilmoitetaan.';
   }
+
+  @override
+  String get addToGoogle => 'Lisää Google Kalenteriin';
+
+  @override
+  String get calendarEnabled => 'Synkronoi vuoroni';
+
+  @override
+  String get calendarHint =>
+      'Lisää kaikkien yritystesi vuorot Google Kalenteriin. Ne päivittyvät itsestään, ja voit poistaa tämän käytöstä milloin vain.';
+
+  @override
+  String get changeSettings => 'Muokkaa';
+
+  @override
+  String get copyCalendarLink => 'Kopioi kalenterin linkki';
+
+  @override
+  String get countryBelgium => 'Belgia';
+
+  @override
+  String get countryCanada => 'Kanada';
+
+  @override
+  String get countryFrance => 'Ranska';
+
+  @override
+  String get countrySwitzerland => 'Sveitsi';
+
+  @override
+  String get employeesSection => 'Työntekijät';
+
+  @override
+  String get emptyNoAlert => 'Tyhjä: ei hälytystä';
+
+  @override
+  String get extrasSection => 'Keikkalaiset';
+
+  @override
+  String get googleCalendar => 'Google Kalenteri';
+
+  @override
+  String get hoursTotals => 'Tuntisummat';
+
+  @override
+  String get legalAlerts => 'Lakisääteiset hälytykset';
+
+  @override
+  String get legalAlertsHint =>
+      'Varoituksia, ei koskaan estoja. Valitse sinua koskevat säännöt tai ei yhtään.';
+
+  @override
+  String get legalPreset => 'Maakohtainen malli';
+
+  @override
+  String get linkCopied => 'Linkki kopioitu.';
+
+  @override
+  String get maxConsecutiveLabel => 'Enimmäismäärä peräkkäisiä työpäiviä';
+
+  @override
+  String get maxDayLabel => 'Enimmäiskesto päivässä (tuntia)';
+
+  @override
+  String get maxWeekLabel => 'Enimmäiskesto viikossa (tuntia)';
+
+  @override
+  String get minRestLabel => 'Vähimmäislepo vuorojen välillä (tuntia)';
+
+  @override
+  String get noLegalRules => 'Hälytyksiä ei ole valittu.';
+
+  @override
+  String get presetNone => 'Ei mitään';
+
+  @override
+  String get presetsCheck =>
+      'Mallit ovat lähtökohta: tarkista ne maasi säädösten ja työehtosopimuksen mukaan.';
+
+  @override
+  String get printMine => 'Oma työvuorolistani';
+
+  @override
+  String get printOwn => 'Vain oma työvuorolista';
+
+  @override
+  String get printPdf => 'Tulosta / PDF';
+
+  @override
+  String get printRights => 'Mitä työntekijät voivat tulostaa';
+
+  @override
+  String get printTeam => 'Koko tiimin työvuorolista';
+
+  @override
+  String get printTeamOption => 'Tiimin työvuorolista';
+
+  @override
+  String get totalsHint =>
+      'Luonnokset mukana. Excel- ja CSV-viennit käyttävät julkaistua listaa.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value päivää peräkkäin (enintään $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value päivässä (enintään $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: vain $value lepoa (vähintään $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value viikossa (enintään $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Lakisääteiset hälytykset: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Vuorot: $count';
+  }
 }
