@@ -1318,4 +1318,31 @@ class L10nBn extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by $date তারিখে $name-এর নিয়োগ প্রত্যাখ্যান করেছেন।';
   }
+
+  @override
+  String get addSubSite => 'উপ-সাইট যোগ করুন';
+
+  @override
+  String get moveSite => 'সরান';
+
+  @override
+  String get topLevel => 'প্রথম স্তর';
+
+  @override
+  String moveSiteTitle(String name) {
+    return '“$name” কে এর নিচে সরান…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return '$name-এর উপ-সাইট';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'সর্বোচ্চ ৩ স্তর, যেমন অঞ্চল › শহর › দোকান। কোনো সাইটের ম্যানেজার তার নিচের সবকিছুও পরিচালনা করেন।';
+
+  @override
+  String get subSitesOnlyHint =>
+      'এখানে আপনি নিজের সাইটের নিচে উপ-সাইট যোগ করেন।';
 }

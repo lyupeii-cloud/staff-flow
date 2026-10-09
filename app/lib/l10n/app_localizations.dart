@@ -2410,6 +2410,48 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'{by} refused scheduling {name} on {date}.'**
   String noticePlacementRefused(String by, String name, String date);
+
+  /// No description provided for @addSubSite.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a sub-site'**
+  String get addSubSite;
+
+  /// No description provided for @moveSite.
+  ///
+  /// In en, this message translates to:
+  /// **'Move'**
+  String get moveSite;
+
+  /// No description provided for @topLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Top level'**
+  String get topLevel;
+
+  /// No description provided for @moveSiteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Move “{name}” under…'**
+  String moveSiteTitle(String name);
+
+  /// No description provided for @subSiteOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Sub-site of {name}'**
+  String subSiteOf(String name);
+
+  /// No description provided for @siteTreeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to 3 levels, e.g. Region › City › Store. A manager of a site also manages everything below it.'**
+  String get siteTreeHint;
+
+  /// No description provided for @subSitesOnlyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Here you add sub-sites under your own sites.'**
+  String get subSitesOnlyHint;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

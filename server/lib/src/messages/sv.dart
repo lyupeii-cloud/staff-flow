@@ -94,4 +94,6 @@ const sv = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} vill schemalägga {name} från en annan plats den {day}: kräver godkännande.',
   '{by} a validé le placement de {name} le {day}.': '{by} godkände schemaläggningen av {name} den {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} avslog schemaläggningen av {name} den {day}.',
+  'Trois niveaux de sites au plus.': 'Högst tre nivåer av platser.',
+  'Un site ne peut pas être placé sous lui-même.': 'En plats kan inte placeras under sig själv.',
 };

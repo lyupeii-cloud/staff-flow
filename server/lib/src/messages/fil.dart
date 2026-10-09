@@ -94,4 +94,6 @@ const fil = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': 'Gustong i-iskedyul ni {by} si {name}, mula sa ibang site, sa {day}: kailangan ng pag-apruba.',
   '{by} a validé le placement de {name} le {day}.': 'Inaprubahan ni {by} ang pag-iskedyul kay {name} sa {day}.',
   '{by} a refusé le placement de {name} le {day}.': 'Tinanggihan ni {by} ang pag-iskedyul kay {name} sa {day}.',
+  'Trois niveaux de sites au plus.': 'Hanggang tatlong antas ng site lang.',
+  'Un site ne peut pas être placé sous lui-même.': 'Hindi mailalagay ang isang site sa ilalim ng sarili nito.',
 };

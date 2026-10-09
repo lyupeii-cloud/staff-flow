@@ -369,5 +369,12 @@
   "placementAwaiting": "Inasubiri idhini ya msimamizi au mmiliki.",
   "noticePlacementToApprove": "{by} anataka kumpangia {name}, wa tovuti nyingine, tarehe {date}: idhini inahitajika.",
   "noticePlacementApproved": "{by} ameidhinisha kumpangia {name} tarehe {date}.",
-  "noticePlacementRefused": "{by} amekataa kumpangia {name} tarehe {date}."
+  "noticePlacementRefused": "{by} amekataa kumpangia {name} tarehe {date}.",
+  "addSubSite": "Ongeza tovuti ndogo",
+  "moveSite": "Hamisha",
+  "topLevel": "Kiwango cha juu",
+  "moveSiteTitle": "Hamisha “{name}” chini ya…",
+  "subSiteOf": "Tovuti ndogo ya {name}",
+  "siteTreeHint": "Hadi viwango 3, k.m. Mkoa › Jiji › Duka. Msimamizi wa tovuti pia husimamia kila kilicho chini yake.",
+  "subSitesOnlyHint": "Hapa unaongeza tovuti ndogo chini ya tovuti zako."
 }

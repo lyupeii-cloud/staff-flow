@@ -94,4 +94,6 @@ const ms = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} mahu menjadualkan {name} dari tapak lain pada {day}: perlu kelulusan.',
   '{by} a validé le placement de {name} le {day}.': '{by} meluluskan penjadualan {name} pada {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} menolak penjadualan {name} pada {day}.',
+  'Trois niveaux de sites au plus.': 'Paling banyak tiga peringkat tapak.',
+  'Un site ne peut pas être placé sous lui-même.': 'Tapak tidak boleh diletakkan di bawah dirinya sendiri.',
 };

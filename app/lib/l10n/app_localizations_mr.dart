@@ -1320,4 +1320,30 @@ class L10nMr extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by यांनी $date रोजी $name यांची नेमणूक नाकारली.';
   }
+
+  @override
+  String get addSubSite => 'उप-साइट जोडा';
+
+  @override
+  String get moveSite => 'हलवा';
+
+  @override
+  String get topLevel => 'पहिला स्तर';
+
+  @override
+  String moveSiteTitle(String name) {
+    return '“$name” याच्या खाली हलवा…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return '$name ची उप-साइट';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'जास्तीत जास्त 3 स्तर, उदा. प्रदेश › शहर › दुकान. साइटचा व्यवस्थापक तिच्या खालचे सर्वही सांभाळतो.';
+
+  @override
+  String get subSitesOnlyHint => 'येथे तुम्ही तुमच्या साइटखाली उप-साइट जोडता.';
 }

@@ -1335,4 +1335,31 @@ class L10nPl extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by odrzucił(a) zaplanowanie $name na $date.';
   }
+
+  @override
+  String get addSubSite => 'Dodaj podplacówkę';
+
+  @override
+  String get moveSite => 'Przenieś';
+
+  @override
+  String get topLevel => 'Najwyższy poziom';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Przenieś „$name” pod…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Podplacówka $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Do 3 poziomów, np. Region › Miasto › Sklep. Kierownik placówki zarządza też wszystkim, co jest pod nią.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Tutaj dodajesz podplacówki pod swoimi placówkami.';
 }

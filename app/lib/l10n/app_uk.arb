@@ -373,5 +373,12 @@
   "placementAwaiting": "Очікує затвердження керівником або власником.",
   "noticePlacementToApprove": "{by} хоче поставити {name} з іншого об'єкта на {date}: потрібне затвердження.",
   "noticePlacementApproved": "{by} затвердив(ла) призначення {name} на {date}.",
-  "noticePlacementRefused": "{by} відхилив(ла) призначення {name} на {date}."
+  "noticePlacementRefused": "{by} відхилив(ла) призначення {name} на {date}.",
+  "addSubSite": "Додати підоб'єкт",
+  "moveSite": "Перемістити",
+  "topLevel": "Верхній рівень",
+  "moveSiteTitle": "Перемістити «{name}» під…",
+  "subSiteOf": "Підоб'єкт {name}",
+  "siteTreeHint": "До 3 рівнів, наприклад Регіон › Місто › Магазин. Керівник об'єкта керує й усім, що нижче.",
+  "subSitesOnlyHint": "Тут ви додаєте підоб'єкти до своїх об'єктів."
 }

@@ -94,4 +94,6 @@ const th = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} ต้องการจัด {name} จากสาขาอื่นในวันที่ {day}: ต้องได้รับการอนุมัติ',
   '{by} a validé le placement de {name} le {day}.': '{by} อนุมัติการจัด {name} ในวันที่ {day} แล้ว',
   '{by} a refusé le placement de {name} le {day}.': '{by} ปฏิเสธการจัด {name} ในวันที่ {day}',
+  'Trois niveaux de sites au plus.': 'สาขาได้สูงสุดสามระดับ',
+  'Un site ne peut pas être placé sous lui-même.': 'ไม่สามารถวางสาขาไว้ใต้ตัวเองได้',
 };

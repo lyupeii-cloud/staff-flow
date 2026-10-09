@@ -94,4 +94,6 @@ const de = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} möchte {name} von einem anderen Standort am {day} einplanen: Freigabe nötig.',
   '{by} a validé le placement de {name} le {day}.': '{by} hat die Einplanung von {name} am {day} freigegeben.',
   '{by} a refusé le placement de {name} le {day}.': '{by} hat die Einplanung von {name} am {day} abgelehnt.',
+  'Trois niveaux de sites au plus.': 'Höchstens drei Standortebenen.',
+  'Un site ne peut pas être placé sous lui-même.': 'Ein Standort kann nicht unter sich selbst liegen.',
 };

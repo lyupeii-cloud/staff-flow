@@ -369,5 +369,12 @@
   "placementAwaiting": "Menunggu kelulusan penyelia atau pemilik.",
   "noticePlacementToApprove": "{by} mahu menjadualkan {name} dari tapak lain pada {date}: perlu kelulusan.",
   "noticePlacementApproved": "{by} meluluskan penjadualan {name} pada {date}.",
-  "noticePlacementRefused": "{by} menolak penjadualan {name} pada {date}."
+  "noticePlacementRefused": "{by} menolak penjadualan {name} pada {date}.",
+  "addSubSite": "Tambah sub-tapak",
+  "moveSite": "Alih",
+  "topLevel": "Peringkat teratas",
+  "moveSiteTitle": "Alih “{name}” ke bawah…",
+  "subSiteOf": "Sub-tapak {name}",
+  "siteTreeHint": "Sehingga 3 peringkat, cth. Wilayah › Bandar › Kedai. Pengurus sesuatu tapak juga mengurus semua di bawahnya.",
+  "subSitesOnlyHint": "Di sini anda menambah sub-tapak di bawah tapak anda sendiri."
 }

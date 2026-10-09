@@ -94,4 +94,6 @@ const ja = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by}さんが別の拠点の{name}さんを{day}に配置しようとしています：承認が必要です。',
   '{by} a validé le placement de {name} le {day}.': '{by}さんが{day}の{name}さんの配置を承認しました。',
   '{by} a refusé le placement de {name} le {day}.': '{by}さんが{day}の{name}さんの配置を却下しました。',
+  'Trois niveaux de sites au plus.': '拠点の階層は3段階までです。',
+  'Un site ne peut pas être placé sous lui-même.': '拠点を自分自身の下に置くことはできません。',
 };

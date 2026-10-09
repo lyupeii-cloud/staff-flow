@@ -94,4 +94,6 @@ const nb = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} vil sette opp {name} fra et annet sted {day}: må godkjennes.',
   '{by} a validé le placement de {name} le {day}.': '{by} godkjente oppsettet av {name} {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} avslo oppsettet av {name} {day}.',
+  'Trois niveaux de sites au plus.': 'Høyst tre nivåer med steder.',
+  'Un site ne peut pas être placé sous lui-même.': 'Et sted kan ikke plasseres under seg selv.',
 };

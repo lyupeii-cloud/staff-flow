@@ -1323,4 +1323,31 @@ class L10nNb extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by avslo oppsettet av $name $date.';
   }
+
+  @override
+  String get addSubSite => 'Legg til et understed';
+
+  @override
+  String get moveSite => 'Flytt';
+
+  @override
+  String get topLevel => 'Øverste nivå';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Flytt «$name» under…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Understed av $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Opptil 3 nivåer, f.eks. Region › By › Butikk. En leder for et sted leder også alt under det.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Her legger du til understeder under dine egne steder.';
 }

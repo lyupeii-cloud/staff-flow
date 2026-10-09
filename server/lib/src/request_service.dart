@@ -390,7 +390,10 @@ class RequestService {
     if (!r.openOffer) return [if (r.peerId != null) r.peerId!];
     final others = [for (final m in await store.members(r.companyId)) if (m.user.id != r.requesterId) m];
     final staff = [for (final m in others) if (m.role == Role.employee || m.role == Role.extra) m];
-    final team = [for (final m in staff) if (r.siteId != null && (m.sites ?? const []).contains(r.siteId)) m];
+    final team = [
+      for (final m in staff)
+        if (r.siteId != null && (await store.expandSites(r.companyId, m.sites ?? const [])).contains(r.siteId)) m,
+    ];
     final chosen = team.isNotEmpty ? team : (staff.isNotEmpty ? staff : others);
     return [for (final m in chosen) m.user.id];
   }
@@ -405,10 +408,11 @@ class RequestService {
     for (final m in await store.members(r.companyId)) {
       if (!m.role.canManage || m.user.id == actor.id) continue;
       if (m.user.id == r.requesterId && m.role != Role.owner) continue;
-      final sites = m.role == Role.owner ? null : m.sites?.toSet();
+      final sites = m.role == Role.owner || m.sites == null ? null : await store.expandSites(r.companyId, m.sites!);
       if (!await _inScope(r, (role: m.role, sites: sites))) continue;
-      // Sites dont ce responsable a choisi de recevoir les notifications.
-      final wanted = await store.notifySitesOf(r.companyId, m.user.id);
+      // Sites dont ce responsable a choisi de recevoir les notifications (et ceux d'en dessous).
+      final picked = await store.notifySitesOf(r.companyId, m.user.id);
+      final wanted = picked == null ? null : await store.expandSites(r.companyId, picked);
       if (wanted != null && concerned.isNotEmpty && !concerned.any(wanted.contains)) continue;
       deciders.add(m.user.id);
     }

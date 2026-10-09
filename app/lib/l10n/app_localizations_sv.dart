@@ -1325,4 +1325,31 @@ class L10nSv extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by avslog schemaläggningen av $name den $date.';
   }
+
+  @override
+  String get addSubSite => 'Lägg till en underplats';
+
+  @override
+  String get moveSite => 'Flytta';
+
+  @override
+  String get topLevel => 'Översta nivån';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Flytta ”$name” under…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Underplats till $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Upp till 3 nivåer, t.ex. Region › Stad › Butik. Den som leder en plats leder också allt under den.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Här lägger du till underplatser under dina egna platser.';
 }

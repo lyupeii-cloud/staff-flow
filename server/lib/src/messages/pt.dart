@@ -94,4 +94,6 @@ const pt = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} quer escalar {name}, de outro local, em {day}: requer aprovação.',
   '{by} a validé le placement de {name} le {day}.': '{by} aprovou a escala de {name} em {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} recusou a escala de {name} em {day}.',
+  'Trois niveaux de sites au plus.': 'No máximo três níveis de locais.',
+  'Un site ne peut pas être placé sous lui-même.': 'Um local não pode ficar debaixo de si mesmo.',
 };

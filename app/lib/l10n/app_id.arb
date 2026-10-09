@@ -369,5 +369,12 @@
   "placementAwaiting": "Menunggu persetujuan atasan atau pemilik.",
   "noticePlacementToApprove": "{by} ingin menjadwalkan {name} dari lokasi lain pada {date}: perlu persetujuan.",
   "noticePlacementApproved": "{by} menyetujui penjadwalan {name} pada {date}.",
-  "noticePlacementRefused": "{by} menolak penjadwalan {name} pada {date}."
+  "noticePlacementRefused": "{by} menolak penjadwalan {name} pada {date}.",
+  "addSubSite": "Tambah sub-lokasi",
+  "moveSite": "Pindahkan",
+  "topLevel": "Tingkat teratas",
+  "moveSiteTitle": "Pindahkan “{name}” ke bawah…",
+  "subSiteOf": "Sub-lokasi dari {name}",
+  "siteTreeHint": "Hingga 3 tingkat, mis. Wilayah › Kota › Toko. Manajer suatu lokasi juga mengelola semua yang ada di bawahnya.",
+  "subSitesOnlyHint": "Di sini Anda menambah sub-lokasi di bawah lokasi Anda sendiri."
 }

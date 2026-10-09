@@ -1326,4 +1326,31 @@ class L10nDa extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by afviste planlægningen af $name den $date.';
   }
+
+  @override
+  String get addSubSite => 'Tilføj et understed';
+
+  @override
+  String get moveSite => 'Flyt';
+
+  @override
+  String get topLevel => 'Øverste niveau';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Flyt “$name” under…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Understed til $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Op til 3 niveauer, f.eks. Region › By › Butik. En leder af et sted leder også alt nedenunder.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Her tilføjer du understeder under dine egne steder.';
 }

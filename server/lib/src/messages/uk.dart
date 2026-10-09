@@ -114,4 +114,6 @@ const uk = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} хоче поставити {name} з іншого об\'єкта на {day}: потрібне затвердження.',
   '{by} a validé le placement de {name} le {day}.': '{by} затвердив(ла) призначення {name} на {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} відхилив(ла) призначення {name} на {day}.',
+  'Trois niveaux de sites au plus.': 'Не більше трьох рівнів об\'єктів.',
+  'Un site ne peut pas être placé sous lui-même.': 'Об\'єкт не можна розмістити під самим собою.',
 };

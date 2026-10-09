@@ -369,5 +369,12 @@
   "placementAwaiting": "Felettes vagy a tulajdonos jóváhagyására vár.",
   "noticePlacementToApprove": "{by} be szeretné osztani {name} munkatársat egy másik telephelyről ekkor: {date} – jóváhagyás szükséges.",
   "noticePlacementApproved": "{by} jóváhagyta {name} beosztását ekkor: {date}.",
-  "noticePlacementRefused": "{by} elutasította {name} beosztását ekkor: {date}."
+  "noticePlacementRefused": "{by} elutasította {name} beosztását ekkor: {date}.",
+  "addSubSite": "Altelephely hozzáadása",
+  "moveSite": "Áthelyezés",
+  "topLevel": "Legfelső szint",
+  "moveSiteTitle": "„{name}” áthelyezése ez alá…",
+  "subSiteOf": "{name} altelephelye",
+  "siteTreeHint": "Legfeljebb 3 szint, pl. Régió › Város › Üzlet. Egy telephely vezetője az alatta lévőket is kezeli.",
+  "subSitesOnlyHint": "Itt a saját telephelyei alá adhat altelephelyeket."
 }

@@ -369,5 +369,12 @@
   "placementAwaiting": "Đang chờ cấp trên hoặc chủ sở hữu phê duyệt.",
   "noticePlacementToApprove": "{by} muốn xếp {name} từ địa điểm khác vào {date}: cần phê duyệt.",
   "noticePlacementApproved": "{by} đã duyệt việc xếp {name} vào {date}.",
-  "noticePlacementRefused": "{by} đã từ chối việc xếp {name} vào {date}."
+  "noticePlacementRefused": "{by} đã từ chối việc xếp {name} vào {date}.",
+  "addSubSite": "Thêm địa điểm con",
+  "moveSite": "Di chuyển",
+  "topLevel": "Cấp cao nhất",
+  "moveSiteTitle": "Di chuyển “{name}” vào dưới…",
+  "subSiteOf": "Địa điểm con của {name}",
+  "siteTreeHint": "Tối đa 3 cấp, ví dụ Vùng › Thành phố › Cửa hàng. Người quản lý một địa điểm cũng quản lý mọi thứ bên dưới.",
+  "subSitesOnlyHint": "Tại đây bạn thêm địa điểm con dưới các địa điểm của mình."
 }

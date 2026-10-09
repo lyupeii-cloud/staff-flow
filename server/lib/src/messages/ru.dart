@@ -94,4 +94,6 @@ const ru = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} хочет поставить {name} с другого объекта на {day}: нужно утверждение.',
   '{by} a validé le placement de {name} le {day}.': '{by} утвердил(а) назначение {name} на {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} отклонил(а) назначение {name} на {day}.',
+  'Trois niveaux de sites au plus.': 'Не более трёх уровней объектов.',
+  'Un site ne peut pas être placé sous lui-même.': 'Объект нельзя поместить под самого себя.',
 };

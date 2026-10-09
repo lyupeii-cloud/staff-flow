@@ -94,4 +94,6 @@ const mr = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} दुसऱ्या साइटवरील {name} यांना {day} रोजी नेमू इच्छितात: मंजुरी हवी.',
   '{by} a validé le placement de {name} le {day}.': '{by} यांनी {day} रोजी {name} यांची नेमणूक मंजूर केली.',
   '{by} a refusé le placement de {name} le {day}.': '{by} यांनी {day} रोजी {name} यांची नेमणूक नाकारली.',
+  'Trois niveaux de sites au plus.': 'जास्तीत जास्त तीन स्तरांच्या साइट.',
+  'Un site ne peut pas être placé sous lui-même.': 'साइट स्वतःच्याच खाली ठेवता येत नाही.',
 };

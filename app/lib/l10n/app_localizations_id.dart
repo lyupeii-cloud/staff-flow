@@ -1321,4 +1321,31 @@ class L10nId extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by menolak penjadwalan $name pada $date.';
   }
+
+  @override
+  String get addSubSite => 'Tambah sub-lokasi';
+
+  @override
+  String get moveSite => 'Pindahkan';
+
+  @override
+  String get topLevel => 'Tingkat teratas';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Pindahkan “$name” ke bawah…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Sub-lokasi dari $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Hingga 3 tingkat, mis. Wilayah › Kota › Toko. Manajer suatu lokasi juga mengelola semua yang ada di bawahnya.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Di sini Anda menambah sub-lokasi di bawah lokasi Anda sendiri.';
 }

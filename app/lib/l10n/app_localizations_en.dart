@@ -1324,4 +1324,30 @@ class L10nEn extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by refused scheduling $name on $date.';
   }
+
+  @override
+  String get addSubSite => 'Add a sub-site';
+
+  @override
+  String get moveSite => 'Move';
+
+  @override
+  String get topLevel => 'Top level';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Move “$name” under…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Sub-site of $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Up to 3 levels, e.g. Region › City › Store. A manager of a site also manages everything below it.';
+
+  @override
+  String get subSitesOnlyHint => 'Here you add sub-sites under your own sites.';
 }

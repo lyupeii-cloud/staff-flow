@@ -369,5 +369,12 @@
   "placementAwaiting": "పై అధికారి లేదా యజమాని ఆమోదం కోసం వేచి ఉంది.",
   "noticePlacementToApprove": "{by} వేరే సైట్‌కు చెందిన {name}‌ను {date}న నియమించాలనుకుంటున్నారు: ఆమోదం అవసరం.",
   "noticePlacementApproved": "{by} {date}న {name} నియామకాన్ని ఆమోదించారు.",
-  "noticePlacementRefused": "{by} {date}న {name} నియామకాన్ని తిరస్కరించారు."
+  "noticePlacementRefused": "{by} {date}న {name} నియామకాన్ని తిరస్కరించారు.",
+  "addSubSite": "ఉప-సైట్ జోడించండి",
+  "moveSite": "తరలించు",
+  "topLevel": "మొదటి స్థాయి",
+  "moveSiteTitle": "“{name}”‌ను దీని కిందకు తరలించు…",
+  "subSiteOf": "{name} ఉప-సైట్",
+  "siteTreeHint": "గరిష్ఠంగా 3 స్థాయిలు, ఉదా. ప్రాంతం › నగరం › దుకాణం. ఒక సైట్ మేనేజర్ దాని కింద ఉన్నవన్నీ కూడా నిర్వహిస్తారు.",
+  "subSitesOnlyHint": "ఇక్కడ మీ సైట్‌ల కింద ఉప-సైట్‌లను జోడిస్తారు."
 }

@@ -369,5 +369,12 @@
   "placementAwaiting": "Aguardando aprovação de um superior ou do dono.",
   "noticePlacementToApprove": "{by} quer escalar {name}, de outro local, em {date}: requer aprovação.",
   "noticePlacementApproved": "{by} aprovou a escala de {name} em {date}.",
-  "noticePlacementRefused": "{by} recusou a escala de {name} em {date}."
+  "noticePlacementRefused": "{by} recusou a escala de {name} em {date}.",
+  "addSubSite": "Adicionar um sublocal",
+  "moveSite": "Mover",
+  "topLevel": "Primeiro nível",
+  "moveSiteTitle": "Mover “{name}” para baixo de…",
+  "subSiteOf": "Sublocal de {name}",
+  "siteTreeHint": "Até 3 níveis, p. ex. Região › Cidade › Loja. O responsável por um local gere também tudo o que está abaixo.",
+  "subSitesOnlyHint": "Aqui adiciona sublocais abaixo dos seus próprios locais."
 }

@@ -94,4 +94,6 @@ const sw = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} anataka kumpangia {name}, wa tovuti nyingine, tarehe {day}: idhini inahitajika.',
   '{by} a validé le placement de {name} le {day}.': '{by} ameidhinisha kumpangia {name} tarehe {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} amekataa kumpangia {name} tarehe {day}.',
+  'Trois niveaux de sites au plus.': 'Viwango vitatu vya tovuti kwa upeo.',
+  'Un site ne peut pas être placé sous lui-même.': 'Tovuti haiwezi kuwekwa chini yake yenyewe.',
 };

@@ -1329,4 +1329,31 @@ class L10nRu extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by отклонил(а) назначение $name на $date.';
   }
+
+  @override
+  String get addSubSite => 'Добавить подобъект';
+
+  @override
+  String get moveSite => 'Переместить';
+
+  @override
+  String get topLevel => 'Верхний уровень';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Переместить «$name» под…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Подобъект $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'До 3 уровней, например Регион › Город › Магазин. Руководитель объекта управляет и всем, что ниже.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Здесь вы добавляете подобъекты к своим объектам.';
 }

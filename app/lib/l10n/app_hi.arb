@@ -369,5 +369,12 @@
   "placementAwaiting": "वरिष्ठ या मालिक की मंज़ूरी का इंतज़ार।",
   "noticePlacementToApprove": "{by} दूसरी साइट के {name} को {date} को लगाना चाहते हैं: मंज़ूरी चाहिए।",
   "noticePlacementApproved": "{by} ने {date} को {name} की नियुक्ति मंज़ूर की।",
-  "noticePlacementRefused": "{by} ने {date} को {name} की नियुक्ति अस्वीकार की।"
+  "noticePlacementRefused": "{by} ने {date} को {name} की नियुक्ति अस्वीकार की।",
+  "addSubSite": "उप-साइट जोड़ें",
+  "moveSite": "ले जाएँ",
+  "topLevel": "पहला स्तर",
+  "moveSiteTitle": "“{name}” को इसके नीचे ले जाएँ…",
+  "subSiteOf": "{name} की उप-साइट",
+  "siteTreeHint": "अधिकतम 3 स्तर, जैसे क्षेत्र › शहर › दुकान। किसी साइट का मैनेजर उसके नीचे की हर चीज़ भी संभालता है।",
+  "subSitesOnlyHint": "यहाँ आप अपनी साइटों के नीचे उप-साइटें जोड़ते हैं।"
 }

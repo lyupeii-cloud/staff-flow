@@ -369,5 +369,12 @@
   "placementAwaiting": "Басшының немесе иесінің бекітуін күтуде.",
   "noticePlacementToApprove": "{by} басқа нысандағы {name} қызметкерін {date} күні қойғысы келеді: бекіту қажет.",
   "noticePlacementApproved": "{by} {date} күні {name} қызметкерін қоюды бекітті.",
-  "noticePlacementRefused": "{by} {date} күні {name} қызметкерін қоюдан бас тартты."
+  "noticePlacementRefused": "{by} {date} күні {name} қызметкерін қоюдан бас тартты.",
+  "addSubSite": "Ішкі нысан қосу",
+  "moveSite": "Жылжыту",
+  "topLevel": "Бірінші деңгей",
+  "moveSiteTitle": "«{name}» нысанын мынаның астына жылжыту…",
+  "subSiteOf": "{name} ішкі нысаны",
+  "siteTreeHint": "3 деңгейге дейін, мысалы Аймақ › Қала › Дүкен. Нысан басшысы оның астындағының бәрін де басқарады.",
+  "subSitesOnlyHint": "Мұнда өз нысандарыңыздың астына ішкі нысандар қосасыз."
 }

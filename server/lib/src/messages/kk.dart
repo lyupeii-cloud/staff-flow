@@ -94,4 +94,6 @@ const kk = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} басқа нысандағы {name} қызметкерін {day} күні қойғысы келеді: бекіту қажет.',
   '{by} a validé le placement de {name} le {day}.': '{by} {day} күні {name} қызметкерін қоюды бекітті.',
   '{by} a refusé le placement de {name} le {day}.': '{by} {day} күні {name} қызметкерін қоюдан бас тартты.',
+  'Trois niveaux de sites au plus.': 'Нысандардың ең көбі үш деңгейі.',
+  'Un site ne peut pas être placé sous lui-même.': 'Нысанды өзінің астына қоюға болмайды.',
 };

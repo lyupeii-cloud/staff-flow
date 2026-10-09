@@ -369,5 +369,12 @@
   "placementAwaiting": "상급자나 대표의 승인을 기다리는 중입니다.",
   "noticePlacementToApprove": "{by}님이 다른 지점의 {name}님을 {date}에 배치하려고 합니다: 승인이 필요합니다.",
   "noticePlacementApproved": "{by}님이 {date} {name}님의 배치를 승인했습니다.",
-  "noticePlacementRefused": "{by}님이 {date} {name}님의 배치를 거절했습니다."
+  "noticePlacementRefused": "{by}님이 {date} {name}님의 배치를 거절했습니다.",
+  "addSubSite": "하위 지점 추가",
+  "moveSite": "이동",
+  "topLevel": "최상위",
+  "moveSiteTitle": "“{name}”을(를) 다음 아래로 이동…",
+  "subSiteOf": "{name}의 하위 지점",
+  "siteTreeHint": "최대 3단계(예: 지역 › 도시 › 매장). 지점 관리자는 그 아래의 모든 지점도 관리합니다.",
+  "subSitesOnlyHint": "여기서 내 지점 아래에 하위 지점을 추가합니다."
 }

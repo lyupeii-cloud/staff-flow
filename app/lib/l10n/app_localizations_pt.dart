@@ -1328,4 +1328,31 @@ class L10nPt extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by recusou a escala de $name em $date.';
   }
+
+  @override
+  String get addSubSite => 'Adicionar um sublocal';
+
+  @override
+  String get moveSite => 'Mover';
+
+  @override
+  String get topLevel => 'Primeiro nível';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Mover “$name” para baixo de…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Sublocal de $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Até 3 níveis, p. ex. Região › Cidade › Loja. O responsável por um local gere também tudo o que está abaixo.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Aqui adiciona sublocais abaixo dos seus próprios locais.';
 }

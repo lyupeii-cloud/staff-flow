@@ -1317,4 +1317,31 @@ class L10nVi extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by đã từ chối việc xếp $name vào $date.';
   }
+
+  @override
+  String get addSubSite => 'Thêm địa điểm con';
+
+  @override
+  String get moveSite => 'Di chuyển';
+
+  @override
+  String get topLevel => 'Cấp cao nhất';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Di chuyển “$name” vào dưới…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Địa điểm con của $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Tối đa 3 cấp, ví dụ Vùng › Thành phố › Cửa hàng. Người quản lý một địa điểm cũng quản lý mọi thứ bên dưới.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Tại đây bạn thêm địa điểm con dưới các địa điểm của mình.';
 }

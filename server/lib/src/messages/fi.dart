@@ -94,4 +94,6 @@ const fi = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} haluaa vuorottaa {name} toiselta toimipaikalta {day}: vaatii hyväksynnän.',
   '{by} a validé le placement de {name} le {day}.': '{by} hyväksyi henkilön {name} vuorotuksen {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} hylkäsi henkilön {name} vuorotuksen {day}.',
+  'Trois niveaux de sites au plus.': 'Enintään kolme toimipaikkatasoa.',
+  'Un site ne peut pas être placé sous lui-même.': 'Toimipaikkaa ei voi sijoittaa itsensä alle.',
 };

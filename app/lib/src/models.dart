@@ -212,10 +212,14 @@ class CatalogItem {
   final String name;
   final bool archived;
 
+  /// Site : le site au-dessus (`null` : premier niveau).
+  final String? parentId;
+
   CatalogItem.fromJson(Map<String, dynamic> j)
       : id = j['id'],
         name = j['name'],
-        archived = j['archived'];
+        archived = j['archived'],
+        parentId = j['parentId'];
 }
 
 enum ShiftStatus { draft, published, modified, deleted }

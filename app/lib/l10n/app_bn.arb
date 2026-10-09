@@ -369,5 +369,12 @@
   "placementAwaiting": "ঊর্ধ্বতন বা মালিকের অনুমোদনের অপেক্ষায়।",
   "noticePlacementToApprove": "{by} অন্য সাইটের {name}-কে {date} তারিখে রাখতে চান: অনুমোদন দরকার।",
   "noticePlacementApproved": "{by} {date} তারিখে {name}-এর নিয়োগ অনুমোদন করেছেন।",
-  "noticePlacementRefused": "{by} {date} তারিখে {name}-এর নিয়োগ প্রত্যাখ্যান করেছেন।"
+  "noticePlacementRefused": "{by} {date} তারিখে {name}-এর নিয়োগ প্রত্যাখ্যান করেছেন।",
+  "addSubSite": "উপ-সাইট যোগ করুন",
+  "moveSite": "সরান",
+  "topLevel": "প্রথম স্তর",
+  "moveSiteTitle": "“{name}” কে এর নিচে সরান…",
+  "subSiteOf": "{name}-এর উপ-সাইট",
+  "siteTreeHint": "সর্বোচ্চ ৩ স্তর, যেমন অঞ্চল › শহর › দোকান। কোনো সাইটের ম্যানেজার তার নিচের সবকিছুও পরিচালনা করেন।",
+  "subSitesOnlyHint": "এখানে আপনি নিজের সাইটের নিচে উপ-সাইট যোগ করেন।"
 }

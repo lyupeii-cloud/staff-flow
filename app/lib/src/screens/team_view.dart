@@ -37,9 +37,12 @@ class _TeamViewState extends State<TeamView> {
 
   /// Sites actifs de l'entreprise que je peux attribuer.
   List<CatalogItem> get _assignable => [
-        for (final s in widget.data.sites)
+        for (final (s, _) in widget.data.siteTree)
           if (!s.archived && (mine == null || mine!.contains(s.id))) s,
       ];
+
+  /// Niveau d'un site dans l'arbre (0 : premier niveau), pour le décaler.
+  late final Map<String, int> _depth = {for (final (s, d) in widget.data.siteTree) s.id: d};
 
   /// Un responsable de site gère les salariés et extras de ses sites.
   bool _inMySites(Member m) => mine == null || (m.sites ?? const []).any(mine!.contains);
@@ -275,7 +278,7 @@ class _TeamViewState extends State<TeamView> {
                     value: !whole && chosen.contains(s.id),
                     onChanged: (v) => setState(() => v == true ? chosen.add(s.id) : chosen.remove(s.id)),
                     title: Text(s.name),
-                    contentPadding: EdgeInsets.only(left: allowWhole ? 32 : 16, right: 16),
+                    contentPadding: EdgeInsets.only(left: (allowWhole ? 32 : 16) + 16.0 * (_depth[s.id] ?? 0), right: 16),
                   ),
               ],
             ),
@@ -334,7 +337,7 @@ class _TeamViewState extends State<TeamView> {
                     children: [
                       for (final s in siteOptions)
                         FilterChip(
-                          label: Text(s.name),
+                          label: Text(widget.data.sitePath(s.id) ?? s.name),
                           selected: chosenSites.contains(s.id),
                           onSelected: (v) => setState(() => v ? chosenSites.add(s.id) : chosenSites.remove(s.id)),
                         ),

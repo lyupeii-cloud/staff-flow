@@ -369,5 +369,12 @@
   "placementAwaiting": "รอการอนุมัติจากหัวหน้าหรือเจ้าของ",
   "noticePlacementToApprove": "{by} ต้องการจัด {name} จากสาขาอื่นในวันที่ {date}: ต้องได้รับการอนุมัติ",
   "noticePlacementApproved": "{by} อนุมัติการจัด {name} ในวันที่ {date} แล้ว",
-  "noticePlacementRefused": "{by} ปฏิเสธการจัด {name} ในวันที่ {date}"
+  "noticePlacementRefused": "{by} ปฏิเสธการจัด {name} ในวันที่ {date}",
+  "addSubSite": "เพิ่มสาขาย่อย",
+  "moveSite": "ย้าย",
+  "topLevel": "ระดับบนสุด",
+  "moveSiteTitle": "ย้าย “{name}” ไปไว้ใต้…",
+  "subSiteOf": "สาขาย่อยของ {name}",
+  "siteTreeHint": "สูงสุด 3 ระดับ เช่น ภูมิภาค › เมือง › ร้าน ผู้จัดการของสาขาจะดูแลทุกอย่างที่อยู่ข้างใต้ด้วย",
+  "subSitesOnlyHint": "ที่นี่คุณเพิ่มสาขาย่อยใต้สาขาของคุณเองได้"
 }

@@ -1333,4 +1333,31 @@ class L10nRo extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by a refuzat programarea lui $name pe $date.';
   }
+
+  @override
+  String get addSubSite => 'Adaugă un sub-punct de lucru';
+
+  @override
+  String get moveSite => 'Mută';
+
+  @override
+  String get topLevel => 'Primul nivel';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Mută „$name” sub…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Sub-punct al $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Până la 3 niveluri, de ex. Regiune › Oraș › Magazin. Responsabilul unui punct de lucru gestionează și tot ce e sub el.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Aici adăugați sub-puncte de lucru sub propriile puncte.';
 }

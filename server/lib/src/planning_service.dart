@@ -47,23 +47,82 @@ class PlanningService {
   Future<List<CatalogItem>> catalog(User actor, String companyId, CatalogKind kind) async {
     await companies.open(actor, companyId);
     final rows = await store.query(store.db, '''
-      SELECT id::text, name, archived_at IS NOT NULL AS archived FROM ${kind.table}
+      SELECT id::text, name, archived_at IS NOT NULL AS archived,
+        ${kind == CatalogKind.sites ? 'parent_id::text' : 'NULL::text'} FROM ${kind.table}
       WHERE company_id = @c::uuid ORDER BY archived, lower(name)''', {'c': companyId});
-    return [for (final r in rows) CatalogItem(r[0] as String, r[1] as String, r[2] as bool)];
+    return [
+      for (final r in rows) CatalogItem(r[0] as String, r[1] as String, r[2] as bool, parentId: r[3] as String?),
+    ];
   }
 
-  Future<CatalogItem> addCatalogItem(
-      User actor, String companyId, CatalogKind kind, String name) async {
-    await _fullManager(actor, companyId);
+  /// Sites en cascade : trois niveaux au plus (ex. région, ville, magasin).
+  static const maxSiteDepth = 3;
+
+  /// Niveau d'un site (1 : premier niveau).
+  Future<int> _siteDepth(String companyId, String siteId) async {
+    final rows = await store.query(store.db, '''
+      WITH RECURSIVE up AS (
+        SELECT id, parent_id, 1 AS d FROM sites WHERE id = @s::uuid AND company_id = @c::uuid
+        UNION ALL SELECT x.id, x.parent_id, up.d + 1 FROM sites x JOIN up ON x.id = up.parent_id)
+      SELECT max(d) FROM up''', {'s': siteId, 'c': companyId});
+    return rows.first[0] as int? ?? 0;
+  }
+
+  /// Ajoute un poste, ou un site (sous [parentId]). Qui gère toute
+  /// l'entreprise ajoute partout ; un responsable de site, sous ses sites.
+  Future<CatalogItem> addCatalogItem(User actor, String companyId, CatalogKind kind, String name,
+      {String? parentId}) async {
+    if (kind == CatalogKind.positions || parentId == null) {
+      await _fullManager(actor, companyId);
+    } else {
+      final mine = await _manager(actor, companyId);
+      if (mine != null && !mine.contains(parentId)) {
+        throw const ApiError.forbidden('Ce site n\'est pas sous votre responsabilité.');
+      }
+      final depth = await _siteDepth(companyId, parentId);
+      if (depth == 0) throw const ApiError.badRequest('Site inconnu ou archivé.');
+      if (depth >= maxSiteDepth) throw const ApiError.badRequest('Trois niveaux de sites au plus.');
+    }
     final rows = await store.query(store.db,
-        'INSERT INTO ${kind.table} (company_id, name) VALUES (@c::uuid, @n) RETURNING id::text',
-        {'c': companyId, 'n': _name(name)});
-    return CatalogItem(rows.first[0] as String, _name(name), false);
+        kind == CatalogKind.sites
+            ? 'INSERT INTO sites (company_id, name, parent_id) VALUES (@c::uuid, @n, @p::uuid) RETURNING id::text'
+            : 'INSERT INTO ${kind.table} (company_id, name) VALUES (@c::uuid, @n) RETURNING id::text',
+        {'c': companyId, 'n': _name(name), 'p': parentId});
+    return CatalogItem(rows.first[0] as String, _name(name), false, parentId: parentId);
   }
 
+  /// Renomme, archive (ou réactive), ou déplace ([move]) sous [parentId].
+  /// Un responsable de site touche seulement aux sites en dessous des siens ;
+  /// déplacer est réservé à qui gère toute l'entreprise.
   Future<void> updateCatalogItem(User actor, String companyId, CatalogKind kind, String id,
-      {String? name, bool? archived}) async {
-    await _fullManager(actor, companyId);
+      {String? name, bool? archived, bool move = false, String? parentId}) async {
+    if (kind == CatalogKind.positions || move) {
+      await _fullManager(actor, companyId);
+    } else {
+      final mine = await _manager(actor, companyId);
+      if (mine != null) {
+        final own = await store.sitesOf(companyId, actor.id) ?? const [];
+        if (!mine.contains(id) || own.contains(id)) {
+          throw const ApiError.forbidden('Ce site n\'est pas sous votre responsabilité.');
+        }
+      }
+    }
+    if (move && kind == CatalogKind.sites) {
+      // Sa branche (lui et ce qui est en dessous) : hauteur, et le nouveau parent n'y est pas.
+      final rows = await store.query(store.db, '''
+        WITH RECURSIVE down AS (
+          SELECT id, 1 AS h FROM sites WHERE id = @s::uuid AND company_id = @c::uuid
+          UNION ALL SELECT x.id, down.h + 1 FROM sites x JOIN down ON x.parent_id = down.id)
+        SELECT max(h), coalesce(bool_or(id::text = @p), false) FROM down''', {'s': id, 'c': companyId, 'p': parentId});
+      final height = rows.first[0] as int?;
+      if (height == null) throw const ApiError.notFound('Site introuvable.');
+      if (rows.first[1] == true) throw const ApiError.badRequest('Un site ne peut pas être placé sous lui-même.');
+      final depth = parentId == null ? 0 : await _siteDepth(companyId, parentId);
+      if (parentId != null && depth == 0) throw const ApiError.badRequest('Site inconnu ou archivé.');
+      if (depth + height > maxSiteDepth) throw const ApiError.badRequest('Trois niveaux de sites au plus.');
+      await store.query(store.db, 'UPDATE sites SET parent_id = @p::uuid WHERE id = @s::uuid', {'s': id, 'p': parentId});
+    }
+
     final rows = await store.query(store.db, '''
       UPDATE ${kind.table} SET
         name = coalesce(@n, name),
@@ -72,6 +131,18 @@ class PlanningService {
       WHERE id = @id::uuid AND company_id = @c::uuid RETURNING id''',
         {'id': id, 'c': companyId, 'n': name == null ? null : _name(name), 'a': archived});
     if (rows.isEmpty) throw ApiError.notFound(kind == CatalogKind.sites ? 'Site introuvable.' : 'Poste introuvable.');
+    if (kind == CatalogKind.sites && archived != null) {
+      // Archivé : tout ce qui est en dessous aussi. Réactivé : ce qui est au-dessus aussi.
+      await store.query(store.db, archived
+          ? '''
+        WITH RECURSIVE t AS (SELECT id FROM sites WHERE id = @id::uuid
+          UNION SELECT x.id FROM sites x JOIN t ON x.parent_id = t.id)
+        UPDATE sites SET archived_at = coalesce(archived_at, now()) WHERE id IN (SELECT id FROM t)'''
+          : '''
+        WITH RECURSIVE t AS (SELECT id, parent_id FROM sites WHERE id = @id::uuid
+          UNION SELECT x.id, x.parent_id FROM sites x JOIN t ON x.id = t.parent_id)
+        UPDATE sites SET archived_at = NULL WHERE id IN (SELECT id FROM t)''', {'id': id});
+    }
   }
 
   // --- Services -------------------------------------------------------------
@@ -172,11 +243,15 @@ class PlanningService {
     final members = await store.members(companyId);
     final person = members.where((m) => m.user.id == userId).firstOrNull;
     final team = person?.sites;
-    if (person == null || team == null || team.isEmpty || team.contains(siteId)) return;
+    if (person == null || team == null || team.isEmpty) return;
+    if ((await store.expandSites(companyId, team)).contains(siteId)) return;
     if (person.role != Role.employee && person.role != Role.extra) return;
     var managers = [
       for (final m in members)
-        if (m.role == Role.manager && m.user.id != actor.id && (m.sites ?? const []).any(team.contains)) m.user.id,
+        if (m.role == Role.manager &&
+            m.user.id != actor.id &&
+            (await store.expandSites(companyId, m.sites ?? const [])).any(team.contains))
+          m.user.id,
     ];
     // Pas de responsable pour son équipe : le patron et les responsables de toute l'entreprise.
     if (managers.isEmpty) {
@@ -637,22 +712,29 @@ class PlanningService {
     final role = rows.first[0] as String;
     final team = [for (final x in (rows.first[1] as List?) ?? const []) x as String];
     if (role != 'employee' && role != 'extra') return null;
-    if (team.isEmpty || team.any(mine.contains)) return null;
+    if (team.isEmpty || (await store.expandSites(companyId, team, s: s)).any(mine.contains)) return null;
     return actor.id;
   }
 
   /// Qui valide : le patron, les responsables de toute l'entreprise, et le
   /// responsable qui a nommé celui qui demande.
-  static List<String> _approvers(List<Member> members, String requesterId) {
+  Future<List<String>> _approvers(String companyId, List<Member> members, String requesterId) async {
     final requester = members.where((m) => m.user.id == requesterId).firstOrNull;
-    return [
-      for (final m in members)
-        if (m.user.id != requesterId &&
-            (m.role == Role.owner ||
-                (m.role == Role.manager && m.sites == null) ||
-                (m.role == Role.manager && m.user.id == requester?.appointedBy)))
-          m.user.id,
-    ];
+    final theirs = requester?.sites ?? const <String>[];
+    final out = <String>[];
+    for (final m in members) {
+      if (m.user.id == requesterId || !m.role.canManage) continue;
+      if (m.role == Role.owner || m.sites == null || m.user.id == requester?.appointedBy) {
+        out.add(m.user.id);
+        continue;
+      }
+      // Responsable d'un site au-dessus de tous ceux du demandeur.
+      final above = theirs.isNotEmpty &&
+          !m.sites!.any(theirs.contains) &&
+          (await store.expandSites(companyId, m.sites!)).containsAll(theirs);
+      if (above) out.add(m.user.id);
+    }
+    return out;
   }
 
   Future<void> _askApproval(User actor, String companyId, String userId, String? siteId, DateTime day) async {
@@ -661,7 +743,7 @@ class PlanningService {
     final site = siteId == null
         ? const []
         : await store.query(store.db, 'SELECT name FROM sites WHERE id = @s::uuid', {'s': siteId});
-    await notifications.notify(_approvers(members, actor.id), companyId: companyId, kind: 'placement_to_approve', data: {
+    await notifications.notify(await _approvers(companyId, members, actor.id), companyId: companyId, kind: 'placement_to_approve', data: {
       'byName': actor.name,
       'name': person?.user.name,
       'day': formatDay(day),
@@ -683,7 +765,7 @@ class PlanningService {
     final requester = row['approval_by'] as String?;
     if (requester == null) throw const ApiError.conflict('Ce service a changé depuis la demande.');
     final members = await store.members(companyId);
-    if (!_approvers(members, requester).contains(actor.id)) throw const ApiError.forbidden();
+    if (!(await _approvers(companyId, members, requester)).contains(actor.id)) throw const ApiError.forbidden();
     await store.db.runTx((tx) async {
       final updated = await store.query(tx, '''
         UPDATE shifts SET approval_by = NULL, version = version + 1
@@ -780,9 +862,12 @@ class CatalogItem {
   final String name;
   final bool archived;
 
-  const CatalogItem(this.id, this.name, this.archived);
+  /// Site : le site au-dessus (`null` : premier niveau).
+  final String? parentId;
 
-  Map<String, Object?> toJson() => {'id': id, 'name': name, 'archived': archived};
+  const CatalogItem(this.id, this.name, this.archived, {this.parentId});
+
+  Map<String, Object?> toJson() => {'id': id, 'name': name, 'archived': archived, if (parentId != null) 'parentId': parentId};
 }
 
 enum Scope { one, series }

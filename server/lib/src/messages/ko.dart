@@ -94,4 +94,6 @@ const ko = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by}님이 다른 지점의 {name}님을 {day}에 배치하려고 합니다: 승인이 필요합니다.',
   '{by} a validé le placement de {name} le {day}.': '{by}님이 {day} {name}님의 배치를 승인했습니다.',
   '{by} a refusé le placement de {name} le {day}.': '{by}님이 {day} {name}님의 배치를 거절했습니다.',
+  'Trois niveaux de sites au plus.': '지점은 최대 3단계까지입니다.',
+  'Un site ne peut pas être placé sous lui-même.': '지점을 자기 자신 아래에 둘 수 없습니다.',
 };

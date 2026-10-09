@@ -1327,4 +1327,31 @@ class L10nNl extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by heeft het inplannen van $name op $date geweigerd.';
   }
+
+  @override
+  String get addSubSite => 'Subvestiging toevoegen';
+
+  @override
+  String get moveSite => 'Verplaatsen';
+
+  @override
+  String get topLevel => 'Hoogste niveau';
+
+  @override
+  String moveSiteTitle(String name) {
+    return '„$name” verplaatsen onder…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Subvestiging van $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Tot 3 niveaus, bijv. Regio › Stad › Winkel. Wie een vestiging beheert, beheert ook alles eronder.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Hier voegt u subvestigingen toe onder uw eigen vestigingen.';
 }

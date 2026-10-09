@@ -94,4 +94,6 @@ const da = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} vil planlægge {name} fra et andet sted den {day}: kræver godkendelse.',
   '{by} a validé le placement de {name} le {day}.': '{by} godkendte planlægningen af {name} den {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} afviste planlægningen af {name} den {day}.',
+  'Trois niveaux de sites au plus.': 'Højst tre niveauer af steder.',
+  'Un site ne peut pas être placé sous lui-même.': 'Et sted kan ikke placeres under sig selv.',
 };

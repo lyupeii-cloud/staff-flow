@@ -115,4 +115,6 @@ const en = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} wants to schedule {name}, from another site, on {day}: approval needed.',
   '{by} a validé le placement de {name} le {day}.': '{by} approved scheduling {name} on {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} refused scheduling {name} on {day}.',
+  'Trois niveaux de sites au plus.': 'Three levels of sites at most.',
+  'Un site ne peut pas être placé sous lui-même.': 'A site can\'t be placed under itself.',
 };

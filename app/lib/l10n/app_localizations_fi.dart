@@ -1326,4 +1326,31 @@ class L10nFi extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by hylkäsi henkilön $name vuorotuksen $date.';
   }
+
+  @override
+  String get addSubSite => 'Lisää alatoimipaikka';
+
+  @override
+  String get moveSite => 'Siirrä';
+
+  @override
+  String get topLevel => 'Ylin taso';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Siirrä ”$name” kohteen alle…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Toimipaikan $name alatoimipaikka';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Enintään 3 tasoa, esim. Alue › Kaupunki › Myymälä. Toimipaikan esihenkilö hallitsee myös kaikkea sen alla.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Täällä lisäät alatoimipaikkoja omien toimipaikkojesi alle.';
 }

@@ -37,7 +37,8 @@ class CompanyService {
   /// de toute l'entreprise ; sinon ceux d'un responsable de site.
   Future<Set<String>?> managedSites(String companyId, User actor, Role role) async {
     if (role != Role.manager) return null;
-    return (await store.sitesOf(companyId, actor.id))?.toSet();
+    final raw = await store.sitesOf(companyId, actor.id);
+    return raw == null ? null : await store.expandSites(companyId, raw);
   }
 
   /// Un responsable de site gère les salariés et extras rattachés à au

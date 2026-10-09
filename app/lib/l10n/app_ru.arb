@@ -369,5 +369,12 @@
   "placementAwaiting": "Ожидает утверждения руководителем или владельцем.",
   "noticePlacementToApprove": "{by} хочет поставить {name} с другого объекта на {date}: нужно утверждение.",
   "noticePlacementApproved": "{by} утвердил(а) назначение {name} на {date}.",
-  "noticePlacementRefused": "{by} отклонил(а) назначение {name} на {date}."
+  "noticePlacementRefused": "{by} отклонил(а) назначение {name} на {date}.",
+  "addSubSite": "Добавить подобъект",
+  "moveSite": "Переместить",
+  "topLevel": "Верхний уровень",
+  "moveSiteTitle": "Переместить «{name}» под…",
+  "subSiteOf": "Подобъект {name}",
+  "siteTreeHint": "До 3 уровней, например Регион › Город › Магазин. Руководитель объекта управляет и всем, что ниже.",
+  "subSitesOnlyHint": "Здесь вы добавляете подобъекты к своим объектам."
 }

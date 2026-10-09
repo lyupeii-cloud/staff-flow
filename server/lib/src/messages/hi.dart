@@ -94,4 +94,6 @@ const hi = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} दूसरी साइट के {name} को {day} को लगाना चाहते हैं: मंज़ूरी चाहिए।',
   '{by} a validé le placement de {name} le {day}.': '{by} ने {day} को {name} की नियुक्ति मंज़ूर की।',
   '{by} a refusé le placement de {name} le {day}.': '{by} ने {day} को {name} की नियुक्ति अस्वीकार की।',
+  'Trois niveaux de sites au plus.': 'अधिकतम तीन स्तर की साइटें।',
+  'Un site ne peut pas être placé sous lui-même.': 'किसी साइट को उसके ही नीचे नहीं रखा जा सकता।',
 };

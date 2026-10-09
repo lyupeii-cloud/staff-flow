@@ -1332,4 +1332,31 @@ class L10nEs extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by rechazó la programación de $name el $date.';
   }
+
+  @override
+  String get addSubSite => 'Añadir un subcentro';
+
+  @override
+  String get moveSite => 'Mover';
+
+  @override
+  String get topLevel => 'Primer nivel';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Mover «$name» debajo de…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Subcentro de $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Hasta 3 niveles, p. ej. Región › Ciudad › Tienda. El responsable de un centro gestiona también todo lo que hay debajo.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Aquí añades subcentros bajo tus propios centros.';
 }

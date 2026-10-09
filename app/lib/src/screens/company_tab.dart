@@ -42,6 +42,48 @@ class CompanyData {
 
   String? siteName(String? id) => sites.where((s) => s.id == id).firstOrNull?.name;
 
+  /// Sites dans l'ordre de l'arbre (une région, puis ses villes…), avec leur
+  /// niveau (0 : premier niveau).
+  List<(CatalogItem, int)> get siteTree {
+    final ids = {for (final s in sites) s.id};
+    final out = <(CatalogItem, int)>[];
+    void walk(String? parent, int depth) {
+      final children = [
+        for (final s in sites)
+          if (parent == null ? (s.parentId == null || !ids.contains(s.parentId)) : s.parentId == parent) s,
+      ]..sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
+      for (final s in children) {
+        out.add((s, depth));
+        if (depth < 5) walk(s.id, depth + 1);
+      }
+    }
+
+    walk(null, 0);
+    return out;
+  }
+
+  /// [ids] et tous les sites qui sont en dessous.
+  Set<String> expandSites(Iterable<String> ids) {
+    final out = {...ids};
+    for (var added = true; added;) {
+      added = false;
+      for (final s in sites) {
+        if (s.parentId != null && out.contains(s.parentId) && out.add(s.id)) added = true;
+      }
+    }
+    return out;
+  }
+
+  /// « Nord › Lille › Gare ».
+  String? sitePath(String? id) {
+    final names = <String>[];
+    for (var s = sites.where((s) => s.id == id).firstOrNull; s != null && names.length < 5;
+        s = sites.where((x) => x.id == s!.parentId).firstOrNull) {
+      names.insert(0, s.name);
+    }
+    return names.isEmpty ? null : names.join(' › ');
+  }
+
   String? positionName(String? id) => positions.where((p) => p.id == id).firstOrNull?.name;
 }
 
@@ -157,10 +199,10 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
     final messenger = ScaffoldMessenger.of(context);
     final mine = widget.membership.managedSites;
     final sites = !role.canManage || data == null
-        ? const <CatalogItem>[]
-        : [for (final s in data.sites) if (!s.archived && (mine == null || mine.contains(s.id))) s];
+        ? const <(CatalogItem, int)>[]
+        : [for (final (s, d) in data.siteTree) if (!s.archived && (mine == null || mine.contains(s.id))) (s, d)];
     final current = widget.membership.notifySites;
-    final chosen = {for (final s in sites) if (current == null || current.contains(s.id)) s.id};
+    final chosen = {for (final (s, _) in sites) if (current == null || current.contains(s.id)) s.id};
     var on = widget.membership.notificationsOn;
     final ok = await showDialog<bool>(
       context: context,
@@ -182,9 +224,9 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
                 if (sites.length >= 2) ...[
                   const Divider(),
                   Text(t.notifySitesHint),
-                  for (final s in sites)
+                  for (final (s, d) in sites)
                     CheckboxListTile(
-                      contentPadding: EdgeInsets.zero,
+                      contentPadding: EdgeInsets.only(left: 16.0 * d),
                       value: on && chosen.contains(s.id),
                       title: Text(s.name),
                       onChanged: on ? (v) => setDialog(() => v == true ? chosen.add(s.id) : chosen.remove(s.id)) : null,
@@ -204,7 +246,7 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
     try {
       await widget.session.api.send('PUT', '/companies/${company.id}/notifications', body: {'enabled': on});
       if (sites.length >= 2) {
-        final all = sites.every((s) => chosen.contains(s.id));
+        final all = sites.every((s) => chosen.contains(s.$1.id));
         await widget.session.api.send('PUT', '/companies/${company.id}/notify-sites',
             body: {'sites': all ? null : chosen.toList()});
       }
@@ -284,7 +326,7 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
                       t.messagesTab
                     ),
                     (_View.team, const Icon(Icons.group), t.viewTeam),
-                    if (widget.membership.managesAll) (_View.catalog, const Icon(Icons.store), t.viewPositions),
+                    if (role.canManage) (_View.catalog, const Icon(Icons.store), t.viewPositions),
                   ],
                   onSelected: (v) {
                     // L'équipe a pu changer : le planning repart de la liste à jour.
@@ -337,7 +379,7 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
                 _View.team => TeamView(
                     session: widget.session, membership: widget.membership, data: data, onChanged: _reload),
                 _View.catalog => CatalogView(
-                    session: widget.session, company: company, data: data, onChanged: _reload),
+                    session: widget.session, membership: widget.membership, data: data, onChanged: _reload),
               };
             },
           ),

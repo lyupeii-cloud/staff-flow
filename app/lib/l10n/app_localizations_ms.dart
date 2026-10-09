@@ -1321,4 +1321,31 @@ class L10nMs extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by menolak penjadualan $name pada $date.';
   }
+
+  @override
+  String get addSubSite => 'Tambah sub-tapak';
+
+  @override
+  String get moveSite => 'Alih';
+
+  @override
+  String get topLevel => 'Peringkat teratas';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Alih “$name” ke bawah…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Sub-tapak $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Sehingga 3 peringkat, cth. Wilayah › Bandar › Kedai. Pengurus sesuatu tapak juga mengurus semua di bawahnya.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Di sini anda menambah sub-tapak di bawah tapak anda sendiri.';
 }

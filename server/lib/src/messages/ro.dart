@@ -94,4 +94,6 @@ const ro = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} vrea să programeze pe {name}, de la alt punct de lucru, pe {day}: necesită aprobare.',
   '{by} a validé le placement de {name} le {day}.': '{by} a aprobat programarea lui {name} pe {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} a refuzat programarea lui {name} pe {day}.',
+  'Trois niveaux de sites au plus.': 'Cel mult trei niveluri de puncte de lucru.',
+  'Un site ne peut pas être placé sous lui-même.': 'Un punct de lucru nu poate fi pus sub el însuși.',
 };

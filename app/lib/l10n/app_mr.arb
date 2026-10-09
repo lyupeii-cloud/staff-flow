@@ -369,5 +369,12 @@
   "placementAwaiting": "वरिष्ठ किंवा मालकाच्या मंजुरीची प्रतीक्षा.",
   "noticePlacementToApprove": "{by} दुसऱ्या साइटवरील {name} यांना {date} रोजी नेमू इच्छितात: मंजुरी हवी.",
   "noticePlacementApproved": "{by} यांनी {date} रोजी {name} यांची नेमणूक मंजूर केली.",
-  "noticePlacementRefused": "{by} यांनी {date} रोजी {name} यांची नेमणूक नाकारली."
+  "noticePlacementRefused": "{by} यांनी {date} रोजी {name} यांची नेमणूक नाकारली.",
+  "addSubSite": "उप-साइट जोडा",
+  "moveSite": "हलवा",
+  "topLevel": "पहिला स्तर",
+  "moveSiteTitle": "“{name}” याच्या खाली हलवा…",
+  "subSiteOf": "{name} ची उप-साइट",
+  "siteTreeHint": "जास्तीत जास्त 3 स्तर, उदा. प्रदेश › शहर › दुकान. साइटचा व्यवस्थापक तिच्या खालचे सर्वही सांभाळतो.",
+  "subSitesOnlyHint": "येथे तुम्ही तुमच्या साइटखाली उप-साइट जोडता."
 }

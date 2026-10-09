@@ -1321,4 +1321,30 @@ class L10nTe extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by $dateన $name నియామకాన్ని తిరస్కరించారు.';
   }
+
+  @override
+  String get addSubSite => 'ఉప-సైట్ జోడించండి';
+
+  @override
+  String get moveSite => 'తరలించు';
+
+  @override
+  String get topLevel => 'మొదటి స్థాయి';
+
+  @override
+  String moveSiteTitle(String name) {
+    return '“$name”‌ను దీని కిందకు తరలించు…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return '$name ఉప-సైట్';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'గరిష్ఠంగా 3 స్థాయిలు, ఉదా. ప్రాంతం › నగరం › దుకాణం. ఒక సైట్ మేనేజర్ దాని కింద ఉన్నవన్నీ కూడా నిర్వహిస్తారు.';
+
+  @override
+  String get subSitesOnlyHint => 'ఇక్కడ మీ సైట్‌ల కింద ఉప-సైట్‌లను జోడిస్తారు.';
 }

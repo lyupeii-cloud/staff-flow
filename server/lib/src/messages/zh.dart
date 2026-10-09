@@ -94,4 +94,6 @@ const zh = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} 想在 {day} 安排其他站点的 {name}：需要审批。',
   '{by} a validé le placement de {name} le {day}.': '{by} 已批准在 {day} 安排 {name}。',
   '{by} a refusé le placement de {name} le {day}.': '{by} 已拒绝在 {day} 安排 {name}。',
+  'Trois niveaux de sites au plus.': '站点最多三级。',
+  'Un site ne peut pas être placé sous lui-même.': '站点不能放在自身之下。',
 };

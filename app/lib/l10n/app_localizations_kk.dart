@@ -1322,4 +1322,31 @@ class L10nKk extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by $date күні $name қызметкерін қоюдан бас тартты.';
   }
+
+  @override
+  String get addSubSite => 'Ішкі нысан қосу';
+
+  @override
+  String get moveSite => 'Жылжыту';
+
+  @override
+  String get topLevel => 'Бірінші деңгей';
+
+  @override
+  String moveSiteTitle(String name) {
+    return '«$name» нысанын мынаның астына жылжыту…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return '$name ішкі нысаны';
+  }
+
+  @override
+  String get siteTreeHint =>
+      '3 деңгейге дейін, мысалы Аймақ › Қала › Дүкен. Нысан басшысы оның астындағының бәрін де басқарады.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Мұнда өз нысандарыңыздың астына ішкі нысандар қосасыз.';
 }

@@ -1282,4 +1282,29 @@ class L10nZh extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by 已拒绝在 $date 安排 $name。';
   }
+
+  @override
+  String get addSubSite => '添加子站点';
+
+  @override
+  String get moveSite => '移动';
+
+  @override
+  String get topLevel => '顶级';
+
+  @override
+  String moveSiteTitle(String name) {
+    return '将“$name”移到…之下';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return '$name 的子站点';
+  }
+
+  @override
+  String get siteTreeHint => '最多 3 级，例如 区域 › 城市 › 门店。站点负责人也管理其下的所有站点。';
+
+  @override
+  String get subSitesOnlyHint => '在这里，您可以在自己的站点下添加子站点。';
 }

@@ -94,4 +94,6 @@ const bg = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} иска да планира {name} от друг обект на {day}: нужно е одобрение.',
   '{by} a validé le placement de {name} le {day}.': '{by} одобри планирането на {name} на {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} отказа планирането на {name} на {day}.',
+  'Trois niveaux de sites au plus.': 'Най-много три нива обекти.',
+  'Un site ne peut pas être placé sous lui-même.': 'Обект не може да бъде поставен под самия себе си.',
 };

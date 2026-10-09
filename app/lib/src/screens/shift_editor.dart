@@ -120,7 +120,7 @@ class _ShiftEditorState extends State<_ShiftEditor> {
         _siteId != null &&
         team != null &&
         team.isNotEmpty &&
-        !team.contains(_siteId);
+        !widget.data.expandSites(team).contains(_siteId);
   }
 
   /// Responsable de site qui choisit un salarié d'un autre site : le service
@@ -134,7 +134,7 @@ class _ShiftEditorState extends State<_ShiftEditor> {
         (m.role == Role.employee || m.role == Role.extra) &&
         team != null &&
         team.isNotEmpty &&
-        !team.any(mine.contains);
+        !widget.data.expandSites(team).any(mine.contains);
   }
 
   /// Valider ce placement : le patron, un responsable de toute l'entreprise,
@@ -146,7 +146,12 @@ class _ShiftEditorState extends State<_ShiftEditor> {
     if (me == null || mm == null || by == null || by == me.user.id || widget.company.readOnly) return false;
     if (mm.managesAll) return true;
     final requester = widget.data.members.where((m) => m.user.id == by).firstOrNull;
-    return mm.role == Role.manager && requester?.appointedBy == me.user.id;
+    if (mm.role != Role.manager || requester == null) return false;
+    if (requester.appointedBy == me.user.id) return true;
+    // Responsable d'un site au-dessus de tous ceux du demandeur.
+    final mine = widget.data.members.where((m) => m.user.id == me.user.id).firstOrNull?.sites ?? const <String>[];
+    final theirs = requester.sites ?? const <String>[];
+    return theirs.isNotEmpty && !mine.any(theirs.contains) && widget.data.expandSites(mine).containsAll(theirs);
   }
 
   Future<void> _decide(bool approve) async {
@@ -209,9 +214,10 @@ class _ShiftEditorState extends State<_ShiftEditor> {
     final members = widget.data.members;
     _checkBusy();
     final only = widget.onlySites;
-    final sites = widget.data.sites
-        .where((i) => (!i.archived || i.id == _siteId) && (only == null || only.contains(i.id)))
-        .toList();
+    final sites = [
+      for (final (i, d) in widget.data.siteTree)
+        if ((!i.archived || i.id == _siteId) && (only == null || only.contains(i.id))) (i, d),
+    ];
     final positions = widget.data.positions.where((i) => !i.archived || i.id == _positionId).toList();
     return Padding(
       padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
@@ -413,7 +419,14 @@ class _ShiftEditorState extends State<_ShiftEditor> {
                 decoration: InputDecoration(labelText: t.site),
                 items: [
                   if (only == null) const DropdownMenuItem(value: null, child: Text('—')),
-                  for (final p in sites) DropdownMenuItem(value: p.id, child: Text(p.name)),
+                  for (final (p, d) in sites)
+                    DropdownMenuItem(
+                        value: p.id, child: Padding(padding: EdgeInsets.only(left: 16.0 * d), child: Text(p.name))),
+                ],
+                // Choisi : le chemin complet (Nord › Lille › Gare).
+                selectedItemBuilder: (_) => [
+                  if (only == null) const Text('—'),
+                  for (final (p, _) in sites) Text(widget.data.sitePath(p.id) ?? p.name, overflow: TextOverflow.ellipsis),
                 ],
                 onChanged: (v) => setState(() => _siteId = v),
               ),

@@ -369,5 +369,12 @@
   "placementAwaiting": "Odottaa esihenkilön tai omistajan hyväksyntää.",
   "noticePlacementToApprove": "{by} haluaa vuorottaa {name} toiselta toimipaikalta {date}: vaatii hyväksynnän.",
   "noticePlacementApproved": "{by} hyväksyi henkilön {name} vuorotuksen {date}.",
-  "noticePlacementRefused": "{by} hylkäsi henkilön {name} vuorotuksen {date}."
+  "noticePlacementRefused": "{by} hylkäsi henkilön {name} vuorotuksen {date}.",
+  "addSubSite": "Lisää alatoimipaikka",
+  "moveSite": "Siirrä",
+  "topLevel": "Ylin taso",
+  "moveSiteTitle": "Siirrä ”{name}” kohteen alle…",
+  "subSiteOf": "Toimipaikan {name} alatoimipaikka",
+  "siteTreeHint": "Enintään 3 tasoa, esim. Alue › Kaupunki › Myymälä. Toimipaikan esihenkilö hallitsee myös kaikkea sen alla.",
+  "subSitesOnlyHint": "Täällä lisäät alatoimipaikkoja omien toimipaikkojesi alle."
 }

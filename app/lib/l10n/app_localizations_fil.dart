@@ -1332,4 +1332,31 @@ class L10nFil extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return 'Tinanggihan ni $by ang pag-iskedyul kay $name sa $date.';
   }
+
+  @override
+  String get addSubSite => 'Magdagdag ng sub-site';
+
+  @override
+  String get moveSite => 'Ilipat';
+
+  @override
+  String get topLevel => 'Unang antas';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Ilipat ang “$name” sa ilalim ng…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Sub-site ng $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Hanggang 3 antas, hal. Rehiyon › Lungsod › Tindahan. Ang manager ng isang site ay namamahala rin sa lahat ng nasa ilalim nito.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Dito ka nagdadagdag ng mga sub-site sa ilalim ng sarili mong mga site.';
 }

@@ -1332,4 +1332,31 @@ class L10nTa extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by $date அன்று $name-இன் நியமனத்தை மறுத்தார்.';
   }
+
+  @override
+  String get addSubSite => 'துணைத் தளம் சேர்';
+
+  @override
+  String get moveSite => 'நகர்த்து';
+
+  @override
+  String get topLevel => 'முதல் நிலை';
+
+  @override
+  String moveSiteTitle(String name) {
+    return '“$name”-ஐ இதன் கீழ் நகர்த்து…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return '$name-இன் துணைத் தளம்';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'அதிகபட்சம் 3 நிலைகள், எ.கா. மண்டலம் › நகரம் › கடை. ஒரு தளத்தின் மேலாளர் அதன் கீழுள்ள அனைத்தையும் நிர்வகிப்பார்.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'இங்கே உங்கள் தளங்களின் கீழ் துணைத் தளங்களைச் சேர்க்கலாம்.';
 }

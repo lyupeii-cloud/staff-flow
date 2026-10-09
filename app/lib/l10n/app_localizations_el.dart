@@ -1335,4 +1335,31 @@ class L10nEl extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return 'Ο/Η $by απέρριψε τον προγραμματισμό του/της $name στις $date.';
   }
+
+  @override
+  String get addSubSite => 'Προσθήκη υποσημείου';
+
+  @override
+  String get moveSite => 'Μετακίνηση';
+
+  @override
+  String get topLevel => 'Πρώτο επίπεδο';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Μετακίνηση του «$name» κάτω από…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Υποσημείο του $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Έως 3 επίπεδα, π.χ. Περιοχή › Πόλη › Κατάστημα. Ο υπεύθυνος ενός σημείου διαχειρίζεται και ό,τι είναι από κάτω.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Εδώ προσθέτετε υποσημεία κάτω από τα δικά σας σημεία.';
 }

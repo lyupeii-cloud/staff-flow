@@ -369,5 +369,12 @@
   "placementAwaiting": "Väntar på godkännande från en chef eller ägaren.",
   "noticePlacementToApprove": "{by} vill schemalägga {name} från en annan plats den {date}: kräver godkännande.",
   "noticePlacementApproved": "{by} godkände schemaläggningen av {name} den {date}.",
-  "noticePlacementRefused": "{by} avslog schemaläggningen av {name} den {date}."
+  "noticePlacementRefused": "{by} avslog schemaläggningen av {name} den {date}.",
+  "addSubSite": "Lägg till en underplats",
+  "moveSite": "Flytta",
+  "topLevel": "Översta nivån",
+  "moveSiteTitle": "Flytta ”{name}” under…",
+  "subSiteOf": "Underplats till {name}",
+  "siteTreeHint": "Upp till 3 nivåer, t.ex. Region › Stad › Butik. Den som leder en plats leder också allt under den.",
+  "subSitesOnlyHint": "Här lägger du till underplatser under dina egna platser."
 }

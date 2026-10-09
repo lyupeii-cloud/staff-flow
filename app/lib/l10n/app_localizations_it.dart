@@ -1331,4 +1331,30 @@ class L10nIt extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by ha rifiutato la pianificazione di $name il $date.';
   }
+
+  @override
+  String get addSubSite => 'Aggiungi una sottosede';
+
+  @override
+  String get moveSite => 'Sposta';
+
+  @override
+  String get topLevel => 'Primo livello';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Sposta «$name» sotto…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Sottosede di $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Fino a 3 livelli, ad es. Regione › Città › Negozio. Il responsabile di una sede gestisce anche tutto ciò che sta sotto.';
+
+  @override
+  String get subSitesOnlyHint => 'Qui aggiungi sottosedi sotto le tue sedi.';
 }

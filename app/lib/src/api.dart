@@ -163,12 +163,14 @@ class Api {
 
   // --- Sites et postes ------------------------------------------------------
 
-  Future<void> addCatalogItem(String companyId, String kind, String name) =>
-      _send('POST', '/companies/$companyId/$kind', {'name': name});
+  Future<void> addCatalogItem(String companyId, String kind, String name, {String? parentId}) =>
+      _send('POST', '/companies/$companyId/$kind', {'name': name, 'parentId': ?parentId});
 
+  /// [move] : placer le site sous [parentId] (`null` : premier niveau).
   Future<void> updateCatalogItem(String companyId, String kind, String id,
-          {String? name, bool? archived}) =>
-      _send('PATCH', '/companies/$companyId/$kind/$id', {'name': ?name, 'archived': ?archived});
+          {String? name, bool? archived, bool move = false, String? parentId}) =>
+      _send('PATCH', '/companies/$companyId/$kind/$id',
+          {'name': ?name, 'archived': ?archived, if (move) 'parentId': parentId});
 
   // Planning (services, publication, remplacement) : voir offline/sync.dart,
   // qui gère aussi le mode hors connexion.

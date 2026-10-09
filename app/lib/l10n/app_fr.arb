@@ -373,5 +373,12 @@
   "placementAwaiting": "En attente de validation par un supérieur ou le patron.",
   "noticePlacementToApprove": "{by} veut placer {name}, d'un autre site, le {date} : à valider.",
   "noticePlacementApproved": "{by} a validé le placement de {name} le {date}.",
-  "noticePlacementRefused": "{by} a refusé le placement de {name} le {date}."
+  "noticePlacementRefused": "{by} a refusé le placement de {name} le {date}.",
+  "addSubSite": "Ajouter un sous-site",
+  "moveSite": "Déplacer",
+  "topLevel": "Premier niveau",
+  "moveSiteTitle": "Déplacer « {name} » sous…",
+  "subSiteOf": "Sous-site de {name}",
+  "siteTreeHint": "Jusqu'à 3 niveaux, par exemple Région › Ville › Magasin. Le responsable d'un site gère aussi tout ce qui est en dessous.",
+  "subSitesOnlyHint": "Ici, vous ajoutez des sous-sites sous vos propres sites."
 }

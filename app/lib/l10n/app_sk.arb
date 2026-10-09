@@ -369,5 +369,12 @@
   "placementAwaiting": "Čaká na schválenie nadriadeným alebo majiteľom.",
   "noticePlacementToApprove": "{by} chce naplánovať {name} z iného miesta na {date}: treba schváliť.",
   "noticePlacementApproved": "{by} schválil(a) naplánovanie {name} na {date}.",
-  "noticePlacementRefused": "{by} zamietol(a) naplánovanie {name} na {date}."
+  "noticePlacementRefused": "{by} zamietol(a) naplánovanie {name} na {date}.",
+  "addSubSite": "Pridať podmiesto",
+  "moveSite": "Presunúť",
+  "topLevel": "Prvá úroveň",
+  "moveSiteTitle": "Presunúť „{name}“ pod…",
+  "subSiteOf": "Podmiesto miesta {name}",
+  "siteTreeHint": "Až 3 úrovne, napr. Región › Mesto › Predajňa. Vedúci miesta riadi aj všetko pod ním.",
+  "subSitesOnlyHint": "Tu pridávate podmiesta pod svoje miesta."
 }

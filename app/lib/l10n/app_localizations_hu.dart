@@ -1320,4 +1320,31 @@ class L10nHu extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by elutasította $name beosztását ekkor: $date.';
   }
+
+  @override
+  String get addSubSite => 'Altelephely hozzáadása';
+
+  @override
+  String get moveSite => 'Áthelyezés';
+
+  @override
+  String get topLevel => 'Legfelső szint';
+
+  @override
+  String moveSiteTitle(String name) {
+    return '„$name” áthelyezése ez alá…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return '$name altelephelye';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Legfeljebb 3 szint, pl. Régió › Város › Üzlet. Egy telephely vezetője az alatta lévőket is kezeli.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Itt a saját telephelyei alá adhat altelephelyeket.';
 }

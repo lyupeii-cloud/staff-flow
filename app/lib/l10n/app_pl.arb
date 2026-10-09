@@ -369,5 +369,12 @@
   "placementAwaiting": "Czeka na zatwierdzenie przez przełożonego lub właściciela.",
   "noticePlacementToApprove": "{by} chce zaplanować {name} z innej placówki na {date}: wymaga zatwierdzenia.",
   "noticePlacementApproved": "{by} zatwierdził(a) zaplanowanie {name} na {date}.",
-  "noticePlacementRefused": "{by} odrzucił(a) zaplanowanie {name} na {date}."
+  "noticePlacementRefused": "{by} odrzucił(a) zaplanowanie {name} na {date}.",
+  "addSubSite": "Dodaj podplacówkę",
+  "moveSite": "Przenieś",
+  "topLevel": "Najwyższy poziom",
+  "moveSiteTitle": "Przenieś „{name}” pod…",
+  "subSiteOf": "Podplacówka {name}",
+  "siteTreeHint": "Do 3 poziomów, np. Region › Miasto › Sklep. Kierownik placówki zarządza też wszystkim, co jest pod nią.",
+  "subSitesOnlyHint": "Tutaj dodajesz podplacówki pod swoimi placówkami."
 }

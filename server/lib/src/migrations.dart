@@ -374,4 +374,10 @@ CREATE TABLE conversation_mutes (
   '''
 ALTER TABLE shifts ADD COLUMN approval_by uuid REFERENCES users(id) ON DELETE SET NULL;
 ''',
+  // 21 — sites en cascade (3 niveaux au plus) : un responsable d'un site
+  // gère aussi tous ceux qui sont en dessous.
+  '''
+ALTER TABLE sites ADD COLUMN parent_id uuid REFERENCES sites(id) ON DELETE CASCADE;
+CREATE INDEX sites_parent ON sites (parent_id);
+''',
 ];

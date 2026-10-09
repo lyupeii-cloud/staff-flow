@@ -94,4 +94,6 @@ const sk = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} chce naplánovať {name} z iného miesta na {day}: treba schváliť.',
   '{by} a validé le placement de {name} le {day}.': '{by} schválil(a) naplánovanie {name} na {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} zamietol(a) naplánovanie {name} na {day}.',
+  'Trois niveaux de sites au plus.': 'Najviac tri úrovne miest.',
+  'Un site ne peut pas être placé sous lui-même.': 'Miesto nemožno umiestniť pod seba samého.',
 };

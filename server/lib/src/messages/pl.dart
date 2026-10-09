@@ -94,4 +94,6 @@ const pl = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} chce zaplanować {name} z innej placówki na {day}: wymaga zatwierdzenia.',
   '{by} a validé le placement de {name} le {day}.': '{by} zatwierdził(a) zaplanowanie {name} na {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} odrzucił(a) zaplanowanie {name} na {day}.',
+  'Trois niveaux de sites au plus.': 'Najwyżej trzy poziomy placówek.',
+  'Un site ne peut pas être placé sous lui-même.': 'Placówki nie można umieścić pod nią samą.',
 };

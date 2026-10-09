@@ -909,5 +909,26 @@
         "type": "String"
       }
     }
-  }
+  },
+  "addSubSite": "Add a sub-site",
+  "moveSite": "Move",
+  "topLevel": "Top level",
+  "moveSiteTitle": "Move “{name}” under…",
+  "@moveSiteTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "subSiteOf": "Sub-site of {name}",
+  "@subSiteOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "siteTreeHint": "Up to 3 levels, e.g. Region › City › Store. A manager of a site also manages everything below it.",
+  "subSitesOnlyHint": "Here you add sub-sites under your own sites."
 }

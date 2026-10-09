@@ -369,5 +369,12 @@
   "placementAwaiting": "Naghihintay ng pag-apruba ng superior o ng may-ari.",
   "noticePlacementToApprove": "Gustong i-iskedyul ni {by} si {name}, mula sa ibang site, sa {date}: kailangan ng pag-apruba.",
   "noticePlacementApproved": "Inaprubahan ni {by} ang pag-iskedyul kay {name} sa {date}.",
-  "noticePlacementRefused": "Tinanggihan ni {by} ang pag-iskedyul kay {name} sa {date}."
+  "noticePlacementRefused": "Tinanggihan ni {by} ang pag-iskedyul kay {name} sa {date}.",
+  "addSubSite": "Magdagdag ng sub-site",
+  "moveSite": "Ilipat",
+  "topLevel": "Unang antas",
+  "moveSiteTitle": "Ilipat ang “{name}” sa ilalim ng…",
+  "subSiteOf": "Sub-site ng {name}",
+  "siteTreeHint": "Hanggang 3 antas, hal. Rehiyon › Lungsod › Tindahan. Ang manager ng isang site ay namamahala rin sa lahat ng nasa ilalim nito.",
+  "subSitesOnlyHint": "Dito ka nagdadagdag ng mga sub-site sa ilalim ng sarili mong mga site."
 }

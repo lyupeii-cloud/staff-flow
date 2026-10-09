@@ -94,4 +94,6 @@ const nl = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} wil {name} van een andere vestiging inplannen op {day}: goedkeuring nodig.',
   '{by} a validé le placement de {name} le {day}.': '{by} heeft het inplannen van {name} op {day} goedgekeurd.',
   '{by} a refusé le placement de {name} le {day}.': '{by} heeft het inplannen van {name} op {day} geweigerd.',
+  'Trois niveaux de sites au plus.': 'Hoogstens drie niveaus vestigingen.',
+  'Un site ne peut pas être placé sous lui-même.': 'Een vestiging kan niet onder zichzelf staan.',
 };

@@ -94,4 +94,6 @@ const ta = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} வேறு தளத்தைச் சேர்ந்த {name}-ஐ {day} அன்று நியமிக்க விரும்புகிறார்: ஒப்புதல் தேவை.',
   '{by} a validé le placement de {name} le {day}.': '{by} {day} அன்று {name}-இன் நியமனத்தை ஒப்புக்கொண்டார்.',
   '{by} a refusé le placement de {name} le {day}.': '{by} {day} அன்று {name}-இன் நியமனத்தை மறுத்தார்.',
+  'Trois niveaux de sites au plus.': 'அதிகபட்சம் மூன்று நிலை தளங்கள்.',
+  'Un site ne peut pas être placé sous lui-même.': 'ஒரு தளத்தை அதன் கீழேயே வைக்க முடியாது.',
 };

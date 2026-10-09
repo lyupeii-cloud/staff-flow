@@ -94,4 +94,6 @@ const vi = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} muốn xếp {name} từ địa điểm khác vào {day}: cần phê duyệt.',
   '{by} a validé le placement de {name} le {day}.': '{by} đã duyệt việc xếp {name} vào {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} đã từ chối việc xếp {name} vào {day}.',
+  'Trois niveaux de sites au plus.': 'Tối đa ba cấp địa điểm.',
+  'Un site ne peut pas être placé sous lui-même.': 'Không thể đặt một địa điểm dưới chính nó.',
 };

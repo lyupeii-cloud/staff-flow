@@ -94,4 +94,6 @@ const hu = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} be szeretné osztani {name} munkatársat egy másik telephelyről ekkor: {day} – jóváhagyás szükséges.',
   '{by} a validé le placement de {name} le {day}.': '{by} jóváhagyta {name} beosztását ekkor: {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} elutasította {name} beosztását ekkor: {day}.',
+  'Trois niveaux de sites au plus.': 'Legfeljebb három telephelyszint.',
+  'Un site ne peut pas être placé sous lui-même.': 'Egy telephely nem kerülhet saját maga alá.',
 };

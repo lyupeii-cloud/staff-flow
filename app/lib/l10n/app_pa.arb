@@ -369,5 +369,12 @@
   "placementAwaiting": "ਸੀਨੀਅਰ ਜਾਂ ਮਾਲਕ ਦੀ ਮਨਜ਼ੂਰੀ ਦੀ ਉਡੀਕ।",
   "noticePlacementToApprove": "{by} ਹੋਰ ਸਾਈਟ ਦੇ {name} ਨੂੰ {date} ਨੂੰ ਲਗਾਉਣਾ ਚਾਹੁੰਦੇ ਹਨ: ਮਨਜ਼ੂਰੀ ਚਾਹੀਦੀ ਹੈ।",
   "noticePlacementApproved": "{by} ਨੇ {date} ਨੂੰ {name} ਦੀ ਨਿਯੁਕਤੀ ਮਨਜ਼ੂਰ ਕੀਤੀ।",
-  "noticePlacementRefused": "{by} ਨੇ {date} ਨੂੰ {name} ਦੀ ਨਿਯੁਕਤੀ ਰੱਦ ਕੀਤੀ।"
+  "noticePlacementRefused": "{by} ਨੇ {date} ਨੂੰ {name} ਦੀ ਨਿਯੁਕਤੀ ਰੱਦ ਕੀਤੀ।",
+  "addSubSite": "ਉਪ-ਸਾਈਟ ਜੋੜੋ",
+  "moveSite": "ਹਿਲਾਓ",
+  "topLevel": "ਪਹਿਲਾ ਪੱਧਰ",
+  "moveSiteTitle": "“{name}” ਨੂੰ ਇਸਦੇ ਹੇਠਾਂ ਹਿਲਾਓ…",
+  "subSiteOf": "{name} ਦੀ ਉਪ-ਸਾਈਟ",
+  "siteTreeHint": "ਵੱਧ ਤੋਂ ਵੱਧ 3 ਪੱਧਰ, ਜਿਵੇਂ ਖੇਤਰ › ਸ਼ਹਿਰ › ਦੁਕਾਨ। ਕਿਸੇ ਸਾਈਟ ਦਾ ਮੈਨੇਜਰ ਉਸਦੇ ਹੇਠਾਂ ਦੀ ਹਰ ਚੀਜ਼ ਵੀ ਸੰਭਾਲਦਾ ਹੈ।",
+  "subSitesOnlyHint": "ਇੱਥੇ ਤੁਸੀਂ ਆਪਣੀਆਂ ਸਾਈਟਾਂ ਹੇਠ ਉਪ-ਸਾਈਟਾਂ ਜੋੜਦੇ ਹੋ।"
 }

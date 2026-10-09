@@ -369,5 +369,12 @@
   "placementAwaiting": "Wacht op goedkeuring van een leidinggevende of de eigenaar.",
   "noticePlacementToApprove": "{by} wil {name} van een andere vestiging inplannen op {date}: goedkeuring nodig.",
   "noticePlacementApproved": "{by} heeft het inplannen van {name} op {date} goedgekeurd.",
-  "noticePlacementRefused": "{by} heeft het inplannen van {name} op {date} geweigerd."
+  "noticePlacementRefused": "{by} heeft het inplannen van {name} op {date} geweigerd.",
+  "addSubSite": "Subvestiging toevoegen",
+  "moveSite": "Verplaatsen",
+  "topLevel": "Hoogste niveau",
+  "moveSiteTitle": "„{name}” verplaatsen onder…",
+  "subSiteOf": "Subvestiging van {name}",
+  "siteTreeHint": "Tot 3 niveaus, bijv. Regio › Stad › Winkel. Wie een vestiging beheert, beheert ook alles eronder.",
+  "subSitesOnlyHint": "Hier voegt u subvestigingen toe onder uw eigen vestigingen."
 }

@@ -369,5 +369,12 @@
   "placementAwaiting": "ઉપરી અથવા માલિકની મંજૂરીની રાહ.",
   "noticePlacementToApprove": "{by} બીજી સાઇટના {name}ને {date}એ ગોઠવવા માંગે છે: મંજૂરી જરૂરી.",
   "noticePlacementApproved": "{by}એ {date}એ {name}ની ગોઠવણ મંજૂર કરી.",
-  "noticePlacementRefused": "{by}એ {date}એ {name}ની ગોઠવણ નકારી."
+  "noticePlacementRefused": "{by}એ {date}એ {name}ની ગોઠવણ નકારી.",
+  "addSubSite": "પેટા-સાઇટ ઉમેરો",
+  "moveSite": "ખસેડો",
+  "topLevel": "પ્રથમ સ્તર",
+  "moveSiteTitle": "“{name}”ને આની નીચે ખસેડો…",
+  "subSiteOf": "{name}ની પેટા-સાઇટ",
+  "siteTreeHint": "વધુમાં વધુ 3 સ્તર, દા.ત. પ્રદેશ › શહેર › દુકાન. સાઇટના મેનેજર તેની નીચેનું બધું પણ સંભાળે છે.",
+  "subSitesOnlyHint": "અહીં તમે તમારી પોતાની સાઇટ નીચે પેટા-સાઇટ ઉમેરો છો."
 }

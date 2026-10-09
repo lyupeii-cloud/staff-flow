@@ -94,4 +94,6 @@ const te = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} వేరే సైట్‌కు చెందిన {name}‌ను {day}న నియమించాలనుకుంటున్నారు: ఆమోదం అవసరం.',
   '{by} a validé le placement de {name} le {day}.': '{by} {day}న {name} నియామకాన్ని ఆమోదించారు.',
   '{by} a refusé le placement de {name} le {day}.': '{by} {day}న {name} నియామకాన్ని తిరస్కరించారు.',
+  'Trois niveaux de sites au plus.': 'గరిష్ఠంగా మూడు స్థాయిల సైట్‌లు.',
+  'Un site ne peut pas être placé sous lui-même.': 'సైట్‌ను దాని కిందే ఉంచలేరు.',
 };

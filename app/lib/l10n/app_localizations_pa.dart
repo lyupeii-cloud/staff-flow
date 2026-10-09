@@ -1321,4 +1321,31 @@ class L10nPa extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by ਨੇ $date ਨੂੰ $name ਦੀ ਨਿਯੁਕਤੀ ਰੱਦ ਕੀਤੀ।';
   }
+
+  @override
+  String get addSubSite => 'ਉਪ-ਸਾਈਟ ਜੋੜੋ';
+
+  @override
+  String get moveSite => 'ਹਿਲਾਓ';
+
+  @override
+  String get topLevel => 'ਪਹਿਲਾ ਪੱਧਰ';
+
+  @override
+  String moveSiteTitle(String name) {
+    return '“$name” ਨੂੰ ਇਸਦੇ ਹੇਠਾਂ ਹਿਲਾਓ…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return '$name ਦੀ ਉਪ-ਸਾਈਟ';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'ਵੱਧ ਤੋਂ ਵੱਧ 3 ਪੱਧਰ, ਜਿਵੇਂ ਖੇਤਰ › ਸ਼ਹਿਰ › ਦੁਕਾਨ। ਕਿਸੇ ਸਾਈਟ ਦਾ ਮੈਨੇਜਰ ਉਸਦੇ ਹੇਠਾਂ ਦੀ ਹਰ ਚੀਜ਼ ਵੀ ਸੰਭਾਲਦਾ ਹੈ।';
+
+  @override
+  String get subSitesOnlyHint =>
+      'ਇੱਥੇ ਤੁਸੀਂ ਆਪਣੀਆਂ ਸਾਈਟਾਂ ਹੇਠ ਉਪ-ਸਾਈਟਾਂ ਜੋੜਦੇ ਹੋ।';
 }

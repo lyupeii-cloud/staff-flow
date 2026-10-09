@@ -1321,4 +1321,30 @@ class L10nBg extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by отказа планирането на $name на $date.';
   }
+
+  @override
+  String get addSubSite => 'Добавяне на подобект';
+
+  @override
+  String get moveSite => 'Преместване';
+
+  @override
+  String get topLevel => 'Първо ниво';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Преместване на „$name“ под…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Подобект на $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'До 3 нива, напр. Регион › Град › Магазин. Управителят на обект управлява и всичко под него.';
+
+  @override
+  String get subSitesOnlyHint => 'Тук добавяте подобекти към своите обекти.';
 }

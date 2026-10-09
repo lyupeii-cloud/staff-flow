@@ -369,5 +369,12 @@
   "placementAwaiting": "In attesa di approvazione da un superiore o dal titolare.",
   "noticePlacementToApprove": "{by} vuole pianificare {name}, di un'altra sede, il {date}: serve l'approvazione.",
   "noticePlacementApproved": "{by} ha approvato la pianificazione di {name} il {date}.",
-  "noticePlacementRefused": "{by} ha rifiutato la pianificazione di {name} il {date}."
+  "noticePlacementRefused": "{by} ha rifiutato la pianificazione di {name} il {date}.",
+  "addSubSite": "Aggiungi una sottosede",
+  "moveSite": "Sposta",
+  "topLevel": "Primo livello",
+  "moveSiteTitle": "Sposta «{name}» sotto…",
+  "subSiteOf": "Sottosede di {name}",
+  "siteTreeHint": "Fino a 3 livelli, ad es. Regione › Città › Negozio. Il responsabile di una sede gestisce anche tutto ciò che sta sotto.",
+  "subSitesOnlyHint": "Qui aggiungi sottosedi sotto le tue sedi."
 }

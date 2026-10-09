@@ -1324,4 +1324,30 @@ class L10nCs extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by odmítl(a) naplánování $name na $date.';
   }
+
+  @override
+  String get addSubSite => 'Přidat podmísto';
+
+  @override
+  String get moveSite => 'Přesunout';
+
+  @override
+  String get topLevel => 'První úroveň';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Přesunout „$name“ pod…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Podmísto místa $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Až 3 úrovně, např. Region › Město › Prodejna. Vedoucí místa řídí i vše pod ním.';
+
+  @override
+  String get subSitesOnlyHint => 'Zde přidáváte podmísta pod svá místa.';
 }

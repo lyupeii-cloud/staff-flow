@@ -369,5 +369,12 @@
   "placementAwaiting": "Venter på godkjenning fra en overordnet eller eieren.",
   "noticePlacementToApprove": "{by} vil sette opp {name} fra et annet sted {date}: må godkjennes.",
   "noticePlacementApproved": "{by} godkjente oppsettet av {name} {date}.",
-  "noticePlacementRefused": "{by} avslo oppsettet av {name} {date}."
+  "noticePlacementRefused": "{by} avslo oppsettet av {name} {date}.",
+  "addSubSite": "Legg til et understed",
+  "moveSite": "Flytt",
+  "topLevel": "Øverste nivå",
+  "moveSiteTitle": "Flytt «{name}» under…",
+  "subSiteOf": "Understed av {name}",
+  "siteTreeHint": "Opptil 3 nivåer, f.eks. Region › By › Butikk. En leder for et sted leder også alt under det.",
+  "subSitesOnlyHint": "Her legger du til understeder under dine egne steder."
 }

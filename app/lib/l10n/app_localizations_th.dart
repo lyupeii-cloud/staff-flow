@@ -1312,4 +1312,30 @@ class L10nTh extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by ปฏิเสธการจัด $name ในวันที่ $date';
   }
+
+  @override
+  String get addSubSite => 'เพิ่มสาขาย่อย';
+
+  @override
+  String get moveSite => 'ย้าย';
+
+  @override
+  String get topLevel => 'ระดับบนสุด';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'ย้าย “$name” ไปไว้ใต้…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'สาขาย่อยของ $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'สูงสุด 3 ระดับ เช่น ภูมิภาค › เมือง › ร้าน ผู้จัดการของสาขาจะดูแลทุกอย่างที่อยู่ข้างใต้ด้วย';
+
+  @override
+  String get subSitesOnlyHint => 'ที่นี่คุณเพิ่มสาขาย่อยใต้สาขาของคุณเองได้';
 }

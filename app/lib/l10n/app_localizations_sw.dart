@@ -1325,4 +1325,31 @@ class L10nSw extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by amekataa kumpangia $name tarehe $date.';
   }
+
+  @override
+  String get addSubSite => 'Ongeza tovuti ndogo';
+
+  @override
+  String get moveSite => 'Hamisha';
+
+  @override
+  String get topLevel => 'Kiwango cha juu';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Hamisha “$name” chini ya…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Tovuti ndogo ya $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Hadi viwango 3, k.m. Mkoa › Jiji › Duka. Msimamizi wa tovuti pia husimamia kila kilicho chini yake.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Hapa unaongeza tovuti ndogo chini ya tovuti zako.';
 }

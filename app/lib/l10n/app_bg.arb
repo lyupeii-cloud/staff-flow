@@ -369,5 +369,12 @@
   "placementAwaiting": "Чака одобрение от началник или собственика.",
   "noticePlacementToApprove": "{by} иска да планира {name} от друг обект на {date}: нужно е одобрение.",
   "noticePlacementApproved": "{by} одобри планирането на {name} на {date}.",
-  "noticePlacementRefused": "{by} отказа планирането на {name} на {date}."
+  "noticePlacementRefused": "{by} отказа планирането на {name} на {date}.",
+  "addSubSite": "Добавяне на подобект",
+  "moveSite": "Преместване",
+  "topLevel": "Първо ниво",
+  "moveSiteTitle": "Преместване на „{name}“ под…",
+  "subSiteOf": "Подобект на {name}",
+  "siteTreeHint": "До 3 нива, напр. Регион › Град › Магазин. Управителят на обект управлява и всичко под него.",
+  "subSitesOnlyHint": "Тук добавяте подобекти към своите обекти."
 }

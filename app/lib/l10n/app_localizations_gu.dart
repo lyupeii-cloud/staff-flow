@@ -1317,4 +1317,31 @@ class L10nGu extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$byએ $dateએ $nameની ગોઠવણ નકારી.';
   }
+
+  @override
+  String get addSubSite => 'પેટા-સાઇટ ઉમેરો';
+
+  @override
+  String get moveSite => 'ખસેડો';
+
+  @override
+  String get topLevel => 'પ્રથમ સ્તર';
+
+  @override
+  String moveSiteTitle(String name) {
+    return '“$name”ને આની નીચે ખસેડો…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return '$nameની પેટા-સાઇટ';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'વધુમાં વધુ 3 સ્તર, દા.ત. પ્રદેશ › શહેર › દુકાન. સાઇટના મેનેજર તેની નીચેનું બધું પણ સંભાળે છે.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'અહીં તમે તમારી પોતાની સાઇટ નીચે પેટા-સાઇટ ઉમેરો છો.';
 }

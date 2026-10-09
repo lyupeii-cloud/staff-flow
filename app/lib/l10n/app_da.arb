@@ -369,5 +369,12 @@
   "placementAwaiting": "Venter på godkendelse fra en overordnet eller ejeren.",
   "noticePlacementToApprove": "{by} vil planlægge {name} fra et andet sted den {date}: kræver godkendelse.",
   "noticePlacementApproved": "{by} godkendte planlægningen af {name} den {date}.",
-  "noticePlacementRefused": "{by} afviste planlægningen af {name} den {date}."
+  "noticePlacementRefused": "{by} afviste planlægningen af {name} den {date}.",
+  "addSubSite": "Tilføj et understed",
+  "moveSite": "Flyt",
+  "topLevel": "Øverste niveau",
+  "moveSiteTitle": "Flyt “{name}” under…",
+  "subSiteOf": "Understed til {name}",
+  "siteTreeHint": "Op til 3 niveauer, f.eks. Region › By › Butik. En leder af et sted leder også alt nedenunder.",
+  "subSitesOnlyHint": "Her tilføjer du understeder under dine egne steder."
 }

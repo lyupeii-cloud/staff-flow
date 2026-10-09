@@ -1293,4 +1293,30 @@ class L10nKo extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by님이 $date $name님의 배치를 거절했습니다.';
   }
+
+  @override
+  String get addSubSite => '하위 지점 추가';
+
+  @override
+  String get moveSite => '이동';
+
+  @override
+  String get topLevel => '최상위';
+
+  @override
+  String moveSiteTitle(String name) {
+    return '“$name”을(를) 다음 아래로 이동…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return '$name의 하위 지점';
+  }
+
+  @override
+  String get siteTreeHint =>
+      '최대 3단계(예: 지역 › 도시 › 매장). 지점 관리자는 그 아래의 모든 지점도 관리합니다.';
+
+  @override
+  String get subSitesOnlyHint => '여기서 내 지점 아래에 하위 지점을 추가합니다.';
 }

@@ -162,12 +162,18 @@ class Store {
       FROM memberships m JOIN companies c ON c.id = m.company_id
       WHERE m.user_id = @u::uuid AND m.left_at IS NULL
       ORDER BY c.created_at''', {'u': userId});
-    return [
-      for (final r in rows)
-        Membership(companyFromRow(r.toColumnMap()), Role.parse(r.toColumnMap()['role'] as String),
-            _sites(r.toColumnMap()['member_sites']), _sites(r.toColumnMap()['notify_sites']),
-            r.toColumnMap()['notifications_off'] != true, r.toColumnMap()['utc_offset'] as int?),
-    ];
+    final out = <Membership>[];
+    for (final row in rows) {
+      final r = row.toColumnMap();
+      final role = Role.parse(r['role'] as String);
+      var sites = _sites(r['member_sites']);
+      if (role == Role.manager && sites != null) {
+        sites = (await expandSites(r['id'] as String, sites)).toList();
+      }
+      out.add(Membership(companyFromRow(r), role, sites, _sites(r['notify_sites']), r['notifications_off'] != true,
+          r['utc_offset'] as int?));
+    }
+    return out;
   }
 
   Future<Role?> roleOf(String companyId, String userId) async {
@@ -223,6 +229,17 @@ class Store {
       INSERT INTO memberships (company_id, user_id, role, sites) VALUES (@c::uuid, @u::uuid, @r, @s::uuid[])
       ON CONFLICT (company_id, user_id) WHERE left_at IS NULL DO NOTHING''',
         {'c': companyId, 'u': userId, 'r': role.name, 's': sites});
+  }
+
+  /// [ids] et tous les sites qui sont en dessous (sites en cascade).
+  Future<Set<String>> expandSites(String companyId, Iterable<String> ids, {Session? s}) async {
+    if (ids.isEmpty) return {};
+    final rows = await query(s ?? _db, '''
+      WITH RECURSIVE t AS (
+        SELECT id FROM sites WHERE company_id = @c::uuid AND id::text = ANY(@ids::text[])
+        UNION SELECT x.id FROM sites x JOIN t ON x.parent_id = t.id)
+      SELECT id::text FROM t''', {'c': companyId, 'ids': ids.toList()});
+    return {for (final r in rows) r[0] as String};
   }
 
   /// Voir [Membership.sites].

@@ -94,4 +94,6 @@ const id = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} ingin menjadwalkan {name} dari lokasi lain pada {day}: perlu persetujuan.',
   '{by} a validé le placement de {name} le {day}.': '{by} menyetujui penjadwalan {name} pada {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} menolak penjadwalan {name} pada {day}.',
+  'Trois niveaux de sites au plus.': 'Paling banyak tiga tingkat lokasi.',
+  'Un site ne peut pas être placé sous lui-même.': 'Lokasi tidak bisa ditempatkan di bawah dirinya sendiri.',
 };

@@ -1337,4 +1337,31 @@ class L10nDe extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by hat die Einplanung von $name am $date abgelehnt.';
   }
+
+  @override
+  String get addSubSite => 'Unterstandort hinzufügen';
+
+  @override
+  String get moveSite => 'Verschieben';
+
+  @override
+  String get topLevel => 'Oberste Ebene';
+
+  @override
+  String moveSiteTitle(String name) {
+    return '„$name“ verschieben unter…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Unterstandort von $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Bis zu 3 Ebenen, z. B. Region › Stadt › Filiale. Wer einen Standort leitet, leitet auch alles darunter.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Hier fügen Sie Unterstandorte unter Ihren eigenen Standorten hinzu.';
 }

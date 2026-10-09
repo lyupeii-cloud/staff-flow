@@ -94,4 +94,6 @@ const gu = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} બીજી સાઇટના {name}ને {day}એ ગોઠવવા માંગે છે: મંજૂરી જરૂરી.',
   '{by} a validé le placement de {name} le {day}.': '{by}એ {day}એ {name}ની ગોઠવણ મંજૂર કરી.',
   '{by} a refusé le placement de {name} le {day}.': '{by}એ {day}એ {name}ની ગોઠવણ નકારી.',
+  'Trois niveaux de sites au plus.': 'વધુમાં વધુ ત્રણ સ્તરની સાઇટ.',
+  'Un site ne peut pas être placé sous lui-même.': 'સાઇટને પોતાની નીચે મૂકી શકાતી નથી.',
 };

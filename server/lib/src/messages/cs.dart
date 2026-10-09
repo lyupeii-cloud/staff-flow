@@ -94,4 +94,6 @@ const cs = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} chce naplánovat {name} z jiného místa na {day}: je třeba schválit.',
   '{by} a validé le placement de {name} le {day}.': '{by} schválil(a) naplánování {name} na {day}.',
   '{by} a refusé le placement de {name} le {day}.': '{by} odmítl(a) naplánování {name} na {day}.',
+  'Trois niveaux de sites au plus.': 'Nejvýše tři úrovně míst.',
+  'Un site ne peut pas être placé sous lui-même.': 'Místo nelze umístit pod sebe sama.',
 };

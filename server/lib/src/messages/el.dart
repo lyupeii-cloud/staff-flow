@@ -94,4 +94,6 @@ const el = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': 'Ο/Η {by} θέλει να προγραμματίσει τον/την {name} από άλλο σημείο στις {day}: απαιτείται έγκριση.',
   '{by} a validé le placement de {name} le {day}.': 'Ο/Η {by} ενέκρινε τον προγραμματισμό του/της {name} στις {day}.',
   '{by} a refusé le placement de {name} le {day}.': 'Ο/Η {by} απέρριψε τον προγραμματισμό του/της {name} στις {day}.',
+  'Trois niveaux de sites au plus.': 'Το πολύ τρία επίπεδα σημείων.',
+  'Un site ne peut pas être placé sous lui-même.': 'Ένα σημείο δεν μπορεί να μπει κάτω από τον εαυτό του.',
 };

@@ -1330,4 +1330,31 @@ class L10nUk extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by відхилив(ла) призначення $name на $date.';
   }
+
+  @override
+  String get addSubSite => 'Додати підоб\'єкт';
+
+  @override
+  String get moveSite => 'Перемістити';
+
+  @override
+  String get topLevel => 'Верхній рівень';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Перемістити «$name» під…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Підоб\'єкт $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'До 3 рівнів, наприклад Регіон › Місто › Магазин. Керівник об\'єкта керує й усім, що нижче.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Тут ви додаєте підоб\'єкти до своїх об\'єктів.';
 }

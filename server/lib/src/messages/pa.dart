@@ -94,4 +94,6 @@ const pa = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} ਹੋਰ ਸਾਈਟ ਦੇ {name} ਨੂੰ {day} ਨੂੰ ਲਗਾਉਣਾ ਚਾਹੁੰਦੇ ਹਨ: ਮਨਜ਼ੂਰੀ ਚਾਹੀਦੀ ਹੈ।',
   '{by} a validé le placement de {name} le {day}.': '{by} ਨੇ {day} ਨੂੰ {name} ਦੀ ਨਿਯੁਕਤੀ ਮਨਜ਼ੂਰ ਕੀਤੀ।',
   '{by} a refusé le placement de {name} le {day}.': '{by} ਨੇ {day} ਨੂੰ {name} ਦੀ ਨਿਯੁਕਤੀ ਰੱਦ ਕੀਤੀ।',
+  'Trois niveaux de sites au plus.': 'ਵੱਧ ਤੋਂ ਵੱਧ ਤਿੰਨ ਪੱਧਰਾਂ ਦੀਆਂ ਸਾਈਟਾਂ।',
+  'Un site ne peut pas être placé sous lui-même.': 'ਕਿਸੇ ਸਾਈਟ ਨੂੰ ਉਸਦੇ ਆਪਣੇ ਹੇਠਾਂ ਨਹੀਂ ਰੱਖਿਆ ਜਾ ਸਕਦਾ।',
 };

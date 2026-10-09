@@ -442,15 +442,22 @@ class Api {
 
   Future<Response> _addCatalogItem(Request req, User user) async {
     final body = await _body(req);
-    final item =
-        await planning.addCatalogItem(user, req.params['id']!, _kind(req), _string(body, 'name'));
+    final parent = body['parentId'];
+    if (parent != null && parent is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    final item = await planning.addCatalogItem(user, req.params['id']!, _kind(req), _string(body, 'name'),
+        parentId: parent as String?);
     return _json(item.toJson(), status: 201);
   }
 
   Future<Response> _updateCatalogItem(Request req, User user) async {
     final body = await _body(req);
+    final parent = body['parentId'];
+    if (parent != null && parent is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
     await planning.updateCatalogItem(user, req.params['id']!, _kind(req), req.params['itemId']!,
-        name: body['name'] as String?, archived: body['archived'] as bool?);
+        name: body['name'] as String?,
+        archived: body['archived'] as bool?,
+        move: body.containsKey('parentId'),
+        parentId: parent as String?);
     return Response(204);
   }
 

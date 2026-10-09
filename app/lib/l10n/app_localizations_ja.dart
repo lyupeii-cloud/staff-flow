@@ -1293,4 +1293,29 @@ class L10nJa extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$byさんが$dateの$nameさんの配置を却下しました。';
   }
+
+  @override
+  String get addSubSite => '下位拠点を追加';
+
+  @override
+  String get moveSite => '移動';
+
+  @override
+  String get topLevel => '最上位';
+
+  @override
+  String moveSiteTitle(String name) {
+    return '「$name」を次の下へ移動…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return '$nameの下位拠点';
+  }
+
+  @override
+  String get siteTreeHint => '最大3階層（例：地域 › 都市 › 店舗）。拠点の責任者は、その下のすべても管理します。';
+
+  @override
+  String get subSitesOnlyHint => 'ここでは、自分の拠点の下に下位拠点を追加できます。';
 }

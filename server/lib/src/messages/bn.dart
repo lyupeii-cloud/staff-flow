@@ -94,4 +94,6 @@ const bn = <String, String>{
   '{by} veut placer {name}, d\'un autre site, le {day} : à valider.': '{by} অন্য সাইটের {name}-কে {day} তারিখে রাখতে চান: অনুমোদন দরকার।',
   '{by} a validé le placement de {name} le {day}.': '{by} {day} তারিখে {name}-এর নিয়োগ অনুমোদন করেছেন।',
   '{by} a refusé le placement de {name} le {day}.': '{by} {day} তারিখে {name}-এর নিয়োগ প্রত্যাখ্যান করেছেন।',
+  'Trois niveaux de sites au plus.': 'সর্বোচ্চ তিন স্তরের সাইট।',
+  'Un site ne peut pas être placé sous lui-même.': 'কোনো সাইটকে তার নিজের নিচে রাখা যায় না।',
 };

@@ -369,5 +369,12 @@
   "placementAwaiting": "Așteaptă aprobarea unui superior sau a proprietarului.",
   "noticePlacementToApprove": "{by} vrea să programeze pe {name}, de la alt punct de lucru, pe {date}: necesită aprobare.",
   "noticePlacementApproved": "{by} a aprobat programarea lui {name} pe {date}.",
-  "noticePlacementRefused": "{by} a refuzat programarea lui {name} pe {date}."
+  "noticePlacementRefused": "{by} a refuzat programarea lui {name} pe {date}.",
+  "addSubSite": "Adaugă un sub-punct de lucru",
+  "moveSite": "Mută",
+  "topLevel": "Primul nivel",
+  "moveSiteTitle": "Mută „{name}” sub…",
+  "subSiteOf": "Sub-punct al {name}",
+  "siteTreeHint": "Până la 3 niveluri, de ex. Regiune › Oraș › Magazin. Responsabilul unui punct de lucru gestionează și tot ce e sub el.",
+  "subSitesOnlyHint": "Aici adăugați sub-puncte de lucru sub propriile puncte."
 }

@@ -1326,4 +1326,30 @@ class L10nSk extends L10n {
   String noticePlacementRefused(String by, String name, String date) {
     return '$by zamietol(a) naplánovanie $name na $date.';
   }
+
+  @override
+  String get addSubSite => 'Pridať podmiesto';
+
+  @override
+  String get moveSite => 'Presunúť';
+
+  @override
+  String get topLevel => 'Prvá úroveň';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Presunúť „$name“ pod…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Podmiesto miesta $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Až 3 úrovne, napr. Región › Mesto › Predajňa. Vedúci miesta riadi aj všetko pod ním.';
+
+  @override
+  String get subSitesOnlyHint => 'Tu pridávate podmiesta pod svoje miesta.';
 }
