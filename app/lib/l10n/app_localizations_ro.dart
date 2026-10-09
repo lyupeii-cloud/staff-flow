@@ -1216,4 +1216,95 @@ class L10nRo extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Ore după ora din $zone ($company). Dispozitivul tău: $here.';
   }
+
+  @override
+  String get addPreset => 'Adaugă presetarea';
+
+  @override
+  String get addPresets => 'Creează presetări';
+
+  @override
+  String get appearance => 'Aspect';
+
+  @override
+  String get chooseLogo => 'Alege o imagine PNG';
+
+  @override
+  String get conversationMuted =>
+      'Notificări oprite pentru această conversație.';
+
+  @override
+  String get conversationUnmuted =>
+      'Notificări repornite pentru această conversație.';
+
+  @override
+  String get customization => 'Personalizare';
+
+  @override
+  String get disableGroup => 'Dezactivează grupul';
+
+  @override
+  String get disableGroupConfirm =>
+      'Grupul întregii firme va fi ascuns pentru toți. Îl poți reactiva din Mesaje.';
+
+  @override
+  String get editPresets => 'Presetări';
+
+  @override
+  String get enable => 'Reactivează';
+
+  @override
+  String get groupDisabled => 'Grup dezactivat (doar tu îl vezi)';
+
+  @override
+  String get logoHint =>
+      'O imagine PNG mică (logoul tău) afișată pe fila firmei, pentru toți membrii.';
+
+  @override
+  String get logoPngOnly => 'Alege o imagine PNG de cel mult 1 MB.';
+
+  @override
+  String get muteConversation => 'Oprește notificările acestei conversații';
+
+  @override
+  String get myIdentifier => 'Identificatorul meu';
+
+  @override
+  String get myProfile => 'Profilul meu';
+
+  @override
+  String get presetName => 'Nume (ex. Dimineață)';
+
+  @override
+  String get removeLogo => 'Elimină imaginea';
+
+  @override
+  String get resetGroup => 'Resetează grupul';
+
+  @override
+  String get resetGroupConfirm =>
+      'Toate mesajele din grupul firmei vor fi șterse pentru toți.';
+
+  @override
+  String get settingsTitle => 'Setări';
+
+  @override
+  String get shiftPresets => 'Presetări de ore';
+
+  @override
+  String get shiftPresetsHint =>
+      'Ore gata făcute (dimineață, seară, noapte…): o atingere într-o tură completează începutul și sfârșitul.';
+
+  @override
+  String get themeDark => 'Întunecat';
+
+  @override
+  String get themeLight => 'Luminos';
+
+  @override
+  String get themeSystem => 'Sistem';
+
+  @override
+  String get unmuteConversation =>
+      'Repornește notificările acestei conversații';
 }

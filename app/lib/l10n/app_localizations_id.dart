@@ -1208,4 +1208,92 @@ class L10nId extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Jam menurut waktu $zone ($company). Perangkat Anda: $here.';
   }
+
+  @override
+  String get addPreset => 'Tambah prasetel';
+
+  @override
+  String get addPresets => 'Buat prasetel';
+
+  @override
+  String get appearance => 'Tampilan';
+
+  @override
+  String get chooseLogo => 'Pilih gambar PNG';
+
+  @override
+  String get conversationMuted => 'Notifikasi percakapan ini dibisukan.';
+
+  @override
+  String get conversationUnmuted => 'Notifikasi percakapan ini aktif lagi.';
+
+  @override
+  String get customization => 'Personalisasi';
+
+  @override
+  String get disableGroup => 'Nonaktifkan grup';
+
+  @override
+  String get disableGroupConfirm =>
+      'Grup seluruh perusahaan akan disembunyikan untuk semua orang. Anda bisa mengaktifkannya lagi di Pesan.';
+
+  @override
+  String get editPresets => 'Prasetel';
+
+  @override
+  String get enable => 'Aktifkan lagi';
+
+  @override
+  String get groupDisabled => 'Grup dinonaktifkan (hanya Anda yang melihatnya)';
+
+  @override
+  String get logoHint =>
+      'Gambar PNG kecil (logo Anda) yang tampil di tab perusahaan untuk semua anggotanya.';
+
+  @override
+  String get logoPngOnly => 'Pilih gambar PNG maksimal 1 MB.';
+
+  @override
+  String get muteConversation => 'Bisukan percakapan ini';
+
+  @override
+  String get myIdentifier => 'ID saya';
+
+  @override
+  String get myProfile => 'Profil saya';
+
+  @override
+  String get presetName => 'Nama (mis. Pagi)';
+
+  @override
+  String get removeLogo => 'Hapus gambar';
+
+  @override
+  String get resetGroup => 'Atur ulang grup';
+
+  @override
+  String get resetGroupConfirm =>
+      'Semua pesan di grup perusahaan akan dihapus untuk semua orang.';
+
+  @override
+  String get settingsTitle => 'Pengaturan';
+
+  @override
+  String get shiftPresets => 'Prasetel jam kerja';
+
+  @override
+  String get shiftPresetsHint =>
+      'Jam siap pakai (pagi, sore, malam…): satu ketukan di shift mengisi jam mulai dan selesai.';
+
+  @override
+  String get themeDark => 'Gelap';
+
+  @override
+  String get themeLight => 'Terang';
+
+  @override
+  String get themeSystem => 'Sistem';
+
+  @override
+  String get unmuteConversation => 'Aktifkan notifikasi percakapan ini';
 }

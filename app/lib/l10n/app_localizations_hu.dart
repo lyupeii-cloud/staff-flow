@@ -1204,4 +1204,94 @@ class L10nHu extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Időpontok $zone idő szerint ($company). Az eszközöd: $here.';
   }
+
+  @override
+  String get addPreset => 'Előbeállítás hozzáadása';
+
+  @override
+  String get addPresets => 'Előbeállítások létrehozása';
+
+  @override
+  String get appearance => 'Megjelenés';
+
+  @override
+  String get chooseLogo => 'PNG-kép kiválasztása';
+
+  @override
+  String get conversationMuted => 'A beszélgetés értesítései némítva.';
+
+  @override
+  String get conversationUnmuted =>
+      'A beszélgetés értesítései újra bekapcsolva.';
+
+  @override
+  String get customization => 'Testreszabás';
+
+  @override
+  String get disableGroup => 'Csoport kikapcsolása';
+
+  @override
+  String get disableGroupConfirm =>
+      'Az egész cég csoportja mindenki elől el lesz rejtve. Az Üzenetekben újra bekapcsolhatod.';
+
+  @override
+  String get editPresets => 'Előbeállítások';
+
+  @override
+  String get enable => 'Újra bekapcsolás';
+
+  @override
+  String get groupDisabled => 'Csoport kikapcsolva (csak te látod)';
+
+  @override
+  String get logoHint =>
+      'Kis PNG-kép (a logód), amely a cég fülén jelenik meg minden tag számára.';
+
+  @override
+  String get logoPngOnly => 'Legfeljebb 1 MB-os PNG-képet válassz.';
+
+  @override
+  String get muteConversation => 'Beszélgetés némítása';
+
+  @override
+  String get myIdentifier => 'Azonosítóm';
+
+  @override
+  String get myProfile => 'Profilom';
+
+  @override
+  String get presetName => 'Név (pl. Reggeli)';
+
+  @override
+  String get removeLogo => 'Kép eltávolítása';
+
+  @override
+  String get resetGroup => 'Csoport visszaállítása';
+
+  @override
+  String get resetGroupConfirm =>
+      'A cég csoportjának minden üzenete mindenkinél törlődik.';
+
+  @override
+  String get settingsTitle => 'Beállítások';
+
+  @override
+  String get shiftPresets => 'Műszak-előbeállítások';
+
+  @override
+  String get shiftPresetsHint =>
+      'Kész időpontok (reggel, este, éjjel…): egy koppintás a műszakban kitölti a kezdést és a végét.';
+
+  @override
+  String get themeDark => 'Sötét';
+
+  @override
+  String get themeLight => 'Világos';
+
+  @override
+  String get themeSystem => 'Rendszer';
+
+  @override
+  String get unmuteConversation =>
+      'Beszélgetés értesítéseinek visszakapcsolása';
 }

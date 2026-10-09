@@ -1220,4 +1220,95 @@ class L10nDe extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Zeiten in der Zeit von $zone ($company). Ihr Gerät: $here.';
   }
+
+  @override
+  String get addPreset => 'Vorlage hinzufügen';
+
+  @override
+  String get addPresets => 'Vorlagen erstellen';
+
+  @override
+  String get appearance => 'Darstellung';
+
+  @override
+  String get chooseLogo => 'PNG-Bild wählen';
+
+  @override
+  String get conversationMuted =>
+      'Benachrichtigungen für diese Unterhaltung stummgeschaltet.';
+
+  @override
+  String get conversationUnmuted =>
+      'Benachrichtigungen für diese Unterhaltung wieder an.';
+
+  @override
+  String get customization => 'Personalisierung';
+
+  @override
+  String get disableGroup => 'Gruppe deaktivieren';
+
+  @override
+  String get disableGroupConfirm =>
+      'Die Gruppe des ganzen Unternehmens wird für alle ausgeblendet. Sie können sie unter Nachrichten wieder aktivieren.';
+
+  @override
+  String get editPresets => 'Vorlagen';
+
+  @override
+  String get enable => 'Wieder aktivieren';
+
+  @override
+  String get groupDisabled => 'Gruppe deaktiviert (nur Sie sehen sie)';
+
+  @override
+  String get logoHint =>
+      'Ein kleines PNG-Bild (Ihr Logo) auf dem Unternehmens-Tab, für alle Mitglieder.';
+
+  @override
+  String get logoPngOnly => 'Wählen Sie ein PNG-Bild von höchstens 1 MB.';
+
+  @override
+  String get muteConversation => 'Diese Unterhaltung stummschalten';
+
+  @override
+  String get myIdentifier => 'Meine Kennung';
+
+  @override
+  String get myProfile => 'Mein Profil';
+
+  @override
+  String get presetName => 'Name (z. B. Früh)';
+
+  @override
+  String get removeLogo => 'Bild entfernen';
+
+  @override
+  String get resetGroup => 'Gruppe zurücksetzen';
+
+  @override
+  String get resetGroupConfirm =>
+      'Alle Nachrichten der Unternehmensgruppe werden für alle gelöscht.';
+
+  @override
+  String get settingsTitle => 'Einstellungen';
+
+  @override
+  String get shiftPresets => 'Schichtvorlagen';
+
+  @override
+  String get shiftPresetsHint =>
+      'Fertige Zeiten (Früh, Spät, Nacht …): ein Tippen in einer Schicht füllt Beginn und Ende aus.';
+
+  @override
+  String get themeDark => 'Dunkel';
+
+  @override
+  String get themeLight => 'Hell';
+
+  @override
+  String get themeSystem => 'System';
+
+  @override
+  String get unmuteConversation =>
+      'Benachrichtigungen dieser Unterhaltung wieder einschalten';
 }

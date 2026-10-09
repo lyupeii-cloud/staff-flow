@@ -11,6 +11,7 @@ import '../session.dart';
 import 'chat_screen.dart';
 import 'company_tab.dart';
 import 'group_editor.dart';
+import 'home_screen.dart';
 
 /// Messagerie d'une entreprise (section 7) : le groupe de toute l'équipe,
 /// puis les conversations privées. Hors connexion : la dernière liste
@@ -166,6 +167,22 @@ class _MessagesViewState extends State<MessagesView> {
               physics: const AlwaysScrollableScrollPhysics(),
               padding: const EdgeInsets.only(bottom: 88),
               children: [
+                // Groupe de l'entreprise désactivé : seul le patron le voit, et peut le rétablir.
+                if (!company.groupEnabled && widget.membership.role == Role.owner)
+                  ListTile(
+                    leading: const CircleAvatar(child: Icon(Icons.groups_outlined)),
+                    title: Text(t.wholeTeam),
+                    subtitle: Text(t.groupDisabled),
+                    trailing: TextButton(
+                      onPressed: () async {
+                        await runAction(context, session,
+                            () => session.api.send('PUT', '/companies/${company.id}/group', body: {'enabled': true}));
+                        await session.refresh();
+                        if (mounted) setState(_load);
+                      },
+                      child: Text(t.enable),
+                    ),
+                  ),
                 for (final c in snap.data!)
                   ListTile(
                     leading: c.isGroup
@@ -184,8 +201,11 @@ class _MessagesViewState extends State<MessagesView> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        if (c.last != null)
-                          Text(_shortWhen(c.last!.createdAt, loc), style: Theme.of(context).textTheme.bodySmall),
+                        Row(mainAxisSize: MainAxisSize.min, children: [
+                          if (c.muted) Icon(Icons.notifications_off, size: 14, color: Theme.of(context).disabledColor),
+                          if (c.last != null)
+                            Text(' ${_shortWhen(c.last!.createdAt, loc)}', style: Theme.of(context).textTheme.bodySmall),
+                        ]),
                         if (c.unread > 0) ...[
                           const SizedBox(height: 4),
                           Badge(label: Text('${c.unread}')),

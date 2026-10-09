@@ -1208,4 +1208,92 @@ class L10nHi extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'समय $zone के अनुसार ($company)। आपका डिवाइस: $here।';
   }
+
+  @override
+  String get addPreset => 'प्रीसेट जोड़ें';
+
+  @override
+  String get addPresets => 'प्रीसेट बनाएँ';
+
+  @override
+  String get appearance => 'रूप-रंग';
+
+  @override
+  String get chooseLogo => 'PNG छवि चुनें';
+
+  @override
+  String get conversationMuted => 'इस बातचीत की सूचनाएँ बंद कीं।';
+
+  @override
+  String get conversationUnmuted => 'इस बातचीत की सूचनाएँ फिर चालू कीं।';
+
+  @override
+  String get customization => 'अनुकूलन';
+
+  @override
+  String get disableGroup => 'समूह बंद करें';
+
+  @override
+  String get disableGroupConfirm =>
+      'पूरी कंपनी का समूह सभी से छिप जाएगा। आप इसे संदेशों में फिर चालू कर सकते हैं।';
+
+  @override
+  String get editPresets => 'प्रीसेट';
+
+  @override
+  String get enable => 'फिर चालू करें';
+
+  @override
+  String get groupDisabled => 'समूह बंद है (केवल आप देख सकते हैं)';
+
+  @override
+  String get logoHint =>
+      'कंपनी के टैब पर दिखने वाली छोटी PNG छवि (आपका लोगो), सभी सदस्यों के लिए।';
+
+  @override
+  String get logoPngOnly => '1 MB तक की PNG छवि चुनें।';
+
+  @override
+  String get muteConversation => 'इस बातचीत को म्यूट करें';
+
+  @override
+  String get myIdentifier => 'मेरी पहचान';
+
+  @override
+  String get myProfile => 'मेरी प्रोफ़ाइल';
+
+  @override
+  String get presetName => 'नाम (जैसे सुबह)';
+
+  @override
+  String get removeLogo => 'छवि हटाएँ';
+
+  @override
+  String get resetGroup => 'समूह रीसेट करें';
+
+  @override
+  String get resetGroupConfirm =>
+      'कंपनी समूह के सभी संदेश सभी के लिए मिट जाएँगे।';
+
+  @override
+  String get settingsTitle => 'सेटिंग';
+
+  @override
+  String get shiftPresets => 'शिफ़्ट समय प्रीसेट';
+
+  @override
+  String get shiftPresetsHint =>
+      'तैयार समय (सुबह, शाम, रात…): शिफ़्ट में एक टैप से शुरुआत और अंत भर जाता है।';
+
+  @override
+  String get themeDark => 'गहरा';
+
+  @override
+  String get themeLight => 'हल्का';
+
+  @override
+  String get themeSystem => 'सिस्टम';
+
+  @override
+  String get unmuteConversation => 'इस बातचीत की सूचनाएँ फिर चालू करें';
 }

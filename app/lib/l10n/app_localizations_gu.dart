@@ -1205,4 +1205,91 @@ class L10nGu extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'સમય $zone ના સમય મુજબ ($company). તમારું ઉપકરણ: $here.';
   }
+
+  @override
+  String get addPreset => 'પ્રીસેટ ઉમેરો';
+
+  @override
+  String get addPresets => 'પ્રીસેટ બનાવો';
+
+  @override
+  String get appearance => 'દેખાવ';
+
+  @override
+  String get chooseLogo => 'PNG છબી પસંદ કરો';
+
+  @override
+  String get conversationMuted => 'આ વાતચીતની સૂચનાઓ બંધ કરી.';
+
+  @override
+  String get conversationUnmuted => 'આ વાતચીતની સૂચનાઓ ફરી ચાલુ કરી.';
+
+  @override
+  String get customization => 'વૈયક્તિકરણ';
+
+  @override
+  String get disableGroup => 'જૂથ બંધ કરો';
+
+  @override
+  String get disableGroupConfirm =>
+      'આખી કંપનીનું જૂથ બધાથી છુપાઈ જશે. સંદેશાઓમાં તેને ફરી ચાલુ કરી શકાય.';
+
+  @override
+  String get editPresets => 'પ્રીસેટ';
+
+  @override
+  String get enable => 'ફરી ચાલુ કરો';
+
+  @override
+  String get groupDisabled => 'જૂથ બંધ છે (ફક્ત તમે જુઓ છો)';
+
+  @override
+  String get logoHint =>
+      'કંપનીના ટૅબ પર દેખાતી નાની PNG છબી (તમારો લોગો), બધા સભ્યો માટે.';
+
+  @override
+  String get logoPngOnly => '1 MB સુધીની PNG છબી પસંદ કરો.';
+
+  @override
+  String get muteConversation => 'આ વાતચીત શાંત કરો';
+
+  @override
+  String get myIdentifier => 'મારો ઓળખકર્તા';
+
+  @override
+  String get myProfile => 'મારી પ્રોફાઇલ';
+
+  @override
+  String get presetName => 'નામ (દા.ત. સવાર)';
+
+  @override
+  String get removeLogo => 'છબી દૂર કરો';
+
+  @override
+  String get resetGroup => 'જૂથ રીસેટ કરો';
+
+  @override
+  String get resetGroupConfirm => 'કંપની જૂથના બધા સંદેશા બધા માટે કાઢી નખાશે.';
+
+  @override
+  String get settingsTitle => 'સેટિંગ્સ';
+
+  @override
+  String get shiftPresets => 'શિફ્ટ સમયના પ્રીસેટ';
+
+  @override
+  String get shiftPresetsHint =>
+      'તૈયાર સમય (સવાર, સાંજ, રાત…): શિફ્ટમાં એક ટૅપથી શરૂઆત અને અંત ભરાય છે.';
+
+  @override
+  String get themeDark => 'ઘાટો';
+
+  @override
+  String get themeLight => 'આછો';
+
+  @override
+  String get themeSystem => 'સિસ્ટમ';
+
+  @override
+  String get unmuteConversation => 'આ વાતચીતની સૂચનાઓ ચાલુ કરો';
 }

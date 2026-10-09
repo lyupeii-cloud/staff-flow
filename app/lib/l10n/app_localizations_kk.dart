@@ -1208,4 +1208,93 @@ class L10nKk extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Уақыттар $zone уақыты бойынша ($company). Құрылғыңыз: $here.';
   }
+
+  @override
+  String get addPreset => 'Үлгі қосу';
+
+  @override
+  String get addPresets => 'Үлгілер жасау';
+
+  @override
+  String get appearance => 'Көрініс';
+
+  @override
+  String get chooseLogo => 'PNG суретін таңдау';
+
+  @override
+  String get conversationMuted => 'Бұл әңгіменің хабарландырулары өшірілді.';
+
+  @override
+  String get conversationUnmuted =>
+      'Бұл әңгіменің хабарландырулары қайта қосылды.';
+
+  @override
+  String get customization => 'Жекелендіру';
+
+  @override
+  String get disableGroup => 'Топты өшіру';
+
+  @override
+  String get disableGroupConfirm =>
+      'Бүкіл компания тобы бәрінен жасырылады. Оны «Хабарламалар» бөлімінде қайта қосуға болады.';
+
+  @override
+  String get editPresets => 'Үлгілер';
+
+  @override
+  String get enable => 'Қайта қосу';
+
+  @override
+  String get groupDisabled => 'Топ өшірулі (тек сіз көресіз)';
+
+  @override
+  String get logoHint =>
+      'Компания қойындысында барлық мүшелерге көрінетін шағын PNG сурет (логотипіңіз).';
+
+  @override
+  String get logoPngOnly => 'Көлемі 1 МБ-тан аспайтын PNG суретін таңдаңыз.';
+
+  @override
+  String get muteConversation => 'Бұл әңгімені дыбыссыз ету';
+
+  @override
+  String get myIdentifier => 'Менің идентификаторым';
+
+  @override
+  String get myProfile => 'Менің профилім';
+
+  @override
+  String get presetName => 'Атауы (мыс. Таңертең)';
+
+  @override
+  String get removeLogo => 'Суретті алып тастау';
+
+  @override
+  String get resetGroup => 'Топты тазалау';
+
+  @override
+  String get resetGroupConfirm =>
+      'Компания тобындағы барлық хабарламалар бәрі үшін жойылады.';
+
+  @override
+  String get settingsTitle => 'Баптаулар';
+
+  @override
+  String get shiftPresets => 'Ауысым уақыты үлгілері';
+
+  @override
+  String get shiftPresetsHint =>
+      'Дайын уақыттар (таң, кеш, түн…): ауысымда бір рет басқанда басы мен соңы толтырылады.';
+
+  @override
+  String get themeDark => 'Қараңғы';
+
+  @override
+  String get themeLight => 'Ашық';
+
+  @override
+  String get themeSystem => 'Жүйелік';
+
+  @override
+  String get unmuteConversation => 'Бұл әңгіменің хабарландыруларын қосу';
 }

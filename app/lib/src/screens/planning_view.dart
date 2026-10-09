@@ -21,7 +21,11 @@ class PlanningView extends StatefulWidget {
   final Membership membership;
   final CompanyData data;
 
-  const PlanningView({super.key, required this.session, required this.membership, required this.data});
+  /// Jour à afficher en ouvrant (sinon aujourd'hui).
+  final DateTime? initialDay;
+
+  const PlanningView(
+      {super.key, required this.session, required this.membership, required this.data, this.initialDay});
 
   @override
   State<PlanningView> createState() => _PlanningViewState();
@@ -29,7 +33,7 @@ class PlanningView extends StatefulWidget {
 
 class _PlanningViewState extends State<PlanningView> {
   var _mode = _Mode.week;
-  var _anchor = dateOnly(DateTime.now());
+  late var _anchor = dateOnly(widget.initialDay ?? DateTime.now());
   late var _selected = _anchor;
   late bool _mineOnly = !widget.membership.role.canManage;
 
@@ -499,15 +503,18 @@ class _PlanningViewState extends State<PlanningView> {
         padding: const EdgeInsets.only(top: 12, bottom: 4),
         child: Row(
           children: [
-            Text(
-              dayLabel(day, loc),
-              style: theme.textTheme.titleSmall?.copyWith(
-                color: today ? theme.colorScheme.primary : null,
-                fontWeight: today ? FontWeight.bold : null,
+            // Date sur une largeur fixe : les « + » sont alignés les uns sous les autres.
+            SizedBox(
+              width: 150,
+              child: Text(
+                dayLabel(day, loc),
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.titleSmall?.copyWith(
+                  color: today ? theme.colorScheme.primary : null,
+                  fontWeight: today ? FontWeight.bold : null,
+                ),
               ),
             ),
-            // Le « + » à côté de la date (pas à l'autre bout de l'écran).
-            const SizedBox(width: 6),
             if (canEdit && !isEditableDay(day))
               Tooltip(
                 message: t.readOnlyPastDays,

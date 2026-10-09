@@ -1183,4 +1183,89 @@ class L10nJa extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return '時刻は $zone 時間（$company）です。お使いのデバイス：$here。';
   }
+
+  @override
+  String get addPreset => 'プリセットを追加';
+
+  @override
+  String get addPresets => 'プリセットを作成';
+
+  @override
+  String get appearance => '表示';
+
+  @override
+  String get chooseLogo => 'PNG 画像を選択';
+
+  @override
+  String get conversationMuted => 'この会話の通知をミュートしました。';
+
+  @override
+  String get conversationUnmuted => 'この会話の通知を再開しました。';
+
+  @override
+  String get customization => 'カスタマイズ';
+
+  @override
+  String get disableGroup => 'グループをオフにする';
+
+  @override
+  String get disableGroupConfirm =>
+      '会社全体のグループが全員に対して非表示になります。メッセージから再びオンにできます。';
+
+  @override
+  String get editPresets => 'プリセット';
+
+  @override
+  String get enable => '再びオンにする';
+
+  @override
+  String get groupDisabled => 'グループはオフです（あなたにだけ表示）';
+
+  @override
+  String get logoHint => '会社のタブに表示される小さな PNG 画像（ロゴ）。全メンバーに表示されます。';
+
+  @override
+  String get logoPngOnly => '1 MB 以下の PNG 画像を選んでください。';
+
+  @override
+  String get muteConversation => 'この会話をミュート';
+
+  @override
+  String get myIdentifier => 'マイ ID';
+
+  @override
+  String get myProfile => 'マイプロフィール';
+
+  @override
+  String get presetName => '名前（例：朝）';
+
+  @override
+  String get removeLogo => '画像を削除';
+
+  @override
+  String get resetGroup => 'グループをリセット';
+
+  @override
+  String get resetGroupConfirm => '会社グループのすべてのメッセージが全員に対して削除されます。';
+
+  @override
+  String get settingsTitle => '設定';
+
+  @override
+  String get shiftPresets => '勤務時間のプリセット';
+
+  @override
+  String get shiftPresetsHint => '決まった時間（朝・夕方・夜…）：シフトでタップすると開始と終了が入ります。';
+
+  @override
+  String get themeDark => 'ダーク';
+
+  @override
+  String get themeLight => 'ライト';
+
+  @override
+  String get themeSystem => 'システム';
+
+  @override
+  String get unmuteConversation => 'この会話のミュートを解除';
 }

@@ -196,6 +196,10 @@ class _AllSchedulesViewState extends State<AllSchedulesView> with AutomaticKeepA
                 Container(width: 6, color: companyColor(indexOf(s['companyId'] as String).clamp(0, 999))),
                 Expanded(
                   child: ListTile(
+                    // Toucher : le planning de l'entreprise, à ce jour-là.
+                    onTap: () => widget.session.openDay.value =
+                        (companyId: s['companyId'] as String, day: parseDay(s['day'] as String)),
+                    trailing: const Icon(Icons.chevron_right),
                     leading: s['overlap'] == true ? Tooltip(message: t.overlapTooltip, child: _Bang()) : null,
                     title: Text('${timeLabel(s['start'] as int)} – ${timeLabel(s['end'] as int)}'
                         '${(s['end'] as int) > 1440 ? ' (+1)' : ''}  ·  ${s['companyName']}'),

@@ -1209,4 +1209,91 @@ class L10nPa extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'ਸਮੇਂ $zone ਦੇ ਸਮੇਂ ਮੁਤਾਬਕ ($company)। ਤੁਹਾਡੀ ਡਿਵਾਈਸ: $here।';
   }
+
+  @override
+  String get addPreset => 'ਪ੍ਰੀਸੈੱਟ ਜੋੜੋ';
+
+  @override
+  String get addPresets => 'ਪ੍ਰੀਸੈੱਟ ਬਣਾਓ';
+
+  @override
+  String get appearance => 'ਦਿੱਖ';
+
+  @override
+  String get chooseLogo => 'PNG ਤਸਵੀਰ ਚੁਣੋ';
+
+  @override
+  String get conversationMuted => 'ਇਸ ਗੱਲਬਾਤ ਦੀਆਂ ਸੂਚਨਾਵਾਂ ਬੰਦ ਕੀਤੀਆਂ।';
+
+  @override
+  String get conversationUnmuted => 'ਇਸ ਗੱਲਬਾਤ ਦੀਆਂ ਸੂਚਨਾਵਾਂ ਮੁੜ ਚਾਲੂ ਕੀਤੀਆਂ।';
+
+  @override
+  String get customization => 'ਨਿੱਜੀਕਰਨ';
+
+  @override
+  String get disableGroup => 'ਸਮੂਹ ਬੰਦ ਕਰੋ';
+
+  @override
+  String get disableGroupConfirm =>
+      'ਪੂਰੀ ਕੰਪਨੀ ਦਾ ਸਮੂਹ ਸਭ ਤੋਂ ਲੁਕ ਜਾਵੇਗਾ। ਤੁਸੀਂ ਇਸਨੂੰ ਸੁਨੇਹਿਆਂ ਵਿੱਚ ਮੁੜ ਚਾਲੂ ਕਰ ਸਕਦੇ ਹੋ।';
+
+  @override
+  String get editPresets => 'ਪ੍ਰੀਸੈੱਟ';
+
+  @override
+  String get enable => 'ਮੁੜ ਚਾਲੂ ਕਰੋ';
+
+  @override
+  String get groupDisabled => 'ਸਮੂਹ ਬੰਦ ਹੈ (ਸਿਰਫ਼ ਤੁਸੀਂ ਵੇਖਦੇ ਹੋ)';
+
+  @override
+  String get logoHint =>
+      'ਕੰਪਨੀ ਦੀ ਟੈਬ \'ਤੇ ਦਿਸਣ ਵਾਲੀ ਛੋਟੀ PNG ਤਸਵੀਰ (ਤੁਹਾਡਾ ਲੋਗੋ), ਸਾਰੇ ਮੈਂਬਰਾਂ ਲਈ।';
+
+  @override
+  String get logoPngOnly => '1 MB ਤੱਕ ਦੀ PNG ਤਸਵੀਰ ਚੁਣੋ।';
+
+  @override
+  String get muteConversation => 'ਇਸ ਗੱਲਬਾਤ ਨੂੰ ਮਿਊਟ ਕਰੋ';
+
+  @override
+  String get myIdentifier => 'ਮੇਰੀ ਪਛਾਣ';
+
+  @override
+  String get myProfile => 'ਮੇਰੀ ਪ੍ਰੋਫ਼ਾਈਲ';
+
+  @override
+  String get presetName => 'ਨਾਮ (ਜਿਵੇਂ ਸਵੇਰ)';
+
+  @override
+  String get removeLogo => 'ਤਸਵੀਰ ਹਟਾਓ';
+
+  @override
+  String get resetGroup => 'ਸਮੂਹ ਰੀਸੈੱਟ ਕਰੋ';
+
+  @override
+  String get resetGroupConfirm => 'ਕੰਪਨੀ ਸਮੂਹ ਦੇ ਸਾਰੇ ਸੁਨੇਹੇ ਸਭ ਲਈ ਮਿਟ ਜਾਣਗੇ।';
+
+  @override
+  String get settingsTitle => 'ਸੈਟਿੰਗਾਂ';
+
+  @override
+  String get shiftPresets => 'ਸ਼ਿਫ਼ਟ ਸਮੇਂ ਦੇ ਪ੍ਰੀਸੈੱਟ';
+
+  @override
+  String get shiftPresetsHint =>
+      'ਤਿਆਰ ਸਮੇਂ (ਸਵੇਰ, ਸ਼ਾਮ, ਰਾਤ…): ਸ਼ਿਫ਼ਟ ਵਿੱਚ ਇੱਕ ਟੈਪ ਨਾਲ ਸ਼ੁਰੂ ਅਤੇ ਅੰਤ ਭਰ ਜਾਂਦੇ ਹਨ।';
+
+  @override
+  String get themeDark => 'ਗੂੜ੍ਹਾ';
+
+  @override
+  String get themeLight => 'ਹਲਕਾ';
+
+  @override
+  String get themeSystem => 'ਸਿਸਟਮ';
+
+  @override
+  String get unmuteConversation => 'ਇਸ ਗੱਲਬਾਤ ਦੀਆਂ ਸੂਚਨਾਵਾਂ ਚਾਲੂ ਕਰੋ';
 }

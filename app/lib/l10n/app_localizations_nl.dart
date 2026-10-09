@@ -1213,4 +1213,92 @@ class L10nNl extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Tijden in de tijd van $zone ($company). Je apparaat: $here.';
   }
+
+  @override
+  String get addPreset => 'Voorinstelling toevoegen';
+
+  @override
+  String get addPresets => 'Voorinstellingen maken';
+
+  @override
+  String get appearance => 'Weergave';
+
+  @override
+  String get chooseLogo => 'Kies een PNG-afbeelding';
+
+  @override
+  String get conversationMuted => 'Meldingen voor dit gesprek gedempt.';
+
+  @override
+  String get conversationUnmuted => 'Meldingen voor dit gesprek weer aan.';
+
+  @override
+  String get customization => 'Aanpassen';
+
+  @override
+  String get disableGroup => 'Groep uitschakelen';
+
+  @override
+  String get disableGroupConfirm =>
+      'De groep van het hele bedrijf wordt voor iedereen verborgen. Je kunt hem weer inschakelen bij Berichten.';
+
+  @override
+  String get editPresets => 'Voorinstellingen';
+
+  @override
+  String get enable => 'Weer inschakelen';
+
+  @override
+  String get groupDisabled => 'Groep uitgeschakeld (alleen jij ziet hem)';
+
+  @override
+  String get logoHint =>
+      'Een kleine PNG-afbeelding (je logo) op het tabblad van het bedrijf, voor alle leden.';
+
+  @override
+  String get logoPngOnly => 'Kies een PNG-afbeelding van maximaal 1 MB.';
+
+  @override
+  String get muteConversation => 'Dit gesprek dempen';
+
+  @override
+  String get myIdentifier => 'Mijn ID';
+
+  @override
+  String get myProfile => 'Mijn profiel';
+
+  @override
+  String get presetName => 'Naam (bijv. Ochtend)';
+
+  @override
+  String get removeLogo => 'Afbeelding verwijderen';
+
+  @override
+  String get resetGroup => 'Groep leegmaken';
+
+  @override
+  String get resetGroupConfirm =>
+      'Alle berichten van de bedrijfsgroep worden voor iedereen verwijderd.';
+
+  @override
+  String get settingsTitle => 'Instellingen';
+
+  @override
+  String get shiftPresets => 'Voorinstellingen voor diensten';
+
+  @override
+  String get shiftPresetsHint =>
+      'Kant-en-klare tijden (ochtend, avond, nacht…): één tik in een dienst vult begin en einde in.';
+
+  @override
+  String get themeDark => 'Donker';
+
+  @override
+  String get themeLight => 'Licht';
+
+  @override
+  String get themeSystem => 'Systeem';
+
+  @override
+  String get unmuteConversation => 'Meldingen van dit gesprek weer aanzetten';
 }

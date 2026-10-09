@@ -1198,4 +1198,93 @@ class L10nTh extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'เวลาตามเวลา $zone ($company) อุปกรณ์ของคุณ: $here';
   }
+
+  @override
+  String get addPreset => 'เพิ่มค่าที่ตั้งไว้';
+
+  @override
+  String get addPresets => 'สร้างค่าที่ตั้งไว้';
+
+  @override
+  String get appearance => 'ลักษณะ';
+
+  @override
+  String get chooseLogo => 'เลือกรูป PNG';
+
+  @override
+  String get conversationMuted => 'ปิดเสียงการแจ้งเตือนของการสนทนานี้แล้ว';
+
+  @override
+  String get conversationUnmuted =>
+      'เปิดการแจ้งเตือนของการสนทนานี้อีกครั้งแล้ว';
+
+  @override
+  String get customization => 'การปรับแต่ง';
+
+  @override
+  String get disableGroup => 'ปิดกลุ่ม';
+
+  @override
+  String get disableGroupConfirm =>
+      'กลุ่มของทั้งบริษัทจะถูกซ่อนจากทุกคน คุณเปิดใหม่ได้ในข้อความ';
+
+  @override
+  String get editPresets => 'ค่าที่ตั้งไว้';
+
+  @override
+  String get enable => 'เปิดอีกครั้ง';
+
+  @override
+  String get groupDisabled => 'ปิดกลุ่มอยู่ (คุณเห็นคนเดียว)';
+
+  @override
+  String get logoHint =>
+      'รูป PNG เล็ก ๆ (โลโก้ของคุณ) แสดงบนแท็บบริษัทสำหรับสมาชิกทุกคน';
+
+  @override
+  String get logoPngOnly => 'เลือกรูป PNG ขนาดไม่เกิน 1 MB';
+
+  @override
+  String get muteConversation => 'ปิดเสียงการสนทนานี้';
+
+  @override
+  String get myIdentifier => 'รหัสของฉัน';
+
+  @override
+  String get myProfile => 'โปรไฟล์ของฉัน';
+
+  @override
+  String get presetName => 'ชื่อ (เช่น เช้า)';
+
+  @override
+  String get removeLogo => 'ลบรูป';
+
+  @override
+  String get resetGroup => 'รีเซ็ตกลุ่ม';
+
+  @override
+  String get resetGroupConfirm =>
+      'ข้อความทั้งหมดในกลุ่มบริษัทจะถูกลบสำหรับทุกคน';
+
+  @override
+  String get settingsTitle => 'การตั้งค่า';
+
+  @override
+  String get shiftPresets => 'ค่าเวลาที่ตั้งไว้';
+
+  @override
+  String get shiftPresetsHint =>
+      'เวลาสำเร็จรูป (เช้า เย็น กลางคืน…): แตะครั้งเดียวในกะจะกรอกเวลาเริ่มและเลิก';
+
+  @override
+  String get themeDark => 'มืด';
+
+  @override
+  String get themeLight => 'สว่าง';
+
+  @override
+  String get themeSystem => 'ตามระบบ';
+
+  @override
+  String get unmuteConversation => 'เปิดการแจ้งเตือนของการสนทนานี้';
 }

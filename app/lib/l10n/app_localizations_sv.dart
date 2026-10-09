@@ -1210,4 +1210,93 @@ class L10nSv extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Tider enligt tiden i $zone ($company). Din enhet: $here.';
   }
+
+  @override
+  String get addPreset => 'Lägg till förinställning';
+
+  @override
+  String get addPresets => 'Skapa förinställningar';
+
+  @override
+  String get appearance => 'Utseende';
+
+  @override
+  String get chooseLogo => 'Välj en PNG-bild';
+
+  @override
+  String get conversationMuted => 'Aviseringar för konversationen avstängda.';
+
+  @override
+  String get conversationUnmuted =>
+      'Aviseringar för konversationen påslagna igen.';
+
+  @override
+  String get customization => 'Anpassning';
+
+  @override
+  String get disableGroup => 'Stäng av gruppen';
+
+  @override
+  String get disableGroupConfirm =>
+      'Hela företagets grupp döljs för alla. Du kan slå på den igen under Meddelanden.';
+
+  @override
+  String get editPresets => 'Förinställningar';
+
+  @override
+  String get enable => 'Slå på igen';
+
+  @override
+  String get groupDisabled => 'Gruppen avstängd (bara du ser den)';
+
+  @override
+  String get logoHint =>
+      'En liten PNG-bild (din logotyp) på företagets flik, för alla medlemmar.';
+
+  @override
+  String get logoPngOnly => 'Välj en PNG-bild på högst 1 MB.';
+
+  @override
+  String get muteConversation => 'Tysta den här konversationen';
+
+  @override
+  String get myIdentifier => 'Mitt id';
+
+  @override
+  String get myProfile => 'Min profil';
+
+  @override
+  String get presetName => 'Namn (t.ex. Morgon)';
+
+  @override
+  String get removeLogo => 'Ta bort bilden';
+
+  @override
+  String get resetGroup => 'Återställ gruppen';
+
+  @override
+  String get resetGroupConfirm =>
+      'Alla meddelanden i företagets grupp raderas för alla.';
+
+  @override
+  String get settingsTitle => 'Inställningar';
+
+  @override
+  String get shiftPresets => 'Förinställda tider';
+
+  @override
+  String get shiftPresetsHint =>
+      'Färdiga tider (morgon, kväll, natt…): ett tryck i ett pass fyller i start och slut.';
+
+  @override
+  String get themeDark => 'Mörkt';
+
+  @override
+  String get themeLight => 'Ljust';
+
+  @override
+  String get themeSystem => 'System';
+
+  @override
+  String get unmuteConversation => 'Slå på aviseringar för konversationen';
 }

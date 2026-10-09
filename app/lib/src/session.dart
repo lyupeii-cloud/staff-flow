@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' show ThemeMode;
 import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -35,6 +36,9 @@ class Session extends ChangeNotifier {
   /// de l'entreprise passe à « Demandes » et la met en évidence.
   final openRequest = ValueNotifier<({String companyId, String requestId})?>(null);
 
+  /// Jour à montrer dans le planning d'une entreprise (« Tous mes plannings »).
+  final openDay = ValueNotifier<({String companyId, DateTime day})?>(null);
+
   static const tokenKey = 'session_token';
 
   SessionState state = SessionState.loading;
@@ -45,6 +49,17 @@ class Session extends ChangeNotifier {
   bool get googleReady => _googleReady;
 
   static const languageKey = 'language';
+  static const themeKey = 'theme';
+
+  /// Apparence : comme le système (par défaut), claire ou foncée.
+  ThemeMode themeMode = ThemeMode.system;
+
+  Future<void> setThemeMode(ThemeMode mode) async {
+    themeMode = mode;
+    notifyListeners();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(themeKey, mode.name);
+  }
 
   /// Langue choisie à la main dans le menu « Langue » (code `uk`, `fr`…) ;
   /// `null` = automatique (téléphone, ou compte Google sur le web).
@@ -66,6 +81,7 @@ class Session extends ChangeNotifier {
     try {
       final prefs = await SharedPreferences.getInstance();
       language = prefs.getString(languageKey);
+      themeMode = ThemeMode.values.asNameMap()[prefs.getString(themeKey)] ?? ThemeMode.system;
       sync = await Sync.open(api);
       _watchLifecycle();
       api.token = prefs.getString(tokenKey);

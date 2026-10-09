@@ -1183,4 +1183,89 @@ class L10nKo extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return '시간은 $zone 기준($company)입니다. 내 기기: $here.';
   }
+
+  @override
+  String get addPreset => '프리셋 추가';
+
+  @override
+  String get addPresets => '프리셋 만들기';
+
+  @override
+  String get appearance => '화면 모드';
+
+  @override
+  String get chooseLogo => 'PNG 이미지 선택';
+
+  @override
+  String get conversationMuted => '이 대화의 알림을 껐습니다.';
+
+  @override
+  String get conversationUnmuted => '이 대화의 알림을 다시 켰습니다.';
+
+  @override
+  String get customization => '맞춤 설정';
+
+  @override
+  String get disableGroup => '그룹 끄기';
+
+  @override
+  String get disableGroupConfirm => '회사 전체 그룹이 모두에게 숨겨집니다. 메시지에서 다시 켤 수 있습니다.';
+
+  @override
+  String get editPresets => '프리셋';
+
+  @override
+  String get enable => '다시 켜기';
+
+  @override
+  String get groupDisabled => '그룹 꺼짐(나만 볼 수 있음)';
+
+  @override
+  String get logoHint => '회사 탭에 표시되는 작은 PNG 이미지(로고)로, 모든 구성원에게 보입니다.';
+
+  @override
+  String get logoPngOnly => '1MB 이하의 PNG 이미지를 선택하세요.';
+
+  @override
+  String get muteConversation => '이 대화 알림 끄기';
+
+  @override
+  String get myIdentifier => '내 식별자';
+
+  @override
+  String get myProfile => '내 프로필';
+
+  @override
+  String get presetName => '이름(예: 오전)';
+
+  @override
+  String get removeLogo => '이미지 삭제';
+
+  @override
+  String get resetGroup => '그룹 초기화';
+
+  @override
+  String get resetGroupConfirm => '회사 그룹의 모든 메시지가 모두에게서 삭제됩니다.';
+
+  @override
+  String get settingsTitle => '설정';
+
+  @override
+  String get shiftPresets => '근무 시간 프리셋';
+
+  @override
+  String get shiftPresetsHint =>
+      '준비된 시간(오전, 저녁, 야간…): 근무에서 한 번 누르면 시작과 종료가 채워집니다.';
+
+  @override
+  String get themeDark => '어둡게';
+
+  @override
+  String get themeLight => '밝게';
+
+  @override
+  String get themeSystem => '시스템';
+
+  @override
+  String get unmuteConversation => '이 대화 알림 다시 켜기';
 }

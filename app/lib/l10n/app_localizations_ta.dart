@@ -1215,4 +1215,95 @@ class L10nTa extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'நேரங்கள் $zone நேரப்படி ($company). உங்கள் சாதனம்: $here.';
   }
+
+  @override
+  String get addPreset => 'முன்னமைவைச் சேர்';
+
+  @override
+  String get addPresets => 'முன்னமைவுகளை உருவாக்கு';
+
+  @override
+  String get appearance => 'தோற்றம்';
+
+  @override
+  String get chooseLogo => 'PNG படத்தைத் தேர்ந்தெடு';
+
+  @override
+  String get conversationMuted =>
+      'இந்த உரையாடலின் அறிவிப்புகள் நிறுத்தப்பட்டன.';
+
+  @override
+  String get conversationUnmuted =>
+      'இந்த உரையாடலின் அறிவிப்புகள் மீண்டும் இயக்கப்பட்டன.';
+
+  @override
+  String get customization => 'தனிப்பயனாக்கம்';
+
+  @override
+  String get disableGroup => 'குழுவை அணை';
+
+  @override
+  String get disableGroupConfirm =>
+      'முழு நிறுவனக் குழுவும் அனைவரிடமிருந்தும் மறைக்கப்படும். செய்திகளில் மீண்டும் இயக்கலாம்.';
+
+  @override
+  String get editPresets => 'முன்னமைவுகள்';
+
+  @override
+  String get enable => 'மீண்டும் இயக்கு';
+
+  @override
+  String get groupDisabled =>
+      'குழு அணைக்கப்பட்டது (நீங்கள் மட்டுமே பார்க்கலாம்)';
+
+  @override
+  String get logoHint =>
+      'நிறுவனத் தாவலில் அனைத்து உறுப்பினர்களுக்கும் காட்டப்படும் சிறிய PNG படம் (உங்கள் லோகோ).';
+
+  @override
+  String get logoPngOnly => '1 MB வரையிலான PNG படத்தைத் தேர்ந்தெடுங்கள்.';
+
+  @override
+  String get muteConversation => 'இந்த உரையாடலை ஒலியடக்கு';
+
+  @override
+  String get myIdentifier => 'என் அடையாளம்';
+
+  @override
+  String get myProfile => 'என் சுயவிவரம்';
+
+  @override
+  String get presetName => 'பெயர் (எ.கா. காலை)';
+
+  @override
+  String get removeLogo => 'படத்தை அகற்று';
+
+  @override
+  String get resetGroup => 'குழுவை மீட்டமை';
+
+  @override
+  String get resetGroupConfirm =>
+      'நிறுவனக் குழுவின் எல்லாச் செய்திகளும் அனைவருக்கும் நீக்கப்படும்.';
+
+  @override
+  String get settingsTitle => 'அமைப்புகள்';
+
+  @override
+  String get shiftPresets => 'ஷிஃப்ட் நேர முன்னமைவுகள்';
+
+  @override
+  String get shiftPresetsHint =>
+      'தயாரான நேரங்கள் (காலை, மாலை, இரவு…): ஷிஃப்டில் ஒரு தட்டல் தொடக்கத்தையும் முடிவையும் நிரப்பும்.';
+
+  @override
+  String get themeDark => 'இருண்ட';
+
+  @override
+  String get themeLight => 'வெளிர்';
+
+  @override
+  String get themeSystem => 'கணினி';
+
+  @override
+  String get unmuteConversation => 'இந்த உரையாடலின் அறிவிப்புகளை இயக்கு';
 }

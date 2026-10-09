@@ -1207,4 +1207,93 @@ class L10nMs extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Waktu mengikut waktu $zone ($company). Peranti anda: $here.';
   }
+
+  @override
+  String get addPreset => 'Tambah pratetap';
+
+  @override
+  String get addPresets => 'Cipta pratetap';
+
+  @override
+  String get appearance => 'Rupa';
+
+  @override
+  String get chooseLogo => 'Pilih imej PNG';
+
+  @override
+  String get conversationMuted => 'Pemberitahuan perbualan ini dibisukan.';
+
+  @override
+  String get conversationUnmuted =>
+      'Pemberitahuan perbualan ini dihidupkan semula.';
+
+  @override
+  String get customization => 'Pemperibadian';
+
+  @override
+  String get disableGroup => 'Matikan kumpulan';
+
+  @override
+  String get disableGroupConfirm =>
+      'Kumpulan seluruh syarikat akan disembunyikan untuk semua. Anda boleh menghidupkannya semula dalam Mesej.';
+
+  @override
+  String get editPresets => 'Pratetap';
+
+  @override
+  String get enable => 'Hidupkan semula';
+
+  @override
+  String get groupDisabled => 'Kumpulan dimatikan (hanya anda yang nampak)';
+
+  @override
+  String get logoHint =>
+      'Imej PNG kecil (logo anda) dipaparkan pada tab syarikat untuk semua ahli.';
+
+  @override
+  String get logoPngOnly => 'Pilih imej PNG maksimum 1 MB.';
+
+  @override
+  String get muteConversation => 'Bisukan perbualan ini';
+
+  @override
+  String get myIdentifier => 'ID saya';
+
+  @override
+  String get myProfile => 'Profil saya';
+
+  @override
+  String get presetName => 'Nama (cth. Pagi)';
+
+  @override
+  String get removeLogo => 'Buang imej';
+
+  @override
+  String get resetGroup => 'Set semula kumpulan';
+
+  @override
+  String get resetGroupConfirm =>
+      'Semua mesej dalam kumpulan syarikat akan dipadam untuk semua.';
+
+  @override
+  String get settingsTitle => 'Tetapan';
+
+  @override
+  String get shiftPresets => 'Pratetap waktu syif';
+
+  @override
+  String get shiftPresetsHint =>
+      'Waktu sedia ada (pagi, petang, malam…): satu ketikan dalam syif mengisi mula dan tamat.';
+
+  @override
+  String get themeDark => 'Gelap';
+
+  @override
+  String get themeLight => 'Cerah';
+
+  @override
+  String get themeSystem => 'Sistem';
+
+  @override
+  String get unmuteConversation => 'Hidupkan pemberitahuan perbualan ini';
 }

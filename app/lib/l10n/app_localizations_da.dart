@@ -1211,4 +1211,93 @@ class L10nDa extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Tider efter tiden i $zone ($company). Din enhed: $here.';
   }
+
+  @override
+  String get addPreset => 'Tilføj forudindstilling';
+
+  @override
+  String get addPresets => 'Opret forudindstillinger';
+
+  @override
+  String get appearance => 'Udseende';
+
+  @override
+  String get chooseLogo => 'Vælg et PNG-billede';
+
+  @override
+  String get conversationMuted => 'Notifikationer slået fra for denne samtale.';
+
+  @override
+  String get conversationUnmuted =>
+      'Notifikationer slået til igen for denne samtale.';
+
+  @override
+  String get customization => 'Tilpasning';
+
+  @override
+  String get disableGroup => 'Slå gruppen fra';
+
+  @override
+  String get disableGroupConfirm =>
+      'Hele virksomhedens gruppe skjules for alle. Du kan slå den til igen under Beskeder.';
+
+  @override
+  String get editPresets => 'Forudindstillinger';
+
+  @override
+  String get enable => 'Slå til igen';
+
+  @override
+  String get groupDisabled => 'Gruppen er slået fra (kun du ser den)';
+
+  @override
+  String get logoHint =>
+      'Et lille PNG-billede (dit logo) på virksomhedens fane, for alle medlemmer.';
+
+  @override
+  String get logoPngOnly => 'Vælg et PNG-billede på højst 1 MB.';
+
+  @override
+  String get muteConversation => 'Slå lyden fra for denne samtale';
+
+  @override
+  String get myIdentifier => 'Mit id';
+
+  @override
+  String get myProfile => 'Min profil';
+
+  @override
+  String get presetName => 'Navn (f.eks. Morgen)';
+
+  @override
+  String get removeLogo => 'Fjern billedet';
+
+  @override
+  String get resetGroup => 'Nulstil gruppen';
+
+  @override
+  String get resetGroupConfirm =>
+      'Alle beskeder i virksomhedens gruppe slettes for alle.';
+
+  @override
+  String get settingsTitle => 'Indstillinger';
+
+  @override
+  String get shiftPresets => 'Forudindstillede tider';
+
+  @override
+  String get shiftPresetsHint =>
+      'Færdige tider (morgen, aften, nat…): ét tryk i en vagt udfylder start og slut.';
+
+  @override
+  String get themeDark => 'Mørkt';
+
+  @override
+  String get themeLight => 'Lyst';
+
+  @override
+  String get themeSystem => 'System';
+
+  @override
+  String get unmuteConversation => 'Slå notifikationer til for denne samtale';
 }

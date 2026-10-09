@@ -836,5 +836,33 @@
         "type": "String"
       }
     }
-  }
+  },
+  "addPreset": "Add preset",
+  "addPresets": "Create presets",
+  "appearance": "Appearance",
+  "chooseLogo": "Choose a PNG image",
+  "conversationMuted": "Notifications muted for this conversation.",
+  "conversationUnmuted": "Notifications back on for this conversation.",
+  "customization": "Customization",
+  "disableGroup": "Turn off the group",
+  "disableGroupConfirm": "The whole-company group will be hidden for everyone. You can turn it back on in Messages.",
+  "editPresets": "Presets",
+  "enable": "Turn back on",
+  "groupDisabled": "Group turned off (only you can see it)",
+  "logoHint": "A small PNG image (your logo) shown on the company tab, for all its members.",
+  "logoPngOnly": "Choose a PNG image of 1 MB or less.",
+  "muteConversation": "Mute this conversation",
+  "myIdentifier": "My identifier",
+  "myProfile": "My profile",
+  "presetName": "Name (e.g. Morning)",
+  "removeLogo": "Remove image",
+  "resetGroup": "Reset the group",
+  "resetGroupConfirm": "All messages in the company group will be deleted for everyone.",
+  "settingsTitle": "Settings",
+  "shiftPresets": "Shift presets",
+  "shiftPresetsHint": "Ready-made times (morning, evening, night…): one tap in a shift fills in the start and end.",
+  "themeDark": "Dark",
+  "themeLight": "Light",
+  "themeSystem": "System",
+  "unmuteConversation": "Unmute this conversation"
 }

@@ -1219,4 +1219,96 @@ class L10nFr extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Horaires à l\'heure de $zone ($company). Votre appareil : $here.';
   }
+
+  @override
+  String get addPreset => 'Ajouter le préréglage';
+
+  @override
+  String get addPresets => 'Créer des préréglages';
+
+  @override
+  String get appearance => 'Apparence';
+
+  @override
+  String get chooseLogo => 'Choisir une image PNG';
+
+  @override
+  String get conversationMuted =>
+      'Notifications coupées pour cette conversation.';
+
+  @override
+  String get conversationUnmuted =>
+      'Notifications rétablies pour cette conversation.';
+
+  @override
+  String get customization => 'Personnalisation';
+
+  @override
+  String get disableGroup => 'Désactiver le groupe';
+
+  @override
+  String get disableGroupConfirm =>
+      'Le groupe de toute l\'entreprise sera caché pour tout le monde. Vous pourrez le réactiver dans Messages.';
+
+  @override
+  String get editPresets => 'Préréglages';
+
+  @override
+  String get enable => 'Réactiver';
+
+  @override
+  String get groupDisabled => 'Groupe désactivé (vous seul le voyez)';
+
+  @override
+  String get logoHint =>
+      'Une petite image PNG (votre logo) affichée sur l\'onglet de l\'entreprise, pour tous ses membres.';
+
+  @override
+  String get logoPngOnly => 'Choisissez une image PNG de 1 Mo au plus.';
+
+  @override
+  String get muteConversation =>
+      'Couper les notifications de cette conversation';
+
+  @override
+  String get myIdentifier => 'Mon identifiant';
+
+  @override
+  String get myProfile => 'Mon profil';
+
+  @override
+  String get presetName => 'Nom (ex. Matin)';
+
+  @override
+  String get removeLogo => 'Retirer l\'image';
+
+  @override
+  String get resetGroup => 'Réinitialiser le groupe';
+
+  @override
+  String get resetGroupConfirm =>
+      'Tous les messages du groupe de l\'entreprise seront effacés pour tout le monde.';
+
+  @override
+  String get settingsTitle => 'Réglages';
+
+  @override
+  String get shiftPresets => 'Préréglages d\'horaires';
+
+  @override
+  String get shiftPresetsHint =>
+      'Des horaires tout prêts (matin, soir, nuit…) : un appui dans un service remplit le début et la fin.';
+
+  @override
+  String get themeDark => 'Foncé';
+
+  @override
+  String get themeLight => 'Clair';
+
+  @override
+  String get themeSystem => 'Système';
+
+  @override
+  String get unmuteConversation =>
+      'Rétablir les notifications de cette conversation';
 }

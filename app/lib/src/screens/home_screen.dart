@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 
 import '../api.dart';
@@ -10,15 +9,14 @@ import '../i18n.dart';
 import '../models.dart';
 import '../push.dart';
 import '../session.dart';
+import 'account_pages.dart';
 import 'all_schedules_view.dart';
+import 'company_logo.dart';
 import 'company_tab.dart';
 import 'join_code_dialog.dart';
-import 'language_picker.dart';
 import 'chat_screen.dart';
-import 'notification_settings.dart';
 import 'people_widgets.dart';
 import 'sync_widgets.dart';
-import 'tools_widgets.dart';
 
 /// Un onglet par entreprise dont l'utilisateur est membre (section 3).
 class HomeScreen extends StatefulWidget {
@@ -46,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     session.sync.addListener(_onSync);
     session.openRequest.addListener(_onOpenRequest);
+    session.openDay.addListener(_onOpenDay);
     _push = session.push.events.listen(_onPush);
   }
 
@@ -53,12 +52,21 @@ class _HomeScreenState extends State<HomeScreen> {
   void dispose() {
     session.sync.removeListener(_onSync);
     session.openRequest.removeListener(_onOpenRequest);
+    session.openDay.removeListener(_onOpenDay);
     _push?.cancel();
     super.dispose();
   }
 
   /// Une demande est à montrer : on passe à l'onglet de son entreprise
   /// (qui affiche alors la vue « Demandes »).
+  /// Un service touché dans « Tous mes plannings » : onglet de son entreprise.
+  void _onOpenDay() {
+    final wanted = session.openDay.value;
+    if (wanted == null) return;
+    final index = session.me?.companies.indexWhere((m) => m.company.id == wanted.companyId) ?? -1;
+    if (index >= 0) _tabs?.animateTo(index + (_showAll ? 1 : 0));
+  }
+
   void _onOpenRequest() {
     final wanted = session.openRequest.value;
     if (wanted == null) return;
@@ -143,16 +151,18 @@ class _HomeScreenState extends State<HomeScreen> {
                           Text(context.l10n.allSchedules),
                         ]),
                       ),
+                    // Onglet d'une entreprise : son image (choisie par le patron), sinon sa couleur.
                     for (final (i, m) in companies.indexed)
-                      _showAll
-                          ? Tab(
-                              child: Row(mainAxisSize: MainAxisSize.min, children: [
-                                CircleAvatar(radius: 5, backgroundColor: companyColor(i)),
-                                const SizedBox(width: 6),
-                                Text(m.company.name),
-                              ]),
-                            )
-                          : Tab(text: m.company.name),
+                      Tab(
+                        child: Row(mainAxisSize: MainAxisSize.min, children: [
+                          if (m.company.logoVersion > 0)
+                            CompanyLogo(session: session, company: m.company)
+                          else if (_showAll)
+                            CircleAvatar(radius: 5, backgroundColor: companyColor(i)),
+                          if (m.company.logoVersion > 0 || _showAll) const SizedBox(width: 6),
+                          Text(m.company.name),
+                        ]),
+                      ),
                   ],
                       ),
                     ),
@@ -340,36 +350,19 @@ class _ProfileMenu extends StatelessWidget {
         child: user.photoUrl == null ? Text(user.name.characters.first.toUpperCase()) : null,
       ),
       onSelected: (v) {
-        if (v == 'qr') {
-          showMyQrCode(context, user);
-        } else if (v == 'name') {
-          _changeName(context);
-        } else if (v == 'notifications') {
-          NotificationSettingsPage.open(context, session);
-        } else if (v == 'join') {
-          showJoinCodeDialog(context, session);
-        } else if (v == 'create') {
-          createCompany(context, session);
-        } else if (v == 'calendar') {
-          showCalendarDialog(context, session);
-        } else if (v == 'language') {
-          showLanguagePicker(context, session);
-        } else if (v == 'copy') {
-          Clipboard.setData(ClipboardData(text: user.publicId));
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.idCopied)));
+        if (v == 'profile') {
+          ProfilePage.open(context, session);
+        } else if (v == 'settings') {
+          SettingsPage.open(context, session);
         } else if (v == 'logout') {
           session.signOut();
         }
       },
       itemBuilder: (_) => [
         PopupMenuItem(enabled: false, child: Text('${user.name}\n${user.email}')),
-        _item('qr', Icons.qr_code_2, t.myQrCode),
-        _item('name', Icons.badge_outlined, t.changeMyName),
-        _item('notifications', Icons.notifications_outlined, t.notificationsTitle),
-        _item('calendar', Icons.event, t.googleCalendar),
-        _item('join', Icons.pin_outlined, t.joinCompany),
-        _item('copy', Icons.copy, t.myId(user.publicId)),
-        _item('language', Icons.language, t.language),
+        _item('profile', Icons.person_outline, t.myProfile),
+        _item('settings', Icons.settings_outlined, t.settingsTitle),
+        const PopupMenuDivider(),
         _item('logout', Icons.logout, t.signOut),
       ],
     );
@@ -379,21 +372,6 @@ class _ProfileMenu extends StatelessWidget {
         value: value,
         child: Row(children: [Icon(icon, size: 20, color: Brand.blue), const SizedBox(width: 12), Flexible(child: Text(label))]),
       );
-
-  Future<void> _changeName(BuildContext context) async {
-    final t = context.l10n;
-    final user = session.me!.user;
-    final name = await askName(
-      context,
-      title: t.changeMyName,
-      current: user.name,
-      hint: '${t.nameShownToTeam}\n${t.googleName(user.googleName)}',
-      resetLabel: t.useGoogleName,
-      canReset: user.name != user.googleName,
-    );
-    if (name == null || !context.mounted) return;
-    await runAction(context, session, () => session.api.setMyName(name.isEmpty ? null : name));
-  }
 }
 
 class _JoinBanner extends StatelessWidget {

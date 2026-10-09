@@ -1214,4 +1214,93 @@ class L10nRu extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Часы по времени $zone ($company). Ваше устройство: $here.';
   }
+
+  @override
+  String get addPreset => 'Добавить шаблон';
+
+  @override
+  String get addPresets => 'Создать шаблоны';
+
+  @override
+  String get appearance => 'Оформление';
+
+  @override
+  String get chooseLogo => 'Выбрать изображение PNG';
+
+  @override
+  String get conversationMuted => 'Уведомления этого разговора отключены.';
+
+  @override
+  String get conversationUnmuted =>
+      'Уведомления этого разговора снова включены.';
+
+  @override
+  String get customization => 'Персонализация';
+
+  @override
+  String get disableGroup => 'Отключить группу';
+
+  @override
+  String get disableGroupConfirm =>
+      'Группа всей компании будет скрыта для всех. Включить её снова можно в «Сообщениях».';
+
+  @override
+  String get editPresets => 'Шаблоны';
+
+  @override
+  String get enable => 'Включить снова';
+
+  @override
+  String get groupDisabled => 'Группа отключена (видите только вы)';
+
+  @override
+  String get logoHint =>
+      'Небольшое изображение PNG (ваш логотип) на вкладке компании для всех её участников.';
+
+  @override
+  String get logoPngOnly => 'Выберите изображение PNG не более 1 МБ.';
+
+  @override
+  String get muteConversation => 'Отключить уведомления этого разговора';
+
+  @override
+  String get myIdentifier => 'Мой идентификатор';
+
+  @override
+  String get myProfile => 'Мой профиль';
+
+  @override
+  String get presetName => 'Название (напр. Утро)';
+
+  @override
+  String get removeLogo => 'Убрать изображение';
+
+  @override
+  String get resetGroup => 'Очистить группу';
+
+  @override
+  String get resetGroupConfirm =>
+      'Все сообщения группы компании будут удалены для всех.';
+
+  @override
+  String get settingsTitle => 'Настройки';
+
+  @override
+  String get shiftPresets => 'Шаблоны смен';
+
+  @override
+  String get shiftPresetsHint =>
+      'Готовые часы (утро, вечер, ночь…): одно касание в смене заполняет начало и конец.';
+
+  @override
+  String get themeDark => 'Тёмное';
+
+  @override
+  String get themeLight => 'Светлое';
+
+  @override
+  String get themeSystem => 'Системное';
+
+  @override
+  String get unmuteConversation => 'Включить уведомления этого разговора';
 }

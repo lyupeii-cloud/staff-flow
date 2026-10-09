@@ -1207,4 +1207,92 @@ class L10nMr extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'वेळा $zone च्या वेळेनुसार ($company). तुमचे उपकरण: $here.';
   }
+
+  @override
+  String get addPreset => 'प्रीसेट जोडा';
+
+  @override
+  String get addPresets => 'प्रीसेट तयार करा';
+
+  @override
+  String get appearance => 'दिसणे';
+
+  @override
+  String get chooseLogo => 'PNG प्रतिमा निवडा';
+
+  @override
+  String get conversationMuted => 'या संभाषणाच्या सूचना बंद केल्या.';
+
+  @override
+  String get conversationUnmuted => 'या संभाषणाच्या सूचना पुन्हा सुरू केल्या.';
+
+  @override
+  String get customization => 'सानुकूलन';
+
+  @override
+  String get disableGroup => 'गट बंद करा';
+
+  @override
+  String get disableGroupConfirm =>
+      'संपूर्ण कंपनीचा गट सर्वांपासून लपवला जाईल. संदेशांमध्ये तो पुन्हा सुरू करता येईल.';
+
+  @override
+  String get editPresets => 'प्रीसेट';
+
+  @override
+  String get enable => 'पुन्हा सुरू करा';
+
+  @override
+  String get groupDisabled => 'गट बंद (फक्त तुम्हाला दिसतो)';
+
+  @override
+  String get logoHint =>
+      'कंपनीच्या टॅबवर दिसणारी छोटी PNG प्रतिमा (तुमचा लोगो), सर्व सदस्यांसाठी.';
+
+  @override
+  String get logoPngOnly => '1 MB पर्यंतची PNG प्रतिमा निवडा.';
+
+  @override
+  String get muteConversation => 'हे संभाषण शांत करा';
+
+  @override
+  String get myIdentifier => 'माझा ओळखकर्ता';
+
+  @override
+  String get myProfile => 'माझी प्रोफाइल';
+
+  @override
+  String get presetName => 'नाव (उदा. सकाळ)';
+
+  @override
+  String get removeLogo => 'प्रतिमा काढा';
+
+  @override
+  String get resetGroup => 'गट रीसेट करा';
+
+  @override
+  String get resetGroupConfirm =>
+      'कंपनी गटातील सर्व संदेश सर्वांसाठी हटवले जातील.';
+
+  @override
+  String get settingsTitle => 'सेटिंग्ज';
+
+  @override
+  String get shiftPresets => 'शिफ्ट वेळेचे प्रीसेट';
+
+  @override
+  String get shiftPresetsHint =>
+      'तयार वेळा (सकाळ, संध्याकाळ, रात्र…): शिफ्टमध्ये एका टॅपने सुरुवात व शेवट भरतात.';
+
+  @override
+  String get themeDark => 'गडद';
+
+  @override
+  String get themeLight => 'फिकट';
+
+  @override
+  String get themeSystem => 'सिस्टम';
+
+  @override
+  String get unmuteConversation => 'या संभाषणाच्या सूचना सुरू करा';
 }

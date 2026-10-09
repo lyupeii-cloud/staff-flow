@@ -1207,4 +1207,93 @@ class L10nBg extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Часове по времето в $zone ($company). Вашето устройство: $here.';
   }
+
+  @override
+  String get addPreset => 'Добави шаблон';
+
+  @override
+  String get addPresets => 'Създай шаблони';
+
+  @override
+  String get appearance => 'Външен вид';
+
+  @override
+  String get chooseLogo => 'Избери PNG изображение';
+
+  @override
+  String get conversationMuted => 'Известията за този разговор са заглушени.';
+
+  @override
+  String get conversationUnmuted =>
+      'Известията за този разговор отново са включени.';
+
+  @override
+  String get customization => 'Персонализиране';
+
+  @override
+  String get disableGroup => 'Изключи групата';
+
+  @override
+  String get disableGroupConfirm =>
+      'Групата на цялата фирма ще бъде скрита за всички. Можете да я включите отново в Съобщения.';
+
+  @override
+  String get editPresets => 'Шаблони';
+
+  @override
+  String get enable => 'Включи отново';
+
+  @override
+  String get groupDisabled => 'Групата е изключена (виждате я само вие)';
+
+  @override
+  String get logoHint =>
+      'Малко PNG изображение (вашето лого) в раздела на фирмата за всички членове.';
+
+  @override
+  String get logoPngOnly => 'Изберете PNG изображение до 1 MB.';
+
+  @override
+  String get muteConversation => 'Заглуши този разговор';
+
+  @override
+  String get myIdentifier => 'Моят идентификатор';
+
+  @override
+  String get myProfile => 'Моят профил';
+
+  @override
+  String get presetName => 'Име (напр. Сутрин)';
+
+  @override
+  String get removeLogo => 'Премахни изображението';
+
+  @override
+  String get resetGroup => 'Нулирай групата';
+
+  @override
+  String get resetGroupConfirm =>
+      'Всички съобщения в групата на фирмата ще бъдат изтрити за всички.';
+
+  @override
+  String get settingsTitle => 'Настройки';
+
+  @override
+  String get shiftPresets => 'Шаблони за смени';
+
+  @override
+  String get shiftPresetsHint =>
+      'Готови часове (сутрин, вечер, нощ…): едно докосване в смяна попълва началото и края.';
+
+  @override
+  String get themeDark => 'Тъмен';
+
+  @override
+  String get themeLight => 'Светъл';
+
+  @override
+  String get themeSystem => 'Системен';
+
+  @override
+  String get unmuteConversation => 'Включи известията за този разговор';
 }

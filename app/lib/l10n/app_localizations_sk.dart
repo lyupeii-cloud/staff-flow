@@ -1212,4 +1212,92 @@ class L10nSk extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Časy podľa času $zone ($company). Vaše zariadenie: $here.';
   }
+
+  @override
+  String get addPreset => 'Pridať predvoľbu';
+
+  @override
+  String get addPresets => 'Vytvoriť predvoľby';
+
+  @override
+  String get appearance => 'Vzhľad';
+
+  @override
+  String get chooseLogo => 'Vybrať obrázok PNG';
+
+  @override
+  String get conversationMuted => 'Oznámenia tejto konverzácie stlmené.';
+
+  @override
+  String get conversationUnmuted => 'Oznámenia tejto konverzácie opäť zapnuté.';
+
+  @override
+  String get customization => 'Prispôsobenie';
+
+  @override
+  String get disableGroup => 'Vypnúť skupinu';
+
+  @override
+  String get disableGroupConfirm =>
+      'Skupina celej firmy bude pre všetkých skrytá. Znova ju zapnete v Správach.';
+
+  @override
+  String get editPresets => 'Predvoľby';
+
+  @override
+  String get enable => 'Znova zapnúť';
+
+  @override
+  String get groupDisabled => 'Skupina vypnutá (vidíte ju len vy)';
+
+  @override
+  String get logoHint =>
+      'Malý obrázok PNG (vaše logo) zobrazený na karte firmy pre všetkých členov.';
+
+  @override
+  String get logoPngOnly => 'Vyberte obrázok PNG do 1 MB.';
+
+  @override
+  String get muteConversation => 'Stlmiť túto konverzáciu';
+
+  @override
+  String get myIdentifier => 'Môj identifikátor';
+
+  @override
+  String get myProfile => 'Môj profil';
+
+  @override
+  String get presetName => 'Názov (napr. Ranná)';
+
+  @override
+  String get removeLogo => 'Odstrániť obrázok';
+
+  @override
+  String get resetGroup => 'Vymazať skupinu';
+
+  @override
+  String get resetGroupConfirm =>
+      'Všetky správy skupiny firmy budú vymazané pre všetkých.';
+
+  @override
+  String get settingsTitle => 'Nastavenia';
+
+  @override
+  String get shiftPresets => 'Predvoľby zmien';
+
+  @override
+  String get shiftPresetsHint =>
+      'Hotové časy (ranná, poobedná, nočná…): jedným ťuknutím v zmene vyplníte začiatok aj koniec.';
+
+  @override
+  String get themeDark => 'Tmavý';
+
+  @override
+  String get themeLight => 'Svetlý';
+
+  @override
+  String get themeSystem => 'Systémový';
+
+  @override
+  String get unmuteConversation => 'Zapnúť oznámenia tejto konverzácie';
 }

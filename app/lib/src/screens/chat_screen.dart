@@ -9,6 +9,7 @@ import '../models.dart';
 import '../push.dart';
 import '../session.dart';
 import 'group_editor.dart';
+import 'home_screen.dart';
 import 'requests_view.dart';
 
 /// Une conversation : messages du plus ancien au plus récent, envoi en bas.
@@ -324,6 +325,55 @@ class _ChatScreenState extends State<ChatScreen> {
   late Conversation _conversation = widget.conversation;
 
   /// Groupe créé par un responsable : changer son nom ou ses membres.
+  late bool _muted = widget.conversation.muted;
+
+  bool get _isOwner =>
+      session.me?.companies.where((m) => m.company.id == widget.company.id).firstOrNull?.role == Role.owner;
+
+  Future<void> _toggleMute() async {
+    final t = context.l10n;
+    final messenger = ScaffoldMessenger.of(context);
+    try {
+      await session.api.send('PUT', '/conversations/$id/mute', body: {'muted': !_muted});
+      setState(() => _muted = !_muted);
+      messenger.showSnackBar(SnackBar(content: Text(_muted ? t.conversationMuted : t.conversationUnmuted)));
+    } on OfflineException {
+      messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+    }
+  }
+
+  Future<bool> _confirm(String title, String body, String action) async =>
+      await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(title),
+          content: Text(body),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(context, false), child: Text(context.l10n.cancel)),
+            FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(action)),
+          ],
+        ),
+      ) ==
+      true;
+
+  Future<void> _disableGroup() async {
+    final t = context.l10n;
+    final navigator = Navigator.of(context);
+    if (!await _confirm(t.disableGroup, t.disableGroupConfirm, t.disableGroup) || !mounted) return;
+    await runAction(context, session,
+        () => session.api.send('PUT', '/companies/${widget.company.id}/group', body: {'enabled': false}));
+    await session.refresh();
+    session.sync.markChanged();
+    navigator.pop();
+  }
+
+  Future<void> _resetGroup() async {
+    final t = context.l10n;
+    if (!await _confirm(t.resetGroup, t.resetGroupConfirm, t.resetGroup) || !mounted) return;
+    await runAction(context, session, () => session.api.send('POST', '/companies/${widget.company.id}/group/reset'));
+    await _refresh();
+  }
+
   /// Responsable : supprimer le groupe et ses messages, pour tout le monde.
   Future<void> _deleteGroup() async {
     final t = context.l10n;
@@ -408,6 +458,21 @@ class _ChatScreenState extends State<ChatScreen> {
             IconButton(tooltip: t.editGroup, icon: const Icon(Icons.group), onPressed: _editGroup),
           if (c.isTeam && canManage)
             IconButton(tooltip: t.deleteGroup, icon: const Icon(Icons.delete_outline), onPressed: _deleteGroup),
+          // Notifications de cette conversation, pour soi seulement.
+          IconButton(
+            tooltip: _muted ? t.unmuteConversation : t.muteConversation,
+            icon: Icon(_muted ? Icons.notifications_off : Icons.notifications_active),
+            onPressed: _toggleMute,
+          ),
+          // Groupe de toute l'entreprise : le patron le coupe ou le vide.
+          if (c.isGroup && _isOwner)
+            PopupMenuButton<String>(
+              onSelected: (v) => v == 'disable' ? _disableGroup() : _resetGroup(),
+              itemBuilder: (_) => [
+                PopupMenuItem(value: 'disable', child: Text(t.disableGroup)),
+                PopupMenuItem(value: 'reset', child: Text(t.resetGroup)),
+              ],
+            ),
         ],
       ),
       body: Column(

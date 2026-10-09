@@ -1207,4 +1207,92 @@ class L10nTe extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'సమయాలు $zone సమయం ప్రకారం ($company). మీ పరికరం: $here.';
   }
+
+  @override
+  String get addPreset => 'ప్రీసెట్‌ను జోడించు';
+
+  @override
+  String get addPresets => 'ప్రీసెట్‌లు సృష్టించు';
+
+  @override
+  String get appearance => 'రూపం';
+
+  @override
+  String get chooseLogo => 'PNG చిత్రాన్ని ఎంచుకో';
+
+  @override
+  String get conversationMuted => 'ఈ సంభాషణ నోటిఫికేషన్లు ఆపివేయబడ్డాయి.';
+
+  @override
+  String get conversationUnmuted => 'ఈ సంభాషణ నోటిఫికేషన్లు మళ్లీ ఆన్ అయ్యాయి.';
+
+  @override
+  String get customization => 'అనుకూలీకరణ';
+
+  @override
+  String get disableGroup => 'సమూహాన్ని ఆపివేయి';
+
+  @override
+  String get disableGroupConfirm =>
+      'మొత్తం కంపెనీ సమూహం అందరికీ దాచబడుతుంది. సందేశాలలో దాన్ని మళ్లీ ఆన్ చేయవచ్చు.';
+
+  @override
+  String get editPresets => 'ప్రీసెట్‌లు';
+
+  @override
+  String get enable => 'మళ్లీ ఆన్ చేయి';
+
+  @override
+  String get groupDisabled => 'సమూహం ఆపివేయబడింది (మీకు మాత్రమే కనిపిస్తుంది)';
+
+  @override
+  String get logoHint =>
+      'కంపెనీ ట్యాబ్‌లో అందరికీ కనిపించే చిన్న PNG చిత్రం (మీ లోగో).';
+
+  @override
+  String get logoPngOnly => '1 MB వరకు ఉన్న PNG చిత్రాన్ని ఎంచుకోండి.';
+
+  @override
+  String get muteConversation => 'ఈ సంభాషణను మ్యూట్ చేయి';
+
+  @override
+  String get myIdentifier => 'నా గుర్తింపు';
+
+  @override
+  String get myProfile => 'నా ప్రొఫైల్';
+
+  @override
+  String get presetName => 'పేరు (ఉదా. ఉదయం)';
+
+  @override
+  String get removeLogo => 'చిత్రాన్ని తీసివేయి';
+
+  @override
+  String get resetGroup => 'సమూహాన్ని రీసెట్ చేయి';
+
+  @override
+  String get resetGroupConfirm =>
+      'కంపెనీ సమూహంలోని అన్ని సందేశాలు అందరికీ తొలగించబడతాయి.';
+
+  @override
+  String get settingsTitle => 'సెట్టింగ్‌లు';
+
+  @override
+  String get shiftPresets => 'షిఫ్ట్ సమయ ప్రీసెట్‌లు';
+
+  @override
+  String get shiftPresetsHint =>
+      'సిద్ధమైన సమయాలు (ఉదయం, సాయంత్రం, రాత్రి…): షిఫ్ట్‌లో ఒక్క తట్టుతో ప్రారంభం, ముగింపు నిండుతాయి.';
+
+  @override
+  String get themeDark => 'ముదురు';
+
+  @override
+  String get themeLight => 'లేత';
+
+  @override
+  String get themeSystem => 'సిస్టమ్';
+
+  @override
+  String get unmuteConversation => 'ఈ సంభాషణ నోటిఫికేషన్లను ఆన్ చేయి';
 }

@@ -46,13 +46,40 @@ class Company {
   /// Ce que les salariés peuvent imprimer : `own` ou `team`.
   final String printScope;
 
+  /// Préréglages d'horaires (matin, soir, nuit…) définis par les responsables.
+  final List<ShiftPreset> shiftPresets;
+
+  /// Groupe de messagerie de toute l'entreprise (le patron peut le couper).
+  final bool groupEnabled;
+
+  /// Image de l'entreprise : 0 = aucune ; change à chaque nouvelle image.
+  final int logoVersion;
+
   Company.fromJson(Map<String, dynamic> j)
       : id = j['id'],
         name = j['name'],
         timezone = j['timezone'],
         readOnly = j['status'] == 'readOnly',
         legalRules = (j['legalRules'] as Map?)?.map((k, v) => MapEntry(k as String, v as int)),
-        printScope = j['printScope'] ?? 'team';
+        printScope = j['printScope'] ?? 'team',
+        shiftPresets = [for (final p in j['shiftPresets'] ?? const []) ShiftPreset.fromJson((p as Map).cast<String, dynamic>())],
+        groupEnabled = j['groupEnabled'] != false,
+        logoVersion = j['logoVersion'] ?? 0;
+}
+
+/// Préréglage d'horaire : un nom et des heures (minutes depuis minuit).
+class ShiftPreset {
+  final String name;
+  final int start, end;
+
+  const ShiftPreset(this.name, this.start, this.end);
+
+  ShiftPreset.fromJson(Map<String, dynamic> j)
+      : name = j['name'],
+        start = j['start'],
+        end = j['end'];
+
+  Map<String, Object?> toJson() => {'name': name, 'start': start, 'end': end};
 }
 
 class Membership {
@@ -306,7 +333,11 @@ class Conversation {
         withPhotoUrl = j['with']?['photoUrl'],
         withActive = j['with']?['active'] ?? true,
         last = j['lastMessage'] == null ? null : ChatMessage.fromJson(j['lastMessage']),
-        unread = j['unread'] ?? 0;
+        unread = j['unread'] ?? 0,
+        muted = j['muted'] == true;
+
+  /// Notifications de cette conversation coupées pour soi.
+  final bool muted;
 }
 
 class ChatMessage {

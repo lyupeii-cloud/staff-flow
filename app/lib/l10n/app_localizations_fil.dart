@@ -1216,4 +1216,94 @@ class L10nFil extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Mga oras ayon sa oras sa $zone ($company). Ang device mo: $here.';
   }
+
+  @override
+  String get addPreset => 'Idagdag ang preset';
+
+  @override
+  String get addPresets => 'Gumawa ng mga preset';
+
+  @override
+  String get appearance => 'Hitsura';
+
+  @override
+  String get chooseLogo => 'Pumili ng PNG na larawan';
+
+  @override
+  String get conversationMuted =>
+      'Naka-mute ang mga notification ng usapang ito.';
+
+  @override
+  String get conversationUnmuted =>
+      'Bumalik ang mga notification ng usapang ito.';
+
+  @override
+  String get customization => 'Pag-customize';
+
+  @override
+  String get disableGroup => 'I-off ang grupo';
+
+  @override
+  String get disableGroupConfirm =>
+      'Itatago sa lahat ang grupo ng buong kumpanya. Puwede mo itong i-on ulit sa Mga Mensahe.';
+
+  @override
+  String get editPresets => 'Mga preset';
+
+  @override
+  String get enable => 'I-on ulit';
+
+  @override
+  String get groupDisabled => 'Naka-off ang grupo (ikaw lang ang nakakakita)';
+
+  @override
+  String get logoHint =>
+      'Maliit na PNG na larawan (ang logo mo) sa tab ng kumpanya para sa lahat ng miyembro.';
+
+  @override
+  String get logoPngOnly => 'Pumili ng PNG na larawan na hanggang 1 MB.';
+
+  @override
+  String get muteConversation => 'I-mute ang usapang ito';
+
+  @override
+  String get myIdentifier => 'Ang identifier ko';
+
+  @override
+  String get myProfile => 'Ang profile ko';
+
+  @override
+  String get presetName => 'Pangalan (hal. Umaga)';
+
+  @override
+  String get removeLogo => 'Alisin ang larawan';
+
+  @override
+  String get resetGroup => 'I-reset ang grupo';
+
+  @override
+  String get resetGroupConfirm =>
+      'Mabubura para sa lahat ang lahat ng mensahe sa grupo ng kumpanya.';
+
+  @override
+  String get settingsTitle => 'Mga setting';
+
+  @override
+  String get shiftPresets => 'Mga preset ng oras';
+
+  @override
+  String get shiftPresetsHint =>
+      'Handang oras (umaga, gabi, hatinggabi…): isang tap sa shift ang pupuno sa simula at tapos.';
+
+  @override
+  String get themeDark => 'Madilim';
+
+  @override
+  String get themeLight => 'Maliwanag';
+
+  @override
+  String get themeSystem => 'System';
+
+  @override
+  String get unmuteConversation => 'I-unmute ang usapang ito';
 }

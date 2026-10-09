@@ -45,6 +45,19 @@ class Api {
       _send(method, path, body, idempotencyKey);
 
   /// Le serveur répond-il ? (Sans session : simple test de connexion.)
+  /// Fichier (image de l'entreprise) ; `null` s'il n'existe pas.
+  Future<List<int>?> bytes(String path) async {
+    try {
+      final res = await _http.get(_uri(path), headers: {if (token != null) 'authorization': 'Bearer $token'})
+          .timeout(const Duration(seconds: 20));
+      return res.statusCode == 200 ? res.bodyBytes : null;
+    } on TimeoutException {
+      throw OfflineException();
+    } on http.ClientException {
+      throw OfflineException();
+    }
+  }
+
   Future<bool> ping() async {
     try {
       final res = await _http.get(Uri.parse('${Config.apiUrl}/health')).timeout(const Duration(seconds: 8));

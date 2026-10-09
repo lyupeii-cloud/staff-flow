@@ -2206,6 +2206,174 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Times are in {zone} time ({company}). Your device: {here}.'**
   String timezoneDiffers(String zone, String company, String here);
+
+  /// No description provided for @addPreset.
+  ///
+  /// In en, this message translates to:
+  /// **'Add preset'**
+  String get addPreset;
+
+  /// No description provided for @addPresets.
+  ///
+  /// In en, this message translates to:
+  /// **'Create presets'**
+  String get addPresets;
+
+  /// No description provided for @appearance.
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get appearance;
+
+  /// No description provided for @chooseLogo.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a PNG image'**
+  String get chooseLogo;
+
+  /// No description provided for @conversationMuted.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications muted for this conversation.'**
+  String get conversationMuted;
+
+  /// No description provided for @conversationUnmuted.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications back on for this conversation.'**
+  String get conversationUnmuted;
+
+  /// No description provided for @customization.
+  ///
+  /// In en, this message translates to:
+  /// **'Customization'**
+  String get customization;
+
+  /// No description provided for @disableGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn off the group'**
+  String get disableGroup;
+
+  /// No description provided for @disableGroupConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'The whole-company group will be hidden for everyone. You can turn it back on in Messages.'**
+  String get disableGroupConfirm;
+
+  /// No description provided for @editPresets.
+  ///
+  /// In en, this message translates to:
+  /// **'Presets'**
+  String get editPresets;
+
+  /// No description provided for @enable.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn back on'**
+  String get enable;
+
+  /// No description provided for @groupDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Group turned off (only you can see it)'**
+  String get groupDisabled;
+
+  /// No description provided for @logoHint.
+  ///
+  /// In en, this message translates to:
+  /// **'A small PNG image (your logo) shown on the company tab, for all its members.'**
+  String get logoHint;
+
+  /// No description provided for @logoPngOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a PNG image of 1 MB or less.'**
+  String get logoPngOnly;
+
+  /// No description provided for @muteConversation.
+  ///
+  /// In en, this message translates to:
+  /// **'Mute this conversation'**
+  String get muteConversation;
+
+  /// No description provided for @myIdentifier.
+  ///
+  /// In en, this message translates to:
+  /// **'My identifier'**
+  String get myIdentifier;
+
+  /// No description provided for @myProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'My profile'**
+  String get myProfile;
+
+  /// No description provided for @presetName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name (e.g. Morning)'**
+  String get presetName;
+
+  /// No description provided for @removeLogo.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove image'**
+  String get removeLogo;
+
+  /// No description provided for @resetGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset the group'**
+  String get resetGroup;
+
+  /// No description provided for @resetGroupConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'All messages in the company group will be deleted for everyone.'**
+  String get resetGroupConfirm;
+
+  /// No description provided for @settingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settingsTitle;
+
+  /// No description provided for @shiftPresets.
+  ///
+  /// In en, this message translates to:
+  /// **'Shift presets'**
+  String get shiftPresets;
+
+  /// No description provided for @shiftPresetsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ready-made times (morning, evening, night…): one tap in a shift fills in the start and end.'**
+  String get shiftPresetsHint;
+
+  /// No description provided for @themeDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get themeDark;
+
+  /// No description provided for @themeLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get themeLight;
+
+  /// No description provided for @themeSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get themeSystem;
+
+  /// No description provided for @unmuteConversation.
+  ///
+  /// In en, this message translates to:
+  /// **'Unmute this conversation'**
+  String get unmuteConversation;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

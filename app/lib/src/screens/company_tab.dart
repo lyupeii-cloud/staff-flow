@@ -80,13 +80,16 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
     _data = CompanyData.load(widget.session, company.id);
     widget.session.sync.addListener(_onSync);
     widget.session.openRequest.addListener(_onOpenRequest);
+    widget.session.openDay.addListener(_onOpenDay);
     _onOpenRequest();
+    _onOpenDay();
   }
 
   @override
   void dispose() {
     widget.session.sync.removeListener(_onSync);
     widget.session.openRequest.removeListener(_onOpenRequest);
+    widget.session.openDay.removeListener(_onOpenDay);
     super.dispose();
   }
 
@@ -97,6 +100,19 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
   }
 
   /// Notification touchée, ou icône d'une demande dans le planning.
+  /// Jour à montrer dans le planning (service touché dans « Tous mes plannings »).
+  DateTime? _focusDay;
+
+  void _onOpenDay() {
+    final wanted = widget.session.openDay.value;
+    if (wanted == null || wanted.companyId != company.id) return;
+    widget.session.openDay.value = null;
+    setState(() {
+      _view = _View.planning;
+      _focusDay = wanted.day;
+    });
+  }
+
   void _onOpenRequest() {
     final wanted = widget.session.openRequest.value;
     if (wanted == null || wanted.companyId != company.id) return;
@@ -304,8 +320,12 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
               if (!snap.hasData) return const Center(child: CircularProgressIndicator());
               final data = snap.data!;
               return switch (_view) {
-                _View.planning =>
-                  PlanningView(session: widget.session, membership: widget.membership, data: data),
+                _View.planning => PlanningView(
+                    key: ValueKey(_focusDay),
+                    session: widget.session,
+                    membership: widget.membership,
+                    data: data,
+                    initialDay: _focusDay),
                 _View.requests => RequestsView(
                     key: ValueKey(_focusRequest),
                     session: widget.session,

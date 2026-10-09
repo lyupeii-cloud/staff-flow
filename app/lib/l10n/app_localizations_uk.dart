@@ -1216,4 +1216,92 @@ class L10nUk extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Години за часом $zone ($company). Ваш пристрій: $here.';
   }
+
+  @override
+  String get addPreset => 'Додати шаблон';
+
+  @override
+  String get addPresets => 'Створити шаблони';
+
+  @override
+  String get appearance => 'Вигляд';
+
+  @override
+  String get chooseLogo => 'Вибрати зображення PNG';
+
+  @override
+  String get conversationMuted => 'Сповіщення цієї розмови вимкнено.';
+
+  @override
+  String get conversationUnmuted => 'Сповіщення цієї розмови знову ввімкнено.';
+
+  @override
+  String get customization => 'Персоналізація';
+
+  @override
+  String get disableGroup => 'Вимкнути групу';
+
+  @override
+  String get disableGroupConfirm =>
+      'Групу всієї компанії буде приховано для всіх. Увімкнути її знову можна в «Повідомленнях».';
+
+  @override
+  String get editPresets => 'Шаблони';
+
+  @override
+  String get enable => 'Увімкнути знову';
+
+  @override
+  String get groupDisabled => 'Групу вимкнено (бачите лише ви)';
+
+  @override
+  String get logoHint =>
+      'Невелике зображення PNG (ваш логотип) на вкладці компанії для всіх її учасників.';
+
+  @override
+  String get logoPngOnly => 'Виберіть зображення PNG до 1 МБ.';
+
+  @override
+  String get muteConversation => 'Вимкнути сповіщення цієї розмови';
+
+  @override
+  String get myIdentifier => 'Мій ідентифікатор';
+
+  @override
+  String get myProfile => 'Мій профіль';
+
+  @override
+  String get presetName => 'Назва (напр. Ранок)';
+
+  @override
+  String get removeLogo => 'Прибрати зображення';
+
+  @override
+  String get resetGroup => 'Очистити групу';
+
+  @override
+  String get resetGroupConfirm =>
+      'Усі повідомлення групи компанії буде видалено для всіх.';
+
+  @override
+  String get settingsTitle => 'Налаштування';
+
+  @override
+  String get shiftPresets => 'Шаблони змін';
+
+  @override
+  String get shiftPresetsHint =>
+      'Готові години (ранок, вечір, ніч…): один дотик у зміні заповнює початок і кінець.';
+
+  @override
+  String get themeDark => 'Темний';
+
+  @override
+  String get themeLight => 'Світлий';
+
+  @override
+  String get themeSystem => 'Системний';
+
+  @override
+  String get unmuteConversation => 'Увімкнути сповіщення цієї розмови';
 }

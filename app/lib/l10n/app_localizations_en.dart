@@ -1209,4 +1209,93 @@ class L10nEn extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Times are in $zone time ($company). Your device: $here.';
   }
+
+  @override
+  String get addPreset => 'Add preset';
+
+  @override
+  String get addPresets => 'Create presets';
+
+  @override
+  String get appearance => 'Appearance';
+
+  @override
+  String get chooseLogo => 'Choose a PNG image';
+
+  @override
+  String get conversationMuted => 'Notifications muted for this conversation.';
+
+  @override
+  String get conversationUnmuted =>
+      'Notifications back on for this conversation.';
+
+  @override
+  String get customization => 'Customization';
+
+  @override
+  String get disableGroup => 'Turn off the group';
+
+  @override
+  String get disableGroupConfirm =>
+      'The whole-company group will be hidden for everyone. You can turn it back on in Messages.';
+
+  @override
+  String get editPresets => 'Presets';
+
+  @override
+  String get enable => 'Turn back on';
+
+  @override
+  String get groupDisabled => 'Group turned off (only you can see it)';
+
+  @override
+  String get logoHint =>
+      'A small PNG image (your logo) shown on the company tab, for all its members.';
+
+  @override
+  String get logoPngOnly => 'Choose a PNG image of 1 MB or less.';
+
+  @override
+  String get muteConversation => 'Mute this conversation';
+
+  @override
+  String get myIdentifier => 'My identifier';
+
+  @override
+  String get myProfile => 'My profile';
+
+  @override
+  String get presetName => 'Name (e.g. Morning)';
+
+  @override
+  String get removeLogo => 'Remove image';
+
+  @override
+  String get resetGroup => 'Reset the group';
+
+  @override
+  String get resetGroupConfirm =>
+      'All messages in the company group will be deleted for everyone.';
+
+  @override
+  String get settingsTitle => 'Settings';
+
+  @override
+  String get shiftPresets => 'Shift presets';
+
+  @override
+  String get shiftPresetsHint =>
+      'Ready-made times (morning, evening, night…): one tap in a shift fills in the start and end.';
+
+  @override
+  String get themeDark => 'Dark';
+
+  @override
+  String get themeLight => 'Light';
+
+  @override
+  String get themeSystem => 'System';
+
+  @override
+  String get unmuteConversation => 'Unmute this conversation';
 }

@@ -1205,4 +1205,92 @@ class L10nBn extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'সময় $zone-এর সময় অনুযায়ী ($company)। আপনার ডিভাইস: $here।';
   }
+
+  @override
+  String get addPreset => 'প্রিসেট যোগ করুন';
+
+  @override
+  String get addPresets => 'প্রিসেট তৈরি করুন';
+
+  @override
+  String get appearance => 'চেহারা';
+
+  @override
+  String get chooseLogo => 'PNG ছবি বাছুন';
+
+  @override
+  String get conversationMuted => 'এই কথোপকথনের বিজ্ঞপ্তি বন্ধ করা হয়েছে।';
+
+  @override
+  String get conversationUnmuted => 'এই কথোপকথনের বিজ্ঞপ্তি আবার চালু হয়েছে।';
+
+  @override
+  String get customization => 'নিজের মতো সাজানো';
+
+  @override
+  String get disableGroup => 'গ্রুপ বন্ধ করুন';
+
+  @override
+  String get disableGroupConfirm =>
+      'পুরো কোম্পানির গ্রুপ সবার কাছ থেকে লুকানো হবে। বার্তা থেকে আবার চালু করতে পারবেন।';
+
+  @override
+  String get editPresets => 'প্রিসেট';
+
+  @override
+  String get enable => 'আবার চালু করুন';
+
+  @override
+  String get groupDisabled => 'গ্রুপ বন্ধ (শুধু আপনি দেখছেন)';
+
+  @override
+  String get logoHint =>
+      'কোম্পানির ট্যাবে দেখানো ছোট PNG ছবি (আপনার লোগো), সব সদস্যের জন্য।';
+
+  @override
+  String get logoPngOnly => '১ MB পর্যন্ত PNG ছবি বাছুন।';
+
+  @override
+  String get muteConversation => 'এই কথোপকথন নীরব করুন';
+
+  @override
+  String get myIdentifier => 'আমার শনাক্তকারী';
+
+  @override
+  String get myProfile => 'আমার প্রোফাইল';
+
+  @override
+  String get presetName => 'নাম (যেমন সকাল)';
+
+  @override
+  String get removeLogo => 'ছবি সরান';
+
+  @override
+  String get resetGroup => 'গ্রুপ রিসেট করুন';
+
+  @override
+  String get resetGroupConfirm =>
+      'কোম্পানির গ্রুপের সব বার্তা সবার জন্য মুছে যাবে।';
+
+  @override
+  String get settingsTitle => 'সেটিংস';
+
+  @override
+  String get shiftPresets => 'শিফটের সময় প্রিসেট';
+
+  @override
+  String get shiftPresetsHint =>
+      'তৈরি সময় (সকাল, সন্ধ্যা, রাত…): শিফটে এক ট্যাপে শুরু ও শেষ পূরণ হয়।';
+
+  @override
+  String get themeDark => 'গাঢ়';
+
+  @override
+  String get themeLight => 'হালকা';
+
+  @override
+  String get themeSystem => 'সিস্টেম';
+
+  @override
+  String get unmuteConversation => 'এই কথোপকথনের বিজ্ঞপ্তি চালু করুন';
 }

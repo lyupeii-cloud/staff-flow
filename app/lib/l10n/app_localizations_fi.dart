@@ -1211,4 +1211,93 @@ class L10nFi extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Ajat aikavyöhykkeellä $zone ($company). Laitteesi: $here.';
   }
+
+  @override
+  String get addPreset => 'Lisää esiasetus';
+
+  @override
+  String get addPresets => 'Luo esiasetuksia';
+
+  @override
+  String get appearance => 'Ulkoasu';
+
+  @override
+  String get chooseLogo => 'Valitse PNG-kuva';
+
+  @override
+  String get conversationMuted => 'Tämän keskustelun ilmoitukset mykistetty.';
+
+  @override
+  String get conversationUnmuted =>
+      'Tämän keskustelun ilmoitukset taas päällä.';
+
+  @override
+  String get customization => 'Mukautus';
+
+  @override
+  String get disableGroup => 'Poista ryhmä käytöstä';
+
+  @override
+  String get disableGroupConfirm =>
+      'Koko yrityksen ryhmä piilotetaan kaikilta. Voit ottaa sen takaisin käyttöön Viesteissä.';
+
+  @override
+  String get editPresets => 'Esiasetukset';
+
+  @override
+  String get enable => 'Ota takaisin käyttöön';
+
+  @override
+  String get groupDisabled => 'Ryhmä poistettu käytöstä (vain sinä näet sen)';
+
+  @override
+  String get logoHint =>
+      'Pieni PNG-kuva (logosi) yrityksen välilehdellä kaikille jäsenille.';
+
+  @override
+  String get logoPngOnly => 'Valitse enintään 1 Mt:n PNG-kuva.';
+
+  @override
+  String get muteConversation => 'Mykistä tämä keskustelu';
+
+  @override
+  String get myIdentifier => 'Tunnukseni';
+
+  @override
+  String get myProfile => 'Profiilini';
+
+  @override
+  String get presetName => 'Nimi (esim. Aamu)';
+
+  @override
+  String get removeLogo => 'Poista kuva';
+
+  @override
+  String get resetGroup => 'Tyhjennä ryhmä';
+
+  @override
+  String get resetGroupConfirm =>
+      'Kaikki yrityksen ryhmän viestit poistetaan kaikilta.';
+
+  @override
+  String get settingsTitle => 'Asetukset';
+
+  @override
+  String get shiftPresets => 'Vuorojen esiasetukset';
+
+  @override
+  String get shiftPresetsHint =>
+      'Valmiit ajat (aamu, ilta, yö…): yksi napautus vuorossa täyttää alun ja lopun.';
+
+  @override
+  String get themeDark => 'Tumma';
+
+  @override
+  String get themeLight => 'Vaalea';
+
+  @override
+  String get themeSystem => 'Järjestelmä';
+
+  @override
+  String get unmuteConversation => 'Ota tämän keskustelun ilmoitukset käyttöön';
 }

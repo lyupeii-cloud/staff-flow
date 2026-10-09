@@ -1174,4 +1174,88 @@ class L10nZh extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return '时间按 $zone 时间（$company）。您的设备：$here。';
   }
+
+  @override
+  String get addPreset => '添加预设';
+
+  @override
+  String get addPresets => '创建预设';
+
+  @override
+  String get appearance => '外观';
+
+  @override
+  String get chooseLogo => '选择 PNG 图片';
+
+  @override
+  String get conversationMuted => '已将此对话静音。';
+
+  @override
+  String get conversationUnmuted => '已恢复此对话的通知。';
+
+  @override
+  String get customization => '个性化';
+
+  @override
+  String get disableGroup => '关闭群组';
+
+  @override
+  String get disableGroupConfirm => '全公司群组将对所有人隐藏。您可以在“消息”中重新开启。';
+
+  @override
+  String get editPresets => '预设';
+
+  @override
+  String get enable => '重新开启';
+
+  @override
+  String get groupDisabled => '群组已关闭（仅您可见）';
+
+  @override
+  String get logoHint => '显示在公司标签上的小 PNG 图片（您的标志），所有成员可见。';
+
+  @override
+  String get logoPngOnly => '请选择不超过 1 MB 的 PNG 图片。';
+
+  @override
+  String get muteConversation => '将此对话静音';
+
+  @override
+  String get myIdentifier => '我的标识';
+
+  @override
+  String get myProfile => '我的资料';
+
+  @override
+  String get presetName => '名称（如：早班）';
+
+  @override
+  String get removeLogo => '移除图片';
+
+  @override
+  String get resetGroup => '重置群组';
+
+  @override
+  String get resetGroupConfirm => '公司群组的所有消息将对所有人删除。';
+
+  @override
+  String get settingsTitle => '设置';
+
+  @override
+  String get shiftPresets => '班次时间预设';
+
+  @override
+  String get shiftPresetsHint => '现成的时间（早班、晚班、夜班…）：在班次中点一下即可填入开始和结束时间。';
+
+  @override
+  String get themeDark => '深色';
+
+  @override
+  String get themeLight => '浅色';
+
+  @override
+  String get themeSystem => '跟随系统';
+
+  @override
+  String get unmuteConversation => '恢复此对话的通知';
 }

@@ -1220,4 +1220,93 @@ class L10nPl extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Godziny według czasu $zone ($company). Twoje urządzenie: $here.';
   }
+
+  @override
+  String get addPreset => 'Dodaj szablon';
+
+  @override
+  String get addPresets => 'Utwórz szablony';
+
+  @override
+  String get appearance => 'Wygląd';
+
+  @override
+  String get chooseLogo => 'Wybierz obraz PNG';
+
+  @override
+  String get conversationMuted => 'Powiadomienia z tej rozmowy wyciszone.';
+
+  @override
+  String get conversationUnmuted =>
+      'Powiadomienia z tej rozmowy znów włączone.';
+
+  @override
+  String get customization => 'Personalizacja';
+
+  @override
+  String get disableGroup => 'Wyłącz grupę';
+
+  @override
+  String get disableGroupConfirm =>
+      'Grupa całej firmy zostanie ukryta dla wszystkich. Możesz ją ponownie włączyć w Wiadomościach.';
+
+  @override
+  String get editPresets => 'Szablony';
+
+  @override
+  String get enable => 'Włącz ponownie';
+
+  @override
+  String get groupDisabled => 'Grupa wyłączona (widzisz ją tylko ty)';
+
+  @override
+  String get logoHint =>
+      'Mały obraz PNG (twoje logo) widoczny na karcie firmy dla wszystkich jej członków.';
+
+  @override
+  String get logoPngOnly => 'Wybierz obraz PNG do 1 MB.';
+
+  @override
+  String get muteConversation => 'Wycisz tę rozmowę';
+
+  @override
+  String get myIdentifier => 'Mój identyfikator';
+
+  @override
+  String get myProfile => 'Mój profil';
+
+  @override
+  String get presetName => 'Nazwa (np. Rano)';
+
+  @override
+  String get removeLogo => 'Usuń obraz';
+
+  @override
+  String get resetGroup => 'Wyczyść grupę';
+
+  @override
+  String get resetGroupConfirm =>
+      'Wszystkie wiadomości z grupy firmy zostaną usunięte dla wszystkich.';
+
+  @override
+  String get settingsTitle => 'Ustawienia';
+
+  @override
+  String get shiftPresets => 'Szablony godzin';
+
+  @override
+  String get shiftPresetsHint =>
+      'Gotowe godziny (rano, wieczór, noc…): jedno dotknięcie w zmianie wypełnia początek i koniec.';
+
+  @override
+  String get themeDark => 'Ciemny';
+
+  @override
+  String get themeLight => 'Jasny';
+
+  @override
+  String get themeSystem => 'Systemowy';
+
+  @override
+  String get unmuteConversation => 'Włącz powiadomienia z tej rozmowy';
 }

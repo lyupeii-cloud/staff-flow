@@ -1212,4 +1212,92 @@ class L10nSw extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Saa kulingana na saa za $zone ($company). Kifaa chako: $here.';
   }
+
+  @override
+  String get addPreset => 'Ongeza mpangilio';
+
+  @override
+  String get addPresets => 'Unda mipangilio';
+
+  @override
+  String get appearance => 'Mwonekano';
+
+  @override
+  String get chooseLogo => 'Chagua picha ya PNG';
+
+  @override
+  String get conversationMuted => 'Arifa za mazungumzo haya zimenyamazishwa.';
+
+  @override
+  String get conversationUnmuted => 'Arifa za mazungumzo haya zimewashwa tena.';
+
+  @override
+  String get customization => 'Ubinafsishaji';
+
+  @override
+  String get disableGroup => 'Zima kikundi';
+
+  @override
+  String get disableGroupConfirm =>
+      'Kikundi cha kampuni nzima kitafichwa kwa kila mtu. Unaweza kukiwasha tena kwenye Ujumbe.';
+
+  @override
+  String get editPresets => 'Mipangilio';
+
+  @override
+  String get enable => 'Washa tena';
+
+  @override
+  String get groupDisabled => 'Kikundi kimezimwa (wewe tu unakiona)';
+
+  @override
+  String get logoHint =>
+      'Picha ndogo ya PNG (nembo yako) inayoonyeshwa kwenye kichupo cha kampuni kwa wanachama wote.';
+
+  @override
+  String get logoPngOnly => 'Chagua picha ya PNG ya hadi MB 1.';
+
+  @override
+  String get muteConversation => 'Nyamazisha mazungumzo haya';
+
+  @override
+  String get myIdentifier => 'Kitambulisho changu';
+
+  @override
+  String get myProfile => 'Wasifu wangu';
+
+  @override
+  String get presetName => 'Jina (mf. Asubuhi)';
+
+  @override
+  String get removeLogo => 'Ondoa picha';
+
+  @override
+  String get resetGroup => 'Weka upya kikundi';
+
+  @override
+  String get resetGroupConfirm =>
+      'Ujumbe wote katika kikundi cha kampuni utafutwa kwa kila mtu.';
+
+  @override
+  String get settingsTitle => 'Mipangilio';
+
+  @override
+  String get shiftPresets => 'Mipangilio ya saa za zamu';
+
+  @override
+  String get shiftPresetsHint =>
+      'Saa zilizo tayari (asubuhi, jioni, usiku…): mguso mmoja kwenye zamu hujaza mwanzo na mwisho.';
+
+  @override
+  String get themeDark => 'Giza';
+
+  @override
+  String get themeLight => 'Mwanga';
+
+  @override
+  String get themeSystem => 'Mfumo';
+
+  @override
+  String get unmuteConversation => 'Washa arifa za mazungumzo haya';
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
+import 'company_logo.dart';
 import 'company_tab.dart';
 import 'home_screen.dart';
 import 'people_widgets.dart';
@@ -112,6 +113,11 @@ class _TeamViewState extends State<TeamView> {
               );
             },
           ),
+          // Personnalisation : l'image de l'entreprise, pour le patron seulement.
+          if (role == Role.owner) ...[
+            const SizedBox(height: 28),
+            CompanyLogoSettings(session: widget.session, company: company),
+          ],
           if (role != Role.owner) ...[
             const SizedBox(height: 24),
             OutlinedButton.icon(

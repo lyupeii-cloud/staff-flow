@@ -6,6 +6,7 @@ import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
 import 'company_tab.dart';
+import 'presets_dialog.dart';
 import 'sync_widgets.dart';
 
 /// Crée un service ([shift] nul) ou modifie [shift]. Renvoie `true` si le
@@ -229,6 +230,28 @@ class _ShiftEditorState extends State<_ShiftEditor> {
               ],
             ),
             if (_end <= _start) Text(t.endsNextDay, style: theme.textTheme.bodySmall),
+            // Préréglages : un appui remplit début et fin.
+            if (_presets.isNotEmpty || _canEditPresets)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Wrap(spacing: 6, runSpacing: 4, children: [
+                  for (final p in _presets)
+                    ActionChip(
+                      avatar: const Icon(Icons.schedule, size: 16),
+                      label: Text('${p.name} ${timeLabel(p.start)}–${timeLabel(p.end)}'),
+                      onPressed: () => setState(() {
+                        _start = p.start;
+                        _end = p.end;
+                      }),
+                    ),
+                  if (_canEditPresets)
+                    ActionChip(
+                      avatar: const Icon(Icons.tune, size: 16),
+                      label: Text(_presets.isEmpty ? t.addPresets : t.editPresets),
+                      onPressed: _editPresets,
+                    ),
+                ]),
+              ),
             const SizedBox(height: 12),
             Wrap(
               spacing: 8,
@@ -441,6 +464,30 @@ class _ShiftEditorState extends State<_ShiftEditor> {
     padding: const EdgeInsets.only(bottom: 6),
     child: Text(text, style: Theme.of(context).textTheme.labelLarge),
   );
+
+  /// Préréglages de l'entreprise (mis à jour ici après une modification).
+  late List<ShiftPreset> _presets = widget.company.shiftPresets;
+
+  bool get _canEditPresets => !widget.company.readOnly;
+
+  Future<void> _editPresets() async {
+    final updated = await showDialog<List<ShiftPreset>>(
+      context: context,
+      builder: (_) => PresetsDialog(initial: _presets),
+    );
+    if (updated == null || !mounted) return;
+    final messenger = ScaffoldMessenger.of(context);
+    try {
+      await widget.session.api.send('PUT', '/companies/${widget.company.id}/presets',
+          body: {'presets': [for (final p in updated) p.toJson()]});
+      setState(() => _presets = updated);
+      await widget.session.refresh();
+    } on OfflineException {
+      messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+    } on ApiException catch (err) {
+      messenger.showSnackBar(SnackBar(content: Text(err.describe(t))));
+    }
+  }
 
   Widget _timeButton(String label, int minutes, void Function(int) set) => OutlinedButton(
     onPressed: () async {

@@ -1202,4 +1202,93 @@ class L10nVi extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Giờ theo giờ $zone ($company). Thiết bị của bạn: $here.';
   }
+
+  @override
+  String get addPreset => 'Thêm mẫu giờ';
+
+  @override
+  String get addPresets => 'Tạo mẫu giờ';
+
+  @override
+  String get appearance => 'Giao diện';
+
+  @override
+  String get chooseLogo => 'Chọn ảnh PNG';
+
+  @override
+  String get conversationMuted => 'Đã tắt thông báo của cuộc trò chuyện này.';
+
+  @override
+  String get conversationUnmuted =>
+      'Đã bật lại thông báo của cuộc trò chuyện này.';
+
+  @override
+  String get customization => 'Tùy chỉnh';
+
+  @override
+  String get disableGroup => 'Tắt nhóm';
+
+  @override
+  String get disableGroupConfirm =>
+      'Nhóm của toàn công ty sẽ bị ẩn với mọi người. Bạn có thể bật lại trong Tin nhắn.';
+
+  @override
+  String get editPresets => 'Mẫu giờ';
+
+  @override
+  String get enable => 'Bật lại';
+
+  @override
+  String get groupDisabled => 'Nhóm đã tắt (chỉ bạn thấy)';
+
+  @override
+  String get logoHint =>
+      'Một ảnh PNG nhỏ (logo của bạn) hiện trên tab công ty cho mọi thành viên.';
+
+  @override
+  String get logoPngOnly => 'Hãy chọn ảnh PNG tối đa 1 MB.';
+
+  @override
+  String get muteConversation => 'Tắt thông báo cuộc trò chuyện này';
+
+  @override
+  String get myIdentifier => 'Mã định danh của tôi';
+
+  @override
+  String get myProfile => 'Hồ sơ của tôi';
+
+  @override
+  String get presetName => 'Tên (vd. Sáng)';
+
+  @override
+  String get removeLogo => 'Gỡ ảnh';
+
+  @override
+  String get resetGroup => 'Đặt lại nhóm';
+
+  @override
+  String get resetGroupConfirm =>
+      'Mọi tin nhắn trong nhóm công ty sẽ bị xóa với mọi người.';
+
+  @override
+  String get settingsTitle => 'Cài đặt';
+
+  @override
+  String get shiftPresets => 'Mẫu giờ làm';
+
+  @override
+  String get shiftPresetsHint =>
+      'Giờ có sẵn (sáng, tối, đêm…): một chạm trong ca sẽ điền giờ bắt đầu và kết thúc.';
+
+  @override
+  String get themeDark => 'Tối';
+
+  @override
+  String get themeLight => 'Sáng';
+
+  @override
+  String get themeSystem => 'Theo hệ thống';
+
+  @override
+  String get unmuteConversation => 'Bật lại thông báo cuộc trò chuyện này';
 }

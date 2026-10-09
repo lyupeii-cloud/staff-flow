@@ -1217,4 +1217,96 @@ class L10nEl extends L10n {
   String timezoneDiffers(String zone, String company, String here) {
     return 'Ώρες κατά την ώρα $zone ($company). Η συσκευή σας: $here.';
   }
+
+  @override
+  String get addPreset => 'Προσθήκη προρρύθμισης';
+
+  @override
+  String get addPresets => 'Δημιουργία προρρυθμίσεων';
+
+  @override
+  String get appearance => 'Εμφάνιση';
+
+  @override
+  String get chooseLogo => 'Επιλογή εικόνας PNG';
+
+  @override
+  String get conversationMuted =>
+      'Οι ειδοποιήσεις αυτής της συνομιλίας σίγησαν.';
+
+  @override
+  String get conversationUnmuted =>
+      'Οι ειδοποιήσεις αυτής της συνομιλίας ενεργοποιήθηκαν ξανά.';
+
+  @override
+  String get customization => 'Προσαρμογή';
+
+  @override
+  String get disableGroup => 'Απενεργοποίηση ομάδας';
+
+  @override
+  String get disableGroupConfirm =>
+      'Η ομάδα όλης της εταιρείας θα κρυφτεί για όλους. Μπορείτε να την ενεργοποιήσετε ξανά στα Μηνύματα.';
+
+  @override
+  String get editPresets => 'Προρρυθμίσεις';
+
+  @override
+  String get enable => 'Ενεργοποίηση ξανά';
+
+  @override
+  String get groupDisabled =>
+      'Η ομάδα απενεργοποιήθηκε (τη βλέπετε μόνο εσείς)';
+
+  @override
+  String get logoHint =>
+      'Μια μικρή εικόνα PNG (το λογότυπό σας) στην καρτέλα της εταιρείας, για όλα τα μέλη.';
+
+  @override
+  String get logoPngOnly => 'Επιλέξτε εικόνα PNG έως 1 MB.';
+
+  @override
+  String get muteConversation => 'Σίγαση αυτής της συνομιλίας';
+
+  @override
+  String get myIdentifier => 'Το αναγνωριστικό μου';
+
+  @override
+  String get myProfile => 'Το προφίλ μου';
+
+  @override
+  String get presetName => 'Όνομα (π.χ. Πρωί)';
+
+  @override
+  String get removeLogo => 'Αφαίρεση εικόνας';
+
+  @override
+  String get resetGroup => 'Επαναφορά ομάδας';
+
+  @override
+  String get resetGroupConfirm =>
+      'Όλα τα μηνύματα της ομάδας της εταιρείας θα διαγραφούν για όλους.';
+
+  @override
+  String get settingsTitle => 'Ρυθμίσεις';
+
+  @override
+  String get shiftPresets => 'Προρρυθμίσεις ωραρίων';
+
+  @override
+  String get shiftPresetsHint =>
+      'Έτοιμα ωράρια (πρωί, απόγευμα, νύχτα…): ένα πάτημα σε μια βάρδια συμπληρώνει έναρξη και λήξη.';
+
+  @override
+  String get themeDark => 'Σκοτεινό';
+
+  @override
+  String get themeLight => 'Φωτεινό';
+
+  @override
+  String get themeSystem => 'Σύστημα';
+
+  @override
+  String get unmuteConversation =>
+      'Ενεργοποίηση ειδοποιήσεων αυτής της συνομιλίας';
 }

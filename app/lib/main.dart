@@ -37,6 +37,7 @@ class StaffFlowApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: Brand.theme(Brightness.light),
           darkTheme: Brand.theme(Brightness.dark),
+          themeMode: session.themeMode,
           locale: _locale,
           supportedLocales: supportedLocales,
           localizationsDelegates: const [
