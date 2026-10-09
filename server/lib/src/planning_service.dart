@@ -471,6 +471,24 @@ class PlanningService {
 
   // --- Outils ---------------------------------------------------------------
 
+  /// Échange validé : le service passe à [toUserId], directement dans le
+  /// planning publié (les deux personnes sont prévenues par la demande).
+  /// 409 si le service a changé depuis la demande.
+  Future<void> applySwap(TxSession tx, User actor, String companyId, String shiftId, int version, String toUserId) async {
+    final rows = await store.query(tx,
+        'SELECT * FROM shifts WHERE id = @id::uuid AND company_id = @c::uuid FOR UPDATE', {'id': shiftId, 'c': companyId});
+    final row = rows.isEmpty ? null : rows.first.toColumnMap();
+    if (row == null || row['deleted'] == true || row['version'] != version) {
+      throw const ApiError.conflict('Ce service a changé depuis la demande.');
+    }
+    _checkEditable(row['day'] as DateTime);
+    final after = await store.query(tx, '''
+      UPDATE shifts SET user_id = @u::uuid, version = version + 1, updated_by = @by::uuid, updated_at = now(),
+        published = CASE WHEN published IS NULL THEN NULL ELSE jsonb_set(published, '{userId}', to_jsonb(@u::text)) END
+      WHERE id = @id::uuid RETURNING *''', {'u': toUserId, 'by': actor.id, 'id': shiftId});
+    await _history(tx, companyId, shiftId, actor, 'update', _snapshot(row), _snapshot(after.first.toColumnMap()));
+  }
+
   /// Responsable (ou propriétaire) d'une entreprise modifiable. Renvoie ses
   /// sites : `null` s'il gère toute l'entreprise.
   Future<Set<String>?> _manager(User actor, String companyId) async {

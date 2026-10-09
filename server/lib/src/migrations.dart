@@ -286,4 +286,32 @@ ALTER TABLE users ADD COLUMN notice_retention text NOT NULL DEFAULT 'week'
 ALTER TABLE memberships ADD COLUMN sites uuid[];
 ALTER TABLE join_requests ADD COLUMN sites uuid[];
 ''',
+  // 12 — demandes : échange de service (proposé à un collègue ou à tous ceux
+  // du même poste, accepté par lui, validé par un responsable), congé et
+  // indisponibilité (validés par un responsable).
+  '''
+CREATE TABLE requests (
+  id            uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  company_id    uuid NOT NULL REFERENCES companies(id) ON DELETE CASCADE,
+  kind          text NOT NULL CHECK (kind IN ('swap', 'leave', 'unavailability')),
+  status        text NOT NULL CHECK (status IN ('pending_peer', 'pending_manager', 'approved', 'refused', 'cancelled')),
+  requester_id  uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  -- Échange : le collègue qui reprend le service (choisi, ou le premier qui
+  -- accepte une offre ouverte à tous ceux du même poste).
+  peer_id       uuid REFERENCES users(id) ON DELETE SET NULL,
+  open_offer    boolean NOT NULL DEFAULT false,
+  shift_id      uuid REFERENCES shifts(id) ON DELETE SET NULL,
+  shift_version int,
+  -- Congé et indisponibilité : période, et jours de la semaine (1 = lundi)
+  -- pour une indisponibilité qui revient chaque semaine.
+  start_day     date,
+  end_day       date,
+  weekdays      int[],
+  note          text,
+  decided_by    uuid REFERENCES users(id) ON DELETE SET NULL,
+  created_at    timestamptz NOT NULL DEFAULT now(),
+  updated_at    timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX requests_company ON requests (company_id, status);
+''',
 ];

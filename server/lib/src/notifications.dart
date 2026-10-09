@@ -126,6 +126,13 @@ class NotificationService {
     'join_invite': NotifyCategory.requests,
     'transfer_offer': NotifyCategory.requests,
     'member_joined': NotifyCategory.requests,
+    'swap_offer': NotifyCategory.requests,
+    'swap_declined': NotifyCategory.requests,
+    'swap_to_approve': NotifyCategory.requests,
+    'leave_to_approve': NotifyCategory.requests,
+    'unavailability_to_approve': NotifyCategory.requests,
+    'request_approved': NotifyCategory.requests,
+    'request_refused': NotifyCategory.requests,
     'shift_overwritten': NotifyCategory.conflicts,
   };
 
@@ -236,6 +243,13 @@ class NotificationService {
     return switch (kind) {
       'schedule_published' => (title, t('Votre planning a été publié ou modifié.')),
       'join_invite' => (title, t('Cette entreprise veut vous ajouter à son équipe.')),
+      'swap_offer' => (title, t('{name} vous propose de reprendre un de ses services.', {'name': name})),
+      'swap_declined' => (title, t('{name} a refusé votre proposition d\'échange.', {'name': name})),
+      'swap_to_approve' => (title, t('Un échange de service attend votre validation.')),
+      'leave_to_approve' => (title, t('{name} demande un congé.', {'name': name})),
+      'unavailability_to_approve' => (title, t('{name} déclare une indisponibilité.', {'name': name})),
+      'request_approved' => (title, t('Votre demande a été acceptée.')),
+      'request_refused' => (title, t('Votre demande a été refusée.')),
       'member_joined' => (title, t('{name} a rejoint l\'entreprise.', {'name': '${data['name'] ?? '?'}'})),
       'transfer_offer' =>
         (title, t('{name} vous propose de devenir propriétaire de l\'entreprise.', {'name': name})),

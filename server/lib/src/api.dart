@@ -14,6 +14,7 @@ import 'notice_service.dart';
 import 'notifications.dart';
 import 'models.dart';
 import 'planning_service.dart';
+import 'request_service.dart';
 import 'store.dart';
 import 'translator.dart';
 
@@ -26,6 +27,7 @@ class Api {
   late final NotificationService notifications = NotificationService(store, push: push);
   late final PlanningService planning = PlanningService(store, companies, notifications, now: now);
   late final ChatService chat = ChatService(store, companies, notifications);
+  late final RequestService requests = RequestService(store, companies, planning, notifications);
   late final JoinService joins = JoinService(store, companies, now: now);
   late final NoticeService notices = NoticeService(store, now: now);
 
@@ -108,6 +110,21 @@ class Api {
       ..post('/conversations/<id>/read', _authed(_readMessages))
       ..post('/messages/<id>/translate', _authed(_translateMessage))
       ..post('/companies/<id>/groups', _authed(_createGroup))
+      // Demandes : échange, congé, indisponibilité
+      ..get('/companies/<id>/requests', _authed((r, u) async => _json({'requests': await requests.list(u, r.params['id']!)})))
+      ..post('/companies/<id>/requests', _authed(_createRequest))
+      ..get('/companies/<id>/absences', _authed(_absences))
+      ..post('/requests/<id>/accept', _authed((r, u) async => _json(await requests.accept(u, r.params['id']!))))
+      ..post('/requests/<id>/decline', _authed((r, u) async {
+        await requests.decline(u, r.params['id']!);
+        return Response(204);
+      }))
+      ..post('/requests/<id>/approve', _authed((r, u) async => _json(await requests.decide(u, r.params['id']!, approve: true))))
+      ..post('/requests/<id>/refuse', _authed((r, u) async => _json(await requests.decide(u, r.params['id']!, approve: false))))
+      ..post('/requests/<id>/cancel', _authed((r, u) async {
+        await requests.cancel(u, r.params['id']!);
+        return Response(204);
+      }))
       ..patch('/conversations/<id>', _authed(_updateGroup));
     if (devLogin) v1.post('/auth/dev', _loginDev);
 
@@ -416,6 +433,22 @@ class Api {
     final lang = (await _body(req))['lang'];
     if (lang is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
     return _json({'text': await chat.translate(user, id, lang, t)});
+  }
+
+  Future<Response> _createRequest(Request req, User user) async =>
+      _json(await requests.create(user, req.params['id']!, await _body(req)), status: 201);
+
+  Future<Response> _absences(Request req, User user) async {
+    final q = req.url.queryParameters;
+    final from = q['from'], to = q['to'];
+    if (from == null || to == null) throw const ApiError.badRequest('Paramètres from et to requis.');
+    try {
+      parseDay(from);
+      parseDay(to);
+    } on FormatException {
+      throw const ApiError.badRequest('Dates invalides.');
+    }
+    return _json({'absences': await requests.absences(user, req.params['id']!, from, to)});
   }
 
   static List<String>? _optionalIds(Object? value) => value == null ? null : _ids(value);
