@@ -47,4 +47,6 @@ const ru = <String, String>{
   'Traduction momentanément indisponible.': 'Перевод временно недоступен.',
   'Traduction indisponible pour cette langue.': 'Перевод на этот язык недоступен.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Дни, прошедшие более месяца назад, больше нельзя изменять.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Этот объект не находится в вашем ведении.',
+  'Choisissez au moins un de vos sites.': 'Выберите хотя бы один из своих объектов.',
 };

@@ -47,4 +47,6 @@ const pa = <String, String>{
   'Traduction momentanément indisponible.': 'ਅਨੁਵਾਦ ਫ਼ਿਲਹਾਲ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।',
   'Traduction indisponible pour cette langue.': 'ਇਸ ਭਾਸ਼ਾ ਲਈ ਅਨੁਵਾਦ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'ਇੱਕ ਮਹੀਨੇ ਤੋਂ ਪੁਰਾਣੇ ਦਿਨ ਹੁਣ ਬਦਲੇ ਨਹੀਂ ਜਾ ਸਕਦੇ।',
+  'Ce site n\'est pas sous votre responsabilité.': 'ਇਹ ਸਾਈਟ ਤੁਹਾਡੀ ਜ਼ਿੰਮੇਵਾਰੀ ਵਿੱਚ ਨਹੀਂ ਹੈ।',
+  'Choisissez au moins un de vos sites.': 'ਆਪਣੀ ਘੱਟੋ-ਘੱਟ ਇੱਕ ਸਾਈਟ ਚੁਣੋ।',
 };

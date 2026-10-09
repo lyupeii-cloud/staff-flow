@@ -47,4 +47,6 @@ const hu = <String, String>{
   'Traduction momentanément indisponible.': 'A fordítás átmenetileg nem érhető el.',
   'Traduction indisponible pour cette langue.': 'Erre a nyelvre nem érhető el fordítás.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Az egy hónapnál régebbi napok már nem módosíthatók.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Ez a telephely nem a te felelősséged.',
+  'Choisissez au moins un de vos sites.': 'Válassz legalább egyet a telephelyeid közül.',
 };

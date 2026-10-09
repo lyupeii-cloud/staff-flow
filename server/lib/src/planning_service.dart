@@ -54,7 +54,7 @@ class PlanningService {
 
   Future<CatalogItem> addCatalogItem(
       User actor, String companyId, CatalogKind kind, String name) async {
-    await _manager(actor, companyId);
+    await _fullManager(actor, companyId);
     final rows = await store.query(store.db,
         'INSERT INTO ${kind.table} (company_id, name) VALUES (@c::uuid, @n) RETURNING id::text',
         {'c': companyId, 'n': _name(name)});
@@ -63,7 +63,7 @@ class PlanningService {
 
   Future<void> updateCatalogItem(User actor, String companyId, CatalogKind kind, String id,
       {String? name, bool? archived}) async {
-    await _manager(actor, companyId);
+    await _fullManager(actor, companyId);
     final rows = await store.query(store.db, '''
       UPDATE ${kind.table} SET
         name = coalesce(@n, name),
@@ -100,15 +100,19 @@ class PlanningService {
       SELECT * FROM shifts
       WHERE company_id = @c::uuid AND day BETWEEN @from::date AND @to::date
       ORDER BY day, start_min''', params);
-    final pending = await store.query(
-        store.db, 'SELECT count(*) FROM shifts WHERE company_id = @c::uuid AND dirty', {'c': companyId});
+    // Modifications que cette personne peut publier (ses sites pour un responsable de site).
+    final mine = await companies.managedSites(companyId, actor, role);
+    final pending = await store.query(store.db, '''
+      SELECT count(*) FROM shifts WHERE company_id = @c::uuid AND dirty
+        AND (@sites::text[] IS NULL OR site_id::text = ANY(@sites::text[]))''', {'c': companyId, 'sites': mine?.toList()});
     return ([for (final r in rows) Shift.fromRow(r.toColumnMap())], pending.first[0] as int);
   }
 
   /// Crée un service sur chacun des [days] ; avec [repeat], une série.
   Future<List<Shift>> create(User actor, String companyId, ShiftInput input,
       {required List<DateTime> days, Repeat? repeat}) async {
-    await _manager(actor, companyId);
+    final mine = await _manager(actor, companyId);
+    _checkSite(mine, input.siteId);
     if (days.isEmpty) throw const ApiError.badRequest('Choisissez au moins un jour.');
     await _checkRefs(companyId, input);
     final dates = repeat == null ? (days.toSet().toList()..sort()) : repeat.occurrences(days);
@@ -162,7 +166,7 @@ class PlanningService {
   /// plus récente l'emporte quand même, et l'autre responsable est prévenu.
   Future<int> update(User actor, String companyId, String shiftId, ShiftPatch patch,
       {required Scope scope, int? baseVersion}) async {
-    await _manager(actor, companyId);
+    final mine = await _manager(actor, companyId);
     final shift = await _find(companyId, shiftId);
     _checkEditable(shift.day);
     if (patch.day != null) _checkEditable(patch.day!);
@@ -170,11 +174,15 @@ class PlanningService {
       throw const ApiError.badRequest('Le jour se change service par service.');
     }
     final merged = patch.merge(shift);
+    _checkSite(mine, merged.siteId);
     await _checkRefs(companyId, merged);
     final series = scope == Scope.series && shift.seriesId != null;
     var overwritten = const <String>[];
     final count = await store.db.runTx((tx) async {
       final rows = await _lock(tx, shift, series: series);
+      for (final r in rows) {
+        _checkSite(mine, r['site_id'] as String?);
+      }
       overwritten = await _noticeIfOverwritten(tx, actor, companyId, rows, shift.id, baseVersion);
       for (final row in rows) {
         final after = await store.query(tx, '''
@@ -207,13 +215,16 @@ class PlanningService {
   /// reste visible des salariés jusqu'à la prochaine publication.
   Future<int> delete(User actor, String companyId, String shiftId,
       {required Scope scope, int? baseVersion}) async {
-    await _manager(actor, companyId);
+    final mine = await _manager(actor, companyId);
     final shift = await _find(companyId, shiftId);
     _checkEditable(shift.day);
     final series = scope == Scope.series && shift.seriesId != null;
     var overwritten = const <String>[];
     final count = await store.db.runTx((tx) async {
       final rows = await _lock(tx, shift, series: series);
+      for (final r in rows) {
+        _checkSite(mine, r['site_id'] as String?);
+      }
       overwritten = await _noticeIfOverwritten(tx, actor, companyId, rows, shift.id, baseVersion);
       for (final row in rows) {
         await _deleteRow(tx, actor, companyId, row, action: 'delete');
@@ -232,7 +243,7 @@ class PlanningService {
   /// Remplace une personne par une autre sur ses services de la période.
   Future<int> replace(User actor, String companyId,
       {required String fromUserId, required String toUserId, required String from, required String to}) async {
-    await _manager(actor, companyId);
+    final mine = await _manager(actor, companyId);
     if (await store.roleOf(companyId, toUserId) == null) {
       throw const ApiError.badRequest('Le remplaçant ne fait pas partie de l\'entreprise.');
     }
@@ -242,7 +253,9 @@ class PlanningService {
         WHERE company_id = @c::uuid AND user_id = @from::uuid AND NOT deleted
           AND day BETWEEN @start::date AND @end::date
           AND day >= @editable::date
+          AND (@sites::text[] IS NULL OR site_id::text = ANY(@sites::text[]))
         FOR UPDATE''', {
+        'sites': mine?.toList(),
         'c': companyId,
         'editable': formatDay(editableFrom),
         'from': fromUserId,
@@ -287,7 +300,7 @@ class PlanningService {
   /// rétablit (en brouillon s'il n'avait jamais été publié). Renvoie `false`
   /// si le service était déjà dans cet état.
   Future<bool> undo(User actor, String companyId, int historyId) async {
-    await _manager(actor, companyId);
+    final mine = await _manager(actor, companyId);
     final changed = await store.db.runTx((tx) async {
       final entries = await store.query(tx,
           'SELECT shift_id::text, before FROM shift_history WHERE id = @id AND company_id = @c::uuid',
@@ -299,6 +312,8 @@ class PlanningService {
       final row = current.isEmpty ? null : current.first.toColumnMap();
       if (row != null) _checkEditable(row['day'] as DateTime);
       if (target != null) _checkEditable(DateTime.parse(target['day'] as String));
+      if (row != null) _checkSite(mine, row['site_id'] as String?);
+      if (target != null) _checkSite(mine, target['siteId'] as String?);
       final alive = row != null && row['deleted'] != true;
 
       if (target == null) {
@@ -425,20 +440,25 @@ class PlanningService {
   /// Publie toutes les modifications en attente. Renvoie le nombre de
   /// services publiés et les personnes concernées (à prévenir).
   Future<(int, Set<String>)> publish(User actor, String companyId) async {
-    await _manager(actor, companyId);
+    final mine = await _manager(actor, companyId);
+    final sites = mine?.toList();
     final (count, users) = await store.db.runTx((tx) async {
       final affected = await store.query(tx, '''
         SELECT DISTINCT u FROM shifts,
           LATERAL (VALUES (user_id::text), (published->>'userId')) AS v(u)
-        WHERE company_id = @c::uuid AND dirty AND u IS NOT NULL''', {'c': companyId});
+        WHERE company_id = @c::uuid AND dirty AND u IS NOT NULL
+          AND (@sites::text[] IS NULL OR site_id::text = ANY(@sites::text[]))''', {'c': companyId, 'sites': sites});
       final removed = await store.query(tx,
-          'DELETE FROM shifts WHERE company_id = @c::uuid AND dirty AND deleted RETURNING id',
-          {'c': companyId});
+          '''DELETE FROM shifts WHERE company_id = @c::uuid AND dirty AND deleted
+            AND (@sites::text[] IS NULL OR site_id::text = ANY(@sites::text[])) RETURNING id''',
+          {'c': companyId, 'sites': sites});
       final updated = await store.query(tx, '''
         UPDATE shifts SET dirty = false, published = jsonb_build_object(
           'day', day, 'start', start_min, 'end', end_min, 'userId', user_id,
           'siteId', site_id, 'positionId', position_id, 'note', note)
-        WHERE company_id = @c::uuid AND dirty RETURNING id''', {'c': companyId});
+        WHERE company_id = @c::uuid AND dirty
+          AND (@sites::text[] IS NULL OR site_id::text = ANY(@sites::text[])) RETURNING id''',
+          {'c': companyId, 'sites': sites});
       return (removed.length + updated.length, {for (final r in affected) r[0] as String});
     });
     await store.audit(
@@ -451,11 +471,26 @@ class PlanningService {
 
   // --- Outils ---------------------------------------------------------------
 
-  Future<void> _manager(User actor, String companyId) async {
+  /// Responsable (ou propriétaire) d'une entreprise modifiable. Renvoie ses
+  /// sites : `null` s'il gère toute l'entreprise.
+  Future<Set<String>?> _manager(User actor, String companyId) async {
     final (company, role) = await companies.open(actor, companyId);
     if (!role.canManage) throw const ApiError.forbidden();
     if (company.status == CompanyStatus.readOnly) {
       throw const ApiError.conflict('Cette entreprise est en lecture seule.');
+    }
+    return companies.managedSites(companyId, actor, role);
+  }
+
+  /// Sites et postes : réservés à qui gère toute l'entreprise.
+  Future<void> _fullManager(User actor, String companyId) async {
+    if (await _manager(actor, companyId) != null) throw const ApiError.forbidden();
+  }
+
+  /// Un responsable de site ne touche qu'aux services de ses sites.
+  static void _checkSite(Set<String>? mine, String? siteId) {
+    if (mine != null && (siteId == null || !mine.contains(siteId))) {
+      throw const ApiError.forbidden('Ce site n\'est pas sous votre responsabilité.');
     }
   }
 

@@ -47,4 +47,6 @@ const gu = <String, String>{
   'Traduction momentanément indisponible.': 'અનુવાદ હાલ ઉપલબ્ધ નથી.',
   'Traduction indisponible pour cette langue.': 'આ ભાષા માટે અનુવાદ ઉપલબ્ધ નથી.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'એક મહિનાથી જૂના દિવસો હવે બદલી શકાતા નથી.',
+  'Ce site n\'est pas sous votre responsabilité.': 'આ સાઇટ તમારી જવાબદારીમાં નથી.',
+  'Choisissez au moins un de vos sites.': 'તમારી ઓછામાં ઓછી એક સાઇટ પસંદ કરો.',
 };

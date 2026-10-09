@@ -47,4 +47,6 @@ const nb = <String, String>{
   'Traduction momentanément indisponible.': 'Oversettelse er midlertidig utilgjengelig.',
   'Traduction indisponible pour cette langue.': 'Oversettelse er ikke tilgjengelig for dette språket.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Dager som er mer enn en måned gamle, kan ikke lenger endres.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Dette stedet er ikke ditt ansvar.',
+  'Choisissez au moins un de vos sites.': 'Velg minst ett av stedene dine.',
 };

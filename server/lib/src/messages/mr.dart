@@ -47,4 +47,6 @@ const mr = <String, String>{
   'Traduction momentanément indisponible.': 'भाषांतर तात्पुरते उपलब्ध नाही.',
   'Traduction indisponible pour cette langue.': 'या भाषेसाठी भाषांतर उपलब्ध नाही.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'एक महिन्यापेक्षा जुने दिवस आता बदलता येणार नाहीत.',
+  'Ce site n\'est pas sous votre responsabilité.': 'ही साइट तुमच्या जबाबदारीत नाही.',
+  'Choisissez au moins un de vos sites.': 'तुमच्या किमान एका साइटची निवड करा.',
 };

@@ -47,4 +47,6 @@ const th = <String, String>{
   'Traduction momentanément indisponible.': 'การแปลไม่พร้อมใช้งานชั่วคราว',
   'Traduction indisponible pour cette langue.': 'ไม่มีการแปลสำหรับภาษานี้',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'วันที่ผ่านมาเกินหนึ่งเดือนแก้ไขไม่ได้แล้ว',
+  'Ce site n\'est pas sous votre responsabilité.': 'สาขานี้ไม่อยู่ในความรับผิดชอบของคุณ',
+  'Choisissez au moins un de vos sites.': 'เลือกสาขาของคุณอย่างน้อยหนึ่งแห่ง',
 };

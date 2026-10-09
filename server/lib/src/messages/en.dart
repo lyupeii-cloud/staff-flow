@@ -68,4 +68,6 @@ const en = <String, String>{
   'Traduction momentanément indisponible.': 'Translation temporarily unavailable.',
   'Traduction indisponible pour cette langue.': 'Translation not available for this language.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Days more than a month old can no longer be changed.',
+  'Ce site n\'est pas sous votre responsabilité.': 'This site is not under your responsibility.',
+  'Choisissez au moins un de vos sites.': 'Choose at least one of your sites.',
 };

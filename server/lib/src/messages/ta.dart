@@ -47,4 +47,6 @@ const ta = <String, String>{
   'Traduction momentanément indisponible.': 'மொழிபெயர்ப்பு தற்காலிகமாகக் கிடைக்கவில்லை.',
   'Traduction indisponible pour cette langue.': 'இந்த மொழிக்கு மொழிபெயர்ப்பு இல்லை.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'ஒரு மாதத்துக்கு மேல் பழைய நாட்களை இனி மாற்ற முடியாது.',
+  'Ce site n\'est pas sous votre responsabilité.': 'இந்தத் தளம் உங்கள் பொறுப்பில் இல்லை.',
+  'Choisissez au moins un de vos sites.': 'உங்கள் தளங்களில் குறைந்தது ஒன்றைத் தேர்ந்தெடுங்கள்.',
 };

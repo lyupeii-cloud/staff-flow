@@ -47,4 +47,6 @@ const es = <String, String>{
   'Traduction momentanément indisponible.': 'Traducción no disponible por el momento.',
   'Traduction indisponible pour cette langue.': 'Traducción no disponible para este idioma.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Los días de hace más de un mes ya no se pueden modificar.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Este centro no está bajo tu responsabilidad.',
+  'Choisissez au moins un de vos sites.': 'Elige al menos uno de tus centros.',
 };

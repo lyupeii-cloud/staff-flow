@@ -47,4 +47,6 @@ const fi = <String, String>{
   'Traduction momentanément indisponible.': 'Käännös ei ole tilapäisesti käytettävissä.',
   'Traduction indisponible pour cette langue.': 'Käännöstä ei ole saatavilla tälle kielelle.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Yli kuukauden takaisia päiviä ei voi enää muuttaa.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Tämä toimipiste ei ole vastuullasi.',
+  'Choisissez au moins un de vos sites.': 'Valitse vähintään yksi toimipisteistäsi.',
 };

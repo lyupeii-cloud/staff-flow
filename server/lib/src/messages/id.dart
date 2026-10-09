@@ -47,4 +47,6 @@ const id = <String, String>{
   'Traduction momentanément indisponible.': 'Terjemahan sementara tidak tersedia.',
   'Traduction indisponible pour cette langue.': 'Terjemahan tidak tersedia untuk bahasa ini.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Hari yang sudah lewat lebih dari sebulan tidak dapat diubah lagi.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Lokasi ini bukan tanggung jawab Anda.',
+  'Choisissez au moins un de vos sites.': 'Pilih setidaknya satu lokasi Anda.',
 };

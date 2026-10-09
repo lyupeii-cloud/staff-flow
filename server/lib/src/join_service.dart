@@ -49,9 +49,10 @@ class JoinService {
     String companyId, {
     required String code,
     required Role role,
+    List<String>? sites,
     required String ip,
   }) async {
-    final company = await _openForInvite(manager, companyId, role);
+    final (company, chosen) = await _openForInvite(manager, companyId, role, sites);
     final at = await _checkLockout(manager, companyId, ip);
     final found = await store.db.runTx((tx) async {
       final rows = await store.query(tx, '''
@@ -62,7 +63,7 @@ class JoinService {
     });
     await _attempt(manager, companyId, ip, at, success: found != null);
     if (found == null) throw const ApiError.notFound('Code invalide ou expiré.');
-    return _invite(manager, company, (await store.findUser(found))!, role);
+    return _invite(manager, company, (await store.findUser(found))!, role, chosen);
   }
 
   static final _publicId = RegExp(r'SF-[A-Z2-9]{8}');
@@ -76,18 +77,22 @@ class JoinService {
     String companyId, {
     required String qr,
     required Role role,
+    List<String>? sites,
     required String ip,
   }) async {
-    final company = await _openForInvite(manager, companyId, role);
+    final (company, chosen) = await _openForInvite(manager, companyId, role, sites);
     final at = await _checkLockout(manager, companyId, ip);
     final id = _publicId.firstMatch(qr.toUpperCase())?[0];
     final user = id == null ? null : await store.findUserByPublicId(id);
     await _attempt(manager, companyId, ip, at, success: user != null);
     if (user == null) throw const ApiError.notFound('Compte introuvable.');
-    return _invite(manager, company, user, role);
+    return _invite(manager, company, user, role, chosen);
   }
 
-  Future<Company> _openForInvite(User manager, String companyId, Role role) async {
+  /// Vérifie le droit d'inviter et renvoie les sites de la future équipe :
+  /// un responsable de site invite forcément dans un ou plusieurs de ses sites.
+  Future<(Company, List<String>?)> _openForInvite(
+      User manager, String companyId, Role role, List<String>? sites) async {
     final (company, actorRole) = await companies.open(manager, companyId);
     if (!actorRole.canManage) throw const ApiError.forbidden();
     if (company.status == CompanyStatus.readOnly) {
@@ -96,7 +101,17 @@ class JoinService {
     if (role != Role.employee && role != Role.extra) {
       throw const ApiError.badRequest('Rôle attendu : salarié ou extra.');
     }
-    return company;
+    final chosen = sites == null ? null : await companies.validSites(companyId, sites);
+    final mine = await companies.managedSites(companyId, manager, actorRole);
+    if (mine != null) {
+      if (chosen == null || chosen.isEmpty) {
+        throw const ApiError.badRequest('Choisissez au moins un de vos sites.');
+      }
+      if (!chosen.every(mine.contains)) {
+        throw const ApiError.forbidden('Ce site n\'est pas sous votre responsabilité.');
+      }
+    }
+    return (company, chosen == null || chosen.isEmpty ? null : chosen);
   }
 
   /// Renvoie l'heure de la tentative, ou lève 429 pendant la suspension.
@@ -115,17 +130,18 @@ class JoinService {
     return at;
   }
 
-  Future<(JoinRequest, User)> _invite(User manager, Company company, User user, Role role) async {
+  Future<(JoinRequest, User)> _invite(User manager, Company company, User user, Role role, List<String>? sites) async {
     final companyId = company.id;
     if (await store.roleOf(companyId, user.id) != null) {
       throw ApiError.conflict('{name} fait déjà partie de l\'entreprise.', {'name': user.name});
     }
     final rows = await store.query(store.db, '''
-      INSERT INTO join_requests (company_id, user_id, role, invited_by)
-      VALUES (@c::uuid, @u::uuid, @r, @m::uuid)
+      INSERT INTO join_requests (company_id, user_id, role, invited_by, sites)
+      VALUES (@c::uuid, @u::uuid, @r, @m::uuid, @s::uuid[])
       ON CONFLICT (company_id, user_id) WHERE status = 'pending'
-        DO UPDATE SET role = EXCLUDED.role, invited_by = EXCLUDED.invited_by, created_at = now()
-      RETURNING id::text''', {'c': companyId, 'u': user.id, 'r': role.name, 'm': manager.id});
+        DO UPDATE SET role = EXCLUDED.role, invited_by = EXCLUDED.invited_by, sites = EXCLUDED.sites,
+          created_at = now()
+      RETURNING id::text''', {'c': companyId, 'u': user.id, 'r': role.name, 'm': manager.id, 's': sites});
     final request = JoinRequest(id: rows.first[0] as String, company: company, role: role);
     await store.audit(
         companyId: companyId,
@@ -156,11 +172,15 @@ class JoinService {
     final rows = await store.query(store.db, '''
       UPDATE join_requests SET status = @s, resolved_at = now()
       WHERE id = @id::uuid AND user_id = @u::uuid AND status = 'pending'
-      RETURNING company_id::text, role''',
+      RETURNING company_id::text, role, sites::text[]''',
         {'id': requestId, 'u': user.id, 's': accept ? 'accepted' : 'declined'});
     if (rows.isEmpty) throw const ApiError.notFound('Invitation introuvable.');
     final companyId = rows.first[0] as String;
-    if (accept) await store.addMember(companyId, user.id, Role.parse(rows.first[1] as String));
+    if (accept) {
+      final sites = rows.first[2] as List?;
+      await store.addMember(companyId, user.id, Role.parse(rows.first[1] as String),
+          sites: sites?.cast<String>());
+    }
     await store.audit(
         companyId: companyId, actorId: user.id, action: accept ? 'join.accept' : 'join.decline');
     return companyId;

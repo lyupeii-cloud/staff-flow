@@ -47,4 +47,6 @@ const te = <String, String>{
   'Traduction momentanément indisponible.': 'అనువాదం తాత్కాలికంగా అందుబాటులో లేదు.',
   'Traduction indisponible pour cette langue.': 'ఈ భాషకు అనువాదం అందుబాటులో లేదు.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'ఒక నెల కంటే పాత రోజులను ఇక మార్చలేరు.',
+  'Ce site n\'est pas sous votre responsabilité.': 'ఈ సైట్ మీ బాధ్యతలో లేదు.',
+  'Choisissez au moins un de vos sites.': 'మీ సైట్‌లలో కనీసం ఒకదాన్ని ఎంచుకోండి.',
 };

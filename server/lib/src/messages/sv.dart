@@ -47,4 +47,6 @@ const sv = <String, String>{
   'Traduction momentanément indisponible.': 'Översättning tillfälligt otillgänglig.',
   'Traduction indisponible pour cette langue.': 'Översättning finns inte för det här språket.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Dagar äldre än en månad kan inte längre ändras.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Den här arbetsplatsen ligger inte under ditt ansvar.',
+  'Choisissez au moins un de vos sites.': 'Välj minst en av dina arbetsplatser.',
 };

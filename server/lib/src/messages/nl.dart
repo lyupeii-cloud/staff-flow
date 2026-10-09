@@ -47,4 +47,6 @@ const nl = <String, String>{
   'Traduction momentanément indisponible.': 'Vertaling tijdelijk niet beschikbaar.',
   'Traduction indisponible pour cette langue.': 'Vertaling niet beschikbaar voor deze taal.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Dagen van meer dan een maand geleden kunnen niet meer worden gewijzigd.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Deze vestiging valt niet onder jouw verantwoordelijkheid.',
+  'Choisissez au moins un de vos sites.': 'Kies minstens één van je vestigingen.',
 };

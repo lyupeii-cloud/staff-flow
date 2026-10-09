@@ -47,4 +47,6 @@ const el = <String, String>{
   'Traduction momentanément indisponible.': 'Η μετάφραση δεν είναι προσωρινά διαθέσιμη.',
   'Traduction indisponible pour cette langue.': 'Η μετάφραση δεν είναι διαθέσιμη για αυτή τη γλώσσα.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Οι ημέρες πριν από περισσότερο από έναν μήνα δεν μπορούν πλέον να αλλάξουν.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Αυτό το κατάστημα δεν είναι στην ευθύνη σας.',
+  'Choisissez au moins un de vos sites.': 'Επιλέξτε τουλάχιστον ένα από τα καταστήματά σας.',
 };

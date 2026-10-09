@@ -47,4 +47,6 @@ const sk = <String, String>{
   'Traduction momentanément indisponible.': 'Preklad je dočasne nedostupný.',
   'Traduction indisponible pour cette langue.': 'Preklad do tohto jazyka nie je dostupný.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Dni staršie ako mesiac už nemožno meniť.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Toto pracovisko nemáte na starosti.',
+  'Choisissez au moins un de vos sites.': 'Vyberte aspoň jedno zo svojich pracovísk.',
 };

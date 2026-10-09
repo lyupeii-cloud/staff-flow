@@ -109,9 +109,13 @@ class Membership {
   final Company company;
   final Role role;
 
-  const Membership(this.company, this.role);
+  /// Responsable : sites dont il s'occupe (`null` : toute l'entreprise).
+  /// Salarié ou extra : sites de son équipe (`null` : aucun en particulier).
+  final List<String>? sites;
 
-  Map<String, Object?> toJson() => {'company': company.toJson(), 'role': role.name};
+  const Membership(this.company, this.role, [this.sites]);
+
+  Map<String, Object?> toJson() => {'company': company.toJson(), 'role': role.name, 'sites': sites};
 }
 
 class Member {
@@ -120,14 +124,18 @@ class Member {
   final Role role;
   final DateTime joinedAt;
 
+  /// Voir [Membership.sites].
+  final List<String>? sites;
+
   /// Nom donné par un responsable pour cette entreprise seulement.
   final String? nameInCompany;
 
-  const Member(this.user, this.role, this.joinedAt, {this.nameInCompany});
+  const Member(this.user, this.role, this.joinedAt, {this.nameInCompany, this.sites});
 
   Map<String, Object?> toJson() => {
         'user': user.toJson(),
         'nameInCompany': nameInCompany,
+        'sites': sites,
         'role': role.name,
         'joinedAt': joinedAt.toUtc().toIso8601String(),
       };

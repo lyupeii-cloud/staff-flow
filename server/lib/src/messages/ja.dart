@@ -47,4 +47,6 @@ const ja = <String, String>{
   'Traduction momentanément indisponible.': '翻訳は一時的に利用できません。',
   'Traduction indisponible pour cette langue.': 'この言語への翻訳は利用できません。',
   'Les jours de plus d\'un mois ne sont plus modifiables.': '1か月以上前の日は変更できません。',
+  'Ce site n\'est pas sous votre responsabilité.': 'この拠点はあなたの担当ではありません。',
+  'Choisissez au moins un de vos sites.': '担当拠点を少なくとも1つ選んでください。',
 };

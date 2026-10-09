@@ -47,4 +47,6 @@ const sw = <String, String>{
   'Traduction momentanément indisponible.': 'Tafsiri haipatikani kwa sasa.',
   'Traduction indisponible pour cette langue.': 'Tafsiri haipatikani kwa lugha hii.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Siku zilizopita zaidi ya mwezi mmoja haziwezi kubadilishwa tena.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Eneo hili haliko chini ya jukumu lako.',
+  'Choisissez au moins un de vos sites.': 'Chagua angalau moja ya maeneo yako.',
 };

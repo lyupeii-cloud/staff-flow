@@ -47,4 +47,6 @@ const bg = <String, String>{
   'Traduction momentanément indisponible.': 'Преводът временно не е достъпен.',
   'Traduction indisponible pour cette langue.': 'Превод на този език не е достъпен.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Дни отпреди повече от месец вече не могат да се променят.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Този обект не е под ваша отговорност.',
+  'Choisissez au moins un de vos sites.': 'Изберете поне един от вашите обекти.',
 };

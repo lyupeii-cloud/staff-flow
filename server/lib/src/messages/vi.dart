@@ -47,4 +47,6 @@ const vi = <String, String>{
   'Traduction momentanément indisponible.': 'Tạm thời không dịch được.',
   'Traduction indisponible pour cette langue.': 'Không có bản dịch cho ngôn ngữ này.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Không thể sửa các ngày đã qua hơn một tháng.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Địa điểm này không thuộc trách nhiệm của bạn.',
+  'Choisissez au moins un de vos sites.': 'Chọn ít nhất một địa điểm của bạn.',
 };

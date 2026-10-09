@@ -66,6 +66,7 @@ class Api {
       ..get('/companies/<id>/members', _authed(_members))
       ..put('/companies/<id>/members/<userId>/role', _authed(_setRole))
       ..put('/companies/<id>/members/<userId>/name', _authed(_renameMember))
+      ..put('/companies/<id>/members/<userId>/sites', _authed(_setMemberSites))
       ..delete('/companies/<id>/members/<userId>', _authed(_removeMember))
       ..post('/companies/<id>/transfer', _authed(_proposeTransfer))
       ..delete('/companies/<id>/transfer', _authed(_cancelTransfer))
@@ -199,7 +200,7 @@ class Api {
   Future<Response> _setRole(Request req, User user) async {
     final body = await _body(req);
     final role = _role(_string(body, 'role'));
-    await companies.setRole(user, req.params['id']!, req.params['userId']!, role);
+    await companies.setRole(user, req.params['id']!, req.params['userId']!, role, sites: _optionalIds(body['sites']));
     return Response(204);
   }
 
@@ -248,6 +249,7 @@ class Api {
     final (request, invited) = await joins.redeem(user, req.params['id']!,
         code: _string(body, 'code'),
         role: _role((body['role'] as String?) ?? 'employee'),
+        sites: _optionalIds(body['sites']),
         ip: _clientIp(req));
     await _notifyInvite(request, invited, user);
     return _json({'request': request.toJson(), 'user': invited.toJson()}, status: 201);
@@ -258,6 +260,7 @@ class Api {
     final (request, invited) = await joins.inviteByQr(user, req.params['id']!,
         qr: _string(body, 'qr'),
         role: _role((body['role'] as String?) ?? 'employee'),
+        sites: _optionalIds(body['sites']),
         ip: _clientIp(req));
     await _notifyInvite(request, invited, user);
     return _json({'request': request.toJson(), 'user': invited.toJson()}, status: 201);
@@ -413,6 +416,14 @@ class Api {
     final lang = (await _body(req))['lang'];
     if (lang is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
     return _json({'text': await chat.translate(user, id, lang, t)});
+  }
+
+  static List<String>? _optionalIds(Object? value) => value == null ? null : _ids(value);
+
+  Future<Response> _setMemberSites(Request req, User user) async {
+    final body = await _body(req);
+    await companies.setSites(user, req.params['id']!, req.params['userId']!, _optionalIds(body['sites']));
+    return Response(204);
   }
 
   static List<String> _ids(Object? value) {

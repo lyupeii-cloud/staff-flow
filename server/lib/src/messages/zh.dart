@@ -47,4 +47,6 @@ const zh = <String, String>{
   'Traduction momentanément indisponible.': '翻译暂时不可用。',
   'Traduction indisponible pour cette langue.': '暂不支持翻译成此语言。',
   'Les jours de plus d\'un mois ne sont plus modifiables.': '超过一个月的日期已不能修改。',
+  'Ce site n\'est pas sous votre responsabilité.': '该地点不归您负责。',
+  'Choisissez au moins un de vos sites.': '请至少选择一个您负责的地点。',
 };

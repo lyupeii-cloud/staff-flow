@@ -47,4 +47,6 @@ const kk = <String, String>{
   'Traduction momentanément indisponible.': 'Аударма уақытша қолжетімсіз.',
   'Traduction indisponible pour cette langue.': 'Бұл тілге аударма қолжетімсіз.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Бір айдан асқан күндерді енді өзгерту мүмкін емес.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Бұл нысан сіздің жауапкершілігіңізде емес.',
+  'Choisissez au moins un de vos sites.': 'Өз нысандарыңыздың кемінде біреуін таңдаңыз.',
 };

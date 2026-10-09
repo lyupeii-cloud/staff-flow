@@ -28,10 +28,72 @@ class CompanyService {
     return (company, role);
   }
 
+  /// Sites gérés par [actor] : `null` pour le propriétaire et un responsable
+  /// de toute l'entreprise ; sinon ceux d'un responsable de site.
+  Future<Set<String>?> managedSites(String companyId, User actor, Role role) async {
+    if (role != Role.manager) return null;
+    return (await store.sitesOf(companyId, actor.id))?.toSet();
+  }
+
+  /// Un responsable de site gère les salariés et extras rattachés à au
+  /// moins un de ses sites.
+  Future<bool> inSites(String companyId, String userId, Set<String>? mine) async {
+    if (mine == null) return true;
+    return (await store.sitesOf(companyId, userId) ?? const []).any(mine.contains);
+  }
+
+  /// Sites existants et non archivés de l'entreprise (sans doublon).
+  Future<List<String>> validSites(String companyId, Iterable<String> sites) async {
+    final wanted = sites.toSet().toList();
+    if (wanted.isEmpty) return wanted;
+    final rows = await store.query(store.db, '''
+      SELECT count(*) FROM sites
+      WHERE company_id = @c::uuid AND archived_at IS NULL AND id::text = ANY(@s)''',
+        {'c': companyId, 's': wanted});
+    if (rows.first[0] != wanted.length) throw const ApiError.badRequest('Site inconnu ou archivé.');
+    return wanted;
+  }
+
+  /// Sites d'une personne. Le propriétaire choisit ceux d'un responsable
+  /// (`null` : toute l'entreprise). Pour un salarié ou un extra : un
+  /// responsable de toute l'entreprise choisit librement ; un responsable de
+  /// site n'ajoute ou ne retire que ses propres sites.
+  Future<void> setSites(User actor, String companyId, String userId, List<String>? sites) async {
+    final (company, actorRole) = await open(actor, companyId);
+    _requireWritable(company);
+    final target = await store.roleOf(companyId, userId);
+    if (target == null) throw const ApiError.notFound('Membre introuvable.');
+    final requested = sites == null ? null : await validSites(companyId, sites);
+    List<String>? result;
+    switch (target) {
+      case Role.owner:
+        throw const ApiError.forbidden();
+      case Role.manager:
+        if (actorRole != Role.owner) throw const ApiError.forbidden();
+        result = requested == null || requested.isEmpty ? null : requested;
+      case Role.employee || Role.extra:
+        if (!actorRole.canManage) throw const ApiError.forbidden();
+        final mine = await managedSites(companyId, actor, actorRole);
+        if (mine == null) {
+          result = requested == null || requested.isEmpty ? null : requested;
+        } else {
+          if (!(requested ?? const []).every(mine.contains)) throw const ApiError.forbidden();
+          final current = await store.sitesOf(companyId, userId) ?? const [];
+          final merged = {...current.where((s) => !mine.contains(s)), ...?requested}.toList();
+          result = merged.isEmpty ? null : merged;
+        }
+    }
+    await store.setSites(companyId, userId, result);
+    await store.audit(
+        companyId: companyId, actorId: actor.id, action: 'member.sites', details: {'userId': userId, 'sites': result});
+  }
+
   Future<Company> update(User actor, String companyId, {String? name, String? timezone}) async {
     final (company, role) = await open(actor, companyId);
     _requireWritable(company);
     if (!role.canManage) throw const ApiError.forbidden();
+    // Nom et fuseau de l'entreprise : pas pour un responsable de site.
+    if (await managedSites(companyId, actor, role) != null) throw const ApiError.forbidden();
     final updated = await store.updateCompany(company.copyWith(
       name: name == null ? null : _validName(name),
       timezone: timezone == null ? null : validTimezone(timezone),
@@ -53,7 +115,8 @@ class CompanyService {
   /// Le propriétaire nomme ou retire les responsables ; un responsable peut
   /// seulement faire passer quelqu'un de salarié à extra et inversement.
   /// Le rôle de propriétaire ne change que par transfert.
-  Future<void> setRole(User actor, String companyId, String userId, Role newRole) async {
+  /// [sites] : pour un nouveau responsable, ses sites (`null` : toute l'entreprise).
+  Future<void> setRole(User actor, String companyId, String userId, Role newRole, {List<String>? sites}) async {
     final (company, actorRole) = await open(actor, companyId);
     _requireWritable(company);
     final current = await store.roleOf(companyId, userId);
@@ -63,9 +126,16 @@ class CompanyService {
       throw const ApiError.conflict('La propriété se change par un transfert.');
     }
     final touchesManager = current == Role.manager || newRole == Role.manager;
-    final allowed = actorRole == Role.owner || (actorRole == Role.manager && !touchesManager);
+    final allowed = actorRole == Role.owner ||
+        (actorRole == Role.manager &&
+            !touchesManager &&
+            await inSites(companyId, userId, await managedSites(companyId, actor, actorRole)));
     if (!allowed) throw const ApiError.forbidden();
     await store.setRole(companyId, userId, newRole);
+    if (newRole == Role.manager) {
+      final chosen = sites == null ? null : await validSites(companyId, sites);
+      await store.setSites(companyId, userId, chosen == null || chosen.isEmpty ? null : chosen);
+    }
     await store.audit(
       companyId: companyId,
       actorId: actor.id,
@@ -88,7 +158,9 @@ class CompanyService {
     if (!leaving) {
       _requireWritable(company);
       final allowed = actorRole == Role.owner ||
-          (actorRole == Role.manager && (target == Role.employee || target == Role.extra));
+          (actorRole == Role.manager &&
+              (target == Role.employee || target == Role.extra) &&
+              await inSites(companyId, userId, await managedSites(companyId, actor, actorRole)));
       if (!allowed) throw const ApiError.forbidden();
     }
     await store.removeMember(companyId, userId);
@@ -149,6 +221,8 @@ class CompanyService {
     }
     if (accept) {
       await store.completeTransfer(t);
+      // Le nouveau propriétaire couvre toute l'entreprise.
+      await store.setSites(t.companyId, t.toUserId, null);
     } else {
       await store.closeTransfer(t.id, TransferStatus.declined);
     }
@@ -176,7 +250,9 @@ class CompanyService {
     if (target == null) throw const ApiError.notFound('Membre introuvable.');
     final allowed = actorRole == Role.owner ||
         (actorRole == Role.manager &&
-            (userId == actor.id || target == Role.employee || target == Role.extra));
+            (userId == actor.id ||
+                ((target == Role.employee || target == Role.extra) &&
+                    await inSites(companyId, userId, await managedSites(companyId, actor, actorRole)))));
     if (!allowed) throw const ApiError.forbidden();
     final clean = personName(name);
     await store.setMemberName(companyId, userId, clean);

@@ -47,4 +47,6 @@ const hi = <String, String>{
   'Traduction momentanément indisponible.': 'अनुवाद अभी उपलब्ध नहीं है।',
   'Traduction indisponible pour cette langue.': 'इस भाषा के लिए अनुवाद उपलब्ध नहीं है।',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'एक महीने से पुराने दिन अब बदले नहीं जा सकते।',
+  'Ce site n\'est pas sous votre responsabilité.': 'यह साइट आपकी ज़िम्मेदारी में नहीं है।',
+  'Choisissez au moins un de vos sites.': 'अपनी कम से कम एक साइट चुनें।',
 };

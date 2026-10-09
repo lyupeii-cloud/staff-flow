@@ -67,4 +67,6 @@ const uk = <String, String>{
   'Traduction momentanément indisponible.': 'Переклад тимчасово недоступний.',
   'Traduction indisponible pour cette langue.': 'Переклад цією мовою недоступний.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Дні, що минули понад місяць тому, більше не можна змінювати.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Цей підрозділ не у вашому віданні.',
+  'Choisissez au moins un de vos sites.': 'Оберіть щонайменше один зі своїх підрозділів.',
 };

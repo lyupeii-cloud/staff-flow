@@ -47,4 +47,6 @@ const bn = <String, String>{
   'Traduction momentanément indisponible.': 'অনুবাদ সাময়িকভাবে অনুপলব্ধ।',
   'Traduction indisponible pour cette langue.': 'এই ভাষার জন্য অনুবাদ উপলব্ধ নয়।',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'এক মাসের বেশি পুরোনো দিন আর পরিবর্তন করা যাবে না।',
+  'Ce site n\'est pas sous votre responsabilité.': 'এই সাইটটি আপনার দায়িত্বে নেই।',
+  'Choisissez au moins un de vos sites.': 'আপনার অন্তত একটি সাইট বেছে নিন।',
 };

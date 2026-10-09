@@ -144,12 +144,13 @@ class Store {
 
   Future<List<Membership>> membershipsOf(String userId) async {
     final rows = await query(_db, '''
-      SELECT c.*, m.role FROM memberships m JOIN companies c ON c.id = m.company_id
+      SELECT c.*, m.role, m.sites::text[] AS member_sites FROM memberships m JOIN companies c ON c.id = m.company_id
       WHERE m.user_id = @u::uuid AND m.left_at IS NULL
       ORDER BY c.created_at''', {'u': userId});
     return [
       for (final r in rows)
-        Membership(companyFromRow(r.toColumnMap()), Role.parse(r.toColumnMap()['role'] as String)),
+        Membership(companyFromRow(r.toColumnMap()), Role.parse(r.toColumnMap()['role'] as String),
+            _sites(r.toColumnMap()['member_sites'])),
     ];
   }
 
@@ -163,7 +164,8 @@ class Store {
 
   Future<List<Member>> members(String companyId) async {
     final rows = await query(_db, '''
-      SELECT u.*, m.role, m.joined_at, m.display_name FROM memberships m JOIN users u ON u.id = m.user_id
+      SELECT u.*, m.role, m.joined_at, m.display_name, m.sites::text[] AS member_sites
+      FROM memberships m JOIN users u ON u.id = m.user_id
       WHERE m.company_id = @c::uuid AND m.left_at IS NULL
       ORDER BY m.joined_at''', {'c': companyId});
     return [
@@ -174,6 +176,7 @@ class Store {
             Role.parse(r['role'] as String),
             r['joined_at'] as DateTime,
             nameInCompany: r['display_name'] as String?,
+            sites: _sites(r['member_sites']),
           ),
     ];
   }
@@ -198,12 +201,29 @@ class Store {
         {'c': companyId, 'u': userId, 'n': name});
   }
 
-  Future<void> addMember(String companyId, String userId, Role role) async {
+  Future<void> addMember(String companyId, String userId, Role role, {List<String>? sites}) async {
     await query(_db, '''
-      INSERT INTO memberships (company_id, user_id, role) VALUES (@c::uuid, @u::uuid, @r)
+      INSERT INTO memberships (company_id, user_id, role, sites) VALUES (@c::uuid, @u::uuid, @r, @s::uuid[])
       ON CONFLICT (company_id, user_id) WHERE left_at IS NULL DO NOTHING''',
-        {'c': companyId, 'u': userId, 'r': role.name});
+        {'c': companyId, 'u': userId, 'r': role.name, 's': sites});
   }
+
+  /// Voir [Membership.sites].
+  Future<List<String>?> sitesOf(String companyId, String userId) async {
+    final rows = await query(_db, '''
+      SELECT sites::text[] FROM memberships
+      WHERE company_id = @c::uuid AND user_id = @u::uuid AND left_at IS NULL''', {'c': companyId, 'u': userId});
+    return rows.isEmpty ? null : _sites(rows.first[0]);
+  }
+
+  Future<void> setSites(String companyId, String userId, List<String>? sites) async {
+    await query(_db, '''
+      UPDATE memberships SET sites = @s::uuid[]
+      WHERE company_id = @c::uuid AND user_id = @u::uuid AND left_at IS NULL''',
+        {'c': companyId, 'u': userId, 's': sites});
+  }
+
+  static List<String>? _sites(Object? value) => value == null ? null : [for (final s in value as List) s as String];
 
   Future<void> setRole(String companyId, String userId, Role role) async {
     await query(_db, '''

@@ -47,4 +47,6 @@ const ro = <String, String>{
   'Traduction momentanément indisponible.': 'Traducere momentan indisponibilă.',
   'Traduction indisponible pour cette langue.': 'Traducere indisponibilă pentru această limbă.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Zilele mai vechi de o lună nu mai pot fi modificate.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Acest punct de lucru nu este în responsabilitatea ta.',
+  'Choisissez au moins un de vos sites.': 'Alege cel puțin unul dintre punctele tale de lucru.',
 };

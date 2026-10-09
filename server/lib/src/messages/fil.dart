@@ -47,4 +47,6 @@ const fil = <String, String>{
   'Traduction momentanément indisponible.': 'Pansamantalang hindi available ang pagsasalin.',
   'Traduction indisponible pour cette langue.': 'Walang pagsasalin para sa wikang ito.',
   'Les jours de plus d\'un mois ne sont plus modifiables.': 'Hindi na mababago ang mga araw na lampas isang buwan na.',
+  'Ce site n\'est pas sous votre responsabilité.': 'Hindi mo sakop ang lugar na ito.',
+  'Choisissez au moins un de vos sites.': 'Pumili ng kahit isa sa iyong mga lugar.',
 };

@@ -279,4 +279,11 @@ CREATE TABLE message_translations (
 ALTER TABLE users ADD COLUMN notice_retention text NOT NULL DEFAULT 'week'
   CHECK (notice_retention IN ('day', 'week', 'month'));
 ''',
+  // 11 — sites de chacun : un responsable sur toute l'entreprise (NULL) ou
+  // sur certains sites ; un salarié ou un extra rattaché à des sites (son
+  // équipe). Une invitation peut déjà préciser les sites.
+  '''
+ALTER TABLE memberships ADD COLUMN sites uuid[];
+ALTER TABLE join_requests ADD COLUMN sites uuid[];
+''',
 ];
