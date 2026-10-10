@@ -376,5 +376,7 @@
   "moveSiteTitle": "„{name}” áthelyezése ez alá…",
   "subSiteOf": "{name} altelephelye",
   "siteTreeHint": "Legfeljebb 3 szint, pl. Régió › Város › Üzlet. Egy telephely vezetője az alatta lévőket is kezeli.",
-  "subSitesOnlyHint": "Itt a saját telephelyei alá adhat altelephelyeket."
+  "subSitesOnlyHint": "Itt a saját telephelyei alá adhat altelephelyeket.",
+  "messagingSetting": "Céges üzenetek",
+  "messagingSettingHint": "Be: a csapatnak van Üzenetek lapja. Ki: senki sem látja, és senki sem írhat (a régi üzenetek megmaradnak)."
 }

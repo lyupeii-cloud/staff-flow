@@ -96,4 +96,5 @@ const sk = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} zamietol(a) naplánovanie {name} na {day}.',
   'Trois niveaux de sites au plus.': 'Najviac tri úrovne miest.',
   'Un site ne peut pas être placé sous lui-même.': 'Miesto nemožno umiestniť pod seba samého.',
+  'La messagerie de cette entreprise est désactivée.': 'Správy sú v tejto firme vypnuté.',
 };

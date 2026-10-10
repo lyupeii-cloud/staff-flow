@@ -96,4 +96,5 @@ const sv = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} avslog schemaläggningen av {name} den {day}.',
   'Trois niveaux de sites au plus.': 'Högst tre nivåer av platser.',
   'Un site ne peut pas être placé sous lui-même.': 'En plats kan inte placeras under sig själv.',
+  'La messagerie de cette entreprise est désactivée.': 'Meddelanden är avstängda för det här företaget.',
 };

@@ -376,5 +376,7 @@
   "moveSiteTitle": "„{name}” verplaatsen onder…",
   "subSiteOf": "Subvestiging van {name}",
   "siteTreeHint": "Tot 3 niveaus, bijv. Regio › Stad › Winkel. Wie een vestiging beheert, beheert ook alles eronder.",
-  "subSitesOnlyHint": "Hier voegt u subvestigingen toe onder uw eigen vestigingen."
+  "subSitesOnlyHint": "Hier voegt u subvestigingen toe onder uw eigen vestigingen.",
+  "messagingSetting": "Berichten van het bedrijf",
+  "messagingSettingHint": "Aan: het team heeft een tabblad Berichten. Uit: niemand ziet het of kan schrijven (oude berichten blijven bewaard)."
 }

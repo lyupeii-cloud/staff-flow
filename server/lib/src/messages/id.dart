@@ -96,4 +96,5 @@ const id = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} menolak penjadwalan {name} pada {day}.',
   'Trois niveaux de sites au plus.': 'Paling banyak tiga tingkat lokasi.',
   'Un site ne peut pas être placé sous lui-même.': 'Lokasi tidak bisa ditempatkan di bawah dirinya sendiri.',
+  'La messagerie de cette entreprise est désactivée.': 'Pesan dinonaktifkan untuk perusahaan ini.',
 };

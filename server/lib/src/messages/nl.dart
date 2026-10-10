@@ -96,4 +96,5 @@ const nl = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} heeft het inplannen van {name} op {day} geweigerd.',
   'Trois niveaux de sites au plus.': 'Hoogstens drie niveaus vestigingen.',
   'Un site ne peut pas être placé sous lui-même.': 'Een vestiging kan niet onder zichzelf staan.',
+  'La messagerie de cette entreprise est désactivée.': 'Berichten staan uit voor dit bedrijf.',
 };

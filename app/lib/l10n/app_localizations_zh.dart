@@ -1307,4 +1307,10 @@ class L10nZh extends L10n {
 
   @override
   String get subSitesOnlyHint => '在这里，您可以在自己的站点下添加子站点。';
+
+  @override
+  String get messagingSetting => '公司消息';
+
+  @override
+  String get messagingSettingHint => '开启：团队有“消息”标签。关闭：任何人都看不到也无法发送（旧消息会保留）。';
 }

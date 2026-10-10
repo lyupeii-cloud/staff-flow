@@ -1353,4 +1353,11 @@ class L10nDa extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Her tilføjer du understeder under dine egne steder.';
+
+  @override
+  String get messagingSetting => 'Virksomhedens beskeder';
+
+  @override
+  String get messagingSettingHint =>
+      'Til: holdet har en fane med beskeder. Fra: ingen kan se den eller skrive (gamle beskeder gemmes).';
 }

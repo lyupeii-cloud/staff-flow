@@ -1348,4 +1348,11 @@ class L10nMs extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Di sini anda menambah sub-tapak di bawah tapak anda sendiri.';
+
+  @override
+  String get messagingSetting => 'Pemesejan syarikat';
+
+  @override
+  String get messagingSettingHint =>
+      'Hidup: pasukan ada tab Mesej. Mati: tiada siapa nampak atau boleh menulis (mesej lama disimpan).';
 }

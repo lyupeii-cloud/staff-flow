@@ -34,9 +34,26 @@ class ChatService {
   static const _since = '''greatest(me.joined_at, coalesce((SELECT cm.added_at FROM conversation_members cm
       WHERE cm.conversation_id = c.id AND cm.user_id = @u::uuid), me.joined_at))''';
 
+  /// Messagerie de l'entreprise désactivée : rien n'est accessible.
+  static void _requireMessaging(Company company) {
+    if (!company.messagingEnabled) {
+      throw const ApiError(409, 'messaging_disabled', 'La messagerie de cette entreprise est désactivée.');
+    }
+  }
+
+  /// Patron : messagerie de l'entreprise activée ou désactivée entièrement.
+  Future<void> setMessagingEnabled(User actor, String companyId, bool enabled) async {
+    final (_, role) = await companies.open(actor, companyId);
+    if (role != Role.owner) throw const ApiError.forbidden();
+    await store.query(
+        store.db, 'UPDATE companies SET messaging_enabled = @e WHERE id = @c::uuid', {'c': companyId, 'e': enabled});
+    await store.audit(companyId: companyId, actorId: actor.id, action: 'messaging.enabled', details: {'enabled': enabled});
+  }
+
   /// Conversations visibles par [actor] dans l'entreprise, groupe en premier.
   Future<List<Map<String, Object?>>> conversations(User actor, String companyId) async {
-    final (_, _) = await companies.open(actor, companyId);
+    final (company, _) = await companies.open(actor, companyId);
+    _requireMessaging(company);
     await store.query(store.db, '''
       INSERT INTO conversations (company_id, kind) VALUES (@c::uuid, 'group')
       ON CONFLICT (company_id) WHERE kind = 'group' DO NOTHING''', {'c': companyId});
@@ -129,7 +146,8 @@ class ChatService {
   /// Conversation privée avec [userId] (créée au besoin). Un salarié ne
   /// peut écrire en privé qu'à un responsable.
   Future<String> openPrivate(User actor, String companyId, String userId) async {
-    final (_, role) = await companies.open(actor, companyId);
+    final (company, role) = await companies.open(actor, companyId);
+    _requireMessaging(company);
     final other = await store.roleOf(companyId, userId);
     if (other == null || userId == actor.id) throw const ApiError.notFound('Membre introuvable.');
     if (!role.canManage && !other.canManage) throw const ApiError.forbidden();
@@ -160,6 +178,7 @@ class ChatService {
       throw const ApiError.notFound('Conversation introuvable.');
     }
     final (company, role) = await companies.open(actor, companyId);
+    _requireMessaging(company);
     return (
       companyId: companyId,
       kind: kind,
@@ -173,6 +192,7 @@ class ChatService {
   /// Groupe de discussion créé par un responsable avec les personnes
   /// choisies (le responsable en fait partie). Renvoie son identifiant.
   Future<String> createTeam(User actor, String companyId, String name, List<String> userIds) async {
+    _requireMessaging((await companies.open(actor, companyId)).$1);
     final (company, role) = await companies.open(actor, companyId);
     if (!role.canManage) throw const ApiError.forbidden();
     if (company.status == CompanyStatus.readOnly) {
@@ -244,6 +264,9 @@ class ChatService {
   /// [authorId] et chacune des [others]. Pas de notification de message :
   /// la demande a déjà la sienne.
   Future<void> postRequest(String companyId, String requestId, String authorId, List<String> others) async {
+    // Messagerie désactivée : la demande reste dans la liste des demandes.
+    final on = await store.query(store.db, 'SELECT messaging_enabled FROM companies WHERE id = @c::uuid', {'c': companyId});
+    if (on.isEmpty || on.first[0] != true) return;
     final conversations = <String>[];
     if (others.isEmpty) {
       // Groupe de l'entreprise coupé : la demande reste dans la liste des demandes.
@@ -470,6 +493,7 @@ class ChatService {
       JOIN memberships me ON me.company_id = c.company_id AND me.user_id = @u::uuid AND me.left_at IS NULL
       LEFT JOIN conversation_reads r ON r.conversation_id = c.id AND r.user_id = @u::uuid
       WHERE $_visible
+        AND (SELECT messaging_enabled FROM companies WHERE id = c.company_id)
         AND m.author_id IS DISTINCT FROM @u::uuid
         AND m.id > coalesce(r.last_read_id, 0) AND m.created_at > $_since
       GROUP BY c.company_id''', {'u': userId});

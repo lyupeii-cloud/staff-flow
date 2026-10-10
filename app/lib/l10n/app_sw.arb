@@ -376,5 +376,7 @@
   "moveSiteTitle": "Hamisha “{name}” chini ya…",
   "subSiteOf": "Tovuti ndogo ya {name}",
   "siteTreeHint": "Hadi viwango 3, k.m. Mkoa › Jiji › Duka. Msimamizi wa tovuti pia husimamia kila kilicho chini yake.",
-  "subSitesOnlyHint": "Hapa unaongeza tovuti ndogo chini ya tovuti zako."
+  "subSitesOnlyHint": "Hapa unaongeza tovuti ndogo chini ya tovuti zako.",
+  "messagingSetting": "Ujumbe wa kampuni",
+  "messagingSettingHint": "Imewashwa: timu ina kichupo cha Ujumbe. Imezimwa: hakuna anayekiona wala kuandika (jumbe za zamani huhifadhiwa)."
 }

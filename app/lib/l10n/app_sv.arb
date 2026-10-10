@@ -376,5 +376,7 @@
   "moveSiteTitle": "Flytta ”{name}” under…",
   "subSiteOf": "Underplats till {name}",
   "siteTreeHint": "Upp till 3 nivåer, t.ex. Region › Stad › Butik. Den som leder en plats leder också allt under den.",
-  "subSitesOnlyHint": "Här lägger du till underplatser under dina egna platser."
+  "subSitesOnlyHint": "Här lägger du till underplatser under dina egna platser.",
+  "messagingSetting": "Företagets meddelanden",
+  "messagingSettingHint": "På: teamet har en flik för meddelanden. Av: ingen ser den eller kan skriva (gamla meddelanden sparas)."
 }

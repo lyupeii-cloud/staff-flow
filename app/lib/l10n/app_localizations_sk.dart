@@ -1352,4 +1352,11 @@ class L10nSk extends L10n {
 
   @override
   String get subSitesOnlyHint => 'Tu pridávate podmiesta pod svoje miesta.';
+
+  @override
+  String get messagingSetting => 'Správy vo firme';
+
+  @override
+  String get messagingSettingHint =>
+      'Zapnuté: tím má kartu Správy. Vypnuté: nikto ju nevidí ani nemôže písať (staré správy zostanú).';
 }

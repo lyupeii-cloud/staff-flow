@@ -1350,4 +1350,11 @@ class L10nCs extends L10n {
 
   @override
   String get subSitesOnlyHint => 'Zde přidáváte podmísta pod svá místa.';
+
+  @override
+  String get messagingSetting => 'Zprávy ve firmě';
+
+  @override
+  String get messagingSettingHint =>
+      'Zapnuto: tým má kartu Zprávy. Vypnuto: nikdo ji nevidí ani nemůže psát (staré zprávy zůstanou).';
 }

@@ -1349,4 +1349,11 @@ class L10nKk extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Мұнда өз нысандарыңыздың астына ішкі нысандар қосасыз.';
+
+  @override
+  String get messagingSetting => 'Компания хабарламалары';
+
+  @override
+  String get messagingSettingHint =>
+      'Қосулы: топта «Хабарламалар» қойындысы бар. Өшірулі: ешкім оны көрмейді және жаза алмайды (ескі хабарламалар сақталады).';
 }

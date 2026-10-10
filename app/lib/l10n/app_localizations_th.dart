@@ -1338,4 +1338,11 @@ class L10nTh extends L10n {
 
   @override
   String get subSitesOnlyHint => 'ที่นี่คุณเพิ่มสาขาย่อยใต้สาขาของคุณเองได้';
+
+  @override
+  String get messagingSetting => 'ข้อความของบริษัท';
+
+  @override
+  String get messagingSettingHint =>
+      'เปิด: ทีมมีแท็บข้อความ ปิด: ไม่มีใครเห็นหรือเขียนได้ (ข้อความเก่ายังเก็บไว้)';
 }

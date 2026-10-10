@@ -1347,4 +1347,11 @@ class L10nHu extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Itt a saját telephelyei alá adhat altelephelyeket.';
+
+  @override
+  String get messagingSetting => 'Céges üzenetek';
+
+  @override
+  String get messagingSettingHint =>
+      'Be: a csapatnak van Üzenetek lapja. Ki: senki sem látja, és senki sem írhat (a régi üzenetek megmaradnak).';
 }

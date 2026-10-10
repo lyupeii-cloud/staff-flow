@@ -1344,4 +1344,11 @@ class L10nGu extends L10n {
   @override
   String get subSitesOnlyHint =>
       'અહીં તમે તમારી પોતાની સાઇટ નીચે પેટા-સાઇટ ઉમેરો છો.';
+
+  @override
+  String get messagingSetting => 'કંપનીના સંદેશા';
+
+  @override
+  String get messagingSettingHint =>
+      'ચાલુ: ટીમ પાસે સંદેશા ટૅબ હોય છે. બંધ: કોઈ તેને જોઈ કે લખી શકતું નથી (જૂના સંદેશા રહે છે).';
 }

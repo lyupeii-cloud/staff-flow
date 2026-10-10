@@ -96,4 +96,5 @@ const kk = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} {day} күні {name} қызметкерін қоюдан бас тартты.',
   'Trois niveaux de sites au plus.': 'Нысандардың ең көбі үш деңгейі.',
   'Un site ne peut pas être placé sous lui-même.': 'Нысанды өзінің астына қоюға болмайды.',
+  'La messagerie de cette entreprise est désactivée.': 'Бұл компанияда хабарламалар өшірілген.',
 };

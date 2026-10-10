@@ -96,6 +96,9 @@ class Company {
   /// Image de l'entreprise : 0 = aucune ; augmente à chaque changement.
   final int logoVersion;
 
+  /// Messagerie de l'entreprise : le patron l'active (désactivée au départ).
+  final bool messagingEnabled;
+
   const Company({
     required this.id,
     required this.name,
@@ -107,6 +110,7 @@ class Company {
     this.shiftPresets = const [],
     this.groupEnabled = true,
     this.logoVersion = 0,
+    this.messagingEnabled = false,
   });
 
   Company copyWith({String? name, String? timezone, Map<String, int>? Function()? legalRules, String? printScope}) =>
@@ -121,6 +125,7 @@ class Company {
         shiftPresets: shiftPresets,
         groupEnabled: groupEnabled,
         logoVersion: logoVersion,
+        messagingEnabled: messagingEnabled,
       );
 
   Map<String, Object?> toJson() => {
@@ -133,6 +138,7 @@ class Company {
         'shiftPresets': shiftPresets,
         'groupEnabled': groupEnabled,
         'logoVersion': logoVersion,
+        'messagingEnabled': messagingEnabled,
       };
 }
 

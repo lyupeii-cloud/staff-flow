@@ -96,4 +96,5 @@ const hu = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} elutasította {name} beosztását ekkor: {day}.',
   'Trois niveaux de sites au plus.': 'Legfeljebb három telephelyszint.',
   'Un site ne peut pas être placé sous lui-même.': 'Egy telephely nem kerülhet saját maga alá.',
+  'La messagerie de cette entreprise est désactivée.': 'Ennél a cégnél az üzenetküldés ki van kapcsolva.',
 };

@@ -376,5 +376,7 @@
   "moveSiteTitle": "Ilipat ang “{name}” sa ilalim ng…",
   "subSiteOf": "Sub-site ng {name}",
   "siteTreeHint": "Hanggang 3 antas, hal. Rehiyon › Lungsod › Tindahan. Ang manager ng isang site ay namamahala rin sa lahat ng nasa ilalim nito.",
-  "subSitesOnlyHint": "Dito ka nagdadagdag ng mga sub-site sa ilalim ng sarili mong mga site."
+  "subSitesOnlyHint": "Dito ka nagdadagdag ng mga sub-site sa ilalim ng sarili mong mga site.",
+  "messagingSetting": "Pagmemensahe ng kumpanya",
+  "messagingSettingHint": "Naka-on: may tab na Mga Mensahe ang team. Naka-off: walang makakakita o makakasulat (itinatago ang mga lumang mensahe)."
 }

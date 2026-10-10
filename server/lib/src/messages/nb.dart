@@ -96,4 +96,5 @@ const nb = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} avslo oppsettet av {name} {day}.',
   'Trois niveaux de sites au plus.': 'Høyst tre nivåer med steder.',
   'Un site ne peut pas être placé sous lui-même.': 'Et sted kan ikke plasseres under seg selv.',
+  'La messagerie de cette entreprise est désactivée.': 'Meldinger er slått av for denne bedriften.',
 };

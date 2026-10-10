@@ -96,4 +96,5 @@ const cs = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} odmítl(a) naplánování {name} na {day}.',
   'Trois niveaux de sites au plus.': 'Nejvýše tři úrovně míst.',
   'Un site ne peut pas être placé sous lui-même.': 'Místo nelze umístit pod sebe sama.',
+  'La messagerie de cette entreprise est désactivée.': 'Zprávy jsou v této firmě vypnuté.',
 };

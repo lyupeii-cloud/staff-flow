@@ -96,4 +96,5 @@ const pl = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} odrzucił(a) zaplanowanie {name} na {day}.',
   'Trois niveaux de sites au plus.': 'Najwyżej trzy poziomy placówek.',
   'Un site ne peut pas être placé sous lui-même.': 'Placówki nie można umieścić pod nią samą.',
+  'La messagerie de cette entreprise est désactivée.': 'Wiadomości są wyłączone w tej firmie.',
 };

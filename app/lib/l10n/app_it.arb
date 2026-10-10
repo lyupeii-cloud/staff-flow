@@ -376,5 +376,7 @@
   "moveSiteTitle": "Sposta «{name}» sotto…",
   "subSiteOf": "Sottosede di {name}",
   "siteTreeHint": "Fino a 3 livelli, ad es. Regione › Città › Negozio. Il responsabile di una sede gestisce anche tutto ciò che sta sotto.",
-  "subSitesOnlyHint": "Qui aggiungi sottosedi sotto le tue sedi."
+  "subSitesOnlyHint": "Qui aggiungi sottosedi sotto le tue sedi.",
+  "messagingSetting": "Messaggistica aziendale",
+  "messagingSettingHint": "Attiva: il team ha una scheda Messaggi. Disattiva: nessuno la vede né può scrivere (i vecchi messaggi restano)."
 }

@@ -1359,4 +1359,11 @@ class L10nTa extends L10n {
   @override
   String get subSitesOnlyHint =>
       'இங்கே உங்கள் தளங்களின் கீழ் துணைத் தளங்களைச் சேர்க்கலாம்.';
+
+  @override
+  String get messagingSetting => 'நிறுவனச் செய்திகள்';
+
+  @override
+  String get messagingSettingHint =>
+      'இயக்கம்: குழுவுக்கு செய்திகள் தாவல் இருக்கும். முடக்கம்: யாரும் அதைப் பார்க்கவோ எழுதவோ முடியாது (பழைய செய்திகள் வைக்கப்படும்).';
 }

@@ -116,4 +116,5 @@ const uk = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} відхилив(ла) призначення {name} на {day}.',
   'Trois niveaux de sites au plus.': 'Не більше трьох рівнів об\'єктів.',
   'Un site ne peut pas être placé sous lui-même.': 'Об\'єкт не можна розмістити під самим собою.',
+  'La messagerie de cette entreprise est désactivée.': 'Повідомлення в цій компанії вимкнено.',
 };

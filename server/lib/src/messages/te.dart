@@ -96,4 +96,5 @@ const te = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} {day}న {name} నియామకాన్ని తిరస్కరించారు.',
   'Trois niveaux de sites au plus.': 'గరిష్ఠంగా మూడు స్థాయిల సైట్‌లు.',
   'Un site ne peut pas être placé sous lui-même.': 'సైట్‌ను దాని కిందే ఉంచలేరు.',
+  'La messagerie de cette entreprise est désactivée.': 'ఈ సంస్థకు సందేశాలు ఆఫ్ చేయబడ్డాయి.',
 };

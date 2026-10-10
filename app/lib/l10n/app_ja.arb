@@ -376,5 +376,7 @@
   "moveSiteTitle": "「{name}」を次の下へ移動…",
   "subSiteOf": "{name}の下位拠点",
   "siteTreeHint": "最大3階層（例：地域 › 都市 › 店舗）。拠点の責任者は、その下のすべても管理します。",
-  "subSitesOnlyHint": "ここでは、自分の拠点の下に下位拠点を追加できます。"
+  "subSitesOnlyHint": "ここでは、自分の拠点の下に下位拠点を追加できます。",
+  "messagingSetting": "会社のメッセージ",
+  "messagingSettingHint": "オン：チームに「メッセージ」タブが表示されます。オフ：誰にも表示されず、書き込みもできません（過去のメッセージは残ります）。"
 }

@@ -376,5 +376,7 @@
   "moveSiteTitle": "Pindahkan “{name}” ke bawah…",
   "subSiteOf": "Sub-lokasi dari {name}",
   "siteTreeHint": "Hingga 3 tingkat, mis. Wilayah › Kota › Toko. Manajer suatu lokasi juga mengelola semua yang ada di bawahnya.",
-  "subSitesOnlyHint": "Di sini Anda menambah sub-lokasi di bawah lokasi Anda sendiri."
+  "subSitesOnlyHint": "Di sini Anda menambah sub-lokasi di bawah lokasi Anda sendiri.",
+  "messagingSetting": "Pesan perusahaan",
+  "messagingSettingHint": "Aktif: tim punya tab Pesan. Nonaktif: tidak ada yang melihatnya atau bisa menulis (pesan lama tetap disimpan)."
 }

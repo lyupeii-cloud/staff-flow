@@ -96,4 +96,5 @@ const ru = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} отклонил(а) назначение {name} на {day}.',
   'Trois niveaux de sites au plus.': 'Не более трёх уровней объектов.',
   'Un site ne peut pas être placé sous lui-même.': 'Объект нельзя поместить под самого себя.',
+  'La messagerie de cette entreprise est désactivée.': 'Сообщения в этой компании отключены.',
 };

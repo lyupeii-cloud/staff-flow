@@ -96,4 +96,5 @@ const el = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': 'Ο/Η {by} απέρριψε τον προγραμματισμό του/της {name} στις {day}.',
   'Trois niveaux de sites au plus.': 'Το πολύ τρία επίπεδα σημείων.',
   'Un site ne peut pas être placé sous lui-même.': 'Ένα σημείο δεν μπορεί να μπει κάτω από τον εαυτό του.',
+  'La messagerie de cette entreprise est désactivée.': 'Τα μηνύματα είναι απενεργοποιημένα για αυτή την επιχείρηση.',
 };

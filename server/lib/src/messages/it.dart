@@ -96,4 +96,5 @@ const it = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} ha rifiutato la pianificazione di {name} il {day}.',
   'Trois niveaux de sites au plus.': 'Al massimo tre livelli di sedi.',
   'Un site ne peut pas être placé sous lui-même.': 'Una sede non può stare sotto sé stessa.',
+  'La messagerie de cette entreprise est désactivée.': 'La messaggistica è disattivata per questa azienda.',
 };

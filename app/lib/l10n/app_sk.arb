@@ -376,5 +376,7 @@
   "moveSiteTitle": "Presunúť „{name}“ pod…",
   "subSiteOf": "Podmiesto miesta {name}",
   "siteTreeHint": "Až 3 úrovne, napr. Región › Mesto › Predajňa. Vedúci miesta riadi aj všetko pod ním.",
-  "subSitesOnlyHint": "Tu pridávate podmiesta pod svoje miesta."
+  "subSitesOnlyHint": "Tu pridávate podmiesta pod svoje miesta.",
+  "messagingSetting": "Správy vo firme",
+  "messagingSettingHint": "Zapnuté: tím má kartu Správy. Vypnuté: nikto ju nevidí ani nemôže písať (staré správy zostanú)."
 }

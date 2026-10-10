@@ -96,4 +96,5 @@ const gu = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by}એ {day}એ {name}ની ગોઠવણ નકારી.',
   'Trois niveaux de sites au plus.': 'વધુમાં વધુ ત્રણ સ્તરની સાઇટ.',
   'Un site ne peut pas être placé sous lui-même.': 'સાઇટને પોતાની નીચે મૂકી શકાતી નથી.',
+  'La messagerie de cette entreprise est désactivée.': 'આ કંપની માટે સંદેશા બંધ છે.',
 };

@@ -315,11 +315,14 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
               const SizedBox(height: 8),
               Builder(builder: (context) {
                 final unread = widget.session.me?.unreadMessages[company.id] ?? 0;
+                // Messagerie coupée par le patron : l'onglet disparaît pour tous.
+                if (!company.messagingEnabled && _view == _View.messages) _view = _View.planning;
                 return _ViewSwitcher(
                   selected: _view,
                   items: [
                     (_View.planning, const Icon(Icons.calendar_month), t.viewPlanning),
                     (_View.requests, const Icon(Icons.swap_horiz), t.viewRequests),
+                    if (company.messagingEnabled)
                     (
                       _View.messages,
                       Badge(isLabelVisible: unread > 0, label: Text('$unread'), child: const Icon(Icons.forum)),

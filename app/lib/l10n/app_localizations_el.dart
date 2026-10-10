@@ -1362,4 +1362,11 @@ class L10nEl extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Εδώ προσθέτετε υποσημεία κάτω από τα δικά σας σημεία.';
+
+  @override
+  String get messagingSetting => 'Μηνύματα επιχείρησης';
+
+  @override
+  String get messagingSettingHint =>
+      'Ενεργά: η ομάδα έχει καρτέλα Μηνύματα. Ανενεργά: κανείς δεν τη βλέπει ούτε μπορεί να γράψει (τα παλιά μηνύματα διατηρούνται).';
 }

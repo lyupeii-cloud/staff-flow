@@ -96,4 +96,5 @@ const de = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} hat die Einplanung von {name} am {day} abgelehnt.',
   'Trois niveaux de sites au plus.': 'Höchstens drei Standortebenen.',
   'Un site ne peut pas être placé sous lui-même.': 'Ein Standort kann nicht unter sich selbst liegen.',
+  'La messagerie de cette entreprise est désactivée.': 'Die Nachrichten sind für dieses Unternehmen ausgeschaltet.',
 };

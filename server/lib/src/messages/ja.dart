@@ -96,4 +96,5 @@ const ja = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by}さんが{day}の{name}さんの配置を却下しました。',
   'Trois niveaux de sites au plus.': '拠点の階層は3段階までです。',
   'Un site ne peut pas être placé sous lui-même.': '拠点を自分自身の下に置くことはできません。',
+  'La messagerie de cette entreprise est désactivée.': 'この会社ではメッセージ機能がオフになっています。',
 };

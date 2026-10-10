@@ -109,6 +109,12 @@ class Api {
       ..put('/companies/<id>/notify-sites', _authed(_notifySites))
       ..put('/companies/<id>/presets', _authed((r, u) async =>
           _json({'presets': await companies.setPresets(u, r.params['id']!, (await _body(r))['presets'])})))
+      ..put('/companies/<id>/messaging', _authed((r, u) async {
+        final body = await _body(r);
+        if (body['enabled'] is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        await chat.setMessagingEnabled(u, r.params['id']!, body['enabled'] as bool);
+        return Response(204);
+      }))
       ..put('/companies/<id>/group', _authed((r, u) async {
         final body = await _body(r);
         if (body['enabled'] is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');

@@ -1352,4 +1352,11 @@ class L10nSv extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Här lägger du till underplatser under dina egna platser.';
+
+  @override
+  String get messagingSetting => 'Företagets meddelanden';
+
+  @override
+  String get messagingSettingHint =>
+      'På: teamet har en flik för meddelanden. Av: ingen ser den eller kan skriva (gamla meddelanden sparas).';
 }

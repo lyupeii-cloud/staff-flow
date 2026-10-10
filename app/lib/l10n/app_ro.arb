@@ -376,5 +376,7 @@
   "moveSiteTitle": "Mută „{name}” sub…",
   "subSiteOf": "Sub-punct al {name}",
   "siteTreeHint": "Până la 3 niveluri, de ex. Regiune › Oraș › Magazin. Responsabilul unui punct de lucru gestionează și tot ce e sub el.",
-  "subSitesOnlyHint": "Aici adăugați sub-puncte de lucru sub propriile puncte."
+  "subSitesOnlyHint": "Aici adăugați sub-puncte de lucru sub propriile puncte.",
+  "messagingSetting": "Mesageria firmei",
+  "messagingSettingHint": "Activată: echipa are o filă Mesaje. Dezactivată: nimeni nu o vede și nu poate scrie (mesajele vechi se păstrează)."
 }

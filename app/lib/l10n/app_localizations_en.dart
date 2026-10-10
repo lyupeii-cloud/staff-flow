@@ -1350,4 +1350,11 @@ class L10nEn extends L10n {
 
   @override
   String get subSitesOnlyHint => 'Here you add sub-sites under your own sites.';
+
+  @override
+  String get messagingSetting => 'Company messaging';
+
+  @override
+  String get messagingSettingHint =>
+      'On: the team has a Messages tab. Off: nobody sees it or can write (old messages are kept).';
 }

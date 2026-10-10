@@ -1345,4 +1345,11 @@ class L10nBn extends L10n {
   @override
   String get subSitesOnlyHint =>
       'এখানে আপনি নিজের সাইটের নিচে উপ-সাইট যোগ করেন।';
+
+  @override
+  String get messagingSetting => 'প্রতিষ্ঠানের বার্তা';
+
+  @override
+  String get messagingSettingHint =>
+      'চালু: দলের একটি বার্তা ট্যাব থাকে। বন্ধ: কেউ এটি দেখে না বা লিখতে পারে না (পুরনো বার্তা রাখা হয়)।';
 }

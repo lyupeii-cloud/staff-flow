@@ -1318,4 +1318,11 @@ class L10nJa extends L10n {
 
   @override
   String get subSitesOnlyHint => 'ここでは、自分の拠点の下に下位拠点を追加できます。';
+
+  @override
+  String get messagingSetting => '会社のメッセージ';
+
+  @override
+  String get messagingSettingHint =>
+      'オン：チームに「メッセージ」タブが表示されます。オフ：誰にも表示されず、書き込みもできません（過去のメッセージは残ります）。';
 }

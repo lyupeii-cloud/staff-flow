@@ -1364,4 +1364,11 @@ class L10nFr extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Ici, vous ajoutez des sous-sites sous vos propres sites.';
+
+  @override
+  String get messagingSetting => 'Messagerie de l\'entreprise';
+
+  @override
+  String get messagingSettingHint =>
+      'Activée : l\'équipe a un onglet Messages. Désactivée : personne ne le voit ni ne peut écrire (les anciens messages sont gardés).';
 }

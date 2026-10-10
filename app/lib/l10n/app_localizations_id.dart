@@ -1348,4 +1348,11 @@ class L10nId extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Di sini Anda menambah sub-lokasi di bawah lokasi Anda sendiri.';
+
+  @override
+  String get messagingSetting => 'Pesan perusahaan';
+
+  @override
+  String get messagingSettingHint =>
+      'Aktif: tim punya tab Pesan. Nonaktif: tidak ada yang melihatnya atau bisa menulis (pesan lama tetap disimpan).';
 }

@@ -96,4 +96,5 @@ const da = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} afviste planlægningen af {name} den {day}.',
   'Trois niveaux de sites au plus.': 'Højst tre niveauer af steder.',
   'Un site ne peut pas être placé sous lui-même.': 'Et sted kan ikke placeres under sig selv.',
+  'La messagerie de cette entreprise est désactivée.': 'Beskeder er slået fra for denne virksomhed.',
 };

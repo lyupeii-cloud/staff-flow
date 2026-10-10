@@ -1353,4 +1353,11 @@ class L10nFi extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Täällä lisäät alatoimipaikkoja omien toimipaikkojesi alle.';
+
+  @override
+  String get messagingSetting => 'Yrityksen viestit';
+
+  @override
+  String get messagingSettingHint =>
+      'Päällä: tiimillä on Viestit-välilehti. Pois: kukaan ei näe sitä eikä voi kirjoittaa (vanhat viestit säilyvät).';
 }

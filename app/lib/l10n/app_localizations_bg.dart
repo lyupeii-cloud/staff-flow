@@ -1347,4 +1347,11 @@ class L10nBg extends L10n {
 
   @override
   String get subSitesOnlyHint => 'Тук добавяте подобекти към своите обекти.';
+
+  @override
+  String get messagingSetting => 'Съобщения във фирмата';
+
+  @override
+  String get messagingSettingHint =>
+      'Включено: екипът има раздел „Съобщения“. Изключено: никой не го вижда и не може да пише (старите съобщения се пазят).';
 }

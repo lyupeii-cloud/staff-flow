@@ -1352,4 +1352,11 @@ class L10nSw extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Hapa unaongeza tovuti ndogo chini ya tovuti zako.';
+
+  @override
+  String get messagingSetting => 'Ujumbe wa kampuni';
+
+  @override
+  String get messagingSettingHint =>
+      'Imewashwa: timu ina kichupo cha Ujumbe. Imezimwa: hakuna anayekiona wala kuandika (jumbe za zamani huhifadhiwa).';
 }

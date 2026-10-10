@@ -1356,4 +1356,11 @@ class L10nRu extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Здесь вы добавляете подобъекты к своим объектам.';
+
+  @override
+  String get messagingSetting => 'Сообщения компании';
+
+  @override
+  String get messagingSettingHint =>
+      'Включено: у команды есть вкладка «Сообщения». Выключено: никто её не видит и не может писать (старые сообщения сохраняются).';
 }

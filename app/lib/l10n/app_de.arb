@@ -376,5 +376,7 @@
   "moveSiteTitle": "„{name}“ verschieben unter…",
   "subSiteOf": "Unterstandort von {name}",
   "siteTreeHint": "Bis zu 3 Ebenen, z. B. Region › Stadt › Filiale. Wer einen Standort leitet, leitet auch alles darunter.",
-  "subSitesOnlyHint": "Hier fügen Sie Unterstandorte unter Ihren eigenen Standorten hinzu."
+  "subSitesOnlyHint": "Hier fügen Sie Unterstandorte unter Ihren eigenen Standorten hinzu.",
+  "messagingSetting": "Nachrichten im Unternehmen",
+  "messagingSettingHint": "An: Das Team hat einen Tab „Nachrichten“. Aus: Niemand sieht ihn oder kann schreiben (alte Nachrichten bleiben erhalten)."
 }

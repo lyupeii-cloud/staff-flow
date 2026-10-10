@@ -64,6 +64,51 @@ class CompanyLogo extends StatelessWidget {
   }
 }
 
+/// Patron : messagerie de l'entreprise activée ou coupée entièrement
+/// (désactivée à la création). Coupée, personne ne voit l'onglet Messages.
+class CompanyMessagingSetting extends StatefulWidget {
+  final Session session;
+  final Company company;
+
+  const CompanyMessagingSetting({super.key, required this.session, required this.company});
+
+  @override
+  State<CompanyMessagingSetting> createState() => _CompanyMessagingSettingState();
+}
+
+class _CompanyMessagingSettingState extends State<CompanyMessagingSetting> {
+  bool _busy = false;
+
+  Future<void> _set(bool on) async {
+    final t = context.l10n;
+    final messenger = ScaffoldMessenger.of(context);
+    setState(() => _busy = true);
+    try {
+      await widget.session.api.send('PUT', '/companies/${widget.company.id}/messaging', body: {'enabled': on});
+      await widget.session.refresh();
+    } on OfflineException {
+      messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+    } on ApiException catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text(e.describe(t))));
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final t = context.l10n;
+    return SwitchListTile(
+      contentPadding: EdgeInsets.zero,
+      secondary: const Icon(Icons.forum_outlined),
+      title: Text(t.messagingSetting),
+      subtitle: Text(t.messagingSettingHint),
+      value: widget.company.messagingEnabled,
+      onChanged: _busy || widget.company.readOnly ? null : _set,
+    );
+  }
+}
+
 /// Patron : choisir l'image de l'entreprise (PNG seulement) ou l'enlever.
 class CompanyLogoSettings extends StatefulWidget {
   final Session session;

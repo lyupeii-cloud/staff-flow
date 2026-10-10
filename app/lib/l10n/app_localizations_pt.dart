@@ -1355,4 +1355,11 @@ class L10nPt extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Aqui adiciona sublocais abaixo dos seus próprios locais.';
+
+  @override
+  String get messagingSetting => 'Mensagens da empresa';
+
+  @override
+  String get messagingSettingHint =>
+      'Ativadas: a equipa tem um separador Mensagens. Desativadas: ninguém o vê nem pode escrever (as mensagens antigas são guardadas).';
 }

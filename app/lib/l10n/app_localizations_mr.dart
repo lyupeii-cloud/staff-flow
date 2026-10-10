@@ -1346,4 +1346,11 @@ class L10nMr extends L10n {
 
   @override
   String get subSitesOnlyHint => 'येथे तुम्ही तुमच्या साइटखाली उप-साइट जोडता.';
+
+  @override
+  String get messagingSetting => 'कंपनीचे संदेश';
+
+  @override
+  String get messagingSettingHint =>
+      'चालू: टीमला संदेश टॅब असतो. बंद: कोणालाही तो दिसत नाही किंवा लिहिता येत नाही (जुने संदेश ठेवले जातात).';
 }

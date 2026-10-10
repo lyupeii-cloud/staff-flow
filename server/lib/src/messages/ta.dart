@@ -96,4 +96,5 @@ const ta = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} {day} அன்று {name}-இன் நியமனத்தை மறுத்தார்.',
   'Trois niveaux de sites au plus.': 'அதிகபட்சம் மூன்று நிலை தளங்கள்.',
   'Un site ne peut pas être placé sous lui-même.': 'ஒரு தளத்தை அதன் கீழேயே வைக்க முடியாது.',
+  'La messagerie de cette entreprise est désactivée.': 'இந்த நிறுவனத்தில் செய்திகள் முடக்கப்பட்டுள்ளன.',
 };

@@ -96,4 +96,5 @@ const th = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} ปฏิเสธการจัด {name} ในวันที่ {day}',
   'Trois niveaux de sites au plus.': 'สาขาได้สูงสุดสามระดับ',
   'Un site ne peut pas être placé sous lui-même.': 'ไม่สามารถวางสาขาไว้ใต้ตัวเองได้',
+  'La messagerie de cette entreprise est désactivée.': 'บริษัทนี้ปิดการส่งข้อความอยู่',
 };

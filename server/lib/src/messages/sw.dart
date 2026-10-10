@@ -96,4 +96,5 @@ const sw = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} amekataa kumpangia {name} tarehe {day}.',
   'Trois niveaux de sites au plus.': 'Viwango vitatu vya tovuti kwa upeo.',
   'Un site ne peut pas être placé sous lui-même.': 'Tovuti haiwezi kuwekwa chini yake yenyewe.',
+  'La messagerie de cette entreprise est désactivée.': 'Ujumbe umezimwa kwa kampuni hii.',
 };

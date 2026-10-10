@@ -96,4 +96,5 @@ const pt = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} recusou a escala de {name} em {day}.',
   'Trois niveaux de sites au plus.': 'No máximo três níveis de locais.',
   'Un site ne peut pas être placé sous lui-même.': 'Um local não pode ficar debaixo de si mesmo.',
+  'La messagerie de cette entreprise est désactivée.': 'As mensagens estão desativadas nesta empresa.',
 };

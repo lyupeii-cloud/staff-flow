@@ -1348,4 +1348,11 @@ class L10nPa extends L10n {
   @override
   String get subSitesOnlyHint =>
       'ਇੱਥੇ ਤੁਸੀਂ ਆਪਣੀਆਂ ਸਾਈਟਾਂ ਹੇਠ ਉਪ-ਸਾਈਟਾਂ ਜੋੜਦੇ ਹੋ।';
+
+  @override
+  String get messagingSetting => 'ਕੰਪਨੀ ਦੇ ਸੁਨੇਹੇ';
+
+  @override
+  String get messagingSettingHint =>
+      'ਚਾਲੂ: ਟੀਮ ਕੋਲ ਸੁਨੇਹੇ ਟੈਬ ਹੁੰਦੀ ਹੈ। ਬੰਦ: ਕੋਈ ਇਸਨੂੰ ਨਹੀਂ ਦੇਖਦਾ ਨਾ ਲਿਖ ਸਕਦਾ ਹੈ (ਪੁਰਾਣੇ ਸੁਨੇਹੇ ਰੱਖੇ ਜਾਂਦੇ ਹਨ)।';
 }

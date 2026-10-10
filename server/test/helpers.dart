@@ -153,7 +153,10 @@ class TestEnv {
 
   Future<String> createCompany(Client c, [String name = 'Boulangerie']) async {
     final body = await c.ok('POST', '/companies', {'name': name, 'timezone': 'Europe/Paris'});
-    return body['company']['id'];
+    final id = body['company']['id'] as String;
+    // Désactivée à la création (voir customization_test) ; activée ici pour les autres tests.
+    await c.ok('PUT', '/companies/$id/messaging', {'enabled': true});
+    return id;
   }
 
   Future<(String, Map<String, Object?>)> lastAudit(String action) async {

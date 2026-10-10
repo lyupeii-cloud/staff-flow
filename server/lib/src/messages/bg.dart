@@ -96,4 +96,5 @@ const bg = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} отказа планирането на {name} на {day}.',
   'Trois niveaux de sites au plus.': 'Най-много три нива обекти.',
   'Un site ne peut pas être placé sous lui-même.': 'Обект не може да бъде поставен под самия себе си.',
+  'La messagerie de cette entreprise est désactivée.': 'Съобщенията са изключени за тази фирма.',
 };

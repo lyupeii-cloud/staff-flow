@@ -930,5 +930,7 @@
     }
   },
   "siteTreeHint": "Up to 3 levels, e.g. Region › City › Store. A manager of a site also manages everything below it.",
-  "subSitesOnlyHint": "Here you add sub-sites under your own sites."
+  "subSitesOnlyHint": "Here you add sub-sites under your own sites.",
+  "messagingSetting": "Company messaging",
+  "messagingSettingHint": "On: the team has a Messages tab. Off: nobody sees it or can write (old messages are kept)."
 }

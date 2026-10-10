@@ -96,4 +96,5 @@ const fil = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': 'Tinanggihan ni {by} ang pag-iskedyul kay {name} sa {day}.',
   'Trois niveaux de sites au plus.': 'Hanggang tatlong antas ng site lang.',
   'Un site ne peut pas être placé sous lui-même.': 'Hindi mailalagay ang isang site sa ilalim ng sarili nito.',
+  'La messagerie de cette entreprise est désactivée.': 'Naka-off ang pagmemensahe para sa kumpanyang ito.',
 };

@@ -2452,6 +2452,18 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Here you add sub-sites under your own sites.'**
   String get subSitesOnlyHint;
+
+  /// No description provided for @messagingSetting.
+  ///
+  /// In en, this message translates to:
+  /// **'Company messaging'**
+  String get messagingSetting;
+
+  /// No description provided for @messagingSettingHint.
+  ///
+  /// In en, this message translates to:
+  /// **'On: the team has a Messages tab. Off: nobody sees it or can write (old messages are kept).'**
+  String get messagingSettingHint;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

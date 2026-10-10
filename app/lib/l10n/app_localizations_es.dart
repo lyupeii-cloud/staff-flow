@@ -1359,4 +1359,11 @@ class L10nEs extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Aquí añades subcentros bajo tus propios centros.';
+
+  @override
+  String get messagingSetting => 'Mensajería de la empresa';
+
+  @override
+  String get messagingSettingHint =>
+      'Activada: el equipo tiene una pestaña Mensajes. Desactivada: nadie la ve ni puede escribir (los mensajes antiguos se conservan).';
 }

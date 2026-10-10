@@ -89,6 +89,26 @@ void main() {
     });
   });
 
+  test('messagerie : désactivée à la création, le patron seul l\'active ou la coupe entièrement', () async {
+    final fresh = (await owner.ok('POST', '/companies', {'name': 'Neuve', 'timezone': 'Europe/Paris'}))['company'];
+    expect(fresh['messagingEnabled'], false);
+    final id = fresh['id'];
+    await env.store.addMember(id, bob.id, Role.employee);
+    await env.store.addMember(id, manager.id, Role.manager);
+    expect((await bob('GET', '/companies/$id/conversations')).$1, 409);
+    expect((await manager('PUT', '/companies/$id/messaging', {'enabled': true})).$1, 403);
+    await owner.ok('PUT', '/companies/$id/messaging', {'enabled': true});
+    final g = ((await bob.ok('GET', '/companies/$id/conversations'))['conversations'] as List).single['id'];
+    await manager.ok('POST', '/conversations/$g/messages', {'body': 'Bonjour'});
+    expect((await bob.ok('GET', '/me'))['unreadMessages'], isNotEmpty);
+    // Coupée : plus rien, ni lecture, ni envoi, ni pastille.
+    await owner.ok('PUT', '/companies/$id/messaging', {'enabled': false});
+    expect((await bob('GET', '/conversations/$g/messages')).$1, 409);
+    expect((await manager('POST', '/conversations/$g/messages', {'body': 'Re'})).$1, 409);
+    expect((await bob('POST', '/companies/$id/conversations', {'userId': manager.id})).$1, 409);
+    expect((await bob.ok('GET', '/me'))['unreadMessages'], isEmpty);
+  });
+
   group('image de l\'entreprise', () {
     String png(int w, int h) => base64Encode(img.encodePng(img.Image(width: w, height: h)));
 

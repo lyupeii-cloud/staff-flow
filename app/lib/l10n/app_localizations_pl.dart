@@ -1362,4 +1362,11 @@ class L10nPl extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Tutaj dodajesz podplacówki pod swoimi placówkami.';
+
+  @override
+  String get messagingSetting => 'Wiadomości w firmie';
+
+  @override
+  String get messagingSettingHint =>
+      'Włączone: zespół ma kartę Wiadomości. Wyłączone: nikt jej nie widzi ani nie może pisać (stare wiadomości zostają).';
 }

@@ -96,4 +96,5 @@ const ms = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} menolak penjadualan {name} pada {day}.',
   'Trois niveaux de sites au plus.': 'Paling banyak tiga peringkat tapak.',
   'Un site ne peut pas être placé sous lui-même.': 'Tapak tidak boleh diletakkan di bawah dirinya sendiri.',
+  'La messagerie de cette entreprise est désactivée.': 'Pemesejan dimatikan untuk syarikat ini.',
 };

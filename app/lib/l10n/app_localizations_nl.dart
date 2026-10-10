@@ -1354,4 +1354,11 @@ class L10nNl extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Hier voegt u subvestigingen toe onder uw eigen vestigingen.';
+
+  @override
+  String get messagingSetting => 'Berichten van het bedrijf';
+
+  @override
+  String get messagingSettingHint =>
+      'Aan: het team heeft een tabblad Berichten. Uit: niemand ziet het of kan schrijven (oude berichten blijven bewaard).';
 }

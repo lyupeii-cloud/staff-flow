@@ -376,5 +376,7 @@
   "moveSiteTitle": "Flytt «{name}» under…",
   "subSiteOf": "Understed av {name}",
   "siteTreeHint": "Opptil 3 nivåer, f.eks. Region › By › Butikk. En leder for et sted leder også alt under det.",
-  "subSitesOnlyHint": "Her legger du til understeder under dine egne steder."
+  "subSitesOnlyHint": "Her legger du til understeder under dine egne steder.",
+  "messagingSetting": "Bedriftens meldinger",
+  "messagingSettingHint": "På: teamet har en Meldinger-fane. Av: ingen ser den eller kan skrive (gamle meldinger beholdes)."
 }

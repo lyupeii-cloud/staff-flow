@@ -1319,4 +1319,11 @@ class L10nKo extends L10n {
 
   @override
   String get subSitesOnlyHint => '여기서 내 지점 아래에 하위 지점을 추가합니다.';
+
+  @override
+  String get messagingSetting => '회사 메시지';
+
+  @override
+  String get messagingSettingHint =>
+      '켜짐: 팀에 메시지 탭이 있습니다. 꺼짐: 아무도 볼 수 없고 쓸 수 없습니다(이전 메시지는 보관됩니다).';
 }

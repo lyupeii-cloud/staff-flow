@@ -96,4 +96,5 @@ const pa = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} ਨੇ {day} ਨੂੰ {name} ਦੀ ਨਿਯੁਕਤੀ ਰੱਦ ਕੀਤੀ।',
   'Trois niveaux de sites au plus.': 'ਵੱਧ ਤੋਂ ਵੱਧ ਤਿੰਨ ਪੱਧਰਾਂ ਦੀਆਂ ਸਾਈਟਾਂ।',
   'Un site ne peut pas être placé sous lui-même.': 'ਕਿਸੇ ਸਾਈਟ ਨੂੰ ਉਸਦੇ ਆਪਣੇ ਹੇਠਾਂ ਨਹੀਂ ਰੱਖਿਆ ਜਾ ਸਕਦਾ।',
+  'La messagerie de cette entreprise est désactivée.': 'ਇਸ ਕੰਪਨੀ ਲਈ ਸੁਨੇਹੇ ਬੰਦ ਹਨ।',
 };

@@ -96,4 +96,5 @@ const ro = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} a refuzat programarea lui {name} pe {day}.',
   'Trois niveaux de sites au plus.': 'Cel mult trei niveluri de puncte de lucru.',
   'Un site ne peut pas être placé sous lui-même.': 'Un punct de lucru nu poate fi pus sub el însuși.',
+  'La messagerie de cette entreprise est désactivée.': 'Mesageria este dezactivată pentru această firmă.',
 };

@@ -78,6 +78,7 @@ class Store {
         printScope: r['print_scope'] as String? ?? 'team',
         shiftPresets: [for (final p in (r['shift_presets'] as List?) ?? const []) (p as Map).cast<String, Object?>()],
         groupEnabled: r['group_enabled'] as bool? ?? true,
+        messagingEnabled: r['messaging_enabled'] as bool? ?? false,
         // Sans image : 0 (le numéro, lui, continue de monter pour la suivante).
         logoVersion: r.containsKey('logo') && r['logo'] == null ? 0 : r['logo_version'] as int? ?? 0,
       );

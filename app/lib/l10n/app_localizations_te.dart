@@ -1347,4 +1347,11 @@ class L10nTe extends L10n {
 
   @override
   String get subSitesOnlyHint => 'ఇక్కడ మీ సైట్‌ల కింద ఉప-సైట్‌లను జోడిస్తారు.';
+
+  @override
+  String get messagingSetting => 'సంస్థ సందేశాలు';
+
+  @override
+  String get messagingSettingHint =>
+      'ఆన్: బృందానికి సందేశాలు ట్యాబ్ ఉంటుంది. ఆఫ్: ఎవరూ దాన్ని చూడలేరు, రాయలేరు (పాత సందేశాలు ఉంచబడతాయి).';
 }

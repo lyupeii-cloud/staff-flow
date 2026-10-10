@@ -1344,4 +1344,11 @@ class L10nVi extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Tại đây bạn thêm địa điểm con dưới các địa điểm của mình.';
+
+  @override
+  String get messagingSetting => 'Tin nhắn của công ty';
+
+  @override
+  String get messagingSettingHint =>
+      'Bật: nhóm có thẻ Tin nhắn. Tắt: không ai thấy hay viết được (tin nhắn cũ vẫn được giữ).';
 }

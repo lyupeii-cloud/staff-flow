@@ -376,5 +376,7 @@
   "moveSiteTitle": "Di chuyển “{name}” vào dưới…",
   "subSiteOf": "Địa điểm con của {name}",
   "siteTreeHint": "Tối đa 3 cấp, ví dụ Vùng › Thành phố › Cửa hàng. Người quản lý một địa điểm cũng quản lý mọi thứ bên dưới.",
-  "subSitesOnlyHint": "Tại đây bạn thêm địa điểm con dưới các địa điểm của mình."
+  "subSitesOnlyHint": "Tại đây bạn thêm địa điểm con dưới các địa điểm của mình.",
+  "messagingSetting": "Tin nhắn của công ty",
+  "messagingSettingHint": "Bật: nhóm có thẻ Tin nhắn. Tắt: không ai thấy hay viết được (tin nhắn cũ vẫn được giữ)."
 }

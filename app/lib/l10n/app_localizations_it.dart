@@ -1357,4 +1357,11 @@ class L10nIt extends L10n {
 
   @override
   String get subSitesOnlyHint => 'Qui aggiungi sottosedi sotto le tue sedi.';
+
+  @override
+  String get messagingSetting => 'Messaggistica aziendale';
+
+  @override
+  String get messagingSettingHint =>
+      'Attiva: il team ha una scheda Messaggi. Disattiva: nessuno la vede né può scrivere (i vecchi messaggi restano).';
 }

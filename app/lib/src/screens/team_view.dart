@@ -120,6 +120,8 @@ class _TeamViewState extends State<TeamView> {
           if (role == Role.owner) ...[
             const SizedBox(height: 28),
             CompanyLogoSettings(session: widget.session, company: company),
+            const SizedBox(height: 12),
+            CompanyMessagingSetting(session: widget.session, company: company),
           ],
           if (role != Role.owner) ...[
             const SizedBox(height: 24),

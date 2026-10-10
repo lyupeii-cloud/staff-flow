@@ -376,5 +376,7 @@
   "moveSiteTitle": "Alih “{name}” ke bawah…",
   "subSiteOf": "Sub-tapak {name}",
   "siteTreeHint": "Sehingga 3 peringkat, cth. Wilayah › Bandar › Kedai. Pengurus sesuatu tapak juga mengurus semua di bawahnya.",
-  "subSitesOnlyHint": "Di sini anda menambah sub-tapak di bawah tapak anda sendiri."
+  "subSitesOnlyHint": "Di sini anda menambah sub-tapak di bawah tapak anda sendiri.",
+  "messagingSetting": "Pemesejan syarikat",
+  "messagingSettingHint": "Hidup: pasukan ada tab Mesej. Mati: tiada siapa nampak atau boleh menulis (mesej lama disimpan)."
 }

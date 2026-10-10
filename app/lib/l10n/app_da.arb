@@ -376,5 +376,7 @@
   "moveSiteTitle": "Flyt “{name}” under…",
   "subSiteOf": "Understed til {name}",
   "siteTreeHint": "Op til 3 niveauer, f.eks. Region › By › Butik. En leder af et sted leder også alt nedenunder.",
-  "subSitesOnlyHint": "Her tilføjer du understeder under dine egne steder."
+  "subSitesOnlyHint": "Her tilføjer du understeder under dine egne steder.",
+  "messagingSetting": "Virksomhedens beskeder",
+  "messagingSettingHint": "Til: holdet har en fane med beskeder. Fra: ingen kan se den eller skrive (gamle beskeder gemmes)."
 }

@@ -380,5 +380,7 @@
   "moveSiteTitle": "Déplacer « {name} » sous…",
   "subSiteOf": "Sous-site de {name}",
   "siteTreeHint": "Jusqu'à 3 niveaux, par exemple Région › Ville › Magasin. Le responsable d'un site gère aussi tout ce qui est en dessous.",
-  "subSitesOnlyHint": "Ici, vous ajoutez des sous-sites sous vos propres sites."
+  "subSitesOnlyHint": "Ici, vous ajoutez des sous-sites sous vos propres sites.",
+  "messagingSetting": "Messagerie de l'entreprise",
+  "messagingSettingHint": "Activée : l'équipe a un onglet Messages. Désactivée : personne ne le voit ni ne peut écrire (les anciens messages sont gardés)."
 }

@@ -96,4 +96,5 @@ const mr = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} यांनी {day} रोजी {name} यांची नेमणूक नाकारली.',
   'Trois niveaux de sites au plus.': 'जास्तीत जास्त तीन स्तरांच्या साइट.',
   'Un site ne peut pas être placé sous lui-même.': 'साइट स्वतःच्याच खाली ठेवता येत नाही.',
+  'La messagerie de cette entreprise est désactivée.': 'या कंपनीसाठी संदेश बंद आहेत.',
 };

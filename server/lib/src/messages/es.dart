@@ -96,4 +96,5 @@ const es = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} rechazó la programación de {name} el {day}.',
   'Trois niveaux de sites au plus.': 'Tres niveles de centros como máximo.',
   'Un site ne peut pas être placé sous lui-même.': 'Un centro no puede colocarse debajo de sí mismo.',
+  'La messagerie de cette entreprise est désactivée.': 'La mensajería de esta empresa está desactivada.',
 };

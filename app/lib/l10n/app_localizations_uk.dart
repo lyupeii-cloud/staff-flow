@@ -1357,4 +1357,11 @@ class L10nUk extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Тут ви додаєте підоб\'єкти до своїх об\'єктів.';
+
+  @override
+  String get messagingSetting => 'Повідомлення компанії';
+
+  @override
+  String get messagingSettingHint =>
+      'Увімкнено: у команди є вкладка «Повідомлення». Вимкнено: ніхто її не бачить і не може писати (старі повідомлення зберігаються).';
 }

@@ -96,4 +96,5 @@ const ko = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by}님이 {day} {name}님의 배치를 거절했습니다.',
   'Trois niveaux de sites au plus.': '지점은 최대 3단계까지입니다.',
   'Un site ne peut pas être placé sous lui-même.': '지점을 자기 자신 아래에 둘 수 없습니다.',
+  'La messagerie de cette entreprise est désactivée.': '이 회사의 메시지 기능이 꺼져 있습니다.',
 };

@@ -1350,4 +1350,11 @@ class L10nNb extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Her legger du til understeder under dine egne steder.';
+
+  @override
+  String get messagingSetting => 'Bedriftens meldinger';
+
+  @override
+  String get messagingSettingHint =>
+      'På: teamet har en Meldinger-fane. Av: ingen ser den eller kan skrive (gamle meldinger beholdes).';
 }

@@ -1359,4 +1359,11 @@ class L10nFil extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Dito ka nagdadagdag ng mga sub-site sa ilalim ng sarili mong mga site.';
+
+  @override
+  String get messagingSetting => 'Pagmemensahe ng kumpanya';
+
+  @override
+  String get messagingSettingHint =>
+      'Naka-on: may tab na Mga Mensahe ang team. Naka-off: walang makakakita o makakasulat (itinatago ang mga lumang mensahe).';
 }

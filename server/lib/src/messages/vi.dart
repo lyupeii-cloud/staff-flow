@@ -96,4 +96,5 @@ const vi = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} đã từ chối việc xếp {name} vào {day}.',
   'Trois niveaux de sites au plus.': 'Tối đa ba cấp địa điểm.',
   'Un site ne peut pas être placé sous lui-même.': 'Không thể đặt một địa điểm dưới chính nó.',
+  'La messagerie de cette entreprise est désactivée.': 'Tính năng tin nhắn đang tắt cho công ty này.',
 };

@@ -52,6 +52,9 @@ class Company {
   /// Groupe de messagerie de toute l'entreprise (le patron peut le couper).
   final bool groupEnabled;
 
+  /// Messagerie de l'entreprise : activée par le patron (sinon, pas d'onglet).
+  final bool messagingEnabled;
+
   /// Image de l'entreprise : 0 = aucune ; change à chaque nouvelle image.
   final int logoVersion;
 
@@ -64,6 +67,7 @@ class Company {
         printScope = j['printScope'] ?? 'team',
         shiftPresets = [for (final p in j['shiftPresets'] ?? const []) ShiftPreset.fromJson((p as Map).cast<String, dynamic>())],
         groupEnabled = j['groupEnabled'] != false,
+        messagingEnabled = j['messagingEnabled'] == true,
         logoVersion = j['logoVersion'] ?? 0;
 }
 

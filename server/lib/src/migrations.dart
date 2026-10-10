@@ -380,4 +380,10 @@ ALTER TABLE shifts ADD COLUMN approval_by uuid REFERENCES users(id) ON DELETE SE
 ALTER TABLE sites ADD COLUMN parent_id uuid REFERENCES sites(id) ON DELETE CASCADE;
 CREATE INDEX sites_parent ON sites (parent_id);
 ''',
+  // 22 — messagerie activée par le patron : désactivée pour les nouvelles
+  // entreprises, gardée pour celles qui existent déjà.
+  '''
+ALTER TABLE companies ADD COLUMN messaging_enabled boolean NOT NULL DEFAULT true;
+ALTER TABLE companies ALTER COLUMN messaging_enabled SET DEFAULT false;
+''',
 ];

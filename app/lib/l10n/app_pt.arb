@@ -376,5 +376,7 @@
   "moveSiteTitle": "Mover “{name}” para baixo de…",
   "subSiteOf": "Sublocal de {name}",
   "siteTreeHint": "Até 3 níveis, p. ex. Região › Cidade › Loja. O responsável por um local gere também tudo o que está abaixo.",
-  "subSitesOnlyHint": "Aqui adiciona sublocais abaixo dos seus próprios locais."
+  "subSitesOnlyHint": "Aqui adiciona sublocais abaixo dos seus próprios locais.",
+  "messagingSetting": "Mensagens da empresa",
+  "messagingSettingHint": "Ativadas: a equipa tem um separador Mensagens. Desativadas: ninguém o vê nem pode escrever (as mensagens antigas são guardadas)."
 }

@@ -1364,4 +1364,11 @@ class L10nDe extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Hier fügen Sie Unterstandorte unter Ihren eigenen Standorten hinzu.';
+
+  @override
+  String get messagingSetting => 'Nachrichten im Unternehmen';
+
+  @override
+  String get messagingSettingHint =>
+      'An: Das Team hat einen Tab „Nachrichten“. Aus: Niemand sieht ihn oder kann schreiben (alte Nachrichten bleiben erhalten).';
 }

@@ -96,4 +96,5 @@ const fi = <String, String>{
   '{by} a refusé le placement de {name} le {day}.': '{by} hylkäsi henkilön {name} vuorotuksen {day}.',
   'Trois niveaux de sites au plus.': 'Enintään kolme toimipaikkatasoa.',
   'Un site ne peut pas être placé sous lui-même.': 'Toimipaikkaa ei voi sijoittaa itsensä alle.',
+  'La messagerie de cette entreprise est désactivée.': 'Viestit on poistettu käytöstä tässä yrityksessä.',
 };

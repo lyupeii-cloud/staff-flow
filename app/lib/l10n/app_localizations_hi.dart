@@ -1348,4 +1348,11 @@ class L10nHi extends L10n {
   @override
   String get subSitesOnlyHint =>
       'यहाँ आप अपनी साइटों के नीचे उप-साइटें जोड़ते हैं।';
+
+  @override
+  String get messagingSetting => 'कंपनी के संदेश';
+
+  @override
+  String get messagingSettingHint =>
+      'चालू: टीम के पास संदेश टैब होता है। बंद: कोई इसे देख या लिख नहीं सकता (पुराने संदेश रखे जाते हैं)।';
 }

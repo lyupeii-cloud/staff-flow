@@ -1360,4 +1360,11 @@ class L10nRo extends L10n {
   @override
   String get subSitesOnlyHint =>
       'Aici adăugați sub-puncte de lucru sub propriile puncte.';
+
+  @override
+  String get messagingSetting => 'Mesageria firmei';
+
+  @override
+  String get messagingSettingHint =>
+      'Activată: echipa are o filă Mesaje. Dezactivată: nimeni nu o vede și nu poate scrie (mesajele vechi se păstrează).';
 }

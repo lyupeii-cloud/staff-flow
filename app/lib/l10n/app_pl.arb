@@ -376,5 +376,7 @@
   "moveSiteTitle": "Przenieś „{name}” pod…",
   "subSiteOf": "Podplacówka {name}",
   "siteTreeHint": "Do 3 poziomów, np. Region › Miasto › Sklep. Kierownik placówki zarządza też wszystkim, co jest pod nią.",
-  "subSitesOnlyHint": "Tutaj dodajesz podplacówki pod swoimi placówkami."
+  "subSitesOnlyHint": "Tutaj dodajesz podplacówki pod swoimi placówkami.",
+  "messagingSetting": "Wiadomości w firmie",
+  "messagingSettingHint": "Włączone: zespół ma kartę Wiadomości. Wyłączone: nikt jej nie widzi ani nie może pisać (stare wiadomości zostają)."
 }

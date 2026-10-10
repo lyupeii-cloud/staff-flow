@@ -376,5 +376,7 @@
   "moveSiteTitle": "Mover «{name}» debajo de…",
   "subSiteOf": "Subcentro de {name}",
   "siteTreeHint": "Hasta 3 niveles, p. ej. Región › Ciudad › Tienda. El responsable de un centro gestiona también todo lo que hay debajo.",
-  "subSitesOnlyHint": "Aquí añades subcentros bajo tus propios centros."
+  "subSitesOnlyHint": "Aquí añades subcentros bajo tus propios centros.",
+  "messagingSetting": "Mensajería de la empresa",
+  "messagingSettingHint": "Activada: el equipo tiene una pestaña Mensajes. Desactivada: nadie la ve ni puede escribir (los mensajes antiguos se conservan)."
 }
