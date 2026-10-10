@@ -158,7 +158,7 @@ class L10nGu extends L10n {
   String get viewPlanning => 'શેડ્યૂલ';
 
   @override
-  String get viewTeam => 'ટીમ';
+  String get viewTeam => 'વ્યવસ્થાપન';
 
   @override
   String get viewPositions => 'હોદ્દા';

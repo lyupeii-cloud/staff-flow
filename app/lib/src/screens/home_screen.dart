@@ -10,6 +10,7 @@ import '../models.dart';
 import '../push.dart';
 import '../session.dart';
 import 'account_pages.dart';
+import 'requests_page.dart';
 import 'all_schedules_view.dart';
 import 'company_logo.dart';
 import 'company_tab.dart';
@@ -46,6 +47,8 @@ class _HomeScreenState extends State<HomeScreen> {
     session.openRequest.addListener(_onOpenRequest);
     session.openDay.addListener(_onOpenDay);
     _push = session.push.events.listen(_onPush);
+    // Ouverte depuis une notification de demande : on la montre.
+    WidgetsBinding.instance.addPostFrameCallback((_) => _onOpenRequest());
   }
 
   @override
@@ -69,10 +72,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onOpenRequest() {
     final wanted = session.openRequest.value;
-    if (wanted == null) return;
-    final index = session.me?.companies.indexWhere((m) => m.company.id == wanted.companyId) ?? -1;
-    // L'onglet « Tous mes plannings » vient en premier s'il est affiché.
-    if (index >= 0) _tabs?.animateTo(index + (_showAll ? 1 : 0));
+    if (wanted == null || !mounted) return;
+    session.openRequest.value = null;
+    RequestsPage.open(context, session, companyId: wanted.companyId, requestId: wanted.requestId);
   }
 
   /// Notification reçue pendant que l'application est à l'écran : Android
@@ -354,6 +356,8 @@ class _ProfileMenu extends StatelessWidget {
           ProfilePage.open(context, session);
         } else if (v == 'settings') {
           SettingsPage.open(context, session);
+        } else if (v == 'requests') {
+          RequestsPage.open(context, session);
         } else if (v == 'logout') {
           session.signOut();
         }
@@ -362,6 +366,7 @@ class _ProfileMenu extends StatelessWidget {
         PopupMenuItem(enabled: false, child: Text('${user.name}\n${user.email}')),
         _item('profile', Icons.person_outline, t.myProfile),
         _item('settings', Icons.settings_outlined, t.settingsTitle),
+        _item('requests', Icons.swap_horiz, t.viewRequests),
         const PopupMenuDivider(),
         _item('logout', Icons.logout, t.signOut),
       ],

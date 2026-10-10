@@ -158,7 +158,7 @@ class L10nPt extends L10n {
   String get viewPlanning => 'Horário';
 
   @override
-  String get viewTeam => 'Equipa';
+  String get viewTeam => 'Gestão';
 
   @override
   String get viewPositions => 'Funções';

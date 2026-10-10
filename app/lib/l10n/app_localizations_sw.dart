@@ -158,7 +158,7 @@ class L10nSw extends L10n {
   String get viewPlanning => 'Ratiba';
 
   @override
-  String get viewTeam => 'Timu';
+  String get viewTeam => 'Usimamizi';
 
   @override
   String get viewPositions => 'Nafasi';

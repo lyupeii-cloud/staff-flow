@@ -434,7 +434,7 @@ abstract class L10n {
   /// No description provided for @viewTeam.
   ///
   /// In en, this message translates to:
-  /// **'Team'**
+  /// **'Management'**
   String get viewTeam;
 
   /// No description provided for @viewPositions.

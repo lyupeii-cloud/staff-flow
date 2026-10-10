@@ -158,7 +158,7 @@ class L10nDe extends L10n {
   String get viewPlanning => 'Dienstplan';
 
   @override
-  String get viewTeam => 'Team';
+  String get viewTeam => 'Management';
 
   @override
   String get viewPositions => 'Positionen';

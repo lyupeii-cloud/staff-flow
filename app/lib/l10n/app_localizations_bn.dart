@@ -158,7 +158,7 @@ class L10nBn extends L10n {
   String get viewPlanning => 'সময়সূচি';
 
   @override
-  String get viewTeam => 'দল';
+  String get viewTeam => 'ব্যবস্থাপনা';
 
   @override
   String get viewPositions => 'পদ';

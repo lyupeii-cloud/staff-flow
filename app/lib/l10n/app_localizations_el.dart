@@ -158,7 +158,7 @@ class L10nEl extends L10n {
   String get viewPlanning => 'Πρόγραμμα';
 
   @override
-  String get viewTeam => 'Ομάδα';
+  String get viewTeam => 'Διαχείριση';
 
   @override
   String get viewPositions => 'Θέσεις';

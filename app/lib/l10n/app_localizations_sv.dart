@@ -158,7 +158,7 @@ class L10nSv extends L10n {
   String get viewPlanning => 'Schema';
 
   @override
-  String get viewTeam => 'Team';
+  String get viewTeam => 'Ledning';
 
   @override
   String get viewPositions => 'Roller';

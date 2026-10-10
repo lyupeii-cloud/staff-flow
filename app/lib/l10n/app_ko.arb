@@ -40,7 +40,7 @@
   "joinInvite": "‘{company}’에서 {role}(으)로 초대했습니다.",
   "joinedCompany": "{company}에 가입했습니다.",
   "viewPlanning": "근무표",
-  "viewTeam": "팀",
+  "viewTeam": "관리",
   "viewPositions": "직무",
   "readOnlyCompany": "읽기 전용 회사입니다.",
   "team": "팀",

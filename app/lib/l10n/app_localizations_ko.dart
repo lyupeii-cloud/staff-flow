@@ -157,7 +157,7 @@ class L10nKo extends L10n {
   String get viewPlanning => '근무표';
 
   @override
-  String get viewTeam => '팀';
+  String get viewTeam => '관리';
 
   @override
   String get viewPositions => '직무';

@@ -157,7 +157,7 @@ class L10nZh extends L10n {
   String get viewPlanning => '排班';
 
   @override
-  String get viewTeam => '团队';
+  String get viewTeam => '管理';
 
   @override
   String get viewPositions => '岗位';

@@ -158,7 +158,7 @@ class L10nTe extends L10n {
   String get viewPlanning => 'షెడ్యూల్';
 
   @override
-  String get viewTeam => 'బృందం';
+  String get viewTeam => 'నిర్వహణ';
 
   @override
   String get viewPositions => 'పదవులు';

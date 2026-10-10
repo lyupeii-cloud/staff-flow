@@ -158,7 +158,7 @@ class L10nTh extends L10n {
   String get viewPlanning => 'ตารางงาน';
 
   @override
-  String get viewTeam => 'ทีม';
+  String get viewTeam => 'การจัดการ';
 
   @override
   String get viewPositions => 'ตำแหน่ง';

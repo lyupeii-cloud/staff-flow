@@ -158,7 +158,7 @@ class L10nFr extends L10n {
   String get viewPlanning => 'Planning';
 
   @override
-  String get viewTeam => 'Équipe';
+  String get viewTeam => 'Management';
 
   @override
   String get viewPositions => 'Postes';

@@ -40,7 +40,7 @@
   "joinInvite": "«{company}» приглашает вас в роли: {role}.",
   "joinedCompany": "Вы присоединились к «{company}».",
   "viewPlanning": "График",
-  "viewTeam": "Команда",
+  "viewTeam": "Управление",
   "viewPositions": "Должности",
   "readOnlyCompany": "Компания доступна только для просмотра.",
   "team": "Команда",

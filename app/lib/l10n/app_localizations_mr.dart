@@ -158,7 +158,7 @@ class L10nMr extends L10n {
   String get viewPlanning => 'वेळापत्रक';
 
   @override
-  String get viewTeam => 'टीम';
+  String get viewTeam => 'व्यवस्थापन';
 
   @override
   String get viewPositions => 'पदे';

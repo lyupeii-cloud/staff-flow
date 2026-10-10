@@ -158,7 +158,7 @@ class L10nNb extends L10n {
   String get viewPlanning => 'Vaktplan';
 
   @override
-  String get viewTeam => 'Team';
+  String get viewTeam => 'Ledelse';
 
   @override
   String get viewPositions => 'Stillinger';

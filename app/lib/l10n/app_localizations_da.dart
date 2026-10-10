@@ -158,7 +158,7 @@ class L10nDa extends L10n {
   String get viewPlanning => 'Vagtplan';
 
   @override
-  String get viewTeam => 'Team';
+  String get viewTeam => 'Ledelse';
 
   @override
   String get viewPositions => 'Funktioner';

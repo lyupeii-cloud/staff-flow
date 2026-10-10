@@ -159,7 +159,7 @@ class L10nId extends L10n {
   String get viewPlanning => 'Jadwal';
 
   @override
-  String get viewTeam => 'Tim';
+  String get viewTeam => 'Manajemen';
 
   @override
   String get viewPositions => 'Posisi';

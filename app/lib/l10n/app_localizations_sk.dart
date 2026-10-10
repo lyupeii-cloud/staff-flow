@@ -158,7 +158,7 @@ class L10nSk extends L10n {
   String get viewPlanning => 'Rozpis';
 
   @override
-  String get viewTeam => 'Tím';
+  String get viewTeam => 'Správa';
 
   @override
   String get viewPositions => 'Pozície';

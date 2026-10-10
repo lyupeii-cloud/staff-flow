@@ -158,7 +158,7 @@ class L10nKk extends L10n {
   String get viewPlanning => 'Кесте';
 
   @override
-  String get viewTeam => 'Команда';
+  String get viewTeam => 'Басқару';
 
   @override
   String get viewPositions => 'Лауазымдар';

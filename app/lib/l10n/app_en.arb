@@ -96,7 +96,7 @@
     }
   },
   "viewPlanning": "Schedule",
-  "viewTeam": "Team",
+  "viewTeam": "Management",
   "viewPositions": "Positions",
   "readOnlyCompany": "This company is read-only.",
   "team": "Team",

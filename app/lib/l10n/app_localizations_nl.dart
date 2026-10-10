@@ -158,7 +158,7 @@ class L10nNl extends L10n {
   String get viewPlanning => 'Rooster';
 
   @override
-  String get viewTeam => 'Team';
+  String get viewTeam => 'Beheer';
 
   @override
   String get viewPositions => 'Functies';

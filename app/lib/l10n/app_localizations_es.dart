@@ -158,7 +158,7 @@ class L10nEs extends L10n {
   String get viewPlanning => 'Horario';
 
   @override
-  String get viewTeam => 'Equipo';
+  String get viewTeam => 'Gestión';
 
   @override
   String get viewPositions => 'Puestos';

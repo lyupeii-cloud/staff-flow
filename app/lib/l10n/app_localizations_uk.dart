@@ -158,7 +158,7 @@ class L10nUk extends L10n {
   String get viewPlanning => 'Графік';
 
   @override
-  String get viewTeam => 'Команда';
+  String get viewTeam => 'Управління';
 
   @override
   String get viewPositions => 'Посади';

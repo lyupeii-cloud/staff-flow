@@ -158,7 +158,7 @@ class L10nRu extends L10n {
   String get viewPlanning => 'График';
 
   @override
-  String get viewTeam => 'Команда';
+  String get viewTeam => 'Управление';
 
   @override
   String get viewPositions => 'Должности';

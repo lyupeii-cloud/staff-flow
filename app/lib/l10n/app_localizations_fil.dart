@@ -158,7 +158,7 @@ class L10nFil extends L10n {
   String get viewPlanning => 'Iskedyul';
 
   @override
-  String get viewTeam => 'Team';
+  String get viewTeam => 'Pamamahala';
 
   @override
   String get viewPositions => 'Posisyon';

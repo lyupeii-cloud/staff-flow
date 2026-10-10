@@ -95,7 +95,7 @@ String legalAlertText(L10n t, Map<String, dynamic> a, CompanyData data) {
   };
 }
 
-/// Réglages du responsable : alertes légales et droit d'impression.
+/// Réglages du responsable : alertes légales.
 class ToolsSettings extends StatelessWidget {
   final Session session;
   final Company company;
@@ -149,7 +149,39 @@ class ToolsSettings extends StatelessWidget {
         Text(t.legalAlertsHint, style: theme.textTheme.bodySmall),
         const SizedBox(height: 6),
         for (final l in lines) Text('• $l'),
-        const SizedBox(height: 24),
+      ],
+    );
+  }
+}
+
+/// Réglages de l'entreprise (onglet « Management ») : fuseau horaire et
+/// droit d'impression des salariés.
+class CompanySettings extends StatelessWidget {
+  final Session session;
+  final Company company;
+
+  const CompanySettings({super.key, required this.session, required this.company});
+
+  Future<void> _save(BuildContext context, Map<String, dynamic> body) async {
+    final t = context.l10n;
+    final messenger = ScaffoldMessenger.of(context);
+    try {
+      await session.api.send('PATCH', '/companies/${company.id}', body: body);
+      await session.refresh();
+    } on OfflineException {
+      messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+    } on ApiException catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text(e.describe(t))));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final t = context.l10n;
+    final theme = Theme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
         Row(children: [
           Expanded(child: Text(t.companyTimezone, style: theme.textTheme.titleMedium)),
           if (!company.readOnly)

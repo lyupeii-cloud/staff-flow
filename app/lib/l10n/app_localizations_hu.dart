@@ -158,7 +158,7 @@ class L10nHu extends L10n {
   String get viewPlanning => 'Beosztás';
 
   @override
-  String get viewTeam => 'Csapat';
+  String get viewTeam => 'Vezetés';
 
   @override
   String get viewPositions => 'Munkakörök';

@@ -40,7 +40,7 @@
   "joinInvite": "「{company}」から{role}として招待されています。",
   "joinedCompany": "{company} に参加しました。",
   "viewPlanning": "シフト",
-  "viewTeam": "チーム",
+  "viewTeam": "管理",
   "viewPositions": "ポジション",
   "readOnlyCompany": "この会社は閲覧のみです。",
   "team": "チーム",

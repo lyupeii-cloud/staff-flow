@@ -158,7 +158,7 @@ class L10nMs extends L10n {
   String get viewPlanning => 'Jadual';
 
   @override
-  String get viewTeam => 'Pasukan';
+  String get viewTeam => 'Pengurusan';
 
   @override
   String get viewPositions => 'Jawatan';

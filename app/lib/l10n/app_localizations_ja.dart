@@ -157,7 +157,7 @@ class L10nJa extends L10n {
   String get viewPlanning => 'シフト';
 
   @override
-  String get viewTeam => 'チーム';
+  String get viewTeam => '管理';
 
   @override
   String get viewPositions => 'ポジション';

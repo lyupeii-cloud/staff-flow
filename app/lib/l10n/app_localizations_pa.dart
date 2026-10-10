@@ -158,7 +158,7 @@ class L10nPa extends L10n {
   String get viewPlanning => 'ਸ਼ਡਿਊਲ';
 
   @override
-  String get viewTeam => 'ਟੀਮ';
+  String get viewTeam => 'ਪ੍ਰਬੰਧਨ';
 
   @override
   String get viewPositions => 'ਅਹੁਦੇ';

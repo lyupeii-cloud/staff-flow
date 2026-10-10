@@ -158,7 +158,7 @@ class L10nRo extends L10n {
   String get viewPlanning => 'Program';
 
   @override
-  String get viewTeam => 'Echipă';
+  String get viewTeam => 'Management';
 
   @override
   String get viewPositions => 'Posturi';

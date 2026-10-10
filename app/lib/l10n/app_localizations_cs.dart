@@ -158,7 +158,7 @@ class L10nCs extends L10n {
   String get viewPlanning => 'Rozpis';
 
   @override
-  String get viewTeam => 'Tým';
+  String get viewTeam => 'Správa';
 
   @override
   String get viewPositions => 'Pozice';

@@ -7,6 +7,7 @@ import 'company_logo.dart';
 import 'company_tab.dart';
 import 'home_screen.dart';
 import 'people_widgets.dart';
+import 'tools_widgets.dart';
 
 /// Équipe de l'entreprise : membres, rôles, ajout par code, transfert.
 class TeamView extends StatefulWidget {
@@ -122,6 +123,11 @@ class _TeamViewState extends State<TeamView> {
             CompanyLogoSettings(session: widget.session, company: company),
             const SizedBox(height: 12),
             CompanyMessagingSetting(session: widget.session, company: company),
+          ],
+          // Réglages de l'entreprise : fuseau horaire, impression.
+          if (widget.membership.managesAll) ...[
+            const SizedBox(height: 24),
+            CompanySettings(session: widget.session, company: company),
           ],
           if (role != Role.owner) ...[
             const SizedBox(height: 24),

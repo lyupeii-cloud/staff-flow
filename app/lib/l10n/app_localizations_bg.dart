@@ -158,7 +158,7 @@ class L10nBg extends L10n {
   String get viewPlanning => 'График';
 
   @override
-  String get viewTeam => 'Екип';
+  String get viewTeam => 'Управление';
 
   @override
   String get viewPositions => 'Длъжности';

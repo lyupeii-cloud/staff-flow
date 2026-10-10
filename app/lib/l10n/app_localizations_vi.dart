@@ -158,7 +158,7 @@ class L10nVi extends L10n {
   String get viewPlanning => 'Lịch';
 
   @override
-  String get viewTeam => 'Đội';
+  String get viewTeam => 'Quản lý';
 
   @override
   String get viewPositions => 'Vị trí';

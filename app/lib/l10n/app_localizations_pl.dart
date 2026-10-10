@@ -158,7 +158,7 @@ class L10nPl extends L10n {
   String get viewPlanning => 'Grafik';
 
   @override
-  String get viewTeam => 'Zespół';
+  String get viewTeam => 'Zarządzanie';
 
   @override
   String get viewPositions => 'Stanowiska';

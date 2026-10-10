@@ -7,7 +7,6 @@ import '../session.dart';
 import 'catalog_view.dart';
 import 'messages_view.dart';
 import 'planning_view.dart';
-import 'requests_view.dart';
 import 'team_view.dart';
 import 'tools_widgets.dart';
 
@@ -87,7 +86,7 @@ class CompanyData {
   String? positionName(String? id) => positions.where((p) => p.id == id).firstOrNull?.name;
 }
 
-enum _View { planning, requests, messages, team, catalog }
+enum _View { planning, messages, team, catalog }
 
 /// Onglet d'une entreprise : planning, équipe, et pour les responsables,
 /// sites et postes.
@@ -113,24 +112,18 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
 
   late int _synced = widget.session.sync.synced;
 
-  /// Demande à mettre en évidence dans la vue « Demandes ».
-  String? _focusRequest;
-
   @override
   void initState() {
     super.initState();
     _data = CompanyData.load(widget.session, company.id);
     widget.session.sync.addListener(_onSync);
-    widget.session.openRequest.addListener(_onOpenRequest);
     widget.session.openDay.addListener(_onOpenDay);
-    _onOpenRequest();
     _onOpenDay();
   }
 
   @override
   void dispose() {
     widget.session.sync.removeListener(_onSync);
-    widget.session.openRequest.removeListener(_onOpenRequest);
     widget.session.openDay.removeListener(_onOpenDay);
     super.dispose();
   }
@@ -152,16 +145,6 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
     setState(() {
       _view = _View.planning;
       _focusDay = wanted.day;
-    });
-  }
-
-  void _onOpenRequest() {
-    final wanted = widget.session.openRequest.value;
-    if (wanted == null || wanted.companyId != company.id) return;
-    widget.session.openRequest.value = null;
-    setState(() {
-      _view = _View.requests;
-      _focusRequest = wanted.requestId;
     });
   }
 
@@ -321,14 +304,13 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
                   selected: _view,
                   items: [
                     (_View.planning, const Icon(Icons.calendar_month), t.viewPlanning),
-                    (_View.requests, const Icon(Icons.swap_horiz), t.viewRequests),
                     if (company.messagingEnabled)
                     (
                       _View.messages,
                       Badge(isLabelVisible: unread > 0, label: Text('$unread'), child: const Icon(Icons.forum)),
                       t.messagesTab
                     ),
-                    (_View.team, const Icon(Icons.group), t.viewTeam),
+                    (_View.team, const Icon(Icons.manage_accounts), t.viewTeam),
                     if (role.canManage) (_View.catalog, const Icon(Icons.store), t.viewPositions),
                   ],
                   onSelected: (v) {
@@ -336,7 +318,6 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
                     if (v == _View.planning && _view != _View.planning) _reload();
                     setState(() {
                       _view = v;
-                      _focusRequest = null;
                     });
                   },
                 );
@@ -371,12 +352,6 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
                     membership: widget.membership,
                     data: data,
                     initialDay: _focusDay),
-                _View.requests => RequestsView(
-                    key: ValueKey(_focusRequest),
-                    session: widget.session,
-                    membership: widget.membership,
-                    data: data,
-                    focus: _focusRequest),
                 _View.messages =>
                   MessagesView(session: widget.session, membership: widget.membership, data: data),
                 _View.team => TeamView(

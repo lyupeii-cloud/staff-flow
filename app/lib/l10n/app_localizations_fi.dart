@@ -158,7 +158,7 @@ class L10nFi extends L10n {
   String get viewPlanning => 'Työvuorot';
 
   @override
-  String get viewTeam => 'Tiimi';
+  String get viewTeam => 'Hallinta';
 
   @override
   String get viewPositions => 'Tehtävät';

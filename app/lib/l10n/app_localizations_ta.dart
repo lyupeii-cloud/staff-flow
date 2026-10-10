@@ -158,7 +158,7 @@ class L10nTa extends L10n {
   String get viewPlanning => 'அட்டவணை';
 
   @override
-  String get viewTeam => 'குழு';
+  String get viewTeam => 'மேலாண்மை';
 
   @override
   String get viewPositions => 'பணிகள்';
