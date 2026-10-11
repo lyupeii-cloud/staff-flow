@@ -9,9 +9,9 @@ const site = 'https://staff-flow.cloud';
 const app = 'https://staff-flow.vercane.com';
 const langs = ['fr', 'uk', 'en'];
 
-/// Captures : celles de la langue, sinon les françaises.
+/// Captures : une série par langue (www/img/fr, uk, en).
 const shots = ['1-planning', '2-service', '3-messages', '4-demandes', '5-management'];
-String shotDir(String l) => l == 'uk' ? 'uk' : 'fr';
+String shotDir(String l) => l;
 
 final t = <String, Map<String, Object>>{
   'fr': {
@@ -24,14 +24,14 @@ final t = <String, Map<String, Object>>{
     'lead': 'Créez les horaires en quelques gestes, publiez-les, et chacun les reçoit sur son téléphone. Échanges de service, congés et messages : tout au même endroit.',
     'start': 'Essayer gratuitement',
     'how': 'Comment ça marche',
-    'checks': ['2 jours d\'essai complet', 'Gratuit pour les salariés', 'Fonctionne hors connexion'],
+    'checks': ['2 jours d\'essai complet', 'Gratuit pour les salariés', 'Consultable même sans réseau'],
     'featH': 'Tout ce qu\'il faut, rien de compliqué',
     'featSub': 'Pensé pour les cafés, restaurants, boulangeries, commerces et toutes les équipes qui travaillent en horaires décalés.',
     'feats': [
       ['🗓️', 'Un planning en quelques secondes', 'Préréglages « Matin », « Soir », répétition chaque jour ou chaque semaine, brouillon puis publication en un geste.'],
       ['🔁', 'Échanges et congés', 'Un salarié propose son service à un collègue, demande un congé ou une indisponibilité ; vous validez d\'un tap.'],
       ['💬', 'Messagerie d\'équipe', 'Groupe de toute l\'entreprise, groupes par équipe et messages privés, avec traduction automatique.'],
-      ['📶', 'Même sans réseau', 'Le planning reste consultable hors connexion ; les changements partent tout seuls au retour du réseau.'],
+      ['📶', 'Même sans réseau', 'Sans connexion, le planning reste affiché et vous pouvez continuer à le préparer ou demander un congé : c\'est gardé sur le téléphone et envoyé à l\'équipe dès que le réseau revient.'],
       ['🏢', 'Plusieurs sites et entreprises', 'Sites en cascade, responsables par site, et un onglet par entreprise pour qui travaille à plusieurs endroits.'],
       ['🌍', '37 langues', 'Chacun utilise l\'application dans sa langue : français, ukrainien, anglais, espagnol, polonais…'],
     ],
@@ -55,7 +55,7 @@ final t = <String, Map<String, Object>>{
     'p1': 'Propriétaire d\'entreprise',
     'p1a': '1 €',
     'p1u': '/ mois',
-    'p1l': ['Jusqu\'à 10 salariés et 1 extra', 'Puis quelques centimes par tranche de 10 salariés', 'Toutes les fonctions incluses', '2 jours d\'essai complet'],
+    'p1l': ['Jusqu\'à 10 salariés et 1 extra', '+ tarification par tranches de 10 salariés', 'Toutes les fonctions incluses', '2 jours d\'essai complet'],
     'p2': 'Salariés et extras',
     'p2a': '0 €',
     'p2u': 'pour toujours',
@@ -66,7 +66,7 @@ final t = <String, Map<String, Object>>{
       ['Faut-il un iPhone ou un Android ?', 'L\'application existe pour Android. Sur iPhone, ordinateur ou tablette, tout fonctionne dans le navigateur, sans rien installer.'],
       ['Mes salariés doivent-ils payer ?', 'Non. Seul le propriétaire de l\'entreprise a un abonnement. Les salariés, responsables et extras utilisent l\'application gratuitement.'],
       ['Comment se connecter ?', 'Avec un compte Google, sans nouveau mot de passe. Chacun garde le même compte pour toutes ses entreprises.'],
-      ['Et si le téléphone n\'a pas de réseau ?', 'Le planning reste consultable. Les modifications faites hors connexion sont envoyées dès que le réseau revient.'],
+      ['Et si le téléphone n\'a pas de réseau ?', 'Le planning déjà reçu reste affiché. Le patron peut continuer à préparer le planning et un salarié à faire une demande de congé : c\'est gardé dans la mémoire du téléphone, puis envoyé dès que la connexion revient. Les autres ne voient ces changements qu\'à ce moment-là.'],
       ['Mes données sont-elles protégées ?', 'Les échanges sont chiffrés (HTTPS), les sauvegardes aussi. Vos plannings et messages ne sont ni vendus, ni utilisés pour la publicité.'],
       ['Puis-je gérer plusieurs entreprises ?', 'Oui : un onglet par entreprise. Une personne qui travaille dans deux entreprises voit tous ses plannings au même endroit.'],
     ],
@@ -84,14 +84,14 @@ final t = <String, Map<String, Object>>{
     'lead': 'Складіть зміни за кілька дотиків, опублікуйте — і кожен отримає їх на телефон. Обмін змінами, відпустки та повідомлення — все в одному місці.',
     'start': 'Спробувати безкоштовно',
     'how': 'Як це працює',
-    'checks': ['2 дні повного доступу', 'Безкоштовно для працівників', 'Працює без інтернету'],
+    'checks': ['2 дні повного доступу', 'Безкоштовно для працівників', 'Графік видно навіть без мережі'],
     'featH': 'Усе потрібне, нічого зайвого',
     'featSub': 'Створено для кав\'ярень, ресторанів, пекарень, магазинів і всіх команд, що працюють змінами.',
     'feats': [
       ['🗓️', 'Графік за кілька секунд', 'Шаблони «Ранок», «Вечір», повторення щодня чи щотижня, чернетка й публікація одним дотиком.'],
       ['🔁', 'Обмін змінами та відпустки', 'Працівник пропонує зміну колезі, просить відпустку чи позначає, коли не може працювати; ви підтверджуєте одним дотиком.'],
       ['💬', 'Чат команди', 'Загальний чат компанії, групи за командами та особисті повідомлення з автоматичним перекладом.'],
-      ['📶', 'Навіть без мережі', 'Графік видно без інтернету, а зміни надсилаються самі, щойно з\'явиться зв\'язок.'],
+      ['📶', 'Навіть без мережі', 'Без зв\'язку графік залишається на екрані, а ви можете далі його складати чи попросити відпустку: усе зберігається в телефоні й надсилається команді, щойно з\'явиться мережа.'],
       ['🏢', 'Кілька об\'єктів і компаній', 'Ієрархія об\'єктів, керівники для кожного об\'єкта й окрема вкладка для кожної компанії.'],
       ['🌍', '37 мов', 'Кожен користується застосунком своєю мовою: українська, англійська, польська, французька…'],
     ],
@@ -115,7 +115,7 @@ final t = <String, Map<String, Object>>{
     'p1': 'Власник компанії',
     'p1a': '1 €',
     'p1u': '/ місяць',
-    'p1l': ['До 10 працівників і 1 тимчасового', 'Далі — кілька центів за кожні 10 працівників', 'Усі функції включено', '2 дні повного доступу'],
+    'p1l': ['До 10 працівників і 1 тимчасового', '+ тарифікація за кожні 10 працівників', 'Усі функції включено', '2 дні повного доступу'],
     'p2': 'Працівники та тимчасові працівники',
     'p2a': '0 €',
     'p2u': 'назавжди',
@@ -126,7 +126,7 @@ final t = <String, Map<String, Object>>{
       ['Потрібен iPhone чи Android?', 'Застосунок є для Android. На iPhone, комп\'ютері чи планшеті все працює в браузері, нічого не треба встановлювати.'],
       ['Чи платять працівники?', 'Ні. Підписка є лише у власника компанії. Працівники, керівники й тимчасові працівники користуються застосунком безкоштовно.'],
       ['Як увійти?', 'Через акаунт Google, без нового пароля. Один акаунт для всіх ваших компаній.'],
-      ['А якщо на телефоні немає зв\'язку?', 'Графік залишається доступним. Зміни, зроблені без інтернету, надсилаються, щойно з\'явиться мережа.'],
+      ['А якщо на телефоні немає зв\'язку?', 'Уже отриманий графік залишається на екрані. Власник може далі складати графік, а працівник — попросити відпустку: усе зберігається в пам\'яті телефона й надсилається, щойно з\'явиться зв\'язок. Інші побачать ці зміни саме тоді.'],
       ['Чи захищені мої дані?', 'Обмін даними зашифровано (HTTPS), резервні копії теж. Ваші графіки й повідомлення не продаються й не використовуються для реклами.'],
       ['Чи можна вести кілька компаній?', 'Так: окрема вкладка для кожної компанії. Людина, яка працює у двох компаніях, бачить усі свої графіки в одному місці.'],
     ],
@@ -144,14 +144,14 @@ final t = <String, Map<String, Object>>{
     'lead': 'Build shifts in a few taps, publish them, and everyone gets them on their phone. Shift swaps, leave and messages — all in one place.',
     'start': 'Try it free',
     'how': 'How it works',
-    'checks': ['2-day full trial', 'Free for employees', 'Works offline'],
+    'checks': ['2-day full trial', 'Free for employees', 'Readable even without signal'],
     'featH': 'Everything you need, nothing complicated',
     'featSub': 'Made for cafés, restaurants, bakeries, shops and every team that works in shifts.',
     'feats': [
       ['🗓️', 'A schedule in seconds', '“Morning” and “Evening” presets, daily or weekly repeats, draft then publish in one tap.'],
       ['🔁', 'Swaps and leave', 'An employee offers a shift to a colleague, asks for leave or marks unavailability; you approve in one tap.'],
       ['💬', 'Team messaging', 'Company-wide group, team groups and private messages, with automatic translation.'],
-      ['📶', 'Even without signal', 'The schedule stays readable offline; changes are sent automatically when the network is back.'],
+      ['📶', 'Even without signal', 'Offline, the schedule stays on screen and you can keep planning or ask for leave: it is kept on the phone and sent to the team as soon as the network is back.'],
       ['🏢', 'Several sites and companies', 'Nested sites, managers per site, and one tab per company for people who work in several places.'],
       ['🌍', '37 languages', 'Everyone uses the app in their own language: English, Ukrainian, French, Spanish, Polish…'],
     ],
@@ -175,7 +175,7 @@ final t = <String, Map<String, Object>>{
     'p1': 'Company owner',
     'p1a': '€1',
     'p1u': '/ month',
-    'p1l': ['Up to 10 employees and 1 temp', 'Then a few cents per 10 more employees', 'Every feature included', '2-day full trial'],
+    'p1l': ['Up to 10 employees and 1 temp', '+ pricing per block of 10 employees', 'Every feature included', '2-day full trial'],
     'p2': 'Employees and temps',
     'p2a': '€0',
     'p2u': 'forever',
@@ -186,7 +186,7 @@ final t = <String, Map<String, Object>>{
       ['Do I need an iPhone or an Android?', 'There is an Android app. On iPhone, computer or tablet, everything works in the browser, with nothing to install.'],
       ['Do my employees pay?', 'No. Only the company owner has a subscription. Employees, managers and temps use the app for free.'],
       ['How do people sign in?', 'With a Google account, no new password. One account for all your companies.'],
-      ['What if the phone has no signal?', 'The schedule stays readable. Changes made offline are sent as soon as the network is back.'],
+      ['What if the phone has no signal?', 'The schedule you already received stays on screen. The owner can keep planning and an employee can ask for leave: it is kept in the phone\'s memory and sent as soon as the connection is back. Others see those changes only then.'],
       ['Is my data protected?', 'Connections are encrypted (HTTPS), and so are backups. Your schedules and messages are never sold or used for advertising.'],
       ['Can I manage several companies?', 'Yes: one tab per company. Someone who works for two companies sees all their schedules in one place.'],
     ],
@@ -232,12 +232,12 @@ String page(String l) {
   <meta name="theme-color" content="#061440">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preload" href="/fonts/Nunito.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style.css?v=2">
 </head>
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="/$l/"><img src="/logo.png" alt="" width="40" height="31"><b>Staff<span>Flow</span></b></a>
+    <a class="brand" href="/$l/"><img src="/brand.png" alt="Staff Flow" width="205" height="46"></a>
     <nav class="langs" aria-label="Language">$switcher</nav>
     <a class="btn btn-main" href="$app">${s('open')}</a>
   </div>
@@ -353,7 +353,7 @@ String root() => '''<!doctype html>
   <title>Staff Flow</title>
   ${[for (final o in langs) '<link rel="alternate" hreflang="$o" href="$site/$o/">'].join('\n  ')}
   <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style.css?v=2">
 </head>
 <body>
 <section class="final" style="min-height:100vh;display:grid;place-items:center">
