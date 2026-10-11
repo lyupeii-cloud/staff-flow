@@ -1418,13 +1418,6 @@ class L10nHu extends L10n {
   String get billingNoInvoices => 'Még nincs számla.';
 
   @override
-  String get billingInvoiceByEmail => 'Számlák fogadása e-mailben';
-
-  @override
-  String get billingEmailSoon =>
-      'Az e-mailes küldés hamarosan érkezik; a számlák itt mindig letölthetők.';
-
-  @override
   String get billingManage => 'Előfizetés kezelése';
 
   @override
@@ -1459,5 +1452,20 @@ class L10nHu extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company nemfizetés miatt törölve.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'Cégazonosító: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'Ma: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Tartalmazza a folyó hónap hátralévő részét ($days nap, arányosan), utána teljes hónapokat 1-jétől.';
   }
 }

@@ -1418,13 +1418,6 @@ class L10nTe extends L10n {
   String get billingNoInvoices => 'ఇంకా ఇన్‌వాయిస్‌లు లేవు.';
 
   @override
-  String get billingInvoiceByEmail => 'ఇన్‌వాయిస్‌లను ఈమెయిల్‌లో పొందండి';
-
-  @override
-  String get billingEmailSoon =>
-      'ఈమెయిల్ పంపడం త్వరలో వస్తుంది; ఇన్‌వాయిస్‌లను ఎప్పుడైనా ఇక్కడ డౌన్‌లోడ్ చేయవచ్చు.';
-
-  @override
   String get billingManage => 'సబ్‌స్క్రిప్షన్ నిర్వహించండి';
 
   @override
@@ -1459,5 +1452,20 @@ class L10nTe extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return 'చెల్లింపు లేనందున $company తొలగించబడింది.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'సంస్థ ID: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'ఈరోజు: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'ప్రస్తుత నెల మిగతా భాగం ($days రోజులు, దామాషా) చేర్చబడింది; తర్వాత 1వ తేదీ నుండి పూర్తి నెలలు.';
   }
 }

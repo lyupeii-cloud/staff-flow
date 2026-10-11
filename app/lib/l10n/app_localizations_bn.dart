@@ -1416,13 +1416,6 @@ class L10nBn extends L10n {
   String get billingNoInvoices => 'এখনো কোনো ইনভয়েস নেই।';
 
   @override
-  String get billingInvoiceByEmail => 'ইমেইলে ইনভয়েস পান';
-
-  @override
-  String get billingEmailSoon =>
-      'ইমেইলে পাঠানো শীঘ্রই আসছে; ইনভয়েস সবসময় এখানে ডাউনলোড করা যায়।';
-
-  @override
   String get billingManage => 'সাবস্ক্রিপশন পরিচালনা';
 
   @override
@@ -1457,5 +1450,20 @@ class L10nBn extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return 'পেমেন্ট না হওয়ায় $company মুছে ফেলা হয়েছে।';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'প্রতিষ্ঠানের আইডি: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'আজ: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'চলতি মাসের বাকি অংশ ($days দিন, আনুপাতিক) এবং তারপর ১ তারিখ থেকে পূর্ণ মাস অন্তর্ভুক্ত।';
   }
 }

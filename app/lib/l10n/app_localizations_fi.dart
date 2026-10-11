@@ -1424,13 +1424,6 @@ class L10nFi extends L10n {
   String get billingNoInvoices => 'Ei vielä laskuja.';
 
   @override
-  String get billingInvoiceByEmail => 'Vastaanota laskut sähköpostitse';
-
-  @override
-  String get billingEmailSoon =>
-      'Sähköpostilähetys tulossa pian; laskut voi aina ladata täältä.';
-
-  @override
   String get billingManage => 'Hallinnoi tilausta';
 
   @override
@@ -1465,5 +1458,20 @@ class L10nFi extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company poistettiin maksamattomuuden vuoksi.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'Yrityksen tunnus: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'Tänään: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Sisältää kuluvan kuukauden loppuosan ($days päivää, suhteutettuna) ja sen jälkeen kokonaiset kuukaudet 1. päivästä alkaen.';
   }
 }

@@ -395,8 +395,6 @@
   "billingPaidOk": "पेमेंट नोंदवले.",
   "billingInvoices": "बिले",
   "billingNoInvoices": "अद्याप बिले नाहीत.",
-  "billingInvoiceByEmail": "बिले ईमेलने मिळवा",
-  "billingEmailSoon": "ईमेलने पाठवणे लवकरच येत आहे; बिले येथे नेहमी डाउनलोड करता येतात.",
   "billingManage": "सदस्यता व्यवस्थापित करा",
   "billingReadOnlyStaff": "मालक सदस्यता नूतनीकरण करेपर्यंत ही कंपनी फक्त वाचनासाठी आहे.",
   "billingPerMonth": "{amount} / महिना",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: मोफत चाचणी 24 तासांपेक्षा कमी वेळात संपेल.",
   "noticeBillingGrace": "पैसे न भरल्याने {company} फक्त वाचनासाठी; {date} रोजी हटवली जाईल.",
   "noticeBillingGraceReminder": "स्मरण: पैसे न भरल्यास {company} {date} रोजी हटवली जाईल.",
-  "noticeBillingDeleted": "पैसे न भरल्यामुळे {company} हटवली गेली."
+  "noticeBillingDeleted": "पैसे न भरल्यामुळे {company} हटवली गेली.",
+  "billingCompanyId": "कंपनी आयडी: {id}",
+  "billingDueToday": "आज: {amount}",
+  "billingProrataNote": "चालू महिन्याचा उरलेला भाग ({days} दिवस, प्रमाणशीर) समाविष्ट; नंतर 1 तारखेपासून पूर्ण महिने."
 }

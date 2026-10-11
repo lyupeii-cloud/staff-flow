@@ -395,8 +395,6 @@
   "billingPaidOk": "Płatność zarejestrowana.",
   "billingInvoices": "Faktury",
   "billingNoInvoices": "Brak faktur.",
-  "billingInvoiceByEmail": "Otrzymuj faktury e-mailem",
-  "billingEmailSoon": "Wysyłka e-mailem będzie wkrótce; faktury zawsze można pobrać tutaj.",
   "billingManage": "Zarządzaj subskrypcją",
   "billingReadOnlyStaff": "Ta firma jest tylko do odczytu, dopóki właściciel nie odnowi subskrypcji.",
   "billingPerMonth": "{amount} / mies.",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: bezpłatny okres próbny kończy się za mniej niż 24 godziny.",
   "noticeBillingGrace": "{company} jest tylko do odczytu z powodu braku płatności; usunięcie {date}.",
   "noticeBillingGraceReminder": "Przypomnienie: bez płatności {company} zostanie usunięta {date}.",
-  "noticeBillingDeleted": "{company} została usunięta z powodu braku płatności."
+  "noticeBillingDeleted": "{company} została usunięta z powodu braku płatności.",
+  "billingCompanyId": "ID firmy: {id}",
+  "billingDueToday": "Dzisiaj: {amount}",
+  "billingProrataNote": "Obejmuje resztę bieżącego miesiąca ({days} dni, proporcjonalnie), a potem pełne miesiące od 1. dnia."
 }

@@ -395,8 +395,6 @@
   "billingPaidOk": "చెల్లింపు నమోదైంది.",
   "billingInvoices": "ఇన్‌వాయిస్‌లు",
   "billingNoInvoices": "ఇంకా ఇన్‌వాయిస్‌లు లేవు.",
-  "billingInvoiceByEmail": "ఇన్‌వాయిస్‌లను ఈమెయిల్‌లో పొందండి",
-  "billingEmailSoon": "ఈమెయిల్ పంపడం త్వరలో వస్తుంది; ఇన్‌వాయిస్‌లను ఎప్పుడైనా ఇక్కడ డౌన్‌లోడ్ చేయవచ్చు.",
   "billingManage": "సబ్‌స్క్రిప్షన్ నిర్వహించండి",
   "billingReadOnlyStaff": "యజమాని సబ్‌స్క్రిప్షన్ పునరుద్ధరించే వరకు ఈ సంస్థ చదవడానికి మాత్రమే.",
   "billingPerMonth": "{amount} / నెల",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: ఉచిత ట్రయల్ 24 గంటల కంటే తక్కువ సమయంలో ముగుస్తుంది.",
   "noticeBillingGrace": "చెల్లింపు లేనందున {company} చదవడానికి మాత్రమే; {date}న తొలగింపు.",
   "noticeBillingGraceReminder": "గుర్తు: చెల్లింపు లేకపోతే {company} {date}న తొలగించబడుతుంది.",
-  "noticeBillingDeleted": "చెల్లింపు లేనందున {company} తొలగించబడింది."
+  "noticeBillingDeleted": "చెల్లింపు లేనందున {company} తొలగించబడింది.",
+  "billingCompanyId": "సంస్థ ID: {id}",
+  "billingDueToday": "ఈరోజు: {amount}",
+  "billingProrataNote": "ప్రస్తుత నెల మిగతా భాగం ({days} రోజులు, దామాషా) చేర్చబడింది; తర్వాత 1వ తేదీ నుండి పూర్తి నెలలు."
 }

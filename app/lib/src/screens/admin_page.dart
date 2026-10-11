@@ -229,7 +229,7 @@ class _Companies extends StatelessWidget {
                 child: Row(children: [
                   Expanded(
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      Text('${c['name']}', style: const TextStyle(fontWeight: FontWeight.w700)),
+                      Text('${c['name']} · ${c['publicId']}', style: const TextStyle(fontWeight: FontWeight.w700)),
                       Text('${c['ownerEmail'] ?? '?'} · ${c['staff']} salariés'),
                       Text('${_states[c['billingStatus']] ?? c['billingStatus']}'
                           '${switch (c['billingStatus']) {

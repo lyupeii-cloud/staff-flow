@@ -1433,13 +1433,6 @@ class L10nEl extends L10n {
   String get billingNoInvoices => 'Δεν υπάρχουν ακόμη τιμολόγια.';
 
   @override
-  String get billingInvoiceByEmail => 'Λήψη τιμολογίων μέσω email';
-
-  @override
-  String get billingEmailSoon =>
-      'Η αποστολή με email έρχεται σύντομα· τα τιμολόγια κατεβαίνουν πάντα από εδώ.';
-
-  @override
   String get billingManage => 'Διαχείριση συνδρομής';
 
   @override
@@ -1474,5 +1467,20 @@ class L10nEl extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return 'Η $company διαγράφηκε λόγω μη πληρωμής.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'Αναγνωριστικό επιχείρησης: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'Σήμερα: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Περιλαμβάνει το υπόλοιπο του τρέχοντος μήνα ($days ημέρες, αναλογικά) και μετά ολόκληρους μήνες από την 1η.';
   }
 }

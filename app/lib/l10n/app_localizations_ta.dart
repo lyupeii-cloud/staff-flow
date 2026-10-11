@@ -1430,13 +1430,6 @@ class L10nTa extends L10n {
   String get billingNoInvoices => 'இன்னும் விலைப்பட்டியல் இல்லை.';
 
   @override
-  String get billingInvoiceByEmail => 'விலைப்பட்டியல்களை மின்னஞ்சலில் பெறுக';
-
-  @override
-  String get billingEmailSoon =>
-      'மின்னஞ்சல் அனுப்புதல் விரைவில் வருகிறது; விலைப்பட்டியல்களை இங்கே எப்போதும் பதிவிறக்கலாம்.';
-
-  @override
   String get billingManage => 'சந்தாவை நிர்வகி';
 
   @override
@@ -1471,5 +1464,20 @@ class L10nTa extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return 'பணம் செலுத்தாததால் $company நீக்கப்பட்டது.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'நிறுவன அடையாளம்: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'இன்று: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'நடப்பு மாதத்தின் மீதி ($days நாட்கள், விகிதாசாரம்) அடங்கும்; பின்னர் 1ஆம் தேதி முதல் முழு மாதங்கள்.';
   }
 }

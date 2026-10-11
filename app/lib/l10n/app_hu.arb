@@ -395,8 +395,6 @@
   "billingPaidOk": "Fizetés rögzítve.",
   "billingInvoices": "Számlák",
   "billingNoInvoices": "Még nincs számla.",
-  "billingInvoiceByEmail": "Számlák fogadása e-mailben",
-  "billingEmailSoon": "Az e-mailes küldés hamarosan érkezik; a számlák itt mindig letölthetők.",
   "billingManage": "Előfizetés kezelése",
   "billingReadOnlyStaff": "Ez a cég csak olvasható, amíg a tulajdonos meg nem újítja az előfizetést.",
   "billingPerMonth": "{amount} / hó",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: az ingyenes próbaidőszak kevesebb mint 24 óra múlva lejár.",
   "noticeBillingGrace": "{company} nemfizetés miatt csak olvasható; törlés: {date}.",
   "noticeBillingGraceReminder": "Emlékeztető: fizetés nélkül {company} törlődik ekkor: {date}.",
-  "noticeBillingDeleted": "{company} nemfizetés miatt törölve."
+  "noticeBillingDeleted": "{company} nemfizetés miatt törölve.",
+  "billingCompanyId": "Cégazonosító: {id}",
+  "billingDueToday": "Ma: {amount}",
+  "billingProrataNote": "Tartalmazza a folyó hónap hátralévő részét ({days} nap, arányosan), utána teljes hónapokat 1-jétől."
 }

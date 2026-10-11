@@ -108,12 +108,6 @@ class Api {
       }))
       // Abonnement et factures (propriétaire de l'entreprise).
       ..get('/companies/<id>/billing', _authed((r, u) async => _json(await billing.summary(u, r.params['id']!))))
-      ..put('/companies/<id>/billing', _authed((r, u) async {
-        final on = (await _body(r))['invoiceByEmail'];
-        if (on is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
-        await billing.setInvoiceByEmail(u, r.params['id']!, on);
-        return Response(204);
-      }))
       ..post('/companies/<id>/billing/checkout', _authed((r, u) async {
         final body = await _body(r);
         if (body['period'] is! String || body['cascade'] is! bool) {
@@ -125,13 +119,14 @@ class Api {
       ..get('/companies/<id>/invoices/<invoiceId>/link', _authed((r, u) async {
         final id = int.tryParse(r.params['invoiceId']!);
         if (id == null) throw const ApiError.notFound();
-        return _json({'path': '/api/v1/invoices/${await billing.invoiceLink(u, r.params['id']!, id)}'});
+        final lang = r.url.queryParameters['lang'] ?? negotiateLanguage(r.headers['accept-language']);
+        return _json({'path': '/api/v1/invoices/${await billing.invoiceLink(u, r.params['id']!, id, lang)}'});
       }))
       ..get('/invoices/<token>', (Request r) async {
         final (name, bytes) = await billing.invoicePdf(r.params['token']!);
         return Response.ok(bytes, headers: {
           'content-type': 'application/pdf',
-          'content-disposition': 'inline; filename="$name"',
+          'content-disposition': 'attachment; filename="$name"',
           'cache-control': 'no-store',
         });
       })

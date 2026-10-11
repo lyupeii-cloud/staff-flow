@@ -395,8 +395,6 @@
   "billingPaidOk": "भुगतान दर्ज हुआ।",
   "billingInvoices": "चालान",
   "billingNoInvoices": "अभी कोई चालान नहीं।",
-  "billingInvoiceByEmail": "चालान ईमेल से प्राप्त करें",
-  "billingEmailSoon": "ईमेल से भेजना जल्द आ रहा है; चालान यहाँ हमेशा डाउनलोड किए जा सकते हैं।",
   "billingManage": "सदस्यता प्रबंधित करें",
   "billingReadOnlyStaff": "मालिक के सदस्यता नवीनीकरण तक यह कंपनी केवल पढ़ने के लिए है।",
   "billingPerMonth": "{amount} / माह",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: मुफ़्त ट्रायल 24 घंटे से कम में खत्म होगा।",
   "noticeBillingGrace": "{company} भुगतान न होने से केवल पढ़ने के लिए है; {date} को हटाई जाएगी।",
   "noticeBillingGraceReminder": "याद दिलाना: भुगतान के बिना {company} {date} को हटा दी जाएगी।",
-  "noticeBillingDeleted": "{company} भुगतान न होने के कारण हटा दी गई।"
+  "noticeBillingDeleted": "{company} भुगतान न होने के कारण हटा दी गई।",
+  "billingCompanyId": "कंपनी आईडी: {id}",
+  "billingDueToday": "आज: {amount}",
+  "billingProrataNote": "इसमें चालू माह के शेष दिन ({days} दिन, आनुपातिक) और फिर 1 तारीख से पूरे महीने शामिल हैं।"
 }

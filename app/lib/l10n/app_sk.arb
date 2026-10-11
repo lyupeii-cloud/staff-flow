@@ -395,8 +395,6 @@
   "billingPaidOk": "Platba zaznamenaná.",
   "billingInvoices": "Faktúry",
   "billingNoInvoices": "Zatiaľ žiadne faktúry.",
-  "billingInvoiceByEmail": "Dostávať faktúry e-mailom",
-  "billingEmailSoon": "Posielanie e-mailom bude čoskoro; faktúry si môžete vždy stiahnuť tu.",
   "billingManage": "Spravovať predplatné",
   "billingReadOnlyStaff": "Táto firma je len na čítanie, kým majiteľ neobnoví predplatné.",
   "billingPerMonth": "{amount} / mesiac",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: bezplatná skúšobná doba sa končí o menej než 24 hodín.",
   "noticeBillingGrace": "{company} je pre nezaplatenie len na čítanie; vymazanie {date}.",
   "noticeBillingGraceReminder": "Pripomienka: bez platby bude {company} {date} vymazaná.",
-  "noticeBillingDeleted": "{company} bola vymazaná pre nezaplatenie."
+  "noticeBillingDeleted": "{company} bola vymazaná pre nezaplatenie.",
+  "billingCompanyId": "ID firmy: {id}",
+  "billingDueToday": "Dnes: {amount}",
+  "billingProrataNote": "Zahŕňa zvyšok aktuálneho mesiaca ({days} dní, pomerne), potom celé mesiace od 1. dňa."
 }

@@ -998,8 +998,6 @@
   "billingPaidOk": "Payment recorded.",
   "billingInvoices": "Invoices",
   "billingNoInvoices": "No invoices yet.",
-  "billingInvoiceByEmail": "Receive invoices by email",
-  "billingEmailSoon": "Email delivery is coming soon; invoices can always be downloaded here.",
   "billingManage": "Manage subscription",
   "billingReadOnlyStaff": "This company is read-only until the owner renews the subscription.",
   "billingPerMonth": "{amount} / month",
@@ -1052,6 +1050,30 @@
   "@noticeBillingDeleted": {
     "placeholders": {
       "company": {
+        "type": "String"
+      }
+    }
+  },
+  "billingCompanyId": "Company ID: {id}",
+  "@billingCompanyId": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "billingDueToday": "Today: {amount}",
+  "@billingDueToday": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "billingProrataNote": "Includes the rest of this month ({days} days, prorated), then whole months from the 1st.",
+  "@billingProrataNote": {
+    "placeholders": {
+      "days": {
         "type": "String"
       }
     }

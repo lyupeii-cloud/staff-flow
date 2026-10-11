@@ -395,8 +395,6 @@
   "billingPaidOk": "Maksu kirjattu.",
   "billingInvoices": "Laskut",
   "billingNoInvoices": "Ei vielä laskuja.",
-  "billingInvoiceByEmail": "Vastaanota laskut sähköpostitse",
-  "billingEmailSoon": "Sähköpostilähetys tulossa pian; laskut voi aina ladata täältä.",
   "billingManage": "Hallinnoi tilausta",
   "billingReadOnlyStaff": "Yritys on vain luku -tilassa, kunnes omistaja uusii tilauksen.",
   "billingPerMonth": "{amount} / kk",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: ilmainen kokeilu päättyy alle 24 tunnin kuluttua.",
   "noticeBillingGrace": "{company} on vain luku -tilassa maksamattomuuden vuoksi; poisto {date}.",
   "noticeBillingGraceReminder": "Muistutus: ilman maksua {company} poistetaan {date}.",
-  "noticeBillingDeleted": "{company} poistettiin maksamattomuuden vuoksi."
+  "noticeBillingDeleted": "{company} poistettiin maksamattomuuden vuoksi.",
+  "billingCompanyId": "Yrityksen tunnus: {id}",
+  "billingDueToday": "Tänään: {amount}",
+  "billingProrataNote": "Sisältää kuluvan kuukauden loppuosan ({days} päivää, suhteutettuna) ja sen jälkeen kokonaiset kuukaudet 1. päivästä alkaen."
 }

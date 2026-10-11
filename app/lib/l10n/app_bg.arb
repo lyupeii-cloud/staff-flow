@@ -395,8 +395,6 @@
   "billingPaidOk": "Плащането е записано.",
   "billingInvoices": "Фактури",
   "billingNoInvoices": "Все още няма фактури.",
-  "billingInvoiceByEmail": "Получаване на фактури по имейл",
-  "billingEmailSoon": "Изпращането по имейл идва скоро; фактурите винаги могат да се изтеглят тук.",
   "billingManage": "Управление на абонамента",
   "billingReadOnlyStaff": "Тази фирма е само за четене, докато собственикът не поднови абонамента.",
   "billingPerMonth": "{amount} / месец",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: безплатният пробен период изтича след по-малко от 24 часа.",
   "noticeBillingGrace": "{company} е само за четене поради неплащане; изтриване на {date}.",
   "noticeBillingGraceReminder": "Напомняне: без плащане {company} ще бъде изтрита на {date}.",
-  "noticeBillingDeleted": "{company} беше изтрита поради неплащане."
+  "noticeBillingDeleted": "{company} беше изтрита поради неплащане.",
+  "billingCompanyId": "ID на фирмата: {id}",
+  "billingDueToday": "Днес: {amount}",
+  "billingProrataNote": "Включва остатъка от текущия месец ({days} дни, пропорционално), след това цели месеци от 1-во число."
 }

@@ -395,8 +395,6 @@
   "billingPaidOk": "Betaling registrert.",
   "billingInvoices": "Fakturaer",
   "billingNoInvoices": "Ingen fakturaer ennå.",
-  "billingInvoiceByEmail": "Motta fakturaer på e-post",
-  "billingEmailSoon": "Utsending på e-post kommer snart; fakturaer kan alltid lastes ned her.",
   "billingManage": "Administrer abonnement",
   "billingReadOnlyStaff": "Bedriften er skrivebeskyttet til eieren fornyer abonnementet.",
   "billingPerMonth": "{amount} / måned",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: den gratis prøveperioden slutter om mindre enn 24 timer.",
   "noticeBillingGrace": "{company} er skrivebeskyttet på grunn av manglende betaling; slettes {date}.",
   "noticeBillingGraceReminder": "Påminnelse: uten betaling slettes {company} {date}.",
-  "noticeBillingDeleted": "{company} ble slettet på grunn av manglende betaling."
+  "noticeBillingDeleted": "{company} ble slettet på grunn av manglende betaling.",
+  "billingCompanyId": "Bedrifts-ID: {id}",
+  "billingDueToday": "I dag: {amount}",
+  "billingProrataNote": "Omfatter resten av inneværende måned ({days} dager, forholdsmessig) og deretter hele måneder fra den 1."
 }

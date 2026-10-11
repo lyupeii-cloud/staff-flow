@@ -1423,13 +1423,6 @@ class L10nSv extends L10n {
   String get billingNoInvoices => 'Inga fakturor ännu.';
 
   @override
-  String get billingInvoiceByEmail => 'Ta emot fakturor via e-post';
-
-  @override
-  String get billingEmailSoon =>
-      'Utskick via e-post kommer snart; fakturor kan alltid laddas ned här.';
-
-  @override
   String get billingManage => 'Hantera abonnemang';
 
   @override
@@ -1464,5 +1457,20 @@ class L10nSv extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company raderades på grund av utebliven betalning.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'Företags-ID: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'I dag: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Inkluderar resten av innevarande månad ($days dagar, proportionellt), därefter hela månader från den 1:a.';
   }
 }

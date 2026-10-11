@@ -395,8 +395,6 @@
   "billingPaidOk": "கட்டணம் பதிவு செய்யப்பட்டது.",
   "billingInvoices": "விலைப்பட்டியல்கள்",
   "billingNoInvoices": "இன்னும் விலைப்பட்டியல் இல்லை.",
-  "billingInvoiceByEmail": "விலைப்பட்டியல்களை மின்னஞ்சலில் பெறுக",
-  "billingEmailSoon": "மின்னஞ்சல் அனுப்புதல் விரைவில் வருகிறது; விலைப்பட்டியல்களை இங்கே எப்போதும் பதிவிறக்கலாம்.",
   "billingManage": "சந்தாவை நிர்வகி",
   "billingReadOnlyStaff": "உரிமையாளர் சந்தாவைப் புதுப்பிக்கும் வரை இந்த நிறுவனம் படிக்க மட்டும்.",
   "billingPerMonth": "{amount} / மாதம்",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: இலவச சோதனை 24 மணி நேரத்திற்குள் முடியும்.",
   "noticeBillingGrace": "பணம் செலுத்தாததால் {company} படிக்க மட்டும்; {date} அன்று நீக்கப்படும்.",
   "noticeBillingGraceReminder": "நினைவூட்டல்: பணம் செலுத்தாவிட்டால் {company} {date} அன்று நீக்கப்படும்.",
-  "noticeBillingDeleted": "பணம் செலுத்தாததால் {company} நீக்கப்பட்டது."
+  "noticeBillingDeleted": "பணம் செலுத்தாததால் {company} நீக்கப்பட்டது.",
+  "billingCompanyId": "நிறுவன அடையாளம்: {id}",
+  "billingDueToday": "இன்று: {amount}",
+  "billingProrataNote": "நடப்பு மாதத்தின் மீதி ({days} நாட்கள், விகிதாசாரம்) அடங்கும்; பின்னர் 1ஆம் தேதி முதல் முழு மாதங்கள்."
 }

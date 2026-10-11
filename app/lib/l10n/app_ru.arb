@@ -395,8 +395,6 @@
   "billingPaidOk": "Оплата зачислена.",
   "billingInvoices": "Счета",
   "billingNoInvoices": "Счетов пока нет.",
-  "billingInvoiceByEmail": "Получать счета по электронной почте",
-  "billingEmailSoon": "Отправка по почте скоро появится; счета всегда можно скачать здесь.",
   "billingManage": "Управлять подпиской",
   "billingReadOnlyStaff": "Компания доступна только для чтения, пока владелец не продлит подписку.",
   "billingPerMonth": "{amount} / мес.",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: бесплатный пробный период закончится менее чем через 24 часа.",
   "noticeBillingGrace": "{company} доступна только для чтения из-за неоплаты; удаление {date}.",
   "noticeBillingGraceReminder": "Напоминание: без оплаты {company} будет удалена {date}.",
-  "noticeBillingDeleted": "{company} удалена из-за неоплаты."
+  "noticeBillingDeleted": "{company} удалена из-за неоплаты.",
+  "billingCompanyId": "Идентификатор компании: {id}",
+  "billingDueToday": "Сегодня: {amount}",
+  "billingProrataNote": "Включает остаток текущего месяца ({days} дн., пропорционально), далее полные месяцы с 1-го числа."
 }

@@ -395,8 +395,6 @@
   "billingPaidOk": "Plată înregistrată.",
   "billingInvoices": "Facturi",
   "billingNoInvoices": "Încă nu există facturi.",
-  "billingInvoiceByEmail": "Primește facturile pe e-mail",
-  "billingEmailSoon": "Trimiterea pe e-mail vine în curând; facturile se pot descărca oricând aici.",
   "billingManage": "Gestionează abonamentul",
   "billingReadOnlyStaff": "Această firmă este doar în citire până când proprietarul reînnoiește abonamentul.",
   "billingPerMonth": "{amount} / lună",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: perioada de probă gratuită se încheie în mai puțin de 24 de ore.",
   "noticeBillingGrace": "{company} este doar în citire din cauza neplății; ștergere pe {date}.",
   "noticeBillingGraceReminder": "Memento: fără plată, {company} va fi ștearsă pe {date}.",
-  "noticeBillingDeleted": "{company} a fost ștearsă din cauza neplății."
+  "noticeBillingDeleted": "{company} a fost ștearsă din cauza neplății.",
+  "billingCompanyId": "ID-ul firmei: {id}",
+  "billingDueToday": "Astăzi: {amount}",
+  "billingProrataNote": "Include restul lunii curente ({days} zile, pro rata), apoi luni întregi de la data de 1."
 }

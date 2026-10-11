@@ -1377,12 +1377,6 @@ class L10nZh extends L10n {
   String get billingNoInvoices => '暂无发票。';
 
   @override
-  String get billingInvoiceByEmail => '通过电子邮件接收发票';
-
-  @override
-  String get billingEmailSoon => '邮件发送即将推出；发票随时可在此下载。';
-
-  @override
   String get billingManage => '管理订阅';
 
   @override
@@ -1416,5 +1410,20 @@ class L10nZh extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company 因未付款已被删除。';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return '公司编号：$id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return '今天：$amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return '包含本月剩余天数（$days 天，按比例），之后从每月 1 日起按整月计费。';
   }
 }

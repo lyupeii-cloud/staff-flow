@@ -437,4 +437,21 @@ CREATE TABLE invoices (
 );
 CREATE INDEX invoices_company ON invoices (company_id, id);
 ''',
+  // 25 — identifiant public de chaque entreprise (sur ses factures :
+  // SF-<identifiant>-<année>-<n°>) ; plus d'envoi des factures par e-mail.
+  '''
+ALTER TABLE companies ADD COLUMN public_id text;
+UPDATE companies SET public_id = (
+  SELECT string_agg(substr('ABCDEFGHJKLMNPQRSTUVWXYZ23456789', 1 + floor(random() * 32)::int, 1), '')
+  FROM generate_series(1, 6) WHERE companies.id IS NOT NULL);
+ALTER TABLE companies ALTER COLUMN public_id SET NOT NULL;
+ALTER TABLE companies ADD CONSTRAINT companies_public_id UNIQUE (public_id);
+ALTER TABLE companies DROP COLUMN invoice_by_email;
+ALTER TABLE invoices ADD COLUMN company_code text;
+UPDATE invoices i SET company_code = c.public_id FROM companies c WHERE c.id = i.company_id;
+UPDATE invoices SET company_code = '' WHERE company_code IS NULL;
+ALTER TABLE invoices ALTER COLUMN company_code SET NOT NULL;
+ALTER TABLE invoices DROP COLUMN owner_email, DROP COLUMN emailed_at;
+DROP SEQUENCE invoice_number_seq;
+''',
 ];

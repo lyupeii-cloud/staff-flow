@@ -395,8 +395,6 @@
   "billingPaidOk": "支払いを記録しました。",
   "billingInvoices": "請求書",
   "billingNoInvoices": "請求書はまだありません。",
-  "billingInvoiceByEmail": "請求書をメールで受け取る",
-  "billingEmailSoon": "メール送信はまもなく対応します。請求書はいつでもここからダウンロードできます。",
   "billingManage": "サブスクリプションを管理",
   "billingReadOnlyStaff": "オーナーがサブスクリプションを更新するまで、この会社は読み取り専用です。",
   "billingPerMonth": "{amount} / 月",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}：無料体験は24時間以内に終了します。",
   "noticeBillingGrace": "{company}は未払いのため読み取り専用です。{date}に削除されます。",
   "noticeBillingGraceReminder": "リマインダー：支払いがない場合、{company}は{date}に削除されます。",
-  "noticeBillingDeleted": "{company}は未払いのため削除されました。"
+  "noticeBillingDeleted": "{company}は未払いのため削除されました。",
+  "billingCompanyId": "会社ID：{id}",
+  "billingDueToday": "本日：{amount}",
+  "billingProrataNote": "今月の残り（{days}日分、日割り）と、翌月1日からの月単位の料金を含みます。"
 }

@@ -395,8 +395,6 @@
   "billingPaidOk": "บันทึกการชำระเงินแล้ว",
   "billingInvoices": "ใบแจ้งหนี้",
   "billingNoInvoices": "ยังไม่มีใบแจ้งหนี้",
-  "billingInvoiceByEmail": "รับใบแจ้งหนี้ทางอีเมล",
-  "billingEmailSoon": "การส่งทางอีเมลจะมาเร็ว ๆ นี้ ใบแจ้งหนี้ดาวน์โหลดได้ที่นี่เสมอ",
   "billingManage": "จัดการการสมัครสมาชิก",
   "billingReadOnlyStaff": "บริษัทนี้เป็นแบบอ่านอย่างเดียวจนกว่าเจ้าของจะต่ออายุการสมัครสมาชิก",
   "billingPerMonth": "{amount} / เดือน",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: ช่วงทดลองใช้ฟรีจะสิ้นสุดในอีกไม่ถึง 24 ชั่วโมง",
   "noticeBillingGrace": "{company} เป็นแบบอ่านอย่างเดียวเนื่องจากไม่ชำระเงิน จะถูกลบในวันที่ {date}",
   "noticeBillingGraceReminder": "แจ้งเตือน: หากไม่ชำระเงิน {company} จะถูกลบในวันที่ {date}",
-  "noticeBillingDeleted": "{company} ถูกลบเนื่องจากไม่ชำระเงิน"
+  "noticeBillingDeleted": "{company} ถูกลบเนื่องจากไม่ชำระเงิน",
+  "billingCompanyId": "รหัสบริษัท: {id}",
+  "billingDueToday": "วันนี้: {amount}",
+  "billingProrataNote": "รวมส่วนที่เหลือของเดือนนี้ ({days} วัน ตามสัดส่วน) แล้วคิดเต็มเดือนตั้งแต่วันที่ 1"
 }

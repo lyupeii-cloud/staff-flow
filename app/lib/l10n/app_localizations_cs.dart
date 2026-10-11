@@ -1421,13 +1421,6 @@ class L10nCs extends L10n {
   String get billingNoInvoices => 'Zatím žádné faktury.';
 
   @override
-  String get billingInvoiceByEmail => 'Dostávat faktury e-mailem';
-
-  @override
-  String get billingEmailSoon =>
-      'Zasílání e-mailem bude brzy; faktury si můžete vždy stáhnout zde.';
-
-  @override
   String get billingManage => 'Spravovat předplatné';
 
   @override
@@ -1462,5 +1455,20 @@ class L10nCs extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company byla smazána kvůli nezaplacení.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'ID firmy: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'Dnes: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Zahrnuje zbytek aktuálního měsíce ($days dní, poměrně), poté celé měsíce od 1. dne.';
   }
 }

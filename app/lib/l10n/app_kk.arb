@@ -395,8 +395,6 @@
   "billingPaidOk": "Төлем тіркелді.",
   "billingInvoices": "Шоттар",
   "billingNoInvoices": "Әзірге шот жоқ.",
-  "billingInvoiceByEmail": "Шоттарды электрондық поштамен алу",
-  "billingEmailSoon": "Поштамен жіберу жақында қосылады; шоттарды мұнда әрқашан жүктеп алуға болады.",
   "billingManage": "Жазылымды басқару",
   "billingReadOnlyStaff": "Иесі жазылымды жаңартқанша бұл компания тек оқуға арналған.",
   "billingPerMonth": "{amount} / ай",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: тегін сынақ 24 сағаттан аз уақытта аяқталады.",
   "noticeBillingGrace": "{company} төленбегендіктен тек оқуға арналған; {date} күні жойылады.",
   "noticeBillingGraceReminder": "Еске салу: төлем болмаса, {company} {date} күні жойылады.",
-  "noticeBillingDeleted": "{company} төленбегендіктен жойылды."
+  "noticeBillingDeleted": "{company} төленбегендіктен жойылды.",
+  "billingCompanyId": "Компания идентификаторы: {id}",
+  "billingDueToday": "Бүгін: {amount}",
+  "billingProrataNote": "Ағымдағы айдың қалған бөлігі ({days} күн, үлестік), содан кейін 1-күннен бастап толық айлар."
 }

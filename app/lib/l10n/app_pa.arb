@@ -395,8 +395,6 @@
   "billingPaidOk": "ਭੁਗਤਾਨ ਦਰਜ ਹੋ ਗਿਆ।",
   "billingInvoices": "ਇਨਵੌਇਸ",
   "billingNoInvoices": "ਅਜੇ ਕੋਈ ਇਨਵੌਇਸ ਨਹੀਂ।",
-  "billingInvoiceByEmail": "ਇਨਵੌਇਸ ਈਮੇਲ ਰਾਹੀਂ ਪ੍ਰਾਪਤ ਕਰੋ",
-  "billingEmailSoon": "ਈਮੇਲ ਰਾਹੀਂ ਭੇਜਣਾ ਜਲਦੀ ਆ ਰਿਹਾ ਹੈ; ਇਨਵੌਇਸ ਇੱਥੇ ਹਮੇਸ਼ਾ ਡਾਊਨਲੋਡ ਕੀਤੇ ਜਾ ਸਕਦੇ ਹਨ।",
   "billingManage": "ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਪ੍ਰਬੰਧਿਤ ਕਰੋ",
   "billingReadOnlyStaff": "ਮਾਲਕ ਦੇ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਨਵਿਆਉਣ ਤੱਕ ਇਹ ਕੰਪਨੀ ਸਿਰਫ਼ ਪੜ੍ਹਨ ਲਈ ਹੈ।",
   "billingPerMonth": "{amount} / ਮਹੀਨਾ",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: ਮੁਫ਼ਤ ਟ੍ਰਾਇਲ 24 ਘੰਟਿਆਂ ਤੋਂ ਘੱਟ ਸਮੇਂ ਵਿੱਚ ਖਤਮ ਹੋਵੇਗਾ।",
   "noticeBillingGrace": "ਭੁਗਤਾਨ ਨਾ ਹੋਣ ਕਾਰਨ {company} ਸਿਰਫ਼ ਪੜ੍ਹਨ ਲਈ; {date} ਨੂੰ ਮਿਟਾਈ ਜਾਵੇਗੀ।",
   "noticeBillingGraceReminder": "ਯਾਦ ਦਿਵਾਉਣਾ: ਭੁਗਤਾਨ ਤੋਂ ਬਿਨਾਂ {company} {date} ਨੂੰ ਮਿਟਾ ਦਿੱਤੀ ਜਾਵੇਗੀ।",
-  "noticeBillingDeleted": "ਭੁਗਤਾਨ ਨਾ ਹੋਣ ਕਾਰਨ {company} ਮਿਟਾ ਦਿੱਤੀ ਗਈ।"
+  "noticeBillingDeleted": "ਭੁਗਤਾਨ ਨਾ ਹੋਣ ਕਾਰਨ {company} ਮਿਟਾ ਦਿੱਤੀ ਗਈ।",
+  "billingCompanyId": "ਕੰਪਨੀ ਆਈਡੀ: {id}",
+  "billingDueToday": "ਅੱਜ: {amount}",
+  "billingProrataNote": "ਚਾਲੂ ਮਹੀਨੇ ਦਾ ਬਾਕੀ ਹਿੱਸਾ ({days} ਦਿਨ, ਅਨੁਪਾਤਕ) ਸ਼ਾਮਲ; ਫਿਰ 1 ਤਾਰੀਖ ਤੋਂ ਪੂਰੇ ਮਹੀਨੇ।"
 }

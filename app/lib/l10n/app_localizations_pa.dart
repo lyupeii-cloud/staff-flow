@@ -1419,13 +1419,6 @@ class L10nPa extends L10n {
   String get billingNoInvoices => 'ਅਜੇ ਕੋਈ ਇਨਵੌਇਸ ਨਹੀਂ।';
 
   @override
-  String get billingInvoiceByEmail => 'ਇਨਵੌਇਸ ਈਮੇਲ ਰਾਹੀਂ ਪ੍ਰਾਪਤ ਕਰੋ';
-
-  @override
-  String get billingEmailSoon =>
-      'ਈਮੇਲ ਰਾਹੀਂ ਭੇਜਣਾ ਜਲਦੀ ਆ ਰਿਹਾ ਹੈ; ਇਨਵੌਇਸ ਇੱਥੇ ਹਮੇਸ਼ਾ ਡਾਊਨਲੋਡ ਕੀਤੇ ਜਾ ਸਕਦੇ ਹਨ।';
-
-  @override
   String get billingManage => 'ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਪ੍ਰਬੰਧਿਤ ਕਰੋ';
 
   @override
@@ -1460,5 +1453,20 @@ class L10nPa extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return 'ਭੁਗਤਾਨ ਨਾ ਹੋਣ ਕਾਰਨ $company ਮਿਟਾ ਦਿੱਤੀ ਗਈ।';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'ਕੰਪਨੀ ਆਈਡੀ: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'ਅੱਜ: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'ਚਾਲੂ ਮਹੀਨੇ ਦਾ ਬਾਕੀ ਹਿੱਸਾ ($days ਦਿਨ, ਅਨੁਪਾਤਕ) ਸ਼ਾਮਲ; ਫਿਰ 1 ਤਾਰੀਖ ਤੋਂ ਪੂਰੇ ਮਹੀਨੇ।';
   }
 }

@@ -1435,13 +1435,6 @@ class L10nFr extends L10n {
   String get billingNoInvoices => 'Aucune facture pour l\'instant.';
 
   @override
-  String get billingInvoiceByEmail => 'Recevoir les factures par e-mail';
-
-  @override
-  String get billingEmailSoon =>
-      'L\'envoi par e-mail arrive bientôt ; les factures restent téléchargeables ici.';
-
-  @override
   String get billingManage => 'Gérer l\'abonnement';
 
   @override
@@ -1476,5 +1469,20 @@ class L10nFr extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company a été supprimée faute de paiement.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'Identifiant de l\'entreprise : $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'Aujourd\'hui : $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Comprend la fin du mois en cours ($days jours, au prorata), puis des mois pleins à partir du 1er.';
   }
 }

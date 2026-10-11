@@ -395,8 +395,6 @@
   "billingPaidOk": "Đã ghi nhận thanh toán.",
   "billingInvoices": "Hóa đơn",
   "billingNoInvoices": "Chưa có hóa đơn.",
-  "billingInvoiceByEmail": "Nhận hóa đơn qua email",
-  "billingEmailSoon": "Gửi email sắp ra mắt; hóa đơn luôn có thể tải tại đây.",
   "billingManage": "Quản lý gói đăng ký",
   "billingReadOnlyStaff": "Công ty này ở chế độ chỉ đọc cho đến khi chủ gia hạn gói đăng ký.",
   "billingPerMonth": "{amount} / tháng",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: bản dùng thử miễn phí sẽ kết thúc trong chưa đầy 24 giờ.",
   "noticeBillingGrace": "{company} ở chế độ chỉ đọc do chưa thanh toán; sẽ xóa vào {date}.",
   "noticeBillingGraceReminder": "Nhắc nhở: nếu không thanh toán, {company} sẽ bị xóa vào {date}.",
-  "noticeBillingDeleted": "{company} đã bị xóa do không thanh toán."
+  "noticeBillingDeleted": "{company} đã bị xóa do không thanh toán.",
+  "billingCompanyId": "Mã công ty: {id}",
+  "billingDueToday": "Hôm nay: {amount}",
+  "billingProrataNote": "Gồm phần còn lại của tháng này ({days} ngày, theo tỷ lệ), sau đó tính theo tháng tròn từ ngày 1."
 }

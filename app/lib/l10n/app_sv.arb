@@ -395,8 +395,6 @@
   "billingPaidOk": "Betalningen registrerad.",
   "billingInvoices": "Fakturor",
   "billingNoInvoices": "Inga fakturor ännu.",
-  "billingInvoiceByEmail": "Ta emot fakturor via e-post",
-  "billingEmailSoon": "Utskick via e-post kommer snart; fakturor kan alltid laddas ned här.",
   "billingManage": "Hantera abonnemang",
   "billingReadOnlyStaff": "Företaget är skrivskyddat tills ägaren förnyar abonnemanget.",
   "billingPerMonth": "{amount} / månad",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: den kostnadsfria provperioden slutar om mindre än 24 timmar.",
   "noticeBillingGrace": "{company} är skrivskyddat på grund av utebliven betalning; raderas den {date}.",
   "noticeBillingGraceReminder": "Påminnelse: utan betalning raderas {company} den {date}.",
-  "noticeBillingDeleted": "{company} raderades på grund av utebliven betalning."
+  "noticeBillingDeleted": "{company} raderades på grund av utebliven betalning.",
+  "billingCompanyId": "Företags-ID: {id}",
+  "billingDueToday": "I dag: {amount}",
+  "billingProrataNote": "Inkluderar resten av innevarande månad ({days} dagar, proportionellt), därefter hela månader från den 1:a."
 }

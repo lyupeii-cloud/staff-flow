@@ -1430,13 +1430,6 @@ class L10nFil extends L10n {
   String get billingNoInvoices => 'Wala pang invoice.';
 
   @override
-  String get billingInvoiceByEmail => 'Tumanggap ng mga invoice sa email';
-
-  @override
-  String get billingEmailSoon =>
-      'Malapit na ang pagpapadala sa email; maaaring i-download ang mga invoice dito anumang oras.';
-
-  @override
   String get billingManage => 'Pamahalaan ang subscription';
 
   @override
@@ -1471,5 +1464,20 @@ class L10nFil extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return 'Binura ang $company dahil hindi nabayaran.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'ID ng kumpanya: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'Ngayon: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Kasama ang natitira sa buwang ito ($days araw, prorata), at pagkatapos ay buong buwan mula sa ika-1.';
   }
 }

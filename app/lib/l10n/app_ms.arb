@@ -395,8 +395,6 @@
   "billingPaidOk": "Bayaran direkodkan.",
   "billingInvoices": "Invois",
   "billingNoInvoices": "Belum ada invois.",
-  "billingInvoiceByEmail": "Terima invois melalui e-mel",
-  "billingEmailSoon": "Penghantaran e-mel akan datang; invois sentiasa boleh dimuat turun di sini.",
   "billingManage": "Urus langganan",
   "billingReadOnlyStaff": "Syarikat ini baca sahaja sehingga pemilik memperbaharui langganan.",
   "billingPerMonth": "{amount} / bulan",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: percubaan percuma tamat dalam masa kurang daripada 24 jam.",
   "noticeBillingGrace": "{company} baca sahaja kerana tidak dibayar; dipadam pada {date}.",
   "noticeBillingGraceReminder": "Peringatan: tanpa bayaran, {company} akan dipadam pada {date}.",
-  "noticeBillingDeleted": "{company} telah dipadam kerana tidak dibayar."
+  "noticeBillingDeleted": "{company} telah dipadam kerana tidak dibayar.",
+  "billingCompanyId": "ID syarikat: {id}",
+  "billingDueToday": "Hari ini: {amount}",
+  "billingProrataNote": "Termasuk baki bulan ini ({days} hari, prorata), kemudian bulan penuh mulai 1 haribulan."
 }

@@ -395,8 +395,6 @@
   "billingPaidOk": "Pagamento registado.",
   "billingInvoices": "Faturas",
   "billingNoInvoices": "Ainda não há faturas.",
-  "billingInvoiceByEmail": "Receber as faturas por e-mail",
-  "billingEmailSoon": "O envio por e-mail chega em breve; as faturas podem sempre ser descarregadas aqui.",
   "billingManage": "Gerir a subscrição",
   "billingReadOnlyStaff": "Esta empresa está só de leitura até o proprietário renovar a subscrição.",
   "billingPerMonth": "{amount} / mês",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: o teste gratuito termina em menos de 24 horas.",
   "noticeBillingGrace": "{company} está só de leitura por falta de pagamento; eliminação a {date}.",
   "noticeBillingGraceReminder": "Lembrete: sem pagamento, {company} será eliminada a {date}.",
-  "noticeBillingDeleted": "{company} foi eliminada por falta de pagamento."
+  "noticeBillingDeleted": "{company} foi eliminada por falta de pagamento.",
+  "billingCompanyId": "ID da empresa: {id}",
+  "billingDueToday": "Hoje: {amount}",
+  "billingProrataNote": "Inclui o resto do mês em curso ({days} dias, proporcional) e depois meses completos a partir do dia 1."
 }

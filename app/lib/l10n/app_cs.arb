@@ -395,8 +395,6 @@
   "billingPaidOk": "Platba zaznamenána.",
   "billingInvoices": "Faktury",
   "billingNoInvoices": "Zatím žádné faktury.",
-  "billingInvoiceByEmail": "Dostávat faktury e-mailem",
-  "billingEmailSoon": "Zasílání e-mailem bude brzy; faktury si můžete vždy stáhnout zde.",
   "billingManage": "Spravovat předplatné",
   "billingReadOnlyStaff": "Tato firma je jen pro čtení, dokud majitel neobnoví předplatné.",
   "billingPerMonth": "{amount} / měsíc",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: bezplatná zkušební doba končí za méně než 24 hodin.",
   "noticeBillingGrace": "{company} je kvůli nezaplacení jen pro čtení; smazání {date}.",
   "noticeBillingGraceReminder": "Připomínka: bez platby bude {company} {date} smazána.",
-  "noticeBillingDeleted": "{company} byla smazána kvůli nezaplacení."
+  "noticeBillingDeleted": "{company} byla smazána kvůli nezaplacení.",
+  "billingCompanyId": "ID firmy: {id}",
+  "billingDueToday": "Dnes: {amount}",
+  "billingProrataNote": "Zahrnuje zbytek aktuálního měsíce ({days} dní, poměrně), poté celé měsíce od 1. dne."
 }

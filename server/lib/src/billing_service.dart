@@ -8,6 +8,7 @@ import 'package:pdf/widgets.dart' as pw;
 
 import 'company_service.dart';
 import 'errors.dart';
+import 'messages.dart';
 import 'models.dart';
 import 'notifications.dart';
 import 'platform_service.dart';
@@ -82,6 +83,72 @@ class BillingService {
 
   bool canPay(User actor) => testPaymentsForAll || isAdmin(actor);
 
+  /// Ce qui sera payé aujourd'hui : on paie des mois civils pleins. Au premier
+  /// paiement (ou après une interruption), le reste du mois en cours est payé
+  /// au prorata (jour du paiement compris, arrondi au centime supérieur), puis
+  /// la période choisie commence le 1er du mois suivant ; payé le 1er, la
+  /// période commence le jour même. Un renouvellement prolonge simplement la
+  /// période déjà payée.
+  ({int prorataDays, int monthDays, DateTime periodStart, DateTime periodEnd, DateTime coverFrom}) _plan(
+      Company company, String period) {
+    final t = now();
+    final months = period == 'year' ? 12 : 1;
+    if (company.paidUntil != null && company.paidUntil!.isAfter(t)) {
+      final start = company.paidUntil!;
+      return (prorataDays: 0, monthDays: 0, periodStart: start, periodEnd: _addMonths(start, months), coverFrom: start);
+    }
+    final monthStart = DateTime.utc(t.year, t.month);
+    final next = DateTime.utc(t.year, t.month + 1);
+    final monthDays = next.difference(monthStart).inDays;
+    if (t.day == 1) {
+      return (prorataDays: 0, monthDays: monthDays, periodStart: monthStart, periodEnd: _addMonths(monthStart, months), coverFrom: t);
+    }
+    return (
+      prorataDays: monthDays - t.day + 1,
+      monthDays: monthDays,
+      periodStart: next,
+      periodEnd: _addMonths(next, months),
+      coverFrom: t,
+    );
+  }
+
+  static int _prorata(int monthlyCents, int days, int monthDays) =>
+      days == 0 ? 0 : (monthlyCents * days + monthDays - 1) ~/ monthDays;
+
+  /// Montants et lignes de facture d'un paiement.
+  ({int amount, List<Map<String, Object?>> lines, int base, bool withOption}) _price(
+      Map<String, int> v, int staff, String period, bool cascade, ({int prorataDays, int monthDays, DateTime periodStart, DateTime periodEnd, DateTime coverFrom}) p) {
+    final withOption = cascade && staff < v['cascadeIncludedFrom']!;
+    final base = PlatformService.monthlyCents(v, staff);
+    final option = withOption ? v['cascadeOptionPrice']! : 0;
+    final months = period == 'year' ? 12 : 1;
+    final baseAmount = period == 'year' ? base * v['annualMonths']! : base;
+    final prorataBase = _prorata(base, p.prorataDays, p.monthDays);
+    final prorataOption = _prorata(option, p.prorataDays, p.monthDays);
+    final lines = <Map<String, Object?>>[
+      if (prorataBase > 0)
+        {'label': 'prorata', 'staff': staff, 'days': p.prorataDays, 'monthDays': p.monthDays, 'cents': prorataBase},
+      if (prorataOption > 0)
+        {'label': 'cascadeProrata', 'days': p.prorataDays, 'monthDays': p.monthDays, 'cents': prorataOption},
+      {
+        'label': 'subscription',
+        'staff': staff,
+        'period': period,
+        'unitCents': base,
+        'months': months,
+        'paidMonths': period == 'year' ? v['annualMonths'] : 1,
+        'cents': baseAmount,
+      },
+      if (withOption) {'label': 'cascade', 'unitCents': option, 'months': months, 'cents': option * months},
+    ];
+    return (
+      amount: lines.fold(0, (s, l) => s + (l['cents'] as int)),
+      lines: lines,
+      base: base,
+      withOption: withOption,
+    );
+  }
+
   Future<Map<String, Object?>> summary(User actor, String companyId) async {
     final company = await _owned(actor, companyId);
     final v = await platform.values();
@@ -89,8 +156,11 @@ class BillingService {
     final invoices = await store.query(store.db, '''
       SELECT id, number, issued_at, period, period_start, period_end, amount_cents
       FROM invoices WHERE company_id = @c::uuid ORDER BY id DESC''', {'c': companyId});
+    final month = _plan(company, 'month');
+    int due(String period, bool cascade) => _price(v, staff, period, cascade, _plan(company, period)).amount;
     return {
       ...company.billingJson(),
+      'publicId': company.publicId,
       'staff': staff,
       'cascadeIncludedFrom': v['cascadeIncludedFrom'],
       'annualMonths': v['annualMonths'],
@@ -100,6 +170,14 @@ class BillingService {
         'monthCascade': PlatformService.monthlyCents(v, staff, cascade: true),
         'yearCascade': PlatformService.annualCents(v, staff, cascade: true),
       },
+      // À payer aujourd'hui (prorata du mois en cours compris).
+      'dueNow': {
+        'month': due('month', false),
+        'year': due('year', false),
+        'monthCascade': due('month', true),
+        'yearCascade': due('year', true),
+      },
+      'prorataDays': month.prorataDays,
       'canPay': canPay(actor),
       'testPayments': true,
       'invoices': [
@@ -117,11 +195,6 @@ class BillingService {
     };
   }
 
-  Future<void> setInvoiceByEmail(User actor, String companyId, bool on) async {
-    await _owned(actor, companyId);
-    await store.query(store.db, 'UPDATE companies SET invoice_by_email = @e WHERE id = @c::uuid', {'c': companyId, 'e': on});
-  }
-
   static DateTime _addMonths(DateTime d, int months) {
     final m = d.month - 1 + months;
     final y = d.year + m ~/ 12;
@@ -130,9 +203,10 @@ class BillingService {
     return DateTime.utc(y, month, d.day > last ? last : d.day, d.hour, d.minute, d.second);
   }
 
-  /// Paiement (fictif pour l'instant) d'un mois ou d'une année : le prix est
-  /// calculé avec les tarifs et l'effectif du moment, la période s'ajoute à
-  /// celle déjà payée, l'entreprise redevient modifiable, une facture est créée.
+  /// Paiement (fictif pour l'instant) d'un mois ou d'une année civile, avec
+  /// le prorata du mois en cours (voir [_plan]) ; le prix est calculé avec
+  /// les tarifs et l'effectif du moment ; l'entreprise redevient modifiable ;
+  /// une facture est créée, numérotée par entreprise et par année.
   Future<Map<String, Object?>> checkout(User actor, String companyId, {required String period, required bool cascade}) async {
     final company = await _owned(actor, companyId);
     if (!canPay(actor)) throw const ApiError.conflict('Le paiement en ligne arrive bientôt.');
@@ -140,63 +214,53 @@ class BillingService {
     if (company.billingStatus == 'comped') throw const ApiError.conflict('Cette entreprise est offerte : rien à payer.');
     final v = await platform.values();
     final staff = await staffCount(companyId);
-    final withOption = cascade && staff < v['cascadeIncludedFrom']!;
-    final base = PlatformService.monthlyCents(v, staff);
-    final option = withOption ? v['cascadeOptionPrice']! : 0;
-    final months = period == 'year' ? 12 : 1;
-    final baseAmount = period == 'year' ? base * v['annualMonths']! : base;
+    final plan = _plan(company, period);
+    final price = _price(v, staff, period, cascade, plan);
     final t = now();
-    final from = company.paidUntil != null && company.paidUntil!.isAfter(t) ? company.paidUntil! : t;
-    final to = _addMonths(from, months);
-    final lines = [
-      {
-        'label': 'subscription',
-        'staff': staff,
-        'period': period,
-        'unitCents': base,
-        'months': months,
-        'paidMonths': period == 'year' ? v['annualMonths'] : 1,
-        'cents': baseAmount,
-      },
-      if (withOption) {'label': 'cascade', 'unitCents': option, 'months': months, 'cents': option * months},
-    ];
-    final amount = baseAmount + option * months;
     final owner = await store.findUser(actor.id);
-    final invoice = await store.db.runTx((tx) async {
-      final seq = await store.query(tx, "SELECT nextval('invoice_number_seq')");
-      final number = 'SF-${t.year}-${(seq.first[0] as int).toString().padLeft(6, '0')}';
+    return store.db.runTx((tx) async {
+      // Numéro : SF-<identifiant de l'entreprise>-<année>-<n° dans l'année>.
+      await store.query(tx, 'SELECT 1 FROM companies WHERE id = @c::uuid FOR UPDATE', {'c': companyId});
+      final count = await store.query(tx, '''
+        SELECT count(*) FROM invoices WHERE company_code = @k AND extract(year FROM issued_at) = @y''',
+          {'k': company.publicId, 'y': t.year});
+      final number = 'SF-${company.publicId}-${t.year}-${((count.first[0] as num).toInt() + 1).toString().padLeft(4, '0')}';
       final rows = await store.query(tx, '''
-        INSERT INTO invoices (number, company_id, company_name, owner_id, owner_name, owner_email, issued_at,
+        INSERT INTO invoices (number, company_id, company_code, company_name, owner_id, owner_name, issued_at,
           period, period_start, period_end, staff, lines, amount_cents, provider, paid_at)
-        VALUES (@n, @c::uuid, @cn, @o::uuid, @on, @oe, @t, @p, @f, @to, @s, @l::jsonb, @a, 'test', @t)
+        VALUES (@n, @c::uuid, @k, @cn, @o::uuid, @on, @t, @p, @f, @to, @s, @l::jsonb, @a, 'test', @t)
         RETURNING id''', {
         'n': number,
         'c': companyId,
+        'k': company.publicId,
         'cn': company.name,
         'o': actor.id,
         'on': owner?.name,
-        'oe': owner?.email,
         't': t,
         'p': period,
-        'f': from,
-        'to': to,
+        'f': plan.coverFrom,
+        'to': plan.periodEnd,
         's': staff,
-        'l': jsonEncode(lines),
-        'a': amount,
+        'l': jsonEncode(price.lines),
+        'a': price.amount,
       });
       await store.query(tx, '''
         UPDATE companies SET billing_status = 'active', paid_until = @to, grace_ends_at = NULL, status = 'active',
           billing_period = @p, cascade_option = @co, billing_reminders = '{}'
-        WHERE id = @c::uuid''', {'c': companyId, 'to': to, 'p': period, 'co': withOption});
+        WHERE id = @c::uuid''', {'c': companyId, 'to': plan.periodEnd, 'p': period, 'co': price.withOption});
       await store.audit(
           companyId: companyId,
           actorId: actor.id,
           action: 'billing.paid',
-          details: {'invoice': number, 'amountCents': amount, 'period': period, 'provider': 'test'},
+          details: {'invoice': number, 'amountCents': price.amount, 'period': period, 'provider': 'test'},
           tx: tx);
-      return {'id': rows.first[0], 'number': number, 'amountCents': amount, 'paidUntil': to.toIso8601String()};
+      return {
+        'id': rows.first[0],
+        'number': number,
+        'amountCents': price.amount,
+        'paidUntil': plan.periodEnd.toIso8601String(),
+      };
     });
-    return invoice;
   }
 
   /// L'option « sites en cascade » est-elle ouverte ? (Essai et entreprise
@@ -210,12 +274,15 @@ class BillingService {
 
   // --- Factures -------------------------------------------------------------
 
-  Future<String> invoiceLink(User actor, String companyId, int invoiceId) async {
+  /// Lien de téléchargement (10 minutes) d'une facture de l'entreprise, pour
+  /// son propriétaire actuel : un nouveau propriétaire retrouve tout
+  /// l'historique. [lang] : langue de l'application (la facture est aussi en anglais).
+  Future<String> invoiceLink(User actor, String companyId, int invoiceId, String lang) async {
     await _owned(actor, companyId);
     final rows = await store.query(store.db,
         'SELECT 1 FROM invoices WHERE id = @i AND company_id = @c::uuid', {'i': invoiceId, 'c': companyId});
     if (rows.isEmpty) throw const ApiError.notFound();
-    final jwt = JWT({'i': invoiceId}, subject: actor.id, issuer: 'staff-flow-invoice');
+    final jwt = JWT({'i': invoiceId, 'c': companyId, 'l': lang}, subject: actor.id, issuer: 'staff-flow-invoice');
     return jwt.sign(_key, expiresIn: const Duration(minutes: 10));
   }
 
@@ -226,14 +293,18 @@ class BillingService {
     } on JWTException {
       throw const ApiError.notFound('Lien expiré.');
     }
-    final id = (jwt.payload as Map)['i'] as int;
+    final claims = jwt.payload as Map;
+    final user = await store.findUser(jwt.subject!);
+    if (user == null) throw const ApiError.notFound('Lien expiré.');
+    // Les droits sont revérifiés : la personne doit être encore propriétaire.
+    await _owned(user, claims['c'] as String);
     final rows = await store.query(store.db, '''
-      SELECT number, company_name, owner_name, owner_email, issued_at, period, period_start, period_end,
-        staff, lines, amount_cents, provider, owner_id::text
-      FROM invoices WHERE id = @i''', {'i': id});
-    if (rows.isEmpty || rows.first[12] != jwt.subject) throw const ApiError.notFound('Lien expiré.');
+      SELECT number, company_name, owner_name, company_code, issued_at, period, period_start, period_end,
+        staff, lines, amount_cents, provider
+      FROM invoices WHERE id = @i AND company_id = @c::uuid''', {'i': claims['i'], 'c': claims['c']});
+    if (rows.isEmpty) throw const ApiError.notFound('Lien expiré.');
     final r = rows.first;
-    return ('${r[0]}.pdf', await renderInvoice(r));
+    return ('${r[0]}.pdf', await renderInvoice(r, claims['l'] as String? ?? 'en'));
   }
 
   static pw.Font? _regular, _bold;
@@ -248,9 +319,20 @@ class BillingService {
   static String _day(DateTime d) =>
       '${d.day.toString().padLeft(2, '0')}/${d.month.toString().padLeft(2, '0')}/${d.year}';
 
-  /// Facture en français et en anglais. Les informations de l'éditeur sont
-  /// provisoires tant que l'entreprise n'est pas enregistrée.
-  static Future<Uint8List> renderInvoice(List<Object?> r) async {
+  /// Contact public de l'éditeur (redirection : l'adresse personnelle n'apparaît jamais).
+  static const contactEmail = 'contact@staff-flow.cloud';
+
+  /// Facture dans la langue de l'application du propriétaire, doublée en
+  /// anglais. [r] : number, company_name, owner_name, company_code, issued_at,
+  /// period, period_start, period_end, staff, lines, amount_cents, provider.
+  static Future<Uint8List> renderInvoice(List<Object?> r, String lang) async {
+    // Chaque texte : dans la langue choisie, puis en anglais.
+    String t(String fr, [Map<String, String> args = const {}]) {
+      final en = translate(fr, 'en', args);
+      final mine = translate(fr, lang, args);
+      return lang == 'en' || mine == en ? en : '$mine / $en';
+    }
+
     final font = _regular ??= _loadFont('DejaVuSans.ttf');
     final bold = _bold ??= _loadFont('DejaVuSans-Bold.ttf');
     final navy = PdfColor.fromHex('#061440');
@@ -259,81 +341,89 @@ class BillingService {
     final lines = (r[9] as List).cast<Map>();
     final test = r[11] == 'test';
     final doc = pw.Document(theme: pw.ThemeData.withFont(base: font, bold: bold));
-    pw.Widget cell(String s, {bool bold = false, pw.TextAlign align = pw.TextAlign.left, PdfColor? color}) => pw.Padding(
+    pw.Widget cell(String s, {bool strong = false, pw.TextAlign align = pw.TextAlign.left, PdfColor? color}) => pw.Padding(
         padding: const pw.EdgeInsets.symmetric(vertical: 6, horizontal: 6),
         child: pw.Text(s,
             textAlign: align,
-            style: pw.TextStyle(fontSize: 10, fontWeight: bold ? pw.FontWeight.bold : null, color: color)));
-    String label(Map l) => l['label'] == 'cascade'
-        ? 'Option « sites en cascade » / Nested sites option — ${l['months']} mois / months'
-        : 'Abonnement Staff Flow / Subscription — ${l['staff']} salariés / employees — '
-            '${l['period'] == 'year' ? '12 mois, ${l['paidMonths']} facturés / 12 months, ${l['paidMonths']} billed' : '1 mois / 1 month'}';
+            style: pw.TextStyle(fontSize: 9.5, fontWeight: strong ? pw.FontWeight.bold : null, color: color)));
+    String label(Map l) => switch (l['label']) {
+          'prorata' => t('Prorata du mois en cours ({days} jours sur {total}) : abonnement, {staff} salariés',
+              {'days': '${l['days']}', 'total': '${l['monthDays']}', 'staff': '${l['staff']}'}),
+          'cascadeProrata' => t('Prorata du mois en cours ({days} jours sur {total}) : option « sites en cascade »',
+              {'days': '${l['days']}', 'total': '${l['monthDays']}'}),
+          'cascade' => t('Option « sites en cascade » : {months} mois', {'months': '${l['months']}'}),
+          _ => l['period'] == 'year'
+              ? t('Abonnement Staff Flow, {staff} salariés : 12 mois, {paid} facturés',
+                  {'staff': '${l['staff']}', 'paid': '${l['paidMonths']}'})
+              : t('Abonnement Staff Flow, {staff} salariés : 1 mois', {'staff': '${l['staff']}'}),
+        };
     doc.addPage(pw.Page(
       pageFormat: PdfPageFormat.a4,
       margin: const pw.EdgeInsets.all(40),
       build: (_) => pw.Column(crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
-        pw.Row(mainAxisAlignment: pw.MainAxisAlignment.spaceBetween, children: [
+        pw.Row(mainAxisAlignment: pw.MainAxisAlignment.spaceBetween, crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
           pw.Text('Staff Flow', style: pw.TextStyle(fontSize: 24, color: navy, fontWeight: pw.FontWeight.bold)),
           pw.Column(crossAxisAlignment: pw.CrossAxisAlignment.end, children: [
-            pw.Text('FACTURE / INVOICE', style: pw.TextStyle(fontSize: 14, color: blue)),
+            pw.Text(t('FACTURE'), style: pw.TextStyle(fontSize: 14, color: blue)),
             pw.Text('${r[0]}', style: const pw.TextStyle(fontSize: 12)),
-            pw.Text('Date : ${_day(r[4] as DateTime)}', style: pw.TextStyle(fontSize: 10, color: grey)),
+            pw.Text(t('Date : {date}', {'date': _day(r[4] as DateTime)}), style: pw.TextStyle(fontSize: 9, color: grey)),
           ]),
         ]),
         if (test) ...[
           pw.SizedBox(height: 12),
           pw.Container(
+            width: double.infinity,
             padding: const pw.EdgeInsets.all(8),
             color: PdfColor.fromHex('#FFF3CD'),
-            child: pw.Text('EXEMPLE — paiement de test, aucun montant prélevé. / SAMPLE — test payment, nothing charged.',
-                style: const pw.TextStyle(fontSize: 10)),
+            child: pw.Text(t('EXEMPLE : paiement de test, aucun montant prélevé.'), style: const pw.TextStyle(fontSize: 9.5)),
           ),
         ],
         pw.SizedBox(height: 24),
         pw.Row(crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
           pw.Expanded(
             child: pw.Column(crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
-              pw.Text('Émetteur / Seller', style: pw.TextStyle(fontSize: 9, color: grey)),
+              pw.Text(t('Émetteur'), style: pw.TextStyle(fontSize: 8.5, color: grey)),
               pw.Text('Staff Flow', style: const pw.TextStyle(fontSize: 11)),
-              pw.Text('[Raison sociale, numéro d\'enregistrement et adresse à compléter]',
-                  style: pw.TextStyle(fontSize: 9, color: grey)),
-              pw.Text('https://staff-flow.cloud', style: pw.TextStyle(fontSize: 9, color: grey)),
+              pw.Text(t('[Raison sociale, numéro d\'enregistrement et adresse à compléter]'),
+                  style: pw.TextStyle(fontSize: 8.5, color: grey)),
+              pw.Text('$contactEmail · https://staff-flow.cloud', style: pw.TextStyle(fontSize: 8.5, color: grey)),
             ]),
           ),
+          pw.SizedBox(width: 16),
           pw.Expanded(
             child: pw.Column(crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
-              pw.Text('Client / Customer', style: pw.TextStyle(fontSize: 9, color: grey)),
+              pw.Text(t('Client'), style: pw.TextStyle(fontSize: 8.5, color: grey)),
               pw.Text('${r[1]}', style: const pw.TextStyle(fontSize: 11)),
-              pw.Text('${r[2] ?? ''} · ${r[3] ?? ''}', style: pw.TextStyle(fontSize: 9, color: grey)),
+              pw.Text(t('Entreprise n° {id}', {'id': '${r[3]}'}), style: pw.TextStyle(fontSize: 8.5, color: grey)),
+              if (r[2] != null) pw.Text('${r[2]}', style: pw.TextStyle(fontSize: 8.5, color: grey)),
             ]),
           ),
         ]),
         pw.SizedBox(height: 16),
-        pw.Text('Période / Period : ${_day(r[6] as DateTime)} – ${_day(r[7] as DateTime)}',
-            style: const pw.TextStyle(fontSize: 10)),
-        pw.SizedBox(height: 16),
+        pw.Text(t('Période : {from} – {to}', {'from': _day(r[6] as DateTime), 'to': _day((r[7] as DateTime).subtract(const Duration(days: 1)))}),
+            style: const pw.TextStyle(fontSize: 9.5)),
+        pw.SizedBox(height: 12),
         pw.Table(
           border: pw.TableBorder(horizontalInside: pw.BorderSide(color: PdfColor.fromHex('#E3E8F2'))),
           columnWidths: {0: const pw.FlexColumnWidth(3), 1: const pw.FlexColumnWidth(1)},
           children: [
             pw.TableRow(decoration: pw.BoxDecoration(color: navy), children: [
-              cell('Désignation / Description', bold: true, color: PdfColors.white),
-              cell('Montant / Amount', bold: true, align: pw.TextAlign.right, color: PdfColors.white),
+              cell(t('Désignation'), strong: true, color: PdfColors.white),
+              cell(t('Montant'), strong: true, align: pw.TextAlign.right, color: PdfColors.white),
             ]),
             for (final l in lines)
               pw.TableRow(children: [cell(label(l)), cell(_eur(l['cents'] as int), align: pw.TextAlign.right)]),
             pw.TableRow(children: [
-              cell('Total TTC / Total incl. taxes', bold: true),
-              cell(_eur(r[10] as int), bold: true, align: pw.TextAlign.right),
+              cell(t('Total TTC'), strong: true),
+              cell(_eur(r[10] as int), strong: true, align: pw.TextAlign.right),
             ]),
           ],
         ),
         pw.SizedBox(height: 12),
-        pw.Text('Payé / Paid. Taxes : régime à préciser selon le statut de l\'éditeur. / Tax regime to be confirmed.',
-            style: pw.TextStyle(fontSize: 9, color: grey)),
+        pw.Text(t('Payé. Taxes : régime à préciser selon le statut de l\'éditeur.'),
+            style: pw.TextStyle(fontSize: 8.5, color: grey)),
         pw.Spacer(),
-        pw.Text('Aucun remboursement d\'une période payée. / Paid periods are not refundable.',
-            style: pw.TextStyle(fontSize: 8, color: grey)),
+        pw.Text(t('Aucun remboursement d\'une période payée.'), style: pw.TextStyle(fontSize: 8, color: grey)),
       ]),
     ));
     return doc.save();
@@ -419,9 +509,9 @@ class BillingService {
 
   Future<List<Map<String, Object?>>> adminCompanies() async {
     final rows = await store.query(store.db, '''
-      SELECT c.id::text, c.name, c.billing_status, c.trial_ends_at, c.paid_until, c.grace_ends_at, u.email,
+      SELECT c.id::text, c.name, c.billing_status, c.trial_ends_at, c.paid_until, c.grace_ends_at, u.email, c.public_id,
         (SELECT count(*) FROM memberships m2 WHERE m2.company_id = c.id AND m2.left_at IS NULL
-           AND m2.role IN ('manager', 'employee'))
+           AND m2.role IN ('manager', 'employee')) AS staff
       FROM companies c
       LEFT JOIN memberships m ON m.company_id = c.id AND m.role = 'owner' AND m.left_at IS NULL
       LEFT JOIN users u ON u.id = m.user_id
@@ -437,7 +527,8 @@ class BillingService {
           'paidUntil': iso(r[4]),
           'graceEndsAt': iso(r[5]),
           'ownerEmail': r[6],
-          'staff': (r[7] as num).toInt(),
+          'publicId': r[7],
+          'staff': (r[8] as num).toInt(),
         },
     ];
   }

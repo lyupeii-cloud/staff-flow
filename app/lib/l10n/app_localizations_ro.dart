@@ -1431,13 +1431,6 @@ class L10nRo extends L10n {
   String get billingNoInvoices => 'Încă nu există facturi.';
 
   @override
-  String get billingInvoiceByEmail => 'Primește facturile pe e-mail';
-
-  @override
-  String get billingEmailSoon =>
-      'Trimiterea pe e-mail vine în curând; facturile se pot descărca oricând aici.';
-
-  @override
   String get billingManage => 'Gestionează abonamentul';
 
   @override
@@ -1472,5 +1465,20 @@ class L10nRo extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company a fost ștearsă din cauza neplății.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'ID-ul firmei: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'Astăzi: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Include restul lunii curente ($days zile, pro rata), apoi luni întregi de la data de 1.';
   }
 }

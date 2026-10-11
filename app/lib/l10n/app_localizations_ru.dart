@@ -1427,13 +1427,6 @@ class L10nRu extends L10n {
   String get billingNoInvoices => 'Счетов пока нет.';
 
   @override
-  String get billingInvoiceByEmail => 'Получать счета по электронной почте';
-
-  @override
-  String get billingEmailSoon =>
-      'Отправка по почте скоро появится; счета всегда можно скачать здесь.';
-
-  @override
   String get billingManage => 'Управлять подпиской';
 
   @override
@@ -1468,5 +1461,20 @@ class L10nRu extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company удалена из-за неоплаты.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'Идентификатор компании: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'Сегодня: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Включает остаток текущего месяца ($days дн., пропорционально), далее полные месяцы с 1-го числа.';
   }
 }

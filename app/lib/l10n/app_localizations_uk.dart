@@ -1428,13 +1428,6 @@ class L10nUk extends L10n {
   String get billingNoInvoices => 'Рахунків поки немає.';
 
   @override
-  String get billingInvoiceByEmail => 'Отримувати рахунки електронною поштою';
-
-  @override
-  String get billingEmailSoon =>
-      'Надсилання поштою незабаром; рахунки завжди можна завантажити тут.';
-
-  @override
   String get billingManage => 'Керувати підпискою';
 
   @override
@@ -1469,5 +1462,20 @@ class L10nUk extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company видалено через несплату.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'Ідентифікатор компанії: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'Сьогодні: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Включає решту поточного місяця ($days дн., пропорційно), далі повні місяці з 1-го числа.';
   }
 }

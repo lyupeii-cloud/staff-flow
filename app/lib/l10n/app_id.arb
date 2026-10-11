@@ -395,8 +395,6 @@
   "billingPaidOk": "Pembayaran tercatat.",
   "billingInvoices": "Faktur",
   "billingNoInvoices": "Belum ada faktur.",
-  "billingInvoiceByEmail": "Terima faktur lewat email",
-  "billingEmailSoon": "Pengiriman email segera hadir; faktur selalu bisa diunduh di sini.",
   "billingManage": "Kelola langganan",
   "billingReadOnlyStaff": "Perusahaan ini hanya-baca sampai pemilik memperpanjang langganan.",
   "billingPerMonth": "{amount} / bulan",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: uji coba gratis berakhir dalam kurang dari 24 jam.",
   "noticeBillingGrace": "{company} hanya-baca karena belum dibayar; dihapus pada {date}.",
   "noticeBillingGraceReminder": "Pengingat: tanpa pembayaran, {company} akan dihapus pada {date}.",
-  "noticeBillingDeleted": "{company} dihapus karena tidak dibayar."
+  "noticeBillingDeleted": "{company} dihapus karena tidak dibayar.",
+  "billingCompanyId": "ID perusahaan: {id}",
+  "billingDueToday": "Hari ini: {amount}",
+  "billingProrataNote": "Termasuk sisa bulan ini ({days} hari, prorata), lalu bulan penuh mulai tanggal 1."
 }

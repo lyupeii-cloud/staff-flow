@@ -395,8 +395,6 @@
   "billingPaidOk": "পেমেন্ট রেকর্ড হয়েছে।",
   "billingInvoices": "ইনভয়েস",
   "billingNoInvoices": "এখনো কোনো ইনভয়েস নেই।",
-  "billingInvoiceByEmail": "ইমেইলে ইনভয়েস পান",
-  "billingEmailSoon": "ইমেইলে পাঠানো শীঘ্রই আসছে; ইনভয়েস সবসময় এখানে ডাউনলোড করা যায়।",
   "billingManage": "সাবস্ক্রিপশন পরিচালনা",
   "billingReadOnlyStaff": "মালিক সাবস্ক্রিপশন নবায়ন না করা পর্যন্ত এই প্রতিষ্ঠান শুধু পড়ার জন্য।",
   "billingPerMonth": "{amount} / মাস",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: বিনামূল্যে ট্রায়াল ২৪ ঘণ্টার কম সময়ে শেষ হবে।",
   "noticeBillingGrace": "{company} পেমেন্ট না হওয়ায় শুধু পড়ার জন্য; {date} তারিখে মুছে ফেলা হবে।",
   "noticeBillingGraceReminder": "অনুস্মারক: পেমেন্ট না হলে {company} {date} তারিখে মুছে ফেলা হবে।",
-  "noticeBillingDeleted": "পেমেন্ট না হওয়ায় {company} মুছে ফেলা হয়েছে।"
+  "noticeBillingDeleted": "পেমেন্ট না হওয়ায় {company} মুছে ফেলা হয়েছে।",
+  "billingCompanyId": "প্রতিষ্ঠানের আইডি: {id}",
+  "billingDueToday": "আজ: {amount}",
+  "billingProrataNote": "চলতি মাসের বাকি অংশ ({days} দিন, আনুপাতিক) এবং তারপর ১ তারিখ থেকে পূর্ণ মাস অন্তর্ভুক্ত।"
 }

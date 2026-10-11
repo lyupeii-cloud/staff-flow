@@ -85,7 +85,7 @@ class Store {
         graceEndsAt: r['grace_ends_at'] as DateTime?,
         billingPeriod: r['billing_period'] as String?,
         cascadeOption: r['cascade_option'] as bool? ?? false,
-        invoiceByEmail: r['invoice_by_email'] as bool? ?? true,
+        publicId: r['public_id'] as String? ?? '',
         // Sans image : 0 (le numéro, lui, continue de monter pour la suivante).
         logoVersion: r.containsKey('logo') && r['logo'] == null ? 0 : r['logo_version'] as int? ?? 0,
       );
@@ -135,8 +135,8 @@ class Store {
   }) =>
       _db.runTx((tx) async {
         final rows = await query(tx,
-            'INSERT INTO companies (name, timezone) VALUES (@name, @tz) RETURNING *',
-            {'name': name, 'tz': timezone});
+            'INSERT INTO companies (name, timezone, public_id) VALUES (@name, @tz, @p) RETURNING *',
+            {'name': name, 'tz': timezone, 'p': newCompanyCode()});
         final company = companyFromRow(rows.first.toColumnMap());
         await query(tx,
             "INSERT INTO memberships (company_id, user_id, role) VALUES (@c::uuid, @u::uuid, 'owner')",
@@ -381,5 +381,8 @@ const _publicIdAlphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 final _random = Random.secure();
 
 /// Identifiant lisible, sans caractères ambigus (0/O, 1/I) : `SF-7KQ2M9XA`.
+/// Identifiant public d'une entreprise : 6 caractères sans 0/O ni 1/I.
+String newCompanyCode() => List.generate(6, (_) => _publicIdAlphabet[_random.nextInt(_publicIdAlphabet.length)]).join();
+
 String newPublicId() =>
     'SF-${List.generate(8, (_) => _publicIdAlphabet[_random.nextInt(_publicIdAlphabet.length)]).join()}';

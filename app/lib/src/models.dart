@@ -37,6 +37,9 @@ class User {
 class Company {
   final String id;
   final String name;
+
+  /// Identifiant public (6 caractères), sur les factures.
+  final String publicId;
   final String timezone;
   final bool readOnly;
 
@@ -68,6 +71,7 @@ class Company {
   Company.fromJson(Map<String, dynamic> j)
       : id = j['id'],
         name = j['name'],
+        publicId = j['publicId'] ?? '',
         timezone = j['timezone'],
         readOnly = j['status'] == 'readOnly',
         legalRules = (j['legalRules'] as Map?)?.map((k, v) => MapEntry(k as String, v as int)),

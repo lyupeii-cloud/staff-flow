@@ -1417,13 +1417,6 @@ class L10nMr extends L10n {
   String get billingNoInvoices => 'अद्याप बिले नाहीत.';
 
   @override
-  String get billingInvoiceByEmail => 'बिले ईमेलने मिळवा';
-
-  @override
-  String get billingEmailSoon =>
-      'ईमेलने पाठवणे लवकरच येत आहे; बिले येथे नेहमी डाउनलोड करता येतात.';
-
-  @override
   String get billingManage => 'सदस्यता व्यवस्थापित करा';
 
   @override
@@ -1458,5 +1451,20 @@ class L10nMr extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return 'पैसे न भरल्यामुळे $company हटवली गेली.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'कंपनी आयडी: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'आज: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'चालू महिन्याचा उरलेला भाग ($days दिवस, प्रमाणशीर) समाविष्ट; नंतर 1 तारखेपासून पूर्ण महिने.';
   }
 }

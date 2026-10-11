@@ -1424,13 +1424,6 @@ class L10nDa extends L10n {
   String get billingNoInvoices => 'Ingen fakturaer endnu.';
 
   @override
-  String get billingInvoiceByEmail => 'Modtag fakturaer via e-mail';
-
-  @override
-  String get billingEmailSoon =>
-      'Afsendelse via e-mail kommer snart; fakturaer kan altid downloades her.';
-
-  @override
   String get billingManage => 'Administrer abonnement';
 
   @override
@@ -1465,5 +1458,20 @@ class L10nDa extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company blev slettet på grund af manglende betaling.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'Virksomheds-ID: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'I dag: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Omfatter resten af indeværende måned ($days dage, forholdsmæssigt) og derefter hele måneder fra den 1.';
   }
 }

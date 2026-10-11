@@ -1418,13 +1418,6 @@ class L10nBg extends L10n {
   String get billingNoInvoices => 'Все още няма фактури.';
 
   @override
-  String get billingInvoiceByEmail => 'Получаване на фактури по имейл';
-
-  @override
-  String get billingEmailSoon =>
-      'Изпращането по имейл идва скоро; фактурите винаги могат да се изтеглят тук.';
-
-  @override
   String get billingManage => 'Управление на абонамента';
 
   @override
@@ -1459,5 +1452,20 @@ class L10nBg extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company беше изтрита поради неплащане.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'ID на фирмата: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'Днес: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Включва остатъка от текущия месец ($days дни, пропорционално), след това цели месеци от 1-во число.';
   }
 }

@@ -1420,13 +1420,6 @@ class L10nMs extends L10n {
   String get billingNoInvoices => 'Belum ada invois.';
 
   @override
-  String get billingInvoiceByEmail => 'Terima invois melalui e-mel';
-
-  @override
-  String get billingEmailSoon =>
-      'Penghantaran e-mel akan datang; invois sentiasa boleh dimuat turun di sini.';
-
-  @override
   String get billingManage => 'Urus langganan';
 
   @override
@@ -1461,5 +1454,20 @@ class L10nMs extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company telah dipadam kerana tidak dibayar.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'ID syarikat: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'Hari ini: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Termasuk baki bulan ini ($days hari, prorata), kemudian bulan penuh mulai 1 haribulan.';
   }
 }

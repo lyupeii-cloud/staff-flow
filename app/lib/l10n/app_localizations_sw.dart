@@ -1423,13 +1423,6 @@ class L10nSw extends L10n {
   String get billingNoInvoices => 'Bado hakuna ankara.';
 
   @override
-  String get billingInvoiceByEmail => 'Pokea ankara kwa barua pepe';
-
-  @override
-  String get billingEmailSoon =>
-      'Kutuma kwa barua pepe kunakuja hivi karibuni; ankara zinaweza kupakuliwa hapa wakati wowote.';
-
-  @override
   String get billingManage => 'Simamia usajili';
 
   @override
@@ -1464,5 +1457,20 @@ class L10nSw extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company imefutwa kwa kutolipa.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'Kitambulisho cha kampuni: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'Leo: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Inajumuisha sehemu iliyobaki ya mwezi huu (siku $days, kwa uwiano), kisha miezi kamili kuanzia tarehe 1.';
   }
 }

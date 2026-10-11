@@ -76,6 +76,9 @@ class Company {
   final String id;
   final String name;
 
+  /// Identifiant public (6 caractères), sur les factures de l'entreprise.
+  final String publicId;
+
   /// Fuseau IANA de l'entreprise : toutes ses heures y sont exprimées.
   final String timezone;
   final CompanyStatus status;
@@ -107,11 +110,11 @@ class Company {
   final DateTime? graceEndsAt;
   final String? billingPeriod;
   final bool cascadeOption;
-  final bool invoiceByEmail;
 
   const Company({
     required this.id,
     required this.name,
+    this.publicId = '',
     required this.timezone,
     required this.status,
     required this.createdAt,
@@ -127,7 +130,6 @@ class Company {
     this.graceEndsAt,
     this.billingPeriod,
     this.cascadeOption = false,
-    this.invoiceByEmail = true,
   });
 
   Map<String, Object?> billingJson() => {
@@ -137,7 +139,6 @@ class Company {
         'graceEndsAt': graceEndsAt?.toIso8601String(),
         'period': billingPeriod,
         'cascadeOption': cascadeOption,
-        'invoiceByEmail': invoiceByEmail,
       };
 
   Company copyWith({String? name, String? timezone, Map<String, int>? Function()? legalRules, String? printScope}) =>
@@ -159,12 +160,13 @@ class Company {
         graceEndsAt: graceEndsAt,
         billingPeriod: billingPeriod,
         cascadeOption: cascadeOption,
-        invoiceByEmail: invoiceByEmail,
+        publicId: publicId,
       );
 
   Map<String, Object?> toJson() => {
         'id': id,
         'name': name,
+        'publicId': publicId,
         'timezone': timezone,
         'status': status.name,
         'legalRules': legalRules,

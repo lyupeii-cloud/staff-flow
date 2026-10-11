@@ -395,8 +395,6 @@
   "billingPaidOk": "Zahlung erfasst.",
   "billingInvoices": "Rechnungen",
   "billingNoInvoices": "Noch keine Rechnungen.",
-  "billingInvoiceByEmail": "Rechnungen per E-Mail erhalten",
-  "billingEmailSoon": "Der E-Mail-Versand folgt bald; Rechnungen können hier jederzeit heruntergeladen werden.",
   "billingManage": "Abonnement verwalten",
   "billingReadOnlyStaff": "Dieses Unternehmen ist schreibgeschützt, bis der Inhaber das Abonnement verlängert.",
   "billingPerMonth": "{amount} / Monat",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: Die kostenlose Testphase endet in weniger als 24 Stunden.",
   "noticeBillingGrace": "{company} ist wegen Nichtzahlung schreibgeschützt; Löschung am {date}.",
   "noticeBillingGraceReminder": "Erinnerung: Ohne Zahlung wird {company} am {date} gelöscht.",
-  "noticeBillingDeleted": "{company} wurde wegen Nichtzahlung gelöscht."
+  "noticeBillingDeleted": "{company} wurde wegen Nichtzahlung gelöscht.",
+  "billingCompanyId": "Unternehmens-ID: {id}",
+  "billingDueToday": "Heute: {amount}",
+  "billingProrataNote": "Enthält den Rest des laufenden Monats ({days} Tage, anteilig), danach volle Monate ab dem 1."
 }

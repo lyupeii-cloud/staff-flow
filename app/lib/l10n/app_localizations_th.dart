@@ -1409,13 +1409,6 @@ class L10nTh extends L10n {
   String get billingNoInvoices => 'ยังไม่มีใบแจ้งหนี้';
 
   @override
-  String get billingInvoiceByEmail => 'รับใบแจ้งหนี้ทางอีเมล';
-
-  @override
-  String get billingEmailSoon =>
-      'การส่งทางอีเมลจะมาเร็ว ๆ นี้ ใบแจ้งหนี้ดาวน์โหลดได้ที่นี่เสมอ';
-
-  @override
   String get billingManage => 'จัดการการสมัครสมาชิก';
 
   @override
@@ -1450,5 +1443,20 @@ class L10nTh extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company ถูกลบเนื่องจากไม่ชำระเงิน';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'รหัสบริษัท: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'วันนี้: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'รวมส่วนที่เหลือของเดือนนี้ ($days วัน ตามสัดส่วน) แล้วคิดเต็มเดือนตั้งแต่วันที่ 1';
   }
 }

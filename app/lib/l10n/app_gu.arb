@@ -395,8 +395,6 @@
   "billingPaidOk": "ચુકવણી નોંધાઈ.",
   "billingInvoices": "ઇન્વૉઇસ",
   "billingNoInvoices": "હજી કોઈ ઇન્વૉઇસ નથી.",
-  "billingInvoiceByEmail": "ઇન્વૉઇસ ઇમેઇલથી મેળવો",
-  "billingEmailSoon": "ઇમેઇલથી મોકલવાનું ટૂંક સમયમાં; ઇન્વૉઇસ અહીં હંમેશાં ડાઉનલોડ થઈ શકે છે.",
   "billingManage": "સબ્સ્ક્રિપ્શન સંચાલિત કરો",
   "billingReadOnlyStaff": "માલિક સબ્સ્ક્રિપ્શન રિન્યૂ ન કરે ત્યાં સુધી આ કંપની ફક્ત વાંચવા માટે છે.",
   "billingPerMonth": "{amount} / મહિનો",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: મફત ટ્રાયલ 24 કલાકથી ઓછા સમયમાં પૂરું થશે.",
   "noticeBillingGrace": "ચુકવણી ન થવાથી {company} ફક્ત વાંચવા માટે; {date}એ કાઢી નાખવામાં આવશે.",
   "noticeBillingGraceReminder": "યાદ અપાવવું: ચુકવણી વિના {company} {date}એ કાઢી નાખવામાં આવશે.",
-  "noticeBillingDeleted": "ચુકવણી ન થવાથી {company} કાઢી નાખવામાં આવી."
+  "noticeBillingDeleted": "ચુકવણી ન થવાથી {company} કાઢી નાખવામાં આવી.",
+  "billingCompanyId": "કંપની ID: {id}",
+  "billingDueToday": "આજે: {amount}",
+  "billingProrataNote": "ચાલુ મહિનાનો બાકીનો ભાગ ({days} દિવસ, પ્રમાણસર) સમાવિષ્ટ; પછી 1 તારીખથી પૂરા મહિના."
 }

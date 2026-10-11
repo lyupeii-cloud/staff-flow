@@ -65,18 +65,22 @@ void main() {
     }
     final b = await billing(boss, company);
     expect([b['staff'], b['prices']['month'], b['prices']['year'], b['canPay']], [25, 500, 5000, true]);
+    // Le 5 octobre : prorata de 27 jours sur 31, arrondi au centime supérieur.
+    expect([b['prorataDays'], b['dueNow']['month'], b['dueNow']['yearCascade']], [27, 436 + 500, 436 + 175 + 5000 + 2400]);
+    expect(b['publicId'], matches(RegExp(r'^[A-Z2-9]{6}$')));
     expect((await other('POST', '/companies/$mine/billing/checkout', {'period': 'month', 'cascade': false})).$1, 409);
     expect((await other('GET', '/companies/$company/billing')).$1, 404, reason: 'pas membre');
     // Année avec l'option : l'option n'a pas de remise.
     final paid = await boss.ok('POST', '/companies/$company/billing/checkout', {'period': 'year', 'cascade': true});
-    expect(paid['amountCents'], 5000 + 200 * 12);
-    expect(paid['number'], startsWith('SF-2026-'));
+    expect(paid['amountCents'], 436 + 175 + 5000 + 200 * 12);
+    expect(paid['number'], 'SF-${b['publicId']}-2026-0001');
     final after = await billing(boss, company);
     expect([after['status'], after['period'], after['cascadeOption']], ['active', 'year', true]);
-    expect(DateTime.parse(after['paidUntil']), DateTime.utc(2027, 10, 5, 8));
+    expect(DateTime.parse(after['paidUntil']), DateTime.utc(2027, 11, 1), reason: 'mois civils pleins');
     // Un mois de plus s'ajoute à la période déjà payée.
-    await boss.ok('POST', '/companies/$company/billing/checkout', {'period': 'month', 'cascade': false});
-    expect(DateTime.parse((await billing(boss, company))['paidUntil']), DateTime.utc(2027, 11, 5, 8));
+    final renewal = await boss.ok('POST', '/companies/$company/billing/checkout', {'period': 'month', 'cascade': false});
+    expect([renewal['amountCents'], renewal['number']], [500, 'SF-${b['publicId']}-2026-0002'], reason: 'pas de prorata');
+    expect(DateTime.parse((await billing(boss, company))['paidUntil']), DateTime.utc(2027, 12, 1));
     // Facture PDF par un lien temporaire.
     final invoice = (await billing(boss, company))['invoices'].last;
     final link = (await boss.ok('GET', '/companies/$company/invoices/${invoice['id']}/link'))['path'] as String;
@@ -92,7 +96,7 @@ void main() {
     final boss = await env.login('boss');
     final company = await env.createCompany(boss);
     await boss.ok('POST', '/companies/$company/billing/checkout', {'period': 'month', 'cascade': false});
-    env.clock.advance(const Duration(days: 32));
+    env.clock.advance(const Duration(days: 60)); // prorata d'octobre + novembre : payé jusqu'au 1er décembre
     await env.api.billing.tick();
     expect((await billing(boss, company))['status'], 'grace');
     // Payer pendant la grâce réactive tout.

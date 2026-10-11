@@ -395,8 +395,6 @@
   "billingPaidOk": "Betaling geregistreerd.",
   "billingInvoices": "Facturen",
   "billingNoInvoices": "Nog geen facturen.",
-  "billingInvoiceByEmail": "Facturen per e-mail ontvangen",
-  "billingEmailSoon": "Verzending per e-mail komt binnenkort; facturen zijn hier altijd te downloaden.",
   "billingManage": "Abonnement beheren",
   "billingReadOnlyStaff": "Dit bedrijf is alleen-lezen tot de eigenaar het abonnement verlengt.",
   "billingPerMonth": "{amount} / maand",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: de gratis proefperiode eindigt binnen 24 uur.",
   "noticeBillingGrace": "{company} is alleen-lezen wegens niet-betaling; verwijdering op {date}.",
   "noticeBillingGraceReminder": "Herinnering: zonder betaling wordt {company} op {date} verwijderd.",
-  "noticeBillingDeleted": "{company} is verwijderd wegens niet-betaling."
+  "noticeBillingDeleted": "{company} is verwijderd wegens niet-betaling.",
+  "billingCompanyId": "Bedrijfs-ID: {id}",
+  "billingDueToday": "Vandaag: {amount}",
+  "billingProrataNote": "Inclusief de rest van deze maand ({days} dagen, pro rata), daarna hele maanden vanaf de 1e."
 }

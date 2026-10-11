@@ -1390,12 +1390,6 @@ class L10nKo extends L10n {
   String get billingNoInvoices => '아직 청구서가 없습니다.';
 
   @override
-  String get billingInvoiceByEmail => '이메일로 청구서 받기';
-
-  @override
-  String get billingEmailSoon => '이메일 발송은 곧 제공됩니다. 청구서는 언제든 여기서 다운로드할 수 있습니다.';
-
-  @override
   String get billingManage => '구독 관리';
 
   @override
@@ -1429,5 +1423,20 @@ class L10nKo extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company이(가) 미납으로 삭제되었습니다.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return '회사 ID: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return '오늘: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return '이번 달 남은 기간($days일, 일할 계산)과 다음 달 1일부터의 월 단위 요금이 포함됩니다.';
   }
 }

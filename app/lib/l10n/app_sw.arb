@@ -395,8 +395,6 @@
   "billingPaidOk": "Malipo yamerekodiwa.",
   "billingInvoices": "Ankara",
   "billingNoInvoices": "Bado hakuna ankara.",
-  "billingInvoiceByEmail": "Pokea ankara kwa barua pepe",
-  "billingEmailSoon": "Kutuma kwa barua pepe kunakuja hivi karibuni; ankara zinaweza kupakuliwa hapa wakati wowote.",
   "billingManage": "Simamia usajili",
   "billingReadOnlyStaff": "Kampuni hii ni ya kusoma tu hadi mmiliki atakapofanya upya usajili.",
   "billingPerMonth": "{amount} / mwezi",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: jaribio la bure linaisha ndani ya chini ya saa 24.",
   "noticeBillingGrace": "{company} ni ya kusoma tu kwa kutolipa; itafutwa tarehe {date}.",
   "noticeBillingGraceReminder": "Kumbusho: bila malipo, {company} itafutwa tarehe {date}.",
-  "noticeBillingDeleted": "{company} imefutwa kwa kutolipa."
+  "noticeBillingDeleted": "{company} imefutwa kwa kutolipa.",
+  "billingCompanyId": "Kitambulisho cha kampuni: {id}",
+  "billingDueToday": "Leo: {amount}",
+  "billingProrataNote": "Inajumuisha sehemu iliyobaki ya mwezi huu (siku {days}, kwa uwiano), kisha miezi kamili kuanzia tarehe 1."
 }

@@ -125,7 +125,8 @@ class _TeamViewState extends State<TeamView> {
               child: ListTile(
                 leading: const Icon(Icons.workspace_premium_outlined),
                 title: Text(t.billingManage),
-                subtitle: Text(billingStatusText(context, company) ?? ''),
+                subtitle: Text('${billingStatusText(context, company) ?? ''}\n${t.billingCompanyId(company.publicId)}'),
+                isThreeLine: true,
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () => BillingPage.open(context, widget.session, company),
               ),
@@ -350,17 +351,27 @@ class _TeamViewState extends State<TeamView> {
                 ),
                 if (siteOptions.isNotEmpty) ...[
                   const SizedBox(height: 12),
-                  Text(t.sitesLabel, style: Theme.of(context).textTheme.titleSmall),
-                  Wrap(
-                    spacing: 6,
-                    children: [
-                      for (final s in siteOptions)
-                        FilterChip(
-                          label: Text(widget.data.sitePath(s.id) ?? s.name),
-                          selected: chosenSites.contains(s.id),
-                          onSelected: (v) => setState(() => v ? chosenSites.add(s.id) : chosenSites.remove(s.id)),
-                        ),
-                    ],
+                  Text(chosenSites.isEmpty ? t.sitesLabel : '${t.sitesLabel} (${chosenSites.length})',
+                      style: Theme.of(context).textTheme.titleSmall),
+                  const SizedBox(height: 4),
+                  // Une seule ligne qui défile : le dialogue reste lisible avec beaucoup de sites.
+                  SizedBox(
+                    height: 44,
+                    width: 360,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        for (final s in siteOptions)
+                          Padding(
+                            padding: const EdgeInsets.only(right: 6),
+                            child: FilterChip(
+                              label: Text(widget.data.sitePath(s.id) ?? s.name),
+                              selected: chosenSites.contains(s.id),
+                              onSelected: (v) => setState(() => v ? chosenSites.add(s.id) : chosenSites.remove(s.id)),
+                            ),
+                          ),
+                      ],
+                    ),
                   ),
                 ],
                 const SizedBox(height: 16),

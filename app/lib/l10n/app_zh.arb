@@ -395,8 +395,6 @@
   "billingPaidOk": "付款已记录。",
   "billingInvoices": "发票",
   "billingNoInvoices": "暂无发票。",
-  "billingInvoiceByEmail": "通过电子邮件接收发票",
-  "billingEmailSoon": "邮件发送即将推出；发票随时可在此下载。",
   "billingManage": "管理订阅",
   "billingReadOnlyStaff": "在老板续订之前，此公司为只读状态。",
   "billingPerMonth": "{amount} / 月",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}：免费试用将在 24 小时内结束。",
   "noticeBillingGrace": "{company} 因未付款处于只读状态；将于 {date} 删除。",
   "noticeBillingGraceReminder": "提醒：如不付款，{company} 将于 {date} 删除。",
-  "noticeBillingDeleted": "{company} 因未付款已被删除。"
+  "noticeBillingDeleted": "{company} 因未付款已被删除。",
+  "billingCompanyId": "公司编号：{id}",
+  "billingDueToday": "今天：{amount}",
+  "billingProrataNote": "包含本月剩余天数（{days} 天，按比例），之后从每月 1 日起按整月计费。"
 }

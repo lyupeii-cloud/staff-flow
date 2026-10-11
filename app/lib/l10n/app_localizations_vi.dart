@@ -1415,13 +1415,6 @@ class L10nVi extends L10n {
   String get billingNoInvoices => 'Chưa có hóa đơn.';
 
   @override
-  String get billingInvoiceByEmail => 'Nhận hóa đơn qua email';
-
-  @override
-  String get billingEmailSoon =>
-      'Gửi email sắp ra mắt; hóa đơn luôn có thể tải tại đây.';
-
-  @override
   String get billingManage => 'Quản lý gói đăng ký';
 
   @override
@@ -1456,5 +1449,20 @@ class L10nVi extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company đã bị xóa do không thanh toán.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'Mã công ty: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'Hôm nay: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Gồm phần còn lại của tháng này ($days ngày, theo tỷ lệ), sau đó tính theo tháng tròn từ ngày 1.';
   }
 }

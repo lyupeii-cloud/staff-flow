@@ -399,8 +399,6 @@
   "billingPaidOk": "Оплату зараховано.",
   "billingInvoices": "Рахунки",
   "billingNoInvoices": "Рахунків поки немає.",
-  "billingInvoiceByEmail": "Отримувати рахунки електронною поштою",
-  "billingEmailSoon": "Надсилання поштою незабаром; рахунки завжди можна завантажити тут.",
   "billingManage": "Керувати підпискою",
   "billingReadOnlyStaff": "Компанія доступна лише для читання, доки власник не поновить підписку.",
   "billingPerMonth": "{amount} / міс.",
@@ -408,5 +406,8 @@
   "noticeBillingTrialEnding": "{company}: безкоштовний пробний період закінчиться менш ніж за 24 години.",
   "noticeBillingGrace": "{company} доступна лише для читання через несплату; видалення {date}.",
   "noticeBillingGraceReminder": "Нагадування: без оплати {company} буде видалено {date}.",
-  "noticeBillingDeleted": "{company} видалено через несплату."
+  "noticeBillingDeleted": "{company} видалено через несплату.",
+  "billingCompanyId": "Ідентифікатор компанії: {id}",
+  "billingDueToday": "Сьогодні: {amount}",
+  "billingProrataNote": "Включає решту поточного місяця ({days} дн., пропорційно), далі повні місяці з 1-го числа."
 }

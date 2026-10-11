@@ -395,8 +395,6 @@
   "billingPaidOk": "Naitala ang bayad.",
   "billingInvoices": "Mga invoice",
   "billingNoInvoices": "Wala pang invoice.",
-  "billingInvoiceByEmail": "Tumanggap ng mga invoice sa email",
-  "billingEmailSoon": "Malapit na ang pagpapadala sa email; maaaring i-download ang mga invoice dito anumang oras.",
   "billingManage": "Pamahalaan ang subscription",
   "billingReadOnlyStaff": "Read-only ang kumpanyang ito hanggang i-renew ng may-ari ang subscription.",
   "billingPerMonth": "{amount} / buwan",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: matatapos ang libreng trial sa loob ng 24 na oras.",
   "noticeBillingGrace": "Read-only ang {company} dahil hindi nabayaran; buburahin sa {date}.",
   "noticeBillingGraceReminder": "Paalala: kung walang bayad, buburahin ang {company} sa {date}.",
-  "noticeBillingDeleted": "Binura ang {company} dahil hindi nabayaran."
+  "noticeBillingDeleted": "Binura ang {company} dahil hindi nabayaran.",
+  "billingCompanyId": "ID ng kumpanya: {id}",
+  "billingDueToday": "Ngayon: {amount}",
+  "billingProrataNote": "Kasama ang natitira sa buwang ito ({days} araw, prorata), at pagkatapos ay buong buwan mula sa ika-1."
 }

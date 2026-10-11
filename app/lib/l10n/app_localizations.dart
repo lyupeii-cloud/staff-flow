@@ -2561,18 +2561,6 @@ abstract class L10n {
   /// **'No invoices yet.'**
   String get billingNoInvoices;
 
-  /// No description provided for @billingInvoiceByEmail.
-  ///
-  /// In en, this message translates to:
-  /// **'Receive invoices by email'**
-  String get billingInvoiceByEmail;
-
-  /// No description provided for @billingEmailSoon.
-  ///
-  /// In en, this message translates to:
-  /// **'Email delivery is coming soon; invoices can always be downloaded here.'**
-  String get billingEmailSoon;
-
   /// No description provided for @billingManage.
   ///
   /// In en, this message translates to:
@@ -2620,6 +2608,24 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'{company} was deleted for non-payment.'**
   String noticeBillingDeleted(String company);
+
+  /// No description provided for @billingCompanyId.
+  ///
+  /// In en, this message translates to:
+  /// **'Company ID: {id}'**
+  String billingCompanyId(String id);
+
+  /// No description provided for @billingDueToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today: {amount}'**
+  String billingDueToday(String amount);
+
+  /// No description provided for @billingProrataNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Includes the rest of this month ({days} days, prorated), then whole months from the 1st.'**
+  String billingProrataNote(String days);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

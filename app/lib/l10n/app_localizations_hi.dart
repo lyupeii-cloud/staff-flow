@@ -1419,13 +1419,6 @@ class L10nHi extends L10n {
   String get billingNoInvoices => 'अभी कोई चालान नहीं।';
 
   @override
-  String get billingInvoiceByEmail => 'चालान ईमेल से प्राप्त करें';
-
-  @override
-  String get billingEmailSoon =>
-      'ईमेल से भेजना जल्द आ रहा है; चालान यहाँ हमेशा डाउनलोड किए जा सकते हैं।';
-
-  @override
   String get billingManage => 'सदस्यता प्रबंधित करें';
 
   @override
@@ -1460,5 +1453,20 @@ class L10nHi extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company भुगतान न होने के कारण हटा दी गई।';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'कंपनी आईडी: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'आज: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'इसमें चालू माह के शेष दिन ($days दिन, आनुपातिक) और फिर 1 तारीख से पूरे महीने शामिल हैं।';
   }
 }

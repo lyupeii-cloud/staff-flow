@@ -395,8 +395,6 @@
   "billingPaidOk": "결제가 기록되었습니다.",
   "billingInvoices": "청구서",
   "billingNoInvoices": "아직 청구서가 없습니다.",
-  "billingInvoiceByEmail": "이메일로 청구서 받기",
-  "billingEmailSoon": "이메일 발송은 곧 제공됩니다. 청구서는 언제든 여기서 다운로드할 수 있습니다.",
   "billingManage": "구독 관리",
   "billingReadOnlyStaff": "대표가 구독을 갱신할 때까지 이 회사는 읽기 전용입니다.",
   "billingPerMonth": "{amount} / 월",
@@ -404,5 +402,8 @@
   "noticeBillingTrialEnding": "{company}: 무료 체험이 24시간 이내에 종료됩니다.",
   "noticeBillingGrace": "{company}은(는) 미납으로 읽기 전용입니다. {date}에 삭제됩니다.",
   "noticeBillingGraceReminder": "알림: 결제하지 않으면 {company}이(가) {date}에 삭제됩니다.",
-  "noticeBillingDeleted": "{company}이(가) 미납으로 삭제되었습니다."
+  "noticeBillingDeleted": "{company}이(가) 미납으로 삭제되었습니다.",
+  "billingCompanyId": "회사 ID: {id}",
+  "billingDueToday": "오늘: {amount}",
+  "billingProrataNote": "이번 달 남은 기간({days}일, 일할 계산)과 다음 달 1일부터의 월 단위 요금이 포함됩니다."
 }

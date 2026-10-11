@@ -1389,12 +1389,6 @@ class L10nJa extends L10n {
   String get billingNoInvoices => '請求書はまだありません。';
 
   @override
-  String get billingInvoiceByEmail => '請求書をメールで受け取る';
-
-  @override
-  String get billingEmailSoon => 'メール送信はまもなく対応します。請求書はいつでもここからダウンロードできます。';
-
-  @override
   String get billingManage => 'サブスクリプションを管理';
 
   @override
@@ -1428,5 +1422,20 @@ class L10nJa extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$companyは未払いのため削除されました。';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return '会社ID：$id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return '本日：$amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return '今月の残り（$days日分、日割り）と、翌月1日からの月単位の料金を含みます。';
   }
 }

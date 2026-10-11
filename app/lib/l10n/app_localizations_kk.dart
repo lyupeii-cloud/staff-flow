@@ -1420,13 +1420,6 @@ class L10nKk extends L10n {
   String get billingNoInvoices => 'Әзірге шот жоқ.';
 
   @override
-  String get billingInvoiceByEmail => 'Шоттарды электрондық поштамен алу';
-
-  @override
-  String get billingEmailSoon =>
-      'Поштамен жіберу жақында қосылады; шоттарды мұнда әрқашан жүктеп алуға болады.';
-
-  @override
   String get billingManage => 'Жазылымды басқару';
 
   @override
@@ -1461,5 +1454,20 @@ class L10nKk extends L10n {
   @override
   String noticeBillingDeleted(String company) {
     return '$company төленбегендіктен жойылды.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'Компания идентификаторы: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'Бүгін: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Ағымдағы айдың қалған бөлігі ($days күн, үлестік), содан кейін 1-күннен бастап толық айлар.';
   }
 }
