@@ -14,6 +14,8 @@ import 'package:staff_flow_server/staff_flow_server.dart';
 ///   notifications sur les téléphones et navigateurs ; absent : avis dans l'application seulement
 /// - `TRANSLATE_URL` : adresse de LibreTranslate (ex. http://translate:5000) ; absent : pas de traduction
 /// - `DEV_LOGIN=true` : connexion sans Google, développement local uniquement
+/// - `ADMIN_EMAILS` : adresses Google des administrateurs de la plateforme, séparées par des virgules
+/// - `PLATFORM_CONFIG` : fichier JSON des réglages de la plateforme (tarifs…), facultatif
 /// - `PORT` : 8080 par défaut
 Future<void> main() async {
   final env = Platform.environment;
@@ -55,6 +57,8 @@ Future<void> main() async {
     allowedOrigins: list('ALLOWED_ORIGINS').toSet(),
     push: push,
     translator: translator,
+    adminEmails: {for (final e in list('ADMIN_EMAILS')) e.toLowerCase()},
+    platformFile: (env['PLATFORM_CONFIG'] ?? '').isEmpty ? null : PlatformService.readFile(env['PLATFORM_CONFIG']!),
   );
 
   final port = int.parse(env['PORT'] ?? '8080');

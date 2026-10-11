@@ -181,6 +181,9 @@ class Me {
   /// Familles de notifications activées (planning, requests, messages…).
   final Map<String, bool> notificationPrefs;
 
+  /// Administrateur de la plateforme (page d'administration).
+  final bool isAdmin;
+
   Me.fromJson(Map<String, dynamic> j)
       : user = User.fromJson(j['user']),
         companies = [for (final c in j['companies']) Membership.fromJson(c)],
@@ -191,6 +194,7 @@ class Me {
         unreadNotices = j['unreadNotices'] ?? 0,
         noticeRetention = j['noticeRetention'] ?? 'week',
         calendarPath = j['calendarPath'],
+        isAdmin = j['isAdmin'] == true,
         unreadMessages = {
           for (final e in ((j['unreadMessages'] ?? const {}) as Map).entries) e.key as String: e.value as int,
         },

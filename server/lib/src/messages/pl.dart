@@ -97,4 +97,6 @@ const pl = <String, String>{
   'Trois niveaux de sites au plus.': 'Najwyżej trzy poziomy placówek.',
   'Un site ne peut pas être placé sous lui-même.': 'Placówki nie można umieścić pod nią samą.',
   'La messagerie de cette entreprise est désactivée.': 'Wiadomości są wyłączone w tej firmie.',
+  'Valeur hors limites : de {min} à {max}.': 'Wartość poza zakresem: od {min} do {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Progi muszą następować po sobie: pracownicy w cenie < koniec progu 1 < koniec progu 2.',
 };

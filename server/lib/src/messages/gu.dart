@@ -97,4 +97,6 @@ const gu = <String, String>{
   'Trois niveaux de sites au plus.': 'વધુમાં વધુ ત્રણ સ્તરની સાઇટ.',
   'Un site ne peut pas être placé sous lui-même.': 'સાઇટને પોતાની નીચે મૂકી શકાતી નથી.',
   'La messagerie de cette entreprise est désactivée.': 'આ કંપની માટે સંદેશા બંધ છે.',
+  'Valeur hors limites : de {min} à {max}.': 'મૂલ્ય મર્યાદા બહાર: {min} થી {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'સ્તરો ક્રમમાં હોવા જોઈએ: સમાવિષ્ટ કર્મચારીઓ < સ્તર 1 નો અંત < સ્તર 2 નો અંત.',
 };

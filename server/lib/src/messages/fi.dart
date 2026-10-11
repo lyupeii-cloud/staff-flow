@@ -97,4 +97,6 @@ const fi = <String, String>{
   'Trois niveaux de sites au plus.': 'Enintään kolme toimipaikkatasoa.',
   'Un site ne peut pas être placé sous lui-même.': 'Toimipaikkaa ei voi sijoittaa itsensä alle.',
   'La messagerie de cette entreprise est désactivée.': 'Viestit on poistettu käytöstä tässä yrityksessä.',
+  'Valeur hors limites : de {min} à {max}.': 'Arvo rajojen ulkopuolella: {min}–{max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Portaiden on seurattava toisiaan: sisältyvät työntekijät < portaan 1 loppu < portaan 2 loppu.',
 };

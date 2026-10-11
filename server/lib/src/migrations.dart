@@ -386,4 +386,14 @@ CREATE INDEX sites_parent ON sites (parent_id);
 ALTER TABLE companies ADD COLUMN messaging_enabled boolean NOT NULL DEFAULT true;
 ALTER TABLE companies ALTER COLUMN messaging_enabled SET DEFAULT false;
 ''',
+  // 23 — réglages de la plateforme modifiés par l'administration (tarifs,
+  // durées) ; les autres gardent la valeur du fichier de configuration.
+  '''
+CREATE TABLE platform_settings (
+  key        text PRIMARY KEY,
+  value      bigint NOT NULL,
+  updated_by uuid REFERENCES users(id) ON DELETE SET NULL,
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+''',
 ];

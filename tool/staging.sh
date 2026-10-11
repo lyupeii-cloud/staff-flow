@@ -28,7 +28,7 @@ up)
       -e DATABASE_URL="postgresql://postgres:stg@sf-stg-db:5432/stg?sslmode=disable" \
       -e SESSION_SECRET=staging-only-secret-0123456789abcdef -e DEV_LOGIN=true \
       -e FCM_CREDENTIALS_B64="$FCM" -e TRANSLATE_URL="$TR" \
-      -e ALLOWED_ORIGINS=http://localhost:5050 \
+      -e ALLOWED_ORIGINS=http://localhost:5050 -e ADMIN_EMAILS=claire@test.dev \
       dart:3.13.5 sh -c "dart pub get >/dev/null && dart run bin/server.dart" >/dev/null
     for i in $(seq 1 60); do curl -s 127.0.0.1:18099/health && exit 0; sleep 2; done; exit 1'
   echo " API de test prête." ;;

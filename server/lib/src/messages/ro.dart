@@ -97,4 +97,6 @@ const ro = <String, String>{
   'Trois niveaux de sites au plus.': 'Cel mult trei niveluri de puncte de lucru.',
   'Un site ne peut pas être placé sous lui-même.': 'Un punct de lucru nu poate fi pus sub el însuși.',
   'La messagerie de cette entreprise est désactivée.': 'Mesageria este dezactivată pentru această firmă.',
+  'Valeur hors limites : de {min} à {max}.': 'Valoare în afara limitelor: de la {min} la {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Pragurile trebuie să se succeadă: angajați incluși < sfârșitul pragului 1 < sfârșitul pragului 2.',
 };

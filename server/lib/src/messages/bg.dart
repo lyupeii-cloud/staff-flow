@@ -97,4 +97,6 @@ const bg = <String, String>{
   'Trois niveaux de sites au plus.': 'Най-много три нива обекти.',
   'Un site ne peut pas être placé sous lui-même.': 'Обект не може да бъде поставен под самия себе си.',
   'La messagerie de cette entreprise est désactivée.': 'Съобщенията са изключени за тази фирма.',
+  'Valeur hors limites : de {min} à {max}.': 'Стойност извън границите: от {min} до {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Нивата трябва да следват едно след друго: включени служители < край на ниво 1 < край на ниво 2.',
 };

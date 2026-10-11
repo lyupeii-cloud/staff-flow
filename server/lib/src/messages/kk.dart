@@ -97,4 +97,6 @@ const kk = <String, String>{
   'Trois niveaux de sites au plus.': 'Нысандардың ең көбі үш деңгейі.',
   'Un site ne peut pas être placé sous lui-même.': 'Нысанды өзінің астына қоюға болмайды.',
   'La messagerie de cette entreprise est désactivée.': 'Бұл компанияда хабарламалар өшірілген.',
+  'Valeur hors limites : de {min} à {max}.': 'Мән шектен тыс: {min}-ден {max}-ге дейін.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Деңгейлер ретімен болуы керек: кіретін қызметкерлер < 1-деңгейдің соңы < 2-деңгейдің соңы.',
 };

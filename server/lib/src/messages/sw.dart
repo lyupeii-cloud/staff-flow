@@ -97,4 +97,6 @@ const sw = <String, String>{
   'Trois niveaux de sites au plus.': 'Viwango vitatu vya tovuti kwa upeo.',
   'Un site ne peut pas être placé sous lui-même.': 'Tovuti haiwezi kuwekwa chini yake yenyewe.',
   'La messagerie de cette entreprise est désactivée.': 'Ujumbe umezimwa kwa kampuni hii.',
+  'Valeur hors limites : de {min} à {max}.': 'Thamani nje ya kiwango: kutoka {min} hadi {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Viwango lazima vifuatane: wafanyakazi waliojumuishwa < mwisho wa kiwango 1 < mwisho wa kiwango 2.',
 };

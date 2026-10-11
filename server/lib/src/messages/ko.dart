@@ -97,4 +97,6 @@ const ko = <String, String>{
   'Trois niveaux de sites au plus.': '지점은 최대 3단계까지입니다.',
   'Un site ne peut pas être placé sous lui-même.': '지점을 자기 자신 아래에 둘 수 없습니다.',
   'La messagerie de cette entreprise est désactivée.': '이 회사의 메시지 기능이 꺼져 있습니다.',
+  'Valeur hors limites : de {min} à {max}.': '값이 범위를 벗어났습니다: {min}~{max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': '구간은 순서대로여야 합니다: 포함 직원 수 < 1구간 끝 < 2구간 끝.',
 };

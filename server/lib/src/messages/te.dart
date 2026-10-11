@@ -97,4 +97,6 @@ const te = <String, String>{
   'Trois niveaux de sites au plus.': 'గరిష్ఠంగా మూడు స్థాయిల సైట్‌లు.',
   'Un site ne peut pas être placé sous lui-même.': 'సైట్‌ను దాని కిందే ఉంచలేరు.',
   'La messagerie de cette entreprise est désactivée.': 'ఈ సంస్థకు సందేశాలు ఆఫ్ చేయబడ్డాయి.',
+  'Valeur hors limites : de {min} à {max}.': 'విలువ పరిధి వెలుపల ఉంది: {min} నుండి {max} వరకు.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'స్థాయిలు వరుసగా ఉండాలి: చేర్చబడిన ఉద్యోగులు < స్థాయి 1 ముగింపు < స్థాయి 2 ముగింపు.',
 };

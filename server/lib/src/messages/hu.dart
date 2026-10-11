@@ -97,4 +97,6 @@ const hu = <String, String>{
   'Trois niveaux de sites au plus.': 'Legfeljebb három telephelyszint.',
   'Un site ne peut pas être placé sous lui-même.': 'Egy telephely nem kerülhet saját maga alá.',
   'La messagerie de cette entreprise est désactivée.': 'Ennél a cégnél az üzenetküldés ki van kapcsolva.',
+  'Valeur hors limites : de {min} à {max}.': 'Az érték a tartományon kívül esik: {min} és {max} között.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'A sávoknak egymást kell követniük: benne foglalt munkatársak < 1. sáv vége < 2. sáv vége.',
 };

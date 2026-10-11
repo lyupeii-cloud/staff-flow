@@ -97,4 +97,6 @@ const zh = <String, String>{
   'Trois niveaux de sites au plus.': '站点最多三级。',
   'Un site ne peut pas être placé sous lui-même.': '站点不能放在自身之下。',
   'La messagerie de cette entreprise est désactivée.': '此公司的消息功能已关闭。',
+  'Valeur hors limites : de {min} à {max}.': '数值超出范围：{min} 至 {max}。',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': '各档必须依次递增：包含的员工数 < 第 1 档上限 < 第 2 档上限。',
 };

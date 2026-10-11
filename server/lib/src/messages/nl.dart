@@ -97,4 +97,6 @@ const nl = <String, String>{
   'Trois niveaux de sites au plus.': 'Hoogstens drie niveaus vestigingen.',
   'Un site ne peut pas être placé sous lui-même.': 'Een vestiging kan niet onder zichzelf staan.',
   'La messagerie de cette entreprise est désactivée.': 'Berichten staan uit voor dit bedrijf.',
+  'Valeur hors limites : de {min} à {max}.': 'Waarde buiten bereik: van {min} tot {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'De schijven moeten op elkaar volgen: inbegrepen medewerkers < einde schijf 1 < einde schijf 2.',
 };

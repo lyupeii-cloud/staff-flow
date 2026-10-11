@@ -97,4 +97,6 @@ const pa = <String, String>{
   'Trois niveaux de sites au plus.': 'ਵੱਧ ਤੋਂ ਵੱਧ ਤਿੰਨ ਪੱਧਰਾਂ ਦੀਆਂ ਸਾਈਟਾਂ।',
   'Un site ne peut pas être placé sous lui-même.': 'ਕਿਸੇ ਸਾਈਟ ਨੂੰ ਉਸਦੇ ਆਪਣੇ ਹੇਠਾਂ ਨਹੀਂ ਰੱਖਿਆ ਜਾ ਸਕਦਾ।',
   'La messagerie de cette entreprise est désactivée.': 'ਇਸ ਕੰਪਨੀ ਲਈ ਸੁਨੇਹੇ ਬੰਦ ਹਨ।',
+  'Valeur hors limites : de {min} à {max}.': 'ਮੁੱਲ ਸੀਮਾ ਤੋਂ ਬਾਹਰ: {min} ਤੋਂ {max} ਤੱਕ।',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'ਪੱਧਰ ਕ੍ਰਮ ਵਿੱਚ ਹੋਣੇ ਚਾਹੀਦੇ ਹਨ: ਸ਼ਾਮਲ ਕਰਮਚਾਰੀ < ਪੱਧਰ 1 ਦਾ ਅੰਤ < ਪੱਧਰ 2 ਦਾ ਅੰਤ।',
 };

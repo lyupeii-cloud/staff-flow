@@ -97,4 +97,6 @@ const nb = <String, String>{
   'Trois niveaux de sites au plus.': 'Høyst tre nivåer med steder.',
   'Un site ne peut pas être placé sous lui-même.': 'Et sted kan ikke plasseres under seg selv.',
   'La messagerie de cette entreprise est désactivée.': 'Meldinger er slått av for denne bedriften.',
+  'Valeur hors limites : de {min} à {max}.': 'Verdi utenfor området: fra {min} til {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Trinnene må følge hverandre: inkluderte ansatte < slutt på trinn 1 < slutt på trinn 2.',
 };

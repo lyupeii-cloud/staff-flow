@@ -97,4 +97,6 @@ const bn = <String, String>{
   'Trois niveaux de sites au plus.': 'সর্বোচ্চ তিন স্তরের সাইট।',
   'Un site ne peut pas être placé sous lui-même.': 'কোনো সাইটকে তার নিজের নিচে রাখা যায় না।',
   'La messagerie de cette entreprise est désactivée.': 'এই প্রতিষ্ঠানের বার্তা বন্ধ আছে।',
+  'Valeur hors limites : de {min} à {max}.': 'মান সীমার বাইরে: {min} থেকে {max}।',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'স্তরগুলো ক্রমানুসারে হতে হবে: অন্তর্ভুক্ত কর্মী < স্তর ১-এর শেষ < স্তর ২-এর শেষ।',
 };

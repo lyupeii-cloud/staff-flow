@@ -118,4 +118,6 @@ const en = <String, String>{
   'Trois niveaux de sites au plus.': 'Three levels of sites at most.',
   'Un site ne peut pas être placé sous lui-même.': 'A site can\'t be placed under itself.',
   'La messagerie de cette entreprise est désactivée.': 'Messaging is turned off for this company.',
+  'Valeur hors limites : de {min} à {max}.': 'Value out of range: from {min} to {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Tiers must follow each other: included staff < end of tier 1 < end of tier 2.',
 };

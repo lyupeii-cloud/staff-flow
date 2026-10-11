@@ -97,4 +97,6 @@ const ja = <String, String>{
   'Trois niveaux de sites au plus.': '拠点の階層は3段階までです。',
   'Un site ne peut pas être placé sous lui-même.': '拠点を自分自身の下に置くことはできません。',
   'La messagerie de cette entreprise est désactivée.': 'この会社ではメッセージ機能がオフになっています。',
+  'Valeur hors limites : de {min} à {max}.': '値が範囲外です：{min}～{max}。',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': '段階は順番に並ぶ必要があります：含まれる従業員数 < 段階1の上限 < 段階2の上限。',
 };

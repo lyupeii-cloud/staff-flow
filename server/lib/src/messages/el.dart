@@ -97,4 +97,6 @@ const el = <String, String>{
   'Trois niveaux de sites au plus.': 'Το πολύ τρία επίπεδα σημείων.',
   'Un site ne peut pas être placé sous lui-même.': 'Ένα σημείο δεν μπορεί να μπει κάτω από τον εαυτό του.',
   'La messagerie de cette entreprise est désactivée.': 'Τα μηνύματα είναι απενεργοποιημένα για αυτή την επιχείρηση.',
+  'Valeur hors limites : de {min} à {max}.': 'Τιμή εκτός ορίων: από {min} έως {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Τα κλιμάκια πρέπει να ακολουθούν το ένα το άλλο: εργαζόμενοι που περιλαμβάνονται < τέλος κλιμακίου 1 < τέλος κλιμακίου 2.',
 };

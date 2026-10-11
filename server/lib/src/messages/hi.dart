@@ -97,4 +97,6 @@ const hi = <String, String>{
   'Trois niveaux de sites au plus.': 'अधिकतम तीन स्तर की साइटें।',
   'Un site ne peut pas être placé sous lui-même.': 'किसी साइट को उसके ही नीचे नहीं रखा जा सकता।',
   'La messagerie de cette entreprise est désactivée.': 'इस कंपनी के लिए संदेश बंद हैं।',
+  'Valeur hors limites : de {min} à {max}.': 'मान सीमा से बाहर: {min} से {max} तक।',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'स्तर क्रम में होने चाहिए: शामिल कर्मचारी < स्तर 1 का अंत < स्तर 2 का अंत।',
 };

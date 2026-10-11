@@ -97,4 +97,6 @@ const de = <String, String>{
   'Trois niveaux de sites au plus.': 'Höchstens drei Standortebenen.',
   'Un site ne peut pas être placé sous lui-même.': 'Ein Standort kann nicht unter sich selbst liegen.',
   'La messagerie de cette entreprise est désactivée.': 'Die Nachrichten sind für dieses Unternehmen ausgeschaltet.',
+  'Valeur hors limites : de {min} à {max}.': 'Wert außerhalb des Bereichs: von {min} bis {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Die Stufen müssen aufeinander folgen: inbegriffene Mitarbeitende < Ende Stufe 1 < Ende Stufe 2.',
 };

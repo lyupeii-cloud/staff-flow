@@ -97,4 +97,6 @@ const it = <String, String>{
   'Trois niveaux de sites au plus.': 'Al massimo tre livelli di sedi.',
   'Un site ne peut pas être placé sous lui-même.': 'Una sede non può stare sotto sé stessa.',
   'La messagerie de cette entreprise est désactivée.': 'La messaggistica è disattivata per questa azienda.',
+  'Valeur hors limites : de {min} à {max}.': 'Valore fuori dai limiti: da {min} a {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Le fasce devono susseguirsi: dipendenti inclusi < fine fascia 1 < fine fascia 2.',
 };

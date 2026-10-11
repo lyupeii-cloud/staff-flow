@@ -143,6 +143,7 @@ class TestEnv {
         now: () => clock.now,
         push: push,
         translator: translator,
+        adminEmails: {'boss@example.com'},
       );
       handler = api.handler;
     });

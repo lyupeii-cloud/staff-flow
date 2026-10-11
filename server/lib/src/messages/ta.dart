@@ -97,4 +97,6 @@ const ta = <String, String>{
   'Trois niveaux de sites au plus.': 'அதிகபட்சம் மூன்று நிலை தளங்கள்.',
   'Un site ne peut pas être placé sous lui-même.': 'ஒரு தளத்தை அதன் கீழேயே வைக்க முடியாது.',
   'La messagerie de cette entreprise est désactivée.': 'இந்த நிறுவனத்தில் செய்திகள் முடக்கப்பட்டுள்ளன.',
+  'Valeur hors limites : de {min} à {max}.': 'மதிப்பு வரம்புக்கு வெளியே: {min} முதல் {max} வரை.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'நிலைகள் வரிசையாக இருக்க வேண்டும்: சேர்க்கப்பட்ட ஊழியர்கள் < நிலை 1 முடிவு < நிலை 2 முடிவு.',
 };

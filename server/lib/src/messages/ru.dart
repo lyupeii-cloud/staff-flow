@@ -97,4 +97,6 @@ const ru = <String, String>{
   'Trois niveaux de sites au plus.': 'Не более трёх уровней объектов.',
   'Un site ne peut pas être placé sous lui-même.': 'Объект нельзя поместить под самого себя.',
   'La messagerie de cette entreprise est désactivée.': 'Сообщения в этой компании отключены.',
+  'Valeur hors limites : de {min} à {max}.': 'Значение вне допустимых пределов: от {min} до {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Уровни должны идти по порядку: включённые сотрудники < конец уровня 1 < конец уровня 2.',
 };

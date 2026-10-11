@@ -1,4 +1,5 @@
-{$DOMAIN} {
+# Adresse de l'application, et APP_DOMAIN (nouvelle adresse, facultative).
+{$DOMAIN} {$APP_DOMAIN} {
 	encode zstd gzip
 
 	header {

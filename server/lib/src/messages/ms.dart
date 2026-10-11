@@ -97,4 +97,6 @@ const ms = <String, String>{
   'Trois niveaux de sites au plus.': 'Paling banyak tiga peringkat tapak.',
   'Un site ne peut pas être placé sous lui-même.': 'Tapak tidak boleh diletakkan di bawah dirinya sendiri.',
   'La messagerie de cette entreprise est désactivée.': 'Pemesejan dimatikan untuk syarikat ini.',
+  'Valeur hors limites : de {min} à {max}.': 'Nilai di luar julat: dari {min} hingga {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Peringkat mesti berturutan: pekerja termasuk < akhir peringkat 1 < akhir peringkat 2.',
 };

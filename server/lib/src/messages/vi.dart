@@ -97,4 +97,6 @@ const vi = <String, String>{
   'Trois niveaux de sites au plus.': 'Tối đa ba cấp địa điểm.',
   'Un site ne peut pas être placé sous lui-même.': 'Không thể đặt một địa điểm dưới chính nó.',
   'La messagerie de cette entreprise est désactivée.': 'Tính năng tin nhắn đang tắt cho công ty này.',
+  'Valeur hors limites : de {min} à {max}.': 'Giá trị ngoài phạm vi: từ {min} đến {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Các bậc phải nối tiếp nhau: số nhân viên bao gồm < cuối bậc 1 < cuối bậc 2.',
 };

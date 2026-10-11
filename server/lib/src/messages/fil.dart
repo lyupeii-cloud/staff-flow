@@ -97,4 +97,6 @@ const fil = <String, String>{
   'Trois niveaux de sites au plus.': 'Hanggang tatlong antas ng site lang.',
   'Un site ne peut pas être placé sous lui-même.': 'Hindi mailalagay ang isang site sa ilalim ng sarili nito.',
   'La messagerie de cette entreprise est désactivée.': 'Naka-off ang pagmemensahe para sa kumpanyang ito.',
+  'Valeur hors limites : de {min} à {max}.': 'Wala sa saklaw ang halaga: mula {min} hanggang {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Dapat sunud-sunod ang mga antas: kasamang empleyado < dulo ng antas 1 < dulo ng antas 2.',
 };

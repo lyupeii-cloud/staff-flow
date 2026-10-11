@@ -117,4 +117,6 @@ const uk = <String, String>{
   'Trois niveaux de sites au plus.': 'Не більше трьох рівнів об\'єктів.',
   'Un site ne peut pas être placé sous lui-même.': 'Об\'єкт не можна розмістити під самим собою.',
   'La messagerie de cette entreprise est désactivée.': 'Повідомлення в цій компанії вимкнено.',
+  'Valeur hors limites : de {min} à {max}.': 'Значення поза межами: від {min} до {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Рівні мають іти по порядку: включені працівники < кінець рівня 1 < кінець рівня 2.',
 };

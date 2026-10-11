@@ -97,4 +97,6 @@ const sk = <String, String>{
   'Trois niveaux de sites au plus.': 'Najviac tri úrovne miest.',
   'Un site ne peut pas être placé sous lui-même.': 'Miesto nemožno umiestniť pod seba samého.',
   'La messagerie de cette entreprise est désactivée.': 'Správy sú v tejto firme vypnuté.',
+  'Valeur hors limites : de {min} à {max}.': 'Hodnota mimo rozsahu: od {min} do {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Pásma musia na seba nadväzovať: zahrnutí zamestnanci < koniec pásma 1 < koniec pásma 2.',
 };

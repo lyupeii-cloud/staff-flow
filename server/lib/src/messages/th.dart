@@ -97,4 +97,6 @@ const th = <String, String>{
   'Trois niveaux de sites au plus.': 'สาขาได้สูงสุดสามระดับ',
   'Un site ne peut pas être placé sous lui-même.': 'ไม่สามารถวางสาขาไว้ใต้ตัวเองได้',
   'La messagerie de cette entreprise est désactivée.': 'บริษัทนี้ปิดการส่งข้อความอยู่',
+  'Valeur hors limites : de {min} à {max}.': 'ค่าอยู่นอกช่วง: ตั้งแต่ {min} ถึง {max}',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'ขั้นต้องเรียงต่อกัน: จำนวนพนักงานที่รวม < สิ้นสุดขั้น 1 < สิ้นสุดขั้น 2',
 };

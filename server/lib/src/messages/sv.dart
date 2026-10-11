@@ -97,4 +97,6 @@ const sv = <String, String>{
   'Trois niveaux de sites au plus.': 'Högst tre nivåer av platser.',
   'Un site ne peut pas être placé sous lui-même.': 'En plats kan inte placeras under sig själv.',
   'La messagerie de cette entreprise est désactivée.': 'Meddelanden är avstängda för det här företaget.',
+  'Valeur hors limites : de {min} à {max}.': 'Värdet ligger utanför intervallet: från {min} till {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Nivåerna måste följa på varandra: inkluderade anställda < slut på nivå 1 < slut på nivå 2.',
 };

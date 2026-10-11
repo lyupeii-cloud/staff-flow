@@ -9,6 +9,7 @@ export 'src/models.dart';
 export 'src/notice_service.dart';
 export 'src/notifications.dart';
 export 'src/overlap_service.dart';
+export 'src/platform_service.dart';
 export 'src/planning_service.dart';
 export 'src/request_service.dart';
 export 'src/store.dart';

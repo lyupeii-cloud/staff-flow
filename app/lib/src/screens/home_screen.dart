@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 
@@ -10,6 +11,7 @@ import '../models.dart';
 import '../push.dart';
 import '../session.dart';
 import 'account_pages.dart';
+import 'admin_page.dart';
 import 'requests_page.dart';
 import 'all_schedules_view.dart';
 import 'company_logo.dart';
@@ -48,7 +50,13 @@ class _HomeScreenState extends State<HomeScreen> {
     session.openDay.addListener(_onOpenDay);
     _push = session.push.events.listen(_onPush);
     // Ouverte depuis une notification de demande : on la montre.
-    WidgetsBinding.instance.addPostFrameCallback((_) => _onOpenRequest());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _onOpenRequest();
+      // Site web ouvert à l'adresse /admin : la page d'administration.
+      if (kIsWeb && Uri.base.path.startsWith('/admin') && session.me?.isAdmin == true && mounted) {
+        AdminPage.open(context, session);
+      }
+    });
   }
 
   @override
@@ -356,6 +364,8 @@ class _ProfileMenu extends StatelessWidget {
           ProfilePage.open(context, session);
         } else if (v == 'settings') {
           SettingsPage.open(context, session);
+        } else if (v == 'admin') {
+          AdminPage.open(context, session);
         } else if (v == 'requests') {
           RequestsPage.open(context, session);
         } else if (v == 'logout') {
@@ -367,6 +377,7 @@ class _ProfileMenu extends StatelessWidget {
         _item('profile', Icons.person_outline, t.myProfile),
         _item('settings', Icons.settings_outlined, t.settingsTitle),
         _item('requests', Icons.swap_horiz, t.viewRequests),
+        if (session.me?.isAdmin == true) _item('admin', Icons.admin_panel_settings_outlined, 'Administration'),
         const PopupMenuDivider(),
         _item('logout', Icons.logout, t.signOut),
       ],

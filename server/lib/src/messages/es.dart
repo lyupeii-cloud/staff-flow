@@ -97,4 +97,6 @@ const es = <String, String>{
   'Trois niveaux de sites au plus.': 'Tres niveles de centros como máximo.',
   'Un site ne peut pas être placé sous lui-même.': 'Un centro no puede colocarse debajo de sí mismo.',
   'La messagerie de cette entreprise est désactivée.': 'La mensajería de esta empresa está desactivada.',
+  'Valeur hors limites : de {min} à {max}.': 'Valor fuera de límites: de {min} a {max}.',
+  'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Los tramos deben sucederse: empleados incluidos < fin del tramo 1 < fin del tramo 2.',
 };

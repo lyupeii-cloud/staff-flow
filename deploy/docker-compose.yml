@@ -26,7 +26,9 @@ services:
       DATABASE_URL: postgresql://staffflow:${POSTGRES_PASSWORD}@db:5432/staffflow?sslmode=disable
       SESSION_SECRET: ${SESSION_SECRET:?}
       GOOGLE_CLIENT_IDS: ${GOOGLE_CLIENT_IDS:?}
-      ALLOWED_ORIGINS: https://${DOMAIN}
+      ALLOWED_ORIGINS: https://${DOMAIN},https://${APP_DOMAIN:-${DOMAIN}}
+      # Administrateurs de la plateforme (adresses Google, séparées par des virgules).
+      ADMIN_EMAILS: ${ADMIN_EMAILS:-}
       # Compte de service Firebase (JSON en base64) ; vide : pas de notifications sur les appareils.
       FCM_CREDENTIALS_B64: ${FCM_CREDENTIALS_B64:-}
       # Traduction des messages, sur ce serveur (service « translate » ci-dessous).
@@ -42,6 +44,7 @@ services:
     depends_on: [api]
     environment:
       DOMAIN: ${DOMAIN:?}
+      APP_DOMAIN: ${APP_DOMAIN:-}
     ports:
       - "80:80"
       - "443:443"

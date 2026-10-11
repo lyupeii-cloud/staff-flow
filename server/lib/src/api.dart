@@ -15,6 +15,7 @@ import 'notifications.dart';
 import 'overlap_service.dart';
 import 'models.dart';
 import 'planning_service.dart';
+import 'platform_service.dart';
 import 'request_service.dart';
 import 'store.dart';
 import 'tools_service.dart';
@@ -35,6 +36,14 @@ class Api {
       RequestService(store, companies, planning, notifications, overlaps: overlaps, chat: chat);
   late final JoinService joins = JoinService(store, companies, now: now);
   late final NoticeService notices = NoticeService(store, now: now);
+  late final PlatformService platform = PlatformService(store, fileValues: platformFile);
+
+  /// Adresses Google des administrateurs de la plateforme (fichier de
+  /// configuration du serveur ; jamais modifiables depuis le web).
+  final Set<String> adminEmails;
+
+  /// Réglages lus au démarrage dans le fichier `PLATFORM_CONFIG`.
+  final Map<String, int>? platformFile;
 
   /// Horloge (UTC), remplaçable dans les tests.
   final DateTime Function() now;
@@ -58,6 +67,8 @@ class Api {
     this.allowedOrigins = const {},
     this.push,
     this.translator,
+    this.adminEmails = const {},
+    this.platformFile,
     DateTime Function()? now,
   })  : companies = CompanyService(store),
         now = now ?? (() => DateTime.now().toUtc());
@@ -66,6 +77,27 @@ class Api {
     final v1 = Router(notFoundHandler: _notFound)
       ..post('/auth/google', _loginGoogle)
       ..get('/me', _authed(_me))
+      // Administration de la plateforme (réservée aux administrateurs).
+      ..get('/admin/overview', _admin((r, u) async => _json(await platform.overview())))
+      ..get('/admin/settings', _admin((r, u) async => _json({'settings': await platform.list()})))
+      ..put('/admin/settings/<key>', _admin((r, u) async {
+        final value = (await _body(r))['value'];
+        if (value is! int) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        await platform.set(u, r.params['key']!, value);
+        return Response(204);
+      }))
+      ..delete('/admin/settings/<key>', _admin((r, u) async {
+        await platform.set(u, r.params['key']!, null);
+        return Response(204);
+      }))
+      ..get('/admin/log', _admin((r, u) async => _json({'entries': await platform.log()})))
+      ..get('/admin/quote', _admin((r, u) async {
+        final staff = int.tryParse(r.url.queryParameters['staff'] ?? '');
+        if (staff == null || staff < 0 || staff > 1000000) {
+          throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        }
+        return _json(await platform.quote(staff, cascade: r.url.queryParameters['cascade'] == '1'));
+      }))
       ..patch('/me', _authed(_updateMe))
       ..post('/companies', _authed(_createCompany))
       ..get('/companies/<id>', _authed(_getCompany))
@@ -302,6 +334,7 @@ class Api {
         'notificationPrefs': await notifications.prefs(user.id),
         'noticeRetention': await notices.retention(user.id),
         'unreadMessages': await chat.unreadByCompany(user.id),
+        if (_isAdmin(user)) 'isAdmin': true,
         'calendarPath': switch (await tools.calendarToken(user.id)) {
           null => null,
           final token => '/api/v1/calendar/$token.ics',
@@ -784,6 +817,17 @@ class Api {
   static Response _notFound(Request req) => _json(
       const ApiError.notFound('Route inconnue.').toJson(negotiateLanguage(req.headers['accept-language'])),
       status: 404);
+
+  /// Administrateur : adresse inscrite dans la configuration du serveur, et
+  /// compte Google réel (jamais une connexion de développement en production).
+  bool _isAdmin(User user) =>
+      adminEmails.contains(user.email.toLowerCase()) && (devLogin || !user.googleSub.startsWith('dev:'));
+
+  /// Réservé aux administrateurs ; pour les autres, l'adresse n'existe pas.
+  Handler _admin(Future<Response> Function(Request, User) handler) => _authed((req, user) {
+        if (!_isAdmin(user)) throw const ApiError.notFound();
+        return handler(req, user);
+      });
 
   Handler _authed(Future<Response> Function(Request, User) handler) => (Request req) async {
         final header = req.headers['authorization'] ?? '';
