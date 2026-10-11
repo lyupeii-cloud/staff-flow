@@ -36,7 +36,7 @@ final t = <String, Map<String, Object>>{
     'how': 'Comment ça marche',
     'checks': ['2 jours d\'essai complet', 'Gratuit pour les salariés', 'Consultable même sans réseau'],
     'featH': 'Tout ce qu\'il faut, rien de compliqué',
-    'featSub': 'Pensé pour les cafés, restaurants, boulangeries, commerces et toutes les équipes qui travaillent en horaires décalés.',
+    'featSub': 'De la petite équipe de quelques salariés à la grande entreprise aux nombreux sites et responsables : Staff Flow s\'adapte à votre taille, dans tous les secteurs qui travaillent en horaires.',
     'feats': [
       ['🗓️', 'Un planning en quelques secondes', 'Préréglages « Matin », « Soir », répétition chaque jour ou chaque semaine, brouillon puis publication en un geste.'],
       ['🔁', 'Échanges et congés', 'Un salarié propose son service à un collègue, demande un congé ou une indisponibilité ; vous validez d\'un tap.'],
@@ -118,7 +118,7 @@ final t = <String, Map<String, Object>>{
     'how': 'Як це працює',
     'checks': ['2 дні повного доступу', 'Безкоштовно для працівників', 'Графік видно навіть без мережі'],
     'featH': 'Усе потрібне, нічого зайвого',
-    'featSub': 'Створено для кав\'ярень, ресторанів, пекарень, магазинів і всіх команд, що працюють змінами.',
+    'featSub': 'Від невеликої команди з кількох працівників до великої компанії з багатьма об\'єктами й керівниками: Staff Flow підлаштовується під ваш розмір у будь-якій галузі, де працюють за графіком.',
     'feats': [
       ['🗓️', 'Графік за кілька секунд', 'Шаблони «Ранок», «Вечір», повторення щодня чи щотижня, чернетка й публікація одним дотиком.'],
       ['🔁', 'Обмін змінами та відпустки', 'Працівник пропонує зміну колезі, просить відпустку чи позначає, коли не може працювати; ви підтверджуєте одним дотиком.'],
@@ -200,7 +200,7 @@ final t = <String, Map<String, Object>>{
     'how': 'How it works',
     'checks': ['2-day full trial', 'Free for employees', 'Readable even without signal'],
     'featH': 'Everything you need, nothing complicated',
-    'featSub': 'Made for cafés, restaurants, bakeries, shops and every team that works in shifts.',
+    'featSub': 'From a small team of a few employees to a large company with many sites and managers: Staff Flow adapts to your size, in every sector that works on schedules.',
     'feats': [
       ['🗓️', 'A schedule in seconds', '“Morning” and “Evening” presets, daily or weekly repeats, draft then publish in one tap.'],
       ['🔁', 'Swaps and leave', 'An employee offers a shift to a colleague, asks for leave or marks unavailability; you approve in one tap.'],
