@@ -13,6 +13,12 @@ const langs = ['fr', 'uk', 'en'];
 const shots = ['1-planning', '2-service', '3-messages', '4-demandes', '5-management'];
 String shotDir(String l) => l;
 
+/// Adresse de chaque langue : le pays pour l'Ukraine (UA ; « UK » serait le Royaume-Uni).
+String slug(String l) => l == 'uk' ? 'ua' : l;
+
+/// Libellé du choix de langue.
+String label(String l) => slug(l).toUpperCase();
+
 final t = <String, Map<String, Object>>{
   'fr': {
     'name': 'Français',
@@ -208,12 +214,12 @@ String page(String l) {
   List<String> list(String k) => [for (final c in x[k] as List) c as String];
   final dir = shotDir(l);
   final alternates = [
-    for (final o in langs) '<link rel="alternate" hreflang="$o" href="$site/$o/">',
+    for (final o in langs) '<link rel="alternate" hreflang="$o" href="$site/${slug(o)}/">',
     '<link rel="alternate" hreflang="x-default" href="$site/">',
   ].join('\n  ');
   final switcher = [
     for (final o in langs)
-      '<a href="/$o/" lang="$o"${o == l ? ' aria-current="page"' : ''}>${o.toUpperCase()}</a>',
+      '<a href="/${slug(o)}/" lang="$o" title="${esc(t[o]!['name'] as String)}"${o == l ? ' aria-current="page"' : ''}>${label(o)}</a>',
   ].join();
   return '''<!doctype html>
 <html lang="$l">
@@ -222,23 +228,23 @@ String page(String l) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${s('title')}</title>
   <meta name="description" content="${s('desc')}">
-  <link rel="canonical" href="$site/$l/">
+  <link rel="canonical" href="$site/${slug(l)}/">
   $alternates
   <meta property="og:type" content="website">
   <meta property="og:title" content="${s('title')}">
   <meta property="og:description" content="${s('desc')}">
-  <meta property="og:url" content="$site/$l/">
+  <meta property="og:url" content="$site/${slug(l)}/">
   <meta property="og:image" content="$site/og.png">
   <meta name="theme-color" content="#061440">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preload" href="/fonts/Nunito.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="/style.css?v=2">
+  <link rel="stylesheet" href="/style.css?v=3">
 </head>
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="/$l/"><img src="/brand.png" alt="Staff Flow" width="205" height="46"></a>
-    <nav class="langs" aria-label="Language">$switcher</nav>
+    <a class="brand" translate="no" href="/${slug(l)}/"><img src="/brand.png" alt="Staff Flow" width="205" height="46"></a>
+    <nav class="langs" translate="no" aria-label="Language">$switcher</nav>
     <a class="btn btn-main" href="$app">${s('open')}</a>
   </div>
 </header>
@@ -335,7 +341,7 @@ String page(String l) {
 <footer>
   <div class="wrap">
     <span>© 2026 Staff Flow</span>
-    <span>${[for (final o in langs) '<a href="/$o/" lang="$o">${esc(t[o]!['name'] as String)}</a>'].join(' · ')}</span>
+    <span>${[for (final o in langs) '<a href="/${slug(o)}/" lang="$o">${esc(t[o]!['name'] as String)}</a>'].join(' · ')}</span>
   </div>
 </footer>
 </body>
@@ -351,9 +357,9 @@ String root() => '''<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Staff Flow</title>
-  ${[for (final o in langs) '<link rel="alternate" hreflang="$o" href="$site/$o/">'].join('\n  ')}
+  ${[for (final o in langs) '<link rel="alternate" hreflang="$o" href="$site/${slug(o)}/">'].join('\n  ')}
   <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="stylesheet" href="/style.css?v=2">
+  <link rel="stylesheet" href="/style.css?v=3">
 </head>
 <body>
 <section class="final" style="min-height:100vh;display:grid;place-items:center">
@@ -361,7 +367,7 @@ String root() => '''<!doctype html>
     <img src="/logo.png" alt="" width="96" height="75" style="margin:0 auto 18px">
     <h2>Staff Flow</h2>
     <div class="cta" style="justify-content:center">
-      ${[for (final o in langs) '<a class="btn btn-ghost" href="/$o/" lang="$o">${esc(t[o]!['name'] as String)}</a>'].join('\n      ')}
+      ${[for (final o in langs) '<a class="btn btn-ghost" href="/${slug(o)}/" lang="$o">${esc(t[o]!['name'] as String)}</a>'].join('\n      ')}
     </div>
   </div>
 </section>
@@ -371,8 +377,8 @@ String root() => '''<!doctype html>
 
 void main() {
   for (final l in langs) {
-    Directory('www/$l').createSync(recursive: true);
-    File('www/$l/index.html').writeAsStringSync(page(l));
+    Directory('www/${slug(l)}').createSync(recursive: true);
+    File('www/${slug(l)}/index.html').writeAsStringSync(page(l));
   }
   File('www/index.html').writeAsStringSync(root());
   File('www/robots.txt').writeAsStringSync('User-agent: *\nAllow: /\nSitemap: $site/sitemap.xml\n');
@@ -380,7 +386,7 @@ void main() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${[
     for (final l in langs)
-      '  <url><loc>$site/$l/</loc>${[for (final o in langs) '<xhtml:link rel="alternate" hreflang="$o" href="$site/$o/"/>'].join()}</url>',
+      '  <url><loc>$site/${slug(l)}/</loc>${[for (final o in langs) '<xhtml:link rel="alternate" hreflang="$o" href="$site/${slug(o)}/"/>'].join()}</url>',
   ].join('\n')}
 </urlset>
 ''');

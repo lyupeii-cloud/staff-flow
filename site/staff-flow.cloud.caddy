@@ -18,14 +18,19 @@ staff-flow.cloud {
 	# Images et polices : en cache une semaine ; pages : toujours revérifiées.
 	header /img/* Cache-Control "public, max-age=604800"
 	header /fonts/* Cache-Control "public, max-age=31536000, immutable"
-	header /*.html Cache-Control "no-cache"
+	@pages path / */ *.html
+	header @pages Cache-Control "no-cache"
 
-	# Accueil : la langue du navigateur (ukrainien, russe → /uk/ ; français → /fr/ ; sinon /en/).
+	# Ancienne adresse de la page ukrainienne.
+	redir /uk /ua/ permanent
+	redir /uk/* /ua/ permanent
+
+	# Accueil : la langue du navigateur (ukrainien, russe → /ua/ ; français → /fr/ ; sinon /en/).
 	@uk {
 		path /
 		header_regexp Accept-Language ^\s*(uk|ru)
 	}
-	redir @uk /uk/ 302
+	redir @uk /ua/ 302
 	@fr {
 		path /
 		header_regexp Accept-Language ^\s*fr
