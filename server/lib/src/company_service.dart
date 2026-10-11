@@ -1,0 +1,439 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
+import 'package:image/image.dart' as img;
+
+import 'errors.dart';
+import 'models.dart';
+import 'store.dart';
+
+/// Règles des sections 2 et 3 du cahier des charges : rôles par entreprise,
+/// gestion des membres et transfert de propriété.
+class CompanyService {
+  final Store store;
+
+  CompanyService(this.store);
+
+  Future<Company> create(User actor, {required String name, required String timezone}) async {
+    final company = await store.createCompany(
+      ownerId: actor.id,
+      name: _validName(name),
+      timezone: validTimezone(timezone),
+    );
+    await store.audit(companyId: company.id, actorId: actor.id, action: 'company.create');
+    return company;
+  }
+
+  /// Entreprise vue par un membre actif ; 404 pour les autres, pour ne pas
+  /// révéler qu'elle existe.
+  Future<(Company, Role)> open(User actor, String companyId) async {
+    final role = await store.roleOf(companyId, actor.id);
+    final company = role == null ? null : await store.findCompany(companyId);
+    if (role == null || company == null) throw const ApiError.notFound('Entreprise introuvable.');
+    return (company, role);
+  }
+
+  /// Sites gérés par [actor] : `null` pour le propriétaire et un responsable
+  /// de toute l'entreprise ; sinon ceux d'un responsable de site.
+  Future<Set<String>?> managedSites(String companyId, User actor, Role role) async {
+    if (role != Role.manager) return null;
+    final raw = await store.sitesOf(companyId, actor.id);
+    return raw == null ? null : await store.expandSites(companyId, raw);
+  }
+
+  /// Un responsable de site gère les salariés et extras rattachés à au
+  /// moins un de ses sites.
+  Future<bool> inSites(String companyId, String userId, Set<String>? mine) async {
+    if (mine == null) return true;
+    return (await store.sitesOf(companyId, userId) ?? const []).any(mine.contains);
+  }
+
+  /// Sites existants et non archivés de l'entreprise (sans doublon).
+  Future<List<String>> validSites(String companyId, Iterable<String> sites) async {
+    final wanted = sites.toSet().toList();
+    if (wanted.isEmpty) return wanted;
+    final rows = await store.query(store.db, '''
+      SELECT count(*) FROM sites
+      WHERE company_id = @c::uuid AND archived_at IS NULL AND id::text = ANY(@s)''',
+        {'c': companyId, 's': wanted});
+    if (rows.first[0] != wanted.length) throw const ApiError.badRequest('Site inconnu ou archivé.');
+    return wanted;
+  }
+
+  /// Renforts possibles : les salariés et extras des autres entreprises
+  /// actives où [actor] est responsable, qui ne sont pas déjà dans celle-ci.
+  Future<List<Map<String, Object?>>> reinforcements(User actor, String companyId) async {
+    final (company, role) = await open(actor, companyId);
+    if (!role.canManage) throw const ApiError.forbidden();
+    final rows = await store.query(store.db, '''
+      SELECT DISTINCT ON (u.id) u.id::text, coalesce(m.display_name, u.custom_name, u.name), m.role, c.id::text, c.name
+      FROM memberships mine
+      JOIN companies c ON c.id = mine.company_id AND c.status = 'active'
+      JOIN memberships m ON m.company_id = c.id AND m.left_at IS NULL AND m.role IN ('employee', 'extra')
+      JOIN users u ON u.id = m.user_id
+      WHERE mine.user_id = @u::uuid AND mine.left_at IS NULL AND mine.role IN ('owner', 'manager')
+        AND c.id <> @c::uuid
+        AND NOT EXISTS (SELECT 1 FROM memberships x WHERE x.company_id = @c::uuid AND x.user_id = u.id AND x.left_at IS NULL)
+      ORDER BY u.id, c.created_at''', {'u': actor.id, 'c': company.id});
+    final people = [
+      for (final r in rows) {'userId': r[0], 'name': r[1], 'role': r[2], 'companyId': r[3], 'companyName': r[4]},
+    ];
+    people.sort((a, b) => (a['name'] as String).toLowerCase().compareTo((b['name'] as String).toLowerCase()));
+    return people;
+  }
+
+  /// Ajoute comme renfort (extra) une personne d'une autre de ses entreprises.
+  Future<void> addReinforcement(User actor, String companyId, String userId) async {
+    final (company, _) = await open(actor, companyId);
+    _requireWritable(company);
+    if (!(await reinforcements(actor, companyId)).any((p) => p['userId'] == userId)) {
+      throw const ApiError.notFound('Membre introuvable.');
+    }
+    await store.addMember(companyId, userId, Role.extra);
+    await store.audit(companyId: companyId, actorId: actor.id, action: 'member.reinforcement', details: {'userId': userId});
+  }
+
+  /// Préréglages d'horaires (matin, soir, nuit…), choisis par les responsables.
+  Future<List<Map<String, Object?>>> setPresets(User actor, String companyId, Object? presets) async {
+    final (company, role) = await open(actor, companyId);
+    _requireWritable(company);
+    if (!role.canManage) throw const ApiError.forbidden();
+    if (presets is! List || presets.length > 20) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    final clean = <Map<String, Object?>>[];
+    for (final p in presets) {
+      final name = p is Map && p['name'] is String ? personName(p['name'] as String) : null;
+      final start = p is Map ? p['start'] : null, end = p is Map ? p['end'] : null;
+      if (name == null || name.length > 40 || start is! int || end is! int || start < 0 || start > 1439 || end < 0 || end > 1439) {
+        throw const ApiError.badRequest('Préréglage invalide.');
+      }
+      clean.add({'name': name, 'start': start, 'end': end});
+    }
+    await store.query(store.db, 'UPDATE companies SET shift_presets = @p::jsonb WHERE id = @c::uuid',
+        {'c': companyId, 'p': jsonEncode(clean)});
+    return clean;
+  }
+
+  /// Patron : image de l'entreprise (PNG seulement). Elle est décodée puis
+  /// réencodée en 192 × 192 au plus : rien d'autre que les pixels n'est gardé.
+  Future<int> setLogo(User actor, String companyId, List<int>? png) async {
+    final (company, role) = await open(actor, companyId);
+    _requireWritable(company);
+    if (role != Role.owner) throw const ApiError.forbidden();
+    List<int>? clean;
+    if (png != null) {
+      const signature = [0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A];
+      if (png.length > 1024 * 1024 || png.length < 8 || [for (var i = 0; i < 8; i++) png[i]].join() != signature.join()) {
+        throw const ApiError.badRequest('Image PNG de 1 Mo au plus attendue.');
+      }
+      // Fichier abîmé ou piégé : le décodeur échoue, on refuse proprement.
+      img.Image? image;
+      try {
+        final decoder = img.PngDecoder();
+        final info = decoder.startDecode(Uint8List.fromList(png));
+        if (info != null && info.width <= 4096 && info.height <= 4096) image = decoder.decode(Uint8List.fromList(png));
+      } catch (_) {
+        image = null;
+      }
+      if (image == null) throw const ApiError.badRequest('Image PNG de 1 Mo au plus attendue.');
+      final side = image.width > image.height ? image.width : image.height;
+      final resized = side > 192
+          ? img.copyResize(image,
+              width: image.width >= image.height ? 192 : null,
+              height: image.height > image.width ? 192 : null,
+              interpolation: img.Interpolation.average)
+          : image;
+      clean = img.encodePng(resized);
+    }
+    final rows = await store.query(store.db, '''
+      UPDATE companies SET logo = @l, logo_version = logo_version + 1
+      WHERE id = @c::uuid RETURNING logo_version''', {'c': companyId, 'l': clean == null ? null : Uint8List.fromList(clean)});
+    await store.audit(companyId: companyId, actorId: actor.id, action: 'company.logo', details: {'set': clean != null});
+    // Le numéro ne revient jamais en arrière : une nouvelle image n'a jamais
+    // le numéro d'une ancienne (gardée en cache par les appareils).
+    return clean == null ? 0 : rows.first[0] as int;
+  }
+
+  /// Image de l'entreprise, pour ses membres.
+  Future<List<int>?> logo(User actor, String companyId) async {
+    await open(actor, companyId);
+    final rows = await store.query(store.db, 'SELECT logo FROM companies WHERE id = @c::uuid', {'c': companyId});
+    return rows.isEmpty ? null : rows.first[0] as List<int>?;
+  }
+
+  /// Responsable : sites dont il veut recevoir les notifications de
+  /// demandes (`null` : tous ; liste vide : aucun).
+  Future<void> setNotifySites(User actor, String companyId, List<String>? sites) async {
+    final (_, role) = await open(actor, companyId);
+    if (!role.canManage) throw const ApiError.forbidden();
+    final chosen = sites == null ? null : await validSites(companyId, sites);
+    await store.setNotifySites(companyId, actor.id, chosen);
+  }
+
+  /// Sites d'une personne. Le propriétaire choisit ceux d'un responsable
+  /// (`null` : toute l'entreprise). Pour un salarié ou un extra : un
+  /// responsable de toute l'entreprise choisit librement ; un responsable de
+  /// site n'ajoute ou ne retire que ses propres sites.
+  Future<void> setSites(User actor, String companyId, String userId, List<String>? sites) async {
+    final (company, actorRole) = await open(actor, companyId);
+    _requireWritable(company);
+    final target = await store.roleOf(companyId, userId);
+    if (target == null) throw const ApiError.notFound('Membre introuvable.');
+    final requested = sites == null ? null : await validSites(companyId, sites);
+    List<String>? result;
+    switch (target) {
+      case Role.owner:
+        throw const ApiError.forbidden();
+      case Role.manager:
+        if (actorRole == Role.owner) {
+          result = requested == null || requested.isEmpty ? null : requested;
+        } else {
+          // Un responsable change les sites du sous-responsable qu'il a nommé :
+          // un ou plusieurs des siens.
+          if (actorRole != Role.manager || await store.appointedBy(companyId, userId) != actor.id) {
+            throw const ApiError.forbidden();
+          }
+          if (requested == null || requested.isEmpty) throw const ApiError.badRequest('Choisissez au moins un site.');
+          final mine = await managedSites(companyId, actor, actorRole);
+          if (mine != null && !requested.every(mine.contains)) throw const ApiError.forbidden();
+          result = requested;
+        }
+      case Role.employee || Role.extra:
+        if (!actorRole.canManage) throw const ApiError.forbidden();
+        final mine = await managedSites(companyId, actor, actorRole);
+        if (mine == null) {
+          result = requested == null || requested.isEmpty ? null : requested;
+        } else {
+          if (!(requested ?? const []).every(mine.contains)) throw const ApiError.forbidden();
+          final current = await store.sitesOf(companyId, userId) ?? const [];
+          final merged = {...current.where((s) => !mine.contains(s)), ...?requested}.toList();
+          result = merged.isEmpty ? null : merged;
+        }
+    }
+    await store.setSites(companyId, userId, result);
+    await store.audit(
+        companyId: companyId, actorId: actor.id, action: 'member.sites', details: {'userId': userId, 'sites': result});
+  }
+
+  Future<Company> update(User actor, String companyId,
+      {String? name, String? timezone, Map<String, int>? Function()? legalRules, String? printScope}) async {
+    final (company, role) = await open(actor, companyId);
+    _requireWritable(company);
+    if (!role.canManage) throw const ApiError.forbidden();
+    // Nom et fuseau de l'entreprise : pas pour un responsable de site.
+    if (await managedSites(companyId, actor, role) != null) throw const ApiError.forbidden();
+    if (printScope != null && printScope != 'own' && printScope != 'team') {
+      throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    }
+    final updated = await store.updateCompany(company.copyWith(
+      name: name == null ? null : _validName(name),
+      timezone: timezone == null ? null : validTimezone(timezone),
+      legalRules: legalRules,
+      printScope: printScope,
+    ));
+    await store.audit(
+      companyId: companyId,
+      actorId: actor.id,
+      action: 'company.update',
+      details: {'name': name, 'timezone': timezone, 'printScope': printScope, if (legalRules != null) 'legalRules': legalRules()}
+        ..removeWhere((_, v) => v == null),
+    );
+    return updated;
+  }
+
+  Future<List<Member>> members(User actor, String companyId) async {
+    await open(actor, companyId);
+    return store.members(companyId);
+  }
+
+  /// Le propriétaire nomme ou retire les responsables ; un responsable peut
+  /// seulement faire passer quelqu'un de salarié à extra et inversement.
+  /// Le rôle de propriétaire ne change que par transfert.
+  /// [sites] : pour un nouveau responsable, ses sites (`null` : toute l'entreprise).
+  Future<void> setRole(User actor, String companyId, String userId, Role newRole, {List<String>? sites}) async {
+    final (company, actorRole) = await open(actor, companyId);
+    _requireWritable(company);
+    final current = await store.roleOf(companyId, userId);
+    if (current == null) throw const ApiError.notFound('Membre introuvable.');
+    if (current == newRole) return;
+    if (current == Role.owner || newRole == Role.owner) {
+      throw const ApiError.conflict('La propriété se change par un transfert.');
+    }
+    final mine = await managedSites(companyId, actor, actorRole);
+    List<String>? chosen = sites == null ? null : await validSites(companyId, sites);
+    if (chosen != null && chosen.isEmpty) chosen = null;
+    String? appointer;
+    if (actorRole == Role.owner) {
+      // Le propriétaire nomme et retire tous les responsables.
+    } else if (actorRole != Role.manager) {
+      throw const ApiError.forbidden();
+    } else if (newRole == Role.manager) {
+      // Un responsable nomme un sous-responsable parmi les salariés de ses
+      // sites, limité à un ou plusieurs de ses propres sites.
+      if (!await inSites(companyId, userId, mine)) throw const ApiError.forbidden();
+      if (chosen == null) throw const ApiError.badRequest('Choisissez au moins un site.');
+      if (mine != null && !chosen.every(mine.contains)) throw const ApiError.forbidden();
+      appointer = actor.id;
+    } else if (current == Role.manager) {
+      // Il ne retire que les sous-responsables qu'il a nommés.
+      if (await store.appointedBy(companyId, userId) != actor.id) throw const ApiError.forbidden();
+    } else if (!await inSites(companyId, userId, mine)) {
+      throw const ApiError.forbidden();
+    }
+    await store.setRole(companyId, userId, newRole, appointedBy: newRole == Role.manager ? appointer : null);
+    if (newRole == Role.manager) {
+      await store.setSites(companyId, userId, chosen);
+    } else if (current == Role.manager) {
+      // Redevenu salarié : il garde ses sites comme équipe.
+    }
+    await store.audit(
+      companyId: companyId,
+      actorId: actor.id,
+      action: 'member.role',
+      details: {'userId': userId, 'from': current.name, 'to': newRole.name},
+    );
+  }
+
+  /// Retire un membre, ou permet à un membre de quitter l'entreprise.
+  /// Le propriétaire ne peut pas partir sans avoir transféré la propriété.
+  Future<void> removeMember(User actor, String companyId, String userId) async {
+    final (company, actorRole) = await open(actor, companyId);
+    final target = await store.roleOf(companyId, userId);
+    if (target == null) throw const ApiError.notFound('Membre introuvable.');
+    if (target == Role.owner) {
+      throw const ApiError.conflict(
+          'Le propriétaire doit transférer l\'entreprise avant de la quitter.');
+    }
+    final leaving = userId == actor.id;
+    if (!leaving) {
+      _requireWritable(company);
+      final allowed = actorRole == Role.owner ||
+          (actorRole == Role.manager &&
+              (target == Role.employee || target == Role.extra) &&
+              await inSites(companyId, userId, await managedSites(companyId, actor, actorRole))) ||
+          // Un responsable retire un sous-responsable qu'il a nommé.
+          (actorRole == Role.manager && target == Role.manager && await store.appointedBy(companyId, userId) == actor.id);
+      if (!allowed) throw const ApiError.forbidden();
+    }
+    await store.removeMember(companyId, userId);
+    await store.audit(
+      companyId: companyId,
+      actorId: actor.id,
+      action: leaving ? 'member.leave' : 'member.remove',
+      details: {'userId': userId},
+    );
+  }
+
+  Future<OwnershipTransfer> proposeTransfer(User actor, String companyId, String toUserId) async {
+    final (company, role) = await open(actor, companyId);
+    _requireWritable(company);
+    if (role != Role.owner) throw const ApiError.forbidden('Seul le propriétaire peut transférer.');
+    if (await store.roleOf(companyId, toUserId) != Role.manager) {
+      throw const ApiError.badRequest('Le nouveau propriétaire doit être responsable de l\'entreprise.');
+    }
+    if (await store.pendingTransfer(companyId) != null) {
+      throw const ApiError.conflict('Un transfert est déjà en attente.');
+    }
+    final transfer = await store.createTransfer(
+        companyId: companyId, fromUserId: actor.id, toUserId: toUserId);
+    await store.audit(
+      companyId: companyId,
+      actorId: actor.id,
+      action: 'transfer.propose',
+      details: {'transferId': transfer.id, 'toUserId': toUserId},
+    );
+    return transfer;
+  }
+
+  Future<void> cancelTransfer(User actor, String companyId) async {
+    final (_, role) = await open(actor, companyId);
+    if (role != Role.owner) throw const ApiError.forbidden();
+    final pending = await store.pendingTransfer(companyId);
+    if (pending == null) throw const ApiError.notFound('Aucun transfert en attente.');
+    await store.closeTransfer(pending.id, TransferStatus.cancelled);
+    await store.audit(
+        companyId: companyId,
+        actorId: actor.id,
+        action: 'transfer.cancel',
+        details: {'transferId': pending.id});
+  }
+
+  /// Le destinataire accepte ou refuse. Si l'un des deux a quitté
+  /// l'entreprise ou changé de rôle entre-temps, le transfert est annulé.
+  Future<void> answerTransfer(User actor, String transferId, {required bool accept}) async {
+    final t = await store.findTransfer(transferId);
+    if (t == null || t.toUserId != actor.id || t.status != TransferStatus.pending) {
+      throw const ApiError.notFound('Transfert introuvable.');
+    }
+    final stillValid = await store.roleOf(t.companyId, t.fromUserId) == Role.owner &&
+        await store.roleOf(t.companyId, t.toUserId) == Role.manager;
+    if (!stillValid) {
+      await store.closeTransfer(t.id, TransferStatus.cancelled);
+      throw const ApiError.conflict('Ce transfert n\'est plus valable.');
+    }
+    if (accept) {
+      await store.completeTransfer(t);
+      // Le nouveau propriétaire couvre toute l'entreprise.
+      await store.setSites(t.companyId, t.toUserId, null);
+    } else {
+      await store.closeTransfer(t.id, TransferStatus.declined);
+    }
+    await store.audit(
+      companyId: t.companyId,
+      actorId: actor.id,
+      action: accept ? 'transfer.accept' : 'transfer.decline',
+      details: {'transferId': t.id},
+    );
+  }
+
+  void _requireWritable(Company company) {
+    if (company.status == CompanyStatus.readOnly) {
+      throw const ApiError.conflict('Cette entreprise est en lecture seule.');
+    }
+  }
+
+  /// Nom d'une personne dans l'entreprise, donné par un responsable : le
+  /// propriétaire renomme tout le monde, un responsable les salariés, les
+  /// extras et lui-même. Vide : on revient au nom choisi par la personne.
+  Future<void> renameMember(User actor, String companyId, String userId, String? name) async {
+    final (company, actorRole) = await open(actor, companyId);
+    _requireWritable(company);
+    final target = await store.roleOf(companyId, userId);
+    if (target == null) throw const ApiError.notFound('Membre introuvable.');
+    final allowed = actorRole == Role.owner ||
+        (actorRole == Role.manager &&
+            (userId == actor.id ||
+                ((target == Role.employee || target == Role.extra) &&
+                    await inSites(companyId, userId, await managedSites(companyId, actor, actorRole)))));
+    if (!allowed) throw const ApiError.forbidden();
+    final clean = personName(name);
+    await store.setMemberName(companyId, userId, clean);
+    await store.audit(
+      companyId: companyId,
+      actorId: actor.id,
+      action: 'member.name',
+      details: {'userId': userId, 'name': clean},
+    );
+  }
+
+  /// `null` ou vide : pas de nom personnalisé.
+  static String? personName(String? name) =>
+      name == null || name.trim().isEmpty ? null : _validName(name);
+
+  static String _validName(String name) {
+    final trimmed = name.trim();
+    if (trimmed.isEmpty || trimmed.length > 120) {
+      throw const ApiError.badRequest('Le nom doit faire entre 1 et 120 caractères.');
+    }
+    return trimmed;
+  }
+}
+
+final _ianaZone = RegExp(r'^(UTC|[A-Z][A-Za-z_]+(/[A-Za-z0-9_+\-]+){1,2})$');
+
+/// Vérifie la forme d'un fuseau IANA (`Europe/Paris`, `America/Argentina/Buenos_Aires`).
+String validTimezone(String value) {
+  if (!_ianaZone.hasMatch(value)) {
+    throw ApiError.badRequest('Fuseau horaire invalide : {value}', {'value': value});
+  }
+  return value;
+}

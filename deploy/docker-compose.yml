@@ -1,0 +1,84 @@
+# Lancer depuis la racine du dépôt :
+#   docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d --build
+name: staff-flow
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: staffflow
+      POSTGRES_USER: staffflow
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?}
+    volumes:
+      - db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U staffflow -d staffflow"]
+      interval: 10s
+      retries: 10
+
+  api:
+    build: ../server
+    restart: unless-stopped
+    depends_on:
+      db: { condition: service_healthy }
+    environment:
+      DATABASE_URL: postgresql://staffflow:${POSTGRES_PASSWORD}@db:5432/staffflow?sslmode=disable
+      SESSION_SECRET: ${SESSION_SECRET:?}
+      GOOGLE_CLIENT_IDS: ${GOOGLE_CLIENT_IDS:?}
+      ALLOWED_ORIGINS: https://${DOMAIN},https://${APP_DOMAIN:-${DOMAIN}}
+      # Administrateurs de la plateforme (adresses Google, séparées par des virgules).
+      ADMIN_EMAILS: ${ADMIN_EMAILS:-}
+      # Compte de service Firebase (JSON en base64) ; vide : pas de notifications sur les appareils.
+      FCM_CREDENTIALS_B64: ${FCM_CREDENTIALS_B64:-}
+      # Traduction des messages, sur ce serveur (service « translate » ci-dessous).
+      TRANSLATE_URL: http://translate:5000
+
+  web:
+    build:
+      context: ..
+      dockerfile: deploy/web.Dockerfile
+      args:
+        GOOGLE_WEB_CLIENT_ID: ${GOOGLE_WEB_CLIENT_ID:?}
+    restart: unless-stopped
+    depends_on: [api]
+    environment:
+      DOMAIN: ${DOMAIN:?}
+      APP_DOMAIN: ${APP_DOMAIN:-}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+
+  # Traducteur libre (LibreTranslate) : les messages ne sortent pas du serveur.
+  # Pas de port publié : seule l'API y accède. Modèles gardés dans un volume.
+  translate:
+    image: libretranslate/libretranslate:v1.9.6
+    restart: unless-stopped
+    environment:
+      LT_LOAD_ONLY: en,fr,es,uk,ru,pt,de,it,nl,pl,cs,sk,ro,hu,bg,el,sv,da,nb,fi,id,ms,vi,tl,th,ja,ko,zh,hi,bn
+    volumes:
+      - translate-models:/home/libretranslate/.local
+
+  backup:
+    build: ./backup
+    restart: unless-stopped
+    depends_on:
+      db: { condition: service_healthy }
+    environment:
+      DATABASE_URL: postgresql://staffflow:${POSTGRES_PASSWORD}@db:5432/staffflow?sslmode=disable
+      BACKUP_PASSPHRASE: ${BACKUP_PASSPHRASE:?}
+      BACKUP_KEEP_DAYS: "30"
+      TZ: Europe/Paris
+    volumes:
+      - ${BACKUP_DIR:-/var/backups/staff-flow}:/backups
+
+volumes:
+  db:
+  translate-models:
+    name: staff-flow_translate-models
+  caddy_data:
+  caddy_config:

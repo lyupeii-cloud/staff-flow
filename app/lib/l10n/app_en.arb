@@ -1,0 +1,936 @@
+{
+  "@@locale": "en",
+  "cancel": "Cancel",
+  "save": "Save",
+  "confirm": "Confirm",
+  "validate": "Confirm",
+  "add": "Add",
+  "rename": "Rename",
+  "delete": "Delete",
+  "accept": "Accept",
+  "decline": "Decline",
+  "close": "Close",
+  "retry": "Try again",
+  "name": "Name",
+  "serverUnreachable": "Cannot reach the server.",
+  "errorStatus": "Error {status}",
+  "@errorStatus": {
+    "placeholders": {
+      "status": {
+        "type": "int"
+      }
+    }
+  },
+  "roleOwner": "Owner",
+  "roleManager": "Manager",
+  "roleEmployee": "Employee",
+  "roleExtra": "Extra",
+  "taglineStart": "Your team's schedules, ",
+  "taglineEnd": "everywhere.",
+  "googleNotConfigured": "Google sign-in is not configured (GOOGLE_WEB_CLIENT_ID).",
+  "signInWithGoogle": "Sign in with Google",
+  "devSection": "Development",
+  "emailLabel": "Email address",
+  "devSignIn": "Test sign-in",
+  "googleUnavailable": "Google sign-in unavailable: {detail}",
+  "@googleUnavailable": {
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
+  "googleFailed": "Google sign-in failed: {detail}",
+  "@googleFailed": {
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
+  "newCompany": "New company",
+  "timezone": "Time zone",
+  "create": "Create",
+  "noCompanyTitle": "You are not part of any company yet.",
+  "noCompanyHint": "To join your employer's, generate a code and give it to your manager.",
+  "joinCompany": "Join a company",
+  "createCompany": "Create a company",
+  "transferOffer": "You are invited to become the owner of “{company}”.",
+  "@transferOffer": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "someCompany": "a company",
+  "becameOwner": "You are now the owner.",
+  "myAccount": "My account",
+  "idCopied": "ID copied.",
+  "myId": "My ID: {id}",
+  "@myId": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "signOut": "Sign out",
+  "joinInvite": "“{company}” invites you as {role}.",
+  "@joinInvite": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      },
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "joinedCompany": "You joined {company}.",
+  "@joinedCompany": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "viewPlanning": "Schedule",
+  "viewTeam": "Management",
+  "viewPositions": "Positions",
+  "readOnlyCompany": "This company is read-only.",
+  "team": "Team",
+  "leaveCompany": "Leave this company",
+  "meSuffix": "{name} (you)",
+  "@meSuffix": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "transferConfirmTitle": "Transfer the company to {name}?",
+  "@transferConfirmTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "transferConfirmBody": "Once they accept, they will become the owner (subscription, invoices, managers) and you will become a manager.",
+  "transferSent": "Offer sent to {name}.",
+  "@transferSent": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "removeConfirmTitle": "Remove {name}?",
+  "@removeConfirmTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "removeConfirmBody": "Their history is kept.",
+  "addPersonTitle": "Add a person",
+  "addPersonHint": "Ask them to open Staff Flow, then their account menu, “Join a company”, and enter the code they see.",
+  "sixDigitCode": "6-digit code",
+  "invitationSent": "Invitation sent to {name}: they need to accept it.",
+  "@invitationSent": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "leaveConfirmTitle": "Leave {company}?",
+  "@leaveConfirmTitle": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "leaveConfirmBody": "You will no longer see its schedule.",
+  "renameCompany": "Rename the company",
+  "actionMakeManager": "Make manager",
+  "actionMakeEmployee": "Make employee again",
+  "actionToEmployee": "Make employee",
+  "actionToExtra": "Make extra",
+  "actionTransfer": "Transfer ownership",
+  "actionRemove": "Remove from the company",
+  "positions": "Positions",
+  "sites": "Sites",
+  "positionsHint": "What the person does: checkout, kitchen, reception…",
+  "sitesHint": "Where the shift takes place, if the company has several locations.",
+  "archived": "Archived",
+  "archive": "Archive",
+  "reactivate": "Reactivate",
+  "weekOf": "Week of {date}",
+  "@weekOf": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "changesPublished": "{count, plural, =1{1 change published.} other{{count} changes published.}}",
+  "@changesPublished": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shiftButton": "Shift",
+  "display": "View",
+  "week": "Week",
+  "month": "Month",
+  "today": "Today",
+  "onlyMine": "Only my shifts",
+  "replacePersonMenu": "Replace a person…",
+  "pendingChanges": "{count, plural, =1{1 unpublished change} other{{count} unpublished changes}}",
+  "@pendingChanges": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pendingHint": "Employees can't see them yet.",
+  "publish": "Publish",
+  "yourHours": "Your hours for this period: {duration}",
+  "@yourHours": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "addShiftThisDay": "Add a shift on this day",
+  "noShift": "No shifts",
+  "unassigned": "Unassigned",
+  "formerMember": "Former member",
+  "statusDraft": "Draft",
+  "statusModified": "Changed",
+  "statusDeleted": "Deleted",
+  "durationHours": "{hours}h",
+  "@durationHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "durationHoursMinutes": "{hours}h{minutes}",
+  "@durationHoursMinutes": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "editShift": "Edit shift",
+  "newShift": "New shift",
+  "thisShift": "This shift",
+  "thisAndFollowing": "This and following",
+  "daysLabel": "{count, plural, =1{Day} other{Days}}",
+  "@daysLabel": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "otherDay": "Another day",
+  "start": "Start",
+  "end": "End",
+  "endsNextDay": "Ends the next day.",
+  "person": "Person",
+  "position": "Position",
+  "site": "Site",
+  "noteOptional": "Note (optional)",
+  "repetition": "Repeat",
+  "repeatNone": "None",
+  "repeatDaily": "Every day",
+  "repeatWeekly": "Every week",
+  "repeatForPrefix": "For ",
+  "repeatDaysSuffix": " days",
+  "repeatWeeksSuffix": " weeks",
+  "repeatUntilPrefix": "Until ",
+  "replacePersonTitle": "Replace a person",
+  "replaceFrom": "Replace",
+  "replaceBy": "With",
+  "dateRange": "From {from} to {to}",
+  "@dateRange": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "shiftsChanged": "{count, plural, =0{No shifts changed.} =1{1 shift changed.} other{{count} shifts changed.}}",
+  "@shiftsChanged": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "replaceButton": "Replace",
+  "joinHint": "Give this code to your manager. They enter it in their app, then you receive an invitation to accept.",
+  "codeExpired": "Code expired.",
+  "codeValidFor": "Valid for {time}",
+  "@codeValidFor": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "newCode": "New code",
+  "language": "Language",
+  "languageAuto": "Automatic (device language)",
+  "syncUpToDate": "Up to date",
+  "syncOffline": "Offline",
+  "syncPending": "Pending changes: {count}",
+  "@syncPending": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "syncNow": "Sync now",
+  "syncRejected": "Change refused by the server: {reason}",
+  "@syncRejected": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "pendingBadge": "Pending",
+  "offlineUnavailable": "Unavailable offline.",
+  "offlineCached": "Offline: showing the last saved data.",
+  "savedOffline": "Saved on this device, will be sent when the network is back.",
+  "notices": "Notices",
+  "noNotices": "No notices.",
+  "noticeOverwritten": "{name} replaced your change to the shift on {date}.",
+  "@noticeOverwritten": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "history": "History",
+  "recentChanges": "Recent changes",
+  "undoChange": "Undo this change",
+  "undoDone": "Change undone.",
+  "historyCreate": "Created",
+  "historyUpdate": "Changed",
+  "historyDelete": "Deleted",
+  "historyUndo": "Undone",
+  "noHistory": "No changes.",
+  "pendingNotEditable": "This shift is not synced yet: try again once online.",
+  "myQrCode": "My QR code",
+  "myQrCodeHint": "A manager scans this code to add you to their company; you then confirm. It never changes.",
+  "changeMyName": "Change my name",
+  "nameShownToTeam": "This name is shown to your colleagues instead of your Google name.",
+  "googleName": "Google name: {name}",
+  "@googleName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "useGoogleName": "Use my Google name",
+  "renameMemberTitle": "Rename {name}",
+  "@renameMemberTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "renameMemberHint": "This name is only used in this company.",
+  "useOwnName": "Use their own name",
+  "scanQrCode": "Scan a QR code",
+  "scanQrHint": "Point the camera at the QR code shown in their app (account menu, “My QR code”).",
+  "orEnterCode": "Or enter their 6-digit code",
+  "qrInvalid": "This is not a Staff Flow QR code.",
+  "cameraUnavailable": "Camera unavailable ({error}).",
+  "@cameraUnavailable": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationsTitle": "Notifications",
+  "notifChooseHint": "Choose what you are notified about. Everything stays visible in the bell.",
+  "notifPlanning": "Schedule published or changed",
+  "notifRequests": "Requests: swaps, leave, invitations",
+  "notifMessages": "New messages",
+  "notifOverlap": "Overlapping shifts between companies",
+  "notifConflicts": "Your changes replaced by another manager",
+  "notifBilling": "Subscription reminders",
+  "pushEnabled": "Notifications are on for this device.",
+  "pushOff": "Notifications are off on this device.",
+  "pushBlocked": "Notifications are blocked: allow them in your phone or browser settings.",
+  "pushUnavailable": "Notifications are not available on this device.",
+  "enablePush": "Turn on",
+  "noticeSchedulePublished": "{company}: your schedule has been published or changed.",
+  "@noticeSchedulePublished": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeJoinInvite": "{company} wants to add you to its team.",
+  "@noticeJoinInvite": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeTransferOffer": "{name} offers to make you the owner of {company}.",
+  "@noticeTransferOffer": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeMemberJoined": "{name} joined {company}.",
+  "@noticeMemberJoined": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "messagesTab": "Messages",
+  "wholeTeam": "Whole team",
+  "newConversation": "New conversation",
+  "noMessages": "No messages yet.",
+  "messageHint": "Write a message",
+  "earlierMessages": "Earlier messages",
+  "personLeftCompany": "This person is no longer part of the company.",
+  "messagePreview": "{name}: {text}",
+  "@messagePreview": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "newGroup": "New group",
+  "editGroup": "Edit group",
+  "groupName": "Group name",
+  "groupMembersHint": "Choose the people in this group. Only they will see its messages.",
+  "chooseAtLeastOne": "Choose at least one person.",
+  "replyAction": "Reply",
+  "translateAction": "Translate",
+  "replyingTo": "Replying to {name}",
+  "@replyingTo": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "lastMessagesOf": "Last messages from {name}",
+  "@lastMessagesOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteAllNotices": "Delete all",
+  "deleteAllNoticesConfirm": "Delete all notices?",
+  "noticeRetention": "Delete read notices after",
+  "retentionDay": "1 day",
+  "retentionWeek": "1 week",
+  "retentionMonth": "1 month",
+  "billingOwnersOnly": "Only active when you own a company.",
+  "readOnlyPastDays": "Days more than a month old are read-only.",
+  "wholeCompany": "Whole company",
+  "sitesLabel": "Sites",
+  "actionSites": "Sites…",
+  "managerOf": "{name} manages",
+  "@managerOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "teamSitesOf": "{name}'s team",
+  "@teamSitesOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notYourSite": "This site is not under your responsibility.",
+  "chooseYourSite": "Choose at least one site.",
+  "viewRequests": "Requests",
+  "newRequest": "New request",
+  "requestLeave": "Leave",
+  "requestUnavailability": "Unavailability",
+  "requestSwap": "Shift swap",
+  "swapHint": "To offer a swap, tap one of your upcoming shifts in the schedule.",
+  "noRequests": "No requests yet.",
+  "requestsToHandle": "To handle",
+  "myRequests": "My requests",
+  "otherRequests": "Team requests",
+  "statusPendingPeer": "Waiting for the colleague",
+  "statusPendingManager": "Waiting for a manager",
+  "statusApproved": "Approved",
+  "statusRefused": "Refused",
+  "statusCancelled": "Cancelled",
+  "cancelRequest": "Cancel request",
+  "acceptSwap": "Take this shift",
+  "approve": "Approve",
+  "periodLabel": "From {from} to {to}",
+  "@periodLabel": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "swapToPeer": "Offered to {name}",
+  "@swapToPeer": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "swapToTeam": "Whole team",
+  "everyWeekdays": "Every week: {days}",
+  "@everyWeekdays": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "unavailableEveryWeek": "Days you are never available:",
+  "choosePeriod": "Choose dates",
+  "choosePeriodOptional": "Limit to a period (optional)",
+  "clearPeriod": "No period",
+  "sendRequest": "Send request",
+  "proposeSwap": "Offer a swap",
+  "swapWith": "Offer to",
+  "swapSteps": "The colleague accepts, then a manager approves. The schedule only changes after that.",
+  "absentThatDay": "Approved absence that day",
+  "requestSent": "Request sent.",
+  "noticeSwapOffer": "{name} offers you one of their shifts.",
+  "@noticeSwapOffer": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeSwapDeclined": "{name} declined your swap offer.",
+  "@noticeSwapDeclined": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeSwapToApprove": "A shift swap is waiting for your approval.",
+  "noticeLeaveToApprove": "{name} is asking for leave.",
+  "@noticeLeaveToApprove": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeUnavailabilityToApprove": "{name} reports being unavailable.",
+  "@noticeUnavailabilityToApprove": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeRequestApproved": "Your request has been approved.",
+  "noticeRequestRefused": "Your request has been refused.",
+  "choosePeer": "Who takes over this shift?",
+  "discardAll": "Discard all",
+  "notifySitesHint": "Choose the sites you get request notifications for. All requests stay visible in the list.",
+  "notifySitesTitle": "Notifications by site",
+  "pendingRequestTooltip": "Pending request: tap to open it",
+  "requestsHistory": "All requests",
+  "revertChange": "Undo this change",
+  "statusExpired": "No longer applies",
+  "swapWithHint": "Tap to choose a specific colleague",
+  "changesDiscarded": "Changes discarded: {count}",
+  "@changesDiscarded": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "discardConfirm": "Discard the {count} unpublished changes?",
+  "@discardConfirm": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "allSchedules": "All my schedules",
+  "busyElsewhere": "Already working at another company at this time",
+  "overlapTooltip": "Overlaps a shift at another company",
+  "overlapWarning": "Some of your shifts at two companies overlap.",
+  "noticeOverlap": "Two of your shifts at different companies overlap on {date}.",
+  "@noticeOverlap": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "allMyCompanies": "All my companies",
+  "deleteGroup": "Delete group",
+  "openRequest": "View request",
+  "thisCompany": "This company",
+  "withExtras": "Include extras",
+  "deleteGroupConfirm": "Delete “{name}” and all its messages for everyone?",
+  "@deleteGroupConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "reinforcementHint": "From {company}: will be added as backup staff and notified.",
+  "@reinforcementHint": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "addToGoogle": "Add to Google Calendar",
+  "calendarEnabled": "Sync my shifts",
+  "calendarHint": "Add your shifts from all your companies to Google Calendar. They update on their own, and you can turn this off at any time.",
+  "changeSettings": "Edit",
+  "copyCalendarLink": "Copy calendar link",
+  "countryBelgium": "Belgium",
+  "countryCanada": "Canada",
+  "countryFrance": "France",
+  "countrySwitzerland": "Switzerland",
+  "employeesSection": "Employees",
+  "emptyNoAlert": "Empty: no alert",
+  "extrasSection": "Extras",
+  "googleCalendar": "Google Calendar",
+  "hoursTotals": "Hour totals",
+  "legalAlerts": "Legal alerts",
+  "legalAlertsHint": "Warnings, never blocks. Choose the rules that apply to you, or none.",
+  "legalPreset": "Country template",
+  "linkCopied": "Link copied.",
+  "maxConsecutiveLabel": "Maximum consecutive working days",
+  "maxDayLabel": "Maximum hours per day",
+  "maxWeekLabel": "Maximum hours per week",
+  "minRestLabel": "Minimum rest between shifts (hours)",
+  "noLegalRules": "No alerts chosen.",
+  "presetNone": "None",
+  "presetsCheck": "Templates are starting points: check them against your country's rules and your collective agreement.",
+  "printMine": "My schedule",
+  "printOwn": "Their own schedule only",
+  "printPdf": "Print / PDF",
+  "printRights": "What employees can print",
+  "printTeam": "The whole team's schedule",
+  "printTeamOption": "The team's schedule",
+  "totalsHint": "Drafts included. Excel and CSV exports use the published schedule.",
+  "alertConsecutive": "{name}: {value} days in a row (maximum {limit})",
+  "@alertConsecutive": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "alertDay": "{name}: {value} in the day (maximum {limit})",
+  "@alertDay": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "alertRest": "{name}: only {value} of rest (minimum {limit})",
+  "@alertRest": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "alertWeek": "{name}: {value} in the week (maximum {limit})",
+  "@alertWeek": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "legalAlertsCount": "Legal alerts: {count}",
+  "@legalAlertsCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "shiftsCount": "Shifts: {count}",
+  "@shiftsCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "actionMakeDeputy": "Appoint as deputy manager",
+  "actionRemoveDeputy": "Remove deputy manager role",
+  "busyHere": "Already working at this company at this time",
+  "calendarByLink": "By link (Google Calendar on a computer)",
+  "calendarDenied": "Calendar access denied. Allow it in the phone settings.",
+  "calendarLinkHint": "Add it from Google Calendar on a computer; Google updates it within a few hours.",
+  "calendarNone": "No editable calendar on this phone.",
+  "calendarOnPhone": "Add my shifts to the phone calendar",
+  "calendarOnPhoneHint": "In your Google calendar: visible right away, on the phone and in Google Calendar.",
+  "chooseCalendar": "Choose the calendar",
+  "otherSiteHint": "Employee from another site: their managers will be notified.",
+  "subManager": "Deputy manager",
+  "calendarSynced": "Shifts in the calendar: {count}",
+  "@calendarSynced": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "deputyOf": "Deputy manager: {name}",
+  "@deputyOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeBorrowed": "{by} scheduled {name} at {site} on {date}.",
+  "@noticeBorrowed": {
+    "placeholders": {
+      "by": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "site": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeReinforcement": "{company} added you as backup staff.",
+  "@noticeReinforcement": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "companyNotificationsHint": "Off: nothing rings on this phone, but everything stays in the bell.",
+  "companyNotificationsOn": "Get notifications from this company",
+  "companyTimezone": "Company time zone",
+  "companyTimezoneHint": "All of this company's times are in this time zone (daylight saving included). Calendars convert them automatically.",
+  "iosInstallHint": "On iPhone: tap Share, then “Add to Home Screen” to install Staff Flow.",
+  "searchCity": "Search for a city",
+  "thisPhone": "This device",
+  "companyNotifications": "Notifications: {name}",
+  "@companyNotifications": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "timezoneDiffers": "Times are in {zone} time ({company}). Your device: {here}.",
+  "@timezoneDiffers": {
+    "placeholders": {
+      "zone": {
+        "type": "String"
+      },
+      "company": {
+        "type": "String"
+      },
+      "here": {
+        "type": "String"
+      }
+    }
+  },
+  "addPreset": "Add preset",
+  "addPresets": "Create presets",
+  "appearance": "Appearance",
+  "chooseLogo": "Choose a PNG image",
+  "conversationMuted": "Notifications muted for this conversation.",
+  "conversationUnmuted": "Notifications back on for this conversation.",
+  "customization": "Customization",
+  "disableGroup": "Turn off the group",
+  "disableGroupConfirm": "The whole-company group will be hidden for everyone. You can turn it back on in Messages.",
+  "editPresets": "Presets",
+  "enable": "Turn back on",
+  "groupDisabled": "Group turned off (only you can see it)",
+  "logoHint": "A small PNG image (your logo) shown on the company tab, for all its members.",
+  "logoPngOnly": "Choose a PNG image of 1 MB or less.",
+  "muteConversation": "Mute this conversation",
+  "myIdentifier": "My identifier",
+  "myProfile": "My profile",
+  "presetName": "Name (e.g. Morning)",
+  "removeLogo": "Remove image",
+  "resetGroup": "Reset the group",
+  "resetGroupConfirm": "All messages in the company group will be deleted for everyone.",
+  "settingsTitle": "Settings",
+  "shiftPresets": "Shift presets",
+  "shiftPresetsHint": "Ready-made times (morning, evening, night…): one tap in a shift fills in the start and end.",
+  "themeDark": "Dark",
+  "themeLight": "Light",
+  "themeSystem": "System",
+  "unmuteConversation": "Unmute this conversation",
+  "awaitingApproval": "To approve",
+  "placementNeedsApproval": "! This person isn't on your sites: the shift will wait for approval from your superior or the owner before it can be published. Otherwise, pick someone else.",
+  "placementAwaiting": "Waiting for approval from a superior or the owner.",
+  "noticePlacementToApprove": "{by} wants to schedule {name}, from another site, on {date}: approval needed.",
+  "@noticePlacementToApprove": {
+    "placeholders": {
+      "by": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noticePlacementApproved": "{by} approved scheduling {name} on {date}.",
+  "@noticePlacementApproved": {
+    "placeholders": {
+      "by": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noticePlacementRefused": "{by} refused scheduling {name} on {date}.",
+  "@noticePlacementRefused": {
+    "placeholders": {
+      "by": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "addSubSite": "Add a sub-site",
+  "moveSite": "Move",
+  "topLevel": "Top level",
+  "moveSiteTitle": "Move “{name}” under…",
+  "@moveSiteTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "subSiteOf": "Sub-site of {name}",
+  "@subSiteOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "siteTreeHint": "Up to 3 levels, e.g. Region › City › Store. A manager of a site also manages everything below it.",
+  "subSitesOnlyHint": "Here you add sub-sites under your own sites.",
+  "messagingSetting": "Company messaging",
+  "messagingSettingHint": "On: the team has a Messages tab. Off: nobody sees it or can write (old messages are kept)."
+}

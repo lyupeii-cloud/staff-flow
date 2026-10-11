@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://staff-flow.cloud/sitemap.xml
