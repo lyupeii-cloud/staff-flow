@@ -6,7 +6,7 @@ import 'dart:io';
 /// Une page par langue ; la page d'accueil « / » envoie vers la langue du
 /// navigateur (règle dans deploy/staff-flow.cloud.caddy).
 const site = 'https://staff-flow.cloud';
-const app = 'https://staff-flow.vercane.com';
+const app = 'https://app.staff-flow.cloud';
 const langs = ['fr', 'uk', 'en'];
 
 /// Captures : une série par langue (www/img/fr, uk, en).

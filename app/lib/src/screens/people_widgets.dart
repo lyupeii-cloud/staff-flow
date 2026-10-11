@@ -9,7 +9,7 @@ import '../models.dart';
 /// Adresse contenue dans le QR code permanent d'une personne. Le serveur n'en
 /// lit que l'identifiant SF-… ; l'adresse ouvre le site si on le scanne avec
 /// un appareil photo ordinaire.
-String qrPayload(User user) => 'https://staff-flow.vercane.com/u/${user.publicId}';
+String qrPayload(User user) => 'https://app.staff-flow.cloud/u/${user.publicId}';
 
 final _publicId = RegExp(r'SF-[A-Z2-9]{8}');
 

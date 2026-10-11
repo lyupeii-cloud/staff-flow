@@ -4,5 +4,5 @@
 set -eu
 cd "$(dirname "$0")/../app"
 flutter build apk --release \
-  --dart-define=API_URL=https://staff-flow.vercane.com \
+  --dart-define=API_URL=https://app.staff-flow.cloud \
   --dart-define=GOOGLE_WEB_CLIENT_ID=971132277831-1oco3slk71e7rnia5cfap7qc4gvk77mu.apps.googleusercontent.com
