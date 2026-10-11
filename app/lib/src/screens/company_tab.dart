@@ -381,45 +381,57 @@ class _ViewSwitcher extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     return LayoutBuilder(builder: (context, box) {
       final compact = box.maxWidth < 520;
+      final selectedAt = items.indexWhere((it) => it.$1 == selected);
       return Container(
         height: 44,
+        padding: const EdgeInsets.all(3),
         decoration: BoxDecoration(
           border: Border.all(color: scheme.outline),
           borderRadius: BorderRadius.circular(22),
         ),
-        clipBehavior: Clip.antiAlias,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            for (final (i, (view, icon, label)) in items.indexed)
+            for (final (i, (view, icon, label)) in items.indexed) ...[
+              // Séparateur fin, caché à côté de la vue choisie (sa pastille suffit).
+              if (i > 0)
+                Container(
+                  width: 1,
+                  margin: const EdgeInsets.symmetric(vertical: 8),
+                  color: i == selectedAt || i - 1 == selectedAt ? Colors.transparent : scheme.outlineVariant,
+                ),
               Expanded(
                 flex: compact && view == selected ? 3 : 2,
                 child: Tooltip(
                   message: label,
-                  child: InkWell(
-                    onTap: () => onSelected(view),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: view == selected ? scheme.secondaryContainer : null,
-                        border: i == 0 ? null : Border(left: BorderSide(color: scheme.outline)),
-                      ),
-                      padding: const EdgeInsets.symmetric(horizontal: 6),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          IconTheme.merge(data: const IconThemeData(size: 20), child: icon),
-                          if (!compact || view == selected) ...[
-                            const SizedBox(width: 6),
-                            Flexible(
-                              child: Text(label,
-                                  maxLines: 1, overflow: TextOverflow.ellipsis, style: Theme.of(context).textTheme.labelLarge),
-                            ),
+                  // Vue choisie : une pastille arrondie, à l'intérieur du cadre.
+                  child: Material(
+                    color: view == selected ? scheme.secondaryContainer : Colors.transparent,
+                    borderRadius: BorderRadius.circular(18),
+                    clipBehavior: Clip.antiAlias,
+                    child: InkWell(
+                      onTap: () => onSelected(view),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 6),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconTheme.merge(data: const IconThemeData(size: 20), child: icon),
+                            if (!compact || view == selected) ...[
+                              const SizedBox(width: 6),
+                              Flexible(
+                                child: Text(label,
+                                    maxLines: 1, overflow: TextOverflow.ellipsis, style: Theme.of(context).textTheme.labelLarge),
+                              ),
+                            ],
                           ],
-                        ],
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
+            ],
           ],
         ),
       );
