@@ -476,5 +476,14 @@
   "apiKeyNeverUsed": "ક્યારેય વપરાઈ નથી",
   "apiRevoke": "રદ કરો",
   "apiRevokeConfirm": "આ કી વાપરતા સૉફ્ટવેરની ઍક્સેસ બંધ થઈ જશે.",
-  "apiDocs": "API દસ્તાવેજ"
+  "apiDocs": "API દસ્તાવેજ",
+  "memberGoogleLink": "Google એકાઉન્ટ બદલવાની લિંક",
+  "googleLinkHint": "આ લિંક {name} ને મોકલો. તે બ્રાઉઝરમાં ખૂલે છે (Android એપમાં નહીં), માત્ર એક વાર, 24 કલાક માટે: {name} નવા Google એકાઉન્ટથી સાઇન ઇન કરીને પોતાનું એકાઉન્ટ પાછું મેળવે છે. પછી તેમના બાકીના બધા ડિવાઇસ સાઇન આઉટ થાય છે.",
+  "googleLinkCopied": "લિંક કૉપિ થઈ.",
+  "switchBanner": "Google એકાઉન્ટ બદલવાની લિંક: તમારું Staff Flow એકાઉન્ટ પાછું મેળવવા નવા Google એકાઉન્ટથી સાઇન ઇન કરો.",
+  "switchSignOutFirst": "આ લિંક Staff Flow એકાઉન્ટને નવા Google એકાઉન્ટ સાથે જોડે છે. પહેલાં સાઇન આઉટ કરો, પછી નવા Google એકાઉન્ટથી સાઇન ઇન કરો.",
+  "switchDone": "થઈ ગયું: તમારું Staff Flow એકાઉન્ટ આ Google એકાઉન્ટ સાથે જોડાયું છે. તમારા બાકીના ડિવાઇસ સાઇન આઉટ થયા છે.",
+  "changeGoogleBot": "સૌથી સરળ: Telegram માં બૉટ {bot} ને /changegoogle મોકલો અને સૂચનાઓ અનુસરો, પછી 10 મિનિટમાં નવા Google એકાઉન્ટથી સાઇન ઇન કરો.",
+  "changeGoogleNoTelegram": "Telegram વિના: માલિક કે મેનેજર પાસે Google એકાઉન્ટ બદલવાની લિંક માગો.",
+  "noticeGoogleSwitchLink": "{name} એ તમારા એકાઉન્ટને નવા Google એકાઉન્ટ સાથે જોડવા માટે લિંક બનાવી છે. જો તમે આ માગ્યું ન હોય, તો તમારા મેનેજરને જણાવો."
 }

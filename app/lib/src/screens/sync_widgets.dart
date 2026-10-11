@@ -160,6 +160,7 @@ class NoticesButton extends StatelessWidget {
       'billing_grace' => t.noticeBillingGrace(company, longDate(parseDay(data['day']), loc)),
       'billing_grace_reminder' => t.noticeBillingGraceReminder(company, longDate(parseDay(data['day']), loc)),
       'billing_deleted' => t.noticeBillingDeleted(data['companyName'] ?? '?'),
+      'google_switch_link' => t.noticeGoogleSwitchLink(data['byName'] ?? '?'),
       'placement_to_approve' =>
         t.noticePlacementToApprove(data['byName'] ?? '?', data['name'] ?? '?', longDate(parseDay(data['day']), loc)),
       'placement_approved' =>
@@ -174,6 +175,7 @@ class NoticesButton extends StatelessWidget {
         'schedule_published' => Icons.calendar_month,
         'join_invite' => Icons.group_add,
         'transfer_offer' => Icons.key,
+        'google_switch_link' => Icons.switch_account,
         'member_joined' => Icons.person_add,
         'swap_offer' || 'swap_declined' || 'swap_to_approve' => Icons.swap_horiz,
         'leave_to_approve' => Icons.beach_access,

@@ -1724,4 +1724,41 @@ class L10nFi extends L10n {
 
   @override
   String get apiDocs => 'API-dokumentaatio';
+
+  @override
+  String get memberGoogleLink => 'Linkki Google-tilin vaihtoon';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Lähetä tämä linkki henkilölle $name. Se avautuu selaimessa (ei Android-sovelluksessa), kerran, 24 tunnin ajan: $name kirjautuu uudella Google-tilillään ja saa tilinsä takaisin. Kaikki hänen muut laitteensa kirjataan silloin ulos.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Linkki kopioitu.';
+
+  @override
+  String get switchBanner =>
+      'Google-tilin vaihtolinkki: kirjaudu uudella Google-tililläsi saadaksesi Staff Flow -tilisi takaisin.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Tämä linkki yhdistää Staff Flow -tilin uuteen Google-tiliin. Kirjaudu ensin ulos ja sitten sisään uudella Google-tilillä.';
+
+  @override
+  String get switchDone =>
+      'Valmis: Staff Flow -tilisi on yhdistetty tähän Google-tiliin. Muut laitteesi on kirjattu ulos.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Helpointa: lähetä Telegramissa /changegoogle botille $bot ja noudata ohjeita; kirjaudu sitten 10 minuutin kuluessa uudella Google-tilillä.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Ilman Telegramia: pyydä omistajalta tai esihenkilöltä linkki Google-tilin vaihtoon.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name loi linkin, jolla tilisi yhdistetään uuteen Google-tiliin. Jos et pyytänyt tätä, kerro esihenkilöllesi.';
+  }
 }

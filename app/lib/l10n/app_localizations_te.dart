@@ -1717,4 +1717,41 @@ class L10nTe extends L10n {
 
   @override
   String get apiDocs => 'API డాక్యుమెంటేషన్';
+
+  @override
+  String get memberGoogleLink => 'Google ఖాతా మార్చే లింక్';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'ఈ లింక్‌ను $nameకి పంపండి. ఇది బ్రౌజర్‌లో తెరుచుకుంటుంది (Android యాప్‌లో కాదు), ఒక్కసారే, 24 గంటల పాటు: $name కొత్త Google ఖాతాతో సైన్ ఇన్ చేసి తమ ఖాతాను తిరిగి పొందుతారు. అప్పుడు వారి మిగతా అన్ని పరికరాలు సైన్ అవుట్ అవుతాయి.';
+  }
+
+  @override
+  String get googleLinkCopied => 'లింక్ కాపీ అయింది.';
+
+  @override
+  String get switchBanner =>
+      'Google ఖాతా మార్చే లింక్: మీ Staff Flow ఖాతాను తిరిగి పొందడానికి కొత్త Google ఖాతాతో సైన్ ఇన్ చేయండి.';
+
+  @override
+  String get switchSignOutFirst =>
+      'ఈ లింక్ Staff Flow ఖాతాను కొత్త Google ఖాతాకు లింక్ చేస్తుంది. ముందుగా సైన్ అవుట్ చేసి, తర్వాత కొత్త Google ఖాతాతో సైన్ ఇన్ చేయండి.';
+
+  @override
+  String get switchDone =>
+      'పూర్తయింది: మీ Staff Flow ఖాతా ఈ Google ఖాతాకు లింక్ అయింది. మీ ఇతర పరికరాలు సైన్ అవుట్ అయ్యాయి.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'సులువైన మార్గం: Telegram‌లో $bot బాట్‌కు /changegoogle పంపి సూచనలు పాటించండి, తర్వాత 10 నిమిషాల్లో కొత్త Google ఖాతాతో సైన్ ఇన్ చేయండి.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Telegram లేకపోతే: యజమానిని లేదా మేనేజర్‌ను Google ఖాతా మార్చే లింక్ అడగండి.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return 'మీ ఖాతాను కొత్త Google ఖాతాకు లింక్ చేయడానికి $name ఒక లింక్ సృష్టించారు. మీరు అడగకపోతే, మీ మేనేజర్‌కు తెలియజేయండి.';
+  }
 }

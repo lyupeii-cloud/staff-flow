@@ -3052,6 +3052,60 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'API documentation'**
   String get apiDocs;
+
+  /// No description provided for @memberGoogleLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Link to change Google account'**
+  String get memberGoogleLink;
+
+  /// No description provided for @googleLinkHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Send this link to {name}. It opens in a browser (not in the Android app), once, for 24 hours: {name} signs in with their new Google account and gets their account back. All their other devices are then signed out.'**
+  String googleLinkHint(String name);
+
+  /// No description provided for @googleLinkCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Link copied.'**
+  String get googleLinkCopied;
+
+  /// No description provided for @switchBanner.
+  ///
+  /// In en, this message translates to:
+  /// **'Google account change link: sign in with your new Google account to get your Staff Flow account back.'**
+  String get switchBanner;
+
+  /// No description provided for @switchSignOutFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'This link attaches a Staff Flow account to a new Google account. Sign out first, then sign in with the new Google account.'**
+  String get switchSignOutFirst;
+
+  /// No description provided for @switchDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done: your Staff Flow account is linked to this Google account. Your other devices have been signed out.'**
+  String get switchDone;
+
+  /// No description provided for @changeGoogleBot.
+  ///
+  /// In en, this message translates to:
+  /// **'The easiest way: in Telegram, send /changegoogle to the bot {bot} and follow its instructions, then sign in with the new Google account within 10 minutes.'**
+  String changeGoogleBot(String bot);
+
+  /// No description provided for @changeGoogleNoTelegram.
+  ///
+  /// In en, this message translates to:
+  /// **'Without Telegram: ask your owner or a manager for a Google account change link.'**
+  String get changeGoogleNoTelegram;
+
+  /// No description provided for @noticeGoogleSwitchLink.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} created a link to attach your account to a new Google account. If you did not ask for this, tell your manager.'**
+  String noticeGoogleSwitchLink(String name);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

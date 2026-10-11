@@ -476,5 +476,14 @@
   "apiKeyNeverUsed": "Nikdy nepoužit",
   "apiRevoke": "Zrušit",
   "apiRevokeConfirm": "Software, který tento klíč používá, ztratí přístup.",
-  "apiDocs": "Dokumentace API"
+  "apiDocs": "Dokumentace API",
+  "memberGoogleLink": "Odkaz ke změně účtu Google",
+  "googleLinkHint": "Pošlete tento odkaz osobě {name}. Otevře se v prohlížeči (ne v aplikaci pro Android), jen jednou, po dobu 24 hodin: {name} se přihlásí novým účtem Google a získá svůj účet zpět. Všechna ostatní zařízení se pak odhlásí.",
+  "googleLinkCopied": "Odkaz zkopírován.",
+  "switchBanner": "Odkaz ke změně účtu Google: přihlaste se novým účtem Google a získejte zpět svůj účet Staff Flow.",
+  "switchSignOutFirst": "Tento odkaz propojí účet Staff Flow s novým účtem Google. Nejprve se odhlaste, potom se přihlaste novým účtem Google.",
+  "switchDone": "Hotovo: váš účet Staff Flow je propojen s tímto účtem Google. Vaše ostatní zařízení byla odhlášena.",
+  "changeGoogleBot": "Nejjednodušší: v Telegramu pošlete /changegoogle botovi {bot} a postupujte podle pokynů, pak se do 10 minut přihlaste novým účtem Google.",
+  "changeGoogleNoTelegram": "Bez Telegramu: požádejte majitele nebo vedoucího o odkaz ke změně účtu Google.",
+  "noticeGoogleSwitchLink": "{name} vytvořil(a) odkaz k propojení vašeho účtu s novým účtem Google. Pokud jste o to nežádali, dejte vědět svému vedoucímu."
 }

@@ -1731,4 +1731,41 @@ class L10nFil extends L10n {
 
   @override
   String get apiDocs => 'Dokumentasyon ng API';
+
+  @override
+  String get memberGoogleLink => 'Link para magpalit ng Google account';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Ipadala ang link na ito kay $name. Bubukas ito sa browser (hindi sa Android app), isang beses lang, sa loob ng 24 oras: magsa-sign in si $name gamit ang bagong Google account at mababawi ang kanyang account. Masa-sign out ang lahat ng iba niyang device.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Nakopya ang link.';
+
+  @override
+  String get switchBanner =>
+      'Link para magpalit ng Google account: mag-sign in gamit ang iyong bagong Google account para mabawi ang iyong Staff Flow account.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Ini-link ng link na ito ang isang Staff Flow account sa bagong Google account. Mag-sign out muna, saka mag-sign in gamit ang bagong Google account.';
+
+  @override
+  String get switchDone =>
+      'Tapos na: naka-link na ang iyong Staff Flow account sa Google account na ito. Na-sign out na ang iba mong device.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Pinakamadali: sa Telegram, ipadala ang /changegoogle sa bot na $bot at sundin ang mga tagubilin, saka mag-sign in gamit ang bagong Google account sa loob ng 10 minuto.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Walang Telegram: humingi sa may-ari o sa isang manager ng link para magpalit ng Google account.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return 'Gumawa si $name ng link para i-link ang iyong account sa bagong Google account. Kung hindi mo ito hiniling, sabihan ang iyong manager.';
+  }
 }

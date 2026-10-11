@@ -1734,4 +1734,41 @@ class L10nFr extends L10n {
 
   @override
   String get apiDocs => 'Documentation de l\'API';
+
+  @override
+  String get memberGoogleLink => 'Lien pour changer de compte Google';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Envoyez ce lien à $name. Il s\'ouvre dans un navigateur (pas dans l\'application Android), une seule fois, pendant 24 heures : $name s\'y connecte avec son nouveau compte Google et retrouve son compte. Tous ses autres appareils sont alors déconnectés.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Lien copié.';
+
+  @override
+  String get switchBanner =>
+      'Lien de changement de compte Google : connectez-vous avec votre nouveau compte Google pour retrouver votre compte Staff Flow.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Ce lien sert à relier un compte Staff Flow à un nouveau compte Google. Déconnectez-vous d\'abord, puis connectez-vous avec le nouveau compte Google.';
+
+  @override
+  String get switchDone =>
+      'C\'est fait : votre compte Staff Flow est relié à ce compte Google. Vos autres appareils ont été déconnectés.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Le plus simple : dans Telegram, envoyez /changegoogle au bot $bot et suivez ses instructions, puis connectez-vous avec le nouveau compte Google dans les 10 minutes.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Sans Telegram : demandez à votre patron ou à un responsable un lien de changement de compte Google.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.';
+  }
 }

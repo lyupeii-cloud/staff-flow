@@ -1726,4 +1726,41 @@ class L10nNl extends L10n {
 
   @override
   String get apiDocs => 'API-documentatie';
+
+  @override
+  String get memberGoogleLink => 'Link om van Google-account te wisselen';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Stuur deze link naar $name. Hij opent in een browser (niet in de Android-app), één keer, gedurende 24 uur: $name logt in met het nieuwe Google-account en krijgt zijn account terug. Al zijn andere apparaten worden dan uitgelogd.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Link gekopieerd.';
+
+  @override
+  String get switchBanner =>
+      'Link om van Google-account te wisselen: log in met je nieuwe Google-account om je Staff Flow-account terug te krijgen.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Deze link koppelt een Staff Flow-account aan een nieuw Google-account. Log eerst uit en log dan in met het nieuwe Google-account.';
+
+  @override
+  String get switchDone =>
+      'Klaar: je Staff Flow-account is gekoppeld aan dit Google-account. Je andere apparaten zijn uitgelogd.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Het makkelijkst: stuur in Telegram /changegoogle naar de bot $bot en volg de instructies; log daarna binnen 10 minuten in met het nieuwe Google-account.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Zonder Telegram: vraag je eigenaar of leidinggevende om een link om van Google-account te wisselen.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name heeft een link gemaakt om je account aan een nieuw Google-account te koppelen. Heb je hier niet om gevraagd, laat het dan je leidinggevende weten.';
+  }
 }

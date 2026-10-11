@@ -93,6 +93,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: Brand.display(18).copyWith(fontWeight: FontWeight.w700),
                     ),
                     const SizedBox(height: 32),
+                    if (session.googleSwitchToken != null) ...[
+                      Card(
+                        color: Colors.white.withValues(alpha: 0.1),
+                        child: Padding(
+                          padding: const EdgeInsets.all(14),
+                          child: Row(children: [
+                            const Icon(Icons.switch_account, color: Colors.white),
+                            const SizedBox(width: 12),
+                            Expanded(child: Text(t.switchBanner, style: const TextStyle(color: Colors.white))),
+                          ]),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                    ],
                     if (Config.googleWebClientId.isEmpty)
                       Text(
                     t.googleNotConfigured,

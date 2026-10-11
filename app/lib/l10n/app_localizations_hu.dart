@@ -1717,4 +1717,41 @@ class L10nHu extends L10n {
 
   @override
   String get apiDocs => 'API-dokumentáció';
+
+  @override
+  String get memberGoogleLink => 'Link a Google-fiók cseréjéhez';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Küldje el ezt a linket neki: $name. Böngészőben nyílik meg (nem az Android-alkalmazásban), egyszer, 24 órán át: $name bejelentkezik az új Google-fiókjával, és visszakapja a fiókját. Az összes többi eszközéről ekkor kijelentkezteti a rendszer.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Link kimásolva.';
+
+  @override
+  String get switchBanner =>
+      'Google-fiók cseréjére szolgáló link: jelentkezzen be az új Google-fiókjával, hogy visszakapja Staff Flow-fiókját.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Ez a link egy Staff Flow-fiókot új Google-fiókhoz kapcsol. Előbb jelentkezzen ki, majd jelentkezzen be az új Google-fiókkal.';
+
+  @override
+  String get switchDone =>
+      'Kész: Staff Flow-fiókja ehhez a Google-fiókhoz kapcsolódik. A többi eszközéről kijelentkeztettük.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'A legegyszerűbb: a Telegramban küldje el a /changegoogle parancsot a(z) $bot botnak, kövesse az utasításait, majd 10 percen belül jelentkezzen be az új Google-fiókkal.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Telegram nélkül: kérjen a tulajdonostól vagy egy vezetőtől linket a Google-fiók cseréjéhez.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name létrehozott egy linket, amellyel a fiókja új Google-fiókhoz kapcsolható. Ha nem Ön kérte, szóljon a vezetőjének.';
+  }
 }

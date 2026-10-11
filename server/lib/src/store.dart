@@ -67,6 +67,7 @@ class Store {
         locale: r['locale'] as String?,
         createdAt: r['created_at'] as DateTime,
         avatar: (r['avatar'] as Map?)?.cast<String, Object?>(),
+        sessionVersion: r['session_version'] as int? ?? 0,
       );
 
   static Company companyFromRow(Map<String, dynamic> r) => Company(
@@ -210,7 +211,8 @@ class Store {
   Future<List<Member>> members(String companyId) async {
     final rows = await query(_db, '''
       SELECT u.*, m.role, m.joined_at, m.display_name, m.sites::text[] AS member_sites, m.appointed_by::text AS appointed_by,
-        CASE WHEN m.show_telegram THEN u.telegram_username END AS shown_telegram, c.hide_photos
+        CASE WHEN m.show_telegram THEN u.telegram_username END AS shown_telegram, c.hide_photos,
+        u.telegram_chat_id IS NOT NULL AS has_telegram
       FROM memberships m JOIN users u ON u.id = m.user_id JOIN companies c ON c.id = m.company_id
       WHERE m.company_id = @c::uuid AND m.left_at IS NULL
       ORDER BY m.joined_at''', {'c': companyId});
@@ -226,6 +228,7 @@ class Store {
             sites: _sites(r['member_sites']),
             appointedBy: r['appointed_by'] as String?,
             telegram: r['shown_telegram'] as String?,
+            telegramLinked: r['has_telegram'] == true,
           ),
     ];
   }

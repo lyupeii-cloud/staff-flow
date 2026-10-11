@@ -54,6 +54,36 @@ class _HomeScreenState extends State<HomeScreen> {
     // Ouverte depuis une notification de demande : on la montre.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _onOpenRequest();
+      if (session.accountSwitched && mounted) {
+        session.accountSwitched = false;
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.l10n.switchDone)));
+      }
+      if (session.googleSwitchToken != null && mounted) {
+        final t = context.l10n;
+        showDialog<void>(
+          context: context,
+          builder: (dialog) => AlertDialog(
+            title: Text(t.changeGoogle),
+            content: Text(t.switchSignOutFirst),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  session.googleSwitchToken = null;
+                  Navigator.pop(dialog);
+                },
+                child: Text(t.cancel),
+              ),
+              FilledButton(
+                onPressed: () {
+                  Navigator.pop(dialog);
+                  session.signOut();
+                },
+                child: Text(t.signOut),
+              ),
+            ],
+          ),
+        );
+      }
       if (session.accountRestored && mounted) {
         session.accountRestored = false;
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.l10n.accountRestored)));

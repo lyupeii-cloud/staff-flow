@@ -56,6 +56,9 @@ class FakePush implements PushSender {
 class FakeTelegram implements TelegramApi {
   final sent = <(int, String)>[];
 
+  /// Boutons du dernier message envoyé.
+  List<(String, String)>? lastButtons;
+
   /// Comptes qui ont bloqué le bot.
   final blocked = <int>{};
 
@@ -66,9 +69,10 @@ class FakeTelegram implements TelegramApi {
   Future<List<Map<String, dynamic>>> updates(int offset) async => [];
 
   @override
-  Future<void> send(int chatId, String text) async {
+  Future<void> send(int chatId, String text, {List<(String, String)>? buttons}) async {
     if (blocked.contains(chatId)) throw TelegramBlocked();
     sent.add((chatId, text));
+    lastButtons = buttons;
   }
 
   @override

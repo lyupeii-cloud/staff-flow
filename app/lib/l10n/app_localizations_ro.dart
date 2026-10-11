@@ -1730,4 +1730,41 @@ class L10nRo extends L10n {
 
   @override
   String get apiDocs => 'Documentația API';
+
+  @override
+  String get memberGoogleLink => 'Link pentru schimbarea contului Google';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Trimite acest link lui $name. Se deschide într-un browser (nu în aplicația Android), o singură dată, timp de 24 de ore: $name se conectează cu noul cont Google și își recuperează contul. Toate celelalte dispozitive ale sale sunt apoi deconectate.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Link copiat.';
+
+  @override
+  String get switchBanner =>
+      'Link de schimbare a contului Google: conectează-te cu noul cont Google pentru a-ți recupera contul Staff Flow.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Acest link conectează un cont Staff Flow la un nou cont Google. Deconectează-te mai întâi, apoi conectează-te cu noul cont Google.';
+
+  @override
+  String get switchDone =>
+      'Gata: contul tău Staff Flow este conectat la acest cont Google. Celelalte dispozitive ale tale au fost deconectate.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Cel mai simplu: în Telegram trimite /changegoogle botului $bot și urmează instrucțiunile, apoi conectează-te cu noul cont Google în 10 minute.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Fără Telegram: cere patronului sau unui responsabil un link de schimbare a contului Google.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name a creat un link pentru a conecta contul tău la un nou cont Google. Dacă nu ai cerut asta, anunță-ți responsabilul.';
+  }
 }

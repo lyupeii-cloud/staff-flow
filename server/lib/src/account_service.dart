@@ -226,10 +226,10 @@ class AccountService {
         UPDATE users SET google_sub = 'merged:' || id, email = '', name = 'Ghost · ' || public_id, photo_url = NULL,
           deleted_at = @t, erased = true
         WHERE id = @u::uuid''', {'u': current.id, 't': now()});
-      await store.query(tx, 'DELETE FROM push_devices WHERE user_id = @u::uuid', {'u': current.id});
+      await store.query(tx, 'DELETE FROM push_devices WHERE user_id IN (@u::uuid, @o::uuid)', {'u': current.id, 'o': oldId});
       await store.query(tx, '''
         UPDATE users SET google_sub = @s, email = @e, name = @n, photo_url = @p, locale = coalesce(locale, @l),
-          deleted_at = NULL
+          deleted_at = NULL, session_version = session_version + 1
         WHERE id = @o::uuid''', {'o': oldId, 's': f[0], 'e': f[1], 'n': f[2], 'p': f[3], 'l': f[4]});
       await store.audit(actorId: oldId, action: 'account.google_changed', details: {'email': f[1]}, tx: tx);
     });

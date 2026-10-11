@@ -512,4 +512,23 @@ CREATE TABLE api_keys (
 );
 CREATE INDEX api_keys_company ON api_keys (company_id);
 ''',
+  // 28 — changement de compte Google : par le bot (adresse confirmée, 10
+  // minutes pour se connecter) ou par un lien du patron ; version des
+  // sessions (l'augmenter déconnecte tous les appareils).
+  '''
+ALTER TABLE users ADD COLUMN session_version int NOT NULL DEFAULT 0;
+CREATE TABLE google_switches (
+  user_id     uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+  email       text NOT NULL,
+  expires_at  timestamptz NOT NULL
+);
+CREATE TABLE google_switch_links (
+  token_hash  text PRIMARY KEY,
+  user_id     uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  company_id  uuid REFERENCES companies(id) ON DELETE CASCADE,
+  created_by  uuid REFERENCES users(id) ON DELETE SET NULL,
+  expires_at  timestamptz NOT NULL,
+  used_at     timestamptz
+);
+''',
 ];

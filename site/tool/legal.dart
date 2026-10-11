@@ -24,7 +24,8 @@ const legal = <String, Map<String, List<List<Object>>>>{
       ]],
       ['3. Compte', [
         'La connexion se fait avec un compte Google. Chaque personne a un seul compte Staff Flow, identifié par un numéro (SF-…), valable dans toutes ses entreprises. Il faut avoir au moins 16 ans.',
-        'Vous êtes responsable de l\'accès à votre compte Google. Vous pouvez relier un compte Telegram vérifié : il sert à confirmer votre identité, notamment pour rattacher votre compte à un autre compte Google.',
+        'Vous êtes responsable de l\'accès à votre compte Google. Vous pouvez relier un compte Telegram vérifié : il sert à confirmer votre identité, notamment pour rattacher votre compte à un autre compte Google (commande /changegoogle du bot). Sans Telegram, le patron ou un responsable peut créer un lien à usage unique pour ce changement.',
+        'Chacun est responsable de la sécurité de son téléphone, de son ordinateur, de son compte Google et de son compte Telegram, et de ce qui est fait depuis ceux-ci. Vercane ne peut être tenu responsable d\'un usage frauduleux résultant de leur perte, de leur vol, d\'un code communiqué à un tiers ou de leur piratage. Nous ferons toutefois notre possible pour vous aider : écrivez à contact@staff-flow.cloud.',
         'Vous pouvez à tout moment exporter vos données et supprimer votre compte depuis « Mon profil ». Un « Ghost » anonyme reste dans l\'historique des entreprises (services passés, demandes de congé…) pour qu\'elles puissent retracer les évènements.',
       ]],
       ['4. Rôles et responsabilité de l\'entreprise', [
@@ -128,7 +129,8 @@ const legal = <String, Map<String, List<List<Object>>>>{
       ]],
       ['3. Обліковий запис', [
         'Вхід здійснюється через обліковий запис Google. Кожна людина має один обліковий запис Staff Flow з номером (SF-…), чинним в усіх її компаніях. Користувачеві має бути щонайменше 16 років.',
-        'Ви відповідаєте за доступ до свого облікового запису Google. Можна прив\'язати підтверджений Telegram: він слугує для підтвердження особи, зокрема щоб прив\'язати обліковий запис до іншого облікового запису Google.',
+        'Ви відповідаєте за доступ до свого облікового запису Google. Можна прив\'язати підтверджений Telegram: він слугує для підтвердження особи, зокрема щоб прив\'язати обліковий запис до іншого облікового запису Google (команда бота /changegoogle). Без Telegram власник або керівник може створити одноразове посилання для такої зміни.',
+        'Кожен відповідає за безпеку свого телефона, комп\'ютера, облікового запису Google і Telegram, а також за дії, виконані з них. Vercane не несе відповідальності за шахрайське використання внаслідок їх втрати, крадіжки, передачі коду третій особі чи зламу. Проте ми зробимо все можливе, щоб допомогти: пишіть на contact@staff-flow.cloud.',
         'Будь-коли можна експортувати свої дані й видалити обліковий запис у розділі «Мій профіль». В історії компаній залишається анонімний «Ghost» (минулі зміни, заяви на відпустку тощо), щоб вони могли відстежити події.',
       ]],
       ['4. Ролі та відповідальність компанії', [
@@ -232,7 +234,8 @@ const legal = <String, Map<String, List<List<Object>>>>{
       ]],
       ['3. Account', [
         'Sign-in uses a Google account. Each person has a single Staff Flow account, identified by a number (SF-…), valid in all their companies. You must be at least 16.',
-        'You are responsible for access to your Google account. You can link a verified Telegram account: it is used to confirm your identity, in particular to attach your account to another Google account.',
+        'You are responsible for access to your Google account. You can link a verified Telegram account: it is used to confirm your identity, in particular to attach your account to another Google account (the bot\'s /changegoogle command). Without Telegram, the owner or a manager can create a single-use link for this change.',
+        'Everyone is responsible for the security of their phone, computer, Google account and Telegram account, and for what is done from them. Vercane cannot be held liable for fraudulent use resulting from their loss, theft, a code given to someone else or hacking. We will nevertheless do our best to help: write to contact@staff-flow.cloud.',
         'You can export your data and delete your account at any time from “My profile”. An anonymous “Ghost” remains in company history (past shifts, leave requests…) so companies can trace what happened.',
       ]],
       ['4. Roles and the company\'s responsibility', [

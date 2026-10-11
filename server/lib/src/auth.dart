@@ -75,8 +75,25 @@ class SessionTokens {
   /// Secret dérivé pour un autre usage (liens d'export…).
   String derive(String purpose) => '$_secret:$purpose';
 
-  String issue(String userId) =>
-      JWT({}, subject: userId, issuer: 'staff-flow').sign(_key, expiresIn: lifetime);
+  /// [version] : version des sessions du compte ; l'augmenter ferme toutes
+  /// les sessions ouvertes avant.
+  String issue(String userId, {int version = 0}) =>
+      JWT({'v': version}, subject: userId, issuer: 'staff-flow').sign(_key, expiresIn: lifetime);
+
+  /// Identifiant et version de session du jeton, ou lève 401.
+  (String, int) verifyVersioned(String token) {
+    try {
+      final jwt = JWT.verify(token, _key, issuer: 'staff-flow');
+      final sub = jwt.subject;
+      if (sub == null) throw const ApiError.unauthorized();
+      final v = jwt.payload is Map ? (jwt.payload as Map)['v'] : null;
+      return (sub, v is int ? v : 0);
+    } on JWTExpiredException {
+      throw const ApiError.unauthorized('Session expirée, reconnectez-vous.');
+    } on JWTException {
+      throw const ApiError.unauthorized('Session invalide.');
+    }
+  }
 
   /// Renvoie l'identifiant utilisateur du jeton, ou lève 401.
   String verify(String token) {

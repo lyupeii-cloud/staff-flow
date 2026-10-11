@@ -476,5 +476,14 @@
   "apiKeyNeverUsed": "Hindi pa nagagamit",
   "apiRevoke": "Bawiin",
   "apiRevokeConfirm": "Mawawalan ng access ang software na gumagamit ng key na ito.",
-  "apiDocs": "Dokumentasyon ng API"
+  "apiDocs": "Dokumentasyon ng API",
+  "memberGoogleLink": "Link para magpalit ng Google account",
+  "googleLinkHint": "Ipadala ang link na ito kay {name}. Bubukas ito sa browser (hindi sa Android app), isang beses lang, sa loob ng 24 oras: magsa-sign in si {name} gamit ang bagong Google account at mababawi ang kanyang account. Masa-sign out ang lahat ng iba niyang device.",
+  "googleLinkCopied": "Nakopya ang link.",
+  "switchBanner": "Link para magpalit ng Google account: mag-sign in gamit ang iyong bagong Google account para mabawi ang iyong Staff Flow account.",
+  "switchSignOutFirst": "Ini-link ng link na ito ang isang Staff Flow account sa bagong Google account. Mag-sign out muna, saka mag-sign in gamit ang bagong Google account.",
+  "switchDone": "Tapos na: naka-link na ang iyong Staff Flow account sa Google account na ito. Na-sign out na ang iba mong device.",
+  "changeGoogleBot": "Pinakamadali: sa Telegram, ipadala ang /changegoogle sa bot na {bot} at sundin ang mga tagubilin, saka mag-sign in gamit ang bagong Google account sa loob ng 10 minuto.",
+  "changeGoogleNoTelegram": "Walang Telegram: humingi sa may-ari o sa isang manager ng link para magpalit ng Google account.",
+  "noticeGoogleSwitchLink": "Gumawa si {name} ng link para i-link ang iyong account sa bagong Google account. Kung hindi mo ito hiniling, sabihan ang iyong manager."
 }

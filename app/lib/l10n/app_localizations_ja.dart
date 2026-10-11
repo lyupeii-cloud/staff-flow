@@ -1677,4 +1677,41 @@ class L10nJa extends L10n {
 
   @override
   String get apiDocs => 'API ドキュメント';
+
+  @override
+  String get memberGoogleLink => 'Google アカウント変更用リンク';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'このリンクを $name に送ってください。ブラウザーで開きます（Android アプリでは開きません）。1 回限り、24 時間有効です。$name が新しい Google アカウントでログインすると、自分のアカウントに戻れます。ほかのすべての端末はログアウトされます。';
+  }
+
+  @override
+  String get googleLinkCopied => 'リンクをコピーしました。';
+
+  @override
+  String get switchBanner =>
+      'Google アカウント変更用リンク：新しい Google アカウントでログインすると、Staff Flow のアカウントに戻れます。';
+
+  @override
+  String get switchSignOutFirst =>
+      'このリンクは Staff Flow のアカウントを新しい Google アカウントに連携するためのものです。いったんログアウトしてから、新しい Google アカウントでログインしてください。';
+
+  @override
+  String get switchDone =>
+      '完了：Staff Flow のアカウントがこの Google アカウントに連携されました。ほかの端末はログアウトされました。';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'いちばん簡単な方法：Telegram でボット $bot に /changegoogle を送り、案内に従ってください。その後 10 分以内に新しい Google アカウントでログインします。';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Telegram がない場合：オーナーまたは責任者に Google アカウント変更用リンクを依頼してください。';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name が、あなたのアカウントを新しい Google アカウントに連携するリンクを作成しました。心当たりがない場合は、責任者に知らせてください。';
+  }
 }

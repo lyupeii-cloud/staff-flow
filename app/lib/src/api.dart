@@ -94,20 +94,25 @@ class Api {
     return decoded;
   }
 
-  Future<(String, User)> loginGoogle(String idToken) async {
-    final j = await _send('POST', '/auth/google', {'idToken': idToken});
+  Future<(String, User)> loginGoogle(String idToken, {String? switchToken}) async {
+    final j = await _send('POST', '/auth/google', {'idToken': idToken, 'switchToken': ?switchToken});
     lastLoginRestored = j['restored'] == true;
+    lastLoginSwitched = j['switched'] == true;
     return (j['token'] as String, User.fromJson(j['user']));
   }
 
-  Future<(String, User)> loginDev(String email) async {
-    final j = await _send('POST', '/auth/dev', {'email': email});
+  Future<(String, User)> loginDev(String email, {String? switchToken}) async {
+    final j = await _send('POST', '/auth/dev', {'email': email, 'switchToken': ?switchToken});
     lastLoginRestored = j['restored'] == true;
+    lastLoginSwitched = j['switched'] == true;
     return (j['token'] as String, User.fromJson(j['user']));
   }
 
   /// La dernière connexion a réactivé un compte supprimé en fantôme.
   bool lastLoginRestored = false;
+
+  /// La dernière connexion a rattaché ce compte Google à un compte existant.
+  bool lastLoginSwitched = false;
 
 
   Future<Membership> createCompany(String name, String timezone) async =>

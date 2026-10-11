@@ -40,6 +40,9 @@ class User {
   /// Avatar choisi ({icon, color}) ; `null` : photo Google (ou initiale).
   final Map<String, Object?>? avatar;
 
+  /// Version des sessions : les jetons d'une version plus ancienne ne valent plus.
+  final int sessionVersion;
+
   const User({
     required this.id,
     required this.publicId,
@@ -51,6 +54,7 @@ class User {
     this.locale,
     required this.createdAt,
     this.avatar,
+    this.sessionVersion = 0,
   }) : googleName = googleName ?? name;
 
   User withName(String name) => User(
@@ -64,6 +68,7 @@ class User {
         locale: locale,
         createdAt: createdAt,
         avatar: avatar,
+        sessionVersion: sessionVersion,
       );
 
   Map<String, Object?> toJson() => {
@@ -250,11 +255,16 @@ class Member {
   /// Nom Telegram (sans « @ »), si la personne l'affiche dans cette entreprise.
   final String? telegram;
 
-  const Member(this.user, this.role, this.joinedAt, {this.nameInCompany, this.sites, this.appointedBy, this.telegram});
+  /// Telegram vérifié (sinon, le changement de compte Google passe par un lien du responsable).
+  final bool telegramLinked;
+
+  const Member(this.user, this.role, this.joinedAt,
+      {this.nameInCompany, this.sites, this.appointedBy, this.telegram, this.telegramLinked = false});
 
   Map<String, Object?> toJson() => {
         'user': user.toJson(),
         'telegram': telegram,
+        'telegramLinked': telegramLinked,
         'nameInCompany': nameInCompany,
         'sites': sites,
         'appointedBy': appointedBy,

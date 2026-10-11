@@ -1719,4 +1719,41 @@ class L10nHi extends L10n {
 
   @override
   String get apiDocs => 'API दस्तावेज़';
+
+  @override
+  String get memberGoogleLink => 'Google खाता बदलने का लिंक';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'यह लिंक $name को भेजें। यह ब्राउज़र में खुलता है (Android ऐप में नहीं), सिर्फ़ एक बार, 24 घंटे तक: $name अपने नए Google खाते से साइन इन करके अपना खाता वापस पाते हैं। उनके बाकी सभी डिवाइस तब साइन आउट हो जाते हैं।';
+  }
+
+  @override
+  String get googleLinkCopied => 'लिंक कॉपी हुआ।';
+
+  @override
+  String get switchBanner =>
+      'Google खाता बदलने का लिंक: अपना Staff Flow खाता वापस पाने के लिए नए Google खाते से साइन इन करें।';
+
+  @override
+  String get switchSignOutFirst =>
+      'यह लिंक Staff Flow खाते को नए Google खाते से जोड़ता है। पहले साइन आउट करें, फिर नए Google खाते से साइन इन करें।';
+
+  @override
+  String get switchDone =>
+      'हो गया: आपका Staff Flow खाता इस Google खाते से जुड़ गया है। आपके बाकी डिवाइस साइन आउट कर दिए गए हैं।';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'सबसे आसान: Telegram में बॉट $bot को /changegoogle भेजें और निर्देशों का पालन करें, फिर 10 मिनट के भीतर नए Google खाते से साइन इन करें।';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Telegram के बिना: अपने मालिक या प्रबंधक से Google खाता बदलने का लिंक माँगें।';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name ने आपके खाते को नए Google खाते से जोड़ने के लिए एक लिंक बनाया है। अगर आपने यह नहीं माँगा, तो अपने प्रबंधक को बताएँ।';
+  }
 }

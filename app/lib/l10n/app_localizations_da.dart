@@ -1723,4 +1723,41 @@ class L10nDa extends L10n {
 
   @override
   String get apiDocs => 'API-dokumentation';
+
+  @override
+  String get memberGoogleLink => 'Link til at skifte Google-konto';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Send dette link til $name. Det åbnes i en browser (ikke i Android-appen), én gang, i 24 timer: $name logger ind med sin nye Google-konto og får sin konto tilbage. Alle personens andre enheder bliver så logget ud.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Link kopieret.';
+
+  @override
+  String get switchBanner =>
+      'Link til skift af Google-konto: log ind med din nye Google-konto for at få din Staff Flow-konto tilbage.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Dette link knytter en Staff Flow-konto til en ny Google-konto. Log først ud, og log derefter ind med den nye Google-konto.';
+
+  @override
+  String get switchDone =>
+      'Færdig: din Staff Flow-konto er tilknyttet denne Google-konto. Dine andre enheder er logget ud.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Det nemmeste: send /changegoogle til botten $bot i Telegram, og følg instruktionerne; log derefter ind med den nye Google-konto inden for 10 minutter.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Uden Telegram: bed ejeren eller en leder om et link til at skifte Google-konto.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name har oprettet et link til at knytte din konto til en ny Google-konto. Hvis du ikke har bedt om det, så sig det til din leder.';
+  }
 }

@@ -1716,4 +1716,41 @@ class L10nBn extends L10n {
 
   @override
   String get apiDocs => 'API ডকুমেন্টেশন';
+
+  @override
+  String get memberGoogleLink => 'Google অ্যাকাউন্ট বদলানোর লিঙ্ক';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'এই লিঙ্কটি $name-কে পাঠান। এটি ব্রাউজারে খোলে (Android অ্যাপে নয়), শুধু একবার, ২৪ ঘণ্টার জন্য: $name নতুন Google অ্যাকাউন্ট দিয়ে সাইন ইন করে অ্যাকাউন্ট ফিরে পান। তখন তাঁর অন্য সব ডিভাইস সাইন আউট হয়।';
+  }
+
+  @override
+  String get googleLinkCopied => 'লিঙ্ক কপি হয়েছে।';
+
+  @override
+  String get switchBanner =>
+      'Google অ্যাকাউন্ট বদলানোর লিঙ্ক: আপনার Staff Flow অ্যাকাউন্ট ফিরে পেতে নতুন Google অ্যাকাউন্ট দিয়ে সাইন ইন করুন।';
+
+  @override
+  String get switchSignOutFirst =>
+      'এই লিঙ্ক একটি Staff Flow অ্যাকাউন্টকে নতুন Google অ্যাকাউন্টের সাথে যুক্ত করে। আগে সাইন আউট করুন, তারপর নতুন Google অ্যাকাউন্ট দিয়ে সাইন ইন করুন।';
+
+  @override
+  String get switchDone =>
+      'সম্পন্ন: আপনার Staff Flow অ্যাকাউন্ট এই Google অ্যাকাউন্টের সাথে যুক্ত। আপনার অন্য ডিভাইসগুলো সাইন আউট করা হয়েছে।';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'সবচেয়ে সহজ: Telegram-এ বট $bot-কে /changegoogle পাঠান ও নির্দেশনা মেনে চলুন, তারপর ১০ মিনিটের মধ্যে নতুন Google অ্যাকাউন্ট দিয়ে সাইন ইন করুন।';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Telegram ছাড়া: মালিক বা ব্যবস্থাপকের কাছে Google অ্যাকাউন্ট বদলানোর লিঙ্ক চান।';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name আপনার অ্যাকাউন্টকে একটি নতুন Google অ্যাকাউন্টের সাথে যুক্ত করার লিঙ্ক তৈরি করেছেন। আপনি এটি না চাইলে আপনার ব্যবস্থাপককে জানান।';
+  }
 }

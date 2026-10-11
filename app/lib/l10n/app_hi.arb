@@ -476,5 +476,14 @@
   "apiKeyNeverUsed": "कभी उपयोग नहीं हुई",
   "apiRevoke": "रद्द करें",
   "apiRevokeConfirm": "इस कुंजी का उपयोग करने वाले सॉफ़्टवेयर की पहुँच बंद हो जाएगी।",
-  "apiDocs": "API दस्तावेज़"
+  "apiDocs": "API दस्तावेज़",
+  "memberGoogleLink": "Google खाता बदलने का लिंक",
+  "googleLinkHint": "यह लिंक {name} को भेजें। यह ब्राउज़र में खुलता है (Android ऐप में नहीं), सिर्फ़ एक बार, 24 घंटे तक: {name} अपने नए Google खाते से साइन इन करके अपना खाता वापस पाते हैं। उनके बाकी सभी डिवाइस तब साइन आउट हो जाते हैं।",
+  "googleLinkCopied": "लिंक कॉपी हुआ।",
+  "switchBanner": "Google खाता बदलने का लिंक: अपना Staff Flow खाता वापस पाने के लिए नए Google खाते से साइन इन करें।",
+  "switchSignOutFirst": "यह लिंक Staff Flow खाते को नए Google खाते से जोड़ता है। पहले साइन आउट करें, फिर नए Google खाते से साइन इन करें।",
+  "switchDone": "हो गया: आपका Staff Flow खाता इस Google खाते से जुड़ गया है। आपके बाकी डिवाइस साइन आउट कर दिए गए हैं।",
+  "changeGoogleBot": "सबसे आसान: Telegram में बॉट {bot} को /changegoogle भेजें और निर्देशों का पालन करें, फिर 10 मिनट के भीतर नए Google खाते से साइन इन करें।",
+  "changeGoogleNoTelegram": "Telegram के बिना: अपने मालिक या प्रबंधक से Google खाता बदलने का लिंक माँगें।",
+  "noticeGoogleSwitchLink": "{name} ने आपके खाते को नए Google खाते से जोड़ने के लिए एक लिंक बनाया है। अगर आपने यह नहीं माँगा, तो अपने प्रबंधक को बताएँ।"
 }

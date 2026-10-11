@@ -1731,4 +1731,41 @@ class L10nTa extends L10n {
 
   @override
   String get apiDocs => 'API ஆவணம்';
+
+  @override
+  String get memberGoogleLink => 'Google கணக்கை மாற்றும் இணைப்பு';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'இந்த இணைப்பை $name-க்கு அனுப்புங்கள். இது உலாவியில் திறக்கும் (Android செயலியில் அல்ல), ஒருமுறை மட்டும், 24 மணிநேரம்: $name புதிய Google கணக்கில் உள்நுழைந்து தன் கணக்கைத் திரும்பப் பெறுவார். அவரின் மற்ற எல்லா சாதனங்களும் அப்போது வெளியேற்றப்படும்.';
+  }
+
+  @override
+  String get googleLinkCopied => 'இணைப்பு நகலெடுக்கப்பட்டது.';
+
+  @override
+  String get switchBanner =>
+      'Google கணக்கை மாற்றும் இணைப்பு: உங்கள் Staff Flow கணக்கைத் திரும்பப் பெற புதிய Google கணக்கில் உள்நுழையுங்கள்.';
+
+  @override
+  String get switchSignOutFirst =>
+      'இந்த இணைப்பு Staff Flow கணக்கை புதிய Google கணக்குடன் இணைக்கிறது. முதலில் வெளியேறி, பின்னர் புதிய Google கணக்கில் உள்நுழையுங்கள்.';
+
+  @override
+  String get switchDone =>
+      'முடிந்தது: உங்கள் Staff Flow கணக்கு இந்த Google கணக்குடன் இணைக்கப்பட்டது. உங்கள் மற்ற சாதனங்கள் வெளியேற்றப்பட்டன.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'எளிய வழி: Telegram-இல் $bot பாட்டுக்கு /changegoogle அனுப்பி வழிமுறைகளைப் பின்பற்றுங்கள், பின்னர் 10 நிமிடங்களுக்குள் புதிய Google கணக்கில் உள்நுழையுங்கள்.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Telegram இல்லையெனில்: உரிமையாளர் அல்லது மேலாளரிடம் Google கணக்கை மாற்றும் இணைப்பைக் கேளுங்கள்.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return 'உங்கள் கணக்கை புதிய Google கணக்குடன் இணைக்க $name ஒரு இணைப்பை உருவாக்கியுள்ளார். நீங்கள் கேட்கவில்லை என்றால், உங்கள் மேலாளரிடம் தெரிவியுங்கள்.';
+  }
 }

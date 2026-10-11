@@ -1715,4 +1715,41 @@ class L10nVi extends L10n {
 
   @override
   String get apiDocs => 'Tài liệu API';
+
+  @override
+  String get memberGoogleLink => 'Liên kết đổi tài khoản Google';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Gửi liên kết này cho $name. Liên kết mở trong trình duyệt (không phải ứng dụng Android), chỉ một lần, trong 24 giờ: $name đăng nhập bằng tài khoản Google mới và lấy lại tài khoản. Mọi thiết bị khác của họ khi đó bị đăng xuất.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Đã sao chép liên kết.';
+
+  @override
+  String get switchBanner =>
+      'Liên kết đổi tài khoản Google: đăng nhập bằng tài khoản Google mới để lấy lại tài khoản Staff Flow của bạn.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Liên kết này gắn một tài khoản Staff Flow với một tài khoản Google mới. Hãy đăng xuất trước, rồi đăng nhập bằng tài khoản Google mới.';
+
+  @override
+  String get switchDone =>
+      'Xong: tài khoản Staff Flow của bạn đã liên kết với tài khoản Google này. Các thiết bị khác của bạn đã bị đăng xuất.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Cách đơn giản nhất: trong Telegram, gửi /changegoogle cho bot $bot và làm theo hướng dẫn, rồi đăng nhập bằng tài khoản Google mới trong vòng 10 phút.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Không có Telegram: hãy xin chủ hoặc quản lý một liên kết đổi tài khoản Google.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name đã tạo một liên kết để gắn tài khoản của bạn với một tài khoản Google mới. Nếu bạn không yêu cầu, hãy báo cho quản lý của bạn.';
+  }
 }

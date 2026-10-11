@@ -1729,4 +1729,41 @@ class L10nUk extends L10n {
 
   @override
   String get apiDocs => 'Документація API';
+
+  @override
+  String get memberGoogleLink => 'Посилання для зміни облікового запису Google';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Надішліть це посилання $name. Воно відкривається в браузері (не в застосунку Android), один раз, протягом 24 годин: $name входить зі своїм новим обліковим записом Google і повертає свій обліковий запис. Усі інші пристрої при цьому від\'єднуються.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Посилання скопійовано.';
+
+  @override
+  String get switchBanner =>
+      'Посилання для зміни облікового запису Google: увійдіть з новим обліковим записом Google, щоб повернути свій обліковий запис Staff Flow.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Це посилання прив\'язує обліковий запис Staff Flow до нового облікового запису Google. Спершу вийдіть, потім увійдіть з новим обліковим записом Google.';
+
+  @override
+  String get switchDone =>
+      'Готово: ваш обліковий запис Staff Flow прив\'язано до цього облікового запису Google. Інші ваші пристрої від\'єднано.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Найпростіше: у Telegram надішліть /changegoogle боту $bot і виконайте його вказівки, потім увійдіть з новим обліковим записом Google протягом 10 хвилин.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Без Telegram: попросіть власника чи керівника посилання для зміни облікового запису Google.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name створив(-ла) посилання, щоб прив\'язати ваш обліковий запис до нового облікового запису Google. Якщо ви цього не просили, повідомте свого керівника.';
+  }
 }

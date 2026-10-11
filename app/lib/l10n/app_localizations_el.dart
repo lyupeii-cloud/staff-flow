@@ -1734,4 +1734,41 @@ class L10nEl extends L10n {
 
   @override
   String get apiDocs => 'Τεκμηρίωση API';
+
+  @override
+  String get memberGoogleLink => 'Σύνδεσμος για αλλαγή λογαριασμού Google';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Στείλτε αυτόν τον σύνδεσμο στον/στην $name. Ανοίγει σε πρόγραμμα περιήγησης (όχι στην εφαρμογή Android), μία φορά, για 24 ώρες: ο/η $name συνδέεται με τον νέο λογαριασμό Google και ανακτά τον λογαριασμό του/της. Όλες οι άλλες συσκευές του/της αποσυνδέονται.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Ο σύνδεσμος αντιγράφηκε.';
+
+  @override
+  String get switchBanner =>
+      'Σύνδεσμος αλλαγής λογαριασμού Google: συνδεθείτε με τον νέο λογαριασμό Google για να ανακτήσετε τον λογαριασμό σας Staff Flow.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Αυτός ο σύνδεσμος συνδέει έναν λογαριασμό Staff Flow με νέο λογαριασμό Google. Αποσυνδεθείτε πρώτα και μετά συνδεθείτε με τον νέο λογαριασμό Google.';
+
+  @override
+  String get switchDone =>
+      'Έγινε: ο λογαριασμός σας Staff Flow συνδέθηκε με αυτόν τον λογαριασμό Google. Οι άλλες συσκευές σας αποσυνδέθηκαν.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Το πιο απλό: στο Telegram, στείλτε /changegoogle στο bot $bot και ακολουθήστε τις οδηγίες, μετά συνδεθείτε με τον νέο λογαριασμό Google μέσα σε 10 λεπτά.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Χωρίς Telegram: ζητήστε από τον ιδιοκτήτη ή έναν υπεύθυνο σύνδεσμο αλλαγής λογαριασμού Google.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return 'Ο/Η $name δημιούργησε σύνδεσμο για να συνδεθεί ο λογαριασμός σας με νέο λογαριασμό Google. Αν δεν το ζητήσατε, ενημερώστε τον υπεύθυνό σας.';
+  }
 }

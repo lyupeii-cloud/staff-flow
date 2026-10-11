@@ -11,6 +11,7 @@ import 'billing_service.dart';
 import 'chat_service.dart';
 import 'company_service.dart';
 import 'errors.dart';
+import 'google_switch.dart';
 import 'join_service.dart';
 import 'messages.dart';
 import 'notice_service.dart';
@@ -41,7 +42,9 @@ class Api {
   late final JoinService joins = JoinService(store, companies, now: now);
   late final NoticeService notices = NoticeService(store, now: now);
   late final PlatformService platform = PlatformService(store, fileValues: platformFile);
-  late final TelegramService telegram = TelegramService(store, telegramApi, now: now);
+  late final TelegramService telegram = TelegramService(store, telegramApi, now: now)
+    ..interceptor = (chatId, lang, {text, button}) => googleSwitch.onTelegram(chatId, lang, text: text, button: button);
+  late final GoogleSwitchService googleSwitch = GoogleSwitchService(store, companies, telegram, notifications, now: now);
   late final AccountService accounts = AccountService(store, telegram, tokens.derive('account-export'), now: now);
   late final ApiAccessService apiAccess = ApiAccessService(store, companies, tools, now: now);
   late final BillingService billing = BillingService(store, companies, platform, notifications, tokens.derive('invoices'),
@@ -181,6 +184,8 @@ class Api {
         await accounts.delete(u, erase: erase);
         return Response(204);
       }))
+      ..post('/companies/<id>/members/<userId>/google-link', _authed((r, u) async =>
+          _json({'path': await googleSwitch.createLink(u, r.params['id']!, r.params['userId']!)})))
       ..post('/me/qr', _authed((r, u) async => _json((await accounts.newQrCode(u)).toJson())))
       ..put('/me/avatar', _authed((r, u) async => _json((await accounts.setAvatar(u, (await _body(r))['avatar'])).toJson())))
       ..put('/companies/<id>/photos', _authed((r, u) async {
@@ -447,6 +452,9 @@ class Api {
     final idToken = body['idToken'];
     if (idToken is! String || idToken.isEmpty) throw const ApiError.badRequest('idToken manquant.');
     final id = await google.verify(idToken);
+    final switched = await googleSwitch.onLogin(
+        sub: id.sub, email: id.email, name: id.name, photo: id.picture, locale: id.locale, link: body['switchToken'] as String?);
+    if (switched != null) return _session(switched, switched: true);
     final restored = await store.isGhost(id.sub);
     return _session(
         await store.upsertGoogleUser(sub: id.sub, email: id.email, name: id.name, photoUrl: id.picture, locale: id.locale),
@@ -459,6 +467,9 @@ class Api {
     if (email is! String || !email.contains('@')) throw const ApiError.badRequest('email manquant.');
     final name = (body['name'] as String?) ?? email.split('@').first;
     // `locale` simule la langue d'un compte Google.
+    final switched = await googleSwitch.onLogin(
+        sub: 'dev:$email', email: email, name: name, link: body['switchToken'] as String?);
+    if (switched != null) return _session(switched, switched: true);
     final restored = await store.isGhost('dev:$email');
     return _session(
         await store.upsertGoogleUser(sub: 'dev:$email', email: email, name: name, locale: body['locale'] as String?),
@@ -466,9 +477,15 @@ class Api {
   }
 
   /// [restored] : compte supprimé en fantôme, réactivé par cette connexion.
-  Future<Response> _session(User user, {bool restored = false}) async {
+  /// [switched] : compte rattaché à ce nouveau compte Google à la connexion.
+  Future<Response> _session(User user, {bool restored = false, bool switched = false}) async {
     await store.audit(actorId: user.id, action: restored ? 'account.restore' : 'auth.login');
-    return _json({'token': tokens.issue(user.id), 'user': user.toJson(), if (restored) 'restored': true});
+    return _json({
+      'token': tokens.issue(user.id, version: user.sessionVersion),
+      'user': user.toJson(),
+      if (restored) 'restored': true,
+      if (switched) 'switched': true,
+    });
   }
 
   // --- Utilisateur ---------------------------------------------------------
@@ -998,8 +1015,11 @@ class Api {
   Handler _authed(Future<Response> Function(Request, User) handler) => (Request req) async {
         final header = req.headers['authorization'] ?? '';
         if (!header.startsWith('Bearer ')) throw const ApiError.unauthorized();
-        final user = await store.findActiveUser(tokens.verify(header.substring(7)));
+        final (userId, version) = tokens.verifyVersioned(header.substring(7));
+        final user = await store.findActiveUser(userId);
         if (user == null) throw const ApiError.unauthorized('Compte introuvable.');
+        // Compte rattaché à un autre compte Google : les anciennes sessions sont fermées.
+        if (user.sessionVersion != version) throw const ApiError.unauthorized('Session expirée, reconnectez-vous.');
         final key = req.headers['idempotency-key'];
         if (key == null || req.method == 'GET') return handler(req, user);
         return _once(user, key, () => handler(req, user));

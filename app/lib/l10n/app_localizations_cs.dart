@@ -1720,4 +1720,41 @@ class L10nCs extends L10n {
 
   @override
   String get apiDocs => 'Dokumentace API';
+
+  @override
+  String get memberGoogleLink => 'Odkaz ke změně účtu Google';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Pošlete tento odkaz osobě $name. Otevře se v prohlížeči (ne v aplikaci pro Android), jen jednou, po dobu 24 hodin: $name se přihlásí novým účtem Google a získá svůj účet zpět. Všechna ostatní zařízení se pak odhlásí.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Odkaz zkopírován.';
+
+  @override
+  String get switchBanner =>
+      'Odkaz ke změně účtu Google: přihlaste se novým účtem Google a získejte zpět svůj účet Staff Flow.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Tento odkaz propojí účet Staff Flow s novým účtem Google. Nejprve se odhlaste, potom se přihlaste novým účtem Google.';
+
+  @override
+  String get switchDone =>
+      'Hotovo: váš účet Staff Flow je propojen s tímto účtem Google. Vaše ostatní zařízení byla odhlášena.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Nejjednodušší: v Telegramu pošlete /changegoogle botovi $bot a postupujte podle pokynů, pak se do 10 minut přihlaste novým účtem Google.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Bez Telegramu: požádejte majitele nebo vedoucího o odkaz ke změně účtu Google.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name vytvořil(a) odkaz k propojení vašeho účtu s novým účtem Google. Pokud jste o to nežádali, dejte vědět svému vedoucímu.';
+  }
 }

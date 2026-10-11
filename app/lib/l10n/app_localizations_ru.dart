@@ -1726,4 +1726,41 @@ class L10nRu extends L10n {
 
   @override
   String get apiDocs => 'Документация API';
+
+  @override
+  String get memberGoogleLink => 'Ссылка для смены аккаунта Google';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Отправьте эту ссылку $name. Она открывается в браузере (не в приложении Android), один раз, в течение 24 часов: $name входит со своим новым аккаунтом Google и возвращает свой аккаунт. На всех остальных устройствах будет выполнен выход.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Ссылка скопирована.';
+
+  @override
+  String get switchBanner =>
+      'Ссылка для смены аккаунта Google: войдите с новым аккаунтом Google, чтобы вернуть свой аккаунт Staff Flow.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Эта ссылка привязывает аккаунт Staff Flow к новому аккаунту Google. Сначала выйдите, затем войдите с новым аккаунтом Google.';
+
+  @override
+  String get switchDone =>
+      'Готово: ваш аккаунт Staff Flow привязан к этому аккаунту Google. На остальных ваших устройствах выполнен выход.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Проще всего: в Telegram отправьте /changegoogle боту $bot и следуйте его указаниям, затем войдите с новым аккаунтом Google в течение 10 минут.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Без Telegram: попросите у владельца или руководителя ссылку для смены аккаунта Google.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name создал(а) ссылку, чтобы привязать ваш аккаунт к новому аккаунту Google. Если вы этого не просили, сообщите своему руководителю.';
+  }
 }

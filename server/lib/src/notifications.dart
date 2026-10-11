@@ -144,6 +144,7 @@ class NotificationService {
     'billing_grace': NotifyCategory.billing,
     'billing_grace_reminder': NotifyCategory.billing,
     'billing_deleted': NotifyCategory.billing,
+    'google_switch_link': NotifyCategory.requests,
   };
 
   /// Crée un avis par personne ([s] : la transaction en cours, s'il y en a
@@ -283,6 +284,10 @@ class NotificationService {
       'billing_grace_reminder' => (
           title,
           t('Rappel : sans paiement, l\'entreprise sera supprimée le {day}.', {'day': '${data['day'] ?? ''}'})
+        ),
+      'google_switch_link' => (
+          title,
+          t('{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.', {'name': name})
         ),
       'billing_deleted' => (
           title,

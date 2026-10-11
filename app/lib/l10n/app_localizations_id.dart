@@ -1718,4 +1718,41 @@ class L10nId extends L10n {
 
   @override
   String get apiDocs => 'Dokumentasi API';
+
+  @override
+  String get memberGoogleLink => 'Tautan untuk mengganti akun Google';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Kirim tautan ini ke $name. Tautan dibuka di peramban (bukan di aplikasi Android), sekali saja, selama 24 jam: $name masuk dengan akun Google barunya dan mendapatkan kembali akunnya. Semua perangkatnya yang lain lalu dikeluarkan.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Tautan disalin.';
+
+  @override
+  String get switchBanner =>
+      'Tautan penggantian akun Google: masuk dengan akun Google baru Anda untuk mendapatkan kembali akun Staff Flow.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Tautan ini menghubungkan akun Staff Flow ke akun Google baru. Keluar dulu, lalu masuk dengan akun Google yang baru.';
+
+  @override
+  String get switchDone =>
+      'Selesai: akun Staff Flow Anda terhubung ke akun Google ini. Perangkat Anda yang lain telah dikeluarkan.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Cara termudah: di Telegram, kirim /changegoogle ke bot $bot dan ikuti petunjuknya, lalu masuk dengan akun Google baru dalam 10 menit.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Tanpa Telegram: minta tautan penggantian akun Google kepada pemilik atau manajer.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name membuat tautan untuk menghubungkan akun Anda ke akun Google baru. Jika Anda tidak memintanya, beri tahu manajer Anda.';
+  }
 }

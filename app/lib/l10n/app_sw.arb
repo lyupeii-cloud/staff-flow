@@ -476,5 +476,14 @@
   "apiKeyNeverUsed": "Haujawahi kutumika",
   "apiRevoke": "Batilisha",
   "apiRevokeConfirm": "Programu zinazotumia ufunguo huu zitapoteza ufikiaji.",
-  "apiDocs": "Nyaraka za API"
+  "apiDocs": "Nyaraka za API",
+  "memberGoogleLink": "Kiungo cha kubadilisha akaunti ya Google",
+  "googleLinkHint": "Mtumie {name} kiungo hiki. Kinafunguka kwenye kivinjari (si kwenye programu ya Android), mara moja tu, kwa saa 24: {name} anaingia kwa akaunti yake mpya ya Google na kurejesha akaunti yake. Vifaa vyake vingine vyote kisha vinatolewa.",
+  "googleLinkCopied": "Kiungo kimenakiliwa.",
+  "switchBanner": "Kiungo cha kubadilisha akaunti ya Google: ingia kwa akaunti yako mpya ya Google ili kurejesha akaunti yako ya Staff Flow.",
+  "switchSignOutFirst": "Kiungo hiki kinaunganisha akaunti ya Staff Flow na akaunti mpya ya Google. Toka kwanza, kisha ingia kwa akaunti mpya ya Google.",
+  "switchDone": "Imekamilika: akaunti yako ya Staff Flow imeunganishwa na akaunti hii ya Google. Vifaa vyako vingine vimetolewa.",
+  "changeGoogleBot": "Njia rahisi zaidi: kwenye Telegram, tuma /changegoogle kwa boti {bot} na ufuate maagizo yake, kisha ingia kwa akaunti mpya ya Google ndani ya dakika 10.",
+  "changeGoogleNoTelegram": "Bila Telegram: muombe mmiliki au msimamizi kiungo cha kubadilisha akaunti ya Google.",
+  "noticeGoogleSwitchLink": "{name} ameunda kiungo cha kuunganisha akaunti yako na akaunti mpya ya Google. Ikiwa hukuomba hivi, mjulishe msimamizi wako."
 }

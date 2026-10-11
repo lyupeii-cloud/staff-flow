@@ -1720,4 +1720,41 @@ class L10nNb extends L10n {
 
   @override
   String get apiDocs => 'API-dokumentasjon';
+
+  @override
+  String get memberGoogleLink => 'Lenke for å bytte Google-konto';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Send denne lenken til $name. Den åpnes i en nettleser (ikke i Android-appen), én gang, i 24 timer: $name logger inn med den nye Google-kontoen og får kontoen sin tilbake. Alle de andre enhetene blir da logget ut.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Lenken er kopiert.';
+
+  @override
+  String get switchBanner =>
+      'Lenke for bytte av Google-konto: logg inn med den nye Google-kontoen din for å få tilbake Staff Flow-kontoen.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Denne lenken kobler en Staff Flow-konto til en ny Google-konto. Logg ut først, og logg deretter inn med den nye Google-kontoen.';
+
+  @override
+  String get switchDone =>
+      'Ferdig: Staff Flow-kontoen din er koblet til denne Google-kontoen. De andre enhetene dine er logget ut.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Enklest: send /changegoogle til boten $bot i Telegram og følg instruksjonene; logg deretter inn med den nye Google-kontoen innen 10 minutter.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Uten Telegram: be eieren eller en leder om en lenke for å bytte Google-konto.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name har laget en lenke for å koble kontoen din til en ny Google-konto. Hvis du ikke har bedt om dette, si fra til lederen din.';
+  }
 }

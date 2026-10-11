@@ -476,5 +476,14 @@
   "apiKeyNeverUsed": "Chưa dùng",
   "apiRevoke": "Thu hồi",
   "apiRevokeConfirm": "Phần mềm dùng khóa này sẽ mất quyền truy cập.",
-  "apiDocs": "Tài liệu API"
+  "apiDocs": "Tài liệu API",
+  "memberGoogleLink": "Liên kết đổi tài khoản Google",
+  "googleLinkHint": "Gửi liên kết này cho {name}. Liên kết mở trong trình duyệt (không phải ứng dụng Android), chỉ một lần, trong 24 giờ: {name} đăng nhập bằng tài khoản Google mới và lấy lại tài khoản. Mọi thiết bị khác của họ khi đó bị đăng xuất.",
+  "googleLinkCopied": "Đã sao chép liên kết.",
+  "switchBanner": "Liên kết đổi tài khoản Google: đăng nhập bằng tài khoản Google mới để lấy lại tài khoản Staff Flow của bạn.",
+  "switchSignOutFirst": "Liên kết này gắn một tài khoản Staff Flow với một tài khoản Google mới. Hãy đăng xuất trước, rồi đăng nhập bằng tài khoản Google mới.",
+  "switchDone": "Xong: tài khoản Staff Flow của bạn đã liên kết với tài khoản Google này. Các thiết bị khác của bạn đã bị đăng xuất.",
+  "changeGoogleBot": "Cách đơn giản nhất: trong Telegram, gửi /changegoogle cho bot {bot} và làm theo hướng dẫn, rồi đăng nhập bằng tài khoản Google mới trong vòng 10 phút.",
+  "changeGoogleNoTelegram": "Không có Telegram: hãy xin chủ hoặc quản lý một liên kết đổi tài khoản Google.",
+  "noticeGoogleSwitchLink": "{name} đã tạo một liên kết để gắn tài khoản của bạn với một tài khoản Google mới. Nếu bạn không yêu cầu, hãy báo cho quản lý của bạn."
 }

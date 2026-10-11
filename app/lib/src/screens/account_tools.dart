@@ -138,7 +138,10 @@ Future<void> showChangeGoogleHelp(BuildContext context, Session session) {
     context: context,
     builder: (context) => AlertDialog(
       title: Text(t.changeGoogle),
-      content: SingleChildScrollView(child: Text(t.changeGoogleSteps(session.me!.user.publicId))),
+      content: SingleChildScrollView(
+        child: Text('${t.changeGoogleBot('@${session.me!.telegramBot ?? 'Staff_Flow_Bot'}')}\n\n'
+            '${t.changeGoogleSteps(session.me!.user.publicId)}\n\n${t.changeGoogleNoTelegram}'),
+      ),
       actions: [FilledButton(onPressed: () => Navigator.pop(context), child: Text(t.close))],
     ),
   );

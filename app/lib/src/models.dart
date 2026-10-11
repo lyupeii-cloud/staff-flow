@@ -181,7 +181,11 @@ class Member {
         nameInCompany = j['nameInCompany'],
         sites = _sites(j['sites']),
         appointedBy = j['appointedBy'],
-        telegram = j['telegram'];
+        telegram = j['telegram'],
+        telegramLinked = j['telegramLinked'] == true;
+
+  /// Telegram vérifié (sinon le responsable peut créer un lien de changement de compte Google).
+  final bool telegramLinked;
 
   /// Nom Telegram (sans « @ »), si la personne l'affiche dans cette entreprise.
   final String? telegram;

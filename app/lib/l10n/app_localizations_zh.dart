@@ -1662,4 +1662,39 @@ class L10nZh extends L10n {
 
   @override
   String get apiDocs => 'API 文档';
+
+  @override
+  String get memberGoogleLink => '更换 Google 账号的链接';
+
+  @override
+  String googleLinkHint(String name) {
+    return '请将此链接发给 $name。它需在浏览器中打开（不能在 Android 应用中），仅限一次，24 小时内有效：$name 用新的 Google 账号登录即可找回账号。其他所有设备随后都会退出登录。';
+  }
+
+  @override
+  String get googleLinkCopied => '链接已复制。';
+
+  @override
+  String get switchBanner =>
+      '更换 Google 账号链接：请用新的 Google 账号登录，以找回您的 Staff Flow 账号。';
+
+  @override
+  String get switchSignOutFirst =>
+      '此链接用于将 Staff Flow 账号关联到新的 Google 账号。请先退出登录，再用新的 Google 账号登录。';
+
+  @override
+  String get switchDone => '完成：您的 Staff Flow 账号已关联到此 Google 账号。您的其他设备已退出登录。';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return '最简单的方法：在 Telegram 中向机器人 $bot 发送 /changegoogle 并按提示操作，然后在 10 分钟内用新的 Google 账号登录。';
+  }
+
+  @override
+  String get changeGoogleNoTelegram => '没有 Telegram：请向老板或负责人索取更换 Google 账号的链接。';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name 创建了一个链接，用于将您的账号关联到新的 Google 账号。如果您没有提出此请求，请告知您的负责人。';
+  }
 }

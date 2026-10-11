@@ -1720,4 +1720,41 @@ class L10nKk extends L10n {
 
   @override
   String get apiDocs => 'API құжаттамасы';
+
+  @override
+  String get memberGoogleLink => 'Google аккаунтын ауыстыру сілтемесі';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Бұл сілтемені $name адамына жіберіңіз. Ол браузерде ашылады (Android қолданбасында емес), бір рет, 24 сағат бойы: $name жаңа Google аккаунтымен кіріп, өз аккаунтын қайтарады. Сонда оның барлық басқа құрылғылары шығарылады.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Сілтеме көшірілді.';
+
+  @override
+  String get switchBanner =>
+      'Google аккаунтын ауыстыру сілтемесі: Staff Flow аккаунтыңызды қайтару үшін жаңа Google аккаунтымен кіріңіз.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Бұл сілтеме Staff Flow аккаунтын жаңа Google аккаунтына байланыстырады. Алдымен шығыңыз, содан кейін жаңа Google аккаунтымен кіріңіз.';
+
+  @override
+  String get switchDone =>
+      'Дайын: Staff Flow аккаунтыңыз осы Google аккаунтына байланыстырылды. Басқа құрылғыларыңыздан шығарылды.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Ең оңайы: Telegram-да $bot ботына /changegoogle жіберіп, нұсқауларын орындаңыз, содан кейін 10 минут ішінде жаңа Google аккаунтымен кіріңіз.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Telegram болмаса: иесінен немесе басшыдан Google аккаунтын ауыстыру сілтемесін сұраңыз.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name аккаунтыңызды жаңа Google аккаунтына байланыстыру үшін сілтеме жасады. Егер сіз мұны сұрамаған болсаңыз, басшыңызға хабарлаңыз.';
+  }
 }

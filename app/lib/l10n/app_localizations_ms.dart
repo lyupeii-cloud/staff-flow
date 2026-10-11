@@ -1720,4 +1720,41 @@ class L10nMs extends L10n {
 
   @override
   String get apiDocs => 'Dokumentasi API';
+
+  @override
+  String get memberGoogleLink => 'Pautan untuk menukar akaun Google';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Hantar pautan ini kepada $name. Ia dibuka dalam pelayar (bukan dalam aplikasi Android), sekali sahaja, selama 24 jam: $name log masuk dengan akaun Google baharunya dan mendapatkan semula akaunnya. Semua perantinya yang lain kemudian dilog keluar.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Pautan disalin.';
+
+  @override
+  String get switchBanner =>
+      'Pautan penukaran akaun Google: log masuk dengan akaun Google baharu anda untuk mendapatkan semula akaun Staff Flow anda.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Pautan ini memautkan akaun Staff Flow kepada akaun Google baharu. Log keluar dahulu, kemudian log masuk dengan akaun Google baharu.';
+
+  @override
+  String get switchDone =>
+      'Selesai: akaun Staff Flow anda dipautkan kepada akaun Google ini. Peranti anda yang lain telah dilog keluar.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Cara paling mudah: dalam Telegram, hantar /changegoogle kepada bot $bot dan ikut arahannya, kemudian log masuk dengan akaun Google baharu dalam masa 10 minit.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Tanpa Telegram: minta pautan penukaran akaun Google daripada pemilik atau pengurus.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name telah mencipta pautan untuk memautkan akaun anda kepada akaun Google baharu. Jika anda tidak memintanya, maklumkan kepada pengurus anda.';
+  }
 }

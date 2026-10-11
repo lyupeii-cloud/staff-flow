@@ -1719,4 +1719,41 @@ class L10nPa extends L10n {
 
   @override
   String get apiDocs => 'API ਦਸਤਾਵੇਜ਼';
+
+  @override
+  String get memberGoogleLink => 'Google ਖਾਤਾ ਬਦਲਣ ਦਾ ਲਿੰਕ';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'ਇਹ ਲਿੰਕ $name ਨੂੰ ਭੇਜੋ। ਇਹ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਖੁੱਲ੍ਹਦਾ ਹੈ (Android ਐਪ ਵਿੱਚ ਨਹੀਂ), ਸਿਰਫ਼ ਇੱਕ ਵਾਰ, 24 ਘੰਟਿਆਂ ਲਈ: $name ਨਵੇਂ Google ਖਾਤੇ ਨਾਲ ਸਾਈਨ ਇਨ ਕਰਕੇ ਆਪਣਾ ਖਾਤਾ ਵਾਪਸ ਲੈਂਦੇ ਹਨ। ਫਿਰ ਉਨ੍ਹਾਂ ਦੇ ਬਾਕੀ ਸਾਰੇ ਡਿਵਾਈਸ ਸਾਈਨ ਆਊਟ ਹੋ ਜਾਂਦੇ ਹਨ।';
+  }
+
+  @override
+  String get googleLinkCopied => 'ਲਿੰਕ ਕਾਪੀ ਹੋਇਆ।';
+
+  @override
+  String get switchBanner =>
+      'Google ਖਾਤਾ ਬਦਲਣ ਦਾ ਲਿੰਕ: ਆਪਣਾ Staff Flow ਖਾਤਾ ਵਾਪਸ ਲੈਣ ਲਈ ਨਵੇਂ Google ਖਾਤੇ ਨਾਲ ਸਾਈਨ ਇਨ ਕਰੋ।';
+
+  @override
+  String get switchSignOutFirst =>
+      'ਇਹ ਲਿੰਕ Staff Flow ਖਾਤੇ ਨੂੰ ਨਵੇਂ Google ਖਾਤੇ ਨਾਲ ਜੋੜਦਾ ਹੈ। ਪਹਿਲਾਂ ਸਾਈਨ ਆਊਟ ਕਰੋ, ਫਿਰ ਨਵੇਂ Google ਖਾਤੇ ਨਾਲ ਸਾਈਨ ਇਨ ਕਰੋ।';
+
+  @override
+  String get switchDone =>
+      'ਹੋ ਗਿਆ: ਤੁਹਾਡਾ Staff Flow ਖਾਤਾ ਇਸ Google ਖਾਤੇ ਨਾਲ ਜੁੜ ਗਿਆ ਹੈ। ਤੁਹਾਡੇ ਬਾਕੀ ਡਿਵਾਈਸ ਸਾਈਨ ਆਊਟ ਕਰ ਦਿੱਤੇ ਗਏ ਹਨ।';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'ਸਭ ਤੋਂ ਸੌਖਾ: Telegram ਵਿੱਚ ਬੋਟ $bot ਨੂੰ /changegoogle ਭੇਜੋ ਅਤੇ ਹਦਾਇਤਾਂ ਮੰਨੋ, ਫਿਰ 10 ਮਿੰਟਾਂ ਵਿੱਚ ਨਵੇਂ Google ਖਾਤੇ ਨਾਲ ਸਾਈਨ ਇਨ ਕਰੋ।';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Telegram ਤੋਂ ਬਿਨਾਂ: ਮਾਲਕ ਜਾਂ ਮੈਨੇਜਰ ਤੋਂ Google ਖਾਤਾ ਬਦਲਣ ਦਾ ਲਿੰਕ ਮੰਗੋ।';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name ਨੇ ਤੁਹਾਡੇ ਖਾਤੇ ਨੂੰ ਨਵੇਂ Google ਖਾਤੇ ਨਾਲ ਜੋੜਨ ਲਈ ਲਿੰਕ ਬਣਾਇਆ ਹੈ। ਜੇ ਤੁਸੀਂ ਇਹ ਨਹੀਂ ਮੰਗਿਆ, ਤਾਂ ਆਪਣੇ ਮੈਨੇਜਰ ਨੂੰ ਦੱਸੋ।';
+  }
 }

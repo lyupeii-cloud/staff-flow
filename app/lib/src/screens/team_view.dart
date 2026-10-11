@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
+import '../api.dart';
 import '../brand.dart';
 import '../i18n.dart';
 import '../models.dart';
@@ -116,6 +118,7 @@ class _TeamViewState extends State<TeamView> {
                 return const Padding(
                     padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator()));
               }
+              _meDeputy = snap.data!.any((x) => x.user.id == me.id && x.appointedBy != null);
               return Column(
                 children: [for (final m in snap.data!) _memberTile(m, isMe: m.user.id == me.id)],
               );
@@ -218,6 +221,7 @@ class _TeamViewState extends State<TeamView> {
       if (isManager && mineToo && hasSites) _MemberAction.makeDeputy,
       if ((isOwner && m.role == Role.manager) || myDeputy) _MemberAction.makeEmployee,
       if (isOwner || mineToo) _MemberAction.toggleExtra,
+      if (!m.telegramLinked && (isOwner || (mineToo && !_meDeputy))) _MemberAction.googleLink,
       if (hasSites && ((isOwner && m.role == Role.manager) || myDeputy || ((isOwner || isManager) && targetIsStaff)))
         _MemberAction.sites,
       if (isOwner && m.role == Role.manager) _MemberAction.transfer,
@@ -225,9 +229,49 @@ class _TeamViewState extends State<TeamView> {
     ];
   }
 
+  /// Je suis sous-responsable (pas de lien de changement de compte Google).
+  bool _meDeputy = false;
+
+  /// Lien pour qu'une personne sans Telegram change de compte Google.
+  Future<void> _googleLink(Member m) async {
+    try {
+      final r = await widget.session.api.send('POST', '/companies/${company.id}/members/${m.user.id}/google-link');
+      if (!mounted) return;
+      final url = serverUrl(r['path'] as String);
+      await showDialog<void>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(t.changeGoogle),
+          content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            Text(t.googleLinkHint(m.user.name)),
+            const SizedBox(height: 12),
+            SelectableText(url, style: const TextStyle(fontSize: 13)),
+          ]),
+          actions: [
+            TextButton.icon(
+              onPressed: () {
+                Clipboard.setData(ClipboardData(text: url));
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.googleLinkCopied)));
+              },
+              icon: const Icon(Icons.copy),
+              label: Text(t.apiKeyCopy),
+            ),
+            FilledButton(onPressed: () => Navigator.pop(context), child: Text(t.close)),
+          ],
+        ),
+      );
+    } on ApiException catch (e) {
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.describe(t))));
+    } on OfflineException {
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+    }
+  }
+
   Future<void> _run(_MemberAction a, Member m) async {
     final api = widget.session.api;
     switch (a) {
+      case _MemberAction.googleLink:
+        await _googleLink(m);
       case _MemberAction.rename:
         final name = await askName(
           context,
@@ -500,6 +544,7 @@ enum _MemberAction {
   makeEmployee,
   toggleExtra,
   transfer,
+  googleLink,
   remove;
 
   String label(L10n t, Member m) => switch (this) {
@@ -510,6 +555,7 @@ enum _MemberAction {
         makeEmployee => m.appointedBy != null ? t.actionRemoveDeputy : t.actionMakeEmployee,
         toggleExtra => m.role == Role.extra ? t.actionToEmployee : t.actionToExtra,
         transfer => t.actionTransfer,
+        googleLink => t.memberGoogleLink,
         remove => t.actionRemove,
       };
 }

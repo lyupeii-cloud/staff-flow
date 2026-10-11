@@ -1723,4 +1723,41 @@ class L10nSv extends L10n {
 
   @override
   String get apiDocs => 'API-dokumentation';
+
+  @override
+  String get memberGoogleLink => 'Länk för att byta Google-konto';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Skicka länken till $name. Den öppnas i en webbläsare (inte i Android-appen), en gång, i 24 timmar: $name loggar in med sitt nya Google-konto och får tillbaka sitt konto. Alla personens andra enheter loggas då ut.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Länken kopierad.';
+
+  @override
+  String get switchBanner =>
+      'Länk för att byta Google-konto: logga in med ditt nya Google-konto för att få tillbaka ditt Staff Flow-konto.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Den här länken kopplar ett Staff Flow-konto till ett nytt Google-konto. Logga ut först och logga sedan in med det nya Google-kontot.';
+
+  @override
+  String get switchDone =>
+      'Klart: ditt Staff Flow-konto är kopplat till det här Google-kontot. Dina andra enheter har loggats ut.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Enklast: skicka /changegoogle till boten $bot i Telegram och följ instruktionerna, logga sedan in med det nya Google-kontot inom 10 minuter.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Utan Telegram: be ägaren eller en chef om en länk för att byta Google-konto.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name har skapat en länk för att koppla ditt konto till ett nytt Google-konto. Om du inte har bett om detta, säg till din chef.';
+  }
 }

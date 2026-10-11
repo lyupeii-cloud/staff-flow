@@ -476,5 +476,14 @@
   "apiKeyNeverUsed": "Nunca usada",
   "apiRevoke": "Revogar",
   "apiRevokeConfirm": "Os programas que usam esta chave perderão o acesso.",
-  "apiDocs": "Documentação da API"
+  "apiDocs": "Documentação da API",
+  "memberGoogleLink": "Link para trocar de conta Google",
+  "googleLinkHint": "Envie este link para {name}. Ele abre em um navegador (não no aplicativo Android), uma única vez, durante 24 horas: {name} entra com a nova conta Google e recupera a conta. Todos os outros dispositivos são então desconectados.",
+  "googleLinkCopied": "Link copiado.",
+  "switchBanner": "Link de troca de conta Google: entre com sua nova conta Google para recuperar sua conta Staff Flow.",
+  "switchSignOutFirst": "Este link vincula uma conta Staff Flow a uma nova conta Google. Saia primeiro e depois entre com a nova conta Google.",
+  "switchDone": "Pronto: sua conta Staff Flow está vinculada a esta conta Google. Seus outros dispositivos foram desconectados.",
+  "changeGoogleBot": "O mais simples: no Telegram, envie /changegoogle ao bot {bot} e siga as instruções; depois entre com a nova conta Google em até 10 minutos.",
+  "changeGoogleNoTelegram": "Sem Telegram: peça ao proprietário ou a um responsável um link de troca de conta Google.",
+  "noticeGoogleSwitchLink": "{name} criou um link para vincular sua conta a uma nova conta Google. Se você não pediu isso, avise seu responsável."
 }

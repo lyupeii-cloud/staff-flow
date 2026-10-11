@@ -74,6 +74,12 @@ class Session extends ChangeNotifier {
     WidgetsBinding.instance.addPostFrameCallback((_) => push.languageChanged());
   }
 
+  /// Lien de changement de compte Google ouvert dans le navigateur.
+  String? googleSwitchToken = kIsWeb && Uri.base.path.startsWith('/switch/') ? Uri.base.path.substring(8) : null;
+
+  /// La connexion vient de rattacher ce compte Google à un compte existant.
+  bool accountSwitched = false;
+
   Future<void> start() async {
     unawaited(_initGoogle());
     unawaited(_initPush());
@@ -168,7 +174,7 @@ class Session extends ChangeNotifier {
       if (event is GoogleSignInAuthenticationEventSignIn) {
         final idToken = event.user.authentication.idToken;
         if (idToken != null && state != SessionState.signedIn) {
-          await _guard(() async => _signedIn(await api.loginGoogle(idToken)));
+          await _guard(() async => _signedIn(await api.loginGoogle(idToken, switchToken: googleSwitchToken)));
         }
       }
     }, onError: (Object e) {
@@ -187,7 +193,7 @@ class Session extends ChangeNotifier {
       });
 
   Future<void> signInDev(String email) =>
-      _guard(() async => _signedIn(await api.loginDev(email)));
+      _guard(() async => _signedIn(await api.loginDev(email, switchToken: googleSwitchToken)));
 
   /// Compte supprimé en fantôme, réactivé par cette connexion (message d'accueil).
   bool accountRestored = false;
@@ -195,6 +201,8 @@ class Session extends ChangeNotifier {
   Future<void> _signedIn((String, User) login) async {
     final (token, _) = login;
     accountRestored = api.lastLoginRestored;
+    accountSwitched = api.lastLoginSwitched;
+    googleSwitchToken = null;
     await switchToken(token);
   }
 

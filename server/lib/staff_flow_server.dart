@@ -6,6 +6,7 @@ export 'src/billing_service.dart';
 export 'src/chat_service.dart';
 export 'src/company_service.dart';
 export 'src/errors.dart';
+export 'src/google_switch.dart';
 export 'src/join_service.dart';
 export 'src/messages.dart';
 export 'src/models.dart';

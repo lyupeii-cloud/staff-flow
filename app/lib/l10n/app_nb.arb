@@ -476,5 +476,14 @@
   "apiKeyNeverUsed": "Aldri brukt",
   "apiRevoke": "Trekk tilbake",
   "apiRevokeConfirm": "Programmer som bruker nøkkelen, mister tilgangen.",
-  "apiDocs": "API-dokumentasjon"
+  "apiDocs": "API-dokumentasjon",
+  "memberGoogleLink": "Lenke for å bytte Google-konto",
+  "googleLinkHint": "Send denne lenken til {name}. Den åpnes i en nettleser (ikke i Android-appen), én gang, i 24 timer: {name} logger inn med den nye Google-kontoen og får kontoen sin tilbake. Alle de andre enhetene blir da logget ut.",
+  "googleLinkCopied": "Lenken er kopiert.",
+  "switchBanner": "Lenke for bytte av Google-konto: logg inn med den nye Google-kontoen din for å få tilbake Staff Flow-kontoen.",
+  "switchSignOutFirst": "Denne lenken kobler en Staff Flow-konto til en ny Google-konto. Logg ut først, og logg deretter inn med den nye Google-kontoen.",
+  "switchDone": "Ferdig: Staff Flow-kontoen din er koblet til denne Google-kontoen. De andre enhetene dine er logget ut.",
+  "changeGoogleBot": "Enklest: send /changegoogle til boten {bot} i Telegram og følg instruksjonene; logg deretter inn med den nye Google-kontoen innen 10 minutter.",
+  "changeGoogleNoTelegram": "Uten Telegram: be eieren eller en leder om en lenke for å bytte Google-konto.",
+  "noticeGoogleSwitchLink": "{name} har laget en lenke for å koble kontoen din til en ny Google-konto. Hvis du ikke har bedt om dette, si fra til lederen din."
 }

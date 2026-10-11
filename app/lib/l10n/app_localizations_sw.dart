@@ -1723,4 +1723,41 @@ class L10nSw extends L10n {
 
   @override
   String get apiDocs => 'Nyaraka za API';
+
+  @override
+  String get memberGoogleLink => 'Kiungo cha kubadilisha akaunti ya Google';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Mtumie $name kiungo hiki. Kinafunguka kwenye kivinjari (si kwenye programu ya Android), mara moja tu, kwa saa 24: $name anaingia kwa akaunti yake mpya ya Google na kurejesha akaunti yake. Vifaa vyake vingine vyote kisha vinatolewa.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Kiungo kimenakiliwa.';
+
+  @override
+  String get switchBanner =>
+      'Kiungo cha kubadilisha akaunti ya Google: ingia kwa akaunti yako mpya ya Google ili kurejesha akaunti yako ya Staff Flow.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Kiungo hiki kinaunganisha akaunti ya Staff Flow na akaunti mpya ya Google. Toka kwanza, kisha ingia kwa akaunti mpya ya Google.';
+
+  @override
+  String get switchDone =>
+      'Imekamilika: akaunti yako ya Staff Flow imeunganishwa na akaunti hii ya Google. Vifaa vyako vingine vimetolewa.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Njia rahisi zaidi: kwenye Telegram, tuma /changegoogle kwa boti $bot na ufuate maagizo yake, kisha ingia kwa akaunti mpya ya Google ndani ya dakika 10.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Bila Telegram: muombe mmiliki au msimamizi kiungo cha kubadilisha akaunti ya Google.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name ameunda kiungo cha kuunganisha akaunti yako na akaunti mpya ya Google. Ikiwa hukuomba hivi, mjulishe msimamizi wako.';
+  }
 }

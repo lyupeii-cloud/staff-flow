@@ -1679,4 +1679,41 @@ class L10nKo extends L10n {
 
   @override
   String get apiDocs => 'API 문서';
+
+  @override
+  String get memberGoogleLink => 'Google 계정 변경 링크';
+
+  @override
+  String googleLinkHint(String name) {
+    return '이 링크를 $name님에게 보내세요. 브라우저에서 열리며(Android 앱 아님) 24시간 동안 한 번만 쓸 수 있습니다. $name님이 새 Google 계정으로 로그인하면 계정을 되찾습니다. 그 밖의 모든 기기는 로그아웃됩니다.';
+  }
+
+  @override
+  String get googleLinkCopied => '링크를 복사했습니다.';
+
+  @override
+  String get switchBanner =>
+      'Google 계정 변경 링크: 새 Google 계정으로 로그인하면 Staff Flow 계정을 되찾을 수 있습니다.';
+
+  @override
+  String get switchSignOutFirst =>
+      '이 링크는 Staff Flow 계정을 새 Google 계정에 연결합니다. 먼저 로그아웃한 뒤 새 Google 계정으로 로그인하세요.';
+
+  @override
+  String get switchDone =>
+      '완료: Staff Flow 계정이 이 Google 계정에 연결되었습니다. 다른 기기는 로그아웃되었습니다.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return '가장 쉬운 방법: Telegram에서 봇 $bot에게 /changegoogle을 보내 안내를 따른 뒤, 10분 안에 새 Google 계정으로 로그인하세요.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Telegram이 없다면: 소유자나 관리자에게 Google 계정 변경 링크를 요청하세요.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name님이 계정을 새 Google 계정에 연결하는 링크를 만들었습니다. 요청한 적이 없다면 관리자에게 알리세요.';
+  }
 }

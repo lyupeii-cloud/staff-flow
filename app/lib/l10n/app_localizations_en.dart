@@ -1720,4 +1720,41 @@ class L10nEn extends L10n {
 
   @override
   String get apiDocs => 'API documentation';
+
+  @override
+  String get memberGoogleLink => 'Link to change Google account';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Send this link to $name. It opens in a browser (not in the Android app), once, for 24 hours: $name signs in with their new Google account and gets their account back. All their other devices are then signed out.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Link copied.';
+
+  @override
+  String get switchBanner =>
+      'Google account change link: sign in with your new Google account to get your Staff Flow account back.';
+
+  @override
+  String get switchSignOutFirst =>
+      'This link attaches a Staff Flow account to a new Google account. Sign out first, then sign in with the new Google account.';
+
+  @override
+  String get switchDone =>
+      'Done: your Staff Flow account is linked to this Google account. Your other devices have been signed out.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'The easiest way: in Telegram, send /changegoogle to the bot $bot and follow its instructions, then sign in with the new Google account within 10 minutes.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Without Telegram: ask your owner or a manager for a Google account change link.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name created a link to attach your account to a new Google account. If you did not ask for this, tell your manager.';
+  }
 }

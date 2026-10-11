@@ -1708,4 +1708,41 @@ class L10nTh extends L10n {
 
   @override
   String get apiDocs => 'เอกสาร API';
+
+  @override
+  String get memberGoogleLink => 'ลิงก์สำหรับเปลี่ยนบัญชี Google';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'ส่งลิงก์นี้ให้ $name ลิงก์จะเปิดในเบราว์เซอร์ (ไม่ใช่แอป Android) ใช้ได้ครั้งเดียวภายใน 24 ชั่วโมง: $name ลงชื่อเข้าใช้ด้วยบัญชี Google ใหม่แล้วจะได้บัญชีคืน อุปกรณ์อื่นทั้งหมดของเขาจะถูกออกจากระบบ';
+  }
+
+  @override
+  String get googleLinkCopied => 'คัดลอกลิงก์แล้ว';
+
+  @override
+  String get switchBanner =>
+      'ลิงก์เปลี่ยนบัญชี Google: ลงชื่อเข้าใช้ด้วยบัญชี Google ใหม่เพื่อรับบัญชี Staff Flow ของคุณคืน';
+
+  @override
+  String get switchSignOutFirst =>
+      'ลิงก์นี้ใช้เชื่อมบัญชี Staff Flow กับบัญชี Google ใหม่ โปรดออกจากระบบก่อน แล้วลงชื่อเข้าใช้ด้วยบัญชี Google ใหม่';
+
+  @override
+  String get switchDone =>
+      'เรียบร้อย: บัญชี Staff Flow ของคุณเชื่อมกับบัญชี Google นี้แล้ว อุปกรณ์อื่นของคุณถูกออกจากระบบแล้ว';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'วิธีที่ง่ายที่สุด: ใน Telegram ส่ง /changegoogle ไปที่บอท $bot และทำตามคำแนะนำ จากนั้นลงชื่อเข้าใช้ด้วยบัญชี Google ใหม่ภายใน 10 นาที';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'หากไม่มี Telegram: ขอลิงก์เปลี่ยนบัญชี Google จากเจ้าของหรือผู้จัดการ';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name สร้างลิงก์เพื่อเชื่อมบัญชีของคุณกับบัญชี Google ใหม่ หากคุณไม่ได้ขอ โปรดแจ้งผู้จัดการของคุณ';
+  }
 }
