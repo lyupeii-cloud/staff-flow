@@ -263,7 +263,7 @@ String page(String l) {
       <ul class="checks">${[for (final c in list('checks')) '<li>${esc(c)}</li>'].join()}</ul>
     </div>
     <div class="hero-phone">
-      <div class="phone"><img src="/img/$dir/1-planning.jpg" alt="${esc(rows('shots')[0][0])}" width="540" height="1200"></div>
+      <div class="phone"><img src="/img/$dir/1-planning.jpg?v=2" alt="${esc(rows('shots')[0][0])}" width="540" height="1200"></div>
     </div>
   </div>
 </section>
@@ -283,7 +283,7 @@ String page(String l) {
     <h2>${s('shotsH')}</h2>
     <p class="sub">${s('shotsSub')}</p>
     <div class="shots">
-      ${[for (final (i, c) in rows('shots').indexed) '<figure><img src="/img/$dir/${shots[i]}.jpg" alt="${esc(c[0])}" width="540" height="1200" loading="lazy"><figcaption>${esc(c[0])}<span>${esc(c[1])}</span></figcaption></figure>'].join('\n      ')}
+      ${[for (final (i, c) in rows('shots').indexed) '<figure><img src="/img/$dir/${shots[i]}.jpg?v=2" alt="${esc(c[0])}" width="540" height="1200" loading="lazy"><figcaption>${esc(c[0])}<span>${esc(c[1])}</span></figcaption></figure>'].join('\n      ')}
     </div>
   </div>
 </section>
