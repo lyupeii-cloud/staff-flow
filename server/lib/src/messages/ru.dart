@@ -99,4 +99,11 @@ const ru = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Сообщения в этой компании отключены.',
   'Valeur hors limites : de {min} à {max}.': 'Значение вне допустимых пределов: от {min} до {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Уровни должны идти по порядку: включённые сотрудники < конец уровня 1 < конец уровня 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Бесплатный пробный период закончится менее чем через 24 часа.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Подписка не оплачена: компания доступна только для чтения и будет удалена {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Напоминание: без оплаты компания будет удалена {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Компания {name} удалена из-за неоплаты.',
+  'Le paiement en ligne arrive bientôt.': 'Онлайн-оплата скоро появится.',
+  'Cette entreprise est offerte : rien à payer.': 'Эта компания бесплатна: платить ничего не нужно.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Для создания подобъектов нужна опция «иерархия объектов».',
 };

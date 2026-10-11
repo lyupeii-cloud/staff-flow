@@ -2464,6 +2464,162 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'On: the team has a Messages tab. Off: nobody sees it or can write (old messages are kept).'**
   String get messagingSettingHint;
+
+  /// No description provided for @billingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription'**
+  String get billingTitle;
+
+  /// No description provided for @billingStatusTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'Free trial until {date}'**
+  String billingStatusTrial(String date);
+
+  /// No description provided for @billingStatusActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid until {date}'**
+  String billingStatusActive(String date);
+
+  /// No description provided for @billingStatusGrace.
+  ///
+  /// In en, this message translates to:
+  /// **'Read-only: without payment, the company will be deleted on {date}.'**
+  String billingStatusGrace(String date);
+
+  /// No description provided for @billingStatusComped.
+  ///
+  /// In en, this message translates to:
+  /// **'Complimentary'**
+  String get billingStatusComped;
+
+  /// No description provided for @billingStaff.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} employees counted (owner and temps not included)'**
+  String billingStaff(String count);
+
+  /// No description provided for @billingMonthly.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly'**
+  String get billingMonthly;
+
+  /// No description provided for @billingYearly.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly ({months} months billed)'**
+  String billingYearly(String months);
+
+  /// No description provided for @billingCascade.
+  ///
+  /// In en, this message translates to:
+  /// **'“Nested sites” option'**
+  String get billingCascade;
+
+  /// No description provided for @billingCascadeIncluded.
+  ///
+  /// In en, this message translates to:
+  /// **'Included from {count} employees'**
+  String billingCascadeIncluded(String count);
+
+  /// No description provided for @billingPay.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay {amount}'**
+  String billingPay(String amount);
+
+  /// No description provided for @billingTestNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Test payment: nothing is charged.'**
+  String get billingTestNotice;
+
+  /// No description provided for @billingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Online payment is coming soon.'**
+  String get billingSoon;
+
+  /// No description provided for @billingPaidOk.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment recorded.'**
+  String get billingPaidOk;
+
+  /// No description provided for @billingInvoices.
+  ///
+  /// In en, this message translates to:
+  /// **'Invoices'**
+  String get billingInvoices;
+
+  /// No description provided for @billingNoInvoices.
+  ///
+  /// In en, this message translates to:
+  /// **'No invoices yet.'**
+  String get billingNoInvoices;
+
+  /// No description provided for @billingInvoiceByEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive invoices by email'**
+  String get billingInvoiceByEmail;
+
+  /// No description provided for @billingEmailSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Email delivery is coming soon; invoices can always be downloaded here.'**
+  String get billingEmailSoon;
+
+  /// No description provided for @billingManage.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage subscription'**
+  String get billingManage;
+
+  /// No description provided for @billingReadOnlyStaff.
+  ///
+  /// In en, this message translates to:
+  /// **'This company is read-only until the owner renews the subscription.'**
+  String get billingReadOnlyStaff;
+
+  /// No description provided for @billingPerMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} / month'**
+  String billingPerMonth(String amount);
+
+  /// No description provided for @billingPerYear.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} / year'**
+  String billingPerYear(String amount);
+
+  /// No description provided for @noticeBillingTrialEnding.
+  ///
+  /// In en, this message translates to:
+  /// **'{company}: the free trial ends in less than 24 hours.'**
+  String noticeBillingTrialEnding(String company);
+
+  /// No description provided for @noticeBillingGrace.
+  ///
+  /// In en, this message translates to:
+  /// **'{company} is read-only for non-payment; deletion on {date}.'**
+  String noticeBillingGrace(String company, String date);
+
+  /// No description provided for @noticeBillingGraceReminder.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder: without payment, {company} will be deleted on {date}.'**
+  String noticeBillingGraceReminder(String company, String date);
+
+  /// No description provided for @noticeBillingDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'{company} was deleted for non-payment.'**
+  String noticeBillingDeleted(String company);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

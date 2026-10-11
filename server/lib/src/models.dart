@@ -99,6 +99,16 @@ class Company {
   /// Messagerie de l'entreprise : le patron l'active (désactivée au départ).
   final bool messagingEnabled;
 
+  /// Abonnement : `trial`, `active`, `grace` (lecture seule avant
+  /// suppression) ou `comped` (offerte).
+  final String billingStatus;
+  final DateTime? trialEndsAt;
+  final DateTime? paidUntil;
+  final DateTime? graceEndsAt;
+  final String? billingPeriod;
+  final bool cascadeOption;
+  final bool invoiceByEmail;
+
   const Company({
     required this.id,
     required this.name,
@@ -111,7 +121,24 @@ class Company {
     this.groupEnabled = true,
     this.logoVersion = 0,
     this.messagingEnabled = false,
+    this.billingStatus = 'trial',
+    this.trialEndsAt,
+    this.paidUntil,
+    this.graceEndsAt,
+    this.billingPeriod,
+    this.cascadeOption = false,
+    this.invoiceByEmail = true,
   });
+
+  Map<String, Object?> billingJson() => {
+        'status': billingStatus,
+        'trialEndsAt': trialEndsAt?.toIso8601String(),
+        'paidUntil': paidUntil?.toIso8601String(),
+        'graceEndsAt': graceEndsAt?.toIso8601String(),
+        'period': billingPeriod,
+        'cascadeOption': cascadeOption,
+        'invoiceByEmail': invoiceByEmail,
+      };
 
   Company copyWith({String? name, String? timezone, Map<String, int>? Function()? legalRules, String? printScope}) =>
       Company(
@@ -126,6 +153,13 @@ class Company {
         groupEnabled: groupEnabled,
         logoVersion: logoVersion,
         messagingEnabled: messagingEnabled,
+        billingStatus: billingStatus,
+        trialEndsAt: trialEndsAt,
+        paidUntil: paidUntil,
+        graceEndsAt: graceEndsAt,
+        billingPeriod: billingPeriod,
+        cascadeOption: cascadeOption,
+        invoiceByEmail: invoiceByEmail,
       );
 
   Map<String, Object?> toJson() => {
@@ -139,6 +173,7 @@ class Company {
         'groupEnabled': groupEnabled,
         'logoVersion': logoVersion,
         'messagingEnabled': messagingEnabled,
+        'billing': billingJson(),
       };
 }
 

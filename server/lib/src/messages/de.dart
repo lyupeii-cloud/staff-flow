@@ -99,4 +99,11 @@ const de = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Die Nachrichten sind für dieses Unternehmen ausgeschaltet.',
   'Valeur hors limites : de {min} à {max}.': 'Wert außerhalb des Bereichs: von {min} bis {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Die Stufen müssen aufeinander folgen: inbegriffene Mitarbeitende < Ende Stufe 1 < Ende Stufe 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Die kostenlose Testphase endet in weniger als 24 Stunden.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Abonnement nicht bezahlt: Das Unternehmen ist schreibgeschützt und wird am {day} gelöscht.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Erinnerung: Ohne Zahlung wird das Unternehmen am {day} gelöscht.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Das Unternehmen {name} wurde wegen Nichtzahlung gelöscht.',
+  'Le paiement en ligne arrive bientôt.': 'Online-Zahlung folgt bald.',
+  'Cette entreprise est offerte : rien à payer.': 'Dieses Unternehmen ist kostenlos: nichts zu bezahlen.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Für Unterstandorte ist die Option „verschachtelte Standorte“ nötig.',
 };

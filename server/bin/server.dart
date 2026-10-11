@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -16,6 +17,7 @@ import 'package:staff_flow_server/staff_flow_server.dart';
 /// - `DEV_LOGIN=true` : connexion sans Google, développement local uniquement
 /// - `ADMIN_EMAILS` : adresses Google des administrateurs de la plateforme, séparées par des virgules
 /// - `PLATFORM_CONFIG` : fichier JSON des réglages de la plateforme (tarifs…), facultatif
+/// - `BILLING_TEST=true` : paiement fictif ouvert à tous les propriétaires (tests)
 /// - `PORT` : 8080 par défaut
 Future<void> main() async {
   final env = Platform.environment;
@@ -58,6 +60,7 @@ Future<void> main() async {
     push: push,
     translator: translator,
     adminEmails: {for (final e in list('ADMIN_EMAILS')) e.toLowerCase()},
+    testPaymentsForAll: env['BILLING_TEST'] == 'true',
     platformFile: (env['PLATFORM_CONFIG'] ?? '').isEmpty ? null : PlatformService.readFile(env['PLATFORM_CONFIG']!),
   );
 
@@ -65,4 +68,9 @@ Future<void> main() async {
   final handler = const Pipeline().addMiddleware(logRequests()).addHandler(api.handler);
   final server = await io.serve(handler, InternetAddress.anyIPv4, port);
   print('Staff Flow API sur le port ${server.port}');
+
+  // Échéances des abonnements : fin d'essai, rappels, lecture seule, suppression.
+  Future<void> tick() => api.billing.tick().catchError((Object e) => print('Abonnements : $e'));
+  unawaited(tick());
+  Timer.periodic(const Duration(minutes: 10), (_) => tick());
 }

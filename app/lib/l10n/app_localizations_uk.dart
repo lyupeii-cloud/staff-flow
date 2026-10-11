@@ -1364,4 +1364,110 @@ class L10nUk extends L10n {
   @override
   String get messagingSettingHint =>
       'Увімкнено: у команди є вкладка «Повідомлення». Вимкнено: ніхто її не бачить і не може писати (старі повідомлення зберігаються).';
+
+  @override
+  String get billingTitle => 'Підписка';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Безкоштовний пробний період до $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Оплачено до $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Лише читання: без оплати компанію буде видалено $date.';
+  }
+
+  @override
+  String get billingStatusComped => 'Безкоштовно';
+
+  @override
+  String billingStaff(String count) {
+    return 'Враховано працівників: $count (без власника й тимчасових)';
+  }
+
+  @override
+  String get billingMonthly => 'Щомісяця';
+
+  @override
+  String billingYearly(String months) {
+    return 'Щороку (оплачується $months міс.)';
+  }
+
+  @override
+  String get billingCascade => 'Опція «ієрархія об\'єктів»';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Включено від $count працівників';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'Оплатити $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'Тестова оплата: кошти не списуються.';
+
+  @override
+  String get billingSoon => 'Онлайн-оплата незабаром.';
+
+  @override
+  String get billingPaidOk => 'Оплату зараховано.';
+
+  @override
+  String get billingInvoices => 'Рахунки';
+
+  @override
+  String get billingNoInvoices => 'Рахунків поки немає.';
+
+  @override
+  String get billingInvoiceByEmail => 'Отримувати рахунки електронною поштою';
+
+  @override
+  String get billingEmailSoon =>
+      'Надсилання поштою незабаром; рахунки завжди можна завантажити тут.';
+
+  @override
+  String get billingManage => 'Керувати підпискою';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Компанія доступна лише для читання, доки власник не поновить підписку.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / міс.';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / рік';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: безкоштовний пробний період закінчиться менш ніж за 24 години.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company доступна лише для читання через несплату; видалення $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Нагадування: без оплати $company буде видалено $date.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company видалено через несплату.';
+  }
 }

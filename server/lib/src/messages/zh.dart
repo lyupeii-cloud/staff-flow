@@ -99,4 +99,11 @@ const zh = <String, String>{
   'La messagerie de cette entreprise est désactivée.': '此公司的消息功能已关闭。',
   'Valeur hors limites : de {min} à {max}.': '数值超出范围：{min} 至 {max}。',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': '各档必须依次递增：包含的员工数 < 第 1 档上限 < 第 2 档上限。',
+  'L\'essai gratuit se termine dans moins de 24 heures.': '免费试用将在 24 小时内结束。',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': '订阅未付款：公司处于只读状态，将于 {day} 删除。',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': '提醒：如不付款，公司将于 {day} 删除。',
+  'L\'entreprise {name} a été supprimée faute de paiement.': '公司 {name} 因未付款已被删除。',
+  'Le paiement en ligne arrive bientôt.': '在线支付即将推出。',
+  'Cette entreprise est offerte : rien à payer.': '此公司为免费赠送：无需付款。',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': '创建子站点需要“多级站点”选项。',
 };

@@ -99,4 +99,11 @@ const gu = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'આ કંપની માટે સંદેશા બંધ છે.',
   'Valeur hors limites : de {min} à {max}.': 'મૂલ્ય મર્યાદા બહાર: {min} થી {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'સ્તરો ક્રમમાં હોવા જોઈએ: સમાવિષ્ટ કર્મચારીઓ < સ્તર 1 નો અંત < સ્તર 2 નો અંત.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'મફત ટ્રાયલ 24 કલાકથી ઓછા સમયમાં પૂરું થશે.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'સબ્સ્ક્રિપ્શન ચૂકવાયું નથી: કંપની ફક્ત વાંચવા માટે છે અને {day}એ કાઢી નાખવામાં આવશે.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'યાદ અપાવવું: ચુકવણી વિના કંપની {day}એ કાઢી નાખવામાં આવશે.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'ચુકવણી ન થવાથી {name} કંપની કાઢી નાખવામાં આવી.',
+  'Le paiement en ligne arrive bientôt.': 'ઓનલાઇન ચુકવણી ટૂંક સમયમાં આવી રહી છે.',
+  'Cette entreprise est offerte : rien à payer.': 'આ કંપની મફત છે: કંઈ ચૂકવવાનું નથી.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'પેટા-સાઇટ બનાવવા માટે «સ્તરવાળી સાઇટ» વિકલ્પ જરૂરી છે.',
 };

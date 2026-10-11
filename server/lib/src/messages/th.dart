@@ -99,4 +99,11 @@ const th = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'บริษัทนี้ปิดการส่งข้อความอยู่',
   'Valeur hors limites : de {min} à {max}.': 'ค่าอยู่นอกช่วง: ตั้งแต่ {min} ถึง {max}',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'ขั้นต้องเรียงต่อกัน: จำนวนพนักงานที่รวม < สิ้นสุดขั้น 1 < สิ้นสุดขั้น 2',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'ช่วงทดลองใช้ฟรีจะสิ้นสุดในอีกไม่ถึง 24 ชั่วโมง',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'ยังไม่ได้ชำระค่าสมาชิก: บริษัทเป็นแบบอ่านอย่างเดียวและจะถูกลบในวันที่ {day}',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'แจ้งเตือน: หากไม่ชำระเงิน บริษัทจะถูกลบในวันที่ {day}',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'บริษัท {name} ถูกลบเนื่องจากไม่ชำระเงิน',
+  'Le paiement en ligne arrive bientôt.': 'การชำระเงินออนไลน์จะมาเร็ว ๆ นี้',
+  'Cette entreprise est offerte : rien à payer.': 'บริษัทนี้ใช้ฟรี: ไม่ต้องชำระเงิน',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'ต้องใช้ตัวเลือก “สาขาแบบลำดับชั้น” เพื่อสร้างสาขาย่อย',
 };

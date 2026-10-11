@@ -99,4 +99,11 @@ const id = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Pesan dinonaktifkan untuk perusahaan ini.',
   'Valeur hors limites : de {min} à {max}.': 'Nilai di luar batas: dari {min} hingga {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Tingkatan harus berurutan: karyawan termasuk < akhir tingkat 1 < akhir tingkat 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Uji coba gratis berakhir dalam kurang dari 24 jam.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Langganan belum dibayar: perusahaan hanya-baca dan akan dihapus pada {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Pengingat: tanpa pembayaran, perusahaan akan dihapus pada {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Perusahaan {name} dihapus karena tidak dibayar.',
+  'Le paiement en ligne arrive bientôt.': 'Pembayaran online segera hadir.',
+  'Cette entreprise est offerte : rien à payer.': 'Perusahaan ini gratis: tidak ada yang harus dibayar.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Opsi “lokasi bertingkat” diperlukan untuk membuat sub-lokasi.',
 };

@@ -1371,4 +1371,110 @@ class L10nFr extends L10n {
   @override
   String get messagingSettingHint =>
       'Activée : l\'équipe a un onglet Messages. Désactivée : personne ne le voit ni ne peut écrire (les anciens messages sont gardés).';
+
+  @override
+  String get billingTitle => 'Abonnement';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Essai gratuit jusqu\'au $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Payé jusqu\'au $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Lecture seule : sans paiement, l\'entreprise sera supprimée le $date.';
+  }
+
+  @override
+  String get billingStatusComped => 'Offert';
+
+  @override
+  String billingStaff(String count) {
+    return '$count salariés comptés (sans le propriétaire ni les extras)';
+  }
+
+  @override
+  String get billingMonthly => 'Mensuel';
+
+  @override
+  String billingYearly(String months) {
+    return 'Annuel ($months mois facturés)';
+  }
+
+  @override
+  String get billingCascade => 'Option « sites en cascade »';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Incluse à partir de $count salariés';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'Payer $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'Paiement de test : rien n\'est prélevé.';
+
+  @override
+  String get billingSoon => 'Le paiement en ligne arrive bientôt.';
+
+  @override
+  String get billingPaidOk => 'Paiement enregistré.';
+
+  @override
+  String get billingInvoices => 'Factures';
+
+  @override
+  String get billingNoInvoices => 'Aucune facture pour l\'instant.';
+
+  @override
+  String get billingInvoiceByEmail => 'Recevoir les factures par e-mail';
+
+  @override
+  String get billingEmailSoon =>
+      'L\'envoi par e-mail arrive bientôt ; les factures restent téléchargeables ici.';
+
+  @override
+  String get billingManage => 'Gérer l\'abonnement';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Cette entreprise est en lecture seule jusqu\'au renouvellement de l\'abonnement par le propriétaire.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / mois';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / an';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company : l\'essai gratuit se termine dans moins de 24 heures.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company est en lecture seule faute de paiement ; suppression le $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Rappel : sans paiement, $company sera supprimée le $date.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company a été supprimée faute de paiement.';
+  }
 }

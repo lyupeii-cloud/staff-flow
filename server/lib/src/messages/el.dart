@@ -99,4 +99,11 @@ const el = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Τα μηνύματα είναι απενεργοποιημένα για αυτή την επιχείρηση.',
   'Valeur hors limites : de {min} à {max}.': 'Τιμή εκτός ορίων: από {min} έως {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Τα κλιμάκια πρέπει να ακολουθούν το ένα το άλλο: εργαζόμενοι που περιλαμβάνονται < τέλος κλιμακίου 1 < τέλος κλιμακίου 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Η δωρεάν δοκιμή λήγει σε λιγότερο από 24 ώρες.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Η συνδρομή δεν πληρώθηκε: η επιχείρηση είναι μόνο για ανάγνωση και θα διαγραφεί στις {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Υπενθύμιση: χωρίς πληρωμή η επιχείρηση θα διαγραφεί στις {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Η επιχείρηση {name} διαγράφηκε λόγω μη πληρωμής.',
+  'Le paiement en ligne arrive bientôt.': 'Η ηλεκτρονική πληρωμή έρχεται σύντομα.',
+  'Cette entreprise est offerte : rien à payer.': 'Αυτή η επιχείρηση προσφέρεται δωρεάν: τίποτα για πληρωμή.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Απαιτείται η επιλογή «ιεραρχία σημείων» για τη δημιουργία υποσημείων.',
 };

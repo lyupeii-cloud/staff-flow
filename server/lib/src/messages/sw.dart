@@ -99,4 +99,11 @@ const sw = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Ujumbe umezimwa kwa kampuni hii.',
   'Valeur hors limites : de {min} à {max}.': 'Thamani nje ya kiwango: kutoka {min} hadi {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Viwango lazima vifuatane: wafanyakazi waliojumuishwa < mwisho wa kiwango 1 < mwisho wa kiwango 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Jaribio la bure linaisha ndani ya chini ya saa 24.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Usajili haujalipwa: kampuni ni ya kusoma tu na itafutwa tarehe {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Kumbusho: bila malipo, kampuni itafutwa tarehe {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Kampuni {name} imefutwa kwa kutolipa.',
+  'Le paiement en ligne arrive bientôt.': 'Malipo ya mtandaoni yanakuja hivi karibuni.',
+  'Cette entreprise est offerte : rien à payer.': 'Kampuni hii ni ya bure: hakuna cha kulipa.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Chaguo la “tovuti za ngazi” linahitajika kuunda tovuti ndogo.',
 };

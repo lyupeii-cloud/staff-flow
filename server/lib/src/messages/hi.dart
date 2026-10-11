@@ -99,4 +99,11 @@ const hi = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'इस कंपनी के लिए संदेश बंद हैं।',
   'Valeur hors limites : de {min} à {max}.': 'मान सीमा से बाहर: {min} से {max} तक।',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'स्तर क्रम में होने चाहिए: शामिल कर्मचारी < स्तर 1 का अंत < स्तर 2 का अंत।',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'मुफ़्त ट्रायल 24 घंटे से कम में खत्म होगा।',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'सदस्यता का भुगतान नहीं हुआ: कंपनी केवल पढ़ने के लिए है और {day} को हटा दी जाएगी।',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'याद दिलाना: भुगतान के बिना कंपनी {day} को हटा दी जाएगी।',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'भुगतान न होने के कारण कंपनी {name} हटा दी गई।',
+  'Le paiement en ligne arrive bientôt.': 'ऑनलाइन भुगतान जल्द आ रहा है।',
+  'Cette entreprise est offerte : rien à payer.': 'यह कंपनी मुफ़्त है: कुछ भी भुगतान नहीं करना।',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'उप-साइट बनाने के लिए «स्तरीय साइट» विकल्प आवश्यक है।',
 };

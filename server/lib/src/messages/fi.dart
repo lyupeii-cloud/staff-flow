@@ -99,4 +99,11 @@ const fi = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Viestit on poistettu käytöstä tässä yrityksessä.',
   'Valeur hors limites : de {min} à {max}.': 'Arvo rajojen ulkopuolella: {min}–{max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Portaiden on seurattava toisiaan: sisältyvät työntekijät < portaan 1 loppu < portaan 2 loppu.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Ilmainen kokeilu päättyy alle 24 tunnin kuluttua.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Tilausta ei ole maksettu: yritys on vain luku -tilassa ja poistetaan {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Muistutus: ilman maksua yritys poistetaan {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Yritys {name} poistettiin maksamattomuuden vuoksi.',
+  'Le paiement en ligne arrive bientôt.': 'Verkkomaksu tulossa pian.',
+  'Cette entreprise est offerte : rien à payer.': 'Tämä yritys on maksuton: ei maksettavaa.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Alatoimipaikkojen luominen vaatii ”sisäkkäiset toimipaikat” -lisäosan.',
 };

@@ -99,4 +99,11 @@ const cs = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Zprávy jsou v této firmě vypnuté.',
   'Valeur hors limites : de {min} à {max}.': 'Hodnota mimo rozsah: od {min} do {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Pásma musí na sebe navazovat: zahrnutí zaměstnanci < konec pásma 1 < konec pásma 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Bezplatná zkušební doba končí za méně než 24 hodin.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Předplatné není zaplaceno: firma je jen pro čtení a {day} bude smazána.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Připomínka: bez platby bude firma {day} smazána.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Firma {name} byla smazána kvůli nezaplacení.',
+  'Le paiement en ligne arrive bientôt.': 'Online platba bude brzy k dispozici.',
+  'Cette entreprise est offerte : rien à payer.': 'Tato firma je zdarma: není co platit.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'K vytváření podmíst je nutná možnost „vnořená místa“.',
 };

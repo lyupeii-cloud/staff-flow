@@ -1359,4 +1359,110 @@ class L10nSw extends L10n {
   @override
   String get messagingSettingHint =>
       'Imewashwa: timu ina kichupo cha Ujumbe. Imezimwa: hakuna anayekiona wala kuandika (jumbe za zamani huhifadhiwa).';
+
+  @override
+  String get billingTitle => 'Usajili';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Jaribio la bure hadi $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Imelipwa hadi $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Kusoma tu: bila malipo, kampuni itafutwa tarehe $date.';
+  }
+
+  @override
+  String get billingStatusComped => 'Bure';
+
+  @override
+  String billingStaff(String count) {
+    return 'Wafanyakazi $count wamehesabiwa (bila mmiliki na wafanyakazi wa muda)';
+  }
+
+  @override
+  String get billingMonthly => 'Kila mwezi';
+
+  @override
+  String billingYearly(String months) {
+    return 'Kila mwaka (miezi $months inatozwa)';
+  }
+
+  @override
+  String get billingCascade => 'Chaguo la “tovuti za ngazi”';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Imejumuishwa kuanzia wafanyakazi $count';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'Lipa $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'Malipo ya majaribio: hakuna kinachotozwa.';
+
+  @override
+  String get billingSoon => 'Malipo ya mtandaoni yanakuja hivi karibuni.';
+
+  @override
+  String get billingPaidOk => 'Malipo yamerekodiwa.';
+
+  @override
+  String get billingInvoices => 'Ankara';
+
+  @override
+  String get billingNoInvoices => 'Bado hakuna ankara.';
+
+  @override
+  String get billingInvoiceByEmail => 'Pokea ankara kwa barua pepe';
+
+  @override
+  String get billingEmailSoon =>
+      'Kutuma kwa barua pepe kunakuja hivi karibuni; ankara zinaweza kupakuliwa hapa wakati wowote.';
+
+  @override
+  String get billingManage => 'Simamia usajili';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Kampuni hii ni ya kusoma tu hadi mmiliki atakapofanya upya usajili.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / mwezi';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / mwaka';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: jaribio la bure linaisha ndani ya chini ya saa 24.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company ni ya kusoma tu kwa kutolipa; itafutwa tarehe $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Kumbusho: bila malipo, $company itafutwa tarehe $date.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company imefutwa kwa kutolipa.';
+  }
 }

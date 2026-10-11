@@ -1351,4 +1351,110 @@ class L10nVi extends L10n {
   @override
   String get messagingSettingHint =>
       'Bật: nhóm có thẻ Tin nhắn. Tắt: không ai thấy hay viết được (tin nhắn cũ vẫn được giữ).';
+
+  @override
+  String get billingTitle => 'Gói đăng ký';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Dùng thử miễn phí đến $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Đã thanh toán đến $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Chỉ đọc: nếu không thanh toán, công ty sẽ bị xóa vào $date.';
+  }
+
+  @override
+  String get billingStatusComped => 'Miễn phí';
+
+  @override
+  String billingStaff(String count) {
+    return 'Tính $count nhân viên (không gồm chủ và nhân viên tạm thời)';
+  }
+
+  @override
+  String get billingMonthly => 'Hằng tháng';
+
+  @override
+  String billingYearly(String months) {
+    return 'Hằng năm (tính phí $months tháng)';
+  }
+
+  @override
+  String get billingCascade => 'Tùy chọn “địa điểm nhiều cấp”';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Bao gồm từ $count nhân viên';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'Thanh toán $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'Thanh toán thử: không trừ tiền.';
+
+  @override
+  String get billingSoon => 'Thanh toán trực tuyến sắp ra mắt.';
+
+  @override
+  String get billingPaidOk => 'Đã ghi nhận thanh toán.';
+
+  @override
+  String get billingInvoices => 'Hóa đơn';
+
+  @override
+  String get billingNoInvoices => 'Chưa có hóa đơn.';
+
+  @override
+  String get billingInvoiceByEmail => 'Nhận hóa đơn qua email';
+
+  @override
+  String get billingEmailSoon =>
+      'Gửi email sắp ra mắt; hóa đơn luôn có thể tải tại đây.';
+
+  @override
+  String get billingManage => 'Quản lý gói đăng ký';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Công ty này ở chế độ chỉ đọc cho đến khi chủ gia hạn gói đăng ký.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / tháng';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / năm';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: bản dùng thử miễn phí sẽ kết thúc trong chưa đầy 24 giờ.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company ở chế độ chỉ đọc do chưa thanh toán; sẽ xóa vào $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Nhắc nhở: nếu không thanh toán, $company sẽ bị xóa vào $date.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company đã bị xóa do không thanh toán.';
+  }
 }

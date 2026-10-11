@@ -1359,4 +1359,110 @@ class L10nSk extends L10n {
   @override
   String get messagingSettingHint =>
       'Zapnuté: tím má kartu Správy. Vypnuté: nikto ju nevidí ani nemôže písať (staré správy zostanú).';
+
+  @override
+  String get billingTitle => 'Predplatné';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Bezplatná skúšobná doba do $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Zaplatené do $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Len na čítanie: bez platby bude firma $date vymazaná.';
+  }
+
+  @override
+  String get billingStatusComped => 'Zadarmo';
+
+  @override
+  String billingStaff(String count) {
+    return 'Započítaní zamestnanci: $count (bez majiteľa a brigádnikov)';
+  }
+
+  @override
+  String get billingMonthly => 'Mesačne';
+
+  @override
+  String billingYearly(String months) {
+    return 'Ročne (účtovaných $months mesiacov)';
+  }
+
+  @override
+  String get billingCascade => 'Možnosť „vnorené miesta“';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Zahrnuté od $count zamestnancov';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'Zaplatiť $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'Testovacia platba: nič sa nestrháva.';
+
+  @override
+  String get billingSoon => 'Online platba bude čoskoro k dispozícii.';
+
+  @override
+  String get billingPaidOk => 'Platba zaznamenaná.';
+
+  @override
+  String get billingInvoices => 'Faktúry';
+
+  @override
+  String get billingNoInvoices => 'Zatiaľ žiadne faktúry.';
+
+  @override
+  String get billingInvoiceByEmail => 'Dostávať faktúry e-mailom';
+
+  @override
+  String get billingEmailSoon =>
+      'Posielanie e-mailom bude čoskoro; faktúry si môžete vždy stiahnuť tu.';
+
+  @override
+  String get billingManage => 'Spravovať predplatné';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Táto firma je len na čítanie, kým majiteľ neobnoví predplatné.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / mesiac';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / rok';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: bezplatná skúšobná doba sa končí o menej než 24 hodín.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company je pre nezaplatenie len na čítanie; vymazanie $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Pripomienka: bez platby bude $company $date vymazaná.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company bola vymazaná pre nezaplatenie.';
+  }
 }

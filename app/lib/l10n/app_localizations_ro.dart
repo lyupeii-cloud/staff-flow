@@ -1367,4 +1367,110 @@ class L10nRo extends L10n {
   @override
   String get messagingSettingHint =>
       'Activată: echipa are o filă Mesaje. Dezactivată: nimeni nu o vede și nu poate scrie (mesajele vechi se păstrează).';
+
+  @override
+  String get billingTitle => 'Abonament';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Perioadă de probă gratuită până la $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Plătit până la $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Doar citire: fără plată, firma va fi ștearsă pe $date.';
+  }
+
+  @override
+  String get billingStatusComped => 'Oferit';
+
+  @override
+  String billingStaff(String count) {
+    return '$count angajați numărați (fără proprietar și temporari)';
+  }
+
+  @override
+  String get billingMonthly => 'Lunar';
+
+  @override
+  String billingYearly(String months) {
+    return 'Anual ($months luni facturate)';
+  }
+
+  @override
+  String get billingCascade => 'Opțiunea „puncte în cascadă”';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Inclusă de la $count angajați';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'Plătește $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'Plată de test: nu se încasează nimic.';
+
+  @override
+  String get billingSoon => 'Plata online vine în curând.';
+
+  @override
+  String get billingPaidOk => 'Plată înregistrată.';
+
+  @override
+  String get billingInvoices => 'Facturi';
+
+  @override
+  String get billingNoInvoices => 'Încă nu există facturi.';
+
+  @override
+  String get billingInvoiceByEmail => 'Primește facturile pe e-mail';
+
+  @override
+  String get billingEmailSoon =>
+      'Trimiterea pe e-mail vine în curând; facturile se pot descărca oricând aici.';
+
+  @override
+  String get billingManage => 'Gestionează abonamentul';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Această firmă este doar în citire până când proprietarul reînnoiește abonamentul.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / lună';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / an';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: perioada de probă gratuită se încheie în mai puțin de 24 de ore.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company este doar în citire din cauza neplății; ștergere pe $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Memento: fără plată, $company va fi ștearsă pe $date.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company a fost ștearsă din cauza neplății.';
+  }
 }

@@ -19,12 +19,13 @@ class AdminPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Administration'),
           bottom: const TabBar(tabs: [
             Tab(icon: Icon(Icons.insights), text: 'Activité'),
+            Tab(icon: Icon(Icons.store), text: 'Clients'),
             Tab(icon: Icon(Icons.euro), text: 'Tarifs'),
             Tab(icon: Icon(Icons.history), text: 'Journal'),
           ]),
@@ -34,6 +35,7 @@ class AdminPage extends StatelessWidget {
             constraints: const BoxConstraints(maxWidth: 900),
             child: TabBarView(children: [
               _Overview(session: session),
+              _Companies(session: session),
               _Settings(session: session),
               _Log(session: session),
             ]),
@@ -161,6 +163,8 @@ class _Overview extends StatelessWidget {
               ),
             );
         final bands = (o['companiesBySize'] as Map).cast<String, dynamic>();
+        final billing = (o['billing'] as Map?)?.cast<String, dynamic>() ?? const {};
+        final byStatus = (billing['byStatus'] as Map?)?.cast<String, dynamic>() ?? const {};
         return ListView(padding: const EdgeInsets.all(16), children: [
           Wrap(spacing: 8, runSpacing: 8, children: [
             stat('Utilisateurs', o['users'], sub: '+${o['usersLast30Days']} en 30 jours'),
@@ -169,6 +173,12 @@ class _Overview extends StatelessWidget {
             stat('Membres', o['memberships']),
             stat('Services (30 jours)', o['shiftsLast30Days']),
             stat('Messages (30 jours)', o['messagesLast30Days']),
+            stat('Abonnements payés', byStatus['active'] ?? 0),
+            stat('En essai', byStatus['trial'] ?? 0),
+            stat('En période de grâce', byStatus['grace'] ?? 0),
+            stat('Offertes', byStatus['comped'] ?? 0),
+            stat('Revenus du mois', euros(billing['revenueMonthCents'] ?? 0),
+                sub: 'Paiements de test : ${euros(billing['testRevenueMonthCents'] ?? 0)}'),
           ]),
           const SizedBox(height: 16),
           Card(
@@ -184,6 +194,71 @@ class _Overview extends StatelessWidget {
           Text('Entreprises actives par taille (salariés, sans les extras)', style: theme.textTheme.titleMedium),
           if (bands.isEmpty) const Text('Aucune.'),
           for (final e in bands.entries) ListTile(dense: true, title: Text(e.key), trailing: Text('${e.value}')),
+        ]);
+      },
+    );
+  }
+}
+
+/// Entreprises : propriétaire, effectif, état de l'abonnement ; offrir.
+class _Companies extends StatelessWidget {
+  final Session session;
+
+  const _Companies({required this.session});
+
+  static const _states = {
+    'trial': 'Essai',
+    'active': 'Payée',
+    'grace': 'Période de grâce',
+    'comped': 'Offerte',
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    String day(String? iso) => iso == null ? '' : DateTime.parse(iso).toLocal().toString().substring(0, 16);
+    return _Loader(
+      session: session,
+      path: '/admin/companies',
+      builder: (context, data, reload) {
+        final list = data['companies'] as List;
+        return ListView(padding: const EdgeInsets.all(16), children: [
+          for (final c in list)
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 12, 8, 12),
+                child: Row(children: [
+                  Expanded(
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      Text('${c['name']}', style: const TextStyle(fontWeight: FontWeight.w700)),
+                      Text('${c['ownerEmail'] ?? '?'} · ${c['staff']} salariés'),
+                      Text('${_states[c['billingStatus']] ?? c['billingStatus']}'
+                          '${switch (c['billingStatus']) {
+                            'trial' => ' jusqu\'au ${day(c['trialEndsAt'])}',
+                            'active' => ' jusqu\'au ${day(c['paidUntil'])}',
+                            'grace' => ' : suppression le ${day(c['graceEndsAt'])}',
+                            _ => '',
+                          }}'),
+                    ]),
+                  ),
+                  Column(children: [
+                    const Text('Offerte'),
+                    Switch(
+                      value: c['billingStatus'] == 'comped',
+                      onChanged: (v) async {
+                        final messenger = ScaffoldMessenger.of(context);
+                        try {
+                          await session.api.send('PUT', '/admin/companies/${c['id']}/comped', body: {'comped': v});
+                          await session.refresh();
+                        } catch (e) {
+                          messenger.showSnackBar(SnackBar(content: Text('$e')));
+                        }
+                        reload();
+                      },
+                    ),
+                  ]),
+                ]),
+              ),
+            ),
         ]);
       },
     );

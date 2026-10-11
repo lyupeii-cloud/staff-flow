@@ -99,4 +99,11 @@ const ro = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Mesageria este dezactivată pentru această firmă.',
   'Valeur hors limites : de {min} à {max}.': 'Valoare în afara limitelor: de la {min} la {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Pragurile trebuie să se succeadă: angajați incluși < sfârșitul pragului 1 < sfârșitul pragului 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Perioada de probă gratuită se încheie în mai puțin de 24 de ore.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Abonament neplătit: firma este doar în citire și va fi ștearsă pe {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Memento: fără plată, firma va fi ștearsă pe {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Firma {name} a fost ștearsă din cauza neplății.',
+  'Le paiement en ligne arrive bientôt.': 'Plata online vine în curând.',
+  'Cette entreprise est offerte : rien à payer.': 'Această firmă este oferită gratuit: nimic de plătit.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Pentru sub-puncte de lucru este necesară opțiunea „puncte în cascadă”.',
 };

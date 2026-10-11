@@ -1371,4 +1371,110 @@ class L10nDe extends L10n {
   @override
   String get messagingSettingHint =>
       'An: Das Team hat einen Tab „Nachrichten“. Aus: Niemand sieht ihn oder kann schreiben (alte Nachrichten bleiben erhalten).';
+
+  @override
+  String get billingTitle => 'Abonnement';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Kostenlose Testphase bis $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Bezahlt bis $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Schreibgeschützt: Ohne Zahlung wird das Unternehmen am $date gelöscht.';
+  }
+
+  @override
+  String get billingStatusComped => 'Kostenlos';
+
+  @override
+  String billingStaff(String count) {
+    return '$count Mitarbeitende gezählt (ohne Inhaber und Aushilfen)';
+  }
+
+  @override
+  String get billingMonthly => 'Monatlich';
+
+  @override
+  String billingYearly(String months) {
+    return 'Jährlich ($months Monate berechnet)';
+  }
+
+  @override
+  String get billingCascade => 'Option „verschachtelte Standorte“';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Ab $count Mitarbeitenden inklusive';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return '$amount bezahlen';
+  }
+
+  @override
+  String get billingTestNotice => 'Testzahlung: Es wird nichts abgebucht.';
+
+  @override
+  String get billingSoon => 'Online-Zahlung folgt bald.';
+
+  @override
+  String get billingPaidOk => 'Zahlung erfasst.';
+
+  @override
+  String get billingInvoices => 'Rechnungen';
+
+  @override
+  String get billingNoInvoices => 'Noch keine Rechnungen.';
+
+  @override
+  String get billingInvoiceByEmail => 'Rechnungen per E-Mail erhalten';
+
+  @override
+  String get billingEmailSoon =>
+      'Der E-Mail-Versand folgt bald; Rechnungen können hier jederzeit heruntergeladen werden.';
+
+  @override
+  String get billingManage => 'Abonnement verwalten';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Dieses Unternehmen ist schreibgeschützt, bis der Inhaber das Abonnement verlängert.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / Monat';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / Jahr';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: Die kostenlose Testphase endet in weniger als 24 Stunden.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company ist wegen Nichtzahlung schreibgeschützt; Löschung am $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Erinnerung: Ohne Zahlung wird $company am $date gelöscht.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company wurde wegen Nichtzahlung gelöscht.';
+  }
 }

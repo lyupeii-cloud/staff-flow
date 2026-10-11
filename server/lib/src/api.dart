@@ -5,6 +5,7 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
 import 'auth.dart';
+import 'billing_service.dart';
 import 'chat_service.dart';
 import 'company_service.dart';
 import 'errors.dart';
@@ -37,6 +38,12 @@ class Api {
   late final JoinService joins = JoinService(store, companies, now: now);
   late final NoticeService notices = NoticeService(store, now: now);
   late final PlatformService platform = PlatformService(store, fileValues: platformFile);
+  late final BillingService billing = BillingService(store, companies, platform, notifications, tokens.derive('invoices'),
+      now: now, isAdmin: _isAdmin, testPaymentsForAll: testPaymentsForAll);
+
+  /// Paiement fictif ouvert à tous les propriétaires (tests ; sinon réservé
+  /// aux administrateurs).
+  final bool testPaymentsForAll;
 
   /// Adresses Google des administrateurs de la plateforme (fichier de
   /// configuration du serveur ; jamais modifiables depuis le web).
@@ -69,6 +76,7 @@ class Api {
     this.translator,
     this.adminEmails = const {},
     this.platformFile,
+    this.testPaymentsForAll = false,
     DateTime Function()? now,
   })  : companies = CompanyService(store),
         now = now ?? (() => DateTime.now().toUtc());
@@ -78,7 +86,7 @@ class Api {
       ..post('/auth/google', _loginGoogle)
       ..get('/me', _authed(_me))
       // Administration de la plateforme (réservée aux administrateurs).
-      ..get('/admin/overview', _admin((r, u) async => _json(await platform.overview())))
+      ..get('/admin/overview', _admin((r, u) async => _json({...await platform.overview(), 'billing': await billing.stats()})))
       ..get('/admin/settings', _admin((r, u) async => _json({'settings': await platform.list()})))
       ..put('/admin/settings/<key>', _admin((r, u) async {
         final value = (await _body(r))['value'];
@@ -91,6 +99,42 @@ class Api {
         return Response(204);
       }))
       ..get('/admin/log', _admin((r, u) async => _json({'entries': await platform.log()})))
+      ..get('/admin/companies', _admin((r, u) async => _json({'companies': await billing.adminCompanies()})))
+      ..put('/admin/companies/<id>/comped', _admin((r, u) async {
+        final comped = (await _body(r))['comped'];
+        if (comped is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        await billing.setComped(u, r.params['id']!, comped);
+        return Response(204);
+      }))
+      // Abonnement et factures (propriétaire de l'entreprise).
+      ..get('/companies/<id>/billing', _authed((r, u) async => _json(await billing.summary(u, r.params['id']!))))
+      ..put('/companies/<id>/billing', _authed((r, u) async {
+        final on = (await _body(r))['invoiceByEmail'];
+        if (on is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        await billing.setInvoiceByEmail(u, r.params['id']!, on);
+        return Response(204);
+      }))
+      ..post('/companies/<id>/billing/checkout', _authed((r, u) async {
+        final body = await _body(r);
+        if (body['period'] is! String || body['cascade'] is! bool) {
+          throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        }
+        return _json(await billing.checkout(u, r.params['id']!,
+            period: body['period'] as String, cascade: body['cascade'] as bool));
+      }))
+      ..get('/companies/<id>/invoices/<invoiceId>/link', _authed((r, u) async {
+        final id = int.tryParse(r.params['invoiceId']!);
+        if (id == null) throw const ApiError.notFound();
+        return _json({'path': '/api/v1/invoices/${await billing.invoiceLink(u, r.params['id']!, id)}'});
+      }))
+      ..get('/invoices/<token>', (Request r) async {
+        final (name, bytes) = await billing.invoicePdf(r.params['token']!);
+        return Response.ok(bytes, headers: {
+          'content-type': 'application/pdf',
+          'content-disposition': 'inline; filename="$name"',
+          'cache-control': 'no-store',
+        });
+      })
       ..get('/admin/quote', _admin((r, u) async {
         final staff = int.tryParse(r.url.queryParameters['staff'] ?? '');
         if (staff == null || staff < 0 || staff > 1000000) {
@@ -355,8 +399,8 @@ class Api {
 
   Future<Response> _createCompany(Request req, User user) async {
     final body = await _body(req);
-    final company = await companies.create(user,
-        name: _string(body, 'name'), timezone: _string(body, 'timezone'));
+    final company = await billing.start(
+        user, await companies.create(user, name: _string(body, 'name'), timezone: _string(body, 'timezone')));
     return _json(Membership(company, Role.owner).toJson(), status: 201);
   }
 
@@ -483,6 +527,9 @@ class Api {
     final body = await _body(req);
     final parent = body['parentId'];
     if (parent != null && parent is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    if (parent != null && !await billing.cascadeAllowed(req.params['id']!)) {
+      throw const ApiError(402, 'option_required', 'Option « sites en cascade » nécessaire pour créer des sous-sites.');
+    }
     final item = await planning.addCatalogItem(user, req.params['id']!, _kind(req), _string(body, 'name'),
         parentId: parent as String?);
     return _json(item.toJson(), status: 201);

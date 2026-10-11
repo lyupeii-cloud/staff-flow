@@ -99,4 +99,11 @@ const pa = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'ਇਸ ਕੰਪਨੀ ਲਈ ਸੁਨੇਹੇ ਬੰਦ ਹਨ।',
   'Valeur hors limites : de {min} à {max}.': 'ਮੁੱਲ ਸੀਮਾ ਤੋਂ ਬਾਹਰ: {min} ਤੋਂ {max} ਤੱਕ।',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'ਪੱਧਰ ਕ੍ਰਮ ਵਿੱਚ ਹੋਣੇ ਚਾਹੀਦੇ ਹਨ: ਸ਼ਾਮਲ ਕਰਮਚਾਰੀ < ਪੱਧਰ 1 ਦਾ ਅੰਤ < ਪੱਧਰ 2 ਦਾ ਅੰਤ।',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'ਮੁਫ਼ਤ ਟ੍ਰਾਇਲ 24 ਘੰਟਿਆਂ ਤੋਂ ਘੱਟ ਸਮੇਂ ਵਿੱਚ ਖਤਮ ਹੋਵੇਗਾ।',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਦਾ ਭੁਗਤਾਨ ਨਹੀਂ ਹੋਇਆ: ਕੰਪਨੀ ਸਿਰਫ਼ ਪੜ੍ਹਨ ਲਈ ਹੈ ਅਤੇ {day} ਨੂੰ ਮਿਟਾ ਦਿੱਤੀ ਜਾਵੇਗੀ।',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'ਯਾਦ ਦਿਵਾਉਣਾ: ਭੁਗਤਾਨ ਤੋਂ ਬਿਨਾਂ ਕੰਪਨੀ {day} ਨੂੰ ਮਿਟਾ ਦਿੱਤੀ ਜਾਵੇਗੀ।',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'ਭੁਗਤਾਨ ਨਾ ਹੋਣ ਕਾਰਨ {name} ਕੰਪਨੀ ਮਿਟਾ ਦਿੱਤੀ ਗਈ।',
+  'Le paiement en ligne arrive bientôt.': 'ਆਨਲਾਈਨ ਭੁਗਤਾਨ ਜਲਦੀ ਆ ਰਿਹਾ ਹੈ।',
+  'Cette entreprise est offerte : rien à payer.': 'ਇਹ ਕੰਪਨੀ ਮੁਫ਼ਤ ਹੈ: ਕੁਝ ਵੀ ਭੁਗਤਾਨ ਨਹੀਂ ਕਰਨਾ।',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'ਉਪ-ਸਾਈਟਾਂ ਬਣਾਉਣ ਲਈ «ਪੱਧਰੀ ਸਾਈਟ» ਵਿਕਲਪ ਲੋੜੀਂਦਾ ਹੈ।',
 };

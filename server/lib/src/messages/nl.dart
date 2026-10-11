@@ -99,4 +99,11 @@ const nl = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Berichten staan uit voor dit bedrijf.',
   'Valeur hors limites : de {min} à {max}.': 'Waarde buiten bereik: van {min} tot {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'De schijven moeten op elkaar volgen: inbegrepen medewerkers < einde schijf 1 < einde schijf 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'De gratis proefperiode eindigt binnen 24 uur.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Abonnement niet betaald: het bedrijf is alleen-lezen en wordt op {day} verwijderd.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Herinnering: zonder betaling wordt het bedrijf op {day} verwijderd.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Het bedrijf {name} is verwijderd wegens niet-betaling.',
+  'Le paiement en ligne arrive bientôt.': 'Online betalen komt binnenkort.',
+  'Cette entreprise est offerte : rien à payer.': 'Dit bedrijf is gratis: niets te betalen.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Voor subvestigingen is de optie ‘geneste vestigingen’ nodig.',
 };

@@ -99,4 +99,11 @@ const da = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Beskeder er slået fra for denne virksomhed.',
   'Valeur hors limites : de {min} à {max}.': 'Værdi uden for intervallet: fra {min} til {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Trinene skal følge hinanden: inkluderede medarbejdere < slut på trin 1 < slut på trin 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Den gratis prøveperiode slutter om mindre end 24 timer.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Abonnementet er ikke betalt: virksomheden er skrivebeskyttet og slettes den {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Påmindelse: uden betaling slettes virksomheden den {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Virksomheden {name} blev slettet på grund af manglende betaling.',
+  'Le paiement en ligne arrive bientôt.': 'Onlinebetaling kommer snart.',
+  'Cette entreprise est offerte : rien à payer.': 'Denne virksomhed er gratis: intet at betale.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Tilvalget »indlejrede steder« kræves for at oprette understeder.',
 };

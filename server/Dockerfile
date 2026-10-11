@@ -9,6 +9,7 @@ FROM debian:trixie-slim
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates \
     && rm -rf /var/lib/apt/lists/* && useradd --system --no-create-home api
 COPY --from=build /src/server /usr/local/bin/staff-flow-api
+COPY --from=build /src/assets /app/assets
 USER api
 EXPOSE 8080
 CMD ["staff-flow-api"]

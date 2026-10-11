@@ -1354,4 +1354,110 @@ class L10nHu extends L10n {
   @override
   String get messagingSettingHint =>
       'Be: a csapatnak van Üzenetek lapja. Ki: senki sem látja, és senki sem írhat (a régi üzenetek megmaradnak).';
+
+  @override
+  String get billingTitle => 'Előfizetés';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Ingyenes próbaidőszak eddig: $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Fizetve eddig: $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Csak olvasható: fizetés nélkül a cég törlődik ekkor: $date.';
+  }
+
+  @override
+  String get billingStatusComped => 'Ingyenes';
+
+  @override
+  String billingStaff(String count) {
+    return '$count munkatárs számolva (tulajdonos és kisegítők nélkül)';
+  }
+
+  @override
+  String get billingMonthly => 'Havi';
+
+  @override
+  String billingYearly(String months) {
+    return 'Éves ($months hónap számlázva)';
+  }
+
+  @override
+  String get billingCascade => '„Beágyazott telephelyek” opció';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return '$count munkatárstól benne van';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return '$amount fizetése';
+  }
+
+  @override
+  String get billingTestNotice => 'Tesztfizetés: semmit sem vonunk le.';
+
+  @override
+  String get billingSoon => 'Az online fizetés hamarosan érkezik.';
+
+  @override
+  String get billingPaidOk => 'Fizetés rögzítve.';
+
+  @override
+  String get billingInvoices => 'Számlák';
+
+  @override
+  String get billingNoInvoices => 'Még nincs számla.';
+
+  @override
+  String get billingInvoiceByEmail => 'Számlák fogadása e-mailben';
+
+  @override
+  String get billingEmailSoon =>
+      'Az e-mailes küldés hamarosan érkezik; a számlák itt mindig letölthetők.';
+
+  @override
+  String get billingManage => 'Előfizetés kezelése';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Ez a cég csak olvasható, amíg a tulajdonos meg nem újítja az előfizetést.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / hó';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / év';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: az ingyenes próbaidőszak kevesebb mint 24 óra múlva lejár.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company nemfizetés miatt csak olvasható; törlés: $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Emlékeztető: fizetés nélkül $company törlődik ekkor: $date.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company nemfizetés miatt törölve.';
+  }
 }

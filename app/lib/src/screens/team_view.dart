@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
+import 'billing_page.dart';
 import 'company_logo.dart';
 import 'company_tab.dart';
 import 'home_screen.dart';
@@ -119,7 +120,17 @@ class _TeamViewState extends State<TeamView> {
           ),
           // Personnalisation : l'image de l'entreprise, pour le patron seulement.
           if (role == Role.owner) ...[
-            const SizedBox(height: 28),
+            const SizedBox(height: 20),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.workspace_premium_outlined),
+                title: Text(t.billingManage),
+                subtitle: Text(billingStatusText(context, company) ?? ''),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => BillingPage.open(context, widget.session, company),
+              ),
+            ),
+            const SizedBox(height: 20),
             CompanyLogoSettings(session: widget.session, company: company),
             const SizedBox(height: 12),
             CompanyMessagingSetting(session: widget.session, company: company),

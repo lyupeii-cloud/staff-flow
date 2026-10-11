@@ -99,4 +99,11 @@ const vi = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Tính năng tin nhắn đang tắt cho công ty này.',
   'Valeur hors limites : de {min} à {max}.': 'Giá trị ngoài phạm vi: từ {min} đến {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Các bậc phải nối tiếp nhau: số nhân viên bao gồm < cuối bậc 1 < cuối bậc 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Bản dùng thử miễn phí sẽ kết thúc trong chưa đầy 24 giờ.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Chưa thanh toán gói đăng ký: công ty ở chế độ chỉ đọc và sẽ bị xóa vào {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Nhắc nhở: nếu không thanh toán, công ty sẽ bị xóa vào {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Công ty {name} đã bị xóa do không thanh toán.',
+  'Le paiement en ligne arrive bientôt.': 'Thanh toán trực tuyến sắp ra mắt.',
+  'Cette entreprise est offerte : rien à payer.': 'Công ty này được miễn phí: không cần thanh toán.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Cần tùy chọn “địa điểm nhiều cấp” để tạo địa điểm con.',
 };

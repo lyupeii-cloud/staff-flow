@@ -1369,4 +1369,110 @@ class L10nEl extends L10n {
   @override
   String get messagingSettingHint =>
       'Ενεργά: η ομάδα έχει καρτέλα Μηνύματα. Ανενεργά: κανείς δεν τη βλέπει ούτε μπορεί να γράψει (τα παλιά μηνύματα διατηρούνται).';
+
+  @override
+  String get billingTitle => 'Συνδρομή';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Δωρεάν δοκιμή έως $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Πληρωμένο έως $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Μόνο ανάγνωση: χωρίς πληρωμή η επιχείρηση θα διαγραφεί στις $date.';
+  }
+
+  @override
+  String get billingStatusComped => 'Δωρεάν';
+
+  @override
+  String billingStaff(String count) {
+    return 'Υπολογίζονται $count εργαζόμενοι (χωρίς ιδιοκτήτη και έκτακτους)';
+  }
+
+  @override
+  String get billingMonthly => 'Μηνιαία';
+
+  @override
+  String billingYearly(String months) {
+    return 'Ετήσια (χρεώνονται $months μήνες)';
+  }
+
+  @override
+  String get billingCascade => 'Επιλογή «ιεραρχία σημείων»';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Περιλαμβάνεται από $count εργαζόμενους';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'Πληρωμή $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'Δοκιμαστική πληρωμή: δεν χρεώνεται τίποτα.';
+
+  @override
+  String get billingSoon => 'Η ηλεκτρονική πληρωμή έρχεται σύντομα.';
+
+  @override
+  String get billingPaidOk => 'Η πληρωμή καταχωρίστηκε.';
+
+  @override
+  String get billingInvoices => 'Τιμολόγια';
+
+  @override
+  String get billingNoInvoices => 'Δεν υπάρχουν ακόμη τιμολόγια.';
+
+  @override
+  String get billingInvoiceByEmail => 'Λήψη τιμολογίων μέσω email';
+
+  @override
+  String get billingEmailSoon =>
+      'Η αποστολή με email έρχεται σύντομα· τα τιμολόγια κατεβαίνουν πάντα από εδώ.';
+
+  @override
+  String get billingManage => 'Διαχείριση συνδρομής';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Αυτή η επιχείρηση είναι μόνο για ανάγνωση μέχρι ο ιδιοκτήτης να ανανεώσει τη συνδρομή.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / μήνα';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / έτος';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: η δωρεάν δοκιμή λήγει σε λιγότερο από 24 ώρες.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return 'Η $company είναι μόνο για ανάγνωση λόγω μη πληρωμής· διαγραφή στις $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Υπενθύμιση: χωρίς πληρωμή η $company θα διαγραφεί στις $date.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return 'Η $company διαγράφηκε λόγω μη πληρωμής.';
+  }
 }

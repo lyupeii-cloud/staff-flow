@@ -1366,4 +1366,110 @@ class L10nEs extends L10n {
   @override
   String get messagingSettingHint =>
       'Activada: el equipo tiene una pestaña Mensajes. Desactivada: nadie la ve ni puede escribir (los mensajes antiguos se conservan).';
+
+  @override
+  String get billingTitle => 'Suscripción';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Prueba gratuita hasta el $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Pagado hasta el $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Solo lectura: sin pago, la empresa se eliminará el $date.';
+  }
+
+  @override
+  String get billingStatusComped => 'Gratuita';
+
+  @override
+  String billingStaff(String count) {
+    return '$count empleados contados (sin el propietario ni los temporales)';
+  }
+
+  @override
+  String get billingMonthly => 'Mensual';
+
+  @override
+  String billingYearly(String months) {
+    return 'Anual ($months meses facturados)';
+  }
+
+  @override
+  String get billingCascade => 'Opción «centros en cascada»';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Incluida a partir de $count empleados';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'Pagar $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'Pago de prueba: no se cobra nada.';
+
+  @override
+  String get billingSoon => 'El pago en línea llega pronto.';
+
+  @override
+  String get billingPaidOk => 'Pago registrado.';
+
+  @override
+  String get billingInvoices => 'Facturas';
+
+  @override
+  String get billingNoInvoices => 'Aún no hay facturas.';
+
+  @override
+  String get billingInvoiceByEmail => 'Recibir las facturas por correo';
+
+  @override
+  String get billingEmailSoon =>
+      'El envío por correo llega pronto; las facturas siempre se pueden descargar aquí.';
+
+  @override
+  String get billingManage => 'Gestionar la suscripción';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Esta empresa está en solo lectura hasta que el propietario renueve la suscripción.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / mes';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / año';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: la prueba gratuita termina en menos de 24 horas.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company está en solo lectura por falta de pago; eliminación el $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Recordatorio: sin pago, $company se eliminará el $date.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company se eliminó por falta de pago.';
+  }
 }

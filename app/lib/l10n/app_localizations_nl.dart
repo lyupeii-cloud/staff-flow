@@ -1361,4 +1361,110 @@ class L10nNl extends L10n {
   @override
   String get messagingSettingHint =>
       'Aan: het team heeft een tabblad Berichten. Uit: niemand ziet het of kan schrijven (oude berichten blijven bewaard).';
+
+  @override
+  String get billingTitle => 'Abonnement';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Gratis proefperiode tot $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Betaald tot $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Alleen-lezen: zonder betaling wordt het bedrijf op $date verwijderd.';
+  }
+
+  @override
+  String get billingStatusComped => 'Gratis';
+
+  @override
+  String billingStaff(String count) {
+    return '$count medewerkers geteld (zonder eigenaar en uitzendkrachten)';
+  }
+
+  @override
+  String get billingMonthly => 'Maandelijks';
+
+  @override
+  String billingYearly(String months) {
+    return 'Jaarlijks ($months maanden gefactureerd)';
+  }
+
+  @override
+  String get billingCascade => 'Optie ‘geneste vestigingen’';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Inbegrepen vanaf $count medewerkers';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return '$amount betalen';
+  }
+
+  @override
+  String get billingTestNotice => 'Testbetaling: er wordt niets afgeschreven.';
+
+  @override
+  String get billingSoon => 'Online betalen komt binnenkort.';
+
+  @override
+  String get billingPaidOk => 'Betaling geregistreerd.';
+
+  @override
+  String get billingInvoices => 'Facturen';
+
+  @override
+  String get billingNoInvoices => 'Nog geen facturen.';
+
+  @override
+  String get billingInvoiceByEmail => 'Facturen per e-mail ontvangen';
+
+  @override
+  String get billingEmailSoon =>
+      'Verzending per e-mail komt binnenkort; facturen zijn hier altijd te downloaden.';
+
+  @override
+  String get billingManage => 'Abonnement beheren';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Dit bedrijf is alleen-lezen tot de eigenaar het abonnement verlengt.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / maand';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / jaar';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: de gratis proefperiode eindigt binnen 24 uur.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company is alleen-lezen wegens niet-betaling; verwijdering op $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Herinnering: zonder betaling wordt $company op $date verwijderd.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company is verwijderd wegens niet-betaling.';
+  }
 }

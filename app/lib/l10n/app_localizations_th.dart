@@ -1345,4 +1345,110 @@ class L10nTh extends L10n {
   @override
   String get messagingSettingHint =>
       'เปิด: ทีมมีแท็บข้อความ ปิด: ไม่มีใครเห็นหรือเขียนได้ (ข้อความเก่ายังเก็บไว้)';
+
+  @override
+  String get billingTitle => 'การสมัครสมาชิก';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'ทดลองใช้ฟรีถึง $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'ชำระแล้วถึง $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'อ่านอย่างเดียว: หากไม่ชำระเงิน บริษัทจะถูกลบในวันที่ $date';
+  }
+
+  @override
+  String get billingStatusComped => 'ฟรี';
+
+  @override
+  String billingStaff(String count) {
+    return 'นับพนักงาน $count คน (ไม่รวมเจ้าของและพนักงานชั่วคราว)';
+  }
+
+  @override
+  String get billingMonthly => 'รายเดือน';
+
+  @override
+  String billingYearly(String months) {
+    return 'รายปี (เรียกเก็บ $months เดือน)';
+  }
+
+  @override
+  String get billingCascade => 'ตัวเลือก “สาขาแบบลำดับชั้น”';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'รวมอยู่แล้วตั้งแต่ $count คน';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'ชำระ $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'การชำระเงินทดสอบ: ไม่มีการเรียกเก็บเงิน';
+
+  @override
+  String get billingSoon => 'การชำระเงินออนไลน์จะมาเร็ว ๆ นี้';
+
+  @override
+  String get billingPaidOk => 'บันทึกการชำระเงินแล้ว';
+
+  @override
+  String get billingInvoices => 'ใบแจ้งหนี้';
+
+  @override
+  String get billingNoInvoices => 'ยังไม่มีใบแจ้งหนี้';
+
+  @override
+  String get billingInvoiceByEmail => 'รับใบแจ้งหนี้ทางอีเมล';
+
+  @override
+  String get billingEmailSoon =>
+      'การส่งทางอีเมลจะมาเร็ว ๆ นี้ ใบแจ้งหนี้ดาวน์โหลดได้ที่นี่เสมอ';
+
+  @override
+  String get billingManage => 'จัดการการสมัครสมาชิก';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'บริษัทนี้เป็นแบบอ่านอย่างเดียวจนกว่าเจ้าของจะต่ออายุการสมัครสมาชิก';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / เดือน';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / ปี';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: ช่วงทดลองใช้ฟรีจะสิ้นสุดในอีกไม่ถึง 24 ชั่วโมง';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company เป็นแบบอ่านอย่างเดียวเนื่องจากไม่ชำระเงิน จะถูกลบในวันที่ $date';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'แจ้งเตือน: หากไม่ชำระเงิน $company จะถูกลบในวันที่ $date';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company ถูกลบเนื่องจากไม่ชำระเงิน';
+  }
 }

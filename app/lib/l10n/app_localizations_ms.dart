@@ -1355,4 +1355,111 @@ class L10nMs extends L10n {
   @override
   String get messagingSettingHint =>
       'Hidup: pasukan ada tab Mesej. Mati: tiada siapa nampak atau boleh menulis (mesej lama disimpan).';
+
+  @override
+  String get billingTitle => 'Langganan';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Percubaan percuma sehingga $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Dibayar sehingga $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Baca sahaja: tanpa bayaran, syarikat akan dipadam pada $date.';
+  }
+
+  @override
+  String get billingStatusComped => 'Percuma';
+
+  @override
+  String billingStaff(String count) {
+    return '$count pekerja dikira (tanpa pemilik dan pekerja sementara)';
+  }
+
+  @override
+  String get billingMonthly => 'Bulanan';
+
+  @override
+  String billingYearly(String months) {
+    return 'Tahunan ($months bulan dicaj)';
+  }
+
+  @override
+  String get billingCascade => 'Pilihan “tapak berlapis”';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Termasuk mulai $count pekerja';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'Bayar $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'Bayaran ujian: tiada caj.';
+
+  @override
+  String get billingSoon =>
+      'Pembayaran dalam talian akan datang tidak lama lagi.';
+
+  @override
+  String get billingPaidOk => 'Bayaran direkodkan.';
+
+  @override
+  String get billingInvoices => 'Invois';
+
+  @override
+  String get billingNoInvoices => 'Belum ada invois.';
+
+  @override
+  String get billingInvoiceByEmail => 'Terima invois melalui e-mel';
+
+  @override
+  String get billingEmailSoon =>
+      'Penghantaran e-mel akan datang; invois sentiasa boleh dimuat turun di sini.';
+
+  @override
+  String get billingManage => 'Urus langganan';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Syarikat ini baca sahaja sehingga pemilik memperbaharui langganan.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / bulan';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / tahun';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: percubaan percuma tamat dalam masa kurang daripada 24 jam.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company baca sahaja kerana tidak dibayar; dipadam pada $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Peringatan: tanpa bayaran, $company akan dipadam pada $date.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company telah dipadam kerana tidak dibayar.';
+  }
 }

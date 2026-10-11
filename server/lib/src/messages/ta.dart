@@ -99,4 +99,11 @@ const ta = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'இந்த நிறுவனத்தில் செய்திகள் முடக்கப்பட்டுள்ளன.',
   'Valeur hors limites : de {min} à {max}.': 'மதிப்பு வரம்புக்கு வெளியே: {min} முதல் {max} வரை.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'நிலைகள் வரிசையாக இருக்க வேண்டும்: சேர்க்கப்பட்ட ஊழியர்கள் < நிலை 1 முடிவு < நிலை 2 முடிவு.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'இலவச சோதனை 24 மணி நேரத்திற்குள் முடியும்.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'சந்தா செலுத்தப்படவில்லை: நிறுவனம் படிக்க மட்டும், {day} அன்று நீக்கப்படும்.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'நினைவூட்டல்: பணம் செலுத்தாவிட்டால் நிறுவனம் {day} அன்று நீக்கப்படும்.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'பணம் செலுத்தாததால் {name} நிறுவனம் நீக்கப்பட்டது.',
+  'Le paiement en ligne arrive bientôt.': 'ஆன்லைன் கட்டணம் விரைவில் வருகிறது.',
+  'Cette entreprise est offerte : rien à payer.': 'இந்த நிறுவனம் இலவசம்: எதுவும் செலுத்த வேண்டியதில்லை.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'துணைத் தளங்களை உருவாக்க «அடுக்கு தளங்கள்» விருப்பம் தேவை.',
 };

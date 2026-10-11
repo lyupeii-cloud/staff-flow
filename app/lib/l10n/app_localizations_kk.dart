@@ -1356,4 +1356,110 @@ class L10nKk extends L10n {
   @override
   String get messagingSettingHint =>
       'Қосулы: топта «Хабарламалар» қойындысы бар. Өшірулі: ешкім оны көрмейді және жаза алмайды (ескі хабарламалар сақталады).';
+
+  @override
+  String get billingTitle => 'Жазылым';
+
+  @override
+  String billingStatusTrial(String date) {
+    return '$date дейін тегін сынақ';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return '$date дейін төленген';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Тек оқу: төлем болмаса, компания $date күні жойылады.';
+  }
+
+  @override
+  String get billingStatusComped => 'Тегін';
+
+  @override
+  String billingStaff(String count) {
+    return '$count қызметкер есептелді (иесі мен уақытша қызметкерлерсіз)';
+  }
+
+  @override
+  String get billingMonthly => 'Ай сайын';
+
+  @override
+  String billingYearly(String months) {
+    return 'Жыл сайын ($months ай төленеді)';
+  }
+
+  @override
+  String get billingCascade => '«Нысандар иерархиясы» опциясы';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return '$count қызметкерден бастап қосылған';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return '$amount төлеу';
+  }
+
+  @override
+  String get billingTestNotice => 'Сынақ төлемі: ақша алынбайды.';
+
+  @override
+  String get billingSoon => 'Онлайн төлем жақында қосылады.';
+
+  @override
+  String get billingPaidOk => 'Төлем тіркелді.';
+
+  @override
+  String get billingInvoices => 'Шоттар';
+
+  @override
+  String get billingNoInvoices => 'Әзірге шот жоқ.';
+
+  @override
+  String get billingInvoiceByEmail => 'Шоттарды электрондық поштамен алу';
+
+  @override
+  String get billingEmailSoon =>
+      'Поштамен жіберу жақында қосылады; шоттарды мұнда әрқашан жүктеп алуға болады.';
+
+  @override
+  String get billingManage => 'Жазылымды басқару';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Иесі жазылымды жаңартқанша бұл компания тек оқуға арналған.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / ай';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / жыл';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: тегін сынақ 24 сағаттан аз уақытта аяқталады.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company төленбегендіктен тек оқуға арналған; $date күні жойылады.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Еске салу: төлем болмаса, $company $date күні жойылады.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company төленбегендіктен жойылды.';
+  }
 }

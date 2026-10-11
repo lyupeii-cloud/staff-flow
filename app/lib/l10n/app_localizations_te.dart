@@ -1354,4 +1354,110 @@ class L10nTe extends L10n {
   @override
   String get messagingSettingHint =>
       'ఆన్: బృందానికి సందేశాలు ట్యాబ్ ఉంటుంది. ఆఫ్: ఎవరూ దాన్ని చూడలేరు, రాయలేరు (పాత సందేశాలు ఉంచబడతాయి).';
+
+  @override
+  String get billingTitle => 'సబ్‌స్క్రిప్షన్';
+
+  @override
+  String billingStatusTrial(String date) {
+    return '$date వరకు ఉచిత ట్రయల్';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return '$date వరకు చెల్లించబడింది';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'చదవడానికి మాత్రమే: చెల్లింపు లేకపోతే సంస్థ $dateన తొలగించబడుతుంది.';
+  }
+
+  @override
+  String get billingStatusComped => 'ఉచితం';
+
+  @override
+  String billingStaff(String count) {
+    return '$count ఉద్యోగులు లెక్కించబడ్డారు (యజమాని, తాత్కాలిక ఉద్యోగులు మినహా)';
+  }
+
+  @override
+  String get billingMonthly => 'నెలవారీ';
+
+  @override
+  String billingYearly(String months) {
+    return 'వార్షిక ($months నెలలకు బిల్లు)';
+  }
+
+  @override
+  String get billingCascade => '«అంచెల సైట్‌లు» ఎంపిక';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return '$count ఉద్యోగుల నుండి చేర్చబడింది';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return '$amount చెల్లించండి';
+  }
+
+  @override
+  String get billingTestNotice => 'పరీక్ష చెల్లింపు: ఏమీ వసూలు చేయబడదు.';
+
+  @override
+  String get billingSoon => 'ఆన్‌లైన్ చెల్లింపు త్వరలో వస్తుంది.';
+
+  @override
+  String get billingPaidOk => 'చెల్లింపు నమోదైంది.';
+
+  @override
+  String get billingInvoices => 'ఇన్‌వాయిస్‌లు';
+
+  @override
+  String get billingNoInvoices => 'ఇంకా ఇన్‌వాయిస్‌లు లేవు.';
+
+  @override
+  String get billingInvoiceByEmail => 'ఇన్‌వాయిస్‌లను ఈమెయిల్‌లో పొందండి';
+
+  @override
+  String get billingEmailSoon =>
+      'ఈమెయిల్ పంపడం త్వరలో వస్తుంది; ఇన్‌వాయిస్‌లను ఎప్పుడైనా ఇక్కడ డౌన్‌లోడ్ చేయవచ్చు.';
+
+  @override
+  String get billingManage => 'సబ్‌స్క్రిప్షన్ నిర్వహించండి';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'యజమాని సబ్‌స్క్రిప్షన్ పునరుద్ధరించే వరకు ఈ సంస్థ చదవడానికి మాత్రమే.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / నెల';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / సంవత్సరం';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: ఉచిత ట్రయల్ 24 గంటల కంటే తక్కువ సమయంలో ముగుస్తుంది.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return 'చెల్లింపు లేనందున $company చదవడానికి మాత్రమే; $dateన తొలగింపు.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'గుర్తు: చెల్లింపు లేకపోతే $company $dateన తొలగించబడుతుంది.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return 'చెల్లింపు లేనందున $company తొలగించబడింది.';
+  }
 }

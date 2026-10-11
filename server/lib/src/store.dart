@@ -79,6 +79,13 @@ class Store {
         shiftPresets: [for (final p in (r['shift_presets'] as List?) ?? const []) (p as Map).cast<String, Object?>()],
         groupEnabled: r['group_enabled'] as bool? ?? true,
         messagingEnabled: r['messaging_enabled'] as bool? ?? false,
+        billingStatus: r['billing_status'] as String? ?? 'trial',
+        trialEndsAt: r['trial_ends_at'] as DateTime?,
+        paidUntil: r['paid_until'] as DateTime?,
+        graceEndsAt: r['grace_ends_at'] as DateTime?,
+        billingPeriod: r['billing_period'] as String?,
+        cascadeOption: r['cascade_option'] as bool? ?? false,
+        invoiceByEmail: r['invoice_by_email'] as bool? ?? true,
         // Sans image : 0 (le numéro, lui, continue de monter pour la suivante).
         logoVersion: r.containsKey('logo') && r['logo'] == null ? 0 : r['logo_version'] as int? ?? 0,
       );

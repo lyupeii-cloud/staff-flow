@@ -1357,4 +1357,110 @@ class L10nNb extends L10n {
   @override
   String get messagingSettingHint =>
       'På: teamet har en Meldinger-fane. Av: ingen ser den eller kan skrive (gamle meldinger beholdes).';
+
+  @override
+  String get billingTitle => 'Abonnement';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Gratis prøveperiode til $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Betalt til $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Skrivebeskyttet: uten betaling slettes bedriften $date.';
+  }
+
+  @override
+  String get billingStatusComped => 'Gratis';
+
+  @override
+  String billingStaff(String count) {
+    return '$count ansatte telt (uten eier og ekstrahjelp)';
+  }
+
+  @override
+  String get billingMonthly => 'Månedlig';
+
+  @override
+  String billingYearly(String months) {
+    return 'Årlig ($months måneder fakturert)';
+  }
+
+  @override
+  String get billingCascade => 'Tillegget «nestede steder»';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Inkludert fra $count ansatte';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'Betal $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'Testbetaling: ingenting trekkes.';
+
+  @override
+  String get billingSoon => 'Nettbetaling kommer snart.';
+
+  @override
+  String get billingPaidOk => 'Betaling registrert.';
+
+  @override
+  String get billingInvoices => 'Fakturaer';
+
+  @override
+  String get billingNoInvoices => 'Ingen fakturaer ennå.';
+
+  @override
+  String get billingInvoiceByEmail => 'Motta fakturaer på e-post';
+
+  @override
+  String get billingEmailSoon =>
+      'Utsending på e-post kommer snart; fakturaer kan alltid lastes ned her.';
+
+  @override
+  String get billingManage => 'Administrer abonnement';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Bedriften er skrivebeskyttet til eieren fornyer abonnementet.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / måned';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / år';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: den gratis prøveperioden slutter om mindre enn 24 timer.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company er skrivebeskyttet på grunn av manglende betaling; slettes $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Påminnelse: uten betaling slettes $company $date.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company ble slettet på grunn av manglende betaling.';
+  }
 }

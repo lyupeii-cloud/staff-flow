@@ -1366,4 +1366,110 @@ class L10nTa extends L10n {
   @override
   String get messagingSettingHint =>
       'இயக்கம்: குழுவுக்கு செய்திகள் தாவல் இருக்கும். முடக்கம்: யாரும் அதைப் பார்க்கவோ எழுதவோ முடியாது (பழைய செய்திகள் வைக்கப்படும்).';
+
+  @override
+  String get billingTitle => 'சந்தா';
+
+  @override
+  String billingStatusTrial(String date) {
+    return '$date வரை இலவச சோதனை';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return '$date வரை செலுத்தப்பட்டது';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'படிக்க மட்டும்: பணம் செலுத்தாவிட்டால் நிறுவனம் $date அன்று நீக்கப்படும்.';
+  }
+
+  @override
+  String get billingStatusComped => 'இலவசம்';
+
+  @override
+  String billingStaff(String count) {
+    return '$count ஊழியர்கள் கணக்கிடப்பட்டனர் (உரிமையாளர், தற்காலிக ஊழியர்கள் தவிர)';
+  }
+
+  @override
+  String get billingMonthly => 'மாதாந்திரம்';
+
+  @override
+  String billingYearly(String months) {
+    return 'ஆண்டுதோறும் ($months மாதங்கள் கட்டணம்)';
+  }
+
+  @override
+  String get billingCascade => '«அடுக்கு தளங்கள்» விருப்பம்';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return '$count ஊழியர்களிலிருந்து சேர்க்கப்பட்டுள்ளது';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return '$amount செலுத்து';
+  }
+
+  @override
+  String get billingTestNotice => 'சோதனைக் கட்டணம்: எதுவும் வசூலிக்கப்படாது.';
+
+  @override
+  String get billingSoon => 'ஆன்லைன் கட்டணம் விரைவில் வருகிறது.';
+
+  @override
+  String get billingPaidOk => 'கட்டணம் பதிவு செய்யப்பட்டது.';
+
+  @override
+  String get billingInvoices => 'விலைப்பட்டியல்கள்';
+
+  @override
+  String get billingNoInvoices => 'இன்னும் விலைப்பட்டியல் இல்லை.';
+
+  @override
+  String get billingInvoiceByEmail => 'விலைப்பட்டியல்களை மின்னஞ்சலில் பெறுக';
+
+  @override
+  String get billingEmailSoon =>
+      'மின்னஞ்சல் அனுப்புதல் விரைவில் வருகிறது; விலைப்பட்டியல்களை இங்கே எப்போதும் பதிவிறக்கலாம்.';
+
+  @override
+  String get billingManage => 'சந்தாவை நிர்வகி';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'உரிமையாளர் சந்தாவைப் புதுப்பிக்கும் வரை இந்த நிறுவனம் படிக்க மட்டும்.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / மாதம்';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / ஆண்டு';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: இலவச சோதனை 24 மணி நேரத்திற்குள் முடியும்.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return 'பணம் செலுத்தாததால் $company படிக்க மட்டும்; $date அன்று நீக்கப்படும்.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'நினைவூட்டல்: பணம் செலுத்தாவிட்டால் $company $date அன்று நீக்கப்படும்.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return 'பணம் செலுத்தாததால் $company நீக்கப்பட்டது.';
+  }
 }

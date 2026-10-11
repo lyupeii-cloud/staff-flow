@@ -1313,4 +1313,108 @@ class L10nZh extends L10n {
 
   @override
   String get messagingSettingHint => '开启：团队有“消息”标签。关闭：任何人都看不到也无法发送（旧消息会保留）。';
+
+  @override
+  String get billingTitle => '订阅';
+
+  @override
+  String billingStatusTrial(String date) {
+    return '免费试用至 $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return '已付费至 $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return '只读：如不付款，公司将于 $date 删除。';
+  }
+
+  @override
+  String get billingStatusComped => '免费赠送';
+
+  @override
+  String billingStaff(String count) {
+    return '计入员工 $count 人（不含老板和临时工）';
+  }
+
+  @override
+  String get billingMonthly => '按月';
+
+  @override
+  String billingYearly(String months) {
+    return '按年（收费 $months 个月）';
+  }
+
+  @override
+  String get billingCascade => '“多级站点”选项';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return '$count 名员工起免费包含';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return '支付 $amount';
+  }
+
+  @override
+  String get billingTestNotice => '测试付款：不会扣款。';
+
+  @override
+  String get billingSoon => '在线支付即将推出。';
+
+  @override
+  String get billingPaidOk => '付款已记录。';
+
+  @override
+  String get billingInvoices => '发票';
+
+  @override
+  String get billingNoInvoices => '暂无发票。';
+
+  @override
+  String get billingInvoiceByEmail => '通过电子邮件接收发票';
+
+  @override
+  String get billingEmailSoon => '邮件发送即将推出；发票随时可在此下载。';
+
+  @override
+  String get billingManage => '管理订阅';
+
+  @override
+  String get billingReadOnlyStaff => '在老板续订之前，此公司为只读状态。';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / 月';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / 年';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company：免费试用将在 24 小时内结束。';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company 因未付款处于只读状态；将于 $date 删除。';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return '提醒：如不付款，$company 将于 $date 删除。';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company 因未付款已被删除。';
+  }
 }

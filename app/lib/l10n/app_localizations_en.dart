@@ -1357,4 +1357,110 @@ class L10nEn extends L10n {
   @override
   String get messagingSettingHint =>
       'On: the team has a Messages tab. Off: nobody sees it or can write (old messages are kept).';
+
+  @override
+  String get billingTitle => 'Subscription';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Free trial until $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Paid until $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Read-only: without payment, the company will be deleted on $date.';
+  }
+
+  @override
+  String get billingStatusComped => 'Complimentary';
+
+  @override
+  String billingStaff(String count) {
+    return '$count employees counted (owner and temps not included)';
+  }
+
+  @override
+  String get billingMonthly => 'Monthly';
+
+  @override
+  String billingYearly(String months) {
+    return 'Yearly ($months months billed)';
+  }
+
+  @override
+  String get billingCascade => '“Nested sites” option';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Included from $count employees';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'Pay $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'Test payment: nothing is charged.';
+
+  @override
+  String get billingSoon => 'Online payment is coming soon.';
+
+  @override
+  String get billingPaidOk => 'Payment recorded.';
+
+  @override
+  String get billingInvoices => 'Invoices';
+
+  @override
+  String get billingNoInvoices => 'No invoices yet.';
+
+  @override
+  String get billingInvoiceByEmail => 'Receive invoices by email';
+
+  @override
+  String get billingEmailSoon =>
+      'Email delivery is coming soon; invoices can always be downloaded here.';
+
+  @override
+  String get billingManage => 'Manage subscription';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'This company is read-only until the owner renews the subscription.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / month';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / year';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: the free trial ends in less than 24 hours.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company is read-only for non-payment; deletion on $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Reminder: without payment, $company will be deleted on $date.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company was deleted for non-payment.';
+  }
 }

@@ -99,4 +99,11 @@ const ms = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Pemesejan dimatikan untuk syarikat ini.',
   'Valeur hors limites : de {min} à {max}.': 'Nilai di luar julat: dari {min} hingga {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Peringkat mesti berturutan: pekerja termasuk < akhir peringkat 1 < akhir peringkat 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Percubaan percuma tamat dalam masa kurang daripada 24 jam.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Langganan belum dibayar: syarikat baca sahaja dan akan dipadam pada {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Peringatan: tanpa bayaran, syarikat akan dipadam pada {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Syarikat {name} telah dipadam kerana tidak dibayar.',
+  'Le paiement en ligne arrive bientôt.': 'Pembayaran dalam talian akan datang tidak lama lagi.',
+  'Cette entreprise est offerte : rien à payer.': 'Syarikat ini percuma: tiada apa untuk dibayar.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Pilihan “tapak berlapis” diperlukan untuk mencipta sub-tapak.',
 };

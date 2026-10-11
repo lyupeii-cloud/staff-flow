@@ -1326,4 +1326,108 @@ class L10nKo extends L10n {
   @override
   String get messagingSettingHint =>
       '켜짐: 팀에 메시지 탭이 있습니다. 꺼짐: 아무도 볼 수 없고 쓸 수 없습니다(이전 메시지는 보관됩니다).';
+
+  @override
+  String get billingTitle => '구독';
+
+  @override
+  String billingStatusTrial(String date) {
+    return '$date까지 무료 체험';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return '$date까지 결제됨';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return '읽기 전용: 결제하지 않으면 회사가 $date에 삭제됩니다.';
+  }
+
+  @override
+  String get billingStatusComped => '무료 제공';
+
+  @override
+  String billingStaff(String count) {
+    return '직원 $count명 집계(대표 및 임시직 제외)';
+  }
+
+  @override
+  String get billingMonthly => '월간';
+
+  @override
+  String billingYearly(String months) {
+    return '연간($months개월 청구)';
+  }
+
+  @override
+  String get billingCascade => '‘계층형 지점’ 옵션';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return '직원 $count명부터 포함';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return '$amount 결제';
+  }
+
+  @override
+  String get billingTestNotice => '테스트 결제: 청구되지 않습니다.';
+
+  @override
+  String get billingSoon => '온라인 결제가 곧 제공됩니다.';
+
+  @override
+  String get billingPaidOk => '결제가 기록되었습니다.';
+
+  @override
+  String get billingInvoices => '청구서';
+
+  @override
+  String get billingNoInvoices => '아직 청구서가 없습니다.';
+
+  @override
+  String get billingInvoiceByEmail => '이메일로 청구서 받기';
+
+  @override
+  String get billingEmailSoon => '이메일 발송은 곧 제공됩니다. 청구서는 언제든 여기서 다운로드할 수 있습니다.';
+
+  @override
+  String get billingManage => '구독 관리';
+
+  @override
+  String get billingReadOnlyStaff => '대표가 구독을 갱신할 때까지 이 회사는 읽기 전용입니다.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / 월';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / 년';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: 무료 체험이 24시간 이내에 종료됩니다.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company은(는) 미납으로 읽기 전용입니다. $date에 삭제됩니다.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return '알림: 결제하지 않으면 $company이(가) $date에 삭제됩니다.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company이(가) 미납으로 삭제되었습니다.';
+  }
 }

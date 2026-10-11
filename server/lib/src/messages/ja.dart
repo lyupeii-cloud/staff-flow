@@ -99,4 +99,11 @@ const ja = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'この会社ではメッセージ機能がオフになっています。',
   'Valeur hors limites : de {min} à {max}.': '値が範囲外です：{min}～{max}。',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': '段階は順番に並ぶ必要があります：含まれる従業員数 < 段階1の上限 < 段階2の上限。',
+  'L\'essai gratuit se termine dans moins de 24 heures.': '無料体験は24時間以内に終了します。',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'サブスクリプション未払い：会社は読み取り専用となり、{day}に削除されます。',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'リマインダー：支払いがない場合、会社は{day}に削除されます。',
+  'L\'entreprise {name} a été supprimée faute de paiement.': '未払いのため、会社「{name}」は削除されました。',
+  'Le paiement en ligne arrive bientôt.': 'オンライン決済はまもなく利用可能になります。',
+  'Cette entreprise est offerte : rien à payer.': 'この会社は無償提供です：支払いは不要です。',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': '下位拠点を作成するには「階層拠点」オプションが必要です。',
 };

@@ -99,4 +99,11 @@ const nb = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Meldinger er slått av for denne bedriften.',
   'Valeur hors limites : de {min} à {max}.': 'Verdi utenfor området: fra {min} til {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Trinnene må følge hverandre: inkluderte ansatte < slutt på trinn 1 < slutt på trinn 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Den gratis prøveperioden slutter om mindre enn 24 timer.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Abonnementet er ikke betalt: bedriften er skrivebeskyttet og slettes {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Påminnelse: uten betaling slettes bedriften {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Bedriften {name} ble slettet på grunn av manglende betaling.',
+  'Le paiement en ligne arrive bientôt.': 'Nettbetaling kommer snart.',
+  'Cette entreprise est offerte : rien à payer.': 'Denne bedriften er gratis: ingenting å betale.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Tillegget «nestede steder» kreves for å opprette understeder.',
 };

@@ -99,4 +99,11 @@ const bg = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Съобщенията са изключени за тази фирма.',
   'Valeur hors limites : de {min} à {max}.': 'Стойност извън границите: от {min} до {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Нивата трябва да следват едно след друго: включени служители < край на ниво 1 < край на ниво 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Безплатният пробен период изтича след по-малко от 24 часа.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Абонаментът не е платен: фирмата е само за четене и ще бъде изтрита на {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Напомняне: без плащане фирмата ще бъде изтрита на {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Фирмата {name} беше изтрита поради неплащане.',
+  'Le paiement en ligne arrive bientôt.': 'Онлайн плащането идва скоро.',
+  'Cette entreprise est offerte : rien à payer.': 'Тази фирма е безплатна: няма нищо за плащане.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Нужна е опцията „йерархия на обекти“, за да създавате подобекти.',
 };

@@ -1325,4 +1325,108 @@ class L10nJa extends L10n {
   @override
   String get messagingSettingHint =>
       'オン：チームに「メッセージ」タブが表示されます。オフ：誰にも表示されず、書き込みもできません（過去のメッセージは残ります）。';
+
+  @override
+  String get billingTitle => 'サブスクリプション';
+
+  @override
+  String billingStatusTrial(String date) {
+    return '$dateまで無料体験';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return '$dateまで支払い済み';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return '読み取り専用：支払いがない場合、会社は$dateに削除されます。';
+  }
+
+  @override
+  String get billingStatusComped => '無償';
+
+  @override
+  String billingStaff(String count) {
+    return '$count人の従業員を計上（オーナーと臨時スタッフを除く）';
+  }
+
+  @override
+  String get billingMonthly => '月払い';
+
+  @override
+  String billingYearly(String months) {
+    return '年払い（$monthsか月分を請求）';
+  }
+
+  @override
+  String get billingCascade => '「階層拠点」オプション';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return '従業員$count人以上で込み';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return '$amountを支払う';
+  }
+
+  @override
+  String get billingTestNotice => 'テスト決済：請求は発生しません。';
+
+  @override
+  String get billingSoon => 'オンライン決済はまもなく利用可能になります。';
+
+  @override
+  String get billingPaidOk => '支払いを記録しました。';
+
+  @override
+  String get billingInvoices => '請求書';
+
+  @override
+  String get billingNoInvoices => '請求書はまだありません。';
+
+  @override
+  String get billingInvoiceByEmail => '請求書をメールで受け取る';
+
+  @override
+  String get billingEmailSoon => 'メール送信はまもなく対応します。請求書はいつでもここからダウンロードできます。';
+
+  @override
+  String get billingManage => 'サブスクリプションを管理';
+
+  @override
+  String get billingReadOnlyStaff => 'オーナーがサブスクリプションを更新するまで、この会社は読み取り専用です。';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / 月';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / 年';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company：無料体験は24時間以内に終了します。';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$companyは未払いのため読み取り専用です。$dateに削除されます。';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'リマインダー：支払いがない場合、$companyは$dateに削除されます。';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$companyは未払いのため削除されました。';
+  }
 }

@@ -120,4 +120,11 @@ const en = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Messaging is turned off for this company.',
   'Valeur hors limites : de {min} à {max}.': 'Value out of range: from {min} to {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Tiers must follow each other: included staff < end of tier 1 < end of tier 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'The free trial ends in less than 24 hours.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Subscription not paid: the company is read-only and will be deleted on {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Reminder: without payment, the company will be deleted on {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'The company {name} was deleted for non-payment.',
+  'Le paiement en ligne arrive bientôt.': 'Online payment is coming soon.',
+  'Cette entreprise est offerte : rien à payer.': 'This company is complimentary: nothing to pay.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'The “nested sites” option is required to create sub-sites.',
 };

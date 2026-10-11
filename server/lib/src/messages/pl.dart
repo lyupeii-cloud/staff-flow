@@ -99,4 +99,11 @@ const pl = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Wiadomości są wyłączone w tej firmie.',
   'Valeur hors limites : de {min} à {max}.': 'Wartość poza zakresem: od {min} do {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Progi muszą następować po sobie: pracownicy w cenie < koniec progu 1 < koniec progu 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Bezpłatny okres próbny kończy się za mniej niż 24 godziny.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Subskrypcja nieopłacona: firma jest tylko do odczytu i zostanie usunięta {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Przypomnienie: bez płatności firma zostanie usunięta {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Firma {name} została usunięta z powodu braku płatności.',
+  'Le paiement en ligne arrive bientôt.': 'Płatność online będzie dostępna wkrótce.',
+  'Cette entreprise est offerte : rien à payer.': 'Ta firma jest bezpłatna: nie ma nic do zapłaty.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Do tworzenia podplacówek potrzebna jest opcja „zagnieżdżone placówki”.',
 };

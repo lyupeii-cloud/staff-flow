@@ -1355,4 +1355,110 @@ class L10nHi extends L10n {
   @override
   String get messagingSettingHint =>
       'चालू: टीम के पास संदेश टैब होता है। बंद: कोई इसे देख या लिख नहीं सकता (पुराने संदेश रखे जाते हैं)।';
+
+  @override
+  String get billingTitle => 'सदस्यता';
+
+  @override
+  String billingStatusTrial(String date) {
+    return '$date तक मुफ़्त ट्रायल';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return '$date तक भुगतान किया गया';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'केवल पढ़ने के लिए: भुगतान के बिना कंपनी $date को हटा दी जाएगी।';
+  }
+
+  @override
+  String get billingStatusComped => 'मुफ़्त';
+
+  @override
+  String billingStaff(String count) {
+    return '$count कर्मचारी गिने गए (मालिक और अस्थायी कर्मचारी शामिल नहीं)';
+  }
+
+  @override
+  String get billingMonthly => 'मासिक';
+
+  @override
+  String billingYearly(String months) {
+    return 'वार्षिक ($months महीनों का शुल्क)';
+  }
+
+  @override
+  String get billingCascade => '«स्तरीय साइट» विकल्प';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return '$count कर्मचारियों से शामिल';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return '$amount का भुगतान करें';
+  }
+
+  @override
+  String get billingTestNotice => 'परीक्षण भुगतान: कुछ नहीं काटा जाता।';
+
+  @override
+  String get billingSoon => 'ऑनलाइन भुगतान जल्द आ रहा है।';
+
+  @override
+  String get billingPaidOk => 'भुगतान दर्ज हुआ।';
+
+  @override
+  String get billingInvoices => 'चालान';
+
+  @override
+  String get billingNoInvoices => 'अभी कोई चालान नहीं।';
+
+  @override
+  String get billingInvoiceByEmail => 'चालान ईमेल से प्राप्त करें';
+
+  @override
+  String get billingEmailSoon =>
+      'ईमेल से भेजना जल्द आ रहा है; चालान यहाँ हमेशा डाउनलोड किए जा सकते हैं।';
+
+  @override
+  String get billingManage => 'सदस्यता प्रबंधित करें';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'मालिक के सदस्यता नवीनीकरण तक यह कंपनी केवल पढ़ने के लिए है।';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / माह';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / वर्ष';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: मुफ़्त ट्रायल 24 घंटे से कम में खत्म होगा।';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company भुगतान न होने से केवल पढ़ने के लिए है; $date को हटाई जाएगी।';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'याद दिलाना: भुगतान के बिना $company $date को हटा दी जाएगी।';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company भुगतान न होने के कारण हटा दी गई।';
+  }
 }

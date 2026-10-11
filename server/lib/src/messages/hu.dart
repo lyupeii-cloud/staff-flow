@@ -99,4 +99,11 @@ const hu = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Ennél a cégnél az üzenetküldés ki van kapcsolva.',
   'Valeur hors limites : de {min} à {max}.': 'Az érték a tartományon kívül esik: {min} és {max} között.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'A sávoknak egymást kell követniük: benne foglalt munkatársak < 1. sáv vége < 2. sáv vége.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Az ingyenes próbaidőszak kevesebb mint 24 óra múlva lejár.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Az előfizetés nincs kifizetve: a cég csak olvasható, és {day} napon törlődik.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Emlékeztető: fizetés nélkül a cég {day} napon törlődik.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'A(z) {name} céget nemfizetés miatt töröltük.',
+  'Le paiement en ligne arrive bientôt.': 'Az online fizetés hamarosan érkezik.',
+  'Cette entreprise est offerte : rien à payer.': 'Ez a cég ingyenes: nincs mit fizetni.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Altelephelyek létrehozásához a „beágyazott telephelyek” opció szükséges.',
 };

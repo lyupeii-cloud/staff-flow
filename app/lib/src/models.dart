@@ -58,6 +58,13 @@ class Company {
   /// Image de l'entreprise : 0 = aucune ; change à chaque nouvelle image.
   final int logoVersion;
 
+  /// Abonnement : `trial`, `active`, `grace` (lecture seule avant
+  /// suppression) ou `comped` (offerte).
+  final String billingStatus;
+  final DateTime? trialEndsAt;
+  final DateTime? paidUntil;
+  final DateTime? graceEndsAt;
+
   Company.fromJson(Map<String, dynamic> j)
       : id = j['id'],
         name = j['name'],
@@ -68,7 +75,13 @@ class Company {
         shiftPresets = [for (final p in j['shiftPresets'] ?? const []) ShiftPreset.fromJson((p as Map).cast<String, dynamic>())],
         groupEnabled = j['groupEnabled'] != false,
         messagingEnabled = j['messagingEnabled'] == true,
-        logoVersion = j['logoVersion'] ?? 0;
+        logoVersion = j['logoVersion'] ?? 0,
+        billingStatus = (j['billing'] as Map?)?['status'] ?? 'comped',
+        trialEndsAt = _date((j['billing'] as Map?)?['trialEndsAt']),
+        paidUntil = _date((j['billing'] as Map?)?['paidUntil']),
+        graceEndsAt = _date((j['billing'] as Map?)?['graceEndsAt']);
+
+  static DateTime? _date(Object? v) => v is String ? DateTime.parse(v) : null;
 }
 
 /// Préréglage d'horaire : un nom et des heures (minutes depuis minuit).

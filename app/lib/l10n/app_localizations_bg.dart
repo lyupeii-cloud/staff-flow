@@ -1354,4 +1354,110 @@ class L10nBg extends L10n {
   @override
   String get messagingSettingHint =>
       'Включено: екипът има раздел „Съобщения“. Изключено: никой не го вижда и не може да пише (старите съобщения се пазят).';
+
+  @override
+  String get billingTitle => 'Абонамент';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Безплатен пробен период до $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Платено до $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Само за четене: без плащане фирмата ще бъде изтрита на $date.';
+  }
+
+  @override
+  String get billingStatusComped => 'Безплатно';
+
+  @override
+  String billingStaff(String count) {
+    return 'Отчетени служители: $count (без собственика и временните)';
+  }
+
+  @override
+  String get billingMonthly => 'Месечно';
+
+  @override
+  String billingYearly(String months) {
+    return 'Годишно ($months месеца таксувани)';
+  }
+
+  @override
+  String get billingCascade => 'Опция „йерархия на обекти“';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Включена от $count служители';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'Плати $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'Тестово плащане: нищо не се таксува.';
+
+  @override
+  String get billingSoon => 'Онлайн плащането идва скоро.';
+
+  @override
+  String get billingPaidOk => 'Плащането е записано.';
+
+  @override
+  String get billingInvoices => 'Фактури';
+
+  @override
+  String get billingNoInvoices => 'Все още няма фактури.';
+
+  @override
+  String get billingInvoiceByEmail => 'Получаване на фактури по имейл';
+
+  @override
+  String get billingEmailSoon =>
+      'Изпращането по имейл идва скоро; фактурите винаги могат да се изтеглят тук.';
+
+  @override
+  String get billingManage => 'Управление на абонамента';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Тази фирма е само за четене, докато собственикът не поднови абонамента.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / месец';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / година';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: безплатният пробен период изтича след по-малко от 24 часа.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company е само за четене поради неплащане; изтриване на $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Напомняне: без плащане $company ще бъде изтрита на $date.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company беше изтрита поради неплащане.';
+  }
 }

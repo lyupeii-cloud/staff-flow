@@ -99,4 +99,11 @@ const es = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'La mensajería de esta empresa está desactivada.',
   'Valeur hors limites : de {min} à {max}.': 'Valor fuera de límites: de {min} a {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Los tramos deben sucederse: empleados incluidos < fin del tramo 1 < fin del tramo 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'La prueba gratuita termina en menos de 24 horas.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Suscripción no pagada: la empresa está en solo lectura y se eliminará el {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Recordatorio: sin pago, la empresa se eliminará el {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'La empresa {name} se eliminó por falta de pago.',
+  'Le paiement en ligne arrive bientôt.': 'El pago en línea llega pronto.',
+  'Cette entreprise est offerte : rien à payer.': 'Esta empresa es gratuita: no hay nada que pagar.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Se necesita la opción «centros en cascada» para crear subcentros.',
 };

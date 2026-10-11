@@ -99,4 +99,11 @@ const sv = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Meddelanden är avstängda för det här företaget.',
   'Valeur hors limites : de {min} à {max}.': 'Värdet ligger utanför intervallet: från {min} till {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Nivåerna måste följa på varandra: inkluderade anställda < slut på nivå 1 < slut på nivå 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Den kostnadsfria provperioden slutar om mindre än 24 timmar.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Abonnemanget är inte betalt: företaget är skrivskyddat och raderas den {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Påminnelse: utan betalning raderas företaget den {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Företaget {name} raderades på grund av utebliven betalning.',
+  'Le paiement en ligne arrive bientôt.': 'Onlinebetalning kommer snart.',
+  'Cette entreprise est offerte : rien à payer.': 'Det här företaget är kostnadsfritt: inget att betala.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Tillvalet ”kapslade platser” krävs för att skapa underplatser.',
 };

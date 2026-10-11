@@ -1363,4 +1363,110 @@ class L10nRu extends L10n {
   @override
   String get messagingSettingHint =>
       'Включено: у команды есть вкладка «Сообщения». Выключено: никто её не видит и не может писать (старые сообщения сохраняются).';
+
+  @override
+  String get billingTitle => 'Подписка';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Бесплатный пробный период до $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Оплачено до $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Только чтение: без оплаты компания будет удалена $date.';
+  }
+
+  @override
+  String get billingStatusComped => 'Бесплатно';
+
+  @override
+  String billingStaff(String count) {
+    return 'Учтено сотрудников: $count (без владельца и временных)';
+  }
+
+  @override
+  String get billingMonthly => 'Ежемесячно';
+
+  @override
+  String billingYearly(String months) {
+    return 'Ежегодно (оплачивается $months мес.)';
+  }
+
+  @override
+  String get billingCascade => 'Опция «иерархия объектов»';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Включено от $count сотрудников';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'Оплатить $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'Тестовая оплата: деньги не списываются.';
+
+  @override
+  String get billingSoon => 'Онлайн-оплата скоро появится.';
+
+  @override
+  String get billingPaidOk => 'Оплата зачислена.';
+
+  @override
+  String get billingInvoices => 'Счета';
+
+  @override
+  String get billingNoInvoices => 'Счетов пока нет.';
+
+  @override
+  String get billingInvoiceByEmail => 'Получать счета по электронной почте';
+
+  @override
+  String get billingEmailSoon =>
+      'Отправка по почте скоро появится; счета всегда можно скачать здесь.';
+
+  @override
+  String get billingManage => 'Управлять подпиской';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Компания доступна только для чтения, пока владелец не продлит подписку.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / мес.';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / год';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: бесплатный пробный период закончится менее чем через 24 часа.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company доступна только для чтения из-за неоплаты; удаление $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Напоминание: без оплаты $company будет удалена $date.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company удалена из-за неоплаты.';
+  }
 }

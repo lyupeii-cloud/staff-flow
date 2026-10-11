@@ -4,6 +4,7 @@ import '../api.dart';
 import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
+import 'billing_page.dart';
 import 'catalog_view.dart';
 import 'messages_view.dart';
 import 'planning_view.dart';
@@ -175,6 +176,36 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
     );
   }
 
+  /// Essai ou lecture seule faute de paiement : le propriétaire le voit avec
+  /// un bouton vers l'abonnement ; les autres, seulement la lecture seule.
+  Widget? _billingNotice(BuildContext context) {
+    final t = context.l10n;
+    final theme = Theme.of(context);
+    final status = company.billingStatus;
+    final owner = role == Role.owner;
+    if (status == 'grace' && !owner) {
+      return Card(
+        margin: const EdgeInsets.only(top: 6),
+        color: theme.colorScheme.errorContainer,
+        child: ListTile(dense: true, leading: const Icon(Icons.lock_clock), title: Text(t.billingReadOnlyStaff)),
+      );
+    }
+    if (!owner || (status != 'trial' && status != 'grace')) return null;
+    return Card(
+      margin: const EdgeInsets.only(top: 6),
+      color: status == 'grace' ? theme.colorScheme.errorContainer : theme.colorScheme.secondaryContainer,
+      child: ListTile(
+        dense: true,
+        leading: Icon(status == 'grace' ? Icons.lock_clock : Icons.hourglass_bottom),
+        title: Text(billingStatusText(context, company) ?? ''),
+        trailing: TextButton(
+          onPressed: () => BillingPage.open(context, widget.session, company),
+          child: Text(t.billingTitle),
+        ),
+      ),
+    );
+  }
+
   /// Notifications de cette entreprise : un interrupteur pour tous ; pour
   /// un responsable de plusieurs sites, le choix des sites en plus.
   Future<void> _chooseNotifications(CompanyData? data) async {
@@ -295,6 +326,7 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
               ),
               // L'heure de l'entreprise n'est pas celle du téléphone : on le dit.
               ?_timezoneNotice(context),
+              ?_billingNotice(context),
               const SizedBox(height: 8),
               Builder(builder: (context) {
                 final unread = widget.session.me?.unreadMessages[company.id] ?? 0;

@@ -99,4 +99,11 @@ const bn = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'এই প্রতিষ্ঠানের বার্তা বন্ধ আছে।',
   'Valeur hors limites : de {min} à {max}.': 'মান সীমার বাইরে: {min} থেকে {max}।',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'স্তরগুলো ক্রমানুসারে হতে হবে: অন্তর্ভুক্ত কর্মী < স্তর ১-এর শেষ < স্তর ২-এর শেষ।',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'বিনামূল্যে ট্রায়াল ২৪ ঘণ্টার কম সময়ে শেষ হবে।',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'সাবস্ক্রিপশন পরিশোধ হয়নি: প্রতিষ্ঠানটি শুধু পড়ার জন্য এবং {day} তারিখে মুছে ফেলা হবে।',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'অনুস্মারক: পেমেন্ট না হলে প্রতিষ্ঠানটি {day} তারিখে মুছে ফেলা হবে।',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'পেমেন্ট না হওয়ায় {name} প্রতিষ্ঠানটি মুছে ফেলা হয়েছে।',
+  'Le paiement en ligne arrive bientôt.': 'অনলাইন পেমেন্ট শীঘ্রই আসছে।',
+  'Cette entreprise est offerte : rien à payer.': 'এই প্রতিষ্ঠানটি বিনামূল্যে: কিছু দিতে হবে না।',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'উপ-সাইট তৈরি করতে «স্তরভিত্তিক সাইট» অপশন দরকার।',
 };

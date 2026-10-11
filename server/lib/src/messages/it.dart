@@ -99,4 +99,11 @@ const it = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'La messaggistica è disattivata per questa azienda.',
   'Valeur hors limites : de {min} à {max}.': 'Valore fuori dai limiti: da {min} a {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Le fasce devono susseguirsi: dipendenti inclusi < fine fascia 1 < fine fascia 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'La prova gratuita termina tra meno di 24 ore.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Abbonamento non pagato: l\'azienda è in sola lettura e sarà eliminata il {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Promemoria: senza pagamento, l\'azienda sarà eliminata il {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'L\'azienda {name} è stata eliminata per mancato pagamento.',
+  'Le paiement en ligne arrive bientôt.': 'Il pagamento online arriverà presto.',
+  'Cette entreprise est offerte : rien à payer.': 'Questa azienda è offerta: nulla da pagare.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Per creare sottosedi serve l\'opzione «sedi a cascata».',
 };

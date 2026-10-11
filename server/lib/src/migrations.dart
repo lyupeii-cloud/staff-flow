@@ -396,4 +396,45 @@ CREATE TABLE platform_settings (
   updated_at timestamptz NOT NULL DEFAULT now()
 );
 ''',
+  // 24 — abonnement de chaque entreprise : essai (une fois par compte Google),
+  // payée, lecture seule puis suppression, ou offerte ; factures. Les
+  // entreprises existantes commencent un essai de 2 jours.
+  '''
+ALTER TABLE users ADD COLUMN trial_started_at timestamptz;
+ALTER TABLE companies
+  ADD COLUMN billing_status text NOT NULL DEFAULT 'trial'
+    CHECK (billing_status IN ('trial', 'active', 'grace', 'comped')),
+  ADD COLUMN trial_ends_at timestamptz,
+  ADD COLUMN paid_until timestamptz,
+  ADD COLUMN grace_ends_at timestamptz,
+  ADD COLUMN billing_period text CHECK (billing_period IN ('month', 'year')),
+  ADD COLUMN cascade_option boolean NOT NULL DEFAULT false,
+  ADD COLUMN invoice_by_email boolean NOT NULL DEFAULT true,
+  ADD COLUMN billing_reminders text[] NOT NULL DEFAULT '{}';
+UPDATE companies SET trial_ends_at = now() + interval '2 days';
+UPDATE users SET trial_started_at = now()
+  WHERE id IN (SELECT user_id FROM memberships WHERE role = 'owner');
+CREATE SEQUENCE invoice_number_seq;
+CREATE TABLE invoices (
+  id            bigserial PRIMARY KEY,
+  number        text NOT NULL UNIQUE,
+  company_id    uuid REFERENCES companies(id) ON DELETE SET NULL,
+  company_name  text NOT NULL,
+  owner_id      uuid REFERENCES users(id) ON DELETE SET NULL,
+  owner_name    text,
+  owner_email   text,
+  issued_at     timestamptz NOT NULL,
+  period        text NOT NULL CHECK (period IN ('month', 'year')),
+  period_start  timestamptz NOT NULL,
+  period_end    timestamptz NOT NULL,
+  staff         int NOT NULL,
+  lines         jsonb NOT NULL,
+  amount_cents  int NOT NULL,
+  provider      text NOT NULL,
+  provider_ref  text,
+  paid_at       timestamptz NOT NULL,
+  emailed_at    timestamptz
+);
+CREATE INDEX invoices_company ON invoices (company_id, id);
+''',
 ];

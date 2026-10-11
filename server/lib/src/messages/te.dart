@@ -99,4 +99,11 @@ const te = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'ఈ సంస్థకు సందేశాలు ఆఫ్ చేయబడ్డాయి.',
   'Valeur hors limites : de {min} à {max}.': 'విలువ పరిధి వెలుపల ఉంది: {min} నుండి {max} వరకు.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'స్థాయిలు వరుసగా ఉండాలి: చేర్చబడిన ఉద్యోగులు < స్థాయి 1 ముగింపు < స్థాయి 2 ముగింపు.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'ఉచిత ట్రయల్ 24 గంటల కంటే తక్కువ సమయంలో ముగుస్తుంది.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'సబ్‌స్క్రిప్షన్ చెల్లించలేదు: సంస్థ చదవడానికి మాత్రమే, {day}న తొలగించబడుతుంది.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'గుర్తు: చెల్లింపు లేకపోతే సంస్థ {day}న తొలగించబడుతుంది.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'చెల్లింపు లేనందున {name} సంస్థ తొలగించబడింది.',
+  'Le paiement en ligne arrive bientôt.': 'ఆన్‌లైన్ చెల్లింపు త్వరలో వస్తుంది.',
+  'Cette entreprise est offerte : rien à payer.': 'ఈ సంస్థ ఉచితం: ఏమీ చెల్లించనవసరం లేదు.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'ఉప-సైట్‌లు సృష్టించడానికి «అంచెల సైట్‌లు» ఎంపిక అవసరం.',
 };

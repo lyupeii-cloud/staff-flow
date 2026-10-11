@@ -1360,4 +1360,110 @@ class L10nFi extends L10n {
   @override
   String get messagingSettingHint =>
       'Päällä: tiimillä on Viestit-välilehti. Pois: kukaan ei näe sitä eikä voi kirjoittaa (vanhat viestit säilyvät).';
+
+  @override
+  String get billingTitle => 'Tilaus';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Ilmainen kokeilu $date asti';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Maksettu $date asti';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Vain luku: ilman maksua yritys poistetaan $date.';
+  }
+
+  @override
+  String get billingStatusComped => 'Maksuton';
+
+  @override
+  String billingStaff(String count) {
+    return '$count työntekijää laskettu (ilman omistajaa ja keikkalaisia)';
+  }
+
+  @override
+  String get billingMonthly => 'Kuukausittain';
+
+  @override
+  String billingYearly(String months) {
+    return 'Vuosittain ($months kuukautta laskutetaan)';
+  }
+
+  @override
+  String get billingCascade => '”Sisäkkäiset toimipaikat” -lisäosa';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Sisältyy $count työntekijästä alkaen';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'Maksa $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'Testimaksu: mitään ei veloiteta.';
+
+  @override
+  String get billingSoon => 'Verkkomaksu tulossa pian.';
+
+  @override
+  String get billingPaidOk => 'Maksu kirjattu.';
+
+  @override
+  String get billingInvoices => 'Laskut';
+
+  @override
+  String get billingNoInvoices => 'Ei vielä laskuja.';
+
+  @override
+  String get billingInvoiceByEmail => 'Vastaanota laskut sähköpostitse';
+
+  @override
+  String get billingEmailSoon =>
+      'Sähköpostilähetys tulossa pian; laskut voi aina ladata täältä.';
+
+  @override
+  String get billingManage => 'Hallinnoi tilausta';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Yritys on vain luku -tilassa, kunnes omistaja uusii tilauksen.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / kk';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / vuosi';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: ilmainen kokeilu päättyy alle 24 tunnin kuluttua.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company on vain luku -tilassa maksamattomuuden vuoksi; poisto $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Muistutus: ilman maksua $company poistetaan $date.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company poistettiin maksamattomuuden vuoksi.';
+  }
 }

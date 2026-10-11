@@ -99,4 +99,11 @@ const fil = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Naka-off ang pagmemensahe para sa kumpanyang ito.',
   'Valeur hors limites : de {min} à {max}.': 'Wala sa saklaw ang halaga: mula {min} hanggang {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Dapat sunud-sunod ang mga antas: kasamang empleyado < dulo ng antas 1 < dulo ng antas 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Matatapos ang libreng trial sa loob ng 24 na oras.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Hindi nabayaran ang subscription: read-only ang kumpanya at buburahin sa {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Paalala: kung walang bayad, buburahin ang kumpanya sa {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Binura ang kumpanyang {name} dahil hindi nabayaran.',
+  'Le paiement en ligne arrive bientôt.': 'Malapit na ang online na pagbabayad.',
+  'Cette entreprise est offerte : rien à payer.': 'Libre ang kumpanyang ito: walang babayaran.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Kailangan ang opsyong “nakapatong na site” para gumawa ng mga sub-site.',
 };

@@ -99,4 +99,11 @@ const kk = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Бұл компанияда хабарламалар өшірілген.',
   'Valeur hors limites : de {min} à {max}.': 'Мән шектен тыс: {min}-ден {max}-ге дейін.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Деңгейлер ретімен болуы керек: кіретін қызметкерлер < 1-деңгейдің соңы < 2-деңгейдің соңы.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Тегін сынақ кезеңі 24 сағаттан аз уақытта аяқталады.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Жазылым төленбеген: компания тек оқуға арналған және {day} күні жойылады.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Еске салу: төлем болмаса, компания {day} күні жойылады.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': '{name} компаниясы төленбегендіктен жойылды.',
+  'Le paiement en ligne arrive bientôt.': 'Онлайн төлем жақында қосылады.',
+  'Cette entreprise est offerte : rien à payer.': 'Бұл компания тегін: төлейтін ештеңе жоқ.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Ішкі нысандар жасау үшін «нысандар иерархиясы» опциясы қажет.',
 };

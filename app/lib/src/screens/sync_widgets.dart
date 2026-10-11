@@ -156,6 +156,10 @@ class NoticesButton extends StatelessWidget {
       'staff_borrowed' => t.noticeBorrowed(
           data['byName'] ?? '?', data['name'] ?? '?', data['siteName'] ?? '?', longDate(parseDay(data['day']), loc)),
       'reinforcement_added' => t.noticeReinforcement(company),
+      'billing_trial_ending' => t.noticeBillingTrialEnding(company),
+      'billing_grace' => t.noticeBillingGrace(company, longDate(parseDay(data['day']), loc)),
+      'billing_grace_reminder' => t.noticeBillingGraceReminder(company, longDate(parseDay(data['day']), loc)),
+      'billing_deleted' => t.noticeBillingDeleted(data['companyName'] ?? '?'),
       'placement_to_approve' =>
         t.noticePlacementToApprove(data['byName'] ?? '?', data['name'] ?? '?', longDate(parseDay(data['day']), loc)),
       'placement_approved' =>
@@ -179,6 +183,9 @@ class NoticesButton extends StatelessWidget {
         'shift_overlap' => Icons.warning_amber,
         'staff_borrowed' => Icons.transfer_within_a_station,
         'reinforcement_added' => Icons.group_add,
+        'billing_trial_ending' => Icons.hourglass_bottom,
+        'billing_grace' || 'billing_grace_reminder' => Icons.lock_clock,
+        'billing_deleted' => Icons.delete_forever_outlined,
         'placement_to_approve' => Icons.hourglass_top,
         'placement_approved' => Icons.check_circle,
         'placement_refused' => Icons.cancel,

@@ -99,4 +99,11 @@ const ko = <String, String>{
   'La messagerie de cette entreprise est désactivée.': '이 회사의 메시지 기능이 꺼져 있습니다.',
   'Valeur hors limites : de {min} à {max}.': '값이 범위를 벗어났습니다: {min}~{max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': '구간은 순서대로여야 합니다: 포함 직원 수 < 1구간 끝 < 2구간 끝.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': '무료 체험이 24시간 이내에 종료됩니다.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': '구독료 미납: 회사가 읽기 전용이 되며 {day}에 삭제됩니다.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': '알림: 결제하지 않으면 회사가 {day}에 삭제됩니다.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': '미납으로 회사 {name}이(가) 삭제되었습니다.',
+  'Le paiement en ligne arrive bientôt.': '온라인 결제가 곧 제공됩니다.',
+  'Cette entreprise est offerte : rien à payer.': '이 회사는 무료로 제공됩니다: 결제할 것이 없습니다.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': '하위 지점을 만들려면 ‘계층형 지점’ 옵션이 필요합니다.',
 };

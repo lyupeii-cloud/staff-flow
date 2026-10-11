@@ -1366,4 +1366,110 @@ class L10nFil extends L10n {
   @override
   String get messagingSettingHint =>
       'Naka-on: may tab na Mga Mensahe ang team. Naka-off: walang makakakita o makakasulat (itinatago ang mga lumang mensahe).';
+
+  @override
+  String get billingTitle => 'Subscription';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Libreng trial hanggang $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Bayad hanggang $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Read-only: kung walang bayad, buburahin ang kumpanya sa $date.';
+  }
+
+  @override
+  String get billingStatusComped => 'Libre';
+
+  @override
+  String billingStaff(String count) {
+    return '$count empleyadong binilang (hindi kasama ang may-ari at pansamantala)';
+  }
+
+  @override
+  String get billingMonthly => 'Buwanan';
+
+  @override
+  String billingYearly(String months) {
+    return 'Taunan ($months buwang sinisingil)';
+  }
+
+  @override
+  String get billingCascade => 'Opsyong “nakapatong na site”';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Kasama mula $count empleyado';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'Magbayad ng $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'Test na bayad: walang sinisingil.';
+
+  @override
+  String get billingSoon => 'Malapit na ang online na pagbabayad.';
+
+  @override
+  String get billingPaidOk => 'Naitala ang bayad.';
+
+  @override
+  String get billingInvoices => 'Mga invoice';
+
+  @override
+  String get billingNoInvoices => 'Wala pang invoice.';
+
+  @override
+  String get billingInvoiceByEmail => 'Tumanggap ng mga invoice sa email';
+
+  @override
+  String get billingEmailSoon =>
+      'Malapit na ang pagpapadala sa email; maaaring i-download ang mga invoice dito anumang oras.';
+
+  @override
+  String get billingManage => 'Pamahalaan ang subscription';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Read-only ang kumpanyang ito hanggang i-renew ng may-ari ang subscription.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / buwan';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / taon';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: matatapos ang libreng trial sa loob ng 24 na oras.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return 'Read-only ang $company dahil hindi nabayaran; buburahin sa $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Paalala: kung walang bayad, buburahin ang $company sa $date.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return 'Binura ang $company dahil hindi nabayaran.';
+  }
 }

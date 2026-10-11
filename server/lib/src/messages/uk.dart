@@ -119,4 +119,11 @@ const uk = <String, String>{
   'La messagerie de cette entreprise est désactivée.': 'Повідомлення в цій компанії вимкнено.',
   'Valeur hors limites : de {min} à {max}.': 'Значення поза межами: від {min} до {max}.',
   'Les paliers doivent se suivre : salariés inclus < fin du palier 1 < fin du palier 2.': 'Рівні мають іти по порядку: включені працівники < кінець рівня 1 < кінець рівня 2.',
+  'L\'essai gratuit se termine dans moins de 24 heures.': 'Безкоштовний пробний період закінчиться менш ніж за 24 години.',
+  'Abonnement non payé : l\'entreprise est en lecture seule et sera supprimée le {day}.': 'Підписку не оплачено: компанія доступна лише для читання й буде видалена {day}.',
+  'Rappel : sans paiement, l\'entreprise sera supprimée le {day}.': 'Нагадування: без оплати компанію буде видалено {day}.',
+  'L\'entreprise {name} a été supprimée faute de paiement.': 'Компанію {name} видалено через несплату.',
+  'Le paiement en ligne arrive bientôt.': 'Онлайн-оплата незабаром.',
+  'Cette entreprise est offerte : rien à payer.': 'Ця компанія безкоштовна: платити нічого не потрібно.',
+  'Option « sites en cascade » nécessaire pour créer des sous-sites.': 'Для створення підоб\'єктів потрібна опція «ієрархія об\'єктів».',
 };
