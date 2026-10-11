@@ -1679,7 +1679,7 @@ class L10nJa extends L10n {
   String get apiDocs => 'API ドキュメント';
 
   @override
-  String get memberGoogleLink => '従業員の再ログイン';
+  String get memberGoogleLink => '従業員の Google 再ログイン';
 
   @override
   String googleLinkHint(String name) {

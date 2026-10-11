@@ -1732,7 +1732,7 @@ class L10nEs extends L10n {
   String get apiDocs => 'Documentación de la API';
 
   @override
-  String get memberGoogleLink => 'Reconexión del empleado';
+  String get memberGoogleLink => 'Reconexión de Google del empleado';
 
   @override
   String googleLinkHint(String name) {

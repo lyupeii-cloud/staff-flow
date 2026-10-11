@@ -477,7 +477,7 @@
   "apiRevoke": "Batalkan",
   "apiRevokeConfirm": "Perisian yang menggunakan kunci ini akan hilang akses.",
   "apiDocs": "Dokumentasi API",
-  "memberGoogleLink": "Log masuk semula pekerja",
+  "memberGoogleLink": "Log masuk semula Google pekerja",
   "googleLinkHint": "Hantar pautan ini kepada {name}. Ia dibuka dalam pelayar (bukan dalam aplikasi Android), sekali sahaja, selama 24 jam: {name} log masuk dengan akaun Google baharunya dan mendapatkan semula akaunnya. Semua perantinya yang lain kemudian dilog keluar.",
   "googleLinkCopied": "Pautan disalin.",
   "switchBanner": "Pautan penukaran akaun Google: log masuk dengan akaun Google baharu anda untuk mendapatkan semula akaun Staff Flow anda.",

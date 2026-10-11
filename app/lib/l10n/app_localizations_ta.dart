@@ -1733,7 +1733,7 @@ class L10nTa extends L10n {
   String get apiDocs => 'API ஆவணம்';
 
   @override
-  String get memberGoogleLink => 'பணியாளர் மீண்டும் உள்நுழைவு';
+  String get memberGoogleLink => 'பணியாளர் Google மீண்டும் உள்நுழைவு';
 
   @override
   String googleLinkHint(String name) {

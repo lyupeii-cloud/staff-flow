@@ -477,7 +477,7 @@
   "apiRevoke": "Trekk tilbake",
   "apiRevokeConfirm": "Programmer som bruker nøkkelen, mister tilgangen.",
   "apiDocs": "API-dokumentasjon",
-  "memberGoogleLink": "Ny innlogging for ansatt",
+  "memberGoogleLink": "Ny Google-innlogging for ansatt",
   "googleLinkHint": "Send denne lenken til {name}. Den åpnes i en nettleser (ikke i Android-appen), én gang, i 24 timer: {name} logger inn med den nye Google-kontoen og får kontoen sin tilbake. Alle de andre enhetene blir da logget ut.",
   "googleLinkCopied": "Lenken er kopiert.",
   "switchBanner": "Lenke for bytte av Google-konto: logg inn med den nye Google-kontoen din for å få tilbake Staff Flow-kontoen.",

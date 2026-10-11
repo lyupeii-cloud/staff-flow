@@ -477,7 +477,7 @@
   "apiRevoke": "Batilisha",
   "apiRevokeConfirm": "Programu zinazotumia ufunguo huu zitapoteza ufikiaji.",
   "apiDocs": "Nyaraka za API",
-  "memberGoogleLink": "Mfanyakazi kuingia upya",
+  "memberGoogleLink": "Mfanyakazi kuingia upya kwa Google",
   "googleLinkHint": "Mtumie {name} kiungo hiki. Kinafunguka kwenye kivinjari (si kwenye programu ya Android), mara moja tu, kwa saa 24: {name} anaingia kwa akaunti yake mpya ya Google na kurejesha akaunti yake. Vifaa vyake vingine vyote kisha vinatolewa.",
   "googleLinkCopied": "Kiungo kimenakiliwa.",
   "switchBanner": "Kiungo cha kubadilisha akaunti ya Google: ingia kwa akaunti yako mpya ya Google ili kurejesha akaunti yako ya Staff Flow.",

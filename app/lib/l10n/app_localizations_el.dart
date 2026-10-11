@@ -1736,7 +1736,7 @@ class L10nEl extends L10n {
   String get apiDocs => 'Τεκμηρίωση API';
 
   @override
-  String get memberGoogleLink => 'Επανασύνδεση εργαζομένου';
+  String get memberGoogleLink => 'Επανασύνδεση Google εργαζομένου';
 
   @override
   String googleLinkHint(String name) {

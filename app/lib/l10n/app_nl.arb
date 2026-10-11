@@ -477,7 +477,7 @@
   "apiRevoke": "Intrekken",
   "apiRevokeConfirm": "Software die deze sleutel gebruikt, verliest de toegang.",
   "apiDocs": "API-documentatie",
-  "memberGoogleLink": "Opnieuw inloggen medewerker",
+  "memberGoogleLink": "Opnieuw inloggen met Google voor medewerker",
   "googleLinkHint": "Stuur deze link naar {name}. Hij opent in een browser (niet in de Android-app), één keer, gedurende 24 uur: {name} logt in met het nieuwe Google-account en krijgt zijn account terug. Al zijn andere apparaten worden dan uitgelogd.",
   "googleLinkCopied": "Link gekopieerd.",
   "switchBanner": "Link om van Google-account te wisselen: log in met je nieuwe Google-account om je Staff Flow-account terug te krijgen.",

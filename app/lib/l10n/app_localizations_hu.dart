@@ -1719,7 +1719,7 @@ class L10nHu extends L10n {
   String get apiDocs => 'API-dokumentáció';
 
   @override
-  String get memberGoogleLink => 'Munkatárs újbóli bejelentkezése';
+  String get memberGoogleLink => 'Munkatárs újbóli Google-bejelentkezése';
 
   @override
   String googleLinkHint(String name) {

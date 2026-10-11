@@ -1722,7 +1722,7 @@ class L10nCs extends L10n {
   String get apiDocs => 'Dokumentace API';
 
   @override
-  String get memberGoogleLink => 'Opětovné přihlášení zaměstnance';
+  String get memberGoogleLink => 'Opětovné přihlášení zaměstnance přes Google';
 
   @override
   String googleLinkHint(String name) {

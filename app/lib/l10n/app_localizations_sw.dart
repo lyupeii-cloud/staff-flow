@@ -1725,7 +1725,7 @@ class L10nSw extends L10n {
   String get apiDocs => 'Nyaraka za API';
 
   @override
-  String get memberGoogleLink => 'Mfanyakazi kuingia upya';
+  String get memberGoogleLink => 'Mfanyakazi kuingia upya kwa Google';
 
   @override
   String googleLinkHint(String name) {

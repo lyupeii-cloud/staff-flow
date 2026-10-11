@@ -477,7 +477,7 @@
   "apiRevoke": "無効にする",
   "apiRevokeConfirm": "このキーを使うソフトはアクセスできなくなります。",
   "apiDocs": "API ドキュメント",
-  "memberGoogleLink": "従業員の再ログイン",
+  "memberGoogleLink": "従業員の Google 再ログイン",
   "googleLinkHint": "このリンクを {name} に送ってください。ブラウザーで開きます（Android アプリでは開きません）。1 回限り、24 時間有効です。{name} が新しい Google アカウントでログインすると、自分のアカウントに戻れます。ほかのすべての端末はログアウトされます。",
   "googleLinkCopied": "リンクをコピーしました。",
   "switchBanner": "Google アカウント変更用リンク：新しい Google アカウントでログインすると、Staff Flow のアカウントに戻れます。",

@@ -1722,7 +1722,7 @@ class L10nEn extends L10n {
   String get apiDocs => 'API documentation';
 
   @override
-  String get memberGoogleLink => 'Employee reconnection';
+  String get memberGoogleLink => 'Employee Google reconnection';
 
   @override
   String googleLinkHint(String name) {

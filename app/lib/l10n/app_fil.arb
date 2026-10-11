@@ -477,7 +477,7 @@
   "apiRevoke": "Bawiin",
   "apiRevokeConfirm": "Mawawalan ng access ang software na gumagamit ng key na ito.",
   "apiDocs": "Dokumentasyon ng API",
-  "memberGoogleLink": "Muling pag-log in ng empleyado",
+  "memberGoogleLink": "Muling pag-log in sa Google ng empleyado",
   "googleLinkHint": "Ipadala ang link na ito kay {name}. Bubukas ito sa browser (hindi sa Android app), isang beses lang, sa loob ng 24 oras: magsa-sign in si {name} gamit ang bagong Google account at mababawi ang kanyang account. Masa-sign out ang lahat ng iba niyang device.",
   "googleLinkCopied": "Nakopya ang link.",
   "switchBanner": "Link para magpalit ng Google account: mag-sign in gamit ang iyong bagong Google account para mabawi ang iyong Staff Flow account.",

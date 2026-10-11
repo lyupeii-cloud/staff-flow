@@ -3056,7 +3056,7 @@ abstract class L10n {
   /// No description provided for @memberGoogleLink.
   ///
   /// In en, this message translates to:
-  /// **'Employee reconnection'**
+  /// **'Employee Google reconnection'**
   String get memberGoogleLink;
 
   /// No description provided for @googleLinkHint.

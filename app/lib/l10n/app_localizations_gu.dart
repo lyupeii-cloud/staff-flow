@@ -1716,7 +1716,7 @@ class L10nGu extends L10n {
   String get apiDocs => 'API દસ્તાવેજ';
 
   @override
-  String get memberGoogleLink => 'કર્મચારીનું ફરી લૉગિન';
+  String get memberGoogleLink => 'કર્મચારીનું Google થી ફરી લૉગિન';
 
   @override
   String googleLinkHint(String name) {

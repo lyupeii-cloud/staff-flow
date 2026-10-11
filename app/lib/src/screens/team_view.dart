@@ -241,7 +241,7 @@ class _TeamViewState extends State<TeamView> {
       await showDialog<void>(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text(t.changeGoogle),
+          title: Text(t.memberGoogleLink),
           content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
             Text(t.googleLinkHint(m.user.name)),
             const SizedBox(height: 12),

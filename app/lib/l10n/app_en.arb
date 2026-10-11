@@ -1241,7 +1241,7 @@
   "apiRevoke": "Revoke",
   "apiRevokeConfirm": "Software using this key will lose access.",
   "apiDocs": "API documentation",
-  "memberGoogleLink": "Employee reconnection",
+  "memberGoogleLink": "Employee Google reconnection",
   "googleLinkHint": "Send this link to {name}. It opens in a browser (not in the Android app), once, for 24 hours: {name} signs in with their new Google account and gets their account back. All their other devices are then signed out.",
   "@googleLinkHint": {
     "placeholders": {

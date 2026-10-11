@@ -477,7 +477,7 @@
   "apiRevoke": "Cabut",
   "apiRevokeConfirm": "Perangkat lunak yang memakai kunci ini akan kehilangan akses.",
   "apiDocs": "Dokumentasi API",
-  "memberGoogleLink": "Masuk ulang karyawan",
+  "memberGoogleLink": "Masuk ulang Google karyawan",
   "googleLinkHint": "Kirim tautan ini ke {name}. Tautan dibuka di peramban (bukan di aplikasi Android), sekali saja, selama 24 jam: {name} masuk dengan akun Google barunya dan mendapatkan kembali akunnya. Semua perangkatnya yang lain lalu dikeluarkan.",
   "googleLinkCopied": "Tautan disalin.",
   "switchBanner": "Tautan penggantian akun Google: masuk dengan akun Google baru Anda untuk mendapatkan kembali akun Staff Flow.",

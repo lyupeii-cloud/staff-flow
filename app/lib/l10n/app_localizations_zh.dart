@@ -1664,7 +1664,7 @@ class L10nZh extends L10n {
   String get apiDocs => 'API 文档';
 
   @override
-  String get memberGoogleLink => '员工重新登录';
+  String get memberGoogleLink => '员工 Google 重新登录';
 
   @override
   String googleLinkHint(String name) {

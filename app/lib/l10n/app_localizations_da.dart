@@ -1725,7 +1725,7 @@ class L10nDa extends L10n {
   String get apiDocs => 'API-dokumentation';
 
   @override
-  String get memberGoogleLink => 'Ny login for medarbejder';
+  String get memberGoogleLink => 'Ny Google-login for medarbejder';
 
   @override
   String googleLinkHint(String name) {

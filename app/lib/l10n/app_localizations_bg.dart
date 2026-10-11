@@ -1720,7 +1720,7 @@ class L10nBg extends L10n {
   String get apiDocs => 'Документация на API';
 
   @override
-  String get memberGoogleLink => 'Повторен вход на служител';
+  String get memberGoogleLink => 'Повторен вход на служител с Google';
 
   @override
   String googleLinkHint(String name) {

@@ -477,7 +477,7 @@
   "apiRevoke": "Peru",
   "apiRevokeConfirm": "Avainta käyttävät ohjelmat menettävät pääsyn.",
   "apiDocs": "API-dokumentaatio",
-  "memberGoogleLink": "Työntekijän uudelleenkirjautuminen",
+  "memberGoogleLink": "Työntekijän Google-uudelleenkirjautuminen",
   "googleLinkHint": "Lähetä tämä linkki henkilölle {name}. Se avautuu selaimessa (ei Android-sovelluksessa), kerran, 24 tunnin ajan: {name} kirjautuu uudella Google-tilillään ja saa tilinsä takaisin. Kaikki hänen muut laitteensa kirjataan silloin ulos.",
   "googleLinkCopied": "Linkki kopioitu.",
   "switchBanner": "Google-tilin vaihtolinkki: kirjaudu uudella Google-tililläsi saadaksesi Staff Flow -tilisi takaisin.",

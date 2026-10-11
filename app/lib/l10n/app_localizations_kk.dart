@@ -1722,7 +1722,7 @@ class L10nKk extends L10n {
   String get apiDocs => 'API құжаттамасы';
 
   @override
-  String get memberGoogleLink => 'Қызметкердің қайта кіруі';
+  String get memberGoogleLink => 'Қызметкердің Google арқылы қайта кіруі';
 
   @override
   String googleLinkHint(String name) {
