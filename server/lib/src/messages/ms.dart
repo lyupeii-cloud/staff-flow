@@ -135,7 +135,6 @@ const ms = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'Helo! Untuk memautkan akaun Telegram ini kepada Staff Flow, buka aplikasi: Profil saya, kemudian Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'Pautan ini telah tamat tempoh. Mulakan semula daripada aplikasi Staff Flow.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'Selesai: akaun Telegram ini dipautkan kepada akaun Staff Flow anda {id}.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Kod Staff Flow: {code}. Ia memautkan akaun anda {id} kepada akaun Google {email}. Jika ini bukan anda, abaikan mesej ini.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Akaun Staff Flow anda {id} kini dipautkan kepada akaun Google {email}.',
   'N° d\'enregistrement : {id}': 'No. pendaftaran: {id}',
   'Payé.': 'Dibayar.',
@@ -143,4 +142,6 @@ const ms = <String, String>{
   '10 clés au plus par entreprise.': 'Paling banyak 10 kunci bagi setiap syarikat.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Baki bulan ini ({days} daripada {total} hari): pilihan “akses API”',
   'Option « accès API » : {months} mois': 'Pilihan “akses API”: {months} bulan',
+  'Trop de demandes pour ce compte : réessayez demain.': 'Terlalu banyak permintaan untuk akaun ini: cuba lagi esok.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Kod Staff Flow: {code}. Ia memautkan akaun anda {id} kepada akaun Google {email}. Jangan berikan kepada sesiapa, walaupun orang yang mengaku bekerja untuk Staff Flow. Jika ini bukan anda, abaikan mesej ini.',
 };

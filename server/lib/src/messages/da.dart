@@ -135,7 +135,6 @@ const da = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'Hej! For at tilknytte denne Telegram-konto til Staff Flow skal du åbne appen: Min profil, derefter Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'Linket er udløbet. Start forfra fra Staff Flow-appen.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'Færdig: denne Telegram-konto er tilknyttet din Staff Flow-konto {id}.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow-kode: {code}. Den tilknytter din konto {id} til Google-kontoen {email}. Hvis det ikke var dig, så ignorer denne besked.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Din Staff Flow-konto {id} er nu tilknyttet Google-kontoen {email}.',
   'N° d\'enregistrement : {id}': 'Reg.nr.: {id}',
   'Payé.': 'Betalt.',
@@ -143,4 +142,6 @@ const da = <String, String>{
   '10 clés au plus par entreprise.': 'Højst 10 nøgler pr. virksomhed.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Resten af måneden ({days} af {total} dage): tilvalget “API-adgang”',
   'Option « accès API » : {months} mois': 'Tilvalget “API-adgang”: {months} måneder',
+  'Trop de demandes pour ce compte : réessayez demain.': 'For mange anmodninger for denne konto: prøv igen i morgen.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow-kode: {code}. Den tilknytter din konto {id} til Google-kontoen {email}. Giv den aldrig til nogen, heller ikke til en, der siger, at de arbejder for Staff Flow. Hvis det ikke var dig, så ignorer denne besked.',
 };

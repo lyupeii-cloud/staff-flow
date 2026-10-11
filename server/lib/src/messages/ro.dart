@@ -135,7 +135,6 @@ const ro = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'Bună! Pentru a conecta acest cont Telegram la Staff Flow, deschide aplicația: Profilul meu, apoi Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'Acest link a expirat. Reia din aplicația Staff Flow.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'Gata: acest cont Telegram este conectat la contul tău Staff Flow {id}.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Cod Staff Flow: {code}. Conectează contul tău {id} la contul Google {email}. Dacă nu ai fost tu, ignoră acest mesaj.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Contul tău Staff Flow {id} este acum conectat la contul Google {email}.',
   'N° d\'enregistrement : {id}': 'Nr. de înregistrare: {id}',
   'Payé.': 'Plătit.',
@@ -143,4 +142,6 @@ const ro = <String, String>{
   '10 clés au plus par entreprise.': 'Cel mult 10 chei pe firmă.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Restul lunii curente ({days} zile din {total}): opțiunea „acces API”',
   'Option « accès API » : {months} mois': 'Opțiunea „acces API”: {months} luni',
+  'Trop de demandes pour ce compte : réessayez demain.': 'Prea multe cereri pentru acest cont: încearcă din nou mâine.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Cod Staff Flow: {code}. Conectează contul tău {id} la contul Google {email}. Nu-l da nimănui, nici cuiva care spune că lucrează pentru Staff Flow. Dacă nu ai fost tu, ignoră acest mesaj.',
 };

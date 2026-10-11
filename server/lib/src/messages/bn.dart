@@ -135,7 +135,6 @@ const bn = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'নমস্কার! এই Telegram অ্যাকাউন্ট Staff Flow-এর সাথে যুক্ত করতে অ্যাপ খুলুন: আমার প্রোফাইল, তারপর Telegram।',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'এই লিঙ্কের মেয়াদ শেষ। Staff Flow অ্যাপ থেকে আবার শুরু করুন।',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'সম্পন্ন: এই Telegram অ্যাকাউন্ট আপনার Staff Flow অ্যাকাউন্ট {id}-এর সাথে যুক্ত।',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow কোড: {code}। এটি আপনার অ্যাকাউন্ট {id}-কে Google অ্যাকাউন্ট {email}-এর সাথে যুক্ত করে। এটি আপনি না হলে বার্তাটি উপেক্ষা করুন।',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'আপনার Staff Flow অ্যাকাউন্ট {id} এখন Google অ্যাকাউন্ট {email}-এর সাথে যুক্ত।',
   'N° d\'enregistrement : {id}': 'নিবন্ধন নম্বর: {id}',
   'Payé.': 'পরিশোধিত।',
@@ -143,4 +142,6 @@ const bn = <String, String>{
   '10 clés au plus par entreprise.': 'প্রতি প্রতিষ্ঠানে সর্বোচ্চ ১০টি কী।',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'চলতি মাসের বাকি ({total} দিনের মধ্যে {days} দিন): “API অ্যাক্সেস” বিকল্প',
   'Option « accès API » : {months} mois': '“API অ্যাক্সেস” বিকল্প: {months} মাস',
+  'Trop de demandes pour ce compte : réessayez demain.': 'এই অ্যাকাউন্টের জন্য অনেক বেশি অনুরোধ: আগামীকাল আবার চেষ্টা করুন।',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow কোড: {code}। এটি আপনার অ্যাকাউন্ট {id}-কে Google অ্যাকাউন্ট {email}-এর সাথে যুক্ত করে। এটি কাউকে দেবেন না, এমনকি Staff Flow-এর কর্মী দাবি করা কাউকেও না। এটি আপনি না হলে বার্তাটি উপেক্ষা করুন।',
 };

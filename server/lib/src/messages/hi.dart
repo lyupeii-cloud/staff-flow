@@ -135,7 +135,6 @@ const hi = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'नमस्ते! इस Telegram खाते को Staff Flow से जोड़ने के लिए ऐप खोलें: मेरी प्रोफ़ाइल, फिर Telegram।',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'इस लिंक की समय-सीमा समाप्त हो गई है। Staff Flow ऐप से फिर शुरू करें।',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'हो गया: यह Telegram खाता आपके Staff Flow खाते {id} से जुड़ गया है।',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow कोड: {code}। यह आपके खाते {id} को Google खाते {email} से जोड़ता है। अगर यह आप नहीं थे, तो इस संदेश को अनदेखा करें।',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'आपका Staff Flow खाता {id} अब Google खाते {email} से जुड़ा है।',
   'N° d\'enregistrement : {id}': 'पंजीकरण संख्या: {id}',
   'Payé.': 'भुगतान हो गया।',
@@ -143,4 +142,6 @@ const hi = <String, String>{
   '10 clés au plus par entreprise.': 'प्रति कंपनी अधिकतम 10 कुंजियाँ।',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'इस माह के शेष दिन ({total} में से {days} दिन): “API एक्सेस” विकल्प',
   'Option « accès API » : {months} mois': '“API एक्सेस” विकल्प: {months} माह',
+  'Trop de demandes pour ce compte : réessayez demain.': 'इस खाते के लिए बहुत अधिक अनुरोध: कल फिर कोशिश करें।',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow कोड: {code}। यह आपके खाते {id} को Google खाते {email} से जोड़ता है। इसे किसी को न दें, उसे भी नहीं जो खुद को Staff Flow का कर्मचारी बताए। अगर यह आप नहीं थे, तो इस संदेश को अनदेखा करें।',
 };

@@ -135,7 +135,6 @@ const ta = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'வணக்கம்! இந்த Telegram கணக்கை Staff Flow உடன் இணைக்க, செயலியைத் திறக்கவும்: என் சுயவிவரம், பின்னர் Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'இந்த இணைப்பு காலாவதியானது. Staff Flow செயலியிலிருந்து மீண்டும் தொடங்குங்கள்.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'முடிந்தது: இந்த Telegram கணக்கு உங்கள் Staff Flow கணக்கு {id} உடன் இணைக்கப்பட்டது.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow குறியீடு: {code}. இது உங்கள் கணக்கு {id}-ஐ Google கணக்கு {email} உடன் இணைக்கிறது. இது நீங்கள் இல்லையெனில், இந்தச் செய்தியைப் புறக்கணியுங்கள்.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'உங்கள் Staff Flow கணக்கு {id} இப்போது Google கணக்கு {email} உடன் இணைக்கப்பட்டுள்ளது.',
   'N° d\'enregistrement : {id}': 'பதிவு எண்: {id}',
   'Payé.': 'செலுத்தப்பட்டது.',
@@ -143,4 +142,6 @@ const ta = <String, String>{
   '10 clés au plus par entreprise.': 'ஒரு நிறுவனத்துக்கு அதிகபட்சம் 10 சாவிகள்.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'நடப்பு மாத மீதி ({total} நாட்களில் {days}): “API அணுகல்” விருப்பம்',
   'Option « accès API » : {months} mois': '“API அணுகல்” விருப்பம்: {months} மாதம்',
+  'Trop de demandes pour ce compte : réessayez demain.': 'இந்தக் கணக்குக்கு அதிகக் கோரிக்கைகள்: நாளை மீண்டும் முயலுங்கள்.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow குறியீடு: {code}. இது உங்கள் கணக்கு {id}-ஐ Google கணக்கு {email} உடன் இணைக்கிறது. Staff Flow-இல் பணியாற்றுவதாகச் சொல்பவர் உட்பட யாரிடமும் இதைக் கொடுக்காதீர்கள். இது நீங்கள் இல்லையெனில், இந்தச் செய்தியைப் புறக்கணியுங்கள்.',
 };

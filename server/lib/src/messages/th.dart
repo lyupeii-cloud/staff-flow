@@ -135,7 +135,6 @@ const th = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'สวัสดี! หากต้องการเชื่อมบัญชี Telegram นี้กับ Staff Flow ให้เปิดแอป: โปรไฟล์ของฉัน แล้วเลือก Telegram',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'ลิงก์นี้หมดอายุแล้ว โปรดเริ่มใหม่จากแอป Staff Flow',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'เรียบร้อย: บัญชี Telegram นี้เชื่อมกับบัญชี Staff Flow {id} ของคุณแล้ว',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'รหัส Staff Flow: {code} ใช้เชื่อมบัญชี {id} ของคุณกับบัญชี Google {email} หากไม่ใช่คุณ โปรดเพิกเฉยต่อข้อความนี้',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'บัญชี Staff Flow {id} ของคุณเชื่อมกับบัญชี Google {email} แล้ว',
   'N° d\'enregistrement : {id}': 'เลขทะเบียน: {id}',
   'Payé.': 'ชำระแล้ว',
@@ -143,4 +142,6 @@ const th = <String, String>{
   '10 clés au plus par entreprise.': 'สูงสุด 10 คีย์ต่อบริษัท',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'ส่วนที่เหลือของเดือนนี้ ({days} จาก {total} วัน): ตัวเลือก “การเข้าถึง API”',
   'Option « accès API » : {months} mois': 'ตัวเลือก “การเข้าถึง API”: {months} เดือน',
+  'Trop de demandes pour ce compte : réessayez demain.': 'มีคำขอสำหรับบัญชีนี้มากเกินไป โปรดลองอีกครั้งพรุ่งนี้',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'รหัส Staff Flow: {code} ใช้เชื่อมบัญชี {id} ของคุณกับบัญชี Google {email} ห้ามบอกรหัสนี้กับใคร แม้แต่ผู้ที่อ้างว่าทำงานให้ Staff Flow หากไม่ใช่คุณ โปรดเพิกเฉยต่อข้อความนี้',
 };

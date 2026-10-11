@@ -156,7 +156,6 @@ const en = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'Hello! To link this Telegram account to Staff Flow, open the app: My profile, then Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'This link has expired. Start again from the Staff Flow app.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'Done: this Telegram account is linked to your Staff Flow account {id}.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow code: {code}. It links your account {id} to the Google account {email}. If this wasn\'t you, ignore this message.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Your Staff Flow account {id} is now linked to the Google account {email}.',
   'N° d\'enregistrement : {id}': 'Registration no.: {id}',
   'Payé.': 'Paid.',
@@ -166,4 +165,6 @@ const en = <String, String>{
   'Option « accès API » : {months} mois': '“API access” option: {months} months',
   'Clé API invalide.': 'Invalid API key.',
   'Période invalide (5 ans au plus).': 'Invalid period (5 years at most).',
+  'Trop de demandes pour ce compte : réessayez demain.': 'Too many requests for this account: try again tomorrow.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow code: {code}. It links your account {id} to the Google account {email}. Never give it to anyone, even someone who says they work for Staff Flow. If this wasn\'t you, ignore this message.',
 };

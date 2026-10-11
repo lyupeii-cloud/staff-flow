@@ -135,7 +135,6 @@ const sw = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'Habari! Ili kuunganisha akaunti hii ya Telegram na Staff Flow, fungua programu: Wasifu wangu, kisha Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'Kiungo hiki kimeisha muda. Anza upya kutoka kwenye programu ya Staff Flow.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'Imekamilika: akaunti hii ya Telegram imeunganishwa na akaunti yako ya Staff Flow {id}.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Msimbo wa Staff Flow: {code}. Unaunganisha akaunti yako {id} na akaunti ya Google {email}. Ikiwa si wewe, puuza ujumbe huu.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Akaunti yako ya Staff Flow {id} sasa imeunganishwa na akaunti ya Google {email}.',
   'N° d\'enregistrement : {id}': 'Nambari ya usajili: {id}',
   'Payé.': 'Imelipwa.',
@@ -143,4 +142,6 @@ const sw = <String, String>{
   '10 clés au plus par entreprise.': 'Funguo 10 zaidi kwa kila kampuni.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Salio la mwezi huu (siku {days} kati ya {total}): chaguo la “ufikiaji wa API”',
   'Option « accès API » : {months} mois': 'Chaguo la “ufikiaji wa API”: miezi {months}',
+  'Trop de demandes pour ce compte : réessayez demain.': 'Maombi mengi mno kwa akaunti hii: jaribu tena kesho.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Msimbo wa Staff Flow: {code}. Unaunganisha akaunti yako {id} na akaunti ya Google {email}. Usimpe mtu yeyote, hata anayedai kufanya kazi Staff Flow. Ikiwa si wewe, puuza ujumbe huu.',
 };

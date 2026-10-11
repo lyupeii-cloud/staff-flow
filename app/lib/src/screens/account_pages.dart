@@ -67,7 +67,7 @@ class ProfilePage extends StatelessWidget {
                     leading: const Icon(Icons.qr_code_2, color: Brand.blue),
                     title: Text(t.myQrCode),
                     trailing: const Icon(Icons.chevron_right),
-                    onTap: () => showMyQrCode(context, user),
+                    onTap: () => showMyQrCode(context, session),
                   ),
                   const Divider(height: 1),
                   ListTile(
@@ -94,13 +94,6 @@ class ProfilePage extends StatelessWidget {
                     title: Text(t.changeMyName),
                     trailing: const Icon(Icons.chevron_right),
                     onTap: () => _changeName(context),
-                  ),
-                  const Divider(height: 1),
-                  ListTile(
-                    leading: const Icon(Icons.qr_code, color: Brand.blue),
-                    title: Text(t.newQrCode),
-                    trailing: const Icon(Icons.chevron_right),
-                    onTap: () => confirmNewQrCode(context, session),
                   ),
                 ]),
               ),

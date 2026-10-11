@@ -135,7 +135,6 @@ const el = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'Γεια σας! Για να συνδέσετε αυτόν τον λογαριασμό Telegram με το Staff Flow, ανοίξτε την εφαρμογή: Το προφίλ μου, μετά Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'Αυτός ο σύνδεσμος έληξε. Ξεκινήστε ξανά από την εφαρμογή Staff Flow.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'Έγινε: αυτός ο λογαριασμός Telegram συνδέθηκε με τον λογαριασμό σας Staff Flow {id}.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Κωδικός Staff Flow: {code}. Συνδέει τον λογαριασμό σας {id} με τον λογαριασμό Google {email}. Αν δεν ήσασταν εσείς, αγνοήστε αυτό το μήνυμα.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Ο λογαριασμός σας Staff Flow {id} συνδέθηκε πλέον με τον λογαριασμό Google {email}.',
   'N° d\'enregistrement : {id}': 'Αρ. μητρώου: {id}',
   'Payé.': 'Πληρώθηκε.',
@@ -143,4 +142,6 @@ const el = <String, String>{
   '10 clés au plus par entreprise.': 'Έως 10 κλειδιά ανά επιχείρηση.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Υπόλοιπο τρέχοντος μήνα ({days} από {total} ημέρες): επιλογή «πρόσβαση API»',
   'Option « accès API » : {months} mois': 'Επιλογή «πρόσβαση API»: {months} μήνες',
+  'Trop de demandes pour ce compte : réessayez demain.': 'Πάρα πολλά αιτήματα για αυτόν τον λογαριασμό: δοκιμάστε ξανά αύριο.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Κωδικός Staff Flow: {code}. Συνδέει τον λογαριασμό σας {id} με τον λογαριασμό Google {email}. Μην τον δώσετε σε κανέναν, ούτε σε κάποιον που λέει ότι εργάζεται για το Staff Flow. Αν δεν ήσασταν εσείς, αγνοήστε αυτό το μήνυμα.',
 };

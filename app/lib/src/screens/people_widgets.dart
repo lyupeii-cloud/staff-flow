@@ -4,6 +4,8 @@ import 'package:qr_flutter/qr_flutter.dart';
 
 import '../brand.dart';
 import '../i18n.dart';
+import 'account_tools.dart';
+import '../session.dart';
 import '../models.dart';
 
 /// Adresse contenue dans le QR code permanent d'une personne. Le serveur n'en
@@ -15,12 +17,24 @@ final _publicId = RegExp(r'SF-[A-Z2-9]{8}');
 
 /// QR code permanent de l'utilisateur (menu du compte) : un responsable le
 /// scanne pour l'ajouter à son entreprise, puis l'utilisateur confirme.
-Future<void> showMyQrCode(BuildContext context, User user) {
+Future<void> showMyQrCode(BuildContext context, Session session) async {
   final t = context.l10n;
-  return showDialog<void>(
+  final user = session.me!.user;
+  final renew = await showDialog<bool>(
     context: context,
     builder: (context) => AlertDialog(
-      title: Text(t.myQrCode),
+      title: Row(children: [
+        Expanded(child: Text(t.myQrCode)),
+        // Renouveler : l'info-bulle rappelle que rien ne change dans les entreprises.
+        Tooltip(
+          message: t.newQrCodeConfirm,
+          triggerMode: TooltipTriggerMode.longPress,
+          child: IconButton(
+            icon: const Icon(Icons.autorenew),
+            onPressed: () => Navigator.pop(context, true),
+          ),
+        ),
+      ]),
       content: SizedBox(
         width: 280,
         child: Column(
@@ -49,6 +63,9 @@ Future<void> showMyQrCode(BuildContext context, User user) {
       actions: [TextButton(onPressed: () => Navigator.pop(context), child: Text(t.close))],
     ),
   );
+  if (renew != true || !context.mounted) return;
+  // Nouveau QR code confirmé : on montre aussitôt le nouveau.
+  if (await confirmNewQrCode(context, session) && context.mounted) await showMyQrCode(context, session);
 }
 
 /// Ouvre la caméra et renvoie le contenu du premier QR code Staff Flow lu,

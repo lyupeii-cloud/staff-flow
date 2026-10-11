@@ -135,7 +135,6 @@ const es = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': '¡Hola! Para vincular esta cuenta de Telegram a Staff Flow, abre la aplicación: Mi perfil y luego Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'Este enlace ha caducado. Vuelve a empezar desde la aplicación Staff Flow.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'Listo: esta cuenta de Telegram está vinculada a tu cuenta de Staff Flow {id}.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Código de Staff Flow: {code}. Vincula tu cuenta {id} a la cuenta de Google {email}. Si no has sido tú, ignora este mensaje.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Tu cuenta de Staff Flow {id} ahora está vinculada a la cuenta de Google {email}.',
   'N° d\'enregistrement : {id}': 'N.º de registro: {id}',
   'Payé.': 'Pagado.',
@@ -143,4 +142,6 @@ const es = <String, String>{
   '10 clés au plus par entreprise.': '10 claves como máximo por empresa.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Resto del mes en curso ({days} días de {total}): opción «acceso API»',
   'Option « accès API » : {months} mois': 'Opción «acceso API»: {months} meses',
+  'Trop de demandes pour ce compte : réessayez demain.': 'Demasiadas solicitudes para esta cuenta: vuelve a intentarlo mañana.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Código de Staff Flow: {code}. Vincula tu cuenta {id} a la cuenta de Google {email}. No se lo des a nadie, ni siquiera a quien diga trabajar para Staff Flow. Si no has sido tú, ignora este mensaje.',
 };

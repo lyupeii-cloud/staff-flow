@@ -135,7 +135,6 @@ const ja = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'こんにちは！この Telegram アカウントを Staff Flow と連携するには、アプリを開いて「マイプロフィール」→「Telegram」を選んでください。',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'このリンクは有効期限が切れています。Staff Flow アプリからやり直してください。',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': '完了：この Telegram アカウントは Staff Flow アカウント {id} と連携されました。',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow コード：{code}。お客様のアカウント {id} を Google アカウント {email} に連携します。心当たりがない場合は、このメッセージを無視してください。',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Staff Flow アカウント {id} は Google アカウント {email} と連携されました。',
   'N° d\'enregistrement : {id}': '登録番号：{id}',
   'Payé.': '支払済み。',
@@ -143,4 +142,6 @@ const ja = <String, String>{
   '10 clés au plus par entreprise.': 'キーは 1 社につき最大 10 個です。',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': '今月の残り（{total} 日中 {days} 日）：「API アクセス」オプション',
   'Option « accès API » : {months} mois': '「API アクセス」オプション：{months} か月',
+  'Trop de demandes pour ce compte : réessayez demain.': 'このアカウントへのリクエストが多すぎます。明日もう一度お試しください。',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow コード：{code}。お客様のアカウント {id} を Google アカウント {email} に連携します。Staff Flow の担当者を名乗る人を含め、誰にも教えないでください。心当たりがない場合は、このメッセージを無視してください。',
 };

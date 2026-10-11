@@ -135,7 +135,6 @@ const fil = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'Kumusta! Para i-link ang Telegram account na ito sa Staff Flow, buksan ang app: Aking profile, tapos Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'Expired na ang link na ito. Magsimulang muli mula sa Staff Flow app.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'Tapos na: naka-link ang Telegram account na ito sa iyong Staff Flow account {id}.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow code: {code}. Ili-link nito ang iyong account {id} sa Google account na {email}. Kung hindi ikaw ito, huwag pansinin ang mensaheng ito.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Naka-link na ngayon ang iyong Staff Flow account {id} sa Google account na {email}.',
   'N° d\'enregistrement : {id}': 'Blg. ng rehistro: {id}',
   'Payé.': 'Bayad na.',
@@ -143,4 +142,6 @@ const fil = <String, String>{
   '10 clés au plus par entreprise.': 'Hanggang 10 key bawat kumpanya.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Natitira sa buwang ito ({days} sa {total} araw): opsyong “API access”',
   'Option « accès API » : {months} mois': 'Opsyong “API access”: {months} buwan',
+  'Trop de demandes pour ce compte : réessayez demain.': 'Masyadong maraming hiling para sa account na ito: subukang muli bukas.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow code: {code}. Ili-link nito ang iyong account {id} sa Google account na {email}. Huwag itong ibigay kahit kanino, kahit sa nagsasabing nagtatrabaho sila para sa Staff Flow. Kung hindi ikaw ito, huwag pansinin ang mensaheng ito.',
 };

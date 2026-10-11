@@ -135,7 +135,6 @@ const hu = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'Üdvözöljük! A Telegram-fiók és a Staff Flow összekapcsolásához nyissa meg az alkalmazást: Saját profil, majd Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'Ez a link lejárt. Kezdje újra a Staff Flow alkalmazásból.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'Kész: ez a Telegram-fiók össze van kapcsolva a(z) {id} Staff Flow-fiókjával.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow-kód: {code}. Összekapcsolja a(z) {id} fiókját a(z) {email} Google-fiókkal. Ha nem Ön volt, hagyja figyelmen kívül ezt az üzenetet.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'A(z) {id} Staff Flow-fiókja mostantól a(z) {email} Google-fiókhoz kapcsolódik.',
   'N° d\'enregistrement : {id}': 'Nyilvántartási szám: {id}',
   'Payé.': 'Fizetve.',
@@ -143,4 +142,6 @@ const hu = <String, String>{
   '10 clés au plus par entreprise.': 'Cégenként legfeljebb 10 kulcs.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'A folyó hónap hátralévő része ({total} napból {days}): „API-hozzáférés” opció',
   'Option « accès API » : {months} mois': '„API-hozzáférés” opció: {months} hónap',
+  'Trop de demandes pour ce compte : réessayez demain.': 'Túl sok kérés ehhez a fiókhoz: próbálja újra holnap.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow-kód: {code}. Összekapcsolja a(z) {id} fiókját a(z) {email} Google-fiókkal. Senkinek ne adja meg, annak sem, aki azt állítja, hogy a Staff Flow-nak dolgozik. Ha nem Ön volt, hagyja figyelmen kívül ezt az üzenetet.',
 };

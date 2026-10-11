@@ -135,7 +135,6 @@ const gu = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'નમસ્તે! આ Telegram એકાઉન્ટને Staff Flow સાથે જોડવા માટે એપ ખોલો: મારી પ્રોફાઇલ, પછી Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'આ લિંકની મુદત પૂરી થઈ છે. Staff Flow એપમાંથી ફરી શરૂ કરો.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'થઈ ગયું: આ Telegram એકાઉન્ટ તમારા Staff Flow એકાઉન્ટ {id} સાથે જોડાયું છે.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow કોડ: {code}. તે તમારા એકાઉન્ટ {id} ને Google એકાઉન્ટ {email} સાથે જોડે છે. જો આ તમે ન હો, તો આ સંદેશને અવગણો.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'તમારું Staff Flow એકાઉન્ટ {id} હવે Google એકાઉન્ટ {email} સાથે જોડાયું છે.',
   'N° d\'enregistrement : {id}': 'નોંધણી નંબર: {id}',
   'Payé.': 'ચૂકવાયું.',
@@ -143,4 +142,6 @@ const gu = <String, String>{
   '10 clés au plus par entreprise.': 'દરેક કંપની માટે વધુમાં વધુ 10 કી.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'ચાલુ મહિનાનો બાકીનો ભાગ ({total} માંથી {days} દિવસ): “API ઍક્સેસ” વિકલ્પ',
   'Option « accès API » : {months} mois': '“API ઍક્સેસ” વિકલ્પ: {months} મહિના',
+  'Trop de demandes pour ce compte : réessayez demain.': 'આ એકાઉન્ટ માટે ઘણી બધી વિનંતીઓ: કાલે ફરી પ્રયાસ કરો.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow કોડ: {code}. તે તમારા એકાઉન્ટ {id} ને Google એકાઉન્ટ {email} સાથે જોડે છે. તે કોઈને ન આપો, Staff Flow માટે કામ કરતા હોવાનો દાવો કરનારને પણ નહીં. જો આ તમે ન હો, તો આ સંદેશને અવગણો.',
 };

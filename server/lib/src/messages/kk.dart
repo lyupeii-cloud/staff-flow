@@ -135,7 +135,6 @@ const kk = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'Сәлеметсіз бе! Бұл Telegram аккаунтын Staff Flow-ға байланыстыру үшін қолданбаны ашыңыз: Менің профилім, содан кейін Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'Бұл сілтеменің мерзімі өтті. Staff Flow қолданбасынан қайта бастаңыз.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'Дайын: бұл Telegram аккаунты сіздің Staff Flow аккаунтыңызға {id} байланыстырылды.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow коды: {code}. Ол сіздің {id} аккаунтыңызды {email} Google аккаунтына байланыстырады. Бұл сіз болмасаңыз, хабарламаны елемеңіз.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Сіздің Staff Flow аккаунтыңыз {id} енді {email} Google аккаунтына байланыстырылды.',
   'N° d\'enregistrement : {id}': 'Тіркеу нөмірі: {id}',
   'Payé.': 'Төленді.',
@@ -143,4 +142,6 @@ const kk = <String, String>{
   '10 clés au plus par entreprise.': 'Бір компанияға ең көбі 10 кілт.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Ағымдағы айдың қалғаны ({total} күннің {days}): «API қолжетімділігі» опциясы',
   'Option « accès API » : {months} mois': '«API қолжетімділігі» опциясы: {months} ай',
+  'Trop de demandes pour ce compte : réessayez demain.': 'Бұл аккаунтқа сұраулар тым көп: ертең қайталаңыз.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow коды: {code}. Ол сіздің {id} аккаунтыңызды {email} Google аккаунтына байланыстырады. Оны ешкімге бермеңіз, тіпті Staff Flow қызметкерімін дейтін адамға да. Бұл сіз болмасаңыз, хабарламаны елемеңіз.',
 };

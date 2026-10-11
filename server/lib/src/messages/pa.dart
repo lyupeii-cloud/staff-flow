@@ -135,7 +135,6 @@ const pa = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'ਸਤ ਸ੍ਰੀ ਅਕਾਲ! ਇਸ Telegram ਖਾਤੇ ਨੂੰ Staff Flow ਨਾਲ ਜੋੜਨ ਲਈ ਐਪ ਖੋਲ੍ਹੋ: ਮੇਰੀ ਪ੍ਰੋਫਾਈਲ, ਫਿਰ Telegram।',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'ਇਸ ਲਿੰਕ ਦੀ ਮਿਆਦ ਖ਼ਤਮ ਹੋ ਗਈ ਹੈ। Staff Flow ਐਪ ਤੋਂ ਮੁੜ ਸ਼ੁਰੂ ਕਰੋ।',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'ਹੋ ਗਿਆ: ਇਹ Telegram ਖਾਤਾ ਤੁਹਾਡੇ Staff Flow ਖਾਤੇ {id} ਨਾਲ ਜੁੜ ਗਿਆ ਹੈ।',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow ਕੋਡ: {code}। ਇਹ ਤੁਹਾਡੇ ਖਾਤੇ {id} ਨੂੰ Google ਖਾਤੇ {email} ਨਾਲ ਜੋੜਦਾ ਹੈ। ਜੇ ਇਹ ਤੁਸੀਂ ਨਹੀਂ ਸੀ, ਤਾਂ ਇਸ ਸੁਨੇਹੇ ਨੂੰ ਅਣਡਿੱਠਾ ਕਰੋ।',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'ਤੁਹਾਡਾ Staff Flow ਖਾਤਾ {id} ਹੁਣ Google ਖਾਤੇ {email} ਨਾਲ ਜੁੜਿਆ ਹੈ।',
   'N° d\'enregistrement : {id}': 'ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਨੰਬਰ: {id}',
   'Payé.': 'ਭੁਗਤਾਨ ਹੋ ਗਿਆ।',
@@ -143,4 +142,6 @@ const pa = <String, String>{
   '10 clés au plus par entreprise.': 'ਹਰ ਕੰਪਨੀ ਲਈ ਵੱਧ ਤੋਂ ਵੱਧ 10 ਕੁੰਜੀਆਂ।',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'ਚਾਲੂ ਮਹੀਨੇ ਦਾ ਬਾਕੀ ({total} ਵਿੱਚੋਂ {days} ਦਿਨ): “API ਪਹੁੰਚ” ਵਿਕਲਪ',
   'Option « accès API » : {months} mois': '“API ਪਹੁੰਚ” ਵਿਕਲਪ: {months} ਮਹੀਨੇ',
+  'Trop de demandes pour ce compte : réessayez demain.': 'ਇਸ ਖਾਤੇ ਲਈ ਬਹੁਤ ਜ਼ਿਆਦਾ ਬੇਨਤੀਆਂ: ਕੱਲ੍ਹ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ।',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow ਕੋਡ: {code}। ਇਹ ਤੁਹਾਡੇ ਖਾਤੇ {id} ਨੂੰ Google ਖਾਤੇ {email} ਨਾਲ ਜੋੜਦਾ ਹੈ। ਇਹ ਕਿਸੇ ਨੂੰ ਨਾ ਦਿਓ, ਉਸ ਨੂੰ ਵੀ ਨਹੀਂ ਜੋ ਆਪਣੇ ਆਪ ਨੂੰ Staff Flow ਦਾ ਕਰਮਚਾਰੀ ਦੱਸੇ। ਜੇ ਇਹ ਤੁਸੀਂ ਨਹੀਂ ਸੀ, ਤਾਂ ਇਸ ਸੁਨੇਹੇ ਨੂੰ ਅਣਡਿੱਠਾ ਕਰੋ।',
 };

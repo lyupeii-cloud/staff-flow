@@ -145,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
             IconButton(
               tooltip: context.l10n.myQrCode,
               icon: const Icon(Icons.qr_code_2),
-              onPressed: () => showMyQrCode(context, session.me!.user),
+              onPressed: () => showMyQrCode(context, session),
             ),
             _ProfileMenu(session: session),
           ],

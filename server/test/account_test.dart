@@ -154,6 +154,18 @@ void main() {
     expect((await env.login('eva')).id, isNot(eva.id));
   });
 
+  test('changement de compte Google : 5 codes par jour au plus pour un même compte, quel que soit le demandeur', () async {
+    final eva = await env.login('eva');
+    await linkTelegram(eva, 42, 'eva_tg');
+    for (var i = 0; i < 5; i++) {
+      await (await env.login('pirate$i')).ok('POST', '/me/recover', {'publicId': eva.user['publicId']});
+    }
+    final (status, body) = await (await env.login('pirate9')).call('POST', '/me/recover', {'publicId': eva.user['publicId']});
+    expect(status, 409);
+    expect(body['error']['message'], contains('tomorrow'));
+    expect(env.telegram.sent.last.$2, contains('Never give it to anyone'), reason: 'mise en garde contre le vol du code');
+  });
+
   test('un compte Google déjà dans une entreprise ne peut pas reprendre un autre compte', () async {
     final boss = await env.login('boss');
     final eva = await env.login('eva');

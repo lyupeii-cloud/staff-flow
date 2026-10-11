@@ -155,7 +155,6 @@ const uk = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'Вітаємо! Щоб прив\'язати цей Telegram до Staff Flow, відкрийте застосунок: Мій профіль, потім Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'Термін дії посилання минув. Почніть знову в застосунку Staff Flow.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'Готово: цей Telegram прив\'язано до вашого облікового запису Staff Flow {id}.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Код Staff Flow: {code}. Він прив\'язує ваш обліковий запис {id} до облікового запису Google {email}. Якщо це не ви, проігноруйте повідомлення.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Ваш обліковий запис Staff Flow {id} тепер прив\'язано до облікового запису Google {email}.',
   'N° d\'enregistrement : {id}': 'Реєстраційний номер: {id}',
   'Payé.': 'Сплачено.',
@@ -163,4 +162,6 @@ const uk = <String, String>{
   '10 clés au plus par entreprise.': 'Не більше 10 ключів на компанію.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Решта поточного місяця ({days} дн. з {total}): опція «доступ до API»',
   'Option « accès API » : {months} mois': 'Опція «доступ до API»: {months} міс.',
+  'Trop de demandes pour ce compte : réessayez demain.': 'Забагато запитів для цього облікового запису: спробуйте завтра.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Код Staff Flow: {code}. Він прив\'язує ваш обліковий запис {id} до облікового запису Google {email}. Нікому його не повідомляйте, навіть тому, хто називає себе працівником Staff Flow. Якщо це не ви, проігноруйте повідомлення.',
 };

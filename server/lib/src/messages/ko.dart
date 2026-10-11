@@ -135,7 +135,6 @@ const ko = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': '안녕하세요! 이 Telegram 계정을 Staff Flow에 연결하려면 앱을 열고 내 프로필 → Telegram을 선택하세요.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': '이 링크는 만료되었습니다. Staff Flow 앱에서 다시 시작하세요.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': '완료: 이 Telegram 계정이 Staff Flow 계정 {id}에 연결되었습니다.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow 코드: {code}. 이 코드는 계정 {id}을(를) Google 계정 {email}에 연결합니다. 본인이 아니라면 이 메시지를 무시하세요.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Staff Flow 계정 {id}이(가) 이제 Google 계정 {email}에 연결되었습니다.',
   'N° d\'enregistrement : {id}': '등록 번호: {id}',
   'Payé.': '결제 완료.',
@@ -143,4 +142,6 @@ const ko = <String, String>{
   '10 clés au plus par entreprise.': '회사당 키는 최대 10개입니다.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': '이번 달 남은 기간({total}일 중 {days}일): “API 액세스” 옵션',
   'Option « accès API » : {months} mois': '“API 액세스” 옵션: {months}개월',
+  'Trop de demandes pour ce compte : réessayez demain.': '이 계정에 대한 요청이 너무 많습니다. 내일 다시 시도하세요.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow 코드: {code}. 이 코드는 계정 {id}을(를) Google 계정 {email}에 연결합니다. Staff Flow 직원이라고 하는 사람을 포함해 누구에게도 알려 주지 마세요. 본인이 아니라면 이 메시지를 무시하세요.',
 };

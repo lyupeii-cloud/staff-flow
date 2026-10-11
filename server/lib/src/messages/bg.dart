@@ -135,7 +135,6 @@ const bg = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'Здравейте! За да свържете този акаунт в Telegram със Staff Flow, отворете приложението: Моят профил, след това Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'Тази връзка е изтекла. Започнете отначало от приложението Staff Flow.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'Готово: този акаунт в Telegram е свързан с вашия акаунт в Staff Flow {id}.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Код Staff Flow: {code}. Той свързва вашия акаунт {id} с акаунта в Google {email}. Ако не сте били вие, пренебрегнете съобщението.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Вашият акаунт в Staff Flow {id} вече е свързан с акаунта в Google {email}.',
   'N° d\'enregistrement : {id}': 'Рег. №: {id}',
   'Payé.': 'Платено.',
@@ -143,4 +142,6 @@ const bg = <String, String>{
   '10 clés au plus par entreprise.': 'Най-много 10 ключа на фирма.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Остатък от текущия месец ({days} от {total} дни): опция „достъп до API“',
   'Option « accès API » : {months} mois': 'Опция „достъп до API“: {months} месеца',
+  'Trop de demandes pour ce compte : réessayez demain.': 'Твърде много заявки за този акаунт: опитайте отново утре.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Код Staff Flow: {code}. Той свързва вашия акаунт {id} с акаунта в Google {email}. Не го давайте на никого, дори на някой, който твърди, че работи за Staff Flow. Ако не сте били вие, пренебрегнете съобщението.',
 };

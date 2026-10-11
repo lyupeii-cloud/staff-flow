@@ -135,7 +135,6 @@ const vi = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'Xin chào! Để liên kết tài khoản Telegram này với Staff Flow, hãy mở ứng dụng: Hồ sơ của tôi, rồi Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'Liên kết này đã hết hạn. Hãy bắt đầu lại từ ứng dụng Staff Flow.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'Xong: tài khoản Telegram này đã liên kết với tài khoản Staff Flow {id} của bạn.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Mã Staff Flow: {code}. Mã này liên kết tài khoản {id} của bạn với tài khoản Google {email}. Nếu không phải bạn, hãy bỏ qua tin nhắn này.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Tài khoản Staff Flow {id} của bạn hiện đã liên kết với tài khoản Google {email}.',
   'N° d\'enregistrement : {id}': 'Số đăng ký: {id}',
   'Payé.': 'Đã thanh toán.',
@@ -143,4 +142,6 @@ const vi = <String, String>{
   '10 clés au plus par entreprise.': 'Tối đa 10 khóa mỗi công ty.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Phần còn lại của tháng ({days}/{total} ngày): tùy chọn “truy cập API”',
   'Option « accès API » : {months} mois': 'Tùy chọn “truy cập API”: {months} tháng',
+  'Trop de demandes pour ce compte : réessayez demain.': 'Quá nhiều yêu cầu cho tài khoản này: hãy thử lại vào ngày mai.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Mã Staff Flow: {code}. Mã này liên kết tài khoản {id} của bạn với tài khoản Google {email}. Đừng đưa mã cho bất kỳ ai, kể cả người tự nhận làm việc cho Staff Flow. Nếu không phải bạn, hãy bỏ qua tin nhắn này.',
 };

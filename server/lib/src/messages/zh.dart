@@ -135,7 +135,6 @@ const zh = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': '您好！要将此 Telegram 账号关联到 Staff Flow，请打开应用：我的资料，然后选择 Telegram。',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': '此链接已过期。请从 Staff Flow 应用重新开始。',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': '完成：此 Telegram 账号已关联到您的 Staff Flow 账号 {id}。',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow 验证码：{code}。它将您的账号 {id} 关联到 Google 账号 {email}。如果不是您本人操作，请忽略此消息。',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': '您的 Staff Flow 账号 {id} 现已关联到 Google 账号 {email}。',
   'N° d\'enregistrement : {id}': '注册号：{id}',
   'Payé.': '已付款。',
@@ -143,4 +142,6 @@ const zh = <String, String>{
   '10 clés au plus par entreprise.': '每家公司最多 10 个密钥。',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': '本月剩余（{total} 天中的 {days} 天）：“API 访问”选项',
   'Option « accès API » : {months} mois': '“API 访问”选项：{months} 个月',
+  'Trop de demandes pour ce compte : réessayez demain.': '此账号的请求过多：请明天再试。',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow 验证码：{code}。它将您的账号 {id} 关联到 Google 账号 {email}。请勿告诉任何人，即使对方自称是 Staff Flow 的工作人员。如果不是您本人操作，请忽略此消息。',
 };

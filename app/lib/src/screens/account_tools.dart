@@ -111,8 +111,8 @@ class TelegramCard extends StatelessWidget {
   }
 }
 
-/// Nouveau QR code (et nouvel identifiant), après confirmation.
-Future<void> confirmNewQrCode(BuildContext context, Session session) async {
+/// Nouveau QR code (et nouvel identifiant), après confirmation ; `true` s'il a changé.
+Future<bool> confirmNewQrCode(BuildContext context, Session session) async {
   final t = context.l10n;
   final ok = await showDialog<bool>(
     context: context,
@@ -125,8 +125,10 @@ Future<void> confirmNewQrCode(BuildContext context, Session session) async {
       ],
     ),
   );
-  if (ok != true || !context.mounted) return;
+  if (ok != true || !context.mounted) return false;
+  final before = session.me!.user.publicId;
   await runAction(context, session, () => session.api.send('POST', '/me/qr'), success: t.newQrCodeDone);
+  return session.me!.user.publicId != before;
 }
 
 /// Comment changer de compte Google sans perdre son compte.

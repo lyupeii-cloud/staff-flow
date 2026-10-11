@@ -135,7 +135,6 @@ const nl = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'Hallo! Om dit Telegram-account aan Staff Flow te koppelen, open je de app: Mijn profiel, dan Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'Deze link is verlopen. Begin opnieuw vanuit de Staff Flow-app.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'Klaar: dit Telegram-account is gekoppeld aan je Staff Flow-account {id}.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow-code: {code}. Deze koppelt je account {id} aan het Google-account {email}. Was jij dit niet, negeer dan dit bericht.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Je Staff Flow-account {id} is nu gekoppeld aan het Google-account {email}.',
   'N° d\'enregistrement : {id}': 'Registratienr.: {id}',
   'Payé.': 'Betaald.',
@@ -143,4 +142,6 @@ const nl = <String, String>{
   '10 clés au plus par entreprise.': 'Maximaal 10 sleutels per bedrijf.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Rest van deze maand ({days} van {total} dagen): optie ‘API-toegang’',
   'Option « accès API » : {months} mois': 'Optie ‘API-toegang’: {months} maanden',
+  'Trop de demandes pour ce compte : réessayez demain.': 'Te veel verzoeken voor dit account: probeer het morgen opnieuw.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow-code: {code}. Deze koppelt je account {id} aan het Google-account {email}. Geef hem aan niemand, ook niet aan iemand die zegt voor Staff Flow te werken. Was jij dit niet, negeer dan dit bericht.',
 };

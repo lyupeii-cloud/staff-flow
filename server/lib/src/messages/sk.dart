@@ -135,7 +135,6 @@ const sk = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'Dobrý deň! Ak chcete prepojiť tento účet Telegram so Staff Flow, otvorte aplikáciu: Môj profil, potom Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'Platnosť tohto odkazu vypršala. Začnite znova v aplikácii Staff Flow.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'Hotovo: tento účet Telegram je prepojený s vaším účtom Staff Flow {id}.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Kód Staff Flow: {code}. Prepája váš účet {id} s účtom Google {email}. Ak ste to neboli vy, správu ignorujte.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Váš účet Staff Flow {id} je teraz prepojený s účtom Google {email}.',
   'N° d\'enregistrement : {id}': 'Registračné č.: {id}',
   'Payé.': 'Zaplatené.',
@@ -143,4 +142,6 @@ const sk = <String, String>{
   '10 clés au plus par entreprise.': 'Najviac 10 kľúčov na firmu.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Zvyšok aktuálneho mesiaca ({days} z {total} dní): možnosť „prístup API“',
   'Option « accès API » : {months} mois': 'Možnosť „prístup API“: {months} mes.',
+  'Trop de demandes pour ce compte : réessayez demain.': 'Príliš veľa žiadostí pre tento účet: skúste to zajtra.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Kód Staff Flow: {code}. Prepája váš účet {id} s účtom Google {email}. Nikomu ho nedávajte, ani tomu, kto tvrdí, že pracuje pre Staff Flow. Ak ste to neboli vy, správu ignorujte.',
 };

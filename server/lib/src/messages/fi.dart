@@ -135,7 +135,6 @@ const fi = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'Hei! Yhdistä tämä Telegram-tili Staff Flow’hun avaamalla sovellus: Oma profiili, sitten Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'Linkki on vanhentunut. Aloita alusta Staff Flow -sovelluksessa.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'Valmis: tämä Telegram-tili on yhdistetty Staff Flow -tiliisi {id}.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow -koodi: {code}. Se yhdistää tilisi {id} Google-tiliin {email}. Jos et tehnyt tätä, ohita viesti.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Staff Flow -tilisi {id} on nyt yhdistetty Google-tiliin {email}.',
   'N° d\'enregistrement : {id}': 'Rekisterinumero: {id}',
   'Payé.': 'Maksettu.',
@@ -143,4 +142,6 @@ const fi = <String, String>{
   '10 clés au plus par entreprise.': 'Enintään 10 avainta yritystä kohden.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Kuluvan kuun loppu ({days}/{total} päivää): ”API-pääsy”-lisä',
   'Option « accès API » : {months} mois': '”API-pääsy”-lisä: {months} kk',
+  'Trop de demandes pour ce compte : réessayez demain.': 'Liian monta pyyntöä tälle tilille: yritä huomenna uudelleen.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow -koodi: {code}. Se yhdistää tilisi {id} Google-tiliin {email}. Älä anna sitä kenellekään, et edes Staff Flow’n työntekijäksi esittäytyvälle. Jos et tehnyt tätä, ohita viesti.',
 };

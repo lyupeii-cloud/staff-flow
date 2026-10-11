@@ -168,16 +168,26 @@ class AccountService {
       SELECT id::text, locale, telegram_username FROM users
       WHERE public_id = @p AND NOT erased AND telegram_chat_id IS NOT NULL AND id <> @u::uuid''',
         {'p': code, 'u': current.id});
-    await store.audit(actorId: current.id, action: 'account.recovery_code', details: {'publicId': code});
     if (rows.isEmpty) {
+      await store.audit(actorId: current.id, action: 'account.recovery_code', details: {'publicId': code});
       throw const ApiError.notFound('Aucun compte avec ce numéro et un Telegram vérifié.');
     }
     final oldId = rows.first[0] as String;
+    // Limites par compte visé, quel que soit le compte Google qui demande :
+    // 5 codes et 10 mauvais codes par 24 heures au plus.
+    final day = await store.query(store.db, '''
+      SELECT count(*) FILTER (WHERE action = 'account.recovery_code'), count(*) FILTER (WHERE action = 'account.recovery_failed')
+      FROM audit_log WHERE details->>'target' = @o AND at > @t''',
+        {'o': oldId, 't': now().subtract(const Duration(hours: 24))});
+    if ((day.first[0] as num) >= 5 || (day.first[1] as num) >= 10) {
+      throw const ApiError.conflict('Trop de demandes pour ce compte : réessayez demain.');
+    }
+    await store.audit(actorId: current.id, action: 'account.recovery_code', details: {'publicId': code, 'target': oldId});
     final digits = List.generate(6, (_) => _random.nextInt(10)).join();
     final lang = rows.first[1] as String? ?? 'en';
     final sent = await telegram.sendTo(
         oldId,
-        TelegramService.t('Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.',
+        TelegramService.t('Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.',
             lang,
             {'code': digits, 'id': code, 'email': current.email}));
     if (!sent) throw const ApiError.conflict('Le code n\'a pas pu être envoyé sur Telegram.');
@@ -204,6 +214,7 @@ class AccountService {
     if (_hash(code.trim()) != rows.first[1]) {
       await store.query(store.db, 'UPDATE account_recoveries SET attempts = attempts + 1 WHERE new_user_id = @u::uuid',
           {'u': current.id});
+      await store.audit(actorId: current.id, action: 'account.recovery_failed', details: {'target': oldId});
       throw const ApiError.badRequest('Code incorrect.');
     }
     final fresh = await store.query(store.db,

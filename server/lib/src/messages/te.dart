@@ -135,7 +135,6 @@ const te = <String, String>{
   'Bonjour ! Pour relier ce compte Telegram à Staff Flow, ouvrez l\'application : Mon profil, puis Telegram.': 'నమస్కారం! ఈ Telegram ఖాతాను Staff Flow‌తో లింక్ చేయడానికి యాప్ తెరవండి: నా ప్రొఫైల్, తర్వాత Telegram.',
   'Ce lien a expiré. Recommencez depuis l\'application Staff Flow.': 'ఈ లింక్ గడువు ముగిసింది. Staff Flow యాప్ నుండి మళ్లీ ప్రారంభించండి.',
   'C\'est fait : ce compte Telegram est relié à votre compte Staff Flow {id}.': 'పూర్తయింది: ఈ Telegram ఖాతా మీ Staff Flow ఖాతా {id}‌తో లింక్ అయింది.',
-  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow కోడ్: {code}. ఇది మీ ఖాతా {id}ని Google ఖాతా {email}‌తో లింక్ చేస్తుంది. ఇది మీరు కాకపోతే, ఈ సందేశాన్ని పట్టించుకోకండి.',
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'మీ Staff Flow ఖాతా {id} ఇప్పుడు Google ఖాతా {email}‌తో లింక్ అయింది.',
   'N° d\'enregistrement : {id}': 'నమోదు సంఖ్య: {id}',
   'Payé.': 'చెల్లించబడింది.',
@@ -143,4 +142,6 @@ const te = <String, String>{
   '10 clés au plus par entreprise.': 'ఒక్కో సంస్థకు గరిష్టంగా 10 కీలు.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'ఈ నెల మిగతా ({total} రోజుల్లో {days}): “API యాక్సెస్” ఆప్షన్',
   'Option « accès API » : {months} mois': '“API యాక్సెస్” ఆప్షన్: {months} నెలలు',
+  'Trop de demandes pour ce compte : réessayez demain.': 'ఈ ఖాతాకు చాలా అభ్యర్థనలు: రేపు మళ్లీ ప్రయత్నించండి.',
+  'Code Staff Flow : {code}. Il relie votre compte {id} au compte Google {email}. Ne le donnez à personne, même à quelqu\'un qui dit travailler pour Staff Flow. Si ce n\'est pas vous, ignorez ce message.': 'Staff Flow కోడ్: {code}. ఇది మీ ఖాతా {id}ని Google ఖాతా {email}‌తో లింక్ చేస్తుంది. Staff Flow‌లో పనిచేస్తున్నామని చెప్పేవారితో సహా ఎవరికీ దీన్ని ఇవ్వకండి. ఇది మీరు కాకపోతే, ఈ సందేశాన్ని పట్టించుకోకండి.',
 };
