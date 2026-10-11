@@ -477,7 +477,7 @@
   "apiRevoke": "Visszavonás",
   "apiRevokeConfirm": "A kulcsot használó szoftverek elveszítik a hozzáférést.",
   "apiDocs": "API-dokumentáció",
-  "memberGoogleLink": "Link a Google-fiók cseréjéhez",
+  "memberGoogleLink": "Munkatárs újbóli bejelentkezése",
   "googleLinkHint": "Küldje el ezt a linket neki: {name}. Böngészőben nyílik meg (nem az Android-alkalmazásban), egyszer, 24 órán át: {name} bejelentkezik az új Google-fiókjával, és visszakapja a fiókját. Az összes többi eszközéről ekkor kijelentkezteti a rendszer.",
   "googleLinkCopied": "Link kimásolva.",
   "switchBanner": "Google-fiók cseréjére szolgáló link: jelentkezzen be az új Google-fiókjával, hogy visszakapja Staff Flow-fiókját.",

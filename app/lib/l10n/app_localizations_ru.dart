@@ -1728,7 +1728,7 @@ class L10nRu extends L10n {
   String get apiDocs => 'Документация API';
 
   @override
-  String get memberGoogleLink => 'Ссылка для смены аккаунта Google';
+  String get memberGoogleLink => 'Повторный вход сотрудника';
 
   @override
   String googleLinkHint(String name) {

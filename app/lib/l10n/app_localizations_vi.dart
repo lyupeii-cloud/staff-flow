@@ -1717,7 +1717,7 @@ class L10nVi extends L10n {
   String get apiDocs => 'Tài liệu API';
 
   @override
-  String get memberGoogleLink => 'Liên kết đổi tài khoản Google';
+  String get memberGoogleLink => 'Nhân viên đăng nhập lại';
 
   @override
   String googleLinkHint(String name) {

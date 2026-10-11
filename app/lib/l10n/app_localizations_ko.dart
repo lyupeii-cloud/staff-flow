@@ -1681,7 +1681,7 @@ class L10nKo extends L10n {
   String get apiDocs => 'API 문서';
 
   @override
-  String get memberGoogleLink => 'Google 계정 변경 링크';
+  String get memberGoogleLink => '직원 재로그인';
 
   @override
   String googleLinkHint(String name) {

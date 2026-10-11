@@ -1731,7 +1731,7 @@ class L10nUk extends L10n {
   String get apiDocs => 'Документація API';
 
   @override
-  String get memberGoogleLink => 'Посилання для зміни облікового запису Google';
+  String get memberGoogleLink => 'Повторний вхід працівника';
 
   @override
   String googleLinkHint(String name) {

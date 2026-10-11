@@ -1732,7 +1732,7 @@ class L10nRo extends L10n {
   String get apiDocs => 'Documentația API';
 
   @override
-  String get memberGoogleLink => 'Link pentru schimbarea contului Google';
+  String get memberGoogleLink => 'Reconectarea angajatului';
 
   @override
   String googleLinkHint(String name) {

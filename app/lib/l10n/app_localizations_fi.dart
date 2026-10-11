@@ -1726,7 +1726,7 @@ class L10nFi extends L10n {
   String get apiDocs => 'API-dokumentaatio';
 
   @override
-  String get memberGoogleLink => 'Linkki Google-tilin vaihtoon';
+  String get memberGoogleLink => 'Työntekijän uudelleenkirjautuminen';
 
   @override
   String googleLinkHint(String name) {

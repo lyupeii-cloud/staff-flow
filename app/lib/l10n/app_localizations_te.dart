@@ -1719,7 +1719,7 @@ class L10nTe extends L10n {
   String get apiDocs => 'API డాక్యుమెంటేషన్';
 
   @override
-  String get memberGoogleLink => 'Google ఖాతా మార్చే లింక్';
+  String get memberGoogleLink => 'ఉద్యోగి మళ్లీ సైన్ ఇన్';
 
   @override
   String googleLinkHint(String name) {

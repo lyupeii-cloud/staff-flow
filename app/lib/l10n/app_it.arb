@@ -477,7 +477,7 @@
   "apiRevoke": "Revoca",
   "apiRevokeConfirm": "I software che usano questa chiave perderanno l'accesso.",
   "apiDocs": "Documentazione API",
-  "memberGoogleLink": "Link per cambiare account Google",
+  "memberGoogleLink": "Riconnessione del dipendente",
   "googleLinkHint": "Invia questo link a {name}. Si apre in un browser (non nell'app Android), una sola volta, per 24 ore: {name} accede con il nuovo account Google e ritrova il suo account. Tutti gli altri suoi dispositivi vengono allora disconnessi.",
   "googleLinkCopied": "Link copiato.",
   "switchBanner": "Link di cambio account Google: accedi con il tuo nuovo account Google per ritrovare il tuo account Staff Flow.",

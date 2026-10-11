@@ -1724,7 +1724,7 @@ class L10nSk extends L10n {
   String get apiDocs => 'Dokumentácia API';
 
   @override
-  String get memberGoogleLink => 'Odkaz na zmenu účtu Google';
+  String get memberGoogleLink => 'Opätovné prihlásenie zamestnanca';
 
   @override
   String googleLinkHint(String name) {

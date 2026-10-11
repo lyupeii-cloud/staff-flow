@@ -477,7 +477,7 @@
   "apiRevoke": "Zrušit",
   "apiRevokeConfirm": "Software, který tento klíč používá, ztratí přístup.",
   "apiDocs": "Dokumentace API",
-  "memberGoogleLink": "Odkaz ke změně účtu Google",
+  "memberGoogleLink": "Opětovné přihlášení zaměstnance",
   "googleLinkHint": "Pošlete tento odkaz osobě {name}. Otevře se v prohlížeči (ne v aplikaci pro Android), jen jednou, po dobu 24 hodin: {name} se přihlásí novým účtem Google a získá svůj účet zpět. Všechna ostatní zařízení se pak odhlásí.",
   "googleLinkCopied": "Odkaz zkopírován.",
   "switchBanner": "Odkaz ke změně účtu Google: přihlaste se novým účtem Google a získejte zpět svůj účet Staff Flow.",

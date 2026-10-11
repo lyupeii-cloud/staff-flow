@@ -1721,7 +1721,7 @@ class L10nPa extends L10n {
   String get apiDocs => 'API ਦਸਤਾਵੇਜ਼';
 
   @override
-  String get memberGoogleLink => 'Google ਖਾਤਾ ਬਦਲਣ ਦਾ ਲਿੰਕ';
+  String get memberGoogleLink => 'ਕਰਮਚਾਰੀ ਦਾ ਮੁੜ ਲੌਗਇਨ';
 
   @override
   String googleLinkHint(String name) {

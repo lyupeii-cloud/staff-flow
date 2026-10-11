@@ -477,7 +477,7 @@
   "apiRevoke": "Widerrufen",
   "apiRevokeConfirm": "Software, die diesen Schlüssel nutzt, verliert den Zugriff.",
   "apiDocs": "API-Dokumentation",
-  "memberGoogleLink": "Link zum Wechsel des Google-Kontos",
+  "memberGoogleLink": "Neuanmeldung der Person",
   "googleLinkHint": "Senden Sie diesen Link an {name}. Er öffnet sich in einem Browser (nicht in der Android-App), einmalig und 24 Stunden lang: {name} meldet sich mit dem neuen Google-Konto an und erhält das eigene Konto zurück. Alle anderen Geräte werden dann abgemeldet.",
   "googleLinkCopied": "Link kopiert.",
   "switchBanner": "Link zum Wechsel des Google-Kontos: Melden Sie sich mit Ihrem neuen Google-Konto an, um Ihr Staff-Flow-Konto zurückzuerhalten.",

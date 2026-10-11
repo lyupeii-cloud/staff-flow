@@ -1733,7 +1733,7 @@ class L10nFil extends L10n {
   String get apiDocs => 'Dokumentasyon ng API';
 
   @override
-  String get memberGoogleLink => 'Link para magpalit ng Google account';
+  String get memberGoogleLink => 'Muling pag-log in ng empleyado';
 
   @override
   String googleLinkHint(String name) {

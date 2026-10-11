@@ -1720,7 +1720,7 @@ class L10nId extends L10n {
   String get apiDocs => 'Dokumentasi API';
 
   @override
-  String get memberGoogleLink => 'Tautan untuk mengganti akun Google';
+  String get memberGoogleLink => 'Masuk ulang karyawan';
 
   @override
   String googleLinkHint(String name) {

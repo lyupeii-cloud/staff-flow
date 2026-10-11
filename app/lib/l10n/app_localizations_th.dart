@@ -1710,7 +1710,7 @@ class L10nTh extends L10n {
   String get apiDocs => 'เอกสาร API';
 
   @override
-  String get memberGoogleLink => 'ลิงก์สำหรับเปลี่ยนบัญชี Google';
+  String get memberGoogleLink => 'ให้พนักงานเข้าสู่ระบบใหม่';
 
   @override
   String googleLinkHint(String name) {

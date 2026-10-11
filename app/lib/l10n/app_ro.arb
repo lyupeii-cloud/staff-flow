@@ -477,7 +477,7 @@
   "apiRevoke": "Revocă",
   "apiRevokeConfirm": "Programele care folosesc această cheie își vor pierde accesul.",
   "apiDocs": "Documentația API",
-  "memberGoogleLink": "Link pentru schimbarea contului Google",
+  "memberGoogleLink": "Reconectarea angajatului",
   "googleLinkHint": "Trimite acest link lui {name}. Se deschide într-un browser (nu în aplicația Android), o singură dată, timp de 24 de ore: {name} se conectează cu noul cont Google și își recuperează contul. Toate celelalte dispozitive ale sale sunt apoi deconectate.",
   "googleLinkCopied": "Link copiat.",
   "switchBanner": "Link de schimbare a contului Google: conectează-te cu noul cont Google pentru a-ți recupera contul Staff Flow.",
