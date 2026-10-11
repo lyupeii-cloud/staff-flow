@@ -1760,4 +1760,8 @@ class L10nSv extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name har skapat en länk för att koppla ditt konto till ett nytt Google-konto. Om du inte har bett om detta, säg till din chef.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Du har loggats ut: ditt konto är nu kopplat till ett annat Google-konto.';
 }

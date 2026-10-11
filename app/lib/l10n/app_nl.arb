@@ -485,5 +485,6 @@
   "switchDone": "Klaar: je Staff Flow-account is gekoppeld aan dit Google-account. Je andere apparaten zijn uitgelogd.",
   "changeGoogleBot": "Het makkelijkst: stuur in Telegram /changegoogle naar de bot {bot} en volg de instructies; log daarna binnen 10 minuten in met het nieuwe Google-account.",
   "changeGoogleNoTelegram": "Zonder Telegram: vraag je eigenaar of leidinggevende om een link om van Google-account te wisselen.",
-  "noticeGoogleSwitchLink": "{name} heeft een link gemaakt om je account aan een nieuw Google-account te koppelen. Heb je hier niet om gevraagd, laat het dan je leidinggevende weten."
+  "noticeGoogleSwitchLink": "{name} heeft een link gemaakt om je account aan een nieuw Google-account te koppelen. Heb je hier niet om gevraagd, laat het dan je leidinggevende weten.",
+  "sessionRevoked": "Je bent uitgelogd: je account is nu gekoppeld aan een ander Google-account."
 }

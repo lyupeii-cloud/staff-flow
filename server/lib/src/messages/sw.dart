@@ -157,4 +157,5 @@ const sw = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Mtu huyu anafanya kazi katika kampuni kadhaa: lazima aunganishe Telegram yake ili kubadilisha akaunti ya Google.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Imekamilika: akaunti yako ya Staff Flow {id} imeunganishwa na akaunti ya Google {email}. Vifaa vyako vingine vimetolewa.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} ameunda kiungo cha kuunganisha akaunti yako na akaunti mpya ya Google. Ikiwa hukuomba hivi, mjulishe msimamizi wako.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Umetolewa: akaunti yako sasa imeunganishwa na akaunti nyingine ya Google.',
 };

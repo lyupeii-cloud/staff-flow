@@ -86,6 +86,9 @@ class Api {
     }
     if (res.statusCode >= 500) throw OfflineException();
     final decoded = res.body.isEmpty ? null : jsonDecode(utf8.decode(res.bodyBytes));
+    // Session refusée (compte rattaché à un autre compte Google, compte
+    // supprimé…) : l'application se déconnecte.
+    if (res.statusCode == 401 && req.headers.containsKey('authorization')) onUnauthorized?.call();
     if (res.statusCode >= 400) {
       final error = decoded is Map ? decoded['error'] : null;
       final message = error is Map ? error['message'] as String? : null;
@@ -107,6 +110,9 @@ class Api {
     lastLoginSwitched = j['switched'] == true;
     return (j['token'] as String, User.fromJson(j['user']));
   }
+
+  /// Appelé quand le serveur refuse la session en cours.
+  void Function()? onUnauthorized;
 
   /// La dernière connexion a réactivé un compte supprimé en fantôme.
   bool lastLoginRestored = false;

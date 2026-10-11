@@ -1766,4 +1766,8 @@ class L10nIt extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name ha creato un link per collegare il tuo account a un nuovo account Google. Se non l\'hai chiesto, avvisa il tuo responsabile.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Sei stato disconnesso: il tuo account è ora collegato a un altro account Google.';
 }

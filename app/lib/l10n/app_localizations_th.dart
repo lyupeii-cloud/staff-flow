@@ -1745,4 +1745,8 @@ class L10nTh extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name สร้างลิงก์เพื่อเชื่อมบัญชีของคุณกับบัญชี Google ใหม่ หากคุณไม่ได้ขอ โปรดแจ้งผู้จัดการของคุณ';
   }
+
+  @override
+  String get sessionRevoked =>
+      'คุณถูกออกจากระบบแล้ว: บัญชีของคุณเชื่อมกับบัญชี Google อื่นแล้ว';
 }

@@ -1755,4 +1755,8 @@ class L10nBg extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name създаде връзка за свързване на акаунта ви с нов акаунт в Google. Ако не сте поискали това, уведомете отговорника си.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Излязохте от профила си: акаунтът ви вече е свързан с друг акаунт в Google.';
 }

@@ -1757,4 +1757,8 @@ class L10nKk extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name аккаунтыңызды жаңа Google аккаунтына байланыстыру үшін сілтеме жасады. Егер сіз мұны сұрамаған болсаңыз, басшыңызға хабарлаңыз.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Сіз шығарылдыңыз: аккаунтыңыз енді басқа Google аккаунтына байланыстырылған.';
 }

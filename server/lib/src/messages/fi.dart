@@ -157,4 +157,5 @@ const fi = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Tämä henkilö työskentelee useassa yrityksessä: hänen on yhdistettävä Telegraminsa vaihtaakseen Google-tilin.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Valmis: Staff Flow -tilisi {id} on yhdistetty Google-tiliin {email}. Muut laitteesi on kirjattu ulos.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} loi linkin, jolla tilisi yhdistetään uuteen Google-tiliin. Jos et pyytänyt tätä, kerro esihenkilöllesi.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Sinut on kirjattu ulos: tilisi on nyt yhdistetty toiseen Google-tiliin.',
 };

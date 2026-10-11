@@ -45,7 +45,7 @@ class Api {
   late final TelegramService telegram = TelegramService(store, telegramApi, now: now)
     ..interceptor = (chatId, lang, {text, button}) => googleSwitch.onTelegram(chatId, lang, text: text, button: button);
   late final GoogleSwitchService googleSwitch = GoogleSwitchService(store, companies, telegram, notifications, now: now);
-  late final AccountService accounts = AccountService(store, telegram, tokens.derive('account-export'), now: now);
+  late final AccountService accounts = AccountService(store, telegram, tokens.derive('account-export'), now: now, notifications: notifications);
   late final ApiAccessService apiAccess = ApiAccessService(store, companies, tools, now: now);
   late final BillingService billing = BillingService(store, companies, platform, notifications, tokens.derive('invoices'),
       now: now, isAdmin: _isAdmin, testPaymentsForAll: testPaymentsForAll);

@@ -1763,4 +1763,8 @@ class L10nRu extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name создал(а) ссылку, чтобы привязать ваш аккаунт к новому аккаунту Google. Если вы этого не просили, сообщите своему руководителю.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Вы вышли из аккаунта: ваш аккаунт теперь привязан к другому аккаунту Google.';
 }

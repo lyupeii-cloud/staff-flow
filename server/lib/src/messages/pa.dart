@@ -157,4 +157,5 @@ const pa = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'ਇਹ ਵਿਅਕਤੀ ਕਈ ਕੰਪਨੀਆਂ ਵਿੱਚ ਕੰਮ ਕਰਦਾ ਹੈ: Google ਖਾਤਾ ਬਦਲਣ ਲਈ ਉਨ੍ਹਾਂ ਨੂੰ ਆਪਣਾ Telegram ਜੋੜਨਾ ਪਵੇਗਾ।',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'ਹੋ ਗਿਆ: ਤੁਹਾਡਾ Staff Flow ਖਾਤਾ {id} Google ਖਾਤੇ {email} ਨਾਲ ਜੁੜ ਗਿਆ ਹੈ। ਤੁਹਾਡੇ ਬਾਕੀ ਡਿਵਾਈਸ ਸਾਈਨ ਆਊਟ ਕਰ ਦਿੱਤੇ ਗਏ ਹਨ।',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} ਨੇ ਤੁਹਾਡੇ ਖਾਤੇ ਨੂੰ ਨਵੇਂ Google ਖਾਤੇ ਨਾਲ ਜੋੜਨ ਲਈ ਲਿੰਕ ਬਣਾਇਆ ਹੈ। ਜੇ ਤੁਸੀਂ ਇਹ ਨਹੀਂ ਮੰਗਿਆ, ਤਾਂ ਆਪਣੇ ਮੈਨੇਜਰ ਨੂੰ ਦੱਸੋ।',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'ਤੁਹਾਨੂੰ ਸਾਈਨ ਆਊਟ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ: ਤੁਹਾਡਾ ਖਾਤਾ ਹੁਣ ਕਿਸੇ ਹੋਰ Google ਖਾਤੇ ਨਾਲ ਜੁੜਿਆ ਹੈ।',
 };

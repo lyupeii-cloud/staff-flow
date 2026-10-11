@@ -1754,4 +1754,8 @@ class L10nTe extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return 'మీ ఖాతాను కొత్త Google ఖాతాకు లింక్ చేయడానికి $name ఒక లింక్ సృష్టించారు. మీరు అడగకపోతే, మీ మేనేజర్‌కు తెలియజేయండి.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'మీరు సైన్ అవుట్ అయ్యారు: మీ ఖాతా ఇప్పుడు వేరే Google ఖాతాకు లింక్ అయింది.';
 }

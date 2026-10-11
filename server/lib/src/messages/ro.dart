@@ -157,4 +157,5 @@ const ro = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Această persoană lucrează în mai multe firme: trebuie să-și conecteze Telegramul pentru a schimba contul Google.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Gata: contul tău Staff Flow {id} este conectat la contul Google {email}. Celelalte dispozitive ale tale au fost deconectate.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} a creat un link pentru a conecta contul tău la un nou cont Google. Dacă nu ai cerut asta, anunță-ți responsabilul.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Ai fost deconectat: contul tău este acum conectat la alt cont Google.',
 };

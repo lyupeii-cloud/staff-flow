@@ -157,4 +157,5 @@ const vi = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Người này làm việc ở nhiều công ty: họ cần liên kết Telegram để đổi tài khoản Google.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Xong: tài khoản Staff Flow {id} của bạn đã liên kết với tài khoản Google {email}. Các thiết bị khác của bạn đã bị đăng xuất.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} đã tạo một liên kết để gắn tài khoản của bạn với một tài khoản Google mới. Nếu bạn không yêu cầu, hãy báo cho quản lý của bạn.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Bạn đã bị đăng xuất: tài khoản của bạn giờ đã liên kết với một tài khoản Google khác.',
 };

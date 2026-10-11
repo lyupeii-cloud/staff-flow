@@ -157,4 +157,5 @@ const ko = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': '이 사람은 여러 회사에서 일합니다. Google 계정을 변경하려면 Telegram을 연결해야 합니다.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': '완료: Staff Flow 계정 {id}이(가) Google 계정 {email}에 연결되었습니다. 다른 기기는 로그아웃되었습니다.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name}님이 계정을 새 Google 계정에 연결하는 링크를 만들었습니다. 요청한 적이 없다면 관리자에게 알리세요.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': '로그아웃되었습니다. 계정이 이제 다른 Google 계정에 연결되어 있습니다.',
 };

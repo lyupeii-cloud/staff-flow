@@ -1761,4 +1761,8 @@ class L10nFi extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name loi linkin, jolla tilisi yhdistetään uuteen Google-tiliin. Jos et pyytänyt tätä, kerro esihenkilöllesi.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Sinut on kirjattu ulos: tilisi on nyt yhdistetty toiseen Google-tiliin.';
 }

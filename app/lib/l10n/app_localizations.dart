@@ -3106,6 +3106,12 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'{name} created a link to attach your account to a new Google account. If you did not ask for this, tell your manager.'**
   String noticeGoogleSwitchLink(String name);
+
+  /// No description provided for @sessionRevoked.
+  ///
+  /// In en, this message translates to:
+  /// **'You have been signed out: your account is now linked to another Google account.'**
+  String get sessionRevoked;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

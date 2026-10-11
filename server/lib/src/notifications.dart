@@ -115,6 +115,23 @@ class NotificationService {
   final _inflight = <Future<void>>{};
 
   /// Attendre la fin des envois en cours (tests, arrêt du serveur).
+  /// Compte rattaché à un autre compte Google : chaque ancien appareil
+  /// reçoit une notification (l'application se déconnecte aussitôt), puis
+  /// il est oublié.
+  Future<void> revokeDevices(String userId) async {
+    final rows = await store.query(store.db, 'SELECT token, language FROM push_devices WHERE user_id = @u::uuid',
+        {'u': userId});
+    for (final r in rows) {
+      final lang = r[1] as String? ?? 'en';
+      await push?.send(PushMessage(r[0] as String, 'Staff Flow',
+          t('Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.', lang),
+          const {'kind': 'session_revoked'})).catchError((Object _) => PushOutcome.failed);
+    }
+    await store.query(store.db, 'DELETE FROM push_devices WHERE user_id = @u::uuid', {'u': userId});
+  }
+
+  static String t(String fr, String lang) => translate(fr, lang);
+
   Future<void> settle() async {
     while (_inflight.isNotEmpty) {
       await Future.wait(_inflight.toList());

@@ -485,5 +485,6 @@
   "switchDone": "Gotowe: Twoje konto Staff Flow jest połączone z tym kontem Google. Pozostałe urządzenia zostały wylogowane.",
   "changeGoogleBot": "Najprościej: w Telegramie wyślij /changegoogle do bota {bot} i postępuj zgodnie z instrukcjami, a następnie w ciągu 10 minut zaloguj się nowym kontem Google.",
   "changeGoogleNoTelegram": "Bez Telegramu: poproś właściciela lub kierownika o link do zmiany konta Google.",
-  "noticeGoogleSwitchLink": "{name} utworzył(a) link do połączenia Twojego konta z nowym kontem Google. Jeśli o to nie prosiłeś, powiadom swojego kierownika."
+  "noticeGoogleSwitchLink": "{name} utworzył(a) link do połączenia Twojego konta z nowym kontem Google. Jeśli o to nie prosiłeś, powiadom swojego kierownika.",
+  "sessionRevoked": "Wylogowano: Twoje konto jest teraz połączone z innym kontem Google."
 }

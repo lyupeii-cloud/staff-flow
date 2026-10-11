@@ -157,4 +157,5 @@ const mr = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'ही व्यक्ती अनेक कंपन्यांमध्ये काम करते: Google खाते बदलण्यासाठी त्यांनी Telegram जोडणे आवश्यक आहे.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'झाले: तुमचे Staff Flow खाते {id} Google खाते {email} शी जोडले आहे. तुमची इतर उपकरणे साइन आउट झाली आहेत.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} यांनी तुमचे खाते नवीन Google खात्याशी जोडण्यासाठी लिंक तयार केली आहे. तुम्ही हे मागितले नसल्यास, तुमच्या व्यवस्थापकाला कळवा.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'तुम्हाला साइन आउट केले आहे: तुमचे खाते आता दुसऱ्या Google खात्याशी जोडले आहे.',
 };

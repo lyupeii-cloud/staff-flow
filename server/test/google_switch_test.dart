@@ -38,6 +38,7 @@ void main() {
     final company = await env.createCompany(boss);
     await env.store.addMember(company, eva.id, Role.employee);
     await linkTelegram(eva, 42);
+    await eva.ok('PUT', '/devices', {'token': 'ancien-tel', 'platform': 'android', 'language': 'fr'});
     await say(42, '/changegoogle');
     expect(env.telegram.sent.last.$2, contains(eva.user['publicId']));
     await say(42, 'pas une adresse');
@@ -53,6 +54,9 @@ void main() {
     expect(status, 200);
     expect([body['switched'], body['user']['id'], body['user']['email']], [true, eva.id, 'eva.new@example.com']);
     expect((await eva('GET', '/me')).$1, 401, reason: 'ancien appareil déconnecté');
+    // L'ancien téléphone est prévenu tout de suite (l'application se déconnecte).
+    final revoked = env.push.sent.where((p) => p.token == 'ancien-tel').single;
+    expect([revoked.data['kind'], revoked.body], ['session_revoked', contains('déconnecté')]);
     expect(env.telegram.sent.last.$2, contains('signed out'), reason: 'langue du compte inconnue : anglais');
     final again = await env.login('eva.new');
     expect([again.id, (await again.ok('GET', '/me'))['companies'].length], [eva.id, 1]);

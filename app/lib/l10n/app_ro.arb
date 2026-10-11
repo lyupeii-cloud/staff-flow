@@ -485,5 +485,6 @@
   "switchDone": "Gata: contul tău Staff Flow este conectat la acest cont Google. Celelalte dispozitive ale tale au fost deconectate.",
   "changeGoogleBot": "Cel mai simplu: în Telegram trimite /changegoogle botului {bot} și urmează instrucțiunile, apoi conectează-te cu noul cont Google în 10 minute.",
   "changeGoogleNoTelegram": "Fără Telegram: cere patronului sau unui responsabil un link de schimbare a contului Google.",
-  "noticeGoogleSwitchLink": "{name} a creat un link pentru a conecta contul tău la un nou cont Google. Dacă nu ai cerut asta, anunță-ți responsabilul."
+  "noticeGoogleSwitchLink": "{name} a creat un link pentru a conecta contul tău la un nou cont Google. Dacă nu ai cerut asta, anunță-ți responsabilul.",
+  "sessionRevoked": "Ai fost deconectat: contul tău este acum conectat la alt cont Google."
 }

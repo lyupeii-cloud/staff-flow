@@ -157,4 +157,5 @@ const nb = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Denne personen jobber i flere bedrifter: vedkommende må koble Telegram-en sin for å bytte Google-konto.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Ferdig: Staff Flow-kontoen din {id} er koblet til Google-kontoen {email}. De andre enhetene dine er logget ut.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} har laget en lenke for å koble kontoen din til en ny Google-konto. Hvis du ikke har bedt om dette, si fra til lederen din.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Du er logget ut: kontoen din er nå koblet til en annen Google-konto.',
 };

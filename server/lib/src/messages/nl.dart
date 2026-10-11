@@ -157,4 +157,5 @@ const nl = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Deze persoon werkt bij meerdere bedrijven: hij moet zijn Telegram koppelen om van Google-account te wisselen.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Klaar: je Staff Flow-account {id} is gekoppeld aan het Google-account {email}. Je andere apparaten zijn uitgelogd.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} heeft een link gemaakt om je account aan een nieuw Google-account te koppelen. Heb je hier niet om gevraagd, laat het dan je leidinggevende weten.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Je bent uitgelogd: je account is nu gekoppeld aan een ander Google-account.',
 };

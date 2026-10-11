@@ -157,4 +157,5 @@ const it = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Questa persona lavora in più aziende: deve collegare il suo Telegram per cambiare account Google.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Fatto: il tuo account Staff Flow {id} è collegato all\'account Google {email}. Gli altri tuoi dispositivi sono stati disconnessi.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} ha creato un link per collegare il tuo account a un nuovo account Google. Se non l\'hai chiesto, avvisa il tuo responsabile.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Sei stato disconnesso: il tuo account è ora collegato a un altro account Google.',
 };

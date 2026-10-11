@@ -157,4 +157,5 @@ const fil = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Nagtatrabaho ang taong ito sa ilang kumpanya: kailangan niyang i-link ang kanyang Telegram para magpalit ng Google account.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Tapos na: naka-link na ang iyong Staff Flow account na {id} sa Google account na {email}. Na-sign out na ang iba mong device.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': 'Gumawa si {name} ng link para i-link ang iyong account sa bagong Google account. Kung hindi mo ito hiniling, sabihan ang iyong manager.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Na-sign out ka: naka-link na ngayon ang iyong account sa ibang Google account.',
 };

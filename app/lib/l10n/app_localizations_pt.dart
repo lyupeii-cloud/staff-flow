@@ -1762,4 +1762,8 @@ class L10nPt extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name criou um link para vincular sua conta a uma nova conta Google. Se você não pediu isso, avise seu responsável.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Você foi desconectado: sua conta agora está vinculada a outra conta Google.';
 }

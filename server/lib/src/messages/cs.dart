@@ -157,4 +157,5 @@ const cs = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Tato osoba pracuje ve více firmách: ke změně účtu Google musí propojit svůj Telegram.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Hotovo: váš účet Staff Flow {id} je propojen s účtem Google {email}. Vaše ostatní zařízení byla odhlášena.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} vytvořil(a) odkaz k propojení vašeho účtu s novým účtem Google. Pokud jste o to nežádali, dejte vědět svému vedoucímu.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Byli jste odhlášeni: váš účet je nyní propojen s jiným účtem Google.',
 };

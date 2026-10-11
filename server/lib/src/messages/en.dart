@@ -180,4 +180,5 @@ const en = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'This person works in several companies: they must link their Telegram to change Google account.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Done: your Staff Flow account {id} is linked to the Google account {email}. Your other devices have been signed out.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} created a link to attach your account to a new Google account. If you did not ask for this, tell your manager.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'You have been signed out: your account is now linked to another Google account.',
 };

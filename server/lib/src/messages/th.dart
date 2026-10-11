@@ -157,4 +157,5 @@ const th = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'บุคคลนี้ทำงานในหลายบริษัท: ต้องเชื่อม Telegram ก่อนจึงจะเปลี่ยนบัญชี Google ได้',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'เรียบร้อย: บัญชี Staff Flow {id} ของคุณเชื่อมกับบัญชี Google {email} แล้ว อุปกรณ์อื่นของคุณถูกออกจากระบบแล้ว',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} สร้างลิงก์เพื่อเชื่อมบัญชีของคุณกับบัญชี Google ใหม่ หากคุณไม่ได้ขอ โปรดแจ้งผู้จัดการของคุณ',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'คุณถูกออกจากระบบแล้ว: บัญชีของคุณเชื่อมกับบัญชี Google อื่นแล้ว',
 };

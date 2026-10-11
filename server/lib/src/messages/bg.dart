@@ -157,4 +157,5 @@ const bg = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Това лице работи в няколко фирми: трябва да свърже своя Telegram, за да смени акаунта в Google.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Готово: вашият акаунт в Staff Flow {id} е свързан с акаунта в Google {email}. Другите ви устройства са излезли от профила.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} създаде връзка за свързване на акаунта ви с нов акаунт в Google. Ако не сте поискали това, уведомете отговорника си.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Излязохте от профила си: акаунтът ви вече е свързан с друг акаунт в Google.',
 };

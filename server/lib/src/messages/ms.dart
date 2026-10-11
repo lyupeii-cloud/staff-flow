@@ -157,4 +157,5 @@ const ms = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Orang ini bekerja di beberapa syarikat: dia mesti memautkan Telegramnya untuk menukar akaun Google.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Selesai: akaun Staff Flow anda {id} dipautkan kepada akaun Google {email}. Peranti anda yang lain telah dilog keluar.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} telah mencipta pautan untuk memautkan akaun anda kepada akaun Google baharu. Jika anda tidak memintanya, maklumkan kepada pengurus anda.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Anda telah dilog keluar: akaun anda kini dipautkan kepada akaun Google lain.',
 };

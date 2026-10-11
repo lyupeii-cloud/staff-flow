@@ -157,4 +157,5 @@ const te = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'ఈ వ్యక్తి పలు సంస్థల్లో పనిచేస్తారు: Google ఖాతా మార్చడానికి వారు Telegram‌ను లింక్ చేయాలి.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'పూర్తయింది: మీ Staff Flow ఖాతా {id} Google ఖాతా {email}‌కు లింక్ అయింది. మీ ఇతర పరికరాలు సైన్ అవుట్ అయ్యాయి.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': 'మీ ఖాతాను కొత్త Google ఖాతాకు లింక్ చేయడానికి {name} ఒక లింక్ సృష్టించారు. మీరు అడగకపోతే, మీ మేనేజర్‌కు తెలియజేయండి.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'మీరు సైన్ అవుట్ అయ్యారు: మీ ఖాతా ఇప్పుడు వేరే Google ఖాతాకు లింక్ అయింది.',
 };

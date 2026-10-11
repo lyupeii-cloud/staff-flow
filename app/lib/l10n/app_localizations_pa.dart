@@ -1756,4 +1756,8 @@ class L10nPa extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name ਨੇ ਤੁਹਾਡੇ ਖਾਤੇ ਨੂੰ ਨਵੇਂ Google ਖਾਤੇ ਨਾਲ ਜੋੜਨ ਲਈ ਲਿੰਕ ਬਣਾਇਆ ਹੈ। ਜੇ ਤੁਸੀਂ ਇਹ ਨਹੀਂ ਮੰਗਿਆ, ਤਾਂ ਆਪਣੇ ਮੈਨੇਜਰ ਨੂੰ ਦੱਸੋ।';
   }
+
+  @override
+  String get sessionRevoked =>
+      'ਤੁਹਾਨੂੰ ਸਾਈਨ ਆਊਟ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ: ਤੁਹਾਡਾ ਖਾਤਾ ਹੁਣ ਕਿਸੇ ਹੋਰ Google ਖਾਤੇ ਨਾਲ ਜੁੜਿਆ ਹੈ।';
 }

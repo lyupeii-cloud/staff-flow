@@ -1755,4 +1755,8 @@ class L10nId extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name membuat tautan untuk menghubungkan akun Anda ke akun Google baru. Jika Anda tidak memintanya, beri tahu manajer Anda.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Anda telah dikeluarkan: akun Anda kini terhubung ke akun Google lain.';
 }

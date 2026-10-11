@@ -1757,4 +1757,8 @@ class L10nCs extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name vytvořil(a) odkaz k propojení vašeho účtu s novým účtem Google. Pokud jste o to nežádali, dejte vědět svému vedoucímu.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Byli jste odhlášeni: váš účet je nyní propojen s jiným účtem Google.';
 }

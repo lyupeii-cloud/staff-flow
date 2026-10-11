@@ -157,4 +157,5 @@ const zh = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': '此人在多家公司工作：需要关联 Telegram 才能更换 Google 账号。',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': '完成：您的 Staff Flow 账号 {id} 已关联到 Google 账号 {email}。您的其他设备已退出登录。',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} 创建了一个链接，用于将您的账号关联到新的 Google 账号。如果您没有提出此请求，请告知您的负责人。',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': '您已退出登录：您的账号现已关联到另一个 Google 账号。',
 };

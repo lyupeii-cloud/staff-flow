@@ -157,4 +157,5 @@ const ta = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'இவர் பல நிறுவனங்களில் பணியாற்றுகிறார்: Google கணக்கை மாற்ற தன் Telegram-ஐ இணைக்க வேண்டும்.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'முடிந்தது: உங்கள் Staff Flow கணக்கு {id} Google கணக்கு {email} உடன் இணைக்கப்பட்டது. உங்கள் மற்ற சாதனங்கள் வெளியேற்றப்பட்டன.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': 'உங்கள் கணக்கை புதிய Google கணக்குடன் இணைக்க {name} ஒரு இணைப்பை உருவாக்கியுள்ளார். நீங்கள் கேட்கவில்லை என்றால், உங்கள் மேலாளரிடம் தெரிவியுங்கள்.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'நீங்கள் வெளியேற்றப்பட்டீர்கள்: உங்கள் கணக்கு இப்போது வேறொரு Google கணக்குடன் இணைக்கப்பட்டுள்ளது.',
 };

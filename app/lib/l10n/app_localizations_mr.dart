@@ -1752,4 +1752,8 @@ class L10nMr extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name यांनी तुमचे खाते नवीन Google खात्याशी जोडण्यासाठी लिंक तयार केली आहे. तुम्ही हे मागितले नसल्यास, तुमच्या व्यवस्थापकाला कळवा.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'तुम्हाला साइन आउट केले आहे: तुमचे खाते आता दुसऱ्या Google खात्याशी जोडले आहे.';
 }

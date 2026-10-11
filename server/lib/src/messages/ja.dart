@@ -157,4 +157,5 @@ const ja = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'この人は複数の会社で働いています。Google アカウントを変更するには Telegram の連携が必要です。',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': '完了：Staff Flow アカウント {id} は Google アカウント {email} に連携されました。ほかの端末はログアウトされました。',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} が、あなたのアカウントを新しい Google アカウントに連携するリンクを作成しました。心当たりがない場合は、責任者に知らせてください。',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'ログアウトされました。アカウントは別の Google アカウントに連携されています。',
 };

@@ -485,5 +485,6 @@
   "switchDone": "Imekamilika: akaunti yako ya Staff Flow imeunganishwa na akaunti hii ya Google. Vifaa vyako vingine vimetolewa.",
   "changeGoogleBot": "Njia rahisi zaidi: kwenye Telegram, tuma /changegoogle kwa boti {bot} na ufuate maagizo yake, kisha ingia kwa akaunti mpya ya Google ndani ya dakika 10.",
   "changeGoogleNoTelegram": "Bila Telegram: muombe mmiliki au msimamizi kiungo cha kubadilisha akaunti ya Google.",
-  "noticeGoogleSwitchLink": "{name} ameunda kiungo cha kuunganisha akaunti yako na akaunti mpya ya Google. Ikiwa hukuomba hivi, mjulishe msimamizi wako."
+  "noticeGoogleSwitchLink": "{name} ameunda kiungo cha kuunganisha akaunti yako na akaunti mpya ya Google. Ikiwa hukuomba hivi, mjulishe msimamizi wako.",
+  "sessionRevoked": "Umetolewa: akaunti yako sasa imeunganishwa na akaunti nyingine ya Google."
 }

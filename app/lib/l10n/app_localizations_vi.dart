@@ -1752,4 +1752,8 @@ class L10nVi extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name đã tạo một liên kết để gắn tài khoản của bạn với một tài khoản Google mới. Nếu bạn không yêu cầu, hãy báo cho quản lý của bạn.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Bạn đã bị đăng xuất: tài khoản của bạn giờ đã liên kết với một tài khoản Google khác.';
 }

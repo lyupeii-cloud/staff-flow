@@ -1773,4 +1773,8 @@ class L10nDe extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name hat einen Link erstellt, um Ihr Konto mit einem neuen Google-Konto zu verknüpfen. Wenn Sie das nicht angefragt haben, informieren Sie Ihre Führungskraft.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Sie wurden abgemeldet: Ihr Konto ist jetzt mit einem anderen Google-Konto verknüpft.';
 }

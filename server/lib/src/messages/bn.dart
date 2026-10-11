@@ -157,4 +157,5 @@ const bn = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'এই ব্যক্তি একাধিক প্রতিষ্ঠানে কাজ করেন: Google অ্যাকাউন্ট বদলাতে তাঁকে Telegram যুক্ত করতে হবে।',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'সম্পন্ন: আপনার Staff Flow অ্যাকাউন্ট {id} Google অ্যাকাউন্ট {email}-এর সাথে যুক্ত। আপনার অন্য ডিভাইসগুলো সাইন আউট করা হয়েছে।',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} আপনার অ্যাকাউন্টকে একটি নতুন Google অ্যাকাউন্টের সাথে যুক্ত করার লিঙ্ক তৈরি করেছেন। আপনি এটি না চাইলে আপনার ব্যবস্থাপককে জানান।',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'আপনাকে সাইন আউট করা হয়েছে: আপনার অ্যাকাউন্ট এখন অন্য একটি Google অ্যাকাউন্টের সাথে যুক্ত।',
 };

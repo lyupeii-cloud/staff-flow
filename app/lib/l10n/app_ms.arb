@@ -485,5 +485,6 @@
   "switchDone": "Selesai: akaun Staff Flow anda dipautkan kepada akaun Google ini. Peranti anda yang lain telah dilog keluar.",
   "changeGoogleBot": "Cara paling mudah: dalam Telegram, hantar /changegoogle kepada bot {bot} dan ikut arahannya, kemudian log masuk dengan akaun Google baharu dalam masa 10 minit.",
   "changeGoogleNoTelegram": "Tanpa Telegram: minta pautan penukaran akaun Google daripada pemilik atau pengurus.",
-  "noticeGoogleSwitchLink": "{name} telah mencipta pautan untuk memautkan akaun anda kepada akaun Google baharu. Jika anda tidak memintanya, maklumkan kepada pengurus anda."
+  "noticeGoogleSwitchLink": "{name} telah mencipta pautan untuk memautkan akaun anda kepada akaun Google baharu. Jika anda tidak memintanya, maklumkan kepada pengurus anda.",
+  "sessionRevoked": "Anda telah dilog keluar: akaun anda kini dipautkan kepada akaun Google lain."
 }

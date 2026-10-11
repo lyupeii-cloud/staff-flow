@@ -485,5 +485,6 @@
   "switchDone": "Selesai: akun Staff Flow Anda terhubung ke akun Google ini. Perangkat Anda yang lain telah dikeluarkan.",
   "changeGoogleBot": "Cara termudah: di Telegram, kirim /changegoogle ke bot {bot} dan ikuti petunjuknya, lalu masuk dengan akun Google baru dalam 10 menit.",
   "changeGoogleNoTelegram": "Tanpa Telegram: minta tautan penggantian akun Google kepada pemilik atau manajer.",
-  "noticeGoogleSwitchLink": "{name} membuat tautan untuk menghubungkan akun Anda ke akun Google baru. Jika Anda tidak memintanya, beri tahu manajer Anda."
+  "noticeGoogleSwitchLink": "{name} membuat tautan untuk menghubungkan akun Anda ke akun Google baru. Jika Anda tidak memintanya, beri tahu manajer Anda.",
+  "sessionRevoked": "Anda telah dikeluarkan: akun Anda kini terhubung ke akun Google lain."
 }

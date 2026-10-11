@@ -1770,4 +1770,8 @@ class L10nPl extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name utworzył(a) link do połączenia Twojego konta z nowym kontem Google. Jeśli o to nie prosiłeś, powiadom swojego kierownika.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Wylogowano: Twoje konto jest teraz połączone z innym kontem Google.';
 }

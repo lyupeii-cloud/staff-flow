@@ -1757,4 +1757,8 @@ class L10nNb extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name har laget en lenke for å koble kontoen din til en ny Google-konto. Hvis du ikke har bedt om dette, si fra til lederen din.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Du er logget ut: kontoen din er nå koblet til en annen Google-konto.';
 }

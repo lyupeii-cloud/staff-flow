@@ -1771,4 +1771,8 @@ class L10nEl extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return 'Ο/Η $name δημιούργησε σύνδεσμο για να συνδεθεί ο λογαριασμός σας με νέο λογαριασμό Google. Αν δεν το ζητήσατε, ενημερώστε τον υπεύθυνό σας.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Αποσυνδεθήκατε: ο λογαριασμός σας είναι πλέον συνδεδεμένος με άλλον λογαριασμό Google.';
 }

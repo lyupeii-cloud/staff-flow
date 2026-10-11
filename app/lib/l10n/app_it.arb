@@ -485,5 +485,6 @@
   "switchDone": "Fatto: il tuo account Staff Flow è collegato a questo account Google. Gli altri tuoi dispositivi sono stati disconnessi.",
   "changeGoogleBot": "La cosa più semplice: in Telegram invia /changegoogle al bot {bot} e segui le istruzioni, poi accedi con il nuovo account Google entro 10 minuti.",
   "changeGoogleNoTelegram": "Senza Telegram: chiedi al titolare o a un responsabile un link di cambio account Google.",
-  "noticeGoogleSwitchLink": "{name} ha creato un link per collegare il tuo account a un nuovo account Google. Se non l'hai chiesto, avvisa il tuo responsabile."
+  "noticeGoogleSwitchLink": "{name} ha creato un link per collegare il tuo account a un nuovo account Google. Se non l'hai chiesto, avvisa il tuo responsabile.",
+  "sessionRevoked": "Sei stato disconnesso: il tuo account è ora collegato a un altro account Google."
 }

@@ -157,4 +157,5 @@ const es = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Esta persona trabaja en varias empresas: debe vincular su Telegram para cambiar de cuenta de Google.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Listo: tu cuenta de Staff Flow {id} está vinculada a la cuenta de Google {email}. Se ha cerrado la sesión en tus demás dispositivos.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} ha creado un enlace para vincular tu cuenta a una nueva cuenta de Google. Si no lo has pedido, avisa a tu responsable.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Se ha cerrado tu sesión: tu cuenta ahora está vinculada a otra cuenta de Google.',
 };

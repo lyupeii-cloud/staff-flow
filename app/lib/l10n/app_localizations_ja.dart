@@ -1714,4 +1714,7 @@ class L10nJa extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name が、あなたのアカウントを新しい Google アカウントに連携するリンクを作成しました。心当たりがない場合は、責任者に知らせてください。';
   }
+
+  @override
+  String get sessionRevoked => 'ログアウトされました。アカウントは別の Google アカウントに連携されています。';
 }

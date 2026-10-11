@@ -157,4 +157,5 @@ const ru = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Этот человек работает в нескольких компаниях: чтобы сменить аккаунт Google, он должен привязать свой Telegram.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Готово: ваш аккаунт Staff Flow {id} привязан к аккаунту Google {email}. На остальных ваших устройствах выполнен выход.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} создал(а) ссылку, чтобы привязать ваш аккаунт к новому аккаунту Google. Если вы этого не просили, сообщите своему руководителю.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Вы вышли из аккаунта: ваш аккаунт теперь привязан к другому аккаунту Google.',
 };

@@ -1760,4 +1760,8 @@ class L10nSw extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name ameunda kiungo cha kuunganisha akaunti yako na akaunti mpya ya Google. Ikiwa hukuomba hivi, mjulishe msimamizi wako.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Umetolewa: akaunti yako sasa imeunganishwa na akaunti nyingine ya Google.';
 }

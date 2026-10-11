@@ -485,5 +485,6 @@
   "switchDone": "Tapos na: naka-link na ang iyong Staff Flow account sa Google account na ito. Na-sign out na ang iba mong device.",
   "changeGoogleBot": "Pinakamadali: sa Telegram, ipadala ang /changegoogle sa bot na {bot} at sundin ang mga tagubilin, saka mag-sign in gamit ang bagong Google account sa loob ng 10 minuto.",
   "changeGoogleNoTelegram": "Walang Telegram: humingi sa may-ari o sa isang manager ng link para magpalit ng Google account.",
-  "noticeGoogleSwitchLink": "Gumawa si {name} ng link para i-link ang iyong account sa bagong Google account. Kung hindi mo ito hiniling, sabihan ang iyong manager."
+  "noticeGoogleSwitchLink": "Gumawa si {name} ng link para i-link ang iyong account sa bagong Google account. Kung hindi mo ito hiniling, sabihan ang iyong manager.",
+  "sessionRevoked": "Na-sign out ka: naka-link na ngayon ang iyong account sa ibang Google account."
 }

@@ -80,7 +80,22 @@ class Session extends ChangeNotifier {
   /// La connexion vient de rattacher ce compte Google à un compte existant.
   bool accountSwitched = false;
 
+  bool _revoking = false;
+
+  /// Session fermée par le serveur : déconnexion ; [switched] : le compte
+  /// vient d'être rattaché à un autre compte Google (on le dit).
+  void _sessionRevoked({bool switched = false}) {
+    if (state != SessionState.signedIn || _revoking) return;
+    _revoking = true;
+    unawaited(signOut().whenComplete(() {
+      _revoking = false;
+      if (switched) error = (t) => t.sessionRevoked;
+      notifyListeners();
+    }));
+  }
+
   Future<void> start() async {
+    api.onUnauthorized = _sessionRevoked;
     unawaited(_initGoogle());
     unawaited(_initPush());
     unawaited(_initPush());
@@ -119,6 +134,8 @@ class Session extends ChangeNotifier {
     push.events.listen((e) async {
       // Nouvel avis : la cloche se met à jour ; planning publié : il se recharge.
       if (state != SessionState.signedIn) return;
+      // Compte rattaché à un autre compte Google : cet appareil se déconnecte.
+      if (e.kind == 'session_revoked') return _sessionRevoked(switched: true);
       if (e.kind == 'schedule_published' || e.kind == 'member_joined' || e.data['requestId'] != null) {
         sync.markChanged();
       }

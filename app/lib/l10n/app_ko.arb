@@ -485,5 +485,6 @@
   "switchDone": "완료: Staff Flow 계정이 이 Google 계정에 연결되었습니다. 다른 기기는 로그아웃되었습니다.",
   "changeGoogleBot": "가장 쉬운 방법: Telegram에서 봇 {bot}에게 /changegoogle을 보내 안내를 따른 뒤, 10분 안에 새 Google 계정으로 로그인하세요.",
   "changeGoogleNoTelegram": "Telegram이 없다면: 소유자나 관리자에게 Google 계정 변경 링크를 요청하세요.",
-  "noticeGoogleSwitchLink": "{name}님이 계정을 새 Google 계정에 연결하는 링크를 만들었습니다. 요청한 적이 없다면 관리자에게 알리세요."
+  "noticeGoogleSwitchLink": "{name}님이 계정을 새 Google 계정에 연결하는 링크를 만들었습니다. 요청한 적이 없다면 관리자에게 알리세요.",
+  "sessionRevoked": "로그아웃되었습니다. 계정이 이제 다른 Google 계정에 연결되어 있습니다."
 }

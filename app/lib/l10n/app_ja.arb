@@ -485,5 +485,6 @@
   "switchDone": "完了：Staff Flow のアカウントがこの Google アカウントに連携されました。ほかの端末はログアウトされました。",
   "changeGoogleBot": "いちばん簡単な方法：Telegram でボット {bot} に /changegoogle を送り、案内に従ってください。その後 10 分以内に新しい Google アカウントでログインします。",
   "changeGoogleNoTelegram": "Telegram がない場合：オーナーまたは責任者に Google アカウント変更用リンクを依頼してください。",
-  "noticeGoogleSwitchLink": "{name} が、あなたのアカウントを新しい Google アカウントに連携するリンクを作成しました。心当たりがない場合は、責任者に知らせてください。"
+  "noticeGoogleSwitchLink": "{name} が、あなたのアカウントを新しい Google アカウントに連携するリンクを作成しました。心当たりがない場合は、責任者に知らせてください。",
+  "sessionRevoked": "ログアウトされました。アカウントは別の Google アカウントに連携されています。"
 }

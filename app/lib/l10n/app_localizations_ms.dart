@@ -1757,4 +1757,8 @@ class L10nMs extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name telah mencipta pautan untuk memautkan akaun anda kepada akaun Google baharu. Jika anda tidak memintanya, maklumkan kepada pengurus anda.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Anda telah dilog keluar: akaun anda kini dipautkan kepada akaun Google lain.';
 }

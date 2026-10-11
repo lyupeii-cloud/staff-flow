@@ -157,4 +157,5 @@ const hu = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Ez a személy több cégnél dolgozik: a Google-fiók cseréjéhez össze kell kapcsolnia a Telegramját.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Kész: a(z) {id} Staff Flow-fiókja a(z) {email} Google-fiókhoz kapcsolódik. A többi eszközéről kijelentkeztettük.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} létrehozott egy linket, amellyel a fiókja új Google-fiókhoz kapcsolható. Ha nem Ön kérte, szóljon a vezetőjének.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Kijelentkeztettük: fiókja mostantól egy másik Google-fiókhoz kapcsolódik.',
 };

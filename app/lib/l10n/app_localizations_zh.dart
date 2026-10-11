@@ -1697,4 +1697,7 @@ class L10nZh extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name 创建了一个链接，用于将您的账号关联到新的 Google 账号。如果您没有提出此请求，请告知您的负责人。';
   }
+
+  @override
+  String get sessionRevoked => '您已退出登录：您的账号现已关联到另一个 Google 账号。';
 }

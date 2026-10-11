@@ -1766,4 +1766,8 @@ class L10nUk extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name створив(-ла) посилання, щоб прив\'язати ваш обліковий запис до нового облікового запису Google. Якщо ви цього не просили, повідомте свого керівника.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Вас від’єднано: ваш обліковий запис тепер прив’язано до іншого облікового запису Google.';
 }

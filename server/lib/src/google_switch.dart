@@ -188,10 +188,10 @@ class GoogleSwitchService {
           deleted_at = NULL, session_version = session_version + 1
         WHERE id = @u::uuid''', {'u': targetId, 's': sub, 'e': email, 'n': name, 'p': photo, 'l': locale});
       // Anciens appareils : plus de notifications ; leurs sessions ne valent plus.
-      await store.query(tx, 'DELETE FROM push_devices WHERE user_id = @u::uuid', {'u': targetId});
       await store.query(tx, 'DELETE FROM google_switches WHERE user_id = @u::uuid', {'u': targetId});
       await store.audit(actorId: targetId!, action: 'account.google_changed', details: {'email': email, 'by': link == null ? 'telegram' : 'link'}, tx: tx);
     });
+    await notifications.revokeDevices(targetId);
     final user = (await store.findActiveUser(targetId))!;
     await telegram.sendTo(
         targetId,

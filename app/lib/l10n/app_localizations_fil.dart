@@ -1768,4 +1768,8 @@ class L10nFil extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return 'Gumawa si $name ng link para i-link ang iyong account sa bagong Google account. Kung hindi mo ito hiniling, sabihan ang iyong manager.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Na-sign out ka: naka-link na ngayon ang iyong account sa ibang Google account.';
 }

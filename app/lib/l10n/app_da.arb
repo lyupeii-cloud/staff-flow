@@ -485,5 +485,6 @@
   "switchDone": "Færdig: din Staff Flow-konto er tilknyttet denne Google-konto. Dine andre enheder er logget ud.",
   "changeGoogleBot": "Det nemmeste: send /changegoogle til botten {bot} i Telegram, og følg instruktionerne; log derefter ind med den nye Google-konto inden for 10 minutter.",
   "changeGoogleNoTelegram": "Uden Telegram: bed ejeren eller en leder om et link til at skifte Google-konto.",
-  "noticeGoogleSwitchLink": "{name} har oprettet et link til at knytte din konto til en ny Google-konto. Hvis du ikke har bedt om det, så sig det til din leder."
+  "noticeGoogleSwitchLink": "{name} har oprettet et link til at knytte din konto til en ny Google-konto. Hvis du ikke har bedt om det, så sig det til din leder.",
+  "sessionRevoked": "Du er blevet logget ud: din konto er nu tilknyttet en anden Google-konto."
 }

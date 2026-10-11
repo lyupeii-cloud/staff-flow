@@ -485,5 +485,6 @@
   "switchDone": "Klart: ditt Staff Flow-konto är kopplat till det här Google-kontot. Dina andra enheter har loggats ut.",
   "changeGoogleBot": "Enklast: skicka /changegoogle till boten {bot} i Telegram och följ instruktionerna, logga sedan in med det nya Google-kontot inom 10 minuter.",
   "changeGoogleNoTelegram": "Utan Telegram: be ägaren eller en chef om en länk för att byta Google-konto.",
-  "noticeGoogleSwitchLink": "{name} har skapat en länk för att koppla ditt konto till ett nytt Google-konto. Om du inte har bett om detta, säg till din chef."
+  "noticeGoogleSwitchLink": "{name} har skapat en länk för att koppla ditt konto till ett nytt Google-konto. Om du inte har bett om detta, säg till din chef.",
+  "sessionRevoked": "Du har loggats ut: ditt konto är nu kopplat till ett annat Google-konto."
 }

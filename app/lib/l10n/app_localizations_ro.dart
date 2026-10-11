@@ -1767,4 +1767,8 @@ class L10nRo extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name a creat un link pentru a conecta contul tău la un nou cont Google. Dacă nu ai cerut asta, anunță-ți responsabilul.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Ai fost deconectat: contul tău este acum conectat la alt cont Google.';
 }

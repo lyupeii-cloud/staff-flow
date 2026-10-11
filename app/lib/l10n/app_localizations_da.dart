@@ -1760,4 +1760,8 @@ class L10nDa extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name har oprettet et link til at knytte din konto til en ny Google-konto. Hvis du ikke har bedt om det, så sig det til din leder.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Du er blevet logget ud: din konto er nu tilknyttet en anden Google-konto.';
 }

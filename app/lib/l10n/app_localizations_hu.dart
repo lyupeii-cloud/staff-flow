@@ -1754,4 +1754,8 @@ class L10nHu extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name létrehozott egy linket, amellyel a fiókja új Google-fiókhoz kapcsolható. Ha nem Ön kérte, szóljon a vezetőjének.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'Kijelentkeztettük: fiókja mostantól egy másik Google-fiókhoz kapcsolódik.';
 }

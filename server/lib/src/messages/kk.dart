@@ -157,4 +157,5 @@ const kk = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Бұл адам бірнеше компанияда жұмыс істейді: Google аккаунтын ауыстыру үшін Telegram-ын байланыстыруы керек.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Дайын: Staff Flow аккаунтыңыз {id} {email} Google аккаунтына байланыстырылды. Басқа құрылғыларыңыздан шығарылды.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} аккаунтыңызды жаңа Google аккаунтына байланыстыру үшін сілтеме жасады. Егер сіз мұны сұрамаған болсаңыз, басшыңызға хабарлаңыз.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Сіз шығарылдыңыз: аккаунтыңыз енді басқа Google аккаунтына байланыстырылған.',
 };

@@ -1270,5 +1270,6 @@
         "type": "String"
       }
     }
-  }
+  },
+  "sessionRevoked": "You have been signed out: your account is now linked to another Google account."
 }

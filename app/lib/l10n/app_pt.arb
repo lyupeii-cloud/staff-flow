@@ -485,5 +485,6 @@
   "switchDone": "Pronto: sua conta Staff Flow está vinculada a esta conta Google. Seus outros dispositivos foram desconectados.",
   "changeGoogleBot": "O mais simples: no Telegram, envie /changegoogle ao bot {bot} e siga as instruções; depois entre com a nova conta Google em até 10 minutos.",
   "changeGoogleNoTelegram": "Sem Telegram: peça ao proprietário ou a um responsável um link de troca de conta Google.",
-  "noticeGoogleSwitchLink": "{name} criou um link para vincular sua conta a uma nova conta Google. Se você não pediu isso, avise seu responsável."
+  "noticeGoogleSwitchLink": "{name} criou um link para vincular sua conta a uma nova conta Google. Se você não pediu isso, avise seu responsável.",
+  "sessionRevoked": "Você foi desconectado: sua conta agora está vinculada a outra conta Google."
 }

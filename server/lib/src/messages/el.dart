@@ -157,4 +157,5 @@ const el = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Αυτό το άτομο εργάζεται σε πολλές επιχειρήσεις: πρέπει να συνδέσει το Telegram του για να αλλάξει λογαριασμό Google.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Έγινε: ο λογαριασμός σας Staff Flow {id} συνδέθηκε με τον λογαριασμό Google {email}. Οι άλλες συσκευές σας αποσυνδέθηκαν.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': 'Ο/Η {name} δημιούργησε σύνδεσμο για να συνδεθεί ο λογαριασμός σας με νέο λογαριασμό Google. Αν δεν το ζητήσατε, ενημερώστε τον υπεύθυνό σας.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Αποσυνδεθήκατε: ο λογαριασμός σας είναι πλέον συνδεδεμένος με άλλον λογαριασμό Google.',
 };

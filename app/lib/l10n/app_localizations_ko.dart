@@ -1716,4 +1716,7 @@ class L10nKo extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return '$name님이 계정을 새 Google 계정에 연결하는 링크를 만들었습니다. 요청한 적이 없다면 관리자에게 알리세요.';
   }
+
+  @override
+  String get sessionRevoked => '로그아웃되었습니다. 계정이 이제 다른 Google 계정에 연결되어 있습니다.';
 }

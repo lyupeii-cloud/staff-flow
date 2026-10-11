@@ -157,4 +157,5 @@ const da = <String, String>{
   'Cette personne travaille dans plusieurs entreprises : elle doit relier son Telegram pour changer de compte Google.': 'Denne person arbejder i flere virksomheder: vedkommende skal tilknytte sit Telegram for at skifte Google-konto.',
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Færdig: din Staff Flow-konto {id} er tilknyttet Google-kontoen {email}. Dine andre enheder er logget ud.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} har oprettet et link til at knytte din konto til en ny Google-konto. Hvis du ikke har bedt om det, så sig det til din leder.',
+  'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Du er blevet logget ud: din konto er nu tilknyttet en anden Google-konto.',
 };

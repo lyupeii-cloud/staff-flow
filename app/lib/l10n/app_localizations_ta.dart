@@ -1768,4 +1768,8 @@ class L10nTa extends L10n {
   String noticeGoogleSwitchLink(String name) {
     return 'உங்கள் கணக்கை புதிய Google கணக்குடன் இணைக்க $name ஒரு இணைப்பை உருவாக்கியுள்ளார். நீங்கள் கேட்கவில்லை என்றால், உங்கள் மேலாளரிடம் தெரிவியுங்கள்.';
   }
+
+  @override
+  String get sessionRevoked =>
+      'நீங்கள் வெளியேற்றப்பட்டீர்கள்: உங்கள் கணக்கு இப்போது வேறொரு Google கணக்குடன் இணைக்கப்பட்டுள்ளது.';
 }
