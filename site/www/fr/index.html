@@ -18,7 +18,7 @@
   <meta name="theme-color" content="#061440">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preload" href="/fonts/Nunito.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="/style.css?v=5">
+  <link rel="stylesheet" href="/style.css?v=6">
 </head>
 <body>
 <header class="top">
@@ -60,6 +60,9 @@
     <div class="card"><div class="ico" aria-hidden="true">📶</div><h3>Même sans réseau</h3><p>Sans connexion, le planning reste affiché et vous pouvez continuer à le préparer ou demander un congé : c'est gardé sur le téléphone et envoyé à l'équipe dès que le réseau revient.</p></div>
     <div class="card"><div class="ico" aria-hidden="true">🏢</div><h3>Plusieurs sites et entreprises</h3><p>Sites en cascade, responsables par site, et un onglet par entreprise pour qui travaille à plusieurs endroits.</p></div>
     <div class="card"><div class="ico" aria-hidden="true">🌍</div><h3>37 langues</h3><p>Chacun utilise l'application dans sa langue : français, ukrainien, anglais, espagnol, polonais…</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">🔌</div><h3>Relié à vos logiciels</h3><p>Accès API pour votre paie, votre comptabilité ou votre CRM : les heures arrivent toutes seules.</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">🧾</div><h3>Factures claires</h3><p>Chaque paiement détaillé ligne par ligne, factures téléchargeables et rangées par année.</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">🛡️</div><h3>Vos données protégées</h3><p>Export de vos données en un geste, suppression du compte à tout moment, aucune publicité ciblée.</p></div>
   </div>
 </section>
 
@@ -73,6 +76,32 @@
       <figure><img src="/img/fr/3-messages.jpg?v=2" alt="La messagerie" width="540" height="1200" loading="lazy"><figcaption>La messagerie<span>Les demandes d'échange arrivent dans la conversation.</span></figcaption></figure>
       <figure><img src="/img/fr/4-demandes.jpg?v=2" alt="Les demandes" width="540" height="1200" loading="lazy"><figcaption>Les demandes<span>Échanges et congés, validés en un tap.</span></figcaption></figure>
       <figure><img src="/img/fr/5-management.jpg?v=2" alt="Le management" width="540" height="1200" loading="lazy"><figcaption>Le management<span>Votre équipe, ses rôles et ses sites.</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="api-band" id="api">
+  <div class="wrap api-grid">
+    <div>
+      <span class="pill">Pour les entreprises</span>
+      <h2>Vos plannings, directement dans votre comptabilité</h2>
+      <p class="sub">Avec l'accès API, votre logiciel de paie, de comptabilité ou votre CRM récupère tout seul les heures de chacun : plus de ressaisie, plus d'erreurs de copie.</p>
+      <ul class="checks api-points"><li>Planning publié, heures par salarié et absences validées</li><li>Une période au choix, ou tout depuis le premier jour</li><li>JSON pour les développeurs, CSV pour Excel</li><li>Lecture seule, clés révocables à tout moment</li></ul>
+      <div class="cta">
+        <a class="btn btn-main" href="/fr/api/">Voir la documentation</a>
+      </div>
+      <p class="note">Option à 3 € par mois, sans engagement, incluse pendant l'essai.</p>
+    </div>
+    <div class="api-code" aria-hidden="true" translate="no">
+      <div class="api-code-bar"><span></span><span></span><span></span></div>
+<pre><span class="c-cmd">GET</span> /api/v1/ext/totals?from=2026-10-01
+<span class="c-key">Authorization:</span> Bearer sfk_••••••
+
+{ <span class="c-key">"data"</span>: [
+  { <span class="c-key">"name"</span>: <span class="c-str">"Olena"</span>, <span class="c-key">"minutes"</span>: <span class="c-num">9120</span> },
+  { <span class="c-key">"name"</span>: <span class="c-str">"Andriy"</span>, <span class="c-key">"minutes"</span>: <span class="c-num">7680</span> },
+  { <span class="c-key">"name"</span>: <span class="c-str">"Sofia"</span>, <span class="c-key">"minutes"</span>: <span class="c-num">6240</span> }
+] }</pre>
     </div>
   </div>
 </section>
@@ -108,7 +137,7 @@
       <div class="card price main">
         <h3>Propriétaire d'entreprise</h3>
         <div class="amount">3 € <small>/ mois</small></div>
-        <ul><li>Jusqu'à 10 salariés et 1 extra</li><li>+ tarification par tranches de 10 salariés</li><li>2 mois offerts en paiement annuel</li><li>2 jours d'essai complet</li></ul>
+        <ul><li>Jusqu'à 10 salariés et 1 extra</li><li>+ tarification par tranches de 10 salariés</li><li>2 mois offerts en paiement annuel</li><li>2 jours d'essai complet</li><li>Option accès API (comptabilité, CRM) : 3 € / mois</li></ul>
       </div>
       <div class="card price">
         <h3>Salariés et extras</h3>
@@ -129,6 +158,7 @@
       <details><summary>Comment se connecter ?</summary><p>Avec un compte Google, sans nouveau mot de passe. Chacun garde le même compte pour toutes ses entreprises.</p></details>
       <details><summary>Et si le téléphone n'a pas de réseau ?</summary><p>Le planning déjà reçu reste affiché. Le patron peut continuer à préparer le planning et un salarié à faire une demande de congé : c'est gardé dans la mémoire du téléphone, puis envoyé dès que la connexion revient. Les autres ne voient ces changements qu'à ce moment-là.</p></details>
       <details><summary>Mes données sont-elles protégées ?</summary><p>Les échanges sont chiffrés (HTTPS), les sauvegardes aussi. Vos plannings et messages ne sont ni vendus, ni utilisés pour la publicité.</p></details>
+      <details><summary>Staff Flow se connecte-t-il à mon logiciel de paie ou à mon CRM ?</summary><p>Oui, avec l'option accès API : votre logiciel lit automatiquement le planning publié, les heures par salarié et les absences, en JSON ou en CSV. Vous créez les clés vous-même dans l'application et pouvez les révoquer à tout moment. La documentation est publique : staff-flow.cloud/fr/api.</p></details>
       <details><summary>Puis-je gérer plusieurs entreprises ?</summary><p>Oui : un onglet par entreprise. Une personne qui travaille dans deux entreprises voit tous ses plannings au même endroit.</p></details>
     </div>
   </div>

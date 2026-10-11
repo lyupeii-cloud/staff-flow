@@ -44,6 +44,9 @@ final t = <String, Map<String, Object>>{
       ['📶', 'Même sans réseau', 'Sans connexion, le planning reste affiché et vous pouvez continuer à le préparer ou demander un congé : c\'est gardé sur le téléphone et envoyé à l\'équipe dès que le réseau revient.'],
       ['🏢', 'Plusieurs sites et entreprises', 'Sites en cascade, responsables par site, et un onglet par entreprise pour qui travaille à plusieurs endroits.'],
       ['🌍', '37 langues', 'Chacun utilise l\'application dans sa langue : français, ukrainien, anglais, espagnol, polonais…'],
+      ['🔌', 'Relié à vos logiciels', 'Accès API pour votre paie, votre comptabilité ou votre CRM : les heures arrivent toutes seules.'],
+      ['🧾', 'Factures claires', 'Chaque paiement détaillé ligne par ligne, factures téléchargeables et rangées par année.'],
+      ['🛡️', 'Vos données protégées', 'Export de vos données en un geste, suppression du compte à tout moment, aucune publicité ciblée.'],
     ],
     'shotsH': 'Un aperçu de l\'application',
     'shotsSub': 'De vraies captures d\'écran, telles que vous les verrez sur votre téléphone.',
@@ -60,6 +63,17 @@ final t = <String, Map<String, Object>>{
       ['Ajoutez votre équipe', 'Chaque salarié vous montre son QR code : vous le scannez, il accepte. Pas d\'e-mail, pas de mot de passe.'],
       ['Publiez le planning', 'Créez les services, publiez : chacun est prévenu sur son téléphone, et peut l\'ajouter à son agenda.'],
     ],
+    'apiPill': 'Pour les entreprises',
+    'apiH': 'Vos plannings, directement dans votre comptabilité',
+    'apiSub': 'Avec l\'accès API, votre logiciel de paie, de comptabilité ou votre CRM récupère tout seul les heures de chacun : plus de ressaisie, plus d\'erreurs de copie.',
+    'apiPoints': [
+      'Planning publié, heures par salarié et absences validées',
+      'Une période au choix, ou tout depuis le premier jour',
+      'JSON pour les développeurs, CSV pour Excel',
+      'Lecture seule, clés révocables à tout moment',
+    ],
+    'apiCta': 'Voir la documentation',
+    'apiNote': 'Option à 3 € par mois, sans engagement, incluse pendant l\'essai.',
     'installH': 'Installez-la comme une application',
     'installSub': 'Pas besoin de passer par un store : depuis le navigateur, ajoutez Staff Flow à votre écran d\'accueil. Elle s\'ouvre alors en plein écran, avec son icône.',
     'install': [
@@ -72,7 +86,7 @@ final t = <String, Map<String, Object>>{
     'p1': 'Propriétaire d\'entreprise',
     'p1a': '3 €',
     'p1u': '/ mois',
-    'p1l': ['Jusqu\'à 10 salariés et 1 extra', '+ tarification par tranches de 10 salariés', '2 mois offerts en paiement annuel', '2 jours d\'essai complet'],
+    'p1l': ['Jusqu\'à 10 salariés et 1 extra', '+ tarification par tranches de 10 salariés', '2 mois offerts en paiement annuel', '2 jours d\'essai complet', 'Option accès API (comptabilité, CRM) : 3 € / mois'],
     'p2': 'Salariés et extras',
     'p2a': '0 €',
     'p2u': 'pour toujours',
@@ -85,6 +99,7 @@ final t = <String, Map<String, Object>>{
       ['Comment se connecter ?', 'Avec un compte Google, sans nouveau mot de passe. Chacun garde le même compte pour toutes ses entreprises.'],
       ['Et si le téléphone n\'a pas de réseau ?', 'Le planning déjà reçu reste affiché. Le patron peut continuer à préparer le planning et un salarié à faire une demande de congé : c\'est gardé dans la mémoire du téléphone, puis envoyé dès que la connexion revient. Les autres ne voient ces changements qu\'à ce moment-là.'],
       ['Mes données sont-elles protégées ?', 'Les échanges sont chiffrés (HTTPS), les sauvegardes aussi. Vos plannings et messages ne sont ni vendus, ni utilisés pour la publicité.'],
+      ['Staff Flow se connecte-t-il à mon logiciel de paie ou à mon CRM ?', 'Oui, avec l\'option accès API : votre logiciel lit automatiquement le planning publié, les heures par salarié et les absences, en JSON ou en CSV. Vous créez les clés vous-même dans l\'application et pouvez les révoquer à tout moment. La documentation est publique : staff-flow.cloud/fr/api.'],
       ['Puis-je gérer plusieurs entreprises ?', 'Oui : un onglet par entreprise. Une personne qui travaille dans deux entreprises voit tous ses plannings au même endroit.'],
     ],
     'finalH': 'Votre prochain planning en 5 minutes',
@@ -111,6 +126,9 @@ final t = <String, Map<String, Object>>{
       ['📶', 'Навіть без мережі', 'Без зв\'язку графік залишається на екрані, а ви можете далі його складати чи попросити відпустку: усе зберігається в телефоні й надсилається команді, щойно з\'явиться мережа.'],
       ['🏢', 'Кілька об\'єктів і компаній', 'Ієрархія об\'єктів, керівники для кожного об\'єкта й окрема вкладка для кожної компанії.'],
       ['🌍', '37 мов', 'Кожен користується застосунком своєю мовою: українська, англійська, польська, французька…'],
+      ['🔌', 'Зв\'язок з вашими програмами', 'Доступ до API для зарплати, бухгалтерії чи CRM: години надходять самі.'],
+      ['🧾', 'Зрозумілі рахунки', 'Кожна оплата з деталями по рядках, рахунки для завантаження, впорядковані за роками.'],
+      ['🛡️', 'Ваші дані під захистом', 'Експорт даних одним дотиком, видалення облікового запису будь-коли, жодної таргетованої реклами.'],
     ],
     'shotsH': 'Як виглядає застосунок',
     'shotsSub': 'Справжні знімки екрана — саме так ви побачите все на своєму телефоні.',
@@ -127,6 +145,17 @@ final t = <String, Map<String, Object>>{
       ['Додайте команду', 'Працівник показує свій QR-код — ви скануєте, він підтверджує. Без e-mail і паролів.'],
       ['Опублікуйте графік', 'Створіть зміни й опублікуйте: кожен отримає сповіщення та зможе додати зміни до свого календаря.'],
     ],
+    'apiPill': 'Для бізнесу',
+    'apiH': 'Ваші графіки — одразу у вашій бухгалтерії',
+    'apiSub': 'Завдяки доступу до API ваша програма зарплати, бухгалтерії чи CRM сама отримує години кожного працівника: жодного повторного введення, жодних помилок копіювання.',
+    'apiPoints': [
+      'Опублікований графік, години кожного працівника й підтверджені відсутності',
+      'Будь-який період або все з першого дня',
+      'JSON для розробників, CSV для Excel',
+      'Лише читання, ключі можна відкликати будь-коли',
+    ],
+    'apiCta': 'Переглянути документацію',
+    'apiNote': 'Опція за 3 € на місяць, без зобов\'язань, доступна під час пробного періоду.',
     'installH': 'Встановіть як застосунок',
     'installSub': 'Магазин застосунків не потрібен: додайте Staff Flow на головний екран прямо з браузера. Тоді він відкриватиметься на весь екран, зі своєю іконкою.',
     'install': [
@@ -139,7 +168,7 @@ final t = <String, Map<String, Object>>{
     'p1': 'Власник компанії',
     'p1a': '3 €',
     'p1u': '/ місяць',
-    'p1l': ['До 10 працівників і 1 тимчасового', '+ тарифікація за кожні 10 працівників', '2 місяці в подарунок при оплаті за рік', '2 дні повного доступу'],
+    'p1l': ['До 10 працівників і 1 тимчасового', '+ тарифікація за кожні 10 працівників', '2 місяці в подарунок при оплаті за рік', '2 дні повного доступу', 'Опція доступу до API (бухгалтерія, CRM): 3 € / місяць'],
     'p2': 'Працівники та тимчасові працівники',
     'p2a': '0 €',
     'p2u': 'назавжди',
@@ -152,6 +181,7 @@ final t = <String, Map<String, Object>>{
       ['Як увійти?', 'Через акаунт Google, без нового пароля. Один акаунт для всіх ваших компаній.'],
       ['А якщо на телефоні немає зв\'язку?', 'Уже отриманий графік залишається на екрані. Власник може далі складати графік, а працівник — попросити відпустку: усе зберігається в пам\'яті телефона й надсилається, щойно з\'явиться зв\'язок. Інші побачать ці зміни саме тоді.'],
       ['Чи захищені мої дані?', 'Обмін даними зашифровано (HTTPS), резервні копії теж. Ваші графіки й повідомлення не продаються й не використовуються для реклами.'],
+      ['Чи підключається Staff Flow до моєї програми зарплати чи CRM?', 'Так, з опцією доступу до API: ваша програма автоматично читає опублікований графік, години кожного працівника й відсутності у форматі JSON або CSV. Ключі ви створюєте самі в застосунку й можете будь-коли відкликати. Документація відкрита: staff-flow.cloud/ua/api.'],
       ['Чи можна вести кілька компаній?', 'Так: окрема вкладка для кожної компанії. Людина, яка працює у двох компаніях, бачить усі свої графіки в одному місці.'],
     ],
     'finalH': 'Ваш наступний графік — за 5 хвилин',
@@ -178,6 +208,9 @@ final t = <String, Map<String, Object>>{
       ['📶', 'Even without signal', 'Offline, the schedule stays on screen and you can keep planning or ask for leave: it is kept on the phone and sent to the team as soon as the network is back.'],
       ['🏢', 'Several sites and companies', 'Nested sites, managers per site, and one tab per company for people who work in several places.'],
       ['🌍', '37 languages', 'Everyone uses the app in their own language: English, Ukrainian, French, Spanish, Polish…'],
+      ['🔌', 'Connected to your software', 'API access for your payroll, accounting or CRM: hours arrive on their own.'],
+      ['🧾', 'Clear invoices', 'Every payment detailed line by line, invoices to download, sorted by year.'],
+      ['🛡️', 'Your data protected', 'Export your data in one tap, delete your account at any time, no targeted advertising.'],
     ],
     'shotsH': 'A look at the app',
     'shotsSub': 'Real screenshots, just as you will see them on your phone.',
@@ -194,6 +227,17 @@ final t = <String, Map<String, Object>>{
       ['Add your team', 'Each employee shows you their QR code: you scan it, they accept. No email, no password.'],
       ['Publish the schedule', 'Create the shifts and publish: everyone is notified on their phone and can add them to their calendar.'],
     ],
+    'apiPill': 'For businesses',
+    'apiH': 'Your schedules, straight into your accounting',
+    'apiSub': 'With API access, your payroll, accounting or CRM software fetches everyone\'s hours on its own: no more retyping, no more copy errors.',
+    'apiPoints': [
+      'Published schedule, hours per employee and approved absences',
+      'Any period, or everything since day one',
+      'JSON for developers, CSV for Excel',
+      'Read-only, keys you can revoke at any time',
+    ],
+    'apiCta': 'Read the documentation',
+    'apiNote': 'Option at €3 a month, no commitment, included during the trial.',
     'installH': 'Install it like an app',
     'installSub': 'No app store needed: add Staff Flow to your home screen straight from the browser. It then opens full screen, with its own icon.',
     'install': [
@@ -206,7 +250,7 @@ final t = <String, Map<String, Object>>{
     'p1': 'Company owner',
     'p1a': '€3',
     'p1u': '/ month',
-    'p1l': ['Up to 10 employees and 1 temp', '+ pricing per block of 10 employees', '2 months free when paying yearly', '2-day full trial'],
+    'p1l': ['Up to 10 employees and 1 temp', '+ pricing per block of 10 employees', '2 months free when paying yearly', '2-day full trial', 'API access option (accounting, CRM): €3 / month'],
     'p2': 'Employees and temps',
     'p2a': '€0',
     'p2u': 'forever',
@@ -219,6 +263,7 @@ final t = <String, Map<String, Object>>{
       ['How do people sign in?', 'With a Google account, no new password. One account for all your companies.'],
       ['What if the phone has no signal?', 'The schedule you already received stays on screen. The owner can keep planning and an employee can ask for leave: it is kept in the phone\'s memory and sent as soon as the connection is back. Others see those changes only then.'],
       ['Is my data protected?', 'Connections are encrypted (HTTPS), and so are backups. Your schedules and messages are never sold or used for advertising.'],
+      ['Does Staff Flow connect to my payroll software or CRM?', 'Yes, with the API access option: your software automatically reads the published schedule, hours per employee and absences, as JSON or CSV. You create the keys yourself in the app and can revoke them at any time. The documentation is public: staff-flow.cloud/en/api.'],
       ['Can I manage several companies?', 'Yes: one tab per company. Someone who works for two companies sees all their schedules in one place.'],
     ],
     'finalH': 'Your next schedule in 5 minutes',
@@ -263,7 +308,7 @@ String page(String l) {
   <meta name="theme-color" content="#061440">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preload" href="/fonts/Nunito.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="/style.css?v=5">
+  <link rel="stylesheet" href="/style.css?v=6">
 </head>
 <body>
 <header class="top">
@@ -309,6 +354,32 @@ String page(String l) {
     <p class="sub">${s('shotsSub')}</p>
     <div class="shots">
       ${[for (final (i, c) in rows('shots').indexed) '<figure><img src="/img/$dir/${shots[i]}.jpg?v=2" alt="${esc(c[0])}" width="540" height="1200" loading="lazy"><figcaption>${esc(c[0])}<span>${esc(c[1])}</span></figcaption></figure>'].join('\n      ')}
+    </div>
+  </div>
+</section>
+
+<section class="api-band" id="api">
+  <div class="wrap api-grid">
+    <div>
+      <span class="pill">${s('apiPill')}</span>
+      <h2>${s('apiH')}</h2>
+      <p class="sub">${s('apiSub')}</p>
+      <ul class="checks api-points">${[for (final c in list('apiPoints')) '<li>${esc(c)}</li>'].join()}</ul>
+      <div class="cta">
+        <a class="btn btn-main" href="/${slug(l)}/api/">${s('apiCta')}</a>
+      </div>
+      <p class="note">${s('apiNote')}</p>
+    </div>
+    <div class="api-code" aria-hidden="true" translate="no">
+      <div class="api-code-bar"><span></span><span></span><span></span></div>
+<pre><span class="c-cmd">GET</span> /api/v1/ext/totals?from=2026-10-01
+<span class="c-key">Authorization:</span> Bearer sfk_••••••
+
+{ <span class="c-key">"data"</span>: [
+  { <span class="c-key">"name"</span>: <span class="c-str">"Olena"</span>, <span class="c-key">"minutes"</span>: <span class="c-num">9120</span> },
+  { <span class="c-key">"name"</span>: <span class="c-str">"Andriy"</span>, <span class="c-key">"minutes"</span>: <span class="c-num">7680</span> },
+  { <span class="c-key">"name"</span>: <span class="c-str">"Sofia"</span>, <span class="c-key">"minutes"</span>: <span class="c-num">6240</span> }
+] }</pre>
     </div>
   </div>
 </section>
@@ -409,7 +480,7 @@ String legalPage(String l, String doc) {
   ${[for (final o in langs) '<link rel="alternate" hreflang="$o" href="$site/${slug(o)}/$doc/">'].join('\n  ')}
   <meta name="theme-color" content="#061440">
   <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="stylesheet" href="/style.css?v=5">
+  <link rel="stylesheet" href="/style.css?v=6">
 </head>
 <body>
 <header class="top">
@@ -444,7 +515,7 @@ String root() => '''<!doctype html>
   <title>Staff Flow</title>
   ${[for (final o in langs) '<link rel="alternate" hreflang="$o" href="$site/${slug(o)}/">'].join('\n  ')}
   <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="stylesheet" href="/style.css?v=5">
+  <link rel="stylesheet" href="/style.css?v=6">
 </head>
 <body>
 <section class="final" style="min-height:100vh;display:grid;place-items:center">

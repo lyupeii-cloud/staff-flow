@@ -18,7 +18,7 @@
   <meta name="theme-color" content="#061440">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preload" href="/fonts/Nunito.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="/style.css?v=5">
+  <link rel="stylesheet" href="/style.css?v=6">
 </head>
 <body>
 <header class="top">
@@ -60,6 +60,9 @@
     <div class="card"><div class="ico" aria-hidden="true">📶</div><h3>Even without signal</h3><p>Offline, the schedule stays on screen and you can keep planning or ask for leave: it is kept on the phone and sent to the team as soon as the network is back.</p></div>
     <div class="card"><div class="ico" aria-hidden="true">🏢</div><h3>Several sites and companies</h3><p>Nested sites, managers per site, and one tab per company for people who work in several places.</p></div>
     <div class="card"><div class="ico" aria-hidden="true">🌍</div><h3>37 languages</h3><p>Everyone uses the app in their own language: English, Ukrainian, French, Spanish, Polish…</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">🔌</div><h3>Connected to your software</h3><p>API access for your payroll, accounting or CRM: hours arrive on their own.</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">🧾</div><h3>Clear invoices</h3><p>Every payment detailed line by line, invoices to download, sorted by year.</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">🛡️</div><h3>Your data protected</h3><p>Export your data in one tap, delete your account at any time, no targeted advertising.</p></div>
   </div>
 </section>
 
@@ -73,6 +76,32 @@
       <figure><img src="/img/en/3-messages.jpg?v=2" alt="Messaging" width="540" height="1200" loading="lazy"><figcaption>Messaging<span>Swap requests show up right in the conversation.</span></figcaption></figure>
       <figure><img src="/img/en/4-demandes.jpg?v=2" alt="Requests" width="540" height="1200" loading="lazy"><figcaption>Requests<span>Swaps and leave, approved in one tap.</span></figcaption></figure>
       <figure><img src="/img/en/5-management.jpg?v=2" alt="Management" width="540" height="1200" loading="lazy"><figcaption>Management<span>Your team, its roles and its sites.</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="api-band" id="api">
+  <div class="wrap api-grid">
+    <div>
+      <span class="pill">For businesses</span>
+      <h2>Your schedules, straight into your accounting</h2>
+      <p class="sub">With API access, your payroll, accounting or CRM software fetches everyone's hours on its own: no more retyping, no more copy errors.</p>
+      <ul class="checks api-points"><li>Published schedule, hours per employee and approved absences</li><li>Any period, or everything since day one</li><li>JSON for developers, CSV for Excel</li><li>Read-only, keys you can revoke at any time</li></ul>
+      <div class="cta">
+        <a class="btn btn-main" href="/en/api/">Read the documentation</a>
+      </div>
+      <p class="note">Option at €3 a month, no commitment, included during the trial.</p>
+    </div>
+    <div class="api-code" aria-hidden="true" translate="no">
+      <div class="api-code-bar"><span></span><span></span><span></span></div>
+<pre><span class="c-cmd">GET</span> /api/v1/ext/totals?from=2026-10-01
+<span class="c-key">Authorization:</span> Bearer sfk_••••••
+
+{ <span class="c-key">"data"</span>: [
+  { <span class="c-key">"name"</span>: <span class="c-str">"Olena"</span>, <span class="c-key">"minutes"</span>: <span class="c-num">9120</span> },
+  { <span class="c-key">"name"</span>: <span class="c-str">"Andriy"</span>, <span class="c-key">"minutes"</span>: <span class="c-num">7680</span> },
+  { <span class="c-key">"name"</span>: <span class="c-str">"Sofia"</span>, <span class="c-key">"minutes"</span>: <span class="c-num">6240</span> }
+] }</pre>
     </div>
   </div>
 </section>
@@ -108,7 +137,7 @@
       <div class="card price main">
         <h3>Company owner</h3>
         <div class="amount">€3 <small>/ month</small></div>
-        <ul><li>Up to 10 employees and 1 temp</li><li>+ pricing per block of 10 employees</li><li>2 months free when paying yearly</li><li>2-day full trial</li></ul>
+        <ul><li>Up to 10 employees and 1 temp</li><li>+ pricing per block of 10 employees</li><li>2 months free when paying yearly</li><li>2-day full trial</li><li>API access option (accounting, CRM): €3 / month</li></ul>
       </div>
       <div class="card price">
         <h3>Employees and temps</h3>
@@ -129,6 +158,7 @@
       <details><summary>How do people sign in?</summary><p>With a Google account, no new password. One account for all your companies.</p></details>
       <details><summary>What if the phone has no signal?</summary><p>The schedule you already received stays on screen. The owner can keep planning and an employee can ask for leave: it is kept in the phone's memory and sent as soon as the connection is back. Others see those changes only then.</p></details>
       <details><summary>Is my data protected?</summary><p>Connections are encrypted (HTTPS), and so are backups. Your schedules and messages are never sold or used for advertising.</p></details>
+      <details><summary>Does Staff Flow connect to my payroll software or CRM?</summary><p>Yes, with the API access option: your software automatically reads the published schedule, hours per employee and absences, as JSON or CSV. You create the keys yourself in the app and can revoke them at any time. The documentation is public: staff-flow.cloud/en/api.</p></details>
       <details><summary>Can I manage several companies?</summary><p>Yes: one tab per company. Someone who works for two companies sees all their schedules in one place.</p></details>
     </div>
   </div>

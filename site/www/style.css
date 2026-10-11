@@ -207,3 +207,22 @@ footer a { color: #c9d3ee; text-decoration: none; }
 .legal .note { margin: 0 0 18px; }
 .legal pre { background: #0b1a4a; color: #e6ecff; padding: 14px 16px; border-radius: 12px; overflow-x: auto; font-size: 13.5px; line-height: 1.55; margin: 0 0 14px; }
 .legal pre code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; }
+
+/* Accès API : bandeau sombre, texte et exemple de réponse. */
+.api-band { background: radial-gradient(900px 420px at 85% 20%, rgba(26, 140, 252, .28), transparent 60%), var(--navy); color: #fff; }
+.api-band h2 { color: #fff; }
+.api-band .sub { color: #c9d3ee; margin-bottom: 6px; }
+.api-band .note { color: #8d99bb; }
+.api-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.api-points { flex-direction: column; gap: 10px; margin: 18px 0 28px; }
+.api-code { background: #0b1636; border: 1px solid rgba(255, 255, 255, .09); border-radius: 18px; box-shadow: 0 30px 60px rgba(0, 0, 0, .35); overflow: hidden; }
+.api-code-bar { display: flex; gap: 7px; padding: 12px 14px; background: rgba(255, 255, 255, .04); }
+.api-code-bar span { width: 11px; height: 11px; border-radius: 50%; background: #ff5f57; }
+.api-code-bar span:nth-child(2) { background: #febc2e; }
+.api-code-bar span:nth-child(3) { background: #28c840; }
+.api-code pre { margin: 0; padding: 18px 20px 22px; color: #dbe4ff; font: 13px/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-x: auto; }
+.c-cmd { color: var(--blue); font-weight: 700; }
+.c-key { color: var(--cyan); }
+.c-str { color: #ffd479; }
+.c-num { color: #7cc4ff; }
+@media (max-width: 860px) { .api-grid { grid-template-columns: 1fr; gap: 32px; } }

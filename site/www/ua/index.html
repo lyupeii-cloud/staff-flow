@@ -18,7 +18,7 @@
   <meta name="theme-color" content="#061440">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preload" href="/fonts/Nunito.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="/style.css?v=5">
+  <link rel="stylesheet" href="/style.css?v=6">
 </head>
 <body>
 <header class="top">
@@ -60,6 +60,9 @@
     <div class="card"><div class="ico" aria-hidden="true">📶</div><h3>Навіть без мережі</h3><p>Без зв'язку графік залишається на екрані, а ви можете далі його складати чи попросити відпустку: усе зберігається в телефоні й надсилається команді, щойно з'явиться мережа.</p></div>
     <div class="card"><div class="ico" aria-hidden="true">🏢</div><h3>Кілька об'єктів і компаній</h3><p>Ієрархія об'єктів, керівники для кожного об'єкта й окрема вкладка для кожної компанії.</p></div>
     <div class="card"><div class="ico" aria-hidden="true">🌍</div><h3>37 мов</h3><p>Кожен користується застосунком своєю мовою: українська, англійська, польська, французька…</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">🔌</div><h3>Зв'язок з вашими програмами</h3><p>Доступ до API для зарплати, бухгалтерії чи CRM: години надходять самі.</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">🧾</div><h3>Зрозумілі рахунки</h3><p>Кожна оплата з деталями по рядках, рахунки для завантаження, впорядковані за роками.</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">🛡️</div><h3>Ваші дані під захистом</h3><p>Експорт даних одним дотиком, видалення облікового запису будь-коли, жодної таргетованої реклами.</p></div>
   </div>
 </section>
 
@@ -73,6 +76,32 @@
       <figure><img src="/img/uk/3-messages.jpg?v=2" alt="Повідомлення" width="540" height="1200" loading="lazy"><figcaption>Повідомлення<span>Запити на обмін змінами з'являються просто в чаті.</span></figcaption></figure>
       <figure><img src="/img/uk/4-demandes.jpg?v=2" alt="Запити" width="540" height="1200" loading="lazy"><figcaption>Запити<span>Обмін змінами й відпустки підтверджуються одним дотиком.</span></figcaption></figure>
       <figure><img src="/img/uk/5-management.jpg?v=2" alt="Управління" width="540" height="1200" loading="lazy"><figcaption>Управління<span>Ваша команда, ролі та об'єкти.</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="api-band" id="api">
+  <div class="wrap api-grid">
+    <div>
+      <span class="pill">Для бізнесу</span>
+      <h2>Ваші графіки — одразу у вашій бухгалтерії</h2>
+      <p class="sub">Завдяки доступу до API ваша програма зарплати, бухгалтерії чи CRM сама отримує години кожного працівника: жодного повторного введення, жодних помилок копіювання.</p>
+      <ul class="checks api-points"><li>Опублікований графік, години кожного працівника й підтверджені відсутності</li><li>Будь-який період або все з першого дня</li><li>JSON для розробників, CSV для Excel</li><li>Лише читання, ключі можна відкликати будь-коли</li></ul>
+      <div class="cta">
+        <a class="btn btn-main" href="/ua/api/">Переглянути документацію</a>
+      </div>
+      <p class="note">Опція за 3 € на місяць, без зобов'язань, доступна під час пробного періоду.</p>
+    </div>
+    <div class="api-code" aria-hidden="true" translate="no">
+      <div class="api-code-bar"><span></span><span></span><span></span></div>
+<pre><span class="c-cmd">GET</span> /api/v1/ext/totals?from=2026-10-01
+<span class="c-key">Authorization:</span> Bearer sfk_••••••
+
+{ <span class="c-key">"data"</span>: [
+  { <span class="c-key">"name"</span>: <span class="c-str">"Olena"</span>, <span class="c-key">"minutes"</span>: <span class="c-num">9120</span> },
+  { <span class="c-key">"name"</span>: <span class="c-str">"Andriy"</span>, <span class="c-key">"minutes"</span>: <span class="c-num">7680</span> },
+  { <span class="c-key">"name"</span>: <span class="c-str">"Sofia"</span>, <span class="c-key">"minutes"</span>: <span class="c-num">6240</span> }
+] }</pre>
     </div>
   </div>
 </section>
@@ -108,7 +137,7 @@
       <div class="card price main">
         <h3>Власник компанії</h3>
         <div class="amount">3 € <small>/ місяць</small></div>
-        <ul><li>До 10 працівників і 1 тимчасового</li><li>+ тарифікація за кожні 10 працівників</li><li>2 місяці в подарунок при оплаті за рік</li><li>2 дні повного доступу</li></ul>
+        <ul><li>До 10 працівників і 1 тимчасового</li><li>+ тарифікація за кожні 10 працівників</li><li>2 місяці в подарунок при оплаті за рік</li><li>2 дні повного доступу</li><li>Опція доступу до API (бухгалтерія, CRM): 3 € / місяць</li></ul>
       </div>
       <div class="card price">
         <h3>Працівники та тимчасові працівники</h3>
@@ -129,6 +158,7 @@
       <details><summary>Як увійти?</summary><p>Через акаунт Google, без нового пароля. Один акаунт для всіх ваших компаній.</p></details>
       <details><summary>А якщо на телефоні немає зв'язку?</summary><p>Уже отриманий графік залишається на екрані. Власник може далі складати графік, а працівник — попросити відпустку: усе зберігається в пам'яті телефона й надсилається, щойно з'явиться зв'язок. Інші побачать ці зміни саме тоді.</p></details>
       <details><summary>Чи захищені мої дані?</summary><p>Обмін даними зашифровано (HTTPS), резервні копії теж. Ваші графіки й повідомлення не продаються й не використовуються для реклами.</p></details>
+      <details><summary>Чи підключається Staff Flow до моєї програми зарплати чи CRM?</summary><p>Так, з опцією доступу до API: ваша програма автоматично читає опублікований графік, години кожного працівника й відсутності у форматі JSON або CSV. Ключі ви створюєте самі в застосунку й можете будь-коли відкликати. Документація відкрита: staff-flow.cloud/ua/api.</p></details>
       <details><summary>Чи можна вести кілька компаній?</summary><p>Так: окрема вкладка для кожної компанії. Людина, яка працює у двох компаніях, бачить усі свої графіки в одному місці.</p></details>
     </div>
   </div>
