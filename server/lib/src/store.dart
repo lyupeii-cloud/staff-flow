@@ -111,7 +111,7 @@ class Store {
       VALUES (@publicId, @sub, @email, @name, @photo, @locale)
       ON CONFLICT (google_sub) DO UPDATE
         SET email = EXCLUDED.email, name = EXCLUDED.name, photo_url = EXCLUDED.photo_url,
-            locale = coalesce(EXCLUDED.locale, users.locale)
+            locale = coalesce(EXCLUDED.locale, users.locale), deleted_at = NULL
       RETURNING *''', {
       'publicId': newPublicId(),
       'sub': sub,
@@ -122,6 +122,17 @@ class Store {
     });
     return _user(rows.first.toColumnMap());
   }
+
+  /// Compte non supprimé (les sessions d'un compte supprimé ne valent plus).
+  Future<User?> findActiveUser(String id) async {
+    final rows = await query(_db, 'SELECT * FROM users WHERE id = @id::uuid AND deleted_at IS NULL', {'id': id});
+    return rows.isEmpty ? null : _user(rows.first.toColumnMap());
+  }
+
+  /// Compte Google d'un compte supprimé en fantôme (il revient en se reconnectant).
+  Future<bool> isGhost(String googleSub) async =>
+      (await query(_db, 'SELECT 1 FROM users WHERE google_sub = @s AND deleted_at IS NOT NULL', {'s': googleSub}))
+          .isNotEmpty;
 
   Future<User?> findUser(String id) async {
     final rows = await query(_db, 'SELECT * FROM users WHERE id = @id::uuid', {'id': id});
@@ -166,6 +177,7 @@ class Store {
   Future<List<Membership>> membershipsOf(String userId) async {
     final rows = await query(_db, '''
       SELECT c.*, m.role, m.sites::text[] AS member_sites, m.notify_sites::text[] AS notify_sites, m.notifications_off,
+        m.show_telegram,
         (extract(epoch FROM (now() AT TIME ZONE c.timezone) - (now() AT TIME ZONE 'UTC')) / 60)::int AS utc_offset
       FROM memberships m JOIN companies c ON c.id = m.company_id
       WHERE m.user_id = @u::uuid AND m.left_at IS NULL
@@ -179,7 +191,7 @@ class Store {
         sites = (await expandSites(r['id'] as String, sites)).toList();
       }
       out.add(Membership(companyFromRow(r), role, sites, _sites(r['notify_sites']), r['notifications_off'] != true,
-          r['utc_offset'] as int?));
+          r['utc_offset'] as int?, r['show_telegram'] == true));
     }
     return out;
   }
@@ -194,7 +206,8 @@ class Store {
 
   Future<List<Member>> members(String companyId) async {
     final rows = await query(_db, '''
-      SELECT u.*, m.role, m.joined_at, m.display_name, m.sites::text[] AS member_sites, m.appointed_by::text AS appointed_by
+      SELECT u.*, m.role, m.joined_at, m.display_name, m.sites::text[] AS member_sites, m.appointed_by::text AS appointed_by,
+        CASE WHEN m.show_telegram THEN u.telegram_username END AS shown_telegram
       FROM memberships m JOIN users u ON u.id = m.user_id
       WHERE m.company_id = @c::uuid AND m.left_at IS NULL
       ORDER BY m.joined_at''', {'c': companyId});
@@ -208,12 +221,13 @@ class Store {
             nameInCompany: r['display_name'] as String?,
             sites: _sites(r['member_sites']),
             appointedBy: r['appointed_by'] as String?,
+            telegram: r['shown_telegram'] as String?,
           ),
     ];
   }
 
   Future<User?> findUserByPublicId(String publicId) async {
-    final rows = await query(_db, 'SELECT * FROM users WHERE public_id = @p', {'p': publicId});
+    final rows = await query(_db, 'SELECT * FROM users WHERE public_id = @p AND deleted_at IS NULL', {'p': publicId});
     return rows.isEmpty ? null : _user(rows.first.toColumnMap());
   }
 

@@ -1480,4 +1480,178 @@ class L10nFil extends L10n {
   String billingProrataNote(String days) {
     return 'Kasama ang natitira sa buwang ito ($days araw, prorata), at pagkatapos ay buong buwan mula sa ika-1.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Hindi pa naka-link. Ginagamit ito para i-verify ang iyong pagkakakilanlan, halimbawa sa pagpapalit ng Google account.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Naka-link: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'walang username';
+
+  @override
+  String get telegramLink => 'I-link ang aking Telegram';
+
+  @override
+  String get telegramLinkHint =>
+      'Bubukas ang Telegram: i-tap ang “Start”, saka bumalik dito.';
+
+  @override
+  String get telegramUnlink => 'I-unlink';
+
+  @override
+  String get telegramUnavailable => 'Hindi pa available ang Telegram.';
+
+  @override
+  String get telegramShowIn => 'Ipakita ang aking Telegram sa:';
+
+  @override
+  String get newQrCode => 'Palitan ang QR code';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Hindi na gagana ang luma mong QR code at lumang ID. Hindi magbabago ang lugar mo sa iyong mga kumpanya.';
+
+  @override
+  String get newQrCodeDone => 'Nagawa ang bagong QR code.';
+
+  @override
+  String get changeGoogle => 'Palitan ang Google account';
+
+  @override
+  String get changeGoogleSub =>
+      'Parehong account, parehong numero, parehong mga kumpanya';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. I-link ang iyong Telegram sa profile na ito (kailangan).\n2. Mag-sign out, saka mag-sign in gamit ang bagong Google account.\n3. Piliin ang “May Staff Flow account na ako” at ilagay ang iyong ID $id.\n4. Ilagay ang code na natanggap sa Telegram.\nMananatiling pareho ang iyong account, numero at mga kumpanya.';
+  }
+
+  @override
+  String get recoverAccount => 'May Staff Flow account na ako';
+
+  @override
+  String get recoverHint =>
+      'Ilagay ang ID ng luma mong account (SF-…). Ipapadala ang code sa Telegram na naka-link sa account na iyon.';
+
+  @override
+  String get recoverIdLabel => 'ID (SF-…)';
+
+  @override
+  String get recoverSend => 'Ipadala ang code';
+
+  @override
+  String get recoverCodeSent => 'Naipadala ang code sa Telegram.';
+
+  @override
+  String get recoverCodeLabel => 'Natanggap na code (6 na digit)';
+
+  @override
+  String get recoverConfirm => 'Bawiin ang aking account';
+
+  @override
+  String get recoverDone => 'Tapos na: nakabalik ka sa iyong account.';
+
+  @override
+  String get exportData => 'I-export ang aking data';
+
+  @override
+  String get exportDataSub => 'Isang file ng lahat ng iyong personal na data';
+
+  @override
+  String get deleteAccount => 'Burahin ang aking account';
+
+  @override
+  String get deleteGhost => 'Burahin pero mag-iwan ng multo';
+
+  @override
+  String get deleteGhostHint =>
+      'Aalis ka sa lahat ng iyong kumpanya. Mag-sign in mamaya gamit ang parehong Google account para mabawi ang account at numero mo.';
+
+  @override
+  String get deleteErase => 'Burahin lahat nang permanente';
+
+  @override
+  String get deleteEraseHint =>
+      'Mabubura ang pangalan, email, larawan, Telegram, mga mensahe at notification. Hindi na maibabalik.';
+
+  @override
+  String get deleteGhostNote =>
+      'Sa alinmang paraan, ang kasaysayan ng mga kumpanya ay mag-iingat ng anonymous na “Ghost” kapalit mo (mga leave request, mga nakaraang shift…) para masubaybayan ng may-ari at mga manager ang mga pangyayari.';
+
+  @override
+  String get deleteOwnerNote =>
+      'May-ari ng kumpanya? Ilipat muna ito, o hayaang matapos ang subscription nito.';
+
+  @override
+  String get deleteConfirmButton => 'Burahin';
+
+  @override
+  String get accountRestored =>
+      'Maligayang pagbabalik! Na-reactivate ang iyong account.';
+
+  @override
+  String get closedInvoices => 'Mga invoice ng mga saradong kumpanya';
+
+  @override
+  String get downloadAllInvoices => 'I-download lahat ng invoice (ZIP)';
+
+  @override
+  String get legalTerms => 'Mga tuntunin ng paggamit at pagbebenta';
+
+  @override
+  String get legalPrivacy => 'Patakaran sa privacy';
+
+  @override
+  String get billingDetailTitle => 'Detalye ng bayad';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Natitira sa buwang ito ($days sa $total araw): subscription';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Natitira sa buwang ito ($days sa $total araw): opsyong “nested sites”';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Subscription, $staff empleyado: 1 buwan';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Subscription, $staff empleyado: 12 buwan sa presyo ng $paid';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return 'Opsyong “nested sites”: $months buwan, walang diskwento';
+  }
+
+  @override
+  String get billingTotal => 'Kabuuan';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Saklaw na panahon: $from hanggang $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Hindi ire-renew ang kumpanyang ito: i-download na ang lahat ng invoice nito.';
+
+  @override
+  String get billingYearLabel => 'Taon';
+
+  @override
+  String get sitesNoneChosen => 'Walang napiling site';
 }

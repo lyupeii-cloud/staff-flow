@@ -1481,4 +1481,176 @@ class L10nRo extends L10n {
   String billingProrataNote(String days) {
     return 'Include restul lunii curente ($days zile, pro rata), apoi luni întregi de la data de 1.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Încă neconectat. Servește la verificarea identității, de exemplu pentru schimbarea contului Google.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Conectat: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'fără nume de utilizator';
+
+  @override
+  String get telegramLink => 'Conectează-mi Telegramul';
+
+  @override
+  String get telegramLinkHint =>
+      'Se deschide Telegram: atinge „Start”, apoi revino aici.';
+
+  @override
+  String get telegramUnlink => 'Deconectează';
+
+  @override
+  String get telegramUnavailable => 'Telegram nu este încă disponibil.';
+
+  @override
+  String get telegramShowIn => 'Afișează-mi Telegramul în:';
+
+  @override
+  String get newQrCode => 'Schimbă codul QR';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Vechiul cod QR și vechiul identificator nu vor mai funcționa. Locul tău în firme nu se schimbă.';
+
+  @override
+  String get newQrCodeDone => 'Cod QR nou creat.';
+
+  @override
+  String get changeGoogle => 'Schimbă contul Google';
+
+  @override
+  String get changeGoogleSub => 'Același cont, același număr, aceleași firme';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Conectează-ți Telegramul în acest profil (obligatoriu).\n2. Deconectează-te, apoi conectează-te cu noul cont Google.\n3. Alege „Am deja un cont Staff Flow” și introdu identificatorul $id.\n4. Introdu codul primit pe Telegram.\nContul, numărul și firmele tale rămân aceleași.';
+  }
+
+  @override
+  String get recoverAccount => 'Am deja un cont Staff Flow';
+
+  @override
+  String get recoverHint =>
+      'Introdu identificatorul vechiului cont (SF-…). Un cod va fi trimis pe Telegramul conectat la acel cont.';
+
+  @override
+  String get recoverIdLabel => 'Identificator (SF-…)';
+
+  @override
+  String get recoverSend => 'Trimite codul';
+
+  @override
+  String get recoverCodeSent => 'Cod trimis pe Telegram.';
+
+  @override
+  String get recoverCodeLabel => 'Cod primit (6 cifre)';
+
+  @override
+  String get recoverConfirm => 'Recuperează-mi contul';
+
+  @override
+  String get recoverDone => 'Gata: ai revenit în contul tău.';
+
+  @override
+  String get exportData => 'Exportă-mi datele';
+
+  @override
+  String get exportDataSub => 'Un fișier cu toate datele tale personale';
+
+  @override
+  String get deleteAccount => 'Șterge-mi contul';
+
+  @override
+  String get deleteGhost => 'Șterge păstrând o fantomă';
+
+  @override
+  String get deleteGhostHint =>
+      'Părăsești toate firmele. Conectează-te mai târziu cu același cont Google ca să-ți recuperezi contul și numărul.';
+
+  @override
+  String get deleteErase => 'Șterge totul definitiv';
+
+  @override
+  String get deleteEraseHint =>
+      'Numele, e-mailul, fotografia, Telegramul, mesajele și notificările sunt șterse. Nu se poate anula.';
+
+  @override
+  String get deleteGhostNote =>
+      'În ambele cazuri, istoricul firmelor păstrează în locul tău un „Ghost” anonim (cereri de concediu, ture trecute…) ca patronul și responsabilii să poată reconstitui evenimentele.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Ești proprietarul unei firme? Transfer-o mai întâi sau lasă abonamentul să expire.';
+
+  @override
+  String get deleteConfirmButton => 'Șterge';
+
+  @override
+  String get accountRestored => 'Bine ai revenit! Contul tău a fost reactivat.';
+
+  @override
+  String get closedInvoices => 'Facturile firmelor închise';
+
+  @override
+  String get downloadAllInvoices => 'Descarcă toate facturile (ZIP)';
+
+  @override
+  String get legalTerms => 'Condiții de utilizare și de vânzare';
+
+  @override
+  String get legalPrivacy => 'Politica de confidențialitate';
+
+  @override
+  String get billingDetailTitle => 'Detaliile plății';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Restul lunii curente ($days zile din $total): abonament';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Restul lunii curente ($days zile din $total): opțiunea „locații imbricate”';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Abonament, $staff angajați: 1 lună';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Abonament, $staff angajați: 12 luni la prețul a $paid';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return 'Opțiunea „locații imbricate”: $months luni, fără reducere';
+  }
+
+  @override
+  String get billingTotal => 'Total';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Perioadă acoperită: $from – $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Această firmă nu este reînnoită: descarcă acum toate facturile ei.';
+
+  @override
+  String get billingYearLabel => 'An';
+
+  @override
+  String get sitesNoneChosen => 'Nicio locație aleasă';
 }

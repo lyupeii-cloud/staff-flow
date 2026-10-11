@@ -15,6 +15,9 @@ import 'company_tab.dart';
 /// Adresse complète d'un chemin du serveur (`/api/v1/…`).
 String serverUrl(String path) => '${Config.apiUrl.isEmpty ? Uri.base.origin : Config.apiUrl}$path';
 
+/// Ouvre une adresse dans le navigateur (ou l'application concernée).
+Future<void> openUrl(BuildContext context, String url) => _open(context, url);
+
 Future<void> _open(BuildContext context, String url) async {
   final ok = await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication, webOnlyWindowName: '_blank');
   if (!ok && context.mounted) {

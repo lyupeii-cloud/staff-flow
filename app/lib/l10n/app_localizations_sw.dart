@@ -1473,4 +1473,177 @@ class L10nSw extends L10n {
   String billingProrataNote(String days) {
     return 'Inajumuisha sehemu iliyobaki ya mwezi huu (siku $days, kwa uwiano), kisha miezi kamili kuanzia tarehe 1.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Bado haijaunganishwa. Inatumika kuthibitisha utambulisho wako, kwa mfano kubadilisha akaunti ya Google.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Imeunganishwa: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'hakuna jina la mtumiaji';
+
+  @override
+  String get telegramLink => 'Unganisha Telegram yangu';
+
+  @override
+  String get telegramLinkHint =>
+      'Telegram itafunguka: gusa “Start”, kisha urudi hapa.';
+
+  @override
+  String get telegramUnlink => 'Tenganisha';
+
+  @override
+  String get telegramUnavailable => 'Telegram bado haipatikani.';
+
+  @override
+  String get telegramShowIn => 'Onyesha Telegram yangu katika:';
+
+  @override
+  String get newQrCode => 'Badilisha msimbo wa QR';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Msimbo wako wa QR wa zamani na kitambulisho cha zamani havitafanya kazi tena. Nafasi yako katika kampuni haibadiliki.';
+
+  @override
+  String get newQrCodeDone => 'Msimbo mpya wa QR umeundwa.';
+
+  @override
+  String get changeGoogle => 'Badilisha akaunti ya Google';
+
+  @override
+  String get changeGoogleSub =>
+      'Akaunti ileile, nambari ileile, kampuni zilezile';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Unganisha Telegram yako katika wasifu huu (lazima).\n2. Toka, kisha uingie kwa akaunti mpya ya Google.\n3. Chagua “Tayari nina akaunti ya Staff Flow” na uweke kitambulisho chako $id.\n4. Weka msimbo uliopokea kwenye Telegram.\nAkaunti yako, nambari na kampuni zinabaki zilezile.';
+  }
+
+  @override
+  String get recoverAccount => 'Tayari nina akaunti ya Staff Flow';
+
+  @override
+  String get recoverHint =>
+      'Weka kitambulisho cha akaunti yako ya zamani (SF-…). Msimbo utatumwa kwa Telegram iliyounganishwa na akaunti hiyo.';
+
+  @override
+  String get recoverIdLabel => 'Kitambulisho (SF-…)';
+
+  @override
+  String get recoverSend => 'Tuma msimbo';
+
+  @override
+  String get recoverCodeSent => 'Msimbo umetumwa kwa Telegram.';
+
+  @override
+  String get recoverCodeLabel => 'Msimbo uliopokea (tarakimu 6)';
+
+  @override
+  String get recoverConfirm => 'Rejesha akaunti yangu';
+
+  @override
+  String get recoverDone => 'Imekamilika: umerudi kwenye akaunti yako.';
+
+  @override
+  String get exportData => 'Hamisha data yangu';
+
+  @override
+  String get exportDataSub => 'Faili lenye data zako zote binafsi';
+
+  @override
+  String get deleteAccount => 'Futa akaunti yangu';
+
+  @override
+  String get deleteGhost => 'Futa ukiacha mzimu';
+
+  @override
+  String get deleteGhostHint =>
+      'Utaondoka kwenye kampuni zote. Ingia baadaye kwa akaunti ileile ya Google ili kurejesha akaunti na nambari yako.';
+
+  @override
+  String get deleteErase => 'Futa kila kitu kabisa';
+
+  @override
+  String get deleteEraseHint =>
+      'Jina, barua pepe, picha, Telegram, ujumbe na arifa zitafutwa. Haiwezi kutenduliwa.';
+
+  @override
+  String get deleteGhostNote =>
+      'Kwa vyovyote vile, historia ya kampuni huhifadhi “Ghost” asiyejulikana mahali pako (maombi ya likizo, zamu zilizopita…) ili mmiliki na wasimamizi waweze kufuatilia matukio.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Wewe ni mmiliki wa kampuni? Ihamishe kwanza, au acha usajili wake uishe.';
+
+  @override
+  String get deleteConfirmButton => 'Futa';
+
+  @override
+  String get accountRestored => 'Karibu tena! Akaunti yako imewashwa upya.';
+
+  @override
+  String get closedInvoices => 'Ankara za kampuni zilizofungwa';
+
+  @override
+  String get downloadAllInvoices => 'Pakua ankara zote (ZIP)';
+
+  @override
+  String get legalTerms => 'Masharti ya matumizi na mauzo';
+
+  @override
+  String get legalPrivacy => 'Sera ya faragha';
+
+  @override
+  String get billingDetailTitle => 'Maelezo ya malipo';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Salio la mwezi huu (siku $days kati ya $total): usajili';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Salio la mwezi huu (siku $days kati ya $total): chaguo la “maeneo ndani ya maeneo”';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Usajili, wafanyakazi $staff: mwezi 1';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Usajili, wafanyakazi $staff: miezi 12 kwa bei ya $paid';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return 'Chaguo la “maeneo ndani ya maeneo”: miezi $months, bila punguzo';
+  }
+
+  @override
+  String get billingTotal => 'Jumla';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Kipindi: $from hadi $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Kampuni hii haitasasishwa: pakua ankara zake zote sasa.';
+
+  @override
+  String get billingYearLabel => 'Mwaka';
+
+  @override
+  String get sitesNoneChosen => 'Hakuna eneo lililochaguliwa';
 }

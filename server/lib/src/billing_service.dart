@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:archive/archive.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -158,6 +159,17 @@ class BillingService {
       FROM invoices WHERE company_id = @c::uuid ORDER BY id DESC''', {'c': companyId});
     final month = _plan(company, 'month');
     int due(String period, bool cascade) => _price(v, staff, period, cascade, _plan(company, period)).amount;
+    // Détail de chaque formule, montré avant le paiement.
+    Map<String, Object?> quote(String period, bool cascade) {
+      final plan = _plan(company, period);
+      final price = _price(v, staff, period, cascade, plan);
+      return {
+        'lines': price.lines,
+        'total': price.amount,
+        'from': plan.coverFrom.toIso8601String(),
+        'to': plan.periodEnd.toIso8601String(),
+      };
+    }
     return {
       ...company.billingJson(),
       'publicId': company.publicId,
@@ -177,23 +189,28 @@ class BillingService {
         'monthCascade': due('month', true),
         'yearCascade': due('year', true),
       },
+      'quotes': {
+        'month': quote('month', false),
+        'year': quote('year', false),
+        'monthCascade': quote('month', true),
+        'yearCascade': quote('year', true),
+      },
       'prorataDays': month.prorataDays,
       'canPay': canPay(actor),
       'testPayments': true,
-      'invoices': [
-        for (final r in invoices)
-          {
-            'id': r[0],
-            'number': r[1],
-            'issuedAt': (r[2] as DateTime).toIso8601String(),
-            'period': r[3],
-            'from': (r[4] as DateTime).toIso8601String(),
-            'to': (r[5] as DateTime).toIso8601String(),
-            'amountCents': r[6],
-          },
-      ],
+      'invoices': [for (final r in invoices) _invoiceJson(r)],
     };
   }
+
+  static Map<String, Object?> _invoiceJson(List<Object?> r) => {
+        'id': r[0],
+        'number': r[1],
+        'issuedAt': (r[2] as DateTime).toIso8601String(),
+        'period': r[3],
+        'from': (r[4] as DateTime).toIso8601String(),
+        'to': (r[5] as DateTime).toIso8601String(),
+        'amountCents': r[6],
+      };
 
   static DateTime _addMonths(DateTime d, int months) {
     final m = d.month - 1 + months;
@@ -218,6 +235,7 @@ class BillingService {
     final price = _price(v, staff, period, cascade, plan);
     final t = now();
     final owner = await store.findUser(actor.id);
+    final seller = await platform.texts();
     return store.db.runTx((tx) async {
       // Numéro : SF-<identifiant de l'entreprise>-<année>-<n° dans l'année>.
       await store.query(tx, 'SELECT 1 FROM companies WHERE id = @c::uuid FOR UPDATE', {'c': companyId});
@@ -227,8 +245,8 @@ class BillingService {
       final number = 'SF-${company.publicId}-${t.year}-${((count.first[0] as num).toInt() + 1).toString().padLeft(4, '0')}';
       final rows = await store.query(tx, '''
         INSERT INTO invoices (number, company_id, company_code, company_name, owner_id, owner_name, issued_at,
-          period, period_start, period_end, staff, lines, amount_cents, provider, paid_at)
-        VALUES (@n, @c::uuid, @k, @cn, @o::uuid, @on, @t, @p, @f, @to, @s, @l::jsonb, @a, 'test', @t)
+          period, period_start, period_end, staff, lines, amount_cents, provider, paid_at, seller)
+        VALUES (@n, @c::uuid, @k, @cn, @o::uuid, @on, @t, @p, @f, @to, @s, @l::jsonb, @a, 'test', @t, @sel::jsonb)
         RETURNING id''', {
         'n': number,
         'c': companyId,
@@ -243,6 +261,7 @@ class BillingService {
         's': staff,
         'l': jsonEncode(price.lines),
         'a': price.amount,
+        'sel': jsonEncode(seller),
       });
       await store.query(tx, '''
         UPDATE companies SET billing_status = 'active', paid_until = @to, grace_ends_at = NULL, status = 'active',
@@ -282,29 +301,110 @@ class BillingService {
     final rows = await store.query(store.db,
         'SELECT 1 FROM invoices WHERE id = @i AND company_id = @c::uuid', {'i': invoiceId, 'c': companyId});
     if (rows.isEmpty) throw const ApiError.notFound();
-    final jwt = JWT({'i': invoiceId, 'c': companyId, 'l': lang}, subject: actor.id, issuer: 'staff-flow-invoice');
-    return jwt.sign(_key, expiresIn: const Duration(minutes: 10));
+    return _sign({'i': invoiceId, 'l': lang}, actor);
   }
 
-  Future<(String, Uint8List)> invoicePdf(String token) async {
+  /// Facture d'une entreprise fermée, pour son dernier propriétaire.
+  Future<String> archivedInvoiceLink(User actor, int invoiceId, String lang) async {
+    final rows = await store.query(store.db,
+        'SELECT 1 FROM invoices WHERE id = @i AND company_id IS NULL AND holder_id = @u::uuid',
+        {'i': invoiceId, 'u': actor.id});
+    if (rows.isEmpty) throw const ApiError.notFound();
+    return _sign({'i': invoiceId, 'l': lang}, actor);
+  }
+
+  /// Administration : n'importe quelle facture (par exemple pour un ancien
+  /// patron qui a supprimé son compte et prouve qu'il était propriétaire).
+  String adminInvoiceLink(User admin, int invoiceId, String lang) => _sign({'i': invoiceId, 'l': lang, 'a': true}, admin);
+
+  /// Toutes les factures d'une entreprise ([companyId]), ou celles des
+  /// entreprises fermées de la personne (`null`), dans un fichier ZIP.
+  Future<String> zipLink(User actor, String? companyId, String lang) async {
+    if (companyId != null) await _owned(actor, companyId);
+    return _sign({'z': companyId ?? '', 'l': lang}, actor);
+  }
+
+  String _sign(Map<String, Object?> claims, User actor) =>
+      JWT(claims, subject: actor.id, issuer: 'staff-flow-invoice').sign(_key, expiresIn: const Duration(minutes: 10));
+
+  static const _columns = '''number, company_name, owner_name, company_code, issued_at, period, period_start,
+    period_end, staff, lines, amount_cents, provider, seller, company_id::text, holder_id::text''';
+
+  Future<(Map, User)> _verify(String token) async {
     final JWT jwt;
     try {
       jwt = JWT.verify(token, _key, issuer: 'staff-flow-invoice');
     } on JWTException {
       throw const ApiError.notFound('Lien expiré.');
     }
-    final claims = jwt.payload as Map;
-    final user = await store.findUser(jwt.subject!);
+    final user = await store.findActiveUser(jwt.subject!);
     if (user == null) throw const ApiError.notFound('Lien expiré.');
-    // Les droits sont revérifiés : la personne doit être encore propriétaire.
-    await _owned(user, claims['c'] as String);
-    final rows = await store.query(store.db, '''
-      SELECT number, company_name, owner_name, company_code, issued_at, period, period_start, period_end,
-        staff, lines, amount_cents, provider
-      FROM invoices WHERE id = @i AND company_id = @c::uuid''', {'i': claims['i'], 'c': claims['c']});
-    if (rows.isEmpty) throw const ApiError.notFound('Lien expiré.');
+    return (jwt.payload as Map, user);
+  }
+
+  /// Les droits sont revérifiés à chaque téléchargement : propriétaire
+  /// actuel de l'entreprise ; une fois l'entreprise fermée, son dernier
+  /// propriétaire ; ou l'administration.
+  Future<bool> _canRead(User user, List<Object?> r, {bool admin = false}) async {
+    if (admin) return isAdmin(user);
+    final companyId = r[13] as String?;
+    if (companyId != null) return await store.roleOf(companyId, user.id) == Role.owner;
+    return r[14] == user.id;
+  }
+
+  Future<Uint8List> _render(List<Object?> r, String lang) async =>
+      renderInvoice([...r.sublist(0, 12), r[12] ?? await platform.texts()], lang);
+
+  Future<(String, Uint8List)> invoicePdf(String token) async {
+    final (claims, user) = await _verify(token);
+    if (claims['i'] == null) throw const ApiError.notFound('Lien expiré.');
+    final rows = await store.query(store.db, 'SELECT $_columns FROM invoices WHERE id = @i', {'i': claims['i']});
+    if (rows.isEmpty || !await _canRead(user, rows.first, admin: claims['a'] == true)) {
+      throw const ApiError.notFound('Lien expiré.');
+    }
     final r = rows.first;
-    return ('${r[0]}.pdf', await renderInvoice(r, claims['l'] as String? ?? 'en'));
+    return ('${r[0]}.pdf', await _render(r, claims['l'] as String? ?? 'en'));
+  }
+
+  Future<(String, Uint8List)> invoiceZip(String token) async {
+    final (claims, user) = await _verify(token);
+    final companyId = claims['z'] as String?;
+    if (companyId == null) throw const ApiError.notFound('Lien expiré.');
+    final rows = companyId.isEmpty
+        ? await store.query(store.db,
+            'SELECT $_columns FROM invoices WHERE company_id IS NULL AND holder_id = @u::uuid ORDER BY id', {'u': user.id})
+        : await store.query(store.db,
+            'SELECT $_columns FROM invoices WHERE company_id = @c::uuid ORDER BY id', {'c': companyId});
+    final archive = Archive();
+    for (final r in rows) {
+      if (!await _canRead(user, r)) throw const ApiError.notFound('Lien expiré.');
+      final pdf = await _render(r, claims['l'] as String? ?? 'en');
+      archive.addFile(ArchiveFile('${r[0]}.pdf', pdf.length, pdf));
+    }
+    final name = companyId.isEmpty || rows.isEmpty ? 'staff-flow-invoices.zip' : 'SF-${rows.first[3]}-invoices.zip';
+    return (name, Uint8List.fromList(ZipEncoder().encode(archive)!));
+  }
+
+  /// Factures des entreprises fermées dont la personne était le dernier propriétaire.
+  Future<List<Map<String, Object?>>> archivedInvoices(User user) async {
+    final rows = await store.query(store.db, '''
+      SELECT id, number, issued_at, period, period_start, period_end, amount_cents, company_name, company_code
+      FROM invoices WHERE company_id IS NULL AND holder_id = @u::uuid ORDER BY id DESC''', {'u': user.id});
+    return [
+      for (final r in rows) {..._invoiceJson(r), 'companyName': r[7], 'companyCode': r[8]},
+    ];
+  }
+
+  /// Administration : factures d'une entreprise (ouverte ou fermée), par son identifiant.
+  Future<List<Map<String, Object?>>> adminInvoices(String code) async {
+    final rows = await store.query(store.db, '''
+      SELECT i.id, i.number, i.issued_at, i.period, i.period_start, i.period_end, i.amount_cents, i.company_name,
+        i.company_code, i.owner_name, i.company_id IS NULL, i.provider
+      FROM invoices i WHERE i.company_code = @k ORDER BY i.id DESC''', {'k': code.trim().toUpperCase()});
+    return [
+      for (final r in rows)
+        {..._invoiceJson(r), 'companyName': r[7], 'companyCode': r[8], 'ownerName': r[9], 'closed': r[10], 'provider': r[11]},
+    ];
   }
 
   static pw.Font? _regular, _bold;
@@ -324,7 +424,8 @@ class BillingService {
 
   /// Facture dans la langue de l'application du propriétaire, doublée en
   /// anglais. [r] : number, company_name, owner_name, company_code, issued_at,
-  /// period, period_start, period_end, staff, lines, amount_cents, provider.
+  /// period, period_start, period_end, staff, lines, amount_cents, provider,
+  /// seller (textes de l'éditeur, voir [PlatformService.textKeys]).
   static Future<Uint8List> renderInvoice(List<Object?> r, String lang) async {
     // Chaque texte : dans la langue choisie, puis en anglais.
     String t(String fr, [Map<String, String> args = const {}]) {
@@ -340,6 +441,9 @@ class BillingService {
     final grey = PdfColor.fromHex('#55607A');
     final lines = (r[9] as List).cast<Map>();
     final test = r[11] == 'test';
+    final seller = (r[12] as Map? ?? const {}).cast<String, Object?>();
+    String sel(String k) => (seller[k] as String? ?? '').trim();
+    final small = pw.TextStyle(fontSize: 8.5, color: grey);
     final doc = pw.Document(theme: pw.ThemeData.withFont(base: font, bold: bold));
     pw.Widget cell(String s, {bool strong = false, pw.TextAlign align = pw.TextAlign.left, PdfColor? color}) => pw.Padding(
         padding: const pw.EdgeInsets.symmetric(vertical: 6, horizontal: 6),
@@ -383,10 +487,12 @@ class BillingService {
           pw.Expanded(
             child: pw.Column(crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
               pw.Text(t('Émetteur'), style: pw.TextStyle(fontSize: 8.5, color: grey)),
-              pw.Text('Staff Flow', style: const pw.TextStyle(fontSize: 11)),
-              pw.Text(t('[Raison sociale, numéro d\'enregistrement et adresse à compléter]'),
-                  style: pw.TextStyle(fontSize: 8.5, color: grey)),
-              pw.Text('$contactEmail · https://staff-flow.cloud', style: pw.TextStyle(fontSize: 8.5, color: grey)),
+              pw.Text(sel('sellerName').isEmpty ? 'Vercane' : sel('sellerName'), style: const pw.TextStyle(fontSize: 11)),
+              for (final k in ['sellerAddressLatin', 'sellerAddressLocal'])
+                if (sel(k).isNotEmpty) pw.Text(sel(k), style: small),
+              if (sel('sellerRegistration').isNotEmpty)
+                pw.Text(t('N° d\'enregistrement : {id}', {'id': sel('sellerRegistration')}), style: small),
+              pw.Text('$contactEmail · https://staff-flow.cloud', style: small),
             ]),
           ),
           pw.SizedBox(width: 16),
@@ -420,8 +526,8 @@ class BillingService {
           ],
         ),
         pw.SizedBox(height: 12),
-        pw.Text(t('Payé. Taxes : régime à préciser selon le statut de l\'éditeur.'),
-            style: pw.TextStyle(fontSize: 8.5, color: grey)),
+        pw.Text(t('Payé.'), style: small),
+        if (sel('sellerTax').isNotEmpty) pw.Text(sel('sellerTax'), style: small),
         pw.Spacer(),
         pw.Text(t('Aucun remboursement d\'une période payée.'), style: pw.TextStyle(fontSize: 8, color: grey)),
       ]),
@@ -472,12 +578,18 @@ class BillingService {
       LEFT JOIN memberships m ON m.company_id = c.id AND m.role = 'owner' AND m.left_at IS NULL
       WHERE c.billing_status = 'grace' AND c.grace_ends_at <= @t''', {'t': t});
     for (final r in gone) {
+      await store.query(store.db, 'UPDATE invoices SET holder_id = @u::uuid WHERE company_id = @c::uuid',
+          {'c': r[0], 'u': r[2]});
       await store.query(store.db, 'DELETE FROM companies WHERE id = @c::uuid', {'c': r[0]});
       if (r[2] != null) {
         await store.audit(actorId: r[2] as String, action: 'billing.deleted', details: {'companyId': r[0], 'name': r[1]});
         await notifications.notify([r[2] as String], kind: 'billing_deleted', data: {'companyName': r[1]});
       }
     }
+    // Factures des entreprises fermées : gardées la durée légale, puis effacées.
+    await store.query(store.db, '''
+      DELETE FROM invoices WHERE company_id IS NULL AND issued_at < @t::timestamptz - make_interval(years => @y)''',
+        {'t': t, 'y': v['invoiceRetentionYears']});
   }
 
   static String _iso(DateTime d) => d.toIso8601String().substring(0, 10);

@@ -189,8 +189,18 @@ class Session extends ChangeNotifier {
   Future<void> signInDev(String email) =>
       _guard(() async => _signedIn(await api.loginDev(email)));
 
+  /// Compte supprimé en fantôme, réactivé par cette connexion (message d'accueil).
+  bool accountRestored = false;
+
   Future<void> _signedIn((String, User) login) async {
     final (token, _) = login;
+    accountRestored = api.lastLoginRestored;
+    await switchToken(token);
+  }
+
+  /// Nouvelle session (par exemple : ancien compte repris avec ce compte Google).
+  Future<void> switchToken(String token) async {
+    await sync.clear();
     api.token = token;
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(tokenKey, token);

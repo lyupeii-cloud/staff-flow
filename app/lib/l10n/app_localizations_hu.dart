@@ -1468,4 +1468,176 @@ class L10nHu extends L10n {
   String billingProrataNote(String days) {
     return 'Tartalmazza a folyó hónap hátralévő részét ($days nap, arányosan), utána teljes hónapokat 1-jétől.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Még nincs összekapcsolva. A személyazonossága ellenőrzésére szolgál, például Google-fiók cseréjekor.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Összekapcsolva: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'nincs felhasználónév';
+
+  @override
+  String get telegramLink => 'Telegram összekapcsolása';
+
+  @override
+  String get telegramLinkHint =>
+      'Megnyílik a Telegram: koppintson az „Indítás” gombra, majd térjen vissza ide.';
+
+  @override
+  String get telegramUnlink => 'Leválasztás';
+
+  @override
+  String get telegramUnavailable => 'A Telegram még nem érhető el.';
+
+  @override
+  String get telegramShowIn => 'Telegramom megjelenítése itt:';
+
+  @override
+  String get newQrCode => 'QR-kód cseréje';
+
+  @override
+  String get newQrCodeConfirm =>
+      'A régi QR-kód és a régi azonosító nem fog működni. A cégekben elfoglalt helye nem változik.';
+
+  @override
+  String get newQrCodeDone => 'Új QR-kód létrehozva.';
+
+  @override
+  String get changeGoogle => 'Google-fiók cseréje';
+
+  @override
+  String get changeGoogleSub => 'Ugyanaz a fiók, szám és cégek';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Kapcsolja össze Telegramját ebben a profilban (kötelező).\n2. Jelentkezzen ki, majd be az új Google-fiókkal.\n3. Válassza a „Már van Staff Flow-fiókom” lehetőséget, és adja meg az azonosítóját: $id.\n4. Írja be a Telegramon kapott kódot.\nFiókja, száma és cégei ugyanazok maradnak.';
+  }
+
+  @override
+  String get recoverAccount => 'Már van Staff Flow-fiókom';
+
+  @override
+  String get recoverHint =>
+      'Adja meg régi fiókja azonosítóját (SF-…). A kódot a fiókhoz kapcsolt Telegramra küldjük.';
+
+  @override
+  String get recoverIdLabel => 'Azonosító (SF-…)';
+
+  @override
+  String get recoverSend => 'Kód küldése';
+
+  @override
+  String get recoverCodeSent => 'Kód elküldve Telegramon.';
+
+  @override
+  String get recoverCodeLabel => 'Kapott kód (6 számjegy)';
+
+  @override
+  String get recoverConfirm => 'Fiókom visszaszerzése';
+
+  @override
+  String get recoverDone => 'Kész: visszatért a fiókjába.';
+
+  @override
+  String get exportData => 'Adataim exportálása';
+
+  @override
+  String get exportDataSub => 'Egy fájl az összes személyes adatával';
+
+  @override
+  String get deleteAccount => 'Fiókom törlése';
+
+  @override
+  String get deleteGhost => 'Törlés szellem megtartásával';
+
+  @override
+  String get deleteGhostHint =>
+      'Kilép az összes cégből. Később ugyanazzal a Google-fiókkal belépve visszakapja fiókját és számát.';
+
+  @override
+  String get deleteErase => 'Minden végleges törlése';
+
+  @override
+  String get deleteEraseHint =>
+      'Név, e-mail, fotó, Telegram, üzenetek és értesítések törlődnek. Nem vonható vissza.';
+
+  @override
+  String get deleteGhostNote =>
+      'Mindkét esetben a cégek előzményei az Ön helyén egy névtelen „Ghost”-ot őriznek (szabadságkérelmek, korábbi műszakok…), hogy a tulajdonos és a vezetők nyomon követhessék az eseményeket.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Cégtulajdonos? Előbb adja át a céget, vagy hagyja lejárni az előfizetését.';
+
+  @override
+  String get deleteConfirmButton => 'Törlés';
+
+  @override
+  String get accountRestored => 'Üdv újra! Fiókját újraaktiváltuk.';
+
+  @override
+  String get closedInvoices => 'Bezárt cégek számlái';
+
+  @override
+  String get downloadAllInvoices => 'Összes számla letöltése (ZIP)';
+
+  @override
+  String get legalTerms => 'Felhasználási és értékesítési feltételek';
+
+  @override
+  String get legalPrivacy => 'Adatvédelmi irányelvek';
+
+  @override
+  String get billingDetailTitle => 'Fizetés részletei';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'A folyó hónap hátralévő része ($total napból $days): előfizetés';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'A folyó hónap hátralévő része ($total napból $days): „egymásba ágyazott helyszínek” opció';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Előfizetés, $staff munkatárs: 1 hónap';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Előfizetés, $staff munkatárs: 12 hónap $paid havi áron';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return '„Egymásba ágyazott helyszínek” opció: $months hónap, kedvezmény nélkül';
+  }
+
+  @override
+  String get billingTotal => 'Összesen';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Időszak: $from – $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Ez a cég nem újul meg: töltse le most az összes számláját.';
+
+  @override
+  String get billingYearLabel => 'Év';
+
+  @override
+  String get sitesNoneChosen => 'Nincs kiválasztott helyszín';
 }

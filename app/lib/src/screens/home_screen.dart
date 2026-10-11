@@ -11,6 +11,7 @@ import '../models.dart';
 import '../push.dart';
 import '../session.dart';
 import 'account_pages.dart';
+import 'account_tools.dart';
 import 'admin_page.dart';
 import 'requests_page.dart';
 import 'all_schedules_view.dart';
@@ -52,6 +53,10 @@ class _HomeScreenState extends State<HomeScreen> {
     // Ouverte depuis une notification de demande : on la montre.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _onOpenRequest();
+      if (session.accountRestored && mounted) {
+        session.accountRestored = false;
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.l10n.accountRestored)));
+      }
       // Site web ouvert à l'adresse /admin : la page d'administration.
       if (kIsWeb && Uri.base.path.startsWith('/admin') && session.me?.isAdmin == true && mounted) {
         AdminPage.open(context, session);
@@ -302,6 +307,12 @@ class _NoCompany extends StatelessWidget {
               onPressed: () => createCompany(context, session),
               icon: const Icon(Icons.add_business),
               label: Text(t.createCompany),
+            ),
+            const SizedBox(height: 24),
+            TextButton.icon(
+              onPressed: () => showRecoverDialog(context, session),
+              icon: const Icon(Icons.manage_history),
+              label: Text(t.recoverAccount),
             ),
           ],
         ),

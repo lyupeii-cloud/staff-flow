@@ -1439,4 +1439,172 @@ class L10nKo extends L10n {
   String billingProrataNote(String days) {
     return '이번 달 남은 기간($days일, 일할 계산)과 다음 달 1일부터의 월 단위 요금이 포함됩니다.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked => '아직 연결되지 않았습니다. Google 계정 변경 등 본인 확인에 사용됩니다.';
+
+  @override
+  String telegramLinked(String name) {
+    return '연결됨: $name';
+  }
+
+  @override
+  String get telegramNoUsername => '사용자 이름 없음';
+
+  @override
+  String get telegramLink => '내 Telegram 연결';
+
+  @override
+  String get telegramLinkHint => 'Telegram이 열립니다. “시작”을 누른 뒤 여기로 돌아오세요.';
+
+  @override
+  String get telegramUnlink => '연결 해제';
+
+  @override
+  String get telegramUnavailable => 'Telegram은 아직 사용할 수 없습니다.';
+
+  @override
+  String get telegramShowIn => '내 Telegram 표시 회사:';
+
+  @override
+  String get newQrCode => 'QR 코드 변경';
+
+  @override
+  String get newQrCodeConfirm =>
+      '이전 QR 코드와 이전 ID는 더 이상 작동하지 않습니다. 회사에서의 위치는 바뀌지 않습니다.';
+
+  @override
+  String get newQrCodeDone => '새 QR 코드가 생성되었습니다.';
+
+  @override
+  String get changeGoogle => 'Google 계정 변경';
+
+  @override
+  String get changeGoogleSub => '같은 계정, 같은 번호, 같은 회사';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. 이 프로필에서 Telegram을 연결하세요(필수).\n2. 로그아웃한 뒤 새 Google 계정으로 로그인하세요.\n3. “이미 Staff Flow 계정이 있습니다”를 선택하고 ID $id을(를) 입력하세요.\n4. Telegram으로 받은 코드를 입력하세요.\n계정, 번호, 회사는 그대로 유지됩니다.';
+  }
+
+  @override
+  String get recoverAccount => '이미 Staff Flow 계정이 있습니다';
+
+  @override
+  String get recoverHint =>
+      '이전 계정의 ID(SF-…)를 입력하세요. 그 계정에 연결된 Telegram으로 코드가 전송됩니다.';
+
+  @override
+  String get recoverIdLabel => 'ID(SF-…)';
+
+  @override
+  String get recoverSend => '코드 보내기';
+
+  @override
+  String get recoverCodeSent => 'Telegram으로 코드를 보냈습니다.';
+
+  @override
+  String get recoverCodeLabel => '받은 코드(6자리)';
+
+  @override
+  String get recoverConfirm => '내 계정 되찾기';
+
+  @override
+  String get recoverDone => '완료: 계정으로 돌아왔습니다.';
+
+  @override
+  String get exportData => '내 데이터 내보내기';
+
+  @override
+  String get exportDataSub => '모든 개인 데이터가 담긴 파일';
+
+  @override
+  String get deleteAccount => '내 계정 삭제';
+
+  @override
+  String get deleteGhost => '유령을 남기고 삭제';
+
+  @override
+  String get deleteGhostHint =>
+      '모든 회사에서 나갑니다. 나중에 같은 Google 계정으로 로그인하면 계정과 번호가 돌아옵니다.';
+
+  @override
+  String get deleteErase => '모두 영구 삭제';
+
+  @override
+  String get deleteEraseHint =>
+      '이름, 이메일, 사진, Telegram, 메시지, 알림이 삭제됩니다. 되돌릴 수 없습니다.';
+
+  @override
+  String get deleteGhostNote =>
+      '두 경우 모두 회사 기록에는 당신 대신 익명의 “Ghost”가 남습니다(휴가 신청, 지난 근무 등). 소유자와 관리자가 경위를 확인할 수 있도록 하기 위해서입니다.';
+
+  @override
+  String get deleteOwnerNote => '회사 소유자인가요? 먼저 회사를 양도하거나 구독이 끝나도록 두세요.';
+
+  @override
+  String get deleteConfirmButton => '삭제';
+
+  @override
+  String get accountRestored => '다시 오신 것을 환영합니다! 계정이 다시 활성화되었습니다.';
+
+  @override
+  String get closedInvoices => '폐업한 회사의 청구서';
+
+  @override
+  String get downloadAllInvoices => '모든 청구서 다운로드(ZIP)';
+
+  @override
+  String get legalTerms => '이용 및 판매 약관';
+
+  @override
+  String get legalPrivacy => '개인정보 처리방침';
+
+  @override
+  String get billingDetailTitle => '결제 내역';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return '이번 달 남은 기간($total일 중 $days일): 구독';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return '이번 달 남은 기간($total일 중 $days일): “계층형 사업장” 옵션';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return '구독, 직원 $staff명: 1개월';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return '구독, 직원 $staff명: 12개월을 $paid개월 가격으로';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return '“계층형 사업장” 옵션: $months개월, 할인 없음';
+  }
+
+  @override
+  String get billingTotal => '합계';
+
+  @override
+  String billingCovers(String from, String to) {
+    return '적용 기간: $from ~ $to';
+  }
+
+  @override
+  String get billingGraceInvoices => '이 회사는 갱신되지 않습니다. 지금 모든 청구서를 다운로드하세요.';
+
+  @override
+  String get billingYearLabel => '연도';
+
+  @override
+  String get sitesNoneChosen => '선택한 사업장 없음';
 }

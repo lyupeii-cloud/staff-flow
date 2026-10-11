@@ -1438,4 +1438,171 @@ class L10nJa extends L10n {
   String billingProrataNote(String days) {
     return '今月の残り（$days日分、日割り）と、翌月1日からの月単位の料金を含みます。';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked => 'まだ連携されていません。Google アカウントの変更時など、本人確認に使います。';
+
+  @override
+  String telegramLinked(String name) {
+    return '連携済み：$name';
+  }
+
+  @override
+  String get telegramNoUsername => 'ユーザー名なし';
+
+  @override
+  String get telegramLink => 'Telegram を連携';
+
+  @override
+  String get telegramLinkHint => 'Telegram が開きます。「開始」をタップしてから、ここに戻ってください。';
+
+  @override
+  String get telegramUnlink => '連携解除';
+
+  @override
+  String get telegramUnavailable => 'Telegram はまだ利用できません。';
+
+  @override
+  String get telegramShowIn => 'Telegram を表示する会社：';
+
+  @override
+  String get newQrCode => 'QR コードを変更';
+
+  @override
+  String get newQrCodeConfirm =>
+      '古い QR コードと古い ID は使えなくなります。各会社でのあなたの立場は変わりません。';
+
+  @override
+  String get newQrCodeDone => '新しい QR コードを作成しました。';
+
+  @override
+  String get changeGoogle => 'Google アカウントを変更';
+
+  @override
+  String get changeGoogleSub => '同じアカウント・同じ番号・同じ会社のまま';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. このプロフィールで Telegram を連携します（必須）。\n2. ログアウトし、新しい Google アカウントでログインします。\n3. 「Staff Flow のアカウントを持っています」を選び、ID $id を入力します。\n4. Telegram で受け取ったコードを入力します。\nアカウント、番号、会社はそのまま引き継がれます。';
+  }
+
+  @override
+  String get recoverAccount => 'Staff Flow のアカウントを持っています';
+
+  @override
+  String get recoverHint =>
+      '以前のアカウントの ID（SF-…）を入力してください。そのアカウントに連携された Telegram にコードを送ります。';
+
+  @override
+  String get recoverIdLabel => 'ID（SF-…）';
+
+  @override
+  String get recoverSend => 'コードを送信';
+
+  @override
+  String get recoverCodeSent => 'Telegram にコードを送信しました。';
+
+  @override
+  String get recoverCodeLabel => '受け取ったコード（6 桁）';
+
+  @override
+  String get recoverConfirm => 'アカウントを復元';
+
+  @override
+  String get recoverDone => '完了：アカウントに戻りました。';
+
+  @override
+  String get exportData => 'データをエクスポート';
+
+  @override
+  String get exportDataSub => 'あなたの個人データをすべて含むファイル';
+
+  @override
+  String get deleteAccount => 'アカウントを削除';
+
+  @override
+  String get deleteGhost => 'ゴーストを残して削除';
+
+  @override
+  String get deleteGhostHint =>
+      'すべての会社から退出します。後で同じ Google アカウントでログインすると、アカウントと番号が戻ります。';
+
+  @override
+  String get deleteErase => 'すべて完全に消去';
+
+  @override
+  String get deleteEraseHint => '名前、メール、写真、Telegram、メッセージ、通知が消去されます。元に戻せません。';
+
+  @override
+  String get deleteGhostNote =>
+      'どちらの場合も、会社の履歴にはあなたの代わりに匿名の「Ghost」が残ります（休暇申請、過去のシフトなど）。オーナーや責任者が経緯をたどれるようにするためです。';
+
+  @override
+  String get deleteOwnerNote => '会社のオーナーですか？先に会社を譲渡するか、サブスクリプションの終了をお待ちください。';
+
+  @override
+  String get deleteConfirmButton => '削除';
+
+  @override
+  String get accountRestored => 'おかえりなさい！アカウントが再開されました。';
+
+  @override
+  String get closedInvoices => '閉鎖した会社の請求書';
+
+  @override
+  String get downloadAllInvoices => 'すべての請求書をダウンロード（ZIP）';
+
+  @override
+  String get legalTerms => '利用規約・販売条件';
+
+  @override
+  String get legalPrivacy => 'プライバシーポリシー';
+
+  @override
+  String get billingDetailTitle => 'お支払いの内訳';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return '今月の残り（$total 日中 $days 日）：サブスクリプション';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return '今月の残り（$total 日中 $days 日）：「階層拠点」オプション';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'サブスクリプション、従業員 $staff 人：1 か月';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'サブスクリプション、従業員 $staff 人：12 か月を $paid か月分の料金で';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return '「階層拠点」オプション：$months か月、割引なし';
+  }
+
+  @override
+  String get billingTotal => '合計';
+
+  @override
+  String billingCovers(String from, String to) {
+    return '対象期間：$from〜$to';
+  }
+
+  @override
+  String get billingGraceInvoices => 'この会社は更新されません。今すぐすべての請求書をダウンロードしてください。';
+
+  @override
+  String get billingYearLabel => '年';
+
+  @override
+  String get sitesNoneChosen => '拠点が選ばれていません';
 }

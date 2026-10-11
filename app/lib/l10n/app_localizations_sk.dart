@@ -1473,4 +1473,176 @@ class L10nSk extends L10n {
   String billingProrataNote(String days) {
     return 'Zahŕňa zvyšok aktuálneho mesiaca ($days dní, pomerne), potom celé mesiace od 1. dňa.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Zatiaľ neprepojené. Slúži na overenie vašej totožnosti, napríklad pri zmene účtu Google.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Prepojené: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'bez používateľského mena';
+
+  @override
+  String get telegramLink => 'Prepojiť môj Telegram';
+
+  @override
+  String get telegramLinkHint =>
+      'Otvorí sa Telegram: ťuknite na „Štart“ a potom sa vráťte sem.';
+
+  @override
+  String get telegramUnlink => 'Odpojiť';
+
+  @override
+  String get telegramUnavailable => 'Telegram zatiaľ nie je k dispozícii.';
+
+  @override
+  String get telegramShowIn => 'Zobrazovať môj Telegram v:';
+
+  @override
+  String get newQrCode => 'Zmeniť QR kód';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Starý QR kód a starý identifikátor prestanú fungovať. Vaše miesto vo firmách sa nemení.';
+
+  @override
+  String get newQrCodeDone => 'Nový QR kód vytvorený.';
+
+  @override
+  String get changeGoogle => 'Zmeniť účet Google';
+
+  @override
+  String get changeGoogleSub => 'Rovnaký účet, rovnaké číslo, rovnaké firmy';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Prepojte svoj Telegram v tomto profile (povinné).\n2. Odhláste sa a prihláste sa novým účtom Google.\n3. Zvoľte „Už mám účet Staff Flow“ a zadajte svoj identifikátor $id.\n4. Zadajte kód z Telegramu.\nVáš účet, číslo aj firmy zostanú rovnaké.';
+  }
+
+  @override
+  String get recoverAccount => 'Už mám účet Staff Flow';
+
+  @override
+  String get recoverHint =>
+      'Zadajte identifikátor starého účtu (SF-…). Kód sa odošle na Telegram prepojený s týmto účtom.';
+
+  @override
+  String get recoverIdLabel => 'Identifikátor (SF-…)';
+
+  @override
+  String get recoverSend => 'Odoslať kód';
+
+  @override
+  String get recoverCodeSent => 'Kód odoslaný cez Telegram.';
+
+  @override
+  String get recoverCodeLabel => 'Prijatý kód (6 číslic)';
+
+  @override
+  String get recoverConfirm => 'Obnoviť môj účet';
+
+  @override
+  String get recoverDone => 'Hotovo: ste späť vo svojom účte.';
+
+  @override
+  String get exportData => 'Exportovať moje údaje';
+
+  @override
+  String get exportDataSub => 'Súbor so všetkými vašimi osobnými údajmi';
+
+  @override
+  String get deleteAccount => 'Odstrániť môj účet';
+
+  @override
+  String get deleteGhost => 'Odstrániť a ponechať ducha';
+
+  @override
+  String get deleteGhostHint =>
+      'Opustíte všetky firmy. Neskôr sa prihláste rovnakým účtom Google a získate späť účet aj číslo.';
+
+  @override
+  String get deleteErase => 'Všetko natrvalo vymazať';
+
+  @override
+  String get deleteEraseHint =>
+      'Meno, e-mail, fotka, Telegram, správy a upozornenia sa vymažú. Nedá sa to vrátiť.';
+
+  @override
+  String get deleteGhostNote =>
+      'V oboch prípadoch si história firiem ponechá na vašom mieste anonymného „Ghost“ (žiadosti o dovolenku, minulé zmeny…), aby majiteľ a vedúci mohli dohľadať udalosti.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Vlastníte firmu? Najprv ju preveďte, alebo nechajte predplatné skončiť.';
+
+  @override
+  String get deleteConfirmButton => 'Odstrániť';
+
+  @override
+  String get accountRestored => 'Vitajte späť! Váš účet bol znova aktivovaný.';
+
+  @override
+  String get closedInvoices => 'Faktúry zatvorených firiem';
+
+  @override
+  String get downloadAllInvoices => 'Stiahnuť všetky faktúry (ZIP)';
+
+  @override
+  String get legalTerms => 'Podmienky používania a predaja';
+
+  @override
+  String get legalPrivacy => 'Zásady ochrany súkromia';
+
+  @override
+  String get billingDetailTitle => 'Podrobnosti platby';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Zvyšok aktuálneho mesiaca ($days z $total dní): predplatné';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Zvyšok aktuálneho mesiaca ($days z $total dní): možnosť „vnorené pracoviská“';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Predplatné, $staff zamestnancov: 1 mesiac';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Predplatné, $staff zamestnancov: 12 mesiacov za cenu $paid';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return 'Možnosť „vnorené pracoviská“: $months mes., bez zľavy';
+  }
+
+  @override
+  String get billingTotal => 'Spolu';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Obdobie: od $from do $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Táto firma sa neobnoví: stiahnite si hneď všetky jej faktúry.';
+
+  @override
+  String get billingYearLabel => 'Rok';
+
+  @override
+  String get sitesNoneChosen => 'Nevybrané žiadne pracovisko';
 }

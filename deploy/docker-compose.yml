@@ -29,6 +29,8 @@ services:
       ALLOWED_ORIGINS: https://${DOMAIN},https://${APP_DOMAIN:-${DOMAIN}}
       # Administrateurs de la plateforme (adresses Google, séparées par des virgules).
       ADMIN_EMAILS: ${ADMIN_EMAILS:-}
+      # Bot Telegram (jeton donné par @BotFather) ; vide : Telegram désactivé.
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
       # Compte de service Firebase (JSON en base64) ; vide : pas de notifications sur les appareils.
       FCM_CREDENTIALS_B64: ${FCM_CREDENTIALS_B64:-}
       # Traduction des messages, sur ce serveur (service « translate » ci-dessous).

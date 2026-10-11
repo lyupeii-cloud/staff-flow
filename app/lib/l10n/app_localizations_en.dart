@@ -1471,4 +1471,177 @@ class L10nEn extends L10n {
   String billingProrataNote(String days) {
     return 'Includes the rest of this month ($days days, prorated), then whole months from the 1st.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Not linked yet. It is used to verify your identity, for example to change Google account.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Linked: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'no username';
+
+  @override
+  String get telegramLink => 'Link my Telegram';
+
+  @override
+  String get telegramLinkHint =>
+      'Telegram opens: tap “Start”, then come back here.';
+
+  @override
+  String get telegramUnlink => 'Unlink';
+
+  @override
+  String get telegramUnavailable => 'Telegram is not available yet.';
+
+  @override
+  String get telegramShowIn => 'Show my Telegram in:';
+
+  @override
+  String get newQrCode => 'Change QR code';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Your old QR code and old ID will stop working. Your place in your companies does not change.';
+
+  @override
+  String get newQrCodeDone => 'New QR code created.';
+
+  @override
+  String get changeGoogle => 'Change Google account';
+
+  @override
+  String get changeGoogleSub => 'Same account, same number, same companies';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Link your Telegram in this profile (required).\n2. Sign out, then sign in with the new Google account.\n3. Choose “I already have a Staff Flow account” and enter your ID $id.\n4. Enter the code received on Telegram.\nYour account, number and companies stay the same.';
+  }
+
+  @override
+  String get recoverAccount => 'I already have a Staff Flow account';
+
+  @override
+  String get recoverHint =>
+      'Enter the ID of your old account (SF-…). A code will be sent to the Telegram linked to that account.';
+
+  @override
+  String get recoverIdLabel => 'ID (SF-…)';
+
+  @override
+  String get recoverSend => 'Send the code';
+
+  @override
+  String get recoverCodeSent => 'Code sent on Telegram.';
+
+  @override
+  String get recoverCodeLabel => 'Code received (6 digits)';
+
+  @override
+  String get recoverConfirm => 'Recover my account';
+
+  @override
+  String get recoverDone => 'Done: you are back in your account.';
+
+  @override
+  String get exportData => 'Export my data';
+
+  @override
+  String get exportDataSub => 'A file with all your personal data';
+
+  @override
+  String get deleteAccount => 'Delete my account';
+
+  @override
+  String get deleteGhost => 'Delete but keep a ghost';
+
+  @override
+  String get deleteGhostHint =>
+      'You leave all your companies. Sign in later with the same Google account to get your account and number back.';
+
+  @override
+  String get deleteErase => 'Erase everything permanently';
+
+  @override
+  String get deleteEraseHint =>
+      'Name, email, photo, Telegram, messages and notifications are erased. This cannot be undone.';
+
+  @override
+  String get deleteGhostNote =>
+      'Either way, company history keeps an anonymous “Ghost” in your place (leave requests, past shifts…) so the owner and managers can trace what happened.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Own a company? Transfer it first, or let its subscription end.';
+
+  @override
+  String get deleteConfirmButton => 'Delete';
+
+  @override
+  String get accountRestored =>
+      'Welcome back! Your account has been reactivated.';
+
+  @override
+  String get closedInvoices => 'Invoices of closed companies';
+
+  @override
+  String get downloadAllInvoices => 'Download all invoices (ZIP)';
+
+  @override
+  String get legalTerms => 'Terms of use and sale';
+
+  @override
+  String get legalPrivacy => 'Privacy policy';
+
+  @override
+  String get billingDetailTitle => 'Payment details';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Rest of this month ($days days out of $total): subscription';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Rest of this month ($days days out of $total): “nested sites” option';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Subscription, $staff employees: 1 month';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Subscription, $staff employees: 12 months for the price of $paid';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return '“Nested sites” option: $months months, no discount';
+  }
+
+  @override
+  String get billingTotal => 'Total';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Period covered: $from to $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'This company is not being renewed: download all its invoices now.';
+
+  @override
+  String get billingYearLabel => 'Year';
+
+  @override
+  String get sitesNoneChosen => 'No site chosen';
 }

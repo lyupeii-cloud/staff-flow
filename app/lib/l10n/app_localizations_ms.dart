@@ -1470,4 +1470,177 @@ class L10nMs extends L10n {
   String billingProrataNote(String days) {
     return 'Termasuk baki bulan ini ($days hari, prorata), kemudian bulan penuh mulai 1 haribulan.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Belum dipautkan. Ia digunakan untuk mengesahkan identiti anda, contohnya semasa menukar akaun Google.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Dipautkan: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'tiada nama pengguna';
+
+  @override
+  String get telegramLink => 'Pautkan Telegram saya';
+
+  @override
+  String get telegramLinkHint =>
+      'Telegram akan dibuka: ketik “Mula”, kemudian kembali ke sini.';
+
+  @override
+  String get telegramUnlink => 'Nyahpaut';
+
+  @override
+  String get telegramUnavailable => 'Telegram belum tersedia.';
+
+  @override
+  String get telegramShowIn => 'Tunjukkan Telegram saya di:';
+
+  @override
+  String get newQrCode => 'Tukar kod QR';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Kod QR lama dan ID lama anda tidak akan berfungsi lagi. Kedudukan anda dalam syarikat tidak berubah.';
+
+  @override
+  String get newQrCodeDone => 'Kod QR baharu dicipta.';
+
+  @override
+  String get changeGoogle => 'Tukar akaun Google';
+
+  @override
+  String get changeGoogleSub => 'Akaun sama, nombor sama, syarikat sama';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Pautkan Telegram anda dalam profil ini (wajib).\n2. Log keluar, kemudian log masuk dengan akaun Google baharu.\n3. Pilih “Saya sudah ada akaun Staff Flow” dan masukkan ID anda $id.\n4. Masukkan kod yang diterima di Telegram.\nAkaun, nombor dan syarikat anda kekal sama.';
+  }
+
+  @override
+  String get recoverAccount => 'Saya sudah ada akaun Staff Flow';
+
+  @override
+  String get recoverHint =>
+      'Masukkan ID akaun lama anda (SF-…). Kod akan dihantar ke Telegram yang dipautkan kepada akaun itu.';
+
+  @override
+  String get recoverIdLabel => 'ID (SF-…)';
+
+  @override
+  String get recoverSend => 'Hantar kod';
+
+  @override
+  String get recoverCodeSent => 'Kod dihantar melalui Telegram.';
+
+  @override
+  String get recoverCodeLabel => 'Kod diterima (6 digit)';
+
+  @override
+  String get recoverConfirm => 'Pulihkan akaun saya';
+
+  @override
+  String get recoverDone => 'Selesai: anda kembali ke akaun anda.';
+
+  @override
+  String get exportData => 'Eksport data saya';
+
+  @override
+  String get exportDataSub => 'Fail dengan semua data peribadi anda';
+
+  @override
+  String get deleteAccount => 'Padam akaun saya';
+
+  @override
+  String get deleteGhost => 'Padam dengan meninggalkan hantu';
+
+  @override
+  String get deleteGhostHint =>
+      'Anda keluar daripada semua syarikat. Log masuk kemudian dengan akaun Google yang sama untuk mendapatkan semula akaun dan nombor anda.';
+
+  @override
+  String get deleteErase => 'Padam semuanya secara kekal';
+
+  @override
+  String get deleteEraseHint =>
+      'Nama, e-mel, foto, Telegram, mesej dan pemberitahuan dipadam. Tidak boleh dibuat asal.';
+
+  @override
+  String get deleteGhostNote =>
+      'Dalam kedua-dua kes, sejarah syarikat menyimpan “Ghost” tanpa nama di tempat anda (permohonan cuti, syif lalu…) supaya pemilik dan pengurus boleh menjejak peristiwa.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Pemilik syarikat? Pindahkannya dahulu, atau biarkan langganannya tamat.';
+
+  @override
+  String get deleteConfirmButton => 'Padam';
+
+  @override
+  String get accountRestored =>
+      'Selamat kembali! Akaun anda telah diaktifkan semula.';
+
+  @override
+  String get closedInvoices => 'Invois syarikat yang ditutup';
+
+  @override
+  String get downloadAllInvoices => 'Muat turun semua invois (ZIP)';
+
+  @override
+  String get legalTerms => 'Terma penggunaan dan jualan';
+
+  @override
+  String get legalPrivacy => 'Dasar privasi';
+
+  @override
+  String get billingDetailTitle => 'Butiran pembayaran';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Baki bulan ini ($days daripada $total hari): langganan';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Baki bulan ini ($days daripada $total hari): pilihan “lokasi bersarang”';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Langganan, $staff pekerja: 1 bulan';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Langganan, $staff pekerja: 12 bulan pada harga $paid';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return 'Pilihan “lokasi bersarang”: $months bulan, tanpa diskaun';
+  }
+
+  @override
+  String get billingTotal => 'Jumlah';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Tempoh: $from hingga $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Syarikat ini tidak diperbaharui: muat turun semua invoisnya sekarang.';
+
+  @override
+  String get billingYearLabel => 'Tahun';
+
+  @override
+  String get sitesNoneChosen => 'Tiada lokasi dipilih';
 }

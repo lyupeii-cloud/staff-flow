@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../brand.dart';
+import 'account_tools.dart';
 import '../i18n.dart';
 import '../session.dart';
 import 'home_screen.dart';
@@ -87,7 +88,74 @@ class ProfilePage extends StatelessWidget {
                     trailing: const Icon(Icons.chevron_right),
                     onTap: () => _changeName(context),
                   ),
+                  const Divider(height: 1),
+                  ListTile(
+                    leading: const Icon(Icons.qr_code, color: Brand.blue),
+                    title: Text(t.newQrCode),
+                    trailing: const Icon(Icons.chevron_right),
+                    onTap: () => confirmNewQrCode(context, session),
+                  ),
                 ]),
+              ),
+              const SizedBox(height: 12),
+              TelegramCard(session: session),
+              const SizedBox(height: 12),
+              Card(
+                child: Column(children: [
+                  ListTile(
+                    leading: const Icon(Icons.switch_account_outlined, color: Brand.blue),
+                    title: Text(t.changeGoogle),
+                    subtitle: Text(t.changeGoogleSub),
+                    trailing: const Icon(Icons.chevron_right),
+                    onTap: () => showChangeGoogleHelp(context, session),
+                  ),
+                  if (session.me!.companies.isEmpty) ...[
+                    const Divider(height: 1),
+                    ListTile(
+                      leading: const Icon(Icons.manage_history, color: Brand.blue),
+                      title: Text(t.recoverAccount),
+                      trailing: const Icon(Icons.chevron_right),
+                      onTap: () => showRecoverDialog(context, session),
+                    ),
+                  ],
+                  const Divider(height: 1),
+                  ListTile(
+                    leading: const Icon(Icons.download_outlined, color: Brand.blue),
+                    title: Text(t.exportData),
+                    subtitle: Text(t.exportDataSub),
+                    trailing: const Icon(Icons.chevron_right),
+                    onTap: () => downloadFromServer(context, session, '/me/export/link'),
+                  ),
+                  const Divider(height: 1),
+                  ListTile(
+                    leading: const Icon(Icons.receipt_long_outlined, color: Brand.blue),
+                    title: Text(t.closedInvoices),
+                    trailing: const Icon(Icons.chevron_right),
+                    onTap: () => ClosedInvoicesPage.open(context, session),
+                  ),
+                  const Divider(height: 1),
+                  ListTile(
+                    leading: const Icon(Icons.gavel_outlined, color: Brand.blue),
+                    title: Text(t.legalTerms),
+                    trailing: const Icon(Icons.open_in_new, size: 20),
+                    onTap: () => openUrl(context, legalUrl(context, 'terms')),
+                  ),
+                  const Divider(height: 1),
+                  ListTile(
+                    leading: const Icon(Icons.privacy_tip_outlined, color: Brand.blue),
+                    title: Text(t.legalPrivacy),
+                    trailing: const Icon(Icons.open_in_new, size: 20),
+                    onTap: () => openUrl(context, legalUrl(context, 'privacy')),
+                  ),
+                ]),
+              ),
+              const SizedBox(height: 12),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.delete_outline, color: theme.colorScheme.error),
+                  title: Text(t.deleteAccount, style: TextStyle(color: theme.colorScheme.error)),
+                  onTap: () => showDeleteAccountDialog(context, session),
+                ),
               ),
             ],
           ),

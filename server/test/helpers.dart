@@ -52,6 +52,26 @@ class FakePush implements PushSender {
   }
 }
 
+/// Bot Telegram de test : garde les messages envoyés.
+class FakeTelegram implements TelegramApi {
+  final sent = <(int, String)>[];
+
+  /// Comptes qui ont bloqué le bot.
+  final blocked = <int>{};
+
+  @override
+  Future<String> botName() async => 'StaffFlowTestBot';
+
+  @override
+  Future<List<Map<String, dynamic>>> updates(int offset) async => [];
+
+  @override
+  Future<void> send(int chatId, String text) async {
+    if (blocked.contains(chatId)) throw TelegramBlocked();
+    sent.add((chatId, text));
+  }
+}
+
 /// Horloge réglable, pour tester les expirations sans attendre.
 class FakeClock {
   DateTime now = DateTime.utc(2026, 10, 5, 8);
@@ -111,6 +131,7 @@ class TestEnv {
   /// Notifications « envoyées » pendant le test.
   final push = FakePush();
   final translator = FakeTranslator();
+  final telegram = FakeTelegram();
   late FakeClock clock;
 
   TestEnv() {
@@ -132,6 +153,7 @@ class TestEnv {
       await store.migrate();
       clock = FakeClock();
       push.sent.clear();
+      telegram.sent.clear();
       translator
         ..calls = 0
         ..down = false;
@@ -143,6 +165,7 @@ class TestEnv {
         now: () => clock.now,
         push: push,
         translator: translator,
+        telegramApi: telegram,
         adminEmails: {'boss@example.com'},
       );
       handler = api.handler;

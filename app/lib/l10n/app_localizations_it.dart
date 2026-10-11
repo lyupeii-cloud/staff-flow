@@ -1479,4 +1479,177 @@ class L10nIt extends L10n {
   String billingProrataNote(String days) {
     return 'Comprende il resto del mese in corso ($days giorni, pro rata) e poi mesi interi dal giorno 1.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Non ancora collegato. Serve a verificare la tua identità, ad esempio per cambiare account Google.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Collegato: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'senza nome utente';
+
+  @override
+  String get telegramLink => 'Collega il mio Telegram';
+
+  @override
+  String get telegramLinkHint =>
+      'Si apre Telegram: tocca «Avvia», poi torna qui.';
+
+  @override
+  String get telegramUnlink => 'Scollega';
+
+  @override
+  String get telegramUnavailable => 'Telegram non è ancora disponibile.';
+
+  @override
+  String get telegramShowIn => 'Mostra il mio Telegram in:';
+
+  @override
+  String get newQrCode => 'Cambia codice QR';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Il vecchio codice QR e il vecchio identificativo non funzioneranno più. Il tuo posto nelle aziende non cambia.';
+
+  @override
+  String get newQrCodeDone => 'Nuovo codice QR creato.';
+
+  @override
+  String get changeGoogle => 'Cambia account Google';
+
+  @override
+  String get changeGoogleSub => 'Stesso account, stesso numero, stesse aziende';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Collega il tuo Telegram in questo profilo (obbligatorio).\n2. Esci, poi accedi con il nuovo account Google.\n3. Scegli «Ho già un account Staff Flow» e inserisci il tuo identificativo $id.\n4. Inserisci il codice ricevuto su Telegram.\nAccount, numero e aziende restano gli stessi.';
+  }
+
+  @override
+  String get recoverAccount => 'Ho già un account Staff Flow';
+
+  @override
+  String get recoverHint =>
+      'Inserisci l\'identificativo del tuo vecchio account (SF-…). Un codice verrà inviato al Telegram collegato a quell\'account.';
+
+  @override
+  String get recoverIdLabel => 'Identificativo (SF-…)';
+
+  @override
+  String get recoverSend => 'Invia il codice';
+
+  @override
+  String get recoverCodeSent => 'Codice inviato su Telegram.';
+
+  @override
+  String get recoverCodeLabel => 'Codice ricevuto (6 cifre)';
+
+  @override
+  String get recoverConfirm => 'Recupera il mio account';
+
+  @override
+  String get recoverDone => 'Fatto: sei tornato nel tuo account.';
+
+  @override
+  String get exportData => 'Esporta i miei dati';
+
+  @override
+  String get exportDataSub => 'Un file con tutti i tuoi dati personali';
+
+  @override
+  String get deleteAccount => 'Elimina il mio account';
+
+  @override
+  String get deleteGhost => 'Elimina lasciando un fantasma';
+
+  @override
+  String get deleteGhostHint =>
+      'Lasci tutte le aziende. Accedi più tardi con lo stesso account Google per ritrovare account e numero.';
+
+  @override
+  String get deleteErase => 'Cancella tutto definitivamente';
+
+  @override
+  String get deleteEraseHint =>
+      'Nome, e-mail, foto, Telegram, messaggi e notifiche vengono cancellati. Non si può annullare.';
+
+  @override
+  String get deleteGhostNote =>
+      'In entrambi i casi, lo storico delle aziende conserva un «Ghost» anonimo al tuo posto (richieste di ferie, turni passati…) perché titolare e responsabili possano ricostruire gli eventi.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Sei proprietario di un\'azienda? Trasferiscila prima, o lascia scadere l\'abbonamento.';
+
+  @override
+  String get deleteConfirmButton => 'Elimina';
+
+  @override
+  String get accountRestored =>
+      'Bentornato! Il tuo account è stato riattivato.';
+
+  @override
+  String get closedInvoices => 'Fatture delle aziende chiuse';
+
+  @override
+  String get downloadAllInvoices => 'Scarica tutte le fatture (ZIP)';
+
+  @override
+  String get legalTerms => 'Condizioni d\'uso e di vendita';
+
+  @override
+  String get legalPrivacy => 'Informativa sulla privacy';
+
+  @override
+  String get billingDetailTitle => 'Dettaglio del pagamento';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Resto del mese in corso ($days giorni su $total): abbonamento';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Resto del mese in corso ($days giorni su $total): opzione «sedi annidate»';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Abbonamento, $staff dipendenti: 1 mese';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Abbonamento, $staff dipendenti: 12 mesi al prezzo di $paid';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return 'Opzione «sedi annidate»: $months mesi, senza sconto';
+  }
+
+  @override
+  String get billingTotal => 'Totale';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Periodo coperto: dal $from al $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Questa azienda non viene rinnovata: scarica subito tutte le sue fatture.';
+
+  @override
+  String get billingYearLabel => 'Anno';
+
+  @override
+  String get sitesNoneChosen => 'Nessuna sede scelta';
 }

@@ -1483,4 +1483,178 @@ class L10nEl extends L10n {
   String billingProrataNote(String days) {
     return 'Περιλαμβάνει το υπόλοιπο του τρέχοντος μήνα ($days ημέρες, αναλογικά) και μετά ολόκληρους μήνες από την 1η.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Δεν έχει συνδεθεί ακόμη. Χρησιμεύει στην επαλήθευση της ταυτότητάς σας, π.χ. για αλλαγή λογαριασμού Google.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Συνδέθηκε: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'χωρίς όνομα χρήστη';
+
+  @override
+  String get telegramLink => 'Σύνδεση του Telegram μου';
+
+  @override
+  String get telegramLinkHint =>
+      'Ανοίγει το Telegram: πατήστε «Έναρξη» και επιστρέψτε εδώ.';
+
+  @override
+  String get telegramUnlink => 'Αποσύνδεση';
+
+  @override
+  String get telegramUnavailable => 'Το Telegram δεν είναι ακόμη διαθέσιμο.';
+
+  @override
+  String get telegramShowIn => 'Εμφάνιση του Telegram μου σε:';
+
+  @override
+  String get newQrCode => 'Αλλαγή κωδικού QR';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Ο παλιός κωδικός QR και το παλιό αναγνωριστικό δεν θα λειτουργούν πια. Η θέση σας στις επιχειρήσεις δεν αλλάζει.';
+
+  @override
+  String get newQrCodeDone => 'Δημιουργήθηκε νέος κωδικός QR.';
+
+  @override
+  String get changeGoogle => 'Αλλαγή λογαριασμού Google';
+
+  @override
+  String get changeGoogleSub =>
+      'Ίδιος λογαριασμός, ίδιος αριθμός, ίδιες επιχειρήσεις';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Συνδέστε το Telegram σας σε αυτό το προφίλ (υποχρεωτικό).\n2. Αποσυνδεθείτε και συνδεθείτε με τον νέο λογαριασμό Google.\n3. Επιλέξτε «Έχω ήδη λογαριασμό Staff Flow» και πληκτρολογήστε το αναγνωριστικό σας $id.\n4. Πληκτρολογήστε τον κωδικό που λάβατε στο Telegram.\nΟ λογαριασμός, ο αριθμός και οι επιχειρήσεις σας μένουν ίδιοι.';
+  }
+
+  @override
+  String get recoverAccount => 'Έχω ήδη λογαριασμό Staff Flow';
+
+  @override
+  String get recoverHint =>
+      'Πληκτρολογήστε το αναγνωριστικό του παλιού λογαριασμού (SF-…). Θα σταλεί κωδικός στο Telegram που είναι συνδεδεμένο με αυτόν.';
+
+  @override
+  String get recoverIdLabel => 'Αναγνωριστικό (SF-…)';
+
+  @override
+  String get recoverSend => 'Αποστολή κωδικού';
+
+  @override
+  String get recoverCodeSent => 'Ο κωδικός στάλθηκε στο Telegram.';
+
+  @override
+  String get recoverCodeLabel => 'Κωδικός που λάβατε (6 ψηφία)';
+
+  @override
+  String get recoverConfirm => 'Ανάκτηση λογαριασμού';
+
+  @override
+  String get recoverDone => 'Έγινε: επιστρέψατε στον λογαριασμό σας.';
+
+  @override
+  String get exportData => 'Εξαγωγή των δεδομένων μου';
+
+  @override
+  String get exportDataSub => 'Ένα αρχείο με όλα τα προσωπικά σας δεδομένα';
+
+  @override
+  String get deleteAccount => 'Διαγραφή λογαριασμού';
+
+  @override
+  String get deleteGhost => 'Διαγραφή με διατήρηση φαντάσματος';
+
+  @override
+  String get deleteGhostHint =>
+      'Αποχωρείτε από όλες τις επιχειρήσεις. Συνδεθείτε αργότερα με τον ίδιο λογαριασμό Google για να ανακτήσετε λογαριασμό και αριθμό.';
+
+  @override
+  String get deleteErase => 'Οριστική διαγραφή όλων';
+
+  @override
+  String get deleteEraseHint =>
+      'Όνομα, e-mail, φωτογραφία, Telegram, μηνύματα και ειδοποιήσεις διαγράφονται. Δεν αναιρείται.';
+
+  @override
+  String get deleteGhostNote =>
+      'Και στις δύο περιπτώσεις, το ιστορικό των επιχειρήσεων κρατά στη θέση σας έναν ανώνυμο «Ghost» (αιτήματα άδειας, παλιές βάρδιες…) ώστε ο ιδιοκτήτης και οι υπεύθυνοι να ανασυνθέτουν τα γεγονότα.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Είστε ιδιοκτήτης επιχείρησης; Μεταβιβάστε την πρώτα ή αφήστε τη συνδρομή να λήξει.';
+
+  @override
+  String get deleteConfirmButton => 'Διαγραφή';
+
+  @override
+  String get accountRestored =>
+      'Καλώς ήρθατε ξανά! Ο λογαριασμός σας ενεργοποιήθηκε ξανά.';
+
+  @override
+  String get closedInvoices => 'Τιμολόγια κλειστών επιχειρήσεων';
+
+  @override
+  String get downloadAllInvoices => 'Λήψη όλων των τιμολογίων (ZIP)';
+
+  @override
+  String get legalTerms => 'Όροι χρήσης και πώλησης';
+
+  @override
+  String get legalPrivacy => 'Πολιτική απορρήτου';
+
+  @override
+  String get billingDetailTitle => 'Ανάλυση πληρωμής';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Υπόλοιπο τρέχοντος μήνα ($days από $total ημέρες): συνδρομή';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Υπόλοιπο τρέχοντος μήνα ($days από $total ημέρες): επιλογή «ένθετα σημεία»';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Συνδρομή, $staff εργαζόμενοι: 1 μήνας';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Συνδρομή, $staff εργαζόμενοι: 12 μήνες στην τιμή $paid';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return 'Επιλογή «ένθετα σημεία»: $months μήνες, χωρίς έκπτωση';
+  }
+
+  @override
+  String get billingTotal => 'Σύνολο';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Περίοδος: $from έως $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Αυτή η επιχείρηση δεν ανανεώνεται: κατεβάστε τώρα όλα τα τιμολόγιά της.';
+
+  @override
+  String get billingYearLabel => 'Έτος';
+
+  @override
+  String get sitesNoneChosen => 'Δεν επιλέχθηκε σημείο';
 }

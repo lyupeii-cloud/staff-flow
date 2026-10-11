@@ -7,6 +7,7 @@ import '../dates.dart';
 import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
+import 'account_tools.dart';
 import 'tools_widgets.dart';
 
 /// Montant en euros, dans la langue de l'application.
@@ -86,6 +87,60 @@ class _BillingPageState extends State<BillingPage> {
     }
   }
 
+  /// Détail ligne par ligne de ce qui sera payé, puis paiement.
+  Future<void> _confirm(Map<String, dynamic> d, String period, bool cascade) async {
+    final t = context.l10n;
+    final loc = context.localeName;
+    final quote = ((d['quotes'] as Map)['$period${cascade ? 'Cascade' : ''}'] as Map).cast<String, dynamic>();
+    String line(Map l) => switch (l['label']) {
+          'prorata' => t.billingLineProrata('${l['days']}', '${l['monthDays']}'),
+          'cascadeProrata' => t.billingLineCascadeProrata('${l['days']}', '${l['monthDays']}'),
+          'cascade' => t.billingLineCascade('${l['months']}'),
+          _ => l['period'] == 'year'
+              ? t.billingLineYear('${l['staff']}', '${l['paidMonths']}')
+              : t.billingLineMonth('${l['staff']}'),
+        };
+    final total = quote['total'] as int;
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) {
+        final theme = Theme.of(context);
+        return AlertDialog(
+          title: Text(t.billingDetailTitle),
+          content: SingleChildScrollView(
+            child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+              for (final l in quote['lines'] as List)
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 6),
+                  child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Expanded(child: Text(line(l as Map))),
+                    const SizedBox(width: 12),
+                    Text(euroAmount(context, l['cents'] as int)),
+                  ]),
+                ),
+              const Divider(),
+              Row(children: [
+                Expanded(child: Text(t.billingTotal, style: const TextStyle(fontWeight: FontWeight.w800))),
+                Text(euroAmount(context, total), style: const TextStyle(fontWeight: FontWeight.w800)),
+              ]),
+              const SizedBox(height: 8),
+              Text(
+                t.billingCovers(longDate(DateTime.parse(quote['from']).toLocal(), loc),
+                    longDate(DateTime.parse(quote['to']).subtract(const Duration(days: 1)), loc)),
+                style: theme.textTheme.bodySmall,
+              ),
+            ]),
+          ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
+            FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.billingPay(euroAmount(context, total)))),
+          ],
+        );
+      },
+    );
+    if (ok == true && mounted) await _pay(period);
+  }
+
   Future<void> _pay(String period) => _run(() async {
         await widget.session.api.send('POST', '$_base/checkout', body: {'period': period, 'cascade': _cascade});
         await widget.session.refresh();
@@ -145,7 +200,27 @@ class _BillingPageState extends State<BillingPage> {
     final dueMonth = due[cascade ? 'monthCascade' : 'month'] as int;
     final dueYear = due[cascade ? 'yearCascade' : 'year'] as int;
     final prorata = (d['prorataDays'] as int? ?? 0) > 0 && status != 'active';
+    final invoices = d['invoices'] as List;
+    Future<void> downloadAll() =>
+        downloadFromServer(context, widget.session, '/companies/${widget.company.id}/invoices-zip/link');
     return [
+      // Pas renouvelée : on propose de récupérer toutes les factures tant que c'est simple.
+      if (status == 'grace' && invoices.isNotEmpty)
+        Card(
+          color: theme.colorScheme.tertiaryContainer,
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+              Text(t.billingGraceInvoices),
+              const SizedBox(height: 8),
+              FilledButton.icon(
+                onPressed: downloadAll,
+                icon: const Icon(Icons.folder_zip_outlined),
+                label: Text(t.downloadAllInvoices),
+              ),
+            ]),
+          ),
+        ),
       Card(
         color: status == 'grace' ? theme.colorScheme.errorContainer : theme.colorScheme.primaryContainer,
         child: ListTile(
@@ -170,14 +245,14 @@ class _BillingPageState extends State<BillingPage> {
           price: t.billingPerMonth(euroAmount(context, month)),
           due: dueMonth == month ? null : t.billingDueToday(euroAmount(context, dueMonth)),
           button: t.billingPay(euroAmount(context, dueMonth)),
-          onPressed: d['canPay'] == true && !_busy ? () => _pay('month') : null,
+          onPressed: d['canPay'] == true && !_busy ? () => _confirm(d, 'month', cascade) : null,
         ),
         _PriceCard(
           title: t.billingYearly('${d['annualMonths']}'),
           price: t.billingPerYear(euroAmount(context, year)),
           due: dueYear == year ? null : t.billingDueToday(euroAmount(context, dueYear)),
           button: t.billingPay(euroAmount(context, dueYear)),
-          onPressed: d['canPay'] == true && !_busy ? () => _pay('year') : null,
+          onPressed: d['canPay'] == true && !_busy ? () => _confirm(d, 'year', cascade) : null,
         ),
         if (prorata)
           Padding(
@@ -191,16 +266,25 @@ class _BillingPageState extends State<BillingPage> {
       const SizedBox(height: 24),
       Text(t.billingInvoices, style: theme.textTheme.titleMedium),
       _Invoices(
-        invoices: [for (final i in d['invoices'] as List) (i as Map).cast<String, dynamic>()],
+        invoices: [for (final i in invoices) (i as Map).cast<String, dynamic>()],
         busy: _busy,
         onOpen: _openInvoice,
       ),
+      if (invoices.length > 1)
+        Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: OutlinedButton.icon(
+            onPressed: downloadAll,
+            icon: const Icon(Icons.folder_zip_outlined),
+            label: Text(t.downloadAllInvoices),
+          ),
+        ),
     ];
   }
 }
 
-/// Factures, une année à la fois : on passe d'une année à l'autre en
-/// touchant les années (les plus récentes d'abord) ou en glissant.
+/// Factures, une année à la fois, choisie dans un menu déroulant (la plus
+/// récente d'abord).
 class _Invoices extends StatefulWidget {
   final List<Map<String, dynamic>> invoices;
   final bool busy;
@@ -217,11 +301,6 @@ class _InvoicesState extends State<_Invoices> {
     ..sort((a, b) => b.compareTo(a));
   late int? _year = _years.firstOrNull;
 
-  void _shift(int delta) {
-    final i = _years.indexOf(_year!) + delta;
-    if (i >= 0 && i < _years.length) setState(() => _year = _years[i]);
-  }
-
   @override
   Widget build(BuildContext context) {
     final t = context.l10n;
@@ -231,28 +310,15 @@ class _InvoicesState extends State<_Invoices> {
     final shown = [for (final i in widget.invoices) if (DateTime.parse(i['issuedAt']).toLocal().year == _year) i];
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       const SizedBox(height: 8),
-      SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(children: [
-          for (final y in _years)
-            Padding(
-              padding: const EdgeInsets.only(right: 8),
-              child: ChoiceChip(
-                label: Text('$y'),
-                selected: y == _year,
-                onSelected: (_) => setState(() => _year = y),
-              ),
-            ),
-        ]),
+      Align(
+        alignment: Alignment.centerLeft,
+        child: DropdownButton<int>(
+          value: _year,
+          items: [for (final y in _years) DropdownMenuItem(value: y, child: Text('${t.billingYearLabel} $y'))],
+          onChanged: (y) => setState(() => _year = y),
+        ),
       ),
-      // Glisser vers la gauche : année précédente ; vers la droite : suivante.
-      GestureDetector(
-        onHorizontalDragEnd: (e) {
-          final v = e.primaryVelocity ?? 0;
-          if (v < -200) _shift(1);
-          if (v > 200) _shift(-1);
-        },
-        child: Column(children: [
+      Column(children: [
           for (final i in shown)
             ListTile(
               contentPadding: EdgeInsets.zero,
@@ -263,8 +329,7 @@ class _InvoicesState extends State<_Invoices> {
               trailing: const Icon(Icons.download_outlined),
               onTap: widget.busy ? null : () => widget.onOpen(i['id'] as int),
             ),
-        ]),
-      ),
+      ]),
     ]);
   }
 }

@@ -51,6 +51,7 @@ Future<void> main() async {
   final translateUrl = env['TRANSLATE_URL'] ?? '';
   final translator = translateUrl.isEmpty ? null : LibreTranslator(translateUrl);
 
+  final telegramToken = env['TELEGRAM_BOT_TOKEN'] ?? '';
   final api = Api(
     store: store,
     google: TokenInfoGoogleVerifier(list('GOOGLE_CLIENT_IDS').toSet()),
@@ -59,6 +60,7 @@ Future<void> main() async {
     allowedOrigins: list('ALLOWED_ORIGINS').toSet(),
     push: push,
     translator: translator,
+    telegramApi: telegramToken.isEmpty ? null : HttpTelegramApi(telegramToken),
     adminEmails: {for (final e in list('ADMIN_EMAILS')) e.toLowerCase()},
     testPaymentsForAll: env['BILLING_TEST'] == 'true',
     platformFile: (env['PLATFORM_CONFIG'] ?? '').isEmpty ? null : PlatformService.readFile(env['PLATFORM_CONFIG']!),
@@ -73,4 +75,10 @@ Future<void> main() async {
   Future<void> tick() => api.billing.tick().catchError((Object e) => print('Abonnements : $e'));
   unawaited(tick());
   Timer.periodic(const Duration(minutes: 10), (_) => tick());
+
+  // Bot Telegram : liaison des comptes et codes de vérification.
+  if (api.telegram.enabled) {
+    print('Bot Telegram actif.');
+    unawaited(api.telegram.run());
+  }
 }

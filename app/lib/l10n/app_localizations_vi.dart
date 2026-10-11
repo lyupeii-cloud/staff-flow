@@ -1465,4 +1465,177 @@ class L10nVi extends L10n {
   String billingProrataNote(String days) {
     return 'Gồm phần còn lại của tháng này ($days ngày, theo tỷ lệ), sau đó tính theo tháng tròn từ ngày 1.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Chưa liên kết. Dùng để xác minh danh tính, ví dụ khi đổi tài khoản Google.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Đã liên kết: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'không có tên người dùng';
+
+  @override
+  String get telegramLink => 'Liên kết Telegram của tôi';
+
+  @override
+  String get telegramLinkHint =>
+      'Telegram sẽ mở: chạm “Bắt đầu”, rồi quay lại đây.';
+
+  @override
+  String get telegramUnlink => 'Hủy liên kết';
+
+  @override
+  String get telegramUnavailable => 'Telegram chưa khả dụng.';
+
+  @override
+  String get telegramShowIn => 'Hiển thị Telegram của tôi trong:';
+
+  @override
+  String get newQrCode => 'Đổi mã QR';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Mã QR cũ và mã định danh cũ sẽ không dùng được nữa. Vị trí của bạn trong các công ty không đổi.';
+
+  @override
+  String get newQrCodeDone => 'Đã tạo mã QR mới.';
+
+  @override
+  String get changeGoogle => 'Đổi tài khoản Google';
+
+  @override
+  String get changeGoogleSub => 'Cùng tài khoản, cùng số, cùng công ty';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Liên kết Telegram trong hồ sơ này (bắt buộc).\n2. Đăng xuất, rồi đăng nhập bằng tài khoản Google mới.\n3. Chọn “Tôi đã có tài khoản Staff Flow” và nhập mã định danh $id.\n4. Nhập mã nhận được trên Telegram.\nTài khoản, số và các công ty của bạn vẫn giữ nguyên.';
+  }
+
+  @override
+  String get recoverAccount => 'Tôi đã có tài khoản Staff Flow';
+
+  @override
+  String get recoverHint =>
+      'Nhập mã định danh của tài khoản cũ (SF-…). Mã sẽ được gửi tới Telegram liên kết với tài khoản đó.';
+
+  @override
+  String get recoverIdLabel => 'Mã định danh (SF-…)';
+
+  @override
+  String get recoverSend => 'Gửi mã';
+
+  @override
+  String get recoverCodeSent => 'Đã gửi mã qua Telegram.';
+
+  @override
+  String get recoverCodeLabel => 'Mã nhận được (6 chữ số)';
+
+  @override
+  String get recoverConfirm => 'Lấy lại tài khoản';
+
+  @override
+  String get recoverDone => 'Xong: bạn đã trở lại tài khoản của mình.';
+
+  @override
+  String get exportData => 'Xuất dữ liệu của tôi';
+
+  @override
+  String get exportDataSub => 'Một tệp chứa toàn bộ dữ liệu cá nhân của bạn';
+
+  @override
+  String get deleteAccount => 'Xóa tài khoản';
+
+  @override
+  String get deleteGhost => 'Xóa nhưng giữ một bóng ma';
+
+  @override
+  String get deleteGhostHint =>
+      'Bạn rời khỏi mọi công ty. Đăng nhập lại sau bằng cùng tài khoản Google để lấy lại tài khoản và số của bạn.';
+
+  @override
+  String get deleteErase => 'Xóa vĩnh viễn mọi thứ';
+
+  @override
+  String get deleteEraseHint =>
+      'Tên, email, ảnh, Telegram, tin nhắn và thông báo sẽ bị xóa. Không thể hoàn tác.';
+
+  @override
+  String get deleteGhostNote =>
+      'Trong cả hai trường hợp, lịch sử công ty giữ một “Ghost” ẩn danh thay cho bạn (đơn nghỉ phép, ca đã qua…) để chủ và quản lý có thể truy lại sự việc.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Là chủ một công ty? Hãy chuyển nhượng trước, hoặc để gói đăng ký kết thúc.';
+
+  @override
+  String get deleteConfirmButton => 'Xóa';
+
+  @override
+  String get accountRestored =>
+      'Chào mừng trở lại! Tài khoản của bạn đã được kích hoạt lại.';
+
+  @override
+  String get closedInvoices => 'Hóa đơn của công ty đã đóng';
+
+  @override
+  String get downloadAllInvoices => 'Tải tất cả hóa đơn (ZIP)';
+
+  @override
+  String get legalTerms => 'Điều khoản sử dụng và bán hàng';
+
+  @override
+  String get legalPrivacy => 'Chính sách quyền riêng tư';
+
+  @override
+  String get billingDetailTitle => 'Chi tiết thanh toán';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Phần còn lại của tháng ($days/$total ngày): gói đăng ký';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Phần còn lại của tháng ($days/$total ngày): tùy chọn “địa điểm lồng nhau”';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Gói đăng ký, $staff nhân viên: 1 tháng';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Gói đăng ký, $staff nhân viên: 12 tháng với giá $paid tháng';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return 'Tùy chọn “địa điểm lồng nhau”: $months tháng, không giảm giá';
+  }
+
+  @override
+  String get billingTotal => 'Tổng';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Thời gian: từ $from đến $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Công ty này không được gia hạn: hãy tải ngay tất cả hóa đơn.';
+
+  @override
+  String get billingYearLabel => 'Năm';
+
+  @override
+  String get sitesNoneChosen => 'Chưa chọn địa điểm';
 }

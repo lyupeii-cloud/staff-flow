@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../brand.dart';
 import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
@@ -169,14 +170,23 @@ class _TeamViewState extends State<TeamView> {
         if (m.role != Role.manager && m.sites != null) _siteNames(m.sites),
         m.user.publicId,
       ].join(' · ')),
-      trailing: actions.isEmpty
+      trailing: actions.isEmpty && m.telegram == null
           ? null
-          : PopupMenuButton<_MemberAction>(
-              onSelected: (a) => _run(a, m),
-              itemBuilder: (_) => [
-                for (final a in actions) PopupMenuItem(value: a, child: Text(a.label(t, m))),
-              ],
-            ),
+          : Row(mainAxisSize: MainAxisSize.min, children: [
+              if (m.telegram != null)
+                IconButton(
+                  tooltip: '@${m.telegram}',
+                  icon: const Icon(Icons.send_outlined, color: Brand.blue),
+                  onPressed: () => openUrl(context, 'https://t.me/${m.telegram}'),
+                ),
+              if (actions.isNotEmpty)
+                PopupMenuButton<_MemberAction>(
+                  onSelected: (a) => _run(a, m),
+                  itemBuilder: (_) => [
+                    for (final a in actions) PopupMenuItem(value: a, child: Text(a.label(t, m))),
+                  ],
+                ),
+            ]),
     );
   }
 
@@ -351,26 +361,35 @@ class _TeamViewState extends State<TeamView> {
                 ),
                 if (siteOptions.isNotEmpty) ...[
                   const SizedBox(height: 12),
-                  Text(chosenSites.isEmpty ? t.sitesLabel : '${t.sitesLabel} (${chosenSites.length})',
-                      style: Theme.of(context).textTheme.titleSmall),
-                  const SizedBox(height: 4),
-                  // Une seule ligne qui défile : le dialogue reste lisible avec beaucoup de sites.
-                  SizedBox(
-                    height: 44,
-                    width: 360,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        for (final s in siteOptions)
-                          Padding(
-                            padding: const EdgeInsets.only(right: 6),
-                            child: FilterChip(
-                              label: Text(widget.data.sitePath(s.id) ?? s.name),
-                              selected: chosenSites.contains(s.id),
-                              onSelected: (v) => setState(() => v ? chosenSites.add(s.id) : chosenSites.remove(s.id)),
-                            ),
-                          ),
-                      ],
+                  // Menu déroulant à cases à cocher : lisible même avec beaucoup de sites.
+                  MenuAnchor(
+                    menuChildren: [
+                      for (final s in siteOptions)
+                        CheckboxMenuButton(
+                          value: chosenSites.contains(s.id),
+                          closeOnActivate: false,
+                          onChanged: (v) => setState(() => v == true ? chosenSites.add(s.id) : chosenSites.remove(s.id)),
+                          child: Text(widget.data.sitePath(s.id) ?? s.name),
+                        ),
+                    ],
+                    builder: (context, menu, _) => InkWell(
+                      borderRadius: BorderRadius.circular(4),
+                      onTap: () => menu.isOpen ? menu.close() : menu.open(),
+                      child: InputDecorator(
+                        decoration: InputDecoration(
+                          labelText: t.sitesLabel,
+                          border: const OutlineInputBorder(),
+                          suffixIcon: const Icon(Icons.arrow_drop_down),
+                        ),
+                        child: Text(
+                          chosenSites.isEmpty
+                              ? t.sitesNoneChosen
+                              : [for (final s in siteOptions) if (chosenSites.contains(s.id)) widget.data.sitePath(s.id) ?? s.name]
+                                  .join(', '),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
                     ),
                   ),
                 ],

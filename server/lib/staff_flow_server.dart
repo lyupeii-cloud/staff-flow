@@ -1,3 +1,4 @@
+export 'src/account_service.dart';
 export 'src/api.dart';
 export 'src/auth.dart';
 export 'src/billing_service.dart';
@@ -14,5 +15,6 @@ export 'src/platform_service.dart';
 export 'src/planning_service.dart';
 export 'src/request_service.dart';
 export 'src/store.dart';
+export 'src/telegram.dart';
 export 'src/tools_service.dart';
 export 'src/translator.dart';

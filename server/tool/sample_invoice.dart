@@ -14,6 +14,7 @@ Future<void> main(List<String> args) async {
       {'label': 'cascade', 'unitCents': 200, 'months': 12, 'cents': 2400},
     ],
     7672, 'test',
+    {'sellerName': 'Vercane', 'sellerAddressLatin': 'Kyiv, Ukraine', 'sellerAddressLocal': 'Київ, Україна', 'sellerRegistration': '12345678'},
   ], args.length > 1 ? args[1] : 'fr');
   File(args.first).writeAsBytesSync(bytes);
 }

@@ -1,7 +1,10 @@
 import 'dart:io';
 
-/// Génère le site vitrine (www/fr, www/uk, www/en) à partir des textes
-/// ci-dessous :  dart tool/build.dart  (depuis le dossier site/).
+import 'legal.dart';
+
+/// Génère le site vitrine (www/fr, www/ua, www/en) à partir des textes
+/// ci-dessous, et les pages légales (…/terms/, …/privacy/, textes dans
+/// legal.dart) :  dart tool/build.dart  (depuis le dossier site/).
 ///
 /// Une page par langue ; la page d'accueil « / » envoie vers la langue du
 /// navigateur (règle dans deploy/staff-flow.cloud.caddy).
@@ -238,7 +241,7 @@ String page(String l) {
   <meta name="theme-color" content="#061440">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preload" href="/fonts/Nunito.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="/style.css?v=3">
+  <link rel="stylesheet" href="/style.css?v=4">
 </head>
 <body>
 <header class="top">
@@ -338,12 +341,61 @@ String page(String l) {
 </section>
 </main>
 
-<footer>
+${footer(l)}
+</body>
+</html>
+''';
+}
+
+String footer(String l) => '''<footer>
   <div class="wrap">
-    <span>© 2026 Staff Flow</span>
+    <span>© 2026 Staff Flow · <a href="/${slug(l)}/terms/">${esc(legalTitles[l]!['terms']!)}</a> · <a href="/${slug(l)}/privacy/">${esc(legalTitles[l]!['privacy']!)}</a> · <a href="mailto:contact@staff-flow.cloud">contact@staff-flow.cloud</a></span>
     <span>${[for (final o in langs) '<a href="/${slug(o)}/" lang="$o">${esc(t[o]!['name'] as String)}</a>'].join(' · ')}</span>
   </div>
-</footer>
+</footer>''';
+
+/// Page légale [doc] (`terms` ou `privacy`) dans la langue [l].
+String legalPage(String l, String doc) {
+  final x = t[l]!;
+  final title = legalTitles[l]![doc]!;
+  final switcher = [
+    for (final o in langs)
+      '<a href="/${slug(o)}/$doc/" lang="$o" title="${esc(t[o]!['name'] as String)}"${o == l ? ' aria-current="page"' : ''}>${label(o)}</a>',
+  ].join();
+  final sections = [
+    for (final s in legal[l]![doc]!)
+      '<h2>${esc(s[0] as String)}</h2>\n      ${[for (final p in s[1] as List) '<p>${esc(p as String)}</p>'].join('\n      ')}',
+  ].join('\n      ');
+  return '''<!doctype html>
+<html lang="$l">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${esc(title)} – Staff Flow</title>
+  <link rel="canonical" href="$site/${slug(l)}/$doc/">
+  ${[for (final o in langs) '<link rel="alternate" hreflang="$o" href="$site/${slug(o)}/$doc/">'].join('\n  ')}
+  <meta name="theme-color" content="#061440">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="/style.css?v=4">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" translate="no" href="/${slug(l)}/"><img src="/brand.png" alt="Staff Flow" width="205" height="46"></a>
+    <nav class="langs" translate="no" aria-label="Language">$switcher</nav>
+    <a class="btn btn-main" href="$app">${esc(x['open'] as String)}</a>
+  </div>
+</header>
+<main>
+  <section>
+    <div class="wrap legal">
+      <h1>${esc(title)}</h1>
+      <p class="note">${esc(legalUpdated[l]!)}</p>
+      $sections
+    </div>
+  </section>
+</main>
+${footer(l)}
 </body>
 </html>
 ''';
@@ -359,7 +411,7 @@ String root() => '''<!doctype html>
   <title>Staff Flow</title>
   ${[for (final o in langs) '<link rel="alternate" hreflang="$o" href="$site/${slug(o)}/">'].join('\n  ')}
   <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="stylesheet" href="/style.css?v=3">
+  <link rel="stylesheet" href="/style.css?v=4">
 </head>
 <body>
 <section class="final" style="min-height:100vh;display:grid;place-items:center">
@@ -379,6 +431,10 @@ void main() {
   for (final l in langs) {
     Directory('www/${slug(l)}').createSync(recursive: true);
     File('www/${slug(l)}/index.html').writeAsStringSync(page(l));
+    for (final doc in ['terms', 'privacy']) {
+      Directory('www/${slug(l)}/$doc').createSync(recursive: true);
+      File('www/${slug(l)}/$doc/index.html').writeAsStringSync(legalPage(l, doc));
+    }
   }
   File('www/index.html').writeAsStringSync(root());
   File('www/robots.txt').writeAsStringSync('User-agent: *\nAllow: /\nSitemap: $site/sitemap.xml\n');
@@ -386,7 +442,8 @@ void main() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${[
     for (final l in langs)
-      '  <url><loc>$site/${slug(l)}/</loc>${[for (final o in langs) '<xhtml:link rel="alternate" hreflang="$o" href="$site/${slug(o)}/"/>'].join()}</url>',
+      for (final p in ['', 'terms/', 'privacy/'])
+        '  <url><loc>$site/${slug(l)}/$p</loc>${[for (final o in langs) '<xhtml:link rel="alternate" hreflang="$o" href="$site/${slug(o)}/$p"/>'].join()}</url>',
   ].join('\n')}
 </urlset>
 ''');

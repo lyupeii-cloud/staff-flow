@@ -1478,4 +1478,178 @@ class L10nUk extends L10n {
   String billingProrataNote(String days) {
     return 'Включає решту поточного місяця ($days дн., пропорційно), далі повні місяці з 1-го числа.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Ще не прив\'язано. Він потрібен для підтвердження особи, наприклад щоб змінити обліковий запис Google.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Прив\'язано: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'без імені користувача';
+
+  @override
+  String get telegramLink => 'Прив\'язати мій Telegram';
+
+  @override
+  String get telegramLinkHint =>
+      'Відкриється Telegram: натисніть «Почати», потім поверніться сюди.';
+
+  @override
+  String get telegramUnlink => 'Відв\'язати';
+
+  @override
+  String get telegramUnavailable => 'Telegram поки недоступний.';
+
+  @override
+  String get telegramShowIn => 'Показувати мій Telegram у:';
+
+  @override
+  String get newQrCode => 'Змінити QR-код';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Старий QR-код і старий ідентифікатор більше не працюватимуть. Ваше місце в компаніях не зміниться.';
+
+  @override
+  String get newQrCodeDone => 'Новий QR-код створено.';
+
+  @override
+  String get changeGoogle => 'Змінити обліковий запис Google';
+
+  @override
+  String get changeGoogleSub => 'Той самий обліковий запис, номер і компанії';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Прив\'яжіть Telegram у цьому профілі (обов\'язково).\n2. Вийдіть, потім увійдіть з новим обліковим записом Google.\n3. Виберіть «У мене вже є обліковий запис Staff Flow» і введіть свій ідентифікатор $id.\n4. Введіть код, отриманий у Telegram.\nВаш обліковий запис, номер і компанії залишаться тими самими.';
+  }
+
+  @override
+  String get recoverAccount => 'У мене вже є обліковий запис Staff Flow';
+
+  @override
+  String get recoverHint =>
+      'Введіть ідентифікатор старого облікового запису (SF-…). Код буде надіслано в Telegram, прив\'язаний до нього.';
+
+  @override
+  String get recoverIdLabel => 'Ідентифікатор (SF-…)';
+
+  @override
+  String get recoverSend => 'Надіслати код';
+
+  @override
+  String get recoverCodeSent => 'Код надіслано в Telegram.';
+
+  @override
+  String get recoverCodeLabel => 'Отриманий код (6 цифр)';
+
+  @override
+  String get recoverConfirm => 'Відновити мій обліковий запис';
+
+  @override
+  String get recoverDone =>
+      'Готово: ви повернулися до свого облікового запису.';
+
+  @override
+  String get exportData => 'Експортувати мої дані';
+
+  @override
+  String get exportDataSub => 'Файл з усіма вашими особистими даними';
+
+  @override
+  String get deleteAccount => 'Видалити мій обліковий запис';
+
+  @override
+  String get deleteGhost => 'Видалити, залишивши «привида»';
+
+  @override
+  String get deleteGhostHint =>
+      'Ви вийдете з усіх компаній. Пізніше увійдіть з тим самим обліковим записом Google, щоб повернути обліковий запис і номер.';
+
+  @override
+  String get deleteErase => 'Стерти все назавжди';
+
+  @override
+  String get deleteEraseHint =>
+      'Ім\'я, e-mail, фото, Telegram, повідомлення та сповіщення буде стерто. Скасувати неможливо.';
+
+  @override
+  String get deleteGhostNote =>
+      'В обох випадках історія компаній зберігає анонімного «Ghost» замість вас (заяви на відпустку, минулі зміни…), щоб власник і керівники могли відстежити події.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Ви власник компанії? Спочатку передайте її або дочекайтеся завершення підписки.';
+
+  @override
+  String get deleteConfirmButton => 'Видалити';
+
+  @override
+  String get accountRestored =>
+      'З поверненням! Ваш обліковий запис знову активний.';
+
+  @override
+  String get closedInvoices => 'Рахунки закритих компаній';
+
+  @override
+  String get downloadAllInvoices => 'Завантажити всі рахунки (ZIP)';
+
+  @override
+  String get legalTerms => 'Умови використання та продажу';
+
+  @override
+  String get legalPrivacy => 'Політика конфіденційності';
+
+  @override
+  String get billingDetailTitle => 'Деталі оплати';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Решта поточного місяця ($days дн. з $total): підписка';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Решта поточного місяця ($days дн. з $total): опція «вкладені локації»';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Підписка, $staff працівн.: 1 місяць';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Підписка, $staff працівн.: 12 місяців за ціною $paid';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return 'Опція «вкладені локації»: $months міс., без знижки';
+  }
+
+  @override
+  String get billingTotal => 'Разом';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Оплачений період: з $from до $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Цю компанію не буде продовжено: завантажте всі її рахунки вже зараз.';
+
+  @override
+  String get billingYearLabel => 'Рік';
+
+  @override
+  String get sitesNoneChosen => 'Локацію не вибрано';
 }

@@ -1,0 +1,327 @@
+/// Conditions d'utilisation et de vente (`terms`) et politique de
+/// confidentialité (`privacy`), en français, ukrainien et anglais.
+/// Chaque section : un titre et ses paragraphes.
+library;
+
+const legalUpdated = {'fr': 'Version du 11 octobre 2026', 'uk': 'Редакція від 11 жовтня 2026 р.', 'en': 'Version of 11 October 2026'};
+
+const legalTitles = {
+  'fr': {'terms': 'Conditions d\'utilisation et de vente', 'privacy': 'Politique de confidentialité'},
+  'uk': {'terms': 'Умови використання та продажу', 'privacy': 'Політика конфіденційності'},
+  'en': {'terms': 'Terms of use and sale', 'privacy': 'Privacy policy'},
+};
+
+const legal = <String, Map<String, List<List<Object>>>>{
+  'fr': {
+    'terms': [
+      ['1. Éditeur', [
+        'Staff Flow est édité par Vercane, entreprise en cours d\'immatriculation en Ukraine. Ses coordonnées complètes (forme, numéro d\'enregistrement, adresse) seront indiquées ici dès son immatriculation.',
+        'Contact : contact@staff-flow.cloud.',
+      ]],
+      ['2. Le service', [
+        'Staff Flow permet à une entreprise de créer et partager le planning de son équipe : services, échanges, congés et indisponibilités, messagerie, exports, notifications. Il fonctionne sur Android et dans un navigateur (https://app.staff-flow.cloud).',
+        'Les alertes « légales » proposées (durées de travail, repos…) sont des repères indicatifs : l\'employeur reste seul responsable du respect du droit du travail qui s\'applique à lui.',
+      ]],
+      ['3. Compte', [
+        'La connexion se fait avec un compte Google. Chaque personne a un seul compte Staff Flow, identifié par un numéro (SF-…), valable dans toutes ses entreprises. Il faut avoir au moins 16 ans.',
+        'Vous êtes responsable de l\'accès à votre compte Google. Vous pouvez relier un compte Telegram vérifié : il sert à confirmer votre identité, notamment pour rattacher votre compte à un autre compte Google.',
+        'Vous pouvez à tout moment exporter vos données et supprimer votre compte depuis « Mon profil ». Un « Ghost » anonyme reste dans l\'historique des entreprises (services passés, demandes de congé…) pour qu\'elles puissent retracer les évènements.',
+      ]],
+      ['4. Rôles et responsabilité de l\'entreprise', [
+        'Dans chaque entreprise, le propriétaire et les responsables organisent le planning ; les salariés et extras le consultent et font leurs demandes.',
+        'L\'entreprise est responsable des informations qu\'elle saisit sur son équipe et de leur conformité au droit (notamment au RGPD pour les entreprises situées dans l\'Union européenne). Pour ces données, Vercane agit pour le compte de l\'entreprise, comme sous-traitant.',
+      ]],
+      ['5. Prix et abonnement', [
+        'Seul le propriétaire d\'une entreprise paie. Les salariés, responsables et extras utilisent l\'application gratuitement.',
+        'Le prix dépend du nombre de salariés et responsables de l\'entreprise ; la grille en vigueur est affichée dans l\'application et sur le site. Les prix sont indiqués en euros, toutes taxes comprises.',
+        'Chaque compte Google bénéficie une seule fois d\'un essai gratuit de 2 jours à la création de sa première entreprise.',
+        'L\'abonnement couvre des mois civils pleins. Au premier paiement (ou après une interruption), la fin du mois en cours est payée au prorata des jours restants, arrondie au centime supérieur, puis la période choisie commence le 1er du mois suivant : 1 mois (paiement mensuel) ou 12 mois au prix de 10 (paiement annuel). Les options (par exemple « sites en cascade ») sont facturées sans remise. Le détail est affiché avant chaque paiement.',
+        'Un renouvellement prolonge la période déjà payée. Le prix est calculé avec l\'effectif au moment du paiement.',
+        'Le paiement est traité par un prestataire de paiement ; Staff Flow ne reçoit jamais vos données de carte. Les factures sont disponibles au téléchargement dans l\'application.',
+        'Un changement de prix est annoncé au moins 30 jours à l\'avance et s\'applique au renouvellement suivant.',
+      ]],
+      ['6. Fin de l\'abonnement', [
+        'Si l\'abonnement n\'est pas renouvelé, l\'entreprise passe en lecture seule pendant 15 jours, avec des rappels ; le propriétaire peut payer à tout moment pour tout retrouver. Ensuite, l\'entreprise et ses données sont supprimées.',
+        'Les factures sont conservées pendant la durée légale (10 ans) et restent téléchargeables par le dernier propriétaire. Un ancien propriétaire qui a supprimé son compte peut les demander à contact@staff-flow.cloud en justifiant qu\'il était propriétaire de l\'entreprise.',
+        'Une période payée n\'est pas remboursée, sauf lorsque la loi l\'impose. Si la loi de votre pays vous accorde un droit de rétractation, vous pouvez l\'exercer dans les 14 jours suivant le paiement en écrivant à contact@staff-flow.cloud ; le service ayant commencé à votre demande, la part correspondant à la période déjà écoulée reste due.',
+      ]],
+      ['7. Publicité', [
+        'Sur Android, une petite bannière publicitaire pourra être affichée aux personnes qui ne sont propriétaires d\'aucune entreprise ; elle pourra être retirée par un achat unique. Les plannings et messages ne sont jamais utilisés pour la publicité.',
+      ]],
+      ['8. Bon usage', [
+        'Vous vous engagez à utiliser Staff Flow conformément à la loi, à ne pas publier de contenus illicites ou blessants, à ne pas tenter d\'accéder aux données d\'autrui et à ne pas perturber le service. En cas de manquement grave, l\'accès peut être suspendu.',
+      ]],
+      ['9. Disponibilité et responsabilité', [
+        'Nous faisons notre possible pour que le service soit disponible et fiable, sans pouvoir garantir l\'absence d\'interruption (maintenance, panne, réseau). Le planning déjà reçu reste consultable sans connexion.',
+        'Dans les limites permises par la loi, la responsabilité de Vercane est limitée aux sommes payées au cours des 12 derniers mois et exclut les dommages indirects. Rien dans ces conditions ne limite une responsabilité que la loi interdit de limiter.',
+      ]],
+      ['10. Propriété intellectuelle', [
+        'L\'application, sa marque et son contenu appartiennent à Vercane. Les informations que vous saisissez restent les vôtres ou celles de votre entreprise.',
+      ]],
+      ['11. Modifications', [
+        'Ces conditions peuvent évoluer. Les changements importants sont annoncés dans l\'application au moins 30 jours avant de s\'appliquer.',
+      ]],
+      ['12. Droit applicable et litiges', [
+        'Ces conditions sont régies par le droit ukrainien. Si vous êtes un consommateur, vous gardez la protection des règles impératives de votre pays de résidence. En cas de difficulté, écrivez d\'abord à contact@staff-flow.cloud pour trouver une solution amiable.',
+      ]],
+    ],
+    'privacy': [
+      ['1. Qui traite vos données', [
+        'Vercane, éditeur de Staff Flow (contact@staff-flow.cloud), est responsable des données de votre compte.',
+        'Pour les informations qu\'une entreprise saisit sur son équipe (plannings, absences, noms donnés…), l\'entreprise est responsable du traitement et Vercane agit pour son compte, comme sous-traitant.',
+      ]],
+      ['2. Données traitées', [
+        'Compte : nom, adresse e-mail, photo, identifiant et langue de votre compte Google ; votre numéro Staff Flow (SF-…) et le nom que vous choisissez.',
+        'Entreprises : nom, fuseau horaire, image, rôles, sites et postes.',
+        'Planning et demandes : services, échanges, congés et indisponibilités (aucun motif médical n\'est demandé), historique des modifications.',
+        'Messagerie : messages, mentions, traductions demandées.',
+        'Telegram (si vous le reliez) : identifiant de conversation et nom d\'utilisateur.',
+        'Appareils : jeton de notification, plateforme et langue de l\'appareil.',
+        'Facturation : nom de l\'entreprise, nom du propriétaire, montants et périodes. Nous ne recevons jamais vos données de carte bancaire.',
+        'Données techniques : journaux du serveur (dont l\'adresse IP) et journal des actions, pour la sécurité.',
+      ]],
+      ['3. Pourquoi', [
+        'Fournir le service que vous utilisez (exécution du contrat) : planning, demandes, messagerie, notifications.',
+        'Sécurité, prévention des abus et vérification d\'identité (intérêt légitime).',
+        'Facturation et comptabilité (obligation légale).',
+        'Vos données ne sont jamais vendues et ne servent pas à la publicité.',
+      ]],
+      ['4. Qui y a accès', [
+        'Les membres de vos entreprises voient ce que leur rôle permet : planning, noms, et votre Telegram seulement si vous choisissez de l\'afficher.',
+        'Nos prestataires techniques : OVHcloud (hébergement du serveur), Google (connexion et notifications Firebase Cloud Messaging), Telegram (si vous le reliez), et le prestataire de paiement lors d\'un paiement.',
+        'La traduction des messages se fait sur notre propre serveur : les messages ne sont pas envoyés à un service de traduction extérieur.',
+      ]],
+      ['5. Où', [
+        'Le serveur de Staff Flow est actuellement situé en Australie (OVHcloud). Pour les personnes situées dans l\'Union européenne, il s\'agit d\'un transfert de données hors de l\'Union européenne.',
+      ]],
+      ['6. Combien de temps', [
+        'Compte : tant qu\'il existe. Supprimé « en fantôme », il est conservé pour que vous puissiez revenir ; effacé définitivement, vos données personnelles sont effacées aussitôt et il ne reste qu\'un « Ghost » anonyme dans l\'historique des entreprises.',
+        'Entreprise : jusqu\'à sa suppression, au plus tard 15 jours après la fin de son abonnement.',
+        'Factures : 10 ans (obligation légale).',
+        'Sauvegardes et journaux techniques : durée limitée, pour la sécurité et la reprise après incident.',
+      ]],
+      ['7. Vos droits', [
+        'Vous pouvez accéder à vos données et les récupérer (« Mon profil » → « Exporter mes données »), les corriger (nom), et supprimer votre compte (« Mon profil » → « Supprimer mon compte »). Vous pouvez aussi vous opposer à un traitement ou en demander la limitation en écrivant à contact@staff-flow.cloud.',
+        'Pour les données saisies par une entreprise, adressez-vous d\'abord à elle ; nous l\'aiderons à répondre.',
+        'Vous pouvez saisir l\'autorité de protection des données de votre pays (en France : la CNIL ; en Ukraine : le Commissaire aux droits de l\'homme du Parlement).',
+      ]],
+      ['8. Sécurité', [
+        'Connexions chiffrées (HTTPS), accès selon le rôle, liens de téléchargement valables quelques minutes, vérification par Telegram pour changer de compte Google.',
+      ]],
+      ['9. Stockage sur l\'appareil', [
+        'L\'application garde sur votre appareil votre session et une copie du planning, pour fonctionner sans réseau. Ni l\'application ni le site n\'utilisent de traceur publicitaire ou de mesure d\'audience.',
+      ]],
+      ['10. Modifications', [
+        'Cette politique peut évoluer ; les changements importants sont annoncés dans l\'application.',
+      ]],
+    ],
+  },
+  'uk': {
+    'terms': [
+      ['1. Видавець', [
+        'Staff Flow видає Vercane — компанія, що перебуває в процесі реєстрації в Україні. Її повні реквізити (форма, реєстраційний номер, адреса) буде вказано тут одразу після реєстрації.',
+        'Контакт: contact@staff-flow.cloud.',
+      ]],
+      ['2. Сервіс', [
+        'Staff Flow дає змогу компанії складати й поширювати графік своєї команди: зміни, обміни, відпустки й недоступність, повідомлення, експорт, сповіщення. Працює на Android і в браузері (https://app.staff-flow.cloud).',
+        'Запропоновані «юридичні» попередження (тривалість роботи, відпочинок тощо) мають лише орієнтовний характер: роботодавець сам відповідає за дотримання трудового законодавства, що на нього поширюється.',
+      ]],
+      ['3. Обліковий запис', [
+        'Вхід здійснюється через обліковий запис Google. Кожна людина має один обліковий запис Staff Flow з номером (SF-…), чинним в усіх її компаніях. Користувачеві має бути щонайменше 16 років.',
+        'Ви відповідаєте за доступ до свого облікового запису Google. Можна прив\'язати підтверджений Telegram: він слугує для підтвердження особи, зокрема щоб прив\'язати обліковий запис до іншого облікового запису Google.',
+        'Будь-коли можна експортувати свої дані й видалити обліковий запис у розділі «Мій профіль». В історії компаній залишається анонімний «Ghost» (минулі зміни, заяви на відпустку тощо), щоб вони могли відстежити події.',
+      ]],
+      ['4. Ролі та відповідальність компанії', [
+        'У кожній компанії власник і керівники організовують графік; працівники й тимчасові працівники переглядають його та подають запити.',
+        'Компанія відповідає за інформацію, яку вводить про свою команду, і за її відповідність закону (зокрема GDPR для компаній у Європейському Союзі). Щодо цих даних Vercane діє від імені компанії як обробник.',
+      ]],
+      ['5. Ціни та підписка', [
+        'Платить лише власник компанії. Працівники, керівники й тимчасові працівники користуються застосунком безкоштовно.',
+        'Ціна залежить від кількості працівників і керівників компанії; чинну сітку показано в застосунку й на сайті. Ціни вказано в євро з усіма податками.',
+        'Кожен обліковий запис Google один раз отримує безкоштовний пробний період 2 дні під час створення першої компанії.',
+        'Підписка охоплює повні календарні місяці. Під час першої оплати (або після перерви) решта поточного місяця оплачується пропорційно днями, що залишилися, з округленням до цента вгору, а вибраний період починається з 1-го числа наступного місяця: 1 місяць (щомісячна оплата) або 12 місяців за ціною 10 (річна оплата). Опції (наприклад, «вкладені локації») оплачуються без знижки. Деталі показано перед кожною оплатою.',
+        'Продовження подовжує вже оплачений період. Ціна розраховується за кількістю працівників на момент оплати.',
+        'Оплату обробляє платіжний провайдер; Staff Flow ніколи не отримує даних вашої картки. Рахунки можна завантажити в застосунку.',
+        'Про зміну ціни повідомляється щонайменше за 30 днів; вона застосовується з наступного продовження.',
+      ]],
+      ['6. Завершення підписки', [
+        'Якщо підписку не продовжено, компанія на 15 днів переходить у режим лише перегляду з нагадуваннями; власник може будь-коли оплатити й усе відновити. Після цього компанію та її дані буде видалено.',
+        'Рахунки зберігаються протягом встановленого законом строку (10 років) і залишаються доступними для завантаження останньому власникові. Колишній власник, який видалив обліковий запис, може запросити їх на contact@staff-flow.cloud, підтвердивши, що був власником компанії.',
+        'Оплачений період не повертається, крім випадків, передбачених законом. Якщо закон вашої країни надає право на відмову від договору, ви можете скористатися ним протягом 14 днів після оплати, написавши на contact@staff-flow.cloud; оскільки сервіс почав надаватися на ваше прохання, частина за вже використаний період залишається до сплати.',
+      ]],
+      ['7. Реклама', [
+        'На Android людям, які не є власниками жодної компанії, може показуватися невеликий рекламний банер; його можна буде прибрати разовою покупкою. Графіки й повідомлення ніколи не використовуються для реклами.',
+      ]],
+      ['8. Добросовісне використання', [
+        'Ви зобов\'язуєтеся використовувати Staff Flow відповідно до закону, не публікувати незаконного чи образливого вмісту, не намагатися отримати доступ до чужих даних і не порушувати роботу сервісу. У разі серйозного порушення доступ може бути призупинено.',
+      ]],
+      ['9. Доступність і відповідальність', [
+        'Ми робимо все можливе, щоб сервіс був доступним і надійним, але не можемо гарантувати відсутність перерв (обслуговування, збої, мережа). Уже отриманий графік можна переглядати без зв\'язку.',
+        'У межах, дозволених законом, відповідальність Vercane обмежується сумами, сплаченими за останні 12 місяців, і не охоплює непрямих збитків. Ніщо в цих умовах не обмежує відповідальності, яку закон не дозволяє обмежувати.',
+      ]],
+      ['10. Інтелектуальна власність', [
+        'Застосунок, його торговельна марка й вміст належать Vercane. Інформація, яку ви вводите, залишається вашою або вашої компанії.',
+      ]],
+      ['11. Зміни', [
+        'Ці умови можуть змінюватися. Про важливі зміни повідомляється в застосунку щонайменше за 30 днів до набрання ними чинності.',
+      ]],
+      ['12. Застосовне право та спори', [
+        'Ці умови регулюються правом України. Якщо ви споживач, за вами зберігається захист імперативних норм країни вашого проживання. У разі труднощів спершу напишіть на contact@staff-flow.cloud, щоб знайти мирне рішення.',
+      ]],
+    ],
+    'privacy': [
+      ['1. Хто обробляє ваші дані', [
+        'Vercane, видавець Staff Flow (contact@staff-flow.cloud), відповідає за дані вашого облікового запису.',
+        'Щодо інформації, яку компанія вводить про свою команду (графіки, відсутності, надані імена тощо), розпорядником є компанія, а Vercane діє від її імені як обробник.',
+      ]],
+      ['2. Які дані', [
+        'Обліковий запис: ім\'я, e-mail, фото, ідентифікатор і мова облікового запису Google; ваш номер Staff Flow (SF-…) та вибране вами ім\'я.',
+        'Компанії: назва, часовий пояс, зображення, ролі, об\'єкти й посади.',
+        'Графік і запити: зміни, обміни, відпустки й недоступність (медичні причини не запитуються), історія змін.',
+        'Повідомлення: повідомлення, згадки, запитані переклади.',
+        'Telegram (якщо ви його прив\'язали): ідентифікатор чату та ім\'я користувача.',
+        'Пристрої: токен сповіщень, платформа й мова пристрою.',
+        'Оплата: назва компанії, ім\'я власника, суми й періоди. Ми ніколи не отримуємо даних вашої банківської картки.',
+        'Технічні дані: журнали сервера (зокрема IP-адреса) і журнал дій — для безпеки.',
+      ]],
+      ['3. Навіщо', [
+        'Надавати сервіс, яким ви користуєтеся (виконання договору): графік, запити, повідомлення, сповіщення.',
+        'Безпека, запобігання зловживанням і перевірка особи (законний інтерес).',
+        'Виставлення рахунків і бухгалтерія (вимога закону).',
+        'Ваші дані ніколи не продаються й не використовуються для реклами.',
+      ]],
+      ['4. Хто має доступ', [
+        'Учасники ваших компаній бачать те, що дозволяє їхня роль: графік, імена, а ваш Telegram — лише якщо ви вирішите його показувати.',
+        'Наші технічні постачальники: OVHcloud (хостинг сервера), Google (вхід і сповіщення Firebase Cloud Messaging), Telegram (якщо ви його прив\'язали) та платіжний провайдер під час оплати.',
+        'Переклад повідомлень виконується на нашому власному сервері: повідомлення не надсилаються сторонньому сервісу перекладу.',
+      ]],
+      ['5. Де', [
+        'Сервер Staff Flow зараз розташований в Австралії (OVHcloud). Для людей у Європейському Союзі це передавання даних за межі ЄС.',
+      ]],
+      ['6. Як довго', [
+        'Обліковий запис: поки він існує. Якщо його видалено «з привидом», він зберігається, щоб ви могли повернутися; якщо стерто назавжди, ваші особисті дані стираються одразу, а в історії компаній залишається лише анонімний «Ghost».',
+        'Компанія: до її видалення, не пізніше ніж через 15 днів після завершення підписки.',
+        'Рахунки: 10 років (вимога закону).',
+        'Резервні копії й технічні журнали: обмежений строк, для безпеки та відновлення після збоїв.',
+      ]],
+      ['7. Ваші права', [
+        'Ви можете отримати доступ до своїх даних і завантажити їх («Мій профіль» → «Експортувати мої дані»), виправити їх (ім\'я) і видалити обліковий запис («Мій профіль» → «Видалити мій обліковий запис»). Також можна заперечити проти обробки або попросити її обмежити, написавши на contact@staff-flow.cloud.',
+        'Щодо даних, введених компанією, спершу зверніться до неї; ми допоможемо їй відповісти.',
+        'Ви можете звернутися до органу із захисту даних своєї країни (в Україні — до Уповноваженого Верховної Ради України з прав людини; у Франції — до CNIL).',
+      ]],
+      ['8. Безпека', [
+        'Зашифровані з\'єднання (HTTPS), доступ відповідно до ролі, посилання на завантаження, чинні кілька хвилин, перевірка через Telegram для зміни облікового запису Google.',
+      ]],
+      ['9. Зберігання на пристрої', [
+        'Застосунок зберігає на вашому пристрої сесію й копію графіка, щоб працювати без мережі. Ні застосунок, ні сайт не використовують рекламних трекерів чи вимірювання аудиторії.',
+      ]],
+      ['10. Зміни', [
+        'Ця політика може змінюватися; про важливі зміни повідомляється в застосунку.',
+      ]],
+    ],
+  },
+  'en': {
+    'terms': [
+      ['1. Publisher', [
+        'Staff Flow is published by Vercane, a company being registered in Ukraine. Its full details (legal form, registration number, address) will be shown here as soon as it is registered.',
+        'Contact: contact@staff-flow.cloud.',
+      ]],
+      ['2. The service', [
+        'Staff Flow lets a company build and share its team schedule: shifts, swaps, leave and unavailability, messaging, exports, notifications. It works on Android and in a browser (https://app.staff-flow.cloud).',
+        'The “legal” alerts offered (working hours, rest…) are indicative guides only: the employer remains solely responsible for complying with the labour law that applies to it.',
+      ]],
+      ['3. Account', [
+        'Sign-in uses a Google account. Each person has a single Staff Flow account, identified by a number (SF-…), valid in all their companies. You must be at least 16.',
+        'You are responsible for access to your Google account. You can link a verified Telegram account: it is used to confirm your identity, in particular to attach your account to another Google account.',
+        'You can export your data and delete your account at any time from “My profile”. An anonymous “Ghost” remains in company history (past shifts, leave requests…) so companies can trace what happened.',
+      ]],
+      ['4. Roles and the company\'s responsibility', [
+        'In each company, the owner and managers organise the schedule; employees and temps view it and make requests.',
+        'The company is responsible for the information it enters about its team and for its lawfulness (in particular under the GDPR for companies in the European Union). For that data, Vercane acts on the company\'s behalf, as a processor.',
+      ]],
+      ['5. Prices and subscription', [
+        'Only the owner of a company pays. Employees, managers and temps use the app for free.',
+        'The price depends on the number of employees and managers in the company; the current grid is shown in the app and on the website. Prices are in euros, all taxes included.',
+        'Each Google account gets a free 2-day trial once, when creating its first company.',
+        'The subscription covers whole calendar months. At the first payment (or after an interruption), the rest of the current month is paid pro rata for the remaining days, rounded up to the cent, then the chosen period starts on the 1st of the following month: 1 month (monthly payment) or 12 months for the price of 10 (yearly payment). Options (such as “nested sites”) are charged without discount. The details are shown before each payment.',
+        'A renewal extends the period already paid. The price is calculated with the headcount at the time of payment.',
+        'Payment is handled by a payment provider; Staff Flow never receives your card details. Invoices can be downloaded in the app.',
+        'A price change is announced at least 30 days in advance and applies from the next renewal.',
+      ]],
+      ['6. End of the subscription', [
+        'If the subscription is not renewed, the company becomes read-only for 15 days, with reminders; the owner can pay at any time to get everything back. After that, the company and its data are deleted.',
+        'Invoices are kept for the legal period (10 years) and remain downloadable by the last owner. A former owner who deleted their account can request them at contact@staff-flow.cloud by showing they owned the company.',
+        'A paid period is not refunded, except where the law requires it. If the law of your country gives you a right of withdrawal, you can exercise it within 14 days of payment by writing to contact@staff-flow.cloud; since the service started at your request, the share for the period already elapsed remains due.',
+      ]],
+      ['7. Advertising', [
+        'On Android, a small ad banner may be shown to people who own no company; it will be removable with a one-off purchase. Schedules and messages are never used for advertising.',
+      ]],
+      ['8. Proper use', [
+        'You agree to use Staff Flow lawfully, not to publish unlawful or hurtful content, not to try to access other people\'s data and not to disrupt the service. In case of serious breach, access may be suspended.',
+      ]],
+      ['9. Availability and liability', [
+        'We do our best to keep the service available and reliable, but cannot guarantee it will never be interrupted (maintenance, failures, network). A schedule already received can be read offline.',
+        'To the extent permitted by law, Vercane\'s liability is limited to the amounts paid in the last 12 months and excludes indirect damage. Nothing in these terms limits liability that the law does not allow to be limited.',
+      ]],
+      ['10. Intellectual property', [
+        'The app, its brand and its content belong to Vercane. The information you enter remains yours or your company\'s.',
+      ]],
+      ['11. Changes', [
+        'These terms may change. Significant changes are announced in the app at least 30 days before they apply.',
+      ]],
+      ['12. Governing law and disputes', [
+        'These terms are governed by Ukrainian law. If you are a consumer, you keep the protection of the mandatory rules of your country of residence. If there is a problem, please first write to contact@staff-flow.cloud to find an amicable solution.',
+      ]],
+    ],
+    'privacy': [
+      ['1. Who processes your data', [
+        'Vercane, publisher of Staff Flow (contact@staff-flow.cloud), is responsible for your account data.',
+        'For the information a company enters about its team (schedules, absences, names given…), the company is the controller and Vercane acts on its behalf, as a processor.',
+      ]],
+      ['2. What data', [
+        'Account: name, email address, photo, ID and language of your Google account; your Staff Flow number (SF-…) and the name you choose.',
+        'Companies: name, time zone, image, roles, sites and positions.',
+        'Schedule and requests: shifts, swaps, leave and unavailability (no medical reason is asked), change history.',
+        'Messaging: messages, mentions, translations requested.',
+        'Telegram (if you link it): chat ID and username.',
+        'Devices: notification token, platform and device language.',
+        'Billing: company name, owner name, amounts and periods. We never receive your bank card details.',
+        'Technical data: server logs (including IP address) and an action log, for security.',
+      ]],
+      ['3. Why', [
+        'To provide the service you use (performance of the contract): schedule, requests, messaging, notifications.',
+        'Security, abuse prevention and identity checks (legitimate interest).',
+        'Billing and accounting (legal obligation).',
+        'Your data is never sold and is not used for advertising.',
+      ]],
+      ['4. Who has access', [
+        'Members of your companies see what their role allows: the schedule, names, and your Telegram only if you choose to show it.',
+        'Our technical providers: OVHcloud (server hosting), Google (sign-in and Firebase Cloud Messaging notifications), Telegram (if you link it), and the payment provider when you pay.',
+        'Messages are translated on our own server: they are not sent to an outside translation service.',
+      ]],
+      ['5. Where', [
+        'The Staff Flow server is currently located in Australia (OVHcloud). For people in the European Union, this is a transfer of data outside the European Union.',
+      ]],
+      ['6. How long', [
+        'Account: as long as it exists. Deleted “as a ghost”, it is kept so you can come back; erased permanently, your personal data is erased at once and only an anonymous “Ghost” remains in company history.',
+        'Company: until it is deleted, at the latest 15 days after its subscription ends.',
+        'Invoices: 10 years (legal obligation).',
+        'Backups and technical logs: a limited time, for security and recovery after an incident.',
+      ]],
+      ['7. Your rights', [
+        'You can access and download your data (“My profile” → “Export my data”), correct it (name), and delete your account (“My profile” → “Delete my account”). You can also object to processing or ask for it to be restricted by writing to contact@staff-flow.cloud.',
+        'For data entered by a company, please contact the company first; we will help it reply.',
+        'You can complain to the data protection authority of your country (in Ukraine: the Ukrainian Parliament Commissioner for Human Rights; in France: the CNIL).',
+      ]],
+      ['8. Security', [
+        'Encrypted connections (HTTPS), role-based access, download links valid for a few minutes, Telegram verification to change Google account.',
+      ]],
+      ['9. Storage on your device', [
+        'The app keeps your session and a copy of the schedule on your device, to work offline. Neither the app nor the website uses advertising trackers or audience measurement.',
+      ]],
+      ['10. Changes', [
+        'This policy may change; significant changes are announced in the app.',
+      ]],
+    ],
+  },
+};

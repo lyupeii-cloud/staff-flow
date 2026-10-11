@@ -1468,4 +1468,177 @@ class L10nBg extends L10n {
   String billingProrataNote(String days) {
     return 'Включва остатъка от текущия месец ($days дни, пропорционално), след това цели месеци от 1-во число.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Все още не е свързан. Служи за потвърждаване на самоличността ви, например при смяна на акаунт в Google.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Свързан: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'без потребителско име';
+
+  @override
+  String get telegramLink => 'Свържи моя Telegram';
+
+  @override
+  String get telegramLinkHint =>
+      'Ще се отвори Telegram: докоснете „Старт“, после се върнете тук.';
+
+  @override
+  String get telegramUnlink => 'Прекъсни връзката';
+
+  @override
+  String get telegramUnavailable => 'Telegram все още не е наличен.';
+
+  @override
+  String get telegramShowIn => 'Показвай моя Telegram в:';
+
+  @override
+  String get newQrCode => 'Смени QR кода';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Старият QR код и старият идентификатор няма да работят. Мястото ви във фирмите не се променя.';
+
+  @override
+  String get newQrCodeDone => 'Създаден е нов QR код.';
+
+  @override
+  String get changeGoogle => 'Смени акаунта в Google';
+
+  @override
+  String get changeGoogleSub => 'Същият акаунт, същият номер, същите фирми';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Свържете своя Telegram в този профил (задължително).\n2. Излезте и влезте с новия акаунт в Google.\n3. Изберете „Вече имам акаунт в Staff Flow“ и въведете идентификатора си $id.\n4. Въведете кода, получен в Telegram.\nАкаунтът, номерът и фирмите ви остават същите.';
+  }
+
+  @override
+  String get recoverAccount => 'Вече имам акаунт в Staff Flow';
+
+  @override
+  String get recoverHint =>
+      'Въведете идентификатора на стария си акаунт (SF-…). Ще бъде изпратен код до свързания с него Telegram.';
+
+  @override
+  String get recoverIdLabel => 'Идентификатор (SF-…)';
+
+  @override
+  String get recoverSend => 'Изпрати кода';
+
+  @override
+  String get recoverCodeSent => 'Кодът е изпратен в Telegram.';
+
+  @override
+  String get recoverCodeLabel => 'Получен код (6 цифри)';
+
+  @override
+  String get recoverConfirm => 'Възстанови акаунта ми';
+
+  @override
+  String get recoverDone => 'Готово: върнахте се в акаунта си.';
+
+  @override
+  String get exportData => 'Експортирай данните ми';
+
+  @override
+  String get exportDataSub => 'Файл с всичките ви лични данни';
+
+  @override
+  String get deleteAccount => 'Изтрий акаунта ми';
+
+  @override
+  String get deleteGhost => 'Изтрий, като оставиш призрак';
+
+  @override
+  String get deleteGhostHint =>
+      'Напускате всички фирми. По-късно влезте със същия акаунт в Google, за да си върнете акаунта и номера.';
+
+  @override
+  String get deleteErase => 'Изтрий всичко окончателно';
+
+  @override
+  String get deleteEraseHint =>
+      'Име, имейл, снимка, Telegram, съобщения и известия се изтриват. Не може да се отмени.';
+
+  @override
+  String get deleteGhostNote =>
+      'И в двата случая историята на фирмите пази анонимен „Ghost“ на ваше място (молби за отпуск, минали смени…), за да могат собственикът и отговорниците да проследят събитията.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Собственик на фирма ли сте? Първо я прехвърлете или оставете абонамента да изтече.';
+
+  @override
+  String get deleteConfirmButton => 'Изтрий';
+
+  @override
+  String get accountRestored =>
+      'Добре дошли отново! Акаунтът ви е активиран отново.';
+
+  @override
+  String get closedInvoices => 'Фактури на закрити фирми';
+
+  @override
+  String get downloadAllInvoices => 'Изтегли всички фактури (ZIP)';
+
+  @override
+  String get legalTerms => 'Условия за ползване и продажба';
+
+  @override
+  String get legalPrivacy => 'Политика за поверителност';
+
+  @override
+  String get billingDetailTitle => 'Подробности за плащането';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Остатък от текущия месец ($days от $total дни): абонамент';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Остатък от текущия месец ($days от $total дни): опция „вложени обекти“';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Абонамент, $staff служители: 1 месец';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Абонамент, $staff служители: 12 месеца на цената на $paid';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return 'Опция „вложени обекти“: $months месеца, без отстъпка';
+  }
+
+  @override
+  String get billingTotal => 'Общо';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Период: от $from до $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Тази фирма не се подновява: изтеглете сега всичките ѝ фактури.';
+
+  @override
+  String get billingYearLabel => 'Година';
+
+  @override
+  String get sitesNoneChosen => 'Не е избран обект';
 }

@@ -2626,6 +2626,300 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Includes the rest of this month ({days} days, prorated), then whole months from the 1st.'**
   String billingProrataNote(String days);
+
+  /// No description provided for @telegramTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Telegram'**
+  String get telegramTitle;
+
+  /// No description provided for @telegramNotLinked.
+  ///
+  /// In en, this message translates to:
+  /// **'Not linked yet. It is used to verify your identity, for example to change Google account.'**
+  String get telegramNotLinked;
+
+  /// No description provided for @telegramLinked.
+  ///
+  /// In en, this message translates to:
+  /// **'Linked: {name}'**
+  String telegramLinked(String name);
+
+  /// No description provided for @telegramNoUsername.
+  ///
+  /// In en, this message translates to:
+  /// **'no username'**
+  String get telegramNoUsername;
+
+  /// No description provided for @telegramLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Link my Telegram'**
+  String get telegramLink;
+
+  /// No description provided for @telegramLinkHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Telegram opens: tap “Start”, then come back here.'**
+  String get telegramLinkHint;
+
+  /// No description provided for @telegramUnlink.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlink'**
+  String get telegramUnlink;
+
+  /// No description provided for @telegramUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Telegram is not available yet.'**
+  String get telegramUnavailable;
+
+  /// No description provided for @telegramShowIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Show my Telegram in:'**
+  String get telegramShowIn;
+
+  /// No description provided for @newQrCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Change QR code'**
+  String get newQrCode;
+
+  /// No description provided for @newQrCodeConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Your old QR code and old ID will stop working. Your place in your companies does not change.'**
+  String get newQrCodeConfirm;
+
+  /// No description provided for @newQrCodeDone.
+  ///
+  /// In en, this message translates to:
+  /// **'New QR code created.'**
+  String get newQrCodeDone;
+
+  /// No description provided for @changeGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Google account'**
+  String get changeGoogle;
+
+  /// No description provided for @changeGoogleSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Same account, same number, same companies'**
+  String get changeGoogleSub;
+
+  /// No description provided for @changeGoogleSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Link your Telegram in this profile (required).\n2. Sign out, then sign in with the new Google account.\n3. Choose “I already have a Staff Flow account” and enter your ID {id}.\n4. Enter the code received on Telegram.\nYour account, number and companies stay the same.'**
+  String changeGoogleSteps(String id);
+
+  /// No description provided for @recoverAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'I already have a Staff Flow account'**
+  String get recoverAccount;
+
+  /// No description provided for @recoverHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the ID of your old account (SF-…). A code will be sent to the Telegram linked to that account.'**
+  String get recoverHint;
+
+  /// No description provided for @recoverIdLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'ID (SF-…)'**
+  String get recoverIdLabel;
+
+  /// No description provided for @recoverSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send the code'**
+  String get recoverSend;
+
+  /// No description provided for @recoverCodeSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Code sent on Telegram.'**
+  String get recoverCodeSent;
+
+  /// No description provided for @recoverCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Code received (6 digits)'**
+  String get recoverCodeLabel;
+
+  /// No description provided for @recoverConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Recover my account'**
+  String get recoverConfirm;
+
+  /// No description provided for @recoverDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done: you are back in your account.'**
+  String get recoverDone;
+
+  /// No description provided for @exportData.
+  ///
+  /// In en, this message translates to:
+  /// **'Export my data'**
+  String get exportData;
+
+  /// No description provided for @exportDataSub.
+  ///
+  /// In en, this message translates to:
+  /// **'A file with all your personal data'**
+  String get exportDataSub;
+
+  /// No description provided for @deleteAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete my account'**
+  String get deleteAccount;
+
+  /// No description provided for @deleteGhost.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete but keep a ghost'**
+  String get deleteGhost;
+
+  /// No description provided for @deleteGhostHint.
+  ///
+  /// In en, this message translates to:
+  /// **'You leave all your companies. Sign in later with the same Google account to get your account and number back.'**
+  String get deleteGhostHint;
+
+  /// No description provided for @deleteErase.
+  ///
+  /// In en, this message translates to:
+  /// **'Erase everything permanently'**
+  String get deleteErase;
+
+  /// No description provided for @deleteEraseHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Name, email, photo, Telegram, messages and notifications are erased. This cannot be undone.'**
+  String get deleteEraseHint;
+
+  /// No description provided for @deleteGhostNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Either way, company history keeps an anonymous “Ghost” in your place (leave requests, past shifts…) so the owner and managers can trace what happened.'**
+  String get deleteGhostNote;
+
+  /// No description provided for @deleteOwnerNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Own a company? Transfer it first, or let its subscription end.'**
+  String get deleteOwnerNote;
+
+  /// No description provided for @deleteConfirmButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get deleteConfirmButton;
+
+  /// No description provided for @accountRestored.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back! Your account has been reactivated.'**
+  String get accountRestored;
+
+  /// No description provided for @closedInvoices.
+  ///
+  /// In en, this message translates to:
+  /// **'Invoices of closed companies'**
+  String get closedInvoices;
+
+  /// No description provided for @downloadAllInvoices.
+  ///
+  /// In en, this message translates to:
+  /// **'Download all invoices (ZIP)'**
+  String get downloadAllInvoices;
+
+  /// No description provided for @legalTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of use and sale'**
+  String get legalTerms;
+
+  /// No description provided for @legalPrivacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy policy'**
+  String get legalPrivacy;
+
+  /// No description provided for @billingDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment details'**
+  String get billingDetailTitle;
+
+  /// No description provided for @billingLineProrata.
+  ///
+  /// In en, this message translates to:
+  /// **'Rest of this month ({days} days out of {total}): subscription'**
+  String billingLineProrata(String days, String total);
+
+  /// No description provided for @billingLineCascadeProrata.
+  ///
+  /// In en, this message translates to:
+  /// **'Rest of this month ({days} days out of {total}): “nested sites” option'**
+  String billingLineCascadeProrata(String days, String total);
+
+  /// No description provided for @billingLineMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription, {staff} employees: 1 month'**
+  String billingLineMonth(String staff);
+
+  /// No description provided for @billingLineYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription, {staff} employees: 12 months for the price of {paid}'**
+  String billingLineYear(String staff, String paid);
+
+  /// No description provided for @billingLineCascade.
+  ///
+  /// In en, this message translates to:
+  /// **'“Nested sites” option: {months} months, no discount'**
+  String billingLineCascade(String months);
+
+  /// No description provided for @billingTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get billingTotal;
+
+  /// No description provided for @billingCovers.
+  ///
+  /// In en, this message translates to:
+  /// **'Period covered: {from} to {to}'**
+  String billingCovers(String from, String to);
+
+  /// No description provided for @billingGraceInvoices.
+  ///
+  /// In en, this message translates to:
+  /// **'This company is not being renewed: download all its invoices now.'**
+  String get billingGraceInvoices;
+
+  /// No description provided for @billingYearLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get billingYearLabel;
+
+  /// No description provided for @sitesNoneChosen.
+  ///
+  /// In en, this message translates to:
+  /// **'No site chosen'**
+  String get sitesNoneChosen;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

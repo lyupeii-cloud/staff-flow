@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../api.dart';
 import '../session.dart';
+import 'tools_widgets.dart';
 
 /// Administration de la plateforme (section 10 du cahier des charges) :
 /// tableau de bord, tarifs et réglages modifiables en direct, journal.
@@ -19,7 +20,7 @@ class AdminPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 5,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Administration'),
@@ -27,8 +28,10 @@ class AdminPage extends StatelessWidget {
             Tab(icon: Icon(Icons.insights), text: 'Activité'),
             Tab(icon: Icon(Icons.store), text: 'Clients'),
             Tab(icon: Icon(Icons.euro), text: 'Tarifs'),
+            Tab(icon: Icon(Icons.receipt_long), text: 'Factures'),
             Tab(icon: Icon(Icons.history), text: 'Journal'),
           ]),
+
         ),
         body: Center(
           child: ConstrainedBox(
@@ -37,6 +40,7 @@ class AdminPage extends StatelessWidget {
               _Overview(session: session),
               _Companies(session: session),
               _Settings(session: session),
+              _Invoicing(session: session),
               _Log(session: session),
             ]),
           ),
@@ -74,6 +78,12 @@ const _labels = {
   'trialDays': 'Essai gratuit (jours)',
   'graceDays': 'Période de grâce (jours)',
   'priceNoticeDays': 'Préavis avant un changement de prix (jours)',
+  'invoiceRetentionYears': 'Conservation des factures d\'une entreprise fermée (années)',
+  'sellerName': 'Vendeur : nom',
+  'sellerAddressLatin': 'Vendeur : adresse (alphabet latin)',
+  'sellerAddressLocal': 'Vendeur : adresse (ukrainien)',
+  'sellerRegistration': 'Vendeur : n° d\'enregistrement (ЄДРПОУ)',
+  'sellerTax': 'Mention fiscale (TVA…)',
 };
 
 /// Nature de chaque réglage (pour afficher le journal).
@@ -82,8 +92,8 @@ const _kinds = {
   'cascadeOptionPrice': 'cents', 'adRemovalPrice': 'cents', 'extrasPercent': 'percent',
 };
 
-String _format(String kind, num value) => switch (kind) {
-      'cents' => euros(value),
+String _format(String kind, Object? value) => switch (kind) {
+      'cents' => euros(value as num),
       'percent' => '$value %',
       _ => '$value',
     };
@@ -439,6 +449,128 @@ class _QuoteState extends State<_Quote> {
                 style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
         ]),
       ),
+    );
+  }
+}
+
+/// Factures : vendeur imprimé sur les factures (figé sur chaque facture
+/// émise), et factures d'une entreprise retrouvées par son identifiant,
+/// même fermée (par exemple pour un ancien patron qui a supprimé son compte
+/// et qui prouve, par e-mail, qu'il en était le propriétaire).
+class _Invoicing extends StatefulWidget {
+  final Session session;
+
+  const _Invoicing({required this.session});
+
+  @override
+  State<_Invoicing> createState() => _InvoicingState();
+}
+
+class _InvoicingState extends State<_Invoicing> with AutomaticKeepAliveClientMixin {
+  final _code = TextEditingController();
+  List? _found;
+
+  @override
+  bool get wantKeepAlive => true;
+
+  Session get session => widget.session;
+
+  Future<void> _edit(BuildContext context, String key, String value, VoidCallback reload) async {
+    final field = TextEditingController(text: value);
+    final messenger = ScaffoldMessenger.of(context);
+    final text = await showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(_labels[key] ?? key),
+        content: TextField(controller: field, autofocus: true, minLines: 1, maxLines: 4),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Annuler')),
+          FilledButton(onPressed: () => Navigator.pop(context, field.text), child: const Text('Enregistrer')),
+        ],
+      ),
+    );
+    if (text == null) return;
+    try {
+      await session.api.send('PUT', '/admin/texts/$key', body: {'value': text});
+    } catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text('$e')));
+    }
+    reload();
+  }
+
+  Future<void> _search() async {
+    final messenger = ScaffoldMessenger.of(context);
+    try {
+      final r = await session.api.send('GET', '/admin/invoices?code=${Uri.encodeQueryComponent(_code.text.trim())}');
+      setState(() => _found = r['invoices'] as List);
+    } catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text('$e')));
+    }
+  }
+
+  Future<void> _open(int id) async {
+    final messenger = ScaffoldMessenger.of(context);
+    try {
+      final r = await session.api.send('GET', '/admin/invoices/$id/link?lang=fr');
+      if (mounted) await openUrl(context, serverUrl(r['path'] as String));
+    } catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text('$e')));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    final theme = Theme.of(context);
+    return _Loader(
+      session: session,
+      path: '/admin/texts',
+      builder: (context, data, reload) {
+        final texts = (data['texts'] as Map).cast<String, dynamic>();
+        return ListView(padding: const EdgeInsets.all(16), children: [
+          Text('Vendeur sur les factures', style: theme.textTheme.titleMedium),
+          const Text('Figé sur chaque facture au moment du paiement : une modification ne change pas les factures déjà émises.'),
+          for (final e in texts.entries)
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              title: Text(_labels[e.key] ?? e.key),
+              subtitle: Text('${e.value}'.isEmpty ? '(vide)' : '${e.value}'),
+              trailing: IconButton(
+                tooltip: 'Modifier',
+                icon: const Icon(Icons.edit_outlined),
+                onPressed: () => _edit(context, e.key, '${e.value}', reload),
+              ),
+            ),
+          const Divider(height: 32),
+          Text('Retrouver les factures d\'une entreprise', style: theme.textTheme.titleMedium),
+          Row(children: [
+            Expanded(
+              child: TextField(
+                controller: _code,
+                textCapitalization: TextCapitalization.characters,
+                decoration: const InputDecoration(labelText: 'Identifiant de l\'entreprise (6 caractères)'),
+                onSubmitted: (_) => _search(),
+              ),
+            ),
+            const SizedBox(width: 8),
+            FilledButton(onPressed: _search, child: const Text('Chercher')),
+          ]),
+          if (_found != null && _found!.isEmpty)
+            const Padding(padding: EdgeInsets.only(top: 12), child: Text('Aucune facture.')),
+          for (final i in _found ?? const [])
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: const Icon(Icons.receipt_long_outlined),
+              title: Text('${i['number']} · ${euros(i['amountCents'] as int)}'),
+              subtitle: Text('${i['companyName']} · ${i['ownerName'] ?? '?'}'
+                  '${i['closed'] == true ? ' · entreprise fermée' : ''}${i['provider'] == 'test' ? ' · test' : ''}\n'
+                  '${DateTime.parse(i['issuedAt']).toLocal().toString().substring(0, 16)}'),
+              isThreeLine: true,
+              trailing: const Icon(Icons.download_outlined),
+              onTap: () => _open(i['id'] as int),
+            ),
+        ]);
+      },
     );
   }
 }

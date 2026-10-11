@@ -7,7 +7,9 @@ import '../platform/standalone.dart';
 import '../google/button.dart';
 import '../i18n.dart';
 import '../session.dart';
+import 'account_tools.dart';
 import 'language_picker.dart';
+import 'tools_widgets.dart';
 
 class LoginScreen extends StatefulWidget {
   final Session session;
@@ -138,6 +140,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Text(t.devSignIn),
                       ),
                     ],
+                    const SizedBox(height: 24),
+                    Wrap(alignment: WrapAlignment.center, children: [
+                      TextButton(
+                        onPressed: () => openUrl(context, legalUrl(context, 'terms')),
+                        child: Text(t.legalTerms, style: const TextStyle(fontSize: 12)),
+                      ),
+                      TextButton(
+                        onPressed: () => openUrl(context, legalUrl(context, 'privacy')),
+                        child: Text(t.legalPrivacy, style: const TextStyle(fontSize: 12)),
+                      ),
+                    ]),
                     if (session.error != null) ...[
                       const SizedBox(height: 16),
                       Text(

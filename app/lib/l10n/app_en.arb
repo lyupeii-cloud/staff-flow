@@ -1077,5 +1077,122 @@
         "type": "String"
       }
     }
-  }
+  },
+  "telegramTitle": "Telegram",
+  "telegramNotLinked": "Not linked yet. It is used to verify your identity, for example to change Google account.",
+  "telegramLinked": "Linked: {name}",
+  "@telegramLinked": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "telegramNoUsername": "no username",
+  "telegramLink": "Link my Telegram",
+  "telegramLinkHint": "Telegram opens: tap “Start”, then come back here.",
+  "telegramUnlink": "Unlink",
+  "telegramUnavailable": "Telegram is not available yet.",
+  "telegramShowIn": "Show my Telegram in:",
+  "newQrCode": "Change QR code",
+  "newQrCodeConfirm": "Your old QR code and old ID will stop working. Your place in your companies does not change.",
+  "newQrCodeDone": "New QR code created.",
+  "changeGoogle": "Change Google account",
+  "changeGoogleSub": "Same account, same number, same companies",
+  "changeGoogleSteps": "1. Link your Telegram in this profile (required).\n2. Sign out, then sign in with the new Google account.\n3. Choose “I already have a Staff Flow account” and enter your ID {id}.\n4. Enter the code received on Telegram.\nYour account, number and companies stay the same.",
+  "@changeGoogleSteps": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "recoverAccount": "I already have a Staff Flow account",
+  "recoverHint": "Enter the ID of your old account (SF-…). A code will be sent to the Telegram linked to that account.",
+  "recoverIdLabel": "ID (SF-…)",
+  "recoverSend": "Send the code",
+  "recoverCodeSent": "Code sent on Telegram.",
+  "recoverCodeLabel": "Code received (6 digits)",
+  "recoverConfirm": "Recover my account",
+  "recoverDone": "Done: you are back in your account.",
+  "exportData": "Export my data",
+  "exportDataSub": "A file with all your personal data",
+  "deleteAccount": "Delete my account",
+  "deleteGhost": "Delete but keep a ghost",
+  "deleteGhostHint": "You leave all your companies. Sign in later with the same Google account to get your account and number back.",
+  "deleteErase": "Erase everything permanently",
+  "deleteEraseHint": "Name, email, photo, Telegram, messages and notifications are erased. This cannot be undone.",
+  "deleteGhostNote": "Either way, company history keeps an anonymous “Ghost” in your place (leave requests, past shifts…) so the owner and managers can trace what happened.",
+  "deleteOwnerNote": "Own a company? Transfer it first, or let its subscription end.",
+  "deleteConfirmButton": "Delete",
+  "accountRestored": "Welcome back! Your account has been reactivated.",
+  "closedInvoices": "Invoices of closed companies",
+  "downloadAllInvoices": "Download all invoices (ZIP)",
+  "legalTerms": "Terms of use and sale",
+  "legalPrivacy": "Privacy policy",
+  "billingDetailTitle": "Payment details",
+  "billingLineProrata": "Rest of this month ({days} days out of {total}): subscription",
+  "@billingLineProrata": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLineCascadeProrata": "Rest of this month ({days} days out of {total}): “nested sites” option",
+  "@billingLineCascadeProrata": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLineMonth": "Subscription, {staff} employees: 1 month",
+  "@billingLineMonth": {
+    "placeholders": {
+      "staff": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLineYear": "Subscription, {staff} employees: 12 months for the price of {paid}",
+  "@billingLineYear": {
+    "placeholders": {
+      "staff": {
+        "type": "String"
+      },
+      "paid": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLineCascade": "“Nested sites” option: {months} months, no discount",
+  "@billingLineCascade": {
+    "placeholders": {
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingTotal": "Total",
+  "billingCovers": "Period covered: {from} to {to}",
+  "@billingCovers": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "billingGraceInvoices": "This company is not being renewed: download all its invoices now.",
+  "billingYearLabel": "Year",
+  "sitesNoneChosen": "No site chosen"
 }

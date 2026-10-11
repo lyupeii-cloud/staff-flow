@@ -198,3 +198,10 @@ footer a { color: #c9d3ee; text-decoration: none; }
   .brand img { width: 140px; }
   .shots { grid-auto-columns: 72%; }
 }
+
+/* Pages légales : texte long, lisible. */
+.legal { max-width: 760px; }
+.legal h1 { font-size: clamp(30px, 4vw, 42px); line-height: 1.15; margin: 0 0 6px; font-weight: 900; }
+.legal h2 { font-size: 21px; letter-spacing: 0; margin: 34px 0 8px; }
+.legal p { line-height: 1.65; margin: 0 0 10px; }
+.legal .note { margin: 0 0 18px; }

@@ -1485,4 +1485,178 @@ class L10nDe extends L10n {
   String billingProrataNote(String days) {
     return 'Enthält den Rest des laufenden Monats ($days Tage, anteilig), danach volle Monate ab dem 1.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Noch nicht verknüpft. Es dient zur Bestätigung Ihrer Identität, zum Beispiel beim Wechsel des Google-Kontos.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Verknüpft: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'ohne Benutzernamen';
+
+  @override
+  String get telegramLink => 'Mein Telegram verknüpfen';
+
+  @override
+  String get telegramLinkHint =>
+      'Telegram öffnet sich: Tippen Sie auf „Starten“ und kommen Sie dann hierher zurück.';
+
+  @override
+  String get telegramUnlink => 'Trennen';
+
+  @override
+  String get telegramUnavailable => 'Telegram ist noch nicht verfügbar.';
+
+  @override
+  String get telegramShowIn => 'Mein Telegram anzeigen in:';
+
+  @override
+  String get newQrCode => 'QR-Code ändern';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Ihr alter QR-Code und Ihre alte Kennung funktionieren nicht mehr. Ihr Platz in Ihren Unternehmen bleibt gleich.';
+
+  @override
+  String get newQrCodeDone => 'Neuer QR-Code erstellt.';
+
+  @override
+  String get changeGoogle => 'Google-Konto wechseln';
+
+  @override
+  String get changeGoogleSub =>
+      'Gleiches Konto, gleiche Nummer, gleiche Unternehmen';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Verknüpfen Sie Ihr Telegram in diesem Profil (erforderlich).\n2. Melden Sie sich ab und mit dem neuen Google-Konto wieder an.\n3. Wählen Sie „Ich habe bereits ein Staff-Flow-Konto“ und geben Sie Ihre Kennung $id ein.\n4. Geben Sie den Code aus Telegram ein.\nIhr Konto, Ihre Nummer und Ihre Unternehmen bleiben gleich.';
+  }
+
+  @override
+  String get recoverAccount => 'Ich habe bereits ein Staff-Flow-Konto';
+
+  @override
+  String get recoverHint =>
+      'Geben Sie die Kennung Ihres alten Kontos ein (SF-…). Ein Code wird an das mit diesem Konto verknüpfte Telegram gesendet.';
+
+  @override
+  String get recoverIdLabel => 'Kennung (SF-…)';
+
+  @override
+  String get recoverSend => 'Code senden';
+
+  @override
+  String get recoverCodeSent => 'Code per Telegram gesendet.';
+
+  @override
+  String get recoverCodeLabel => 'Erhaltener Code (6 Ziffern)';
+
+  @override
+  String get recoverConfirm => 'Mein Konto zurückholen';
+
+  @override
+  String get recoverDone => 'Erledigt: Sie sind wieder in Ihrem Konto.';
+
+  @override
+  String get exportData => 'Meine Daten exportieren';
+
+  @override
+  String get exportDataSub => 'Eine Datei mit all Ihren persönlichen Daten';
+
+  @override
+  String get deleteAccount => 'Mein Konto löschen';
+
+  @override
+  String get deleteGhost => 'Löschen und einen Geist behalten';
+
+  @override
+  String get deleteGhostHint =>
+      'Sie verlassen alle Unternehmen. Melden Sie sich später mit demselben Google-Konto an, um Konto und Nummer zurückzuerhalten.';
+
+  @override
+  String get deleteErase => 'Alles endgültig löschen';
+
+  @override
+  String get deleteEraseHint =>
+      'Name, E-Mail, Foto, Telegram, Nachrichten und Benachrichtigungen werden gelöscht. Das kann nicht rückgängig gemacht werden.';
+
+  @override
+  String get deleteGhostNote =>
+      'In beiden Fällen behält der Verlauf der Unternehmen an Ihrer Stelle einen anonymen „Ghost“ (Urlaubsanträge, vergangene Schichten …), damit Inhaber und Verantwortliche die Ereignisse nachvollziehen können.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Inhaber eines Unternehmens? Übertragen Sie es zuerst oder lassen Sie das Abonnement auslaufen.';
+
+  @override
+  String get deleteConfirmButton => 'Löschen';
+
+  @override
+  String get accountRestored =>
+      'Willkommen zurück! Ihr Konto wurde reaktiviert.';
+
+  @override
+  String get closedInvoices => 'Rechnungen geschlossener Unternehmen';
+
+  @override
+  String get downloadAllInvoices => 'Alle Rechnungen herunterladen (ZIP)';
+
+  @override
+  String get legalTerms => 'Nutzungs- und Verkaufsbedingungen';
+
+  @override
+  String get legalPrivacy => 'Datenschutzerklärung';
+
+  @override
+  String get billingDetailTitle => 'Zahlungsdetails';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Rest des laufenden Monats ($days von $total Tagen): Abonnement';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Rest des laufenden Monats ($days von $total Tagen): Option „verschachtelte Standorte“';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Abonnement, $staff Beschäftigte: 1 Monat';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Abonnement, $staff Beschäftigte: 12 Monate zum Preis von $paid';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return 'Option „verschachtelte Standorte“: $months Monate, ohne Rabatt';
+  }
+
+  @override
+  String get billingTotal => 'Gesamt';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Abgedeckter Zeitraum: $from bis $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Dieses Unternehmen wird nicht verlängert: Laden Sie jetzt alle Rechnungen herunter.';
+
+  @override
+  String get billingYearLabel => 'Jahr';
+
+  @override
+  String get sitesNoneChosen => 'Kein Standort gewählt';
 }

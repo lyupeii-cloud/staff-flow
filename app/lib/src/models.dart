@@ -126,7 +126,11 @@ class Membership {
         sites = _sites(j['sites']),
         notifySites = _sites(j['notifySites']),
         notificationsOn = j['notificationsOn'] != false,
-        utcOffset = j['utcOffset'];
+        utcOffset = j['utcOffset'],
+        showTelegram = j['showTelegram'] == true;
+
+  /// Son Telegram est affiché aux membres de cette entreprise.
+  final bool showTelegram;
 
   /// Sites que cette personne gère : `null` pour toute l'entreprise
   /// (propriétaire, responsable général), vide si elle ne gère rien.
@@ -164,7 +168,11 @@ class Member {
         role = Role.values.byName(j['role']),
         nameInCompany = j['nameInCompany'],
         sites = _sites(j['sites']),
-        appointedBy = j['appointedBy'];
+        appointedBy = j['appointedBy'],
+        telegram = j['telegram'];
+
+  /// Nom Telegram (sans « @ »), si la personne l'affiche dans cette entreprise.
+  final String? telegram;
 }
 
 class Transfer {
@@ -201,6 +209,13 @@ class Me {
   /// Administrateur de la plateforme (page d'administration).
   final bool isAdmin;
 
+  /// Compte Telegram vérifié, et son nom d'utilisateur (s'il en a un).
+  final bool telegramLinked;
+  final String? telegramUsername;
+
+  /// Nom du bot Telegram ; `null` : Telegram pas encore disponible.
+  final String? telegramBot;
+
   Me.fromJson(Map<String, dynamic> j)
       : user = User.fromJson(j['user']),
         companies = [for (final c in j['companies']) Membership.fromJson(c)],
@@ -212,6 +227,9 @@ class Me {
         noticeRetention = j['noticeRetention'] ?? 'week',
         calendarPath = j['calendarPath'],
         isAdmin = j['isAdmin'] == true,
+        telegramLinked = j['telegram'] != null,
+        telegramUsername = (j['telegram'] as Map?)?['username'],
+        telegramBot = j['telegramBot'],
         unreadMessages = {
           for (final e in ((j['unreadMessages'] ?? const {}) as Map).entries) e.key as String: e.value as int,
         },

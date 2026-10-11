@@ -56,7 +56,32 @@ class PlatformService {
     SettingDef('trialDays', 'durations', SettingKind.count, 2, 0, 90),
     SettingDef('graceDays', 'durations', SettingKind.count, 15, 0, 90),
     SettingDef('priceNoticeDays', 'durations', SettingKind.count, 30, 0, 365),
+    SettingDef('invoiceRetentionYears', 'durations', SettingKind.count, 10, 1, 30),
   ];
+
+  /// Éditeur imprimé sur les factures (figé sur chaque facture émise).
+  static const textKeys = ['sellerName', 'sellerAddressLatin', 'sellerAddressLocal', 'sellerRegistration', 'sellerTax'];
+  static const textDefaults = {'sellerName': 'Vercane'};
+
+  Future<Map<String, String>> texts() async {
+    final rows = await store.query(store.db, 'SELECT key, value FROM platform_texts');
+    final saved = {for (final r in rows) r[0] as String: r[1] as String};
+    return {for (final k in textKeys) k: saved[k] ?? textDefaults[k] ?? ''};
+  }
+
+  Future<void> setText(User admin, String key, String value) async {
+    if (!textKeys.contains(key)) throw const ApiError.notFound();
+    final clean = value.trim();
+    if (clean.length > 400) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    final before = (await texts())[key];
+    await store.db.runTx((tx) async {
+      await store.query(tx, '''
+        INSERT INTO platform_texts (key, value, updated_by) VALUES (@k, @v, @u::uuid)
+        ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value, updated_by = EXCLUDED.updated_by, updated_at = now()''',
+          {'k': key, 'v': clean, 'u': admin.id});
+      await store.audit(actorId: admin.id, action: 'platform.text', details: {'key': key, 'old': before, 'new': clean}, tx: tx);
+    });
+  }
 
   static SettingDef? def(String key) => defs.where((d) => d.key == key).firstOrNull;
 
@@ -220,7 +245,7 @@ class PlatformService {
   Future<List<Map<String, Object?>>> log({int limit = 100}) async {
     final rows = await store.query(store.db, '''
       SELECT a.at, u.email, a.details FROM audit_log a LEFT JOIN users u ON u.id = a.actor_id
-      WHERE a.action = 'platform.setting' ORDER BY a.id DESC LIMIT @l''', {'l': limit});
+      WHERE a.action IN ('platform.setting', 'platform.text') ORDER BY a.id DESC LIMIT @l''', {'l': limit});
     return [
       for (final r in rows)
         {'at': (r[0] as DateTime).toIso8601String(), 'by': r[1], ...(r[2] as Map).cast<String, Object?>()},

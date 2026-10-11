@@ -1480,4 +1480,178 @@ class L10nTa extends L10n {
   String billingProrataNote(String days) {
     return 'நடப்பு மாதத்தின் மீதி ($days நாட்கள், விகிதாசாரம்) அடங்கும்; பின்னர் 1ஆம் தேதி முதல் முழு மாதங்கள்.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'இன்னும் இணைக்கப்படவில்லை. Google கணக்கை மாற்றுவது போன்றவற்றில் உங்கள் அடையாளத்தைச் சரிபார்க்க இது பயன்படும்.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'இணைக்கப்பட்டது: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'பயனர்பெயர் இல்லை';
+
+  @override
+  String get telegramLink => 'என் Telegram-ஐ இணை';
+
+  @override
+  String get telegramLinkHint =>
+      'Telegram திறக்கும்: “Start” தொடுங்கள், பின்னர் இங்கே திரும்புங்கள்.';
+
+  @override
+  String get telegramUnlink => 'துண்டி';
+
+  @override
+  String get telegramUnavailable => 'Telegram இன்னும் கிடைக்கவில்லை.';
+
+  @override
+  String get telegramShowIn => 'என் Telegram-ஐ இங்கு காட்டு:';
+
+  @override
+  String get newQrCode => 'QR குறியீட்டை மாற்று';
+
+  @override
+  String get newQrCodeConfirm =>
+      'பழைய QR குறியீடும் பழைய அடையாளமும் இனி வேலை செய்யாது. நிறுவனங்களில் உங்கள் இடம் மாறாது.';
+
+  @override
+  String get newQrCodeDone => 'புதிய QR குறியீடு உருவாக்கப்பட்டது.';
+
+  @override
+  String get changeGoogle => 'Google கணக்கை மாற்று';
+
+  @override
+  String get changeGoogleSub => 'அதே கணக்கு, அதே எண், அதே நிறுவனங்கள்';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. இந்தச் சுயவிவரத்தில் Telegram-ஐ இணையுங்கள் (கட்டாயம்).\n2. வெளியேறி, புதிய Google கணக்கில் உள்நுழையுங்கள்.\n3. “எனக்கு ஏற்கனவே Staff Flow கணக்கு உள்ளது” என்பதைத் தேர்ந்து உங்கள் அடையாளம் $id-ஐ உள்ளிடுங்கள்.\n4. Telegram-இல் வந்த குறியீட்டை உள்ளிடுங்கள்.\nஉங்கள் கணக்கு, எண், நிறுவனங்கள் அப்படியே இருக்கும்.';
+  }
+
+  @override
+  String get recoverAccount => 'எனக்கு ஏற்கனவே Staff Flow கணக்கு உள்ளது';
+
+  @override
+  String get recoverHint =>
+      'பழைய கணக்கின் அடையாளத்தை (SF-…) உள்ளிடுங்கள். அந்தக் கணக்குடன் இணைந்த Telegram-க்குக் குறியீடு அனுப்பப்படும்.';
+
+  @override
+  String get recoverIdLabel => 'அடையாளம் (SF-…)';
+
+  @override
+  String get recoverSend => 'குறியீட்டை அனுப்பு';
+
+  @override
+  String get recoverCodeSent => 'குறியீடு Telegram-இல் அனுப்பப்பட்டது.';
+
+  @override
+  String get recoverCodeLabel => 'பெற்ற குறியீடு (6 இலக்கம்)';
+
+  @override
+  String get recoverConfirm => 'என் கணக்கை மீட்டெடு';
+
+  @override
+  String get recoverDone => 'முடிந்தது: உங்கள் கணக்குக்குத் திரும்பினீர்கள்.';
+
+  @override
+  String get exportData => 'என் தரவை ஏற்றுமதி செய்';
+
+  @override
+  String get exportDataSub => 'உங்கள் அனைத்து தனிப்பட்ட தரவும் உள்ள கோப்பு';
+
+  @override
+  String get deleteAccount => 'என் கணக்கை நீக்கு';
+
+  @override
+  String get deleteGhost => 'பேயை வைத்து நீக்கு';
+
+  @override
+  String get deleteGhostHint =>
+      'நீங்கள் எல்லா நிறுவனங்களிலிருந்தும் வெளியேறுவீர்கள். பின்னர் அதே Google கணக்கில் உள்நுழைந்து கணக்கையும் எண்ணையும் திரும்பப் பெறலாம்.';
+
+  @override
+  String get deleteErase => 'அனைத்தையும் நிரந்தரமாக அழி';
+
+  @override
+  String get deleteEraseHint =>
+      'பெயர், மின்னஞ்சல், படம், Telegram, செய்திகள், அறிவிப்புகள் அழிக்கப்படும். திரும்பப் பெற முடியாது.';
+
+  @override
+  String get deleteGhostNote =>
+      'இரண்டு நிலையிலும், நிறுவன வரலாற்றில் உங்கள் இடத்தில் அநாமதேய “Ghost” இருக்கும் (விடுப்பு கோரிக்கைகள், கடந்த ஷிஃப்ட்கள்…), உரிமையாளரும் மேலாளர்களும் நிகழ்வுகளைக் கண்டறிய.';
+
+  @override
+  String get deleteOwnerNote =>
+      'நிறுவன உரிமையாளரா? முதலில் அதை மாற்றுங்கள், அல்லது சந்தா முடிய விடுங்கள்.';
+
+  @override
+  String get deleteConfirmButton => 'நீக்கு';
+
+  @override
+  String get accountRestored =>
+      'மீண்டும் வருக! உங்கள் கணக்கு மீண்டும் செயல்படுகிறது.';
+
+  @override
+  String get closedInvoices => 'மூடப்பட்ட நிறுவனங்களின் விலைப்பட்டியல்கள்';
+
+  @override
+  String get downloadAllInvoices =>
+      'அனைத்து விலைப்பட்டியல்களையும் பதிவிறக்கு (ZIP)';
+
+  @override
+  String get legalTerms => 'பயன்பாட்டு மற்றும் விற்பனை நிபந்தனைகள்';
+
+  @override
+  String get legalPrivacy => 'தனியுரிமைக் கொள்கை';
+
+  @override
+  String get billingDetailTitle => 'கட்டண விவரம்';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'நடப்பு மாத மீதி ($total நாட்களில் $days): சந்தா';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'நடப்பு மாத மீதி ($total நாட்களில் $days): “அடுக்கு இடங்கள்” விருப்பம்';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'சந்தா, $staff பணியாளர்கள்: 1 மாதம்';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'சந்தா, $staff பணியாளர்கள்: 12 மாதம், $paid மாத விலையில்';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return '“அடுக்கு இடங்கள்” விருப்பம்: $months மாதம், தள்ளுபடி இல்லை';
+  }
+
+  @override
+  String get billingTotal => 'மொத்தம்';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'காலம்: $from முதல் $to வரை';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'இந்த நிறுவனம் புதுப்பிக்கப்படாது: இப்போதே அதன் எல்லா விலைப்பட்டியல்களையும் பதிவிறக்குங்கள்.';
+
+  @override
+  String get billingYearLabel => 'ஆண்டு';
+
+  @override
+  String get sitesNoneChosen => 'இடம் எதுவும் தேர்ந்தெடுக்கப்படவில்லை';
 }

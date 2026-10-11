@@ -1474,4 +1474,177 @@ class L10nFi extends L10n {
   String billingProrataNote(String days) {
     return 'Sisältää kuluvan kuukauden loppuosan ($days päivää, suhteutettuna) ja sen jälkeen kokonaiset kuukaudet 1. päivästä alkaen.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Ei vielä yhdistetty. Sillä vahvistetaan henkilöllisyytesi, esimerkiksi Google-tiliä vaihdettaessa.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Yhdistetty: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'ei käyttäjänimeä';
+
+  @override
+  String get telegramLink => 'Yhdistä Telegramini';
+
+  @override
+  String get telegramLinkHint =>
+      'Telegram avautuu: napauta ”Aloita” ja palaa sitten tänne.';
+
+  @override
+  String get telegramUnlink => 'Poista yhteys';
+
+  @override
+  String get telegramUnavailable => 'Telegram ei ole vielä käytettävissä.';
+
+  @override
+  String get telegramShowIn => 'Näytä Telegramini kohteessa:';
+
+  @override
+  String get newQrCode => 'Vaihda QR-koodi';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Vanha QR-koodisi ja vanha tunnuksesi lakkaavat toimimasta. Paikkasi yrityksissä ei muutu.';
+
+  @override
+  String get newQrCodeDone => 'Uusi QR-koodi luotu.';
+
+  @override
+  String get changeGoogle => 'Vaihda Google-tili';
+
+  @override
+  String get changeGoogleSub => 'Sama tili, sama numero, samat yritykset';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Yhdistä Telegramisi tässä profiilissa (pakollinen).\n2. Kirjaudu ulos ja sisään uudella Google-tilillä.\n3. Valitse ”Minulla on jo Staff Flow -tili” ja anna tunnuksesi $id.\n4. Anna Telegramissa saamasi koodi.\nTilisi, numerosi ja yrityksesi pysyvät samoina.';
+  }
+
+  @override
+  String get recoverAccount => 'Minulla on jo Staff Flow -tili';
+
+  @override
+  String get recoverHint =>
+      'Anna vanhan tilisi tunnus (SF-…). Koodi lähetetään tiliin yhdistettyyn Telegramiin.';
+
+  @override
+  String get recoverIdLabel => 'Tunnus (SF-…)';
+
+  @override
+  String get recoverSend => 'Lähetä koodi';
+
+  @override
+  String get recoverCodeSent => 'Koodi lähetetty Telegramissa.';
+
+  @override
+  String get recoverCodeLabel => 'Saatu koodi (6 numeroa)';
+
+  @override
+  String get recoverConfirm => 'Palauta tilini';
+
+  @override
+  String get recoverDone => 'Valmis: olet taas tililläsi.';
+
+  @override
+  String get exportData => 'Vie tietoni';
+
+  @override
+  String get exportDataSub => 'Tiedosto kaikista henkilötiedoistasi';
+
+  @override
+  String get deleteAccount => 'Poista tilini';
+
+  @override
+  String get deleteGhost => 'Poista ja jätä haamu';
+
+  @override
+  String get deleteGhostHint =>
+      'Poistut kaikista yrityksistäsi. Kirjaudu myöhemmin samalla Google-tilillä saadaksesi tilin ja numeron takaisin.';
+
+  @override
+  String get deleteErase => 'Poista kaikki pysyvästi';
+
+  @override
+  String get deleteEraseHint =>
+      'Nimi, sähköposti, kuva, Telegram, viestit ja ilmoitukset poistetaan. Tätä ei voi perua.';
+
+  @override
+  String get deleteGhostNote =>
+      'Molemmissa tapauksissa yritysten historiaan jää sinun tilallesi anonyymi ”Ghost” (lomapyynnöt, menneet vuorot…), jotta omistaja ja esihenkilöt voivat jäljittää tapahtumat.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Omistatko yrityksen? Siirrä se ensin tai anna tilauksen päättyä.';
+
+  @override
+  String get deleteConfirmButton => 'Poista';
+
+  @override
+  String get accountRestored =>
+      'Tervetuloa takaisin! Tilisi on aktivoitu uudelleen.';
+
+  @override
+  String get closedInvoices => 'Suljettujen yritysten laskut';
+
+  @override
+  String get downloadAllInvoices => 'Lataa kaikki laskut (ZIP)';
+
+  @override
+  String get legalTerms => 'Käyttö- ja myyntiehdot';
+
+  @override
+  String get legalPrivacy => 'Tietosuojakäytäntö';
+
+  @override
+  String get billingDetailTitle => 'Maksun erittely';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Kuluvan kuun loppu ($days/$total päivää): tilaus';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Kuluvan kuun loppu ($days/$total päivää): ”sisäkkäiset toimipaikat” -lisä';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Tilaus, $staff työntekijää: 1 kuukausi';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Tilaus, $staff työntekijää: 12 kuukautta $paid kuukauden hinnalla';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return '”Sisäkkäiset toimipaikat” -lisä: $months kk, ei alennusta';
+  }
+
+  @override
+  String get billingTotal => 'Yhteensä';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Kausi: $from–$to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Tätä yritystä ei uusita: lataa kaikki sen laskut nyt.';
+
+  @override
+  String get billingYearLabel => 'Vuosi';
+
+  @override
+  String get sitesNoneChosen => 'Toimipaikkaa ei valittu';
 }

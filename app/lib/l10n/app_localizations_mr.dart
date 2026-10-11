@@ -1467,4 +1467,175 @@ class L10nMr extends L10n {
   String billingProrataNote(String days) {
     return 'चालू महिन्याचा उरलेला भाग ($days दिवस, प्रमाणशीर) समाविष्ट; नंतर 1 तारखेपासून पूर्ण महिने.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'अजून जोडलेले नाही. Google खाते बदलताना वगैरे तुमची ओळख पडताळण्यासाठी याचा वापर होतो.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'जोडले: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'वापरकर्तानाव नाही';
+
+  @override
+  String get telegramLink => 'माझे Telegram जोडा';
+
+  @override
+  String get telegramLinkHint => 'Telegram उघडेल: “Start” दाबा, मग इथे परत या.';
+
+  @override
+  String get telegramUnlink => 'वेगळे करा';
+
+  @override
+  String get telegramUnavailable => 'Telegram अजून उपलब्ध नाही.';
+
+  @override
+  String get telegramShowIn => 'माझे Telegram येथे दाखवा:';
+
+  @override
+  String get newQrCode => 'QR कोड बदला';
+
+  @override
+  String get newQrCodeConfirm =>
+      'तुमचा जुना QR कोड आणि जुनी ओळख यापुढे चालणार नाहीत. तुमच्या कंपन्यांमधील तुमचे स्थान बदलत नाही.';
+
+  @override
+  String get newQrCodeDone => 'नवीन QR कोड तयार झाला.';
+
+  @override
+  String get changeGoogle => 'Google खाते बदला';
+
+  @override
+  String get changeGoogleSub => 'तेच खाते, तोच क्रमांक, त्याच कंपन्या';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. या प्रोफाइलमध्ये तुमचे Telegram जोडा (आवश्यक).\n2. साइन आउट करा, मग नवीन Google खात्याने साइन इन करा.\n3. “माझे आधीच Staff Flow खाते आहे” निवडा आणि तुमची ओळख $id भरा.\n4. Telegram वर आलेला कोड भरा.\nतुमचे खाते, क्रमांक आणि कंपन्या तशाच राहतात.';
+  }
+
+  @override
+  String get recoverAccount => 'माझे आधीच Staff Flow खाते आहे';
+
+  @override
+  String get recoverHint =>
+      'जुन्या खात्याची ओळख (SF-…) भरा. त्या खात्याशी जोडलेल्या Telegram वर कोड पाठवला जाईल.';
+
+  @override
+  String get recoverIdLabel => 'ओळख (SF-…)';
+
+  @override
+  String get recoverSend => 'कोड पाठवा';
+
+  @override
+  String get recoverCodeSent => 'कोड Telegram वर पाठवला.';
+
+  @override
+  String get recoverCodeLabel => 'मिळालेला कोड (6 अंकी)';
+
+  @override
+  String get recoverConfirm => 'माझे खाते परत मिळवा';
+
+  @override
+  String get recoverDone => 'झाले: तुम्ही तुमच्या खात्यात परत आलात.';
+
+  @override
+  String get exportData => 'माझा डेटा निर्यात करा';
+
+  @override
+  String get exportDataSub => 'तुमचा सर्व वैयक्तिक डेटा असलेली फाइल';
+
+  @override
+  String get deleteAccount => 'माझे खाते हटवा';
+
+  @override
+  String get deleteGhost => 'भूत ठेवून हटवा';
+
+  @override
+  String get deleteGhostHint =>
+      'तुम्ही सर्व कंपन्या सोडाल. नंतर त्याच Google खात्याने साइन इन करून खाते आणि क्रमांक परत मिळवा.';
+
+  @override
+  String get deleteErase => 'सर्व कायमचे पुसा';
+
+  @override
+  String get deleteEraseHint =>
+      'नाव, ईमेल, फोटो, Telegram, संदेश आणि सूचना पुसल्या जातील. हे परत करता येत नाही.';
+
+  @override
+  String get deleteGhostNote =>
+      'दोन्ही बाबतीत कंपन्यांच्या इतिहासात तुमच्या जागी अनामिक “Ghost” राहतो (रजा विनंत्या, मागील शिफ्ट…), जेणेकरून मालक आणि व्यवस्थापक घटना शोधू शकतील.';
+
+  @override
+  String get deleteOwnerNote =>
+      'कंपनीचे मालक आहात? आधी ती हस्तांतरित करा, किंवा तिची सदस्यता संपू द्या.';
+
+  @override
+  String get deleteConfirmButton => 'हटवा';
+
+  @override
+  String get accountRestored => 'पुन्हा स्वागत! तुमचे खाते पुन्हा सक्रिय झाले.';
+
+  @override
+  String get closedInvoices => 'बंद कंपन्यांची बिले';
+
+  @override
+  String get downloadAllInvoices => 'सर्व बिले डाउनलोड करा (ZIP)';
+
+  @override
+  String get legalTerms => 'वापर आणि विक्री अटी';
+
+  @override
+  String get legalPrivacy => 'गोपनीयता धोरण';
+
+  @override
+  String get billingDetailTitle => 'पेमेंट तपशील';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'चालू महिन्याचे उरलेले ($total पैकी $days दिवस): सदस्यता';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'चालू महिन्याचे उरलेले ($total पैकी $days दिवस): “नेस्टेड साइट” पर्याय';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'सदस्यता, $staff कर्मचारी: 1 महिना';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'सदस्यता, $staff कर्मचारी: 12 महिने, $paid महिन्यांच्या किमतीत';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return '“नेस्टेड साइट” पर्याय: $months महिने, सवलत नाही';
+  }
+
+  @override
+  String get billingTotal => 'एकूण';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'कालावधी: $from ते $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'या कंपनीचे नूतनीकरण होणार नाही: आत्ताच तिची सर्व बिले डाउनलोड करा.';
+
+  @override
+  String get billingYearLabel => 'वर्ष';
+
+  @override
+  String get sitesNoneChosen => 'कोणतीही साइट निवडलेली नाही';
 }

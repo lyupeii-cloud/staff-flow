@@ -1475,4 +1475,178 @@ class L10nNl extends L10n {
   String billingProrataNote(String days) {
     return 'Inclusief de rest van deze maand ($days dagen, pro rata), daarna hele maanden vanaf de 1e.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Nog niet gekoppeld. Het dient om je identiteit te bevestigen, bijvoorbeeld bij het wisselen van Google-account.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Gekoppeld: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'geen gebruikersnaam';
+
+  @override
+  String get telegramLink => 'Mijn Telegram koppelen';
+
+  @override
+  String get telegramLinkHint =>
+      'Telegram opent: tik op ‘Start’ en kom dan hier terug.';
+
+  @override
+  String get telegramUnlink => 'Ontkoppelen';
+
+  @override
+  String get telegramUnavailable => 'Telegram is nog niet beschikbaar.';
+
+  @override
+  String get telegramShowIn => 'Mijn Telegram tonen in:';
+
+  @override
+  String get newQrCode => 'QR-code wijzigen';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Je oude QR-code en oude ID werken niet meer. Je plaats in je bedrijven verandert niet.';
+
+  @override
+  String get newQrCodeDone => 'Nieuwe QR-code gemaakt.';
+
+  @override
+  String get changeGoogle => 'Ander Google-account';
+
+  @override
+  String get changeGoogleSub =>
+      'Zelfde account, zelfde nummer, zelfde bedrijven';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Koppel je Telegram in dit profiel (verplicht).\n2. Log uit en log in met het nieuwe Google-account.\n3. Kies ‘Ik heb al een Staff Flow-account’ en voer je ID $id in.\n4. Voer de code in die je via Telegram ontving.\nJe account, nummer en bedrijven blijven hetzelfde.';
+  }
+
+  @override
+  String get recoverAccount => 'Ik heb al een Staff Flow-account';
+
+  @override
+  String get recoverHint =>
+      'Voer de ID van je oude account in (SF-…). Er wordt een code gestuurd naar de Telegram die aan dat account is gekoppeld.';
+
+  @override
+  String get recoverIdLabel => 'ID (SF-…)';
+
+  @override
+  String get recoverSend => 'Code versturen';
+
+  @override
+  String get recoverCodeSent => 'Code verstuurd via Telegram.';
+
+  @override
+  String get recoverCodeLabel => 'Ontvangen code (6 cijfers)';
+
+  @override
+  String get recoverConfirm => 'Mijn account terughalen';
+
+  @override
+  String get recoverDone => 'Klaar: je bent terug in je account.';
+
+  @override
+  String get exportData => 'Mijn gegevens exporteren';
+
+  @override
+  String get exportDataSub => 'Een bestand met al je persoonsgegevens';
+
+  @override
+  String get deleteAccount => 'Mijn account verwijderen';
+
+  @override
+  String get deleteGhost => 'Verwijderen en een geest bewaren';
+
+  @override
+  String get deleteGhostHint =>
+      'Je verlaat al je bedrijven. Log later in met hetzelfde Google-account om je account en nummer terug te krijgen.';
+
+  @override
+  String get deleteErase => 'Alles definitief wissen';
+
+  @override
+  String get deleteEraseHint =>
+      'Naam, e-mail, foto, Telegram, berichten en meldingen worden gewist. Dit kan niet ongedaan worden.';
+
+  @override
+  String get deleteGhostNote =>
+      'In beide gevallen houdt de geschiedenis van de bedrijven een anonieme ‘Ghost’ op jouw plaats (verlofaanvragen, eerdere diensten…) zodat de eigenaar en leidinggevenden kunnen nagaan wat er gebeurde.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Eigenaar van een bedrijf? Draag het eerst over, of laat het abonnement aflopen.';
+
+  @override
+  String get deleteConfirmButton => 'Verwijderen';
+
+  @override
+  String get accountRestored =>
+      'Welkom terug! Je account is opnieuw geactiveerd.';
+
+  @override
+  String get closedInvoices => 'Facturen van gesloten bedrijven';
+
+  @override
+  String get downloadAllInvoices => 'Alle facturen downloaden (ZIP)';
+
+  @override
+  String get legalTerms => 'Gebruiks- en verkoopvoorwaarden';
+
+  @override
+  String get legalPrivacy => 'Privacybeleid';
+
+  @override
+  String get billingDetailTitle => 'Betalingsdetails';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Rest van deze maand ($days van $total dagen): abonnement';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Rest van deze maand ($days van $total dagen): optie ‘geneste locaties’';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Abonnement, $staff medewerkers: 1 maand';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Abonnement, $staff medewerkers: 12 maanden voor de prijs van $paid';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return 'Optie ‘geneste locaties’: $months maanden, zonder korting';
+  }
+
+  @override
+  String get billingTotal => 'Totaal';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Periode: $from tot $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Dit bedrijf wordt niet verlengd: download nu al zijn facturen.';
+
+  @override
+  String get billingYearLabel => 'Jaar';
+
+  @override
+  String get sitesNoneChosen => 'Geen locatie gekozen';
 }

@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
+import 'account_service.dart';
 import 'auth.dart';
 import 'billing_service.dart';
 import 'chat_service.dart';
@@ -19,6 +20,7 @@ import 'planning_service.dart';
 import 'platform_service.dart';
 import 'request_service.dart';
 import 'store.dart';
+import 'telegram.dart';
 import 'tools_service.dart';
 import 'translator.dart';
 
@@ -38,6 +40,8 @@ class Api {
   late final JoinService joins = JoinService(store, companies, now: now);
   late final NoticeService notices = NoticeService(store, now: now);
   late final PlatformService platform = PlatformService(store, fileValues: platformFile);
+  late final TelegramService telegram = TelegramService(store, telegramApi, now: now);
+  late final AccountService accounts = AccountService(store, telegram, tokens.derive('account-export'), now: now);
   late final BillingService billing = BillingService(store, companies, platform, notifications, tokens.derive('invoices'),
       now: now, isAdmin: _isAdmin, testPaymentsForAll: testPaymentsForAll);
 
@@ -66,6 +70,9 @@ class Api {
   /// Traduction des messages (LibreTranslate) ; `null` : pas de traduction.
   final Translator? translator;
 
+  /// Bot Telegram ; `null` : Telegram désactivé.
+  final TelegramApi? telegramApi;
+
   Api({
     required this.store,
     required this.google,
@@ -74,6 +81,7 @@ class Api {
     this.allowedOrigins = const {},
     this.push,
     this.translator,
+    this.telegramApi,
     this.adminEmails = const {},
     this.platformFile,
     this.testPaymentsForAll = false,
@@ -99,6 +107,20 @@ class Api {
         return Response(204);
       }))
       ..get('/admin/log', _admin((r, u) async => _json({'entries': await platform.log()})))
+      ..get('/admin/texts', _admin((r, u) async => _json({'texts': await platform.texts()})))
+      ..put('/admin/texts/<key>', _admin((r, u) async {
+        final value = (await _body(r))['value'];
+        if (value is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        await platform.setText(u, r.params['key']!, value);
+        return Response(204);
+      }))
+      ..get('/admin/invoices', _admin((r, u) async =>
+          _json({'invoices': await billing.adminInvoices(r.url.queryParameters['code'] ?? '')})))
+      ..get('/admin/invoices/<invoiceId>/link', _admin((r, u) async {
+        final id = int.tryParse(r.params['invoiceId']!);
+        if (id == null) throw const ApiError.notFound();
+        return _json({'path': '/api/v1/invoices/${billing.adminInvoiceLink(u, id, _lang(r))}'});
+      }))
       ..get('/admin/companies', _admin((r, u) async => _json({'companies': await billing.adminCompanies()})))
       ..put('/admin/companies/<id>/comped', _admin((r, u) async {
         final comped = (await _body(r))['comped'];
@@ -119,9 +141,59 @@ class Api {
       ..get('/companies/<id>/invoices/<invoiceId>/link', _authed((r, u) async {
         final id = int.tryParse(r.params['invoiceId']!);
         if (id == null) throw const ApiError.notFound();
-        final lang = r.url.queryParameters['lang'] ?? negotiateLanguage(r.headers['accept-language']);
-        return _json({'path': '/api/v1/invoices/${await billing.invoiceLink(u, r.params['id']!, id, lang)}'});
+        return _json({'path': '/api/v1/invoices/${await billing.invoiceLink(u, r.params['id']!, id, _lang(r))}'});
       }))
+      ..get('/companies/<id>/invoices-zip/link', _authed((r, u) async =>
+          _json({'path': '/api/v1/invoice-zips/${await billing.zipLink(u, r.params['id']!, _lang(r))}'})))
+      ..get('/me/invoices', _authed((r, u) async => _json({'invoices': await billing.archivedInvoices(u)})))
+      ..get('/me/invoices-zip/link', _authed((r, u) async =>
+          _json({'path': '/api/v1/invoice-zips/${await billing.zipLink(u, null, _lang(r))}'})))
+      ..get('/me/invoices/<invoiceId>/link', _authed((r, u) async {
+        final id = int.tryParse(r.params['invoiceId']!);
+        if (id == null) throw const ApiError.notFound();
+        return _json({'path': '/api/v1/invoices/${await billing.archivedInvoiceLink(u, id, _lang(r))}'});
+      }))
+      ..get('/invoice-zips/<token>', (Request r) async {
+        final (name, bytes) = await billing.invoiceZip(r.params['token']!);
+        return Response.ok(bytes, headers: {
+          'content-type': 'application/zip',
+          'content-disposition': 'attachment; filename="$name"',
+          'cache-control': 'no-store',
+        });
+      })
+      // Compte : export, suppression, QR code, Telegram, reprise.
+      ..get('/me/export/link', _authed((r, u) async =>
+          _json({'path': '/api/v1/account-exports/${accounts.exportLink(u)}'})))
+      ..get('/account-exports/<token>', (Request r) async {
+        final (name, bytes) = await accounts.exportFile(r.params['token']!);
+        return Response.ok(bytes, headers: {
+          'content-type': 'application/json; charset=utf-8',
+          'content-disposition': 'attachment; filename="$name"',
+          'cache-control': 'no-store',
+        });
+      })
+      ..post('/me/delete', _authed((r, u) async {
+        final erase = (await _body(r))['erase'];
+        if (erase is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        await accounts.delete(u, erase: erase);
+        return Response(204);
+      }))
+      ..post('/me/qr', _authed((r, u) async => _json((await accounts.newQrCode(u)).toJson())))
+      ..post('/me/telegram/link', _authed((r, u) async => _json({'url': await telegram.linkUrl(u)})))
+      ..delete('/me/telegram', _authed((r, u) async {
+        await telegram.unlink(u);
+        return Response(204);
+      }))
+      ..put('/companies/<id>/telegram', _authed((r, u) async {
+        final show = (await _body(r))['show'];
+        if (show is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        await accounts.showTelegram(u, r.params['id']!, show);
+        return Response(204);
+      }))
+      ..post('/me/recover', _authed((r, u) async =>
+          _json(await accounts.recoverStart(u, _string(await _body(r), 'publicId')))))
+      ..post('/me/recover/confirm', _authed((r, u) async =>
+          _session(await accounts.recoverConfirm(u, _string(await _body(r), 'code')))))
       ..get('/invoices/<token>', (Request r) async {
         final (name, bytes) = await billing.invoicePdf(r.params['token']!);
         return Response.ok(bytes, headers: {
@@ -336,13 +408,17 @@ class Api {
 
   // --- Connexion -----------------------------------------------------------
 
+  String _lang(Request r) => r.url.queryParameters['lang'] ?? negotiateLanguage(r.headers['accept-language']);
+
   Future<Response> _loginGoogle(Request req) async {
     final body = await _body(req);
     final idToken = body['idToken'];
     if (idToken is! String || idToken.isEmpty) throw const ApiError.badRequest('idToken manquant.');
     final id = await google.verify(idToken);
-    return _session(await store.upsertGoogleUser(
-        sub: id.sub, email: id.email, name: id.name, photoUrl: id.picture, locale: id.locale));
+    final restored = await store.isGhost(id.sub);
+    return _session(
+        await store.upsertGoogleUser(sub: id.sub, email: id.email, name: id.name, photoUrl: id.picture, locale: id.locale),
+        restored: restored);
   }
 
   Future<Response> _loginDev(Request req) async {
@@ -351,13 +427,16 @@ class Api {
     if (email is! String || !email.contains('@')) throw const ApiError.badRequest('email manquant.');
     final name = (body['name'] as String?) ?? email.split('@').first;
     // `locale` simule la langue d'un compte Google.
-    return _session(await store.upsertGoogleUser(
-        sub: 'dev:$email', email: email, name: name, locale: body['locale'] as String?));
+    final restored = await store.isGhost('dev:$email');
+    return _session(
+        await store.upsertGoogleUser(sub: 'dev:$email', email: email, name: name, locale: body['locale'] as String?),
+        restored: restored);
   }
 
-  Future<Response> _session(User user) async {
-    await store.audit(actorId: user.id, action: 'auth.login');
-    return _json({'token': tokens.issue(user.id), 'user': user.toJson()});
+  /// [restored] : compte supprimé en fantôme, réactivé par cette connexion.
+  Future<Response> _session(User user, {bool restored = false}) async {
+    await store.audit(actorId: user.id, action: restored ? 'account.restore' : 'auth.login');
+    return _json({'token': tokens.issue(user.id), 'user': user.toJson(), if (restored) 'restored': true});
   }
 
   // --- Utilisateur ---------------------------------------------------------
@@ -374,6 +453,8 @@ class Api {
         'noticeRetention': await notices.retention(user.id),
         'unreadMessages': await chat.unreadByCompany(user.id),
         if (_isAdmin(user)) 'isAdmin': true,
+        'telegram': await telegram.of(user.id),
+        'telegramBot': await telegram.botName().catchError((Object _) => null),
         'calendarPath': switch (await tools.calendarToken(user.id)) {
           null => null,
           final token => '/api/v1/calendar/$token.ics',
@@ -874,7 +955,7 @@ class Api {
   Handler _authed(Future<Response> Function(Request, User) handler) => (Request req) async {
         final header = req.headers['authorization'] ?? '';
         if (!header.startsWith('Bearer ')) throw const ApiError.unauthorized();
-        final user = await store.findUser(tokens.verify(header.substring(7)));
+        final user = await store.findActiveUser(tokens.verify(header.substring(7)));
         if (user == null) throw const ApiError.unauthorized('Compte introuvable.');
         final key = req.headers['idempotency-key'];
         if (key == null || req.method == 'GET') return handler(req, user);

@@ -1426,4 +1426,168 @@ class L10nZh extends L10n {
   String billingProrataNote(String days) {
     return '包含本月剩余天数（$days 天，按比例），之后从每月 1 日起按整月计费。';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked => '尚未关联。它用于验证您的身份，例如更换 Google 账号时。';
+
+  @override
+  String telegramLinked(String name) {
+    return '已关联：$name';
+  }
+
+  @override
+  String get telegramNoUsername => '无用户名';
+
+  @override
+  String get telegramLink => '关联我的 Telegram';
+
+  @override
+  String get telegramLinkHint => '将打开 Telegram：点击“开始”，然后返回这里。';
+
+  @override
+  String get telegramUnlink => '取消关联';
+
+  @override
+  String get telegramUnavailable => 'Telegram 暂不可用。';
+
+  @override
+  String get telegramShowIn => '在以下公司显示我的 Telegram：';
+
+  @override
+  String get newQrCode => '更换二维码';
+
+  @override
+  String get newQrCodeConfirm => '您的旧二维码和旧编号将失效。您在各公司中的位置不变。';
+
+  @override
+  String get newQrCodeDone => '已创建新二维码。';
+
+  @override
+  String get changeGoogle => '更换 Google 账号';
+
+  @override
+  String get changeGoogleSub => '同一账号、同一编号、同样的公司';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. 在此资料页关联您的 Telegram（必需）。\n2. 退出登录，然后用新的 Google 账号登录。\n3. 选择“我已有 Staff Flow 账号”，输入您的编号 $id。\n4. 输入在 Telegram 收到的验证码。\n您的账号、编号和公司都保持不变。';
+  }
+
+  @override
+  String get recoverAccount => '我已有 Staff Flow 账号';
+
+  @override
+  String get recoverHint => '输入旧账号的编号（SF-…）。验证码将发送到该账号关联的 Telegram。';
+
+  @override
+  String get recoverIdLabel => '编号（SF-…）';
+
+  @override
+  String get recoverSend => '发送验证码';
+
+  @override
+  String get recoverCodeSent => '验证码已通过 Telegram 发送。';
+
+  @override
+  String get recoverCodeLabel => '收到的验证码（6 位数字）';
+
+  @override
+  String get recoverConfirm => '找回我的账号';
+
+  @override
+  String get recoverDone => '完成：您已回到自己的账号。';
+
+  @override
+  String get exportData => '导出我的数据';
+
+  @override
+  String get exportDataSub => '包含您全部个人数据的文件';
+
+  @override
+  String get deleteAccount => '删除我的账号';
+
+  @override
+  String get deleteGhost => '删除但保留“幽灵”';
+
+  @override
+  String get deleteGhostHint => '您将退出所有公司。之后用同一个 Google 账号登录即可找回账号和编号。';
+
+  @override
+  String get deleteErase => '永久删除全部内容';
+
+  @override
+  String get deleteEraseHint => '姓名、邮箱、照片、Telegram、消息和通知都将被删除，且无法撤销。';
+
+  @override
+  String get deleteGhostNote =>
+      '无论哪种方式，公司历史中都会以匿名的“Ghost”保留您的位置（休假申请、过去的班次等），以便老板和负责人追溯记录。';
+
+  @override
+  String get deleteOwnerNote => '您是公司所有者？请先转让公司，或等待其订阅结束。';
+
+  @override
+  String get deleteConfirmButton => '删除';
+
+  @override
+  String get accountRestored => '欢迎回来！您的账号已重新启用。';
+
+  @override
+  String get closedInvoices => '已关闭公司的发票';
+
+  @override
+  String get downloadAllInvoices => '下载全部发票（ZIP）';
+
+  @override
+  String get legalTerms => '使用与销售条款';
+
+  @override
+  String get legalPrivacy => '隐私政策';
+
+  @override
+  String get billingDetailTitle => '付款明细';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return '本月剩余（$total 天中的 $days 天）：订阅';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return '本月剩余（$total 天中的 $days 天）：“多级地点”选项';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return '订阅，$staff 名员工：1 个月';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return '订阅，$staff 名员工：12 个月，按 $paid 个月计费';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return '“多级地点”选项：$months 个月，无折扣';
+  }
+
+  @override
+  String get billingTotal => '合计';
+
+  @override
+  String billingCovers(String from, String to) {
+    return '覆盖期间：$from 至 $to';
+  }
+
+  @override
+  String get billingGraceInvoices => '此公司不再续订：请立即下载其全部发票。';
+
+  @override
+  String get billingYearLabel => '年份';
+
+  @override
+  String get sitesNoneChosen => '未选择地点';
 }

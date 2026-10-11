@@ -1483,4 +1483,177 @@ class L10nPl extends L10n {
   String billingProrataNote(String days) {
     return 'Obejmuje resztę bieżącego miesiąca ($days dni, proporcjonalnie), a potem pełne miesiące od 1. dnia.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Jeszcze nie połączono. Służy do potwierdzania tożsamości, np. przy zmianie konta Google.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Połączono: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'bez nazwy użytkownika';
+
+  @override
+  String get telegramLink => 'Połącz mój Telegram';
+
+  @override
+  String get telegramLinkHint =>
+      'Otworzy się Telegram: dotknij „Start”, a potem wróć tutaj.';
+
+  @override
+  String get telegramUnlink => 'Odłącz';
+
+  @override
+  String get telegramUnavailable => 'Telegram nie jest jeszcze dostępny.';
+
+  @override
+  String get telegramShowIn => 'Pokazuj mój Telegram w:';
+
+  @override
+  String get newQrCode => 'Zmień kod QR';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Stary kod QR i stary identyfikator przestaną działać. Twoje miejsce w firmach się nie zmienia.';
+
+  @override
+  String get newQrCodeDone => 'Utworzono nowy kod QR.';
+
+  @override
+  String get changeGoogle => 'Zmień konto Google';
+
+  @override
+  String get changeGoogleSub => 'To samo konto, ten sam numer, te same firmy';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Połącz Telegram w tym profilu (wymagane).\n2. Wyloguj się, a następnie zaloguj nowym kontem Google.\n3. Wybierz „Mam już konto Staff Flow” i wpisz swój identyfikator $id.\n4. Wpisz kod otrzymany na Telegramie.\nTwoje konto, numer i firmy pozostają bez zmian.';
+  }
+
+  @override
+  String get recoverAccount => 'Mam już konto Staff Flow';
+
+  @override
+  String get recoverHint =>
+      'Wpisz identyfikator starego konta (SF-…). Kod zostanie wysłany na Telegram połączony z tym kontem.';
+
+  @override
+  String get recoverIdLabel => 'Identyfikator (SF-…)';
+
+  @override
+  String get recoverSend => 'Wyślij kod';
+
+  @override
+  String get recoverCodeSent => 'Kod wysłano na Telegram.';
+
+  @override
+  String get recoverCodeLabel => 'Otrzymany kod (6 cyfr)';
+
+  @override
+  String get recoverConfirm => 'Odzyskaj moje konto';
+
+  @override
+  String get recoverDone => 'Gotowe: wróciłeś do swojego konta.';
+
+  @override
+  String get exportData => 'Eksportuj moje dane';
+
+  @override
+  String get exportDataSub => 'Plik ze wszystkimi Twoimi danymi osobowymi';
+
+  @override
+  String get deleteAccount => 'Usuń moje konto';
+
+  @override
+  String get deleteGhost => 'Usuń, zostawiając ducha';
+
+  @override
+  String get deleteGhostHint =>
+      'Opuszczasz wszystkie firmy. Zaloguj się później tym samym kontem Google, aby odzyskać konto i numer.';
+
+  @override
+  String get deleteErase => 'Usuń wszystko na zawsze';
+
+  @override
+  String get deleteEraseHint =>
+      'Imię, e-mail, zdjęcie, Telegram, wiadomości i powiadomienia zostaną usunięte. Nie można tego cofnąć.';
+
+  @override
+  String get deleteGhostNote =>
+      'W obu przypadkach historia firm zachowuje w Twoim miejscu anonimowego „Ghost” (wnioski urlopowe, dawne zmiany…), aby właściciel i kierownicy mogli odtworzyć zdarzenia.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Jesteś właścicielem firmy? Najpierw ją przekaż albo pozwól, by subskrypcja wygasła.';
+
+  @override
+  String get deleteConfirmButton => 'Usuń';
+
+  @override
+  String get accountRestored =>
+      'Witaj ponownie! Twoje konto zostało reaktywowane.';
+
+  @override
+  String get closedInvoices => 'Faktury zamkniętych firm';
+
+  @override
+  String get downloadAllInvoices => 'Pobierz wszystkie faktury (ZIP)';
+
+  @override
+  String get legalTerms => 'Warunki korzystania i sprzedaży';
+
+  @override
+  String get legalPrivacy => 'Polityka prywatności';
+
+  @override
+  String get billingDetailTitle => 'Szczegóły płatności';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Reszta bieżącego miesiąca ($days z $total dni): subskrypcja';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Reszta bieżącego miesiąca ($days z $total dni): opcja „zagnieżdżone lokalizacje”';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Subskrypcja, $staff pracowników: 1 miesiąc';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Subskrypcja, $staff pracowników: 12 miesięcy w cenie $paid';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return 'Opcja „zagnieżdżone lokalizacje”: $months mies., bez rabatu';
+  }
+
+  @override
+  String get billingTotal => 'Razem';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Okres: od $from do $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Ta firma nie zostanie przedłużona: pobierz teraz wszystkie jej faktury.';
+
+  @override
+  String get billingYearLabel => 'Rok';
+
+  @override
+  String get sitesNoneChosen => 'Nie wybrano lokalizacji';
 }

@@ -96,13 +96,18 @@ class Api {
 
   Future<(String, User)> loginGoogle(String idToken) async {
     final j = await _send('POST', '/auth/google', {'idToken': idToken});
+    lastLoginRestored = j['restored'] == true;
     return (j['token'] as String, User.fromJson(j['user']));
   }
 
   Future<(String, User)> loginDev(String email) async {
     final j = await _send('POST', '/auth/dev', {'email': email});
+    lastLoginRestored = j['restored'] == true;
     return (j['token'] as String, User.fromJson(j['user']));
   }
+
+  /// La dernière connexion a réactivé un compte supprimé en fantôme.
+  bool lastLoginRestored = false;
 
 
   Future<Membership> createCompany(String name, String timezone) async =>

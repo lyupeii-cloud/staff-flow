@@ -197,7 +197,11 @@ class Membership {
   /// (heure d'été comprise).
   final int? utcOffset;
 
-  const Membership(this.company, this.role, [this.sites, this.notifySites, this.notificationsOn = true, this.utcOffset]);
+  /// Son Telegram est affiché aux autres membres de cette entreprise.
+  final bool showTelegram;
+
+  const Membership(this.company, this.role,
+      [this.sites, this.notifySites, this.notificationsOn = true, this.utcOffset, this.showTelegram = false]);
 
   Map<String, Object?> toJson() => {
         'company': company.toJson(),
@@ -206,6 +210,7 @@ class Membership {
         'notifySites': notifySites,
         'notificationsOn': notificationsOn,
         'utcOffset': utcOffset,
+        'showTelegram': showTelegram,
       };
 }
 
@@ -224,10 +229,14 @@ class Member {
   /// Sous-responsable : le responsable qui l'a nommé.
   final String? appointedBy;
 
-  const Member(this.user, this.role, this.joinedAt, {this.nameInCompany, this.sites, this.appointedBy});
+  /// Nom Telegram (sans « @ »), si la personne l'affiche dans cette entreprise.
+  final String? telegram;
+
+  const Member(this.user, this.role, this.joinedAt, {this.nameInCompany, this.sites, this.appointedBy, this.telegram});
 
   Map<String, Object?> toJson() => {
         'user': user.toJson(),
+        'telegram': telegram,
         'nameInCompany': nameInCompany,
         'sites': sites,
         'appointedBy': appointedBy,

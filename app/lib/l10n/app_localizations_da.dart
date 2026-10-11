@@ -1474,4 +1474,176 @@ class L10nDa extends L10n {
   String billingProrataNote(String days) {
     return 'Omfatter resten af indeværende måned ($days dage, forholdsmæssigt) og derefter hele måneder fra den 1.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Ikke tilknyttet endnu. Det bruges til at bekræfte din identitet, fx når du skifter Google-konto.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Tilknyttet: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'intet brugernavn';
+
+  @override
+  String get telegramLink => 'Tilknyt mit Telegram';
+
+  @override
+  String get telegramLinkHint =>
+      'Telegram åbner: tryk på “Start”, og vend så tilbage hertil.';
+
+  @override
+  String get telegramUnlink => 'Fjern tilknytning';
+
+  @override
+  String get telegramUnavailable => 'Telegram er ikke tilgængeligt endnu.';
+
+  @override
+  String get telegramShowIn => 'Vis mit Telegram i:';
+
+  @override
+  String get newQrCode => 'Skift QR-kode';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Din gamle QR-kode og dit gamle ID holder op med at virke. Din plads i dine virksomheder ændres ikke.';
+
+  @override
+  String get newQrCodeDone => 'Ny QR-kode oprettet.';
+
+  @override
+  String get changeGoogle => 'Skift Google-konto';
+
+  @override
+  String get changeGoogleSub => 'Samme konto, samme nummer, samme virksomheder';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Tilknyt dit Telegram i denne profil (påkrævet).\n2. Log ud, og log ind med den nye Google-konto.\n3. Vælg “Jeg har allerede en Staff Flow-konto”, og indtast dit ID $id.\n4. Indtast koden fra Telegram.\nDin konto, dit nummer og dine virksomheder forbliver de samme.';
+  }
+
+  @override
+  String get recoverAccount => 'Jeg har allerede en Staff Flow-konto';
+
+  @override
+  String get recoverHint =>
+      'Indtast ID\'et på din gamle konto (SF-…). Der sendes en kode til det Telegram, der er tilknyttet kontoen.';
+
+  @override
+  String get recoverIdLabel => 'ID (SF-…)';
+
+  @override
+  String get recoverSend => 'Send koden';
+
+  @override
+  String get recoverCodeSent => 'Koden er sendt via Telegram.';
+
+  @override
+  String get recoverCodeLabel => 'Modtaget kode (6 cifre)';
+
+  @override
+  String get recoverConfirm => 'Gendan min konto';
+
+  @override
+  String get recoverDone => 'Færdig: du er tilbage på din konto.';
+
+  @override
+  String get exportData => 'Eksportér mine data';
+
+  @override
+  String get exportDataSub => 'En fil med alle dine personoplysninger';
+
+  @override
+  String get deleteAccount => 'Slet min konto';
+
+  @override
+  String get deleteGhost => 'Slet, men behold et spøgelse';
+
+  @override
+  String get deleteGhostHint =>
+      'Du forlader alle dine virksomheder. Log senere ind med samme Google-konto for at få konto og nummer tilbage.';
+
+  @override
+  String get deleteErase => 'Slet alt permanent';
+
+  @override
+  String get deleteEraseHint =>
+      'Navn, e-mail, foto, Telegram, beskeder og notifikationer slettes. Det kan ikke fortrydes.';
+
+  @override
+  String get deleteGhostNote =>
+      'I begge tilfælde beholder virksomhedernes historik en anonym “Ghost” i dit sted (ferieanmodninger, tidligere vagter …), så ejeren og lederne kan spore begivenhederne.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Ejer du en virksomhed? Overdrag den først, eller lad abonnementet udløbe.';
+
+  @override
+  String get deleteConfirmButton => 'Slet';
+
+  @override
+  String get accountRestored => 'Velkommen tilbage! Din konto er genaktiveret.';
+
+  @override
+  String get closedInvoices => 'Fakturaer fra lukkede virksomheder';
+
+  @override
+  String get downloadAllInvoices => 'Download alle fakturaer (ZIP)';
+
+  @override
+  String get legalTerms => 'Brugs- og salgsbetingelser';
+
+  @override
+  String get legalPrivacy => 'Privatlivspolitik';
+
+  @override
+  String get billingDetailTitle => 'Betalingsdetaljer';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Resten af måneden ($days af $total dage): abonnement';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Resten af måneden ($days af $total dage): tilvalget “indlejrede steder”';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Abonnement, $staff medarbejdere: 1 måned';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Abonnement, $staff medarbejdere: 12 måneder til prisen for $paid';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return 'Tilvalget “indlejrede steder”: $months måneder, uden rabat';
+  }
+
+  @override
+  String get billingTotal => 'I alt';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Periode: $from til $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Denne virksomhed fornyes ikke: download alle dens fakturaer nu.';
+
+  @override
+  String get billingYearLabel => 'År';
+
+  @override
+  String get sitesNoneChosen => 'Intet sted valgt';
 }

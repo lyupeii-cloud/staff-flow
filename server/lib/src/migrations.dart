@@ -454,4 +454,42 @@ ALTER TABLE invoices ALTER COLUMN company_code SET NOT NULL;
 ALTER TABLE invoices DROP COLUMN owner_email, DROP COLUMN emailed_at;
 DROP SEQUENCE invoice_number_seq;
 ''',
+  // 26 — comptes : suppression (fantôme qu'on peut réactiver, ou effacement
+  // définitif), Telegram vérifié (affiché par entreprise, sert à reprendre
+  // son compte avec un autre compte Google) ; vendeur figé sur chaque
+  // facture ; factures d'une entreprise fermée gardées pour son dernier patron.
+  '''
+ALTER TABLE users
+  ADD COLUMN deleted_at timestamptz,
+  ADD COLUMN erased boolean NOT NULL DEFAULT false,
+  ADD COLUMN telegram_chat_id bigint UNIQUE,
+  ADD COLUMN telegram_username text,
+  ADD COLUMN telegram_linked_at timestamptz;
+ALTER TABLE memberships ADD COLUMN show_telegram boolean NOT NULL DEFAULT false;
+CREATE TABLE telegram_links (
+  token       text PRIMARY KEY,
+  user_id     uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  expires_at  timestamptz NOT NULL
+);
+CREATE TABLE account_recoveries (
+  new_user_id  uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+  old_user_id  uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  code_hash    text NOT NULL,
+  attempts     int NOT NULL DEFAULT 0,
+  sent_at      timestamptz NOT NULL,
+  expires_at   timestamptz NOT NULL
+);
+CREATE TABLE platform_texts (
+  key        text PRIMARY KEY,
+  value      text NOT NULL,
+  updated_by uuid REFERENCES users(id) ON DELETE SET NULL,
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+ALTER TABLE invoices
+  ADD COLUMN seller jsonb,
+  ADD COLUMN holder_id uuid REFERENCES users(id) ON DELETE SET NULL;
+UPDATE invoices SET holder_id = owner_id WHERE company_id IS NULL;
+CREATE INDEX invoices_holder ON invoices (holder_id) WHERE company_id IS NULL;
+CREATE INDEX invoices_code ON invoices (company_code);
+''',
 ];

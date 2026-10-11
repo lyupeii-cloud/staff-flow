@@ -1459,4 +1459,177 @@ class L10nTh extends L10n {
   String billingProrataNote(String days) {
     return 'รวมส่วนที่เหลือของเดือนนี้ ($days วัน ตามสัดส่วน) แล้วคิดเต็มเดือนตั้งแต่วันที่ 1';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'ยังไม่ได้เชื่อม ใช้ยืนยันตัวตน เช่น ตอนเปลี่ยนบัญชี Google';
+
+  @override
+  String telegramLinked(String name) {
+    return 'เชื่อมแล้ว: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'ไม่มีชื่อผู้ใช้';
+
+  @override
+  String get telegramLink => 'เชื่อม Telegram ของฉัน';
+
+  @override
+  String get telegramLinkHint =>
+      'Telegram จะเปิดขึ้น: แตะ “เริ่ม” แล้วกลับมาที่นี่';
+
+  @override
+  String get telegramUnlink => 'ยกเลิกการเชื่อม';
+
+  @override
+  String get telegramUnavailable => 'ยังใช้ Telegram ไม่ได้';
+
+  @override
+  String get telegramShowIn => 'แสดง Telegram ของฉันใน:';
+
+  @override
+  String get newQrCode => 'เปลี่ยน QR โค้ด';
+
+  @override
+  String get newQrCodeConfirm =>
+      'QR โค้ดเก่าและรหัสเก่าจะใช้ไม่ได้อีก ตำแหน่งของคุณในบริษัทไม่เปลี่ยน';
+
+  @override
+  String get newQrCodeDone => 'สร้าง QR โค้ดใหม่แล้ว';
+
+  @override
+  String get changeGoogle => 'เปลี่ยนบัญชี Google';
+
+  @override
+  String get changeGoogleSub => 'บัญชีเดิม หมายเลขเดิม บริษัทเดิม';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. เชื่อม Telegram ในโปรไฟล์นี้ (จำเป็น)\n2. ออกจากระบบ แล้วลงชื่อเข้าใช้ด้วยบัญชี Google ใหม่\n3. เลือก “ฉันมีบัญชี Staff Flow อยู่แล้ว” และกรอกรหัส $id\n4. กรอกรหัสที่ได้รับทาง Telegram\nบัญชี หมายเลข และบริษัทของคุณยังคงเหมือนเดิม';
+  }
+
+  @override
+  String get recoverAccount => 'ฉันมีบัญชี Staff Flow อยู่แล้ว';
+
+  @override
+  String get recoverHint =>
+      'กรอกรหัสของบัญชีเดิม (SF-…) ระบบจะส่งรหัสไปยัง Telegram ที่เชื่อมกับบัญชีนั้น';
+
+  @override
+  String get recoverIdLabel => 'รหัส (SF-…)';
+
+  @override
+  String get recoverSend => 'ส่งรหัส';
+
+  @override
+  String get recoverCodeSent => 'ส่งรหัสทาง Telegram แล้ว';
+
+  @override
+  String get recoverCodeLabel => 'รหัสที่ได้รับ (6 หลัก)';
+
+  @override
+  String get recoverConfirm => 'กู้คืนบัญชีของฉัน';
+
+  @override
+  String get recoverDone => 'เรียบร้อย: คุณกลับเข้าบัญชีของคุณแล้ว';
+
+  @override
+  String get exportData => 'ส่งออกข้อมูลของฉัน';
+
+  @override
+  String get exportDataSub => 'ไฟล์ที่มีข้อมูลส่วนบุคคลทั้งหมดของคุณ';
+
+  @override
+  String get deleteAccount => 'ลบบัญชีของฉัน';
+
+  @override
+  String get deleteGhost => 'ลบโดยเก็บผีไว้';
+
+  @override
+  String get deleteGhostHint =>
+      'คุณจะออกจากทุกบริษัท ภายหลังลงชื่อเข้าใช้ด้วยบัญชี Google เดิมเพื่อรับบัญชีและหมายเลขคืน';
+
+  @override
+  String get deleteErase => 'ลบทุกอย่างถาวร';
+
+  @override
+  String get deleteEraseHint =>
+      'ชื่อ อีเมล รูปภาพ Telegram ข้อความ และการแจ้งเตือนจะถูกลบ ไม่สามารถย้อนกลับได้';
+
+  @override
+  String get deleteGhostNote =>
+      'ไม่ว่ากรณีใด ประวัติของบริษัทจะเก็บ “Ghost” แบบไม่ระบุตัวตนแทนคุณ (คำขอลา กะที่ผ่านมา…) เพื่อให้เจ้าของและผู้จัดการติดตามเหตุการณ์ได้';
+
+  @override
+  String get deleteOwnerNote =>
+      'เป็นเจ้าของบริษัทอยู่หรือไม่? โอนบริษัทก่อน หรือรอให้การสมัครสมาชิกสิ้นสุด';
+
+  @override
+  String get deleteConfirmButton => 'ลบ';
+
+  @override
+  String get accountRestored =>
+      'ยินดีต้อนรับกลับ! บัญชีของคุณเปิดใช้งานอีกครั้งแล้ว';
+
+  @override
+  String get closedInvoices => 'ใบแจ้งหนี้ของบริษัทที่ปิดแล้ว';
+
+  @override
+  String get downloadAllInvoices => 'ดาวน์โหลดใบแจ้งหนี้ทั้งหมด (ZIP)';
+
+  @override
+  String get legalTerms => 'ข้อกำหนดการใช้งานและการขาย';
+
+  @override
+  String get legalPrivacy => 'นโยบายความเป็นส่วนตัว';
+
+  @override
+  String get billingDetailTitle => 'รายละเอียดการชำระเงิน';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'ส่วนที่เหลือของเดือนนี้ ($days จาก $total วัน): การสมัครสมาชิก';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'ส่วนที่เหลือของเดือนนี้ ($days จาก $total วัน): ตัวเลือก “สาขาซ้อน”';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'การสมัครสมาชิก พนักงาน $staff คน: 1 เดือน';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'การสมัครสมาชิก พนักงาน $staff คน: 12 เดือนในราคา $paid เดือน';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return 'ตัวเลือก “สาขาซ้อน”: $months เดือน ไม่มีส่วนลด';
+  }
+
+  @override
+  String get billingTotal => 'รวม';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'ช่วงเวลา: $from ถึง $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'บริษัทนี้จะไม่ต่ออายุ: ดาวน์โหลดใบแจ้งหนี้ทั้งหมดตอนนี้';
+
+  @override
+  String get billingYearLabel => 'ปี';
+
+  @override
+  String get sitesNoneChosen => 'ยังไม่ได้เลือกสาขา';
 }

@@ -1470,4 +1470,177 @@ class L10nKk extends L10n {
   String billingProrataNote(String days) {
     return 'Ағымдағы айдың қалған бөлігі ($days күн, үлестік), содан кейін 1-күннен бастап толық айлар.';
   }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Әлі байланыстырылмаған. Ол жеке басыңызды растау үшін керек, мысалы Google аккаунтын ауыстырғанда.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Байланыстырылған: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'пайдаланушы аты жоқ';
+
+  @override
+  String get telegramLink => 'Telegram-ымды байланыстыру';
+
+  @override
+  String get telegramLinkHint =>
+      'Telegram ашылады: «Бастау» түймесін басып, осында оралыңыз.';
+
+  @override
+  String get telegramUnlink => 'Ажырату';
+
+  @override
+  String get telegramUnavailable => 'Telegram әзірге қолжетімсіз.';
+
+  @override
+  String get telegramShowIn => 'Telegram-ымды көрсету:';
+
+  @override
+  String get newQrCode => 'QR кодын ауыстыру';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Ескі QR кодыңыз бен ескі идентификаторыңыз енді жұмыс істемейді. Компаниялардағы орныңыз өзгермейді.';
+
+  @override
+  String get newQrCodeDone => 'Жаңа QR коды жасалды.';
+
+  @override
+  String get changeGoogle => 'Google аккаунтын ауыстыру';
+
+  @override
+  String get changeGoogleSub => 'Сол аккаунт, сол нөмір, сол компаниялар';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Осы профильде Telegram-ыңызды байланыстырыңыз (міндетті).\n2. Шығып, жаңа Google аккаунтымен кіріңіз.\n3. «Менде Staff Flow аккаунты бар» дегенді таңдап, $id идентификаторыңызды енгізіңіз.\n4. Telegram-да алған кодты енгізіңіз.\nАккаунтыңыз, нөміріңіз және компанияларыңыз сол күйі қалады.';
+  }
+
+  @override
+  String get recoverAccount => 'Менде Staff Flow аккаунты бар';
+
+  @override
+  String get recoverHint =>
+      'Ескі аккаунтыңыздың идентификаторын (SF-…) енгізіңіз. Код сол аккаунтқа байланыстырылған Telegram-ға жіберіледі.';
+
+  @override
+  String get recoverIdLabel => 'Идентификатор (SF-…)';
+
+  @override
+  String get recoverSend => 'Кодты жіберу';
+
+  @override
+  String get recoverCodeSent => 'Код Telegram-ға жіберілді.';
+
+  @override
+  String get recoverCodeLabel => 'Алынған код (6 сан)';
+
+  @override
+  String get recoverConfirm => 'Аккаунтымды қалпына келтіру';
+
+  @override
+  String get recoverDone => 'Дайын: аккаунтыңызға оралдыңыз.';
+
+  @override
+  String get exportData => 'Деректерімді экспорттау';
+
+  @override
+  String get exportDataSub => 'Барлық жеке деректеріңіз бар файл';
+
+  @override
+  String get deleteAccount => 'Аккаунтымды жою';
+
+  @override
+  String get deleteGhost => 'Елес қалдырып жою';
+
+  @override
+  String get deleteGhostHint =>
+      'Барлық компаниядан шығасыз. Кейін сол Google аккаунтымен кіріп, аккаунт пен нөміріңізді қайтарыңыз.';
+
+  @override
+  String get deleteErase => 'Барлығын біржола өшіру';
+
+  @override
+  String get deleteEraseHint =>
+      'Аты, e-mail, фото, Telegram, хабарламалар мен хабарландырулар өшіріледі. Қайтару мүмкін емес.';
+
+  @override
+  String get deleteGhostNote =>
+      'Екі жағдайда да компаниялар тарихында сіздің орныңызда анонимді «Ghost» қалады (демалыс өтініштері, өткен ауысымдар…), иесі мен басшылар оқиғаларды қадағалай алуы үшін.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Компания иесісіз бе? Алдымен оны беріңіз немесе жазылымының аяқталуын күтіңіз.';
+
+  @override
+  String get deleteConfirmButton => 'Жою';
+
+  @override
+  String get accountRestored =>
+      'Қайта қош келдіңіз! Аккаунтыңыз қайта белсендірілді.';
+
+  @override
+  String get closedInvoices => 'Жабылған компаниялардың шоттары';
+
+  @override
+  String get downloadAllInvoices => 'Барлық шотты жүктеу (ZIP)';
+
+  @override
+  String get legalTerms => 'Пайдалану және сату шарттары';
+
+  @override
+  String get legalPrivacy => 'Құпиялылық саясаты';
+
+  @override
+  String get billingDetailTitle => 'Төлем мәліметтері';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Ағымдағы айдың қалғаны ($total күннің $days): жазылым';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Ағымдағы айдың қалғаны ($total күннің $days): «ішкі нысандар» опциясы';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Жазылым, $staff қызметкер: 1 ай';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Жазылым, $staff қызметкер: 12 ай $paid айдың бағасымен';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return '«Ішкі нысандар» опциясы: $months ай, жеңілдіксіз';
+  }
+
+  @override
+  String get billingTotal => 'Барлығы';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Кезең: $from – $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Бұл компания ұзартылмайды: оның барлық шотын қазір жүктеп алыңыз.';
+
+  @override
+  String get billingYearLabel => 'Жыл';
+
+  @override
+  String get sitesNoneChosen => 'Нысан таңдалмаған';
 }
