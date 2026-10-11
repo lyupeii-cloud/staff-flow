@@ -1646,4 +1646,81 @@ class L10nDa extends L10n {
 
   @override
   String get sitesNoneChosen => 'Intet sted valgt';
+
+  @override
+  String get avatarTitle => 'Min avatar';
+
+  @override
+  String get avatarSub => 'Et billede i stedet for dit foto';
+
+  @override
+  String get avatarUseGoogle => 'Brug mit Google-foto';
+
+  @override
+  String get avatarColor => 'Farve';
+
+  @override
+  String get hidePhotosTitle => 'Skjul Google-fotos';
+
+  @override
+  String get hidePhotosSub =>
+      'I denne virksomhed vises alle med deres avatar eller forbogstav.';
+
+  @override
+  String get billingApi => 'Tilvalget “API-adgang”';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Tilvalget “API-adgang”: $months måneder, uden rabat';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Resten af måneden ($days af $total dage): tilvalget “API-adgang”';
+  }
+
+  @override
+  String get apiTitle => 'API-adgang (regnskab, CRM)';
+
+  @override
+  String get apiSub =>
+      'Dit regnskabs-, løn- eller CRM-program læser den offentliggjorte vagtplan, timer og fravær.';
+
+  @override
+  String get apiNeedsOption =>
+      'Betalt tilvalg: tilføj “API-adgang” under “Administrer abonnement”.';
+
+  @override
+  String get apiNewKey => 'Ny nøgle';
+
+  @override
+  String get apiKeyName => 'Nøglens navn (fx lønprogram)';
+
+  @override
+  String get apiKeyCreated =>
+      'Kopiér nøglen nu, og opbevar den sikkert: den vises ikke igen.';
+
+  @override
+  String get apiKeyCopy => 'Kopiér';
+
+  @override
+  String get apiKeyCopied => 'Nøglen er kopieret.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Sidst brugt: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Aldrig brugt';
+
+  @override
+  String get apiRevoke => 'Tilbagekald';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Programmer, der bruger nøglen, mister adgangen.';
+
+  @override
+  String get apiDocs => 'API-dokumentation';
 }

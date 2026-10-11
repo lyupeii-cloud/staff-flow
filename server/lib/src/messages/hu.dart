@@ -139,4 +139,8 @@ const hu = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'A(z) {id} Staff Flow-fiókja mostantól a(z) {email} Google-fiókhoz kapcsolódik.',
   'N° d\'enregistrement : {id}': 'Nyilvántartási szám: {id}',
   'Payé.': 'Fizetve.',
+  'Option « accès API » nécessaire pour créer une clé.': 'Kulcs létrehozásához az „API-hozzáférés” opció szükséges.',
+  '10 clés au plus par entreprise.': 'Cégenként legfeljebb 10 kulcs.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'A folyó hónap hátralévő része ({total} napból {days}): „API-hozzáférés” opció',
+  'Option « accès API » : {months} mois': '„API-hozzáférés” opció: {months} hónap',
 };

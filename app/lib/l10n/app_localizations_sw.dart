@@ -1646,4 +1646,81 @@ class L10nSw extends L10n {
 
   @override
   String get sitesNoneChosen => 'Hakuna eneo lililochaguliwa';
+
+  @override
+  String get avatarTitle => 'Avatar yangu';
+
+  @override
+  String get avatarSub => 'Picha badala ya picha yako halisi';
+
+  @override
+  String get avatarUseGoogle => 'Tumia picha yangu ya Google';
+
+  @override
+  String get avatarColor => 'Rangi';
+
+  @override
+  String get hidePhotosTitle => 'Ficha picha za Google';
+
+  @override
+  String get hidePhotosSub =>
+      'Katika kampuni hii, kila mtu anaonekana kwa avatar au herufi yake ya kwanza.';
+
+  @override
+  String get billingApi => 'Chaguo la “ufikiaji wa API”';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Chaguo la “ufikiaji wa API”: miezi $months, bila punguzo';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Salio la mwezi huu (siku $days kati ya $total): chaguo la “ufikiaji wa API”';
+  }
+
+  @override
+  String get apiTitle => 'Ufikiaji wa API (uhasibu, CRM)';
+
+  @override
+  String get apiSub =>
+      'Programu zako za uhasibu, mishahara au CRM husoma ratiba iliyochapishwa, saa na kutokuwepo.';
+
+  @override
+  String get apiNeedsOption =>
+      'Chaguo la kulipia: ongeza “ufikiaji wa API” katika “Dhibiti usajili”.';
+
+  @override
+  String get apiNewKey => 'Ufunguo mpya';
+
+  @override
+  String get apiKeyName => 'Jina la ufunguo (k.m.: programu ya mishahara)';
+
+  @override
+  String get apiKeyCreated =>
+      'Nakili ufunguo huu sasa na uuhifadhi salama: hautaonyeshwa tena.';
+
+  @override
+  String get apiKeyCopy => 'Nakili';
+
+  @override
+  String get apiKeyCopied => 'Ufunguo umenakiliwa.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Ulitumika mwisho: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Haujawahi kutumika';
+
+  @override
+  String get apiRevoke => 'Batilisha';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Programu zinazotumia ufunguo huu zitapoteza ufikiaji.';
+
+  @override
+  String get apiDocs => 'Nyaraka za API';
 }

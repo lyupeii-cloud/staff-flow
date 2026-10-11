@@ -139,4 +139,8 @@ const id = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Akun Staff Flow Anda {id} kini terhubung ke akun Google {email}.',
   'N° d\'enregistrement : {id}': 'No. registrasi: {id}',
   'Payé.': 'Lunas.',
+  'Option « accès API » nécessaire pour créer une clé.': 'Opsi “akses API” diperlukan untuk membuat kunci.',
+  '10 clés au plus par entreprise.': 'Paling banyak 10 kunci per perusahaan.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Sisa bulan ini ({days} dari {total} hari): opsi “akses API”',
+  'Option « accès API » : {months} mois': 'Opsi “akses API”: {months} bulan',
 };

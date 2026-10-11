@@ -1641,4 +1641,81 @@ class L10nId extends L10n {
 
   @override
   String get sitesNoneChosen => 'Belum ada lokasi dipilih';
+
+  @override
+  String get avatarTitle => 'Avatar saya';
+
+  @override
+  String get avatarSub => 'Gambar sebagai pengganti foto Anda';
+
+  @override
+  String get avatarUseGoogle => 'Pakai foto Google saya';
+
+  @override
+  String get avatarColor => 'Warna';
+
+  @override
+  String get hidePhotosTitle => 'Sembunyikan foto Google';
+
+  @override
+  String get hidePhotosSub =>
+      'Di perusahaan ini, semua orang tampil dengan avatar atau inisialnya.';
+
+  @override
+  String get billingApi => 'Opsi “akses API”';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Opsi “akses API”: $months bulan, tanpa diskon';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Sisa bulan ini ($days dari $total hari): opsi “akses API”';
+  }
+
+  @override
+  String get apiTitle => 'Akses API (akuntansi, CRM)';
+
+  @override
+  String get apiSub =>
+      'Perangkat lunak akuntansi, penggajian, atau CRM Anda membaca jadwal yang diterbitkan, jam kerja, dan ketidakhadiran.';
+
+  @override
+  String get apiNeedsOption =>
+      'Opsi berbayar: tambahkan “akses API” di “Kelola langganan”.';
+
+  @override
+  String get apiNewKey => 'Kunci baru';
+
+  @override
+  String get apiKeyName => 'Nama kunci (mis.: aplikasi penggajian)';
+
+  @override
+  String get apiKeyCreated =>
+      'Salin kunci ini sekarang dan simpan dengan aman: kunci tidak akan ditampilkan lagi.';
+
+  @override
+  String get apiKeyCopy => 'Salin';
+
+  @override
+  String get apiKeyCopied => 'Kunci disalin.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Terakhir dipakai: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Belum pernah dipakai';
+
+  @override
+  String get apiRevoke => 'Cabut';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Perangkat lunak yang memakai kunci ini akan kehilangan akses.';
+
+  @override
+  String get apiDocs => 'Dokumentasi API';
 }

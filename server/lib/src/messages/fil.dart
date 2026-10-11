@@ -139,4 +139,8 @@ const fil = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Naka-link na ngayon ang iyong Staff Flow account {id} sa Google account na {email}.',
   'N° d\'enregistrement : {id}': 'Blg. ng rehistro: {id}',
   'Payé.': 'Bayad na.',
+  'Option « accès API » nécessaire pour créer une clé.': 'Kailangan ang opsyong “API access” para gumawa ng key.',
+  '10 clés au plus par entreprise.': 'Hanggang 10 key bawat kumpanya.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Natitira sa buwang ito ({days} sa {total} araw): opsyong “API access”',
+  'Option « accès API » : {months} mois': 'Opsyong “API access”: {months} buwan',
 };

@@ -1657,4 +1657,81 @@ class L10nFr extends L10n {
 
   @override
   String get sitesNoneChosen => 'Aucun site choisi';
+
+  @override
+  String get avatarTitle => 'Mon avatar';
+
+  @override
+  String get avatarSub => 'Une image à la place de votre photo';
+
+  @override
+  String get avatarUseGoogle => 'Utiliser ma photo Google';
+
+  @override
+  String get avatarColor => 'Couleur';
+
+  @override
+  String get hidePhotosTitle => 'Masquer les photos Google';
+
+  @override
+  String get hidePhotosSub =>
+      'Dans cette entreprise, chacun apparaît avec son avatar ou son initiale.';
+
+  @override
+  String get billingApi => 'Option « accès API »';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Option « accès API » : $months mois, sans remise';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Fin du mois en cours ($days jours sur $total) : option « accès API »';
+  }
+
+  @override
+  String get apiTitle => 'Accès API (comptabilité, CRM)';
+
+  @override
+  String get apiSub =>
+      'Vos logiciels de comptabilité, de paie ou votre CRM lisent le planning publié, les heures et les absences.';
+
+  @override
+  String get apiNeedsOption =>
+      'Option payante : ajoutez « accès API » dans « Gérer l\'abonnement ».';
+
+  @override
+  String get apiNewKey => 'Nouvelle clé';
+
+  @override
+  String get apiKeyName => 'Nom de la clé (ex. : logiciel de paie)';
+
+  @override
+  String get apiKeyCreated =>
+      'Copiez cette clé maintenant et gardez-la en lieu sûr : elle ne sera plus affichée.';
+
+  @override
+  String get apiKeyCopy => 'Copier';
+
+  @override
+  String get apiKeyCopied => 'Clé copiée.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Dernière utilisation : $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Jamais utilisée';
+
+  @override
+  String get apiRevoke => 'Révoquer';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Les logiciels qui utilisent cette clé n\'auront plus accès.';
+
+  @override
+  String get apiDocs => 'Documentation de l\'API';
 }

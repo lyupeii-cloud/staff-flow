@@ -117,11 +117,14 @@ class BillingService {
       days == 0 ? 0 : (monthlyCents * days + monthDays - 1) ~/ monthDays;
 
   /// Montants et lignes de facture d'un paiement.
-  ({int amount, List<Map<String, Object?>> lines, int base, bool withOption}) _price(
-      Map<String, int> v, int staff, String period, bool cascade, ({int prorataDays, int monthDays, DateTime periodStart, DateTime periodEnd, DateTime coverFrom}) p) {
+  ({int amount, List<Map<String, Object?>> lines, int base, bool withOption, int recurring}) _price(
+      Map<String, int> v, int staff, String period, bool cascade, ({int prorataDays, int monthDays, DateTime periodStart, DateTime periodEnd, DateTime coverFrom}) p,
+      {bool api = false}) {
     final withOption = cascade && staff < v['cascadeIncludedFrom']!;
     final base = PlatformService.monthlyCents(v, staff);
     final option = withOption ? v['cascadeOptionPrice']! : 0;
+    final apiPrice = api ? v['apiOptionPrice']! : 0;
+    final prorataApi = _prorata(apiPrice, p.prorataDays, p.monthDays);
     final months = period == 'year' ? 12 : 1;
     final baseAmount = period == 'year' ? base * v['annualMonths']! : base;
     final prorataBase = _prorata(base, p.prorataDays, p.monthDays);
@@ -141,12 +144,15 @@ class BillingService {
         'cents': baseAmount,
       },
       if (withOption) {'label': 'cascade', 'unitCents': option, 'months': months, 'cents': option * months},
+      if (prorataApi > 0) {'label': 'apiProrata', 'days': p.prorataDays, 'monthDays': p.monthDays, 'cents': prorataApi},
+      if (api) {'label': 'api', 'unitCents': apiPrice, 'months': months, 'cents': apiPrice * months},
     ];
     return (
       amount: lines.fold(0, (s, l) => s + (l['cents'] as int)),
       lines: lines,
       base: base,
       withOption: withOption,
+      recurring: baseAmount + (option + apiPrice) * months,
     );
   }
 
@@ -160,12 +166,13 @@ class BillingService {
     final month = _plan(company, 'month');
     int due(String period, bool cascade) => _price(v, staff, period, cascade, _plan(company, period)).amount;
     // Détail de chaque formule, montré avant le paiement.
-    Map<String, Object?> quote(String period, bool cascade) {
+    Map<String, Object?> quote(String period, bool cascade, [bool api = false]) {
       final plan = _plan(company, period);
-      final price = _price(v, staff, period, cascade, plan);
+      final price = _price(v, staff, period, cascade, plan, api: api);
       return {
         'lines': price.lines,
         'total': price.amount,
+        'price': price.recurring,
         'from': plan.coverFrom.toIso8601String(),
         'to': plan.periodEnd.toIso8601String(),
       };
@@ -195,6 +202,14 @@ class BillingService {
         'monthCascade': quote('month', true),
         'yearCascade': quote('year', true),
       },
+      // Toutes les combinaisons : « période-cascade-api », par exemple « year-1-0 ».
+      'offers': {
+        for (final p in ['month', 'year'])
+          for (final c in [false, true])
+            for (final x in [false, true]) '$p-${c ? 1 : 0}-${x ? 1 : 0}': quote(p, c, x),
+      },
+      'apiOption': company.apiOption,
+      'apiOptionPrice': v['apiOptionPrice'],
       'prorataDays': month.prorataDays,
       'canPay': canPay(actor),
       'testPayments': true,
@@ -224,7 +239,8 @@ class BillingService {
   /// le prorata du mois en cours (voir [_plan]) ; le prix est calculé avec
   /// les tarifs et l'effectif du moment ; l'entreprise redevient modifiable ;
   /// une facture est créée, numérotée par entreprise et par année.
-  Future<Map<String, Object?>> checkout(User actor, String companyId, {required String period, required bool cascade}) async {
+  Future<Map<String, Object?>> checkout(User actor, String companyId,
+      {required String period, required bool cascade, bool? api}) async {
     final company = await _owned(actor, companyId);
     if (!canPay(actor)) throw const ApiError.conflict('Le paiement en ligne arrive bientôt.');
     if (period != 'month' && period != 'year') throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
@@ -232,7 +248,9 @@ class BillingService {
     final v = await platform.values();
     final staff = await staffCount(companyId);
     final plan = _plan(company, period);
-    final price = _price(v, staff, period, cascade, plan);
+    // Sans précision (anciennes versions de l'application) : l'option API reste comme elle est.
+    final withApi = api ?? company.apiOption;
+    final price = _price(v, staff, period, cascade, plan, api: withApi);
     final t = now();
     final owner = await store.findUser(actor.id);
     final seller = await platform.texts();
@@ -265,8 +283,8 @@ class BillingService {
       });
       await store.query(tx, '''
         UPDATE companies SET billing_status = 'active', paid_until = @to, grace_ends_at = NULL, status = 'active',
-          billing_period = @p, cascade_option = @co, billing_reminders = '{}'
-        WHERE id = @c::uuid''', {'c': companyId, 'to': plan.periodEnd, 'p': period, 'co': price.withOption});
+          billing_period = @p, cascade_option = @co, api_option = @ao, billing_reminders = '{}'
+        WHERE id = @c::uuid''', {'c': companyId, 'to': plan.periodEnd, 'p': period, 'co': price.withOption, 'ao': withApi});
       await store.audit(
           companyId: companyId,
           actorId: actor.id,
@@ -408,12 +426,13 @@ class BillingService {
   }
 
   static pw.Font? _regular, _bold;
+  static pw.MemoryImage? _logo;
+
+  static String _assets() => Directory('/app/assets').existsSync() ? '/app/assets' : 'assets';
 
   /// Polices DejaVu Sans (libres, cyrillique compris), livrées avec le serveur.
-  static pw.Font _loadFont(String file) {
-    final dir = Directory('/app/assets').existsSync() ? '/app/assets' : 'assets';
-    return pw.Font.ttf(ByteData.sublistView(File('$dir/$file').readAsBytesSync()));
-  }
+  static pw.Font _loadFont(String file) =>
+      pw.Font.ttf(ByteData.sublistView(File('${_assets()}/$file').readAsBytesSync()));
 
   static String _eur(int cents) => '${(cents / 100).toStringAsFixed(2).replaceAll('.', ',')} €';
   static String _day(DateTime d) =>
@@ -435,6 +454,7 @@ class BillingService {
     }
 
     final font = _regular ??= _loadFont('DejaVuSans.ttf');
+    final logo = _logo ??= pw.MemoryImage(File('${_assets()}/logo.png').readAsBytesSync());
     final bold = _bold ??= _loadFont('DejaVuSans-Bold.ttf');
     final navy = PdfColor.fromHex('#061440');
     final blue = PdfColor.fromHex('#1A8CFC');
@@ -456,6 +476,9 @@ class BillingService {
           'cascadeProrata' => t('Prorata du mois en cours ({days} jours sur {total}) : option « sites en cascade »',
               {'days': '${l['days']}', 'total': '${l['monthDays']}'}),
           'cascade' => t('Option « sites en cascade » : {months} mois', {'months': '${l['months']}'}),
+          'apiProrata' => t('Prorata du mois en cours ({days} jours sur {total}) : option « accès API »',
+              {'days': '${l['days']}', 'total': '${l['monthDays']}'}),
+          'api' => t('Option « accès API » : {months} mois', {'months': '${l['months']}'}),
           _ => l['period'] == 'year'
               ? t('Abonnement Staff Flow, {staff} salariés : 12 mois, {paid} facturés',
                   {'staff': '${l['staff']}', 'paid': '${l['paidMonths']}'})
@@ -466,7 +489,15 @@ class BillingService {
       margin: const pw.EdgeInsets.all(40),
       build: (_) => pw.Column(crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
         pw.Row(mainAxisAlignment: pw.MainAxisAlignment.spaceBetween, crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
-          pw.Text('Staff Flow', style: pw.TextStyle(fontSize: 24, color: navy, fontWeight: pw.FontWeight.bold)),
+          pw.Row(children: [
+            pw.ClipRRect(horizontalRadius: 9, verticalRadius: 9, child: pw.Image(logo, width: 46, height: 46)),
+            pw.SizedBox(width: 10),
+            pw.RichText(
+                text: pw.TextSpan(style: pw.TextStyle(fontSize: 24, fontWeight: pw.FontWeight.bold), children: [
+              pw.TextSpan(text: 'Staff', style: pw.TextStyle(color: navy)),
+              pw.TextSpan(text: 'Flow', style: pw.TextStyle(color: blue)),
+            ])),
+          ]),
           pw.Column(crossAxisAlignment: pw.CrossAxisAlignment.end, children: [
             pw.Text(t('FACTURE'), style: pw.TextStyle(fontSize: 14, color: blue)),
             pw.Text('${r[0]}', style: const pw.TextStyle(fontSize: 12)),
@@ -578,6 +609,18 @@ class BillingService {
       LEFT JOIN memberships m ON m.company_id = c.id AND m.role = 'owner' AND m.left_at IS NULL
       WHERE c.billing_status = 'grace' AND c.grace_ends_at <= @t''', {'t': t});
     for (final r in gone) {
+      final paid = (await store.query(store.db, 'SELECT 1 FROM invoices WHERE company_id = @c::uuid LIMIT 1', {'c': r[0]}))
+          .isNotEmpty;
+      if (!paid) {
+        // Jamais payée (essai seulement) : tout disparaît, journal compris.
+        await store.db.runTx((tx) async {
+          await store.query(tx, 'DELETE FROM audit_log WHERE company_id = @c::uuid', {'c': r[0]});
+          await store.query(tx, "DELETE FROM audit_log WHERE details->>'companyId' = @c", {'c': r[0]});
+          await store.query(tx, 'DELETE FROM companies WHERE id = @c::uuid', {'c': r[0]});
+        });
+        if (r[2] != null) await notifications.notify([r[2] as String], kind: 'billing_deleted', data: {'companyName': r[1]});
+        continue;
+      }
       await store.query(store.db, 'UPDATE invoices SET holder_id = @u::uuid WHERE company_id = @c::uuid',
           {'c': r[0], 'u': r[2]});
       await store.query(store.db, 'DELETE FROM companies WHERE id = @c::uuid', {'c': r[0]});

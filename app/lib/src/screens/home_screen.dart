@@ -21,6 +21,7 @@ import 'join_code_dialog.dart';
 import 'chat_screen.dart';
 import 'people_widgets.dart';
 import 'sync_widgets.dart';
+import 'avatar_widgets.dart';
 
 /// Un onglet par entreprise dont l'utilisateur est membre (section 3).
 class HomeScreen extends StatefulWidget {
@@ -365,11 +366,7 @@ class _ProfileMenu extends StatelessWidget {
     final user = session.me!.user;
     return PopupMenuButton<String>(
       tooltip: t.myAccount,
-      icon: CircleAvatar(
-        radius: 16,
-        backgroundImage: user.photoUrl == null ? null : NetworkImage(user.photoUrl!),
-        child: user.photoUrl == null ? Text(user.name.characters.first.toUpperCase()) : null,
-      ),
+      icon: UserAvatar.of(user, radius: 16),
       onSelected: (v) {
         if (v == 'profile') {
           ProfilePage.open(context, session);

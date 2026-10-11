@@ -1590,4 +1590,76 @@ class L10nZh extends L10n {
 
   @override
   String get sitesNoneChosen => '未选择地点';
+
+  @override
+  String get avatarTitle => '我的头像';
+
+  @override
+  String get avatarSub => '用图片代替您的照片';
+
+  @override
+  String get avatarUseGoogle => '使用我的 Google 照片';
+
+  @override
+  String get avatarColor => '颜色';
+
+  @override
+  String get hidePhotosTitle => '隐藏 Google 照片';
+
+  @override
+  String get hidePhotosSub => '在此公司中，每个人都以头像或首字母显示。';
+
+  @override
+  String get billingApi => '“API 访问”选项';
+
+  @override
+  String billingLineApi(String months) {
+    return '“API 访问”选项：$months 个月，无折扣';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return '本月剩余（$total 天中的 $days 天）：“API 访问”选项';
+  }
+
+  @override
+  String get apiTitle => 'API 访问（会计、CRM）';
+
+  @override
+  String get apiSub => '您的会计、工资或 CRM 软件可读取已发布的排班、工时和缺勤。';
+
+  @override
+  String get apiNeedsOption => '付费选项：请在“管理订阅”中添加“API 访问”。';
+
+  @override
+  String get apiNewKey => '新密钥';
+
+  @override
+  String get apiKeyName => '密钥名称（例如：工资软件）';
+
+  @override
+  String get apiKeyCreated => '请立即复制此密钥并妥善保存：它不会再次显示。';
+
+  @override
+  String get apiKeyCopy => '复制';
+
+  @override
+  String get apiKeyCopied => '密钥已复制。';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return '上次使用：$date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => '从未使用';
+
+  @override
+  String get apiRevoke => '撤销';
+
+  @override
+  String get apiRevokeConfirm => '使用此密钥的软件将失去访问权限。';
+
+  @override
+  String get apiDocs => 'API 文档';
 }

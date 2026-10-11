@@ -5,6 +5,7 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
 import 'account_service.dart';
+import 'api_access.dart';
 import 'auth.dart';
 import 'billing_service.dart';
 import 'chat_service.dart';
@@ -42,6 +43,7 @@ class Api {
   late final PlatformService platform = PlatformService(store, fileValues: platformFile);
   late final TelegramService telegram = TelegramService(store, telegramApi, now: now);
   late final AccountService accounts = AccountService(store, telegram, tokens.derive('account-export'), now: now);
+  late final ApiAccessService apiAccess = ApiAccessService(store, companies, tools, now: now);
   late final BillingService billing = BillingService(store, companies, platform, notifications, tokens.derive('invoices'),
       now: now, isAdmin: _isAdmin, testPaymentsForAll: testPaymentsForAll);
 
@@ -135,8 +137,9 @@ class Api {
         if (body['period'] is! String || body['cascade'] is! bool) {
           throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
         }
+        if (body['api'] != null && body['api'] is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
         return _json(await billing.checkout(u, r.params['id']!,
-            period: body['period'] as String, cascade: body['cascade'] as bool));
+            period: body['period'] as String, cascade: body['cascade'] as bool, api: body['api'] as bool?));
       }))
       ..get('/companies/<id>/invoices/<invoiceId>/link', _authed((r, u) async {
         final id = int.tryParse(r.params['invoiceId']!);
@@ -179,6 +182,35 @@ class Api {
         return Response(204);
       }))
       ..post('/me/qr', _authed((r, u) async => _json((await accounts.newQrCode(u)).toJson())))
+      ..put('/me/avatar', _authed((r, u) async => _json((await accounts.setAvatar(u, (await _body(r))['avatar'])).toJson())))
+      ..put('/companies/<id>/photos', _authed((r, u) async {
+        final hidden = (await _body(r))['hidden'];
+        if (hidden is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        await accounts.hidePhotos(u, r.params['id']!, hidden);
+        return Response(204);
+      }))
+      // Clés API (propriétaire) et lecture par les logiciels de l'entreprise.
+      ..get('/companies/<id>/api-keys', _authed((r, u) async => _json({'keys': await apiAccess.list(u, r.params['id']!)})))
+      ..post('/companies/<id>/api-keys', _authed((r, u) async =>
+          _json(await apiAccess.create(u, r.params['id']!, _string(await _body(r), 'name')), status: 201)))
+      ..delete('/companies/<id>/api-keys/<keyId>', _authed((r, u) async {
+        await apiAccess.revoke(u, r.params['id']!, r.params['keyId']!);
+        return Response(204);
+      }))
+      ..get('/ext/company', _apiKey((r, c) async => apiAccess.company(c)))
+      ..get('/ext/members', _apiKey((r, c) async => apiAccess.members(c)))
+      ..get('/ext/shifts', _apiKey((r, c) async {
+        final (from, to) = apiAccess.period(c, r.url.queryParameters);
+        return apiAccess.shifts(c, from, to);
+      }))
+      ..get('/ext/totals', _apiKey((r, c) async {
+        final (from, to) = apiAccess.period(c, r.url.queryParameters);
+        return apiAccess.totals(c, from, to);
+      }))
+      ..get('/ext/absences', _apiKey((r, c) async {
+        final (from, to) = apiAccess.period(c, r.url.queryParameters);
+        return apiAccess.absences(c, from, to);
+      }))
       ..post('/me/telegram/link', _authed((r, u) async => _json({'url': await telegram.linkUrl(u)})))
       ..delete('/me/telegram', _authed((r, u) async {
         await telegram.unlink(u);
@@ -951,6 +983,17 @@ class Api {
         if (!_isAdmin(user)) throw const ApiError.notFound();
         return handler(req, user);
       });
+
+  /// Lecture par clé API : JSON (`{"data": …}`), ou CSV avec `?format=csv`.
+  Handler _apiKey(Future<Object?> Function(Request, Company) handler) => (Request req) async {
+        final company = await apiAccess.authenticate(req.headers['authorization'] ?? req.headers['x-api-key']);
+        final data = await handler(req, company);
+        if (req.url.queryParameters['format'] == 'csv' && data is List) {
+          return Response.ok(ApiAccessService.csv(data.cast<Map<String, Object?>>()),
+              headers: {'content-type': 'text/csv; charset=utf-8', 'cache-control': 'no-store'});
+        }
+        return _json({'data': data});
+      };
 
   Handler _authed(Future<Response> Function(Request, User) handler) => (Request req) async {
         final header = req.headers['authorization'] ?? '';

@@ -1642,4 +1642,81 @@ class L10nPa extends L10n {
 
   @override
   String get sitesNoneChosen => 'ਕੋਈ ਸਾਈਟ ਨਹੀਂ ਚੁਣੀ';
+
+  @override
+  String get avatarTitle => 'ਮੇਰਾ ਅਵਤਾਰ';
+
+  @override
+  String get avatarSub => 'ਤੁਹਾਡੀ ਫ਼ੋਟੋ ਦੀ ਥਾਂ ਇੱਕ ਤਸਵੀਰ';
+
+  @override
+  String get avatarUseGoogle => 'ਮੇਰੀ Google ਫ਼ੋਟੋ ਵਰਤੋ';
+
+  @override
+  String get avatarColor => 'ਰੰਗ';
+
+  @override
+  String get hidePhotosTitle => 'Google ਫ਼ੋਟੋਆਂ ਲੁਕਾਓ';
+
+  @override
+  String get hidePhotosSub =>
+      'ਇਸ ਕੰਪਨੀ ਵਿੱਚ ਹਰ ਕੋਈ ਆਪਣੇ ਅਵਤਾਰ ਜਾਂ ਪਹਿਲੇ ਅੱਖਰ ਨਾਲ ਦਿਖਦਾ ਹੈ।';
+
+  @override
+  String get billingApi => '“API ਪਹੁੰਚ” ਵਿਕਲਪ';
+
+  @override
+  String billingLineApi(String months) {
+    return '“API ਪਹੁੰਚ” ਵਿਕਲਪ: $months ਮਹੀਨੇ, ਬਿਨਾਂ ਛੋਟ';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'ਚਾਲੂ ਮਹੀਨੇ ਦਾ ਬਾਕੀ ($total ਵਿੱਚੋਂ $days ਦਿਨ): “API ਪਹੁੰਚ” ਵਿਕਲਪ';
+  }
+
+  @override
+  String get apiTitle => 'API ਪਹੁੰਚ (ਲੇਖਾ, CRM)';
+
+  @override
+  String get apiSub =>
+      'ਤੁਹਾਡੇ ਲੇਖਾ, ਤਨਖ਼ਾਹ ਜਾਂ CRM ਸਾਫ਼ਟਵੇਅਰ ਪ੍ਰਕਾਸ਼ਿਤ ਸ਼ਡਿਊਲ, ਘੰਟੇ ਅਤੇ ਗ਼ੈਰਹਾਜ਼ਰੀਆਂ ਪੜ੍ਹਦੇ ਹਨ।';
+
+  @override
+  String get apiNeedsOption =>
+      'ਭੁਗਤਾਨ ਵਾਲਾ ਵਿਕਲਪ: “ਗਾਹਕੀ ਪ੍ਰਬੰਧਿਤ ਕਰੋ” ਵਿੱਚ “API ਪਹੁੰਚ” ਜੋੜੋ।';
+
+  @override
+  String get apiNewKey => 'ਨਵੀਂ ਕੁੰਜੀ';
+
+  @override
+  String get apiKeyName => 'ਕੁੰਜੀ ਦਾ ਨਾਮ (ਜਿਵੇਂ: ਤਨਖ਼ਾਹ ਸਾਫ਼ਟਵੇਅਰ)';
+
+  @override
+  String get apiKeyCreated =>
+      'ਇਹ ਕੁੰਜੀ ਹੁਣੇ ਕਾਪੀ ਕਰੋ ਅਤੇ ਸੁਰੱਖਿਅਤ ਰੱਖੋ: ਇਹ ਮੁੜ ਨਹੀਂ ਦਿਖਾਈ ਜਾਵੇਗੀ।';
+
+  @override
+  String get apiKeyCopy => 'ਕਾਪੀ ਕਰੋ';
+
+  @override
+  String get apiKeyCopied => 'ਕੁੰਜੀ ਕਾਪੀ ਹੋਈ।';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'ਆਖ਼ਰੀ ਵਰਤੋਂ: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'ਕਦੇ ਨਹੀਂ ਵਰਤੀ';
+
+  @override
+  String get apiRevoke => 'ਰੱਦ ਕਰੋ';
+
+  @override
+  String get apiRevokeConfirm =>
+      'ਇਸ ਕੁੰਜੀ ਨੂੰ ਵਰਤਣ ਵਾਲੇ ਸਾਫ਼ਟਵੇਅਰ ਦੀ ਪਹੁੰਚ ਖ਼ਤਮ ਹੋ ਜਾਵੇਗੀ।';
+
+  @override
+  String get apiDocs => 'API ਦਸਤਾਵੇਜ਼';
 }

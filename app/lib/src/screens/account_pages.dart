@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../brand.dart';
 import 'account_tools.dart';
+import 'avatar_widgets.dart';
 import '../i18n.dart';
 import '../session.dart';
 import 'home_screen.dart';
@@ -50,12 +51,10 @@ class ProfilePage extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             children: [
               Center(
-                child: CircleAvatar(
-                  radius: 40,
-                  backgroundImage: user.photoUrl == null ? null : NetworkImage(user.photoUrl!),
-                  child: user.photoUrl == null
-                      ? Text(user.name.characters.first.toUpperCase(), style: theme.textTheme.headlineMedium)
-                      : null,
+                child: InkWell(
+                  customBorder: const CircleBorder(),
+                  onTap: () => showAvatarPicker(context, session),
+                  child: UserAvatar.of(user, radius: 40),
                 ),
               ),
               const SizedBox(height: 12),
@@ -80,6 +79,14 @@ class ProfilePage extends StatelessWidget {
                       Clipboard.setData(ClipboardData(text: user.publicId));
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.idCopied)));
                     },
+                  ),
+                  const Divider(height: 1),
+                  ListTile(
+                    leading: const Icon(Icons.face_outlined, color: Brand.blue),
+                    title: Text(t.avatarTitle),
+                    subtitle: Text(t.avatarSub),
+                    trailing: const Icon(Icons.chevron_right),
+                    onTap: () => showAvatarPicker(context, session),
                   ),
                   const Divider(height: 1),
                   ListTile(

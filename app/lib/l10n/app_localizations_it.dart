@@ -1652,4 +1652,81 @@ class L10nIt extends L10n {
 
   @override
   String get sitesNoneChosen => 'Nessuna sede scelta';
+
+  @override
+  String get avatarTitle => 'Il mio avatar';
+
+  @override
+  String get avatarSub => 'Un\'immagine al posto della tua foto';
+
+  @override
+  String get avatarUseGoogle => 'Usa la mia foto Google';
+
+  @override
+  String get avatarColor => 'Colore';
+
+  @override
+  String get hidePhotosTitle => 'Nascondi le foto Google';
+
+  @override
+  String get hidePhotosSub =>
+      'In questa azienda ognuno appare con il proprio avatar o la propria iniziale.';
+
+  @override
+  String get billingApi => 'Opzione «accesso API»';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Opzione «accesso API»: $months mesi, senza sconto';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Resto del mese in corso ($days giorni su $total): opzione «accesso API»';
+  }
+
+  @override
+  String get apiTitle => 'Accesso API (contabilità, CRM)';
+
+  @override
+  String get apiSub =>
+      'I tuoi software di contabilità, paghe o CRM leggono il planning pubblicato, le ore e le assenze.';
+
+  @override
+  String get apiNeedsOption =>
+      'Opzione a pagamento: aggiungi «accesso API» in «Gestisci l\'abbonamento».';
+
+  @override
+  String get apiNewKey => 'Nuova chiave';
+
+  @override
+  String get apiKeyName => 'Nome della chiave (es.: software paghe)';
+
+  @override
+  String get apiKeyCreated =>
+      'Copia ora questa chiave e conservala al sicuro: non verrà più mostrata.';
+
+  @override
+  String get apiKeyCopy => 'Copia';
+
+  @override
+  String get apiKeyCopied => 'Chiave copiata.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Ultimo utilizzo: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Mai usata';
+
+  @override
+  String get apiRevoke => 'Revoca';
+
+  @override
+  String get apiRevokeConfirm =>
+      'I software che usano questa chiave perderanno l\'accesso.';
+
+  @override
+  String get apiDocs => 'Documentazione API';
 }

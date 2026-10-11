@@ -1643,4 +1643,81 @@ class L10nCs extends L10n {
 
   @override
   String get sitesNoneChosen => 'Nevybráno žádné pracoviště';
+
+  @override
+  String get avatarTitle => 'Můj avatar';
+
+  @override
+  String get avatarSub => 'Obrázek místo vaší fotky';
+
+  @override
+  String get avatarUseGoogle => 'Použít moji fotku z Googlu';
+
+  @override
+  String get avatarColor => 'Barva';
+
+  @override
+  String get hidePhotosTitle => 'Skrýt fotky z Googlu';
+
+  @override
+  String get hidePhotosSub =>
+      'V této firmě se každý zobrazuje se svým avatarem nebo iniciálou.';
+
+  @override
+  String get billingApi => 'Možnost „přístup API“';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Možnost „přístup API“: $months měs., bez slevy';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Zbytek aktuálního měsíce ($days z $total dní): možnost „přístup API“';
+  }
+
+  @override
+  String get apiTitle => 'Přístup API (účetnictví, CRM)';
+
+  @override
+  String get apiSub =>
+      'Váš účetní, mzdový nebo CRM software čte zveřejněný rozpis, hodiny a nepřítomnosti.';
+
+  @override
+  String get apiNeedsOption =>
+      'Placená možnost: přidejte „přístup API“ v části „Spravovat předplatné“.';
+
+  @override
+  String get apiNewKey => 'Nový klíč';
+
+  @override
+  String get apiKeyName => 'Název klíče (např. mzdový software)';
+
+  @override
+  String get apiKeyCreated =>
+      'Zkopírujte si tento klíč hned a uložte ho bezpečně: znovu se nezobrazí.';
+
+  @override
+  String get apiKeyCopy => 'Kopírovat';
+
+  @override
+  String get apiKeyCopied => 'Klíč zkopírován.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Naposledy použit: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Nikdy nepoužit';
+
+  @override
+  String get apiRevoke => 'Zrušit';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Software, který tento klíč používá, ztratí přístup.';
+
+  @override
+  String get apiDocs => 'Dokumentace API';
 }

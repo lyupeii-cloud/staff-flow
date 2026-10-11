@@ -78,7 +78,12 @@ Future<void> main() async {
 
   // Bot Telegram : liaison des comptes et codes de vérification.
   if (api.telegram.enabled) {
-    print('Bot Telegram actif.');
+    try {
+      print('Bot Telegram actif : @${await api.telegram.botName()}');
+      await api.telegram.customize();
+    } catch (e) {
+      print('Telegram : $e');
+    }
     unawaited(api.telegram.run());
   }
 }

@@ -1654,4 +1654,81 @@ class L10nTa extends L10n {
 
   @override
   String get sitesNoneChosen => 'இடம் எதுவும் தேர்ந்தெடுக்கப்படவில்லை';
+
+  @override
+  String get avatarTitle => 'என் அவதார்';
+
+  @override
+  String get avatarSub => 'உங்கள் படத்துக்குப் பதிலாக ஒரு படம்';
+
+  @override
+  String get avatarUseGoogle => 'என் Google படத்தைப் பயன்படுத்து';
+
+  @override
+  String get avatarColor => 'நிறம்';
+
+  @override
+  String get hidePhotosTitle => 'Google படங்களை மறை';
+
+  @override
+  String get hidePhotosSub =>
+      'இந்த நிறுவனத்தில் ஒவ்வொருவரும் அவதார் அல்லது முதலெழுத்துடன் தோன்றுவர்.';
+
+  @override
+  String get billingApi => '“API அணுகல்” விருப்பம்';
+
+  @override
+  String billingLineApi(String months) {
+    return '“API அணுகல்” விருப்பம்: $months மாதம், தள்ளுபடி இல்லை';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'நடப்பு மாத மீதி ($total நாட்களில் $days): “API அணுகல்” விருப்பம்';
+  }
+
+  @override
+  String get apiTitle => 'API அணுகல் (கணக்கியல், CRM)';
+
+  @override
+  String get apiSub =>
+      'உங்கள் கணக்கியல், சம்பள அல்லது CRM மென்பொருள் வெளியிட்ட அட்டவணை, மணிநேரம், விடுப்புகளைப் படிக்கும்.';
+
+  @override
+  String get apiNeedsOption =>
+      'கட்டண விருப்பம்: “சந்தாவை நிர்வகி” இல் “API அணுகல்” சேர்க்கவும்.';
+
+  @override
+  String get apiNewKey => 'புதிய சாவி';
+
+  @override
+  String get apiKeyName => 'சாவியின் பெயர் (எ.கா.: சம்பள மென்பொருள்)';
+
+  @override
+  String get apiKeyCreated =>
+      'இந்தச் சாவியை இப்போதே நகலெடுத்து பாதுகாப்பாக வையுங்கள்: மீண்டும் காட்டப்படாது.';
+
+  @override
+  String get apiKeyCopy => 'நகலெடு';
+
+  @override
+  String get apiKeyCopied => 'சாவி நகலெடுக்கப்பட்டது.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'கடைசிப் பயன்பாடு: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'ஒருமுறையும் பயன்படுத்தவில்லை';
+
+  @override
+  String get apiRevoke => 'ரத்து செய்';
+
+  @override
+  String get apiRevokeConfirm =>
+      'இந்தச் சாவியைப் பயன்படுத்தும் மென்பொருள் அணுகலை இழக்கும்.';
+
+  @override
+  String get apiDocs => 'API ஆவணம்';
 }

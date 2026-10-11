@@ -139,4 +139,8 @@ const nl = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Je Staff Flow-account {id} is nu gekoppeld aan het Google-account {email}.',
   'N° d\'enregistrement : {id}': 'Registratienr.: {id}',
   'Payé.': 'Betaald.',
+  'Option « accès API » nécessaire pour créer une clé.': 'Voor een sleutel is de optie ‘API-toegang’ nodig.',
+  '10 clés au plus par entreprise.': 'Maximaal 10 sleutels per bedrijf.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Rest van deze maand ({days} van {total} dagen): optie ‘API-toegang’',
+  'Option « accès API » : {months} mois': 'Optie ‘API-toegang’: {months} maanden',
 };

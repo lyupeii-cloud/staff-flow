@@ -189,6 +189,33 @@ class ToolsService {
     return out;
   }
 
+  /// Accès API : services publiés de la période, avec les noms.
+  Future<List<Map<String, Object?>>> publishedForApi(String companyId, DateTime from, DateTime to) async {
+    final shifts = await _shifts(companyId, from, to, published: true);
+    final n = await _names(companyId);
+    return [
+      for (final s in shifts)
+        {
+          'id': s.id,
+          'day': formatDay(s.day),
+          'start': _time(s.start),
+          'end': _time(s.end),
+          'minutes': s.minutes,
+          'userId': s.userId,
+          'userName': s.userId == null ? null : n.people[s.userId]?.user.name ?? await _formerName(s.userId!),
+          'siteId': s.siteId,
+          'site': n.sites[s.siteId],
+          'positionId': s.positionId,
+          'position': n.positions[s.positionId],
+          'note': s.note,
+        },
+    ];
+  }
+
+  /// Accès API : heures publiées par personne sur la période.
+  Future<List<Map<String, Object?>>> totalsForApi(String companyId, DateTime from, DateTime to) async =>
+      _totals(companyId, await _shifts(companyId, from, to, published: true));
+
   Future<String> _formerName(String userId) async {
     final rows = await store.query(store.db, 'SELECT coalesce(custom_name, name) FROM users WHERE id = @u::uuid', {'u': userId});
     return rows.isEmpty ? '?' : rows.first[0] as String;

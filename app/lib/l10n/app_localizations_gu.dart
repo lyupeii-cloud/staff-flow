@@ -1638,4 +1638,80 @@ class L10nGu extends L10n {
 
   @override
   String get sitesNoneChosen => 'કોઈ સાઇટ પસંદ કરી નથી';
+
+  @override
+  String get avatarTitle => 'મારો અવતાર';
+
+  @override
+  String get avatarSub => 'તમારા ફોટોની જગ્યાએ એક ચિત્ર';
+
+  @override
+  String get avatarUseGoogle => 'મારો Google ફોટો વાપરો';
+
+  @override
+  String get avatarColor => 'રંગ';
+
+  @override
+  String get hidePhotosTitle => 'Google ફોટા છુપાવો';
+
+  @override
+  String get hidePhotosSub =>
+      'આ કંપનીમાં દરેક વ્યક્તિ પોતાના અવતાર કે આદ્યાક્ષર સાથે દેખાય છે.';
+
+  @override
+  String get billingApi => '“API ઍક્સેસ” વિકલ્પ';
+
+  @override
+  String billingLineApi(String months) {
+    return '“API ઍક્સેસ” વિકલ્પ: $months મહિના, છૂટ વિના';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'ચાલુ મહિનાનો બાકીનો ભાગ ($total માંથી $days દિવસ): “API ઍક્સેસ” વિકલ્પ';
+  }
+
+  @override
+  String get apiTitle => 'API ઍક્સેસ (હિસાબ, CRM)';
+
+  @override
+  String get apiSub =>
+      'તમારા હિસાબ, પગાર કે CRM સૉફ્ટવેર પ્રકાશિત શેડ્યૂલ, કલાકો અને ગેરહાજરી વાંચે છે.';
+
+  @override
+  String get apiNeedsOption =>
+      'ચૂકવણીવાળો વિકલ્પ: “સબ્સ્ક્રિપ્શન સંચાલિત કરો”માં “API ઍક્સેસ” ઉમેરો.';
+
+  @override
+  String get apiNewKey => 'નવી કી';
+
+  @override
+  String get apiKeyName => 'કીનું નામ (દા.ત.: પગાર સૉફ્ટવેર)';
+
+  @override
+  String get apiKeyCreated =>
+      'આ કી હમણાં જ કૉપિ કરો અને સુરક્ષિત રાખો: તે ફરી દેખાશે નહીં.';
+
+  @override
+  String get apiKeyCopy => 'કૉપિ કરો';
+
+  @override
+  String get apiKeyCopied => 'કી કૉપિ થઈ.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'છેલ્લો ઉપયોગ: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'ક્યારેય વપરાઈ નથી';
+
+  @override
+  String get apiRevoke => 'રદ કરો';
+
+  @override
+  String get apiRevokeConfirm => 'આ કી વાપરતા સૉફ્ટવેરની ઍક્સેસ બંધ થઈ જશે.';
+
+  @override
+  String get apiDocs => 'API દસ્તાવેજ';
 }

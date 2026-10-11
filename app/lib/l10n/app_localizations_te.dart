@@ -1640,4 +1640,81 @@ class L10nTe extends L10n {
 
   @override
   String get sitesNoneChosen => 'సైట్ ఏదీ ఎంచుకోలేదు';
+
+  @override
+  String get avatarTitle => 'నా అవతార్';
+
+  @override
+  String get avatarSub => 'మీ ఫోటోకు బదులుగా ఒక చిత్రం';
+
+  @override
+  String get avatarUseGoogle => 'నా Google ఫోటో వాడు';
+
+  @override
+  String get avatarColor => 'రంగు';
+
+  @override
+  String get hidePhotosTitle => 'Google ఫోటోలను దాచు';
+
+  @override
+  String get hidePhotosSub =>
+      'ఈ సంస్థలో ప్రతి ఒక్కరూ వారి అవతార్ లేదా మొదటి అక్షరంతో కనిపిస్తారు.';
+
+  @override
+  String get billingApi => '“API యాక్సెస్” ఆప్షన్';
+
+  @override
+  String billingLineApi(String months) {
+    return '“API యాక్సెస్” ఆప్షన్: $months నెలలు, తగ్గింపు లేదు';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'ఈ నెల మిగతా ($total రోజుల్లో $days): “API యాక్సెస్” ఆప్షన్';
+  }
+
+  @override
+  String get apiTitle => 'API యాక్సెస్ (అకౌంటింగ్, CRM)';
+
+  @override
+  String get apiSub =>
+      'మీ అకౌంటింగ్, జీతం లేదా CRM సాఫ్ట్‌వేర్ ప్రచురించిన షెడ్యూల్, గంటలు, గైర్హాజరులను చదువుతుంది.';
+
+  @override
+  String get apiNeedsOption =>
+      'చెల్లింపు ఆప్షన్: “సబ్‌స్క్రిప్షన్ నిర్వహించు”లో “API యాక్సెస్” జోడించండి.';
+
+  @override
+  String get apiNewKey => 'కొత్త కీ';
+
+  @override
+  String get apiKeyName => 'కీ పేరు (ఉదా: జీతం సాఫ్ట్‌వేర్)';
+
+  @override
+  String get apiKeyCreated =>
+      'ఈ కీని ఇప్పుడే కాపీ చేసి సురక్షితంగా ఉంచండి: ఇది మళ్లీ చూపబడదు.';
+
+  @override
+  String get apiKeyCopy => 'కాపీ';
+
+  @override
+  String get apiKeyCopied => 'కీ కాపీ అయింది.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'చివరి వినియోగం: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'ఎప్పుడూ వాడలేదు';
+
+  @override
+  String get apiRevoke => 'రద్దు చేయి';
+
+  @override
+  String get apiRevokeConfirm =>
+      'ఈ కీని వాడే సాఫ్ట్‌వేర్ యాక్సెస్ కోల్పోతుంది.';
+
+  @override
+  String get apiDocs => 'API డాక్యుమెంటేషన్';
 }

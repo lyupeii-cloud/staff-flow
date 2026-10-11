@@ -139,4 +139,8 @@ const bn = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'আপনার Staff Flow অ্যাকাউন্ট {id} এখন Google অ্যাকাউন্ট {email}-এর সাথে যুক্ত।',
   'N° d\'enregistrement : {id}': 'নিবন্ধন নম্বর: {id}',
   'Payé.': 'পরিশোধিত।',
+  'Option « accès API » nécessaire pour créer une clé.': 'কী তৈরি করতে “API অ্যাক্সেস” বিকল্প প্রয়োজন।',
+  '10 clés au plus par entreprise.': 'প্রতি প্রতিষ্ঠানে সর্বোচ্চ ১০টি কী।',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'চলতি মাসের বাকি ({total} দিনের মধ্যে {days} দিন): “API অ্যাক্সেস” বিকল্প',
+  'Option « accès API » : {months} mois': '“API অ্যাক্সেস” বিকল্প: {months} মাস',
 };

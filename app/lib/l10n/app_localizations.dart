@@ -2920,6 +2920,138 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'No site chosen'**
   String get sitesNoneChosen;
+
+  /// No description provided for @avatarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My avatar'**
+  String get avatarTitle;
+
+  /// No description provided for @avatarSub.
+  ///
+  /// In en, this message translates to:
+  /// **'A picture instead of your photo'**
+  String get avatarSub;
+
+  /// No description provided for @avatarUseGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Use my Google photo'**
+  String get avatarUseGoogle;
+
+  /// No description provided for @avatarColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Colour'**
+  String get avatarColor;
+
+  /// No description provided for @hidePhotosTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide Google photos'**
+  String get hidePhotosTitle;
+
+  /// No description provided for @hidePhotosSub.
+  ///
+  /// In en, this message translates to:
+  /// **'In this company, everyone appears with their avatar or initial.'**
+  String get hidePhotosSub;
+
+  /// No description provided for @billingApi.
+  ///
+  /// In en, this message translates to:
+  /// **'“API access” option'**
+  String get billingApi;
+
+  /// No description provided for @billingLineApi.
+  ///
+  /// In en, this message translates to:
+  /// **'“API access” option: {months} months, no discount'**
+  String billingLineApi(String months);
+
+  /// No description provided for @billingLineApiProrata.
+  ///
+  /// In en, this message translates to:
+  /// **'Rest of this month ({days} days out of {total}): “API access” option'**
+  String billingLineApiProrata(String days, String total);
+
+  /// No description provided for @apiTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'API access (accounting, CRM)'**
+  String get apiTitle;
+
+  /// No description provided for @apiSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Your accounting, payroll or CRM software reads the published schedule, hours and absences.'**
+  String get apiSub;
+
+  /// No description provided for @apiNeedsOption.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid option: add “API access” in “Manage subscription”.'**
+  String get apiNeedsOption;
+
+  /// No description provided for @apiNewKey.
+  ///
+  /// In en, this message translates to:
+  /// **'New key'**
+  String get apiNewKey;
+
+  /// No description provided for @apiKeyName.
+  ///
+  /// In en, this message translates to:
+  /// **'Key name (e.g. payroll software)'**
+  String get apiKeyName;
+
+  /// No description provided for @apiKeyCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy this key now and keep it safe: it will not be shown again.'**
+  String get apiKeyCreated;
+
+  /// No description provided for @apiKeyCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get apiKeyCopy;
+
+  /// No description provided for @apiKeyCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Key copied.'**
+  String get apiKeyCopied;
+
+  /// No description provided for @apiKeyLastUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'Last used: {date}'**
+  String apiKeyLastUsed(String date);
+
+  /// No description provided for @apiKeyNeverUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'Never used'**
+  String get apiKeyNeverUsed;
+
+  /// No description provided for @apiRevoke.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke'**
+  String get apiRevoke;
+
+  /// No description provided for @apiRevokeConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Software using this key will lose access.'**
+  String get apiRevokeConfirm;
+
+  /// No description provided for @apiDocs.
+  ///
+  /// In en, this message translates to:
+  /// **'API documentation'**
+  String get apiDocs;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

@@ -139,4 +139,8 @@ const it = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Il tuo account Staff Flow {id} è ora collegato all\'account Google {email}.',
   'N° d\'enregistrement : {id}': 'N. di registrazione: {id}',
   'Payé.': 'Pagato.',
+  'Option « accès API » nécessaire pour créer une clé.': 'Per creare una chiave serve l\'opzione «accesso API».',
+  '10 clés au plus par entreprise.': 'Al massimo 10 chiavi per azienda.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Resto del mese in corso ({days} giorni su {total}): opzione «accesso API»',
+  'Option « accès API » : {months} mois': 'Opzione «accesso API»: {months} mesi',
 };

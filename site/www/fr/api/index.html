@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accès API : planning, heures et absences – Staff Flow</title>
+  <link rel="canonical" href="https://staff-flow.cloud/fr/api/">
+  <link rel="alternate" hreflang="fr" href="https://staff-flow.cloud/fr/api/">
+  <link rel="alternate" hreflang="uk" href="https://staff-flow.cloud/ua/api/">
+  <link rel="alternate" hreflang="en" href="https://staff-flow.cloud/en/api/">
+  <meta name="theme-color" content="#061440">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="/style.css?v=5">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" translate="no" href="/fr/"><img src="/brand.png" alt="Staff Flow" width="205" height="46"></a>
+    <nav class="langs" translate="no" aria-label="Language"><a href="/fr/api/" lang="fr" title="Français" aria-current="page">FR</a><a href="/ua/api/" lang="uk" title="Українська">UA</a><a href="/en/api/" lang="en" title="English">EN</a></nav>
+    <a class="btn btn-main" href="https://app.staff-flow.cloud">Ouvrir l'application</a>
+  </div>
+</header>
+<main>
+  <section>
+    <div class="wrap legal">
+      <h1>Accès API : planning, heures et absences</h1>
+      
+      <h2>À quoi ça sert</h2>
+      <p>L'option « accès API » permet à vos logiciels de comptabilité, de paie ou à votre CRM de lire automatiquement le planning publié de votre entreprise, les heures de chacun et les absences validées. L'accès est en lecture seule : rien ne peut être modifié par l'API.</p>
+      <p>L'option se prend dans l'application : Management → Gérer l'abonnement. Elle est ouverte pendant l'essai gratuit.</p>
+      <h2>1. Créer une clé</h2>
+      <p>Dans l'application, le propriétaire de l'entreprise ouvre Management → Accès API → Nouvelle clé, et lui donne un nom (par exemple « Logiciel de paie »). La clé complète n'est affichée qu'une seule fois : copiez-la dans votre logiciel. Vous pouvez la révoquer à tout moment ; 10 clés au plus par entreprise.</p>
+      <h2>2. Appeler l'API</h2>
+      <p>Envoyez la clé dans l'en-tête « Authorization: Bearer … » (ou « X-Api-Key »). Toutes les adresses commencent par https://app.staff-flow.cloud/api/v1/ext/.</p>
+      <pre><code>curl -H &quot;Authorization: Bearer sfk_xxxxxxxx_yyyyyyyy…&quot; \
+  &quot;https://app.staff-flow.cloud/api/v1/ext/shifts?from=2026-10-01&amp;to=2026-10-31&quot;</code></pre>
+      <h2>3. Les adresses</h2>
+      <pre><code>GET /api/v1/ext/company     company, sites, positions
+GET /api/v1/ext/members     people (current and former), role, dates
+GET /api/v1/ext/shifts      published shifts         ?from=&amp;to=&amp;format=csv
+GET /api/v1/ext/totals      published hours/person   ?from=&amp;to=&amp;format=csv
+GET /api/v1/ext/absences    approved leave and unavailability  ?from=&amp;to=</code></pre>
+      <p>Période : « from » et « to » au format AAAA-MM-JJ. Sans « from », depuis la création de l'entreprise ; sans « to », jusqu'à aujourd'hui ; 5 ans au plus par appel.</p>
+      <p>Format : JSON par défaut ({&quot;data&quot;: […]}) ; ajoutez « format=csv » pour un fichier CSV (séparateur « ; », lisible par Excel).</p>
+      <p>Seul le planning publié est transmis (ce que voient les salariés), jamais les brouillons.</p>
+      <h2>4. Exemple de réponse</h2>
+      <pre><code>{
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;6c1f…&quot;, &quot;day&quot;: &quot;2026-10-06&quot;, &quot;start&quot;: &quot;08:00&quot;, &quot;end&quot;: &quot;16:00&quot;,
+      &quot;minutes&quot;: 480, &quot;userId&quot;: &quot;a41e…&quot;, &quot;userName&quot;: &quot;Olena&quot;,
+      &quot;siteId&quot;: &quot;…&quot;, &quot;site&quot;: &quot;Centre&quot;, &quot;positionId&quot;: &quot;…&quot;, &quot;position&quot;: &quot;Barista&quot;,
+      &quot;note&quot;: null
+    }
+  ]
+}</code></pre>
+      <h2>5. Erreurs</h2>
+      <p>401 : clé absente, fausse ou révoquée. 402 : l'option « accès API » n'est pas active (abonnement sans l'option). 400 : dates invalides.</p>
+      <h2>Données personnelles</h2>
+      <p>L'entreprise reste responsable de l'usage des données qu'elle récupère (noms, horaires, absences) et doit les protéger dans ses propres logiciels. Gardez les clés secrètes ; révoquez une clé dès qu'elle ne sert plus.</p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© 2026 Staff Flow · <a href="/fr/terms/">Conditions d'utilisation et de vente</a> · <a href="/fr/privacy/">Politique de confidentialité</a> · <a href="/fr/api/">API</a> · <a href="mailto:contact@staff-flow.cloud">contact@staff-flow.cloud</a></span>
+    <span><a href="/fr/" lang="fr">Français</a> · <a href="/ua/" lang="uk">Українська</a> · <a href="/en/" lang="en">English</a></span>
+  </div>
+</footer>
+</body>
+</html>

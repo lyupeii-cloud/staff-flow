@@ -47,6 +47,7 @@ class _BillingPageState extends State<BillingPage> {
   Map<String, dynamic>? _data;
   Object? _error;
   bool _cascade = false;
+  bool _api = false;
   bool _busy = false;
 
   String get _base => '/companies/${widget.company.id}/billing';
@@ -65,6 +66,7 @@ class _BillingPageState extends State<BillingPage> {
         _data = d;
         _error = null;
         _cascade = d['cascadeOption'] == true;
+        _api = d['apiOption'] == true;
       });
     } catch (e) {
       if (mounted) setState(() => _error = e);
@@ -88,11 +90,17 @@ class _BillingPageState extends State<BillingPage> {
   }
 
   /// Détail ligne par ligne de ce qui sera payé, puis paiement.
+  /// Offre du serveur : période, option cascade, option API.
+  static Map<String, dynamic> _offer(Map<String, dynamic> d, String period, bool cascade, bool api) =>
+      ((d['offers'] as Map)['$period-${cascade ? 1 : 0}-${api ? 1 : 0}'] as Map).cast<String, dynamic>();
+
   Future<void> _confirm(Map<String, dynamic> d, String period, bool cascade) async {
     final t = context.l10n;
     final loc = context.localeName;
-    final quote = ((d['quotes'] as Map)['$period${cascade ? 'Cascade' : ''}'] as Map).cast<String, dynamic>();
+    final quote = _offer(d, period, cascade, _api);
     String line(Map l) => switch (l['label']) {
+          'api' => t.billingLineApi('${l['months']}'),
+          'apiProrata' => t.billingLineApiProrata('${l['days']}', '${l['monthDays']}'),
           'prorata' => t.billingLineProrata('${l['days']}', '${l['monthDays']}'),
           'cascadeProrata' => t.billingLineCascadeProrata('${l['days']}', '${l['monthDays']}'),
           'cascade' => t.billingLineCascade('${l['months']}'),
@@ -142,7 +150,7 @@ class _BillingPageState extends State<BillingPage> {
   }
 
   Future<void> _pay(String period) => _run(() async {
-        await widget.session.api.send('POST', '$_base/checkout', body: {'period': period, 'cascade': _cascade});
+        await widget.session.api.send('POST', '$_base/checkout', body: {'period': period, 'cascade': _cascade, 'api': _api});
         await widget.session.refresh();
         await _load();
       }, done: context.l10n.billingPaidOk);
@@ -194,11 +202,11 @@ class _BillingPageState extends State<BillingPage> {
     final staff = d['staff'] as int;
     final included = staff >= (d['cascadeIncludedFrom'] as int);
     final cascade = _cascade && !included;
-    final month = prices[cascade ? 'monthCascade' : 'month'] as int;
-    final year = prices[cascade ? 'yearCascade' : 'year'] as int;
-    final due = (d['dueNow'] as Map).cast<String, dynamic>();
-    final dueMonth = due[cascade ? 'monthCascade' : 'month'] as int;
-    final dueYear = due[cascade ? 'yearCascade' : 'year'] as int;
+    final monthOffer = _offer(d, 'month', cascade, _api), yearOffer = _offer(d, 'year', cascade, _api);
+    final month = monthOffer['price'] as int;
+    final year = yearOffer['price'] as int;
+    final dueMonth = monthOffer['total'] as int;
+    final dueYear = yearOffer['total'] as int;
     final prorata = (d['prorataDays'] as int? ?? 0) > 0 && status != 'active';
     final invoices = d['invoices'] as List;
     Future<void> downloadAll() =>
@@ -238,6 +246,13 @@ class _BillingPageState extends State<BillingPage> {
           onChanged: included || _busy ? null : (v) => setState(() => _cascade = v ?? false),
           title: Text(t.billingCascade),
           subtitle: Text(included ? t.billingCascadeIncluded('${d['cascadeIncludedFrom']}') : t.billingPerMonth(euroAmount(context, prices['monthCascade'] - prices['month']))),
+        ),
+        CheckboxListTile(
+          contentPadding: EdgeInsets.zero,
+          value: _api,
+          onChanged: _busy ? null : (v) => setState(() => _api = v ?? false),
+          title: Text(t.billingApi),
+          subtitle: Text(t.billingPerMonth(euroAmount(context, d['apiOptionPrice'] as int))),
         ),
         const SizedBox(height: 8),
         _PriceCard(

@@ -230,6 +230,33 @@ class AccountService {
     return user;
   }
 
+  // --- Avatar et photos ------------------------------------------------------------
+
+  /// Avatar choisi (`{icon, color}`), ou `null` pour revenir à la photo Google.
+  Future<User> setAvatar(User user, Object? avatar) async {
+    Map<String, Object?>? clean;
+    if (avatar != null) {
+      final icon = avatar is Map ? avatar['icon'] : null, color = avatar is Map ? avatar['color'] : null;
+      if (icon is! String || !avatarIcons.contains(icon) || color is! int || color < 0 || color >= avatarColors) {
+        throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+      }
+      clean = {'icon': icon, 'color': color};
+    }
+    await store.query(store.db, 'UPDATE users SET avatar = @a::jsonb WHERE id = @u::uuid',
+        {'u': user.id, 'a': clean == null ? null : jsonEncode(clean)});
+    return (await store.findActiveUser(user.id))!;
+  }
+
+  /// Le patron masque les photos Google dans son entreprise.
+  Future<void> hidePhotos(User actor, String companyId, bool hidden) async {
+    final rows = await store.query(store.db, '''
+      SELECT 1 FROM memberships WHERE company_id = @c::uuid AND user_id = @u::uuid AND role = 'owner' AND left_at IS NULL''',
+        {'c': companyId, 'u': actor.id});
+    if (rows.isEmpty) throw const ApiError.forbidden();
+    await store.query(store.db, 'UPDATE companies SET hide_photos = @h WHERE id = @c::uuid', {'c': companyId, 'h': hidden});
+    await store.audit(companyId: companyId, actorId: actor.id, action: 'company.photos', details: {'hidden': hidden});
+  }
+
   // --- Telegram affiché dans une entreprise ---------------------------------------
 
   Future<void> showTelegram(User user, String companyId, bool show) async {
@@ -249,3 +276,11 @@ class AccountService {
     if (rows.isEmpty) throw const ApiError.notFound();
   }
 }
+
+/// Avatars proposés : une figure et une couleur de fond.
+const avatarIcons = {
+  'pets', 'cruelty_free', 'emoji_nature', 'local_florist', 'park', 'spa', 'eco', 'bolt', //
+  'star', 'favorite', 'rocket_launch', 'flight', 'sailing', 'directions_bike', 'sports_soccer', 'music_note', //
+  'headphones', 'palette', 'camera_alt', 'coffee', 'local_pizza', 'icecream', 'cake', 'beach_access',
+};
+const avatarColors = 12;

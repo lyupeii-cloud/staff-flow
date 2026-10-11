@@ -139,4 +139,8 @@ const bg = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Вашият акаунт в Staff Flow {id} вече е свързан с акаунта в Google {email}.',
   'N° d\'enregistrement : {id}': 'Рег. №: {id}',
   'Payé.': 'Платено.',
+  'Option « accès API » nécessaire pour créer une clé.': 'За да създадете ключ, е нужна опцията „достъп до API“.',
+  '10 clés au plus par entreprise.': 'Най-много 10 ключа на фирма.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Остатък от текущия месец ({days} от {total} дни): опция „достъп до API“',
+  'Option « accès API » : {months} mois': 'Опция „достъп до API“: {months} месеца',
 };

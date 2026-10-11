@@ -1643,4 +1643,81 @@ class L10nNb extends L10n {
 
   @override
   String get sitesNoneChosen => 'Ingen sted valgt';
+
+  @override
+  String get avatarTitle => 'Min avatar';
+
+  @override
+  String get avatarSub => 'Et bilde i stedet for bildet ditt';
+
+  @override
+  String get avatarUseGoogle => 'Bruk Google-bildet mitt';
+
+  @override
+  String get avatarColor => 'Farge';
+
+  @override
+  String get hidePhotosTitle => 'Skjul Google-bilder';
+
+  @override
+  String get hidePhotosSub =>
+      'I denne bedriften vises alle med avataren eller forbokstaven sin.';
+
+  @override
+  String get billingApi => 'Tillegget «API-tilgang»';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Tillegget «API-tilgang»: $months måneder, uten rabatt';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Resten av måneden ($days av $total dager): tillegget «API-tilgang»';
+  }
+
+  @override
+  String get apiTitle => 'API-tilgang (regnskap, CRM)';
+
+  @override
+  String get apiSub =>
+      'Regnskaps-, lønns- eller CRM-programmet ditt leser den publiserte vaktlisten, timer og fravær.';
+
+  @override
+  String get apiNeedsOption =>
+      'Betalt tillegg: legg til «API-tilgang» under «Administrer abonnement».';
+
+  @override
+  String get apiNewKey => 'Ny nøkkel';
+
+  @override
+  String get apiKeyName => 'Navn på nøkkelen (f.eks. lønnsprogram)';
+
+  @override
+  String get apiKeyCreated =>
+      'Kopier nøkkelen nå og oppbevar den trygt: den vises ikke igjen.';
+
+  @override
+  String get apiKeyCopy => 'Kopier';
+
+  @override
+  String get apiKeyCopied => 'Nøkkelen er kopiert.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Sist brukt: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Aldri brukt';
+
+  @override
+  String get apiRevoke => 'Trekk tilbake';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Programmer som bruker nøkkelen, mister tilgangen.';
+
+  @override
+  String get apiDocs => 'API-dokumentasjon';
 }

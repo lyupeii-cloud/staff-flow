@@ -1638,4 +1638,81 @@ class L10nMr extends L10n {
 
   @override
   String get sitesNoneChosen => 'कोणतीही साइट निवडलेली नाही';
+
+  @override
+  String get avatarTitle => 'माझा अवतार';
+
+  @override
+  String get avatarSub => 'तुमच्या फोटोऐवजी एक चित्र';
+
+  @override
+  String get avatarUseGoogle => 'माझा Google फोटो वापरा';
+
+  @override
+  String get avatarColor => 'रंग';
+
+  @override
+  String get hidePhotosTitle => 'Google फोटो लपवा';
+
+  @override
+  String get hidePhotosSub =>
+      'या कंपनीत प्रत्येकजण आपल्या अवतार किंवा आद्याक्षरासह दिसतो.';
+
+  @override
+  String get billingApi => '“API प्रवेश” पर्याय';
+
+  @override
+  String billingLineApi(String months) {
+    return '“API प्रवेश” पर्याय: $months महिने, सवलत नाही';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'चालू महिन्याचे उरलेले ($total पैकी $days दिवस): “API प्रवेश” पर्याय';
+  }
+
+  @override
+  String get apiTitle => 'API प्रवेश (लेखा, CRM)';
+
+  @override
+  String get apiSub =>
+      'तुमचे लेखा, पगार किंवा CRM सॉफ्टवेअर प्रकाशित वेळापत्रक, तास आणि गैरहजेरी वाचतात.';
+
+  @override
+  String get apiNeedsOption =>
+      'सशुल्क पर्याय: “सदस्यता व्यवस्थापित करा” मध्ये “API प्रवेश” जोडा.';
+
+  @override
+  String get apiNewKey => 'नवीन की';
+
+  @override
+  String get apiKeyName => 'कीचे नाव (उदा.: पगार सॉफ्टवेअर)';
+
+  @override
+  String get apiKeyCreated =>
+      'ही की आत्ताच कॉपी करा आणि सुरक्षित ठेवा: ती पुन्हा दाखवली जाणार नाही.';
+
+  @override
+  String get apiKeyCopy => 'कॉपी करा';
+
+  @override
+  String get apiKeyCopied => 'की कॉपी झाली.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'शेवटचा वापर: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'कधीही वापरली नाही';
+
+  @override
+  String get apiRevoke => 'रद्द करा';
+
+  @override
+  String get apiRevokeConfirm =>
+      'ही की वापरणाऱ्या सॉफ्टवेअरचा प्रवेश बंद होईल.';
+
+  @override
+  String get apiDocs => 'API दस्तऐवज';
 }

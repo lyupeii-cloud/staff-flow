@@ -139,4 +139,8 @@ const ta = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'உங்கள் Staff Flow கணக்கு {id} இப்போது Google கணக்கு {email} உடன் இணைக்கப்பட்டுள்ளது.',
   'N° d\'enregistrement : {id}': 'பதிவு எண்: {id}',
   'Payé.': 'செலுத்தப்பட்டது.',
+  'Option « accès API » nécessaire pour créer une clé.': 'சாவியை உருவாக்க “API அணுகல்” விருப்பம் தேவை.',
+  '10 clés au plus par entreprise.': 'ஒரு நிறுவனத்துக்கு அதிகபட்சம் 10 சாவிகள்.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'நடப்பு மாத மீதி ({total} நாட்களில் {days}): “API அணுகல்” விருப்பம்',
+  'Option « accès API » : {months} mois': '“API அணுகல்” விருப்பம்: {months} மாதம்',
 };

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Доступ до API: графік, години й відсутності – Staff Flow</title>
+  <link rel="canonical" href="https://staff-flow.cloud/ua/api/">
+  <link rel="alternate" hreflang="fr" href="https://staff-flow.cloud/fr/api/">
+  <link rel="alternate" hreflang="uk" href="https://staff-flow.cloud/ua/api/">
+  <link rel="alternate" hreflang="en" href="https://staff-flow.cloud/en/api/">
+  <meta name="theme-color" content="#061440">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="/style.css?v=5">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" translate="no" href="/ua/"><img src="/brand.png" alt="Staff Flow" width="205" height="46"></a>
+    <nav class="langs" translate="no" aria-label="Language"><a href="/fr/api/" lang="fr" title="Français">FR</a><a href="/ua/api/" lang="uk" title="Українська" aria-current="page">UA</a><a href="/en/api/" lang="en" title="English">EN</a></nav>
+    <a class="btn btn-main" href="https://app.staff-flow.cloud">Відкрити застосунок</a>
+  </div>
+</header>
+<main>
+  <section>
+    <div class="wrap legal">
+      <h1>Доступ до API: графік, години й відсутності</h1>
+      
+      <h2>Навіщо це</h2>
+      <p>Опція «доступ до API» дає змогу вашим програмам бухгалтерії, зарплати чи CRM автоматично читати опублікований графік компанії, години кожного працівника й підтверджені відсутності. Доступ лише для читання: через API нічого змінити не можна.</p>
+      <p>Опцію можна підключити в застосунку: Управління → Керувати підпискою. Під час безкоштовного пробного періоду вона доступна.</p>
+      <h2>1. Створіть ключ</h2>
+      <p>У застосунку власник компанії відкриває Управління → Доступ до API → Новий ключ і дає йому назву (наприклад, «Програма зарплати»). Повний ключ показується лише один раз: скопіюйте його у свою програму. Ключ можна будь-коли відкликати; не більше 10 ключів на компанію.</p>
+      <h2>2. Виклик API</h2>
+      <p>Передайте ключ у заголовку «Authorization: Bearer …» (або «X-Api-Key»). Усі адреси починаються з https://app.staff-flow.cloud/api/v1/ext/.</p>
+      <pre><code>curl -H &quot;Authorization: Bearer sfk_xxxxxxxx_yyyyyyyy…&quot; \
+  &quot;https://app.staff-flow.cloud/api/v1/ext/shifts?from=2026-10-01&amp;to=2026-10-31&quot;</code></pre>
+      <h2>3. Адреси</h2>
+      <pre><code>GET /api/v1/ext/company     company, sites, positions
+GET /api/v1/ext/members     people (current and former), role, dates
+GET /api/v1/ext/shifts      published shifts         ?from=&amp;to=&amp;format=csv
+GET /api/v1/ext/totals      published hours/person   ?from=&amp;to=&amp;format=csv
+GET /api/v1/ext/absences    approved leave and unavailability  ?from=&amp;to=</code></pre>
+      <p>Період: «from» і «to» у форматі РРРР-ММ-ДД. Без «from» — від створення компанії; без «to» — до сьогодні; не більше 5 років за один запит.</p>
+      <p>Формат: JSON за замовчуванням ({&quot;data&quot;: […]}); додайте «format=csv», щоб отримати файл CSV (роздільник «;», відкривається в Excel).</p>
+      <p>Передається лише опублікований графік (те, що бачать працівники), ніколи не чернетки.</p>
+      <h2>4. Приклад відповіді</h2>
+      <pre><code>{
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;6c1f…&quot;, &quot;day&quot;: &quot;2026-10-06&quot;, &quot;start&quot;: &quot;08:00&quot;, &quot;end&quot;: &quot;16:00&quot;,
+      &quot;minutes&quot;: 480, &quot;userId&quot;: &quot;a41e…&quot;, &quot;userName&quot;: &quot;Olena&quot;,
+      &quot;siteId&quot;: &quot;…&quot;, &quot;site&quot;: &quot;Centre&quot;, &quot;positionId&quot;: &quot;…&quot;, &quot;position&quot;: &quot;Barista&quot;,
+      &quot;note&quot;: null
+    }
+  ]
+}</code></pre>
+      <h2>5. Помилки</h2>
+      <p>401: ключа немає, він неправильний або відкликаний. 402: опція «доступ до API» не активна (підписка без опції). 400: неправильні дати.</p>
+      <h2>Персональні дані</h2>
+      <p>Компанія відповідає за використання отриманих даних (імена, години, відсутності) і має захищати їх у своїх програмах. Зберігайте ключі в таємниці; відкликайте ключ, щойно він більше не потрібен.</p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© 2026 Staff Flow · <a href="/ua/terms/">Умови використання та продажу</a> · <a href="/ua/privacy/">Політика конфіденційності</a> · <a href="/ua/api/">API</a> · <a href="mailto:contact@staff-flow.cloud">contact@staff-flow.cloud</a></span>
+    <span><a href="/fr/" lang="fr">Français</a> · <a href="/ua/" lang="uk">Українська</a> · <a href="/en/" lang="en">English</a></span>
+  </div>
+</footer>
+</body>
+</html>

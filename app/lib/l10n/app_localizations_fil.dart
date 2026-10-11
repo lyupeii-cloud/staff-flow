@@ -1654,4 +1654,81 @@ class L10nFil extends L10n {
 
   @override
   String get sitesNoneChosen => 'Walang napiling site';
+
+  @override
+  String get avatarTitle => 'Aking avatar';
+
+  @override
+  String get avatarSub => 'Larawang kapalit ng iyong photo';
+
+  @override
+  String get avatarUseGoogle => 'Gamitin ang aking Google photo';
+
+  @override
+  String get avatarColor => 'Kulay';
+
+  @override
+  String get hidePhotosTitle => 'Itago ang mga Google photo';
+
+  @override
+  String get hidePhotosSub =>
+      'Sa kumpanyang ito, lumalabas ang bawat isa gamit ang kanilang avatar o inisyal.';
+
+  @override
+  String get billingApi => 'Opsyong “API access”';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Opsyong “API access”: $months buwan, walang diskwento';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Natitira sa buwang ito ($days sa $total araw): opsyong “API access”';
+  }
+
+  @override
+  String get apiTitle => 'API access (accounting, CRM)';
+
+  @override
+  String get apiSub =>
+      'Binabasa ng iyong accounting, payroll o CRM software ang na-publish na iskedyul, oras at pagliban.';
+
+  @override
+  String get apiNeedsOption =>
+      'Bayad na opsyon: idagdag ang “API access” sa “Pamahalaan ang subscription”.';
+
+  @override
+  String get apiNewKey => 'Bagong key';
+
+  @override
+  String get apiKeyName => 'Pangalan ng key (hal.: payroll software)';
+
+  @override
+  String get apiKeyCreated =>
+      'Kopyahin na ngayon ang key na ito at itago nang ligtas: hindi na ito ipapakita ulit.';
+
+  @override
+  String get apiKeyCopy => 'Kopyahin';
+
+  @override
+  String get apiKeyCopied => 'Nakopya ang key.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Huling ginamit: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Hindi pa nagagamit';
+
+  @override
+  String get apiRevoke => 'Bawiin';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Mawawalan ng access ang software na gumagamit ng key na ito.';
+
+  @override
+  String get apiDocs => 'Dokumentasyon ng API';
 }

@@ -1,5 +1,6 @@
 export 'src/account_service.dart';
 export 'src/api.dart';
+export 'src/api_access.dart';
 export 'src/auth.dart';
 export 'src/billing_service.dart';
 export 'src/chat_service.dart';

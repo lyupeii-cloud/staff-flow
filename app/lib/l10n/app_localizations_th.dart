@@ -1632,4 +1632,80 @@ class L10nTh extends L10n {
 
   @override
   String get sitesNoneChosen => 'ยังไม่ได้เลือกสาขา';
+
+  @override
+  String get avatarTitle => 'อวาตาร์ของฉัน';
+
+  @override
+  String get avatarSub => 'รูปภาพแทนรูปถ่ายของคุณ';
+
+  @override
+  String get avatarUseGoogle => 'ใช้รูป Google ของฉัน';
+
+  @override
+  String get avatarColor => 'สี';
+
+  @override
+  String get hidePhotosTitle => 'ซ่อนรูป Google';
+
+  @override
+  String get hidePhotosSub => 'ในบริษัทนี้ ทุกคนจะแสดงด้วยอวาตาร์หรืออักษรย่อ';
+
+  @override
+  String get billingApi => 'ตัวเลือก “การเข้าถึง API”';
+
+  @override
+  String billingLineApi(String months) {
+    return 'ตัวเลือก “การเข้าถึง API”: $months เดือน ไม่มีส่วนลด';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'ส่วนที่เหลือของเดือนนี้ ($days จาก $total วัน): ตัวเลือก “การเข้าถึง API”';
+  }
+
+  @override
+  String get apiTitle => 'การเข้าถึง API (บัญชี, CRM)';
+
+  @override
+  String get apiSub =>
+      'ซอฟต์แวร์บัญชี เงินเดือน หรือ CRM ของคุณจะอ่านตารางที่เผยแพร่ ชั่วโมงงาน และการขาดงาน';
+
+  @override
+  String get apiNeedsOption =>
+      'ตัวเลือกแบบชำระเงิน: เพิ่ม “การเข้าถึง API” ใน “จัดการการสมัครสมาชิก”';
+
+  @override
+  String get apiNewKey => 'คีย์ใหม่';
+
+  @override
+  String get apiKeyName => 'ชื่อคีย์ (เช่น ซอฟต์แวร์เงินเดือน)';
+
+  @override
+  String get apiKeyCreated =>
+      'คัดลอกคีย์นี้ตอนนี้และเก็บไว้ให้ปลอดภัย: จะไม่แสดงอีก';
+
+  @override
+  String get apiKeyCopy => 'คัดลอก';
+
+  @override
+  String get apiKeyCopied => 'คัดลอกคีย์แล้ว';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'ใช้ล่าสุด: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'ยังไม่เคยใช้';
+
+  @override
+  String get apiRevoke => 'เพิกถอน';
+
+  @override
+  String get apiRevokeConfirm =>
+      'ซอฟต์แวร์ที่ใช้คีย์นี้จะไม่สามารถเข้าถึงได้อีก';
+
+  @override
+  String get apiDocs => 'เอกสาร API';
 }

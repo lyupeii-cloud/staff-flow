@@ -62,6 +62,8 @@ const technicalMessages = {
   'idToken manquant.',
   'email manquant.',
   'Route inconnue.',
+  'Clé API invalide.',
+  'Période invalide (5 ans au plus).',
   'Corps JSON attendu.',
   'Champ « {field} » manquant.',
   'Champ manquant ou de mauvais type.',

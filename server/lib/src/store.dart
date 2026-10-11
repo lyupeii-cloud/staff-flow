@@ -66,6 +66,7 @@ class Store {
         photoUrl: r['photo_url'] as String?,
         locale: r['locale'] as String?,
         createdAt: r['created_at'] as DateTime,
+        avatar: (r['avatar'] as Map?)?.cast<String, Object?>(),
       );
 
   static Company companyFromRow(Map<String, dynamic> r) => Company(
@@ -85,6 +86,8 @@ class Store {
         graceEndsAt: r['grace_ends_at'] as DateTime?,
         billingPeriod: r['billing_period'] as String?,
         cascadeOption: r['cascade_option'] as bool? ?? false,
+        apiOption: r['api_option'] as bool? ?? false,
+        hidePhotos: r['hide_photos'] as bool? ?? false,
         publicId: r['public_id'] as String? ?? '',
         // Sans image : 0 (le numéro, lui, continue de monter pour la suivante).
         logoVersion: r.containsKey('logo') && r['logo'] == null ? 0 : r['logo_version'] as int? ?? 0,
@@ -207,13 +210,14 @@ class Store {
   Future<List<Member>> members(String companyId) async {
     final rows = await query(_db, '''
       SELECT u.*, m.role, m.joined_at, m.display_name, m.sites::text[] AS member_sites, m.appointed_by::text AS appointed_by,
-        CASE WHEN m.show_telegram THEN u.telegram_username END AS shown_telegram
-      FROM memberships m JOIN users u ON u.id = m.user_id
+        CASE WHEN m.show_telegram THEN u.telegram_username END AS shown_telegram, c.hide_photos
+      FROM memberships m JOIN users u ON u.id = m.user_id JOIN companies c ON c.id = m.company_id
       WHERE m.company_id = @c::uuid AND m.left_at IS NULL
       ORDER BY m.joined_at''', {'c': companyId});
     return [
+      // Photos Google masquées par le patron : l'avatar (ou l'initiale) les remplace.
       for (final r in rows.map((r) => r.toColumnMap()))
-        if (_user(r) case final u)
+        if (_user({...r, if (r['hide_photos'] == true) 'photo_url': null}) case final u)
           Member(
             r['display_name'] == null ? u : u.withName(r['display_name'] as String),
             Role.parse(r['role'] as String),

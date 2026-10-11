@@ -1644,4 +1644,80 @@ class L10nEn extends L10n {
 
   @override
   String get sitesNoneChosen => 'No site chosen';
+
+  @override
+  String get avatarTitle => 'My avatar';
+
+  @override
+  String get avatarSub => 'A picture instead of your photo';
+
+  @override
+  String get avatarUseGoogle => 'Use my Google photo';
+
+  @override
+  String get avatarColor => 'Colour';
+
+  @override
+  String get hidePhotosTitle => 'Hide Google photos';
+
+  @override
+  String get hidePhotosSub =>
+      'In this company, everyone appears with their avatar or initial.';
+
+  @override
+  String get billingApi => '“API access” option';
+
+  @override
+  String billingLineApi(String months) {
+    return '“API access” option: $months months, no discount';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Rest of this month ($days days out of $total): “API access” option';
+  }
+
+  @override
+  String get apiTitle => 'API access (accounting, CRM)';
+
+  @override
+  String get apiSub =>
+      'Your accounting, payroll or CRM software reads the published schedule, hours and absences.';
+
+  @override
+  String get apiNeedsOption =>
+      'Paid option: add “API access” in “Manage subscription”.';
+
+  @override
+  String get apiNewKey => 'New key';
+
+  @override
+  String get apiKeyName => 'Key name (e.g. payroll software)';
+
+  @override
+  String get apiKeyCreated =>
+      'Copy this key now and keep it safe: it will not be shown again.';
+
+  @override
+  String get apiKeyCopy => 'Copy';
+
+  @override
+  String get apiKeyCopied => 'Key copied.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Last used: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Never used';
+
+  @override
+  String get apiRevoke => 'Revoke';
+
+  @override
+  String get apiRevokeConfirm => 'Software using this key will lose access.';
+
+  @override
+  String get apiDocs => 'API documentation';
 }

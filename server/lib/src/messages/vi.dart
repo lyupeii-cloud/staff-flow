@@ -139,4 +139,8 @@ const vi = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Tài khoản Staff Flow {id} của bạn hiện đã liên kết với tài khoản Google {email}.',
   'N° d\'enregistrement : {id}': 'Số đăng ký: {id}',
   'Payé.': 'Đã thanh toán.',
+  'Option « accès API » nécessaire pour créer une clé.': 'Cần tùy chọn “truy cập API” để tạo khóa.',
+  '10 clés au plus par entreprise.': 'Tối đa 10 khóa mỗi công ty.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Phần còn lại của tháng ({days}/{total} ngày): tùy chọn “truy cập API”',
+  'Option « accès API » : {months} mois': 'Tùy chọn “truy cập API”: {months} tháng',
 };

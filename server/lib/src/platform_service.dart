@@ -49,6 +49,7 @@ class PlatformService {
     SettingDef('annualMonths', 'pricing', SettingKind.count, 10, 1, 12),
     SettingDef('cascadeOptionPrice', 'options', SettingKind.cents, 200, 0, 100000),
     SettingDef('cascadeIncludedFrom', 'options', SettingKind.count, 101, 1, 100000),
+    SettingDef('apiOptionPrice', 'options', SettingKind.cents, 300, 0, 100000),
     SettingDef('adRemovalPrice', 'options', SettingKind.cents, 120, 0, 100000),
     SettingDef('extrasIncluded', 'extras', SettingKind.count, 1, 0, 1000),
     SettingDef('extrasPercent', 'extras', SettingKind.percent, 20, 0, 100),

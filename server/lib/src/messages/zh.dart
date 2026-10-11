@@ -139,4 +139,8 @@ const zh = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': '您的 Staff Flow 账号 {id} 现已关联到 Google 账号 {email}。',
   'N° d\'enregistrement : {id}': '注册号：{id}',
   'Payé.': '已付款。',
+  'Option « accès API » nécessaire pour créer une clé.': '创建密钥需要“API 访问”选项。',
+  '10 clés au plus par entreprise.': '每家公司最多 10 个密钥。',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': '本月剩余（{total} 天中的 {days} 天）：“API 访问”选项',
+  'Option « accès API » : {months} mois': '“API 访问”选项：{months} 个月',
 };

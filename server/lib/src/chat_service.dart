@@ -59,7 +59,7 @@ class ChatService {
       ON CONFLICT (company_id) WHERE kind = 'group' DO NOTHING''', {'c': companyId});
     final rows = await store.query(store.db, '''
       SELECT c.id::text, c.kind,
-        other.id::text AS other_id, other.name AS other_name, other.photo_url AS other_photo,
+        other.id::text AS other_id, other.name AS other_name, other.photo_url AS other_photo, other.avatar AS other_avatar,
         other.role AS other_role, other.active AS other_active,
         last.body AS last_body, last.author_name AS last_author, last.created_at AS last_at,
         (SELECT count(*) FROM messages m
@@ -72,7 +72,7 @@ class ChatService {
       JOIN memberships me ON me.company_id = c.company_id AND me.user_id = @u::uuid AND me.left_at IS NULL
       LEFT JOIN conversation_reads r ON r.conversation_id = c.id AND r.user_id = @u::uuid
       LEFT JOIN LATERAL (
-        SELECT u.id, $_name AS name, u.photo_url, ms.role, ms.user_id IS NOT NULL AS active
+        SELECT u.id, $_name AS name, u.photo_url, u.avatar, ms.role, ms.user_id IS NOT NULL AS active
         FROM users u
         LEFT JOIN memberships ms ON ms.user_id = u.id AND ms.company_id = c.company_id AND ms.left_at IS NULL
         WHERE c.kind = 'private' AND u.id = CASE WHEN c.user_a = @u::uuid THEN c.user_b ELSE c.user_a END
@@ -97,7 +97,8 @@ class ChatService {
             'with': {
               'id': r['other_id'],
               'name': r['other_name'],
-              'photoUrl': r['other_photo'],
+              'photoUrl': company.hidePhotos ? null : r['other_photo'],
+              'avatar': r['other_avatar'],
               'role': r['other_role'],
               'active': r['other_active'],
             },

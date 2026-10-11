@@ -1605,4 +1605,76 @@ class L10nJa extends L10n {
 
   @override
   String get sitesNoneChosen => '拠点が選ばれていません';
+
+  @override
+  String get avatarTitle => 'マイアバター';
+
+  @override
+  String get avatarSub => '写真の代わりに表示する画像';
+
+  @override
+  String get avatarUseGoogle => 'Google の写真を使う';
+
+  @override
+  String get avatarColor => '色';
+
+  @override
+  String get hidePhotosTitle => 'Google の写真を隠す';
+
+  @override
+  String get hidePhotosSub => 'この会社では、全員がアバターまたはイニシャルで表示されます。';
+
+  @override
+  String get billingApi => '「API アクセス」オプション';
+
+  @override
+  String billingLineApi(String months) {
+    return '「API アクセス」オプション：$months か月、割引なし';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return '今月の残り（$total 日中 $days 日）：「API アクセス」オプション';
+  }
+
+  @override
+  String get apiTitle => 'API アクセス（会計・CRM）';
+
+  @override
+  String get apiSub => '会計・給与・CRM ソフトが、公開されたシフト、勤務時間、不在を読み取ります。';
+
+  @override
+  String get apiNeedsOption => '有料オプション：「サブスクリプションを管理」で「API アクセス」を追加してください。';
+
+  @override
+  String get apiNewKey => '新しいキー';
+
+  @override
+  String get apiKeyName => 'キーの名前（例：給与ソフト）';
+
+  @override
+  String get apiKeyCreated => 'このキーを今すぐコピーして安全に保管してください。再表示されません。';
+
+  @override
+  String get apiKeyCopy => 'コピー';
+
+  @override
+  String get apiKeyCopied => 'キーをコピーしました。';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return '最終使用：$date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => '未使用';
+
+  @override
+  String get apiRevoke => '無効にする';
+
+  @override
+  String get apiRevokeConfirm => 'このキーを使うソフトはアクセスできなくなります。';
+
+  @override
+  String get apiDocs => 'API ドキュメント';
 }

@@ -24,6 +24,9 @@ class User {
   /// Langue du compte Google (« uk », « fr »…), si Google l'a fournie.
   final String? locale;
 
+  /// Avatar choisi ({icon, color}) ; `null` : photo Google ou initiale.
+  final Map<String, dynamic>? avatar;
+
   User.fromJson(Map<String, dynamic> j)
       : id = j['id'],
         publicId = j['publicId'],
@@ -31,7 +34,8 @@ class User {
         name = j['name'],
         googleName = j['googleName'] ?? j['name'],
         photoUrl = j['photoUrl'],
-        locale = j['locale'];
+        locale = j['locale'],
+        avatar = (j['avatar'] as Map?)?.cast<String, dynamic>();
 }
 
 class Company {
@@ -58,6 +62,12 @@ class Company {
   /// Messagerie de l'entreprise : activée par le patron (sinon, pas d'onglet).
   final bool messagingEnabled;
 
+  /// Photos Google masquées par le patron (avatars ou initiales à la place).
+  final bool hidePhotos;
+
+  /// Option « accès API » payée.
+  final bool apiOption;
+
   /// Image de l'entreprise : 0 = aucune ; change à chaque nouvelle image.
   final int logoVersion;
 
@@ -79,6 +89,8 @@ class Company {
         shiftPresets = [for (final p in j['shiftPresets'] ?? const []) ShiftPreset.fromJson((p as Map).cast<String, dynamic>())],
         groupEnabled = j['groupEnabled'] != false,
         messagingEnabled = j['messagingEnabled'] == true,
+        hidePhotos = j['hidePhotos'] == true,
+        apiOption = j['billing']?['apiOption'] == true,
         logoVersion = j['logoVersion'] ?? 0,
         billingStatus = (j['billing'] as Map?)?['status'] ?? 'comped',
         trialEndsAt = _date((j['billing'] as Map?)?['trialEndsAt']),
@@ -373,6 +385,7 @@ class Conversation {
 
   /// L'autre personne fait-elle encore partie de l'entreprise ?
   final bool withActive;
+  final Map<String, dynamic>? withAvatar;
   final ChatMessage? last;
   final int unread;
 
@@ -385,6 +398,7 @@ class Conversation {
         withId = j['with']?['id'],
         withName = j['with']?['name'],
         withPhotoUrl = j['with']?['photoUrl'],
+        withAvatar = (j['with']?['avatar'] as Map?)?.cast<String, dynamic>(),
         withActive = j['with']?['active'] ?? true,
         last = j['lastMessage'] == null ? null : ChatMessage.fromJson(j['lastMessage']),
         unread = j['unread'] ?? 0,

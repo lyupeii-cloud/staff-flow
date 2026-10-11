@@ -1643,4 +1643,81 @@ class L10nKk extends L10n {
 
   @override
   String get sitesNoneChosen => 'Нысан таңдалмаған';
+
+  @override
+  String get avatarTitle => 'Менің аватарым';
+
+  @override
+  String get avatarSub => 'Фотоңыздың орнына сурет';
+
+  @override
+  String get avatarUseGoogle => 'Google фотомды қолдану';
+
+  @override
+  String get avatarColor => 'Түс';
+
+  @override
+  String get hidePhotosTitle => 'Google фотоларын жасыру';
+
+  @override
+  String get hidePhotosSub =>
+      'Бұл компанияда әркім өз аватарымен немесе бас әрпімен көрсетіледі.';
+
+  @override
+  String get billingApi => '«API қолжетімділігі» опциясы';
+
+  @override
+  String billingLineApi(String months) {
+    return '«API қолжетімділігі» опциясы: $months ай, жеңілдіксіз';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Ағымдағы айдың қалғаны ($total күннің $days): «API қолжетімділігі» опциясы';
+  }
+
+  @override
+  String get apiTitle => 'API қолжетімділігі (бухгалтерия, CRM)';
+
+  @override
+  String get apiSub =>
+      'Бухгалтерия, жалақы немесе CRM бағдарламаларыңыз жарияланған кестені, сағаттарды және болмауларды оқиды.';
+
+  @override
+  String get apiNeedsOption =>
+      'Ақылы опция: «Жазылымды басқару» бөлімінде «API қолжетімділігі» қосыңыз.';
+
+  @override
+  String get apiNewKey => 'Жаңа кілт';
+
+  @override
+  String get apiKeyName => 'Кілт атауы (мыс.: жалақы бағдарламасы)';
+
+  @override
+  String get apiKeyCreated =>
+      'Бұл кілтті қазір көшіріп, қауіпсіз сақтаңыз: ол қайта көрсетілмейді.';
+
+  @override
+  String get apiKeyCopy => 'Көшіру';
+
+  @override
+  String get apiKeyCopied => 'Кілт көшірілді.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Соңғы қолданылған: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Әлі қолданылмаған';
+
+  @override
+  String get apiRevoke => 'Кері қайтару';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Бұл кілтті қолданатын бағдарламалар қолжетімділігінен айырылады.';
+
+  @override
+  String get apiDocs => 'API құжаттамасы';
 }

@@ -205,3 +205,5 @@ footer a { color: #c9d3ee; text-decoration: none; }
 .legal h2 { font-size: 21px; letter-spacing: 0; margin: 34px 0 8px; }
 .legal p { line-height: 1.65; margin: 0 0 10px; }
 .legal .note { margin: 0 0 18px; }
+.legal pre { background: #0b1a4a; color: #e6ecff; padding: 14px 16px; border-radius: 12px; overflow-x: auto; font-size: 13.5px; line-height: 1.55; margin: 0 0 14px; }
+.legal pre code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; }

@@ -37,6 +37,9 @@ class User {
   final String? locale;
   final DateTime createdAt;
 
+  /// Avatar choisi ({icon, color}) ; `null` : photo Google (ou initiale).
+  final Map<String, Object?>? avatar;
+
   const User({
     required this.id,
     required this.publicId,
@@ -47,6 +50,7 @@ class User {
     this.photoUrl,
     this.locale,
     required this.createdAt,
+    this.avatar,
   }) : googleName = googleName ?? name;
 
   User withName(String name) => User(
@@ -59,6 +63,7 @@ class User {
         photoUrl: photoUrl,
         locale: locale,
         createdAt: createdAt,
+        avatar: avatar,
       );
 
   Map<String, Object?> toJson() => {
@@ -69,6 +74,7 @@ class User {
         'googleName': googleName,
         'photoUrl': photoUrl,
         'locale': locale,
+        'avatar': avatar,
       };
 }
 
@@ -111,6 +117,12 @@ class Company {
   final String? billingPeriod;
   final bool cascadeOption;
 
+  /// Option « accès API » payée.
+  final bool apiOption;
+
+  /// Le patron masque les photos Google dans son entreprise (avatars à la place).
+  final bool hidePhotos;
+
   const Company({
     required this.id,
     required this.name,
@@ -130,6 +142,8 @@ class Company {
     this.graceEndsAt,
     this.billingPeriod,
     this.cascadeOption = false,
+    this.apiOption = false,
+    this.hidePhotos = false,
   });
 
   Map<String, Object?> billingJson() => {
@@ -139,6 +153,7 @@ class Company {
         'graceEndsAt': graceEndsAt?.toIso8601String(),
         'period': billingPeriod,
         'cascadeOption': cascadeOption,
+        'apiOption': apiOption,
       };
 
   Company copyWith({String? name, String? timezone, Map<String, int>? Function()? legalRules, String? printScope}) =>
@@ -160,6 +175,8 @@ class Company {
         graceEndsAt: graceEndsAt,
         billingPeriod: billingPeriod,
         cascadeOption: cascadeOption,
+        apiOption: apiOption,
+        hidePhotos: hidePhotos,
         publicId: publicId,
       );
 
@@ -175,6 +192,7 @@ class Company {
         'groupEnabled': groupEnabled,
         'logoVersion': logoVersion,
         'messagingEnabled': messagingEnabled,
+        'hidePhotos': hidePhotos,
         'billing': billingJson(),
       };
 }

@@ -1647,4 +1647,81 @@ class L10nFi extends L10n {
 
   @override
   String get sitesNoneChosen => 'Toimipaikkaa ei valittu';
+
+  @override
+  String get avatarTitle => 'Oma avatar';
+
+  @override
+  String get avatarSub => 'Kuva valokuvasi sijaan';
+
+  @override
+  String get avatarUseGoogle => 'Käytä Google-kuvaani';
+
+  @override
+  String get avatarColor => 'Väri';
+
+  @override
+  String get hidePhotosTitle => 'Piilota Google-kuvat';
+
+  @override
+  String get hidePhotosSub =>
+      'Tässä yrityksessä jokainen näkyy avatarillaan tai alkukirjaimellaan.';
+
+  @override
+  String get billingApi => '”API-pääsy”-lisä';
+
+  @override
+  String billingLineApi(String months) {
+    return '”API-pääsy”-lisä: $months kk, ei alennusta';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Kuluvan kuun loppu ($days/$total päivää): ”API-pääsy”-lisä';
+  }
+
+  @override
+  String get apiTitle => 'API-pääsy (kirjanpito, CRM)';
+
+  @override
+  String get apiSub =>
+      'Kirjanpito-, palkka- tai CRM-ohjelmasi lukee julkaistun vuorolistan, tunnit ja poissaolot.';
+
+  @override
+  String get apiNeedsOption =>
+      'Maksullinen lisä: lisää ”API-pääsy” kohdassa ”Hallitse tilausta”.';
+
+  @override
+  String get apiNewKey => 'Uusi avain';
+
+  @override
+  String get apiKeyName => 'Avaimen nimi (esim. palkkaohjelma)';
+
+  @override
+  String get apiKeyCreated =>
+      'Kopioi avain nyt ja säilytä se turvallisesti: sitä ei näytetä uudelleen.';
+
+  @override
+  String get apiKeyCopy => 'Kopioi';
+
+  @override
+  String get apiKeyCopied => 'Avain kopioitu.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Viimeksi käytetty: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Ei koskaan käytetty';
+
+  @override
+  String get apiRevoke => 'Peru';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Avainta käyttävät ohjelmat menettävät pääsyn.';
+
+  @override
+  String get apiDocs => 'API-dokumentaatio';
 }

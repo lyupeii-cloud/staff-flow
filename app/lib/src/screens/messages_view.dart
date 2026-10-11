@@ -12,6 +12,7 @@ import 'chat_screen.dart';
 import 'company_tab.dart';
 import 'group_editor.dart';
 import 'home_screen.dart';
+import 'avatar_widgets.dart';
 
 /// Messagerie d'une entreprise (section 7) : le groupe de toute l'équipe,
 /// puis les conversations privées. Hors connexion : la dernière liste
@@ -101,7 +102,7 @@ class _MessagesViewState extends State<MessagesView> {
             ),
           for (final m in people)
             ListTile(
-              leading: _Avatar(name: m.user.name, photoUrl: m.user.photoUrl),
+              leading: UserAvatar.of(m.user),
               title: Text(m.user.name),
               subtitle: Text(m.role.label(t)),
               onTap: () => Navigator.pop(context, m),
@@ -129,7 +130,7 @@ class _MessagesViewState extends State<MessagesView> {
       await _open(Conversation.fromJson({
         'id': j['id'],
         'kind': 'private',
-        'with': {'id': picked.user.id, 'name': picked.user.name, 'photoUrl': picked.user.photoUrl},
+        'with': {'id': picked.user.id, 'name': picked.user.name, 'photoUrl': picked.user.photoUrl, 'avatar': picked.user.avatar},
       }));
     } on OfflineException {
       messenger.showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
@@ -189,7 +190,7 @@ class _MessagesViewState extends State<MessagesView> {
                         ? const CircleAvatar(child: Icon(Icons.groups))
                         : c.isTeam
                         ? const CircleAvatar(child: Icon(Icons.workspaces))
-                        : _Avatar(name: c.withName ?? '?', photoUrl: c.withPhotoUrl),
+                        : UserAvatar(name: c.withName ?? '?', photoUrl: c.withPhotoUrl, avatar: c.withAvatar),
                     title: Text(c.isGroup ? t.wholeTeam : (c.isTeam ? c.name ?? '?' : c.withName ?? '?'),
                         style: c.unread > 0 ? const TextStyle(fontWeight: FontWeight.w700) : null),
                     subtitle: Text(
@@ -232,16 +233,4 @@ String _shortWhen(DateTime at, String loc) {
   return dateOnly(at) == dateOnly(now) ? timeLabel(at.hour * 60 + at.minute) : dayLabel(at, loc);
 }
 
-class _Avatar extends StatelessWidget {
-  final String name;
-  final String? photoUrl;
-
-  const _Avatar({required this.name, this.photoUrl});
-
-  @override
-  Widget build(BuildContext context) => CircleAvatar(
-        backgroundImage: photoUrl == null ? null : NetworkImage(photoUrl!),
-        child: photoUrl == null ? Text(name.characters.first.toUpperCase()) : null,
-      );
-}
 

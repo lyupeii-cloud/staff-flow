@@ -1648,4 +1648,81 @@ class L10nPt extends L10n {
 
   @override
   String get sitesNoneChosen => 'Nenhum local escolhido';
+
+  @override
+  String get avatarTitle => 'Meu avatar';
+
+  @override
+  String get avatarSub => 'Uma imagem no lugar da sua foto';
+
+  @override
+  String get avatarUseGoogle => 'Usar minha foto do Google';
+
+  @override
+  String get avatarColor => 'Cor';
+
+  @override
+  String get hidePhotosTitle => 'Ocultar as fotos do Google';
+
+  @override
+  String get hidePhotosSub =>
+      'Nesta empresa, cada pessoa aparece com seu avatar ou sua inicial.';
+
+  @override
+  String get billingApi => 'Opção “acesso API”';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Opção “acesso API”: $months meses, sem desconto';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Resto do mês atual ($days dias de $total): opção “acesso API”';
+  }
+
+  @override
+  String get apiTitle => 'Acesso API (contabilidade, CRM)';
+
+  @override
+  String get apiSub =>
+      'Seus programas de contabilidade, folha de pagamento ou CRM leem a escala publicada, as horas e as ausências.';
+
+  @override
+  String get apiNeedsOption =>
+      'Opção paga: adicione “acesso API” em “Gerenciar assinatura”.';
+
+  @override
+  String get apiNewKey => 'Nova chave';
+
+  @override
+  String get apiKeyName => 'Nome da chave (ex.: programa de folha)';
+
+  @override
+  String get apiKeyCreated =>
+      'Copie esta chave agora e guarde-a em segurança: ela não será mostrada novamente.';
+
+  @override
+  String get apiKeyCopy => 'Copiar';
+
+  @override
+  String get apiKeyCopied => 'Chave copiada.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Último uso: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Nunca usada';
+
+  @override
+  String get apiRevoke => 'Revogar';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Os programas que usam esta chave perderão o acesso.';
+
+  @override
+  String get apiDocs => 'Documentação da API';
 }

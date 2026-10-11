@@ -139,4 +139,8 @@ const hi = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'आपका Staff Flow खाता {id} अब Google खाते {email} से जुड़ा है।',
   'N° d\'enregistrement : {id}': 'पंजीकरण संख्या: {id}',
   'Payé.': 'भुगतान हो गया।',
+  'Option « accès API » nécessaire pour créer une clé.': 'कुंजी बनाने के लिए “API एक्सेस” विकल्प चाहिए।',
+  '10 clés au plus par entreprise.': 'प्रति कंपनी अधिकतम 10 कुंजियाँ।',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'इस माह के शेष दिन ({total} में से {days} दिन): “API एक्सेस” विकल्प',
+  'Option « accès API » : {months} mois': '“API एक्सेस” विकल्प: {months} माह',
 };

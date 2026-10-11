@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'api_docs.dart';
 import 'legal.dart';
 
 /// Génère le site vitrine (www/fr, www/ua, www/en) à partir des textes
@@ -59,6 +60,13 @@ final t = <String, Map<String, Object>>{
       ['Ajoutez votre équipe', 'Chaque salarié vous montre son QR code : vous le scannez, il accepte. Pas d\'e-mail, pas de mot de passe.'],
       ['Publiez le planning', 'Créez les services, publiez : chacun est prévenu sur son téléphone, et peut l\'ajouter à son agenda.'],
     ],
+    'installH': 'Installez-la comme une application',
+    'installSub': 'Pas besoin de passer par un store : depuis le navigateur, ajoutez Staff Flow à votre écran d\'accueil. Elle s\'ouvre alors en plein écran, avec son icône.',
+    'install': [
+      ['🤖', 'Android', 'Ouvrez app.staff-flow.cloud dans Chrome (ou Edge, Samsung Internet), menu ⋮ puis « Installer l\'application » ou « Ajouter à l\'écran d\'accueil ». L\'application Android arrive aussi sur Google Play.'],
+      ['🍎', 'iPhone et iPad', 'Ouvrez app.staff-flow.cloud dans Safari, touchez le bouton Partager puis « Sur l\'écran d\'accueil ». Depuis iOS 16.4, c\'est aussi possible depuis Chrome ou Edge, avec leur bouton Partager.'],
+      ['💻', 'Ordinateur', 'Dans Chrome ou Edge, cliquez sur l\'icône d\'installation à droite de la barre d\'adresse. Avec un autre navigateur, gardez simplement l\'adresse en favori.'],
+    ],
     'priceH': 'Un prix tout petit',
     'priceSub': 'Seul le propriétaire de l\'entreprise paie. Les salariés utilisent l\'application gratuitement.',
     'p1': 'Propriétaire d\'entreprise',
@@ -72,7 +80,7 @@ final t = <String, Map<String, Object>>{
     'priceNote': 'Prix TTC, en euros. Le paiement en ligne arrive bientôt.',
     'faqH': 'Questions fréquentes',
     'faq': [
-      ['Faut-il un iPhone ou un Android ?', 'L\'application existe pour Android. Sur iPhone, ordinateur ou tablette, tout fonctionne dans le navigateur, sans rien installer.'],
+      ['Faut-il un iPhone ou un Android ?', 'L\'application existe pour Android. Sur iPhone, ordinateur ou tablette, tout fonctionne dans le navigateur, et vous pouvez l\'ajouter à l\'écran d\'accueil comme une application.'],
       ['Mes salariés doivent-ils payer ?', 'Non. Seul le propriétaire de l\'entreprise a un abonnement. Les salariés, responsables et extras utilisent l\'application gratuitement.'],
       ['Comment se connecter ?', 'Avec un compte Google, sans nouveau mot de passe. Chacun garde le même compte pour toutes ses entreprises.'],
       ['Et si le téléphone n\'a pas de réseau ?', 'Le planning déjà reçu reste affiché. Le patron peut continuer à préparer le planning et un salarié à faire une demande de congé : c\'est gardé dans la mémoire du téléphone, puis envoyé dès que la connexion revient. Les autres ne voient ces changements qu\'à ce moment-là.'],
@@ -119,6 +127,13 @@ final t = <String, Map<String, Object>>{
       ['Додайте команду', 'Працівник показує свій QR-код — ви скануєте, він підтверджує. Без e-mail і паролів.'],
       ['Опублікуйте графік', 'Створіть зміни й опублікуйте: кожен отримає сповіщення та зможе додати зміни до свого календаря.'],
     ],
+    'installH': 'Встановіть як застосунок',
+    'installSub': 'Магазин застосунків не потрібен: додайте Staff Flow на головний екран прямо з браузера. Тоді він відкриватиметься на весь екран, зі своєю іконкою.',
+    'install': [
+      ['🤖', 'Android', 'Відкрийте app.staff-flow.cloud у Chrome (або Edge, Samsung Internet), меню ⋮, потім «Установити застосунок» або «Додати на головний екран». Застосунок для Android також з\'явиться в Google Play.'],
+      ['🍎', 'iPhone та iPad', 'Відкрийте app.staff-flow.cloud у Safari, натисніть кнопку «Поділитися», потім «На початковий екран». Починаючи з iOS 16.4, це можна зробити й у Chrome чи Edge — тією ж кнопкою «Поділитися».'],
+      ['💻', 'Комп\'ютер', 'У Chrome чи Edge натисніть значок установлення праворуч в адресному рядку. В іншому браузері просто додайте адресу в закладки.'],
+    ],
     'priceH': 'Зовсім невелика ціна',
     'priceSub': 'Платить лише власник компанії. Працівники користуються застосунком безкоштовно.',
     'p1': 'Власник компанії',
@@ -132,7 +147,7 @@ final t = <String, Map<String, Object>>{
     'priceNote': 'Ціни з ПДВ, у євро; можна платити карткою в гривнях. Онлайн-оплата незабаром.',
     'faqH': 'Часті запитання',
     'faq': [
-      ['Потрібен iPhone чи Android?', 'Застосунок є для Android. На iPhone, комп\'ютері чи планшеті все працює в браузері, нічого не треба встановлювати.'],
+      ['Потрібен iPhone чи Android?', 'Застосунок є для Android. На iPhone, комп\'ютері чи планшеті все працює в браузері, і його можна додати на головний екран як застосунок.'],
       ['Чи платять працівники?', 'Ні. Підписка є лише у власника компанії. Працівники, керівники й тимчасові працівники користуються застосунком безкоштовно.'],
       ['Як увійти?', 'Через акаунт Google, без нового пароля. Один акаунт для всіх ваших компаній.'],
       ['А якщо на телефоні немає зв\'язку?', 'Уже отриманий графік залишається на екрані. Власник може далі складати графік, а працівник — попросити відпустку: усе зберігається в пам\'яті телефона й надсилається, щойно з\'явиться зв\'язок. Інші побачать ці зміни саме тоді.'],
@@ -179,6 +194,13 @@ final t = <String, Map<String, Object>>{
       ['Add your team', 'Each employee shows you their QR code: you scan it, they accept. No email, no password.'],
       ['Publish the schedule', 'Create the shifts and publish: everyone is notified on their phone and can add them to their calendar.'],
     ],
+    'installH': 'Install it like an app',
+    'installSub': 'No app store needed: add Staff Flow to your home screen straight from the browser. It then opens full screen, with its own icon.',
+    'install': [
+      ['🤖', 'Android', 'Open app.staff-flow.cloud in Chrome (or Edge, Samsung Internet), menu ⋮ then “Install app” or “Add to Home screen”. The Android app is also coming to Google Play.'],
+      ['🍎', 'iPhone and iPad', 'Open app.staff-flow.cloud in Safari, tap the Share button then “Add to Home Screen”. Since iOS 16.4 you can also do it from Chrome or Edge, with their Share button.'],
+      ['💻', 'Computer', 'In Chrome or Edge, click the install icon on the right of the address bar. In another browser, simply bookmark the address.'],
+    ],
     'priceH': 'A tiny price',
     'priceSub': 'Only the company owner pays. Employees use the app for free.',
     'p1': 'Company owner',
@@ -192,7 +214,7 @@ final t = <String, Map<String, Object>>{
     'priceNote': 'Prices include VAT, in euros. Online payment is coming soon.',
     'faqH': 'Frequently asked questions',
     'faq': [
-      ['Do I need an iPhone or an Android?', 'There is an Android app. On iPhone, computer or tablet, everything works in the browser, with nothing to install.'],
+      ['Do I need an iPhone or an Android?', 'There is an Android app. On iPhone, computer or tablet, everything works in the browser, and you can add it to your home screen like an app.'],
       ['Do my employees pay?', 'No. Only the company owner has a subscription. Employees, managers and temps use the app for free.'],
       ['How do people sign in?', 'With a Google account, no new password. One account for all your companies.'],
       ['What if the phone has no signal?', 'The schedule you already received stays on screen. The owner can keep planning and an employee can ask for leave: it is kept in the phone\'s memory and sent as soon as the connection is back. Others see those changes only then.'],
@@ -241,7 +263,7 @@ String page(String l) {
   <meta name="theme-color" content="#061440">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preload" href="/fonts/Nunito.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="/style.css?v=4">
+  <link rel="stylesheet" href="/style.css?v=5">
 </head>
 <body>
 <header class="top">
@@ -300,6 +322,16 @@ String page(String l) {
   </div>
 </section>
 
+<section id="install">
+  <div class="wrap center">
+    <h2>${s('installH')}</h2>
+    <p class="sub">${s('installSub')}</p>
+  </div>
+  <div class="wrap grid">
+    ${[for (final f in rows('install')) '<div class="card"><div class="ico" aria-hidden="true">${f[0]}</div><h3>${esc(f[1])}</h3><p>${esc(f[2])}</p></div>'].join('\n    ')}
+  </div>
+</section>
+
 <section class="soft" id="prices">
   <div class="wrap center">
     <h2>${s('priceH')}</h2>
@@ -349,7 +381,7 @@ ${footer(l)}
 
 String footer(String l) => '''<footer>
   <div class="wrap">
-    <span>© 2026 Staff Flow · <a href="/${slug(l)}/terms/">${esc(legalTitles[l]!['terms']!)}</a> · <a href="/${slug(l)}/privacy/">${esc(legalTitles[l]!['privacy']!)}</a> · <a href="mailto:contact@staff-flow.cloud">contact@staff-flow.cloud</a></span>
+    <span>© 2026 Staff Flow · <a href="/${slug(l)}/terms/">${esc(legalTitles[l]!['terms']!)}</a> · <a href="/${slug(l)}/privacy/">${esc(legalTitles[l]!['privacy']!)}</a> · <a href="/${slug(l)}/api/">API</a> · <a href="mailto:contact@staff-flow.cloud">contact@staff-flow.cloud</a></span>
     <span>${[for (final o in langs) '<a href="/${slug(o)}/" lang="$o">${esc(t[o]!['name'] as String)}</a>'].join(' · ')}</span>
   </div>
 </footer>''';
@@ -357,14 +389,15 @@ String footer(String l) => '''<footer>
 /// Page légale [doc] (`terms` ou `privacy`) dans la langue [l].
 String legalPage(String l, String doc) {
   final x = t[l]!;
-  final title = legalTitles[l]![doc]!;
+  final title = doc == 'api' ? apiTitles[l]! : legalTitles[l]![doc]!;
   final switcher = [
     for (final o in langs)
       '<a href="/${slug(o)}/$doc/" lang="$o" title="${esc(t[o]!['name'] as String)}"${o == l ? ' aria-current="page"' : ''}>${label(o)}</a>',
   ].join();
+  String item(Object p) => p is List ? '<pre><code>${esc(p[1] as String)}</code></pre>' : '<p>${esc(p as String)}</p>';
   final sections = [
-    for (final s in legal[l]![doc]!)
-      '<h2>${esc(s[0] as String)}</h2>\n      ${[for (final p in s[1] as List) '<p>${esc(p as String)}</p>'].join('\n      ')}',
+    for (final s in doc == 'api' ? apiDocs[l]! : legal[l]![doc]!)
+      '<h2>${esc(s[0] as String)}</h2>\n      ${[for (final p in s[1] as List) item(p as Object)].join('\n      ')}',
   ].join('\n      ');
   return '''<!doctype html>
 <html lang="$l">
@@ -376,7 +409,7 @@ String legalPage(String l, String doc) {
   ${[for (final o in langs) '<link rel="alternate" hreflang="$o" href="$site/${slug(o)}/$doc/">'].join('\n  ')}
   <meta name="theme-color" content="#061440">
   <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="stylesheet" href="/style.css?v=4">
+  <link rel="stylesheet" href="/style.css?v=5">
 </head>
 <body>
 <header class="top">
@@ -390,7 +423,7 @@ String legalPage(String l, String doc) {
   <section>
     <div class="wrap legal">
       <h1>${esc(title)}</h1>
-      <p class="note">${esc(legalUpdated[l]!)}</p>
+      ${doc == 'api' ? '' : '<p class="note">${esc(legalUpdated[l]!)}</p>'}
       $sections
     </div>
   </section>
@@ -411,7 +444,7 @@ String root() => '''<!doctype html>
   <title>Staff Flow</title>
   ${[for (final o in langs) '<link rel="alternate" hreflang="$o" href="$site/${slug(o)}/">'].join('\n  ')}
   <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="stylesheet" href="/style.css?v=4">
+  <link rel="stylesheet" href="/style.css?v=5">
 </head>
 <body>
 <section class="final" style="min-height:100vh;display:grid;place-items:center">
@@ -431,7 +464,7 @@ void main() {
   for (final l in langs) {
     Directory('www/${slug(l)}').createSync(recursive: true);
     File('www/${slug(l)}/index.html').writeAsStringSync(page(l));
-    for (final doc in ['terms', 'privacy']) {
+    for (final doc in ['terms', 'privacy', 'api']) {
       Directory('www/${slug(l)}/$doc').createSync(recursive: true);
       File('www/${slug(l)}/$doc/index.html').writeAsStringSync(legalPage(l, doc));
     }
@@ -442,7 +475,7 @@ void main() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${[
     for (final l in langs)
-      for (final p in ['', 'terms/', 'privacy/'])
+      for (final p in ['', 'terms/', 'privacy/', 'api/'])
         '  <url><loc>$site/${slug(l)}/$p</loc>${[for (final o in langs) '<xhtml:link rel="alternate" hreflang="$o" href="$site/${slug(o)}/$p"/>'].join()}</url>',
   ].join('\n')}
 </urlset>

@@ -1653,4 +1653,81 @@ class L10nEs extends L10n {
 
   @override
   String get sitesNoneChosen => 'Ninguna sede elegida';
+
+  @override
+  String get avatarTitle => 'Mi avatar';
+
+  @override
+  String get avatarSub => 'Una imagen en lugar de tu foto';
+
+  @override
+  String get avatarUseGoogle => 'Usar mi foto de Google';
+
+  @override
+  String get avatarColor => 'Color';
+
+  @override
+  String get hidePhotosTitle => 'Ocultar las fotos de Google';
+
+  @override
+  String get hidePhotosSub =>
+      'En esta empresa, cada uno aparece con su avatar o su inicial.';
+
+  @override
+  String get billingApi => 'Opción «acceso API»';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Opción «acceso API»: $months meses, sin descuento';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Resto del mes en curso ($days días de $total): opción «acceso API»';
+  }
+
+  @override
+  String get apiTitle => 'Acceso API (contabilidad, CRM)';
+
+  @override
+  String get apiSub =>
+      'Tus programas de contabilidad, nóminas o tu CRM leen el planning publicado, las horas y las ausencias.';
+
+  @override
+  String get apiNeedsOption =>
+      'Opción de pago: añade «acceso API» en «Gestionar la suscripción».';
+
+  @override
+  String get apiNewKey => 'Nueva clave';
+
+  @override
+  String get apiKeyName => 'Nombre de la clave (p. ej.: programa de nóminas)';
+
+  @override
+  String get apiKeyCreated =>
+      'Copia esta clave ahora y guárdala en un lugar seguro: no se volverá a mostrar.';
+
+  @override
+  String get apiKeyCopy => 'Copiar';
+
+  @override
+  String get apiKeyCopied => 'Clave copiada.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Último uso: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Nunca usada';
+
+  @override
+  String get apiRevoke => 'Revocar';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Los programas que usan esta clave perderán el acceso.';
+
+  @override
+  String get apiDocs => 'Documentación de la API';
 }

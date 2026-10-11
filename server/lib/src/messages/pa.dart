@@ -139,4 +139,8 @@ const pa = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'ਤੁਹਾਡਾ Staff Flow ਖਾਤਾ {id} ਹੁਣ Google ਖਾਤੇ {email} ਨਾਲ ਜੁੜਿਆ ਹੈ।',
   'N° d\'enregistrement : {id}': 'ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਨੰਬਰ: {id}',
   'Payé.': 'ਭੁਗਤਾਨ ਹੋ ਗਿਆ।',
+  'Option « accès API » nécessaire pour créer une clé.': 'ਕੁੰਜੀ ਬਣਾਉਣ ਲਈ “API ਪਹੁੰਚ” ਵਿਕਲਪ ਚਾਹੀਦਾ ਹੈ।',
+  '10 clés au plus par entreprise.': 'ਹਰ ਕੰਪਨੀ ਲਈ ਵੱਧ ਤੋਂ ਵੱਧ 10 ਕੁੰਜੀਆਂ।',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'ਚਾਲੂ ਮਹੀਨੇ ਦਾ ਬਾਕੀ ({total} ਵਿੱਚੋਂ {days} ਦਿਨ): “API ਪਹੁੰਚ” ਵਿਕਲਪ',
+  'Option « accès API » : {months} mois': '“API ਪਹੁੰਚ” ਵਿਕਲਪ: {months} ਮਹੀਨੇ',
 };

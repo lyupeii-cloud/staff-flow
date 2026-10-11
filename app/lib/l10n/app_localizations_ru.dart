@@ -1649,4 +1649,81 @@ class L10nRu extends L10n {
 
   @override
   String get sitesNoneChosen => 'Объект не выбран';
+
+  @override
+  String get avatarTitle => 'Мой аватар';
+
+  @override
+  String get avatarSub => 'Изображение вместо вашего фото';
+
+  @override
+  String get avatarUseGoogle => 'Использовать фото Google';
+
+  @override
+  String get avatarColor => 'Цвет';
+
+  @override
+  String get hidePhotosTitle => 'Скрыть фото Google';
+
+  @override
+  String get hidePhotosSub =>
+      'В этой компании каждого показывают с аватаром или инициалом.';
+
+  @override
+  String get billingApi => 'Опция «доступ к API»';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Опция «доступ к API»: $months мес., без скидки';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Остаток текущего месяца ($days дн. из $total): опция «доступ к API»';
+  }
+
+  @override
+  String get apiTitle => 'Доступ к API (бухгалтерия, CRM)';
+
+  @override
+  String get apiSub =>
+      'Ваши программы бухгалтерии, зарплаты или CRM читают опубликованный график, часы и отсутствия.';
+
+  @override
+  String get apiNeedsOption =>
+      'Платная опция: добавьте «доступ к API» в «Управлять подпиской».';
+
+  @override
+  String get apiNewKey => 'Новый ключ';
+
+  @override
+  String get apiKeyName => 'Название ключа (напр.: программа зарплаты)';
+
+  @override
+  String get apiKeyCreated =>
+      'Скопируйте этот ключ сейчас и храните его надёжно: больше он не будет показан.';
+
+  @override
+  String get apiKeyCopy => 'Копировать';
+
+  @override
+  String get apiKeyCopied => 'Ключ скопирован.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Последнее использование: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Ещё не использовался';
+
+  @override
+  String get apiRevoke => 'Отозвать';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Программы, использующие этот ключ, потеряют доступ.';
+
+  @override
+  String get apiDocs => 'Документация API';
 }

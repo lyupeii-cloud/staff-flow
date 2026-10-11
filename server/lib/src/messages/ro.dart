@@ -139,4 +139,8 @@ const ro = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Contul tău Staff Flow {id} este acum conectat la contul Google {email}.',
   'N° d\'enregistrement : {id}': 'Nr. de înregistrare: {id}',
   'Payé.': 'Plătit.',
+  'Option « accès API » nécessaire pour créer une clé.': 'Pentru a crea o cheie este necesară opțiunea „acces API”.',
+  '10 clés au plus par entreprise.': 'Cel mult 10 chei pe firmă.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Restul lunii curente ({days} zile din {total}): opțiunea „acces API”',
+  'Option « accès API » : {months} mois': 'Opțiunea „acces API”: {months} luni',
 };

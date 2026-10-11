@@ -492,4 +492,24 @@ UPDATE invoices SET holder_id = owner_id WHERE company_id IS NULL;
 CREATE INDEX invoices_holder ON invoices (holder_id) WHERE company_id IS NULL;
 CREATE INDEX invoices_code ON invoices (company_code);
 ''',
+  // 27 — avatars choisis par chacun ; photos Google masquées par le patron
+  // dans son entreprise ; option « accès API » et clés API.
+  '''
+ALTER TABLE users ADD COLUMN avatar jsonb;
+ALTER TABLE companies
+  ADD COLUMN hide_photos boolean NOT NULL DEFAULT false,
+  ADD COLUMN api_option boolean NOT NULL DEFAULT false;
+CREATE TABLE api_keys (
+  id           uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  company_id   uuid NOT NULL REFERENCES companies(id) ON DELETE CASCADE,
+  name         text NOT NULL,
+  prefix       text NOT NULL UNIQUE,
+  key_hash     text NOT NULL,
+  created_by   uuid REFERENCES users(id) ON DELETE SET NULL,
+  created_at   timestamptz NOT NULL DEFAULT now(),
+  last_used_at timestamptz,
+  revoked_at   timestamptz
+);
+CREATE INDEX api_keys_company ON api_keys (company_id);
+''',
 ];

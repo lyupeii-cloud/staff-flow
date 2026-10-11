@@ -1642,4 +1642,81 @@ class L10nHi extends L10n {
 
   @override
   String get sitesNoneChosen => 'कोई साइट नहीं चुनी';
+
+  @override
+  String get avatarTitle => 'मेरा अवतार';
+
+  @override
+  String get avatarSub => 'आपकी फ़ोटो की जगह एक चित्र';
+
+  @override
+  String get avatarUseGoogle => 'मेरी Google फ़ोटो इस्तेमाल करें';
+
+  @override
+  String get avatarColor => 'रंग';
+
+  @override
+  String get hidePhotosTitle => 'Google फ़ोटो छिपाएँ';
+
+  @override
+  String get hidePhotosSub =>
+      'इस कंपनी में हर व्यक्ति अपने अवतार या आद्याक्षर के साथ दिखता है।';
+
+  @override
+  String get billingApi => '“API एक्सेस” विकल्प';
+
+  @override
+  String billingLineApi(String months) {
+    return '“API एक्सेस” विकल्प: $months माह, बिना छूट';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'इस माह के शेष दिन ($total में से $days दिन): “API एक्सेस” विकल्प';
+  }
+
+  @override
+  String get apiTitle => 'API एक्सेस (लेखा, CRM)';
+
+  @override
+  String get apiSub =>
+      'आपके लेखा, वेतन या CRM सॉफ़्टवेयर प्रकाशित शेड्यूल, घंटे और अनुपस्थिति पढ़ते हैं।';
+
+  @override
+  String get apiNeedsOption =>
+      'सशुल्क विकल्प: “सदस्यता प्रबंधित करें” में “API एक्सेस” जोड़ें।';
+
+  @override
+  String get apiNewKey => 'नई कुंजी';
+
+  @override
+  String get apiKeyName => 'कुंजी का नाम (जैसे: वेतन सॉफ़्टवेयर)';
+
+  @override
+  String get apiKeyCreated =>
+      'यह कुंजी अभी कॉपी करें और सुरक्षित रखें: यह दोबारा नहीं दिखेगी।';
+
+  @override
+  String get apiKeyCopy => 'कॉपी करें';
+
+  @override
+  String get apiKeyCopied => 'कुंजी कॉपी हुई।';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'पिछला उपयोग: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'कभी उपयोग नहीं हुई';
+
+  @override
+  String get apiRevoke => 'रद्द करें';
+
+  @override
+  String get apiRevokeConfirm =>
+      'इस कुंजी का उपयोग करने वाले सॉफ़्टवेयर की पहुँच बंद हो जाएगी।';
+
+  @override
+  String get apiDocs => 'API दस्तावेज़';
 }

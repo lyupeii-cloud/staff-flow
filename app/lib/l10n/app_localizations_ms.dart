@@ -1643,4 +1643,81 @@ class L10nMs extends L10n {
 
   @override
   String get sitesNoneChosen => 'Tiada lokasi dipilih';
+
+  @override
+  String get avatarTitle => 'Avatar saya';
+
+  @override
+  String get avatarSub => 'Gambar sebagai ganti foto anda';
+
+  @override
+  String get avatarUseGoogle => 'Guna foto Google saya';
+
+  @override
+  String get avatarColor => 'Warna';
+
+  @override
+  String get hidePhotosTitle => 'Sembunyikan foto Google';
+
+  @override
+  String get hidePhotosSub =>
+      'Dalam syarikat ini, setiap orang dipaparkan dengan avatar atau huruf awalnya.';
+
+  @override
+  String get billingApi => 'Pilihan “akses API”';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Pilihan “akses API”: $months bulan, tanpa diskaun';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Baki bulan ini ($days daripada $total hari): pilihan “akses API”';
+  }
+
+  @override
+  String get apiTitle => 'Akses API (perakaunan, CRM)';
+
+  @override
+  String get apiSub =>
+      'Perisian perakaunan, gaji atau CRM anda membaca jadual yang diterbitkan, jam dan ketidakhadiran.';
+
+  @override
+  String get apiNeedsOption =>
+      'Pilihan berbayar: tambah “akses API” dalam “Urus langganan”.';
+
+  @override
+  String get apiNewKey => 'Kunci baharu';
+
+  @override
+  String get apiKeyName => 'Nama kunci (cth.: perisian gaji)';
+
+  @override
+  String get apiKeyCreated =>
+      'Salin kunci ini sekarang dan simpan dengan selamat: ia tidak akan dipaparkan lagi.';
+
+  @override
+  String get apiKeyCopy => 'Salin';
+
+  @override
+  String get apiKeyCopied => 'Kunci disalin.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Kali terakhir digunakan: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Belum pernah digunakan';
+
+  @override
+  String get apiRevoke => 'Batalkan';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Perisian yang menggunakan kunci ini akan hilang akses.';
+
+  @override
+  String get apiDocs => 'Dokumentasi API';
 }

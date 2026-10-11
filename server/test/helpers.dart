@@ -70,6 +70,9 @@ class FakeTelegram implements TelegramApi {
     if (blocked.contains(chatId)) throw TelegramBlocked();
     sent.add((chatId, text));
   }
+
+  @override
+  Future<void> configure(String method, Map<String, Object?> body) async {}
 }
 
 /// Horloge réglable, pour tester les expirations sans attendre.

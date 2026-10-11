@@ -139,4 +139,8 @@ const ja = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Staff Flow アカウント {id} は Google アカウント {email} と連携されました。',
   'N° d\'enregistrement : {id}': '登録番号：{id}',
   'Payé.': '支払済み。',
+  'Option « accès API » nécessaire pour créer une clé.': 'キーを作成するには「API アクセス」オプションが必要です。',
+  '10 clés au plus par entreprise.': 'キーは 1 社につき最大 10 個です。',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': '今月の残り（{total} 日中 {days} 日）：「API アクセス」オプション',
+  'Option « accès API » : {months} mois': '「API アクセス」オプション：{months} か月',
 };

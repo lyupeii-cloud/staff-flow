@@ -139,4 +139,8 @@ const ko = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Staff Flow 계정 {id}이(가) 이제 Google 계정 {email}에 연결되었습니다.',
   'N° d\'enregistrement : {id}': '등록 번호: {id}',
   'Payé.': '결제 완료.',
+  'Option « accès API » nécessaire pour créer une clé.': '키를 만들려면 “API 액세스” 옵션이 필요합니다.',
+  '10 clés au plus par entreprise.': '회사당 키는 최대 10개입니다.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': '이번 달 남은 기간({total}일 중 {days}일): “API 액세스” 옵션',
+  'Option « accès API » : {months} mois': '“API 액세스” 옵션: {months}개월',
 };

@@ -1646,4 +1646,81 @@ class L10nSv extends L10n {
 
   @override
   String get sitesNoneChosen => 'Ingen plats vald';
+
+  @override
+  String get avatarTitle => 'Min avatar';
+
+  @override
+  String get avatarSub => 'En bild i stället för ditt foto';
+
+  @override
+  String get avatarUseGoogle => 'Använd mitt Google-foto';
+
+  @override
+  String get avatarColor => 'Färg';
+
+  @override
+  String get hidePhotosTitle => 'Dölj Google-foton';
+
+  @override
+  String get hidePhotosSub =>
+      'I det här företaget visas alla med sin avatar eller initial.';
+
+  @override
+  String get billingApi => 'Tillvalet ”API-åtkomst”';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Tillvalet ”API-åtkomst”: $months månader, utan rabatt';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Resten av månaden ($days av $total dagar): tillvalet ”API-åtkomst”';
+  }
+
+  @override
+  String get apiTitle => 'API-åtkomst (bokföring, CRM)';
+
+  @override
+  String get apiSub =>
+      'Ditt bokförings-, löne- eller CRM-program läser det publicerade schemat, timmar och frånvaro.';
+
+  @override
+  String get apiNeedsOption =>
+      'Betalt tillval: lägg till ”API-åtkomst” under ”Hantera abonnemang”.';
+
+  @override
+  String get apiNewKey => 'Ny nyckel';
+
+  @override
+  String get apiKeyName => 'Nyckelns namn (t.ex. löneprogram)';
+
+  @override
+  String get apiKeyCreated =>
+      'Kopiera nyckeln nu och förvara den säkert: den visas inte igen.';
+
+  @override
+  String get apiKeyCopy => 'Kopiera';
+
+  @override
+  String get apiKeyCopied => 'Nyckeln kopierad.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Senast använd: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Aldrig använd';
+
+  @override
+  String get apiRevoke => 'Återkalla';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Program som använder nyckeln förlorar åtkomsten.';
+
+  @override
+  String get apiDocs => 'API-dokumentation';
 }

@@ -4,12 +4,14 @@ import '../brand.dart';
 import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
+import 'api_keys_page.dart';
 import 'billing_page.dart';
 import 'company_logo.dart';
 import 'company_tab.dart';
 import 'home_screen.dart';
 import 'people_widgets.dart';
 import 'tools_widgets.dart';
+import 'avatar_widgets.dart';
 
 /// Équipe de l'entreprise : membres, rôles, ajout par code, transfert.
 class TeamView extends StatefulWidget {
@@ -136,6 +138,17 @@ class _TeamViewState extends State<TeamView> {
             CompanyLogoSettings(session: widget.session, company: company),
             const SizedBox(height: 12),
             CompanyMessagingSetting(session: widget.session, company: company),
+            CompanyPhotosSetting(session: widget.session, company: company),
+            const SizedBox(height: 12),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.key_outlined),
+                title: Text(t.apiTitle),
+                subtitle: Text(t.apiSub),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => ApiKeysPage.open(context, widget.session, company),
+              ),
+            ),
           ],
           // Réglages de l'entreprise : fuseau horaire, impression.
           if (widget.membership.managesAll) ...[
@@ -159,10 +172,7 @@ class _TeamViewState extends State<TeamView> {
     final actions = isMe || company.readOnly ? const <_MemberAction>[] : _actionsFor(m);
     return ListTile(
       contentPadding: EdgeInsets.zero,
-      leading: CircleAvatar(
-        backgroundImage: m.user.photoUrl == null ? null : NetworkImage(m.user.photoUrl!),
-        child: m.user.photoUrl == null ? Text(m.user.name.characters.first.toUpperCase()) : null,
-      ),
+      leading: UserAvatar.of(m.user),
       title: Text(isMe ? t.meSuffix(m.user.name) : m.user.name),
       subtitle: Text([
         if (m.appointedBy != null) t.subManager else m.role.label(t),

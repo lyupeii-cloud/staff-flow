@@ -1657,4 +1657,81 @@ class L10nEl extends L10n {
 
   @override
   String get sitesNoneChosen => 'Δεν επιλέχθηκε σημείο';
+
+  @override
+  String get avatarTitle => 'Το avatar μου';
+
+  @override
+  String get avatarSub => 'Μια εικόνα στη θέση της φωτογραφίας σας';
+
+  @override
+  String get avatarUseGoogle => 'Χρήση της φωτογραφίας μου από το Google';
+
+  @override
+  String get avatarColor => 'Χρώμα';
+
+  @override
+  String get hidePhotosTitle => 'Απόκρυψη φωτογραφιών Google';
+
+  @override
+  String get hidePhotosSub =>
+      'Σε αυτή την επιχείρηση ο καθένας εμφανίζεται με το avatar ή το αρχικό του.';
+
+  @override
+  String get billingApi => 'Επιλογή «πρόσβαση API»';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Επιλογή «πρόσβαση API»: $months μήνες, χωρίς έκπτωση';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Υπόλοιπο τρέχοντος μήνα ($days από $total ημέρες): επιλογή «πρόσβαση API»';
+  }
+
+  @override
+  String get apiTitle => 'Πρόσβαση API (λογιστική, CRM)';
+
+  @override
+  String get apiSub =>
+      'Το λογισμικό λογιστικής, μισθοδοσίας ή CRM διαβάζει το δημοσιευμένο πρόγραμμα, τις ώρες και τις απουσίες.';
+
+  @override
+  String get apiNeedsOption =>
+      'Επιλογή επί πληρωμή: προσθέστε «πρόσβαση API» στη «Διαχείριση συνδρομής».';
+
+  @override
+  String get apiNewKey => 'Νέο κλειδί';
+
+  @override
+  String get apiKeyName => 'Όνομα κλειδιού (π.χ. λογισμικό μισθοδοσίας)';
+
+  @override
+  String get apiKeyCreated =>
+      'Αντιγράψτε τώρα αυτό το κλειδί και φυλάξτε το με ασφάλεια: δεν θα εμφανιστεί ξανά.';
+
+  @override
+  String get apiKeyCopy => 'Αντιγραφή';
+
+  @override
+  String get apiKeyCopied => 'Το κλειδί αντιγράφηκε.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Τελευταία χρήση: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Δεν έχει χρησιμοποιηθεί';
+
+  @override
+  String get apiRevoke => 'Ανάκληση';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Το λογισμικό που χρησιμοποιεί αυτό το κλειδί θα χάσει την πρόσβαση.';
+
+  @override
+  String get apiDocs => 'Τεκμηρίωση API';
 }

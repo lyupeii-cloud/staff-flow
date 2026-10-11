@@ -19,6 +19,9 @@ abstract class TelegramApi {
 
   /// Envoie un message ; lève [TelegramBlocked] si la personne a bloqué le bot.
   Future<void> send(int chatId, String text);
+
+  /// Réglage du bot (nom, description, commandes).
+  Future<void> configure(String method, Map<String, Object?> body);
 }
 
 class TelegramBlocked implements Exception {}
@@ -54,6 +57,9 @@ class HttpTelegramApi implements TelegramApi {
 
   @override
   Future<void> send(int chatId, String text) => _call('sendMessage', {'chat_id': chatId, 'text': text});
+
+  @override
+  Future<void> configure(String method, Map<String, Object?> body) => _call(method, body);
 }
 
 /// Compte Telegram vérifié de chaque personne : la personne ouvre le bot
@@ -175,6 +181,55 @@ class TelegramService {
       await api!.send(chatId, text);
     } on TelegramBlocked {
       // La personne a bloqué le bot entre-temps.
+    }
+  }
+
+  /// Présentation du bot, par langue (`''` : toutes les autres).
+  static const _profile = {
+    '': (
+      'Staff Flow',
+      'Staff Flow — your team\'s schedule.\n\nThis bot verifies your Staff Flow account. Link it from the app (My profile → Telegram). It sends you verification codes, for example to change Google account.\n\nhttps://staff-flow.cloud',
+      'Staff Flow account verification · staff-flow.cloud',
+      'Link your Staff Flow account',
+    ),
+    'fr': (
+      'Staff Flow',
+      'Staff Flow — le planning de votre équipe.\n\nCe bot vérifie votre compte Staff Flow. Reliez-le depuis l\'application (Mon profil → Telegram). Il vous envoie les codes de vérification, par exemple pour changer de compte Google.\n\nhttps://staff-flow.cloud',
+      'Vérification des comptes Staff Flow · staff-flow.cloud',
+      'Relier votre compte Staff Flow',
+    ),
+    'uk': (
+      'Staff Flow',
+      'Staff Flow — графік вашої команди.\n\nЦей бот підтверджує ваш обліковий запис Staff Flow. Прив\'яжіть його в застосунку (Мій профіль → Telegram). Він надсилає коди підтвердження, наприклад для зміни облікового запису Google.\n\nhttps://staff-flow.cloud',
+      'Підтвердження облікових записів Staff Flow · staff-flow.cloud',
+      'Прив\'язати обліковий запис Staff Flow',
+    ),
+    'ru': (
+      'Staff Flow',
+      'Staff Flow — график вашей команды.\n\nЭтот бот подтверждает ваш аккаунт Staff Flow. Привяжите его в приложении (Мой профиль → Telegram). Он присылает коды подтверждения, например для смены аккаунта Google.\n\nhttps://staff-flow.cloud',
+      'Подтверждение аккаунтов Staff Flow · staff-flow.cloud',
+      'Привязать аккаунт Staff Flow',
+    ),
+  };
+
+  /// Nom, descriptions et commande du bot, dans chaque langue. (La photo et
+  /// l'image de description se règlent dans @BotFather : deploy/telegram/.)
+  Future<void> customize() async {
+    if (api == null) return;
+    // Telegram limite ces réglages : une erreur (déjà réglé, trop souvent) n'empêche pas le reste.
+    Future<void> set(String method, Map<String, Object?> body) =>
+        api!.configure(method, body).catchError((Object e) => print('Telegram $method : $e'));
+    for (final MapEntry(key: lang, value: (name, description, short, command)) in _profile.entries) {
+      final l = lang.isEmpty ? const <String, Object?>{} : {'language_code': lang};
+      await set('setMyName', {'name': name, ...l});
+      await set('setMyDescription', {'description': description, ...l});
+      await set('setMyShortDescription', {'short_description': short, ...l});
+      await set('setMyCommands', {
+        'commands': [
+          {'command': 'start', 'description': command},
+        ],
+        ...l,
+      });
     }
   }
 

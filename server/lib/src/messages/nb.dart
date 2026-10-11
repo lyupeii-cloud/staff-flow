@@ -139,4 +139,8 @@ const nb = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Staff Flow-kontoen din {id} er nå koblet til Google-kontoen {email}.',
   'N° d\'enregistrement : {id}': 'Org.nr.: {id}',
   'Payé.': 'Betalt.',
+  'Option « accès API » nécessaire pour créer une clé.': 'Tillegget «API-tilgang» kreves for å opprette en nøkkel.',
+  '10 clés au plus par entreprise.': 'Maks 10 nøkler per bedrift.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Resten av måneden ({days} av {total} dager): tillegget «API-tilgang»',
+  'Option « accès API » : {months} mois': 'Tillegget «API-tilgang»: {months} måneder',
 };

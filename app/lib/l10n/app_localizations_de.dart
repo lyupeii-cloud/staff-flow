@@ -1659,4 +1659,81 @@ class L10nDe extends L10n {
 
   @override
   String get sitesNoneChosen => 'Kein Standort gewählt';
+
+  @override
+  String get avatarTitle => 'Mein Avatar';
+
+  @override
+  String get avatarSub => 'Ein Bild anstelle Ihres Fotos';
+
+  @override
+  String get avatarUseGoogle => 'Mein Google-Foto verwenden';
+
+  @override
+  String get avatarColor => 'Farbe';
+
+  @override
+  String get hidePhotosTitle => 'Google-Fotos ausblenden';
+
+  @override
+  String get hidePhotosSub =>
+      'In diesem Unternehmen erscheint jede Person mit ihrem Avatar oder ihrer Initiale.';
+
+  @override
+  String get billingApi => 'Option „API-Zugang“';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Option „API-Zugang“: $months Monate, ohne Rabatt';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Rest des laufenden Monats ($days von $total Tagen): Option „API-Zugang“';
+  }
+
+  @override
+  String get apiTitle => 'API-Zugang (Buchhaltung, CRM)';
+
+  @override
+  String get apiSub =>
+      'Ihre Buchhaltungs-, Lohn- oder CRM-Software liest den veröffentlichten Plan, die Stunden und Abwesenheiten.';
+
+  @override
+  String get apiNeedsOption =>
+      'Kostenpflichtige Option: Fügen Sie „API-Zugang“ unter „Abonnement verwalten“ hinzu.';
+
+  @override
+  String get apiNewKey => 'Neuer Schlüssel';
+
+  @override
+  String get apiKeyName => 'Name des Schlüssels (z. B. Lohnsoftware)';
+
+  @override
+  String get apiKeyCreated =>
+      'Kopieren Sie diesen Schlüssel jetzt und bewahren Sie ihn sicher auf: Er wird nicht erneut angezeigt.';
+
+  @override
+  String get apiKeyCopy => 'Kopieren';
+
+  @override
+  String get apiKeyCopied => 'Schlüssel kopiert.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Zuletzt verwendet: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Nie verwendet';
+
+  @override
+  String get apiRevoke => 'Widerrufen';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Software, die diesen Schlüssel nutzt, verliert den Zugriff.';
+
+  @override
+  String get apiDocs => 'API-Dokumentation';
 }

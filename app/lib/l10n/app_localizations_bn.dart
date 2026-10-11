@@ -1639,4 +1639,81 @@ class L10nBn extends L10n {
 
   @override
   String get sitesNoneChosen => 'কোনো সাইট বাছাই হয়নি';
+
+  @override
+  String get avatarTitle => 'আমার অবতার';
+
+  @override
+  String get avatarSub => 'আপনার ছবির বদলে একটি চিত্র';
+
+  @override
+  String get avatarUseGoogle => 'আমার Google ছবি ব্যবহার করুন';
+
+  @override
+  String get avatarColor => 'রং';
+
+  @override
+  String get hidePhotosTitle => 'Google ছবি লুকান';
+
+  @override
+  String get hidePhotosSub =>
+      'এই প্রতিষ্ঠানে প্রত্যেকে তাদের অবতার বা আদ্যক্ষর দিয়ে দেখায়।';
+
+  @override
+  String get billingApi => '“API অ্যাক্সেস” বিকল্প';
+
+  @override
+  String billingLineApi(String months) {
+    return '“API অ্যাক্সেস” বিকল্প: $months মাস, ছাড় ছাড়া';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'চলতি মাসের বাকি ($total দিনের মধ্যে $days দিন): “API অ্যাক্সেস” বিকল্প';
+  }
+
+  @override
+  String get apiTitle => 'API অ্যাক্সেস (হিসাব, CRM)';
+
+  @override
+  String get apiSub =>
+      'আপনার হিসাব, বেতন বা CRM সফটওয়্যার প্রকাশিত সময়সূচি, ঘণ্টা ও অনুপস্থিতি পড়ে।';
+
+  @override
+  String get apiNeedsOption =>
+      'পেইড বিকল্প: “সাবস্ক্রিপশন পরিচালনা”-তে “API অ্যাক্সেস” যোগ করুন।';
+
+  @override
+  String get apiNewKey => 'নতুন কী';
+
+  @override
+  String get apiKeyName => 'কী-এর নাম (যেমন: বেতন সফটওয়্যার)';
+
+  @override
+  String get apiKeyCreated =>
+      'এই কী এখনই কপি করে নিরাপদে রাখুন: এটি আর দেখানো হবে না।';
+
+  @override
+  String get apiKeyCopy => 'কপি করুন';
+
+  @override
+  String get apiKeyCopied => 'কী কপি হয়েছে।';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'শেষ ব্যবহার: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'কখনও ব্যবহার হয়নি';
+
+  @override
+  String get apiRevoke => 'প্রত্যাহার করুন';
+
+  @override
+  String get apiRevokeConfirm =>
+      'এই কী ব্যবহারকারী সফটওয়্যার আর প্রবেশ পাবে না।';
+
+  @override
+  String get apiDocs => 'API ডকুমেন্টেশন';
 }

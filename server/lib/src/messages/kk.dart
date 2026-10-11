@@ -139,4 +139,8 @@ const kk = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Сіздің Staff Flow аккаунтыңыз {id} енді {email} Google аккаунтына байланыстырылды.',
   'N° d\'enregistrement : {id}': 'Тіркеу нөмірі: {id}',
   'Payé.': 'Төленді.',
+  'Option « accès API » nécessaire pour créer une clé.': 'Кілт жасау үшін «API қолжетімділігі» опциясы керек.',
+  '10 clés au plus par entreprise.': 'Бір компанияға ең көбі 10 кілт.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Ағымдағы айдың қалғаны ({total} күннің {days}): «API қолжетімділігі» опциясы',
+  'Option « accès API » : {months} mois': '«API қолжетімділігі» опциясы: {months} ай',
 };

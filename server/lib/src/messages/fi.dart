@@ -139,4 +139,8 @@ const fi = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Staff Flow -tilisi {id} on nyt yhdistetty Google-tiliin {email}.',
   'N° d\'enregistrement : {id}': 'Rekisterinumero: {id}',
   'Payé.': 'Maksettu.',
+  'Option « accès API » nécessaire pour créer une clé.': 'Avaimen luominen vaatii ”API-pääsy”-lisän.',
+  '10 clés au plus par entreprise.': 'Enintään 10 avainta yritystä kohden.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Kuluvan kuun loppu ({days}/{total} päivää): ”API-pääsy”-lisä',
+  'Option « accès API » : {months} mois': '”API-pääsy”-lisä: {months} kk',
 };

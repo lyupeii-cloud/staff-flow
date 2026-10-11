@@ -1194,5 +1194,51 @@
   },
   "billingGraceInvoices": "This company is not being renewed: download all its invoices now.",
   "billingYearLabel": "Year",
-  "sitesNoneChosen": "No site chosen"
+  "sitesNoneChosen": "No site chosen",
+  "avatarTitle": "My avatar",
+  "avatarSub": "A picture instead of your photo",
+  "avatarUseGoogle": "Use my Google photo",
+  "avatarColor": "Colour",
+  "hidePhotosTitle": "Hide Google photos",
+  "hidePhotosSub": "In this company, everyone appears with their avatar or initial.",
+  "billingApi": "“API access” option",
+  "billingLineApi": "“API access” option: {months} months, no discount",
+  "@billingLineApi": {
+    "placeholders": {
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLineApiProrata": "Rest of this month ({days} days out of {total}): “API access” option",
+  "@billingLineApiProrata": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "apiTitle": "API access (accounting, CRM)",
+  "apiSub": "Your accounting, payroll or CRM software reads the published schedule, hours and absences.",
+  "apiNeedsOption": "Paid option: add “API access” in “Manage subscription”.",
+  "apiNewKey": "New key",
+  "apiKeyName": "Key name (e.g. payroll software)",
+  "apiKeyCreated": "Copy this key now and keep it safe: it will not be shown again.",
+  "apiKeyCopy": "Copy",
+  "apiKeyCopied": "Key copied.",
+  "apiKeyLastUsed": "Last used: {date}",
+  "@apiKeyLastUsed": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "apiKeyNeverUsed": "Never used",
+  "apiRevoke": "Revoke",
+  "apiRevokeConfirm": "Software using this key will lose access.",
+  "apiDocs": "API documentation"
 }

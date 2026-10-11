@@ -1649,4 +1649,81 @@ class L10nNl extends L10n {
 
   @override
   String get sitesNoneChosen => 'Geen locatie gekozen';
+
+  @override
+  String get avatarTitle => 'Mijn avatar';
+
+  @override
+  String get avatarSub => 'Een afbeelding in plaats van je foto';
+
+  @override
+  String get avatarUseGoogle => 'Mijn Google-foto gebruiken';
+
+  @override
+  String get avatarColor => 'Kleur';
+
+  @override
+  String get hidePhotosTitle => 'Google-foto\'s verbergen';
+
+  @override
+  String get hidePhotosSub =>
+      'In dit bedrijf verschijnt iedereen met zijn avatar of initiaal.';
+
+  @override
+  String get billingApi => 'Optie ‘API-toegang’';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Optie ‘API-toegang’: $months maanden, zonder korting';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Rest van deze maand ($days van $total dagen): optie ‘API-toegang’';
+  }
+
+  @override
+  String get apiTitle => 'API-toegang (boekhouding, CRM)';
+
+  @override
+  String get apiSub =>
+      'Je boekhoud-, salaris- of CRM-software leest het gepubliceerde rooster, de uren en afwezigheden.';
+
+  @override
+  String get apiNeedsOption =>
+      'Betaalde optie: voeg ‘API-toegang’ toe bij ‘Abonnement beheren’.';
+
+  @override
+  String get apiNewKey => 'Nieuwe sleutel';
+
+  @override
+  String get apiKeyName => 'Naam van de sleutel (bijv. salarissoftware)';
+
+  @override
+  String get apiKeyCreated =>
+      'Kopieer deze sleutel nu en bewaar hem veilig: hij wordt niet meer getoond.';
+
+  @override
+  String get apiKeyCopy => 'Kopiëren';
+
+  @override
+  String get apiKeyCopied => 'Sleutel gekopieerd.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Laatst gebruikt: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Nooit gebruikt';
+
+  @override
+  String get apiRevoke => 'Intrekken';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Software die deze sleutel gebruikt, verliest de toegang.';
+
+  @override
+  String get apiDocs => 'API-documentatie';
 }

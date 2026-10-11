@@ -1640,4 +1640,81 @@ class L10nHu extends L10n {
 
   @override
   String get sitesNoneChosen => 'Nincs kiválasztott helyszín';
+
+  @override
+  String get avatarTitle => 'Az avatarom';
+
+  @override
+  String get avatarSub => 'Egy kép a fotója helyett';
+
+  @override
+  String get avatarUseGoogle => 'Google-fotóm használata';
+
+  @override
+  String get avatarColor => 'Szín';
+
+  @override
+  String get hidePhotosTitle => 'Google-fotók elrejtése';
+
+  @override
+  String get hidePhotosSub =>
+      'Ebben a cégben mindenki az avatarjával vagy a kezdőbetűjével jelenik meg.';
+
+  @override
+  String get billingApi => '„API-hozzáférés” opció';
+
+  @override
+  String billingLineApi(String months) {
+    return '„API-hozzáférés” opció: $months hónap, kedvezmény nélkül';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'A folyó hónap hátralévő része ($total napból $days): „API-hozzáférés” opció';
+  }
+
+  @override
+  String get apiTitle => 'API-hozzáférés (könyvelés, CRM)';
+
+  @override
+  String get apiSub =>
+      'Könyvelő-, bérszámfejtő vagy CRM-szoftvere olvassa a közzétett beosztást, az órákat és a távolléteket.';
+
+  @override
+  String get apiNeedsOption =>
+      'Fizetős opció: adja hozzá az „API-hozzáférés”-t az „Előfizetés kezelése” menüben.';
+
+  @override
+  String get apiNewKey => 'Új kulcs';
+
+  @override
+  String get apiKeyName => 'A kulcs neve (pl. bérszámfejtő program)';
+
+  @override
+  String get apiKeyCreated =>
+      'Másolja ki most ezt a kulcsot, és őrizze biztonságban: többé nem jelenik meg.';
+
+  @override
+  String get apiKeyCopy => 'Másolás';
+
+  @override
+  String get apiKeyCopied => 'Kulcs kimásolva.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Utoljára használva: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Még nem használták';
+
+  @override
+  String get apiRevoke => 'Visszavonás';
+
+  @override
+  String get apiRevokeConfirm =>
+      'A kulcsot használó szoftverek elveszítik a hozzáférést.';
+
+  @override
+  String get apiDocs => 'API-dokumentáció';
 }

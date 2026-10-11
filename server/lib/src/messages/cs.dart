@@ -139,4 +139,8 @@ const cs = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Váš účet Staff Flow {id} je nyní propojen s účtem Google {email}.',
   'N° d\'enregistrement : {id}': 'Registrační č.: {id}',
   'Payé.': 'Zaplaceno.',
+  'Option « accès API » nécessaire pour créer une clé.': 'K vytvoření klíče je potřeba možnost „přístup API“.',
+  '10 clés au plus par entreprise.': 'Nejvýše 10 klíčů na firmu.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Zbytek aktuálního měsíce ({days} z {total} dní): možnost „přístup API“',
+  'Option « accès API » : {months} mois': 'Možnost „přístup API“: {months} měs.',
 };

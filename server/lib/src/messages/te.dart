@@ -139,4 +139,8 @@ const te = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'మీ Staff Flow ఖాతా {id} ఇప్పుడు Google ఖాతా {email}‌తో లింక్ అయింది.',
   'N° d\'enregistrement : {id}': 'నమోదు సంఖ్య: {id}',
   'Payé.': 'చెల్లించబడింది.',
+  'Option « accès API » nécessaire pour créer une clé.': 'కీ సృష్టించడానికి “API యాక్సెస్” ఆప్షన్ అవసరం.',
+  '10 clés au plus par entreprise.': 'ఒక్కో సంస్థకు గరిష్టంగా 10 కీలు.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'ఈ నెల మిగతా ({total} రోజుల్లో {days}): “API యాక్సెస్” ఆప్షన్',
+  'Option « accès API » : {months} mois': '“API యాక్సెస్” ఆప్షన్: {months} నెలలు',
 };

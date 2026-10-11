@@ -1656,4 +1656,81 @@ class L10nPl extends L10n {
 
   @override
   String get sitesNoneChosen => 'Nie wybrano lokalizacji';
+
+  @override
+  String get avatarTitle => 'Mój awatar';
+
+  @override
+  String get avatarSub => 'Obrazek zamiast Twojego zdjęcia';
+
+  @override
+  String get avatarUseGoogle => 'Użyj mojego zdjęcia Google';
+
+  @override
+  String get avatarColor => 'Kolor';
+
+  @override
+  String get hidePhotosTitle => 'Ukryj zdjęcia Google';
+
+  @override
+  String get hidePhotosSub =>
+      'W tej firmie każdy jest widoczny z awatarem lub inicjałem.';
+
+  @override
+  String get billingApi => 'Opcja „dostęp API”';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Opcja „dostęp API”: $months mies., bez rabatu';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Reszta bieżącego miesiąca ($days z $total dni): opcja „dostęp API”';
+  }
+
+  @override
+  String get apiTitle => 'Dostęp API (księgowość, CRM)';
+
+  @override
+  String get apiSub =>
+      'Twoje programy księgowe, płacowe lub CRM odczytują opublikowany grafik, godziny i nieobecności.';
+
+  @override
+  String get apiNeedsOption =>
+      'Opcja płatna: dodaj „dostęp API” w „Zarządzaj subskrypcją”.';
+
+  @override
+  String get apiNewKey => 'Nowy klucz';
+
+  @override
+  String get apiKeyName => 'Nazwa klucza (np. program płacowy)';
+
+  @override
+  String get apiKeyCreated =>
+      'Skopiuj ten klucz teraz i przechowuj go bezpiecznie: nie zostanie ponownie wyświetlony.';
+
+  @override
+  String get apiKeyCopy => 'Kopiuj';
+
+  @override
+  String get apiKeyCopied => 'Klucz skopiowany.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Ostatnie użycie: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Nigdy nieużywany';
+
+  @override
+  String get apiRevoke => 'Unieważnij';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Programy używające tego klucza stracą dostęp.';
+
+  @override
+  String get apiDocs => 'Dokumentacja API';
 }

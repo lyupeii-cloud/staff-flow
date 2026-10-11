@@ -1645,4 +1645,81 @@ class L10nSk extends L10n {
 
   @override
   String get sitesNoneChosen => 'Nevybrané žiadne pracovisko';
+
+  @override
+  String get avatarTitle => 'Môj avatar';
+
+  @override
+  String get avatarSub => 'Obrázok namiesto vašej fotky';
+
+  @override
+  String get avatarUseGoogle => 'Použiť moju fotku z Googlu';
+
+  @override
+  String get avatarColor => 'Farba';
+
+  @override
+  String get hidePhotosTitle => 'Skryť fotky z Googlu';
+
+  @override
+  String get hidePhotosSub =>
+      'V tejto firme sa každý zobrazuje so svojím avatarom alebo iniciálou.';
+
+  @override
+  String get billingApi => 'Možnosť „prístup API“';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Možnosť „prístup API“: $months mes., bez zľavy';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Zvyšok aktuálneho mesiaca ($days z $total dní): možnosť „prístup API“';
+  }
+
+  @override
+  String get apiTitle => 'Prístup API (účtovníctvo, CRM)';
+
+  @override
+  String get apiSub =>
+      'Váš účtovný, mzdový alebo CRM softvér číta zverejnený rozpis, hodiny a neprítomnosti.';
+
+  @override
+  String get apiNeedsOption =>
+      'Platená možnosť: pridajte „prístup API“ v časti „Spravovať predplatné“.';
+
+  @override
+  String get apiNewKey => 'Nový kľúč';
+
+  @override
+  String get apiKeyName => 'Názov kľúča (napr. mzdový softvér)';
+
+  @override
+  String get apiKeyCreated =>
+      'Skopírujte si tento kľúč hneď a uložte ho bezpečne: znova sa nezobrazí.';
+
+  @override
+  String get apiKeyCopy => 'Kopírovať';
+
+  @override
+  String get apiKeyCopied => 'Kľúč skopírovaný.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Naposledy použitý: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Nikdy nepoužitý';
+
+  @override
+  String get apiRevoke => 'Zrušiť';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Softvér, ktorý tento kľúč používa, stratí prístup.';
+
+  @override
+  String get apiDocs => 'Dokumentácia API';
 }

@@ -139,4 +139,8 @@ const th = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'บัญชี Staff Flow {id} ของคุณเชื่อมกับบัญชี Google {email} แล้ว',
   'N° d\'enregistrement : {id}': 'เลขทะเบียน: {id}',
   'Payé.': 'ชำระแล้ว',
+  'Option « accès API » nécessaire pour créer une clé.': 'ต้องมีตัวเลือก “การเข้าถึง API” จึงจะสร้างคีย์ได้',
+  '10 clés au plus par entreprise.': 'สูงสุด 10 คีย์ต่อบริษัท',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'ส่วนที่เหลือของเดือนนี้ ({days} จาก {total} วัน): ตัวเลือก “การเข้าถึง API”',
+  'Option « accès API » : {months} mois': 'ตัวเลือก “การเข้าถึง API”: {months} เดือน',
 };

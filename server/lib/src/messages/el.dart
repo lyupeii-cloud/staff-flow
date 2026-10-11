@@ -139,4 +139,8 @@ const el = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Ο λογαριασμός σας Staff Flow {id} συνδέθηκε πλέον με τον λογαριασμό Google {email}.',
   'N° d\'enregistrement : {id}': 'Αρ. μητρώου: {id}',
   'Payé.': 'Πληρώθηκε.',
+  'Option « accès API » nécessaire pour créer une clé.': 'Για να δημιουργήσετε κλειδί χρειάζεται η επιλογή «πρόσβαση API».',
+  '10 clés au plus par entreprise.': 'Έως 10 κλειδιά ανά επιχείρηση.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Υπόλοιπο τρέχοντος μήνα ({days} από {total} ημέρες): επιλογή «πρόσβαση API»',
+  'Option « accès API » : {months} mois': 'Επιλογή «πρόσβαση API»: {months} μήνες',
 };

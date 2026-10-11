@@ -1638,4 +1638,81 @@ class L10nVi extends L10n {
 
   @override
   String get sitesNoneChosen => 'Chưa chọn địa điểm';
+
+  @override
+  String get avatarTitle => 'Ảnh đại diện của tôi';
+
+  @override
+  String get avatarSub => 'Một hình thay cho ảnh của bạn';
+
+  @override
+  String get avatarUseGoogle => 'Dùng ảnh Google của tôi';
+
+  @override
+  String get avatarColor => 'Màu';
+
+  @override
+  String get hidePhotosTitle => 'Ẩn ảnh Google';
+
+  @override
+  String get hidePhotosSub =>
+      'Trong công ty này, mọi người hiển thị bằng ảnh đại diện hoặc chữ cái đầu.';
+
+  @override
+  String get billingApi => 'Tùy chọn “truy cập API”';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Tùy chọn “truy cập API”: $months tháng, không giảm giá';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Phần còn lại của tháng ($days/$total ngày): tùy chọn “truy cập API”';
+  }
+
+  @override
+  String get apiTitle => 'Truy cập API (kế toán, CRM)';
+
+  @override
+  String get apiSub =>
+      'Phần mềm kế toán, tính lương hoặc CRM của bạn đọc lịch đã công bố, số giờ và các lần vắng mặt.';
+
+  @override
+  String get apiNeedsOption =>
+      'Tùy chọn trả phí: thêm “truy cập API” trong “Quản lý gói đăng ký”.';
+
+  @override
+  String get apiNewKey => 'Khóa mới';
+
+  @override
+  String get apiKeyName => 'Tên khóa (vd: phần mềm tính lương)';
+
+  @override
+  String get apiKeyCreated =>
+      'Hãy sao chép khóa này ngay và cất giữ an toàn: khóa sẽ không hiển thị lại.';
+
+  @override
+  String get apiKeyCopy => 'Sao chép';
+
+  @override
+  String get apiKeyCopied => 'Đã sao chép khóa.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Lần dùng gần nhất: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Chưa dùng';
+
+  @override
+  String get apiRevoke => 'Thu hồi';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Phần mềm dùng khóa này sẽ mất quyền truy cập.';
+
+  @override
+  String get apiDocs => 'Tài liệu API';
 }

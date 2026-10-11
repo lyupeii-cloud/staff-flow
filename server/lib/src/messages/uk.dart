@@ -159,4 +159,8 @@ const uk = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Ваш обліковий запис Staff Flow {id} тепер прив\'язано до облікового запису Google {email}.',
   'N° d\'enregistrement : {id}': 'Реєстраційний номер: {id}',
   'Payé.': 'Сплачено.',
+  'Option « accès API » nécessaire pour créer une clé.': 'Щоб створити ключ, потрібна опція «доступ до API».',
+  '10 clés au plus par entreprise.': 'Не більше 10 ключів на компанію.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Решта поточного місяця ({days} дн. з {total}): опція «доступ до API»',
+  'Option « accès API » : {months} mois': 'Опція «доступ до API»: {months} міс.',
 };

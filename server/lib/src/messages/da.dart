@@ -139,4 +139,8 @@ const da = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Din Staff Flow-konto {id} er nu tilknyttet Google-kontoen {email}.',
   'N° d\'enregistrement : {id}': 'Reg.nr.: {id}',
   'Payé.': 'Betalt.',
+  'Option « accès API » nécessaire pour créer une clé.': 'Tilvalget “API-adgang” kræves for at oprette en nøgle.',
+  '10 clés au plus par entreprise.': 'Højst 10 nøgler pr. virksomhed.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Resten af måneden ({days} af {total} dage): tilvalget “API-adgang”',
+  'Option « accès API » : {months} mois': 'Tilvalget “API-adgang”: {months} måneder',
 };

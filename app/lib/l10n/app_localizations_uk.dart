@@ -1652,4 +1652,81 @@ class L10nUk extends L10n {
 
   @override
   String get sitesNoneChosen => 'Локацію не вибрано';
+
+  @override
+  String get avatarTitle => 'Мій аватар';
+
+  @override
+  String get avatarSub => 'Зображення замість вашого фото';
+
+  @override
+  String get avatarUseGoogle => 'Використовувати фото Google';
+
+  @override
+  String get avatarColor => 'Колір';
+
+  @override
+  String get hidePhotosTitle => 'Приховати фото Google';
+
+  @override
+  String get hidePhotosSub =>
+      'У цій компанії кожного показано з аватаром або ініціалом.';
+
+  @override
+  String get billingApi => 'Опція «доступ до API»';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Опція «доступ до API»: $months міс., без знижки';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Решта поточного місяця ($days дн. з $total): опція «доступ до API»';
+  }
+
+  @override
+  String get apiTitle => 'Доступ до API (бухгалтерія, CRM)';
+
+  @override
+  String get apiSub =>
+      'Ваші програми бухгалтерії, зарплати чи CRM читають опублікований графік, години й відсутності.';
+
+  @override
+  String get apiNeedsOption =>
+      'Платна опція: додайте «доступ до API» в «Керувати підпискою».';
+
+  @override
+  String get apiNewKey => 'Новий ключ';
+
+  @override
+  String get apiKeyName => 'Назва ключа (напр.: програма зарплати)';
+
+  @override
+  String get apiKeyCreated =>
+      'Скопіюйте цей ключ зараз і зберігайте його надійно: більше він не показуватиметься.';
+
+  @override
+  String get apiKeyCopy => 'Копіювати';
+
+  @override
+  String get apiKeyCopied => 'Ключ скопійовано.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Останнє використання: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Ще не використовувався';
+
+  @override
+  String get apiRevoke => 'Відкликати';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Програми, що використовують цей ключ, втратять доступ.';
+
+  @override
+  String get apiDocs => 'Документація API';
 }

@@ -139,4 +139,8 @@ const sv = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Ditt Staff Flow-konto {id} är nu kopplat till Google-kontot {email}.',
   'N° d\'enregistrement : {id}': 'Reg.nr: {id}',
   'Payé.': 'Betald.',
+  'Option « accès API » nécessaire pour créer une clé.': 'Tillvalet ”API-åtkomst” krävs för att skapa en nyckel.',
+  '10 clés au plus par entreprise.': 'Högst 10 nycklar per företag.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Resten av månaden ({days} av {total} dagar): tillvalet ”API-åtkomst”',
+  'Option « accès API » : {months} mois': 'Tillvalet ”API-åtkomst”: {months} månader',
 };

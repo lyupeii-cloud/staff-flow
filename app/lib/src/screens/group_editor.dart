@@ -4,6 +4,7 @@ import '../api.dart';
 import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
+import 'avatar_widgets.dart';
 
 /// Création ou modification d'un groupe de discussion par un responsable :
 /// un nom et les personnes choisies. Renvoie l'identifiant du groupe, ou
@@ -109,10 +110,7 @@ class _GroupEditorPageState extends State<GroupEditorPage> {
             CheckboxListTile(
               value: _chosen.contains(m.user.id),
               onChanged: (v) => setState(() => v == true ? _chosen.add(m.user.id) : _chosen.remove(m.user.id)),
-              secondary: CircleAvatar(
-                backgroundImage: m.user.photoUrl == null ? null : NetworkImage(m.user.photoUrl!),
-                child: m.user.photoUrl == null ? Text(m.user.name.characters.first.toUpperCase()) : null,
-              ),
+              secondary: UserAvatar.of(m.user),
               title: Text(m.user.id == _me ? t.meSuffix(m.user.name) : m.user.name),
               subtitle: Text(m.role.label(t)),
             ),

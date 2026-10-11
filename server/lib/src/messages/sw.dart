@@ -139,4 +139,8 @@ const sw = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Akaunti yako ya Staff Flow {id} sasa imeunganishwa na akaunti ya Google {email}.',
   'N° d\'enregistrement : {id}': 'Nambari ya usajili: {id}',
   'Payé.': 'Imelipwa.',
+  'Option « accès API » nécessaire pour créer une clé.': 'Chaguo la “ufikiaji wa API” linahitajika ili kuunda ufunguo.',
+  '10 clés au plus par entreprise.': 'Funguo 10 zaidi kwa kila kampuni.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Salio la mwezi huu (siku {days} kati ya {total}): chaguo la “ufikiaji wa API”',
+  'Option « accès API » : {months} mois': 'Chaguo la “ufikiaji wa API”: miezi {months}',
 };

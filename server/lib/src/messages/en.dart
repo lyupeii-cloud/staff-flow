@@ -160,4 +160,10 @@ const en = <String, String>{
   'Votre compte Staff Flow {id} est maintenant relié au compte Google {email}.': 'Your Staff Flow account {id} is now linked to the Google account {email}.',
   'N° d\'enregistrement : {id}': 'Registration no.: {id}',
   'Payé.': 'Paid.',
+  'Option « accès API » nécessaire pour créer une clé.': 'The “API access” option is required to create a key.',
+  '10 clés au plus par entreprise.': '10 keys at most per company.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Rest of this month ({days} days out of {total}): “API access” option',
+  'Option « accès API » : {months} mois': '“API access” option: {months} months',
+  'Clé API invalide.': 'Invalid API key.',
+  'Période invalide (5 ans au plus).': 'Invalid period (5 years at most).',
 };

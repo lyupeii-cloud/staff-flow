@@ -1641,4 +1641,81 @@ class L10nBg extends L10n {
 
   @override
   String get sitesNoneChosen => 'Не е избран обект';
+
+  @override
+  String get avatarTitle => 'Моят аватар';
+
+  @override
+  String get avatarSub => 'Изображение вместо вашата снимка';
+
+  @override
+  String get avatarUseGoogle => 'Използвай снимката ми от Google';
+
+  @override
+  String get avatarColor => 'Цвят';
+
+  @override
+  String get hidePhotosTitle => 'Скрий снимките от Google';
+
+  @override
+  String get hidePhotosSub =>
+      'В тази фирма всеки се показва със своя аватар или инициал.';
+
+  @override
+  String get billingApi => 'Опция „достъп до API“';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Опция „достъп до API“: $months месеца, без отстъпка';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Остатък от текущия месец ($days от $total дни): опция „достъп до API“';
+  }
+
+  @override
+  String get apiTitle => 'Достъп до API (счетоводство, CRM)';
+
+  @override
+  String get apiSub =>
+      'Вашите счетоводни, ТРЗ или CRM програми четат публикувания график, часовете и отсъствията.';
+
+  @override
+  String get apiNeedsOption =>
+      'Платена опция: добавете „достъп до API“ в „Управление на абонамента“.';
+
+  @override
+  String get apiNewKey => 'Нов ключ';
+
+  @override
+  String get apiKeyName => 'Име на ключа (напр. програма за ТРЗ)';
+
+  @override
+  String get apiKeyCreated =>
+      'Копирайте ключа сега и го пазете на сигурно място: няма да бъде показан отново.';
+
+  @override
+  String get apiKeyCopy => 'Копирай';
+
+  @override
+  String get apiKeyCopied => 'Ключът е копиран.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Последно използван: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Неизползван';
+
+  @override
+  String get apiRevoke => 'Отмени';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Програмите, които използват този ключ, ще загубят достъп.';
+
+  @override
+  String get apiDocs => 'Документация на API';
 }
