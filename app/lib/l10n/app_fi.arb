@@ -486,5 +486,6 @@
   "changeGoogleBot": "Helpointa: lähetä Telegramissa /changegoogle botille {bot} ja noudata ohjeita; kirjaudu sitten 10 minuutin kuluessa uudella Google-tilillä.",
   "changeGoogleNoTelegram": "Ilman Telegramia: pyydä omistajalta tai esihenkilöltä linkki Google-tilin vaihtoon.",
   "noticeGoogleSwitchLink": "{name} loi linkin, jolla tilisi yhdistetään uuteen Google-tiliin. Jos et pyytänyt tätä, kerro esihenkilöllesi.",
-  "sessionRevoked": "Sinut on kirjattu ulos: tilisi on nyt yhdistetty toiseen Google-tiliin."
+  "sessionRevoked": "Sinut on kirjattu ulos: tilisi on nyt yhdistetty toiseen Google-tiliin.",
+  "telegramLoginHint": "Vinkki: lähetä /connexion botille {bot}, niin saat linkin ja voit avata Staff Flow’n selaimessa ilman sovellusta tai Google-tiliä."
 }

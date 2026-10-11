@@ -486,5 +486,6 @@
   "changeGoogleBot": "Najprościej: w Telegramie wyślij /changegoogle do bota {bot} i postępuj zgodnie z instrukcjami, a następnie w ciągu 10 minut zaloguj się nowym kontem Google.",
   "changeGoogleNoTelegram": "Bez Telegramu: poproś właściciela lub kierownika o link do zmiany konta Google.",
   "noticeGoogleSwitchLink": "{name} utworzył(a) link do połączenia Twojego konta z nowym kontem Google. Jeśli o to nie prosiłeś, powiadom swojego kierownika.",
-  "sessionRevoked": "Wylogowano: Twoje konto jest teraz połączone z innym kontem Google."
+  "sessionRevoked": "Wylogowano: Twoje konto jest teraz połączone z innym kontem Google.",
+  "telegramLoginHint": "Wskazówka: wyślij /connexion do bota {bot}, aby dostać link i otworzyć Staff Flow w przeglądarce, bez aplikacji i konta Google."
 }

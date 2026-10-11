@@ -158,4 +158,9 @@ const fil = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Tapos na: naka-link na ang iyong Staff Flow account na {id} sa Google account na {email}. Na-sign out na ang iba mong device.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': 'Gumawa si {name} ng link para i-link ang iyong account sa bagong Google account. Kung hindi mo ito hiniling, sabihan ang iyong manager.',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Na-sign out ka: naka-link na ngayon ang iyong account sa ibang Google account.',
+  'Trop de liens demandés : réessayez dans une heure.': 'Masyadong maraming link ang hiningi: subukang muli pagkalipas ng isang oras.',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'Ang iyong link para mag-sign in sa Staff Flow (balido nang 5 minuto, isang beses). Huwag itong ipasa kaninuman.',
+  'Se connecter': 'Mag-sign in',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Expired na ang sign-in link: ipadala ang /connexion sa bot para makakuha ng bago.',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'May bagong pag-sign in sa Staff Flow gamit ang iyong Telegram link. Kung hindi ikaw ito, i-unlink ang Telegram sa Aking profile at sumulat sa contact@staff-flow.cloud.',
 };

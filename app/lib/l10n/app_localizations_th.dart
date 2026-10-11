@@ -1749,4 +1749,9 @@ class L10nTh extends L10n {
   @override
   String get sessionRevoked =>
       'คุณถูกออกจากระบบแล้ว: บัญชีของคุณเชื่อมกับบัญชี Google อื่นแล้ว';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'เคล็ดลับ: ส่ง /connexion ถึงบอท $bot เพื่อรับลิงก์และเปิด Staff Flow ในเบราว์เซอร์ โดยไม่ต้องใช้แอปหรือบัญชี Google';
+  }
 }

@@ -1767,4 +1767,9 @@ class L10nNl extends L10n {
   @override
   String get sessionRevoked =>
       'Je bent uitgelogd: je account is nu gekoppeld aan een ander Google-account.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Tip: stuur /connexion naar de bot $bot voor een link om Staff Flow in een browser te openen, zonder app of Google-account.';
+  }
 }

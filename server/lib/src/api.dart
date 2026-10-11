@@ -23,6 +23,7 @@ import 'platform_service.dart';
 import 'request_service.dart';
 import 'store.dart';
 import 'telegram.dart';
+import 'telegram_login.dart';
 import 'tools_service.dart';
 import 'translator.dart';
 
@@ -43,7 +44,10 @@ class Api {
   late final NoticeService notices = NoticeService(store, now: now);
   late final PlatformService platform = PlatformService(store, fileValues: platformFile);
   late final TelegramService telegram = TelegramService(store, telegramApi, now: now)
-    ..interceptor = (chatId, lang, {text, button}) => googleSwitch.onTelegram(chatId, lang, text: text, button: button);
+    ..interceptor = (chatId, lang, {text, button}) async =>
+        await telegramLogin.onTelegram(chatId, lang, text: text) ||
+        await googleSwitch.onTelegram(chatId, lang, text: text, button: button);
+  late final TelegramLoginService telegramLogin = TelegramLoginService(store, telegram, now: now, appUrl: appUrl);
   late final GoogleSwitchService googleSwitch = GoogleSwitchService(store, companies, telegram, notifications, now: now);
   late final AccountService accounts = AccountService(store, telegram, tokens.derive('account-export'), now: now, notifications: notifications);
   late final ApiAccessService apiAccess = ApiAccessService(store, companies, tools, now: now);
@@ -78,6 +82,9 @@ class Api {
   /// Bot Telegram ; `null` : Telegram désactivé.
   final TelegramApi? telegramApi;
 
+  /// Adresse de l'application web (liens envoyés par le bot).
+  final String appUrl;
+
   Api({
     required this.store,
     required this.google,
@@ -87,6 +94,7 @@ class Api {
     this.push,
     this.translator,
     this.telegramApi,
+    this.appUrl = 'https://app.staff-flow.cloud',
     this.adminEmails = const {},
     this.platformFile,
     this.testPaymentsForAll = false,
@@ -97,6 +105,7 @@ class Api {
   Handler get handler {
     final v1 = Router(notFoundHandler: _notFound)
       ..post('/auth/google', _loginGoogle)
+      ..post('/auth/telegram', (Request r) async => _session(await telegramLogin.redeem(_string(await _body(r), 'token'))))
       ..get('/me', _authed(_me))
       // Administration de la plateforme (réservée aux administrateurs).
       ..get('/admin/overview', _admin((r, u) async => _json({...await platform.overview(), 'billing': await billing.stats()})))

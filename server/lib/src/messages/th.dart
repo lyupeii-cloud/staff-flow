@@ -158,4 +158,9 @@ const th = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'เรียบร้อย: บัญชี Staff Flow {id} ของคุณเชื่อมกับบัญชี Google {email} แล้ว อุปกรณ์อื่นของคุณถูกออกจากระบบแล้ว',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} สร้างลิงก์เพื่อเชื่อมบัญชีของคุณกับบัญชี Google ใหม่ หากคุณไม่ได้ขอ โปรดแจ้งผู้จัดการของคุณ',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'คุณถูกออกจากระบบแล้ว: บัญชีของคุณเชื่อมกับบัญชี Google อื่นแล้ว',
+  'Trop de liens demandés : réessayez dans une heure.': 'ขอลิงก์มากเกินไป โปรดลองอีกครั้งในอีกหนึ่งชั่วโมง',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'ลิงก์เข้าสู่ระบบ Staff Flow ของคุณ (ใช้ได้ 5 นาที ครั้งเดียว) ห้ามส่งต่อให้ผู้อื่น',
+  'Se connecter': 'เข้าสู่ระบบ',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'ลิงก์เข้าสู่ระบบหมดอายุ: ส่ง /connexion ถึงบอทเพื่อรับลิงก์ใหม่',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'มีการเข้าสู่ระบบ Staff Flow ใหม่ด้วยลิงก์ Telegram ของคุณ หากไม่ใช่คุณ โปรดยกเลิกการเชื่อม Telegram ในโปรไฟล์ของฉัน และเขียนถึง contact@staff-flow.cloud',
 };

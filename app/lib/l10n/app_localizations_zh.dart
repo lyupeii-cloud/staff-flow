@@ -1700,4 +1700,9 @@ class L10nZh extends L10n {
 
   @override
   String get sessionRevoked => '您已退出登录：您的账号现已关联到另一个 Google 账号。';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return '提示：向机器人 $bot 发送 /connexion 获取链接，即可在浏览器中打开 Staff Flow，无需应用或 Google 账号。';
+  }
 }

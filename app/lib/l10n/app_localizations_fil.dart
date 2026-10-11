@@ -1772,4 +1772,9 @@ class L10nFil extends L10n {
   @override
   String get sessionRevoked =>
       'Na-sign out ka: naka-link na ngayon ang iyong account sa ibang Google account.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Tip: ipadala ang /connexion sa bot na $bot para makakuha ng link at mabuksan ang Staff Flow sa browser, nang walang app o Google account.';
+  }
 }

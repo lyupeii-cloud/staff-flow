@@ -18,5 +18,6 @@ export 'src/planning_service.dart';
 export 'src/request_service.dart';
 export 'src/store.dart';
 export 'src/telegram.dart';
+export 'src/telegram_login.dart';
 export 'src/tools_service.dart';
 export 'src/translator.dart';

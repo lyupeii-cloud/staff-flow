@@ -486,5 +486,6 @@
   "changeGoogleBot": "Njia rahisi zaidi: kwenye Telegram, tuma /changegoogle kwa boti {bot} na ufuate maagizo yake, kisha ingia kwa akaunti mpya ya Google ndani ya dakika 10.",
   "changeGoogleNoTelegram": "Bila Telegram: muombe mmiliki au msimamizi kiungo cha kubadilisha akaunti ya Google.",
   "noticeGoogleSwitchLink": "{name} ameunda kiungo cha kuunganisha akaunti yako na akaunti mpya ya Google. Ikiwa hukuomba hivi, mjulishe msimamizi wako.",
-  "sessionRevoked": "Umetolewa: akaunti yako sasa imeunganishwa na akaunti nyingine ya Google."
+  "sessionRevoked": "Umetolewa: akaunti yako sasa imeunganishwa na akaunti nyingine ya Google.",
+  "telegramLoginHint": "Kidokezo: tuma /connexion kwa boti {bot} upate kiungo na ufungue Staff Flow kwenye kivinjari, bila programu wala akaunti ya Google."
 }

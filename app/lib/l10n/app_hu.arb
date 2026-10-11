@@ -486,5 +486,6 @@
   "changeGoogleBot": "A legegyszerűbb: a Telegramban küldje el a /changegoogle parancsot a(z) {bot} botnak, kövesse az utasításait, majd 10 percen belül jelentkezzen be az új Google-fiókkal.",
   "changeGoogleNoTelegram": "Telegram nélkül: kérjen a tulajdonostól vagy egy vezetőtől linket a Google-fiók cseréjéhez.",
   "noticeGoogleSwitchLink": "{name} létrehozott egy linket, amellyel a fiókja új Google-fiókhoz kapcsolható. Ha nem Ön kérte, szóljon a vezetőjének.",
-  "sessionRevoked": "Kijelentkeztettük: fiókja mostantól egy másik Google-fiókhoz kapcsolódik."
+  "sessionRevoked": "Kijelentkeztettük: fiókja mostantól egy másik Google-fiókhoz kapcsolódik.",
+  "telegramLoginHint": "Tipp: küldje el a /connexion parancsot a(z) {bot} botnak, és kap egy linket, amellyel böngészőben nyithatja meg a Staff Flow-t, alkalmazás és Google-fiók nélkül."
 }

@@ -1757,4 +1757,9 @@ class L10nBn extends L10n {
   @override
   String get sessionRevoked =>
       'আপনাকে সাইন আউট করা হয়েছে: আপনার অ্যাকাউন্ট এখন অন্য একটি Google অ্যাকাউন্টের সাথে যুক্ত।';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'পরামর্শ: লিঙ্ক পেতে বট $bot-কে /connexion পাঠান এবং অ্যাপ বা Google অ্যাকাউন্ট ছাড়াই ব্রাউজারে Staff Flow খুলুন।';
+  }
 }

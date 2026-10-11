@@ -114,6 +114,14 @@ class Api {
   /// Appelé quand le serveur refuse la session en cours.
   void Function()? onUnauthorized;
 
+  /// Connexion par un lien envoyé par le bot Telegram (/connexion).
+  Future<(String, User)> loginTelegram(String linkToken) async {
+    final j = await _send('POST', '/auth/telegram', {'token': linkToken});
+    lastLoginRestored = false;
+    lastLoginSwitched = false;
+    return (j['token'] as String, User.fromJson(j['user']));
+  }
+
   /// La dernière connexion a réactivé un compte supprimé en fantôme.
   bool lastLoginRestored = false;
 

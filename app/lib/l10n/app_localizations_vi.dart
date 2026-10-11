@@ -1756,4 +1756,9 @@ class L10nVi extends L10n {
   @override
   String get sessionRevoked =>
       'Bạn đã bị đăng xuất: tài khoản của bạn giờ đã liên kết với một tài khoản Google khác.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Mẹo: gửi /connexion cho bot $bot để nhận liên kết và mở Staff Flow trong trình duyệt, không cần ứng dụng hay tài khoản Google.';
+  }
 }

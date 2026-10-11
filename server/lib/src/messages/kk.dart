@@ -158,4 +158,9 @@ const kk = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Дайын: Staff Flow аккаунтыңыз {id} {email} Google аккаунтына байланыстырылды. Басқа құрылғыларыңыздан шығарылды.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} аккаунтыңызды жаңа Google аккаунтына байланыстыру үшін сілтеме жасады. Егер сіз мұны сұрамаған болсаңыз, басшыңызға хабарлаңыз.',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Сіз шығарылдыңыз: аккаунтыңыз енді басқа Google аккаунтына байланыстырылған.',
+  'Trop de liens demandés : réessayez dans une heure.': 'Сілтеме тым көп сұралды: бір сағаттан кейін қайталаңыз.',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'Staff Flow-ға кіру сілтемеңіз (5 минут, бір рет жарамды). Оны ешкімге жібермеңіз.',
+  'Se connecter': 'Кіру',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Кіру сілтемесінің мерзімі өтті: жаңасын алу үшін ботқа /connexion жіберіңіз.',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Telegram сілтемеңіз арқылы Staff Flow-ға жаңа кіру болды. Бұл сіз болмасаңыз, Менің профилім бөлімінде Telegram-ды ажыратып, contact@staff-flow.cloud мекенжайына жазыңыз.',
 };

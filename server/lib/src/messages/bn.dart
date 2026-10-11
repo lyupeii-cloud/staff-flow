@@ -158,4 +158,9 @@ const bn = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'সম্পন্ন: আপনার Staff Flow অ্যাকাউন্ট {id} Google অ্যাকাউন্ট {email}-এর সাথে যুক্ত। আপনার অন্য ডিভাইসগুলো সাইন আউট করা হয়েছে।',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} আপনার অ্যাকাউন্টকে একটি নতুন Google অ্যাকাউন্টের সাথে যুক্ত করার লিঙ্ক তৈরি করেছেন। আপনি এটি না চাইলে আপনার ব্যবস্থাপককে জানান।',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'আপনাকে সাইন আউট করা হয়েছে: আপনার অ্যাকাউন্ট এখন অন্য একটি Google অ্যাকাউন্টের সাথে যুক্ত।',
+  'Trop de liens demandés : réessayez dans une heure.': 'অনেক বেশি লিঙ্ক চাওয়া হয়েছে: এক ঘণ্টা পরে আবার চেষ্টা করুন।',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'আপনার Staff Flow সাইন-ইন লিঙ্ক (৫ মিনিটের জন্য, একবারই বৈধ)। এটি কাউকে ফরোয়ার্ড করবেন না।',
+  'Se connecter': 'সাইন ইন',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'সাইন-ইন লিঙ্কের মেয়াদ শেষ: নতুন লিঙ্ক পেতে বটকে /connexion পাঠান।',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'আপনার Telegram লিঙ্ক দিয়ে Staff Flow-এ নতুন সাইন-ইন হয়েছে। এটি আপনি না হলে আমার প্রোফাইলে Telegram বিচ্ছিন্ন করুন এবং contact@staff-flow.cloud-এ লিখুন।',
 };

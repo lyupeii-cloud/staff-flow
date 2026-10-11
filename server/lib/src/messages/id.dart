@@ -158,4 +158,9 @@ const id = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Selesai: akun Staff Flow Anda {id} terhubung ke akun Google {email}. Perangkat Anda yang lain telah dikeluarkan.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} membuat tautan untuk menghubungkan akun Anda ke akun Google baru. Jika Anda tidak memintanya, beri tahu manajer Anda.',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Anda telah dikeluarkan: akun Anda kini terhubung ke akun Google lain.',
+  'Trop de liens demandés : réessayez dans une heure.': 'Terlalu banyak tautan diminta: coba lagi dalam satu jam.',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'Tautan masuk Staff Flow Anda (berlaku 5 menit, sekali pakai). Jangan teruskan kepada siapa pun.',
+  'Se connecter': 'Masuk',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Tautan masuk kedaluwarsa: kirim /connexion ke bot untuk mendapatkan yang baru.',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Ada login baru ke Staff Flow dengan tautan Telegram Anda. Jika ini bukan Anda, putuskan Telegram di Profil saya dan tulis ke contact@staff-flow.cloud.',
 };

@@ -1271,5 +1271,13 @@
       }
     }
   },
-  "sessionRevoked": "You have been signed out: your account is now linked to another Google account."
+  "sessionRevoked": "You have been signed out: your account is now linked to another Google account.",
+  "telegramLoginHint": "Tip: send /connexion to the bot {bot} to get a link and open Staff Flow in a browser, without the app or a Google account.",
+  "@telegramLoginHint": {
+    "placeholders": {
+      "bot": {
+        "type": "String"
+      }
+    }
+  }
 }

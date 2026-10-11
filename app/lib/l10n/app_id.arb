@@ -486,5 +486,6 @@
   "changeGoogleBot": "Cara termudah: di Telegram, kirim /changegoogle ke bot {bot} dan ikuti petunjuknya, lalu masuk dengan akun Google baru dalam 10 menit.",
   "changeGoogleNoTelegram": "Tanpa Telegram: minta tautan penggantian akun Google kepada pemilik atau manajer.",
   "noticeGoogleSwitchLink": "{name} membuat tautan untuk menghubungkan akun Anda ke akun Google baru. Jika Anda tidak memintanya, beri tahu manajer Anda.",
-  "sessionRevoked": "Anda telah dikeluarkan: akun Anda kini terhubung ke akun Google lain."
+  "sessionRevoked": "Anda telah dikeluarkan: akun Anda kini terhubung ke akun Google lain.",
+  "telegramLoginHint": "Tips: kirim /connexion ke bot {bot} untuk mendapatkan tautan dan membuka Staff Flow di peramban, tanpa aplikasi atau akun Google."
 }

@@ -1775,4 +1775,9 @@ class L10nEl extends L10n {
   @override
   String get sessionRevoked =>
       'Αποσυνδεθήκατε: ο λογαριασμός σας είναι πλέον συνδεδεμένος με άλλον λογαριασμό Google.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Συμβουλή: στείλτε /connexion στο bot $bot για να λάβετε σύνδεσμο και να ανοίξετε το Staff Flow σε πρόγραμμα περιήγησης, χωρίς εφαρμογή ή λογαριασμό Google.';
+  }
 }

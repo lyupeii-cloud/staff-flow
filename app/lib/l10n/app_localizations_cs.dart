@@ -1761,4 +1761,9 @@ class L10nCs extends L10n {
   @override
   String get sessionRevoked =>
       'Byli jste odhlášeni: váš účet je nyní propojen s jiným účtem Google.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Tip: pošlete /connexion botovi $bot, dostanete odkaz a otevřete Staff Flow v prohlížeči – bez aplikace i účtu Google.';
+  }
 }

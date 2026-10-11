@@ -1719,4 +1719,9 @@ class L10nKo extends L10n {
 
   @override
   String get sessionRevoked => '로그아웃되었습니다. 계정이 이제 다른 Google 계정에 연결되어 있습니다.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return '팁: 봇 $bot에게 /connexion을 보내면 링크를 받아 앱이나 Google 계정 없이 브라우저에서 Staff Flow를 열 수 있습니다.';
+  }
 }

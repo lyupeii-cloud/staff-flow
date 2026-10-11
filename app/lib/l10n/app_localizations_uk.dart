@@ -1770,4 +1770,9 @@ class L10nUk extends L10n {
   @override
   String get sessionRevoked =>
       'Вас від’єднано: ваш обліковий запис тепер прив’язано до іншого облікового запису Google.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Порада: надішліть /connexion боту $bot, щоб отримати посилання й відкрити Staff Flow у браузері — без застосунку й облікового запису Google.';
+  }
 }

@@ -486,5 +486,6 @@
   "changeGoogleBot": "Cách đơn giản nhất: trong Telegram, gửi /changegoogle cho bot {bot} và làm theo hướng dẫn, rồi đăng nhập bằng tài khoản Google mới trong vòng 10 phút.",
   "changeGoogleNoTelegram": "Không có Telegram: hãy xin chủ hoặc quản lý một liên kết đổi tài khoản Google.",
   "noticeGoogleSwitchLink": "{name} đã tạo một liên kết để gắn tài khoản của bạn với một tài khoản Google mới. Nếu bạn không yêu cầu, hãy báo cho quản lý của bạn.",
-  "sessionRevoked": "Bạn đã bị đăng xuất: tài khoản của bạn giờ đã liên kết với một tài khoản Google khác."
+  "sessionRevoked": "Bạn đã bị đăng xuất: tài khoản của bạn giờ đã liên kết với một tài khoản Google khác.",
+  "telegramLoginHint": "Mẹo: gửi /connexion cho bot {bot} để nhận liên kết và mở Staff Flow trong trình duyệt, không cần ứng dụng hay tài khoản Google."
 }

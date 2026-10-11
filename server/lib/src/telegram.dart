@@ -17,7 +17,8 @@ abstract class TelegramApi {
   /// Messages reçus par le bot depuis [offset] (attente longue).
   Future<List<Map<String, dynamic>>> updates(int offset);
 
-  /// Envoie un message (avec des boutons `(données, libellé)`) ; lève
+  /// Envoie un message (avec des boutons `(données, libellé)` ; des données
+  /// en `https://…` font un bouton-lien) ; lève
   /// [TelegramBlocked] si la personne a bloqué le bot.
   Future<void> send(int chatId, String text, {List<(String, String)>? buttons});
 
@@ -60,10 +61,15 @@ class HttpTelegramApi implements TelegramApi {
   Future<void> send(int chatId, String text, {List<(String, String)>? buttons}) => _call('sendMessage', {
         'chat_id': chatId,
         'text': text,
+        // Pas d'aperçu : Telegram ouvrirait les liens à notre place.
+        'link_preview_options': {'is_disabled': true},
         if (buttons != null)
           'reply_markup': {
             'inline_keyboard': [
-              [for (final (data, label) in buttons) {'text': label, 'callback_data': data}],
+              [
+                for (final (data, label) in buttons)
+                  data.startsWith('https://') ? {'text': label, 'url': data} : {'text': label, 'callback_data': data},
+              ],
             ],
           },
       });
@@ -222,6 +228,7 @@ class TelegramService {
       'Staff Flow account verification · staff-flow.cloud',
       'Link your Staff Flow account',
       'Change the Google account of your Staff Flow account',
+      'Get a link to sign in to the web app',
     ),
     'fr': (
       'Staff Flow',
@@ -229,6 +236,7 @@ class TelegramService {
       'Vérification des comptes Staff Flow · staff-flow.cloud',
       'Relier votre compte Staff Flow',
       'Changer le compte Google de votre compte Staff Flow',
+      'Recevoir un lien de connexion à l\'application web',
     ),
     'uk': (
       'Staff Flow',
@@ -236,6 +244,7 @@ class TelegramService {
       'Підтвердження облікових записів Staff Flow · staff-flow.cloud',
       'Прив\'язати обліковий запис Staff Flow',
       'Змінити обліковий запис Google для Staff Flow',
+      'Отримати посилання для входу у вебзастосунок',
     ),
     'ru': (
       'Staff Flow',
@@ -243,6 +252,7 @@ class TelegramService {
       'Подтверждение аккаунтов Staff Flow · staff-flow.cloud',
       'Привязать аккаунт Staff Flow',
       'Сменить аккаунт Google для Staff Flow',
+      'Получить ссылку для входа в веб-приложение',
     ),
   };
 
@@ -253,7 +263,7 @@ class TelegramService {
     // Telegram limite ces réglages : une erreur (déjà réglé, trop souvent) n'empêche pas le reste.
     Future<void> set(String method, Map<String, Object?> body) =>
         api!.configure(method, body).catchError((Object e) => print('Telegram $method : $e'));
-    for (final MapEntry(key: lang, value: (name, description, short, command, change)) in _profile.entries) {
+    for (final MapEntry(key: lang, value: (name, description, short, command, change, login)) in _profile.entries) {
       final l = lang.isEmpty ? const <String, Object?>{} : {'language_code': lang};
       await set('setMyName', {'name': name, ...l});
       await set('setMyDescription', {'description': description, ...l});
@@ -261,6 +271,7 @@ class TelegramService {
       await set('setMyCommands', {
         'commands': [
           {'command': 'start', 'description': command},
+          {'command': 'connexion', 'description': login},
           {'command': 'changegoogle', 'description': change},
         ],
         ...l,

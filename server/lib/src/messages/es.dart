@@ -158,4 +158,9 @@ const es = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Listo: tu cuenta de Staff Flow {id} está vinculada a la cuenta de Google {email}. Se ha cerrado la sesión en tus demás dispositivos.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} ha creado un enlace para vincular tu cuenta a una nueva cuenta de Google. Si no lo has pedido, avisa a tu responsable.',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Se ha cerrado tu sesión: tu cuenta ahora está vinculada a otra cuenta de Google.',
+  'Trop de liens demandés : réessayez dans une heure.': 'Demasiados enlaces solicitados: vuelve a intentarlo en una hora.',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'Tu enlace para iniciar sesión en Staff Flow (válido 5 minutos, una sola vez). No se lo reenvíes a nadie.',
+  'Se connecter': 'Iniciar sesión',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Enlace de inicio de sesión caducado: envía /connexion al bot para recibir uno nuevo.',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Nuevo inicio de sesión en Staff Flow con tu enlace de Telegram. Si no has sido tú, desvincula Telegram en Mi perfil y escribe a contact@staff-flow.cloud.',
 };

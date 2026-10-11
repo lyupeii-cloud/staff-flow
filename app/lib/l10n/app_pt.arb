@@ -486,5 +486,6 @@
   "changeGoogleBot": "O mais simples: no Telegram, envie /changegoogle ao bot {bot} e siga as instruções; depois entre com a nova conta Google em até 10 minutos.",
   "changeGoogleNoTelegram": "Sem Telegram: peça ao proprietário ou a um responsável um link de troca de conta Google.",
   "noticeGoogleSwitchLink": "{name} criou um link para vincular sua conta a uma nova conta Google. Se você não pediu isso, avise seu responsável.",
-  "sessionRevoked": "Você foi desconectado: sua conta agora está vinculada a outra conta Google."
+  "sessionRevoked": "Você foi desconectado: sua conta agora está vinculada a outra conta Google.",
+  "telegramLoginHint": "Dica: envie /connexion ao bot {bot} para receber um link e abrir o Staff Flow num navegador, sem o aplicativo nem conta Google."
 }

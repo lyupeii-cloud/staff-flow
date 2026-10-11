@@ -1758,4 +1758,9 @@ class L10nTe extends L10n {
   @override
   String get sessionRevoked =>
       'మీరు సైన్ అవుట్ అయ్యారు: మీ ఖాతా ఇప్పుడు వేరే Google ఖాతాకు లింక్ అయింది.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'చిట్కా: లింక్ పొందడానికి బాట్ $botకు /connexion పంపండి; యాప్ లేదా Google ఖాతా లేకుండా బ్రౌజర్‌లో Staff Flow తెరవండి.';
+  }
 }

@@ -1758,4 +1758,9 @@ class L10nHu extends L10n {
   @override
   String get sessionRevoked =>
       'Kijelentkeztettük: fiókja mostantól egy másik Google-fiókhoz kapcsolódik.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Tipp: küldje el a /connexion parancsot a(z) $bot botnak, és kap egy linket, amellyel böngészőben nyithatja meg a Staff Flow-t, alkalmazás és Google-fiók nélkül.';
+  }
 }

@@ -158,4 +158,9 @@ const ro = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Gata: contul tău Staff Flow {id} este conectat la contul Google {email}. Celelalte dispozitive ale tale au fost deconectate.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} a creat un link pentru a conecta contul tău la un nou cont Google. Dacă nu ai cerut asta, anunță-ți responsabilul.',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Ai fost deconectat: contul tău este acum conectat la alt cont Google.',
+  'Trop de liens demandés : réessayez dans une heure.': 'Prea multe linkuri cerute: încearcă din nou peste o oră.',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'Linkul tău de conectare la Staff Flow (valabil 5 minute, o singură dată). Nu-l trimite nimănui.',
+  'Se connecter': 'Conectează-te',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Link de conectare expirat: trimite /connexion botului pentru unul nou.',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Conectare nouă la Staff Flow cu linkul tău din Telegram. Dacă nu ai fost tu, deconectează Telegramul din Profilul meu și scrie la contact@staff-flow.cloud.',
 };

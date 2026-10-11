@@ -158,4 +158,9 @@ const ja = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': '完了：Staff Flow アカウント {id} は Google アカウント {email} に連携されました。ほかの端末はログアウトされました。',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} が、あなたのアカウントを新しい Google アカウントに連携するリンクを作成しました。心当たりがない場合は、責任者に知らせてください。',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'ログアウトされました。アカウントは別の Google アカウントに連携されています。',
+  'Trop de liens demandés : réessayez dans une heure.': 'リンクの請求が多すぎます。1 時間後にもう一度お試しください。',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'Staff Flow のログインリンクです（5 分間、1 回限り有効）。誰にも転送しないでください。',
+  'Se connecter': 'ログイン',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'ログインリンクの有効期限が切れました。ボットに /connexion を送って新しいリンクを受け取ってください。',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Telegram のリンクで Staff Flow に新しくログインがありました。心当たりがない場合は、マイプロフィールで Telegram の連携を解除し、contact@staff-flow.cloud までご連絡ください。',
 };

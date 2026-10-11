@@ -158,4 +158,9 @@ const da = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Færdig: din Staff Flow-konto {id} er tilknyttet Google-kontoen {email}. Dine andre enheder er logget ud.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} har oprettet et link til at knytte din konto til en ny Google-konto. Hvis du ikke har bedt om det, så sig det til din leder.',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Du er blevet logget ud: din konto er nu tilknyttet en anden Google-konto.',
+  'Trop de liens demandés : réessayez dans une heure.': 'For mange links anmodet: prøv igen om en time.',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'Dit login-link til Staff Flow (gyldigt i 5 minutter, én gang). Videresend det ikke til nogen.',
+  'Se connecter': 'Log ind',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Login-linket er udløbet: send /connexion til botten for at få et nyt.',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Nyt login på Staff Flow med dit Telegram-link. Hvis det ikke var dig, så fjern tilknytningen til Telegram under Min profil og skriv til contact@staff-flow.cloud.',
 };

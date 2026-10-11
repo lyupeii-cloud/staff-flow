@@ -1775,4 +1775,9 @@ class L10nFr extends L10n {
   @override
   String get sessionRevoked =>
       'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Astuce : envoyez /connexion au bot $bot pour recevoir un lien et ouvrir Staff Flow dans un navigateur, sans application ni compte Google.';
+  }
 }

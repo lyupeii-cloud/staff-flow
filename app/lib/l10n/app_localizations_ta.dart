@@ -1772,4 +1772,9 @@ class L10nTa extends L10n {
   @override
   String get sessionRevoked =>
       'நீங்கள் வெளியேற்றப்பட்டீர்கள்: உங்கள் கணக்கு இப்போது வேறொரு Google கணக்குடன் இணைக்கப்பட்டுள்ளது.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'குறிப்பு: இணைப்பைப் பெற $bot பாட்டுக்கு /connexion அனுப்புங்கள்; செயலி அல்லது Google கணக்கு இல்லாமல் உலாவியில் Staff Flow-ஐத் திறக்கலாம்.';
+  }
 }

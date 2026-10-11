@@ -531,4 +531,15 @@ CREATE TABLE google_switch_links (
   used_at     timestamptz
 );
 ''',
+  // 29 — liens de connexion envoyés par le bot (/connexion) : une fois, 5 minutes.
+  '''
+CREATE TABLE telegram_logins (
+  token_hash  text PRIMARY KEY,
+  user_id     uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  created_at  timestamptz NOT NULL,
+  expires_at  timestamptz NOT NULL,
+  used_at     timestamptz
+);
+CREATE INDEX telegram_logins_user ON telegram_logins (user_id, created_at);
+''',
 ];

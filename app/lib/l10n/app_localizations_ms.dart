@@ -1761,4 +1761,9 @@ class L10nMs extends L10n {
   @override
   String get sessionRevoked =>
       'Anda telah dilog keluar: akaun anda kini dipautkan kepada akaun Google lain.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Petua: hantar /connexion kepada bot $bot untuk mendapatkan pautan dan membuka Staff Flow dalam pelayar, tanpa aplikasi atau akaun Google.';
+  }
 }

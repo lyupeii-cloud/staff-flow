@@ -158,4 +158,9 @@ const hu = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Kész: a(z) {id} Staff Flow-fiókja a(z) {email} Google-fiókhoz kapcsolódik. A többi eszközéről kijelentkeztettük.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} létrehozott egy linket, amellyel a fiókja új Google-fiókhoz kapcsolható. Ha nem Ön kérte, szóljon a vezetőjének.',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Kijelentkeztettük: fiókja mostantól egy másik Google-fiókhoz kapcsolódik.',
+  'Trop de liens demandés : réessayez dans une heure.': 'Túl sok link kérése: próbálja újra egy óra múlva.',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'Az Ön Staff Flow-bejelentkezési linkje (5 percig, egyszer érvényes). Senkinek ne továbbítsa.',
+  'Se connecter': 'Bejelentkezés',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'A bejelentkezési link lejárt: küldje el a /connexion parancsot a botnak egy újért.',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Új bejelentkezés a Staff Flow-ba a Telegram-linkjével. Ha nem Ön volt, válassza le a Telegramot a Saját profilban, és írjon ide: contact@staff-flow.cloud.',
 };

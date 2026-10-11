@@ -158,4 +158,9 @@ const el = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Έγινε: ο λογαριασμός σας Staff Flow {id} συνδέθηκε με τον λογαριασμό Google {email}. Οι άλλες συσκευές σας αποσυνδέθηκαν.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': 'Ο/Η {name} δημιούργησε σύνδεσμο για να συνδεθεί ο λογαριασμός σας με νέο λογαριασμό Google. Αν δεν το ζητήσατε, ενημερώστε τον υπεύθυνό σας.',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Αποσυνδεθήκατε: ο λογαριασμός σας είναι πλέον συνδεδεμένος με άλλον λογαριασμό Google.',
+  'Trop de liens demandés : réessayez dans une heure.': 'Πάρα πολλά αιτήματα συνδέσμων: δοκιμάστε ξανά σε μία ώρα.',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'Ο σύνδεσμος εισόδου σας στο Staff Flow (ισχύει 5 λεπτά, μία φορά). Μην τον προωθήσετε σε κανέναν.',
+  'Se connecter': 'Σύνδεση',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Ο σύνδεσμος εισόδου έληξε: στείλτε /connexion στο bot για νέο.',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Νέα σύνδεση στο Staff Flow με τον σύνδεσμό σας από το Telegram. Αν δεν ήσασταν εσείς, αποσυνδέστε το Telegram στο Το προφίλ μου και γράψτε στο contact@staff-flow.cloud.',
 };

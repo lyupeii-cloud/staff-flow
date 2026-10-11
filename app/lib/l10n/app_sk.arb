@@ -486,5 +486,6 @@
   "changeGoogleBot": "Najjednoduchšie: v Telegrame pošlite /changegoogle botovi {bot} a postupujte podľa pokynov, potom sa do 10 minút prihláste novým účtom Google.",
   "changeGoogleNoTelegram": "Bez Telegramu: požiadajte majiteľa alebo vedúceho o odkaz na zmenu účtu Google.",
   "noticeGoogleSwitchLink": "{name} vytvoril(a) odkaz na prepojenie vášho účtu s novým účtom Google. Ak ste o to nežiadali, dajte vedieť svojmu vedúcemu.",
-  "sessionRevoked": "Boli ste odhlásení: váš účet je teraz prepojený s iným účtom Google."
+  "sessionRevoked": "Boli ste odhlásení: váš účet je teraz prepojený s iným účtom Google.",
+  "telegramLoginHint": "Tip: pošlite /connexion botovi {bot}, dostanete odkaz a otvoríte Staff Flow v prehliadači – bez aplikácie aj účtu Google."
 }

@@ -1759,4 +1759,9 @@ class L10nBg extends L10n {
   @override
   String get sessionRevoked =>
       'Излязохте от профила си: акаунтът ви вече е свързан с друг акаунт в Google.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Съвет: изпратете /connexion на бота $bot, за да получите връзка и да отворите Staff Flow в браузър – без приложение и акаунт в Google.';
+  }
 }

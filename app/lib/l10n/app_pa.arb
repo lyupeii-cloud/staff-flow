@@ -486,5 +486,6 @@
   "changeGoogleBot": "ਸਭ ਤੋਂ ਸੌਖਾ: Telegram ਵਿੱਚ ਬੋਟ {bot} ਨੂੰ /changegoogle ਭੇਜੋ ਅਤੇ ਹਦਾਇਤਾਂ ਮੰਨੋ, ਫਿਰ 10 ਮਿੰਟਾਂ ਵਿੱਚ ਨਵੇਂ Google ਖਾਤੇ ਨਾਲ ਸਾਈਨ ਇਨ ਕਰੋ।",
   "changeGoogleNoTelegram": "Telegram ਤੋਂ ਬਿਨਾਂ: ਮਾਲਕ ਜਾਂ ਮੈਨੇਜਰ ਤੋਂ Google ਖਾਤਾ ਬਦਲਣ ਦਾ ਲਿੰਕ ਮੰਗੋ।",
   "noticeGoogleSwitchLink": "{name} ਨੇ ਤੁਹਾਡੇ ਖਾਤੇ ਨੂੰ ਨਵੇਂ Google ਖਾਤੇ ਨਾਲ ਜੋੜਨ ਲਈ ਲਿੰਕ ਬਣਾਇਆ ਹੈ। ਜੇ ਤੁਸੀਂ ਇਹ ਨਹੀਂ ਮੰਗਿਆ, ਤਾਂ ਆਪਣੇ ਮੈਨੇਜਰ ਨੂੰ ਦੱਸੋ।",
-  "sessionRevoked": "ਤੁਹਾਨੂੰ ਸਾਈਨ ਆਊਟ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ: ਤੁਹਾਡਾ ਖਾਤਾ ਹੁਣ ਕਿਸੇ ਹੋਰ Google ਖਾਤੇ ਨਾਲ ਜੁੜਿਆ ਹੈ।"
+  "sessionRevoked": "ਤੁਹਾਨੂੰ ਸਾਈਨ ਆਊਟ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ: ਤੁਹਾਡਾ ਖਾਤਾ ਹੁਣ ਕਿਸੇ ਹੋਰ Google ਖਾਤੇ ਨਾਲ ਜੁੜਿਆ ਹੈ।",
+  "telegramLoginHint": "ਸੁਝਾਅ: ਲਿੰਕ ਲੈਣ ਲਈ ਬੋਟ {bot} ਨੂੰ /connexion ਭੇਜੋ ਅਤੇ ਬਿਨਾਂ ਐਪ ਜਾਂ Google ਖਾਤੇ ਦੇ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ Staff Flow ਖੋਲ੍ਹੋ।"
 }

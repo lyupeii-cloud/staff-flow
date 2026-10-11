@@ -486,5 +486,6 @@
   "changeGoogleBot": "Enklast: skicka /changegoogle till boten {bot} i Telegram och följ instruktionerna, logga sedan in med det nya Google-kontot inom 10 minuter.",
   "changeGoogleNoTelegram": "Utan Telegram: be ägaren eller en chef om en länk för att byta Google-konto.",
   "noticeGoogleSwitchLink": "{name} har skapat en länk för att koppla ditt konto till ett nytt Google-konto. Om du inte har bett om detta, säg till din chef.",
-  "sessionRevoked": "Du har loggats ut: ditt konto är nu kopplat till ett annat Google-konto."
+  "sessionRevoked": "Du har loggats ut: ditt konto är nu kopplat till ett annat Google-konto.",
+  "telegramLoginHint": "Tips: skicka /connexion till boten {bot} för att få en länk och öppna Staff Flow i en webbläsare, utan app eller Google-konto."
 }

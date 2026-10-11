@@ -158,4 +158,9 @@ const sw = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Imekamilika: akaunti yako ya Staff Flow {id} imeunganishwa na akaunti ya Google {email}. Vifaa vyako vingine vimetolewa.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} ameunda kiungo cha kuunganisha akaunti yako na akaunti mpya ya Google. Ikiwa hukuomba hivi, mjulishe msimamizi wako.',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Umetolewa: akaunti yako sasa imeunganishwa na akaunti nyingine ya Google.',
+  'Trop de liens demandés : réessayez dans une heure.': 'Viungo vingi mno vimeombwa: jaribu tena baada ya saa moja.',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'Kiungo chako cha kuingia Staff Flow (halali kwa dakika 5, mara moja). Usimtumie mtu yeyote.',
+  'Se connecter': 'Ingia',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Kiungo cha kuingia kimeisha muda: tuma /connexion kwa boti upate kipya.',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Kuingia kipya kwenye Staff Flow kwa kiungo chako cha Telegram. Ikiwa si wewe, tenganisha Telegram kwenye Wasifu wangu na uandike kwa contact@staff-flow.cloud.',
 };

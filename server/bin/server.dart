@@ -61,6 +61,7 @@ Future<void> main() async {
     push: push,
     translator: translator,
     telegramApi: telegramToken.isEmpty ? null : HttpTelegramApi(telegramToken),
+    appUrl: env['APP_URL'] ?? 'https://app.staff-flow.cloud',
     adminEmails: {for (final e in list('ADMIN_EMAILS')) e.toLowerCase()},
     testPaymentsForAll: env['BILLING_TEST'] == 'true',
     platformFile: (env['PLATFORM_CONFIG'] ?? '').isEmpty ? null : PlatformService.readFile(env['PLATFORM_CONFIG']!),

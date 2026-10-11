@@ -158,4 +158,9 @@ const vi = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Xong: tài khoản Staff Flow {id} của bạn đã liên kết với tài khoản Google {email}. Các thiết bị khác của bạn đã bị đăng xuất.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} đã tạo một liên kết để gắn tài khoản của bạn với một tài khoản Google mới. Nếu bạn không yêu cầu, hãy báo cho quản lý của bạn.',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Bạn đã bị đăng xuất: tài khoản của bạn giờ đã liên kết với một tài khoản Google khác.',
+  'Trop de liens demandés : réessayez dans une heure.': 'Yêu cầu quá nhiều liên kết: hãy thử lại sau một giờ.',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'Liên kết đăng nhập Staff Flow của bạn (hiệu lực 5 phút, một lần). Đừng chuyển tiếp cho bất kỳ ai.',
+  'Se connecter': 'Đăng nhập',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Liên kết đăng nhập đã hết hạn: gửi /connexion cho bot để nhận liên kết mới.',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Có lượt đăng nhập mới vào Staff Flow bằng liên kết Telegram của bạn. Nếu không phải bạn, hãy hủy liên kết Telegram trong Hồ sơ của tôi và viết thư tới contact@staff-flow.cloud.',
 };

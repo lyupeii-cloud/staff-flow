@@ -77,6 +77,10 @@ class Session extends ChangeNotifier {
   /// Lien de changement de compte Google ouvert dans le navigateur.
   String? googleSwitchToken = kIsWeb && Uri.base.path.startsWith('/switch/') ? Uri.base.path.substring(8) : null;
 
+  /// Lien de connexion envoyé par le bot Telegram (/connexion), ouvert dans le navigateur.
+  String? telegramLoginToken =
+      kIsWeb && Uri.base.path.startsWith('/connexion/') ? Uri.base.path.substring('/connexion/'.length) : null;
+
   /// La connexion vient de rattacher ce compte Google à un compte existant.
   bool accountSwitched = false;
 
@@ -106,6 +110,16 @@ class Session extends ChangeNotifier {
       sync = await Sync.open(api);
       _watchLifecycle();
       api.token = prefs.getString(tokenKey);
+      // Lien du bot Telegram : connexion directe (il ne sert qu'une fois).
+      final link = telegramLoginToken;
+      if (link != null) {
+        telegramLoginToken = null;
+        try {
+          return await _signedIn(await api.loginTelegram(link));
+        } on ApiException catch (e) {
+          error = e.describe;
+        }
+      }
       if (api.token == null) return _set(SessionState.signedOut);
       // Lancement : l'écran s'affiche tout de suite avec les données de la
       // dernière utilisation, puis se met à jour.

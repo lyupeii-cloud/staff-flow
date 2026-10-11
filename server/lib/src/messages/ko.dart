@@ -158,4 +158,9 @@ const ko = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': '완료: Staff Flow 계정 {id}이(가) Google 계정 {email}에 연결되었습니다. 다른 기기는 로그아웃되었습니다.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name}님이 계정을 새 Google 계정에 연결하는 링크를 만들었습니다. 요청한 적이 없다면 관리자에게 알리세요.',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': '로그아웃되었습니다. 계정이 이제 다른 Google 계정에 연결되어 있습니다.',
+  'Trop de liens demandés : réessayez dans une heure.': '링크 요청이 너무 많습니다. 1시간 후에 다시 시도하세요.',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'Staff Flow 로그인 링크입니다(5분 동안 한 번만 유효). 아무에게도 전달하지 마세요.',
+  'Se connecter': '로그인',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': '로그인 링크가 만료되었습니다. 봇에게 /connexion을 보내 새 링크를 받으세요.',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Telegram 링크로 Staff Flow에 새로 로그인했습니다. 본인이 아니라면 내 프로필에서 Telegram 연결을 해제하고 contact@staff-flow.cloud로 연락하세요.',
 };

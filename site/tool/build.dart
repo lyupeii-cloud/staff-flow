@@ -96,7 +96,7 @@ final t = <String, Map<String, Object>>{
     'faq': [
       ['Faut-il un iPhone ou un Android ?', 'L\'application existe pour Android. Sur iPhone, ordinateur ou tablette, tout fonctionne dans le navigateur, et vous pouvez l\'ajouter à l\'écran d\'accueil comme une application.'],
       ['Mes salariés doivent-ils payer ?', 'Non. Seul le propriétaire de l\'entreprise a un abonnement. Les salariés, responsables et extras utilisent l\'application gratuitement.'],
-      ['Comment se connecter ?', 'Avec un compte Google, sans nouveau mot de passe. Chacun garde le même compte pour toutes ses entreprises.'],
+      ['Comment se connecter ?', 'Avec un compte Google, sans nouveau mot de passe. Chacun garde le même compte pour toutes ses entreprises. Après avoir relié votre Telegram, vous pouvez aussi demander un lien de connexion au bot (/connexion) et ouvrir Staff Flow dans n\'importe quel navigateur, sans rien installer.'],
       ['Et si le téléphone n\'a pas de réseau ?', 'Le planning déjà reçu reste affiché. Le patron peut continuer à préparer le planning et un salarié à faire une demande de congé : c\'est gardé dans la mémoire du téléphone, puis envoyé dès que la connexion revient. Les autres ne voient ces changements qu\'à ce moment-là.'],
       ['Mes données sont-elles protégées ?', 'Les échanges sont chiffrés (HTTPS), les sauvegardes aussi. Vos plannings et messages ne sont ni vendus, ni utilisés pour la publicité.'],
       ['Staff Flow se connecte-t-il à mon logiciel de paie ou à mon CRM ?', 'Oui, avec l\'option accès API : votre logiciel lit automatiquement le planning publié, les heures par salarié et les absences, en JSON ou en CSV. Vous créez les clés vous-même dans l\'application et pouvez les révoquer à tout moment. La documentation est publique : staff-flow.cloud/fr/api.'],
@@ -178,7 +178,7 @@ final t = <String, Map<String, Object>>{
     'faq': [
       ['Потрібен iPhone чи Android?', 'Застосунок є для Android. На iPhone, комп\'ютері чи планшеті все працює в браузері, і його можна додати на головний екран як застосунок.'],
       ['Чи платять працівники?', 'Ні. Підписка є лише у власника компанії. Працівники, керівники й тимчасові працівники користуються застосунком безкоштовно.'],
-      ['Як увійти?', 'Через акаунт Google, без нового пароля. Один акаунт для всіх ваших компаній.'],
+      ['Як увійти?', 'Через акаунт Google, без нового пароля. Один акаунт для всіх ваших компаній. Прив\'язавши Telegram, ви можете також попросити в бота посилання для входу (/connexion) і відкрити Staff Flow у будь-якому браузері, нічого не встановлюючи.'],
       ['А якщо на телефоні немає зв\'язку?', 'Уже отриманий графік залишається на екрані. Власник може далі складати графік, а працівник — попросити відпустку: усе зберігається в пам\'яті телефона й надсилається, щойно з\'явиться зв\'язок. Інші побачать ці зміни саме тоді.'],
       ['Чи захищені мої дані?', 'Обмін даними зашифровано (HTTPS), резервні копії теж. Ваші графіки й повідомлення не продаються й не використовуються для реклами.'],
       ['Чи підключається Staff Flow до моєї програми зарплати чи CRM?', 'Так, з опцією доступу до API: ваша програма автоматично читає опублікований графік, години кожного працівника й відсутності у форматі JSON або CSV. Ключі ви створюєте самі в застосунку й можете будь-коли відкликати. Документація відкрита: staff-flow.cloud/ua/api.'],
@@ -260,7 +260,7 @@ final t = <String, Map<String, Object>>{
     'faq': [
       ['Do I need an iPhone or an Android?', 'There is an Android app. On iPhone, computer or tablet, everything works in the browser, and you can add it to your home screen like an app.'],
       ['Do my employees pay?', 'No. Only the company owner has a subscription. Employees, managers and temps use the app for free.'],
-      ['How do people sign in?', 'With a Google account, no new password. One account for all your companies.'],
+      ['How do people sign in?', 'With a Google account, no new password. One account for all your companies. Once your Telegram is linked, you can also ask the bot for a sign-in link (/connexion) and open Staff Flow in any browser, with nothing to install.'],
       ['What if the phone has no signal?', 'The schedule you already received stays on screen. The owner can keep planning and an employee can ask for leave: it is kept in the phone\'s memory and sent as soon as the connection is back. Others see those changes only then.'],
       ['Is my data protected?', 'Connections are encrypted (HTTPS), and so are backups. Your schedules and messages are never sold or used for advertising.'],
       ['Does Staff Flow connect to my payroll software or CRM?', 'Yes, with the API access option: your software automatically reads the published schedule, hours per employee and absences, as JSON or CSV. You create the keys yourself in the app and can revoke them at any time. The documentation is public: staff-flow.cloud/en/api.'],

@@ -92,6 +92,12 @@ class TelegramCard extends StatelessWidget {
               label: Text(t.telegramLink),
             ),
           ),
+        if (linked)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+            child: Text(t.telegramLoginHint(me.telegramBot == null ? '' : '@${me.telegramBot}'),
+                style: Theme.of(context).textTheme.bodySmall),
+          ),
         if (linked && telegram != null && me.companies.isNotEmpty) ...[
           const Divider(height: 1),
           Padding(

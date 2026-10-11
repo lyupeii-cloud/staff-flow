@@ -1761,4 +1761,9 @@ class L10nEn extends L10n {
   @override
   String get sessionRevoked =>
       'You have been signed out: your account is now linked to another Google account.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Tip: send /connexion to the bot $bot to get a link and open Staff Flow in a browser, without the app or a Google account.';
+  }
 }

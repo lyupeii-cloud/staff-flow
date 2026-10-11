@@ -1764,4 +1764,9 @@ class L10nDa extends L10n {
   @override
   String get sessionRevoked =>
       'Du er blevet logget ud: din konto er nu tilknyttet en anden Google-konto.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Tip: send /connexion til botten $bot for at få et link og åbne Staff Flow i en browser – uden app eller Google-konto.';
+  }
 }

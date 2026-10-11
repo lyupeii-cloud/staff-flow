@@ -1771,4 +1771,9 @@ class L10nEs extends L10n {
   @override
   String get sessionRevoked =>
       'Se ha cerrado tu sesión: tu cuenta ahora está vinculada a otra cuenta de Google.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Consejo: envía /connexion al bot $bot para recibir un enlace y abrir Staff Flow en un navegador, sin la aplicación ni cuenta de Google.';
+  }
 }

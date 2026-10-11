@@ -1759,4 +1759,9 @@ class L10nId extends L10n {
   @override
   String get sessionRevoked =>
       'Anda telah dikeluarkan: akun Anda kini terhubung ke akun Google lain.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Tips: kirim /connexion ke bot $bot untuk mendapatkan tautan dan membuka Staff Flow di peramban, tanpa aplikasi atau akun Google.';
+  }
 }

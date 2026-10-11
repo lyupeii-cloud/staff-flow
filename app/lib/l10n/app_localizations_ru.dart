@@ -1767,4 +1767,9 @@ class L10nRu extends L10n {
   @override
   String get sessionRevoked =>
       'Вы вышли из аккаунта: ваш аккаунт теперь привязан к другому аккаунту Google.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Совет: отправьте /connexion боту $bot, чтобы получить ссылку и открыть Staff Flow в браузере — без приложения и аккаунта Google.';
+  }
 }

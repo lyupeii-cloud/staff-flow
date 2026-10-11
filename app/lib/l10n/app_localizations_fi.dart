@@ -1765,4 +1765,9 @@ class L10nFi extends L10n {
   @override
   String get sessionRevoked =>
       'Sinut on kirjattu ulos: tilisi on nyt yhdistetty toiseen Google-tiliin.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Vinkki: lähetä /connexion botille $bot, niin saat linkin ja voit avata Staff Flow’n selaimessa ilman sovellusta tai Google-tiliä.';
+  }
 }

@@ -486,5 +486,6 @@
   "changeGoogleBot": "最简单的方法：在 Telegram 中向机器人 {bot} 发送 /changegoogle 并按提示操作，然后在 10 分钟内用新的 Google 账号登录。",
   "changeGoogleNoTelegram": "没有 Telegram：请向老板或负责人索取更换 Google 账号的链接。",
   "noticeGoogleSwitchLink": "{name} 创建了一个链接，用于将您的账号关联到新的 Google 账号。如果您没有提出此请求，请告知您的负责人。",
-  "sessionRevoked": "您已退出登录：您的账号现已关联到另一个 Google 账号。"
+  "sessionRevoked": "您已退出登录：您的账号现已关联到另一个 Google 账号。",
+  "telegramLoginHint": "提示：向机器人 {bot} 发送 /connexion 获取链接，即可在浏览器中打开 Staff Flow，无需应用或 Google 账号。"
 }

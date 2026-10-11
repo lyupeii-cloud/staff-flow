@@ -1760,4 +1760,9 @@ class L10nPa extends L10n {
   @override
   String get sessionRevoked =>
       'ਤੁਹਾਨੂੰ ਸਾਈਨ ਆਊਟ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ: ਤੁਹਾਡਾ ਖਾਤਾ ਹੁਣ ਕਿਸੇ ਹੋਰ Google ਖਾਤੇ ਨਾਲ ਜੁੜਿਆ ਹੈ।';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'ਸੁਝਾਅ: ਲਿੰਕ ਲੈਣ ਲਈ ਬੋਟ $bot ਨੂੰ /connexion ਭੇਜੋ ਅਤੇ ਬਿਨਾਂ ਐਪ ਜਾਂ Google ਖਾਤੇ ਦੇ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ Staff Flow ਖੋਲ੍ਹੋ।';
+  }
 }

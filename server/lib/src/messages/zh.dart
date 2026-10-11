@@ -158,4 +158,9 @@ const zh = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': '完成：您的 Staff Flow 账号 {id} 已关联到 Google 账号 {email}。您的其他设备已退出登录。',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} 创建了一个链接，用于将您的账号关联到新的 Google 账号。如果您没有提出此请求，请告知您的负责人。',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': '您已退出登录：您的账号现已关联到另一个 Google 账号。',
+  'Trop de liens demandés : réessayez dans une heure.': '请求的链接过多：请一小时后再试。',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': '您的 Staff Flow 登录链接（5 分钟内有效，仅限一次）。请勿转发给任何人。',
+  'Se connecter': '登录',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': '登录链接已过期：向机器人发送 /connexion 获取新链接。',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': '有人通过您的 Telegram 链接登录了 Staff Flow。如果不是您本人，请在“我的资料”中取消关联 Telegram，并写信至 contact@staff-flow.cloud。',
 };

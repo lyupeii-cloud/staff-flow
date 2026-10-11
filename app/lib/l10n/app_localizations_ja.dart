@@ -1717,4 +1717,9 @@ class L10nJa extends L10n {
 
   @override
   String get sessionRevoked => 'ログアウトされました。アカウントは別の Google アカウントに連携されています。';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'ヒント：ボット $bot に /connexion を送るとリンクが届き、アプリや Google アカウントなしでブラウザーから Staff Flow を開けます。';
+  }
 }

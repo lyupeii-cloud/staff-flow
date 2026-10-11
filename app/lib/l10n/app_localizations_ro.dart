@@ -1771,4 +1771,9 @@ class L10nRo extends L10n {
   @override
   String get sessionRevoked =>
       'Ai fost deconectat: contul tău este acum conectat la alt cont Google.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Sfat: trimite /connexion botului $bot ca să primești un link și să deschizi Staff Flow în browser, fără aplicație și fără cont Google.';
+  }
 }

@@ -158,4 +158,9 @@ const ta = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'முடிந்தது: உங்கள் Staff Flow கணக்கு {id} Google கணக்கு {email} உடன் இணைக்கப்பட்டது. உங்கள் மற்ற சாதனங்கள் வெளியேற்றப்பட்டன.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': 'உங்கள் கணக்கை புதிய Google கணக்குடன் இணைக்க {name} ஒரு இணைப்பை உருவாக்கியுள்ளார். நீங்கள் கேட்கவில்லை என்றால், உங்கள் மேலாளரிடம் தெரிவியுங்கள்.',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'நீங்கள் வெளியேற்றப்பட்டீர்கள்: உங்கள் கணக்கு இப்போது வேறொரு Google கணக்குடன் இணைக்கப்பட்டுள்ளது.',
+  'Trop de liens demandés : réessayez dans une heure.': 'அதிக இணைப்புகள் கோரப்பட்டன: ஒரு மணி நேரம் கழித்து மீண்டும் முயலுங்கள்.',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'உங்கள் Staff Flow உள்நுழைவு இணைப்பு (5 நிமிடம், ஒருமுறை மட்டும் செல்லும்). யாருக்கும் அனுப்பாதீர்கள்.',
+  'Se connecter': 'உள்நுழை',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'உள்நுழைவு இணைப்பு காலாவதியானது: புதியதைப் பெற பாட்டுக்கு /connexion அனுப்புங்கள்.',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'உங்கள் Telegram இணைப்பின் மூலம் Staff Flow-இல் புதிய உள்நுழைவு. இது நீங்கள் இல்லையெனில், என் சுயவிவரத்தில் Telegram-ஐத் துண்டித்து contact@staff-flow.cloud-க்கு எழுதுங்கள்.',
 };

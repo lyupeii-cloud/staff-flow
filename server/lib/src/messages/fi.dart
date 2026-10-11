@@ -158,4 +158,9 @@ const fi = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Valmis: Staff Flow -tilisi {id} on yhdistetty Google-tiliin {email}. Muut laitteesi on kirjattu ulos.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} loi linkin, jolla tilisi yhdistetään uuteen Google-tiliin. Jos et pyytänyt tätä, kerro esihenkilöllesi.',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Sinut on kirjattu ulos: tilisi on nyt yhdistetty toiseen Google-tiliin.',
+  'Trop de liens demandés : réessayez dans une heure.': 'Liian monta linkkipyyntöä: yritä uudelleen tunnin kuluttua.',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'Staff Flow -kirjautumislinkkisi (voimassa 5 minuuttia, kerran). Älä välitä sitä kenellekään.',
+  'Se connecter': 'Kirjaudu',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Kirjautumislinkki on vanhentunut: lähetä botille /connexion saadaksesi uuden.',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Uusi kirjautuminen Staff Flow’hun Telegram-linkilläsi. Jos et tehnyt tätä, poista Telegram-yhteys kohdassa Oma profiili ja kirjoita osoitteeseen contact@staff-flow.cloud.',
 };

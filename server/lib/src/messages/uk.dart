@@ -178,4 +178,9 @@ const uk = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Готово: ваш обліковий запис Staff Flow {id} прив\'язано до облікового запису Google {email}. Інші ваші пристрої від\'єднано.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} створив(-ла) посилання, щоб прив\'язати ваш обліковий запис до нового облікового запису Google. Якщо ви цього не просили, повідомте свого керівника.',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Вас від’єднано: ваш обліковий запис тепер прив’язано до іншого облікового запису Google.',
+  'Trop de liens demandés : réessayez dans une heure.': 'Забагато запитів на посилання: спробуйте через годину.',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'Ваше посилання для входу в Staff Flow (діє 5 хвилин, один раз). Нікому його не пересилайте.',
+  'Se connecter': 'Увійти',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Посилання для входу застаріло: надішліть боту /connexion, щоб отримати нове.',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Новий вхід у Staff Flow за вашим посиланням із Telegram. Якщо це не ви, відв\'яжіть Telegram у розділі «Мій профіль» і напишіть на contact@staff-flow.cloud.',
 };

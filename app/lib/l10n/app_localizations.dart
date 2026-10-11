@@ -3112,6 +3112,12 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'You have been signed out: your account is now linked to another Google account.'**
   String get sessionRevoked;
+
+  /// No description provided for @telegramLoginHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tip: send /connexion to the bot {bot} to get a link and open Staff Flow in a browser, without the app or a Google account.'**
+  String telegramLoginHint(String bot);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

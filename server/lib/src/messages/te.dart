@@ -158,4 +158,9 @@ const te = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'పూర్తయింది: మీ Staff Flow ఖాతా {id} Google ఖాతా {email}‌కు లింక్ అయింది. మీ ఇతర పరికరాలు సైన్ అవుట్ అయ్యాయి.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': 'మీ ఖాతాను కొత్త Google ఖాతాకు లింక్ చేయడానికి {name} ఒక లింక్ సృష్టించారు. మీరు అడగకపోతే, మీ మేనేజర్‌కు తెలియజేయండి.',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'మీరు సైన్ అవుట్ అయ్యారు: మీ ఖాతా ఇప్పుడు వేరే Google ఖాతాకు లింక్ అయింది.',
+  'Trop de liens demandés : réessayez dans une heure.': 'చాలా లింక్‌లు అడిగారు: ఒక గంట తర్వాత మళ్లీ ప్రయత్నించండి.',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'మీ Staff Flow సైన్-ఇన్ లింక్ (5 నిమిషాలు, ఒక్కసారే చెల్లుతుంది). దీన్ని ఎవరికీ ఫార్వర్డ్ చేయకండి.',
+  'Se connecter': 'సైన్ ఇన్',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'సైన్-ఇన్ లింక్ గడువు ముగిసింది: కొత్తది పొందడానికి బాట్‌కు /connexion పంపండి.',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'మీ Telegram లింక్‌తో Staff Flow‌లో కొత్త సైన్-ఇన్ జరిగింది. ఇది మీరు కాకపోతే, నా ప్రొఫైల్‌లో Telegram‌ను అన్‌లింక్ చేసి contact@staff-flow.cloud‌కు రాయండి.',
 };

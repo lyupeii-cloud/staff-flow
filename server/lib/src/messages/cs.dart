@@ -158,4 +158,9 @@ const cs = <String, String>{
   'C\'est fait : votre compte Staff Flow {id} est relié au compte Google {email}. Vos autres appareils ont été déconnectés.': 'Hotovo: váš účet Staff Flow {id} je propojen s účtem Google {email}. Vaše ostatní zařízení byla odhlášena.',
   '{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.': '{name} vytvořil(a) odkaz k propojení vašeho účtu s novým účtem Google. Pokud jste o to nežádali, dejte vědět svému vedoucímu.',
   'Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.': 'Byli jste odhlášeni: váš účet je nyní propojen s jiným účtem Google.',
+  'Trop de liens demandés : réessayez dans une heure.': 'Příliš mnoho žádostí o odkaz: zkuste to za hodinu.',
+  'Votre lien de connexion à Staff Flow (valable 5 minutes, une seule fois). Ne le transférez à personne.': 'Váš odkaz pro přihlášení do Staff Flow (platí 5 minut, jednou). Nikomu ho nepřeposílejte.',
+  'Se connecter': 'Přihlásit se',
+  'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Odkaz pro přihlášení vypršel: pošlete botovi /connexion a dostanete nový.',
+  'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Nové přihlášení do Staff Flow přes váš odkaz z Telegramu. Pokud jste to nebyli vy, odpojte Telegram v Mém profilu a napište na contact@staff-flow.cloud.',
 };

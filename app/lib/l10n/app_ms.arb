@@ -486,5 +486,6 @@
   "changeGoogleBot": "Cara paling mudah: dalam Telegram, hantar /changegoogle kepada bot {bot} dan ikut arahannya, kemudian log masuk dengan akaun Google baharu dalam masa 10 minit.",
   "changeGoogleNoTelegram": "Tanpa Telegram: minta pautan penukaran akaun Google daripada pemilik atau pengurus.",
   "noticeGoogleSwitchLink": "{name} telah mencipta pautan untuk memautkan akaun anda kepada akaun Google baharu. Jika anda tidak memintanya, maklumkan kepada pengurus anda.",
-  "sessionRevoked": "Anda telah dilog keluar: akaun anda kini dipautkan kepada akaun Google lain."
+  "sessionRevoked": "Anda telah dilog keluar: akaun anda kini dipautkan kepada akaun Google lain.",
+  "telegramLoginHint": "Petua: hantar /connexion kepada bot {bot} untuk mendapatkan pautan dan membuka Staff Flow dalam pelayar, tanpa aplikasi atau akaun Google."
 }

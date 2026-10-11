@@ -486,5 +486,6 @@
   "changeGoogleBot": "सबसे आसान: Telegram में बॉट {bot} को /changegoogle भेजें और निर्देशों का पालन करें, फिर 10 मिनट के भीतर नए Google खाते से साइन इन करें।",
   "changeGoogleNoTelegram": "Telegram के बिना: अपने मालिक या प्रबंधक से Google खाता बदलने का लिंक माँगें।",
   "noticeGoogleSwitchLink": "{name} ने आपके खाते को नए Google खाते से जोड़ने के लिए एक लिंक बनाया है। अगर आपने यह नहीं माँगा, तो अपने प्रबंधक को बताएँ।",
-  "sessionRevoked": "आप साइन आउट हो गए हैं: आपका खाता अब किसी दूसरे Google खाते से जुड़ा है।"
+  "sessionRevoked": "आप साइन आउट हो गए हैं: आपका खाता अब किसी दूसरे Google खाते से जुड़ा है।",
+  "telegramLoginHint": "सुझाव: लिंक पाने के लिए बॉट {bot} को /connexion भेजें और बिना ऐप या Google खाते के ब्राउज़र में Staff Flow खोलें।"
 }

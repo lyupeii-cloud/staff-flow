@@ -1764,4 +1764,9 @@ class L10nSw extends L10n {
   @override
   String get sessionRevoked =>
       'Umetolewa: akaunti yako sasa imeunganishwa na akaunti nyingine ya Google.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Kidokezo: tuma /connexion kwa boti $bot upate kiungo na ufungue Staff Flow kwenye kivinjari, bila programu wala akaunti ya Google.';
+  }
 }
