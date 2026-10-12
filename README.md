@@ -84,4 +84,4 @@ docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d --build
 
 Le nom de domaine doit pointer vers le serveur, et les ports 80 et 443 doivent être ouverts : Caddy obtient alors le certificat HTTPS tout seul.
 
-Les sauvegardes sont enregistrées dans `BACKUP_DIR`, `/var/backups/staff-flow` par défaut. La commande de restauration est en tête de `deploy/backup/backup.sh`. Il faut aussi copier ces sauvegardes hors du serveur, par exemple avec l'espace de sauvegarde FTP fourni par OVH.
+Les sauvegardes sont enregistrées dans `BACKUP_DIR`, `/home/debian/backups/staff-flow` par défaut. La commande de restauration est en tête de `deploy/backup/backup.sh`. Il faut aussi copier ces sauvegardes hors du serveur, par exemple avec l'espace de sauvegarde FTP fourni par OVH.
