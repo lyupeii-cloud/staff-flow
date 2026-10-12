@@ -1781,4 +1781,90 @@ class L10nUk extends L10n {
 
   @override
   String get timeFormatAuto => 'Авто';
+
+  @override
+  String get people => 'Люди';
+
+  @override
+  String get sortNatural => 'Звичайний порядок';
+
+  @override
+  String get sortName => 'Ім\'я';
+
+  @override
+  String get employeeNumber => 'Табельний номер';
+
+  @override
+  String get sfIdLabel => 'ID Staff Flow';
+
+  @override
+  String get pickSearch => 'Пошук';
+
+  @override
+  String get pickSearchPeople => 'Пошук: ім\'я, табельний номер, ID SF';
+
+  @override
+  String get pickSortTitle => 'Сортувати й показувати за';
+
+  @override
+  String pickSelected(String count) {
+    return 'Позначено: $count';
+  }
+
+  @override
+  String get pickCheckAll => 'Позначити всіх';
+
+  @override
+  String get pickClear => 'Зняти всі позначки';
+
+  @override
+  String get pickNoResult => 'Нічого не знайдено';
+
+  @override
+  String get pickMultiHint =>
+      'Позначте кількох людей: для кожного буде створено зміну, усе за один раз.';
+
+  @override
+  String get filterAll => 'Усі';
+
+  @override
+  String filterValue(String label, String value) {
+    return '$label: $value';
+  }
+
+  @override
+  String get noPositionGroup => 'Без посади';
+
+  @override
+  String get noSiteGroup => 'Без об\'єкта';
+
+  @override
+  String get groupByTitle => 'Групувати за';
+
+  @override
+  String get groupRole => 'Роль';
+
+  @override
+  String get groupNone => 'Без групування';
+
+  @override
+  String showMore(String count, String left) {
+    return 'Показати ще $count (залишилося $left)';
+  }
+
+  @override
+  String get findByQr => 'Знайти учасника за його QR-кодом';
+
+  @override
+  String get qrNotMember => 'Цей QR-код не відповідає нікому в цій компанії.';
+
+  @override
+  String get memberProfile => 'Табельний номер і посада';
+
+  @override
+  String get employeeNumberHint =>
+      'Власний номер вашої компанії (необов\'язково). ID Staff Flow зберігається.';
+
+  @override
+  String get usualPosition => 'Звичайна посада';
 }

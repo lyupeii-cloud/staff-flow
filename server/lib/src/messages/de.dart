@@ -163,4 +163,9 @@ const de = <String, String>{
   'Se connecter': 'Anmelden',
   'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Anmeldelink abgelaufen: Senden Sie /connexion an den Bot, um einen neuen zu erhalten.',
   'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Neue Anmeldung bei Staff Flow mit Ihrem Telegram-Link. Wenn Sie das nicht waren, trennen Sie Telegram unter „Mein Profil“ und schreiben Sie an contact@staff-flow.cloud.',
+  'Matricule : 40 caractères au plus.': 'Personalnummer: höchstens 40 Zeichen.',
+  'Ce matricule est déjà utilisé dans l\'entreprise.': 'Diese Personalnummer wird im Unternehmen bereits verwendet.',
+  'Choisissez au moins une personne.': 'Wählen Sie mindestens eine Person.',
+  'Trop de personnes d\'un coup (200 au plus).': 'Zu viele Personen auf einmal (höchstens 200).',
+  'Trop de services d\'un coup (2000 au plus).': 'Zu viele Schichten auf einmal (höchstens 2000).',
 };

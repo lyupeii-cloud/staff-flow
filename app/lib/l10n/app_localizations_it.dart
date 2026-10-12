@@ -1781,4 +1781,91 @@ class L10nIt extends L10n {
 
   @override
   String get timeFormatAuto => 'Auto';
+
+  @override
+  String get people => 'Persone';
+
+  @override
+  String get sortNatural => 'Ordine abituale';
+
+  @override
+  String get sortName => 'Nome';
+
+  @override
+  String get employeeNumber => 'Matricola';
+
+  @override
+  String get sfIdLabel => 'ID Staff Flow';
+
+  @override
+  String get pickSearch => 'Cerca';
+
+  @override
+  String get pickSearchPeople => 'Cerca: nome, matricola, ID SF';
+
+  @override
+  String get pickSortTitle => 'Ordina e mostra per';
+
+  @override
+  String pickSelected(String count) {
+    return 'Selezionati: $count';
+  }
+
+  @override
+  String get pickCheckAll => 'Seleziona tutti';
+
+  @override
+  String get pickClear => 'Deseleziona tutti';
+
+  @override
+  String get pickNoResult => 'Nessun risultato';
+
+  @override
+  String get pickMultiHint =>
+      'Seleziona più persone: verrà creato un turno per ciascuna, tutto in una volta.';
+
+  @override
+  String get filterAll => 'Tutti';
+
+  @override
+  String filterValue(String label, String value) {
+    return '$label: $value';
+  }
+
+  @override
+  String get noPositionGroup => 'Senza ruolo';
+
+  @override
+  String get noSiteGroup => 'Senza sede';
+
+  @override
+  String get groupByTitle => 'Raggruppa per';
+
+  @override
+  String get groupRole => 'Ruolo';
+
+  @override
+  String get groupNone => 'Nessun raggruppamento';
+
+  @override
+  String showMore(String count, String left) {
+    return 'Mostra altri $count (ne restano $left)';
+  }
+
+  @override
+  String get findByQr => 'Trova un membro con il suo codice QR';
+
+  @override
+  String get qrNotMember =>
+      'Questo codice QR non corrisponde a nessuno in questa azienda.';
+
+  @override
+  String get memberProfile => 'Matricola e ruolo';
+
+  @override
+  String get employeeNumberHint =>
+      'Numero interno della tua azienda (facoltativo). L\'ID Staff Flow resta assegnato.';
+
+  @override
+  String get usualPosition => 'Ruolo abituale';
 }

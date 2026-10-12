@@ -186,4 +186,9 @@ const en = <String, String>{
   'Se connecter': 'Sign in',
   'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Sign-in link expired: send /connexion to the bot to get a new one.',
   'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'New sign-in to Staff Flow with your Telegram link. If this wasn\'t you, unlink Telegram in My profile and write to contact@staff-flow.cloud.',
+  'Matricule : 40 caractères au plus.': 'Employee number: 40 characters at most.',
+  'Ce matricule est déjà utilisé dans l\'entreprise.': 'This employee number is already used in the company.',
+  'Choisissez au moins une personne.': 'Choose at least one person.',
+  'Trop de personnes d\'un coup (200 au plus).': 'Too many people at once (200 at most).',
+  'Trop de services d\'un coup (2000 au plus).': 'Too many shifts at once (2000 at most).',
 };

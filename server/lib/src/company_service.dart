@@ -415,6 +415,41 @@ class CompanyService {
     );
   }
 
+  /// Matricule et poste habituel d'une personne : mêmes droits que pour son nom.
+  Future<void> setMemberProfile(User actor, String companyId, String userId,
+      {String? employeeNumber, String? positionId}) async {
+    final (company, actorRole) = await open(actor, companyId);
+    _requireWritable(company);
+    final target = await store.roleOf(companyId, userId);
+    if (target == null) throw const ApiError.notFound('Membre introuvable.');
+    final allowed = actorRole == Role.owner ||
+        (actorRole == Role.manager &&
+            (userId == actor.id ||
+                ((target == Role.employee || target == Role.extra) &&
+                    await inSites(companyId, userId, await managedSites(companyId, actor, actorRole)))));
+    if (!allowed) throw const ApiError.forbidden();
+    final number = employeeNumber?.trim();
+    final clean = number == null || number.isEmpty ? null : number;
+    if (clean != null && clean.length > 40) {
+      throw const ApiError.badRequest('Matricule : 40 caractères au plus.');
+    }
+    if (positionId != null) {
+      final rows = await store.query(store.db, '''
+        SELECT 1 FROM positions WHERE id::text = @p AND company_id = @c::uuid AND archived_at IS NULL''',
+          {'p': positionId, 'c': companyId});
+      if (rows.isEmpty) throw const ApiError.badRequest('Poste inconnu ou archivé.');
+    }
+    if (!await store.setMemberProfile(companyId, userId, clean, positionId)) {
+      throw const ApiError.conflict('Ce matricule est déjà utilisé dans l\'entreprise.');
+    }
+    await store.audit(
+      companyId: companyId,
+      actorId: actor.id,
+      action: 'member.profile',
+      details: {'userId': userId, 'employeeNumber': clean, 'positionId': positionId},
+    );
+  }
+
   /// `null` ou vide : pas de nom personnalisé.
   static String? personName(String? name) =>
       name == null || name.trim().isEmpty ? null : _validName(name);

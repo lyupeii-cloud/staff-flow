@@ -1788,4 +1788,91 @@ class L10nDe extends L10n {
 
   @override
   String get timeFormatAuto => 'Auto';
+
+  @override
+  String get people => 'Personen';
+
+  @override
+  String get sortNatural => 'Standardreihenfolge';
+
+  @override
+  String get sortName => 'Name';
+
+  @override
+  String get employeeNumber => 'Personalnummer';
+
+  @override
+  String get sfIdLabel => 'Staff-Flow-ID';
+
+  @override
+  String get pickSearch => 'Suchen';
+
+  @override
+  String get pickSearchPeople => 'Suchen: Name, Personalnummer, SF-ID';
+
+  @override
+  String get pickSortTitle => 'Sortieren und anzeigen nach';
+
+  @override
+  String pickSelected(String count) {
+    return 'Ausgewählt: $count';
+  }
+
+  @override
+  String get pickCheckAll => 'Alle auswählen';
+
+  @override
+  String get pickClear => 'Auswahl aufheben';
+
+  @override
+  String get pickNoResult => 'Keine Ergebnisse';
+
+  @override
+  String get pickMultiHint =>
+      'Mehrere Personen auswählen: Für jede wird eine Schicht erstellt, alles auf einmal.';
+
+  @override
+  String get filterAll => 'Alle';
+
+  @override
+  String filterValue(String label, String value) {
+    return '$label: $value';
+  }
+
+  @override
+  String get noPositionGroup => 'Ohne Position';
+
+  @override
+  String get noSiteGroup => 'Ohne Standort';
+
+  @override
+  String get groupByTitle => 'Gruppieren nach';
+
+  @override
+  String get groupRole => 'Rolle';
+
+  @override
+  String get groupNone => 'Keine Gruppierung';
+
+  @override
+  String showMore(String count, String left) {
+    return '$count weitere anzeigen (noch $left)';
+  }
+
+  @override
+  String get findByQr => 'Mitglied per QR-Code finden';
+
+  @override
+  String get qrNotMember =>
+      'Dieser QR-Code passt zu niemandem in diesem Unternehmen.';
+
+  @override
+  String get memberProfile => 'Personalnummer und Position';
+
+  @override
+  String get employeeNumberHint =>
+      'Eigene Nummer Ihres Unternehmens (optional). Die Staff-Flow-ID bleibt bestehen.';
+
+  @override
+  String get usualPosition => 'Übliche Position';
 }

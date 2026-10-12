@@ -1777,4 +1777,92 @@ class L10nPt extends L10n {
 
   @override
   String get timeFormatAuto => 'Auto';
+
+  @override
+  String get people => 'Pessoas';
+
+  @override
+  String get sortNatural => 'Ordem habitual';
+
+  @override
+  String get sortName => 'Nome';
+
+  @override
+  String get employeeNumber => 'Número de funcionário';
+
+  @override
+  String get sfIdLabel => 'ID Staff Flow';
+
+  @override
+  String get pickSearch => 'Pesquisar';
+
+  @override
+  String get pickSearchPeople =>
+      'Pesquisar: nome, número de funcionário, ID SF';
+
+  @override
+  String get pickSortTitle => 'Ordenar e mostrar por';
+
+  @override
+  String pickSelected(String count) {
+    return 'Marcados: $count';
+  }
+
+  @override
+  String get pickCheckAll => 'Marcar todos';
+
+  @override
+  String get pickClear => 'Desmarcar todos';
+
+  @override
+  String get pickNoResult => 'Nenhum resultado';
+
+  @override
+  String get pickMultiHint =>
+      'Marque várias pessoas: será criado um turno para cada uma, tudo de uma vez.';
+
+  @override
+  String get filterAll => 'Todos';
+
+  @override
+  String filterValue(String label, String value) {
+    return '$label: $value';
+  }
+
+  @override
+  String get noPositionGroup => 'Sem cargo';
+
+  @override
+  String get noSiteGroup => 'Sem local';
+
+  @override
+  String get groupByTitle => 'Agrupar por';
+
+  @override
+  String get groupRole => 'Função';
+
+  @override
+  String get groupNone => 'Sem agrupamento';
+
+  @override
+  String showMore(String count, String left) {
+    return 'Mostrar mais $count (faltam $left)';
+  }
+
+  @override
+  String get findByQr => 'Encontrar um membro pelo QR code';
+
+  @override
+  String get qrNotMember =>
+      'Este QR code não corresponde a ninguém nesta empresa.';
+
+  @override
+  String get memberProfile => 'Número de funcionário e cargo';
+
+  @override
+  String get employeeNumberHint =>
+      'Número próprio da sua empresa (opcional). O ID Staff Flow continua atribuído.';
+
+  @override
+  String get usualPosition => 'Cargo habitual';
 }

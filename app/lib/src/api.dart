@@ -149,6 +149,11 @@ class Api {
   Future<void> renameMember(String companyId, String userId, String? name) =>
       _send('PUT', '/companies/$companyId/members/$userId/name', {'name': name});
 
+  /// Matricule et poste habituel d'une personne dans l'entreprise.
+  Future<void> setMemberProfile(String companyId, String userId, String? employeeNumber, String? positionId) =>
+      _send('PUT', '/companies/$companyId/members/$userId/profile',
+          {'employeeNumber': employeeNumber, 'positionId': positionId});
+
   /// Nom affiché partout ; `null` : celui de Google.
   Future<void> setMyName(String? name) => _send('PATCH', '/me', {'name': name});
 

@@ -12,6 +12,7 @@ import 'company_logo.dart';
 import 'company_tab.dart';
 import 'home_screen.dart';
 import 'people_widgets.dart';
+import 'pick_list.dart';
 import 'tools_widgets.dart';
 import 'avatar_widgets.dart';
 
@@ -59,10 +60,25 @@ class _TeamViewState extends State<TeamView> {
       ].join(', ');
   L10n get t => context.l10n;
 
+  /// Recherche (nom, matricule, ID SF), regroupement et pages de 20.
+  final _search = TextEditingController();
+  late _GroupBy _groupBy = widget.data.positions.any((p) => !p.archived) ? _GroupBy.position : _GroupBy.role;
+  final Map<String, int> _shown = {};
+  static const _page = 20;
+
   @override
   void initState() {
     super.initState();
     _load();
+    PickPrefs.load().then((_) {
+      if (mounted) setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _search.dispose();
+    super.dispose();
   }
 
   @override
@@ -119,9 +135,7 @@ class _TeamViewState extends State<TeamView> {
                     padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator()));
               }
               _meDeputy = snap.data!.any((x) => x.user.id == me.id && x.appointedBy != null);
-              return Column(
-                children: [for (final m in snap.data!) _memberTile(m, isMe: m.user.id == me.id)],
-              );
+              return _browser(snap.data!, me.id);
             },
           ),
           // Personnalisation : l'image de l'entreprise, pour le patron seulement.
@@ -171,17 +185,170 @@ class _TeamViewState extends State<TeamView> {
     );
   }
 
-  Widget _memberTile(Member m, {required bool isMe}) {
+  PickItem _item(Member m) => PickItem(m.user.id, m.user.name,
+      number: m.employeeNumber, sfId: m.user.publicId, detail: widget.data.positionName(m.positionId));
+
+  /// Liste des membres : recherche, tri, groupes repliables (postes, sites,
+  /// rôles) et 20 personnes affichées à la fois par groupe.
+  Widget _browser(List<Member> all, String meId) {
+    final theme = Theme.of(context);
+    final sort = PickPrefs.people.value;
+    final byId = {for (final m in all) m.user.id: m};
+    final found = [
+      for (final i in sortItems(searchItems([for (final m in all) _item(m)], _search.text), sort)) byId[i.id]!,
+    ];
+    final searching = _search.text.trim().isNotEmpty;
+
+    Widget page(String key, List<Member> list) {
+      final n = _shown[key] ?? _page;
+      return Column(children: [
+        for (final m in list.take(n)) _memberTile(m, isMe: m.user.id == meId, sort: sort),
+        if (list.length > n)
+          TextButton.icon(
+            onPressed: () => setState(() => _shown[key] = n + _page),
+            icon: const Icon(Icons.expand_more),
+            label: Text(t.showMore('${(list.length - n).clamp(0, _page)}', '${list.length - n}')),
+          ),
+      ]);
+    }
+
+    final groups = <(String, String, List<Member>)>[];
+    if (!searching && _groupBy != _GroupBy.none) {
+      switch (_groupBy) {
+        case _GroupBy.position:
+          for (final p in widget.data.positions) {
+            final list = [for (final m in found) if (m.positionId == p.id) m];
+            if (list.isNotEmpty) groups.add((p.id, p.name, list));
+          }
+          final none = [for (final m in found) if (widget.data.positionName(m.positionId) == null) m];
+          if (none.isNotEmpty) groups.add(('', t.noPositionGroup, none));
+        case _GroupBy.site:
+          for (final (s, _) in widget.data.siteTree) {
+            final list = [for (final m in found) if (m.sites?.contains(s.id) ?? false) m];
+            if (list.isNotEmpty) groups.add((s.id, widget.data.sitePath(s.id) ?? s.name, list));
+          }
+          final none = [for (final m in found) if ((m.sites ?? const []).isEmpty) m];
+          if (none.isNotEmpty) groups.add(('', t.noSiteGroup, none));
+        case _GroupBy.role:
+          for (final r in Role.values) {
+            final list = [for (final m in found) if (m.role == r) m];
+            if (list.isNotEmpty) groups.add((r.name, r.label(t), list));
+          }
+        case _GroupBy.none:
+      }
+    }
+
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      const SizedBox(height: 8),
+      Row(children: [
+        Expanded(
+          child: TextField(
+            controller: _search,
+            onChanged: (_) => setState(() => _shown.clear()),
+            decoration: InputDecoration(
+              isDense: true,
+              border: const OutlineInputBorder(),
+              prefixIcon: const Icon(Icons.search, size: 20),
+              hintText: t.pickSearchPeople,
+              suffixIcon: _search.text.isEmpty
+                  ? null
+                  : IconButton(icon: const Icon(Icons.close, size: 18), onPressed: () => setState(_search.clear)),
+            ),
+          ),
+        ),
+        IconButton(tooltip: t.findByQr, icon: const Icon(Icons.qr_code_scanner), onPressed: () => _findByQr(all)),
+        PopupMenuButton<_GroupBy>(
+          tooltip: t.groupByTitle,
+          icon: const Icon(Icons.account_tree_outlined),
+          onSelected: (g) => setState(() {
+            _groupBy = g;
+            _shown.clear();
+          }),
+          itemBuilder: (_) => [
+            for (final g in _GroupBy.values)
+              CheckedPopupMenuItem(value: g, checked: g == _groupBy, child: Text(g.label(t))),
+          ],
+        ),
+        PopupMenuButton<PickSort>(
+          tooltip: t.pickSortTitle,
+          icon: const Icon(Icons.sort),
+          onSelected: (s) async {
+            await PickPrefs.set(s);
+            if (mounted) setState(() {});
+          },
+          itemBuilder: (_) => [
+            for (final s in const [PickSort.name, PickSort.number, PickSort.sfId])
+              CheckedPopupMenuItem(value: s, checked: s == sort, child: Text(s.label(t))),
+          ],
+        ),
+      ]),
+      const SizedBox(height: 4),
+      if (found.isEmpty)
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: Center(child: Text(t.pickNoResult, style: theme.textTheme.bodySmall)),
+        )
+      else if (groups.isEmpty)
+        page('*', found)
+      else
+        for (final (key, title, list) in groups)
+          ExpansionTile(
+            key: PageStorageKey('team-${_groupBy.name}-$key'),
+            tilePadding: EdgeInsets.zero,
+            initiallyExpanded: all.length <= _page,
+            title: Text(title, style: theme.textTheme.titleSmall),
+            trailing: Row(mainAxisSize: MainAxisSize.min, children: [
+              Badge(
+                label: Text('${list.length}'),
+                backgroundColor: theme.colorScheme.secondaryContainer,
+                textColor: theme.colorScheme.onSecondaryContainer,
+              ),
+              const Icon(Icons.expand_more),
+            ]),
+            children: [page(key, list)],
+          ),
+    ]);
+  }
+
+  /// Le salarié montre son QR code : on le retrouve dans la liste.
+  Future<void> _findByQr(List<Member> all) async {
+    final qr = await scanQrCode(context);
+    if (qr == null || !mounted) return;
+    final id = RegExp(r'SF-[A-Z2-9]{8}').firstMatch(qr.toUpperCase())?[0];
+    final m = all.where((m) => m.user.publicId == id).firstOrNull;
+    if (m == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.qrNotMember)));
+      return;
+    }
+    setState(() {
+      _search.text = m.user.publicId;
+      _shown.clear();
+    });
+  }
+
+  /// Titre d'une ligne : la clé de tri d'abord (matricule, ID SF ou nom).
+  String _title(Member m, PickSort sort, bool isMe) {
+    final name = isMe ? t.meSuffix(m.user.name) : m.user.name;
+    return switch (sort) {
+      PickSort.number when m.employeeNumber != null => '${m.employeeNumber} · $name',
+      PickSort.sfId => '${m.user.publicId} · $name',
+      _ => name,
+    };
+  }
+
+  Widget _memberTile(Member m, {required bool isMe, PickSort sort = PickSort.name}) {
     final actions = isMe || company.readOnly ? const <_MemberAction>[] : _actionsFor(m);
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: UserAvatar.of(m.user),
-      title: Text(isMe ? t.meSuffix(m.user.name) : m.user.name),
+      title: Text(_title(m, sort, isMe)),
       subtitle: Text([
         if (m.appointedBy != null) t.subManager else m.role.label(t),
         if (m.role == Role.manager) m.sites == null ? t.wholeCompany : _siteNames(m.sites),
         if (m.role != Role.manager && m.sites != null) _siteNames(m.sites),
-        m.user.publicId,
+        ?widget.data.positionName(m.positionId),
+        if (sort != PickSort.number && m.employeeNumber != null) '${t.employeeNumber} ${m.employeeNumber}',
+        if (sort != PickSort.sfId) m.user.publicId,
       ].join(' · ')),
       trailing: actions.isEmpty && m.telegram == null
           ? null
@@ -217,6 +384,7 @@ class _TeamViewState extends State<TeamView> {
     final myDeputy = isManager && m.role == Role.manager && m.appointedBy == widget.session.me?.user.id;
     return [
       if (isOwner || mineToo) _MemberAction.rename,
+      if (isOwner || mineToo) _MemberAction.profile,
       if (isOwner && targetIsStaff) _MemberAction.makeManager,
       if (isManager && mineToo && hasSites) _MemberAction.makeDeputy,
       if ((isOwner && m.role == Role.manager) || myDeputy) _MemberAction.makeEmployee,
@@ -227,6 +395,51 @@ class _TeamViewState extends State<TeamView> {
       if (isOwner && m.role == Role.manager) _MemberAction.transfer,
       if (isOwner || mineToo || myDeputy) _MemberAction.remove,
     ];
+  }
+
+  /// Matricule donné par l'employeur et poste habituel.
+  Future<void> _editProfile(Member m) async {
+    final number = TextEditingController(text: m.employeeNumber);
+    final positions = [for (final p in widget.data.positions) if (!p.archived || p.id == m.positionId) p];
+    String? position = m.positionId;
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setState) => AlertDialog(
+          title: Text(m.user.name),
+          content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            TextField(
+              controller: number,
+              autofocus: true,
+              maxLength: 40,
+              decoration: InputDecoration(labelText: t.employeeNumber, helperText: t.employeeNumberHint, helperMaxLines: 3),
+            ),
+            const SizedBox(height: 8),
+            Text('${t.sfIdLabel} : ${m.user.publicId}', style: Theme.of(context).textTheme.bodySmall),
+            if (positions.isNotEmpty) ...[
+              const SizedBox(height: 12),
+              DropdownButtonFormField<String?>(
+                initialValue: position,
+                isExpanded: true,
+                decoration: InputDecoration(labelText: t.usualPosition),
+                items: [
+                  const DropdownMenuItem(value: null, child: Text('—')),
+                  for (final p in positions) DropdownMenuItem(value: p.id, child: Text(p.name)),
+                ],
+                onChanged: (v) => setState(() => position = v),
+              ),
+            ],
+          ]),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
+            FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.save)),
+          ],
+        ),
+      ),
+    );
+    if (ok != true) return;
+    final value = number.text.trim();
+    await _act(() => widget.session.api.setMemberProfile(company.id, m.user.id, value.isEmpty ? null : value, position));
   }
 
   /// Je suis sous-responsable (pas de lien de changement de compte Google).
@@ -284,6 +497,8 @@ class _TeamViewState extends State<TeamView> {
         if (name != null) {
           await _act(() => api.renameMember(company.id, m.user.id, name.isEmpty ? null : name));
         }
+      case _MemberAction.profile:
+        await _editProfile(m);
       case _MemberAction.makeManager:
         // Responsable de toute l'entreprise, ou de certains sites.
         final scope = widget.data.sites.any((s) => !s.archived)
@@ -536,8 +751,23 @@ class _TeamViewState extends State<TeamView> {
       false;
 }
 
+enum _GroupBy {
+  position,
+  site,
+  role,
+  none;
+
+  String label(L10n t) => switch (this) {
+        position => t.position,
+        site => t.site,
+        role => t.groupRole,
+        none => t.groupNone,
+      };
+}
+
 enum _MemberAction {
   rename,
+  profile,
   sites,
   makeManager,
   makeDeputy,
@@ -549,6 +779,7 @@ enum _MemberAction {
 
   String label(L10n t, Member m) => switch (this) {
         rename => t.rename,
+        profile => t.memberProfile,
         sites => t.actionSites,
         makeManager => t.actionMakeManager,
         makeDeputy => t.actionMakeDeputy,

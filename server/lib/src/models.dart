@@ -258,11 +258,25 @@ class Member {
   /// Telegram vérifié (sinon, le changement de compte Google passe par un lien du responsable).
   final bool telegramLinked;
 
+  /// Matricule donné par l'employeur (l'identifiant SF reste dans `user.publicId`).
+  final String? employeeNumber;
+
+  /// Poste habituel dans l'entreprise.
+  final String? positionId;
+
   const Member(this.user, this.role, this.joinedAt,
-      {this.nameInCompany, this.sites, this.appointedBy, this.telegram, this.telegramLinked = false});
+      {this.nameInCompany,
+      this.sites,
+      this.appointedBy,
+      this.telegram,
+      this.telegramLinked = false,
+      this.employeeNumber,
+      this.positionId});
 
   Map<String, Object?> toJson() => {
         'user': user.toJson(),
+        'employeeNumber': employeeNumber,
+        'positionId': positionId,
         'telegram': telegram,
         'telegramLinked': telegramLinked,
         'nameInCompany': nameInCompany,

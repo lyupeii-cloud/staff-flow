@@ -182,7 +182,15 @@ class Member {
         sites = _sites(j['sites']),
         appointedBy = j['appointedBy'],
         telegram = j['telegram'],
-        telegramLinked = j['telegramLinked'] == true;
+        telegramLinked = j['telegramLinked'] == true,
+        employeeNumber = j['employeeNumber'],
+        positionId = j['positionId'];
+
+  /// Matricule donné par l'employeur (en plus de l'identifiant SF).
+  final String? employeeNumber;
+
+  /// Poste habituel dans l'entreprise.
+  final String? positionId;
 
   /// Telegram vérifié (sinon le responsable peut créer un lien de changement de compte Google).
   final bool telegramLinked;

@@ -163,4 +163,9 @@ const it = <String, String>{
   'Se connecter': 'Accedi',
   'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Link di accesso scaduto: invia /connexion al bot per riceverne uno nuovo.',
   'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Nuovo accesso a Staff Flow con il tuo link Telegram. Se non sei stato tu, scollega Telegram in Il mio profilo e scrivi a contact@staff-flow.cloud.',
+  'Matricule : 40 caractères au plus.': 'Matricola: al massimo 40 caratteri.',
+  'Ce matricule est déjà utilisé dans l\'entreprise.': 'Questa matricola è già usata nell\'azienda.',
+  'Choisissez au moins une personne.': 'Scegli almeno una persona.',
+  'Trop de personnes d\'un coup (200 au plus).': 'Troppe persone in una volta (al massimo 200).',
+  'Trop de services d\'un coup (2000 au plus).': 'Troppi turni in una volta (al massimo 2000).',
 };

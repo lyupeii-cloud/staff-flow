@@ -1281,5 +1281,58 @@
     }
   },
   "timeFormat": "Time format",
-  "timeFormatAuto": "Auto"
+  "timeFormatAuto": "Auto",
+  "people": "People",
+  "sortNatural": "Default order",
+  "sortName": "Name",
+  "employeeNumber": "Employee number",
+  "sfIdLabel": "Staff Flow ID",
+  "pickSearch": "Search",
+  "pickSearchPeople": "Search: name, employee number, SF ID",
+  "pickSortTitle": "Sort and show by",
+  "pickSelected": "Checked: {count}",
+  "@pickSelected": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "pickCheckAll": "Check all",
+  "pickClear": "Uncheck all",
+  "pickNoResult": "No results",
+  "pickMultiHint": "Check several people: a shift will be created for each of them, all at once.",
+  "filterAll": "All",
+  "filterValue": "{label}: {value}",
+  "@filterValue": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "noPositionGroup": "No position",
+  "noSiteGroup": "No site",
+  "groupByTitle": "Group by",
+  "groupRole": "Role",
+  "groupNone": "No grouping",
+  "showMore": "Show {count} more ({left} left)",
+  "@showMore": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "left": {
+        "type": "String"
+      }
+    }
+  },
+  "findByQr": "Find a member with their QR code",
+  "qrNotMember": "This QR code doesn't match anyone in this company.",
+  "memberProfile": "Employee number and position",
+  "employeeNumberHint": "Your company's own number (optional). The Staff Flow ID stays assigned.",
+  "usualPosition": "Usual position"
 }

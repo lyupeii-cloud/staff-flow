@@ -1778,4 +1778,91 @@ class L10nRu extends L10n {
 
   @override
   String get timeFormatAuto => 'Авто';
+
+  @override
+  String get people => 'Люди';
+
+  @override
+  String get sortNatural => 'Обычный порядок';
+
+  @override
+  String get sortName => 'Имя';
+
+  @override
+  String get employeeNumber => 'Табельный номер';
+
+  @override
+  String get sfIdLabel => 'ID Staff Flow';
+
+  @override
+  String get pickSearch => 'Поиск';
+
+  @override
+  String get pickSearchPeople => 'Поиск: имя, табельный номер, ID SF';
+
+  @override
+  String get pickSortTitle => 'Сортировать и показывать по';
+
+  @override
+  String pickSelected(String count) {
+    return 'Отмечено: $count';
+  }
+
+  @override
+  String get pickCheckAll => 'Отметить всех';
+
+  @override
+  String get pickClear => 'Снять все отметки';
+
+  @override
+  String get pickNoResult => 'Ничего не найдено';
+
+  @override
+  String get pickMultiHint =>
+      'Отметьте нескольких человек: для каждого будет создана смена, всё за один раз.';
+
+  @override
+  String get filterAll => 'Все';
+
+  @override
+  String filterValue(String label, String value) {
+    return '$label: $value';
+  }
+
+  @override
+  String get noPositionGroup => 'Без должности';
+
+  @override
+  String get noSiteGroup => 'Без объекта';
+
+  @override
+  String get groupByTitle => 'Группировать по';
+
+  @override
+  String get groupRole => 'Роль';
+
+  @override
+  String get groupNone => 'Без группировки';
+
+  @override
+  String showMore(String count, String left) {
+    return 'Показать ещё $count (осталось $left)';
+  }
+
+  @override
+  String get findByQr => 'Найти участника по его QR-коду';
+
+  @override
+  String get qrNotMember =>
+      'Этот QR-код не соответствует никому в этой компании.';
+
+  @override
+  String get memberProfile => 'Табельный номер и должность';
+
+  @override
+  String get employeeNumberHint =>
+      'Собственный номер вашей компании (необязательно). ID Staff Flow сохраняется.';
+
+  @override
+  String get usualPosition => 'Обычная должность';
 }

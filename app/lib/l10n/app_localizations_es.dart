@@ -1782,4 +1782,91 @@ class L10nEs extends L10n {
 
   @override
   String get timeFormatAuto => 'Auto';
+
+  @override
+  String get people => 'Personas';
+
+  @override
+  String get sortNatural => 'Orden habitual';
+
+  @override
+  String get sortName => 'Nombre';
+
+  @override
+  String get employeeNumber => 'Número de empleado';
+
+  @override
+  String get sfIdLabel => 'ID de Staff Flow';
+
+  @override
+  String get pickSearch => 'Buscar';
+
+  @override
+  String get pickSearchPeople => 'Buscar: nombre, número de empleado, ID SF';
+
+  @override
+  String get pickSortTitle => 'Ordenar y mostrar por';
+
+  @override
+  String pickSelected(String count) {
+    return 'Marcados: $count';
+  }
+
+  @override
+  String get pickCheckAll => 'Marcar todos';
+
+  @override
+  String get pickClear => 'Desmarcar todos';
+
+  @override
+  String get pickNoResult => 'Sin resultados';
+
+  @override
+  String get pickMultiHint =>
+      'Marca varias personas: se creará un turno para cada una, todo de una vez.';
+
+  @override
+  String get filterAll => 'Todos';
+
+  @override
+  String filterValue(String label, String value) {
+    return '$label: $value';
+  }
+
+  @override
+  String get noPositionGroup => 'Sin puesto';
+
+  @override
+  String get noSiteGroup => 'Sin sitio';
+
+  @override
+  String get groupByTitle => 'Agrupar por';
+
+  @override
+  String get groupRole => 'Rol';
+
+  @override
+  String get groupNone => 'Sin agrupar';
+
+  @override
+  String showMore(String count, String left) {
+    return 'Mostrar $count más (quedan $left)';
+  }
+
+  @override
+  String get findByQr => 'Buscar a un miembro con su código QR';
+
+  @override
+  String get qrNotMember =>
+      'Este código QR no corresponde a nadie de esta empresa.';
+
+  @override
+  String get memberProfile => 'Número de empleado y puesto';
+
+  @override
+  String get employeeNumberHint =>
+      'Número propio de tu empresa (opcional). El ID de Staff Flow se mantiene.';
+
+  @override
+  String get usualPosition => 'Puesto habitual';
 }

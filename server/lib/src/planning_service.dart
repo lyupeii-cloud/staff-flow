@@ -180,61 +180,83 @@ class PlanningService {
   }
 
   /// Crée un service sur chacun des [days] ; avec [repeat], une série.
+  /// [userIds] : plusieurs personnes sur le même créneau (un service chacune,
+  /// une série chacune), enregistrées en une fois.
   Future<List<Shift>> create(User actor, String companyId, ShiftInput input,
-      {required List<DateTime> days, Repeat? repeat}) async {
+      {required List<DateTime> days, Repeat? repeat, List<String?>? userIds}) async {
     final mine = await _manager(actor, companyId);
     _checkSite(mine, input.siteId);
     if (days.isEmpty) throw const ApiError.badRequest('Choisissez au moins un jour.');
-    await _checkRefs(companyId, input);
+    final people = userIds == null ? [input.userId] : userIds.toSet().toList();
+    if (people.isEmpty) throw const ApiError.badRequest('Choisissez au moins une personne.');
+    if (people.length > maxPeople) {
+      throw const ApiError.badRequest('Trop de personnes d\'un coup (200 au plus).');
+    }
+    for (final userId in people) {
+      await _checkRefs(companyId, input.withUser(userId));
+    }
     final dates = repeat == null ? (days.toSet().toList()..sort()) : repeat.occurrences(days);
     if (dates.length > maxOccurrences) {
       throw const ApiError.badRequest('Trop de services d\'un coup (400 au plus).');
     }
+    if (dates.length * people.length > maxBatch) {
+      throw const ApiError.badRequest('Trop de services d\'un coup (2000 au plus).');
+    }
     dates.forEach(_checkEditable);
-    final approval = await _approvalFor(store.db, actor, companyId, mine, input.userId);
+    final approvals = {
+      for (final userId in people) userId: await _approvalFor(store.db, actor, companyId, mine, userId),
+    };
     final created = await store.db.runTx((tx) async {
-      String? seriesId;
-      if (repeat != null) {
-        final rows = await store.query(tx, '''
-          INSERT INTO shift_series (company_id, rule, created_by)
-          VALUES (@c::uuid, @rule::jsonb, @u::uuid) RETURNING id::text''',
-            {'c': companyId, 'rule': jsonEncode(repeat.toJson()), 'u': actor.id});
-        seriesId = rows.first[0] as String;
-      }
       final created = <Shift>[];
-      for (final day in dates) {
-        final rows = await store.query(tx, '''
-          INSERT INTO shifts (company_id, series_id, day, start_min, end_min,
-                              user_id, site_id, position_id, note, updated_by, approval_by)
-          VALUES (@c::uuid, @s::uuid, @day::date, @start, @end,
-                  @user::uuid, @site::uuid, @pos::uuid, @note, @by::uuid, @approval::uuid)
-          RETURNING *''', {
-          'c': companyId,
-          's': seriesId,
-          'day': formatDay(day),
-          ...input.params(),
-          'by': actor.id,
-          'approval': approval,
-        });
-        final row = rows.first.toColumnMap();
-        await _history(tx, companyId, row['id'] as String, actor, 'create', null, _snapshot(row));
-        created.add(Shift.fromRow(row));
+      for (final userId in people) {
+        String? seriesId;
+        if (repeat != null) {
+          final rows = await store.query(tx, '''
+            INSERT INTO shift_series (company_id, rule, created_by)
+            VALUES (@c::uuid, @rule::jsonb, @u::uuid) RETURNING id::text''',
+              {'c': companyId, 'rule': jsonEncode(repeat.toJson()), 'u': actor.id});
+          seriesId = rows.first[0] as String;
+        }
+        for (final day in dates) {
+          final rows = await store.query(tx, '''
+            INSERT INTO shifts (company_id, series_id, day, start_min, end_min,
+                                user_id, site_id, position_id, note, updated_by, approval_by)
+            VALUES (@c::uuid, @s::uuid, @day::date, @start, @end,
+                    @user::uuid, @site::uuid, @pos::uuid, @note, @by::uuid, @approval::uuid)
+            RETURNING *''', {
+            'c': companyId,
+            's': seriesId,
+            'day': formatDay(day),
+            ...input.withUser(userId).params(),
+            'by': actor.id,
+            'approval': approvals[userId],
+          });
+          final row = rows.first.toColumnMap();
+          await _history(tx, companyId, row['id'] as String, actor, 'create', null, _snapshot(row));
+          created.add(Shift.fromRow(row));
+        }
       }
       await store.audit(
           companyId: companyId,
           actorId: actor.id,
           action: 'shift.create',
-          details: {'count': created.length, 'seriesId': seriesId},
+          details: {'count': created.length, 'people': people.length},
           tx: tx);
       return created;
     });
-    if (approval != null) {
-      await _askApproval(actor, companyId, input.userId!, input.siteId, dates.first);
-    } else {
-      await _notifyBorrowed(actor, companyId, input.userId, input.siteId, dates.first);
+    for (final userId in people) {
+      if (approvals[userId] != null) {
+        await _askApproval(actor, companyId, userId!, input.siteId, dates.first);
+      } else {
+        await _notifyBorrowed(actor, companyId, userId, input.siteId, dates.first);
+      }
     }
     return created;
   }
+
+  /// Personnes d'un même créneau, et services créés en une fois.
+  static const maxPeople = 200;
+  static const maxBatch = 2000;
 
   /// Un salarié placé sur un site qui n'est pas celui de son équipe : les
   /// responsables de son équipe sont prévenus (le service n'est pas bloqué).
@@ -895,6 +917,10 @@ class ShiftInput {
       throw const ApiError.badRequest('Heures invalides.');
     }
   }
+
+  /// Même créneau pour une autre personne.
+  ShiftInput withUser(String? user) =>
+      ShiftInput(start: start, end: end % 1440, userId: user, siteId: siteId, positionId: positionId, note: note);
 
   Map<String, Object?> params() => {
         'start': start,

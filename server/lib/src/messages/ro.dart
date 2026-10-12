@@ -163,4 +163,9 @@ const ro = <String, String>{
   'Se connecter': 'Conectează-te',
   'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Link de conectare expirat: trimite /connexion botului pentru unul nou.',
   'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Conectare nouă la Staff Flow cu linkul tău din Telegram. Dacă nu ai fost tu, deconectează Telegramul din Profilul meu și scrie la contact@staff-flow.cloud.',
+  'Matricule : 40 caractères au plus.': 'Număr matricol: cel mult 40 de caractere.',
+  'Ce matricule est déjà utilisé dans l\'entreprise.': 'Acest număr matricol este deja folosit în companie.',
+  'Choisissez au moins une personne.': 'Alegeți cel puțin o persoană.',
+  'Trop de personnes d\'un coup (200 au plus).': 'Prea multe persoane deodată (cel mult 200).',
+  'Trop de services d\'un coup (2000 au plus).': 'Prea multe ture deodată (cel mult 2000).',
 };

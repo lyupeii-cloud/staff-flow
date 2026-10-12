@@ -1782,4 +1782,91 @@ class L10nRo extends L10n {
 
   @override
   String get timeFormatAuto => 'Auto';
+
+  @override
+  String get people => 'Persoane';
+
+  @override
+  String get sortNatural => 'Ordinea obișnuită';
+
+  @override
+  String get sortName => 'Nume';
+
+  @override
+  String get employeeNumber => 'Număr matricol';
+
+  @override
+  String get sfIdLabel => 'ID Staff Flow';
+
+  @override
+  String get pickSearch => 'Caută';
+
+  @override
+  String get pickSearchPeople => 'Caută: nume, număr matricol, ID SF';
+
+  @override
+  String get pickSortTitle => 'Sortează și afișează după';
+
+  @override
+  String pickSelected(String count) {
+    return 'Bifate: $count';
+  }
+
+  @override
+  String get pickCheckAll => 'Bifează tot';
+
+  @override
+  String get pickClear => 'Debifează tot';
+
+  @override
+  String get pickNoResult => 'Niciun rezultat';
+
+  @override
+  String get pickMultiHint =>
+      'Bifați mai multe persoane: se va crea câte o tură pentru fiecare, dintr-o dată.';
+
+  @override
+  String get filterAll => 'Toate';
+
+  @override
+  String filterValue(String label, String value) {
+    return '$label: $value';
+  }
+
+  @override
+  String get noPositionGroup => 'Fără post';
+
+  @override
+  String get noSiteGroup => 'Fără locație';
+
+  @override
+  String get groupByTitle => 'Grupează după';
+
+  @override
+  String get groupRole => 'Rol';
+
+  @override
+  String get groupNone => 'Fără grupare';
+
+  @override
+  String showMore(String count, String left) {
+    return 'Arată încă $count (au rămas $left)';
+  }
+
+  @override
+  String get findByQr => 'Găsește un membru după codul său QR';
+
+  @override
+  String get qrNotMember =>
+      'Acest cod QR nu corespunde nimănui din această companie.';
+
+  @override
+  String get memberProfile => 'Număr matricol și post';
+
+  @override
+  String get employeeNumberHint =>
+      'Numărul propriu al companiei dvs. (opțional). ID-ul Staff Flow rămâne atribuit.';
+
+  @override
+  String get usualPosition => 'Post obișnuit';
 }

@@ -1786,4 +1786,91 @@ class L10nFr extends L10n {
 
   @override
   String get timeFormatAuto => 'Auto';
+
+  @override
+  String get people => 'Personnes';
+
+  @override
+  String get sortNatural => 'Ordre habituel';
+
+  @override
+  String get sortName => 'Nom';
+
+  @override
+  String get employeeNumber => 'Matricule';
+
+  @override
+  String get sfIdLabel => 'ID Staff Flow';
+
+  @override
+  String get pickSearch => 'Rechercher';
+
+  @override
+  String get pickSearchPeople => 'Rechercher : nom, matricule, ID SF';
+
+  @override
+  String get pickSortTitle => 'Trier et afficher par';
+
+  @override
+  String pickSelected(String count) {
+    return 'Cochés : $count';
+  }
+
+  @override
+  String get pickCheckAll => 'Tout cocher';
+
+  @override
+  String get pickClear => 'Tout décocher';
+
+  @override
+  String get pickNoResult => 'Aucun résultat';
+
+  @override
+  String get pickMultiHint =>
+      'Cochez plusieurs personnes : un service sera créé pour chacune, en une seule fois.';
+
+  @override
+  String get filterAll => 'Tous';
+
+  @override
+  String filterValue(String label, String value) {
+    return '$label : $value';
+  }
+
+  @override
+  String get noPositionGroup => 'Sans poste';
+
+  @override
+  String get noSiteGroup => 'Sans site';
+
+  @override
+  String get groupByTitle => 'Regrouper par';
+
+  @override
+  String get groupRole => 'Rôle';
+
+  @override
+  String get groupNone => 'Sans regroupement';
+
+  @override
+  String showMore(String count, String left) {
+    return 'Afficher $count de plus (reste $left)';
+  }
+
+  @override
+  String get findByQr => 'Trouver un membre avec son QR code';
+
+  @override
+  String get qrNotMember =>
+      'Ce QR code ne correspond à personne dans cette entreprise.';
+
+  @override
+  String get memberProfile => 'Matricule et poste';
+
+  @override
+  String get employeeNumberHint =>
+      'Numéro propre à votre entreprise (facultatif). L\'identifiant Staff Flow reste attribué.';
+
+  @override
+  String get usualPosition => 'Poste habituel';
 }

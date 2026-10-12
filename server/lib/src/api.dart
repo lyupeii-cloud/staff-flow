@@ -263,6 +263,7 @@ class Api {
       ..put('/companies/<id>/members/<userId>/role', _authed(_setRole))
       ..put('/companies/<id>/members/<userId>/name', _authed(_renameMember))
       ..put('/companies/<id>/members/<userId>/sites', _authed(_setMemberSites))
+      ..put('/companies/<id>/members/<userId>/profile', _authed(_setMemberProfile))
       ..delete('/companies/<id>/members/<userId>', _authed(_removeMember))
       ..post('/companies/<id>/transfer', _authed(_proposeTransfer))
       ..delete('/companies/<id>/transfer', _authed(_cancelTransfer))
@@ -573,6 +574,17 @@ class Api {
     return Response(204);
   }
 
+  Future<Response> _setMemberProfile(Request req, User user) async {
+    final body = await _body(req);
+    final number = body['employeeNumber'], position = body['positionId'];
+    if (number is! String? || position is! String?) {
+      throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    }
+    await companies.setMemberProfile(user, req.params['id']!, req.params['userId']!,
+        employeeNumber: number, positionId: position);
+    return Response(204);
+  }
+
   Future<Response> _removeMember(Request req, User user) async {
     await companies.removeMember(user, req.params['id']!, req.params['userId']!);
     return Response(204);
@@ -696,9 +708,14 @@ class Api {
       throw const ApiError.badRequest('Champ « days » : liste de dates attendue.');
     }
     final repeat = body['repeat'];
+    final userIds = body['userIds'];
+    if (userIds != null && (userIds is! List || userIds.any((u) => u is! String?))) {
+      throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    }
     final created = await _input(() => planning.create(user, req.params['id']!, _shiftInput(body),
         days: [for (final d in days) parseDay(d as String)],
-        repeat: repeat is Map<String, dynamic> ? Repeat.fromJson(repeat) : null));
+        repeat: repeat is Map<String, dynamic> ? Repeat.fromJson(repeat) : null,
+        userIds: userIds == null ? null : [for (final u in userIds) u as String?]));
     return _json({'shifts': [for (final s in created) s.toJson()]}, status: 201);
   }
 

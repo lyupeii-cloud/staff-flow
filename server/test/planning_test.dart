@@ -29,6 +29,26 @@ void main() {
   Map<String, Object?> shift(List<String> days, {String? user, int start = 480, int end = 1020}) =>
       {'days': days, 'start': start, 'end': end, 'userId': user};
 
+  group('fiche du salarié', () {
+    test('matricule unique dans l\'entreprise et poste habituel', () async {
+      final pos = await boss.ok('POST', p('/positions'), {'name': 'Maçon'});
+      await boss.ok('PUT', p('/members/${bob.id}/profile'), {'employeeNumber': ' M-001 ', 'positionId': pos['id']});
+      final members = (await bob.ok('GET', p('/members')))['members'] as List;
+      final b = members.firstWhere((m) => m['user']['id'] == bob.id);
+      expect(b['employeeNumber'], 'M-001');
+      expect(b['positionId'], pos['id']);
+      // Déjà pris (sans tenir compte des majuscules).
+      expect((await boss('PUT', p('/members/${carol.id}/profile'), {'employeeNumber': 'm-001'})).$1, 409);
+      // Un salarié ne change pas sa fiche.
+      expect((await bob('PUT', p('/members/${bob.id}/profile'), {'employeeNumber': 'X'})).$1, 403);
+      expect((await boss('PUT', p('/members/${bob.id}/profile'), {'positionId': 'nope'})).$1, 400);
+      await boss.ok('PUT', p('/members/${bob.id}/profile'), {'employeeNumber': '', 'positionId': null});
+      final after = ((await boss.ok('GET', p('/members')))['members'] as List).firstWhere((m) => m['user']['id'] == bob.id);
+      expect(after['employeeNumber'], isNull);
+      expect(after['positionId'], isNull);
+    });
+  });
+
   group('sites et postes', () {
     test('le responsable crée, renomme et archive ; un salarié lit seulement', () async {
       final caisse = await boss.ok('POST', p('/positions'), {'name': 'Caisse'});
@@ -66,6 +86,23 @@ void main() {
       expect([for (final s in created) s['day']], ['2026-10-05', '2026-10-06']);
       expect(created.first, containsPair('positionId', pos['id']));
       expect(created.first['status'], 'draft');
+    });
+
+    test('plusieurs personnes sur le même créneau, en une fois (une série chacune)', () async {
+      final created = await create({
+        ...shift(['2026-10-05', '2026-10-06']),
+        'userIds': [bob.id, carol.id, bob.id],
+        'repeat': {'freq': 'daily', 'count': 2},
+      });
+      expect(created, hasLength(4));
+      expect({for (final s in created) s['userId']}, {bob.id, carol.id});
+      final series = {for (final s in created) s['userId']: s['seriesId']};
+      expect(series[bob.id], isNot(series[carol.id]));
+      final stranger = await env.login('stranger');
+      expect((await boss('POST', p('/shifts'), {...shift(['2026-10-05']), 'userIds': [bob.id, stranger.id]})).$1, 400);
+      expect((await boss('POST', p('/shifts'), {...shift(['2026-10-05']), 'userIds': []})).$1, 400);
+      // Rien n'est créé si une personne est refusée.
+      expect((await week(boss))['shifts'], hasLength(4));
     });
 
     test('un service de nuit se termine le lendemain', () async {

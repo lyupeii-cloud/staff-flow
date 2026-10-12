@@ -163,4 +163,9 @@ const ru = <String, String>{
   'Se connecter': 'Войти',
   'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Ссылка для входа устарела: отправьте боту /connexion, чтобы получить новую.',
   'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Новый вход в Staff Flow по вашей ссылке из Telegram. Если это были не вы, отвяжите Telegram в разделе «Мой профиль» и напишите на contact@staff-flow.cloud.',
+  'Matricule : 40 caractères au plus.': 'Табельный номер: не более 40 символов.',
+  'Ce matricule est déjà utilisé dans l\'entreprise.': 'Этот табельный номер уже используется в компании.',
+  'Choisissez au moins une personne.': 'Выберите хотя бы одного человека.',
+  'Trop de personnes d\'un coup (200 au plus).': 'Слишком много людей за раз (не более 200).',
+  'Trop de services d\'un coup (2000 au plus).': 'Слишком много смен за раз (не более 2000).',
 };

@@ -1785,4 +1785,90 @@ class L10nPl extends L10n {
 
   @override
   String get timeFormatAuto => 'Auto';
+
+  @override
+  String get people => 'Osoby';
+
+  @override
+  String get sortNatural => 'Zwykła kolejność';
+
+  @override
+  String get sortName => 'Imię i nazwisko';
+
+  @override
+  String get employeeNumber => 'Numer pracownika';
+
+  @override
+  String get sfIdLabel => 'ID Staff Flow';
+
+  @override
+  String get pickSearch => 'Szukaj';
+
+  @override
+  String get pickSearchPeople => 'Szukaj: imię, numer pracownika, ID SF';
+
+  @override
+  String get pickSortTitle => 'Sortuj i pokazuj według';
+
+  @override
+  String pickSelected(String count) {
+    return 'Zaznaczone: $count';
+  }
+
+  @override
+  String get pickCheckAll => 'Zaznacz wszystkich';
+
+  @override
+  String get pickClear => 'Odznacz wszystkich';
+
+  @override
+  String get pickNoResult => 'Brak wyników';
+
+  @override
+  String get pickMultiHint =>
+      'Zaznacz kilka osób: dla każdej zostanie utworzona zmiana, wszystko naraz.';
+
+  @override
+  String get filterAll => 'Wszystkie';
+
+  @override
+  String filterValue(String label, String value) {
+    return '$label: $value';
+  }
+
+  @override
+  String get noPositionGroup => 'Bez stanowiska';
+
+  @override
+  String get noSiteGroup => 'Bez lokalizacji';
+
+  @override
+  String get groupByTitle => 'Grupuj według';
+
+  @override
+  String get groupRole => 'Rola';
+
+  @override
+  String get groupNone => 'Bez grupowania';
+
+  @override
+  String showMore(String count, String left) {
+    return 'Pokaż jeszcze $count (zostało $left)';
+  }
+
+  @override
+  String get findByQr => 'Znajdź członka po jego kodzie QR';
+
+  @override
+  String get qrNotMember => 'Ten kod QR nie pasuje do nikogo w tej firmie.';
+
+  @override
+  String get memberProfile => 'Numer pracownika i stanowisko';
+
+  @override
+  String get employeeNumberHint =>
+      'Własny numer Twojej firmy (opcjonalnie). ID Staff Flow pozostaje przypisane.';
+
+  @override
+  String get usualPosition => 'Zwykłe stanowisko';
 }

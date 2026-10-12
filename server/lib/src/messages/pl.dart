@@ -163,4 +163,9 @@ const pl = <String, String>{
   'Se connecter': 'Zaloguj się',
   'Lien de connexion expiré : envoyez /connexion au bot pour en recevoir un nouveau.': 'Link do logowania wygasł: wyślij /connexion do bota, aby otrzymać nowy.',
   'Nouvelle connexion à Staff Flow avec votre lien Telegram. Si ce n\'est pas vous, déliez Telegram dans Mon profil et écrivez à contact@staff-flow.cloud.': 'Nowe logowanie do Staff Flow przez Twój link z Telegrama. Jeśli to nie Ty, odłącz Telegram w Moim profilu i napisz na contact@staff-flow.cloud.',
+  'Matricule : 40 caractères au plus.': 'Numer pracownika: maksymalnie 40 znaków.',
+  'Ce matricule est déjà utilisé dans l\'entreprise.': 'Ten numer pracownika jest już używany w firmie.',
+  'Choisissez au moins une personne.': 'Wybierz co najmniej jedną osobę.',
+  'Trop de personnes d\'un coup (200 au plus).': 'Za dużo osób naraz (maksymalnie 200).',
+  'Trop de services d\'un coup (2000 au plus).': 'Za dużo zmian naraz (maksymalnie 2000).',
 };

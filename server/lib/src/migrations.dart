@@ -542,4 +542,12 @@ CREATE TABLE telegram_logins (
 );
 CREATE INDEX telegram_logins_user ON telegram_logins (user_id, created_at);
 ''',
+  // 30 — matricule donné par l'employeur (en plus de l'identifiant SF) et
+  // poste habituel du salarié (regroupements, filtres, importation).
+  '''
+ALTER TABLE memberships ADD COLUMN employee_number text;
+ALTER TABLE memberships ADD COLUMN position_id uuid REFERENCES positions(id) ON DELETE SET NULL;
+CREATE UNIQUE INDEX memberships_employee_number ON memberships (company_id, lower(employee_number))
+  WHERE left_at IS NULL AND employee_number IS NOT NULL;
+''',
 ];

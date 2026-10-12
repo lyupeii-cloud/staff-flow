@@ -211,6 +211,7 @@ class Store {
   Future<List<Member>> members(String companyId) async {
     final rows = await query(_db, '''
       SELECT u.*, m.role, m.joined_at, m.display_name, m.sites::text[] AS member_sites, m.appointed_by::text AS appointed_by,
+        m.employee_number, m.position_id::text AS member_position,
         CASE WHEN m.show_telegram THEN u.telegram_username END AS shown_telegram, c.hide_photos,
         u.telegram_chat_id IS NOT NULL AS has_telegram
       FROM memberships m JOIN users u ON u.id = m.user_id JOIN companies c ON c.id = m.company_id
@@ -229,6 +230,8 @@ class Store {
             appointedBy: r['appointed_by'] as String?,
             telegram: r['shown_telegram'] as String?,
             telegramLinked: r['has_telegram'] == true,
+            employeeNumber: r['employee_number'] as String?,
+            positionId: r['member_position'] as String?,
           ),
     ];
   }
@@ -246,6 +249,20 @@ class Store {
   }
 
   /// Nom donné par un responsable dans une entreprise (`null` : nom de la personne).
+  /// Matricule et poste habituel ; `false` si le matricule est déjà pris.
+  Future<bool> setMemberProfile(String companyId, String userId, String? number, String? positionId) async {
+    try {
+      await query(_db, '''
+        UPDATE memberships SET employee_number = @n, position_id = @p::uuid
+        WHERE company_id = @c::uuid AND user_id = @u::uuid AND left_at IS NULL''',
+          {'c': companyId, 'u': userId, 'n': number, 'p': positionId});
+      return true;
+    } on ServerException catch (e) {
+      if (e.code == '23505') return false;
+      rethrow;
+    }
+  }
+
   Future<void> setMemberName(String companyId, String userId, String? name) async {
     await query(_db, '''
       UPDATE memberships SET display_name = @n

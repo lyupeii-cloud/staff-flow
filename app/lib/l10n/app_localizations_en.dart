@@ -1772,6 +1772,93 @@ class L10nEn extends L10n {
 
   @override
   String get timeFormatAuto => 'Auto';
+
+  @override
+  String get people => 'People';
+
+  @override
+  String get sortNatural => 'Default order';
+
+  @override
+  String get sortName => 'Name';
+
+  @override
+  String get employeeNumber => 'Employee number';
+
+  @override
+  String get sfIdLabel => 'Staff Flow ID';
+
+  @override
+  String get pickSearch => 'Search';
+
+  @override
+  String get pickSearchPeople => 'Search: name, employee number, SF ID';
+
+  @override
+  String get pickSortTitle => 'Sort and show by';
+
+  @override
+  String pickSelected(String count) {
+    return 'Checked: $count';
+  }
+
+  @override
+  String get pickCheckAll => 'Check all';
+
+  @override
+  String get pickClear => 'Uncheck all';
+
+  @override
+  String get pickNoResult => 'No results';
+
+  @override
+  String get pickMultiHint =>
+      'Check several people: a shift will be created for each of them, all at once.';
+
+  @override
+  String get filterAll => 'All';
+
+  @override
+  String filterValue(String label, String value) {
+    return '$label: $value';
+  }
+
+  @override
+  String get noPositionGroup => 'No position';
+
+  @override
+  String get noSiteGroup => 'No site';
+
+  @override
+  String get groupByTitle => 'Group by';
+
+  @override
+  String get groupRole => 'Role';
+
+  @override
+  String get groupNone => 'No grouping';
+
+  @override
+  String showMore(String count, String left) {
+    return 'Show $count more ($left left)';
+  }
+
+  @override
+  String get findByQr => 'Find a member with their QR code';
+
+  @override
+  String get qrNotMember =>
+      'This QR code doesn\'t match anyone in this company.';
+
+  @override
+  String get memberProfile => 'Employee number and position';
+
+  @override
+  String get employeeNumberHint =>
+      'Your company\'s own number (optional). The Staff Flow ID stays assigned.';
+
+  @override
+  String get usualPosition => 'Usual position';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).

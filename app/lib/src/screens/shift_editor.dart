@@ -6,6 +6,7 @@ import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
 import 'company_tab.dart';
+import 'pick_list.dart';
 import 'presets_dialog.dart';
 import 'sync_widgets.dart';
 
@@ -68,7 +69,13 @@ class _ShiftEditorState extends State<_ShiftEditor> {
   late List<DateTime> _days = [s?.day ?? widget.day];
   late int _start = s?.start ?? 9 * 60;
   late int _end = (s?.end ?? 17 * 60) % 1440;
-  late String? _userId = s?.userId;
+  /// Personnes choisies : plusieurs à la création (un service chacune),
+  /// une seule en modification.
+  late Set<String> _userIds = {if (s?.userId != null) s!.userId!};
+  String? get _userId => _userIds.firstOrNull;
+
+  /// Filtres de la liste des personnes.
+  String? _filterPosition, _filterSite;
   // Responsable de site : un de ses sites, obligatoirement.
   late String? _siteId = s?.siteId ?? widget.onlySites?.firstOrNull;
   late String? _positionId = s?.positionId;
@@ -112,8 +119,10 @@ class _ShiftEditorState extends State<_ShiftEditor> {
   }
 
   /// Salarié d'une autre équipe (site) : ses responsables seront prévenus.
-  bool get _otherSite {
-    final m = widget.data.members.where((m) => m.user.id == _userId).firstOrNull;
+  bool get _otherSite => _userIds.any(_otherSiteOf);
+
+  bool _otherSiteOf(String userId) {
+    final m = widget.data.members.where((m) => m.user.id == userId).firstOrNull;
     final team = m?.sites;
     return m != null &&
         (m.role == Role.employee || m.role == Role.extra) &&
@@ -125,10 +134,12 @@ class _ShiftEditorState extends State<_ShiftEditor> {
 
   /// Responsable de site qui choisit un salarié d'un autre site : le service
   /// attendra la validation d'un supérieur ou du patron.
-  bool get _needsApproval {
+  bool get _needsApproval => _userIds.any(_needsApprovalOf);
+
+  bool _needsApprovalOf(String userId) {
     final mine = widget.onlySites;
-    if (mine == null || _userId == null || (editing && _userId == s!.userId)) return false;
-    final m = widget.data.members.where((m) => m.user.id == _userId).firstOrNull;
+    if (mine == null || (editing && userId == s!.userId)) return false;
+    final m = widget.data.members.where((m) => m.user.id == userId).firstOrNull;
     final team = m?.sites;
     return m != null &&
         (m.role == Role.employee || m.role == Role.extra) &&
@@ -170,9 +181,11 @@ class _ShiftEditorState extends State<_ShiftEditor> {
     }
   }
 
-  /// Personne choisie dans une autre entreprise : pas encore membre de celle-ci.
-  Map<String, dynamic>? get _reinforcement =>
-      widget.data.members.any((m) => m.user.id == _userId) ? null : _others.where((p) => p['userId'] == _userId).firstOrNull;
+  /// Personnes choisies dans une autre entreprise : pas encore membres de celle-ci.
+  List<Map<String, dynamic>> get _reinforcements => [
+        for (final p in _others)
+          if (_userIds.contains(p['userId']) && !widget.data.members.any((m) => m.user.id == p['userId'])) p,
+      ];
 
   /// Personnes déjà en service dans une autre entreprise sur ce créneau
   /// (le serveur ne dit rien de plus).
@@ -208,10 +221,35 @@ class _ShiftEditorState extends State<_ShiftEditor> {
   bool _absent(String? userId) =>
       userId != null && widget.absences.any((a) => a.requesterId == userId && _days.any(a.covers));
 
+  bool _warn(String userId) => _absent(userId) || _busy.contains(userId) || _busyHere.contains(userId);
+
+  /// Lignes de la liste des personnes (filtres appliqués, choix gardés).
+  List<PickItem> _peopleItems() {
+    final data = widget.data;
+    return [
+      for (final m in data.members)
+        if (_userIds.contains(m.user.id) ||
+            ((_withExtras || m.role != Role.extra) &&
+                (_filterPosition == null || m.positionId == _filterPosition) &&
+                (_filterSite == null || data.expandSites(m.sites ?? const []).contains(_filterSite))))
+          PickItem(m.user.id, m.user.name,
+              number: m.employeeNumber,
+              sfId: m.user.publicId,
+              warn: _warn(m.user.id),
+              detail: [m.role.label(t), ?data.positionName(m.positionId)].join(' · ')),
+      // Renforts : salariés et extras de ses autres entreprises.
+      if (_allCompanies)
+        for (final p in _others)
+          if (!data.members.any((m) => m.user.id == p['userId']) &&
+              (_userIds.contains(p['userId']) || _withExtras || p['role'] != 'extra'))
+            PickItem(p['userId'] as String, p['name'] as String,
+                sfId: p['publicId'] as String?, warn: _busy.contains(p['userId']), detail: p['companyName'] as String?),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final members = widget.data.members;
     _checkBusy();
     final only = widget.onlySites;
     final sites = [
@@ -341,94 +379,85 @@ class _ShiftEditorState extends State<_ShiftEditor> {
                 ),
               ],
             ),
-            DropdownButtonFormField<String?>(
-              key: ValueKey('$_allCompanies$_withExtras${_others.length}'),
-              initialValue: _userId,
-              isExpanded: true,
-              decoration: InputDecoration(labelText: t.person),
-              items: [
-                DropdownMenuItem(value: null, child: Text(t.unassigned)),
-                for (final m in members)
-                  if (_withExtras || m.role != Role.extra || m.user.id == _userId)
-                  DropdownMenuItem(
-                    value: m.user.id,
-                    child: Text(
-                        '${_absent(m.user.id) || _busy.contains(m.user.id) || _busyHere.contains(m.user.id) ? '! ' : ''}${m.user.name} · ${m.role.label(t)}',
-                        style: _absent(m.user.id) || _busy.contains(m.user.id) || _busyHere.contains(m.user.id)
-                            ? TextStyle(color: theme.colorScheme.error)
-                            : null),
+            PickList(
+              label: editing ? t.person : t.people,
+              multi: !editing,
+              items: _peopleItems(),
+              selected: _userIds,
+              onChanged: (v) => setState(() => _userIds = v),
+              sorts: const [PickSort.name, PickSort.number, PickSort.sfId],
+              emptyText: t.unassigned,
+              allowNone: true,
+              hint: editing ? null : t.pickMultiHint,
+              filters: [
+                if (positions.isNotEmpty)
+                  FilterMenu(
+                    label: t.position,
+                    value: _filterPosition,
+                    options: {for (final p in positions) p.id: p.name},
+                    onChanged: (v) => setState(() => _filterPosition = v),
                   ),
-                // Renforts : salariés et extras de ses autres entreprises.
-                if (_allCompanies)
-                  for (final p in _others)
-                    if (_withExtras || p['role'] != 'extra' || p['userId'] == _userId)
-                      DropdownMenuItem(
-                        value: p['userId'] as String,
-                        child: Text(
-                          '${_busy.contains(p['userId']) ? '! ' : ''}${p['name']} · ${p['companyName']}',
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
+                if (widget.data.siteTree.isNotEmpty)
+                  FilterMenu(
+                    label: t.site,
+                    value: _filterSite,
+                    options: {for (final (p, _) in widget.data.siteTree) if (!p.archived) p.id: widget.data.sitePath(p.id) ?? p.name},
+                    onChanged: (v) => setState(() => _filterSite = v),
+                  ),
               ],
-              onChanged: (v) => setState(() => _userId = v),
             ),
-            if (_reinforcement != null)
+            for (final r in _reinforcements)
               Padding(
                 padding: const EdgeInsets.only(top: 4),
-                child: Text(t.reinforcementHint(_reinforcement!['companyName'] as String),
+                child: Text('${r['name']} : ${t.reinforcementHint(r['companyName'] as String)}',
                     style: theme.textTheme.bodySmall),
               ),
-            if (_absent(_userId))
+            if (_userIds.any(_absent))
               Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Text('! ${t.absentThatDay}', style: TextStyle(color: theme.colorScheme.error)),
               ),
-            if (_busyHere.contains(_userId))
+            if (_userIds.any(_busyHere.contains))
               Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Text('! ${t.busyHere}', style: TextStyle(color: theme.colorScheme.error)),
               ),
-            if (_reinforcement == null && _needsApproval)
+            if (_needsApproval)
               Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Text(t.placementNeedsApproval, style: TextStyle(color: theme.colorScheme.error)),
               )
-            else if (_reinforcement == null && _otherSite)
+            else if (_otherSite)
               Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Text(t.otherSiteHint, style: theme.textTheme.bodySmall),
               ),
-            if (_busy.contains(_userId))
+            if (_userIds.any(_busy.contains))
               Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Text('! ${t.busyElsewhere}', style: TextStyle(color: theme.colorScheme.error)),
               ),
             if (positions.isNotEmpty)
-              DropdownButtonFormField<String?>(
-                initialValue: _positionId,
-                decoration: InputDecoration(labelText: t.position),
-                items: [
-                  const DropdownMenuItem(value: null, child: Text('—')),
-                  for (final p in positions) DropdownMenuItem(value: p.id, child: Text(p.name)),
-                ],
-                onChanged: (v) => setState(() => _positionId = v),
+              PickList(
+                label: t.position,
+                items: [for (final p in positions) PickItem(p.id, p.name)],
+                selected: {?_positionId},
+                onChanged: (v) => setState(() => _positionId = v.firstOrNull),
+                emptyText: '—',
+                allowNone: true,
               ),
             if (sites.isNotEmpty)
-              DropdownButtonFormField<String?>(
-                initialValue: _siteId,
-                decoration: InputDecoration(labelText: t.site),
-                items: [
-                  if (only == null) const DropdownMenuItem(value: null, child: Text('—')),
-                  for (final (p, d) in sites)
-                    DropdownMenuItem(
-                        value: p.id, child: Padding(padding: EdgeInsets.only(left: 16.0 * d), child: Text(p.name))),
-                ],
+              PickList(
+                label: t.site,
                 // Choisi : le chemin complet (Nord › Lille › Gare).
-                selectedItemBuilder: (_) => [
-                  if (only == null) const Text('—'),
-                  for (final (p, _) in sites) Text(widget.data.sitePath(p.id) ?? p.name, overflow: TextOverflow.ellipsis),
+                items: [
+                  for (final (p, d) in sites)
+                    PickItem(p.id, p.name, indent: d, selectedText: widget.data.sitePath(p.id) ?? p.name),
                 ],
-                onChanged: (v) => setState(() => _siteId = v),
+                selected: {?_siteId},
+                onChanged: (v) => setState(() => _siteId = v.firstOrNull),
+                emptyText: '—',
+                allowNone: only == null,
               ),
             TextField(
               controller: _note,
@@ -607,12 +636,12 @@ class _ShiftEditorState extends State<_ShiftEditor> {
   Future<void> _save() async {
     final sync = widget.session.sync;
     final companyId = widget.company.id;
-    final reinforcement = _reinforcement;
+    final reinforcements = _reinforcements;
+    final people = _userIds.toList();
     await _run(() async {
-      // Personne d'une autre entreprise : ajoutée d'abord comme renfort.
-      if (reinforcement != null) {
-        await widget.session.api.send('POST', '/companies/$companyId/reinforcements',
-            body: {'userId': reinforcement['userId']});
+      // Personnes d'une autre entreprise : ajoutées d'abord comme renforts.
+      for (final r in reinforcements) {
+        await widget.session.api.send('POST', '/companies/$companyId/reinforcements', body: {'userId': r['userId']});
         sync.markChanged();
       }
       if (editing) {
@@ -622,6 +651,8 @@ class _ShiftEditorState extends State<_ShiftEditor> {
       } else {
         return sync.createShifts(companyId, {
           ..._fields(),
+          // Plusieurs personnes : un service chacune, enregistrés en une fois.
+          if (people.length > 1) ...{'userId': null, 'userIds': people},
           'days': [for (final d in _days) formatDay(d)],
           if (_repeat != _Repeat.none)
             'repeat': {

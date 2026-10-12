@@ -3077,6 +3077,162 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Auto'**
   String get timeFormatAuto;
+
+  /// No description provided for @people.
+  ///
+  /// In en, this message translates to:
+  /// **'People'**
+  String get people;
+
+  /// No description provided for @sortNatural.
+  ///
+  /// In en, this message translates to:
+  /// **'Default order'**
+  String get sortNatural;
+
+  /// No description provided for @sortName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get sortName;
+
+  /// No description provided for @employeeNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Employee number'**
+  String get employeeNumber;
+
+  /// No description provided for @sfIdLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Staff Flow ID'**
+  String get sfIdLabel;
+
+  /// No description provided for @pickSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get pickSearch;
+
+  /// No description provided for @pickSearchPeople.
+  ///
+  /// In en, this message translates to:
+  /// **'Search: name, employee number, SF ID'**
+  String get pickSearchPeople;
+
+  /// No description provided for @pickSortTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort and show by'**
+  String get pickSortTitle;
+
+  /// No description provided for @pickSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'Checked: {count}'**
+  String pickSelected(String count);
+
+  /// No description provided for @pickCheckAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Check all'**
+  String get pickCheckAll;
+
+  /// No description provided for @pickClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Uncheck all'**
+  String get pickClear;
+
+  /// No description provided for @pickNoResult.
+  ///
+  /// In en, this message translates to:
+  /// **'No results'**
+  String get pickNoResult;
+
+  /// No description provided for @pickMultiHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Check several people: a shift will be created for each of them, all at once.'**
+  String get pickMultiHint;
+
+  /// No description provided for @filterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get filterAll;
+
+  /// No description provided for @filterValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{label}: {value}'**
+  String filterValue(String label, String value);
+
+  /// No description provided for @noPositionGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'No position'**
+  String get noPositionGroup;
+
+  /// No description provided for @noSiteGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'No site'**
+  String get noSiteGroup;
+
+  /// No description provided for @groupByTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Group by'**
+  String get groupByTitle;
+
+  /// No description provided for @groupRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Role'**
+  String get groupRole;
+
+  /// No description provided for @groupNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No grouping'**
+  String get groupNone;
+
+  /// No description provided for @showMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Show {count} more ({left} left)'**
+  String showMore(String count, String left);
+
+  /// No description provided for @findByQr.
+  ///
+  /// In en, this message translates to:
+  /// **'Find a member with their QR code'**
+  String get findByQr;
+
+  /// No description provided for @qrNotMember.
+  ///
+  /// In en, this message translates to:
+  /// **'This QR code doesn\'t match anyone in this company.'**
+  String get qrNotMember;
+
+  /// No description provided for @memberProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Employee number and position'**
+  String get memberProfile;
+
+  /// No description provided for @employeeNumberHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Your company\'s own number (optional). The Staff Flow ID stays assigned.'**
+  String get employeeNumberHint;
+
+  /// No description provided for @usualPosition.
+  ///
+  /// In en, this message translates to:
+  /// **'Usual position'**
+  String get usualPosition;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {
