@@ -79,7 +79,6 @@ class Store {
         legalRules: (r['legal_rules'] as Map?)?.map((k, v) => MapEntry(k as String, v as int)),
         printScope: r['print_scope'] as String? ?? 'team',
         shiftPresets: [for (final p in (r['shift_presets'] as List?) ?? const []) (p as Map).cast<String, Object?>()],
-        groupEnabled: r['group_enabled'] as bool? ?? true,
         messagingEnabled: r['messaging_enabled'] as bool? ?? false,
         billingStatus: r['billing_status'] as String? ?? 'trial',
         trialEndsAt: r['trial_ends_at'] as DateTime?,

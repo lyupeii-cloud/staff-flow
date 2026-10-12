@@ -182,7 +182,7 @@ class _Overview extends StatelessWidget {
             stat('Entreprises actives', o['activeCompanies'], sub: '${o['readOnlyCompanies']} en lecture seule'),
             stat('Membres', o['memberships']),
             stat('Services (30 jours)', o['shiftsLast30Days']),
-            stat('Messages (30 jours)', o['messagesLast30Days']),
+            stat('Annonces (30 jours)', o['announcementsLast30Days']),
             stat('Abonnements payés', byStatus['active'] ?? 0),
             stat('En essai', byStatus['trial'] ?? 0),
             stat('En période de grâce', byStatus['grace'] ?? 0),

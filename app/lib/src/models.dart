@@ -56,9 +56,6 @@ class Company {
   /// Préréglages d'horaires (matin, soir, nuit…) définis par les responsables.
   final List<ShiftPreset> shiftPresets;
 
-  /// Groupe de messagerie de toute l'entreprise (le patron peut le couper).
-  final bool groupEnabled;
-
   /// Messagerie de l'entreprise : activée par le patron (sinon, pas d'onglet).
   final bool messagingEnabled;
 
@@ -87,7 +84,6 @@ class Company {
         legalRules = (j['legalRules'] as Map?)?.map((k, v) => MapEntry(k as String, v as int)),
         printScope = j['printScope'] ?? 'team',
         shiftPresets = [for (final p in j['shiftPresets'] ?? const []) ShiftPreset.fromJson((p as Map).cast<String, dynamic>())],
-        groupEnabled = j['groupEnabled'] != false,
         messagingEnabled = j['messagingEnabled'] == true,
         hidePhotos = j['hidePhotos'] == true,
         apiOption = j['billing']?['apiOption'] == true,

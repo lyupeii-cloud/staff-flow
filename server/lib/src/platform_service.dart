@@ -236,7 +236,7 @@ class PlatformService {
       'companiesLast30Days': await count("SELECT count(*) FROM companies WHERE created_at > now() - interval '30 days'"),
       'memberships': await count('SELECT count(*) FROM memberships WHERE left_at IS NULL'),
       'shiftsLast30Days': await count("SELECT count(*) FROM shifts WHERE day > current_date - 30 AND NOT deleted"),
-      'messagesLast30Days': await count("SELECT count(*) FROM messages WHERE created_at > now() - interval '30 days'"),
+      'announcementsLast30Days': await count("SELECT count(*) FROM announcements WHERE created_at > now() - interval '30 days'"),
       'theoreticalMonthlyCents': monthly,
       'companiesBySize': bands,
     };

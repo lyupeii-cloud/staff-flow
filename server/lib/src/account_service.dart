@@ -75,10 +75,6 @@ class AccountService {
         SELECT c.name AS company, r.kind, r.status, r.start_day, r.end_day, r.weekdays, r.note, r.created_at
         FROM requests r JOIN companies c ON c.id = r.company_id
         WHERE r.requester_id = @u::uuid ORDER BY r.created_at'''),
-      'messages': await rows('''
-        SELECT c.name AS company, v.kind AS conversation, m.body, m.created_at
-        FROM messages m JOIN conversations v ON v.id = m.conversation_id JOIN companies c ON c.id = v.company_id
-        WHERE m.author_id = @u::uuid ORDER BY m.id'''),
       'announcements': await rows('''
         SELECT c.name AS company, a.title, a.body, a.created_at
         FROM announcements a JOIN companies c ON c.id = a.company_id
@@ -133,9 +129,6 @@ class AccountService {
         await q('UPDATE memberships SET display_name = NULL WHERE user_id = @u::uuid');
         await q('DELETE FROM notices WHERE user_id = @u::uuid');
         await q('DELETE FROM idempotency_keys WHERE user_id = @u::uuid');
-        await q('DELETE FROM conversation_members WHERE user_id = @u::uuid');
-        await q('DELETE FROM messages WHERE author_id = @u::uuid AND request_id IS NULL');
-        await q("UPDATE messages SET body = '' WHERE author_id = @u::uuid");
       }
       await store.audit(actorId: user.id, action: 'account.delete', details: {'erase': erase}, tx: tx);
     });

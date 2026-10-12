@@ -608,4 +608,9 @@ CREATE TABLE announcement_translations (
 ALTER TABLE companies ALTER COLUMN messaging_enabled SET DEFAULT true;
 UPDATE companies SET messaging_enabled = true;
 ''',
+  // 33 — la messagerie est retirée : tous ses messages sont effacés (décision du 12/10/2026).
+  '''
+DROP TABLE IF EXISTS message_translations, conversation_mutes, conversation_reads, conversation_members, messages, conversations CASCADE;
+ALTER TABLE companies DROP COLUMN IF EXISTS group_enabled;
+''',
 ];

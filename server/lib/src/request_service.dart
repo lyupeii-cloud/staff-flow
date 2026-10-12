@@ -21,8 +21,6 @@ class RequestService {
   /// Prévenue après un échange validé (chevauchement avec une autre entreprise).
   final OverlapService? overlaps;
 
-  /// Cartes des demandes dans les conversations.
-
   RequestService(this.store, this.companies, this.planning, this.notifications, {this.overlaps});
 
   static const kinds = {'swap', 'leave', 'unavailability'};

@@ -104,9 +104,6 @@ class Company {
   /// Préréglages d'horaires : [{name, start, end}] en minutes.
   final List<Map<String, Object?>> shiftPresets;
 
-  /// Groupe de messagerie de toute l'entreprise (le patron peut le couper).
-  final bool groupEnabled;
-
   /// Image de l'entreprise : 0 = aucune ; augmente à chaque changement.
   final int logoVersion;
 
@@ -138,7 +135,6 @@ class Company {
     this.legalRules,
     this.printScope = 'team',
     this.shiftPresets = const [],
-    this.groupEnabled = true,
     this.logoVersion = 0,
     this.messagingEnabled = false,
     this.billingStatus = 'trial',
@@ -171,7 +167,6 @@ class Company {
         legalRules: legalRules == null ? this.legalRules : legalRules(),
         printScope: printScope ?? this.printScope,
         shiftPresets: shiftPresets,
-        groupEnabled: groupEnabled,
         logoVersion: logoVersion,
         messagingEnabled: messagingEnabled,
         billingStatus: billingStatus,
@@ -194,7 +189,6 @@ class Company {
         'legalRules': legalRules,
         'printScope': printScope,
         'shiftPresets': shiftPresets,
-        'groupEnabled': groupEnabled,
         'logoVersion': logoVersion,
         'messagingEnabled': messagingEnabled,
         'hidePhotos': hidePhotos,
