@@ -61,7 +61,7 @@ services:
     image: libretranslate/libretranslate:v1.9.6
     restart: unless-stopped
     environment:
-      LT_LOAD_ONLY: en,fr,es,uk,ru,pt,de,it,nl,pl,cs,sk,ro,hu,bg,el,sv,da,nb,fi,id,ms,vi,tl,th,ja,ko,zh,hi,bn
+      LT_LOAD_ONLY: en,fr,uk,ru,pl,ro,de,es,pt,it
     volumes:
       - translate-models:/home/libretranslate/.local
 

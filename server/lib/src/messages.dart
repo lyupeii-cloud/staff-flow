@@ -5,56 +5,25 @@
 /// se rabattent alors sur l'anglais. Un test vérifie ces règles.
 library;
 
-import 'messages/bg.dart';
-import 'messages/bn.dart';
-import 'messages/cs.dart';
-import 'messages/da.dart';
 import 'messages/de.dart';
-import 'messages/el.dart';
 import 'messages/en.dart';
 import 'messages/es.dart';
-import 'messages/fi.dart';
-import 'messages/fil.dart';
-import 'messages/gu.dart';
-import 'messages/hi.dart';
-import 'messages/hu.dart';
-import 'messages/id.dart';
 import 'messages/it.dart';
-import 'messages/ja.dart';
-import 'messages/kk.dart';
-import 'messages/ko.dart';
-import 'messages/mr.dart';
-import 'messages/ms.dart';
-import 'messages/nb.dart';
-import 'messages/nl.dart';
-import 'messages/pa.dart';
 import 'messages/pl.dart';
 import 'messages/pt.dart';
 import 'messages/ro.dart';
 import 'messages/ru.dart';
-import 'messages/sk.dart';
-import 'messages/sv.dart';
-import 'messages/sw.dart';
-import 'messages/ta.dart';
-import 'messages/te.dart';
-import 'messages/th.dart';
 import 'messages/uk.dart';
-import 'messages/vi.dart';
-import 'messages/zh.dart';
 
 /// Toutes les langues de l'application (le français est le texte du code).
 const catalogs = <String, Map<String, String>>{
-  'en': en, 'uk': uk, 'es': es, 'ru': ru, 'pt': pt, 'de': de, 'zh': zh, 'hi': hi,
-  'bn': bn, 'ja': ja, 'id': id, 'vi': vi, 'ko': ko, 'it': it, 'pl': pl, 'nl': nl,
-  'th': th, 'ta': ta, 'te': te, 'mr': mr, 'sw': sw, 'ro': ro, 'el': el, 'cs': cs,
-  'hu': hu, 'sv': sv, 'ms': ms, 'fil': fil, 'pa': pa, 'gu': gu, 'kk': kk, 'da': da,
-  'fi': fi, 'nb': nb, 'sk': sk, 'bg': bg,
+  'en': en, 'uk': uk, 'ru': ru, 'pl': pl, 'ro': ro, 'de': de, 'es': es, 'pt': pt, 'it': it,
 };
 
 final supportedLanguages = {'fr', ...catalogs.keys};
 
 /// Codes que les navigateurs ou Google emploient pour nos langues.
-const _aliases = {'no': 'nb', 'nn': 'nb', 'tl': 'fil'};
+const _aliases = <String, String>{};
 
 /// Messages techniques : erreurs de programmation ou cas que l'interface
 /// empêche ; ils restent en anglais pour les autres langues.

@@ -34,10 +34,10 @@ void main() {
     addTearDown(tester.platformDispatcher.clearLocalesTestValue);
     final session = Session(Api())
       ..state = SessionState.signedOut
-      ..language = 'ja';
+      ..language = 'pl';
     await tester.pumpWidget(StaffFlowApp(session: session));
     await tester.pumpAndSettle();
-    expect(find.textContaining('チームのシフトを', findRichText: true), findsOneWidget);
+    expect(find.textContaining('Grafiki twojego zespołu', findRichText: true), findsOneWidget);
     // Retour à « automatique » : langue du téléphone.
     session.language = null;
     session.notifyListeners();
@@ -49,8 +49,10 @@ void main() {
     expect(supportedLocaleFor('uk'), const Locale('uk'));
     expect(supportedLocaleFor('fr-CA'), const Locale('fr'));
     expect(supportedLocaleFor('tr'), isNull);
-    expect(supportedLocaleFor('no'), const Locale('nb'));
-    expect(supportedLocaleFor('tl'), const Locale('fil'));
+    expect(supportedLocaleFor('ja'), isNull);
+    expect(supportedLocaleFor('en-GB'), const Locale('en', 'GB'));
+    expect(supportedLocaleFor('en-US'), const Locale('en'));
+    expect(supportedLocaleFor('en_GB'), const Locale('en', 'GB'));
     expect(supportedLocaleFor(null), isNull);
   });
 

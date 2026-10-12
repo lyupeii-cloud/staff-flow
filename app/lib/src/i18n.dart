@@ -15,49 +15,29 @@ class AppLanguage {
 
   const AppLanguage(this.code, this.nativeName);
 
-  Locale get locale => Locale(code);
+  /// `en_GB` → Locale('en', 'GB').
+  Locale get locale {
+    final parts = code.split('_');
+    return Locale(parts.first, parts.length > 1 ? parts[1] : null);
+  }
 }
 
-/// Langues de l'application. La première (anglais) sert quand celle du
-/// téléphone ou du compte Google n'est pas proposée ; elle est toujours là.
+/// Langues de l\'application : les pays visés (Ukraine, France, Europe).
+/// La première (anglais américain) sert quand celle du téléphone ou du
+/// compte Google n'est pas proposée ; elle est toujours là. L'anglais
+/// britannique ne change que l'orthographe et le format des dates.
 const appLanguages = [
-  AppLanguage('en', 'English'),
+  AppLanguage('en', 'English (US)'),
+  AppLanguage('en_GB', 'English (UK)'),
   AppLanguage('fr', 'Français'),
-  AppLanguage('es', 'Español'),
   AppLanguage('uk', 'Українська'),
   AppLanguage('ru', 'Русский'),
-  AppLanguage('pt', 'Português'),
-  AppLanguage('de', 'Deutsch'),
-  AppLanguage('zh', '中文（简体）'),
-  AppLanguage('hi', 'हिन्दी'),
-  AppLanguage('bn', 'বাংলা'),
-  AppLanguage('ja', '日本語'),
-  AppLanguage('id', 'Bahasa Indonesia'),
-  AppLanguage('vi', 'Tiếng Việt'),
-  AppLanguage('ko', '한국어'),
-  AppLanguage('it', 'Italiano'),
   AppLanguage('pl', 'Polski'),
-  AppLanguage('nl', 'Nederlands'),
-  AppLanguage('th', 'ไทย'),
-  AppLanguage('ta', 'தமிழ்'),
-  AppLanguage('te', 'తెలుగు'),
-  AppLanguage('mr', 'मराठी'),
-  AppLanguage('sw', 'Kiswahili'),
   AppLanguage('ro', 'Română'),
-  AppLanguage('el', 'Ελληνικά'),
-  AppLanguage('cs', 'Čeština'),
-  AppLanguage('hu', 'Magyar'),
-  AppLanguage('sv', 'Svenska'),
-  AppLanguage('ms', 'Bahasa Melayu'),
-  AppLanguage('fil', 'Filipino'),
-  AppLanguage('pa', 'ਪੰਜਾਬੀ'),
-  AppLanguage('gu', 'ગુજરાતી'),
-  AppLanguage('kk', 'Қазақ тілі'),
-  AppLanguage('da', 'Dansk'),
-  AppLanguage('fi', 'Suomi'),
-  AppLanguage('nb', 'Norsk bokmål'),
-  AppLanguage('sk', 'Slovenčina'),
-  AppLanguage('bg', 'Български'),
+  AppLanguage('de', 'Deutsch'),
+  AppLanguage('es', 'Español'),
+  AppLanguage('pt', 'Português'),
+  AppLanguage('it', 'Italiano'),
 ];
 
 final supportedLocales = [for (final l in appLanguages) l.locale];
@@ -88,11 +68,15 @@ String durationLabel(L10n t, int minutes) {
 /// l'application la propose ; sinon `null` (on garde celle de l'appareil).
 Locale? supportedLocaleFor(String? tag) {
   if (tag == null || tag.isEmpty) return null;
-  const aliases = {'no': 'nb', 'nn': 'nb', 'tl': 'fil'};
-  var language = tag.split(RegExp('[-_]')).first.toLowerCase();
-  language = aliases[language] ?? language;
+  final parts = tag.split(RegExp('[-_]'));
+  final language = parts.first.toLowerCase();
+  final country = parts.length > 1 ? parts[1].toUpperCase() : null;
+  // Langue et pays (en-GB), sinon la langue seule (en-US → en).
   for (final l in supportedLocales) {
-    if (l.languageCode == language) return l;
+    if (l.languageCode == language && l.countryCode != null && l.countryCode == country) return l;
+  }
+  for (final l in supportedLocales) {
+    if (l.languageCode == language && l.countryCode == null) return l;
   }
   return null;
 }

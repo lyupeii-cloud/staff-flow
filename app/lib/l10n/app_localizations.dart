@@ -5,43 +5,16 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
-import 'app_localizations_bg.dart';
-import 'app_localizations_bn.dart';
-import 'app_localizations_cs.dart';
-import 'app_localizations_da.dart';
 import 'app_localizations_de.dart';
-import 'app_localizations_el.dart';
 import 'app_localizations_en.dart';
 import 'app_localizations_es.dart';
-import 'app_localizations_fi.dart';
-import 'app_localizations_fil.dart';
 import 'app_localizations_fr.dart';
-import 'app_localizations_gu.dart';
-import 'app_localizations_hi.dart';
-import 'app_localizations_hu.dart';
-import 'app_localizations_id.dart';
 import 'app_localizations_it.dart';
-import 'app_localizations_ja.dart';
-import 'app_localizations_kk.dart';
-import 'app_localizations_ko.dart';
-import 'app_localizations_mr.dart';
-import 'app_localizations_ms.dart';
-import 'app_localizations_nb.dart';
-import 'app_localizations_nl.dart';
-import 'app_localizations_pa.dart';
 import 'app_localizations_pl.dart';
 import 'app_localizations_pt.dart';
 import 'app_localizations_ro.dart';
 import 'app_localizations_ru.dart';
-import 'app_localizations_sk.dart';
-import 'app_localizations_sv.dart';
-import 'app_localizations_sw.dart';
-import 'app_localizations_ta.dart';
-import 'app_localizations_te.dart';
-import 'app_localizations_th.dart';
 import 'app_localizations_uk.dart';
-import 'app_localizations_vi.dart';
-import 'app_localizations_zh.dart';
 
 // ignore_for_file: type=lint
 
@@ -128,43 +101,17 @@ abstract class L10n {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
-    Locale('bg'),
-    Locale('bn'),
-    Locale('cs'),
-    Locale('da'),
     Locale('de'),
-    Locale('el'),
     Locale('en'),
+    Locale('en', 'GB'),
     Locale('es'),
-    Locale('fi'),
-    Locale('fil'),
     Locale('fr'),
-    Locale('gu'),
-    Locale('hi'),
-    Locale('hu'),
-    Locale('id'),
     Locale('it'),
-    Locale('ja'),
-    Locale('kk'),
-    Locale('ko'),
-    Locale('mr'),
-    Locale('ms'),
-    Locale('nb'),
-    Locale('nl'),
-    Locale('pa'),
     Locale('pl'),
     Locale('pt'),
     Locale('ro'),
     Locale('ru'),
-    Locale('sk'),
-    Locale('sv'),
-    Locale('sw'),
-    Locale('ta'),
-    Locale('te'),
-    Locale('th'),
     Locale('uk'),
-    Locale('vi'),
-    Locale('zh'),
   ];
 
   /// No description provided for @cancel.
@@ -1544,7 +1491,7 @@ abstract class L10n {
   /// No description provided for @statusCancelled.
   ///
   /// In en, this message translates to:
-  /// **'Cancelled'**
+  /// **'Canceled'**
   String get statusCancelled;
 
   /// No description provided for @cancelRequest.
@@ -2942,7 +2889,7 @@ abstract class L10n {
   /// No description provided for @avatarColor.
   ///
   /// In en, this message translates to:
-  /// **'Colour'**
+  /// **'Color'**
   String get avatarColor;
 
   /// No description provided for @hidePhotosTitle.
@@ -3130,43 +3077,16 @@ class _L10nDelegate extends LocalizationsDelegate<L10n> {
 
   @override
   bool isSupported(Locale locale) => <String>[
-    'bg',
-    'bn',
-    'cs',
-    'da',
     'de',
-    'el',
     'en',
     'es',
-    'fi',
-    'fil',
     'fr',
-    'gu',
-    'hi',
-    'hu',
-    'id',
     'it',
-    'ja',
-    'kk',
-    'ko',
-    'mr',
-    'ms',
-    'nb',
-    'nl',
-    'pa',
     'pl',
     'pt',
     'ro',
     'ru',
-    'sk',
-    'sv',
-    'sw',
-    'ta',
-    'te',
-    'th',
     'uk',
-    'vi',
-    'zh',
   ].contains(locale.languageCode);
 
   @override
@@ -3174,56 +3094,30 @@ class _L10nDelegate extends LocalizationsDelegate<L10n> {
 }
 
 L10n lookupL10n(Locale locale) {
+  // Lookup logic when language+country codes are specified.
+  switch (locale.languageCode) {
+    case 'en':
+      {
+        switch (locale.countryCode) {
+          case 'GB':
+            return L10nEnGb();
+        }
+        break;
+      }
+  }
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'bg':
-      return L10nBg();
-    case 'bn':
-      return L10nBn();
-    case 'cs':
-      return L10nCs();
-    case 'da':
-      return L10nDa();
     case 'de':
       return L10nDe();
-    case 'el':
-      return L10nEl();
     case 'en':
       return L10nEn();
     case 'es':
       return L10nEs();
-    case 'fi':
-      return L10nFi();
-    case 'fil':
-      return L10nFil();
     case 'fr':
       return L10nFr();
-    case 'gu':
-      return L10nGu();
-    case 'hi':
-      return L10nHi();
-    case 'hu':
-      return L10nHu();
-    case 'id':
-      return L10nId();
     case 'it':
       return L10nIt();
-    case 'ja':
-      return L10nJa();
-    case 'kk':
-      return L10nKk();
-    case 'ko':
-      return L10nKo();
-    case 'mr':
-      return L10nMr();
-    case 'ms':
-      return L10nMs();
-    case 'nb':
-      return L10nNb();
-    case 'nl':
-      return L10nNl();
-    case 'pa':
-      return L10nPa();
     case 'pl':
       return L10nPl();
     case 'pt':
@@ -3232,24 +3126,8 @@ L10n lookupL10n(Locale locale) {
       return L10nRo();
     case 'ru':
       return L10nRu();
-    case 'sk':
-      return L10nSk();
-    case 'sv':
-      return L10nSv();
-    case 'sw':
-      return L10nSw();
-    case 'ta':
-      return L10nTa();
-    case 'te':
-      return L10nTe();
-    case 'th':
-      return L10nTh();
     case 'uk':
       return L10nUk();
-    case 'vi':
-      return L10nVi();
-    case 'zh':
-      return L10nZh();
   }
 
   throw FlutterError(

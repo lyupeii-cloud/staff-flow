@@ -816,7 +816,7 @@ class L10nEn extends L10n {
   String get statusRefused => 'Refused';
 
   @override
-  String get statusCancelled => 'Cancelled';
+  String get statusCancelled => 'Canceled';
 
   @override
   String get cancelRequest => 'Cancel request';
@@ -1655,7 +1655,7 @@ class L10nEn extends L10n {
   String get avatarUseGoogle => 'Use my Google photo';
 
   @override
-  String get avatarColor => 'Colour';
+  String get avatarColor => 'Color';
 
   @override
   String get hidePhotosTitle => 'Hide Google photos';
@@ -1766,4 +1766,18 @@ class L10nEn extends L10n {
   String telegramLoginHint(String bot) {
     return 'Tip: send /connexion to the bot $bot to get a link and open Staff Flow in a browser, without the app or a Google account.';
   }
+}
+
+/// The translations for English, as used in the United Kingdom (`en_GB`).
+class L10nEnGb extends L10nEn {
+  L10nEnGb() : super('en_GB');
+
+  @override
+  String get statusCancelled => 'Cancelled';
+
+  @override
+  String get customization => 'Customisation';
+
+  @override
+  String get avatarColor => 'Colour';
 }

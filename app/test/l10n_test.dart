@@ -24,7 +24,7 @@ void main() {
   final english = load('en');
   final files = Directory('lib/l10n')
       .listSync()
-      .map((f) => RegExp(r'app_(\w+)\.arb$').firstMatch(f.path)?.group(1))
+      .map((f) => RegExp(r'app_([a-z]+(?:_[A-Z]{2})?)\.arb$').firstMatch(f.path)?.group(1))
       .whereType<String>()
       .toSet();
 
@@ -35,8 +35,9 @@ void main() {
   for (final lang in files.difference({'en'})) {
     test('$lang : tous les textes, avec les mêmes variables qu\'en anglais', () {
       final t = load(lang);
+      // Variante régionale (en_GB) : seulement les textes qui changent.
       final missing = english.keys.toSet().difference(t.keys.toSet()).difference(devOnly);
-      expect(missing, isEmpty, reason: 'textes manquants');
+      if (!lang.contains('_')) expect(missing, isEmpty, reason: 'textes manquants');
       expect(t.keys.toSet().difference(english.keys.toSet()), isEmpty, reason: 'clés inconnues');
       for (final key in t.keys) {
         expect(placeholders(t[key]!), placeholders(english[key]!), reason: key);

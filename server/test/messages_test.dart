@@ -60,7 +60,7 @@ void main() {
   test('le serveur et l\'application proposent les mêmes langues', () {
     final appLanguages = {
       for (final f in Directory('../app/lib/l10n').listSync())
-        if (RegExp(r'app_(\w+)\.arb$').firstMatch(f.path) case final m?) m.group(1)!,
+        if (RegExp(r'app_([a-z]+)(?:_[A-Z]{2})?\.arb$').firstMatch(f.path) case final m?) m.group(1)!,
     };
     expect(supportedLanguages, appLanguages);
   }, skip: Directory('../app/lib/l10n').existsSync() ? false : 'application absente (tests lancés sans le dossier app)');
@@ -80,9 +80,9 @@ void main() {
       expect(negotiateLanguage('uk-UA,uk;q=0.9,en;q=0.8'), 'uk');
       expect(negotiateLanguage('fr-FR'), 'fr');
       expect(negotiateLanguage('tr-TR,de;q=0.5,en;q=0.7'), 'en');
-      expect(negotiateLanguage('en;q=0.2,ja;q=0.9'), 'ja');
-      expect(negotiateLanguage('no-NO'), 'nb');
-      expect(negotiateLanguage('tl'), 'fil');
+      expect(negotiateLanguage('en;q=0.2,pl;q=0.9'), 'pl');
+      expect(negotiateLanguage('ja-JP'), 'en', reason: 'langue retirée : anglais');
+      expect(negotiateLanguage('en-GB'), 'en');
     });
 
     test('langue non proposée ou absente : anglais', () {
