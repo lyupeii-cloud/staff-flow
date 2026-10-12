@@ -3,7 +3,7 @@
 /// Chaque section : un titre et ses paragraphes.
 library;
 
-const legalUpdated = {'fr': 'Version du 12 octobre 2026', 'uk': 'Редакція від 12 жовтня 2026 р.', 'en': 'Version of 12 October 2026'};
+const legalUpdated = {'fr': 'Version du 13 octobre 2026', 'uk': 'Редакція від 13 жовтня 2026 р.', 'en': 'Version of 13 October 2026'};
 
 const legalTitles = {
   'fr': {'terms': 'Conditions d\'utilisation et de vente', 'privacy': 'Politique de confidentialité'},
@@ -36,13 +36,13 @@ const legal = <String, Map<String, List<List<Object>>>>{
         'Seul le propriétaire d\'une entreprise paie. Les salariés, responsables et extras utilisent l\'application gratuitement.',
         'Le prix dépend du nombre de salariés et responsables de l\'entreprise ; la grille en vigueur est affichée dans l\'application et sur le site. Les prix sont indiqués en euros, toutes taxes comprises.',
         'Chaque compte Google bénéficie une seule fois d\'un essai gratuit de 2 jours à la création de sa première entreprise.',
-        'L\'abonnement couvre des mois civils pleins. Au premier paiement (ou après une interruption), la fin du mois en cours est payée au prorata des jours restants, arrondie au centime supérieur, puis la période choisie commence le 1er du mois suivant : 1 mois (paiement mensuel) ou 12 mois au prix de 10 (paiement annuel). Les options (par exemple « sites en cascade ») sont facturées sans remise. Le détail est affiché avant chaque paiement.',
+        'L\'abonnement couvre des mois civils pleins. Au premier paiement (ou après une interruption), la fin du mois en cours est payée au prorata des jours restants, arrondie au centime supérieur, puis la période choisie commence le 1er du mois suivant : 1 mois (paiement mensuel) ou 12 mois au prix de 10 (paiement annuel). Les options (« accès API », « sites en cascade » au-delà de trois niveaux de sites) sont facturées sans remise. Une option ajoutée en cours d\'abonnement se paie seule : le mois en cours en entier, puis chaque mois jusqu\'à la fin de la période déjà payée (mois offerts de l\'année compris) ; elle est ensuite reprise dans les renouvellements. Le détail est affiché avant chaque paiement, et chaque paiement a sa facture.',
         'Un renouvellement prolonge la période déjà payée. Le prix est calculé avec l\'effectif au moment du paiement.',
         'Le paiement est traité par un prestataire de paiement ; Staff Flow ne reçoit jamais vos données de carte. Les factures sont disponibles au téléchargement dans l\'application.',
         'Un changement de prix est annoncé au moins 30 jours à l\'avance et s\'applique au renouvellement suivant.',
       ]],
       ['6. Fin de l\'abonnement', [
-        'Si l\'abonnement n\'est pas renouvelé, l\'entreprise passe en lecture seule pendant 15 jours, avec des rappels ; le propriétaire peut payer à tout moment pour tout retrouver. Ensuite, l\'entreprise et ses données sont supprimées.',
+        'Si l\'abonnement n\'est pas renouvelé, l\'entreprise passe en lecture seule pendant 15 jours, avec des rappels, et ses clés API ne répondent plus ; le propriétaire peut payer à tout moment pour tout retrouver. Ensuite, l\'entreprise et ses données sont supprimées.',
         'Les factures sont conservées pendant la durée légale (10 ans) et restent téléchargeables par le dernier propriétaire. Un ancien propriétaire qui a supprimé son compte peut les demander à contact@staff-flow.cloud en justifiant qu\'il était propriétaire de l\'entreprise.',
         'Une période payée n\'est pas remboursée, sauf lorsque la loi l\'impose. Si la loi de votre pays vous accorde un droit de rétractation, vous pouvez l\'exercer dans les 14 jours suivant le paiement en écrivant à contact@staff-flow.cloud ; le service ayant commencé à votre demande, la part correspondant à la période déjà écoulée reste due.',
       ]],
@@ -142,13 +142,13 @@ const legal = <String, Map<String, List<List<Object>>>>{
         'Платить лише власник компанії. Працівники, керівники й тимчасові працівники користуються застосунком безкоштовно.',
         'Ціна залежить від кількості працівників і керівників компанії; чинну сітку показано в застосунку й на сайті. Ціни вказано в євро з усіма податками.',
         'Кожен обліковий запис Google один раз отримує безкоштовний пробний період 2 дні під час створення першої компанії.',
-        'Підписка охоплює повні календарні місяці. Під час першої оплати (або після перерви) решта поточного місяця оплачується пропорційно днями, що залишилися, з округленням до цента вгору, а вибраний період починається з 1-го числа наступного місяця: 1 місяць (щомісячна оплата) або 12 місяців за ціною 10 (річна оплата). Опції (наприклад, «вкладені локації») оплачуються без знижки. Деталі показано перед кожною оплатою.',
+        'Підписка охоплює повні календарні місяці. Під час першої оплати (або після перерви) решта поточного місяця оплачується пропорційно днями, що залишилися, з округленням до цента вгору, а вибраний період починається з 1-го числа наступного місяця: 1 місяць (щомісячна оплата) або 12 місяців за ціною 10 (річна оплата). Опції («Доступ до API», «Каскадні об\'єкти» понад три рівні) оплачуються без знижки. Опцію, додану під час підписки, оплачують окремо: поточний місяць повністю, потім кожен місяць до кінця вже оплаченого періоду (включно з безкоштовними місяцями року); далі її включають у продовження. Деталі показано перед кожною оплатою, і на кожну оплату є рахунок.',
         'Продовження подовжує вже оплачений період. Ціна розраховується за кількістю працівників на момент оплати.',
         'Оплату обробляє платіжний провайдер; Staff Flow ніколи не отримує даних вашої картки. Рахунки можна завантажити в застосунку.',
         'Про зміну ціни повідомляється щонайменше за 30 днів; вона застосовується з наступного продовження.',
       ]],
       ['6. Завершення підписки', [
-        'Якщо підписку не продовжено, компанія на 15 днів переходить у режим лише перегляду з нагадуваннями; власник може будь-коли оплатити й усе відновити. Після цього компанію та її дані буде видалено.',
+        'Якщо підписку не продовжено, компанія на 15 днів переходить у режим лише перегляду з нагадуваннями, а її ключі API більше не працюють; власник може будь-коли оплатити й усе відновити. Після цього компанію та її дані буде видалено.',
         'Рахунки зберігаються протягом встановленого законом строку (10 років) і залишаються доступними для завантаження останньому власникові. Колишній власник, який видалив обліковий запис, може запросити їх на contact@staff-flow.cloud, підтвердивши, що був власником компанії.',
         'Оплачений період не повертається, крім випадків, передбачених законом. Якщо закон вашої країни надає право на відмову від договору, ви можете скористатися ним протягом 14 днів після оплати, написавши на contact@staff-flow.cloud; оскільки сервіс почав надаватися на ваше прохання, частина за вже використаний період залишається до сплати.',
       ]],
@@ -248,13 +248,13 @@ const legal = <String, Map<String, List<List<Object>>>>{
         'Only the owner of a company pays. Employees, managers and temps use the app for free.',
         'The price depends on the number of employees and managers in the company; the current grid is shown in the app and on the website. Prices are in euros, all taxes included.',
         'Each Google account gets a free 2-day trial once, when creating its first company.',
-        'The subscription covers whole calendar months. At the first payment (or after an interruption), the rest of the current month is paid pro rata for the remaining days, rounded up to the cent, then the chosen period starts on the 1st of the following month: 1 month (monthly payment) or 12 months for the price of 10 (yearly payment). Options (such as “nested sites”) are charged without discount. The details are shown before each payment.',
+        'The subscription covers whole calendar months. At the first payment (or after an interruption), the rest of the current month is paid pro rata for the remaining days, rounded up to the cent, then the chosen period starts on the 1st of the following month: 1 month (monthly payment) or 12 months for the price of 10 (yearly payment). Options (“API access”, “nested sites” beyond three levels of sites) are charged without discount. An option added during a subscription is paid on its own: the whole current month, then each month until the end of the period already paid (including the free months of a year); it is then included in renewals. The details are shown before each payment, and each payment has its invoice.',
         'A renewal extends the period already paid. The price is calculated with the headcount at the time of payment.',
         'Payment is handled by a payment provider; Staff Flow never receives your card details. Invoices can be downloaded in the app.',
         'A price change is announced at least 30 days in advance and applies from the next renewal.',
       ]],
       ['6. End of the subscription', [
-        'If the subscription is not renewed, the company becomes read-only for 15 days, with reminders; the owner can pay at any time to get everything back. After that, the company and its data are deleted.',
+        'If the subscription is not renewed, the company becomes read-only for 15 days, with reminders, and its API keys stop working; the owner can pay at any time to get everything back. After that, the company and its data are deleted.',
         'Invoices are kept for the legal period (10 years) and remain downloadable by the last owner. A former owner who deleted their account can request them at contact@staff-flow.cloud by showing they owned the company.',
         'A paid period is not refunded, except where the law requires it. If the law of your country gives you a right of withdrawal, you can exercise it within 14 days of payment by writing to contact@staff-flow.cloud; since the service started at your request, the share for the period already elapsed remains due.',
       ]],
