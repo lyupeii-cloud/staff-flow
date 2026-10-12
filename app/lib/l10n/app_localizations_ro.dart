@@ -1996,4 +1996,19 @@ class L10nRo extends L10n {
 
   @override
   String get acceptLeaveCancel => 'Acceptă anularea';
+
+  @override
+  String get requestsSearchHint => 'Caută: nume, număr matricol, ID SF, notă';
+
+  @override
+  String get filterType => 'Tip';
+
+  @override
+  String get filterState => 'Stare';
+
+  @override
+  String get statePending => 'În așteptare';
+
+  @override
+  String get stateClosed => 'Refuzate sau anulate';
 }

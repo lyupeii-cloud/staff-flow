@@ -1997,4 +1997,20 @@ class L10nUk extends L10n {
 
   @override
   String get acceptLeaveCancel => 'Погодити скасування';
+
+  @override
+  String get requestsSearchHint =>
+      'Пошук: ім\'я, табельний номер, ID SF, примітка';
+
+  @override
+  String get filterType => 'Тип';
+
+  @override
+  String get filterState => 'Стан';
+
+  @override
+  String get statePending => 'Очікують';
+
+  @override
+  String get stateClosed => 'Відхилені або скасовані';
 }

@@ -546,5 +546,10 @@
   "askLeaveCancel": "Pedir la anulación de estas vacaciones",
   "confirmAskLeaveCancel": "¿Pedir la anulación de estas vacaciones? Un responsable tendrá que aprobarla; hasta entonces, las vacaciones siguen previstas.",
   "refuseLeaveCancel": "Rechazar la anulación",
-  "acceptLeaveCancel": "Aceptar la anulación"
+  "acceptLeaveCancel": "Aceptar la anulación",
+  "requestsSearchHint": "Buscar: nombre, número de empleado, ID SF, nota",
+  "filterType": "Tipo",
+  "filterState": "Estado",
+  "statePending": "Pendientes",
+  "stateClosed": "Rechazadas o anuladas"
 }

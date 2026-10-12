@@ -3419,6 +3419,36 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Accept the cancellation'**
   String get acceptLeaveCancel;
+
+  /// No description provided for @requestsSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search: name, employee number, SF ID, note'**
+  String get requestsSearchHint;
+
+  /// No description provided for @filterType.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get filterType;
+
+  /// No description provided for @filterState.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get filterState;
+
+  /// No description provided for @statePending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get statePending;
+
+  /// No description provided for @stateClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Refused or cancelled'**
+  String get stateClosed;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

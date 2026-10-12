@@ -285,7 +285,12 @@ class RequestService {
   /// un responsable celles de son périmètre (ses sites). Les plus récentes
   /// d'abord, [limit] à la fois ; [before] : date de création de la dernière
   /// demande déjà affichée (page suivante).
-  Future<List<Map<String, Object?>>> list(User actor, String companyId, {String? before, int limit = 10}) async {
+  /// Filtres : [query] (nom, matricule ou ID SF de la personne ou du
+  /// collègue, ou la note), [kind] (swap, leave, unavailability) et [state]
+  /// (pending, approved, closed : refusée, annulée ou sans objet).
+  Future<List<Map<String, Object?>>> list(User actor, String companyId,
+      {String? before, int limit = 10, String? query, String? kind, String? state}) async {
+    final q = query == null || query.trim().isEmpty ? null : '%${query.trim().toLowerCase()}%';
     final viewer = await _viewer(actor, companyId);
     await expire(companyId);
     final wanted = limit.clamp(1, 50);
@@ -293,9 +298,20 @@ class RequestService {
     var cursor = before;
     while (out.length < wanted) {
       final rows = await store.query(store.db, '''
-        SELECT id::text, created_at FROM requests WHERE company_id = @c::uuid
-          AND (@before::timestamptz IS NULL OR created_at < @before::timestamptz)
-        ORDER BY created_at DESC LIMIT 50''', {'c': companyId, 'before': cursor});
+        SELECT r.id::text, r.created_at FROM requests r WHERE r.company_id = @c::uuid
+          AND (@before::timestamptz IS NULL OR r.created_at < @before::timestamptz)
+          AND (@kind::text IS NULL OR r.kind = @kind::text)
+          AND (@state::text IS NULL
+            OR (@state::text = 'pending' AND (r.status IN ('pending_peer', 'pending_manager') OR r.cancel_requested_at IS NOT NULL))
+            OR (@state::text = 'approved' AND r.status = 'approved')
+            OR (@state::text = 'closed' AND r.status IN ('refused', 'cancelled', 'expired')))
+          AND (@q::text IS NULL OR lower(coalesce(r.note, '')) LIKE @q::text OR EXISTS (
+            SELECT 1 FROM users u
+            LEFT JOIN memberships m ON m.user_id = u.id AND m.company_id = r.company_id AND m.left_at IS NULL
+            WHERE u.id IN (r.requester_id, r.peer_id)
+              AND (lower(coalesce(m.display_name, u.custom_name, u.name)) LIKE @q::text
+                OR lower(coalesce(m.employee_number, '')) LIKE @q::text OR lower(u.public_id) LIKE @q::text)))
+        ORDER BY r.created_at DESC LIMIT 50''', {'c': companyId, 'before': cursor, 'kind': kind, 'state': state, 'q': q});
       if (rows.isEmpty) break;
       for (final row in rows) {
         final json = await _visible(row[0] as String, actor, viewer);

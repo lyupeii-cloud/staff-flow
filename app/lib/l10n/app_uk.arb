@@ -550,5 +550,10 @@
   "askLeaveCancel": "Попросити скасувати цю відпустку",
   "confirmAskLeaveCancel": "Попросити скасувати цю відпустку? Керівник має це погодити; доти відпустка залишається в плані.",
   "refuseLeaveCancel": "Відхилити скасування",
-  "acceptLeaveCancel": "Погодити скасування"
+  "acceptLeaveCancel": "Погодити скасування",
+  "requestsSearchHint": "Пошук: ім'я, табельний номер, ID SF, примітка",
+  "filterType": "Тип",
+  "filterState": "Стан",
+  "statePending": "Очікують",
+  "stateClosed": "Відхилені або скасовані"
 }

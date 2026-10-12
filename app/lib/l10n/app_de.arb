@@ -546,5 +546,10 @@
   "askLeaveCancel": "Stornierung dieses Urlaubs anfragen",
   "confirmAskLeaveCancel": "Stornierung dieses Urlaubs anfragen? Ein Verantwortlicher muss sie genehmigen; bis dahin bleibt der Urlaub geplant.",
   "refuseLeaveCancel": "Stornierung ablehnen",
-  "acceptLeaveCancel": "Stornierung annehmen"
+  "acceptLeaveCancel": "Stornierung annehmen",
+  "requestsSearchHint": "Suchen: Name, Personalnummer, SF-ID, Notiz",
+  "filterType": "Art",
+  "filterState": "Status",
+  "statePending": "Offen",
+  "stateClosed": "Abgelehnt oder storniert"
 }

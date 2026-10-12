@@ -1475,5 +1475,10 @@
   "askLeaveCancel": "Ask to cancel this leave",
   "confirmAskLeaveCancel": "Ask to cancel this leave? A manager will have to approve it; until then, the leave stays planned.",
   "refuseLeaveCancel": "Refuse the cancellation",
-  "acceptLeaveCancel": "Accept the cancellation"
+  "acceptLeaveCancel": "Accept the cancellation",
+  "requestsSearchHint": "Search: name, employee number, SF ID, note",
+  "filterType": "Type",
+  "filterState": "Status",
+  "statePending": "Pending",
+  "stateClosed": "Refused or cancelled"
 }

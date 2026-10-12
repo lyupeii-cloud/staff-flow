@@ -1992,4 +1992,20 @@ class L10nPt extends L10n {
 
   @override
   String get acceptLeaveCancel => 'Aceitar o cancelamento';
+
+  @override
+  String get requestsSearchHint =>
+      'Pesquisar: nome, número de funcionário, ID SF, nota';
+
+  @override
+  String get filterType => 'Tipo';
+
+  @override
+  String get filterState => 'Estado';
+
+  @override
+  String get statePending => 'Pendentes';
+
+  @override
+  String get stateClosed => 'Recusados ou cancelados';
 }

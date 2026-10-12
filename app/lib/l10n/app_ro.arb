@@ -546,5 +546,10 @@
   "askLeaveCancel": "Cere anularea acestui concediu",
   "confirmAskLeaveCancel": "Cereți anularea acestui concediu? Un responsabil trebuie să o aprobe; până atunci, concediul rămâne planificat.",
   "refuseLeaveCancel": "Refuză anularea",
-  "acceptLeaveCancel": "Acceptă anularea"
+  "acceptLeaveCancel": "Acceptă anularea",
+  "requestsSearchHint": "Caută: nume, număr matricol, ID SF, notă",
+  "filterType": "Tip",
+  "filterState": "Stare",
+  "statePending": "În așteptare",
+  "stateClosed": "Refuzate sau anulate"
 }

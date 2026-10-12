@@ -550,5 +550,10 @@
   "askLeaveCancel": "Demander l'annulation de ce congé",
   "confirmAskLeaveCancel": "Demander l'annulation de ce congé ? Un responsable devra la valider ; d'ici là, le congé reste prévu.",
   "refuseLeaveCancel": "Refuser l'annulation",
-  "acceptLeaveCancel": "Accepter l'annulation"
+  "acceptLeaveCancel": "Accepter l'annulation",
+  "requestsSearchHint": "Rechercher : nom, matricule, ID SF, note",
+  "filterType": "Type",
+  "filterState": "État",
+  "statePending": "En attente",
+  "stateClosed": "Refusées ou annulées"
 }

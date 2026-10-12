@@ -1994,4 +1994,20 @@ class L10nRu extends L10n {
 
   @override
   String get acceptLeaveCancel => 'Одобрить отмену';
+
+  @override
+  String get requestsSearchHint =>
+      'Поиск: имя, табельный номер, ID SF, примечание';
+
+  @override
+  String get filterType => 'Тип';
+
+  @override
+  String get filterState => 'Статус';
+
+  @override
+  String get statePending => 'Ожидают';
+
+  @override
+  String get stateClosed => 'Отклонённые или отменённые';
 }

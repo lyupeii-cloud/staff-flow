@@ -1987,6 +1987,21 @@ class L10nEn extends L10n {
 
   @override
   String get acceptLeaveCancel => 'Accept the cancellation';
+
+  @override
+  String get requestsSearchHint => 'Search: name, employee number, SF ID, note';
+
+  @override
+  String get filterType => 'Type';
+
+  @override
+  String get filterState => 'Status';
+
+  @override
+  String get statePending => 'Pending';
+
+  @override
+  String get stateClosed => 'Refused or cancelled';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).

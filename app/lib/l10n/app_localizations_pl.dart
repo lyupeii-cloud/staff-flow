@@ -2000,4 +2000,20 @@ class L10nPl extends L10n {
 
   @override
   String get acceptLeaveCancel => 'Zaakceptuj anulowanie';
+
+  @override
+  String get requestsSearchHint =>
+      'Szukaj: imię, numer pracownika, ID SF, notatka';
+
+  @override
+  String get filterType => 'Typ';
+
+  @override
+  String get filterState => 'Stan';
+
+  @override
+  String get statePending => 'Oczekujące';
+
+  @override
+  String get stateClosed => 'Odrzucone lub anulowane';
 }

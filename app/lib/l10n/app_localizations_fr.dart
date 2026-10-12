@@ -1998,4 +1998,19 @@ class L10nFr extends L10n {
 
   @override
   String get acceptLeaveCancel => 'Accepter l\'annulation';
+
+  @override
+  String get requestsSearchHint => 'Rechercher : nom, matricule, ID SF, note';
+
+  @override
+  String get filterType => 'Type';
+
+  @override
+  String get filterState => 'État';
+
+  @override
+  String get statePending => 'En attente';
+
+  @override
+  String get stateClosed => 'Refusées ou annulées';
 }

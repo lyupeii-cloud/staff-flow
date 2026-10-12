@@ -856,7 +856,12 @@ class Api {
     final before = q['before'];
     if (before != null && DateTime.tryParse(before) == null) throw const ApiError.badRequest('Dates invalides.');
     return _json({
-      'requests': await requests.list(user, id, before: before, limit: int.tryParse(q['limit'] ?? '') ?? 10),
+      'requests': await requests.list(user, id,
+          before: before,
+          limit: int.tryParse(q['limit'] ?? '') ?? 10,
+          query: q['q'],
+          kind: {'swap', 'leave', 'unavailability'}.contains(q['kind']) ? q['kind'] : null,
+          state: {'pending', 'approved', 'closed'}.contains(q['state']) ? q['state'] : null),
     });
   }
 

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../api.dart';
@@ -6,6 +8,7 @@ import '../i18n.dart';
 import '../models.dart';
 import '../session.dart';
 import 'company_tab.dart';
+import 'pick_list.dart';
 
 /// Demandes de l'entreprise : d'abord celles qui attendent une réponse de la
 /// personne connectée, puis toutes les autres (les siennes, et pour un
@@ -38,6 +41,39 @@ class _RequestsViewState extends State<RequestsView> {
 
   static const _page = 10;
 
+  /// Recherche (nom, matricule, ID SF, note) et filtres, faits par le serveur.
+  final _query = TextEditingController();
+  String? _kind, _state;
+  Timer? _debounce;
+
+  bool get _filtered => _query.text.trim().isNotEmpty || _kind != null || _state != null;
+
+  String get _filters => [
+        if (_query.text.trim().isNotEmpty) '&q=${Uri.encodeQueryComponent(_query.text.trim())}',
+        if (_kind != null) '&kind=$_kind',
+        if (_state != null) '&state=$_state',
+      ].join();
+
+  void _search() {
+    _debounce?.cancel();
+    _debounce = Timer(const Duration(milliseconds: 400), () {
+      if (mounted) _load();
+    });
+  }
+
+  /// Demande à traiter qui correspond aussi à la recherche.
+  bool _matches(StaffRequest r) {
+    final q = foldText(_query.text.trim());
+    final kindOk = _kind == null || r.kind.name == _kind;
+    final stateOk = _state == null || _state == 'pending';
+    final textOk = q.isEmpty ||
+        [r.requesterName, r.peerName ?? '', r.note ?? ''].any((s) => foldText(s).contains(q)) ||
+        widget.data.members
+            .where((m) => m.user.id == r.requesterId || m.user.id == r.peerId)
+            .any((m) => foldText('${m.employeeNumber ?? ''} ${m.user.publicId}').contains(q));
+    return kindOk && stateOk && textOk;
+  }
+
   L10n get t => context.l10n;
   Company get company => widget.membership.company;
   String get _base => '/companies/${company.id}/requests';
@@ -54,6 +90,8 @@ class _RequestsViewState extends State<RequestsView> {
   void dispose() {
     widget.session.sync.removeListener(_onSync);
     _scroll.dispose();
+    _query.dispose();
+    _debounce?.cancel();
     super.dispose();
   }
 
@@ -73,7 +111,10 @@ class _RequestsViewState extends State<RequestsView> {
     final sync = widget.session.sync;
     try {
       final pendingF = sync.read('requests-pending:${company.id}', '$_base?pending=1');
-      final firstF = sync.read('requests:${company.id}', '$_base?limit=$_page');
+      // Recherche : directement au serveur (pas de copie gardée sur l'appareil).
+      final firstF = _filtered
+          ? widget.session.api.send('GET', '$_base?limit=$_page$_filters')
+          : sync.read('requests:${company.id}', '$_base?limit=$_page');
       final pending = _parse(await pendingF);
       final first = _parse(await firstF);
       StaffRequest? focused;
@@ -87,7 +128,7 @@ class _RequestsViewState extends State<RequestsView> {
         _focused = focused;
         _toHandle = [
           for (final r in pending)
-            if ((r.canAnswer || r.canDecide || r.canDecideCancel) && r.id != focused?.id) r,
+            if ((r.canAnswer || r.canDecide || r.canDecideCancel) && r.id != focused?.id && _matches(r)) r,
         ];
         _history
           ..clear()
@@ -114,7 +155,7 @@ class _RequestsViewState extends State<RequestsView> {
     setState(() => _loadingMore = true);
     try {
       final page = _parse(await widget.session.api
-          .send('GET', '$_base?limit=$_page${before == null ? '' : '&before=${Uri.encodeQueryComponent(before)}'}'));
+          .send('GET', '$_base?limit=$_page$_filters${before == null ? '' : '&before=${Uri.encodeQueryComponent(before)}'}'));
       if (!mounted) return;
       setState(() {
         _history.addAll(_withoutShown(page));
@@ -242,10 +283,60 @@ class _RequestsViewState extends State<RequestsView> {
               ),
             if (!_loaded && _error == null)
               const Padding(padding: EdgeInsets.all(32), child: Center(child: CircularProgressIndicator())),
+            // Recherche et filtres.
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: TextField(
+                controller: _query,
+                onChanged: (_) {
+                  setState(() {});
+                  _search();
+                },
+                decoration: InputDecoration(
+                  isDense: true,
+                  filled: true,
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(24), borderSide: BorderSide.none),
+                  prefixIcon: const Icon(Icons.search, size: 20),
+                  hintText: t.requestsSearchHint,
+                  suffixIcon: _query.text.isEmpty
+                      ? null
+                      : IconButton(
+                          icon: const Icon(Icons.close, size: 18),
+                          onPressed: () {
+                            _query.clear();
+                            _load();
+                          },
+                        ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: Wrap(spacing: 6, runSpacing: 4, children: [
+                FilterMenu(
+                  label: t.filterType,
+                  value: _kind,
+                  options: {for (final k in RequestKind.values) k.name: requestKindLabel(t, k)},
+                  onChanged: (v) {
+                    setState(() => _kind = v);
+                    _load();
+                  },
+                ),
+                FilterMenu(
+                  label: t.filterState,
+                  value: _state,
+                  options: {'pending': t.statePending, 'approved': t.statusApproved, 'closed': t.stateClosed},
+                  onChanged: (v) {
+                    setState(() => _state = v);
+                    _load();
+                  },
+                ),
+              ]),
+            ),
             if (empty)
               Padding(
                 padding: const EdgeInsets.all(24),
-                child: Text('${t.noRequests}\n\n${t.swapHint}', textAlign: TextAlign.center),
+                child: Text(_filtered ? t.pickNoResult : '${t.noRequests}\n\n${t.swapHint}', textAlign: TextAlign.center),
               ),
             if (focused != null) ...[const SizedBox(height: 8), _card(focused, highlight: true)],
             if (_toHandle.isNotEmpty) title(t.requestsToHandle),

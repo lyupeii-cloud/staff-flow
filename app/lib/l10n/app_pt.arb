@@ -546,5 +546,10 @@
   "askLeaveCancel": "Pedir o cancelamento destas férias",
   "confirmAskLeaveCancel": "Pedir o cancelamento destas férias? Um responsável terá de o aprovar; até lá, as férias continuam previstas.",
   "refuseLeaveCancel": "Recusar o cancelamento",
-  "acceptLeaveCancel": "Aceitar o cancelamento"
+  "acceptLeaveCancel": "Aceitar o cancelamento",
+  "requestsSearchHint": "Pesquisar: nome, número de funcionário, ID SF, nota",
+  "filterType": "Tipo",
+  "filterState": "Estado",
+  "statePending": "Pendentes",
+  "stateClosed": "Recusados ou cancelados"
 }

@@ -546,5 +546,10 @@
   "askLeaveCancel": "Попросить отменить этот отпуск",
   "confirmAskLeaveCancel": "Попросить отменить этот отпуск? Руководитель должен это одобрить; до тех пор отпуск остаётся в плане.",
   "refuseLeaveCancel": "Отклонить отмену",
-  "acceptLeaveCancel": "Одобрить отмену"
+  "acceptLeaveCancel": "Одобрить отмену",
+  "requestsSearchHint": "Поиск: имя, табельный номер, ID SF, примечание",
+  "filterType": "Тип",
+  "filterState": "Статус",
+  "statePending": "Ожидают",
+  "stateClosed": "Отклонённые или отменённые"
 }

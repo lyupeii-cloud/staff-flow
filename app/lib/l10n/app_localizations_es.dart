@@ -1995,4 +1995,20 @@ class L10nEs extends L10n {
 
   @override
   String get acceptLeaveCancel => 'Aceptar la anulación';
+
+  @override
+  String get requestsSearchHint =>
+      'Buscar: nombre, número de empleado, ID SF, nota';
+
+  @override
+  String get filterType => 'Tipo';
+
+  @override
+  String get filterState => 'Estado';
+
+  @override
+  String get statePending => 'Pendientes';
+
+  @override
+  String get stateClosed => 'Rechazadas o anuladas';
 }

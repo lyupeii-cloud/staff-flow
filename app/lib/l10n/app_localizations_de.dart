@@ -2002,4 +2002,19 @@ class L10nDe extends L10n {
 
   @override
   String get acceptLeaveCancel => 'Stornierung annehmen';
+
+  @override
+  String get requestsSearchHint => 'Suchen: Name, Personalnummer, SF-ID, Notiz';
+
+  @override
+  String get filterType => 'Art';
+
+  @override
+  String get filterState => 'Status';
+
+  @override
+  String get statePending => 'Offen';
+
+  @override
+  String get stateClosed => 'Abgelehnt oder storniert';
 }

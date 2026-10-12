@@ -169,6 +169,24 @@ void main() {
   });
 
   group('liste', () {
+    test('recherche par nom, matricule ou note ; filtres par type et par état', () async {
+      await owner.ok('PUT', p('/members/${eva.id}/profile'), {'employeeNumber': 'E-42'});
+      final leave = await bob.ok('POST', p('/requests'), {'kind': 'leave', 'startDay': '2026-10-20', 'endDay': '2026-10-21', 'note': 'Mariage'});
+      await eva.ok('POST', p('/requests'), {'kind': 'unavailability', 'weekdays': [2]});
+      await owner.ok('POST', '/requests/${leave['id']}/approve');
+      Future<List<String>> find(String query) async =>
+          [for (final r in (await owner.ok('GET', p('/requests?$query')))['requests']) r['requester']['name'] as String];
+      expect(await find('q=BO'), ['bob']);
+      expect(await find('q=e-42'), ['eva']);
+      expect(await find('q=mariage'), ['bob']);
+      expect(await find('kind=unavailability'), ['eva']);
+      expect(await find('state=approved'), ['bob']);
+      expect(await find('state=pending'), ['eva']);
+      expect(await find('state=closed'), isEmpty);
+      // Un salarié ne trouve que ce qu'il peut voir.
+      expect([for (final r in (await zoe.ok('GET', p('/requests?q=bob')))['requests']) r['id']], isEmpty);
+    });
+
     test('par pages de 10, la plus récente d\'abord', () async {
       for (var i = 0; i < 12; i++) {
         await bob.ok('POST', p('/requests'), {'kind': 'unavailability', 'weekdays': [1 + i % 7], 'note': 'n$i'});

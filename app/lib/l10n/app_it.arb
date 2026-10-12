@@ -546,5 +546,10 @@
   "askLeaveCancel": "Chiedi di annullare queste ferie",
   "confirmAskLeaveCancel": "Chiedere di annullare queste ferie? Un responsabile dovrà approvarlo; fino ad allora le ferie restano previste.",
   "refuseLeaveCancel": "Rifiuta l'annullamento",
-  "acceptLeaveCancel": "Accetta l'annullamento"
+  "acceptLeaveCancel": "Accetta l'annullamento",
+  "requestsSearchHint": "Cerca: nome, matricola, ID SF, nota",
+  "filterType": "Tipo",
+  "filterState": "Stato",
+  "statePending": "In attesa",
+  "stateClosed": "Rifiutate o annullate"
 }
