@@ -491,5 +491,7 @@
   "changeGoogleNoTelegram": "Sans Telegram : demandez à votre patron ou à un responsable un lien de changement de compte Google.",
   "noticeGoogleSwitchLink": "{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n'avez rien demandé, prévenez votre responsable.",
   "sessionRevoked": "Vous avez été déconnecté : votre compte est maintenant relié à un autre compte Google.",
-  "telegramLoginHint": "Astuce : envoyez /connexion au bot {bot} pour recevoir un lien et ouvrir Staff Flow dans un navigateur, sans application ni compte Google."
+  "telegramLoginHint": "Astuce : envoyez /connexion au bot {bot} pour recevoir un lien et ouvrir Staff Flow dans un navigateur, sans application ni compte Google.",
+  "timeFormat": "Format de l'heure",
+  "timeFormatAuto": "Auto"
 }

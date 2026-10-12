@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'src/api.dart';
 import 'src/brand.dart';
+import 'src/dates.dart';
 import 'src/i18n.dart';
 import 'src/screens/home_screen.dart';
 import 'src/screens/login_screen.dart';
@@ -48,8 +49,13 @@ class StaffFlowApp extends StatelessWidget {
           ],
           builder: (context, child) {
             // Le serveur répond dans la langue de l'écran.
-            session.api.language = Localizations.localeOf(context).languageCode;
-            return FramedApp(child: child!);
+            final locale = Localizations.localeOf(context);
+            session.api.language = locale.languageCode;
+            use24h = session.uses24h(locale);
+            return MediaQuery(
+              data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: use24h),
+              child: FramedApp(child: child!),
+            );
           },
           home: switch (session.state) {
             SessionState.loading => Scaffold(

@@ -50,6 +50,24 @@ class Session extends ChangeNotifier {
 
   static const languageKey = 'language';
   static const themeKey = 'theme';
+  static const timeFormatKey = 'time_format';
+
+  /// Format de l'heure : `auto` (12 h en anglais américain, 24 h sinon), `h12` ou `h24`.
+  String timeFormat = 'auto';
+
+  Future<void> setTimeFormat(String format) async {
+    timeFormat = format;
+    notifyListeners();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(timeFormatKey, format);
+  }
+
+  /// Heures sur 24 h pour cette langue d'affichage ?
+  bool uses24h(Locale locale) => switch (timeFormat) {
+        'h12' => false,
+        'h24' => true,
+        _ => !(locale.languageCode == 'en' && locale.countryCode != 'GB'),
+      };
 
   /// Apparence : comme le système (par défaut), claire ou foncée.
   ThemeMode themeMode = ThemeMode.system;
@@ -107,6 +125,7 @@ class Session extends ChangeNotifier {
       final prefs = await SharedPreferences.getInstance();
       language = prefs.getString(languageKey);
       themeMode = ThemeMode.values.asNameMap()[prefs.getString(themeKey)] ?? ThemeMode.system;
+      timeFormat = prefs.getString(timeFormatKey) ?? 'auto';
       sync = await Sync.open(api);
       _watchLifecycle();
       api.token = prefs.getString(tokenKey);

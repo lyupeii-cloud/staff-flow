@@ -1776,4 +1776,10 @@ class L10nRo extends L10n {
   String telegramLoginHint(String bot) {
     return 'Sfat: trimite /connexion botului $bot ca să primești un link și să deschizi Staff Flow în browser, fără aplicație și fără cont Google.';
   }
+
+  @override
+  String get timeFormat => 'Formatul orei';
+
+  @override
+  String get timeFormatAuto => 'Auto';
 }

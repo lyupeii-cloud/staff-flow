@@ -3065,6 +3065,18 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Tip: send /connexion to the bot {bot} to get a link and open Staff Flow in a browser, without the app or a Google account.'**
   String telegramLoginHint(String bot);
+
+  /// No description provided for @timeFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'Time format'**
+  String get timeFormat;
+
+  /// No description provided for @timeFormatAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto'**
+  String get timeFormatAuto;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

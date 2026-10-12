@@ -32,7 +32,7 @@ class _PresetsDialogState extends State<PresetsDialog> {
       context: context,
       initialTime: TimeOfDay(hour: v ~/ 60, minute: v % 60),
       builder: (context, child) =>
-          MediaQuery(data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true), child: child!),
+          MediaQuery(data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: use24h), child: child!),
     );
     if (picked == null) return;
     setState(() {

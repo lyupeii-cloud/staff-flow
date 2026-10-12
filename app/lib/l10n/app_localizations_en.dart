@@ -1766,6 +1766,12 @@ class L10nEn extends L10n {
   String telegramLoginHint(String bot) {
     return 'Tip: send /connexion to the bot $bot to get a link and open Staff Flow in a browser, without the app or a Google account.';
   }
+
+  @override
+  String get timeFormat => 'Time format';
+
+  @override
+  String get timeFormatAuto => 'Auto';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).

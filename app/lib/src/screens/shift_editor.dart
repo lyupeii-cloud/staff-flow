@@ -574,7 +574,7 @@ class _ShiftEditorState extends State<_ShiftEditor> {
         context: context,
         initialTime: TimeOfDay(hour: minutes ~/ 60, minute: minutes % 60),
         builder: (context, child) =>
-            MediaQuery(data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true), child: child!),
+            MediaQuery(data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: use24h), child: child!),
       );
       if (t != null) setState(() => set(t.hour * 60 + t.minute));
     },

@@ -1779,4 +1779,10 @@ class L10nPl extends L10n {
   String telegramLoginHint(String bot) {
     return 'Wskazówka: wyślij /connexion do bota $bot, aby dostać link i otworzyć Staff Flow w przeglądarce, bez aplikacji i konta Google.';
   }
+
+  @override
+  String get timeFormat => 'Format godziny';
+
+  @override
+  String get timeFormatAuto => 'Auto';
 }

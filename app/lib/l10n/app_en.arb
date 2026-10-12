@@ -1279,5 +1279,7 @@
         "type": "String"
       }
     }
-  }
+  },
+  "timeFormat": "Time format",
+  "timeFormatAuto": "Auto"
 }

@@ -487,5 +487,7 @@
   "changeGoogleNoTelegram": "Fără Telegram: cere patronului sau unui responsabil un link de schimbare a contului Google.",
   "noticeGoogleSwitchLink": "{name} a creat un link pentru a conecta contul tău la un nou cont Google. Dacă nu ai cerut asta, anunță-ți responsabilul.",
   "sessionRevoked": "Ai fost deconectat: contul tău este acum conectat la alt cont Google.",
-  "telegramLoginHint": "Sfat: trimite /connexion botului {bot} ca să primești un link și să deschizi Staff Flow în browser, fără aplicație și fără cont Google."
+  "telegramLoginHint": "Sfat: trimite /connexion botului {bot} ca să primești un link și să deschizi Staff Flow în browser, fără aplicație și fără cont Google.",
+  "timeFormat": "Formatul orei",
+  "timeFormatAuto": "Auto"
 }

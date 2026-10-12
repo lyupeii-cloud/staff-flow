@@ -38,10 +38,16 @@ String weekdayShort(int weekday, String locale) =>
 String weekdayLetter(int weekday, String locale) =>
     DateFormat.EEEEE(locale).format(addDays(_monday, weekday - 1)).toUpperCase();
 
-/// « 08:30 » (24 h) ; au-delà de minuit, l'heure du lendemain.
+/// Heures sur 24 h (« 08:30 ») ou sur 12 h (« 8:30 AM ») : réglé par
+/// l'application (Réglages → Format de l'heure).
+bool use24h = true;
+
+/// « 08:30 » ou « 8:30 AM » ; au-delà de minuit, l'heure du lendemain.
 String timeLabel(int minutes) {
   final m = minutes % 1440;
-  return '${(m ~/ 60).toString().padLeft(2, '0')}:${(m % 60).toString().padLeft(2, '0')}';
+  final h = m ~/ 60, mm = (m % 60).toString().padLeft(2, '0');
+  if (use24h) return '${h.toString().padLeft(2, '0')}:$mm';
+  return '${h % 12 == 0 ? 12 : h % 12}:$mm ${h < 12 ? 'AM' : 'PM'}';
 }
 
 /// Premier jour encore modifiable : les jours de plus d'un mois restent en

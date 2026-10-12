@@ -1775,4 +1775,10 @@ class L10nUk extends L10n {
   String telegramLoginHint(String bot) {
     return 'Порада: надішліть /connexion боту $bot, щоб отримати посилання й відкрити Staff Flow у браузері — без застосунку й облікового запису Google.';
   }
+
+  @override
+  String get timeFormat => 'Формат часу';
+
+  @override
+  String get timeFormatAuto => 'Авто';
 }

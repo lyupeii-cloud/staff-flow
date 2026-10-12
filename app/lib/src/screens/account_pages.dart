@@ -220,6 +220,18 @@ class SettingsPage extends StatelessWidget {
                 selected: {session.themeMode},
                 onSelectionChanged: (v) => session.setThemeMode(v.first),
               ),
+              const SizedBox(height: 20),
+              Text(t.timeFormat, style: theme.textTheme.titleSmall),
+              const SizedBox(height: 8),
+              SegmentedButton<String>(
+                segments: [
+                  ButtonSegment(value: 'auto', icon: const Icon(Icons.schedule), label: Text(t.timeFormatAuto)),
+                  const ButtonSegment(value: 'h12', label: Text('12 h')),
+                  const ButtonSegment(value: 'h24', label: Text('24 h')),
+                ],
+                selected: {session.timeFormat},
+                onSelectionChanged: (v) => session.setTimeFormat(v.first),
+              ),
             ],
           ),
         );
