@@ -261,8 +261,13 @@ class TelegramService {
   Future<void> customize() async {
     if (api == null) return;
     // Telegram limite ces réglages : une erreur (déjà réglé, trop souvent) n'empêche pas le reste.
-    Future<void> set(String method, Map<String, Object?> body) =>
-        api!.configure(method, body).catchError((Object e) => print('Telegram $method : $e'));
+    Future<void> set(String method, Map<String, Object?> body) async {
+      try {
+        await api!.configure(method, body);
+      } catch (e) {
+        print('Telegram $method : $e');
+      }
+    }
     for (final MapEntry(key: lang, value: (name, description, short, command, change, login)) in _profile.entries) {
       final l = lang.isEmpty ? const <String, Object?>{} : {'language_code': lang};
       await set('setMyName', {'name': name, ...l});
