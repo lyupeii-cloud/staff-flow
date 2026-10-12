@@ -162,6 +162,7 @@ class NotificationService {
     'billing_grace_reminder': NotifyCategory.billing,
     'billing_deleted': NotifyCategory.billing,
     'google_switch_link': NotifyCategory.requests,
+    'announcement': NotifyCategory.messages,
   };
 
   /// Crée un avis par personne ([s] : la transaction en cours, s'il y en a
@@ -275,6 +276,10 @@ class NotificationService {
     final name = '${data['byName'] ?? '?'}';
     return switch (kind) {
       'schedule_published' => (title, t('Votre planning a été publié ou modifié.')),
+      'announcement' => (
+          title,
+          t('{name} a publié une annonce : {text}', {'name': name, 'text': '${data['text'] ?? ''}'})
+        ),
       'join_invite' => (title, t('Cette entreprise veut vous ajouter à son équipe.')),
       'swap_offer' => (title, t('{name} vous propose de reprendre un de ses services.', {'name': name})),
       'swap_declined' => (title, t('{name} a refusé votre proposition d\'échange.', {'name': name})),

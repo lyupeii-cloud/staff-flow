@@ -348,12 +348,6 @@ abstract class L10n {
   /// **'ID copied.'**
   String get idCopied;
 
-  /// No description provided for @myId.
-  ///
-  /// In en, this message translates to:
-  /// **'My ID: {id}'**
-  String myId(String id);
-
   /// No description provided for @signOut.
   ///
   /// In en, this message translates to:
@@ -1137,7 +1131,7 @@ abstract class L10n {
   /// No description provided for @notifMessages.
   ///
   /// In en, this message translates to:
-  /// **'New messages'**
+  /// **'New announcements'**
   String get notifMessages;
 
   /// No description provided for @notifOverlap.
@@ -1212,107 +1206,11 @@ abstract class L10n {
   /// **'{name} joined {company}.'**
   String noticeMemberJoined(String name, String company);
 
-  /// No description provided for @messagesTab.
-  ///
-  /// In en, this message translates to:
-  /// **'Messages'**
-  String get messagesTab;
-
-  /// No description provided for @wholeTeam.
-  ///
-  /// In en, this message translates to:
-  /// **'Whole team'**
-  String get wholeTeam;
-
-  /// No description provided for @newConversation.
-  ///
-  /// In en, this message translates to:
-  /// **'New conversation'**
-  String get newConversation;
-
-  /// No description provided for @noMessages.
-  ///
-  /// In en, this message translates to:
-  /// **'No messages yet.'**
-  String get noMessages;
-
-  /// No description provided for @messageHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Write a message'**
-  String get messageHint;
-
-  /// No description provided for @earlierMessages.
-  ///
-  /// In en, this message translates to:
-  /// **'Earlier messages'**
-  String get earlierMessages;
-
-  /// No description provided for @personLeftCompany.
-  ///
-  /// In en, this message translates to:
-  /// **'This person is no longer part of the company.'**
-  String get personLeftCompany;
-
-  /// No description provided for @messagePreview.
-  ///
-  /// In en, this message translates to:
-  /// **'{name}: {text}'**
-  String messagePreview(String name, String text);
-
-  /// No description provided for @newGroup.
-  ///
-  /// In en, this message translates to:
-  /// **'New group'**
-  String get newGroup;
-
-  /// No description provided for @editGroup.
-  ///
-  /// In en, this message translates to:
-  /// **'Edit group'**
-  String get editGroup;
-
-  /// No description provided for @groupName.
-  ///
-  /// In en, this message translates to:
-  /// **'Group name'**
-  String get groupName;
-
-  /// No description provided for @groupMembersHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Choose the people in this group. Only they will see its messages.'**
-  String get groupMembersHint;
-
-  /// No description provided for @chooseAtLeastOne.
-  ///
-  /// In en, this message translates to:
-  /// **'Choose at least one person.'**
-  String get chooseAtLeastOne;
-
-  /// No description provided for @replyAction.
-  ///
-  /// In en, this message translates to:
-  /// **'Reply'**
-  String get replyAction;
-
   /// No description provided for @translateAction.
   ///
   /// In en, this message translates to:
   /// **'Translate'**
   String get translateAction;
-
-  /// No description provided for @replyingTo.
-  ///
-  /// In en, this message translates to:
-  /// **'Replying to {name}'**
-  String replyingTo(String name);
-
-  /// No description provided for @lastMessagesOf.
-  ///
-  /// In en, this message translates to:
-  /// **'Last messages from {name}'**
-  String lastMessagesOf(String name);
 
   /// No description provided for @deleteAllNotices.
   ///
@@ -1451,18 +1349,6 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'To handle'**
   String get requestsToHandle;
-
-  /// No description provided for @myRequests.
-  ///
-  /// In en, this message translates to:
-  /// **'My requests'**
-  String get myRequests;
-
-  /// No description provided for @otherRequests.
-  ///
-  /// In en, this message translates to:
-  /// **'Team requests'**
-  String get otherRequests;
 
   /// No description provided for @statusPendingPeer.
   ///
@@ -1656,12 +1542,6 @@ abstract class L10n {
   /// **'Choose the sites you get request notifications for. All requests stay visible in the list.'**
   String get notifySitesHint;
 
-  /// No description provided for @notifySitesTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Notifications by site'**
-  String get notifySitesTitle;
-
   /// No description provided for @pendingRequestTooltip.
   ///
   /// In en, this message translates to:
@@ -1740,12 +1620,6 @@ abstract class L10n {
   /// **'All my companies'**
   String get allMyCompanies;
 
-  /// No description provided for @deleteGroup.
-  ///
-  /// In en, this message translates to:
-  /// **'Delete group'**
-  String get deleteGroup;
-
   /// No description provided for @openRequest.
   ///
   /// In en, this message translates to:
@@ -1763,12 +1637,6 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Include extras'**
   String get withExtras;
-
-  /// No description provided for @deleteGroupConfirm.
-  ///
-  /// In en, this message translates to:
-  /// **'Delete “{name}” and all its messages for everyone?'**
-  String deleteGroupConfirm(String name);
 
   /// No description provided for @reinforcementHint.
   ///
@@ -1788,23 +1656,11 @@ abstract class L10n {
   /// **'Sync my shifts'**
   String get calendarEnabled;
 
-  /// No description provided for @calendarHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Add your shifts from all your companies to Google Calendar. They update on their own, and you can turn this off at any time.'**
-  String get calendarHint;
-
   /// No description provided for @changeSettings.
   ///
   /// In en, this message translates to:
   /// **'Edit'**
   String get changeSettings;
-
-  /// No description provided for @copyCalendarLink.
-  ///
-  /// In en, this message translates to:
-  /// **'Copy calendar link'**
-  String get copyCalendarLink;
 
   /// No description provided for @countryBelgium.
   ///
@@ -1877,12 +1733,6 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Country template'**
   String get legalPreset;
-
-  /// No description provided for @linkCopied.
-  ///
-  /// In en, this message translates to:
-  /// **'Link copied.'**
-  String get linkCopied;
 
   /// No description provided for @maxConsecutiveLabel.
   ///
@@ -2022,12 +1872,6 @@ abstract class L10n {
   /// **'Already working at this company at this time'**
   String get busyHere;
 
-  /// No description provided for @calendarByLink.
-  ///
-  /// In en, this message translates to:
-  /// **'By link (Google Calendar on a computer)'**
-  String get calendarByLink;
-
   /// No description provided for @calendarDenied.
   ///
   /// In en, this message translates to:
@@ -2045,12 +1889,6 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'No editable calendar on this phone.'**
   String get calendarNone;
-
-  /// No description provided for @calendarOnPhone.
-  ///
-  /// In en, this message translates to:
-  /// **'Add my shifts to the phone calendar'**
-  String get calendarOnPhone;
 
   /// No description provided for @calendarOnPhoneHint.
   ///
@@ -2178,35 +2016,11 @@ abstract class L10n {
   /// **'Choose a PNG image'**
   String get chooseLogo;
 
-  /// No description provided for @conversationMuted.
-  ///
-  /// In en, this message translates to:
-  /// **'Notifications muted for this conversation.'**
-  String get conversationMuted;
-
-  /// No description provided for @conversationUnmuted.
-  ///
-  /// In en, this message translates to:
-  /// **'Notifications back on for this conversation.'**
-  String get conversationUnmuted;
-
   /// No description provided for @customization.
   ///
   /// In en, this message translates to:
   /// **'Customization'**
   String get customization;
-
-  /// No description provided for @disableGroup.
-  ///
-  /// In en, this message translates to:
-  /// **'Turn off the group'**
-  String get disableGroup;
-
-  /// No description provided for @disableGroupConfirm.
-  ///
-  /// In en, this message translates to:
-  /// **'The whole-company group will be hidden for everyone. You can turn it back on in Messages.'**
-  String get disableGroupConfirm;
 
   /// No description provided for @editPresets.
   ///
@@ -2220,12 +2034,6 @@ abstract class L10n {
   /// **'Turn back on'**
   String get enable;
 
-  /// No description provided for @groupDisabled.
-  ///
-  /// In en, this message translates to:
-  /// **'Group turned off (only you can see it)'**
-  String get groupDisabled;
-
   /// No description provided for @logoHint.
   ///
   /// In en, this message translates to:
@@ -2237,12 +2045,6 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Choose a PNG image of 1 MB or less.'**
   String get logoPngOnly;
-
-  /// No description provided for @muteConversation.
-  ///
-  /// In en, this message translates to:
-  /// **'Mute this conversation'**
-  String get muteConversation;
 
   /// No description provided for @myIdentifier.
   ///
@@ -2267,18 +2069,6 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Remove image'**
   String get removeLogo;
-
-  /// No description provided for @resetGroup.
-  ///
-  /// In en, this message translates to:
-  /// **'Reset the group'**
-  String get resetGroup;
-
-  /// No description provided for @resetGroupConfirm.
-  ///
-  /// In en, this message translates to:
-  /// **'All messages in the company group will be deleted for everyone.'**
-  String get resetGroupConfirm;
 
   /// No description provided for @settingsTitle.
   ///
@@ -2315,12 +2105,6 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'System'**
   String get themeSystem;
-
-  /// No description provided for @unmuteConversation.
-  ///
-  /// In en, this message translates to:
-  /// **'Unmute this conversation'**
-  String get unmuteConversation;
 
   /// No description provided for @awaitingApproval.
   ///
@@ -2403,13 +2187,13 @@ abstract class L10n {
   /// No description provided for @messagingSetting.
   ///
   /// In en, this message translates to:
-  /// **'Company messaging'**
+  /// **'News feed'**
   String get messagingSetting;
 
   /// No description provided for @messagingSettingHint.
   ///
   /// In en, this message translates to:
-  /// **'On: the team has a Messages tab. Off: nobody sees it or can write (old messages are kept).'**
+  /// **'On: the owner and managers post announcements (for everyone, a position, a site or chosen people); everyone reads them and can translate them. Off: the tab disappears for everyone.'**
   String get messagingSettingHint;
 
   /// No description provided for @billingTitle.
@@ -3321,7 +3105,7 @@ abstract class L10n {
   /// No description provided for @importCreated.
   ///
   /// In en, this message translates to:
-  /// **'created'**
+  /// **'new'**
   String get importCreated;
 
   /// No description provided for @importDone.
@@ -3371,6 +3155,126 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'I have an invitation code'**
   String get haveInviteCode;
+
+  /// No description provided for @newsTab.
+  ///
+  /// In en, this message translates to:
+  /// **'News'**
+  String get newsTab;
+
+  /// No description provided for @newsNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New announcement'**
+  String get newsNew;
+
+  /// No description provided for @newsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No announcements yet.'**
+  String get newsEmpty;
+
+  /// No description provided for @newsEmptyManager.
+  ///
+  /// In en, this message translates to:
+  /// **'No announcements yet. Post the first one: for the whole company, a position, a site or chosen people.'**
+  String get newsEmptyManager;
+
+  /// No description provided for @newsOlder.
+  ///
+  /// In en, this message translates to:
+  /// **'Older announcements'**
+  String get newsOlder;
+
+  /// No description provided for @newsEdited.
+  ///
+  /// In en, this message translates to:
+  /// **'edited'**
+  String get newsEdited;
+
+  /// No description provided for @newsEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit the announcement'**
+  String get newsEdit;
+
+  /// No description provided for @newsDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this announcement?'**
+  String get newsDeleteTitle;
+
+  /// No description provided for @newsForEveryone.
+  ///
+  /// In en, this message translates to:
+  /// **'For everyone'**
+  String get newsForEveryone;
+
+  /// No description provided for @newsEveryoneMySites.
+  ///
+  /// In en, this message translates to:
+  /// **'Everyone in my sites'**
+  String get newsEveryoneMySites;
+
+  /// No description provided for @newsFor.
+  ///
+  /// In en, this message translates to:
+  /// **'For: {names}'**
+  String newsFor(String names);
+
+  /// No description provided for @newsReadCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Read by {count}'**
+  String newsReadCount(String count);
+
+  /// No description provided for @newsReadOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Read by {count} of {total}'**
+  String newsReadOf(String count, String total);
+
+  /// No description provided for @newsTranslated.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatically translated'**
+  String get newsTranslated;
+
+  /// No description provided for @newsTitleField.
+  ///
+  /// In en, this message translates to:
+  /// **'Title (optional)'**
+  String get newsTitleField;
+
+  /// No description provided for @newsBodyField.
+  ///
+  /// In en, this message translates to:
+  /// **'Announcement text'**
+  String get newsBodyField;
+
+  /// No description provided for @newsRecipients.
+  ///
+  /// In en, this message translates to:
+  /// **'Recipients'**
+  String get newsRecipients;
+
+  /// No description provided for @newsTargetHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Check one or more groups: the announcement goes to everyone who matches any of them.'**
+  String get newsTargetHint;
+
+  /// No description provided for @newsPublish.
+  ///
+  /// In en, this message translates to:
+  /// **'Post'**
+  String get newsPublish;
+
+  /// No description provided for @newsSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Announcement sent to {count} person(s).'**
+  String newsSent(String count);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

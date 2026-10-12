@@ -29,8 +29,8 @@ class Session extends ChangeNotifier {
   /// Notifications sur l'appareil.
   late final Push push = Push(api);
 
-  /// Conversation affichée à l'écran : ses notifications ne s'affichent pas en plus.
-  String? openConversation;
+  /// Annonce touchée dans une notification : onglet de l'entreprise, vue « Actualités ».
+  final openNews = ValueNotifier<String?>(null);
 
   /// Demande à montrer (notification touchée, icône du planning) : l'onglet
   /// de l'entreprise passe à « Demandes » et la met en évidence.

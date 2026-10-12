@@ -258,7 +258,8 @@ class _TeamViewState extends State<TeamView> {
             onChanged: (_) => setState(() => _shown.clear()),
             decoration: InputDecoration(
               isDense: true,
-              border: const OutlineInputBorder(),
+              filled: true,
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(24), borderSide: BorderSide.none),
               prefixIcon: const Icon(Icons.search, size: 20),
               hintText: t.pickSearchPeople,
               suffixIcon: _search.text.isEmpty

@@ -137,11 +137,6 @@ class L10nEs extends L10n {
   String get idCopied => 'Identificador copiado.';
 
   @override
-  String myId(String id) {
-    return 'Mi identificador: $id';
-  }
-
-  @override
   String get signOut => 'Cerrar sesión';
 
   @override
@@ -616,7 +611,7 @@ class L10nEs extends L10n {
   String get notifRequests => 'Solicitudes: cambios, vacaciones, invitaciones';
 
   @override
-  String get notifMessages => 'Mensajes nuevos';
+  String get notifMessages => 'Nuevos anuncios';
 
   @override
   String get notifOverlap => 'Turnos que se solapan entre empresas';
@@ -667,63 +662,7 @@ class L10nEs extends L10n {
   }
 
   @override
-  String get messagesTab => 'Mensajes';
-
-  @override
-  String get wholeTeam => 'Todo el equipo';
-
-  @override
-  String get newConversation => 'Nueva conversación';
-
-  @override
-  String get noMessages => 'Aún no hay mensajes.';
-
-  @override
-  String get messageHint => 'Escribe un mensaje';
-
-  @override
-  String get earlierMessages => 'Mensajes anteriores';
-
-  @override
-  String get personLeftCompany =>
-      'Esta persona ya no forma parte de la empresa.';
-
-  @override
-  String messagePreview(String name, String text) {
-    return '$name: $text';
-  }
-
-  @override
-  String get newGroup => 'Nuevo grupo';
-
-  @override
-  String get editGroup => 'Editar grupo';
-
-  @override
-  String get groupName => 'Nombre del grupo';
-
-  @override
-  String get groupMembersHint =>
-      'Elige a las personas de este grupo. Solo ellas verán sus mensajes.';
-
-  @override
-  String get chooseAtLeastOne => 'Elige al menos una persona.';
-
-  @override
-  String get replyAction => 'Responder';
-
-  @override
   String get translateAction => 'Traducir';
-
-  @override
-  String replyingTo(String name) {
-    return 'Respuesta a $name';
-  }
-
-  @override
-  String lastMessagesOf(String name) {
-    return 'Últimos mensajes de $name';
-  }
 
   @override
   String get deleteAllNotices => 'Borrar todo';
@@ -800,12 +739,6 @@ class L10nEs extends L10n {
 
   @override
   String get requestsToHandle => 'Por atender';
-
-  @override
-  String get myRequests => 'Mis solicitudes';
-
-  @override
-  String get otherRequests => 'Solicitudes del equipo';
 
   @override
   String get statusPendingPeer => 'Esperando al compañero';
@@ -920,9 +853,6 @@ class L10nEs extends L10n {
       'Elige los sitios de los que recibes notificaciones de solicitudes. Todas las solicitudes siguen visibles en la lista.';
 
   @override
-  String get notifySitesTitle => 'Notificaciones por sitio';
-
-  @override
   String get pendingRequestTooltip => 'Solicitud pendiente: toca para abrirla';
 
   @override
@@ -969,9 +899,6 @@ class L10nEs extends L10n {
   String get allMyCompanies => 'Todas mis empresas';
 
   @override
-  String get deleteGroup => 'Eliminar el grupo';
-
-  @override
   String get openRequest => 'Ver la solicitud';
 
   @override
@@ -979,11 +906,6 @@ class L10nEs extends L10n {
 
   @override
   String get withExtras => 'Con los extras';
-
-  @override
-  String deleteGroupConfirm(String name) {
-    return '¿Eliminar «$name» y todos sus mensajes para todos?';
-  }
 
   @override
   String reinforcementHint(String company) {
@@ -997,14 +919,7 @@ class L10nEs extends L10n {
   String get calendarEnabled => 'Sincronizar mis turnos';
 
   @override
-  String get calendarHint =>
-      'Añade tus turnos de todas tus empresas a Google Calendar. Se actualizan solos y puedes desactivarlo cuando quieras.';
-
-  @override
   String get changeSettings => 'Modificar';
-
-  @override
-  String get copyCalendarLink => 'Copiar el enlace del calendario';
 
   @override
   String get countryBelgium => 'Bélgica';
@@ -1042,9 +957,6 @@ class L10nEs extends L10n {
 
   @override
   String get legalPreset => 'Modelo por país';
-
-  @override
-  String get linkCopied => 'Enlace copiado.';
 
   @override
   String get maxConsecutiveLabel => 'Máximo de días trabajados seguidos';
@@ -1130,9 +1042,6 @@ class L10nEs extends L10n {
   String get busyHere => 'Ya trabaja en la empresa en este horario';
 
   @override
-  String get calendarByLink => 'Por enlace (Google Calendar en un ordenador)';
-
-  @override
   String get calendarDenied =>
       'Acceso al calendario denegado. Permítelo en los ajustes del teléfono.';
 
@@ -1143,9 +1052,6 @@ class L10nEs extends L10n {
   @override
   String get calendarNone =>
       'No hay ningún calendario editable en este teléfono.';
-
-  @override
-  String get calendarOnPhone => 'Añadir mis turnos al calendario del teléfono';
 
   @override
   String get calendarOnPhoneHint =>
@@ -1229,22 +1135,7 @@ class L10nEs extends L10n {
   String get chooseLogo => 'Elegir una imagen PNG';
 
   @override
-  String get conversationMuted =>
-      'Notificaciones silenciadas para esta conversación.';
-
-  @override
-  String get conversationUnmuted =>
-      'Notificaciones reactivadas para esta conversación.';
-
-  @override
   String get customization => 'Personalización';
-
-  @override
-  String get disableGroup => 'Desactivar el grupo';
-
-  @override
-  String get disableGroupConfirm =>
-      'El grupo de toda la empresa quedará oculto para todos. Podrás reactivarlo en Mensajes.';
 
   @override
   String get editPresets => 'Preajustes';
@@ -1253,17 +1144,11 @@ class L10nEs extends L10n {
   String get enable => 'Reactivar';
 
   @override
-  String get groupDisabled => 'Grupo desactivado (solo tú lo ves)';
-
-  @override
   String get logoHint =>
       'Una pequeña imagen PNG (tu logo) que aparece en la pestaña de la empresa, para todos sus miembros.';
 
   @override
   String get logoPngOnly => 'Elige una imagen PNG de 1 MB como máximo.';
-
-  @override
-  String get muteConversation => 'Silenciar esta conversación';
 
   @override
   String get myIdentifier => 'Mi identificador';
@@ -1276,13 +1161,6 @@ class L10nEs extends L10n {
 
   @override
   String get removeLogo => 'Quitar la imagen';
-
-  @override
-  String get resetGroup => 'Reiniciar el grupo';
-
-  @override
-  String get resetGroupConfirm =>
-      'Se borrarán todos los mensajes del grupo de la empresa para todos.';
 
   @override
   String get settingsTitle => 'Ajustes';
@@ -1302,10 +1180,6 @@ class L10nEs extends L10n {
 
   @override
   String get themeSystem => 'Sistema';
-
-  @override
-  String get unmuteConversation =>
-      'Reactivar las notificaciones de esta conversación';
 
   @override
   String get awaitingApproval => 'Por validar';
@@ -1361,11 +1235,11 @@ class L10nEs extends L10n {
       'Aquí añades subcentros bajo tus propios centros.';
 
   @override
-  String get messagingSetting => 'Mensajería de la empresa';
+  String get messagingSetting => 'Tablón de noticias';
 
   @override
   String get messagingSettingHint =>
-      'Activada: el equipo tiene una pestaña Mensajes. Desactivada: nadie la ve ni puede escribir (los mensajes antiguos se conservan).';
+      'Activado: el propietario y los responsables publican anuncios (para todos, un puesto, un sitio o personas elegidas); todos los leen y pueden traducirlos. Desactivado: la pestaña desaparece para todos.';
 
   @override
   String get billingTitle => 'Suscripción';
@@ -1929,7 +1803,7 @@ class L10nEs extends L10n {
       'Las filas con errores se omitirán: corrígelas en el archivo y vuelve a importarlo.';
 
   @override
-  String get importCreated => 'creado';
+  String get importCreated => 'nuevo';
 
   @override
   String importDone(String count) {
@@ -1959,4 +1833,74 @@ class L10nEs extends L10n {
 
   @override
   String get haveInviteCode => 'Tengo un código de invitación';
+
+  @override
+  String get newsTab => 'Noticias';
+
+  @override
+  String get newsNew => 'Nuevo anuncio';
+
+  @override
+  String get newsEmpty => 'Todavía no hay anuncios.';
+
+  @override
+  String get newsEmptyManager =>
+      'Todavía no hay anuncios. Publica el primero: para toda la empresa, un puesto, un sitio o personas elegidas.';
+
+  @override
+  String get newsOlder => 'Anuncios anteriores';
+
+  @override
+  String get newsEdited => 'editado';
+
+  @override
+  String get newsEdit => 'Editar el anuncio';
+
+  @override
+  String get newsDeleteTitle => '¿Retirar este anuncio?';
+
+  @override
+  String get newsForEveryone => 'Para todos';
+
+  @override
+  String get newsEveryoneMySites => 'Todos en mis sitios';
+
+  @override
+  String newsFor(String names) {
+    return 'Para: $names';
+  }
+
+  @override
+  String newsReadCount(String count) {
+    return 'Leído por $count';
+  }
+
+  @override
+  String newsReadOf(String count, String total) {
+    return 'Leído por $count de $total';
+  }
+
+  @override
+  String get newsTranslated => 'Traducido automáticamente';
+
+  @override
+  String get newsTitleField => 'Título (opcional)';
+
+  @override
+  String get newsBodyField => 'Texto del anuncio';
+
+  @override
+  String get newsRecipients => 'Destinatarios';
+
+  @override
+  String get newsTargetHint =>
+      'Marca uno o varios grupos: el anuncio llega a cada persona que corresponda a alguno de ellos.';
+
+  @override
+  String get newsPublish => 'Publicar';
+
+  @override
+  String newsSent(String count) {
+    return 'Anuncio enviado a $count persona(s).';
+  }
 }

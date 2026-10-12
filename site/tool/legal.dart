@@ -3,7 +3,7 @@
 /// Chaque section : un titre et ses paragraphes.
 library;
 
-const legalUpdated = {'fr': 'Version du 11 octobre 2026', 'uk': 'Редакція від 11 жовтня 2026 р.', 'en': 'Version of 11 October 2026'};
+const legalUpdated = {'fr': 'Version du 12 octobre 2026', 'uk': 'Редакція від 12 жовтня 2026 р.', 'en': 'Version of 12 October 2026'};
 
 const legalTitles = {
   'fr': {'terms': 'Conditions d\'utilisation et de vente', 'privacy': 'Politique de confidentialité'},
@@ -19,7 +19,7 @@ const legal = <String, Map<String, List<List<Object>>>>{
         'Contact : contact@staff-flow.cloud.',
       ]],
       ['2. Le service', [
-        'Staff Flow permet à une entreprise de créer et partager le planning de son équipe : services, échanges, congés et indisponibilités, messagerie, exports, notifications. Il fonctionne sur Android et dans un navigateur (https://app.staff-flow.cloud).',
+        'Staff Flow permet à une entreprise de créer et partager le planning de son équipe : services, échanges, congés et indisponibilités, fil d\'actualités, importation des salariés, exports, notifications. Il fonctionne sur Android et dans un navigateur (https://app.staff-flow.cloud).',
         'Les alertes « légales » proposées (durées de travail, repos…) sont des repères indicatifs : l\'employeur reste seul responsable du respect du droit du travail qui s\'applique à lui.',
       ]],
       ['3. Compte', [
@@ -47,7 +47,7 @@ const legal = <String, Map<String, List<List<Object>>>>{
         'Une période payée n\'est pas remboursée, sauf lorsque la loi l\'impose. Si la loi de votre pays vous accorde un droit de rétractation, vous pouvez l\'exercer dans les 14 jours suivant le paiement en écrivant à contact@staff-flow.cloud ; le service ayant commencé à votre demande, la part correspondant à la période déjà écoulée reste due.',
       ]],
       ['7. Publicité', [
-        'Sur Android, une petite bannière publicitaire pourra être affichée aux personnes qui ne sont propriétaires d\'aucune entreprise ; elle pourra être retirée par un achat unique. Les plannings et messages ne sont jamais utilisés pour la publicité.',
+        'Sur Android, une petite bannière publicitaire pourra être affichée aux personnes qui ne sont propriétaires d\'aucune entreprise ; elle pourra être retirée par un achat unique. Les plannings et annonces ne sont jamais utilisés pour la publicité.',
       ]],
       ['8. Bon usage', [
         'Vous vous engagez à utiliser Staff Flow conformément à la loi, à ne pas publier de contenus illicites ou blessants, à ne pas tenter d\'accéder aux données d\'autrui et à ne pas perturber le service. En cas de manquement grave, l\'accès peut être suspendu.',
@@ -75,14 +75,15 @@ const legal = <String, Map<String, List<List<Object>>>>{
         'Compte : nom, adresse e-mail, photo, identifiant et langue de votre compte Google ; votre numéro Staff Flow (SF-…) et le nom que vous choisissez.',
         'Entreprises : nom, fuseau horaire, image, rôles, sites et postes.',
         'Planning et demandes : services, échanges, congés et indisponibilités (aucun motif médical n\'est demandé), historique des modifications.',
-        'Messagerie : messages, mentions, traductions demandées.',
+        'Fil d\'actualités : annonces publiées, destinataires, lectures, traductions demandées.',
+        'Importation : nom, e-mail Google, matricule et poste fournis par l\'employeur pour inviter une personne ; une invitation non utilisée est effacée au bout de 90 jours, et la personne n\'est ajoutée qu\'avec son accord.',
         'Telegram (si vous le reliez) : identifiant de conversation et nom d\'utilisateur.',
         'Appareils : jeton de notification, plateforme et langue de l\'appareil.',
         'Facturation : nom de l\'entreprise, nom du propriétaire, montants et périodes. Nous ne recevons jamais vos données de carte bancaire.',
         'Données techniques : journaux du serveur (dont l\'adresse IP) et journal des actions, pour la sécurité.',
       ]],
       ['3. Pourquoi', [
-        'Fournir le service que vous utilisez (exécution du contrat) : planning, demandes, messagerie, notifications.',
+        'Fournir le service que vous utilisez (exécution du contrat) : planning, demandes, annonces, invitations, notifications.',
         'Sécurité, prévention des abus et vérification d\'identité (intérêt légitime).',
         'Facturation et comptabilité (obligation légale).',
         'Vos données ne sont jamais vendues et ne servent pas à la publicité.',
@@ -90,7 +91,7 @@ const legal = <String, Map<String, List<List<Object>>>>{
       ['4. Qui y a accès', [
         'Les membres de vos entreprises voient ce que leur rôle permet : planning, noms, et votre Telegram seulement si vous choisissez de l\'afficher.',
         'Nos prestataires techniques : OVHcloud (hébergement du serveur), Google (connexion et notifications Firebase Cloud Messaging), Telegram (si vous le reliez), et le prestataire de paiement lors d\'un paiement.',
-        'La traduction des messages se fait sur notre propre serveur : les messages ne sont pas envoyés à un service de traduction extérieur.',
+        'La traduction des annonces se fait sur notre propre serveur : elles ne sont pas envoyées à un service de traduction extérieur.',
       ]],
       ['5. Où', [
         'Le serveur de Staff Flow est actuellement situé en Australie (OVHcloud). Pour les personnes situées dans l\'Union européenne, il s\'agit d\'un transfert de données hors de l\'Union européenne.',
@@ -124,7 +125,7 @@ const legal = <String, Map<String, List<List<Object>>>>{
         'Контакт: contact@staff-flow.cloud.',
       ]],
       ['2. Сервіс', [
-        'Staff Flow дає змогу компанії складати й поширювати графік своєї команди: зміни, обміни, відпустки й недоступність, повідомлення, експорт, сповіщення. Працює на Android і в браузері (https://app.staff-flow.cloud).',
+        'Staff Flow дає змогу компанії складати й поширювати графік своєї команди: зміни, обміни, відпустки й недоступність, стрічка новин, імпорт працівників, експорт, сповіщення. Працює на Android і в браузері (https://app.staff-flow.cloud).',
         'Запропоновані «юридичні» попередження (тривалість роботи, відпочинок тощо) мають лише орієнтовний характер: роботодавець сам відповідає за дотримання трудового законодавства, що на нього поширюється.',
       ]],
       ['3. Обліковий запис', [
@@ -152,7 +153,7 @@ const legal = <String, Map<String, List<List<Object>>>>{
         'Оплачений період не повертається, крім випадків, передбачених законом. Якщо закон вашої країни надає право на відмову від договору, ви можете скористатися ним протягом 14 днів після оплати, написавши на contact@staff-flow.cloud; оскільки сервіс почав надаватися на ваше прохання, частина за вже використаний період залишається до сплати.',
       ]],
       ['7. Реклама', [
-        'На Android людям, які не є власниками жодної компанії, може показуватися невеликий рекламний банер; його можна буде прибрати разовою покупкою. Графіки й повідомлення ніколи не використовуються для реклами.',
+        'На Android людям, які не є власниками жодної компанії, може показуватися невеликий рекламний банер; його можна буде прибрати разовою покупкою. Графіки й оголошення ніколи не використовуються для реклами.',
       ]],
       ['8. Добросовісне використання', [
         'Ви зобов\'язуєтеся використовувати Staff Flow відповідно до закону, не публікувати незаконного чи образливого вмісту, не намагатися отримати доступ до чужих даних і не порушувати роботу сервісу. У разі серйозного порушення доступ може бути призупинено.',
@@ -180,14 +181,15 @@ const legal = <String, Map<String, List<List<Object>>>>{
         'Обліковий запис: ім\'я, e-mail, фото, ідентифікатор і мова облікового запису Google; ваш номер Staff Flow (SF-…) та вибране вами ім\'я.',
         'Компанії: назва, часовий пояс, зображення, ролі, об\'єкти й посади.',
         'Графік і запити: зміни, обміни, відпустки й недоступність (медичні причини не запитуються), історія змін.',
-        'Повідомлення: повідомлення, згадки, запитані переклади.',
+        'Стрічка новин: опубліковані оголошення, одержувачі, прочитання, запитані переклади.',
+        'Імпорт: ім\'я, e-mail Google, табельний номер і посада, які надає роботодавець, щоб запросити людину; невикористане запрошення видаляється через 90 днів, а людину додають лише за її згодою.',
         'Telegram (якщо ви його прив\'язали): ідентифікатор чату та ім\'я користувача.',
         'Пристрої: токен сповіщень, платформа й мова пристрою.',
         'Оплата: назва компанії, ім\'я власника, суми й періоди. Ми ніколи не отримуємо даних вашої банківської картки.',
         'Технічні дані: журнали сервера (зокрема IP-адреса) і журнал дій — для безпеки.',
       ]],
       ['3. Навіщо', [
-        'Надавати сервіс, яким ви користуєтеся (виконання договору): графік, запити, повідомлення, сповіщення.',
+        'Надавати сервіс, яким ви користуєтеся (виконання договору): графік, запити, оголошення, запрошення, сповіщення.',
         'Безпека, запобігання зловживанням і перевірка особи (законний інтерес).',
         'Виставлення рахунків і бухгалтерія (вимога закону).',
         'Ваші дані ніколи не продаються й не використовуються для реклами.',
@@ -195,7 +197,7 @@ const legal = <String, Map<String, List<List<Object>>>>{
       ['4. Хто має доступ', [
         'Учасники ваших компаній бачать те, що дозволяє їхня роль: графік, імена, а ваш Telegram — лише якщо ви вирішите його показувати.',
         'Наші технічні постачальники: OVHcloud (хостинг сервера), Google (вхід і сповіщення Firebase Cloud Messaging), Telegram (якщо ви його прив\'язали) та платіжний провайдер під час оплати.',
-        'Переклад повідомлень виконується на нашому власному сервері: повідомлення не надсилаються сторонньому сервісу перекладу.',
+        'Переклад оголошень виконується на нашому власному сервері: вони не надсилаються сторонньому сервісу перекладу.',
       ]],
       ['5. Де', [
         'Сервер Staff Flow зараз розташований в Австралії (OVHcloud). Для людей у Європейському Союзі це передавання даних за межі ЄС.',
@@ -229,7 +231,7 @@ const legal = <String, Map<String, List<List<Object>>>>{
         'Contact: contact@staff-flow.cloud.',
       ]],
       ['2. The service', [
-        'Staff Flow lets a company build and share its team schedule: shifts, swaps, leave and unavailability, messaging, exports, notifications. It works on Android and in a browser (https://app.staff-flow.cloud).',
+        'Staff Flow lets a company build and share its team schedule: shifts, swaps, leave and unavailability, news feed, employee import, exports, notifications. It works on Android and in a browser (https://app.staff-flow.cloud).',
         'The “legal” alerts offered (working hours, rest…) are indicative guides only: the employer remains solely responsible for complying with the labour law that applies to it.',
       ]],
       ['3. Account', [
@@ -257,7 +259,7 @@ const legal = <String, Map<String, List<List<Object>>>>{
         'A paid period is not refunded, except where the law requires it. If the law of your country gives you a right of withdrawal, you can exercise it within 14 days of payment by writing to contact@staff-flow.cloud; since the service started at your request, the share for the period already elapsed remains due.',
       ]],
       ['7. Advertising', [
-        'On Android, a small ad banner may be shown to people who own no company; it will be removable with a one-off purchase. Schedules and messages are never used for advertising.',
+        'On Android, a small ad banner may be shown to people who own no company; it will be removable with a one-off purchase. Schedules and announcements are never used for advertising.',
       ]],
       ['8. Proper use', [
         'You agree to use Staff Flow lawfully, not to publish unlawful or hurtful content, not to try to access other people\'s data and not to disrupt the service. In case of serious breach, access may be suspended.',
@@ -285,14 +287,15 @@ const legal = <String, Map<String, List<List<Object>>>>{
         'Account: name, email address, photo, ID and language of your Google account; your Staff Flow number (SF-…) and the name you choose.',
         'Companies: name, time zone, image, roles, sites and positions.',
         'Schedule and requests: shifts, swaps, leave and unavailability (no medical reason is asked), change history.',
-        'Messaging: messages, mentions, translations requested.',
+        'News feed: announcements posted, recipients, reads, translations requested.',
+        'Import: name, Google e-mail, employee number and position provided by the employer to invite a person; an unused invitation is erased after 90 days, and the person is only added with their consent.',
         'Telegram (if you link it): chat ID and username.',
         'Devices: notification token, platform and device language.',
         'Billing: company name, owner name, amounts and periods. We never receive your bank card details.',
         'Technical data: server logs (including IP address) and an action log, for security.',
       ]],
       ['3. Why', [
-        'To provide the service you use (performance of the contract): schedule, requests, messaging, notifications.',
+        'To provide the service you use (performance of the contract): schedule, requests, announcements, invitations, notifications.',
         'Security, abuse prevention and identity checks (legitimate interest).',
         'Billing and accounting (legal obligation).',
         'Your data is never sold and is not used for advertising.',
@@ -300,7 +303,7 @@ const legal = <String, Map<String, List<List<Object>>>>{
       ['4. Who has access', [
         'Members of your companies see what their role allows: the schedule, names, and your Telegram only if you choose to show it.',
         'Our technical providers: OVHcloud (server hosting), Google (sign-in and Firebase Cloud Messaging notifications), Telegram (if you link it), and the payment provider when you pay.',
-        'Messages are translated on our own server: they are not sent to an outside translation service.',
+        'Announcements are translated on our own server: they are not sent to an outside translation service.',
       ]],
       ['5. Where', [
         'The Staff Flow server is currently located in Australia (OVHcloud). For people in the European Union, this is a transfer of data outside the European Union.',

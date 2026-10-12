@@ -41,12 +41,11 @@ void main() {
       await owner.ok('POST', '/companies/$company/publish');
       expect(await sent(), isEmpty);
       expect((await bob.ok('GET', '/notices'))['notices'], hasLength(1));
-      // Les messages de cette entreprise non plus.
-      final group = (await bob.ok('GET', '/companies/$company/conversations'))['conversations'].first['id'];
-      await owner.ok('POST', '/conversations/$group/messages', {'body': 'Bonjour'});
+      // Les annonces de cette entreprise non plus.
+      await owner.ok('POST', '/companies/$company/news', {'body': 'Bonjour', 'audience': {'everyone': true}});
       expect(await sent(), isEmpty);
       await bob.ok('PUT', '/companies/$company/notifications', {'enabled': true});
-      await owner.ok('POST', '/conversations/$group/messages', {'body': 'Re'});
+      await owner.ok('POST', '/companies/$company/news', {'body': 'Re', 'audience': {'everyone': true}});
       expect((await sent()).map((m) => m.token), ['tel-bob']);
       expect((await bob('PUT', '/companies/$company/notifications', {'enabled': 'non'})).$1, 400);
     });

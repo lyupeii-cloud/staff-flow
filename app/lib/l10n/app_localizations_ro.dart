@@ -137,11 +137,6 @@ class L10nRo extends L10n {
   String get idCopied => 'Identificator copiat.';
 
   @override
-  String myId(String id) {
-    return 'Identificatorul meu: $id';
-  }
-
-  @override
   String get signOut => 'Deconectează-te';
 
   @override
@@ -619,7 +614,7 @@ class L10nRo extends L10n {
   String get notifRequests => 'Cereri: schimburi, concedii, invitații';
 
   @override
-  String get notifMessages => 'Mesaje noi';
+  String get notifMessages => 'Anunțuri noi';
 
   @override
   String get notifOverlap => 'Ture suprapuse între firme';
@@ -668,63 +663,7 @@ class L10nRo extends L10n {
   }
 
   @override
-  String get messagesTab => 'Mesaje';
-
-  @override
-  String get wholeTeam => 'Toată echipa';
-
-  @override
-  String get newConversation => 'Conversație nouă';
-
-  @override
-  String get noMessages => 'Încă nu există mesaje.';
-
-  @override
-  String get messageHint => 'Scrie un mesaj';
-
-  @override
-  String get earlierMessages => 'Mesaje anterioare';
-
-  @override
-  String get personLeftCompany =>
-      'Această persoană nu mai face parte din firmă.';
-
-  @override
-  String messagePreview(String name, String text) {
-    return '$name: $text';
-  }
-
-  @override
-  String get newGroup => 'Grup nou';
-
-  @override
-  String get editGroup => 'Editează grupul';
-
-  @override
-  String get groupName => 'Numele grupului';
-
-  @override
-  String get groupMembersHint =>
-      'Alege persoanele din acest grup. Doar ele vor vedea mesajele.';
-
-  @override
-  String get chooseAtLeastOne => 'Alege cel puțin o persoană.';
-
-  @override
-  String get replyAction => 'Răspunde';
-
-  @override
   String get translateAction => 'Traduce';
-
-  @override
-  String replyingTo(String name) {
-    return 'Răspuns pentru $name';
-  }
-
-  @override
-  String lastMessagesOf(String name) {
-    return 'Ultimele mesaje de la $name';
-  }
 
   @override
   String get deleteAllNotices => 'Șterge tot';
@@ -801,12 +740,6 @@ class L10nRo extends L10n {
 
   @override
   String get requestsToHandle => 'De rezolvat';
-
-  @override
-  String get myRequests => 'Cererile mele';
-
-  @override
-  String get otherRequests => 'Cererile echipei';
 
   @override
   String get statusPendingPeer => 'Așteaptă colegul';
@@ -922,9 +855,6 @@ class L10nRo extends L10n {
       'Alege locațiile pentru care primești notificări despre cereri. Toate cererile rămân vizibile în listă.';
 
   @override
-  String get notifySitesTitle => 'Notificări pe locație';
-
-  @override
   String get pendingRequestTooltip =>
       'Cerere în așteptare: atinge pentru a o deschide';
 
@@ -972,9 +902,6 @@ class L10nRo extends L10n {
   String get allMyCompanies => 'Toate firmele mele';
 
   @override
-  String get deleteGroup => 'Șterge grupul';
-
-  @override
   String get openRequest => 'Vezi cererea';
 
   @override
@@ -982,11 +909,6 @@ class L10nRo extends L10n {
 
   @override
   String get withExtras => 'Cu colaboratorii';
-
-  @override
-  String deleteGroupConfirm(String name) {
-    return 'Ștergi „$name” și toate mesajele pentru toți?';
-  }
 
   @override
   String reinforcementHint(String company) {
@@ -1000,14 +922,7 @@ class L10nRo extends L10n {
   String get calendarEnabled => 'Sincronizează turele mele';
 
   @override
-  String get calendarHint =>
-      'Adaugă turele din toate firmele tale în Google Calendar. Se actualizează singure și poți dezactiva oricând.';
-
-  @override
   String get changeSettings => 'Modifică';
-
-  @override
-  String get copyCalendarLink => 'Copiază linkul calendarului';
 
   @override
   String get countryBelgium => 'Belgia';
@@ -1045,9 +960,6 @@ class L10nRo extends L10n {
 
   @override
   String get legalPreset => 'Model pe țară';
-
-  @override
-  String get linkCopied => 'Link copiat.';
 
   @override
   String get maxConsecutiveLabel => 'Maximum de zile lucrate la rând';
@@ -1133,9 +1045,6 @@ class L10nRo extends L10n {
   String get busyHere => 'Lucrează deja în firmă în acest interval';
 
   @override
-  String get calendarByLink => 'Prin link (Google Calendar pe calculator)';
-
-  @override
   String get calendarDenied =>
       'Accesul la calendar a fost refuzat. Permite-l din setările telefonului.';
 
@@ -1145,9 +1054,6 @@ class L10nRo extends L10n {
 
   @override
   String get calendarNone => 'Niciun calendar editabil pe acest telefon.';
-
-  @override
-  String get calendarOnPhone => 'Adaugă turele mele în calendarul telefonului';
 
   @override
   String get calendarOnPhoneHint =>
@@ -1230,22 +1136,7 @@ class L10nRo extends L10n {
   String get chooseLogo => 'Alege o imagine PNG';
 
   @override
-  String get conversationMuted =>
-      'Notificări oprite pentru această conversație.';
-
-  @override
-  String get conversationUnmuted =>
-      'Notificări repornite pentru această conversație.';
-
-  @override
   String get customization => 'Personalizare';
-
-  @override
-  String get disableGroup => 'Dezactivează grupul';
-
-  @override
-  String get disableGroupConfirm =>
-      'Grupul întregii firme va fi ascuns pentru toți. Îl poți reactiva din Mesaje.';
 
   @override
   String get editPresets => 'Presetări';
@@ -1254,17 +1145,11 @@ class L10nRo extends L10n {
   String get enable => 'Reactivează';
 
   @override
-  String get groupDisabled => 'Grup dezactivat (doar tu îl vezi)';
-
-  @override
   String get logoHint =>
       'O imagine PNG mică (logoul tău) afișată pe fila firmei, pentru toți membrii.';
 
   @override
   String get logoPngOnly => 'Alege o imagine PNG de cel mult 1 MB.';
-
-  @override
-  String get muteConversation => 'Oprește notificările acestei conversații';
 
   @override
   String get myIdentifier => 'Identificatorul meu';
@@ -1277,13 +1162,6 @@ class L10nRo extends L10n {
 
   @override
   String get removeLogo => 'Elimină imaginea';
-
-  @override
-  String get resetGroup => 'Resetează grupul';
-
-  @override
-  String get resetGroupConfirm =>
-      'Toate mesajele din grupul firmei vor fi șterse pentru toți.';
 
   @override
   String get settingsTitle => 'Setări';
@@ -1303,10 +1181,6 @@ class L10nRo extends L10n {
 
   @override
   String get themeSystem => 'Sistem';
-
-  @override
-  String get unmuteConversation =>
-      'Repornește notificările acestei conversații';
 
   @override
   String get awaitingApproval => 'De aprobat';
@@ -1362,11 +1236,11 @@ class L10nRo extends L10n {
       'Aici adăugați sub-puncte de lucru sub propriile puncte.';
 
   @override
-  String get messagingSetting => 'Mesageria firmei';
+  String get messagingSetting => 'Flux de noutăți';
 
   @override
   String get messagingSettingHint =>
-      'Activată: echipa are o filă Mesaje. Dezactivată: nimeni nu o vede și nu poate scrie (mesajele vechi se păstrează).';
+      'Activat: proprietarul și responsabilii publică anunțuri (pentru toți, un post, o locație sau persoane alese); fiecare le citește și le poate traduce. Dezactivat: fila dispare pentru toți.';
 
   @override
   String get billingTitle => 'Abonament';
@@ -1929,7 +1803,7 @@ class L10nRo extends L10n {
       'Rândurile cu erori vor fi ignorate: corectați-le în fișier și importați-l din nou.';
 
   @override
-  String get importCreated => 'creat';
+  String get importCreated => 'nou';
 
   @override
   String importDone(String count) {
@@ -1959,4 +1833,74 @@ class L10nRo extends L10n {
 
   @override
   String get haveInviteCode => 'Am un cod de invitație';
+
+  @override
+  String get newsTab => 'Noutăți';
+
+  @override
+  String get newsNew => 'Anunț nou';
+
+  @override
+  String get newsEmpty => 'Niciun anunț deocamdată.';
+
+  @override
+  String get newsEmptyManager =>
+      'Niciun anunț deocamdată. Publicați primul: pentru toată compania, un post, o locație sau persoane alese.';
+
+  @override
+  String get newsOlder => 'Anunțuri mai vechi';
+
+  @override
+  String get newsEdited => 'modificat';
+
+  @override
+  String get newsEdit => 'Modifică anunțul';
+
+  @override
+  String get newsDeleteTitle => 'Retrageți acest anunț?';
+
+  @override
+  String get newsForEveryone => 'Pentru toată lumea';
+
+  @override
+  String get newsEveryoneMySites => 'Toți din locațiile mele';
+
+  @override
+  String newsFor(String names) {
+    return 'Pentru: $names';
+  }
+
+  @override
+  String newsReadCount(String count) {
+    return 'Citit de $count';
+  }
+
+  @override
+  String newsReadOf(String count, String total) {
+    return 'Citit de $count din $total';
+  }
+
+  @override
+  String get newsTranslated => 'Tradus automat';
+
+  @override
+  String get newsTitleField => 'Titlu (opțional)';
+
+  @override
+  String get newsBodyField => 'Textul anunțului';
+
+  @override
+  String get newsRecipients => 'Destinatari';
+
+  @override
+  String get newsTargetHint =>
+      'Bifați unul sau mai multe grupuri: anunțul ajunge la fiecare persoană care corespunde oricăruia dintre ele.';
+
+  @override
+  String get newsPublish => 'Publică';
+
+  @override
+  String newsSent(String count) {
+    return 'Anunț trimis către $count persoană(e).';
+  }
 }

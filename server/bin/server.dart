@@ -73,7 +73,10 @@ Future<void> main() async {
   print('Staff Flow API sur le port ${server.port}');
 
   // Échéances des abonnements : fin d'essai, rappels, lecture seule, suppression.
-  Future<void> tick() => api.billing.tick().catchError((Object e) => print('Abonnements : $e'));
+  Future<void> tick() async {
+    await api.billing.tick().catchError((Object e) => print('Abonnements : $e'));
+    await api.imports.purge().catchError((Object e) => print('Invitations : $e'));
+  }
   unawaited(tick());
   Timer.periodic(const Duration(minutes: 10), (_) => tick());
 

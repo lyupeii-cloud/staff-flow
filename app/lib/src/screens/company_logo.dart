@@ -100,7 +100,7 @@ class _CompanyMessagingSettingState extends State<CompanyMessagingSetting> {
     final t = context.l10n;
     return SwitchListTile(
       contentPadding: EdgeInsets.zero,
-      secondary: const Icon(Icons.forum_outlined),
+      secondary: const Icon(Icons.campaign_outlined),
       title: Text(t.messagingSetting),
       subtitle: Text(t.messagingSettingHint),
       value: widget.company.messagingEnabled,

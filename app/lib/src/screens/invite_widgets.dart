@@ -141,10 +141,10 @@ class _ImportPageState extends State<ImportPage> {
     final toImport = (summary?['new'] ?? 0) + (summary?['update'] ?? 0);
     return Scaffold(
       appBar: AppBar(title: Text(t.importTitle), actions: [
-        TextButton.icon(
+        IconButton(
+          tooltip: t.invitesTitle,
           onPressed: () => InvitesPage.open(context, widget.session, widget.company, widget.data),
           icon: const Icon(Icons.qr_code_2),
-          label: Text(t.invitesTitle),
         ),
       ]),
       body: ListView(padding: const EdgeInsets.all(16), children: [

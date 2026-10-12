@@ -79,6 +79,10 @@ class AccountService {
         SELECT c.name AS company, v.kind AS conversation, m.body, m.created_at
         FROM messages m JOIN conversations v ON v.id = m.conversation_id JOIN companies c ON c.id = v.company_id
         WHERE m.author_id = @u::uuid ORDER BY m.id'''),
+      'announcements': await rows('''
+        SELECT c.name AS company, a.title, a.body, a.created_at
+        FROM announcements a JOIN companies c ON c.id = a.company_id
+        WHERE a.author_id = @u::uuid ORDER BY a.created_at'''),
       'notifications': await rows('''
         SELECT kind, data, created_at, read_at FROM notices WHERE user_id = @u::uuid ORDER BY created_at'''),
       'devices': await rows('''

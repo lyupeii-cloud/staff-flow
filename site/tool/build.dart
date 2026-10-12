@@ -14,7 +14,7 @@ const app = 'https://app.staff-flow.cloud';
 const langs = ['fr', 'uk', 'en'];
 
 /// Captures : une série par langue (www/img/fr, uk, en).
-const shots = ['1-planning', '2-service', '3-messages', '4-demandes', '5-management'];
+const shots = ['1-planning', '2-service', '3-actualites', '4-demandes', '5-management'];
 String shotDir(String l) => l;
 
 /// Adresse de chaque langue : le pays pour l'Ukraine (UA ; « UK » serait le Royaume-Uni).
@@ -27,11 +27,11 @@ final t = <String, Map<String, Object>>{
   'fr': {
     'name': 'Français',
     'title': 'Staff Flow – Le planning de votre équipe, simple et sur mobile',
-    'desc': 'Créez et partagez le planning de vos salariés en quelques secondes. Échanges, congés, messagerie, consultable même sans réseau. Dès 3 € par mois, gratuit pour les salariés.',
+    'desc': 'Créez et partagez le planning de vos salariés en quelques secondes. Échanges, congés, annonces, consultable même sans réseau. Dès 3 € par mois, gratuit pour les salariés.',
     'open': 'Ouvrir l\'application',
     'pill': 'Planning d\'équipe · Android et navigateur',
     'h1': 'Le planning de votre équipe, <em>enfin simple</em>.',
-    'lead': 'Créez les horaires en quelques gestes, publiez-les, et chacun les reçoit sur son téléphone. Échanges de service, congés et messages : tout au même endroit.',
+    'lead': 'Créez les horaires en quelques gestes, publiez-les, et chacun les reçoit sur son téléphone. Échanges de service, congés et annonces : tout au même endroit.',
     'start': 'Essayer gratuitement',
     'how': 'Comment ça marche',
     'checks': ['2 jours d\'essai complet', 'Gratuit pour les salariés', 'Consultable même sans réseau'],
@@ -40,9 +40,9 @@ final t = <String, Map<String, Object>>{
     'feats': [
       ['🗓️', 'Un planning en quelques secondes', 'Préréglages « Matin », « Soir », répétition chaque jour ou chaque semaine, brouillon puis publication en un geste.'],
       ['🔁', 'Échanges et congés', 'Un salarié propose son service à un collègue, demande un congé ou une indisponibilité ; vous validez d\'un tap.'],
-      ['💬', 'Messagerie d\'équipe', 'Groupe de toute l\'entreprise, groupes par équipe et messages privés, avec traduction automatique.'],
+      ['📣', 'Fil d\'actualités', 'Le patron et les responsables publient des annonces pour tous, un poste, un site ou des personnes choisies ; chacun les traduit dans sa langue.'],
       ['📶', 'Même sans réseau', 'Sans connexion, le planning reste affiché et vous pouvez continuer à le préparer ou demander un congé : c\'est gardé sur le téléphone et envoyé à l\'équipe dès que le réseau revient.'],
-      ['🏢', 'Plusieurs sites et entreprises', 'Sites en cascade, responsables par site, et un onglet par entreprise pour qui travaille à plusieurs endroits.'],
+      ['🏢', 'Plusieurs sites et entreprises', 'Sites en cascade, responsables par site, salariés importés depuis Excel, et un onglet par entreprise pour qui travaille à plusieurs endroits.'],
       ['🌍', '10 langues', 'Chacun utilise l\'application dans sa langue : français, ukrainien, anglais (américain ou britannique), russe, polonais, roumain, allemand, espagnol, portugais et italien.'],
       ['🔌', 'Relié à vos logiciels', 'Accès API pour votre paie, votre comptabilité ou votre CRM : les heures arrivent toutes seules.'],
       ['🧾', 'Factures claires', 'Chaque paiement détaillé ligne par ligne, factures téléchargeables et rangées par année.'],
@@ -53,7 +53,7 @@ final t = <String, Map<String, Object>>{
     'shots': [
       ['Le planning de la semaine', 'Qui travaille, quand et où, d\'un coup d\'œil.'],
       ['Créer un service', 'Préréglages, poste, site et alertes utiles.'],
-      ['La messagerie', 'Les demandes d\'échange arrivent dans la conversation.'],
+      ['Le fil d\'actualités', 'Des annonces ciblées, et qui les a lues.'],
       ['Les demandes', 'Échanges et congés, validés en un tap.'],
       ['Le management', 'Votre équipe, ses rôles et ses sites.'],
     ],
@@ -90,7 +90,7 @@ final t = <String, Map<String, Object>>{
     'p2': 'Salariés et extras',
     'p2a': '0 €',
     'p2u': 'pour toujours',
-    'p2l': ['Planning, échanges, congés, messages', 'Sur Android et dans le navigateur', 'Petite bannière publicitaire sur Android, retirable'],
+    'p2l': ['Planning, échanges, congés, annonces', 'Sur Android et dans le navigateur', 'Petite bannière publicitaire sur Android, retirable'],
     'priceNote': 'Prix TTC, en euros. Le paiement en ligne arrive bientôt.',
     'faqH': 'Questions fréquentes',
     'faq': [
@@ -98,7 +98,7 @@ final t = <String, Map<String, Object>>{
       ['Mes salariés doivent-ils payer ?', 'Non. Seul le propriétaire de l\'entreprise a un abonnement. Les salariés, responsables et extras utilisent l\'application gratuitement.'],
       ['Comment se connecter ?', 'Avec un compte Google, sans nouveau mot de passe. Chacun garde le même compte pour toutes ses entreprises. Après avoir relié votre Telegram, vous pouvez aussi demander un lien de connexion au bot (/connexion) et ouvrir Staff Flow dans n\'importe quel navigateur, sans rien installer.'],
       ['Et si le téléphone n\'a pas de réseau ?', 'Le planning déjà reçu reste affiché. Le patron peut continuer à préparer le planning et un salarié à faire une demande de congé : c\'est gardé dans la mémoire du téléphone, puis envoyé dès que la connexion revient. Les autres ne voient ces changements qu\'à ce moment-là.'],
-      ['Mes données sont-elles protégées ?', 'Les échanges sont chiffrés (HTTPS), les sauvegardes aussi. Vos plannings et messages ne sont ni vendus, ni utilisés pour la publicité.'],
+      ['Mes données sont-elles protégées ?', 'Les échanges sont chiffrés (HTTPS), les sauvegardes aussi. Vos plannings et annonces ne sont ni vendus, ni utilisés pour la publicité.'],
       ['Staff Flow se connecte-t-il à mon logiciel de paie ou à mon CRM ?', 'Oui, avec l\'option accès API : votre logiciel lit automatiquement le planning publié, les heures par salarié et les absences, en JSON ou en CSV. Vous créez les clés vous-même dans l\'application et pouvez les révoquer à tout moment. La documentation est publique : staff-flow.cloud/fr/api.'],
       ['Puis-je gérer plusieurs entreprises ?', 'Oui : un onglet par entreprise. Une personne qui travaille dans deux entreprises voit tous ses plannings au même endroit.'],
     ],
@@ -109,11 +109,11 @@ final t = <String, Map<String, Object>>{
   'uk': {
     'name': 'Українська',
     'title': 'Staff Flow – Графік вашої команди, просто й на телефоні',
-    'desc': 'Складайте та надсилайте графік працівникам за лічені секунди. Обмін змінами, відпустки, повідомлення, робота без інтернету. Від 3 € на місяць, безкоштовно для працівників.',
+    'desc': 'Складайте та надсилайте графік працівникам за лічені секунди. Обмін змінами, відпустки, оголошення, робота без інтернету. Від 3 € на місяць, безкоштовно для працівників.',
     'open': 'Відкрити застосунок',
     'pill': 'Графік команди · Android і браузер',
     'h1': 'Графік вашої команди — <em>нарешті просто</em>.',
-    'lead': 'Складіть зміни за кілька дотиків, опублікуйте — і кожен отримає їх на телефон. Обмін змінами, відпустки та повідомлення — все в одному місці.',
+    'lead': 'Складіть зміни за кілька дотиків, опублікуйте — і кожен отримає їх на телефон. Обмін змінами, відпустки та оголошення — все в одному місці.',
     'start': 'Спробувати безкоштовно',
     'how': 'Як це працює',
     'checks': ['2 дні повного доступу', 'Безкоштовно для працівників', 'Графік видно навіть без мережі'],
@@ -122,9 +122,9 @@ final t = <String, Map<String, Object>>{
     'feats': [
       ['🗓️', 'Графік за кілька секунд', 'Шаблони «Ранок», «Вечір», повторення щодня чи щотижня, чернетка й публікація одним дотиком.'],
       ['🔁', 'Обмін змінами та відпустки', 'Працівник пропонує зміну колезі, просить відпустку чи позначає, коли не може працювати; ви підтверджуєте одним дотиком.'],
-      ['💬', 'Чат команди', 'Загальний чат компанії, групи за командами та особисті повідомлення з автоматичним перекладом.'],
+      ['📣', 'Стрічка новин', 'Власник і керівники публікують оголошення для всіх, посади, об\'єкта або вибраних людей; кожен перекладає їх своєю мовою.'],
       ['📶', 'Навіть без мережі', 'Без зв\'язку графік залишається на екрані, а ви можете далі його складати чи попросити відпустку: усе зберігається в телефоні й надсилається команді, щойно з\'явиться мережа.'],
-      ['🏢', 'Кілька об\'єктів і компаній', 'Ієрархія об\'єктів, керівники для кожного об\'єкта й окрема вкладка для кожної компанії.'],
+      ['🏢', 'Кілька об\'єктів і компаній', 'Ієрархія об\'єктів, керівники для кожного об\'єкта, імпорт працівників з Excel і окрема вкладка для кожної компанії.'],
       ['🌍', '10 мов', 'Кожен користується застосунком своєю мовою: українська, французька, англійська (американська чи британська), російська, польська, румунська, німецька, іспанська, португальська та італійська.'],
       ['🔌', 'Зв\'язок з вашими програмами', 'Доступ до API для зарплати, бухгалтерії чи CRM: години надходять самі.'],
       ['🧾', 'Зрозумілі рахунки', 'Кожна оплата з деталями по рядках, рахунки для завантаження, впорядковані за роками.'],
@@ -135,7 +135,7 @@ final t = <String, Map<String, Object>>{
     'shots': [
       ['Графік на тиждень', 'Хто, коли й де працює — з одного погляду.'],
       ['Нова зміна', 'Шаблони, посада, об\'єкт і корисні підказки.'],
-      ['Повідомлення', 'Запити на обмін змінами з\'являються просто в чаті.'],
+      ['Стрічка новин', 'Цільові оголошення — і видно, хто їх прочитав.'],
       ['Запити', 'Обмін змінами й відпустки підтверджуються одним дотиком.'],
       ['Управління', 'Ваша команда, ролі та об\'єкти.'],
     ],
@@ -172,7 +172,7 @@ final t = <String, Map<String, Object>>{
     'p2': 'Працівники та тимчасові працівники',
     'p2a': '0 €',
     'p2u': 'назавжди',
-    'p2l': ['Графік, обмін змінами, відпустки, повідомлення', 'На Android і в браузері', 'Невеликий рекламний банер на Android, який можна прибрати'],
+    'p2l': ['Графік, обмін змінами, відпустки, оголошення', 'На Android і в браузері', 'Невеликий рекламний банер на Android, який можна прибрати'],
     'priceNote': 'Ціни з ПДВ, у євро; можна платити карткою в гривнях. Онлайн-оплата незабаром.',
     'faqH': 'Часті запитання',
     'faq': [
@@ -180,7 +180,7 @@ final t = <String, Map<String, Object>>{
       ['Чи платять працівники?', 'Ні. Підписка є лише у власника компанії. Працівники, керівники й тимчасові працівники користуються застосунком безкоштовно.'],
       ['Як увійти?', 'Через акаунт Google, без нового пароля. Один акаунт для всіх ваших компаній. Прив\'язавши Telegram, ви можете також попросити в бота посилання для входу (/connexion) і відкрити Staff Flow у будь-якому браузері, нічого не встановлюючи.'],
       ['А якщо на телефоні немає зв\'язку?', 'Уже отриманий графік залишається на екрані. Власник може далі складати графік, а працівник — попросити відпустку: усе зберігається в пам\'яті телефона й надсилається, щойно з\'явиться зв\'язок. Інші побачать ці зміни саме тоді.'],
-      ['Чи захищені мої дані?', 'Обмін даними зашифровано (HTTPS), резервні копії теж. Ваші графіки й повідомлення не продаються й не використовуються для реклами.'],
+      ['Чи захищені мої дані?', 'Обмін даними зашифровано (HTTPS), резервні копії теж. Ваші графіки й оголошення не продаються й не використовуються для реклами.'],
       ['Чи підключається Staff Flow до моєї програми зарплати чи CRM?', 'Так, з опцією доступу до API: ваша програма автоматично читає опублікований графік, години кожного працівника й відсутності у форматі JSON або CSV. Ключі ви створюєте самі в застосунку й можете будь-коли відкликати. Документація відкрита: staff-flow.cloud/ua/api.'],
       ['Чи можна вести кілька компаній?', 'Так: окрема вкладка для кожної компанії. Людина, яка працює у двох компаніях, бачить усі свої графіки в одному місці.'],
     ],
@@ -191,11 +191,11 @@ final t = <String, Map<String, Object>>{
   'en': {
     'name': 'English',
     'title': 'Staff Flow – Your team\'s schedule, simple and mobile',
-    'desc': 'Build and share your staff schedule in seconds. Shift swaps, leave, messaging, works offline. From €3 a month, free for employees.',
+    'desc': 'Build and share your staff schedule in seconds. Shift swaps, leave, announcements, works offline. From €3 a month, free for employees.',
     'open': 'Open the app',
     'pill': 'Team scheduling · Android and web',
     'h1': 'Your team\'s schedule, <em>finally simple</em>.',
-    'lead': 'Build shifts in a few taps, publish them, and everyone gets them on their phone. Shift swaps, leave and messages — all in one place.',
+    'lead': 'Build shifts in a few taps, publish them, and everyone gets them on their phone. Shift swaps, leave and announcements — all in one place.',
     'start': 'Try it free',
     'how': 'How it works',
     'checks': ['2-day full trial', 'Free for employees', 'Readable even without signal'],
@@ -204,9 +204,9 @@ final t = <String, Map<String, Object>>{
     'feats': [
       ['🗓️', 'A schedule in seconds', '“Morning” and “Evening” presets, daily or weekly repeats, draft then publish in one tap.'],
       ['🔁', 'Swaps and leave', 'An employee offers a shift to a colleague, asks for leave or marks unavailability; you approve in one tap.'],
-      ['💬', 'Team messaging', 'Company-wide group, team groups and private messages, with automatic translation.'],
+      ['📣', 'News feed', 'The owner and managers post announcements for everyone, a position, a site or chosen people; everyone translates them into their language.'],
       ['📶', 'Even without signal', 'Offline, the schedule stays on screen and you can keep planning or ask for leave: it is kept on the phone and sent to the team as soon as the network is back.'],
-      ['🏢', 'Several sites and companies', 'Nested sites, managers per site, and one tab per company for people who work in several places.'],
+      ['🏢', 'Several sites and companies', 'Nested sites, managers per site, employees imported from Excel, and one tab per company for people who work in several places.'],
       ['🌍', '10 languages', 'Everyone uses the app in their own language: English (US or UK), French, Ukrainian, Russian, Polish, Romanian, German, Spanish, Portuguese and Italian.'],
       ['🔌', 'Connected to your software', 'API access for your payroll, accounting or CRM: hours arrive on their own.'],
       ['🧾', 'Clear invoices', 'Every payment detailed line by line, invoices to download, sorted by year.'],
@@ -217,7 +217,7 @@ final t = <String, Map<String, Object>>{
     'shots': [
       ['The week\'s schedule', 'Who works when and where, at a glance.'],
       ['Creating a shift', 'Presets, position, site and helpful alerts.'],
-      ['Messaging', 'Swap requests show up right in the conversation.'],
+      ['News feed', 'Targeted announcements, and who has read them.'],
       ['Requests', 'Swaps and leave, approved in one tap.'],
       ['Management', 'Your team, its roles and its sites.'],
     ],
@@ -254,7 +254,7 @@ final t = <String, Map<String, Object>>{
     'p2': 'Employees and temps',
     'p2a': '€0',
     'p2u': 'forever',
-    'p2l': ['Schedule, swaps, leave, messages', 'On Android and in the browser', 'Small ad banner on Android, removable'],
+    'p2l': ['Schedule, swaps, leave, announcements', 'On Android and in the browser', 'Small ad banner on Android, removable'],
     'priceNote': 'Prices include VAT, in euros. Online payment is coming soon.',
     'faqH': 'Frequently asked questions',
     'faq': [
@@ -262,7 +262,7 @@ final t = <String, Map<String, Object>>{
       ['Do my employees pay?', 'No. Only the company owner has a subscription. Employees, managers and temps use the app for free.'],
       ['How do people sign in?', 'With a Google account, no new password. One account for all your companies. Once your Telegram is linked, you can also ask the bot for a sign-in link (/connexion) and open Staff Flow in any browser, with nothing to install.'],
       ['What if the phone has no signal?', 'The schedule you already received stays on screen. The owner can keep planning and an employee can ask for leave: it is kept in the phone\'s memory and sent as soon as the connection is back. Others see those changes only then.'],
-      ['Is my data protected?', 'Connections are encrypted (HTTPS), and so are backups. Your schedules and messages are never sold or used for advertising.'],
+      ['Is my data protected?', 'Connections are encrypted (HTTPS), and so are backups. Your schedules and announcements are never sold or used for advertising.'],
       ['Does Staff Flow connect to my payroll software or CRM?', 'Yes, with the API access option: your software automatically reads the published schedule, hours per employee and absences, as JSON or CSV. You create the keys yourself in the app and can revoke them at any time. The documentation is public: staff-flow.cloud/en/api.'],
       ['Can I manage several companies?', 'Yes: one tab per company. Someone who works for two companies sees all their schedules in one place.'],
     ],

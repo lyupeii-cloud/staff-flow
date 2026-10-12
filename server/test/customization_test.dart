@@ -8,8 +8,7 @@ import 'package:test/test.dart';
 
 import 'helpers.dart';
 
-/// Préréglages d'horaires, groupes en sourdine, groupe de l'entreprise,
-/// image de l'entreprise.
+/// Préréglages d'horaires, image de l'entreprise.
 void main() {
   final env = TestEnv();
 
@@ -49,64 +48,6 @@ void main() {
       ],
     }))
         .$1, 400);
-  });
-
-  group('messagerie', () {
-    Future<void> device(Client c, String token) =>
-        c.ok('PUT', '/devices', {'token': token, 'platform': 'android', 'language': 'fr'});
-
-    Future<String> groupId(Client c) async =>
-        ((await c.ok('GET', p('/conversations')))['conversations'] as List).firstWhere((c) => c['kind'] == 'group')['id'];
-
-    test('une conversation en sourdine ne sonne plus, pour cette personne seulement', () async {
-      await device(bob, 'tel-bob');
-      await device(manager, 'tel-manager');
-      final g = await groupId(bob);
-      await bob.ok('PUT', '/conversations/$g/mute', {'muted': true});
-      final list = (await bob.ok('GET', p('/conversations')))['conversations'] as List;
-      expect(list.firstWhere((c) => c['id'] == g)['muted'], true);
-      await owner.ok('POST', '/conversations/$g/messages', {'body': 'Bonjour'});
-      await env.api.notifications.settle();
-      expect(env.push.sent.map((m) => m.token), ['tel-manager']);
-      await bob.ok('PUT', '/conversations/$g/mute', {'muted': false});
-      await owner.ok('POST', '/conversations/$g/messages', {'body': 'Re'});
-      await env.api.notifications.settle();
-      expect(env.push.sent.map((m) => m.token), containsAll(['tel-bob']));
-    });
-
-    test('le patron seul coupe, rétablit ou vide le groupe de l\'entreprise', () async {
-      final g = await groupId(bob);
-      await bob.ok('POST', '/conversations/$g/messages', {'body': 'Salut'});
-      expect((await manager('PUT', p('/group'), {'enabled': false})).$1, 403);
-      expect((await manager('POST', p('/group/reset'))).$1, 403);
-      await owner.ok('PUT', p('/group'), {'enabled': false});
-      expect((await myCompany(bob))['groupEnabled'], false);
-      expect(((await bob.ok('GET', p('/conversations')))['conversations'] as List).where((c) => c['kind'] == 'group'), isEmpty);
-      expect((await bob('POST', '/conversations/$g/messages', {'body': 'Encore'})).$1, 409);
-      await owner.ok('PUT', p('/group'), {'enabled': true});
-      await owner.ok('POST', p('/group/reset'));
-      expect((await bob.ok('GET', '/conversations/$g/messages'))['messages'], isEmpty);
-    });
-  });
-
-  test('messagerie : désactivée à la création, le patron seul l\'active ou la coupe entièrement', () async {
-    final fresh = (await owner.ok('POST', '/companies', {'name': 'Neuve', 'timezone': 'Europe/Paris'}))['company'];
-    expect(fresh['messagingEnabled'], false);
-    final id = fresh['id'];
-    await env.store.addMember(id, bob.id, Role.employee);
-    await env.store.addMember(id, manager.id, Role.manager);
-    expect((await bob('GET', '/companies/$id/conversations')).$1, 409);
-    expect((await manager('PUT', '/companies/$id/messaging', {'enabled': true})).$1, 403);
-    await owner.ok('PUT', '/companies/$id/messaging', {'enabled': true});
-    final g = ((await bob.ok('GET', '/companies/$id/conversations'))['conversations'] as List).single['id'];
-    await manager.ok('POST', '/conversations/$g/messages', {'body': 'Bonjour'});
-    expect((await bob.ok('GET', '/me'))['unreadMessages'], isNotEmpty);
-    // Coupée : plus rien, ni lecture, ni envoi, ni pastille.
-    await owner.ok('PUT', '/companies/$id/messaging', {'enabled': false});
-    expect((await bob('GET', '/conversations/$g/messages')).$1, 409);
-    expect((await manager('POST', '/conversations/$g/messages', {'body': 'Re'})).$1, 409);
-    expect((await bob('POST', '/companies/$id/conversations', {'userId': manager.id})).$1, 409);
-    expect((await bob.ok('GET', '/me'))['unreadMessages'], isEmpty);
   });
 
   group('image de l\'entreprise', () {

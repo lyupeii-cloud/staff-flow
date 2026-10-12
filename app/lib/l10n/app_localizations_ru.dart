@@ -137,11 +137,6 @@ class L10nRu extends L10n {
   String get idCopied => 'Идентификатор скопирован.';
 
   @override
-  String myId(String id) {
-    return 'Мой идентификатор: $id';
-  }
-
-  @override
   String get signOut => 'Выйти';
 
   @override
@@ -621,7 +616,7 @@ class L10nRu extends L10n {
   String get notifRequests => 'Запросы: обмены, отпуска, приглашения';
 
   @override
-  String get notifMessages => 'Новые сообщения';
+  String get notifMessages => 'Новые объявления';
 
   @override
   String get notifOverlap => 'Наложение смен между компаниями';
@@ -669,62 +664,7 @@ class L10nRu extends L10n {
   }
 
   @override
-  String get messagesTab => 'Сообщения';
-
-  @override
-  String get wholeTeam => 'Вся команда';
-
-  @override
-  String get newConversation => 'Новая беседа';
-
-  @override
-  String get noMessages => 'Сообщений пока нет.';
-
-  @override
-  String get messageHint => 'Напишите сообщение';
-
-  @override
-  String get earlierMessages => 'Предыдущие сообщения';
-
-  @override
-  String get personLeftCompany => 'Этот человек больше не состоит в компании.';
-
-  @override
-  String messagePreview(String name, String text) {
-    return '$name: $text';
-  }
-
-  @override
-  String get newGroup => 'Новая группа';
-
-  @override
-  String get editGroup => 'Изменить группу';
-
-  @override
-  String get groupName => 'Название группы';
-
-  @override
-  String get groupMembersHint =>
-      'Выберите людей для этой группы. Только они увидят её сообщения.';
-
-  @override
-  String get chooseAtLeastOne => 'Выберите хотя бы одного человека.';
-
-  @override
-  String get replyAction => 'Ответить';
-
-  @override
   String get translateAction => 'Перевести';
-
-  @override
-  String replyingTo(String name) {
-    return 'Ответ для $name';
-  }
-
-  @override
-  String lastMessagesOf(String name) {
-    return 'Последние сообщения от $name';
-  }
 
   @override
   String get deleteAllNotices => 'Удалить всё';
@@ -801,12 +741,6 @@ class L10nRu extends L10n {
 
   @override
   String get requestsToHandle => 'Требуют действия';
-
-  @override
-  String get myRequests => 'Мои запросы';
-
-  @override
-  String get otherRequests => 'Запросы команды';
 
   @override
   String get statusPendingPeer => 'Ожидает коллегу';
@@ -921,9 +855,6 @@ class L10nRu extends L10n {
       'Выберите площадки, по которым вы получаете уведомления о запросах. Все запросы остаются видны в списке.';
 
   @override
-  String get notifySitesTitle => 'Уведомления по площадкам';
-
-  @override
   String get pendingRequestTooltip => 'Запрос ожидает: нажмите, чтобы открыть';
 
   @override
@@ -970,9 +901,6 @@ class L10nRu extends L10n {
   String get allMyCompanies => 'Все мои компании';
 
   @override
-  String get deleteGroup => 'Удалить группу';
-
-  @override
   String get openRequest => 'Открыть запрос';
 
   @override
@@ -980,11 +908,6 @@ class L10nRu extends L10n {
 
   @override
   String get withExtras => 'Вместе с внештатными';
-
-  @override
-  String deleteGroupConfirm(String name) {
-    return 'Удалить «$name» и все сообщения для всех?';
-  }
 
   @override
   String reinforcementHint(String company) {
@@ -998,14 +921,7 @@ class L10nRu extends L10n {
   String get calendarEnabled => 'Синхронизировать мои смены';
 
   @override
-  String get calendarHint =>
-      'Добавьте свои смены из всех компаний в Google Календарь. Они обновляются сами, и вы можете отключить это в любой момент.';
-
-  @override
   String get changeSettings => 'Изменить';
-
-  @override
-  String get copyCalendarLink => 'Копировать ссылку на календарь';
 
   @override
   String get countryBelgium => 'Бельгия';
@@ -1043,9 +959,6 @@ class L10nRu extends L10n {
 
   @override
   String get legalPreset => 'Шаблон страны';
-
-  @override
-  String get linkCopied => 'Ссылка скопирована.';
 
   @override
   String get maxConsecutiveLabel => 'Максимум рабочих дней подряд';
@@ -1131,9 +1044,6 @@ class L10nRu extends L10n {
   String get busyHere => 'Уже работает в компании в это время';
 
   @override
-  String get calendarByLink => 'По ссылке (Google Календарь на компьютере)';
-
-  @override
   String get calendarDenied =>
       'Доступ к календарю запрещён. Разрешите его в настройках телефона.';
 
@@ -1143,9 +1053,6 @@ class L10nRu extends L10n {
 
   @override
   String get calendarNone => 'На этом телефоне нет календаря для записи.';
-
-  @override
-  String get calendarOnPhone => 'Добавить мои смены в календарь телефона';
 
   @override
   String get calendarOnPhoneHint =>
@@ -1228,21 +1135,7 @@ class L10nRu extends L10n {
   String get chooseLogo => 'Выбрать изображение PNG';
 
   @override
-  String get conversationMuted => 'Уведомления этого разговора отключены.';
-
-  @override
-  String get conversationUnmuted =>
-      'Уведомления этого разговора снова включены.';
-
-  @override
   String get customization => 'Персонализация';
-
-  @override
-  String get disableGroup => 'Отключить группу';
-
-  @override
-  String get disableGroupConfirm =>
-      'Группа всей компании будет скрыта для всех. Включить её снова можно в «Сообщениях».';
 
   @override
   String get editPresets => 'Шаблоны';
@@ -1251,17 +1144,11 @@ class L10nRu extends L10n {
   String get enable => 'Включить снова';
 
   @override
-  String get groupDisabled => 'Группа отключена (видите только вы)';
-
-  @override
   String get logoHint =>
       'Небольшое изображение PNG (ваш логотип) на вкладке компании для всех её участников.';
 
   @override
   String get logoPngOnly => 'Выберите изображение PNG не более 1 МБ.';
-
-  @override
-  String get muteConversation => 'Отключить уведомления этого разговора';
 
   @override
   String get myIdentifier => 'Мой идентификатор';
@@ -1274,13 +1161,6 @@ class L10nRu extends L10n {
 
   @override
   String get removeLogo => 'Убрать изображение';
-
-  @override
-  String get resetGroup => 'Очистить группу';
-
-  @override
-  String get resetGroupConfirm =>
-      'Все сообщения группы компании будут удалены для всех.';
 
   @override
   String get settingsTitle => 'Настройки';
@@ -1300,9 +1180,6 @@ class L10nRu extends L10n {
 
   @override
   String get themeSystem => 'Системное';
-
-  @override
-  String get unmuteConversation => 'Включить уведомления этого разговора';
 
   @override
   String get awaitingApproval => 'На утверждении';
@@ -1358,11 +1235,11 @@ class L10nRu extends L10n {
       'Здесь вы добавляете подобъекты к своим объектам.';
 
   @override
-  String get messagingSetting => 'Сообщения компании';
+  String get messagingSetting => 'Лента новостей';
 
   @override
   String get messagingSettingHint =>
-      'Включено: у команды есть вкладка «Сообщения». Выключено: никто её не видит и не может писать (старые сообщения сохраняются).';
+      'Включено: владелец и руководители публикуют объявления (для всех, должности, объекта или выбранных людей); каждый их читает и может перевести. Выключено: вкладка исчезает для всех.';
 
   @override
   String get billingTitle => 'Подписка';
@@ -1925,7 +1802,7 @@ class L10nRu extends L10n {
       'Строки с ошибками будут пропущены: исправьте их в файле и импортируйте снова.';
 
   @override
-  String get importCreated => 'создано';
+  String get importCreated => 'новый';
 
   @override
   String importDone(String count) {
@@ -1955,4 +1832,74 @@ class L10nRu extends L10n {
 
   @override
   String get haveInviteCode => 'У меня есть код приглашения';
+
+  @override
+  String get newsTab => 'Новости';
+
+  @override
+  String get newsNew => 'Новое объявление';
+
+  @override
+  String get newsEmpty => 'Объявлений пока нет.';
+
+  @override
+  String get newsEmptyManager =>
+      'Объявлений пока нет. Опубликуйте первое: для всей компании, должности, объекта или выбранных людей.';
+
+  @override
+  String get newsOlder => 'Более старые объявления';
+
+  @override
+  String get newsEdited => 'изменено';
+
+  @override
+  String get newsEdit => 'Изменить объявление';
+
+  @override
+  String get newsDeleteTitle => 'Убрать это объявление?';
+
+  @override
+  String get newsForEveryone => 'Для всех';
+
+  @override
+  String get newsEveryoneMySites => 'Все на моих объектах';
+
+  @override
+  String newsFor(String names) {
+    return 'Для: $names';
+  }
+
+  @override
+  String newsReadCount(String count) {
+    return 'Прочитали: $count';
+  }
+
+  @override
+  String newsReadOf(String count, String total) {
+    return 'Прочитали $count из $total';
+  }
+
+  @override
+  String get newsTranslated => 'Переведено автоматически';
+
+  @override
+  String get newsTitleField => 'Заголовок (необязательно)';
+
+  @override
+  String get newsBodyField => 'Текст объявления';
+
+  @override
+  String get newsRecipients => 'Получатели';
+
+  @override
+  String get newsTargetHint =>
+      'Отметьте одну или несколько групп: объявление получит каждый, кто входит в любую из них.';
+
+  @override
+  String get newsPublish => 'Опубликовать';
+
+  @override
+  String newsSent(String count) {
+    return 'Объявление отправлено: $count чел.';
+  }
 }

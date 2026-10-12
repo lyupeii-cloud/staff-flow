@@ -571,4 +571,41 @@ CREATE INDEX member_invites_company ON member_invites (company_id) WHERE used_at
 CREATE INDEX member_invites_email ON member_invites (lower(email)) WHERE used_at IS NULL;
 ALTER TABLE join_requests ADD COLUMN invite_id uuid REFERENCES member_invites(id) ON DELETE SET NULL;
 ''',
+  // 32 — fil d'actualités (remplace la messagerie ; companies.messaging_enabled
+  // devient l'interrupteur du fil, actif par défaut).
+  '''
+CREATE TABLE announcements (
+  id          uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  company_id  uuid NOT NULL REFERENCES companies(id) ON DELETE CASCADE,
+  author_id   uuid REFERENCES users(id) ON DELETE SET NULL,
+  title       text,
+  body        text NOT NULL,
+  audience    jsonb NOT NULL DEFAULT '{}',
+  everyone    boolean NOT NULL DEFAULT false,
+  created_at  timestamptz NOT NULL DEFAULT now(),
+  edited_at   timestamptz
+);
+CREATE INDEX announcements_company ON announcements (company_id, created_at DESC);
+CREATE TABLE announcement_recipients (
+  announcement_id uuid NOT NULL REFERENCES announcements(id) ON DELETE CASCADE,
+  user_id         uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  PRIMARY KEY (announcement_id, user_id)
+);
+CREATE INDEX announcement_recipients_user ON announcement_recipients (user_id);
+CREATE TABLE announcement_reads (
+  announcement_id uuid NOT NULL REFERENCES announcements(id) ON DELETE CASCADE,
+  user_id         uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  read_at         timestamptz NOT NULL DEFAULT now(),
+  PRIMARY KEY (announcement_id, user_id)
+);
+CREATE TABLE announcement_translations (
+  announcement_id uuid NOT NULL REFERENCES announcements(id) ON DELETE CASCADE,
+  lang            text NOT NULL,
+  title           text,
+  body            text NOT NULL,
+  PRIMARY KEY (announcement_id, lang)
+);
+ALTER TABLE companies ALTER COLUMN messaging_enabled SET DEFAULT true;
+UPDATE companies SET messaging_enabled = true;
+''',
 ];

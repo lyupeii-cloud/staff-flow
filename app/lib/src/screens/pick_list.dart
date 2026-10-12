@@ -425,6 +425,7 @@ class FilterMenu extends StatelessWidget {
         for (final e in options.entries) CheckedPopupMenuItem(value: e.key, checked: value == e.key, child: Text(e.value)),
       ],
       child: Chip(
+        shape: const StadiumBorder(),
         avatar: Icon(Icons.filter_list, size: 16, color: value == null ? null : Theme.of(context).colorScheme.primary),
         label: Text(t.filterValue(label, value == null ? t.filterAll : options[value] ?? '?')),
       ),

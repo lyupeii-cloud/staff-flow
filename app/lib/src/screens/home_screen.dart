@@ -18,7 +18,6 @@ import 'all_schedules_view.dart';
 import 'company_logo.dart';
 import 'company_tab.dart';
 import 'join_code_dialog.dart';
-import 'chat_screen.dart';
 import 'invite_widgets.dart';
 import 'people_widgets.dart';
 import 'sync_widgets.dart';
@@ -130,11 +129,14 @@ class _HomeScreenState extends State<HomeScreen> {
   /// ne l'affiche pas lui-même, on la montre ici.
   void _onPush(PushEvent e) {
     if (!mounted) return;
-    final conversation = e.data['conversationId'] as String?;
     if (e.opened) {
-      // Notification de message touchée : on ouvre la conversation.
-      if (e.kind == 'message' && conversation != null) {
-        openConversationFromPush(context, session, e.data['companyId'] as String, conversation);
+      // Annonce touchée : le fil d'actualités de l'entreprise.
+      if (e.kind == 'announcement' && e.data['companyId'] is String) {
+        Navigator.of(context).popUntil((r) => r.isFirst);
+        final id = e.data['companyId'] as String;
+        final index = session.me?.companies.indexWhere((m) => m.company.id == id) ?? -1;
+        if (index >= 0) _tabs?.animateTo(index + (_showAll ? 1 : 0));
+        session.openNews.value = id;
       }
       // Notification d'une demande touchée : on ouvre la demande.
       final request = e.data['requestId'] as String?;
@@ -145,8 +147,8 @@ class _HomeScreenState extends State<HomeScreen> {
       }
       return;
     }
-    // Message de la conversation déjà à l'écran : rien à signaler.
-    if (e.body == null || (conversation != null && conversation == session.openConversation)) return;
+    if (e.kind == 'announcement') unawaited(session.refresh());
+    if (e.body == null) return;
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(e.title == null ? e.body! : '${e.title} · ${e.body}')));
   }

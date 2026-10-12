@@ -224,8 +224,8 @@ class Me {
   /// Lien d'agenda personnel (Google Agenda) ; `null` : désactivé.
   final String? calendarPath;
 
-  /// Messages non lus, par entreprise.
-  final Map<String, int> unreadMessages;
+  /// Annonces non lues du fil d'actualités, par entreprise.
+  final Map<String, int> unreadNews;
 
   /// Familles de notifications activées (planning, requests, messages…).
   final Map<String, bool> notificationPrefs;
@@ -254,8 +254,8 @@ class Me {
         telegramLinked = j['telegram'] != null,
         telegramUsername = (j['telegram'] as Map?)?['username'],
         telegramBot = j['telegramBot'],
-        unreadMessages = {
-          for (final e in ((j['unreadMessages'] ?? const {}) as Map).entries) e.key as String: e.value as int,
+        unreadNews = {
+          for (final e in ((j['unreadNews'] ?? const {}) as Map).entries) e.key as String: e.value as int,
         },
         notificationPrefs = {
           for (final e in ((j['notificationPrefs'] ?? const {}) as Map).entries) e.key as String: e.value == true,
@@ -378,113 +378,6 @@ DateTime parseDay(String s) => DateTime.parse(s);
 
 String formatDay(DateTime d) =>
     '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
-
-/// Conversation de la messagerie : le groupe de l'entreprise, ou une
-/// conversation privée avec [withName].
-class Conversation {
-  final String id;
-  final bool isGroup;
-
-  /// Groupe créé par un responsable avec des personnes choisies.
-  final bool isTeam;
-
-  /// Nom du groupe (pour [isTeam]).
-  final String? name;
-  final List<String> memberIds;
-  final String? withId;
-  final String? withName;
-  final String? withPhotoUrl;
-
-  /// L'autre personne fait-elle encore partie de l'entreprise ?
-  final bool withActive;
-  final Map<String, dynamic>? withAvatar;
-  final ChatMessage? last;
-  final int unread;
-
-  Conversation.fromJson(Map<String, dynamic> j)
-      : id = j['id'],
-        isGroup = j['kind'] == 'group',
-        isTeam = j['kind'] == 'team',
-        name = j['name'],
-        memberIds = [for (final m in j['memberIds'] ?? const []) m as String],
-        withId = j['with']?['id'],
-        withName = j['with']?['name'],
-        withPhotoUrl = j['with']?['photoUrl'],
-        withAvatar = (j['with']?['avatar'] as Map?)?.cast<String, dynamic>(),
-        withActive = j['with']?['active'] ?? true,
-        last = j['lastMessage'] == null ? null : ChatMessage.fromJson(j['lastMessage']),
-        unread = j['unread'] ?? 0,
-        muted = j['muted'] == true;
-
-  /// Notifications de cette conversation coupées pour soi.
-  final bool muted;
-}
-
-class ChatMessage {
-  /// `null` : message pas encore envoyé (file d'attente hors connexion).
-  final int? id;
-  final String? authorId;
-  final String? authorName;
-  final String body;
-  final DateTime createdAt;
-
-  /// Message auquel celui-ci répond.
-  final ChatReply? replyTo;
-
-  /// Personnes citées avec « # ».
-  final List<Mention> mentions;
-
-  /// Carte d'une demande (échange, congé, indisponibilité) ; [request] est
-  /// `null` si la personne ne peut plus la voir.
-  final String? requestId;
-  final StaffRequest? request;
-
-  const ChatMessage(
-      {this.id,
-      this.authorId,
-      this.authorName,
-      required this.body,
-      required this.createdAt,
-      this.replyTo,
-      this.mentions = const [],
-      this.requestId,
-      this.request});
-
-  bool get pending => id == null;
-
-  ChatMessage.fromJson(Map<String, dynamic> j)
-      : id = j['id'],
-        authorId = j['authorId'],
-        authorName = j['authorName'],
-        body = j['body'],
-        createdAt = DateTime.parse(j['createdAt']).toLocal(),
-        replyTo = j['replyTo'] == null ? null : ChatReply.fromJson(j['replyTo']),
-        mentions = [for (final m in j['mentions'] ?? const []) Mention(m['id'], m['name'])],
-        requestId = j['requestId'],
-        request = j['request'] == null ? null : StaffRequest.fromJson((j['request'] as Map).cast<String, dynamic>());
-}
-
-/// Extrait du message auquel on répond.
-class ChatReply {
-  final int id;
-  final String? authorId;
-  final String? authorName;
-  final String body;
-
-  ChatReply.fromJson(Map<String, dynamic> j)
-      : id = j['id'],
-        authorId = j['authorId'],
-        authorName = j['authorName'],
-        body = j['body'];
-}
-
-/// Personne citée dans un message (« #Bob »).
-class Mention {
-  final String id;
-  final String name;
-
-  const Mention(this.id, this.name);
-}
 
 enum RequestKind { swap, leave, unavailability }
 

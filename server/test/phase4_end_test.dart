@@ -3,8 +3,7 @@ import 'package:test/test.dart';
 
 import 'helpers.dart';
 
-/// Fin de la phase 4 : demandes dans les conversations, renforts d'une
-/// autre entreprise, suppression des groupes.
+/// Fin de la phase 4 : renforts d'une autre entreprise.
 void main() {
   final env = TestEnv();
 
@@ -25,48 +24,6 @@ void main() {
     await env.store.addMember(company, boss2.id, Role.manager);
   });
 
-  Future<String> published(String user, String day) async {
-    final s = (await owner.ok('POST', p('/shifts'), {'days': [day], 'start': 480, 'end': 960, 'userId': user}))['shifts']
-        .single;
-    await owner.ok('POST', p('/publish'));
-    return s['id'];
-  }
-
-  /// Cartes de demandes vues par [c], conversation par conversation (nom).
-  Future<Map<String, List<dynamic>>> cards(Client c) async {
-    final out = <String, List<dynamic>>{};
-    for (final conv in (await c.ok('GET', p('/conversations')))['conversations']) {
-      final messages = (await c.ok('GET', '/conversations/${conv['id']}/messages'))['messages'] as List;
-      final found = [for (final m in messages) if (m['requestId'] != null) m['request']];
-      if (found.isNotEmpty) out[conv['kind'] == 'group' ? 'group' : conv['with']?['name'] ?? '?'] = found;
-    }
-    return out;
-  }
-
-  group('demandes dans les conversations', () {
-    test('échange proposé à un collègue : dans la conversation privée, avec les boutons', () async {
-      final s = await published(bob.id, '2026-10-07');
-      final r = await bob.ok('POST', p('/requests'), {'kind': 'swap', 'shiftId': s, 'peerId': eva.id});
-      final seen = await cards(eva);
-      expect(seen.keys, ['bob']);
-      expect([seen['bob']!.single['id'], seen['bob']!.single['canAnswer']], [r['id'], true]);
-      await eva.ok('POST', '/requests/${r['id']}/accept');
-      expect((await cards(eva))['bob']!.single['status'], 'pending_manager');
-    });
-
-    test('offre à toute l\'équipe : dans le groupe ; congé : chez chaque responsable', () async {
-      final s = await published(bob.id, '2026-10-07');
-      await bob.ok('POST', p('/requests'), {'kind': 'swap', 'shiftId': s});
-      expect((await cards(eva))['group']!.single['canAnswer'], true);
-      await eva.ok('POST', p('/requests'), {'kind': 'leave', 'startDay': '2026-10-10', 'endDay': '2026-10-11'});
-      final ownerCards = await cards(owner);
-      expect(ownerCards['eva']!.single['canDecide'], true);
-      expect((await cards(boss2))['eva'], hasLength(1));
-      // Bob ne voit pas le congé d'Eva (rien dans le groupe à ce sujet).
-      expect((await cards(bob))['group']!.where((r) => r?['kind'] == 'leave'), isEmpty);
-    });
-  });
-
   group('renforts', () {
     test('un responsable ajoute un salarié d\'une autre de ses entreprises', () async {
       final other = (await owner.ok('POST', '/companies', {'name': 'Café', 'timezone': 'Europe/Paris'}))['company']['id'];
@@ -84,18 +41,6 @@ void main() {
       await env.api.notifications.settle();
       expect([for (final n in (await zoe.ok('GET', '/notices'))['notices']) n['kind']], contains('reinforcement_added'));
       await owner.ok('POST', p('/shifts'), {'days': ['2026-10-07'], 'start': 480, 'end': 960, 'userId': zoe.id});
-    });
-  });
-
-  group('groupes', () {
-    test('tout responsable peut supprimer un groupe, pas un salarié', () async {
-      final g = (await owner.ok('POST', p('/groups'), {'name': 'Cuisine', 'userIds': [bob.id]}))['id'];
-      await bob.ok('POST', '/conversations/$g/messages', {'body': 'salut'});
-      expect((await bob('DELETE', '/conversations/$g')).$1, 403);
-      expect((await boss2('DELETE', '/conversations/$g')).$1, 204);
-      expect((await bob('GET', '/conversations/$g/messages')).$1, 404);
-      final group = (await owner.ok('GET', p('/conversations')))['conversations'].first['id'];
-      expect((await owner('DELETE', '/conversations/$group')).$1, 404, reason: 'le groupe général reste');
     });
   });
 }

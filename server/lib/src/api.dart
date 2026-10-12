@@ -8,13 +8,13 @@ import 'account_service.dart';
 import 'api_access.dart';
 import 'auth.dart';
 import 'billing_service.dart';
-import 'chat_service.dart';
 import 'company_service.dart';
 import 'errors.dart';
 import 'google_switch.dart';
 import 'join_service.dart';
 import 'messages.dart';
 import 'import_service.dart';
+import 'news_service.dart';
 import 'notice_service.dart';
 import 'notifications.dart';
 import 'overlap_service.dart';
@@ -36,11 +36,11 @@ class Api {
   final CompanyService companies;
   late final NotificationService notifications = NotificationService(store, push: push);
   late final PlanningService planning = PlanningService(store, companies, notifications, now: now);
-  late final ChatService chat = ChatService(store, companies, notifications);
+  late final NewsService news = NewsService(store, companies, notifications);
   late final ToolsService tools = ToolsService(store, companies, tokens.derive('exports'));
   late final OverlapService overlaps = OverlapService(store, companies, notifications, now: now);
   late final RequestService requests =
-      RequestService(store, companies, planning, notifications, overlaps: overlaps, chat: chat);
+      RequestService(store, companies, planning, notifications, overlaps: overlaps);
   late final JoinService joins = JoinService(store, companies, now: now);
   late final ImportService imports = ImportService(store, companies, tokens.derive('invites'), now: now, appUrl: appUrl);
   late final NoticeService notices = NoticeService(store, now: now);
@@ -342,23 +342,7 @@ class Api {
       ..put('/companies/<id>/messaging', _authed((r, u) async {
         final body = await _body(r);
         if (body['enabled'] is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
-        await chat.setMessagingEnabled(u, r.params['id']!, body['enabled'] as bool);
-        return Response(204);
-      }))
-      ..put('/companies/<id>/group', _authed((r, u) async {
-        final body = await _body(r);
-        if (body['enabled'] is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
-        await chat.setGroupEnabled(u, r.params['id']!, body['enabled'] as bool);
-        return Response(204);
-      }))
-      ..post('/companies/<id>/group/reset', _authed((r, u) async {
-        await chat.resetGroup(u, r.params['id']!);
-        return Response(204);
-      }))
-      ..put('/conversations/<id>/mute', _authed((r, u) async {
-        final body = await _body(r);
-        if (body['muted'] is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
-        await chat.setMuted(u, r.params['id']!, body['muted'] as bool);
+        await news.setEnabled(u, r.params['id']!, body['enabled'] as bool);
         return Response(204);
       }))
       // Image de l'entreprise : PNG envoyé en base64 (null pour l'enlever).
@@ -444,14 +428,41 @@ class Api {
       ..post('/devices/forget', _authed(_forgetDevice))
       ..get('/me/notifications', _authed(_getPrefs))
       ..patch('/me/notifications', _authed(_setPrefs))
-      // Messagerie
-      ..get('/companies/<id>/conversations', _authed(_conversations))
-      ..post('/companies/<id>/conversations', _authed(_openConversation))
-      ..get('/conversations/<id>/messages', _authed(_messages))
-      ..post('/conversations/<id>/messages', _authed(_sendMessage))
-      ..post('/conversations/<id>/read', _authed(_readMessages))
-      ..post('/messages/<id>/translate', _authed(_translateMessage))
-      ..post('/companies/<id>/groups', _authed(_createGroup))
+      // Fil d'actualités
+      ..get('/companies/<id>/news', _authed((r, u) async {
+        final before = r.url.queryParameters['before'];
+        return _json(await news.list(u, r.params['id']!, before: before == null ? null : DateTime.tryParse(before)));
+      }))
+      ..post('/companies/<id>/news', _authed((r, u) async {
+        final body = await _body(r);
+        final title = body['title'], text = body['body'], audience = body['audience'];
+        if (title is! String? || text is! String || audience is! Map<String, dynamic>) {
+          throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        }
+        return _json(await news.publish(u, r.params['id']!, title: title, body: text, audience: audience), status: 201);
+      }))
+      ..patch('/companies/<id>/news/<newsId>', _authed((r, u) async {
+        final body = await _body(r);
+        final title = body['title'], text = body['body'];
+        if (title is! String? || text is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        await news.edit(u, r.params['id']!, r.params['newsId']!, title: title, body: text);
+        return Response(204);
+      }))
+      ..delete('/companies/<id>/news/<newsId>', _authed((r, u) async {
+        await news.delete(u, r.params['id']!, r.params['newsId']!);
+        return Response(204);
+      }))
+      ..post('/companies/<id>/news/read', _authed((r, u) async {
+        await news.markRead(u, r.params['id']!);
+        return Response(204);
+      }))
+      ..post('/companies/<id>/news/<newsId>/translate', _authed((r, u) async {
+        final t = translator;
+        if (t == null) throw const ApiError(409, 'translation_unavailable', 'Traduction momentanément indisponible.');
+        final lang = (await _body(r))['lang'];
+        if (lang is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        return _json(await news.translate(u, r.params['id']!, r.params['newsId']!, lang, t));
+      }))
       // Demandes : échange, congé, indisponibilité
       ..get('/companies/<id>/requests', _authed(_requests))
       ..get('/requests/<id>', _authed((r, u) async => _json(await requests.one(u, r.params['id']!))))
@@ -470,11 +481,6 @@ class Api {
       ..post('/requests/<id>/refuse', _authed((r, u) async => _json(await requests.decide(u, r.params['id']!, approve: false))))
       ..post('/requests/<id>/cancel', _authed((r, u) async {
         await requests.cancel(u, r.params['id']!);
-        return Response(204);
-      }))
-      ..patch('/conversations/<id>', _authed(_updateGroup))
-      ..delete('/conversations/<id>', _authed((r, u) async {
-        await chat.deleteTeam(u, r.params['id']!);
         return Response(204);
       }))
       // Renforts : salariés et extras de ses autres entreprises
@@ -552,7 +558,7 @@ class Api {
         'unreadNotices': await notices.unreadCount(user.id),
         'notificationPrefs': await notifications.prefs(user.id),
         'noticeRetention': await notices.retention(user.id),
-        'unreadMessages': await chat.unreadByCompany(user.id),
+        'unreadNews': await news.unreadByCompany(user.id),
         if (_isAdmin(user)) 'isAdmin': true,
         'telegram': await telegram.of(user.id),
         'telegramBot': await telegram.botName().catchError((Object _) => null),
@@ -809,33 +815,6 @@ class Api {
 
   // --- Messagerie ------------------------------------------------------------
 
-  Future<Response> _conversations(Request req, User user) async =>
-      _json({'conversations': await chat.conversations(user, req.params['id']!)});
-
-  Future<Response> _openConversation(Request req, User user) async {
-    final body = await _body(req);
-    final id = await chat.openPrivate(user, req.params['id']!, _string(body, 'userId'));
-    return _json({'id': id});
-  }
-
-  Future<Response> _messages(Request req, User user) async {
-    final q = req.url.queryParameters;
-    final limit = int.tryParse(q['limit'] ?? '');
-    final messages = await chat.messages(user, req.params['id']!,
-        before: int.tryParse(q['before'] ?? ''), author: q['author'], limit: limit ?? 50);
-    // Carte d'une demande : son état et ce que la personne peut en faire.
-    for (final m in messages) {
-      final id = m['requestId'] as String?;
-      if (id == null) continue;
-      try {
-        m['request'] = await requests.one(user, id);
-      } on ApiError {
-        m['request'] = null;
-      }
-    }
-    return _json({'messages': messages});
-  }
-
   Future<Response> _addReinforcement(Request req, User user) async {
     final body = await _body(req);
     final companyId = req.params['id']!;
@@ -843,27 +822,6 @@ class Api {
     await companies.addReinforcement(user, companyId, userId);
     await notifications.notify([userId], companyId: companyId, kind: 'reinforcement_added', data: {'byName': user.name});
     return Response(204);
-  }
-
-  Future<Response> _sendMessage(Request req, User user) async {
-    final body = await _body(req);
-    final replyTo = body['replyTo'];
-    if (replyTo is! int?) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
-    return _json(
-        await chat.send(user, req.params['id']!, _string(body, 'body'),
-            replyTo: replyTo, mentions: body.containsKey('mentions') ? _ids(body['mentions']) : const []),
-        status: 201);
-  }
-
-  /// Traduction dans la langue demandée (celle de l'application).
-  Future<Response> _translateMessage(Request req, User user) async {
-    final id = int.tryParse(req.params['id']!);
-    if (id == null) throw const ApiError.notFound('Message introuvable.');
-    final t = translator;
-    if (t == null) throw const ApiError(409, 'translation_unavailable', 'Traduction momentanément indisponible.');
-    final lang = (await _body(req))['lang'];
-    if (lang is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
-    return _json({'text': await chat.translate(user, id, lang, t)});
   }
 
   /// `?pending=1` : toutes les demandes en attente ; sinon une page de
@@ -953,30 +911,6 @@ class Api {
     }
     return value.cast<String>();
   }
-
-  Future<Response> _createGroup(Request req, User user) async {
-    final body = await _body(req);
-    final id = await chat.createTeam(user, req.params['id']!, _string(body, 'name'), _ids(body['userIds']));
-    return _json({'id': id}, status: 201);
-  }
-
-  Future<Response> _updateGroup(Request req, User user) async {
-    final body = await _body(req);
-    final name = body['name'];
-    if (name is! String?) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
-    await chat.updateTeam(user, req.params['id']!,
-        name: name, userIds: body.containsKey('userIds') ? _ids(body['userIds']) : null);
-    return Response(204);
-  }
-
-  Future<Response> _readMessages(Request req, User user) async {
-    final last = (await _body(req))['lastId'];
-    if (last is! int) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
-    await chat.markRead(user, req.params['id']!, last);
-    return Response(204);
-  }
-
-  // --- Notifications sur l'appareil -----------------------------------------
 
   Future<Response> _registerDevice(Request req, User user) async {
     final body = await _body(req);

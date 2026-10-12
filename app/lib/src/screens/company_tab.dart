@@ -6,7 +6,7 @@ import '../models.dart';
 import '../session.dart';
 import 'billing_page.dart';
 import 'catalog_view.dart';
-import 'messages_view.dart';
+import 'news_view.dart';
 import 'planning_view.dart';
 import 'team_view.dart';
 import 'tools_widgets.dart';
@@ -87,7 +87,7 @@ class CompanyData {
   String? positionName(String? id) => positions.where((p) => p.id == id).firstOrNull?.name;
 }
 
-enum _View { planning, messages, team, catalog }
+enum _View { planning, news, team, catalog }
 
 /// Onglet d'une entreprise : planning, équipe, et pour les responsables,
 /// sites et postes.
@@ -119,13 +119,22 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
     _data = CompanyData.load(widget.session, company.id);
     widget.session.sync.addListener(_onSync);
     widget.session.openDay.addListener(_onOpenDay);
+    widget.session.openNews.addListener(_onOpenNews);
     _onOpenDay();
+    _onOpenNews();
+  }
+
+  void _onOpenNews() {
+    if (widget.session.openNews.value != company.id || !company.messagingEnabled) return;
+    widget.session.openNews.value = null;
+    setState(() => _view = _View.news);
   }
 
   @override
   void dispose() {
     widget.session.sync.removeListener(_onSync);
     widget.session.openDay.removeListener(_onOpenDay);
+    widget.session.openNews.removeListener(_onOpenNews);
     super.dispose();
   }
 
@@ -329,18 +338,18 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
               ?_billingNotice(context),
               const SizedBox(height: 8),
               Builder(builder: (context) {
-                final unread = widget.session.me?.unreadMessages[company.id] ?? 0;
-                // Messagerie coupée par le patron : l'onglet disparaît pour tous.
-                if (!company.messagingEnabled && _view == _View.messages) _view = _View.planning;
+                final unread = widget.session.me?.unreadNews[company.id] ?? 0;
+                // Fil d'actualités coupé par le patron : l'onglet disparaît pour tous.
+                if (!company.messagingEnabled && _view == _View.news) _view = _View.planning;
                 return _ViewSwitcher(
                   selected: _view,
                   items: [
                     (_View.planning, const Icon(Icons.calendar_month), t.viewPlanning),
                     if (company.messagingEnabled)
                     (
-                      _View.messages,
-                      Badge(isLabelVisible: unread > 0, label: Text('$unread'), child: const Icon(Icons.forum)),
-                      t.messagesTab
+                      _View.news,
+                      Badge(isLabelVisible: unread > 0, label: Text('$unread'), child: const Icon(Icons.campaign)),
+                      t.newsTab
                     ),
                     (_View.team, const Icon(Icons.manage_accounts), t.viewTeam),
                     if (role.canManage) (_View.catalog, const Icon(Icons.store), t.viewPositions),
@@ -384,8 +393,7 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
                     membership: widget.membership,
                     data: data,
                     initialDay: _focusDay),
-                _View.messages =>
-                  MessagesView(session: widget.session, membership: widget.membership, data: data),
+                _View.news => NewsView(session: widget.session, membership: widget.membership, data: data),
                 _View.team => TeamView(
                     session: widget.session, membership: widget.membership, data: data, onChanged: _reload),
                 _View.catalog => CatalogView(

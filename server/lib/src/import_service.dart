@@ -438,6 +438,14 @@ class ImportService {
     }
   }
 
+  /// Invitations expirées ou utilisées depuis plus de 90 jours : effacées
+  /// (nom et e-mail fournis par l'employeur ne sont pas gardés).
+  Future<void> purge() async {
+    await store.query(store.db, '''
+      DELETE FROM member_invites WHERE expires_at < @t OR used_at < @t''', {'t': now().subtract(inviteLifetime)});
+    await store.query(store.db, 'DELETE FROM member_invites WHERE expires_at < @t AND used_at IS NULL', {'t': now()});
+  }
+
   /// Invitations dont l'e-mail est celui du compte Google : proposées à la
   /// personne (elle accepte ou refuse, comme une invitation par QR code).
   Future<void> claimByEmail(User user) async {
