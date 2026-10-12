@@ -550,4 +550,25 @@ ALTER TABLE memberships ADD COLUMN position_id uuid REFERENCES positions(id) ON 
 CREATE UNIQUE INDEX memberships_employee_number ON memberships (company_id, lower(employee_number))
   WHERE left_at IS NULL AND employee_number IS NOT NULL;
 ''',
+  // 31 — importation : invitations personnelles (code + QR code, ou e-mail Google).
+  '''
+CREATE TABLE member_invites (
+  id              uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  company_id      uuid NOT NULL REFERENCES companies(id) ON DELETE CASCADE,
+  code            text NOT NULL UNIQUE,
+  name            text NOT NULL,
+  email           text,
+  employee_number text,
+  position_id     uuid REFERENCES positions(id) ON DELETE SET NULL,
+  sites           uuid[],
+  created_by      uuid REFERENCES users(id) ON DELETE SET NULL,
+  created_at      timestamptz NOT NULL DEFAULT now(),
+  expires_at      timestamptz NOT NULL,
+  used_by         uuid REFERENCES users(id) ON DELETE SET NULL,
+  used_at         timestamptz
+);
+CREATE INDEX member_invites_company ON member_invites (company_id) WHERE used_at IS NULL;
+CREATE INDEX member_invites_email ON member_invites (lower(email)) WHERE used_at IS NULL;
+ALTER TABLE join_requests ADD COLUMN invite_id uuid REFERENCES member_invites(id) ON DELETE SET NULL;
+''',
 ];

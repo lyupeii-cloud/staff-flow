@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'company_service.dart';
 import 'errors.dart';
+import 'import_service.dart';
 import 'models.dart';
 import 'store.dart';
 
@@ -172,7 +173,7 @@ class JoinService {
     final rows = await store.query(store.db, '''
       UPDATE join_requests SET status = @s, resolved_at = now()
       WHERE id = @id::uuid AND user_id = @u::uuid AND status = 'pending'
-      RETURNING company_id::text, role, sites::text[]''',
+      RETURNING company_id::text, role, sites::text[], invite_id::text''',
         {'id': requestId, 'u': user.id, 's': accept ? 'accepted' : 'declined'});
     if (rows.isEmpty) throw const ApiError.notFound('Invitation introuvable.');
     final companyId = rows.first[0] as String;
@@ -180,6 +181,9 @@ class JoinService {
       final sites = rows.first[2] as List?;
       await store.addMember(companyId, user.id, Role.parse(rows.first[1] as String),
           sites: sites?.cast<String>());
+      if (rows.first[3] case final String inviteId) {
+        await ImportService.applyInvite(store, companyId, user.id, inviteId);
+      }
     }
     await store.audit(
         companyId: companyId, actorId: user.id, action: accept ? 'join.accept' : 'join.decline');

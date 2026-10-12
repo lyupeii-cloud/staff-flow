@@ -70,11 +70,14 @@ Future<void> showMyQrCode(BuildContext context, Session session) async {
 
 /// Ouvre la caméra et renvoie le contenu du premier QR code Staff Flow lu,
 /// ou `null` si l'utilisateur abandonne.
-Future<String?> scanQrCode(BuildContext context) =>
-    Navigator.of(context).push<String>(MaterialPageRoute(builder: (_) => const _ScannerPage()));
+/// [accept] : autre forme de QR code acceptée (invitation).
+Future<String?> scanQrCode(BuildContext context, {RegExp? accept}) =>
+    Navigator.of(context).push<String>(MaterialPageRoute(builder: (_) => _ScannerPage(accept: accept)));
 
 class _ScannerPage extends StatefulWidget {
-  const _ScannerPage();
+  final RegExp? accept;
+
+  const _ScannerPage({this.accept});
 
   @override
   State<_ScannerPage> createState() => _ScannerPageState();
@@ -89,7 +92,7 @@ class _ScannerPageState extends State<_ScannerPage> {
     for (final code in capture.barcodes) {
       final value = code.rawValue;
       if (value == null) continue;
-      if (_publicId.hasMatch(value.toUpperCase())) {
+      if ((widget.accept ?? _publicId).hasMatch(value.toUpperCase())) {
         _done = true;
         Navigator.pop(context, value);
         return;

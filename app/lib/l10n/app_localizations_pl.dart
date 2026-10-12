@@ -1871,4 +1871,94 @@ class L10nPl extends L10n {
 
   @override
   String get usualPosition => 'Zwykłe stanowisko';
+
+  @override
+  String get inviteCodeTitle => 'Kod zaproszenia';
+
+  @override
+  String get inviteCodeHint =>
+      'Wpisz kod otrzymany od pracodawcy albo zeskanuj kod QR zaproszenia.';
+
+  @override
+  String inviteJoined(String company) {
+    return 'Dołączyłeś(-aś) do $company.';
+  }
+
+  @override
+  String get importTitle => 'Importuj pracowników';
+
+  @override
+  String get importIntro =>
+      'Zaimportuj listę pracowników z pliku Excel lub CSV. Każdy otrzyma zaproszenie: z e-mailem Google zobaczy je zaraz po zalogowaniu; w przeciwnym razie przekaż mu kod lub kod QR. Nikt nie zostanie dodany bez zgody.';
+
+  @override
+  String get importTemplate => 'Pobierz szablon Excel';
+
+  @override
+  String get importTemplateHint =>
+      'Kolumny: imię i nazwisko, e-mail Google, numer pracownika, stanowisko, lokalizacja. Wymagane jest tylko imię i nazwisko.';
+
+  @override
+  String get importChooseFile => 'Wybierz plik (.xlsx lub .csv)';
+
+  @override
+  String importNew(String count) {
+    return 'Nowi: $count';
+  }
+
+  @override
+  String importUpdate(String count) {
+    return 'Zaktualizowano: $count';
+  }
+
+  @override
+  String importSkip(String count) {
+    return 'Już zaproszeni: $count';
+  }
+
+  @override
+  String importErrors(String count) {
+    return 'Błędy: $count';
+  }
+
+  @override
+  String importConfirm(String count) {
+    return 'Importuj ($count)';
+  }
+
+  @override
+  String get importErrorsIgnored =>
+      'Wiersze z błędami zostaną pominięte: popraw je w pliku i zaimportuj ponownie.';
+
+  @override
+  String get importCreated => 'utworzono';
+
+  @override
+  String importDone(String count) {
+    return 'Utworzono zaproszeń: $count';
+  }
+
+  @override
+  String get invitesTitle => 'Oczekujące zaproszenia';
+
+  @override
+  String get invitesPrint => 'Drukuj kody';
+
+  @override
+  String get inviteShowHint =>
+      'Osoba skanuje ten kod QR lub wpisuje ten kod w Staff Flow (menu konta, „Mam kod zaproszenia”). Ważny 90 dni, jednorazowo.';
+
+  @override
+  String invitesHint(String count) {
+    return 'Oczekujące zaproszenia: $count. Dotknij osoby, aby pokazać jej kod i kod QR, albo wydrukuj wszystkie.';
+  }
+
+  @override
+  String get inviteSeenByEmail => 'zaproszenie widoczne (e-mail)';
+
+  @override
+  String get invitesNone => 'Brak oczekujących zaproszeń.';
+
+  @override
+  String get haveInviteCode => 'Mam kod zaproszenia';
 }

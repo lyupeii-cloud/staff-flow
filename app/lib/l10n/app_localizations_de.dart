@@ -1875,4 +1875,94 @@ class L10nDe extends L10n {
 
   @override
   String get usualPosition => 'Übliche Position';
+
+  @override
+  String get inviteCodeTitle => 'Einladungscode';
+
+  @override
+  String get inviteCodeHint =>
+      'Geben Sie den Code ein, den Sie von Ihrem Arbeitgeber erhalten haben, oder scannen Sie den QR-Code Ihrer Einladung.';
+
+  @override
+  String inviteJoined(String company) {
+    return 'Sie sind $company beigetreten.';
+  }
+
+  @override
+  String get importTitle => 'Mitarbeitende importieren';
+
+  @override
+  String get importIntro =>
+      'Importieren Sie Ihre Mitarbeiterliste aus einer Excel- oder CSV-Datei. Jede Person erhält eine Einladung: Mit ihrer Google-E-Mail sieht sie sie gleich bei der Anmeldung; sonst geben Sie ihr den Code oder QR-Code. Niemand wird ohne Zustimmung hinzugefügt.';
+
+  @override
+  String get importTemplate => 'Excel-Vorlage herunterladen';
+
+  @override
+  String get importTemplateHint =>
+      'Spalten: Name, Google-E-Mail, Personalnummer, Position, Standort. Nur der Name ist Pflicht.';
+
+  @override
+  String get importChooseFile => 'Datei wählen (.xlsx oder .csv)';
+
+  @override
+  String importNew(String count) {
+    return 'Neu: $count';
+  }
+
+  @override
+  String importUpdate(String count) {
+    return 'Aktualisiert: $count';
+  }
+
+  @override
+  String importSkip(String count) {
+    return 'Bereits eingeladen: $count';
+  }
+
+  @override
+  String importErrors(String count) {
+    return 'Fehler: $count';
+  }
+
+  @override
+  String importConfirm(String count) {
+    return 'Importieren ($count)';
+  }
+
+  @override
+  String get importErrorsIgnored =>
+      'Zeilen mit Fehlern werden übersprungen: Korrigieren Sie sie in der Datei und importieren Sie sie erneut.';
+
+  @override
+  String get importCreated => 'angelegt';
+
+  @override
+  String importDone(String count) {
+    return 'Einladungen erstellt: $count';
+  }
+
+  @override
+  String get invitesTitle => 'Offene Einladungen';
+
+  @override
+  String get invitesPrint => 'Codes drucken';
+
+  @override
+  String get inviteShowHint =>
+      'Die Person scannt diesen QR-Code oder gibt diesen Code in Staff Flow ein (Kontomenü, „Ich habe einen Einladungscode“). 90 Tage gültig, einmalig.';
+
+  @override
+  String invitesHint(String count) {
+    return 'Offene Einladungen: $count. Tippen Sie auf eine Person, um ihren Code und QR-Code anzuzeigen, oder drucken Sie alle.';
+  }
+
+  @override
+  String get inviteSeenByEmail => 'Einladung gesehen (E-Mail)';
+
+  @override
+  String get invitesNone => 'Keine offenen Einladungen.';
+
+  @override
+  String get haveInviteCode => 'Ich habe einen Einladungscode';
 }

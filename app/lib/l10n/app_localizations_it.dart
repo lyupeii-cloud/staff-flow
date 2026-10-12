@@ -1868,4 +1868,94 @@ class L10nIt extends L10n {
 
   @override
   String get usualPosition => 'Ruolo abituale';
+
+  @override
+  String get inviteCodeTitle => 'Codice di invito';
+
+  @override
+  String get inviteCodeHint =>
+      'Inserisci il codice ricevuto dal datore di lavoro o scansiona il codice QR del tuo invito.';
+
+  @override
+  String inviteJoined(String company) {
+    return 'Sei entrato/a in $company.';
+  }
+
+  @override
+  String get importTitle => 'Importa dipendenti';
+
+  @override
+  String get importIntro =>
+      'Importa l\'elenco dei dipendenti da un file Excel o CSV. Ognuno riceve un invito: con l\'e-mail Google lo vede appena accede; altrimenti consegnagli il codice o il codice QR. Nessuno viene aggiunto senza il suo consenso.';
+
+  @override
+  String get importTemplate => 'Scarica il modello Excel';
+
+  @override
+  String get importTemplateHint =>
+      'Colonne: nome, e-mail Google, matricola, ruolo, sede. Solo il nome è obbligatorio.';
+
+  @override
+  String get importChooseFile => 'Scegli un file (.xlsx o .csv)';
+
+  @override
+  String importNew(String count) {
+    return 'Nuovi: $count';
+  }
+
+  @override
+  String importUpdate(String count) {
+    return 'Aggiornati: $count';
+  }
+
+  @override
+  String importSkip(String count) {
+    return 'Già invitati: $count';
+  }
+
+  @override
+  String importErrors(String count) {
+    return 'Errori: $count';
+  }
+
+  @override
+  String importConfirm(String count) {
+    return 'Importa ($count)';
+  }
+
+  @override
+  String get importErrorsIgnored =>
+      'Le righe con errori verranno ignorate: correggile nel file e importalo di nuovo.';
+
+  @override
+  String get importCreated => 'creato';
+
+  @override
+  String importDone(String count) {
+    return 'Inviti creati: $count';
+  }
+
+  @override
+  String get invitesTitle => 'Inviti in attesa';
+
+  @override
+  String get invitesPrint => 'Stampa i codici';
+
+  @override
+  String get inviteShowHint =>
+      'La persona scansiona questo codice QR o inserisce questo codice in Staff Flow (menu dell\'account, «Ho un codice di invito»). Valido 90 giorni, una sola volta.';
+
+  @override
+  String invitesHint(String count) {
+    return 'Inviti in attesa: $count. Tocca una persona per mostrare il suo codice e il codice QR, oppure stampali tutti.';
+  }
+
+  @override
+  String get inviteSeenByEmail => 'invito visto (e-mail)';
+
+  @override
+  String get invitesNone => 'Nessun invito in attesa.';
+
+  @override
+  String get haveInviteCode => 'Ho un codice di invito';
 }

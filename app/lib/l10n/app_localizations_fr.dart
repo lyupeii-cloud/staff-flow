@@ -1873,4 +1873,94 @@ class L10nFr extends L10n {
 
   @override
   String get usualPosition => 'Poste habituel';
+
+  @override
+  String get inviteCodeTitle => 'Code d\'invitation';
+
+  @override
+  String get inviteCodeHint =>
+      'Saisissez le code reçu de votre employeur, ou scannez le QR code de votre invitation.';
+
+  @override
+  String inviteJoined(String company) {
+    return 'Vous avez rejoint $company.';
+  }
+
+  @override
+  String get importTitle => 'Importer des salariés';
+
+  @override
+  String get importIntro =>
+      'Importez votre liste de salariés depuis un fichier Excel ou CSV. Chacun reçoit une invitation : avec son e-mail Google, il la voit dès sa connexion ; sinon, donnez-lui son code ou son QR code. Personne n\'est ajouté sans son accord.';
+
+  @override
+  String get importTemplate => 'Télécharger le modèle Excel';
+
+  @override
+  String get importTemplateHint =>
+      'Colonnes : nom, e-mail Google, matricule, poste, site. Seul le nom est obligatoire.';
+
+  @override
+  String get importChooseFile => 'Choisir un fichier (.xlsx ou .csv)';
+
+  @override
+  String importNew(String count) {
+    return 'Nouveaux : $count';
+  }
+
+  @override
+  String importUpdate(String count) {
+    return 'Mis à jour : $count';
+  }
+
+  @override
+  String importSkip(String count) {
+    return 'Déjà invités : $count';
+  }
+
+  @override
+  String importErrors(String count) {
+    return 'Erreurs : $count';
+  }
+
+  @override
+  String importConfirm(String count) {
+    return 'Importer ($count)';
+  }
+
+  @override
+  String get importErrorsIgnored =>
+      'Les lignes en erreur seront ignorées : corrigez-les dans le fichier et importez-le de nouveau.';
+
+  @override
+  String get importCreated => 'créé';
+
+  @override
+  String importDone(String count) {
+    return 'Invitations créées : $count';
+  }
+
+  @override
+  String get invitesTitle => 'Invitations en attente';
+
+  @override
+  String get invitesPrint => 'Imprimer les codes';
+
+  @override
+  String get inviteShowHint =>
+      'La personne scanne ce QR code ou saisit ce code dans Staff Flow (menu du compte, « J\'ai un code d\'invitation »). Valable 90 jours, une seule fois.';
+
+  @override
+  String invitesHint(String count) {
+    return 'Invitations en attente : $count. Touchez une personne pour afficher son code et son QR code, ou imprimez-les tous.';
+  }
+
+  @override
+  String get inviteSeenByEmail => 'invitation vue (e-mail)';
+
+  @override
+  String get invitesNone => 'Aucune invitation en attente.';
+
+  @override
+  String get haveInviteCode => 'J\'ai un code d\'invitation';
 }

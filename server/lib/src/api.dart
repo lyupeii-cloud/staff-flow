@@ -14,6 +14,7 @@ import 'errors.dart';
 import 'google_switch.dart';
 import 'join_service.dart';
 import 'messages.dart';
+import 'import_service.dart';
 import 'notice_service.dart';
 import 'notifications.dart';
 import 'overlap_service.dart';
@@ -41,6 +42,7 @@ class Api {
   late final RequestService requests =
       RequestService(store, companies, planning, notifications, overlaps: overlaps, chat: chat);
   late final JoinService joins = JoinService(store, companies, now: now);
+  late final ImportService imports = ImportService(store, companies, tokens.derive('invites'), now: now, appUrl: appUrl);
   late final NoticeService notices = NoticeService(store, now: now);
   late final PlatformService platform = PlatformService(store, fileValues: platformFile);
   late final TelegramService telegram = TelegramService(store, telegramApi, now: now)
@@ -264,6 +266,44 @@ class Api {
       ..put('/companies/<id>/members/<userId>/name', _authed(_renameMember))
       ..put('/companies/<id>/members/<userId>/sites', _authed(_setMemberSites))
       ..put('/companies/<id>/members/<userId>/profile', _authed(_setMemberProfile))
+      // Importation de salariés et invitations personnelles.
+      ..get('/import-template', (Request r) {
+        final lang = r.url.queryParameters['lang'] ?? negotiateLanguage(r.headers['accept-language']);
+        return Response.ok(imports.template(supportedLanguages.contains(lang) ? lang : 'en'), headers: {
+          'content-type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+          'content-disposition': 'attachment; filename="staff-flow-import.xlsx"',
+        });
+      })
+      ..post('/companies/<id>/imports', _authed((r, u) async {
+        final body = await _body(r);
+        final file = body['file'], name = body['fileName'], dryRun = body['dryRun'];
+        if (file is! String || name is! String || dryRun is! bool) {
+          throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        }
+        final List<int> bytes;
+        try {
+          bytes = base64Decode(file);
+        } on FormatException {
+          throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        }
+        return _json(await imports.run(u, r.params['id']!, ImportService.readFile(bytes, name),
+            dryRun: dryRun, lang: _lang(r)));
+      }))
+      ..get('/companies/<id>/invites', _authed((r, u) async => _json({'invites': await imports.list(u, r.params['id']!)})))
+      ..delete('/companies/<id>/invites/<inviteId>', _authed((r, u) async {
+        await imports.delete(u, r.params['id']!, r.params['inviteId']!);
+        return Response(204);
+      }))
+      ..post('/companies/<id>/invites/sheet-link',
+          _authed((r, u) async => _json({'path': await imports.sheetLink(u, r.params['id']!, _lang(r))})))
+      ..get('/invite-sheets/<token>', (Request r) async => Response.ok(await imports.sheet(r.params['token']!),
+          headers: {'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store'}))
+      ..post('/invites/redeem', _authed((r, u) async {
+        final code = (await _body(r))['code'];
+        if (code is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        final (companyId, name) = await imports.redeem(u, code);
+        return _json({'companyId': companyId, 'companyName': name});
+      }))
       ..delete('/companies/<id>/members/<userId>', _authed(_removeMember))
       ..post('/companies/<id>/transfer', _authed(_proposeTransfer))
       ..delete('/companies/<id>/transfer', _authed(_cancelTransfer))
@@ -506,7 +546,9 @@ class Api {
         'pendingTransfers': [
           for (final t in await store.pendingTransfersFor(user.id)) t.toJson(),
         ],
-        'pendingJoinRequests': [for (final j in await joins.pendingFor(user)) j.toJson()],
+        'pendingJoinRequests': [
+          for (final j in await (imports.claimByEmail(user).then((_) => joins.pendingFor(user)))) j.toJson(),
+        ],
         'unreadNotices': await notices.unreadCount(user.id),
         'notificationPrefs': await notifications.prefs(user.id),
         'noticeRetention': await notices.retention(user.id),

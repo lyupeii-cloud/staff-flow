@@ -185,7 +185,7 @@ class PickList extends StatefulWidget {
 }
 
 class _PickListState extends State<PickList> {
-  static const _rowHeight = 52.0;
+  static const _rowHeight = 56.0;
   bool _open = false;
   final _query = TextEditingController();
 
@@ -236,138 +236,170 @@ class _PickListState extends State<PickList> {
     final shown = sortItems(searchItems(widget.items, _query.text), _sort);
     final rows = [if (widget.allowNone && !widget.multi && _query.text.isEmpty) PickItem('', widget.emptyText), ...shown];
     final count = widget.selected.length;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const SizedBox(height: 8),
-        InkWell(
-          borderRadius: BorderRadius.circular(4),
-          onTap: () => setState(() => _open = !_open),
-          child: InputDecorator(
-            isFocused: _open,
-            decoration: InputDecoration(
-              labelText: widget.multi && count > 0 ? '${widget.label} · $count' : widget.label,
-              suffixIcon: Icon(_open ? Icons.arrow_drop_up : Icons.arrow_drop_down),
-            ),
-            child: Text(_summary(t), maxLines: 1, overflow: TextOverflow.ellipsis),
-          ),
-        ),
-        if (_open) ...[
-          const SizedBox(height: 8),
-          Row(children: [
-            Expanded(
-              child: TextField(
-                controller: _query,
-                onChanged: (_) => setState(() {}),
-                decoration: InputDecoration(
-                  isDense: true,
-                  prefixIcon: const Icon(Icons.search, size: 20),
-                  hintText: _people ? t.pickSearchPeople : t.pickSearch,
-                  suffixIcon: _query.text.isEmpty
-                      ? null
-                      : IconButton(
-                          icon: const Icon(Icons.close, size: 18),
-                          onPressed: () => setState(_query.clear),
-                        ),
-                ),
+    // Une seule surface aux coins arrondis : l'en-tête, puis la liste dépliée.
+    final radius = BorderRadius.circular(18);
+    return Padding(
+      padding: const EdgeInsets.only(top: 10),
+      child: Material(
+        color: theme.colorScheme.surfaceContainerHigh,
+        borderRadius: radius,
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            InkWell(
+              onTap: () => setState(() => _open = !_open),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 10, 8, 10),
+                child: Row(children: [
+                  Expanded(
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      Text(widget.multi && count > 0 ? '${widget.label} · $count' : widget.label,
+                          style: theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.primary)),
+                      const SizedBox(height: 2),
+                      Text(_summary(t), maxLines: 1, overflow: TextOverflow.ellipsis, style: theme.textTheme.bodyLarge),
+                    ]),
+                  ),
+                  AnimatedRotation(
+                    turns: _open ? 0.5 : 0,
+                    duration: const Duration(milliseconds: 200),
+                    child: const Icon(Icons.expand_more),
+                  ),
+                ]),
               ),
             ),
-            if (widget.sorts.length > 1)
-              PopupMenuButton<PickSort>(
-                tooltip: t.pickSortTitle,
-                icon: const Icon(Icons.sort),
-                initialValue: _sort,
-                onSelected: (s) {
-                  setState(() => _sort = s);
-                  if (_people) PickPrefs.set(s);
-                },
-                itemBuilder: (_) => [
-                  for (final s in widget.sorts) CheckedPopupMenuItem(value: s, checked: s == _sort, child: Text(s.label(t))),
-                ],
-              ),
-          ]),
-          if (widget.filters.isNotEmpty)
-            Padding(
-              padding: const EdgeInsets.only(top: 6),
-              child: Wrap(spacing: 6, runSpacing: 4, children: widget.filters),
-            ),
-          if (widget.multi)
-            Row(children: [
-              Expanded(child: Text(t.pickSelected('$count'), style: theme.textTheme.bodySmall)),
-              TextButton(
-                onPressed: shown.isEmpty ? null : () => widget.onChanged({...widget.selected, for (final i in shown) i.id}),
-                child: Text(t.pickCheckAll),
-              ),
-              TextButton(
-                onPressed: count == 0 ? null : () => widget.onChanged({}),
-                child: Text(t.pickClear),
-              ),
-            ]),
-          Container(
-            height: _rowHeight * (rows.isEmpty ? 1 : rows.length.clamp(1, widget.visibleRows)),
-            decoration: BoxDecoration(
-              border: Border.all(color: theme.colorScheme.outlineVariant),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: rows.isEmpty
-                ? Center(child: Text(t.pickNoResult, style: theme.textTheme.bodySmall))
-                : Scrollbar(
-                    thumbVisibility: rows.length > widget.visibleRows,
-                    child: ListView.builder(
-                      primary: false,
-                      itemExtent: _rowHeight,
-                      itemCount: rows.length,
-                      itemBuilder: (context, i) => _row(rows[i], theme),
+            if (_open) ...[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 0, 4, 0),
+                child: Row(children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _query,
+                      onChanged: (_) => setState(() {}),
+                      decoration: InputDecoration(
+                        isDense: true,
+                        filled: true,
+                        fillColor: theme.colorScheme.surface,
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(24), borderSide: BorderSide.none),
+                        prefixIcon: const Icon(Icons.search, size: 20),
+                        hintText: _people ? t.pickSearchPeople : t.pickSearch,
+                        suffixIcon: _query.text.isEmpty
+                            ? null
+                            : IconButton(
+                                icon: const Icon(Icons.close, size: 18),
+                                onPressed: () => setState(_query.clear),
+                              ),
+                      ),
                     ),
                   ),
-          ),
-          if (widget.hint != null)
-            Padding(
-              padding: const EdgeInsets.only(top: 4),
-              child: Text(widget.hint!, style: theme.textTheme.bodySmall),
-            ),
-        ],
-      ],
+                  if (widget.sorts.length > 1)
+                    PopupMenuButton<PickSort>(
+                      tooltip: t.pickSortTitle,
+                      icon: const Icon(Icons.sort),
+                      initialValue: _sort,
+                      onSelected: (s) {
+                        setState(() => _sort = s);
+                        if (_people) PickPrefs.set(s);
+                      },
+                      itemBuilder: (_) => [
+                        for (final s in widget.sorts)
+                          CheckedPopupMenuItem(value: s, checked: s == _sort, child: Text(s.label(t))),
+                      ],
+                    ),
+                ]),
+              ),
+              if (widget.filters.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 8, 10, 0),
+                  child: Wrap(spacing: 6, runSpacing: 4, children: widget.filters),
+                ),
+              if (widget.multi)
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 4, 6, 0),
+                  child: Row(children: [
+                    Expanded(child: Text(t.pickSelected('$count'), style: theme.textTheme.bodySmall)),
+                    TextButton(
+                      onPressed:
+                          shown.isEmpty ? null : () => widget.onChanged({...widget.selected, for (final i in shown) i.id}),
+                      child: Text(t.pickCheckAll),
+                    ),
+                    TextButton(
+                      onPressed: count == 0 ? null : () => widget.onChanged({}),
+                      child: Text(t.pickClear),
+                    ),
+                  ]),
+                ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(8, 4, 8, 8),
+                height: _rowHeight * (rows.isEmpty ? 1 : rows.length.clamp(1, widget.visibleRows)),
+                decoration: BoxDecoration(color: theme.colorScheme.surface, borderRadius: BorderRadius.circular(14)),
+                clipBehavior: Clip.antiAlias,
+                child: rows.isEmpty
+                    ? Center(child: Text(t.pickNoResult, style: theme.textTheme.bodySmall))
+                    : Scrollbar(
+                        thumbVisibility: rows.length > widget.visibleRows,
+                        child: ListView.builder(
+                          primary: false,
+                          padding: const EdgeInsets.symmetric(vertical: 2),
+                          itemExtent: _rowHeight,
+                          itemCount: rows.length,
+                          itemBuilder: (context, i) => _row(rows[i], theme),
+                        ),
+                      ),
+              ),
+              if (widget.hint != null)
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
+                  child: Text(widget.hint!, style: theme.textTheme.bodySmall),
+                ),
+            ],
+          ],
+        ),
+      ),
     );
   }
 
+  /// Ligne choisie : fond teinté et coche à droite ; les autres, rien.
   Widget _row(PickItem item, ThemeData theme) {
     final on = item.id.isEmpty ? widget.selected.isEmpty : widget.selected.contains(item.id);
     final cols = item.columns(_sort);
     final warn = item.warn ? TextStyle(color: theme.colorScheme.error) : null;
-    return InkWell(
-      onTap: () => _toggle(item.id),
-      child: Padding(
-        padding: EdgeInsets.only(left: 8 + 16.0 * item.indent, right: 8),
-        child: Row(children: [
-          Icon(
-            widget.multi
-                ? (on ? Icons.check_box : Icons.check_box_outline_blank)
-                : (on ? Icons.check_circle : Icons.radio_button_unchecked),
-            color: on ? theme.colorScheme.primary : theme.colorScheme.outline,
-            size: 22,
-          ),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text.rich(
-                  TextSpan(children: [
-                    if (item.warn) TextSpan(text: '! ', style: warn),
-                    TextSpan(text: cols.first, style: (warn ?? const TextStyle()).copyWith(fontWeight: FontWeight.w600)),
-                    if (cols.length > 1) TextSpan(text: '  ${cols.skip(1).join(' · ')}', style: theme.textTheme.bodySmall),
-                  ]),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+      child: Material(
+        color: on ? theme.colorScheme.primaryContainer.withValues(alpha: 0.6) : Colors.transparent,
+        borderRadius: BorderRadius.circular(12),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(12),
+          onTap: () => _toggle(item.id),
+          child: Padding(
+            padding: EdgeInsets.only(left: 12 + 16.0 * item.indent, right: 12),
+            child: Row(children: [
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text.rich(
+                      TextSpan(children: [
+                        if (item.warn) TextSpan(text: '! ', style: warn),
+                        TextSpan(
+                            text: cols.first,
+                            style: (warn ?? const TextStyle()).copyWith(fontWeight: on ? FontWeight.w700 : FontWeight.w600)),
+                        if (cols.length > 1) TextSpan(text: '  ${cols.skip(1).join(' · ')}', style: theme.textTheme.bodySmall),
+                      ]),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    if (item.detail != null)
+                      Text(item.detail!, maxLines: 1, overflow: TextOverflow.ellipsis, style: theme.textTheme.bodySmall),
+                  ],
                 ),
-                if (item.detail != null)
-                  Text(item.detail!, maxLines: 1, overflow: TextOverflow.ellipsis, style: theme.textTheme.bodySmall),
-              ],
-            ),
+              ),
+              if (on) Icon(Icons.check_rounded, color: theme.colorScheme.primary, size: 24),
+            ]),
           ),
-        ]),
+        ),
       ),
     );
   }

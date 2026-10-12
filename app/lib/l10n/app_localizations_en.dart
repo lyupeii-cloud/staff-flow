@@ -1859,6 +1859,96 @@ class L10nEn extends L10n {
 
   @override
   String get usualPosition => 'Usual position';
+
+  @override
+  String get inviteCodeTitle => 'Invitation code';
+
+  @override
+  String get inviteCodeHint =>
+      'Enter the code you received from your employer, or scan the QR code of your invitation.';
+
+  @override
+  String inviteJoined(String company) {
+    return 'You joined $company.';
+  }
+
+  @override
+  String get importTitle => 'Import employees';
+
+  @override
+  String get importIntro =>
+      'Import your list of employees from an Excel or CSV file. Each one gets an invitation: with their Google e-mail, they see it as soon as they sign in; otherwise, give them their code or QR code. Nobody is added without their consent.';
+
+  @override
+  String get importTemplate => 'Download the Excel template';
+
+  @override
+  String get importTemplateHint =>
+      'Columns: name, Google e-mail, employee number, position, site. Only the name is required.';
+
+  @override
+  String get importChooseFile => 'Choose a file (.xlsx or .csv)';
+
+  @override
+  String importNew(String count) {
+    return 'New: $count';
+  }
+
+  @override
+  String importUpdate(String count) {
+    return 'Updated: $count';
+  }
+
+  @override
+  String importSkip(String count) {
+    return 'Already invited: $count';
+  }
+
+  @override
+  String importErrors(String count) {
+    return 'Errors: $count';
+  }
+
+  @override
+  String importConfirm(String count) {
+    return 'Import ($count)';
+  }
+
+  @override
+  String get importErrorsIgnored =>
+      'Rows with errors will be skipped: fix them in the file and import it again.';
+
+  @override
+  String get importCreated => 'created';
+
+  @override
+  String importDone(String count) {
+    return 'Invitations created: $count';
+  }
+
+  @override
+  String get invitesTitle => 'Pending invitations';
+
+  @override
+  String get invitesPrint => 'Print the codes';
+
+  @override
+  String get inviteShowHint =>
+      'The person scans this QR code or enters this code in Staff Flow (account menu, “I have an invitation code”). Valid for 90 days, once.';
+
+  @override
+  String invitesHint(String count) {
+    return 'Pending invitations: $count. Tap a person to show their code and QR code, or print them all.';
+  }
+
+  @override
+  String get inviteSeenByEmail => 'invitation seen (e-mail)';
+
+  @override
+  String get invitesNone => 'No pending invitations.';
+
+  @override
+  String get haveInviteCode => 'I have an invitation code';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).

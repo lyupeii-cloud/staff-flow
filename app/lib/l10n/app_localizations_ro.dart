@@ -1869,4 +1869,94 @@ class L10nRo extends L10n {
 
   @override
   String get usualPosition => 'Post obișnuit';
+
+  @override
+  String get inviteCodeTitle => 'Cod de invitație';
+
+  @override
+  String get inviteCodeHint =>
+      'Introduceți codul primit de la angajator sau scanați codul QR al invitației.';
+
+  @override
+  String inviteJoined(String company) {
+    return 'Ați intrat în $company.';
+  }
+
+  @override
+  String get importTitle => 'Importă angajați';
+
+  @override
+  String get importIntro =>
+      'Importați lista de angajați dintr-un fișier Excel sau CSV. Fiecare primește o invitație: cu e-mailul Google o vede imediat ce se conectează; altfel, dați-i codul sau codul QR. Nimeni nu este adăugat fără acordul său.';
+
+  @override
+  String get importTemplate => 'Descarcă șablonul Excel';
+
+  @override
+  String get importTemplateHint =>
+      'Coloane: nume, e-mail Google, număr matricol, post, locație. Doar numele este obligatoriu.';
+
+  @override
+  String get importChooseFile => 'Alege un fișier (.xlsx sau .csv)';
+
+  @override
+  String importNew(String count) {
+    return 'Noi: $count';
+  }
+
+  @override
+  String importUpdate(String count) {
+    return 'Actualizați: $count';
+  }
+
+  @override
+  String importSkip(String count) {
+    return 'Deja invitați: $count';
+  }
+
+  @override
+  String importErrors(String count) {
+    return 'Erori: $count';
+  }
+
+  @override
+  String importConfirm(String count) {
+    return 'Importă ($count)';
+  }
+
+  @override
+  String get importErrorsIgnored =>
+      'Rândurile cu erori vor fi ignorate: corectați-le în fișier și importați-l din nou.';
+
+  @override
+  String get importCreated => 'creat';
+
+  @override
+  String importDone(String count) {
+    return 'Invitații create: $count';
+  }
+
+  @override
+  String get invitesTitle => 'Invitații în așteptare';
+
+  @override
+  String get invitesPrint => 'Tipărește codurile';
+
+  @override
+  String get inviteShowHint =>
+      'Persoana scanează acest cod QR sau introduce acest cod în Staff Flow (meniul contului, „Am un cod de invitație”). Valabil 90 de zile, o singură dată.';
+
+  @override
+  String invitesHint(String count) {
+    return 'Invitații în așteptare: $count. Atingeți o persoană pentru a-i afișa codul și codul QR sau tipăriți-le pe toate.';
+  }
+
+  @override
+  String get inviteSeenByEmail => 'invitație văzută (e-mail)';
+
+  @override
+  String get invitesNone => 'Nicio invitație în așteptare.';
+
+  @override
+  String get haveInviteCode => 'Am un cod de invitație';
 }

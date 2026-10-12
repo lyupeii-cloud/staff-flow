@@ -1867,4 +1867,94 @@ class L10nUk extends L10n {
 
   @override
   String get usualPosition => 'Звичайна посада';
+
+  @override
+  String get inviteCodeTitle => 'Код запрошення';
+
+  @override
+  String get inviteCodeHint =>
+      'Введіть код, отриманий від роботодавця, або відскануйте QR-код запрошення.';
+
+  @override
+  String inviteJoined(String company) {
+    return 'Ви приєдналися до $company.';
+  }
+
+  @override
+  String get importTitle => 'Імпорт працівників';
+
+  @override
+  String get importIntro =>
+      'Імпортуйте список працівників із файлу Excel або CSV. Кожен отримує запрошення: з e-mail Google людина побачить його одразу після входу; інакше дайте їй код або QR-код. Нікого не додають без згоди.';
+
+  @override
+  String get importTemplate => 'Завантажити шаблон Excel';
+
+  @override
+  String get importTemplateHint =>
+      'Стовпці: ім\'я, e-mail Google, табельний номер, посада, об\'єкт. Обов\'язкове лише ім\'я.';
+
+  @override
+  String get importChooseFile => 'Вибрати файл (.xlsx або .csv)';
+
+  @override
+  String importNew(String count) {
+    return 'Нові: $count';
+  }
+
+  @override
+  String importUpdate(String count) {
+    return 'Оновлено: $count';
+  }
+
+  @override
+  String importSkip(String count) {
+    return 'Уже запрошені: $count';
+  }
+
+  @override
+  String importErrors(String count) {
+    return 'Помилки: $count';
+  }
+
+  @override
+  String importConfirm(String count) {
+    return 'Імпортувати ($count)';
+  }
+
+  @override
+  String get importErrorsIgnored =>
+      'Рядки з помилками буде пропущено: виправте їх у файлі й імпортуйте знову.';
+
+  @override
+  String get importCreated => 'створено';
+
+  @override
+  String importDone(String count) {
+    return 'Створено запрошень: $count';
+  }
+
+  @override
+  String get invitesTitle => 'Запрошення в очікуванні';
+
+  @override
+  String get invitesPrint => 'Надрукувати коди';
+
+  @override
+  String get inviteShowHint =>
+      'Людина сканує цей QR-код або вводить цей код у Staff Flow (меню облікового запису, «У мене є код запрошення»). Дійсний 90 днів, один раз.';
+
+  @override
+  String invitesHint(String count) {
+    return 'Запрошень в очікуванні: $count. Торкніться людини, щоб показати її код і QR-код, або надрукуйте всі.';
+  }
+
+  @override
+  String get inviteSeenByEmail => 'запрошення побачено (e-mail)';
+
+  @override
+  String get invitesNone => 'Немає запрошень в очікуванні.';
+
+  @override
+  String get haveInviteCode => 'У мене є код запрошення';
 }

@@ -3233,6 +3233,144 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Usual position'**
   String get usualPosition;
+
+  /// No description provided for @inviteCodeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Invitation code'**
+  String get inviteCodeTitle;
+
+  /// No description provided for @inviteCodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the code you received from your employer, or scan the QR code of your invitation.'**
+  String get inviteCodeHint;
+
+  /// No description provided for @inviteJoined.
+  ///
+  /// In en, this message translates to:
+  /// **'You joined {company}.'**
+  String inviteJoined(String company);
+
+  /// No description provided for @importTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Import employees'**
+  String get importTitle;
+
+  /// No description provided for @importIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Import your list of employees from an Excel or CSV file. Each one gets an invitation: with their Google e-mail, they see it as soon as they sign in; otherwise, give them their code or QR code. Nobody is added without their consent.'**
+  String get importIntro;
+
+  /// No description provided for @importTemplate.
+  ///
+  /// In en, this message translates to:
+  /// **'Download the Excel template'**
+  String get importTemplate;
+
+  /// No description provided for @importTemplateHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Columns: name, Google e-mail, employee number, position, site. Only the name is required.'**
+  String get importTemplateHint;
+
+  /// No description provided for @importChooseFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a file (.xlsx or .csv)'**
+  String get importChooseFile;
+
+  /// No description provided for @importNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New: {count}'**
+  String importNew(String count);
+
+  /// No description provided for @importUpdate.
+  ///
+  /// In en, this message translates to:
+  /// **'Updated: {count}'**
+  String importUpdate(String count);
+
+  /// No description provided for @importSkip.
+  ///
+  /// In en, this message translates to:
+  /// **'Already invited: {count}'**
+  String importSkip(String count);
+
+  /// No description provided for @importErrors.
+  ///
+  /// In en, this message translates to:
+  /// **'Errors: {count}'**
+  String importErrors(String count);
+
+  /// No description provided for @importConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Import ({count})'**
+  String importConfirm(String count);
+
+  /// No description provided for @importErrorsIgnored.
+  ///
+  /// In en, this message translates to:
+  /// **'Rows with errors will be skipped: fix them in the file and import it again.'**
+  String get importErrorsIgnored;
+
+  /// No description provided for @importCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'created'**
+  String get importCreated;
+
+  /// No description provided for @importDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Invitations created: {count}'**
+  String importDone(String count);
+
+  /// No description provided for @invitesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending invitations'**
+  String get invitesTitle;
+
+  /// No description provided for @invitesPrint.
+  ///
+  /// In en, this message translates to:
+  /// **'Print the codes'**
+  String get invitesPrint;
+
+  /// No description provided for @inviteShowHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The person scans this QR code or enters this code in Staff Flow (account menu, “I have an invitation code”). Valid for 90 days, once.'**
+  String get inviteShowHint;
+
+  /// No description provided for @invitesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending invitations: {count}. Tap a person to show their code and QR code, or print them all.'**
+  String invitesHint(String count);
+
+  /// No description provided for @inviteSeenByEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'invitation seen (e-mail)'**
+  String get inviteSeenByEmail;
+
+  /// No description provided for @invitesNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No pending invitations.'**
+  String get invitesNone;
+
+  /// No description provided for @haveInviteCode.
+  ///
+  /// In en, this message translates to:
+  /// **'I have an invitation code'**
+  String get haveInviteCode;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

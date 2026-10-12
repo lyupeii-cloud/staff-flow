@@ -1865,4 +1865,94 @@ class L10nRu extends L10n {
 
   @override
   String get usualPosition => 'Обычная должность';
+
+  @override
+  String get inviteCodeTitle => 'Код приглашения';
+
+  @override
+  String get inviteCodeHint =>
+      'Введите код, полученный от работодателя, или отсканируйте QR-код приглашения.';
+
+  @override
+  String inviteJoined(String company) {
+    return 'Вы присоединились к $company.';
+  }
+
+  @override
+  String get importTitle => 'Импорт сотрудников';
+
+  @override
+  String get importIntro =>
+      'Импортируйте список сотрудников из файла Excel или CSV. Каждый получает приглашение: с e-mail Google человек увидит его сразу после входа; иначе дайте ему код или QR-код. Никого не добавляют без согласия.';
+
+  @override
+  String get importTemplate => 'Скачать шаблон Excel';
+
+  @override
+  String get importTemplateHint =>
+      'Столбцы: имя, e-mail Google, табельный номер, должность, объект. Обязательно только имя.';
+
+  @override
+  String get importChooseFile => 'Выбрать файл (.xlsx или .csv)';
+
+  @override
+  String importNew(String count) {
+    return 'Новые: $count';
+  }
+
+  @override
+  String importUpdate(String count) {
+    return 'Обновлено: $count';
+  }
+
+  @override
+  String importSkip(String count) {
+    return 'Уже приглашены: $count';
+  }
+
+  @override
+  String importErrors(String count) {
+    return 'Ошибки: $count';
+  }
+
+  @override
+  String importConfirm(String count) {
+    return 'Импортировать ($count)';
+  }
+
+  @override
+  String get importErrorsIgnored =>
+      'Строки с ошибками будут пропущены: исправьте их в файле и импортируйте снова.';
+
+  @override
+  String get importCreated => 'создано';
+
+  @override
+  String importDone(String count) {
+    return 'Создано приглашений: $count';
+  }
+
+  @override
+  String get invitesTitle => 'Ожидающие приглашения';
+
+  @override
+  String get invitesPrint => 'Распечатать коды';
+
+  @override
+  String get inviteShowHint =>
+      'Человек сканирует этот QR-код или вводит этот код в Staff Flow (меню аккаунта, «У меня есть код приглашения»). Действует 90 дней, один раз.';
+
+  @override
+  String invitesHint(String count) {
+    return 'Ожидающих приглашений: $count. Нажмите на человека, чтобы показать его код и QR-код, или распечатайте все.';
+  }
+
+  @override
+  String get inviteSeenByEmail => 'приглашение увидено (e-mail)';
+
+  @override
+  String get invitesNone => 'Нет ожидающих приглашений.';
+
+  @override
+  String get haveInviteCode => 'У меня есть код приглашения';
 }

@@ -11,6 +11,7 @@ import 'billing_page.dart';
 import 'company_logo.dart';
 import 'company_tab.dart';
 import 'home_screen.dart';
+import 'invite_widgets.dart';
 import 'people_widgets.dart';
 import 'pick_list.dart';
 import 'tools_widgets.dart';
@@ -117,6 +118,16 @@ class _TeamViewState extends State<TeamView> {
                   onPressed: _addWithCode,
                   icon: const Icon(Icons.person_add, size: 18),
                   label: Text(t.add),
+                ),
+              if (widget.membership.managesAll && !company.readOnly)
+                IconButton(
+                  tooltip: t.importTitle,
+                  onPressed: () async {
+                    await ImportPage.open(context, widget.session, company, widget.data);
+                    if (mounted) setState(_load);
+                    widget.onChanged();
+                  },
+                  icon: const Icon(Icons.upload_file),
                 ),
               if (widget.membership.managesAll && !company.readOnly)
                 TextButton.icon(

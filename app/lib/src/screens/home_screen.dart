@@ -19,6 +19,7 @@ import 'company_logo.dart';
 import 'company_tab.dart';
 import 'join_code_dialog.dart';
 import 'chat_screen.dart';
+import 'invite_widgets.dart';
 import 'people_widgets.dart';
 import 'sync_widgets.dart';
 import 'avatar_widgets.dart';
@@ -54,6 +55,10 @@ class _HomeScreenState extends State<HomeScreen> {
     // Ouverte depuis une notification de demande : on la montre.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _onOpenRequest();
+      if (session.inviteCode case final code? when mounted) {
+        session.inviteCode = null;
+        showInviteCodeDialog(context, session, initial: code);
+      }
       if (session.accountSwitched && mounted) {
         session.accountSwitched = false;
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.l10n.switchDone)));
@@ -334,6 +339,12 @@ class _NoCompany extends StatelessWidget {
               label: Text(t.joinCompany),
             ),
             const SizedBox(height: 8),
+            FilledButton.tonalIcon(
+              onPressed: () => showInviteCodeDialog(context, session),
+              icon: const Icon(Icons.qr_code_2),
+              label: Text(t.haveInviteCode),
+            ),
+            const SizedBox(height: 8),
             OutlinedButton.icon(
               onPressed: () => createCompany(context, session),
               icon: const Icon(Icons.add_business),
@@ -406,6 +417,8 @@ class _ProfileMenu extends StatelessWidget {
           AdminPage.open(context, session);
         } else if (v == 'requests') {
           RequestsPage.open(context, session);
+        } else if (v == 'invite') {
+          showInviteCodeDialog(context, session);
         } else if (v == 'logout') {
           session.signOut();
         }
@@ -415,6 +428,7 @@ class _ProfileMenu extends StatelessWidget {
         _item('profile', Icons.person_outline, t.myProfile),
         _item('settings', Icons.settings_outlined, t.settingsTitle),
         _item('requests', Icons.swap_horiz, t.viewRequests),
+        _item('invite', Icons.qr_code_2, t.haveInviteCode),
         if (session.me?.isAdmin == true) _item('admin', Icons.admin_panel_settings_outlined, 'Administration'),
         const PopupMenuDivider(),
         _item('logout', Icons.logout, t.signOut),

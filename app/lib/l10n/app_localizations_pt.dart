@@ -1865,4 +1865,94 @@ class L10nPt extends L10n {
 
   @override
   String get usualPosition => 'Cargo habitual';
+
+  @override
+  String get inviteCodeTitle => 'Código de convite';
+
+  @override
+  String get inviteCodeHint =>
+      'Digite o código recebido do seu empregador ou escaneie o QR code do seu convite.';
+
+  @override
+  String inviteJoined(String company) {
+    return 'Você entrou em $company.';
+  }
+
+  @override
+  String get importTitle => 'Importar funcionários';
+
+  @override
+  String get importIntro =>
+      'Importe sua lista de funcionários de um arquivo Excel ou CSV. Cada um recebe um convite: com o e-mail Google, verá assim que entrar; caso contrário, entregue-lhe o código ou o QR code. Ninguém é adicionado sem consentimento.';
+
+  @override
+  String get importTemplate => 'Baixar o modelo Excel';
+
+  @override
+  String get importTemplateHint =>
+      'Colunas: nome, e-mail Google, número de funcionário, cargo, local. Só o nome é obrigatório.';
+
+  @override
+  String get importChooseFile => 'Escolher um arquivo (.xlsx ou .csv)';
+
+  @override
+  String importNew(String count) {
+    return 'Novos: $count';
+  }
+
+  @override
+  String importUpdate(String count) {
+    return 'Atualizados: $count';
+  }
+
+  @override
+  String importSkip(String count) {
+    return 'Já convidados: $count';
+  }
+
+  @override
+  String importErrors(String count) {
+    return 'Erros: $count';
+  }
+
+  @override
+  String importConfirm(String count) {
+    return 'Importar ($count)';
+  }
+
+  @override
+  String get importErrorsIgnored =>
+      'As linhas com erro serão ignoradas: corrija-as no arquivo e importe-o novamente.';
+
+  @override
+  String get importCreated => 'criado';
+
+  @override
+  String importDone(String count) {
+    return 'Convites criados: $count';
+  }
+
+  @override
+  String get invitesTitle => 'Convites pendentes';
+
+  @override
+  String get invitesPrint => 'Imprimir os códigos';
+
+  @override
+  String get inviteShowHint =>
+      'A pessoa escaneia este QR code ou digita este código no Staff Flow (menu da conta, «Tenho um código de convite»). Válido por 90 dias, uma única vez.';
+
+  @override
+  String invitesHint(String count) {
+    return 'Convites pendentes: $count. Toque numa pessoa para mostrar o código e o QR code, ou imprima todos.';
+  }
+
+  @override
+  String get inviteSeenByEmail => 'convite visto (e-mail)';
+
+  @override
+  String get invitesNone => 'Nenhum convite pendente.';
+
+  @override
+  String get haveInviteCode => 'Tenho um código de convite';
 }

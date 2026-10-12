@@ -1334,5 +1334,84 @@
   "qrNotMember": "This QR code doesn't match anyone in this company.",
   "memberProfile": "Employee number and position",
   "employeeNumberHint": "Your company's own number (optional). The Staff Flow ID stays assigned.",
-  "usualPosition": "Usual position"
+  "usualPosition": "Usual position",
+  "inviteCodeTitle": "Invitation code",
+  "inviteCodeHint": "Enter the code you received from your employer, or scan the QR code of your invitation.",
+  "inviteJoined": "You joined {company}.",
+  "@inviteJoined": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "importTitle": "Import employees",
+  "importIntro": "Import your list of employees from an Excel or CSV file. Each one gets an invitation: with their Google e-mail, they see it as soon as they sign in; otherwise, give them their code or QR code. Nobody is added without their consent.",
+  "importTemplate": "Download the Excel template",
+  "importTemplateHint": "Columns: name, Google e-mail, employee number, position, site. Only the name is required.",
+  "importChooseFile": "Choose a file (.xlsx or .csv)",
+  "importNew": "New: {count}",
+  "@importNew": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "importUpdate": "Updated: {count}",
+  "@importUpdate": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "importSkip": "Already invited: {count}",
+  "@importSkip": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "importErrors": "Errors: {count}",
+  "@importErrors": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "importConfirm": "Import ({count})",
+  "@importConfirm": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "importErrorsIgnored": "Rows with errors will be skipped: fix them in the file and import it again.",
+  "importCreated": "created",
+  "importDone": "Invitations created: {count}",
+  "@importDone": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "invitesTitle": "Pending invitations",
+  "invitesPrint": "Print the codes",
+  "inviteShowHint": "The person scans this QR code or enters this code in Staff Flow (account menu, “I have an invitation code”). Valid for 90 days, once.",
+  "invitesHint": "Pending invitations: {count}. Tap a person to show their code and QR code, or print them all.",
+  "@invitesHint": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteSeenByEmail": "invitation seen (e-mail)",
+  "invitesNone": "No pending invitations.",
+  "haveInviteCode": "I have an invitation code"
 }

@@ -99,6 +99,9 @@ class Session extends ChangeNotifier {
   String? telegramLoginToken =
       kIsWeb && Uri.base.path.startsWith('/connexion/') ? Uri.base.path.substring('/connexion/'.length) : null;
 
+  /// Lien d'invitation (importation) ouvert dans le navigateur : proposé après la connexion.
+  String? inviteCode = kIsWeb && Uri.base.path.startsWith('/invite/') ? Uri.base.path.substring('/invite/'.length) : null;
+
   /// La connexion vient de rattacher ce compte Google à un compte existant.
   bool accountSwitched = false;
 
