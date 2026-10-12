@@ -76,7 +76,7 @@ services:
       BACKUP_KEEP_DAYS: "30"
       TZ: Europe/Paris
     volumes:
-      - ${BACKUP_DIR:-/var/backups/staff-flow}:/backups
+      - ${BACKUP_DIR:-/home/debian/backups/staff-flow}:/backups
 
 volumes:
   db:
