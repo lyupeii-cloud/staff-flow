@@ -202,4 +202,11 @@ const pl = <String, String>{
   'Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opcja „Dostęp API”, dodana w trakcie subskrypcji, od {from} do {to}: {months} mies.',
   'Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opcja „Lokalizacje kaskadowe”, dodana w trakcie subskrypcji, od {from} do {to}: {months} mies.',
   'Cette option n\'est pas active.': 'Ta opcja nie jest aktywna.',
+  'Cette indisponibilité n\'est plus en cours.': 'Ta niedostępność już nie trwa.',
+  'Ce congé ne peut plus être annulé.': 'Tego urlopu nie można już anulować.',
+  'Annulation déjà demandée.': 'Anulowanie już zgłoszone.',
+  '{name} a mis fin à son indisponibilité : à nouveau disponible.': '{name} kończy swoją niedostępność: znów dostępny(-a).',
+  '{name} demande l\'annulation d\'un congé déjà validé.': '{name} prosi o anulowanie zatwierdzonego urlopu.',
+  'L\'annulation de votre congé a été acceptée.': 'Anulowanie Twojego urlopu zostało zaakceptowane.',
+  'L\'annulation de votre congé a été refusée : le congé est maintenu.': 'Anulowanie Twojego urlopu zostało odrzucone: urlop pozostaje.',
 };

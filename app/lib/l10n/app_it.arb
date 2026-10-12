@@ -537,5 +537,14 @@
   "billingOptionRenewed": "Rinnovo dell'opzione ripreso.",
   "billingOptionStopped": "Opzione non rinnovata: resta attiva fino alla fine del periodo pagato.",
   "billingOptionEnds": "Attiva fino al {date}, non verrà rinnovata (seleziona per mantenerla)",
-  "billingOptionActive": "Attiva e rinnovata (deseleziona per non rinnovarla)"
+  "billingOptionActive": "Attiva e rinnovata (deseleziona per non rinnovarla)",
+  "statusCancelRequested": "Annullamento richiesto",
+  "requestEndedEarly": "Terminata in anticipo dalla persona.",
+  "confirmCancelRequest": "Annullare questa richiesta? I responsabili non la vedranno più.",
+  "endUnavailability": "Termina la mia indisponibilità",
+  "confirmEndUnavailability": "Terminare la tua indisponibilità? Sarai di nuovo disponibile da oggi e i responsabili saranno avvisati.",
+  "askLeaveCancel": "Chiedi di annullare queste ferie",
+  "confirmAskLeaveCancel": "Chiedere di annullare queste ferie? Un responsabile dovrà approvarlo; fino ad allora le ferie restano previste.",
+  "refuseLeaveCancel": "Rifiuta l'annullamento",
+  "acceptLeaveCancel": "Accetta l'annullamento"
 }

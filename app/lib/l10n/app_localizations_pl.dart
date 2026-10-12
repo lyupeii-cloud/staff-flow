@@ -1970,4 +1970,34 @@ class L10nPl extends L10n {
   @override
   String get billingOptionActive =>
       'Aktywna i odnawiana (odznacz, aby jej nie odnawiać)';
+
+  @override
+  String get statusCancelRequested => 'Poproszono o anulowanie';
+
+  @override
+  String get requestEndedEarly => 'Zakończone wcześniej przez tę osobę.';
+
+  @override
+  String get confirmCancelRequest =>
+      'Anulować tę prośbę? Kierownicy nie będą jej już widzieć.';
+
+  @override
+  String get endUnavailability => 'Zakończ moją niedostępność';
+
+  @override
+  String get confirmEndUnavailability =>
+      'Zakończyć Twoją niedostępność? Od dziś będziesz znów dostępny(-a), a kierownicy zostaną powiadomieni.';
+
+  @override
+  String get askLeaveCancel => 'Poproś o anulowanie tego urlopu';
+
+  @override
+  String get confirmAskLeaveCancel =>
+      'Poprosić o anulowanie tego urlopu? Kierownik musi to zatwierdzić; do tego czasu urlop pozostaje w planie.';
+
+  @override
+  String get refuseLeaveCancel => 'Odrzuć anulowanie';
+
+  @override
+  String get acceptLeaveCancel => 'Zaakceptuj anulowanie';
 }

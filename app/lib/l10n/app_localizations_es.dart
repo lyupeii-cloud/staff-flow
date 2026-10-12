@@ -1965,4 +1965,34 @@ class L10nEs extends L10n {
   @override
   String get billingOptionActive =>
       'Activa y renovada (desmárcala para no renovarla)';
+
+  @override
+  String get statusCancelRequested => 'Anulación solicitada';
+
+  @override
+  String get requestEndedEarly => 'Terminada antes por la persona.';
+
+  @override
+  String get confirmCancelRequest =>
+      '¿Anular esta solicitud? Los responsables ya no la verán.';
+
+  @override
+  String get endUnavailability => 'Terminar mi indisponibilidad';
+
+  @override
+  String get confirmEndUnavailability =>
+      '¿Terminar tu indisponibilidad? Estarás disponible de nuevo desde hoy y se avisará a los responsables.';
+
+  @override
+  String get askLeaveCancel => 'Pedir la anulación de estas vacaciones';
+
+  @override
+  String get confirmAskLeaveCancel =>
+      '¿Pedir la anulación de estas vacaciones? Un responsable tendrá que aprobarla; hasta entonces, las vacaciones siguen previstas.';
+
+  @override
+  String get refuseLeaveCancel => 'Rechazar la anulación';
+
+  @override
+  String get acceptLeaveCancel => 'Aceptar la anulación';
 }

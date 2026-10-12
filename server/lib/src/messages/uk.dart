@@ -222,4 +222,11 @@ const uk = <String, String>{
   'Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Опція «Доступ до API», додана під час підписки, з {from} по {to}: {months} міс.',
   'Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Опція «Каскадні об\'єкти», додана під час підписки, з {from} по {to}: {months} міс.',
   'Cette option n\'est pas active.': 'Ця опція не активна.',
+  'Cette indisponibilité n\'est plus en cours.': 'Ця недоступність уже не триває.',
+  'Ce congé ne peut plus être annulé.': 'Цю відпустку вже не можна скасувати.',
+  'Annulation déjà demandée.': 'Скасування вже запитано.',
+  '{name} a mis fin à son indisponibilité : à nouveau disponible.': '{name} завершує свою недоступність: знову доступний(-а).',
+  '{name} demande l\'annulation d\'un congé déjà validé.': '{name} просить скасувати вже погоджену відпустку.',
+  'L\'annulation de votre congé a été acceptée.': 'Скасування вашої відпустки погоджено.',
+  'L\'annulation de votre congé a été refusée : le congé est maintenu.': 'Скасування вашої відпустки відхилено: відпустка залишається.',
 };

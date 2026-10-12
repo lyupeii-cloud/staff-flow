@@ -1966,4 +1966,34 @@ class L10nRo extends L10n {
   @override
   String get billingOptionActive =>
       'Activă și reînnoită (debifați pentru a nu o reînnoi)';
+
+  @override
+  String get statusCancelRequested => 'Anulare cerută';
+
+  @override
+  String get requestEndedEarly => 'Încheiată mai devreme de persoană.';
+
+  @override
+  String get confirmCancelRequest =>
+      'Anulați această cerere? Responsabilii nu o vor mai vedea.';
+
+  @override
+  String get endUnavailability => 'Încheie indisponibilitatea mea';
+
+  @override
+  String get confirmEndUnavailability =>
+      'Încheiați indisponibilitatea? Veți fi din nou disponibil(ă) de azi, iar responsabilii vor fi anunțați.';
+
+  @override
+  String get askLeaveCancel => 'Cere anularea acestui concediu';
+
+  @override
+  String get confirmAskLeaveCancel =>
+      'Cereți anularea acestui concediu? Un responsabil trebuie să o aprobe; până atunci, concediul rămâne planificat.';
+
+  @override
+  String get refuseLeaveCancel => 'Refuză anularea';
+
+  @override
+  String get acceptLeaveCancel => 'Acceptă anularea';
 }

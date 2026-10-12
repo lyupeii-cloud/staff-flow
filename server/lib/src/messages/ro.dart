@@ -202,4 +202,11 @@ const ro = <String, String>{
   'Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opțiunea „Acces API”, adăugată în timpul abonamentului, de la {from} la {to}: {months} luni',
   'Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opțiunea „Locații în cascadă”, adăugată în timpul abonamentului, de la {from} la {to}: {months} luni',
   'Cette option n\'est pas active.': 'Această opțiune nu este activă.',
+  'Cette indisponibilité n\'est plus en cours.': 'Această indisponibilitate nu mai este în curs.',
+  'Ce congé ne peut plus être annulé.': 'Acest concediu nu mai poate fi anulat.',
+  'Annulation déjà demandée.': 'Anularea a fost deja cerută.',
+  '{name} a mis fin à son indisponibilité : à nouveau disponible.': '{name} și-a încheiat indisponibilitatea: din nou disponibil(ă).',
+  '{name} demande l\'annulation d\'un congé déjà validé.': '{name} cere anularea unui concediu deja aprobat.',
+  'L\'annulation de votre congé a été acceptée.': 'Anularea concediului dvs. a fost acceptată.',
+  'L\'annulation de votre congé a été refusée : le congé est maintenu.': 'Anularea concediului dvs. a fost refuzată: concediul rămâne.',
 };

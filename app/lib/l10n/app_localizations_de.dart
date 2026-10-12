@@ -1972,4 +1972,34 @@ class L10nDe extends L10n {
   @override
   String get billingOptionActive =>
       'Aktiv und wird verlängert (Haken entfernen, um sie nicht zu verlängern)';
+
+  @override
+  String get statusCancelRequested => 'Stornierung angefragt';
+
+  @override
+  String get requestEndedEarly => 'Von der Person vorzeitig beendet.';
+
+  @override
+  String get confirmCancelRequest =>
+      'Diese Anfrage zurückziehen? Die Verantwortlichen sehen sie dann nicht mehr.';
+
+  @override
+  String get endUnavailability => 'Meine Nichtverfügbarkeit beenden';
+
+  @override
+  String get confirmEndUnavailability =>
+      'Ihre Nichtverfügbarkeit beenden? Sie sind ab heute wieder verfügbar, und die Verantwortlichen werden benachrichtigt.';
+
+  @override
+  String get askLeaveCancel => 'Stornierung dieses Urlaubs anfragen';
+
+  @override
+  String get confirmAskLeaveCancel =>
+      'Stornierung dieses Urlaubs anfragen? Ein Verantwortlicher muss sie genehmigen; bis dahin bleibt der Urlaub geplant.';
+
+  @override
+  String get refuseLeaveCancel => 'Stornierung ablehnen';
+
+  @override
+  String get acceptLeaveCancel => 'Stornierung annehmen';
 }

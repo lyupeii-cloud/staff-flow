@@ -1962,4 +1962,34 @@ class L10nIt extends L10n {
   @override
   String get billingOptionActive =>
       'Attiva e rinnovata (deseleziona per non rinnovarla)';
+
+  @override
+  String get statusCancelRequested => 'Annullamento richiesto';
+
+  @override
+  String get requestEndedEarly => 'Terminata in anticipo dalla persona.';
+
+  @override
+  String get confirmCancelRequest =>
+      'Annullare questa richiesta? I responsabili non la vedranno più.';
+
+  @override
+  String get endUnavailability => 'Termina la mia indisponibilità';
+
+  @override
+  String get confirmEndUnavailability =>
+      'Terminare la tua indisponibilità? Sarai di nuovo disponibile da oggi e i responsabili saranno avvisati.';
+
+  @override
+  String get askLeaveCancel => 'Chiedi di annullare queste ferie';
+
+  @override
+  String get confirmAskLeaveCancel =>
+      'Chiedere di annullare queste ferie? Un responsabile dovrà approvarlo; fino ad allora le ferie restano previste.';
+
+  @override
+  String get refuseLeaveCancel => 'Rifiuta l\'annullamento';
+
+  @override
+  String get acceptLeaveCancel => 'Accetta l\'annullamento';
 }

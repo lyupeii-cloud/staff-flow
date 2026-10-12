@@ -1967,4 +1967,34 @@ class L10nUk extends L10n {
   @override
   String get billingOptionActive =>
       'Діє й продовжується (зніміть позначку, щоб не продовжувати)';
+
+  @override
+  String get statusCancelRequested => 'Запитано скасування';
+
+  @override
+  String get requestEndedEarly => 'Завершено раніше самою людиною.';
+
+  @override
+  String get confirmCancelRequest =>
+      'Скасувати цей запит? Керівники більше його не побачать.';
+
+  @override
+  String get endUnavailability => 'Завершити мою недоступність';
+
+  @override
+  String get confirmEndUnavailability =>
+      'Завершити вашу недоступність? Ви знову будете доступні з сьогодні, а керівників буде повідомлено.';
+
+  @override
+  String get askLeaveCancel => 'Попросити скасувати цю відпустку';
+
+  @override
+  String get confirmAskLeaveCancel =>
+      'Попросити скасувати цю відпустку? Керівник має це погодити; доти відпустка залишається в плані.';
+
+  @override
+  String get refuseLeaveCancel => 'Відхилити скасування';
+
+  @override
+  String get acceptLeaveCancel => 'Погодити скасування';
 }

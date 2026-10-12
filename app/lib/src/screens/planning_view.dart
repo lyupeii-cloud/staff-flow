@@ -109,11 +109,13 @@ class _PlanningViewState extends State<PlanningView> {
   final _weekScroll = ScrollController();
 
   void _onWeekScroll() {
+    if (_weekScroll.position.extentAfter < 200) _moreWeeks();
+  }
+
+  void _moreWeeks() {
     if (_mode != _Mode.week || _loading || _extraWeeks >= 7) return;
-    if (_weekScroll.position.extentAfter < 200) {
-      setState(() => _extraWeeks++);
-      _load();
-    }
+    setState(() => _extraWeeks++);
+    _load();
   }
 
   /// Hors connexion : planning tiré des dernières données gardées.
@@ -465,7 +467,17 @@ class _PlanningViewState extends State<PlanningView> {
     );
   }
 
-  Widget _weekList() => ListView(
+  // En bas de la liste (même plus courte que l'écran), tirer vers le haut
+  // ajoute la semaine suivante.
+  Widget _weekList() => NotificationListener<OverscrollNotification>(
+    onNotification: (n) {
+      if (n.overscroll > 0) _moreWeeks();
+      return false;
+    },
+    child: _weekListView(),
+  );
+
+  Widget _weekListView() => ListView(
     controller: _weekScroll,
     physics: const AlwaysScrollableScrollPhysics(),
     padding: const EdgeInsets.fromLTRB(16, 4, 16, 96),

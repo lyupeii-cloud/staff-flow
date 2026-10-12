@@ -410,6 +410,16 @@ class StaffRequest {
   final DateTime createdAt;
   final bool canAnswer, canDecline, canDecide, canCancel;
 
+  /// Indisponibilité validée en cours : la personne peut y mettre fin.
+  final bool canEnd;
+
+  /// Congé validé : la personne peut demander à l'annuler ; un responsable
+  /// valide cette annulation ([canDecideCancel]).
+  final bool canAskCancel, canDecideCancel, cancelRequested;
+
+  /// Indisponibilité terminée plus tôt par la personne.
+  final bool endedEarly;
+
   /// Échange sans collègue désigné : le responsable choisit qui le reprend.
   final bool needsPeer;
 
@@ -435,6 +445,11 @@ class StaffRequest {
         canDecline = j['canDecline'] == true,
         canDecide = j['canDecide'] == true,
         canCancel = j['canCancel'] == true,
+        canEnd = j['canEnd'] == true,
+        canAskCancel = j['canAskCancel'] == true,
+        canDecideCancel = j['canDecideCancel'] == true,
+        cancelRequested = j['cancelRequested'] == true,
+        endedEarly = j['endedEarly'] == true,
         needsPeer = j['needsPeer'] == true,
         shiftId = j['shift']?['id'];
 

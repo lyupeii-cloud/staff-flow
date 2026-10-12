@@ -202,4 +202,11 @@ const de = <String, String>{
   'Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Option „API-Zugang“, während des Abonnements hinzugefügt, vom {from} bis {to}: {months} Monate',
   'Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Option „Verschachtelte Standorte“, während des Abonnements hinzugefügt, vom {from} bis {to}: {months} Monate',
   'Cette option n\'est pas active.': 'Diese Option ist nicht aktiv.',
+  'Cette indisponibilité n\'est plus en cours.': 'Diese Abwesenheit läuft nicht mehr.',
+  'Ce congé ne peut plus être annulé.': 'Dieser Urlaub kann nicht mehr storniert werden.',
+  'Annulation déjà demandée.': 'Stornierung bereits angefragt.',
+  '{name} a mis fin à son indisponibilité : à nouveau disponible.': '{name} hat die Nichtverfügbarkeit beendet: wieder verfügbar.',
+  '{name} demande l\'annulation d\'un congé déjà validé.': '{name} bittet, einen bereits genehmigten Urlaub zu stornieren.',
+  'L\'annulation de votre congé a été acceptée.': 'Die Stornierung Ihres Urlaubs wurde angenommen.',
+  'L\'annulation de votre congé a été refusée : le congé est maintenu.': 'Die Stornierung Ihres Urlaubs wurde abgelehnt: Der Urlaub bleibt bestehen.',
 };

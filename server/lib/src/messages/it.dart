@@ -202,4 +202,11 @@ const it = <String, String>{
   'Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opzione «Accesso API», aggiunta durante l\'abbonamento, dal {from} al {to}: {months} mesi',
   'Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opzione «Sedi a cascata», aggiunta durante l\'abbonamento, dal {from} al {to}: {months} mesi',
   'Cette option n\'est pas active.': 'Questa opzione non è attiva.',
+  'Cette indisponibilité n\'est plus en cours.': 'Questa indisponibilità non è più in corso.',
+  'Ce congé ne peut plus être annulé.': 'Queste ferie non possono più essere annullate.',
+  'Annulation déjà demandée.': 'Annullamento già richiesto.',
+  '{name} a mis fin à son indisponibilité : à nouveau disponible.': '{name} ha terminato la sua indisponibilità: di nuovo disponibile.',
+  '{name} demande l\'annulation d\'un congé déjà validé.': '{name} chiede di annullare ferie già approvate.',
+  'L\'annulation de votre congé a été acceptée.': 'L\'annullamento delle tue ferie è stato accettato.',
+  'L\'annulation de votre congé a été refusée : le congé est maintenu.': 'L\'annullamento delle tue ferie è stato rifiutato: le ferie restano.',
 };

@@ -274,6 +274,63 @@ void main() {
       expect(abs['weekdays'], [1, 3]);
     });
 
+    test('indisponibilité en cours : la personne y met fin, les responsables sont prévenus', () async {
+      final r = await zoe.ok('POST', p('/requests'), {'kind': 'unavailability', 'weekdays': [1, 3]});
+      expect(r['canEnd'], false, reason: 'pas encore validée');
+      await owner.ok('POST', '/requests/${r['id']}/approve');
+      final mine = await zoe.ok('GET', '/requests/${r['id']}');
+      expect(mine['canEnd'], true);
+      expect((await bob('POST', '/requests/${r['id']}/end')).$1, 404);
+      final ended = await zoe.ok('POST', '/requests/${r['id']}/end');
+      // Commencée : finie hier (le 4 octobre), de nouveau disponible aujourd'hui.
+      expect([ended['status'], ended['endDay'], ended['endedEarly'], ended['canEnd']], ['approved', '2026-10-04', true, false]);
+      expect((await owner.ok('GET', p('/absences?from=2026-10-05&to=2026-10-11')))['absences'], isEmpty);
+      expect(await kinds(owner), contains('unavailability_ended'));
+      expect((await zoe('POST', '/requests/${r['id']}/end')).$1, 409);
+      // Pas encore commencée : annulée.
+      final later = await zoe.ok('POST', p('/requests'), {'kind': 'unavailability', 'startDay': '2026-10-20', 'endDay': '2026-10-25'});
+      await owner.ok('POST', '/requests/${later['id']}/approve');
+      expect((await zoe.ok('POST', '/requests/${later['id']}/end'))['status'], 'cancelled');
+    });
+
+    test('congé validé : la personne demande l\'annulation, un responsable la valide ou la refuse', () async {
+      final r = await bob.ok('POST', p('/requests'), {'kind': 'leave', 'startDay': '2026-10-08', 'endDay': '2026-10-10'});
+      expect((await bob('POST', '/requests/${r['id']}/ask-cancel')).$1, 409, reason: 'pas encore validé : il suffit d\'annuler');
+      await north.ok('POST', '/requests/${r['id']}/approve');
+      final asked = await bob.ok('POST', '/requests/${r['id']}/ask-cancel');
+      expect([asked['cancelRequested'], asked['canAskCancel']], [true, false]);
+      expect(await kinds(north), contains('leave_cancel_to_approve'));
+      final todo = (await north.ok('GET', p('/requests?pending=1')))['requests'] as List;
+      expect(todo.single['canDecideCancel'], true);
+      expect((await bob('POST', '/requests/${r['id']}/cancel-decision', {'approve': true})).$1, 403);
+      // Refusée : le congé reste.
+      await north.ok('POST', '/requests/${r['id']}/cancel-decision', {'approve': false});
+      expect(await kinds(bob), contains('leave_cancel_refused'));
+      expect((await owner.ok('GET', p('/absences?from=2026-10-05&to=2026-10-11')))['absences'], hasLength(1));
+      // Redemandée puis acceptée : pas encore commencé, il est annulé.
+      await bob.ok('POST', '/requests/${r['id']}/ask-cancel');
+      final done = await north.ok('POST', '/requests/${r['id']}/cancel-decision', {'approve': true});
+      expect(done['status'], 'cancelled');
+      expect(await kinds(bob), contains('leave_cancel_approved'));
+      expect((await owner.ok('GET', p('/absences?from=2026-10-05&to=2026-10-11')))['absences'], isEmpty);
+    });
+
+    test('congé commencé : l\'annulation garde les jours passés', () async {
+      final r = await bob.ok('POST', p('/requests'), {'kind': 'leave', 'startDay': '2026-10-06', 'endDay': '2026-10-12'});
+      await owner.ok('POST', '/requests/${r['id']}/approve');
+      env.clock.advance(const Duration(days: 3)); // le 8 octobre
+      await bob.ok('POST', '/requests/${r['id']}/ask-cancel');
+      final done = await owner.ok('POST', '/requests/${r['id']}/cancel-decision', {'approve': true});
+      expect([done['status'], done['startDay'], done['endDay']], ['approved', '2026-10-06', '2026-10-07']);
+    });
+
+    test('demande pas encore validée : la personne l\'annule', () async {
+      final r = await bob.ok('POST', p('/requests'), {'kind': 'unavailability', 'startDay': '2026-10-20', 'endDay': '2026-10-21'});
+      expect(r['canCancel'], true);
+      await bob.ok('POST', '/requests/${r['id']}/cancel');
+      expect((await bob.ok('GET', '/requests/${r['id']}'))['status'], 'cancelled');
+    });
+
     test('un responsable ne valide pas sa propre demande, le propriétaire si', () async {
       final r = await north.ok('POST', p('/requests'), {'kind': 'leave', 'startDay': '2026-10-08', 'endDay': '2026-10-08'});
       expect(r['canDecide'], false);

@@ -1466,5 +1466,14 @@
       }
     }
   },
-  "billingOptionActive": "Active and renewed (uncheck to stop renewing it)"
+  "billingOptionActive": "Active and renewed (uncheck to stop renewing it)",
+  "statusCancelRequested": "Cancellation requested",
+  "requestEndedEarly": "Ended early by the person.",
+  "confirmCancelRequest": "Cancel this request? Managers will no longer see it.",
+  "endUnavailability": "End my unavailability",
+  "confirmEndUnavailability": "End your unavailability? You will be available again from today, and managers will be notified.",
+  "askLeaveCancel": "Ask to cancel this leave",
+  "confirmAskLeaveCancel": "Ask to cancel this leave? A manager will have to approve it; until then, the leave stays planned.",
+  "refuseLeaveCancel": "Refuse the cancellation",
+  "acceptLeaveCancel": "Accept the cancellation"
 }

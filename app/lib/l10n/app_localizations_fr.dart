@@ -1968,4 +1968,34 @@ class L10nFr extends L10n {
   @override
   String get billingOptionActive =>
       'Active et renouvelée (décochez pour ne pas la renouveler)';
+
+  @override
+  String get statusCancelRequested => 'Annulation demandée';
+
+  @override
+  String get requestEndedEarly => 'Terminée plus tôt par la personne.';
+
+  @override
+  String get confirmCancelRequest =>
+      'Annuler cette demande ? Elle ne sera plus proposée aux responsables.';
+
+  @override
+  String get endUnavailability => 'Mettre fin à mon indisponibilité';
+
+  @override
+  String get confirmEndUnavailability =>
+      'Mettre fin à votre indisponibilité ? Vous serez de nouveau disponible dès aujourd\'hui, et les responsables seront prévenus.';
+
+  @override
+  String get askLeaveCancel => 'Demander l\'annulation de ce congé';
+
+  @override
+  String get confirmAskLeaveCancel =>
+      'Demander l\'annulation de ce congé ? Un responsable devra la valider ; d\'ici là, le congé reste prévu.';
+
+  @override
+  String get refuseLeaveCancel => 'Refuser l\'annulation';
+
+  @override
+  String get acceptLeaveCancel => 'Accepter l\'annulation';
 }

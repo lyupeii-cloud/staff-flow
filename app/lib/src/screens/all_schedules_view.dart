@@ -38,6 +38,20 @@ class _AllSchedulesViewState extends State<AllSchedulesView> with AutomaticKeepA
   Localized? _error;
   int _seenSync = 0;
 
+  /// Semaines ajoutées en faisant défiler vers le bas (8 semaines au plus).
+  int _extraWeeks = 0;
+  final _scroll = ScrollController();
+
+  void _onScroll() {
+    if (_scroll.position.extentAfter < 200) _more();
+  }
+
+  void _more() {
+    if (_loading || _extraWeeks >= 7) return;
+    setState(() => _extraWeeks++);
+    _load();
+  }
+
   L10n get t => context.l10n;
   String get loc => context.localeName;
 
@@ -48,12 +62,14 @@ class _AllSchedulesViewState extends State<AllSchedulesView> with AutomaticKeepA
   void initState() {
     super.initState();
     widget.session.sync.addListener(_onSync);
+    _scroll.addListener(_onScroll);
     _load();
   }
 
   @override
   void dispose() {
     widget.session.sync.removeListener(_onSync);
+    _scroll.dispose();
     super.dispose();
   }
 
@@ -64,9 +80,9 @@ class _AllSchedulesViewState extends State<AllSchedulesView> with AutomaticKeepA
   Future<void> _load() async {
     _seenSync = widget.session.sync.synced;
     setState(() => _loading = true);
-    final from = formatDay(_from), to = formatDay(addDays(_from, 6));
+    final from = formatDay(_from), to = formatDay(addDays(_from, 7 * (1 + _extraWeeks) - 1));
     try {
-      final json = await widget.session.sync.read('my-shifts:$from', '/me/shifts?from=$from&to=$to');
+      final json = await widget.session.sync.read('my-shifts:$from:$to', '/me/shifts?from=$from&to=$to');
       if (!mounted) return;
       setState(() {
         _shifts = [for (final s in json['shifts']) (s as Map).cast<String, dynamic>()];
@@ -82,7 +98,10 @@ class _AllSchedulesViewState extends State<AllSchedulesView> with AutomaticKeepA
   }
 
   void _move(int weeks) {
-    setState(() => _from = addDays(_from, 7 * weeks));
+    setState(() {
+      _from = addDays(_from, 7 * weeks);
+      _extraWeeks = 0;
+    });
     _load();
   }
 
@@ -92,8 +111,10 @@ class _AllSchedulesViewState extends State<AllSchedulesView> with AutomaticKeepA
     final theme = Theme.of(context);
     final companies = widget.session.me?.companies ?? const <Membership>[];
     int indexOf(String id) => companies.indexWhere((m) => m.company.id == id);
+    final lastDay = formatDay(addDays(_from, 6));
+    final week = [for (final s in _shifts) if ((s['day'] as String).compareTo(lastDay) <= 0) s];
     final overlaps = _shifts.where((s) => s['overlap'] == true).length;
-    final minutes = _shifts.fold<int>(0, (n, s) => n + (s['end'] as int) - (s['start'] as int));
+    final minutes = week.fold<int>(0, (n, s) => n + (s['end'] as int) - (s['start'] as int));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -149,14 +170,42 @@ class _AllSchedulesViewState extends State<AllSchedulesView> with AutomaticKeepA
             child: Text(_error!(t), style: TextStyle(color: theme.colorScheme.error)),
           ),
         Expanded(
-          child: RefreshIndicator(
+          child: NotificationListener<OverscrollNotification>(
+            onNotification: (n) {
+              if (n.overscroll > 0) _more();
+              return false;
+            },
+            child: RefreshIndicator(
             onRefresh: _load,
             child: ListView(
+              controller: _scroll,
+              physics: const AlwaysScrollableScrollPhysics(),
               padding: const EdgeInsets.fromLTRB(16, 4, 16, 32),
               children: [
-                for (var i = 0; i < 7; i++) ..._day(addDays(_from, i), indexOf),
+                for (var i = 0; i < 7 * (1 + _extraWeeks); i++) ...[
+                  // Début d'une semaine ajoutée en défilant.
+                  if (i > 0 && i % 7 == 0)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Row(children: [
+                        const Expanded(child: Divider()),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Text(t.weekOf(dayLabel(addDays(_from, i), loc)), style: theme.textTheme.labelLarge),
+                        ),
+                        const Expanded(child: Divider()),
+                      ]),
+                    ),
+                  ..._day(addDays(_from, i), indexOf),
+                ],
+                if (_extraWeeks < 7)
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Center(child: Icon(Icons.keyboard_double_arrow_down, color: theme.disabledColor)),
+                  ),
               ],
             ),
+          ),
           ),
         ),
       ],

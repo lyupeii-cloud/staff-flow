@@ -3365,6 +3365,60 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Active and renewed (uncheck to stop renewing it)'**
   String get billingOptionActive;
+
+  /// No description provided for @statusCancelRequested.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancellation requested'**
+  String get statusCancelRequested;
+
+  /// No description provided for @requestEndedEarly.
+  ///
+  /// In en, this message translates to:
+  /// **'Ended early by the person.'**
+  String get requestEndedEarly;
+
+  /// No description provided for @confirmCancelRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel this request? Managers will no longer see it.'**
+  String get confirmCancelRequest;
+
+  /// No description provided for @endUnavailability.
+  ///
+  /// In en, this message translates to:
+  /// **'End my unavailability'**
+  String get endUnavailability;
+
+  /// No description provided for @confirmEndUnavailability.
+  ///
+  /// In en, this message translates to:
+  /// **'End your unavailability? You will be available again from today, and managers will be notified.'**
+  String get confirmEndUnavailability;
+
+  /// No description provided for @askLeaveCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask to cancel this leave'**
+  String get askLeaveCancel;
+
+  /// No description provided for @confirmAskLeaveCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask to cancel this leave? A manager will have to approve it; until then, the leave stays planned.'**
+  String get confirmAskLeaveCancel;
+
+  /// No description provided for @refuseLeaveCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Refuse the cancellation'**
+  String get refuseLeaveCancel;
+
+  /// No description provided for @acceptLeaveCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept the cancellation'**
+  String get acceptLeaveCancel;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

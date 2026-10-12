@@ -537,5 +537,14 @@
   "billingOptionRenewed": "Reînnoirea opțiunii a fost reluată.",
   "billingOptionStopped": "Opțiunea nu va fi reînnoită: rămâne activă până la sfârșitul perioadei plătite.",
   "billingOptionEnds": "Activă până la {date}, nu va fi reînnoită (bifați pentru a o păstra)",
-  "billingOptionActive": "Activă și reînnoită (debifați pentru a nu o reînnoi)"
+  "billingOptionActive": "Activă și reînnoită (debifați pentru a nu o reînnoi)",
+  "statusCancelRequested": "Anulare cerută",
+  "requestEndedEarly": "Încheiată mai devreme de persoană.",
+  "confirmCancelRequest": "Anulați această cerere? Responsabilii nu o vor mai vedea.",
+  "endUnavailability": "Încheie indisponibilitatea mea",
+  "confirmEndUnavailability": "Încheiați indisponibilitatea? Veți fi din nou disponibil(ă) de azi, iar responsabilii vor fi anunțați.",
+  "askLeaveCancel": "Cere anularea acestui concediu",
+  "confirmAskLeaveCancel": "Cereți anularea acestui concediu? Un responsabil trebuie să o aprobe; până atunci, concediul rămâne planificat.",
+  "refuseLeaveCancel": "Refuză anularea",
+  "acceptLeaveCancel": "Acceptă anularea"
 }

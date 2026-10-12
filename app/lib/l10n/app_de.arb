@@ -537,5 +537,14 @@
   "billingOptionRenewed": "Verlängerung der Option wieder aufgenommen.",
   "billingOptionStopped": "Option wird nicht verlängert: Sie bleibt bis zum Ende des bezahlten Zeitraums aktiv.",
   "billingOptionEnds": "Aktiv bis {date}, wird nicht verlängert (anhaken, um sie zu behalten)",
-  "billingOptionActive": "Aktiv und wird verlängert (Haken entfernen, um sie nicht zu verlängern)"
+  "billingOptionActive": "Aktiv und wird verlängert (Haken entfernen, um sie nicht zu verlängern)",
+  "statusCancelRequested": "Stornierung angefragt",
+  "requestEndedEarly": "Von der Person vorzeitig beendet.",
+  "confirmCancelRequest": "Diese Anfrage zurückziehen? Die Verantwortlichen sehen sie dann nicht mehr.",
+  "endUnavailability": "Meine Nichtverfügbarkeit beenden",
+  "confirmEndUnavailability": "Ihre Nichtverfügbarkeit beenden? Sie sind ab heute wieder verfügbar, und die Verantwortlichen werden benachrichtigt.",
+  "askLeaveCancel": "Stornierung dieses Urlaubs anfragen",
+  "confirmAskLeaveCancel": "Stornierung dieses Urlaubs anfragen? Ein Verantwortlicher muss sie genehmigen; bis dahin bleibt der Urlaub geplant.",
+  "refuseLeaveCancel": "Stornierung ablehnen",
+  "acceptLeaveCancel": "Stornierung annehmen"
 }

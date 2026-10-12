@@ -537,5 +537,14 @@
   "billingOptionRenewed": "Renovación de la opción reanudada.",
   "billingOptionStopped": "Opción no renovada: sigue activa hasta el final del periodo pagado.",
   "billingOptionEnds": "Activa hasta el {date}, no se renovará (márcala para mantenerla)",
-  "billingOptionActive": "Activa y renovada (desmárcala para no renovarla)"
+  "billingOptionActive": "Activa y renovada (desmárcala para no renovarla)",
+  "statusCancelRequested": "Anulación solicitada",
+  "requestEndedEarly": "Terminada antes por la persona.",
+  "confirmCancelRequest": "¿Anular esta solicitud? Los responsables ya no la verán.",
+  "endUnavailability": "Terminar mi indisponibilidad",
+  "confirmEndUnavailability": "¿Terminar tu indisponibilidad? Estarás disponible de nuevo desde hoy y se avisará a los responsables.",
+  "askLeaveCancel": "Pedir la anulación de estas vacaciones",
+  "confirmAskLeaveCancel": "¿Pedir la anulación de estas vacaciones? Un responsable tendrá que aprobarla; hasta entonces, las vacaciones siguen previstas.",
+  "refuseLeaveCancel": "Rechazar la anulación",
+  "acceptLeaveCancel": "Aceptar la anulación"
 }

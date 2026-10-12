@@ -202,4 +202,11 @@ const ru = <String, String>{
   'Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Опция «Доступ к API», добавленная во время подписки, с {from} по {to}: {months} мес.',
   'Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Опция «Каскадные объекты», добавленная во время подписки, с {from} по {to}: {months} мес.',
   'Cette option n\'est pas active.': 'Эта опция не активна.',
+  'Cette indisponibilité n\'est plus en cours.': 'Эта недоступность уже не действует.',
+  'Ce congé ne peut plus être annulé.': 'Этот отпуск уже нельзя отменить.',
+  'Annulation déjà demandée.': 'Отмена уже запрошена.',
+  '{name} a mis fin à son indisponibilité : à nouveau disponible.': '{name} завершает свою недоступность: снова доступен(-на).',
+  '{name} demande l\'annulation d\'un congé déjà validé.': '{name} просит отменить уже согласованный отпуск.',
+  'L\'annulation de votre congé a été acceptée.': 'Отмена вашего отпуска одобрена.',
+  'L\'annulation de votre congé a été refusée : le congé est maintenu.': 'Отмена вашего отпуска отклонена: отпуск сохраняется.',
 };

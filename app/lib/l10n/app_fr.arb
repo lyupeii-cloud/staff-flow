@@ -541,5 +541,14 @@
   "billingOptionRenewed": "Renouvellement de l'option repris.",
   "billingOptionStopped": "Option non renouvelée : elle reste active jusqu'à la fin de la période payée.",
   "billingOptionEnds": "Active jusqu'au {date}, ne sera pas renouvelée (cochez pour la garder)",
-  "billingOptionActive": "Active et renouvelée (décochez pour ne pas la renouveler)"
+  "billingOptionActive": "Active et renouvelée (décochez pour ne pas la renouveler)",
+  "statusCancelRequested": "Annulation demandée",
+  "requestEndedEarly": "Terminée plus tôt par la personne.",
+  "confirmCancelRequest": "Annuler cette demande ? Elle ne sera plus proposée aux responsables.",
+  "endUnavailability": "Mettre fin à mon indisponibilité",
+  "confirmEndUnavailability": "Mettre fin à votre indisponibilité ? Vous serez de nouveau disponible dès aujourd'hui, et les responsables seront prévenus.",
+  "askLeaveCancel": "Demander l'annulation de ce congé",
+  "confirmAskLeaveCancel": "Demander l'annulation de ce congé ? Un responsable devra la valider ; d'ici là, le congé reste prévu.",
+  "refuseLeaveCancel": "Refuser l'annulation",
+  "acceptLeaveCancel": "Accepter l'annulation"
 }

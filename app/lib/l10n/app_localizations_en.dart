@@ -1957,6 +1957,36 @@ class L10nEn extends L10n {
   @override
   String get billingOptionActive =>
       'Active and renewed (uncheck to stop renewing it)';
+
+  @override
+  String get statusCancelRequested => 'Cancellation requested';
+
+  @override
+  String get requestEndedEarly => 'Ended early by the person.';
+
+  @override
+  String get confirmCancelRequest =>
+      'Cancel this request? Managers will no longer see it.';
+
+  @override
+  String get endUnavailability => 'End my unavailability';
+
+  @override
+  String get confirmEndUnavailability =>
+      'End your unavailability? You will be available again from today, and managers will be notified.';
+
+  @override
+  String get askLeaveCancel => 'Ask to cancel this leave';
+
+  @override
+  String get confirmAskLeaveCancel =>
+      'Ask to cancel this leave? A manager will have to approve it; until then, the leave stays planned.';
+
+  @override
+  String get refuseLeaveCancel => 'Refuse the cancellation';
+
+  @override
+  String get acceptLeaveCancel => 'Accept the cancellation';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).

@@ -537,5 +537,14 @@
   "billingOptionRenewed": "Wznowiono odnawianie opcji.",
   "billingOptionStopped": "Opcja nie zostanie odnowiona: działa do końca opłaconego okresu.",
   "billingOptionEnds": "Aktywna do {date}, nie zostanie odnowiona (zaznacz, aby ją zachować)",
-  "billingOptionActive": "Aktywna i odnawiana (odznacz, aby jej nie odnawiać)"
+  "billingOptionActive": "Aktywna i odnawiana (odznacz, aby jej nie odnawiać)",
+  "statusCancelRequested": "Poproszono o anulowanie",
+  "requestEndedEarly": "Zakończone wcześniej przez tę osobę.",
+  "confirmCancelRequest": "Anulować tę prośbę? Kierownicy nie będą jej już widzieć.",
+  "endUnavailability": "Zakończ moją niedostępność",
+  "confirmEndUnavailability": "Zakończyć Twoją niedostępność? Od dziś będziesz znów dostępny(-a), a kierownicy zostaną powiadomieni.",
+  "askLeaveCancel": "Poproś o anulowanie tego urlopu",
+  "confirmAskLeaveCancel": "Poprosić o anulowanie tego urlopu? Kierownik musi to zatwierdzić; do tego czasu urlop pozostaje w planie.",
+  "refuseLeaveCancel": "Odrzuć anulowanie",
+  "acceptLeaveCancel": "Zaakceptuj anulowanie"
 }

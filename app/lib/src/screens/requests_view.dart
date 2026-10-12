@@ -85,7 +85,10 @@ class _RequestsViewState extends State<RequestsView> {
       if (!mounted) return;
       setState(() {
         _focused = focused;
-        _toHandle = [for (final r in pending) if ((r.canAnswer || r.canDecide) && r.id != focused?.id) r];
+        _toHandle = [
+          for (final r in pending)
+            if ((r.canAnswer || r.canDecide || r.canDecideCancel) && r.id != focused?.id) r,
+        ];
         _history
           ..clear()
           ..addAll(_withoutShown(first));
@@ -134,6 +137,24 @@ class _RequestsViewState extends State<RequestsView> {
       messenger.showSnackBar(SnackBar(content: Text(e.describe(t))));
     }
     await _load();
+  }
+
+  /// Action de la personne sur sa propre demande, après confirmation.
+  Future<void> _confirmAct(StaffRequest r, String action, String question) async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (dialog) => AlertDialog(
+        content: Text(question),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(dialog, false), child: Text(t.cancel)),
+          FilledButton(onPressed: () => Navigator.pop(dialog, true), child: Text(t.validate)),
+        ],
+      ),
+    );
+    if (ok != true || !mounted) return;
+    await _act(r, action);
+    // Le planning montre les absences : il se met à jour.
+    widget.session.sync.markChanged();
   }
 
   /// Valider un échange : sans collègue désigné, le responsable choisit qui
@@ -244,10 +265,12 @@ class _RequestsViewState extends State<RequestsView> {
     final lines = <String>[
       ...requestDetails(t, loc, r, widget.data),
       if (r.note != null) '« ${r.note} »',
+      if (r.endedEarly) t.requestEndedEarly,
     ];
     final (statusText, statusColor) = switch (r.status) {
       'pending_peer' => (t.statusPendingPeer, theme.colorScheme.tertiary),
       'pending_manager' => (t.statusPendingManager, theme.colorScheme.tertiary),
+      'approved' when r.cancelRequested => (t.statusCancelRequested, theme.colorScheme.tertiary),
       'approved' => (t.statusApproved, Colors.green.shade700),
       'refused' => (t.statusRefused, theme.colorScheme.error),
       'expired' => (t.statusExpired, theme.disabledColor),
@@ -283,12 +306,46 @@ class _RequestsViewState extends State<RequestsView> {
               padding: const EdgeInsets.only(left: 36, top: 4),
               child: Text(lines.join('\n'), style: theme.textTheme.bodySmall),
             ),
-            if (r.canAnswer || r.canDecline || r.canDecide || r.canCancel)
-              Wrap(
+            if (r.canAnswer || r.canDecline || r.canDecide || r.canCancel || r.canEnd || r.canAskCancel || r.canDecideCancel)
+              SizedBox(width: double.infinity, child: Wrap(
                 alignment: WrapAlignment.end,
+                crossAxisAlignment: WrapCrossAlignment.center,
                 spacing: 8,
                 children: [
-                  if (r.canCancel) TextButton(onPressed: () => _act(r, 'cancel'), child: Text(t.cancelRequest)),
+                  // La personne : annuler une demande en attente, finir une
+                  // indisponibilité, demander l'annulation d'un congé validé.
+                  if (r.canCancel)
+                    IconButton(
+                      tooltip: t.cancelRequest,
+                      icon: Icon(Icons.cancel_outlined, color: theme.colorScheme.error),
+                      onPressed: () => _confirmAct(r, 'cancel', t.confirmCancelRequest),
+                    ),
+                  if (r.canEnd)
+                    IconButton(
+                      tooltip: t.endUnavailability,
+                      icon: Icon(Icons.event_available, color: theme.colorScheme.primary),
+                      onPressed: () => _confirmAct(r, 'end', t.confirmEndUnavailability),
+                    ),
+                  if (r.canAskCancel)
+                    IconButton(
+                      tooltip: t.askLeaveCancel,
+                      icon: Icon(Icons.undo, color: theme.colorScheme.primary),
+                      onPressed: () => _confirmAct(r, 'ask-cancel', t.confirmAskLeaveCancel),
+                    ),
+                  // Un responsable : l'annulation d'un congé validé.
+                  if (r.canDecideCancel) ...[
+                    TextButton(
+                      onPressed: () => _act(r, 'cancel-decision', {'approve': false}),
+                      child: Text(t.refuseLeaveCancel),
+                    ),
+                    FilledButton(
+                      onPressed: () async {
+                        await _act(r, 'cancel-decision', {'approve': true});
+                        widget.session.sync.markChanged();
+                      },
+                      child: Text(t.acceptLeaveCancel),
+                    ),
+                  ],
                   if (r.canDecline) TextButton(onPressed: () => _act(r, 'decline'), child: Text(t.decline)),
                   // Un responsable qui reprend le service valide l'échange du même coup.
                   if (r.canAnswer)
@@ -302,7 +359,7 @@ class _RequestsViewState extends State<RequestsView> {
                     TextButton(onPressed: () => _act(r, 'refuse'), child: Text(t.decline)),
                   if (r.canDecide) FilledButton(onPressed: () => _approve(r), child: Text(t.approve)),
                 ],
-              ),
+              )),
           ],
         ),
       ),

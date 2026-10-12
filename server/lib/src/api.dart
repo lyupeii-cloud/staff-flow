@@ -498,6 +498,13 @@ class Api {
         return _json(await requests.decide(u, r.params['id']!, approve: true, peerId: peer is String ? peer : null));
       }))
       ..post('/requests/<id>/refuse', _authed((r, u) async => _json(await requests.decide(u, r.params['id']!, approve: false))))
+      ..post('/requests/<id>/end', _authed((r, u) async => _json(await requests.endUnavailability(u, r.params['id']!))))
+      ..post('/requests/<id>/ask-cancel', _authed((r, u) async => _json(await requests.askLeaveCancel(u, r.params['id']!))))
+      ..post('/requests/<id>/cancel-decision', _authed((r, u) async {
+        final approve = (await _body(r))['approve'];
+        if (approve is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        return _json(await requests.decideLeaveCancel(u, r.params['id']!, approve: approve));
+      }))
       ..post('/requests/<id>/cancel', _authed((r, u) async {
         await requests.cancel(u, r.params['id']!);
         return Response(204);

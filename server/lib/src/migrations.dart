@@ -624,4 +624,9 @@ ALTER TABLE invoices ADD CONSTRAINT invoices_period_check CHECK (period IN ('mon
   '''
 ALTER TABLE companies ADD COLUMN api_until timestamptz, ADD COLUMN cascade_until timestamptz;
 ''',
+  // 36 — congé validé dont la personne demande l'annulation (en attente d'un
+  // responsable) ; indisponibilité terminée plus tôt.
+  '''
+ALTER TABLE requests ADD COLUMN cancel_requested_at timestamptz, ADD COLUMN ended_early boolean NOT NULL DEFAULT false;
+''',
 ];

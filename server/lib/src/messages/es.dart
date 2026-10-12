@@ -202,4 +202,11 @@ const es = <String, String>{
   'Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opción «Acceso API», añadida durante la suscripción, del {from} al {to}: {months} meses',
   'Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opción «Sitios en cascada», añadida durante la suscripción, del {from} al {to}: {months} meses',
   'Cette option n\'est pas active.': 'Esta opción no está activa.',
+  'Cette indisponibilité n\'est plus en cours.': 'Esta indisponibilidad ya no está en curso.',
+  'Ce congé ne peut plus être annulé.': 'Estas vacaciones ya no se pueden anular.',
+  'Annulation déjà demandée.': 'Anulación ya solicitada.',
+  '{name} a mis fin à son indisponibilité : à nouveau disponible.': '{name} ha terminado su indisponibilidad: de nuevo disponible.',
+  '{name} demande l\'annulation d\'un congé déjà validé.': '{name} pide anular unas vacaciones ya aprobadas.',
+  'L\'annulation de votre congé a été acceptée.': 'La anulación de tus vacaciones ha sido aceptada.',
+  'L\'annulation de votre congé a été refusée : le congé est maintenu.': 'La anulación de tus vacaciones ha sido rechazada: se mantienen.',
 };

@@ -1964,4 +1964,34 @@ class L10nRu extends L10n {
   @override
   String get billingOptionActive =>
       'Действует и продлевается (снимите отметку, чтобы не продлевать)';
+
+  @override
+  String get statusCancelRequested => 'Запрошена отмена';
+
+  @override
+  String get requestEndedEarly => 'Завершено раньше самим человеком.';
+
+  @override
+  String get confirmCancelRequest =>
+      'Отменить этот запрос? Руководители больше его не увидят.';
+
+  @override
+  String get endUnavailability => 'Завершить мою недоступность';
+
+  @override
+  String get confirmEndUnavailability =>
+      'Завершить вашу недоступность? Вы снова будете доступны с сегодняшнего дня, а руководители будут уведомлены.';
+
+  @override
+  String get askLeaveCancel => 'Попросить отменить этот отпуск';
+
+  @override
+  String get confirmAskLeaveCancel =>
+      'Попросить отменить этот отпуск? Руководитель должен это одобрить; до тех пор отпуск остаётся в плане.';
+
+  @override
+  String get refuseLeaveCancel => 'Отклонить отмену';
+
+  @override
+  String get acceptLeaveCancel => 'Одобрить отмену';
 }

@@ -224,4 +224,11 @@ const en = <String, String>{
   'Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': '“API access” option, added during the subscription, from {from} to {to}: {months} months',
   'Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': '“Nested sites” option, added during the subscription, from {from} to {to}: {months} months',
   'Cette option n\'est pas active.': 'This option is not active.',
+  'Cette indisponibilité n\'est plus en cours.': 'This unavailability is no longer ongoing.',
+  'Ce congé ne peut plus être annulé.': 'This leave can no longer be cancelled.',
+  'Annulation déjà demandée.': 'Cancellation already requested.',
+  '{name} a mis fin à son indisponibilité : à nouveau disponible.': '{name} ended their unavailability: available again.',
+  '{name} demande l\'annulation d\'un congé déjà validé.': '{name} asks to cancel a leave already approved.',
+  'L\'annulation de votre congé a été acceptée.': 'The cancellation of your leave was accepted.',
+  'L\'annulation de votre congé a été refusée : le congé est maintenu.': 'The cancellation of your leave was refused: the leave is kept.',
 };

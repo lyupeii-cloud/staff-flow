@@ -189,6 +189,81 @@ class RequestService {
     return _json(await _load(requestId), actor, viewer);
   }
 
+  /// Indisponibilité validée : la personne y met fin. Commencée, elle
+  /// s'arrête hier (de nouveau disponible aujourd'hui) ; pas encore
+  /// commencée, elle est annulée. Les responsables concernés sont prévenus.
+  Future<Map<String, Object?>> endUnavailability(User actor, String requestId) async {
+    final r = await _load(requestId);
+    if (r.requesterId != actor.id) throw const ApiError.notFound('Demande introuvable.');
+    final today = _today();
+    if (r.kind != 'unavailability' || r.status != 'approved' || (r.endDay != null && r.endDay!.isBefore(today))) {
+      throw const ApiError.conflict('Cette indisponibilité n\'est plus en cours.');
+    }
+    final started = r.startDay == null || r.startDay!.isBefore(today);
+    await store.query(store.db, '''
+      UPDATE requests SET ended_early = true, updated_at = now(),
+        status = CASE WHEN @started THEN status ELSE 'cancelled' END,
+        end_day = CASE WHEN @started THEN @yesterday::date ELSE end_day END
+      WHERE id = @id::uuid''', {
+      'id': r.id,
+      'started': started,
+      'yesterday': formatDay(today.subtract(const Duration(days: 1))),
+    });
+    await store.audit(companyId: r.companyId, actorId: actor.id, action: 'request.ended', details: {'id': r.id});
+    await _notifyDeciders(r, actor, kind: 'unavailability_ended');
+    return _json(await _load(requestId), actor, await _viewer(actor, r.companyId));
+  }
+
+  /// Congé validé, pas encore fini : la personne demande à l'annuler ; un
+  /// responsable devra valider.
+  Future<Map<String, Object?>> askLeaveCancel(User actor, String requestId) async {
+    final r = await _load(requestId);
+    if (r.requesterId != actor.id) throw const ApiError.notFound('Demande introuvable.');
+    if (r.kind != 'leave' || r.status != 'approved' || (r.endDay != null && r.endDay!.isBefore(_today()))) {
+      throw const ApiError.conflict('Ce congé ne peut plus être annulé.');
+    }
+    if (r.cancelRequested) throw const ApiError.conflict('Annulation déjà demandée.');
+    await store.query(store.db, 'UPDATE requests SET cancel_requested_at = now(), updated_at = now() WHERE id = @id::uuid',
+        {'id': r.id});
+    await store.audit(companyId: r.companyId, actorId: actor.id, action: 'request.cancel_asked', details: {'id': r.id});
+    await _notifyDeciders(r, actor, kind: 'leave_cancel_to_approve');
+    return _json(await _load(requestId), actor, await _viewer(actor, r.companyId));
+  }
+
+  /// Un responsable accepte ou refuse l'annulation d'un congé validé.
+  /// Acceptée : les jours déjà passés restent en congé, le reste est annulé.
+  Future<Map<String, Object?>> decideLeaveCancel(User actor, String requestId, {required bool approve}) async {
+    final r = await _load(requestId);
+    final viewer = await _viewer(actor, r.companyId);
+    if (!r.cancelRequested || r.status != 'approved') throw const ApiError.conflict('Cette demande n\'est plus en attente.');
+    if (!((r.requesterId != actor.id || viewer.role == Role.owner) && await _inScope(r, viewer))) {
+      throw const ApiError.forbidden();
+    }
+    final today = _today();
+    final started = r.startDay != null && r.startDay!.isBefore(today);
+    await store.query(store.db, '''
+      UPDATE requests SET cancel_requested_at = NULL, decided_by = @a::uuid, updated_at = now(),
+        status = CASE WHEN @approve AND NOT @started THEN 'cancelled' ELSE status END,
+        end_day = CASE WHEN @approve AND @started THEN @yesterday::date ELSE end_day END
+      WHERE id = @id::uuid''', {
+      'id': r.id,
+      'a': actor.id,
+      'approve': approve,
+      'started': started,
+      'yesterday': formatDay(today.subtract(const Duration(days: 1))),
+    });
+    await store.audit(
+        companyId: r.companyId, actorId: actor.id, action: approve ? 'request.cancel_approved' : 'request.cancel_refused',
+        details: {'id': r.id});
+    if (r.requesterId != actor.id) {
+      await notifications.notify([r.requesterId],
+          companyId: r.companyId,
+          kind: approve ? 'leave_cancel_approved' : 'leave_cancel_refused',
+          data: _noticeData(r, actor.name));
+    }
+    return _json(await _load(requestId), actor, viewer);
+  }
+
   Future<void> cancel(User actor, String requestId) async {
     final r = await _load(requestId);
     if (r.requesterId != actor.id) throw const ApiError.notFound('Demande introuvable.');
@@ -237,7 +312,8 @@ class RequestService {
     final viewer = await _viewer(actor, companyId);
     await expire(companyId);
     final rows = await store.query(store.db, '''
-      SELECT id::text FROM requests WHERE company_id = @c::uuid AND status IN ('pending_peer', 'pending_manager')
+      SELECT id::text FROM requests WHERE company_id = @c::uuid
+        AND (status IN ('pending_peer', 'pending_manager') OR (status = 'approved' AND cancel_requested_at IS NOT NULL))
       ORDER BY created_at DESC LIMIT 500''', {'c': companyId});
     final out = <Map<String, Object?>>[];
     for (final row in rows) {
@@ -299,7 +375,8 @@ class RequestService {
       SELECT r.id::text, r.company_id::text, r.kind, r.status, r.requester_id::text, r.peer_id::text, r.open_offer,
         r.shift_id::text, r.shift_version, r.start_day, r.end_day, r.weekdays, r.note, r.created_at,
         s.day, s.start_min, s.end_min, s.site_id::text, s.position_id::text,
-        coalesce(rm.display_name, ru.custom_name, ru.name), coalesce(pm.display_name, pu.custom_name, pu.name)
+        coalesce(rm.display_name, ru.custom_name, ru.name), coalesce(pm.display_name, pu.custom_name, pu.name),
+        r.cancel_requested_at IS NOT NULL, r.ended_early
       FROM requests r
       LEFT JOIN shifts s ON s.id = r.shift_id
       JOIN users ru ON ru.id = r.requester_id
@@ -331,6 +408,8 @@ class RequestService {
       positionId: v[18] as String?,
       requesterName: v[19] as String,
       peerName: v[20] as String?,
+      cancelRequested: v[21] as bool,
+      endedEarly: v[22] as bool,
     );
   }
 
@@ -380,7 +459,7 @@ class RequestService {
 
   /// Responsables qui peuvent valider : ceux du site du service (échange) ou
   /// de l'équipe de la personne (absence), et ceux de toute l'entreprise.
-  Future<void> _notifyDeciders(_Request r, User actor) async {
+  Future<void> _notifyDeciders(_Request r, User actor, {String? kind}) async {
     final deciders = <String>[];
     final concerned = r.kind == 'swap'
         ? {?r.siteId}
@@ -396,12 +475,13 @@ class RequestService {
       if (wanted != null && concerned.isNotEmpty && !concerned.any(wanted.contains)) continue;
       deciders.add(m.user.id);
     }
-    final kind = switch (r.kind) {
-      'swap' => 'swap_to_approve',
-      'leave' => 'leave_to_approve',
-      _ => 'unavailability_to_approve',
-    };
-    await notifications.notify(deciders, companyId: r.companyId, kind: kind, data: _noticeData(r, actor.name));
+    final notice = kind ??
+        switch (r.kind) {
+          'swap' => 'swap_to_approve',
+          'leave' => 'leave_to_approve',
+          _ => 'unavailability_to_approve',
+        };
+    await notifications.notify(deciders, companyId: r.companyId, kind: notice, data: _noticeData(r, actor.name));
   }
 
   Map<String, Object?> _noticeData(_Request r, String byName) => {
@@ -447,10 +527,25 @@ class RequestService {
           (r.requesterId != actor.id || viewer.role == Role.owner) &&
           _scopeSync(r, viewer),
       'canCancel': r.requesterId == actor.id && r.status.startsWith('pending'),
+      'cancelRequested': r.cancelRequested,
+      'endedEarly': r.endedEarly,
+      // Indisponibilité validée, pas finie : la personne peut y mettre fin.
+      'canEnd': r.requesterId == actor.id && r.kind == 'unavailability' && r.status == 'approved' && !_over(r),
+      // Congé validé, pas fini : la personne peut demander à l'annuler.
+      'canAskCancel':
+          r.requesterId == actor.id && r.kind == 'leave' && r.status == 'approved' && !r.cancelRequested && !_over(r),
+      'canDecideCancel': r.cancelRequested &&
+          r.status == 'approved' &&
+          viewer.role.canManage &&
+          (r.requesterId != actor.id || viewer.role == Role.owner) &&
+          _scopeSync(r, viewer),
       // Échange sans collègue encore désigné : le responsable choisit qui le reprend.
       'needsPeer': r.kind == 'swap' && r.peerId == null,
     };
   }
+
+  /// Période finie (avant aujourd'hui).
+  bool _over(_Request r) => r.endDay != null && r.endDay!.isBefore(_today());
 
   /// Version immédiate de [_inScope] pour l'affichage (l'équipe d'une
   /// personne n'est pas relue : le serveur revérifie à la validation).
@@ -490,7 +585,15 @@ class _Request {
   final List<int>? weekdays;
   final DateTime createdAt;
 
+  /// Congé validé dont la personne demande l'annulation.
+  final bool cancelRequested;
+
+  /// Indisponibilité terminée plus tôt par la personne.
+  final bool endedEarly;
+
   _Request({
+    this.cancelRequested = false,
+    this.endedEarly = false,
     required this.id,
     required this.companyId,
     required this.kind,
