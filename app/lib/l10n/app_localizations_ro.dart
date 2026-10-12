@@ -1917,7 +1917,7 @@ class L10nRo extends L10n {
 
   @override
   String get billingRenewalOptions =>
-      'Opțiunile bifate vor fi incluse în următoarele reînnoiri.';
+      'Opțiunile bifate vor fi incluse în următoarele reînnoiri. O opțiune debifată rămâne activă până la sfârșitul perioadei deja plătite.';
 
   @override
   String billingAddonTitle(String option) {
@@ -1950,4 +1950,20 @@ class L10nRo extends L10n {
 
   @override
   String get billingAccessTag => 'Gestionează abonamentul';
+
+  @override
+  String get billingOptionRenewed => 'Reînnoirea opțiunii a fost reluată.';
+
+  @override
+  String get billingOptionStopped =>
+      'Opțiunea nu va fi reînnoită: rămâne activă până la sfârșitul perioadei plătite.';
+
+  @override
+  String billingOptionEnds(String date) {
+    return 'Activă până la $date, nu va fi reînnoită (bifați pentru a o păstra)';
+  }
+
+  @override
+  String get billingOptionActive =>
+      'Activă și reînnoită (debifați pentru a nu o reînnoi)';
 }

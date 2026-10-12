@@ -201,4 +201,5 @@ const ro = <String, String>{
   'Dix niveaux de sites au plus.': 'Cel mult zece niveluri de locații.',
   'Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opțiunea „Acces API”, adăugată în timpul abonamentului, de la {from} la {to}: {months} luni',
   'Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opțiunea „Locații în cascadă”, adăugată în timpul abonamentului, de la {from} la {to}: {months} luni',
+  'Cette option n\'est pas active.': 'Această opțiune nu este activă.',
 };

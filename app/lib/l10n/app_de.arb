@@ -525,7 +525,7 @@
   "newsSent": "Mitteilung an {count} Person(en) gesendet.",
   "billingLineApiAddon": "Option „API-Zugang“, während des Abonnements hinzugefügt, vom {from} bis {to}: {months} Monate, ohne Rabatt",
   "billingLineCascadeAddon": "Option „Verschachtelte Standorte“, während des Abonnements hinzugefügt, vom {from} bis {to}: {months} Monate, ohne Rabatt",
-  "billingRenewalOptions": "Angehakte Optionen sind in Ihren nächsten Verlängerungen enthalten.",
+  "billingRenewalOptions": "Angehakte Optionen sind in Ihren nächsten Verlängerungen enthalten. Eine nicht angehakte Option bleibt bis zum Ende des bereits bezahlten Zeitraums aktiv.",
   "billingAddonTitle": "Jetzt hinzufügen: {option}",
   "billingAddonHint": "Der laufende Monat ganz, dann jeder Monat bis {date} (Ende des bezahlten Zeitraums), ohne Rabatt. Die Option ist sofort nach der Zahlung aktiv und in den nächsten Verlängerungen enthalten.",
   "billingAddonInvoice": "Option",
@@ -533,5 +533,9 @@
   "billingAccessGiven": "{name} kann jetzt das Abonnement und die Rechnungen verwalten.",
   "actionBillingRemove": "Abonnementverwaltung entziehen",
   "actionBillingGive": "Abonnement verwalten lassen",
-  "billingAccessTag": "Verwaltet das Abonnement"
+  "billingAccessTag": "Verwaltet das Abonnement",
+  "billingOptionRenewed": "Verlängerung der Option wieder aufgenommen.",
+  "billingOptionStopped": "Option wird nicht verlängert: Sie bleibt bis zum Ende des bezahlten Zeitraums aktiv.",
+  "billingOptionEnds": "Aktiv bis {date}, wird nicht verlängert (anhaken, um sie zu behalten)",
+  "billingOptionActive": "Aktiv und wird verlängert (Haken entfernen, um sie nicht zu verlängern)"
 }

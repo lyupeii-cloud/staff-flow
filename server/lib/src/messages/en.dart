@@ -223,4 +223,5 @@ const en = <String, String>{
   'Dix niveaux de sites au plus.': 'Ten levels of sites at most.',
   'Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': '“API access” option, added during the subscription, from {from} to {to}: {months} months',
   'Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': '“Nested sites” option, added during the subscription, from {from} to {to}: {months} months',
+  'Cette option n\'est pas active.': 'This option is not active.',
 };

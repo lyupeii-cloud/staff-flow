@@ -525,7 +525,7 @@
   "newsSent": "Ogłoszenie wysłano do {count} os.",
   "billingLineApiAddon": "Opcja „Dostęp API”, dodana w trakcie subskrypcji, od {from} do {to}: {months} mies., bez rabatu",
   "billingLineCascadeAddon": "Opcja „Lokalizacje kaskadowe”, dodana w trakcie subskrypcji, od {from} do {to}: {months} mies., bez rabatu",
-  "billingRenewalOptions": "Zaznaczone opcje zostaną uwzględnione w kolejnych odnowieniach.",
+  "billingRenewalOptions": "Zaznaczone opcje zostaną uwzględnione w kolejnych odnowieniach. Odznaczona opcja działa do końca już opłaconego okresu.",
   "billingAddonTitle": "Dodaj teraz: {option}",
   "billingAddonHint": "Cały bieżący miesiąc, potem każdy miesiąc do {date} (koniec opłaconego okresu), bez rabatu. Opcja działa od razu po płatności i jest uwzględniana w kolejnych odnowieniach.",
   "billingAddonInvoice": "opcja",
@@ -533,5 +533,9 @@
   "billingAccessGiven": "{name} może teraz zarządzać subskrypcją i fakturami.",
   "actionBillingRemove": "Odbierz zarządzanie subskrypcją",
   "actionBillingGive": "Zezwól na zarządzanie subskrypcją",
-  "billingAccessTag": "Zarządza subskrypcją"
+  "billingAccessTag": "Zarządza subskrypcją",
+  "billingOptionRenewed": "Wznowiono odnawianie opcji.",
+  "billingOptionStopped": "Opcja nie zostanie odnowiona: działa do końca opłaconego okresu.",
+  "billingOptionEnds": "Aktywna do {date}, nie zostanie odnowiona (zaznacz, aby ją zachować)",
+  "billingOptionActive": "Aktywna i odnawiana (odznacz, aby jej nie odnawiać)"
 }

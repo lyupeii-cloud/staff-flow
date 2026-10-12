@@ -173,6 +173,30 @@ void main() {
     expect(await read(), 402);
   });
 
+  test('option non renouvelée : active jusqu\'à la fin de la période, puis retirée ; reprise possible', () async {
+    final boss = await env.login('boss');
+    final company = await env.createCompany(boss);
+    await boss.ok('POST', '/companies/$company/billing/checkout', {'period': 'month', 'cascade': false, 'api': true});
+    expect((await boss('PUT', '/companies/$company/billing/renewal', {'option': 'cascade', 'renew': false})).$1, 409);
+    await boss.ok('PUT', '/companies/$company/billing/renewal', {'option': 'api', 'renew': false});
+    var b = await billing(boss, company);
+    expect([b['apiOption'], b['apiUntil']], [true, b['paidUntil']]);
+    // On se ravise, puis on renouvelle sans l'option : elle court jusqu'à l'ancienne fin.
+    await boss.ok('PUT', '/companies/$company/billing/renewal', {'option': 'api', 'renew': true});
+    expect((await billing(boss, company))['apiUntil'], isNull);
+    final oldEnd = b['paidUntil'];
+    await boss.ok('POST', '/companies/$company/billing/checkout', {'period': 'month', 'cascade': false, 'api': false});
+    b = await billing(boss, company);
+    expect([b['apiOption'], b['apiUntil']], [true, oldEnd]);
+    expect(b['quotes']['month']['lines'].any((l) => l['label'] == 'api'), isFalse);
+    // Fin de la période : l'option est retirée, la clé ne répond plus.
+    env.clock.now = DateTime.parse(oldEnd as String).add(const Duration(hours: 1));
+    await env.api.billing.tick();
+    b = await billing(boss, company);
+    expect([b['apiOption'], b['apiUntil'], b['status']], [false, null, 'active']);
+    expect((await boss('POST', '/companies/$company/api-keys', {'name': 'Paie'})).$1, 402);
+  });
+
   test('le patron confie l\'abonnement et les factures à un comptable', () async {
     final boss = await env.login('boss');
     final compta = await env.login('compta');

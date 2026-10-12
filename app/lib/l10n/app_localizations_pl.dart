@@ -1921,7 +1921,7 @@ class L10nPl extends L10n {
 
   @override
   String get billingRenewalOptions =>
-      'Zaznaczone opcje zostaną uwzględnione w kolejnych odnowieniach.';
+      'Zaznaczone opcje zostaną uwzględnione w kolejnych odnowieniach. Odznaczona opcja działa do końca już opłaconego okresu.';
 
   @override
   String billingAddonTitle(String option) {
@@ -1954,4 +1954,20 @@ class L10nPl extends L10n {
 
   @override
   String get billingAccessTag => 'Zarządza subskrypcją';
+
+  @override
+  String get billingOptionRenewed => 'Wznowiono odnawianie opcji.';
+
+  @override
+  String get billingOptionStopped =>
+      'Opcja nie zostanie odnowiona: działa do końca opłaconego okresu.';
+
+  @override
+  String billingOptionEnds(String date) {
+    return 'Aktywna do $date, nie zostanie odnowiona (zaznacz, aby ją zachować)';
+  }
+
+  @override
+  String get billingOptionActive =>
+      'Aktywna i odnawiana (odznacz, aby jej nie odnawiać)';
 }

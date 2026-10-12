@@ -1908,7 +1908,7 @@ class L10nEn extends L10n {
 
   @override
   String get billingRenewalOptions =>
-      'Checked options will be included in your next renewals.';
+      'Checked options will be included in your next renewals. An unchecked option stays active until the end of the period already paid.';
 
   @override
   String billingAddonTitle(String option) {
@@ -1941,6 +1941,22 @@ class L10nEn extends L10n {
 
   @override
   String get billingAccessTag => 'Manages the subscription';
+
+  @override
+  String get billingOptionRenewed => 'Option renewal resumed.';
+
+  @override
+  String get billingOptionStopped =>
+      'Option not renewed: it stays active until the end of the paid period.';
+
+  @override
+  String billingOptionEnds(String date) {
+    return 'Active until $date, won\'t be renewed (check to keep it)';
+  }
+
+  @override
+  String get billingOptionActive =>
+      'Active and renewed (uncheck to stop renewing it)';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).

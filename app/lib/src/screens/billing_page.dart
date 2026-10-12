@@ -65,8 +65,8 @@ class _BillingPageState extends State<BillingPage> {
       setState(() {
         _data = d;
         _error = null;
-        _cascade = d['cascadeOption'] == true;
-        _api = d['apiOption'] == true;
+        _cascade = d['cascadeOption'] == true && d['cascadeUntil'] == null;
+        _api = d['apiOption'] == true && d['apiUntil'] == null;
       });
     } catch (e) {
       if (mounted) setState(() => _error = e);
@@ -96,6 +96,35 @@ class _BillingPageState extends State<BillingPage> {
 
   Future<void> _confirm(Map<String, dynamic> d, String period, bool cascade) =>
       _showQuote(_offer(d, period, cascade, _api), () => _pay(period));
+
+  /// Option active : la renouveler ou non (elle reste jusqu'à la fin de la période payée).
+  Future<void> _setRenewal(String option, bool renew) => _run(() async {
+        await widget.session.api.send('PUT', '$_base/renewal', body: {'option': option, 'renew': renew});
+        await _load();
+      }, done: renew ? context.l10n.billingOptionRenewed : context.l10n.billingOptionStopped);
+
+  /// Case d'une option : pendant un abonnement, une option active se
+  /// renouvelle ou non ; sinon, la case choisit ce qui sera payé.
+  Widget _optionTile(Map<String, dynamic> d, String option, String title, String price,
+      {required bool value, required ValueChanged<bool> onLocal}) {
+    final t = context.l10n;
+    final loc = context.localeName;
+    final active = d['status'] == 'active' && d['${option}Option'] == true;
+    final until = d['${option}Until'] as String?;
+    return CheckboxListTile(
+      contentPadding: EdgeInsets.zero,
+      value: value,
+      onChanged: _busy ? null : (v) => active ? _setRenewal(option, v ?? false) : onLocal(v ?? false),
+      title: Text(title),
+      subtitle: Text([
+        price,
+        if (active && until != null)
+          t.billingOptionEnds(longDate(DateTime.parse(until).subtract(const Duration(days: 1)), loc))
+        else if (active)
+          t.billingOptionActive,
+      ].join('\n')),
+    );
+  }
 
   /// Option seule ([option] : `api` ou `cascade`), payée jusqu'à la fin de la période.
   Future<void> _buyAddon(String option) => _run(() async {
@@ -255,20 +284,20 @@ class _BillingPageState extends State<BillingPage> {
       ),
       if (status != 'comped') ...[
         const SizedBox(height: 16),
-        CheckboxListTile(
-          contentPadding: EdgeInsets.zero,
-          value: included || _cascade,
-          onChanged: included || _busy ? null : (v) => setState(() => _cascade = v ?? false),
-          title: Text(t.billingCascade),
-          subtitle: Text(included ? t.billingCascadeIncluded('${d['cascadeIncludedFrom']}') : t.billingPerMonth(euroAmount(context, prices['monthCascade'] - prices['month']))),
-        ),
-        CheckboxListTile(
-          contentPadding: EdgeInsets.zero,
-          value: _api,
-          onChanged: _busy ? null : (v) => setState(() => _api = v ?? false),
-          title: Text(t.billingApi),
-          subtitle: Text(t.billingPerMonth(euroAmount(context, d['apiOptionPrice'] as int))),
-        ),
+        if (included)
+          CheckboxListTile(
+            contentPadding: EdgeInsets.zero,
+            value: true,
+            onChanged: null,
+            title: Text(t.billingCascade),
+            subtitle: Text(t.billingCascadeIncluded('${d['cascadeIncludedFrom']}')),
+          )
+        else
+          _optionTile(d, 'cascade', t.billingCascade,
+              t.billingPerMonth(euroAmount(context, prices['monthCascade'] - prices['month'])),
+              value: _cascade, onLocal: (v) => setState(() => _cascade = v)),
+        _optionTile(d, 'api', t.billingApi, t.billingPerMonth(euroAmount(context, d['apiOptionPrice'] as int)),
+            value: _api, onLocal: (v) => setState(() => _api = v)),
         // Abonnement en cours : une option s'ajoute seule, jusqu'à la fin de la période payée.
         if (status == 'active') ...[
           Text(t.billingRenewalOptions, style: theme.textTheme.bodySmall),

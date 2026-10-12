@@ -129,6 +129,32 @@ class BillingService {
     return {'lines': [line], 'total': unit * months, 'from': from.toIso8601String(), 'to': until.toIso8601String()};
   }
 
+  /// Fin d'une option non renouvelée (`null` : renouvelée).
+  Future<Map<String, Object?>> _renewals(String companyId) async {
+    final rows = await store.query(store.db, 'SELECT api_until, cascade_until FROM companies WHERE id = @c::uuid', {'c': companyId});
+    return {
+      'apiUntil': (rows.first[0] as DateTime?)?.toIso8601String(),
+      'cascadeUntil': (rows.first[1] as DateTime?)?.toIso8601String(),
+    };
+  }
+
+  /// Une option active n'est plus renouvelée ([renew] faux) : elle reste
+  /// jusqu'à la fin de la période payée, puis elle est retirée ; [renew]
+  /// vrai annule cette décision.
+  Future<void> setRenewal(User actor, String companyId, String option, bool renew) async {
+    final company = await _owned(actor, companyId);
+    if (option != 'api' && option != 'cascade') throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    final active = option == 'api' ? company.apiOption : company.cascadeOption;
+    if (company.billingStatus != 'active' || !active) {
+      throw const ApiError.conflict('Cette option n\'est pas active.');
+    }
+    final column = option == 'api' ? 'api_until' : 'cascade_until';
+    await store.query(store.db, 'UPDATE companies SET $column = @u::timestamptz WHERE id = @c::uuid',
+        {'c': companyId, 'u': renew ? null : company.paidUntil});
+    await store.audit(
+        companyId: companyId, actorId: actor.id, action: 'billing.renewal', details: {'option': option, 'renew': renew});
+  }
+
   /// Paiement d'une option seule ([option] : `api` ou `cascade`) ; elle est
   /// active aussitôt et reprise dans les renouvellements suivants.
   Future<Map<String, Object?>> buyAddon(User actor, String companyId, String option) async {
@@ -167,7 +193,7 @@ class BillingService {
         'sel': jsonEncode(seller),
       });
       await store.query(tx,
-          'UPDATE companies SET ${option == 'api' ? 'api_option' : 'cascade_option'} = true WHERE id = @c::uuid',
+          'UPDATE companies SET ${option == 'api' ? 'api_option = true, api_until' : 'cascade_option = true, cascade_until'} = NULL WHERE id = @c::uuid',
           {'c': companyId});
       await store.audit(
           companyId: companyId,
@@ -308,6 +334,7 @@ class BillingService {
       'apiOption': company.apiOption,
       'apiOptionPrice': v['apiOptionPrice'],
       'cascadeOptionPrice': v['cascadeOptionPrice'],
+      ...await _renewals(companyId),
       // Options à ajouter seules, en cours d'abonnement.
       'addons': {
         for (final o in ['api', 'cascade']) o: _addon(company, v, staff, o),
@@ -384,10 +411,25 @@ class BillingService {
         'a': price.amount,
         'sel': jsonEncode(seller),
       });
+      // Option prise : active et renouvelée. Option laissée pendant un
+      // renouvellement : elle reste jusqu'à la fin de la période déjà payée.
+      final renewal = company.paidUntil != null && company.paidUntil!.isAfter(t) && company.billingStatus == 'active';
       await store.query(tx, '''
         UPDATE companies SET billing_status = 'active', paid_until = @to, grace_ends_at = NULL, status = 'active',
-          billing_period = @p, cascade_option = @co, api_option = @ao, billing_reminders = '{}'
-        WHERE id = @c::uuid''', {'c': companyId, 'to': plan.periodEnd, 'p': period, 'co': price.withOption, 'ao': withApi});
+          billing_period = @p, billing_reminders = '{}',
+          cascade_option = @co OR (@renewal AND cascade_option),
+          cascade_until = CASE WHEN @co THEN NULL WHEN @renewal AND cascade_option THEN coalesce(cascade_until, @old::timestamptz) END,
+          api_option = @ao OR (@renewal AND api_option),
+          api_until = CASE WHEN @ao THEN NULL WHEN @renewal AND api_option THEN coalesce(api_until, @old::timestamptz) END
+        WHERE id = @c::uuid''', {
+        'c': companyId,
+        'to': plan.periodEnd,
+        'p': period,
+        'co': price.withOption,
+        'ao': withApi,
+        'renewal': renewal,
+        'old': company.paidUntil,
+      });
       await store.audit(
           companyId: companyId,
           actorId: actor.id,
@@ -679,6 +721,11 @@ class BillingService {
   /// rappels au propriétaire ; suppression à la fin de la période de grâce.
   Future<void> tick() async {
     final t = now();
+    // Options non renouvelées : retirées à la fin de leur période.
+    await store.query(store.db, '''
+      UPDATE companies SET api_option = false, api_until = NULL WHERE api_until <= @t''', {'t': t});
+    await store.query(store.db, '''
+      UPDATE companies SET cascade_option = false, cascade_until = NULL WHERE cascade_until <= @t''', {'t': t});
     final v = await platform.values();
     final grace = Duration(days: v['graceDays']!);
     // Fin de l'essai ou de la période payée.

@@ -620,4 +620,8 @@ ALTER TABLE memberships ADD COLUMN billing_access boolean NOT NULL DEFAULT false
 ALTER TABLE invoices DROP CONSTRAINT IF EXISTS invoices_period_check;
 ALTER TABLE invoices ADD CONSTRAINT invoices_period_check CHECK (period IN ('month', 'year', 'addon'));
 ''',
+  // 35 — option « non renouvelée » : active jusqu'à cette date, puis retirée.
+  '''
+ALTER TABLE companies ADD COLUMN api_until timestamptz, ADD COLUMN cascade_until timestamptz;
+''',
 ];

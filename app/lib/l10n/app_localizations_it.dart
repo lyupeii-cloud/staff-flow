@@ -1913,7 +1913,7 @@ class L10nIt extends L10n {
 
   @override
   String get billingRenewalOptions =>
-      'Le opzioni selezionate saranno incluse nei prossimi rinnovi.';
+      'Le opzioni selezionate saranno incluse nei prossimi rinnovi. Un\'opzione non selezionata resta attiva fino alla fine del periodo già pagato.';
 
   @override
   String billingAddonTitle(String option) {
@@ -1946,4 +1946,20 @@ class L10nIt extends L10n {
 
   @override
   String get billingAccessTag => 'Gestisce l\'abbonamento';
+
+  @override
+  String get billingOptionRenewed => 'Rinnovo dell\'opzione ripreso.';
+
+  @override
+  String get billingOptionStopped =>
+      'Opzione non rinnovata: resta attiva fino alla fine del periodo pagato.';
+
+  @override
+  String billingOptionEnds(String date) {
+    return 'Attiva fino al $date, non verrà rinnovata (seleziona per mantenerla)';
+  }
+
+  @override
+  String get billingOptionActive =>
+      'Attiva e rinnovata (deseleziona per non rinnovarla)';
 }

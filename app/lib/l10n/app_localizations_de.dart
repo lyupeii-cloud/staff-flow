@@ -1922,7 +1922,7 @@ class L10nDe extends L10n {
 
   @override
   String get billingRenewalOptions =>
-      'Angehakte Optionen sind in Ihren nächsten Verlängerungen enthalten.';
+      'Angehakte Optionen sind in Ihren nächsten Verlängerungen enthalten. Eine nicht angehakte Option bleibt bis zum Ende des bereits bezahlten Zeitraums aktiv.';
 
   @override
   String billingAddonTitle(String option) {
@@ -1955,4 +1955,21 @@ class L10nDe extends L10n {
 
   @override
   String get billingAccessTag => 'Verwaltet das Abonnement';
+
+  @override
+  String get billingOptionRenewed =>
+      'Verlängerung der Option wieder aufgenommen.';
+
+  @override
+  String get billingOptionStopped =>
+      'Option wird nicht verlängert: Sie bleibt bis zum Ende des bezahlten Zeitraums aktiv.';
+
+  @override
+  String billingOptionEnds(String date) {
+    return 'Aktiv bis $date, wird nicht verlängert (anhaken, um sie zu behalten)';
+  }
+
+  @override
+  String get billingOptionActive =>
+      'Aktiv und wird verlängert (Haken entfernen, um sie nicht zu verlängern)';
 }

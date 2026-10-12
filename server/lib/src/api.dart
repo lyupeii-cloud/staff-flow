@@ -147,6 +147,13 @@ class Api {
       }))
       // Abonnement et factures (propriétaire de l'entreprise).
       ..get('/companies/<id>/billing', _authed((r, u) async => _json(await billing.summary(u, r.params['id']!))))
+      ..put('/companies/<id>/billing/renewal', _authed((r, u) async {
+        final body = await _body(r);
+        final option = body['option'], renew = body['renew'];
+        if (option is! String || renew is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        await billing.setRenewal(u, r.params['id']!, option, renew);
+        return Response(204);
+      }))
       ..post('/companies/<id>/billing/addon', _authed((r, u) async {
         final option = (await _body(r))['option'];
         if (option is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');

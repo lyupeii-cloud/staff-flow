@@ -201,4 +201,5 @@ const de = <String, String>{
   'Dix niveaux de sites au plus.': 'Höchstens zehn Standortebenen.',
   'Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Option „API-Zugang“, während des Abonnements hinzugefügt, vom {from} bis {to}: {months} Monate',
   'Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Option „Verschachtelte Standorte“, während des Abonnements hinzugefügt, vom {from} bis {to}: {months} Monate',
+  'Cette option n\'est pas active.': 'Diese Option ist nicht aktiv.',
 };

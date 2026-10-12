@@ -1918,7 +1918,7 @@ class L10nUk extends L10n {
 
   @override
   String get billingRenewalOptions =>
-      'Позначені опції буде включено в наступні продовження.';
+      'Позначені опції буде включено в наступні продовження. Опція без позначки діє до кінця вже оплаченого періоду.';
 
   @override
   String billingAddonTitle(String option) {
@@ -1951,4 +1951,20 @@ class L10nUk extends L10n {
 
   @override
   String get billingAccessTag => 'Керує підпискою';
+
+  @override
+  String get billingOptionRenewed => 'Продовження опції відновлено.';
+
+  @override
+  String get billingOptionStopped =>
+      'Опцію не буде продовжено: вона діє до кінця оплаченого періоду.';
+
+  @override
+  String billingOptionEnds(String date) {
+    return 'Діє до $date, не буде продовжена (позначте, щоб залишити)';
+  }
+
+  @override
+  String get billingOptionActive =>
+      'Діє й продовжується (зніміть позначку, щоб не продовжувати)';
 }

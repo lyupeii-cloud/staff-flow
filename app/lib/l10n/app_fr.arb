@@ -529,7 +529,7 @@
   "newsSent": "Annonce envoyée à {count} personne(s).",
   "billingLineApiAddon": "Option « accès API », ajoutée en cours d'abonnement, du {from} au {to} : {months} mois, sans remise",
   "billingLineCascadeAddon": "Option « sites en cascade », ajoutée en cours d'abonnement, du {from} au {to} : {months} mois, sans remise",
-  "billingRenewalOptions": "Les options cochées seront comprises dans vos prochains renouvellements.",
+  "billingRenewalOptions": "Les options cochées seront comprises dans vos prochains renouvellements. Une option décochée reste active jusqu'à la fin de la période déjà payée.",
   "billingAddonTitle": "Ajouter maintenant : {option}",
   "billingAddonHint": "Le mois en cours en entier, puis chaque mois jusqu'au {date} (fin de la période payée), sans remise. L'option est active dès le paiement et reprise dans les renouvellements suivants.",
   "billingAddonInvoice": "option",
@@ -537,5 +537,9 @@
   "billingAccessGiven": "{name} peut maintenant gérer l'abonnement et les factures.",
   "actionBillingRemove": "Retirer la gestion de l'abonnement",
   "actionBillingGive": "Autoriser à gérer l'abonnement",
-  "billingAccessTag": "Gère l'abonnement"
+  "billingAccessTag": "Gère l'abonnement",
+  "billingOptionRenewed": "Renouvellement de l'option repris.",
+  "billingOptionStopped": "Option non renouvelée : elle reste active jusqu'à la fin de la période payée.",
+  "billingOptionEnds": "Active jusqu'au {date}, ne sera pas renouvelée (cochez pour la garder)",
+  "billingOptionActive": "Active et renouvelée (décochez pour ne pas la renouveler)"
 }

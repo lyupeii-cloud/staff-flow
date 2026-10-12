@@ -525,7 +525,7 @@
   "newsSent": "Anunț trimis către {count} persoană(e).",
   "billingLineApiAddon": "Opțiunea „Acces API”, adăugată în timpul abonamentului, de la {from} la {to}: {months} luni, fără reducere",
   "billingLineCascadeAddon": "Opțiunea „Locații în cascadă”, adăugată în timpul abonamentului, de la {from} la {to}: {months} luni, fără reducere",
-  "billingRenewalOptions": "Opțiunile bifate vor fi incluse în următoarele reînnoiri.",
+  "billingRenewalOptions": "Opțiunile bifate vor fi incluse în următoarele reînnoiri. O opțiune debifată rămâne activă până la sfârșitul perioadei deja plătite.",
   "billingAddonTitle": "Adaugă acum: {option}",
   "billingAddonHint": "Luna curentă întreagă, apoi fiecare lună până la {date} (sfârșitul perioadei plătite), fără reducere. Opțiunea este activă imediat după plată și inclusă în reînnoirile următoare.",
   "billingAddonInvoice": "opțiune",
@@ -533,5 +533,9 @@
   "billingAccessGiven": "{name} poate acum gestiona abonamentul și facturile.",
   "actionBillingRemove": "Retrage gestionarea abonamentului",
   "actionBillingGive": "Permite gestionarea abonamentului",
-  "billingAccessTag": "Gestionează abonamentul"
+  "billingAccessTag": "Gestionează abonamentul",
+  "billingOptionRenewed": "Reînnoirea opțiunii a fost reluată.",
+  "billingOptionStopped": "Opțiunea nu va fi reînnoită: rămâne activă până la sfârșitul perioadei plătite.",
+  "billingOptionEnds": "Activă până la {date}, nu va fi reînnoită (bifați pentru a o păstra)",
+  "billingOptionActive": "Activă și reînnoită (debifați pentru a nu o reînnoi)"
 }

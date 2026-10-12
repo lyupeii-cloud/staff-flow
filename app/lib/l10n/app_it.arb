@@ -525,7 +525,7 @@
   "newsSent": "Annuncio inviato a {count} persona/e.",
   "billingLineApiAddon": "Opzione «Accesso API», aggiunta durante l'abbonamento, dal {from} al {to}: {months} mesi, senza sconto",
   "billingLineCascadeAddon": "Opzione «Sedi a cascata», aggiunta durante l'abbonamento, dal {from} al {to}: {months} mesi, senza sconto",
-  "billingRenewalOptions": "Le opzioni selezionate saranno incluse nei prossimi rinnovi.",
+  "billingRenewalOptions": "Le opzioni selezionate saranno incluse nei prossimi rinnovi. Un'opzione non selezionata resta attiva fino alla fine del periodo già pagato.",
   "billingAddonTitle": "Aggiungi ora: {option}",
   "billingAddonHint": "Il mese in corso per intero, poi ogni mese fino al {date} (fine del periodo pagato), senza sconto. L'opzione è attiva subito dopo il pagamento ed è inclusa nei rinnovi successivi.",
   "billingAddonInvoice": "opzione",
@@ -533,5 +533,9 @@
   "billingAccessGiven": "{name} ora può gestire l'abbonamento e le fatture.",
   "actionBillingRemove": "Togli la gestione dell'abbonamento",
   "actionBillingGive": "Consenti di gestire l'abbonamento",
-  "billingAccessTag": "Gestisce l'abbonamento"
+  "billingAccessTag": "Gestisce l'abbonamento",
+  "billingOptionRenewed": "Rinnovo dell'opzione ripreso.",
+  "billingOptionStopped": "Opzione non rinnovata: resta attiva fino alla fine del periodo pagato.",
+  "billingOptionEnds": "Attiva fino al {date}, non verrà rinnovata (seleziona per mantenerla)",
+  "billingOptionActive": "Attiva e rinnovata (deseleziona per non rinnovarla)"
 }

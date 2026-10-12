@@ -1419,7 +1419,7 @@
       }
     }
   },
-  "billingRenewalOptions": "Checked options will be included in your next renewals.",
+  "billingRenewalOptions": "Checked options will be included in your next renewals. An unchecked option stays active until the end of the period already paid.",
   "billingAddonTitle": "Add now: {option}",
   "@billingAddonTitle": {
     "placeholders": {
@@ -1455,5 +1455,16 @@
   },
   "actionBillingRemove": "Stop managing the subscription",
   "actionBillingGive": "Allow to manage the subscription",
-  "billingAccessTag": "Manages the subscription"
+  "billingAccessTag": "Manages the subscription",
+  "billingOptionRenewed": "Option renewal resumed.",
+  "billingOptionStopped": "Option not renewed: it stays active until the end of the paid period.",
+  "billingOptionEnds": "Active until {date}, won't be renewed (check to keep it)",
+  "@billingOptionEnds": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingOptionActive": "Active and renewed (uncheck to stop renewing it)"
 }

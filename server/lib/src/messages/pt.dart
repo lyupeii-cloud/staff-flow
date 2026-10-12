@@ -201,4 +201,5 @@ const pt = <String, String>{
   'Dix niveaux de sites au plus.': 'No máximo dez níveis de locais.',
   'Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opção «Acesso API», adicionada durante a assinatura, de {from} a {to}: {months} meses',
   'Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opção «Locais em cascata», adicionada durante a assinatura, de {from} a {to}: {months} meses',
+  'Cette option n\'est pas active.': 'Esta opção não está ativa.',
 };

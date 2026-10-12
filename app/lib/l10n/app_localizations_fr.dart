@@ -1919,7 +1919,7 @@ class L10nFr extends L10n {
 
   @override
   String get billingRenewalOptions =>
-      'Les options cochées seront comprises dans vos prochains renouvellements.';
+      'Les options cochées seront comprises dans vos prochains renouvellements. Une option décochée reste active jusqu\'à la fin de la période déjà payée.';
 
   @override
   String billingAddonTitle(String option) {
@@ -1952,4 +1952,20 @@ class L10nFr extends L10n {
 
   @override
   String get billingAccessTag => 'Gère l\'abonnement';
+
+  @override
+  String get billingOptionRenewed => 'Renouvellement de l\'option repris.';
+
+  @override
+  String get billingOptionStopped =>
+      'Option non renouvelée : elle reste active jusqu\'à la fin de la période payée.';
+
+  @override
+  String billingOptionEnds(String date) {
+    return 'Active jusqu\'au $date, ne sera pas renouvelée (cochez pour la garder)';
+  }
+
+  @override
+  String get billingOptionActive =>
+      'Active et renouvelée (décochez pour ne pas la renouveler)';
 }

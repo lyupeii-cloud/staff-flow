@@ -221,4 +221,5 @@ const uk = <String, String>{
   'Dix niveaux de sites au plus.': 'Не більше десяти рівнів об\'єктів.',
   'Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Опція «Доступ до API», додана під час підписки, з {from} по {to}: {months} міс.',
   'Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Опція «Каскадні об\'єкти», додана під час підписки, з {from} по {to}: {months} міс.',
+  'Cette option n\'est pas active.': 'Ця опція не активна.',
 };

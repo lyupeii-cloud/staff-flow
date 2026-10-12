@@ -1915,7 +1915,7 @@ class L10nRu extends L10n {
 
   @override
   String get billingRenewalOptions =>
-      'Отмеченные опции будут включены в следующие продления.';
+      'Отмеченные опции будут включены в следующие продления. Опция без отметки действует до конца уже оплаченного периода.';
 
   @override
   String billingAddonTitle(String option) {
@@ -1948,4 +1948,20 @@ class L10nRu extends L10n {
 
   @override
   String get billingAccessTag => 'Управляет подпиской';
+
+  @override
+  String get billingOptionRenewed => 'Продление опции возобновлено.';
+
+  @override
+  String get billingOptionStopped =>
+      'Опция не будет продлена: она действует до конца оплаченного периода.';
+
+  @override
+  String billingOptionEnds(String date) {
+    return 'Действует до $date, не будет продлена (отметьте, чтобы сохранить)';
+  }
+
+  @override
+  String get billingOptionActive =>
+      'Действует и продлевается (снимите отметку, чтобы не продлевать)';
 }

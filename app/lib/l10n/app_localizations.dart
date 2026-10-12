@@ -3291,7 +3291,7 @@ abstract class L10n {
   /// No description provided for @billingRenewalOptions.
   ///
   /// In en, this message translates to:
-  /// **'Checked options will be included in your next renewals.'**
+  /// **'Checked options will be included in your next renewals. An unchecked option stays active until the end of the period already paid.'**
   String get billingRenewalOptions;
 
   /// No description provided for @billingAddonTitle.
@@ -3341,6 +3341,30 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Manages the subscription'**
   String get billingAccessTag;
+
+  /// No description provided for @billingOptionRenewed.
+  ///
+  /// In en, this message translates to:
+  /// **'Option renewal resumed.'**
+  String get billingOptionRenewed;
+
+  /// No description provided for @billingOptionStopped.
+  ///
+  /// In en, this message translates to:
+  /// **'Option not renewed: it stays active until the end of the paid period.'**
+  String get billingOptionStopped;
+
+  /// No description provided for @billingOptionEnds.
+  ///
+  /// In en, this message translates to:
+  /// **'Active until {date}, won\'t be renewed (check to keep it)'**
+  String billingOptionEnds(String date);
+
+  /// No description provided for @billingOptionActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active and renewed (uncheck to stop renewing it)'**
+  String get billingOptionActive;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

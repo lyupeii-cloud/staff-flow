@@ -525,7 +525,7 @@
   "newsSent": "Aviso enviado a {count} pessoa(s).",
   "billingLineApiAddon": "Opção «Acesso API», adicionada durante a assinatura, de {from} a {to}: {months} meses, sem desconto",
   "billingLineCascadeAddon": "Opção «Locais em cascata», adicionada durante a assinatura, de {from} a {to}: {months} meses, sem desconto",
-  "billingRenewalOptions": "As opções marcadas serão incluídas nas suas próximas renovações.",
+  "billingRenewalOptions": "As opções marcadas serão incluídas nas suas próximas renovações. Uma opção desmarcada continua ativa até o fim do período já pago.",
   "billingAddonTitle": "Adicionar agora: {option}",
   "billingAddonHint": "O mês atual inteiro e depois cada mês até {date} (fim do período pago), sem desconto. A opção fica ativa logo após o pagamento e é incluída nas renovações seguintes.",
   "billingAddonInvoice": "opção",
@@ -533,5 +533,9 @@
   "billingAccessGiven": "{name} agora pode gerir a assinatura e as faturas.",
   "actionBillingRemove": "Retirar a gestão da assinatura",
   "actionBillingGive": "Permitir gerir a assinatura",
-  "billingAccessTag": "Gere a assinatura"
+  "billingAccessTag": "Gere a assinatura",
+  "billingOptionRenewed": "Renovação da opção retomada.",
+  "billingOptionStopped": "Opção não renovada: continua ativa até o fim do período pago.",
+  "billingOptionEnds": "Ativa até {date}, não será renovada (marque para mantê-la)",
+  "billingOptionActive": "Ativa e renovada (desmarque para não renová-la)"
 }

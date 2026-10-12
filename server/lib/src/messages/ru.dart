@@ -201,4 +201,5 @@ const ru = <String, String>{
   'Dix niveaux de sites au plus.': 'Не более десяти уровней объектов.',
   'Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Опция «Доступ к API», добавленная во время подписки, с {from} по {to}: {months} мес.',
   'Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Опция «Каскадные объекты», добавленная во время подписки, с {from} по {to}: {months} мес.',
+  'Cette option n\'est pas active.': 'Эта опция не активна.',
 };

@@ -201,4 +201,5 @@ const pl = <String, String>{
   'Dix niveaux de sites au plus.': 'Maksymalnie dziesięć poziomów lokalizacji.',
   'Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opcja „Dostęp API”, dodana w trakcie subskrypcji, od {from} do {to}: {months} mies.',
   'Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opcja „Lokalizacje kaskadowe”, dodana w trakcie subskrypcji, od {from} do {to}: {months} mies.',
+  'Cette option n\'est pas active.': 'Ta opcja nie jest aktywna.',
 };
