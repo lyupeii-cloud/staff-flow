@@ -1234,7 +1234,7 @@ class L10nPl extends L10n {
 
   @override
   String get siteTreeHint =>
-      'Do 3 poziomów, np. Region › Miasto › Sklep. Kierownik placówki zarządza też wszystkim, co jest pod nią.';
+      'Do 10 poziomów, np. Region › Miasto › Sklep. Pierwsze 3 są w subskrypcji; dalej potrzebna jest opcja „Lokalizacje kaskadowe”. Kierownik lokalizacji zarządza też wszystkim poniżej.';
 
   @override
   String get subSitesOnlyHint =>
@@ -1282,7 +1282,7 @@ class L10nPl extends L10n {
   }
 
   @override
-  String get billingCascade => 'Opcja „zagnieżdżone placówki”';
+  String get billingCascade => 'Opcja „Lokalizacje kaskadowe” (poziomy 4–10)';
 
   @override
   String billingCascadeIncluded(String count) {
@@ -1908,4 +1908,50 @@ class L10nPl extends L10n {
   String newsSent(String count) {
     return 'Ogłoszenie wysłano do $count os.';
   }
+
+  @override
+  String billingLineApiAddon(String from, String to, String months) {
+    return 'Opcja „Dostęp API”, dodana w trakcie subskrypcji, od $from do $to: $months mies., bez rabatu';
+  }
+
+  @override
+  String billingLineCascadeAddon(String from, String to, String months) {
+    return 'Opcja „Lokalizacje kaskadowe”, dodana w trakcie subskrypcji, od $from do $to: $months mies., bez rabatu';
+  }
+
+  @override
+  String get billingRenewalOptions =>
+      'Zaznaczone opcje zostaną uwzględnione w kolejnych odnowieniach.';
+
+  @override
+  String billingAddonTitle(String option) {
+    return 'Dodaj teraz: $option';
+  }
+
+  @override
+  String billingAddonHint(String date) {
+    return 'Cały bieżący miesiąc, potem każdy miesiąc do $date (koniec opłaconego okresu), bez rabatu. Opcja działa od razu po płatności i jest uwzględniana w kolejnych odnowieniach.';
+  }
+
+  @override
+  String get billingAddonInvoice => 'opcja';
+
+  @override
+  String billingAccessRemoved(String name) {
+    return '$name nie zarządza już subskrypcją.';
+  }
+
+  @override
+  String billingAccessGiven(String name) {
+    return '$name może teraz zarządzać subskrypcją i fakturami.';
+  }
+
+  @override
+  String get actionBillingRemove => 'Odbierz zarządzanie subskrypcją';
+
+  @override
+  String get actionBillingGive => 'Zezwól na zarządzanie subskrypcją';
+
+  @override
+  String get billingAccessTag => 'Zarządza subskrypcją';
 }

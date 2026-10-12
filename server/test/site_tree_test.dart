@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 import 'helpers.dart';
 
-/// Sites en cascade : trois niveaux, un responsable d'un site gère aussi
+/// Sites en cascade : dix niveaux, un responsable d'un site gère aussi
 /// ceux qui sont en dessous.
 void main() {
   final env = TestEnv();
@@ -35,10 +35,15 @@ void main() {
     await owner.ok('PUT', p('/members/${eva.id}/sites'), {'sites': [sud]});
   });
 
-  test('trois niveaux au plus, sans boucle ; les sites gardent leur parent', () async {
-    expect((await owner('POST', p('/sites'), {'name': 'Quai', 'parentId': gare})).$1, 400);
+  test('dix niveaux au plus, sans boucle ; les sites gardent leur parent', () async {
+    // Essai : l'option « sites en cascade » est ouverte, jusqu'au 10e niveau.
+    var parent = gare;
+    for (var level = 4; level <= 10; level++) {
+      parent = await site(owner, 'Niveau $level', parent);
+    }
+    expect((await owner('POST', p('/sites'), {'name': 'Niveau 11', 'parentId': parent})).$1, 400);
     expect((await owner('PATCH', p('/sites/$nord'), {'parentId': gare})).$1, 400, reason: 'sous lui-même');
-    expect((await owner('PATCH', p('/sites/$nord'), {'parentId': sud})).$1, 400, reason: '4 niveaux');
+    expect((await owner('PATCH', p('/sites/$nord'), {'parentId': sud})).$1, 400, reason: '11 niveaux');
     await owner.ok('PATCH', p('/sites/$lille'), {'parentId': sud});
     final items = (await owner.ok('GET', p('/sites')))['items'] as List;
     expect(items.firstWhere((s) => s['id'] == lille)['parentId'], sud);

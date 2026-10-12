@@ -1232,7 +1232,7 @@ class L10nDe extends L10n {
 
   @override
   String get siteTreeHint =>
-      'Bis zu 3 Ebenen, z. B. Region › Stadt › Filiale. Wer einen Standort leitet, leitet auch alles darunter.';
+      'Bis zu 10 Ebenen, z. B. Region › Stadt › Filiale. Die ersten 3 sind im Abonnement enthalten; darüber hinaus brauchen Sie die Option „Verschachtelte Standorte“. Wer einen Standort leitet, verwaltet auch alles darunter.';
 
   @override
   String get subSitesOnlyHint =>
@@ -1280,7 +1280,8 @@ class L10nDe extends L10n {
   }
 
   @override
-  String get billingCascade => 'Option „verschachtelte Standorte“';
+  String get billingCascade =>
+      'Option „Verschachtelte Standorte“ (Ebenen 4–10)';
 
   @override
   String billingCascadeIncluded(String count) {
@@ -1908,4 +1909,50 @@ class L10nDe extends L10n {
   String newsSent(String count) {
     return 'Mitteilung an $count Person(en) gesendet.';
   }
+
+  @override
+  String billingLineApiAddon(String from, String to, String months) {
+    return 'Option „API-Zugang“, während des Abonnements hinzugefügt, vom $from bis $to: $months Monate, ohne Rabatt';
+  }
+
+  @override
+  String billingLineCascadeAddon(String from, String to, String months) {
+    return 'Option „Verschachtelte Standorte“, während des Abonnements hinzugefügt, vom $from bis $to: $months Monate, ohne Rabatt';
+  }
+
+  @override
+  String get billingRenewalOptions =>
+      'Angehakte Optionen sind in Ihren nächsten Verlängerungen enthalten.';
+
+  @override
+  String billingAddonTitle(String option) {
+    return 'Jetzt hinzufügen: $option';
+  }
+
+  @override
+  String billingAddonHint(String date) {
+    return 'Der laufende Monat ganz, dann jeder Monat bis $date (Ende des bezahlten Zeitraums), ohne Rabatt. Die Option ist sofort nach der Zahlung aktiv und in den nächsten Verlängerungen enthalten.';
+  }
+
+  @override
+  String get billingAddonInvoice => 'Option';
+
+  @override
+  String billingAccessRemoved(String name) {
+    return '$name verwaltet das Abonnement nicht mehr.';
+  }
+
+  @override
+  String billingAccessGiven(String name) {
+    return '$name kann jetzt das Abonnement und die Rechnungen verwalten.';
+  }
+
+  @override
+  String get actionBillingRemove => 'Abonnementverwaltung entziehen';
+
+  @override
+  String get actionBillingGive => 'Abonnement verwalten lassen';
+
+  @override
+  String get billingAccessTag => 'Verwaltet das Abonnement';
 }

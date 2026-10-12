@@ -1228,7 +1228,7 @@ class L10nRu extends L10n {
 
   @override
   String get siteTreeHint =>
-      'До 3 уровней, например Регион › Город › Магазин. Руководитель объекта управляет и всем, что ниже.';
+      'До 10 уровней, например Регион › Город › Магазин. Первые 3 входят в подписку; дальше нужна опция «Каскадные объекты». Руководитель объекта управляет и всем, что ниже.';
 
   @override
   String get subSitesOnlyHint =>
@@ -1276,7 +1276,7 @@ class L10nRu extends L10n {
   }
 
   @override
-  String get billingCascade => 'Опция «иерархия объектов»';
+  String get billingCascade => 'Опция «Каскадные объекты» (уровни 4–10)';
 
   @override
   String billingCascadeIncluded(String count) {
@@ -1902,4 +1902,50 @@ class L10nRu extends L10n {
   String newsSent(String count) {
     return 'Объявление отправлено: $count чел.';
   }
+
+  @override
+  String billingLineApiAddon(String from, String to, String months) {
+    return 'Опция «Доступ к API», добавленная во время подписки, с $from по $to: $months мес., без скидки';
+  }
+
+  @override
+  String billingLineCascadeAddon(String from, String to, String months) {
+    return 'Опция «Каскадные объекты», добавленная во время подписки, с $from по $to: $months мес., без скидки';
+  }
+
+  @override
+  String get billingRenewalOptions =>
+      'Отмеченные опции будут включены в следующие продления.';
+
+  @override
+  String billingAddonTitle(String option) {
+    return 'Добавить сейчас: $option';
+  }
+
+  @override
+  String billingAddonHint(String date) {
+    return 'Текущий месяц целиком, затем каждый месяц до $date (конец оплаченного периода), без скидки. Опция действует сразу после оплаты и включается в следующие продления.';
+  }
+
+  @override
+  String get billingAddonInvoice => 'опция';
+
+  @override
+  String billingAccessRemoved(String name) {
+    return '$name больше не управляет подпиской.';
+  }
+
+  @override
+  String billingAccessGiven(String name) {
+    return '$name теперь может управлять подпиской и счетами.';
+  }
+
+  @override
+  String get actionBillingRemove => 'Отозвать управление подпиской';
+
+  @override
+  String get actionBillingGive => 'Разрешить управлять подпиской';
+
+  @override
+  String get billingAccessTag => 'Управляет подпиской';
 }

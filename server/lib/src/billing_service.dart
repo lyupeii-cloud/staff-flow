@@ -76,10 +76,107 @@ class BillingService {
     return (rows.first[0] as num).toInt();
   }
 
+  /// Le patron, ou la personne à qui il a confié l'abonnement (comptable…).
   Future<Company> _owned(User actor, String companyId) async {
     final (company, role) = await companies.open(actor, companyId);
-    if (role != Role.owner) throw const ApiError.forbidden();
+    if (role != Role.owner && !await _billingAccess(companyId, actor.id)) throw const ApiError.forbidden();
     return company;
+  }
+
+  Future<bool> _billingAccess(String companyId, String userId) async {
+    final rows = await store.query(store.db, '''
+      SELECT 1 FROM memberships WHERE company_id = @c::uuid AND user_id = @u::uuid AND left_at IS NULL
+        AND (role = 'owner' OR billing_access)''', {'c': companyId, 'u': userId});
+    return rows.isNotEmpty;
+  }
+
+  /// Le patron confie (ou retire) la gestion de l'abonnement et des factures.
+  Future<void> setBillingAccess(User actor, String companyId, String userId, bool enabled) async {
+    final (_, role) = await companies.open(actor, companyId);
+    if (role != Role.owner) throw const ApiError.forbidden();
+    final target = await store.roleOf(companyId, userId);
+    if (target == null) throw const ApiError.notFound('Membre introuvable.');
+    if (target == Role.owner) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    await store.query(store.db, '''
+      UPDATE memberships SET billing_access = @e
+      WHERE company_id = @c::uuid AND user_id = @u::uuid AND left_at IS NULL''', {'c': companyId, 'u': userId, 'e': enabled});
+    await store.audit(
+        companyId: companyId, actorId: actor.id, action: 'billing.access', details: {'userId': userId, 'enabled': enabled});
+  }
+
+  /// Option ajoutée en cours d'abonnement : le mois en cours en entier, puis
+  /// chaque mois jusqu'à la fin de la période payée (mois offerts de
+  /// l'année compris), sans remise. `null` : rien à acheter.
+  Map<String, Object?>? _addon(Company c, Map<String, int> v, int staff, String option) {
+    final t = now();
+    final until = c.paidUntil;
+    if (c.billingStatus != 'active' || until == null || !until.isAfter(t)) return null;
+    if (option == 'api' && c.apiOption) return null;
+    if (option == 'cascade' && (c.cascadeOption || staff >= v['cascadeIncludedFrom']!)) return null;
+    final from = DateTime.utc(t.year, t.month);
+    var months = (until.year - from.year) * 12 + until.month - from.month;
+    if (until.isAfter(DateTime.utc(until.year, until.month))) months++;
+    if (months < 1) months = 1;
+    final unit = option == 'api' ? v['apiOptionPrice']! : v['cascadeOptionPrice']!;
+    final line = {
+      'label': option == 'api' ? 'apiAddon' : 'cascadeAddon',
+      'unitCents': unit,
+      'months': months,
+      'from': from.toIso8601String(),
+      'to': until.toIso8601String(),
+      'cents': unit * months,
+    };
+    return {'lines': [line], 'total': unit * months, 'from': from.toIso8601String(), 'to': until.toIso8601String()};
+  }
+
+  /// Paiement d'une option seule ([option] : `api` ou `cascade`) ; elle est
+  /// active aussitôt et reprise dans les renouvellements suivants.
+  Future<Map<String, Object?>> buyAddon(User actor, String companyId, String option) async {
+    final company = await _owned(actor, companyId);
+    if (!canPay(actor)) throw const ApiError.conflict('Le paiement en ligne arrive bientôt.');
+    if (option != 'api' && option != 'cascade') throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    final v = await platform.values();
+    final quote = _addon(company, v, await staffCount(companyId), option);
+    if (quote == null) throw const ApiError.conflict('Cette option ne peut pas être ajoutée maintenant.');
+    final t = now();
+    final owner = await store.findUser(actor.id);
+    final seller = await platform.texts();
+    return store.db.runTx((tx) async {
+      await store.query(tx, 'SELECT 1 FROM companies WHERE id = @c::uuid FOR UPDATE', {'c': companyId});
+      final count = await store.query(tx, '''
+        SELECT count(*) FROM invoices WHERE company_code = @k AND extract(year FROM issued_at) = @y''',
+          {'k': company.publicId, 'y': t.year});
+      final number = 'SF-${company.publicId}-${t.year}-${((count.first[0] as num).toInt() + 1).toString().padLeft(4, '0')}';
+      final rows = await store.query(tx, '''
+        INSERT INTO invoices (number, company_id, company_code, company_name, owner_id, owner_name, issued_at,
+          period, period_start, period_end, staff, lines, amount_cents, provider, paid_at, seller)
+        VALUES (@n, @c::uuid, @k, @cn, @o::uuid, @on, @t, 'addon', @f, @to, @s, @l::jsonb, @a, 'test', @t, @sel::jsonb)
+        RETURNING id''', {
+        'n': number,
+        'c': companyId,
+        'k': company.publicId,
+        'cn': company.name,
+        'o': actor.id,
+        'on': owner?.name,
+        't': t,
+        'f': DateTime.parse(quote['from'] as String),
+        'to': DateTime.parse(quote['to'] as String),
+        's': await staffCount(companyId),
+        'l': jsonEncode(quote['lines']),
+        'a': quote['total'],
+        'sel': jsonEncode(seller),
+      });
+      await store.query(tx,
+          'UPDATE companies SET ${option == 'api' ? 'api_option' : 'cascade_option'} = true WHERE id = @c::uuid',
+          {'c': companyId});
+      await store.audit(
+          companyId: companyId,
+          actorId: actor.id,
+          action: 'billing.addon',
+          details: {'invoice': number, 'option': option, 'amountCents': quote['total'], 'provider': 'test'},
+          tx: tx);
+      return {'id': rows.first[0], 'number': number, 'amountCents': quote['total']};
+    });
   }
 
   bool canPay(User actor) => testPaymentsForAll || isAdmin(actor);
@@ -210,6 +307,12 @@ class BillingService {
       },
       'apiOption': company.apiOption,
       'apiOptionPrice': v['apiOptionPrice'],
+      'cascadeOptionPrice': v['cascadeOptionPrice'],
+      // Options à ajouter seules, en cours d'abonnement.
+      'addons': {
+        for (final o in ['api', 'cascade']) o: _addon(company, v, staff, o),
+      },
+      'isOwner': (await companies.open(actor, companyId)).$2 == Role.owner,
       'prorataDays': month.prorataDays,
       'canPay': canPay(actor),
       'testPayments': true,
@@ -366,7 +469,7 @@ class BillingService {
   Future<bool> _canRead(User user, List<Object?> r, {bool admin = false}) async {
     if (admin) return isAdmin(user);
     final companyId = r[13] as String?;
-    if (companyId != null) return await store.roleOf(companyId, user.id) == Role.owner;
+    if (companyId != null) return _billingAccess(companyId, user.id);
     return r[14] == user.id;
   }
 
@@ -479,6 +582,10 @@ class BillingService {
           'apiProrata' => t('Prorata du mois en cours ({days} jours sur {total}) : option « accès API »',
               {'days': '${l['days']}', 'total': '${l['monthDays']}'}),
           'api' => t('Option « accès API » : {months} mois', {'months': '${l['months']}'}),
+          'apiAddon' => t('Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois',
+              {'from': _day(DateTime.parse(l['from'] as String)), 'to': _day(DateTime.parse(l['to'] as String).subtract(const Duration(days: 1))), 'months': '${l['months']}'}),
+          'cascadeAddon' => t('Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois',
+              {'from': _day(DateTime.parse(l['from'] as String)), 'to': _day(DateTime.parse(l['to'] as String).subtract(const Duration(days: 1))), 'months': '${l['months']}'}),
           _ => l['period'] == 'year'
               ? t('Abonnement Staff Flow, {staff} salariés : 12 mois, {paid} facturés',
                   {'staff': '${l['staff']}', 'paid': '${l['paidMonths']}'})
@@ -639,7 +746,8 @@ class BillingService {
 
   Future<void> _toOwner(String companyId, String kind, Map<String, Object?> data) async {
     final rows = await store.query(store.db, '''
-      SELECT user_id::text FROM memberships WHERE company_id = @c::uuid AND role = 'owner' AND left_at IS NULL''',
+      SELECT user_id::text FROM memberships
+      WHERE company_id = @c::uuid AND (role = 'owner' OR billing_access) AND left_at IS NULL''',
         {'c': companyId});
     await notifications.notify([for (final r in rows) r[0] as String], companyId: companyId, kind: kind, data: data);
   }

@@ -1232,7 +1232,7 @@ class L10nFr extends L10n {
 
   @override
   String get siteTreeHint =>
-      'Jusqu\'à 3 niveaux, par exemple Région › Ville › Magasin. Le responsable d\'un site gère aussi tout ce qui est en dessous.';
+      'Jusqu\'à 10 niveaux, par exemple Région › Ville › Magasin. Les 3 premiers sont compris dans l\'abonnement ; au-delà, il faut l\'option « sites en cascade ». Le responsable d\'un site gère aussi tout ce qui est en dessous.';
 
   @override
   String get subSitesOnlyHint =>
@@ -1280,7 +1280,7 @@ class L10nFr extends L10n {
   }
 
   @override
-  String get billingCascade => 'Option « sites en cascade »';
+  String get billingCascade => 'Option « sites en cascade » (niveaux 4 à 10)';
 
   @override
   String billingCascadeIncluded(String count) {
@@ -1906,4 +1906,50 @@ class L10nFr extends L10n {
   String newsSent(String count) {
     return 'Annonce envoyée à $count personne(s).';
   }
+
+  @override
+  String billingLineApiAddon(String from, String to, String months) {
+    return 'Option « accès API », ajoutée en cours d\'abonnement, du $from au $to : $months mois, sans remise';
+  }
+
+  @override
+  String billingLineCascadeAddon(String from, String to, String months) {
+    return 'Option « sites en cascade », ajoutée en cours d\'abonnement, du $from au $to : $months mois, sans remise';
+  }
+
+  @override
+  String get billingRenewalOptions =>
+      'Les options cochées seront comprises dans vos prochains renouvellements.';
+
+  @override
+  String billingAddonTitle(String option) {
+    return 'Ajouter maintenant : $option';
+  }
+
+  @override
+  String billingAddonHint(String date) {
+    return 'Le mois en cours en entier, puis chaque mois jusqu\'au $date (fin de la période payée), sans remise. L\'option est active dès le paiement et reprise dans les renouvellements suivants.';
+  }
+
+  @override
+  String get billingAddonInvoice => 'option';
+
+  @override
+  String billingAccessRemoved(String name) {
+    return '$name ne gère plus l\'abonnement.';
+  }
+
+  @override
+  String billingAccessGiven(String name) {
+    return '$name peut maintenant gérer l\'abonnement et les factures.';
+  }
+
+  @override
+  String get actionBillingRemove => 'Retirer la gestion de l\'abonnement';
+
+  @override
+  String get actionBillingGive => 'Autoriser à gérer l\'abonnement';
+
+  @override
+  String get billingAccessTag => 'Gère l\'abonnement';
 }

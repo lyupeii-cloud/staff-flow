@@ -149,6 +149,20 @@ class _TeamViewState extends State<TeamView> {
               return _browser(snap.data!, me.id);
             },
           ),
+          // Abonnement confié par le patron (comptable…) : seulement la carte Abonnement.
+          if (role != Role.owner && widget.membership.billingAccess) ...[
+            const SizedBox(height: 20),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.workspace_premium_outlined),
+                title: Text(t.billingManage),
+                subtitle: Text('${billingStatusText(context, company) ?? ''}\n${t.billingCompanyId(company.publicId)}'),
+                isThreeLine: true,
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => BillingPage.open(context, widget.session, company),
+              ),
+            ),
+          ],
           // Personnalisation : l'image de l'entreprise, pour le patron seulement.
           if (role == Role.owner) ...[
             const SizedBox(height: 20),
@@ -356,6 +370,7 @@ class _TeamViewState extends State<TeamView> {
       title: Text(_title(m, sort, isMe)),
       subtitle: Text([
         if (m.appointedBy != null) t.subManager else m.role.label(t),
+        if (m.billingAccess) t.billingAccessTag,
         if (m.role == Role.manager) m.sites == null ? t.wholeCompany : _siteNames(m.sites),
         if (m.role != Role.manager && m.sites != null) _siteNames(m.sites),
         ?widget.data.positionName(m.positionId),
@@ -405,6 +420,7 @@ class _TeamViewState extends State<TeamView> {
       if (hasSites && ((isOwner && m.role == Role.manager) || myDeputy || ((isOwner || isManager) && targetIsStaff)))
         _MemberAction.sites,
       if (isOwner && m.role == Role.manager) _MemberAction.transfer,
+      if (isOwner) _MemberAction.billing,
       if (isOwner || mineToo || myDeputy) _MemberAction.remove,
     ];
   }
@@ -511,6 +527,10 @@ class _TeamViewState extends State<TeamView> {
         }
       case _MemberAction.profile:
         await _editProfile(m);
+      case _MemberAction.billing:
+        await _act(
+            () => api.send('PUT', '/companies/${company.id}/members/${m.user.id}/billing', body: {'enabled': !m.billingAccess}),
+            success: m.billingAccess ? t.billingAccessRemoved(m.user.name) : t.billingAccessGiven(m.user.name));
       case _MemberAction.makeManager:
         // Responsable de toute l'entreprise, ou de certains sites.
         final scope = widget.data.sites.any((s) => !s.archived)
@@ -786,6 +806,7 @@ enum _MemberAction {
   makeEmployee,
   toggleExtra,
   transfer,
+  billing,
   googleLink,
   remove;
 
@@ -798,6 +819,7 @@ enum _MemberAction {
         makeEmployee => m.appointedBy != null ? t.actionRemoveDeputy : t.actionMakeEmployee,
         toggleExtra => m.role == Role.extra ? t.actionToEmployee : t.actionToExtra,
         transfer => t.actionTransfer,
+        billing => m.billingAccess ? t.actionBillingRemove : t.actionBillingGive,
         googleLink => t.memberGoogleLink,
         remove => t.actionRemove,
       };

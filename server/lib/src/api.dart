@@ -35,7 +35,8 @@ class Api {
   final SessionTokens tokens;
   final CompanyService companies;
   late final NotificationService notifications = NotificationService(store, push: push);
-  late final PlanningService planning = PlanningService(store, companies, notifications, now: now);
+  late final PlanningService planning = PlanningService(store, companies, notifications, now: now)
+    ..cascadeAllowed = ((c) => billing.cascadeAllowed(c));
   late final NewsService news = NewsService(store, companies, notifications);
   late final ToolsService tools = ToolsService(store, companies, tokens.derive('exports'));
   late final OverlapService overlaps = OverlapService(store, companies, notifications, now: now);
@@ -146,6 +147,17 @@ class Api {
       }))
       // Abonnement et factures (propriétaire de l'entreprise).
       ..get('/companies/<id>/billing', _authed((r, u) async => _json(await billing.summary(u, r.params['id']!))))
+      ..post('/companies/<id>/billing/addon', _authed((r, u) async {
+        final option = (await _body(r))['option'];
+        if (option is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        return _json(await billing.buyAddon(u, r.params['id']!, option));
+      }))
+      ..put('/companies/<id>/members/<userId>/billing', _authed((r, u) async {
+        final enabled = (await _body(r))['enabled'];
+        if (enabled is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        await billing.setBillingAccess(u, r.params['id']!, r.params['userId']!, enabled);
+        return Response(204);
+      }))
       ..post('/companies/<id>/billing/checkout', _authed((r, u) async {
         final body = await _body(r);
         if (body['period'] is! String || body['cascade'] is! bool) {
@@ -721,9 +733,6 @@ class Api {
     final body = await _body(req);
     final parent = body['parentId'];
     if (parent != null && parent is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
-    if (parent != null && !await billing.cascadeAllowed(req.params['id']!)) {
-      throw const ApiError(402, 'option_required', 'Option « sites en cascade » nécessaire pour créer des sous-sites.');
-    }
     final item = await planning.addCatalogItem(user, req.params['id']!, _kind(req), _string(body, 'name'),
         parentId: parent as String?);
     return _json(item.toJson(), status: 201);

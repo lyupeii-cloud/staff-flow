@@ -5,10 +5,11 @@ import '../models.dart';
 import '../session.dart';
 import 'company_tab.dart';
 import 'home_screen.dart';
+import 'pick_list.dart';
 import 'tools_widgets.dart';
 
 /// Sites (magasin A, entrepôt…) et postes (caisse, cuisine…) de l'entreprise.
-/// Les sites vont en cascade, sur trois niveaux (région › ville › magasin) ;
+/// Les sites vont en cascade, sur dix niveaux (région › ville › magasin…) ;
 /// un responsable de site gère ici les sites en dessous des siens.
 class CatalogView extends StatelessWidget {
   final Session session;
@@ -19,7 +20,7 @@ class CatalogView extends StatelessWidget {
   const CatalogView(
       {super.key, required this.session, required this.membership, required this.data, required this.onChanged});
 
-  static const maxDepth = 3;
+  static const maxDepth = 10;
 
   Company get company => membership.company;
 
@@ -69,8 +70,11 @@ class CatalogView extends StatelessWidget {
       children: [
         _header(context, t.positions, () => _edit(context, 'positions', null)),
         if (data.positions.isEmpty) Text(t.positionsHint, style: theme.textTheme.bodySmall),
-        for (final i in data.positions)
-          ListTile(
+        _Filtered(
+          items: [for (final i in data.positions) PickItem(i.id, i.name)],
+          build: (item, _) {
+            final i = data.positions.firstWhere((p) => p.id == item.id);
+            return ListTile(
             contentPadding: EdgeInsets.zero,
             title: Text(i.name, style: i.archived ? TextStyle(color: theme.disabledColor) : null),
             subtitle: i.archived ? Text(t.archived) : null,
@@ -86,7 +90,9 @@ class CatalogView extends StatelessWidget {
                       PopupMenuItem(value: 'archive', child: Text(i.archived ? t.reactivate : t.archive)),
                     ],
                   ),
-          ),
+            );
+          },
+        ),
       ],
     );
   }
@@ -102,11 +108,16 @@ class CatalogView extends StatelessWidget {
       children: [
         _header(context, t.sites, membership.managesAll ? () => _edit(context, 'sites', null) : null),
         Text(data.sites.isEmpty ? t.sitesHint : t.siteTreeHint, style: theme.textTheme.bodySmall),
-        for (final (s, depth) in tree)
-          ListTile(
-            contentPadding: EdgeInsets.only(left: 20.0 * depth),
-            leading: Icon(depth == 0 ? Icons.account_tree_outlined : Icons.subdirectory_arrow_right, size: 20),
-            title: Text(s.name, style: s.archived ? TextStyle(color: theme.disabledColor) : null),
+        _Filtered(
+          items: [for (final (s, d) in tree) PickItem(s.id, s.name, indent: d, selectedText: data.sitePath(s.id))],
+          build: (item, flat) {
+            final (s, depth) = tree.firstWhere((x) => x.$1.id == item.id);
+            return ListTile(
+            // Recherche ou tri : liste à plat, chemin complet (Nord › Lille › Gare).
+            contentPadding: EdgeInsets.only(left: flat ? 0 : 20.0 * depth),
+            leading: Icon(depth == 0 || flat ? Icons.account_tree_outlined : Icons.subdirectory_arrow_right, size: 20),
+            title: Text(flat ? item.selectedText ?? s.name : s.name,
+                style: s.archived ? TextStyle(color: theme.disabledColor) : null),
             subtitle: s.archived ? Text(t.archived) : null,
             trailing: company.readOnly
                 ? null
@@ -128,7 +139,9 @@ class CatalogView extends StatelessWidget {
                       ];
                     },
                   ),
-          ),
+            );
+          },
+        ),
       ],
     );
   }
@@ -199,5 +212,78 @@ class CatalogView extends StatelessWidget {
   Future<void> _run(BuildContext context, Future<void> Function() action) async {
     await runAction(context, session, action);
     onChanged();
+  }
+}
+
+/// Liste de postes ou de sites : à partir de 15, une recherche et un tri
+/// (ordre habituel ou par nom) apparaissent, comme dans « Management ».
+class _Filtered extends StatefulWidget {
+  final List<PickItem> items;
+
+  /// [flat] : recherche ou tri en cours (plus d'arbre).
+  final Widget Function(PickItem item, bool flat) build;
+
+  const _Filtered({required this.items, required this.build});
+
+  static const threshold = 15;
+
+  @override
+  State<_Filtered> createState() => _FilteredState();
+}
+
+class _FilteredState extends State<_Filtered> {
+  final _query = TextEditingController();
+  var _sort = PickSort.natural;
+
+  @override
+  void dispose() {
+    _query.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (widget.items.length < _Filtered.threshold) {
+      return Column(children: [for (final i in widget.items) widget.build(i, false)]);
+    }
+    final t = context.l10n;
+    final shown = sortItems(searchItems(widget.items, _query.text), _sort);
+    final flat = _query.text.trim().isNotEmpty || _sort != PickSort.natural;
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      const SizedBox(height: 8),
+      Row(children: [
+        Expanded(
+          child: TextField(
+            controller: _query,
+            onChanged: (_) => setState(() {}),
+            decoration: InputDecoration(
+              isDense: true,
+              filled: true,
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(24), borderSide: BorderSide.none),
+              prefixIcon: const Icon(Icons.search, size: 20),
+              hintText: t.pickSearch,
+              suffixIcon: _query.text.isEmpty
+                  ? null
+                  : IconButton(icon: const Icon(Icons.close, size: 18), onPressed: () => setState(_query.clear)),
+            ),
+          ),
+        ),
+        PopupMenuButton<PickSort>(
+          tooltip: t.pickSortTitle,
+          icon: const Icon(Icons.sort),
+          onSelected: (s) => setState(() => _sort = s),
+          itemBuilder: (_) => [
+            for (final s in const [PickSort.natural, PickSort.name])
+              CheckedPopupMenuItem(value: s, checked: s == _sort, child: Text(s.label(t))),
+          ],
+        ),
+      ]),
+      if (shown.isEmpty)
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: Center(child: Text(t.pickNoResult, style: Theme.of(context).textTheme.bodySmall)),
+        ),
+      for (final i in shown) widget.build(i, flat),
+    ]);
   }
 }

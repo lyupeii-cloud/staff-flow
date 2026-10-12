@@ -613,4 +613,11 @@ UPDATE companies SET messaging_enabled = true;
 DROP TABLE IF EXISTS message_translations, conversation_mutes, conversation_reads, conversation_members, messages, conversations CASCADE;
 ALTER TABLE companies DROP COLUMN IF EXISTS group_enabled;
 ''',
+  // 34 — gestion de l'abonnement confiée par le patron (comptable…), et
+  // factures d'une option ajoutée en cours d'abonnement.
+  '''
+ALTER TABLE memberships ADD COLUMN billing_access boolean NOT NULL DEFAULT false;
+ALTER TABLE invoices DROP CONSTRAINT IF EXISTS invoices_period_check;
+ALTER TABLE invoices ADD CONSTRAINT invoices_period_check CHECK (period IN ('month', 'year', 'addon'));
+''',
 ];

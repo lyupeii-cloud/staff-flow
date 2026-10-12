@@ -1230,7 +1230,7 @@ class L10nUk extends L10n {
 
   @override
   String get siteTreeHint =>
-      'До 3 рівнів, наприклад Регіон › Місто › Магазин. Керівник об\'єкта керує й усім, що нижче.';
+      'До 10 рівнів, наприклад Регіон › Місто › Магазин. Перші 3 включено в підписку; далі потрібна опція «Каскадні об\'єкти». Керівник об\'єкта керує також усім, що нижче.';
 
   @override
   String get subSitesOnlyHint =>
@@ -1278,7 +1278,7 @@ class L10nUk extends L10n {
   }
 
   @override
-  String get billingCascade => 'Опція «ієрархія об\'єктів»';
+  String get billingCascade => 'Опція «Каскадні об\'єкти» (рівні 4–10)';
 
   @override
   String billingCascadeIncluded(String count) {
@@ -1905,4 +1905,50 @@ class L10nUk extends L10n {
   String newsSent(String count) {
     return 'Оголошення надіслано: $count ос.';
   }
+
+  @override
+  String billingLineApiAddon(String from, String to, String months) {
+    return 'Опція «Доступ до API», додана під час підписки, з $from по $to: $months міс., без знижки';
+  }
+
+  @override
+  String billingLineCascadeAddon(String from, String to, String months) {
+    return 'Опція «Каскадні об\'єкти», додана під час підписки, з $from по $to: $months міс., без знижки';
+  }
+
+  @override
+  String get billingRenewalOptions =>
+      'Позначені опції буде включено в наступні продовження.';
+
+  @override
+  String billingAddonTitle(String option) {
+    return 'Додати зараз: $option';
+  }
+
+  @override
+  String billingAddonHint(String date) {
+    return 'Поточний місяць повністю, потім кожен місяць до $date (кінець оплаченого періоду), без знижки. Опція діє одразу після оплати й включається в наступні продовження.';
+  }
+
+  @override
+  String get billingAddonInvoice => 'опція';
+
+  @override
+  String billingAccessRemoved(String name) {
+    return '$name більше не керує підпискою.';
+  }
+
+  @override
+  String billingAccessGiven(String name) {
+    return '$name тепер може керувати підпискою та рахунками.';
+  }
+
+  @override
+  String get actionBillingRemove => 'Забрати керування підпискою';
+
+  @override
+  String get actionBillingGive => 'Дозволити керувати підпискою';
+
+  @override
+  String get billingAccessTag => 'Керує підпискою';
 }

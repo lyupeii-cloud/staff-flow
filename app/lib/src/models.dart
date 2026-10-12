@@ -135,10 +135,14 @@ class Membership {
         notifySites = _sites(j['notifySites']),
         notificationsOn = j['notificationsOn'] != false,
         utcOffset = j['utcOffset'],
-        showTelegram = j['showTelegram'] == true;
+        showTelegram = j['showTelegram'] == true,
+        billingAccess = j['billingAccess'] == true;
 
   /// Son Telegram est affiché aux membres de cette entreprise.
   final bool showTelegram;
+
+  /// Peut gérer l'abonnement et les factures (le patron, ou qui il a choisi).
+  final bool billingAccess;
 
   /// Sites que cette personne gère : `null` pour toute l'entreprise
   /// (propriétaire, responsable général), vide si elle ne gère rien.
@@ -180,7 +184,11 @@ class Member {
         telegram = j['telegram'],
         telegramLinked = j['telegramLinked'] == true,
         employeeNumber = j['employeeNumber'],
-        positionId = j['positionId'];
+        positionId = j['positionId'],
+        billingAccess = j['billingAccess'] == true;
+
+  /// Le patron lui a confié l'abonnement et les factures.
+  final bool billingAccess;
 
   /// Matricule donné par l'employeur (en plus de l'identifiant SF).
   final String? employeeNumber;

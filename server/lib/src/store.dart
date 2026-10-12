@@ -180,7 +180,7 @@ class Store {
   Future<List<Membership>> membershipsOf(String userId) async {
     final rows = await query(_db, '''
       SELECT c.*, m.role, m.sites::text[] AS member_sites, m.notify_sites::text[] AS notify_sites, m.notifications_off,
-        m.show_telegram,
+        m.show_telegram, m.billing_access,
         (extract(epoch FROM (now() AT TIME ZONE c.timezone) - (now() AT TIME ZONE 'UTC')) / 60)::int AS utc_offset
       FROM memberships m JOIN companies c ON c.id = m.company_id
       WHERE m.user_id = @u::uuid AND m.left_at IS NULL
@@ -194,7 +194,8 @@ class Store {
         sites = (await expandSites(r['id'] as String, sites)).toList();
       }
       out.add(Membership(companyFromRow(r), role, sites, _sites(r['notify_sites']), r['notifications_off'] != true,
-          r['utc_offset'] as int?, r['show_telegram'] == true));
+          r['utc_offset'] as int?, r['show_telegram'] == true)
+        ..billingAccess = r['billing_access'] == true);
     }
     return out;
   }
@@ -210,7 +211,7 @@ class Store {
   Future<List<Member>> members(String companyId) async {
     final rows = await query(_db, '''
       SELECT u.*, m.role, m.joined_at, m.display_name, m.sites::text[] AS member_sites, m.appointed_by::text AS appointed_by,
-        m.employee_number, m.position_id::text AS member_position,
+        m.employee_number, m.position_id::text AS member_position, m.billing_access,
         CASE WHEN m.show_telegram THEN u.telegram_username END AS shown_telegram, c.hide_photos,
         u.telegram_chat_id IS NOT NULL AS has_telegram
       FROM memberships m JOIN users u ON u.id = m.user_id JOIN companies c ON c.id = m.company_id
@@ -231,7 +232,7 @@ class Store {
             telegramLinked: r['has_telegram'] == true,
             employeeNumber: r['employee_number'] as String?,
             positionId: r['member_position'] as String?,
-          ),
+          )..billingAccess = r['billing_access'] == true,
     ];
   }
 

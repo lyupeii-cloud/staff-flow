@@ -217,12 +217,16 @@ class Membership {
   /// Son Telegram est affiché aux autres membres de cette entreprise.
   final bool showTelegram;
 
-  const Membership(this.company, this.role,
+  Membership(this.company, this.role,
       [this.sites, this.notifySites, this.notificationsOn = true, this.utcOffset, this.showTelegram = false]);
+
+  /// Le patron lui a confié l'abonnement et les factures.
+  bool billingAccess = false;
 
   Map<String, Object?> toJson() => {
         'company': company.toJson(),
         'role': role.name,
+        'billingAccess': billingAccess || role == Role.owner,
         'sites': sites,
         'notifySites': notifySites,
         'notificationsOn': notificationsOn,
@@ -255,10 +259,13 @@ class Member {
   /// Matricule donné par l'employeur (l'identifiant SF reste dans `user.publicId`).
   final String? employeeNumber;
 
+  /// Peut gérer l'abonnement et les factures (confié par le patron).
+  bool billingAccess = false;
+
   /// Poste habituel dans l'entreprise.
   final String? positionId;
 
-  const Member(this.user, this.role, this.joinedAt,
+  Member(this.user, this.role, this.joinedAt,
       {this.nameInCompany,
       this.sites,
       this.appointedBy,
@@ -271,6 +278,7 @@ class Member {
         'user': user.toJson(),
         'employeeNumber': employeeNumber,
         'positionId': positionId,
+        'billingAccess': billingAccess,
         'telegram': telegram,
         'telegramLinked': telegramLinked,
         'nameInCompany': nameInCompany,

@@ -94,11 +94,26 @@ class _BillingPageState extends State<BillingPage> {
   static Map<String, dynamic> _offer(Map<String, dynamic> d, String period, bool cascade, bool api) =>
       ((d['offers'] as Map)['$period-${cascade ? 1 : 0}-${api ? 1 : 0}'] as Map).cast<String, dynamic>();
 
-  Future<void> _confirm(Map<String, dynamic> d, String period, bool cascade) async {
+  Future<void> _confirm(Map<String, dynamic> d, String period, bool cascade) =>
+      _showQuote(_offer(d, period, cascade, _api), () => _pay(period));
+
+  /// Option seule ([option] : `api` ou `cascade`), payée jusqu'à la fin de la période.
+  Future<void> _buyAddon(String option) => _run(() async {
+        await widget.session.api.send('POST', '$_base/addon', body: {'option': option});
+        await widget.session.refresh();
+        await _load();
+      }, done: context.l10n.billingPaidOk);
+
+  /// Détail ligne par ligne d'un paiement, puis [pay] si la personne confirme.
+  Future<void> _showQuote(Map<String, dynamic> quote, Future<void> Function() pay) async {
     final t = context.l10n;
     final loc = context.localeName;
-    final quote = _offer(d, period, cascade, _api);
+    String date(Object? iso) => longDate(DateTime.parse(iso as String).toLocal(), loc);
     String line(Map l) => switch (l['label']) {
+          'apiAddon' => t.billingLineApiAddon(
+              date(l['from']), longDate(DateTime.parse(l['to']).subtract(const Duration(days: 1)), loc), '${l['months']}'),
+          'cascadeAddon' => t.billingLineCascadeAddon(
+              date(l['from']), longDate(DateTime.parse(l['to']).subtract(const Duration(days: 1)), loc), '${l['months']}'),
           'api' => t.billingLineApi('${l['months']}'),
           'apiProrata' => t.billingLineApiProrata('${l['days']}', '${l['monthDays']}'),
           'prorata' => t.billingLineProrata('${l['days']}', '${l['monthDays']}'),
@@ -146,7 +161,7 @@ class _BillingPageState extends State<BillingPage> {
         );
       },
     );
-    if (ok == true && mounted) await _pay(period);
+    if (ok == true && mounted) await pay();
   }
 
   Future<void> _pay(String period) => _run(() async {
@@ -254,6 +269,34 @@ class _BillingPageState extends State<BillingPage> {
           title: Text(t.billingApi),
           subtitle: Text(t.billingPerMonth(euroAmount(context, d['apiOptionPrice'] as int))),
         ),
+        // Abonnement en cours : une option s'ajoute seule, jusqu'à la fin de la période payée.
+        if (status == 'active') ...[
+          Text(t.billingRenewalOptions, style: theme.textTheme.bodySmall),
+          for (final (key, title) in [('api', t.billingApi), ('cascade', t.billingCascade)])
+            if ((d['addons'] as Map?)?[key] case final Map addon)
+              Card(
+                color: theme.colorScheme.secondaryContainer,
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                    Text(t.billingAddonTitle(title), style: theme.textTheme.titleSmall),
+                    const SizedBox(height: 4),
+                    Text(t.billingAddonHint(
+                        longDate(DateTime.parse(addon['to'] as String).subtract(const Duration(days: 1)), context.localeName))),
+                    const SizedBox(height: 8),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: FilledButton(
+                        onPressed: d['canPay'] == true && !_busy
+                            ? () => _showQuote(addon.cast<String, dynamic>(), () => _buyAddon(key))
+                            : null,
+                        child: Text(t.billingPay(euroAmount(context, addon['total'] as int))),
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+        ],
         const SizedBox(height: 8),
         _PriceCard(
           title: t.billingMonthly,
@@ -338,7 +381,7 @@ class _InvoicesState extends State<_Invoices> {
             ListTile(
               contentPadding: EdgeInsets.zero,
               leading: const Icon(Icons.receipt_long_outlined),
-              title: Text('${i['number']}'),
+              title: Text(i['period'] == 'addon' ? '${i['number']} · ${t.billingAddonInvoice}' : '${i['number']}'),
               subtitle: Text('${day(i['from'])} – ${day(DateTime.parse(i['to']).subtract(const Duration(days: 1)).toIso8601String())}'
                   ' · ${euroAmount(context, i['amountCents'] as int)}'),
               trailing: const Icon(Icons.download_outlined),

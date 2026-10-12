@@ -1222,7 +1222,7 @@ class L10nEn extends L10n {
 
   @override
   String get siteTreeHint =>
-      'Up to 3 levels, e.g. Region › City › Store. A manager of a site also manages everything below it.';
+      'Up to 10 levels, for example Region › City › Shop. The first 3 are included in the subscription; beyond that, you need the “nested sites” option. A site\'s manager also manages everything below it.';
 
   @override
   String get subSitesOnlyHint => 'Here you add sub-sites under your own sites.';
@@ -1269,7 +1269,7 @@ class L10nEn extends L10n {
   }
 
   @override
-  String get billingCascade => '“Nested sites” option';
+  String get billingCascade => '“Nested sites” option (levels 4 to 10)';
 
   @override
   String billingCascadeIncluded(String count) {
@@ -1895,6 +1895,52 @@ class L10nEn extends L10n {
   String newsSent(String count) {
     return 'Announcement sent to $count person(s).';
   }
+
+  @override
+  String billingLineApiAddon(String from, String to, String months) {
+    return '“API access” option, added during the subscription, from $from to $to: $months months, no discount';
+  }
+
+  @override
+  String billingLineCascadeAddon(String from, String to, String months) {
+    return '“Nested sites” option, added during the subscription, from $from to $to: $months months, no discount';
+  }
+
+  @override
+  String get billingRenewalOptions =>
+      'Checked options will be included in your next renewals.';
+
+  @override
+  String billingAddonTitle(String option) {
+    return 'Add now: $option';
+  }
+
+  @override
+  String billingAddonHint(String date) {
+    return 'The whole current month, then each month until $date (end of the paid period), no discount. The option is active as soon as you pay and is included in the next renewals.';
+  }
+
+  @override
+  String get billingAddonInvoice => 'option';
+
+  @override
+  String billingAccessRemoved(String name) {
+    return '$name no longer manages the subscription.';
+  }
+
+  @override
+  String billingAccessGiven(String name) {
+    return '$name can now manage the subscription and invoices.';
+  }
+
+  @override
+  String get actionBillingRemove => 'Stop managing the subscription';
+
+  @override
+  String get actionBillingGive => 'Allow to manage the subscription';
+
+  @override
+  String get billingAccessTag => 'Manages the subscription';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).

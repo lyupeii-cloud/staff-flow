@@ -1229,7 +1229,7 @@ class L10nRo extends L10n {
 
   @override
   String get siteTreeHint =>
-      'Până la 3 niveluri, de ex. Regiune › Oraș › Magazin. Responsabilul unui punct de lucru gestionează și tot ce e sub el.';
+      'Până la 10 niveluri, de exemplu Regiune › Oraș › Magazin. Primele 3 sunt incluse în abonament; mai departe e nevoie de opțiunea „Locații în cascadă”. Responsabilul unei locații gestionează și tot ce este dedesubt.';
 
   @override
   String get subSitesOnlyHint =>
@@ -1277,7 +1277,8 @@ class L10nRo extends L10n {
   }
 
   @override
-  String get billingCascade => 'Opțiunea „puncte în cascadă”';
+  String get billingCascade =>
+      'Opțiunea „Locații în cascadă” (nivelurile 4–10)';
 
   @override
   String billingCascadeIncluded(String count) {
@@ -1903,4 +1904,50 @@ class L10nRo extends L10n {
   String newsSent(String count) {
     return 'Anunț trimis către $count persoană(e).';
   }
+
+  @override
+  String billingLineApiAddon(String from, String to, String months) {
+    return 'Opțiunea „Acces API”, adăugată în timpul abonamentului, de la $from la $to: $months luni, fără reducere';
+  }
+
+  @override
+  String billingLineCascadeAddon(String from, String to, String months) {
+    return 'Opțiunea „Locații în cascadă”, adăugată în timpul abonamentului, de la $from la $to: $months luni, fără reducere';
+  }
+
+  @override
+  String get billingRenewalOptions =>
+      'Opțiunile bifate vor fi incluse în următoarele reînnoiri.';
+
+  @override
+  String billingAddonTitle(String option) {
+    return 'Adaugă acum: $option';
+  }
+
+  @override
+  String billingAddonHint(String date) {
+    return 'Luna curentă întreagă, apoi fiecare lună până la $date (sfârșitul perioadei plătite), fără reducere. Opțiunea este activă imediat după plată și inclusă în reînnoirile următoare.';
+  }
+
+  @override
+  String get billingAddonInvoice => 'opțiune';
+
+  @override
+  String billingAccessRemoved(String name) {
+    return '$name nu mai gestionează abonamentul.';
+  }
+
+  @override
+  String billingAccessGiven(String name) {
+    return '$name poate acum gestiona abonamentul și facturile.';
+  }
+
+  @override
+  String get actionBillingRemove => 'Retrage gestionarea abonamentului';
+
+  @override
+  String get actionBillingGive => 'Permite gestionarea abonamentului';
+
+  @override
+  String get billingAccessTag => 'Gestionează abonamentul';
 }

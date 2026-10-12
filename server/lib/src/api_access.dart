@@ -28,7 +28,8 @@ class ApiAccessService {
   static String _hash(String secret) => sha256.convert(utf8.encode(secret)).toString();
 
   /// Option ouverte : pendant l'essai, entreprise offerte, ou option payée.
-  static bool allowed(Company c) => c.billingStatus == 'trial' || c.billingStatus == 'comped' || c.apiOption;
+  static bool allowed(Company c) =>
+      c.billingStatus == 'trial' || c.billingStatus == 'comped' || (c.apiOption && c.billingStatus == 'active');
 
   Future<Company> _owned(User actor, String companyId) async {
     final (company, role) = await companies.open(actor, companyId);

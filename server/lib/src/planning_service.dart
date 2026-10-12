@@ -55,8 +55,19 @@ class PlanningService {
     ];
   }
 
-  /// Sites en cascade : trois niveaux au plus (ex. région, ville, magasin).
-  static const maxSiteDepth = 3;
+  /// Sites en cascade : dix niveaux au plus ; les trois premiers sont compris
+  /// dans l'abonnement, les suivants demandent l'option « sites en cascade ».
+  static const maxSiteDepth = 10;
+  static const includedSiteDepth = 3;
+
+  /// L'option « sites en cascade » est-elle ouverte ? (Fourni par la facturation.)
+  Future<bool> Function(String companyId) cascadeAllowed = (_) async => true;
+
+  Future<void> _checkCascade(String companyId, int depth) async {
+    if (depth > includedSiteDepth && !await cascadeAllowed(companyId)) {
+      throw const ApiError(402, 'option_required', 'Option « sites en cascade » nécessaire au-delà de trois niveaux de sites.');
+    }
+  }
 
   /// Niveau d'un site (1 : premier niveau).
   Future<int> _siteDepth(String companyId, String siteId) async {
@@ -81,7 +92,8 @@ class PlanningService {
       }
       final depth = await _siteDepth(companyId, parentId);
       if (depth == 0) throw const ApiError.badRequest('Site inconnu ou archivé.');
-      if (depth >= maxSiteDepth) throw const ApiError.badRequest('Trois niveaux de sites au plus.');
+      if (depth >= maxSiteDepth) throw const ApiError.badRequest('Dix niveaux de sites au plus.');
+      await _checkCascade(companyId, depth + 1);
     }
     final rows = await store.query(store.db,
         kind == CatalogKind.sites
@@ -119,7 +131,8 @@ class PlanningService {
       if (rows.first[1] == true) throw const ApiError.badRequest('Un site ne peut pas être placé sous lui-même.');
       final depth = parentId == null ? 0 : await _siteDepth(companyId, parentId);
       if (parentId != null && depth == 0) throw const ApiError.badRequest('Site inconnu ou archivé.');
-      if (depth + height > maxSiteDepth) throw const ApiError.badRequest('Trois niveaux de sites au plus.');
+      if (depth + height > maxSiteDepth) throw const ApiError.badRequest('Dix niveaux de sites au plus.');
+      await _checkCascade(companyId, depth + height);
       await store.query(store.db, 'UPDATE sites SET parent_id = @p::uuid WHERE id = @s::uuid', {'s': id, 'p': parentId});
     }
 

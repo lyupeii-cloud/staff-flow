@@ -855,7 +855,7 @@
       }
     }
   },
-  "siteTreeHint": "Up to 3 levels, e.g. Region › City › Store. A manager of a site also manages everything below it.",
+  "siteTreeHint": "Up to 10 levels, for example Region › City › Shop. The first 3 are included in the subscription; beyond that, you need the “nested sites” option. A site's manager also manages everything below it.",
   "subSitesOnlyHint": "Here you add sub-sites under your own sites.",
   "messagingSetting": "News feed",
   "messagingSettingHint": "On: the owner and managers post announcements (for everyone, a position, a site or chosen people); everyone reads them and can translate them. Off: the tab disappears for everyone.",
@@ -902,7 +902,7 @@
       }
     }
   },
-  "billingCascade": "“Nested sites” option",
+  "billingCascade": "“Nested sites” option (levels 4 to 10)",
   "billingCascadeIncluded": "Included from {count} employees",
   "@billingCascadeIncluded": {
     "placeholders": {
@@ -1390,5 +1390,70 @@
         "type": "String"
       }
     }
-  }
+  },
+  "billingLineApiAddon": "“API access” option, added during the subscription, from {from} to {to}: {months} months, no discount",
+  "@billingLineApiAddon": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLineCascadeAddon": "“Nested sites” option, added during the subscription, from {from} to {to}: {months} months, no discount",
+  "@billingLineCascadeAddon": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingRenewalOptions": "Checked options will be included in your next renewals.",
+  "billingAddonTitle": "Add now: {option}",
+  "@billingAddonTitle": {
+    "placeholders": {
+      "option": {
+        "type": "String"
+      }
+    }
+  },
+  "billingAddonHint": "The whole current month, then each month until {date} (end of the paid period), no discount. The option is active as soon as you pay and is included in the next renewals.",
+  "@billingAddonHint": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingAddonInvoice": "option",
+  "billingAccessRemoved": "{name} no longer manages the subscription.",
+  "@billingAccessRemoved": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "billingAccessGiven": "{name} can now manage the subscription and invoices.",
+  "@billingAccessGiven": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actionBillingRemove": "Stop managing the subscription",
+  "actionBillingGive": "Allow to manage the subscription",
+  "billingAccessTag": "Manages the subscription"
 }

@@ -126,13 +126,73 @@ void main() {
     expect((await billing(owner, company))['status'], 'grace');
   });
 
-  test('payée sans l\'option : pas de sous-site (sauf au-delà de 100 salariés)', () async {
+  test('payée sans l\'option : trois niveaux de sites ; au-delà, l\'option achetée seule', () async {
     final boss = await env.login('boss');
     final company = await env.createCompany(boss);
-    final nord = (await boss.ok('POST', '/companies/$company/sites', {'name': 'Nord'}))['id'];
+    Future<String> site(String name, [String? parent]) async =>
+        (await boss.ok('POST', '/companies/$company/sites', {'name': name, 'parentId': ?parent}))['id'];
+    final ville = await site('Ville', await site('Lille', await site('Nord')));
     await boss.ok('POST', '/companies/$company/billing/checkout', {'period': 'month', 'cascade': false});
-    expect((await boss('POST', '/companies/$company/sites', {'name': 'Lille', 'parentId': nord})).$1, 402);
-    await boss.ok('POST', '/companies/$company/billing/checkout', {'period': 'month', 'cascade': true});
-    await boss.ok('POST', '/companies/$company/sites', {'name': 'Lille', 'parentId': nord});
+    expect((await boss('POST', '/companies/$company/sites', {'name': 'Quai', 'parentId': ville})).$1, 402);
+    // Payé le 5 octobre jusqu'au 1er décembre : octobre en entier et novembre, sans prorata.
+    final quote = (await billing(boss, company))['addons']['cascade'] as Map;
+    expect(quote['lines'].single['months'], 2);
+    expect(quote['total'], 2 * 200);
+    final r = await boss.ok('POST', '/companies/$company/billing/addon', {'option': 'cascade'});
+    expect(r['amountCents'], 400);
+    await site('Quai', ville);
+    final after = await billing(boss, company);
+    expect(after['addons']['cascade'], isNull, reason: 'déjà prise');
+    expect(after['cascadeOption'], true);
+    expect(after['invoices'].first['period'], 'addon');
+    expect((await boss('POST', '/companies/$company/billing/addon', {'option': 'cascade'})).$1, 409);
+  });
+
+  test('option API seule sur un abonnement annuel : mois offerts compris ; coupée pendant la grâce', () async {
+    final boss = await env.login('boss');
+    final company = await env.createCompany(boss);
+    // En essai : rien à ajouter seul (tout est ouvert).
+    expect((await billing(boss, company))['addons']['api'], isNull);
+    await boss.ok('POST', '/companies/$company/billing/checkout', {'period': 'year', 'cascade': false, 'api': false});
+    expect((await boss('POST', '/companies/$company/api-keys', {'name': 'Paie'})).$1, 402);
+    // Payé jusqu'au 1er novembre 2027 : octobre 2026 à octobre 2027, 13 mois à 3 €.
+    final quote = (await billing(boss, company))['addons']['api'] as Map;
+    expect([quote['lines'].single['months'], quote['total']], [13, 13 * 300]);
+    await boss.ok('POST', '/companies/$company/billing/addon', {'option': 'api'});
+    final key = await boss.ok('POST', '/companies/$company/api-keys', {'name': 'Paie'});
+    Future<int> read() async => (await env.handler(Request('GET', Uri.parse('http://localhost/api/v1/ext/company'),
+            headers: {'authorization': 'Bearer ${key['key']}'})))
+        .statusCode;
+    expect(await read(), 200);
+    // Renouvellement suivant : l'option est reprise.
+    expect((await billing(boss, company))['apiOption'], true);
+    // Non renouvelé : période de grâce, la clé ne répond plus.
+    env.clock.advance(const Duration(days: 400));
+    await env.api.billing.tick();
+    expect((await billing(boss, company))['status'], 'grace');
+    expect(await read(), 402);
+  });
+
+  test('le patron confie l\'abonnement et les factures à un comptable', () async {
+    final boss = await env.login('boss');
+    final compta = await env.login('compta');
+    final company = await env.createCompany(boss);
+    await env.store.addMember(company, compta.id, Role.employee);
+    expect((await compta('GET', '/companies/$company/billing')).$1, 403);
+    expect((await compta('PUT', '/companies/$company/members/${compta.id}/billing', {'enabled': true})).$1, 403);
+    await boss.ok('PUT', '/companies/$company/members/${compta.id}/billing', {'enabled': true});
+    final me = (await compta.ok('GET', '/me'))['companies'].single;
+    expect(me['billingAccess'], true);
+    expect((await billing(compta, company))['isOwner'], false);
+    // Le paiement de test est réservé à l'administration (ici le patron) ; le comptable voit les factures.
+    await boss.ok('POST', '/companies/$company/billing/checkout', {'period': 'month', 'cascade': false});
+    final invoice = (await billing(compta, company))['invoices'].first['id'];
+    final link = (await compta.ok('GET', '/companies/$company/invoices/$invoice/link'))['path'] as String;
+    final pdf = await env.handler(Request('GET', Uri.parse('http://localhost$link')));
+    expect(pdf.statusCode, 200);
+    // Rappels de facturation : au patron et au comptable.
+    await boss.ok('PUT', '/companies/$company/members/${compta.id}/billing', {'enabled': false});
+    expect((await compta('GET', '/companies/$company/billing')).$1, 403);
+    expect((await compta.ok('GET', '/me'))['companies'].single['billingAccess'], false);
   });
 }

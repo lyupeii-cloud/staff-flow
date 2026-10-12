@@ -1225,7 +1225,7 @@ class L10nPt extends L10n {
 
   @override
   String get siteTreeHint =>
-      'Até 3 níveis, p. ex. Região › Cidade › Loja. O responsável por um local gere também tudo o que está abaixo.';
+      'Até 10 níveis, por exemplo Região › Cidade › Loja. Os 3 primeiros estão incluídos na assinatura; além disso, é preciso a opção «Locais em cascata». O responsável de um local gere também tudo o que está abaixo.';
 
   @override
   String get subSitesOnlyHint =>
@@ -1273,7 +1273,7 @@ class L10nPt extends L10n {
   }
 
   @override
-  String get billingCascade => 'Opção «locais em cascata»';
+  String get billingCascade => 'Opção «Locais em cascata» (níveis 4 a 10)';
 
   @override
   String billingCascadeIncluded(String count) {
@@ -1900,4 +1900,50 @@ class L10nPt extends L10n {
   String newsSent(String count) {
     return 'Aviso enviado a $count pessoa(s).';
   }
+
+  @override
+  String billingLineApiAddon(String from, String to, String months) {
+    return 'Opção «Acesso API», adicionada durante a assinatura, de $from a $to: $months meses, sem desconto';
+  }
+
+  @override
+  String billingLineCascadeAddon(String from, String to, String months) {
+    return 'Opção «Locais em cascata», adicionada durante a assinatura, de $from a $to: $months meses, sem desconto';
+  }
+
+  @override
+  String get billingRenewalOptions =>
+      'As opções marcadas serão incluídas nas suas próximas renovações.';
+
+  @override
+  String billingAddonTitle(String option) {
+    return 'Adicionar agora: $option';
+  }
+
+  @override
+  String billingAddonHint(String date) {
+    return 'O mês atual inteiro e depois cada mês até $date (fim do período pago), sem desconto. A opção fica ativa logo após o pagamento e é incluída nas renovações seguintes.';
+  }
+
+  @override
+  String get billingAddonInvoice => 'opção';
+
+  @override
+  String billingAccessRemoved(String name) {
+    return '$name já não gere a assinatura.';
+  }
+
+  @override
+  String billingAccessGiven(String name) {
+    return '$name agora pode gerir a assinatura e as faturas.';
+  }
+
+  @override
+  String get actionBillingRemove => 'Retirar a gestão da assinatura';
+
+  @override
+  String get actionBillingGive => 'Permitir gerir a assinatura';
+
+  @override
+  String get billingAccessTag => 'Gere a assinatura';
 }

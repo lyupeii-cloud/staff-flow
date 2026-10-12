@@ -2175,7 +2175,7 @@ abstract class L10n {
   /// No description provided for @siteTreeHint.
   ///
   /// In en, this message translates to:
-  /// **'Up to 3 levels, e.g. Region › City › Store. A manager of a site also manages everything below it.'**
+  /// **'Up to 10 levels, for example Region › City › Shop. The first 3 are included in the subscription; beyond that, you need the “nested sites” option. A site\'s manager also manages everything below it.'**
   String get siteTreeHint;
 
   /// No description provided for @subSitesOnlyHint.
@@ -2247,7 +2247,7 @@ abstract class L10n {
   /// No description provided for @billingCascade.
   ///
   /// In en, this message translates to:
-  /// **'“Nested sites” option'**
+  /// **'“Nested sites” option (levels 4 to 10)'**
   String get billingCascade;
 
   /// No description provided for @billingCascadeIncluded.
@@ -3275,6 +3275,72 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Announcement sent to {count} person(s).'**
   String newsSent(String count);
+
+  /// No description provided for @billingLineApiAddon.
+  ///
+  /// In en, this message translates to:
+  /// **'“API access” option, added during the subscription, from {from} to {to}: {months} months, no discount'**
+  String billingLineApiAddon(String from, String to, String months);
+
+  /// No description provided for @billingLineCascadeAddon.
+  ///
+  /// In en, this message translates to:
+  /// **'“Nested sites” option, added during the subscription, from {from} to {to}: {months} months, no discount'**
+  String billingLineCascadeAddon(String from, String to, String months);
+
+  /// No description provided for @billingRenewalOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Checked options will be included in your next renewals.'**
+  String get billingRenewalOptions;
+
+  /// No description provided for @billingAddonTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add now: {option}'**
+  String billingAddonTitle(String option);
+
+  /// No description provided for @billingAddonHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The whole current month, then each month until {date} (end of the paid period), no discount. The option is active as soon as you pay and is included in the next renewals.'**
+  String billingAddonHint(String date);
+
+  /// No description provided for @billingAddonInvoice.
+  ///
+  /// In en, this message translates to:
+  /// **'option'**
+  String get billingAddonInvoice;
+
+  /// No description provided for @billingAccessRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} no longer manages the subscription.'**
+  String billingAccessRemoved(String name);
+
+  /// No description provided for @billingAccessGiven.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} can now manage the subscription and invoices.'**
+  String billingAccessGiven(String name);
+
+  /// No description provided for @actionBillingRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop managing the subscription'**
+  String get actionBillingRemove;
+
+  /// No description provided for @actionBillingGive.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow to manage the subscription'**
+  String get actionBillingGive;
+
+  /// No description provided for @billingAccessTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Manages the subscription'**
+  String get billingAccessTag;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {
