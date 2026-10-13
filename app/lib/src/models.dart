@@ -30,7 +30,7 @@ class User {
   User.fromJson(Map<String, dynamic> j)
       : id = j['id'],
         publicId = j['publicId'],
-        email = j['email'],
+        email = j['email'] ?? '',
         name = j['name'],
         googleName = j['googleName'] ?? j['name'],
         photoUrl = j['photoUrl'],
