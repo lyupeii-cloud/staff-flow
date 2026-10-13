@@ -34,22 +34,25 @@ class ApiAccessService {
       c.billingStatus == 'comped' ||
       ((c.apiOption || c.apiProOption) && c.billingStatus == 'active');
 
-  /// Écriture (« API Pro ») : abonnement payé (ou offert) avec l'option ;
-  /// ni pendant l'essai, ni pendant la période de grâce.
-  static bool proAllowed(Company c) => c.billingStatus == 'comped' || (c.apiProOption && c.billingStatus == 'active');
+  /// Écriture (« API Pro ») : toujours payée, de bout en bout. Seulement avec
+  /// un abonnement payé et l'option ; jamais incluse (ni essai, ni entreprise
+  /// offerte, ni grande entreprise), coupée pendant la période de grâce.
+  static bool proAllowed(Company c) => c.apiProOption && c.billingStatus == 'active';
 
   /// Droits possibles d'une clé.
   static const readScope = 'read';
   static const writeScopes = {'shifts', 'publish', 'members', 'catalog', 'news', 'requests'};
 
-  /// Le patron et les responsables de toute l'entreprise gèrent les clés.
+  /// Le patron et les responsables qui gèrent l'abonnement gèrent les clés.
   Future<Company> _owned(User actor, String companyId) async {
-    final (company, role) = await companies.open(actor, companyId);
-    if (role != Role.owner && !(role == Role.manager && await companies.managedSites(companyId, actor, role) == null)) {
-      throw const ApiError.forbidden();
-    }
+    final (company, _) = await companies.open(actor, companyId);
+    if (!await _billingAccess(companyId, actor.id)) throw const ApiError.forbidden();
     return company;
   }
+
+  Future<bool> _billingAccess(String companyId, String userId) async => (await store.query(store.db, '''
+      SELECT 1 FROM memberships WHERE company_id = @c::uuid AND user_id = @u::uuid AND left_at IS NULL
+        AND (role = 'owner' OR (role = 'manager' AND billing_access))''', {'c': companyId, 'u': userId})).isNotEmpty;
 
   Future<List<Map<String, Object?>>> list(User actor, String companyId) async {
     await _owned(actor, companyId);
@@ -143,11 +146,7 @@ class ApiAccessService {
     }
     if (k.createdBy != null) {
       final u = await store.findActiveUser(k.createdBy!);
-      final role = await store.roleOf(k.company.id, k.createdBy!);
-      if (u != null &&
-          (role == Role.owner || (role == Role.manager && await companies.managedSites(k.company.id, u, role!) == null))) {
-        return u;
-      }
+      if (u != null && await _billingAccess(k.company.id, u.id)) return u;
     }
     final owner = await store.query(store.db, '''
       SELECT user_id::text FROM memberships WHERE company_id = @c::uuid AND role = 'owner' AND left_at IS NULL''',

@@ -104,13 +104,24 @@ void main() {
     expect((await ext('GET', '/ext/invites', key)).$1, 402);
   });
 
-  test('un responsable de toute l\'entreprise gère les clés ; un responsable de site non', () async {
+  test('clés : le patron et les responsables qui gèrent l\'abonnement ; API Pro jamais offerte', () async {
     final m = await env.login('m');
-    final s = await env.login('s');
+    final compta = await env.login('compta');
     await env.store.addMember(company, m.id, Role.manager);
-    final site = (await boss.ok('POST', p('/sites'), {'name': 'Nord'}))['id'];
-    await env.store.addMember(company, s.id, Role.manager, sites: [site]);
-    await m.ok('POST', p('/api-keys'), {'name': 'Compta'});
-    expect((await s('POST', p('/api-keys'), {'name': 'X'})).$1, 403);
+    await env.store.addMember(company, compta.id, Role.employee);
+    // Responsable de toute l'entreprise, sans l'abonnement : pas de clés.
+    expect((await m('GET', p('/api-keys'))).$1, 403);
+    expect((await m('POST', p('/api-keys'), {'name': 'X'})).$1, 403);
+    // Salarié comptable avec l'abonnement : pas responsable, pas de clés.
+    await boss.ok('PUT', p('/members/${compta.id}/billing'), {'enabled': true});
+    expect((await compta('POST', p('/api-keys'), {'name': 'X'})).$1, 403);
+    await boss.ok('PUT', p('/members/${m.id}/billing'), {'enabled': true});
+    await paid();
+    final key = (await m.ok('POST', p('/api-keys'), {'name': 'Chef', 'scopes': ['read', 'catalog']}))['key'];
+    expect((await ext('POST', '/ext/positions', key, {'name': 'Caisse'})).$1, 201);
+    // Entreprise offerte : la lecture reste, l'écriture non (toujours payante).
+    await boss.ok('PUT', '/admin/companies/$company/comped', {'comped': true});
+    expect((await ext('GET', '/ext/company', key)).$1, 200);
+    expect((await ext('POST', '/ext/positions', key, {'name': 'Bar'})).$1, 402);
   });
 }

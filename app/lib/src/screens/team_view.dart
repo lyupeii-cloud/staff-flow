@@ -210,7 +210,8 @@ class _TeamViewState extends State<TeamView> {
               ),
             ),
           ],
-          if (role != Role.owner && widget.membership.managesAll) ...[
+          // Clés API : responsables à qui le patron a confié l'abonnement.
+          if (role == Role.manager && widget.membership.billingAccess) ...[
             const SizedBox(height: 12),
             Card(
               child: ListTile(

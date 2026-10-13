@@ -29,7 +29,7 @@
       <p>The “API access” option lets your accounting, payroll or CRM software automatically read your company's published schedule, everyone's hours and approved absences. Access is read-only: nothing can be changed through the API.</p>
       <p>Add the option in the app: Management → Manage subscription. It is available during the free trial.</p>
       <h2>1. Create a key</h2>
-      <p>In the app, the company owner opens Management → API access → New key and gives it a name (for example “Payroll software”). The full key is shown only once: copy it into your software. You can revoke it at any time; 10 keys at most per company.</p>
+      <p>In the app, the company owner (or a manager entrusted with the subscription) opens Management → API access → New key and gives it a name (for example “Payroll software”). The full key is shown only once: copy it into your software. You can revoke it at any time; 10 keys at most per company.</p>
       <h2>2. Call the API</h2>
       <p>Send the key in the “Authorization: Bearer …” header (or “X-Api-Key”). All addresses start with https://app.staff-flow.cloud/api/v1/ext/.</p>
       <pre><code>curl -H &quot;Authorization: Bearer sfk_xxxxxxxx_yyyyyyyy…&quot; \
@@ -58,7 +58,7 @@ GET /api/v1/ext/absences    approved leave and unavailability  ?from=&amp;to=</c
       <p>401: missing, wrong or revoked key. 402: the “API access” option is not active (subscription without the option). 400: invalid dates.</p>
       <h2>API Pro: writing into Staff Flow</h2>
       <p>With the “API Pro” option (€9 a month, no discount, with a paid subscription; not during the trial or the grace period), your software can also send schedules, employees, positions and sites, announcements, and decide on requests.</p>
-      <p>Each key has its own permissions, chosen when it is created: read, schedule, publish, employees, positions and sites, announcements, requests. The owner and company-wide managers create and revoke keys (10 at most).</p>
+      <p>Each key has its own permissions, chosen when it is created: read, schedule, publish, employees, positions and sites, announcements, requests. Only the owner and managers entrusted with the subscription create and revoke keys (10 at most). “API Pro” is never included: not during the trial, not for a complimentary company, not above 100 employees. It can be cancelled like any option: it stays active until the end of the paid period.</p>
       <pre><code>POST   /api/v1/ext/shifts           create shifts (draft, or &quot;publish&quot;: true)
 PATCH  /api/v1/ext/shifts/{id}      edit a shift (back to draft)
 DELETE /api/v1/ext/shifts/{id}      delete a shift

@@ -29,7 +29,7 @@
       <p>L'option « accès API » permet à vos logiciels de comptabilité, de paie ou à votre CRM de lire automatiquement le planning publié de votre entreprise, les heures de chacun et les absences validées. Avec l'option « accès API » (2 € par mois), l'accès est en lecture seule ; l'option « API Pro » permet aussi d'écrire (voir plus bas).</p>
       <p>L'option se prend dans l'application : Management → Gérer l'abonnement. Elle est ouverte pendant l'essai gratuit.</p>
       <h2>1. Créer une clé</h2>
-      <p>Dans l'application, le propriétaire (ou un responsable de toute l'entreprise) ouvre Management → Accès API → Nouvelle clé, et lui donne un nom (par exemple « Logiciel de paie »). La clé complète n'est affichée qu'une seule fois : copiez-la dans votre logiciel. Vous pouvez la révoquer à tout moment ; 10 clés au plus par entreprise.</p>
+      <p>Dans l'application, le propriétaire (ou un responsable à qui il a confié la gestion de l'abonnement) ouvre Management → Accès API → Nouvelle clé, et lui donne un nom (par exemple « Logiciel de paie »). La clé complète n'est affichée qu'une seule fois : copiez-la dans votre logiciel. Vous pouvez la révoquer à tout moment ; 10 clés au plus par entreprise.</p>
       <h2>2. Appeler l'API</h2>
       <p>Envoyez la clé dans l'en-tête « Authorization: Bearer … » (ou « X-Api-Key »). Toutes les adresses commencent par https://app.staff-flow.cloud/api/v1/ext/.</p>
       <pre><code>curl -H &quot;Authorization: Bearer sfk_xxxxxxxx_yyyyyyyy…&quot; \
@@ -58,7 +58,7 @@ GET /api/v1/ext/absences    approved leave and unavailability  ?from=&amp;to=</c
       <p>401 : clé absente, fausse ou révoquée. 402 : l'option « accès API » n'est pas active (abonnement sans l'option). 400 : dates invalides.</p>
       <h2>API Pro : écrire dans Staff Flow</h2>
       <p>Avec l'option « API Pro » (9 € par mois, sans remise, avec un abonnement payé ; pas pendant l'essai ni pendant la période de grâce), vos logiciels envoient aussi des plannings, des salariés, des postes et sites, des annonces, et valident les demandes.</p>
-      <p>Chaque clé a ses droits, choisis à sa création : lecture, planning, publier, salariés, postes et sites, annonces, demandes. Le patron et les responsables de toute l'entreprise créent et révoquent les clés (10 au plus).</p>
+      <p>Chaque clé a ses droits, choisis à sa création : lecture, planning, publier, salariés, postes et sites, annonces, demandes. Seuls le patron et les responsables qui gèrent l'abonnement créent et révoquent les clés (10 au plus). « API Pro » n'est jamais incluse : ni pendant l'essai, ni pour une entreprise offerte, ni au-delà de 100 salariés. Elle se résilie comme toute option : elle reste active jusqu'à la fin de la période payée.</p>
       <pre><code>POST   /api/v1/ext/shifts           create shifts (draft, or &quot;publish&quot;: true)
 PATCH  /api/v1/ext/shifts/{id}      edit a shift (back to draft)
 DELETE /api/v1/ext/shifts/{id}      delete a shift

@@ -47,10 +47,10 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
     return c.billingStatus == 'trial' || c.billingStatus == 'comped' || c.apiOption || _pro;
   }
 
-  /// Écriture (« API Pro ») : abonnement payé avec l'option, ou entreprise offerte.
+  /// Écriture (« API Pro ») : toujours payée, avec un abonnement payé.
   bool get _pro {
     final c = widget.company;
-    return c.billingStatus == 'comped' || (c.apiProOption && c.billingStatus == 'active');
+    return c.apiProOption && c.billingStatus == 'active';
   }
 
   static const _writeScopes = ['shifts', 'publish', 'members', 'catalog', 'news', 'requests'];

@@ -66,7 +66,7 @@ const apiDocs = <String, List<List<Object>>>{
       'L\'option se prend dans l\'application : Management → Gérer l\'abonnement. Elle est ouverte pendant l\'essai gratuit.',
     ]],
     ['1. Créer une clé', [
-      'Dans l\'application, le propriétaire (ou un responsable de toute l\'entreprise) ouvre Management → Accès API → Nouvelle clé, et lui donne un nom (par exemple « Logiciel de paie »). La clé complète n\'est affichée qu\'une seule fois : copiez-la dans votre logiciel. Vous pouvez la révoquer à tout moment ; 10 clés au plus par entreprise.',
+      'Dans l\'application, le propriétaire (ou un responsable à qui il a confié la gestion de l\'abonnement) ouvre Management → Accès API → Nouvelle clé, et lui donne un nom (par exemple « Logiciel de paie »). La clé complète n\'est affichée qu\'une seule fois : copiez-la dans votre logiciel. Vous pouvez la révoquer à tout moment ; 10 clés au plus par entreprise.',
     ]],
     ['2. Appeler l\'API', [
       'Envoyez la clé dans l\'en-tête « Authorization: Bearer … » (ou « X-Api-Key »). Toutes les adresses commencent par https://app.staff-flow.cloud/api/v1/ext/.',
@@ -86,7 +86,7 @@ const apiDocs = <String, List<List<Object>>>{
     ]],
     ['API Pro : écrire dans Staff Flow', [
       'Avec l\'option « API Pro » (9 € par mois, sans remise, avec un abonnement payé ; pas pendant l\'essai ni pendant la période de grâce), vos logiciels envoient aussi des plannings, des salariés, des postes et sites, des annonces, et valident les demandes.',
-      'Chaque clé a ses droits, choisis à sa création : lecture, planning, publier, salariés, postes et sites, annonces, demandes. Le patron et les responsables de toute l\'entreprise créent et révoquent les clés (10 au plus).',
+      'Chaque clé a ses droits, choisis à sa création : lecture, planning, publier, salariés, postes et sites, annonces, demandes. Seuls le patron et les responsables qui gèrent l\'abonnement créent et révoquent les clés (10 au plus). « API Pro » n\'est jamais incluse : ni pendant l\'essai, ni pour une entreprise offerte, ni au-delà de 100 salariés. Elle se résilie comme toute option : elle reste active jusqu\'à la fin de la période payée.',
       ['pre', _write],
       'Les services envoyés arrivent en brouillon : les responsables les voient, les adaptent, puis publient. Avec le droit « publier » et « publish »: true, ils sont publiés tout de suite. Une personne se désigne par son identifiant SF ou son matricule ; un site ou un poste par son nom ou son id. Heures : « HH:MM » ou minutes depuis minuit.',
       ['pre', _writeSample],
@@ -107,7 +107,7 @@ const apiDocs = <String, List<List<Object>>>{
       'Опцію можна підключити в застосунку: Управління → Керувати підпискою. Під час безкоштовного пробного періоду вона доступна.',
     ]],
     ['1. Створіть ключ', [
-      'У застосунку власник компанії відкриває Управління → Доступ до API → Новий ключ і дає йому назву (наприклад, «Програма зарплати»). Повний ключ показується лише один раз: скопіюйте його у свою програму. Ключ можна будь-коли відкликати; не більше 10 ключів на компанію.',
+      'У застосунку власник компанії (або керівник, якому доручено підписку) відкриває Управління → Доступ до API → Новий ключ і дає йому назву (наприклад, «Програма зарплати»). Повний ключ показується лише один раз: скопіюйте його у свою програму. Ключ можна будь-коли відкликати; не більше 10 ключів на компанію.',
     ]],
     ['2. Виклик API', [
       'Передайте ключ у заголовку «Authorization: Bearer …» (або «X-Api-Key»). Усі адреси починаються з https://app.staff-flow.cloud/api/v1/ext/.',
@@ -127,7 +127,7 @@ const apiDocs = <String, List<List<Object>>>{
     ]],
     ['API Pro: запис у Staff Flow', [
       'З опцією «API Pro» (9 € на місяць, без знижки, з оплаченою підпискою; не під час пробного періоду й не в пільговий період) ваші програми також надсилають графіки, працівників, посади й об\'єкти, оголошення та погоджують запити.',
-      'Кожен ключ має свої права, вибрані під час створення: читання, графік, публікація, працівники, посади й об\'єкти, оголошення, запити. Власник і керівники всієї компанії створюють і відкликають ключі (не більше 10).',
+      'Кожен ключ має свої права, вибрані під час створення: читання, графік, публікація, працівники, посади й об\'єкти, оголошення, запити. Лише власник і керівники, яким доручено керування підпискою, створюють і відкликають ключі (не більше 10). «API Pro» ніколи не входить у ціну: ні під час пробного періоду, ні для безкоштовної компанії, ні понад 100 працівників. Її можна скасувати, як будь-яку опцію: вона діє до кінця оплаченого періоду.',
       ['pre', _write],
       'Надіслані зміни потрапляють у чернетку: керівники бачать їх, адаптують, а потім публікують. З правом «публікація» та «publish»: true вони публікуються одразу. Людину вказують ідентифікатором SF або табельним номером; об\'єкт чи посаду — назвою або id. Час: «ГГ:ХХ» або хвилини від півночі.',
       ['pre', _writeSample],
@@ -148,7 +148,7 @@ const apiDocs = <String, List<List<Object>>>{
       'Add the option in the app: Management → Manage subscription. It is available during the free trial.',
     ]],
     ['1. Create a key', [
-      'In the app, the company owner opens Management → API access → New key and gives it a name (for example “Payroll software”). The full key is shown only once: copy it into your software. You can revoke it at any time; 10 keys at most per company.',
+      'In the app, the company owner (or a manager entrusted with the subscription) opens Management → API access → New key and gives it a name (for example “Payroll software”). The full key is shown only once: copy it into your software. You can revoke it at any time; 10 keys at most per company.',
     ]],
     ['2. Call the API', [
       'Send the key in the “Authorization: Bearer …” header (or “X-Api-Key”). All addresses start with https://app.staff-flow.cloud/api/v1/ext/.',
@@ -168,7 +168,7 @@ const apiDocs = <String, List<List<Object>>>{
     ]],
     ['API Pro: writing into Staff Flow', [
       'With the “API Pro” option (€9 a month, no discount, with a paid subscription; not during the trial or the grace period), your software can also send schedules, employees, positions and sites, announcements, and decide on requests.',
-      'Each key has its own permissions, chosen when it is created: read, schedule, publish, employees, positions and sites, announcements, requests. The owner and company-wide managers create and revoke keys (10 at most).',
+      'Each key has its own permissions, chosen when it is created: read, schedule, publish, employees, positions and sites, announcements, requests. Only the owner and managers entrusted with the subscription create and revoke keys (10 at most). “API Pro” is never included: not during the trial, not for a complimentary company, not above 100 employees. It can be cancelled like any option: it stays active until the end of the paid period.',
       ['pre', _write],
       'Shifts you send arrive as drafts: managers see them, adjust them, then publish. With the “publish” permission and "publish": true, they are published at once. A person is given by their SF ID or employee number; a site or position by its name or id. Times: “HH:MM” or minutes since midnight.',
       ['pre', _writeSample],
