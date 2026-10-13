@@ -192,8 +192,11 @@ class McpServer {
         final (verb, path, body) = tool.call(args);
         final res = await api(Request(verb, Uri.parse('http://localhost/api/v1$path'),
             body: body == null ? null : jsonEncode(body),
+            // Origine « assistant MCP » dans les journaux, adresse IP d'origine.
+            context: {'mcp': true},
             headers: {
               'authorization': auth!,
+              if (req.headers['x-forwarded-for'] != null) 'x-forwarded-for': req.headers['x-forwarded-for']!,
               'content-type': 'application/json',
               if (req.headers['accept-language'] != null) 'accept-language': req.headers['accept-language']!,
             }));

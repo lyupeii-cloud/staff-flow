@@ -679,4 +679,44 @@ CREATE TABLE webhook_deliveries (
 CREATE INDEX webhook_deliveries_due ON webhook_deliveries (next_at) WHERE status = 'pending';
 CREATE INDEX webhook_deliveries_hook ON webhook_deliveries (webhook_id, created_at);
 ''',
+  // 41 — journaux des clés API : chaque appel et chaque webhook ; mois
+  // anciens archivés compressés ; adresses IP vues par clé ; alertes.
+  '''
+CREATE TABLE api_logs (
+  id          bigserial PRIMARY KEY,
+  company_id  uuid NOT NULL REFERENCES companies(id) ON DELETE CASCADE,
+  at          timestamptz NOT NULL,
+  key_id      uuid REFERENCES api_keys(id) ON DELETE SET NULL,
+  key_name    text,
+  key_prefix  text,
+  source      text NOT NULL,
+  kind        text NOT NULL,
+  method      text,
+  path        text,
+  action      text NOT NULL,
+  details     jsonb NOT NULL DEFAULT '{}',
+  status      int NOT NULL,
+  ok          boolean NOT NULL,
+  error       jsonb,
+  duration_ms int NOT NULL,
+  ip          text,
+  search      text NOT NULL
+);
+CREATE INDEX api_logs_company ON api_logs (company_id, id DESC);
+CREATE INDEX api_logs_key ON api_logs (key_id, at);
+CREATE TABLE api_log_archives (
+  company_id uuid NOT NULL REFERENCES companies(id) ON DELETE CASCADE,
+  month      date NOT NULL,
+  count      int NOT NULL,
+  data       bytea NOT NULL,
+  PRIMARY KEY (company_id, month)
+);
+CREATE TABLE api_key_ips (
+  key_id   uuid NOT NULL REFERENCES api_keys(id) ON DELETE CASCADE,
+  ip       text NOT NULL,
+  first_at timestamptz NOT NULL,
+  PRIMARY KEY (key_id, ip)
+);
+ALTER TABLE api_keys ADD COLUMN failing_alert_at timestamptz, ADD COLUMN new_ip_alert_at timestamptz;
+''',
 ];

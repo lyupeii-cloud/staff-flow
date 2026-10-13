@@ -121,6 +121,11 @@ Staff-Flow-Signature: t=1792400000,v1=5d2a…
 v1 = HMAC-SHA256(secret, t + &quot;.&quot; + body)   (hex)</code></pre>
       <p>Every delivery is signed with the secret given at creation (shown only once): recompute the signature and compare, then reject timestamps older than 5 minutes. Answer with a 2xx code within 10 seconds.</p>
       <p>On failure, Staff Flow retries after 1 min, 5 min, 30 min, 2 h, 6 h and 12 h. After 10 dropped deliveries in a row, the address is turned off; you turn it back on in the app. People are identified by their SF ID and employee number, never by email address. Option ended or grace period: nothing is sent any more.</p>
+      <h2>Logs and alerts</h2>
+      <p>Every call from your keys (read, write, MCP assistant) and every webhook delivery is logged: date, key, plain-language action, result, duration, IP address. For an edit, the before and after (“start 08:00 → 09:00”).</p>
+      <p>In the app: Management → API access → Logs. One month at a time (swipe to change), search (person, employee number, action) and filters (key, source, read or write, succeeded or failed). For the owner and managers entrusted with the subscription.</p>
+      <p>The last 12 months stay online; older months are archived automatically and can still be browsed and searched (“search the whole history”). Each year can be downloaded as a ZIP (one CSV file per month, opens in Excel). Logs are deleted after 3 years.</p>
+      <p>The owner is alerted if a key fails 10 times in one hour, or is used from a new IP address (a possible sign of a stolen key). Each key shows its calls today and this month. A key's permissions can be changed without changing the key.</p>
       <h2>Personal data</h2>
       <p>The company remains responsible for how it uses the data it retrieves (names, hours, absences) and must protect it in its own software. Keep keys secret; revoke a key as soon as it is no longer used.</p>
     </div>

@@ -131,6 +131,12 @@ const apiDocs = <String, List<List<Object>>>{
       'Chaque envoi est signé avec le secret donné à la création (affiché une seule fois) : recalculez la signature et comparez-la, puis refusez les horodatages de plus de 5 minutes. Répondez par un code 2xx en moins de 10 secondes.',
       'En cas d\'échec, Staff Flow réessaie après 1 min, 5 min, 30 min, 2 h, 6 h et 12 h. Après 10 envois abandonnés d\'affilée, l\'adresse est coupée ; vous la réactivez dans l\'application. Les personnes sont désignées par leur identifiant SF et leur matricule, jamais par leur adresse e-mail. Option arrêtée ou période de grâce : plus aucun envoi.',
     ]],
+    ['Journaux et alertes', [
+      'Chaque appel de vos clés (lecture, écriture, assistant MCP) et chaque envoi de webhook est noté : date, clé, action en clair, résultat, durée, adresse IP. Pour une modification, l\'avant et l\'après (« début 08:00 → 09:00 »).',
+      'Dans l\'application : Management → Accès API → Journaux. Un mois à la fois (glissez pour changer), recherche (personne, matricule, action) et filtres (clé, origine, lecture ou écriture, réussi ou échec). Réservé au patron et aux responsables qui gèrent l\'abonnement.',
+      'Les 12 derniers mois restent en ligne ; les mois plus anciens sont archivés automatiquement, toujours consultables et cherchables (« chercher dans tout l\'historique »). Chaque année se télécharge en ZIP (un fichier CSV par mois, lisible dans Excel). Les journaux sont supprimés après 3 ans.',
+      'Le patron est prévenu si une clé échoue 10 fois en une heure, ou si elle est utilisée depuis une nouvelle adresse IP (signe possible d\'une clé volée). Chaque clé affiche ses appels du jour et du mois. Les droits d\'une clé se modifient sans changer la clé.',
+    ]],
     ['Données personnelles', [
       'L\'entreprise reste responsable de l\'usage des données qu\'elle récupère (noms, horaires, absences) et doit les protéger dans ses propres logiciels. Gardez les clés secrètes ; révoquez une clé dès qu\'elle ne sert plus.',
     ]],
@@ -180,6 +186,12 @@ const apiDocs = <String, List<List<Object>>>{
       'Кожне надсилання підписане секретом, виданим під час створення (показується лише раз): обчисліть підпис і порівняйте, а мітки часу старші за 5 хвилин відхиляйте. Відповідайте кодом 2xx протягом 10 секунд.',
       'У разі помилки Staff Flow повторює через 1 хв, 5 хв, 30 хв, 2 год, 6 год і 12 год. Після 10 невдалих надсилань поспіль адресу вимикають; увімкнути її можна в застосунку. Людей позначено ідентифікатором SF і табельним номером, ніколи електронною адресою. Опцію припинено або пільговий період: надсилань більше немає.',
     ]],
+    ['Журнали та сповіщення', [
+      'Кожен виклик ваших ключів (читання, запис, асистент MCP) і кожне надсилання вебхука записується: дата, ключ, зрозуміла дія, результат, тривалість, IP-адреса. Для змін — до і після («початок 08:00 → 09:00»).',
+      'У застосунку: Управління → Доступ до API → Журнали. Один місяць за раз (гортайте, щоб змінити), пошук (людина, табельний номер, дія) і фільтри (ключ, джерело, читання чи запис, успіх чи помилка). Лише для власника та керівників, яким доручено підписку.',
+      'Останні 12 місяців доступні онлайн; старіші місяці автоматично архівуються, але їх можна переглядати й шукати («шукати в усій історії»). Кожен рік можна завантажити в ZIP (CSV-файл на місяць, відкривається в Excel). Журнали видаляються через 3 роки.',
+      'Власника повідомляють, якщо ключ дав збій 10 разів за годину або його використано з нової IP-адреси (можлива крадіжка ключа). Кожен ключ показує виклики за день і за місяць. Права ключа змінюються без зміни самого ключа.',
+    ]],
     ['Персональні дані', [
       'Компанія відповідає за використання отриманих даних (імена, години, відсутності) і має захищати їх у своїх програмах. Зберігайте ключі в таємниці; відкликайте ключ, щойно він більше не потрібен.',
     ]],
@@ -228,6 +240,12 @@ const apiDocs = <String, List<List<Object>>>{
       ['pre', _hookSample],
       'Every delivery is signed with the secret given at creation (shown only once): recompute the signature and compare, then reject timestamps older than 5 minutes. Answer with a 2xx code within 10 seconds.',
       'On failure, Staff Flow retries after 1 min, 5 min, 30 min, 2 h, 6 h and 12 h. After 10 dropped deliveries in a row, the address is turned off; you turn it back on in the app. People are identified by their SF ID and employee number, never by email address. Option ended or grace period: nothing is sent any more.',
+    ]],
+    ['Logs and alerts', [
+      'Every call from your keys (read, write, MCP assistant) and every webhook delivery is logged: date, key, plain-language action, result, duration, IP address. For an edit, the before and after (“start 08:00 → 09:00”).',
+      'In the app: Management → API access → Logs. One month at a time (swipe to change), search (person, employee number, action) and filters (key, source, read or write, succeeded or failed). For the owner and managers entrusted with the subscription.',
+      'The last 12 months stay online; older months are archived automatically and can still be browsed and searched (“search the whole history”). Each year can be downloaded as a ZIP (one CSV file per month, opens in Excel). Logs are deleted after 3 years.',
+      'The owner is alerted if a key fails 10 times in one hour, or is used from a new IP address (a possible sign of a stolen key). Each key shows its calls today and this month. A key\'s permissions can be changed without changing the key.',
     ]],
     ['Personal data', [
       'The company remains responsible for how it uses the data it retrieves (names, hours, absences) and must protect it in its own software. Keep keys secret; revoke a key as soon as it is no longer used.',

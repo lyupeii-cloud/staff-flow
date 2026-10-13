@@ -260,4 +260,8 @@ const uk = <String, String>{
   '5 webhooks au plus : supprimez-en un d\'abord.': 'Не більше 5 вебхуків: спочатку видаліть один.',
   'Adresse invalide : https://… attendue.': 'Неправильна адреса: очікується https://…',
   'Événements inconnus.': 'Невідомі події.',
+  'La clé API « {key} » a échoué {count} fois en une heure : vérifiez le logiciel qui l\'utilise (journaux de l\'accès API).': 'Ключ API «{key}» дав збій {count} разів за годину: перевірте програму, яка його використовує (журнали доступу до API).',
+  'La clé API « {key} » a été utilisée depuis une nouvelle adresse ({ip}). Si ce n\'est pas vous, révoquez-la.': 'Ключ API «{key}» використано з нової адреси ({ip}). Якщо це не ви, відкличте його.',
+  'Mois invalide.': 'Неправильний місяць.',
+  'Année invalide.': 'Неправильний рік.',
 };

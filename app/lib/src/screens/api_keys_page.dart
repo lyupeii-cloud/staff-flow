@@ -8,6 +8,7 @@ import '../models.dart';
 import '../session.dart';
 import 'billing_page.dart';
 import 'tools_widgets.dart';
+import 'api_logs_page.dart';
 import 'webhooks_page.dart';
 
 /// Accès API (option payante) : le patron crée des clés pour ses logiciels
@@ -210,6 +211,15 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
               ),
             Card(
               child: ListTile(
+                leading: const Icon(Icons.receipt_long_outlined),
+                title: Text(t.lgTitle),
+                subtitle: Text(t.lgSub),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => ApiLogsPage.open(context, widget.session, widget.company),
+              ),
+            ),
+            Card(
+              child: ListTile(
                 leading: const Icon(Icons.webhook_outlined),
                 title: Text(t.whTitle),
                 subtitle: Text(t.whSub),
@@ -233,7 +243,9 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
                         title: Text('${k['name']}'),
                         subtitle: Text('${k['prefix']}…\n'
                             '${[for (final s in (k['scopes'] as List? ?? const ['read'])) _scopeLabel(t, s as String)].join(' · ')}\n'
-                            '${k['lastUsedAt'] == null ? t.apiKeyNeverUsed : t.apiKeyLastUsed(longDate(DateTime.parse(k['lastUsedAt']).toLocal(), loc))}'),
+                            '${k['lastUsedAt'] == null ? t.apiKeyNeverUsed : t.apiKeyLastUsed(longDate(DateTime.parse(k['lastUsedAt']).toLocal(), loc))}\n'
+                            '${t.lgStats('${k['stats']?['today'] ?? 0}', '${k['stats']?['month'] ?? 0}')}'
+                            '${k['stats']?['lastFailureAt'] == null ? '' : '\n${t.lgLastFailure(longDate(DateTime.parse(k['stats']['lastFailureAt']).toLocal(), loc))}'}'),
                         isThreeLine: true,
                         onTap: () => _create(key: k as Map),
                         trailing: Row(mainAxisSize: MainAxisSize.min, children: [

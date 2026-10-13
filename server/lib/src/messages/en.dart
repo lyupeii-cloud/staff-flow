@@ -262,4 +262,8 @@ const en = <String, String>{
   '5 webhooks au plus : supprimez-en un d\'abord.': '5 webhooks at most: delete one first.',
   'Adresse invalide : https://… attendue.': 'Invalid address: https://… expected.',
   'Événements inconnus.': 'Unknown events.',
+  'La clé API « {key} » a échoué {count} fois en une heure : vérifiez le logiciel qui l\'utilise (journaux de l\'accès API).': 'API key “{key}” failed {count} times in one hour: check the software using it (API access logs).',
+  'La clé API « {key} » a été utilisée depuis une nouvelle adresse ({ip}). Si ce n\'est pas vous, révoquez-la.': 'API key “{key}” was used from a new address ({ip}). If it wasn\'t you, revoke it.',
+  'Mois invalide.': 'Invalid month.',
+  'Année invalide.': 'Invalid year.',
 };

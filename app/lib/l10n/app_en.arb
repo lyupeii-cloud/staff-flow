@@ -1746,5 +1746,94 @@
   "whStDelivered": "received",
   "whStPending": "pending",
   "whStFailed": "failed",
-  "whStDropped": "dropped"
+  "whStDropped": "dropped",
+  "lgTitle": "Logs",
+  "lgSub": "Every call from your API keys and the MCP assistant, and every webhook delivery. Swipe to change month.",
+  "lgSearch": "Search: person, employee number, action…",
+  "lgAllHistory": "Search the whole history (archives included)",
+  "lgArchived": "Archived month",
+  "lgNone": "Nothing for this month.",
+  "lgMore": "Show more",
+  "lgExport": "Download a year (ZIP)",
+  "lgAllKeys": "All keys",
+  "lgSourceApi": "API",
+  "lgSourceMcp": "MCP assistant",
+  "lgSourceWebhook": "Webhook",
+  "lgKindRead": "Read",
+  "lgKindWrite": "Write",
+  "lgOk": "Succeeded",
+  "lgError": "Failed",
+  "lgBefore": "Before",
+  "lgAfter": "After",
+  "lgStats": "Today: {today} · this month: {month}",
+  "@lgStats": {
+    "placeholders": {
+      "today": {
+        "type": "String"
+      },
+      "month": {
+        "type": "String"
+      }
+    }
+  },
+  "lgLastFailure": "Last failure: {date}",
+  "@lgLastFailure": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "lgActShiftsCreate": "Shifts created",
+  "lgActShiftUpdate": "Shift edited",
+  "lgActShiftDelete": "Shift deleted",
+  "lgActPublish": "Schedule published",
+  "lgActImport": "Employees imported",
+  "lgActProfile": "Employee number or position changed",
+  "lgActPosition": "Position created",
+  "lgActSite": "Site created",
+  "lgActNews": "Announcement published",
+  "lgActApprove": "Request approved",
+  "lgActRefuse": "Request refused",
+  "lgActRead": "Read",
+  "lgActWebhook": "Webhook sent",
+  "lgFDay": "Day",
+  "lgFStart": "Start",
+  "lgFEnd": "End",
+  "lgFPerson": "Person",
+  "lgFSite": "Site",
+  "lgFPosition": "Position",
+  "lgFNote": "Note",
+  "lgFNumber": "Employee number",
+  "noticeApiFailing": "API key “{key}” failed {count} times in one hour: check the software using it.",
+  "@noticeApiFailing": {
+    "placeholders": {
+      "key": {
+        "type": "String"
+      },
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeApiNewIp": "API key “{key}” was used from a new address ({ip}). If it wasn't you, revoke it.",
+  "@noticeApiNewIp": {
+    "placeholders": {
+      "key": {
+        "type": "String"
+      },
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "lgYear": "Year",
+  "lgResults": "Results in the whole history",
+  "lgAllSources": "All sources",
+  "lgAllKinds": "Read and write",
+  "lgAllResults": "Succeeded and failed",
+  "lgFDate": "Date",
+  "lgFKey": "Key",
+  "lgFSource": "Source",
+  "lgFStatus": "Status"
 }

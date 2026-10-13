@@ -2395,4 +2395,169 @@ class L10nRo extends L10n {
 
   @override
   String get whStDropped => 'anulat';
+
+  @override
+  String get lgTitle => 'Jurnale';
+
+  @override
+  String get lgSub =>
+      'Fiecare apel al cheilor API și al asistentului MCP și fiecare trimitere de webhook. Glisați pentru a schimba luna.';
+
+  @override
+  String get lgSearch => 'Căutare: persoană, număr matricol, acțiune…';
+
+  @override
+  String get lgAllHistory => 'Caută în tot istoricul (inclusiv arhive)';
+
+  @override
+  String get lgArchived => 'Lună arhivată';
+
+  @override
+  String get lgNone => 'Nimic în această lună.';
+
+  @override
+  String get lgMore => 'Afișează mai mult';
+
+  @override
+  String get lgExport => 'Descarcă un an (ZIP)';
+
+  @override
+  String get lgAllKeys => 'Toate cheile';
+
+  @override
+  String get lgSourceApi => 'API';
+
+  @override
+  String get lgSourceMcp => 'Asistent MCP';
+
+  @override
+  String get lgSourceWebhook => 'Webhook';
+
+  @override
+  String get lgKindRead => 'Citire';
+
+  @override
+  String get lgKindWrite => 'Scriere';
+
+  @override
+  String get lgOk => 'Reușit';
+
+  @override
+  String get lgError => 'Eșec';
+
+  @override
+  String get lgBefore => 'Înainte';
+
+  @override
+  String get lgAfter => 'După';
+
+  @override
+  String lgStats(String today, String month) {
+    return 'Azi: $today · luna aceasta: $month';
+  }
+
+  @override
+  String lgLastFailure(String date) {
+    return 'Ultimul eșec: $date';
+  }
+
+  @override
+  String get lgActShiftsCreate => 'Ture create';
+
+  @override
+  String get lgActShiftUpdate => 'Tură modificată';
+
+  @override
+  String get lgActShiftDelete => 'Tură ștearsă';
+
+  @override
+  String get lgActPublish => 'Program publicat';
+
+  @override
+  String get lgActImport => 'Angajați importați';
+
+  @override
+  String get lgActProfile => 'Număr matricol sau post modificat';
+
+  @override
+  String get lgActPosition => 'Post creat';
+
+  @override
+  String get lgActSite => 'Locație creată';
+
+  @override
+  String get lgActNews => 'Anunț publicat';
+
+  @override
+  String get lgActApprove => 'Cerere aprobată';
+
+  @override
+  String get lgActRefuse => 'Cerere refuzată';
+
+  @override
+  String get lgActRead => 'Citire';
+
+  @override
+  String get lgActWebhook => 'Webhook trimis';
+
+  @override
+  String get lgFDay => 'Zi';
+
+  @override
+  String get lgFStart => 'Început';
+
+  @override
+  String get lgFEnd => 'Sfârșit';
+
+  @override
+  String get lgFPerson => 'Persoană';
+
+  @override
+  String get lgFSite => 'Locație';
+
+  @override
+  String get lgFPosition => 'Post';
+
+  @override
+  String get lgFNote => 'Notă';
+
+  @override
+  String get lgFNumber => 'Număr matricol';
+
+  @override
+  String noticeApiFailing(String key, String count) {
+    return 'Cheia API „$key” a eșuat de $count ori într-o oră: verificați programul care o folosește.';
+  }
+
+  @override
+  String noticeApiNewIp(String key, String ip) {
+    return 'Cheia API „$key” a fost folosită de la o adresă nouă ($ip). Dacă nu ați fost dvs., revocați-o.';
+  }
+
+  @override
+  String get lgYear => 'An';
+
+  @override
+  String get lgResults => 'Rezultate din tot istoricul';
+
+  @override
+  String get lgAllSources => 'Toate sursele';
+
+  @override
+  String get lgAllKinds => 'Citire și scriere';
+
+  @override
+  String get lgAllResults => 'Reușite și eșecuri';
+
+  @override
+  String get lgFDate => 'Data';
+
+  @override
+  String get lgFKey => 'Cheie';
+
+  @override
+  String get lgFSource => 'Sursă';
+
+  @override
+  String get lgFStatus => 'Stare';
 }

@@ -7,6 +7,7 @@ import 'package:shelf_router/shelf_router.dart';
 
 import 'account_service.dart';
 import 'api_access.dart';
+import 'api_log_service.dart';
 import 'auth.dart';
 import 'billing_service.dart';
 import 'company_service.dart';
@@ -72,6 +73,10 @@ class Api {
       client: webhookClient, now: now, allowPrivate: webhookClient != null, autoDeliver: webhookClient == null);
   final http.Client? webhookClient;
 
+  /// Journaux des clés API (appels et webhooks).
+  late final ApiLogService apiLogs =
+      ApiLogService(store, apiAccess, notifications, platform, tokens.derive('api-logs'), now: now);
+
   /// Adresses Google des administrateurs de la plateforme (fichier de
   /// configuration du serveur ; jamais modifiables depuis le web).
   final Set<String> adminEmails;
@@ -117,6 +122,17 @@ class Api {
   })  : companies = CompanyService(store),
         now = now ?? (() => DateTime.now().toUtc()) {
     store.onAudit = (s, c, action, details) => webhooks.onAudit(s, c, action, details);
+    webhooks.onSent = (companyId, event, url, status, error, took) => apiLogs.record(
+        companyId: companyId,
+        source: 'webhook',
+        kind: 'webhook',
+        method: 'POST',
+        path: url,
+        action: 'webhook.$event',
+        details: {'event': event, 'url': url},
+        status: status ?? 0,
+        errorText: error,
+        took: took);
   }
 
   Handler get handler {
@@ -277,7 +293,40 @@ class Api {
         return Response(204);
       }))
       // Clés API (propriétaire) et lecture par les logiciels de l'entreprise.
-      ..get('/companies/<id>/api-keys', _authed((r, u) async => _json({'keys': await apiAccess.list(u, r.params['id']!)})))
+      ..get('/companies/<id>/api-keys', _authed((r, u) async {
+        final keys = await apiAccess.list(u, r.params['id']!);
+        final stats = await apiLogs.keyStats(await apiAccess.owned(u, r.params['id']!));
+        return _json({
+          'keys': [for (final k in keys) {...k, 'stats': stats[k['id']] ?? {'today': 0, 'month': 0}}]
+        });
+      }))
+      ..get('/companies/<id>/api-logs/months', _authed((r, u) async => _json({'months': await apiLogs.months(u, r.params['id']!)})))
+      ..get('/companies/<id>/api-logs', _authed((r, u) async {
+        final q = r.url.queryParameters;
+        final before = q['before'] == null ? null : int.tryParse(q['before']!);
+        return _json(await apiLogs.list(u, r.params['id']!,
+            month: q['month'],
+            q: q['q'],
+            keyId: q['key'],
+            source: q['source'],
+            kind: q['kind'],
+            result: q['result'],
+            before: before,
+            lang: _lang(r)));
+      }))
+      ..post('/companies/<id>/api-logs/export', _authed((r, u) async {
+        final year = (await _body(r))['year'];
+        if (year is! int) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        return _json({'path': '/api/v1/api-log-exports/${await apiLogs.exportLink(u, r.params['id']!, year, _lang(r))}'});
+      }))
+      ..get('/api-log-exports/<token>', (Request r) async {
+        final (name, bytes) = await apiLogs.export(r.params['token']!);
+        return Response.ok(bytes, headers: {
+          'content-type': 'application/zip',
+          'content-disposition': 'attachment; filename="$name"',
+          'cache-control': 'no-store',
+        });
+      })
       ..post('/companies/<id>/api-keys', _authed((r, u) async {
         final body = await _body(r);
         final scopes = body['scopes'];
@@ -339,6 +388,7 @@ class Api {
           throw const ApiError.badRequest('Champ « shifts » : liste de services attendue (2000 au plus).');
         }
         final publish = body['publish'] == true;
+        ApiLog.note(r, 'shifts.create', {'publish': publish, 'count': list.length});
         if (publish && !k.scopes.contains('publish')) {
           throw const ApiError(403, 'scope_missing', 'Cette clé n\'a pas le droit « {scope} ».', {'scope': 'publish'});
         }
@@ -364,6 +414,7 @@ class Api {
         });
         // Brouillon par défaut : les responsables l'adaptent puis publient.
         final published = publish ? (await planning.publish(u, c)).$1 : 0;
+        ApiLog.of(r)?.details['shifts'] = [for (final id in created.take(50)) await apiAccess.shiftView(c, id)];
         return {'created': created, 'published': published, 'status': publish ? 'published' : 'draft'};
       }))
       ..patch('/ext/shifts/<shiftId>', _apiWrite('shifts', (r, k, u) async {
@@ -378,20 +429,40 @@ class Api {
           if (s.containsKey('position')) 'positionId': await apiAccess.catalogItem(c, 'positions', s['position']),
           if (s.containsKey('note')) 'note': s['note'],
         };
+        final before = await apiAccess.shiftView(c, r.params['shiftId']!);
+        ApiLog.note(r, 'shift.update', {'id': r.params['shiftId'], 'before': before});
         await _input(() => planning.update(u, c, r.params['shiftId']!, ShiftPatch(fields), scope: Scope.one));
+        final after = await apiAccess.shiftView(c, r.params['shiftId']!);
+        // Le service, puis seulement ce qui a changé.
+        ApiLog.note(r, 'shift.update', {
+          'shift': after,
+          'before': {for (final e in (before ?? const {}).entries) if (after?[e.key] != e.value) e.key: e.value},
+          'after': {for (final e in (after ?? const {}).entries) if (before?[e.key] != e.value) e.key: e.value},
+        });
         return {'id': r.params['shiftId'], 'status': 'draft'};
       }))
       ..delete('/ext/shifts/<shiftId>', _apiWrite('shifts', (r, k, u) async {
+        ApiLog.note(r, 'shift.delete',
+            {'id': r.params['shiftId'], 'before': await apiAccess.shiftView(k.company.id, r.params['shiftId']!)});
         await planning.delete(u, k.company.id, r.params['shiftId']!, scope: Scope.one);
         return {'deleted': r.params['shiftId']};
       }))
-      ..post('/ext/publish', _apiWrite('publish', (r, k, u) async => {'published': (await planning.publish(u, k.company.id)).$1}))
+      ..post('/ext/publish', _apiWrite('publish', (r, k, u) async {
+        final published = (await planning.publish(u, k.company.id)).$1;
+        ApiLog.note(r, 'schedule.publish', {'published': published});
+        return {'published': published};
+      }))
       ..post('/ext/members/import', _apiWrite('members', (r, k, u) async {
         final body = await _body(r);
         final rows = body['rows'];
         if (rows is! List || rows.isEmpty || rows.any((x) => x is! Map)) {
           throw const ApiError.badRequest('Champ « rows » : liste de salariés attendue.');
         }
+        ApiLog.note(r, 'members.import', {
+          'dryRun': body['dryRun'] == true,
+          'count': rows.length,
+          'people': [for (final x in rows.take(50)) [x['name'], x['number']].whereType<String>().join(' · ')],
+        });
         final table = [
           ['Nom', 'Matricule', 'Poste', 'Site'],
           for (final x in rows.cast<Map>())
@@ -400,20 +471,38 @@ class Api {
         final result = await imports.run(u, k.company.id, table, dryRun: body['dryRun'] == true, lang: _lang(r));
         return {...result, 'invites': await imports.list(u, k.company.id)};
       }))
-      ..get('/ext/invites', _apiWrite('members', (r, k, u) async => imports.list(u, k.company.id)))
+      ..get('/ext/invites', _apiWrite('members', (r, k, u) async {
+        final list = await imports.list(u, k.company.id);
+        ApiLog.note(r, 'read.invites', {'count': list.length});
+        return list;
+      }))
       ..put('/ext/members/<ref>/profile', _apiWrite('members', (r, k, u) async {
         final body = await _body(r);
         final c = k.company.id;
         final userId = (await apiAccess.person(c, r.params['ref']))!;
+        Future<Map<String, Object?>> profile() async {
+          final p = await store.query(store.db, '''
+            SELECT m.employee_number, p.name FROM memberships m LEFT JOIN positions p ON p.id = m.position_id
+            WHERE m.company_id = @c::uuid AND m.user_id::text = @u AND m.left_at IS NULL''', {'c': c, 'u': userId});
+          return p.isEmpty ? {} : {'employeeNumber': p.first[0], 'position': p.first[1]};
+        }
+
+        final before = await profile();
+        ApiLog.note(r, 'member.profile', {'person': await apiAccess.personLabel(c, userId), 'before': before});
         await companies.setMemberProfile(u, c, userId,
             employeeNumber: body['employeeNumber'] as String?,
             positionId: await apiAccess.catalogItem(c, 'positions', body['position'], create: true));
+        ApiLog.of(r)?.details['after'] = await profile();
         return {'person': r.params['ref']};
       }))
-      ..post('/ext/positions', _apiWrite('catalog', (r, k, u) async =>
-          (await planning.addCatalogItem(u, k.company.id, CatalogKind.positions, _string(await _body(r), 'name'))).toJson()))
+      ..post('/ext/positions', _apiWrite('catalog', (r, k, u) async {
+        final name = _string(await _body(r), 'name');
+        ApiLog.note(r, 'position.create', {'name': name});
+        return (await planning.addCatalogItem(u, k.company.id, CatalogKind.positions, name)).toJson();
+      }))
       ..post('/ext/sites', _apiWrite('catalog', (r, k, u) async {
         final body = await _body(r);
+        ApiLog.note(r, 'site.create', {'name': body['name'], if (body['parent'] != null) 'parent': body['parent']});
         final parent = await apiAccess.catalogItem(k.company.id, 'sites', body['parent']);
         return (await planning.addCatalogItem(u, k.company.id, CatalogKind.sites, _string(body, 'name'), parentId: parent))
             .toJson();
@@ -421,16 +510,31 @@ class Api {
       ..post('/ext/news', _apiWrite('news', (r, k, u) async {
         final body = await _body(r);
         final audience = body['audience'] ?? {'everyone': true};
+        ApiLog.note(r, 'announcement.publish', {'title': body['title'], 'audience': audience});
         if (body['title'] is! String? || audience is! Map) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
         return news.publish(u, k.company.id,
             title: body['title'] as String?, body: _string(body, 'body'), audience: audience.cast<String, dynamic>());
       }))
-      ..get('/ext/requests', _apiWrite('requests', (r, k, u) async => requests.pending(u, k.company.id)))
+      ..get('/ext/requests', _apiWrite('requests', (r, k, u) async {
+        final list = await requests.pending(u, k.company.id);
+        ApiLog.note(r, 'read.requests', {'count': list.length});
+        return list;
+      }))
       ..post('/ext/requests/<requestId>/<decision>', _apiWrite('requests', (r, k, u) async {
         final decision = r.params['decision'];
         if (decision != 'approve' && decision != 'refuse') throw const ApiError.notFound();
-        final mine = await store.query(store.db, 'SELECT 1 FROM requests WHERE id::text = @i AND company_id = @c::uuid',
+        final mine = await store.query(store.db, '''
+          SELECT requester_id::text, kind, start_day, end_day FROM requests WHERE id::text = @i AND company_id = @c::uuid''',
             {'i': r.params['requestId'], 'c': k.company.id});
+        ApiLog.note(r, 'request.$decision', {
+          'id': r.params['requestId'],
+          if (mine.isNotEmpty) ...{
+            'person': await apiAccess.personLabel(k.company.id, mine.first[0] as String?),
+            'kind': mine.first[1],
+            if (mine.first[2] != null) 'from': formatDay(mine.first[2] as DateTime),
+            if (mine.first[3] != null) 'to': formatDay(mine.first[3] as DateTime),
+          },
+        });
         if (mine.isEmpty) throw const ApiError.notFound('Demande introuvable.');
         return requests.decide(u, r.params['requestId']!, approve: decision == 'approve');
       }))
@@ -1234,22 +1338,52 @@ class Api {
       });
 
   /// Lecture par clé API : JSON (`{"data": …}`), ou CSV avec `?format=csv`.
-  Handler _apiKey(Future<Object?> Function(Request, Company) handler) => (Request req) async {
+  /// Appel par clé API, noté au journal de l'entreprise (réussi ou non).
+  Handler _logged(String kind, Handler inner) => (Request req) async {
+        final log = ApiLog();
+        final watch = Stopwatch()..start();
+        var status = 500;
+        Object? error;
+        try {
+          final res = await inner(req.change(context: {'apiLog': log}));
+          status = res.statusCode;
+          return res;
+        } on ApiError catch (e) {
+          status = e.status;
+          error = e;
+          rethrow;
+        } finally {
+          // Les lectures des routes d'écriture (invitations, demandes en attente) comptent comme lectures.
+          await apiLogs.capture(req, log, req.method == 'GET' ? 'read' : kind, status, error, watch.elapsed,
+              ip: _clientIp(req));
+        }
+      };
+
+  Handler _apiKey(Future<Object?> Function(Request, Company) handler) => _logged('read', (Request req) async {
         final key = await apiAccess.key(req.headers['authorization'] ?? req.headers['x-api-key']);
+        ApiLog.of(req)?.key = key;
+        final q = req.url.queryParameters;
+        ApiLog.note(req, 'read.${req.url.pathSegments.last}', {
+          if (q['from'] != null) 'from': q['from'],
+          if (q['to'] != null) 'to': q['to'],
+        });
         if (!key.scopes.contains(ApiAccessService.readScope)) {
           throw const ApiError(403, 'scope_missing', 'Cette clé n\'a pas le droit « {scope} ».', {'scope': 'read'});
         }
         final data = await handler(req, key.company);
+        if (data is List) ApiLog.of(req)?.details['count'] = data.length;
         if (req.url.queryParameters['format'] == 'csv' && data is List) {
           return Response.ok(ApiAccessService.csv(data.cast<Map<String, Object?>>()),
               headers: {'content-type': 'text/csv; charset=utf-8', 'cache-control': 'no-store'});
         }
         return _json({'data': data});
-      };
+      });
 
   /// Écriture par clé API (« API Pro ») : droit [scope], au nom du créateur de la clé.
-  Handler _apiWrite(String scope, Future<Object?> Function(Request, ApiKey, User) handler) => (Request req) async {
+  Handler _apiWrite(String scope, Future<Object?> Function(Request, ApiKey, User) handler) =>
+      _logged('write', (Request req) async {
         final key = await apiAccess.key(req.headers['authorization'] ?? req.headers['x-api-key']);
+        ApiLog.of(req)?.key = key;
         final actor = await apiAccess.actorFor(key, scope);
         final data = await handler(req, key, actor);
         await store.audit(companyId: key.company.id, actorId: actor.id, action: 'api.write', details: {
@@ -1258,7 +1392,7 @@ class Api {
           'path': req.url.path,
         });
         return _json({'data': data}, status: req.method == 'POST' ? 201 : 200);
-      };
+      });
 
   /// Minutes depuis minuit : nombre, ou « HH:MM ».
   static int _minutes(Object? v) {

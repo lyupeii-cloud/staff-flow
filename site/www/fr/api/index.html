@@ -121,6 +121,11 @@ Staff-Flow-Signature: t=1792400000,v1=5d2a…
 v1 = HMAC-SHA256(secret, t + &quot;.&quot; + body)   (hex)</code></pre>
       <p>Chaque envoi est signé avec le secret donné à la création (affiché une seule fois) : recalculez la signature et comparez-la, puis refusez les horodatages de plus de 5 minutes. Répondez par un code 2xx en moins de 10 secondes.</p>
       <p>En cas d'échec, Staff Flow réessaie après 1 min, 5 min, 30 min, 2 h, 6 h et 12 h. Après 10 envois abandonnés d'affilée, l'adresse est coupée ; vous la réactivez dans l'application. Les personnes sont désignées par leur identifiant SF et leur matricule, jamais par leur adresse e-mail. Option arrêtée ou période de grâce : plus aucun envoi.</p>
+      <h2>Journaux et alertes</h2>
+      <p>Chaque appel de vos clés (lecture, écriture, assistant MCP) et chaque envoi de webhook est noté : date, clé, action en clair, résultat, durée, adresse IP. Pour une modification, l'avant et l'après (« début 08:00 → 09:00 »).</p>
+      <p>Dans l'application : Management → Accès API → Journaux. Un mois à la fois (glissez pour changer), recherche (personne, matricule, action) et filtres (clé, origine, lecture ou écriture, réussi ou échec). Réservé au patron et aux responsables qui gèrent l'abonnement.</p>
+      <p>Les 12 derniers mois restent en ligne ; les mois plus anciens sont archivés automatiquement, toujours consultables et cherchables (« chercher dans tout l'historique »). Chaque année se télécharge en ZIP (un fichier CSV par mois, lisible dans Excel). Les journaux sont supprimés après 3 ans.</p>
+      <p>Le patron est prévenu si une clé échoue 10 fois en une heure, ou si elle est utilisée depuis une nouvelle adresse IP (signe possible d'une clé volée). Chaque clé affiche ses appels du jour et du mois. Les droits d'une clé se modifient sans changer la clé.</p>
       <h2>Données personnelles</h2>
       <p>L'entreprise reste responsable de l'usage des données qu'elle récupère (noms, horaires, absences) et doit les protéger dans ses propres logiciels. Gardez les clés secrètes ; révoquez une clé dès qu'elle ne sert plus.</p>
     </div>

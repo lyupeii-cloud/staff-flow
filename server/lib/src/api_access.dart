@@ -142,8 +142,16 @@ class ApiAccessService {
   /// Entreprise d'une clé (`sfk_<préfixe>_<secret>`), ou 401 / 402.
   Future<Company> authenticate(String? header) async => (await key(header)).company;
 
-  /// Clé valide : entreprise, nom, droits et personne au nom de qui elle agit.
-  Future<ApiKey> key(String? header) async {
+  /// Clé reconnue, même si l'option est arrêtée (pour les journaux), sinon `null`.
+  Future<ApiKey?> peek(String? header) async {
+    try {
+      return await _find(header);
+    } on ApiError {
+      return null;
+    }
+  }
+
+  Future<ApiKey> _find(String? header) async {
     final key = header == null
         ? null
         : header.startsWith('Bearer ')
@@ -152,16 +160,23 @@ class ApiAccessService {
     final m = RegExp(r'^sfk_([a-z0-9]{8})_([a-z0-9]{32})$').firstMatch(key ?? '');
     if (m == null) throw const ApiError.unauthorized('Clé API invalide.');
     final rows = await store.query(store.db, '''
-      SELECT company_id::text, key_hash, name, scopes, created_by::text FROM api_keys
+      SELECT company_id::text, key_hash, name, scopes, created_by::text, id::text FROM api_keys
       WHERE prefix = @p AND revoked_at IS NULL''', {'p': m[1]});
     if (rows.isEmpty || rows.first[1] != _hash(m[2]!)) throw const ApiError.unauthorized('Clé API invalide.');
     final company = await store.findCompany(rows.first[0] as String);
     if (company == null) throw const ApiError.unauthorized('Clé API invalide.');
-    if (!allowed(company)) {
+    return ApiKey(company, rows.first[2] as String, {...(rows.first[3] as List).cast<String>()}, rows.first[4] as String?,
+        id: rows.first[5] as String, prefix: 'sfk_${m[1]}');
+  }
+
+  /// Clé valide : entreprise, nom, droits et personne au nom de qui elle agit.
+  Future<ApiKey> key(String? header) async {
+    final k = await _find(header);
+    if (!allowed(k.company)) {
       throw const ApiError(402, 'option_required', 'Option « accès API » nécessaire pour créer une clé.');
     }
-    await store.query(store.db, 'UPDATE api_keys SET last_used_at = @t WHERE prefix = @p', {'p': m[1], 't': now()});
-    return ApiKey(company, rows.first[2] as String, {...(rows.first[3] as List).cast<String>()}, rows.first[4] as String?);
+    await store.query(store.db, 'UPDATE api_keys SET last_used_at = @t WHERE id = @k::uuid', {'k': k.id, 't': now()});
+    return k;
   }
 
   /// Personne au nom de qui une clé d'écriture agit : son créateur s'il
@@ -182,6 +197,41 @@ class ApiAccessService {
       SELECT user_id::text FROM memberships WHERE company_id = @c::uuid AND role = 'owner' AND left_at IS NULL''',
         {'c': k.company.id});
     return (await store.findActiveUser(owner.first[0] as String))!;
+  }
+
+  /// Service lisible pour les journaux (avant / après une modification).
+  Future<Map<String, Object?>?> shiftView(String companyId, String shiftId) async {
+    final rows = await store.query(store.db, '''
+      SELECT s.day, s.start_min, s.end_min, coalesce(m.display_name, u.custom_name, u.name), u.public_id,
+        m.employee_number, si.name, p.name, s.note
+      FROM shifts s
+      LEFT JOIN users u ON u.id = s.user_id
+      LEFT JOIN memberships m ON m.user_id = s.user_id AND m.company_id = s.company_id AND m.left_at IS NULL
+      LEFT JOIN sites si ON si.id = s.site_id
+      LEFT JOIN positions p ON p.id = s.position_id
+      WHERE s.id::text = @i AND s.company_id = @c::uuid''', {'i': shiftId, 'c': companyId});
+    if (rows.isEmpty) return null;
+    final r = rows.first;
+    String hm(int m) => '${(m % 1440 ~/ 60).toString().padLeft(2, '0')}:${(m % 60).toString().padLeft(2, '0')}';
+    return {
+      'day': formatDay(r[0] as DateTime),
+      'start': hm(r[1] as int),
+      'end': hm(r[2] as int),
+      'person': r[3] == null ? null : [r[3], r[4], r[5]].whereType<String>().join(' · '),
+      'site': r[6],
+      'position': r[7],
+      'note': r[8],
+    };
+  }
+
+  /// Personne lisible : « Marie · SF-… · M-0007 ».
+  Future<String?> personLabel(String companyId, String? userId) async {
+    if (userId == null) return null;
+    final r = await store.query(store.db, '''
+      SELECT coalesce(m.display_name, u.custom_name, u.name), u.public_id, m.employee_number
+      FROM users u LEFT JOIN memberships m ON m.user_id = u.id AND m.company_id = @c::uuid AND m.left_at IS NULL
+      WHERE u.id::text = @u''', {'u': userId, 'c': companyId});
+    return r.isEmpty ? null : r.first.whereType<String>().join(' · ');
   }
 
   /// Personne désignée par son identifiant SF, son matricule ou son id interne.
@@ -305,6 +355,8 @@ class ApiKey {
   final String name;
   final Set<String> scopes;
   final String? createdBy;
+  final String? id;
+  final String? prefix;
 
-  const ApiKey(this.company, this.name, this.scopes, this.createdBy);
+  const ApiKey(this.company, this.name, this.scopes, this.createdBy, {this.id, this.prefix});
 }

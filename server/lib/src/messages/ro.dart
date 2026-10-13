@@ -240,4 +240,8 @@ const ro = <String, String>{
   '5 webhooks au plus : supprimez-en un d\'abord.': 'Cel mult 5 webhook-uri: ștergeți mai întâi unul.',
   'Adresse invalide : https://… attendue.': 'Adresă invalidă: se așteaptă https://…',
   'Événements inconnus.': 'Evenimente necunoscute.',
+  'La clé API « {key} » a échoué {count} fois en une heure : vérifiez le logiciel qui l\'utilise (journaux de l\'accès API).': 'Cheia API „{key}” a eșuat de {count} ori într-o oră: verificați programul care o folosește (jurnalele accesului API).',
+  'La clé API « {key} » a été utilisée depuis une nouvelle adresse ({ip}). Si ce n\'est pas vous, révoquez-la.': 'Cheia API „{key}” a fost folosită de la o adresă nouă ({ip}). Dacă nu ați fost dvs., revocați-o.',
+  'Mois invalide.': 'Lună invalidă.',
+  'Année invalide.': 'An invalid.',
 };

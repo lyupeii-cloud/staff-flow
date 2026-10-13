@@ -240,4 +240,8 @@ const pl = <String, String>{
   '5 webhooks au plus : supprimez-en un d\'abord.': 'Najwyżej 5 webhooków: najpierw usuń jeden.',
   'Adresse invalide : https://… attendue.': 'Nieprawidłowy adres: oczekiwano https://…',
   'Événements inconnus.': 'Nieznane zdarzenia.',
+  'La clé API « {key} » a échoué {count} fois en une heure : vérifiez le logiciel qui l\'utilise (journaux de l\'accès API).': 'Klucz API „{key}” zawiódł {count} razy w ciągu godziny: sprawdź program, który go używa (dzienniki dostępu API).',
+  'La clé API « {key} » a été utilisée depuis une nouvelle adresse ({ip}). Si ce n\'est pas vous, révoquez-la.': 'Klucz API „{key}” został użyty z nowego adresu ({ip}). Jeśli to nie Ty, unieważnij go.',
+  'Mois invalide.': 'Nieprawidłowy miesiąc.',
+  'Année invalide.': 'Nieprawidłowy rok.',
 };

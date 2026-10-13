@@ -57,6 +57,8 @@ class PlatformService {
     SettingDef('extraMinDays', 'extras', SettingKind.count, 30, 0, 365),
     SettingDef('trialDays', 'durations', SettingKind.count, 2, 0, 90),
     SettingDef('graceDays', 'durations', SettingKind.count, 15, 0, 90),
+    SettingDef('apiLogLiveMonths', 'durations', SettingKind.count, 12, 1, 36),
+    SettingDef('apiLogYears', 'durations', SettingKind.count, 3, 1, 10),
     SettingDef('priceNoticeDays', 'durations', SettingKind.count, 30, 0, 365),
     SettingDef('invoiceRetentionYears', 'durations', SettingKind.count, 10, 1, 30),
   ];

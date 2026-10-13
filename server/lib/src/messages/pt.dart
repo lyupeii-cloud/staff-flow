@@ -240,4 +240,8 @@ const pt = <String, String>{
   '5 webhooks au plus : supprimez-en un d\'abord.': 'No máximo 5 webhooks: elimine um primeiro.',
   'Adresse invalide : https://… attendue.': 'Endereço inválido: esperado https://…',
   'Événements inconnus.': 'Eventos desconhecidos.',
+  'La clé API « {key} » a échoué {count} fois en une heure : vérifiez le logiciel qui l\'utilise (journaux de l\'accès API).': 'A chave API «{key}» falhou {count} vezes numa hora: verifique o programa que a usa (registos do acesso API).',
+  'La clé API « {key} » a été utilisée depuis une nouvelle adresse ({ip}). Si ce n\'est pas vous, révoquez-la.': 'A chave API «{key}» foi usada a partir de um novo endereço ({ip}). Se não foi você, revogue-a.',
+  'Mois invalide.': 'Mês inválido.',
+  'Année invalide.': 'Ano inválido.',
 };

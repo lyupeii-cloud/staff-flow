@@ -240,4 +240,8 @@ const ru = <String, String>{
   '5 webhooks au plus : supprimez-en un d\'abord.': 'Не более 5 вебхуков: сначала удалите один.',
   'Adresse invalide : https://… attendue.': 'Неверный адрес: ожидается https://…',
   'Événements inconnus.': 'Неизвестные события.',
+  'La clé API « {key} » a échoué {count} fois en une heure : vérifiez le logiciel qui l\'utilise (journaux de l\'accès API).': 'Ключ API «{key}» дал сбой {count} раз за час: проверьте программу, которая его использует (журналы доступа к API).',
+  'La clé API « {key} » a été utilisée depuis une nouvelle adresse ({ip}). Si ce n\'est pas vous, révoquez-la.': 'Ключ API «{key}» использован с нового адреса ({ip}). Если это не вы, отзовите его.',
+  'Mois invalide.': 'Неверный месяц.',
+  'Année invalide.': 'Неверный год.',
 };

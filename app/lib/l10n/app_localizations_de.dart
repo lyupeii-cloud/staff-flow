@@ -2404,4 +2404,169 @@ class L10nDe extends L10n {
 
   @override
   String get whStDropped => 'verworfen';
+
+  @override
+  String get lgTitle => 'Protokolle';
+
+  @override
+  String get lgSub =>
+      'Jeder Aufruf Ihrer API-Schlüssel und des MCP-Assistenten und jede Webhook-Zustellung. Wischen, um den Monat zu wechseln.';
+
+  @override
+  String get lgSearch => 'Suche: Person, Personalnummer, Aktion…';
+
+  @override
+  String get lgAllHistory => 'Im gesamten Verlauf suchen (mit Archiven)';
+
+  @override
+  String get lgArchived => 'Archivierter Monat';
+
+  @override
+  String get lgNone => 'Nichts in diesem Monat.';
+
+  @override
+  String get lgMore => 'Mehr anzeigen';
+
+  @override
+  String get lgExport => 'Ein Jahr herunterladen (ZIP)';
+
+  @override
+  String get lgAllKeys => 'Alle Schlüssel';
+
+  @override
+  String get lgSourceApi => 'API';
+
+  @override
+  String get lgSourceMcp => 'MCP-Assistent';
+
+  @override
+  String get lgSourceWebhook => 'Webhook';
+
+  @override
+  String get lgKindRead => 'Lesen';
+
+  @override
+  String get lgKindWrite => 'Schreiben';
+
+  @override
+  String get lgOk => 'Erfolgreich';
+
+  @override
+  String get lgError => 'Fehlgeschlagen';
+
+  @override
+  String get lgBefore => 'Vorher';
+
+  @override
+  String get lgAfter => 'Nachher';
+
+  @override
+  String lgStats(String today, String month) {
+    return 'Heute: $today · diesen Monat: $month';
+  }
+
+  @override
+  String lgLastFailure(String date) {
+    return 'Letzter Fehler: $date';
+  }
+
+  @override
+  String get lgActShiftsCreate => 'Schichten erstellt';
+
+  @override
+  String get lgActShiftUpdate => 'Schicht geändert';
+
+  @override
+  String get lgActShiftDelete => 'Schicht gelöscht';
+
+  @override
+  String get lgActPublish => 'Dienstplan veröffentlicht';
+
+  @override
+  String get lgActImport => 'Mitarbeitende importiert';
+
+  @override
+  String get lgActProfile => 'Personalnummer oder Position geändert';
+
+  @override
+  String get lgActPosition => 'Position erstellt';
+
+  @override
+  String get lgActSite => 'Standort erstellt';
+
+  @override
+  String get lgActNews => 'Mitteilung veröffentlicht';
+
+  @override
+  String get lgActApprove => 'Anfrage genehmigt';
+
+  @override
+  String get lgActRefuse => 'Anfrage abgelehnt';
+
+  @override
+  String get lgActRead => 'Lesen';
+
+  @override
+  String get lgActWebhook => 'Webhook gesendet';
+
+  @override
+  String get lgFDay => 'Tag';
+
+  @override
+  String get lgFStart => 'Beginn';
+
+  @override
+  String get lgFEnd => 'Ende';
+
+  @override
+  String get lgFPerson => 'Person';
+
+  @override
+  String get lgFSite => 'Standort';
+
+  @override
+  String get lgFPosition => 'Position';
+
+  @override
+  String get lgFNote => 'Notiz';
+
+  @override
+  String get lgFNumber => 'Personalnummer';
+
+  @override
+  String noticeApiFailing(String key, String count) {
+    return 'Der API-Schlüssel „$key“ ist in einer Stunde $count-mal fehlgeschlagen: Prüfen Sie die Software, die ihn nutzt.';
+  }
+
+  @override
+  String noticeApiNewIp(String key, String ip) {
+    return 'Der API-Schlüssel „$key“ wurde von einer neuen Adresse ($ip) verwendet. Wenn Sie das nicht waren, widerrufen Sie ihn.';
+  }
+
+  @override
+  String get lgYear => 'Jahr';
+
+  @override
+  String get lgResults => 'Ergebnisse im gesamten Verlauf';
+
+  @override
+  String get lgAllSources => 'Alle Quellen';
+
+  @override
+  String get lgAllKinds => 'Lesen und Schreiben';
+
+  @override
+  String get lgAllResults => 'Erfolgreich und fehlgeschlagen';
+
+  @override
+  String get lgFDate => 'Datum';
+
+  @override
+  String get lgFKey => 'Schlüssel';
+
+  @override
+  String get lgFSource => 'Quelle';
+
+  @override
+  String get lgFStatus => 'Status';
 }

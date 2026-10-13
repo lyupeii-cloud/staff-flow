@@ -2395,4 +2395,169 @@ class L10nRu extends L10n {
 
   @override
   String get whStDropped => 'отменено';
+
+  @override
+  String get lgTitle => 'Журналы';
+
+  @override
+  String get lgSub =>
+      'Каждый вызов ваших ключей API и ассистента MCP и каждая отправка вебхука. Листайте, чтобы сменить месяц.';
+
+  @override
+  String get lgSearch => 'Поиск: человек, табельный номер, действие…';
+
+  @override
+  String get lgAllHistory => 'Искать во всей истории (включая архивы)';
+
+  @override
+  String get lgArchived => 'Месяц в архиве';
+
+  @override
+  String get lgNone => 'За этот месяц ничего.';
+
+  @override
+  String get lgMore => 'Показать ещё';
+
+  @override
+  String get lgExport => 'Скачать год (ZIP)';
+
+  @override
+  String get lgAllKeys => 'Все ключи';
+
+  @override
+  String get lgSourceApi => 'API';
+
+  @override
+  String get lgSourceMcp => 'Ассистент MCP';
+
+  @override
+  String get lgSourceWebhook => 'Вебхук';
+
+  @override
+  String get lgKindRead => 'Чтение';
+
+  @override
+  String get lgKindWrite => 'Запись';
+
+  @override
+  String get lgOk => 'Успешно';
+
+  @override
+  String get lgError => 'Ошибка';
+
+  @override
+  String get lgBefore => 'До';
+
+  @override
+  String get lgAfter => 'После';
+
+  @override
+  String lgStats(String today, String month) {
+    return 'Сегодня: $today · в этом месяце: $month';
+  }
+
+  @override
+  String lgLastFailure(String date) {
+    return 'Последняя ошибка: $date';
+  }
+
+  @override
+  String get lgActShiftsCreate => 'Смены созданы';
+
+  @override
+  String get lgActShiftUpdate => 'Смена изменена';
+
+  @override
+  String get lgActShiftDelete => 'Смена удалена';
+
+  @override
+  String get lgActPublish => 'График опубликован';
+
+  @override
+  String get lgActImport => 'Сотрудники импортированы';
+
+  @override
+  String get lgActProfile => 'Табельный номер или должность изменены';
+
+  @override
+  String get lgActPosition => 'Должность создана';
+
+  @override
+  String get lgActSite => 'Объект создан';
+
+  @override
+  String get lgActNews => 'Объявление опубликовано';
+
+  @override
+  String get lgActApprove => 'Запрос одобрен';
+
+  @override
+  String get lgActRefuse => 'Запрос отклонён';
+
+  @override
+  String get lgActRead => 'Чтение';
+
+  @override
+  String get lgActWebhook => 'Вебхук отправлен';
+
+  @override
+  String get lgFDay => 'День';
+
+  @override
+  String get lgFStart => 'Начало';
+
+  @override
+  String get lgFEnd => 'Конец';
+
+  @override
+  String get lgFPerson => 'Человек';
+
+  @override
+  String get lgFSite => 'Объект';
+
+  @override
+  String get lgFPosition => 'Должность';
+
+  @override
+  String get lgFNote => 'Примечание';
+
+  @override
+  String get lgFNumber => 'Табельный номер';
+
+  @override
+  String noticeApiFailing(String key, String count) {
+    return 'Ключ API «$key» дал сбой $count раз за час: проверьте программу, которая его использует.';
+  }
+
+  @override
+  String noticeApiNewIp(String key, String ip) {
+    return 'Ключ API «$key» использован с нового адреса ($ip). Если это не вы, отзовите его.';
+  }
+
+  @override
+  String get lgYear => 'Год';
+
+  @override
+  String get lgResults => 'Результаты во всей истории';
+
+  @override
+  String get lgAllSources => 'Все источники';
+
+  @override
+  String get lgAllKinds => 'Чтение и запись';
+
+  @override
+  String get lgAllResults => 'Успешные и ошибки';
+
+  @override
+  String get lgFDate => 'Дата';
+
+  @override
+  String get lgFKey => 'Ключ';
+
+  @override
+  String get lgFSource => 'Источник';
+
+  @override
+  String get lgFStatus => 'Статус';
 }

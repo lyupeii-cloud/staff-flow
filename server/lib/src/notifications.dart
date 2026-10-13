@@ -165,6 +165,8 @@ class NotificationService {
     'billing_grace': NotifyCategory.billing,
     'billing_grace_reminder': NotifyCategory.billing,
     'billing_deleted': NotifyCategory.billing,
+    'api_failing': NotifyCategory.billing,
+    'api_new_ip': NotifyCategory.billing,
     'google_switch_link': NotifyCategory.requests,
     'announcement': NotifyCategory.messages,
     'login_blocked': NotifyCategory.requests,
@@ -323,6 +325,16 @@ class NotificationService {
       'google_switch_link' => (
           title,
           t('{name} a créé un lien pour relier votre compte à un nouveau compte Google. Si vous n\'avez rien demandé, prévenez votre responsable.', {'name': name})
+        ),
+      'api_failing' => (
+          title,
+          t('La clé API « {key} » a échoué {count} fois en une heure : vérifiez le logiciel qui l\'utilise (journaux de l\'accès API).',
+              {'key': '${data['key'] ?? ''}', 'count': '${data['count'] ?? ''}'})
+        ),
+      'api_new_ip' => (
+          title,
+          t('La clé API « {key} » a été utilisée depuis une nouvelle adresse ({ip}). Si ce n\'est pas vous, révoquez-la.',
+              {'key': '${data['key'] ?? ''}', 'ip': '${data['ip'] ?? ''}'})
         ),
       'billing_deleted' => (
           title,

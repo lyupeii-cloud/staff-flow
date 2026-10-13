@@ -4103,6 +4103,318 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'dropped'**
   String get whStDropped;
+
+  /// No description provided for @lgTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Logs'**
+  String get lgTitle;
+
+  /// No description provided for @lgSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Every call from your API keys and the MCP assistant, and every webhook delivery. Swipe to change month.'**
+  String get lgSub;
+
+  /// No description provided for @lgSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search: person, employee number, action…'**
+  String get lgSearch;
+
+  /// No description provided for @lgAllHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Search the whole history (archives included)'**
+  String get lgAllHistory;
+
+  /// No description provided for @lgArchived.
+  ///
+  /// In en, this message translates to:
+  /// **'Archived month'**
+  String get lgArchived;
+
+  /// No description provided for @lgNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing for this month.'**
+  String get lgNone;
+
+  /// No description provided for @lgMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Show more'**
+  String get lgMore;
+
+  /// No description provided for @lgExport.
+  ///
+  /// In en, this message translates to:
+  /// **'Download a year (ZIP)'**
+  String get lgExport;
+
+  /// No description provided for @lgAllKeys.
+  ///
+  /// In en, this message translates to:
+  /// **'All keys'**
+  String get lgAllKeys;
+
+  /// No description provided for @lgSourceApi.
+  ///
+  /// In en, this message translates to:
+  /// **'API'**
+  String get lgSourceApi;
+
+  /// No description provided for @lgSourceMcp.
+  ///
+  /// In en, this message translates to:
+  /// **'MCP assistant'**
+  String get lgSourceMcp;
+
+  /// No description provided for @lgSourceWebhook.
+  ///
+  /// In en, this message translates to:
+  /// **'Webhook'**
+  String get lgSourceWebhook;
+
+  /// No description provided for @lgKindRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Read'**
+  String get lgKindRead;
+
+  /// No description provided for @lgKindWrite.
+  ///
+  /// In en, this message translates to:
+  /// **'Write'**
+  String get lgKindWrite;
+
+  /// No description provided for @lgOk.
+  ///
+  /// In en, this message translates to:
+  /// **'Succeeded'**
+  String get lgOk;
+
+  /// No description provided for @lgError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed'**
+  String get lgError;
+
+  /// No description provided for @lgBefore.
+  ///
+  /// In en, this message translates to:
+  /// **'Before'**
+  String get lgBefore;
+
+  /// No description provided for @lgAfter.
+  ///
+  /// In en, this message translates to:
+  /// **'After'**
+  String get lgAfter;
+
+  /// No description provided for @lgStats.
+  ///
+  /// In en, this message translates to:
+  /// **'Today: {today} · this month: {month}'**
+  String lgStats(String today, String month);
+
+  /// No description provided for @lgLastFailure.
+  ///
+  /// In en, this message translates to:
+  /// **'Last failure: {date}'**
+  String lgLastFailure(String date);
+
+  /// No description provided for @lgActShiftsCreate.
+  ///
+  /// In en, this message translates to:
+  /// **'Shifts created'**
+  String get lgActShiftsCreate;
+
+  /// No description provided for @lgActShiftUpdate.
+  ///
+  /// In en, this message translates to:
+  /// **'Shift edited'**
+  String get lgActShiftUpdate;
+
+  /// No description provided for @lgActShiftDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Shift deleted'**
+  String get lgActShiftDelete;
+
+  /// No description provided for @lgActPublish.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule published'**
+  String get lgActPublish;
+
+  /// No description provided for @lgActImport.
+  ///
+  /// In en, this message translates to:
+  /// **'Employees imported'**
+  String get lgActImport;
+
+  /// No description provided for @lgActProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Employee number or position changed'**
+  String get lgActProfile;
+
+  /// No description provided for @lgActPosition.
+  ///
+  /// In en, this message translates to:
+  /// **'Position created'**
+  String get lgActPosition;
+
+  /// No description provided for @lgActSite.
+  ///
+  /// In en, this message translates to:
+  /// **'Site created'**
+  String get lgActSite;
+
+  /// No description provided for @lgActNews.
+  ///
+  /// In en, this message translates to:
+  /// **'Announcement published'**
+  String get lgActNews;
+
+  /// No description provided for @lgActApprove.
+  ///
+  /// In en, this message translates to:
+  /// **'Request approved'**
+  String get lgActApprove;
+
+  /// No description provided for @lgActRefuse.
+  ///
+  /// In en, this message translates to:
+  /// **'Request refused'**
+  String get lgActRefuse;
+
+  /// No description provided for @lgActRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Read'**
+  String get lgActRead;
+
+  /// No description provided for @lgActWebhook.
+  ///
+  /// In en, this message translates to:
+  /// **'Webhook sent'**
+  String get lgActWebhook;
+
+  /// No description provided for @lgFDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Day'**
+  String get lgFDay;
+
+  /// No description provided for @lgFStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get lgFStart;
+
+  /// No description provided for @lgFEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'End'**
+  String get lgFEnd;
+
+  /// No description provided for @lgFPerson.
+  ///
+  /// In en, this message translates to:
+  /// **'Person'**
+  String get lgFPerson;
+
+  /// No description provided for @lgFSite.
+  ///
+  /// In en, this message translates to:
+  /// **'Site'**
+  String get lgFSite;
+
+  /// No description provided for @lgFPosition.
+  ///
+  /// In en, this message translates to:
+  /// **'Position'**
+  String get lgFPosition;
+
+  /// No description provided for @lgFNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Note'**
+  String get lgFNote;
+
+  /// No description provided for @lgFNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Employee number'**
+  String get lgFNumber;
+
+  /// No description provided for @noticeApiFailing.
+  ///
+  /// In en, this message translates to:
+  /// **'API key “{key}” failed {count} times in one hour: check the software using it.'**
+  String noticeApiFailing(String key, String count);
+
+  /// No description provided for @noticeApiNewIp.
+  ///
+  /// In en, this message translates to:
+  /// **'API key “{key}” was used from a new address ({ip}). If it wasn\'t you, revoke it.'**
+  String noticeApiNewIp(String key, String ip);
+
+  /// No description provided for @lgYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get lgYear;
+
+  /// No description provided for @lgResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Results in the whole history'**
+  String get lgResults;
+
+  /// No description provided for @lgAllSources.
+  ///
+  /// In en, this message translates to:
+  /// **'All sources'**
+  String get lgAllSources;
+
+  /// No description provided for @lgAllKinds.
+  ///
+  /// In en, this message translates to:
+  /// **'Read and write'**
+  String get lgAllKinds;
+
+  /// No description provided for @lgAllResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Succeeded and failed'**
+  String get lgAllResults;
+
+  /// No description provided for @lgFDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get lgFDate;
+
+  /// No description provided for @lgFKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Key'**
+  String get lgFKey;
+
+  /// No description provided for @lgFSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Source'**
+  String get lgFSource;
+
+  /// No description provided for @lgFStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get lgFStatus;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

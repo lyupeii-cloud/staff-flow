@@ -240,4 +240,8 @@ const it = <String, String>{
   '5 webhooks au plus : supprimez-en un d\'abord.': 'Al massimo 5 webhook: eliminane prima uno.',
   'Adresse invalide : https://… attendue.': 'Indirizzo non valido: atteso https://…',
   'Événements inconnus.': 'Eventi sconosciuti.',
+  'La clé API « {key} » a échoué {count} fois en une heure : vérifiez le logiciel qui l\'utilise (journaux de l\'accès API).': 'La chiave API «{key}» non è riuscita {count} volte in un\'ora: controlla il software che la usa (registri dell\'accesso API).',
+  'La clé API « {key} » a été utilisée depuis une nouvelle adresse ({ip}). Si ce n\'est pas vous, révoquez-la.': 'La chiave API «{key}» è stata usata da un nuovo indirizzo ({ip}). Se non sei stato tu, revocala.',
+  'Mois invalide.': 'Mese non valido.',
+  'Année invalide.': 'Anno non valido.',
 };

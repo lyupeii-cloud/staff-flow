@@ -77,6 +77,8 @@ const _labels = {
   'extraMinDays': 'Durée minimale d\'un extra (jours)',
   'trialDays': 'Essai gratuit (jours)',
   'graceDays': 'Période de grâce (jours)',
+  'apiLogLiveMonths': 'Journaux API : mois gardés en base avant archivage',
+  'apiLogYears': 'Journaux API : conservation totale (années)',
   'priceNoticeDays': 'Préavis avant un changement de prix (jours)',
   'invoiceRetentionYears': 'Conservation des factures d\'une entreprise fermée (années)',
   'sellerName': 'Vendeur : nom',

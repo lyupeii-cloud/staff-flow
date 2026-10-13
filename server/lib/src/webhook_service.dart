@@ -45,6 +45,9 @@ class WebhookService {
 
   static const maxHooks = 5;
 
+  /// Chaque envoi (réussi ou non), pour les journaux de l'entreprise.
+  Future<void> Function(String companyId, String event, String url, int? status, String? error, Duration took)? onSent;
+
   /// Envois ratés d'affilée avant de couper l'adresse.
   static const maxFailures = 10;
 
@@ -418,6 +421,7 @@ class WebhookService {
     final stamp = now().millisecondsSinceEpoch ~/ 1000;
     final signature = Hmac(sha256, utf8.encode(_open(r[5] as String))).convert(utf8.encode('$stamp.$body')).toString();
     int? code;
+    final watch = Stopwatch()..start();
     String? error;
     try {
       final uri = Uri.parse(r[4] as String);
@@ -443,6 +447,11 @@ class WebhookService {
     } catch (e) {
       error = e.toString();
       if (error.length > 300) error = error.substring(0, 300);
+    }
+    try {
+      await onSent?.call(r[6] as String, r[2] as String, r[4] as String, code, error, watch.elapsed);
+    } catch (e) {
+      print('Journaux webhooks : $e');
     }
     final attempts = (r[1] as int) + 1;
     final ok = error == null;

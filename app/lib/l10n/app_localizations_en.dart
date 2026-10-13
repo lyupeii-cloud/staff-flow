@@ -2387,6 +2387,171 @@ class L10nEn extends L10n {
 
   @override
   String get whStDropped => 'dropped';
+
+  @override
+  String get lgTitle => 'Logs';
+
+  @override
+  String get lgSub =>
+      'Every call from your API keys and the MCP assistant, and every webhook delivery. Swipe to change month.';
+
+  @override
+  String get lgSearch => 'Search: person, employee number, action…';
+
+  @override
+  String get lgAllHistory => 'Search the whole history (archives included)';
+
+  @override
+  String get lgArchived => 'Archived month';
+
+  @override
+  String get lgNone => 'Nothing for this month.';
+
+  @override
+  String get lgMore => 'Show more';
+
+  @override
+  String get lgExport => 'Download a year (ZIP)';
+
+  @override
+  String get lgAllKeys => 'All keys';
+
+  @override
+  String get lgSourceApi => 'API';
+
+  @override
+  String get lgSourceMcp => 'MCP assistant';
+
+  @override
+  String get lgSourceWebhook => 'Webhook';
+
+  @override
+  String get lgKindRead => 'Read';
+
+  @override
+  String get lgKindWrite => 'Write';
+
+  @override
+  String get lgOk => 'Succeeded';
+
+  @override
+  String get lgError => 'Failed';
+
+  @override
+  String get lgBefore => 'Before';
+
+  @override
+  String get lgAfter => 'After';
+
+  @override
+  String lgStats(String today, String month) {
+    return 'Today: $today · this month: $month';
+  }
+
+  @override
+  String lgLastFailure(String date) {
+    return 'Last failure: $date';
+  }
+
+  @override
+  String get lgActShiftsCreate => 'Shifts created';
+
+  @override
+  String get lgActShiftUpdate => 'Shift edited';
+
+  @override
+  String get lgActShiftDelete => 'Shift deleted';
+
+  @override
+  String get lgActPublish => 'Schedule published';
+
+  @override
+  String get lgActImport => 'Employees imported';
+
+  @override
+  String get lgActProfile => 'Employee number or position changed';
+
+  @override
+  String get lgActPosition => 'Position created';
+
+  @override
+  String get lgActSite => 'Site created';
+
+  @override
+  String get lgActNews => 'Announcement published';
+
+  @override
+  String get lgActApprove => 'Request approved';
+
+  @override
+  String get lgActRefuse => 'Request refused';
+
+  @override
+  String get lgActRead => 'Read';
+
+  @override
+  String get lgActWebhook => 'Webhook sent';
+
+  @override
+  String get lgFDay => 'Day';
+
+  @override
+  String get lgFStart => 'Start';
+
+  @override
+  String get lgFEnd => 'End';
+
+  @override
+  String get lgFPerson => 'Person';
+
+  @override
+  String get lgFSite => 'Site';
+
+  @override
+  String get lgFPosition => 'Position';
+
+  @override
+  String get lgFNote => 'Note';
+
+  @override
+  String get lgFNumber => 'Employee number';
+
+  @override
+  String noticeApiFailing(String key, String count) {
+    return 'API key “$key” failed $count times in one hour: check the software using it.';
+  }
+
+  @override
+  String noticeApiNewIp(String key, String ip) {
+    return 'API key “$key” was used from a new address ($ip). If it wasn\'t you, revoke it.';
+  }
+
+  @override
+  String get lgYear => 'Year';
+
+  @override
+  String get lgResults => 'Results in the whole history';
+
+  @override
+  String get lgAllSources => 'All sources';
+
+  @override
+  String get lgAllKinds => 'Read and write';
+
+  @override
+  String get lgAllResults => 'Succeeded and failed';
+
+  @override
+  String get lgFDate => 'Date';
+
+  @override
+  String get lgFKey => 'Key';
+
+  @override
+  String get lgFSource => 'Source';
+
+  @override
+  String get lgFStatus => 'Status';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).
