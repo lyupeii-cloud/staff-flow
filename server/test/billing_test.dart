@@ -200,7 +200,7 @@ void main() {
   test('places : 10 à la création, 5 % de marge, puis plus personne ; places achetées seules', () async {
     final boss = await env.login('boss');
     final company = await env.createCompany(boss);
-    // 10 places + 1 (5 %, au moins une) : la 12e personne est refusée.
+    // 10 places (5 % arrondi à l'inférieur : pas de marge) : la 12e personne est refusée.
     for (var i = 0; i < 11; i++) {
       final c = await env.login('s$i');
       await env.store.addMember(company, c.id, Role.employee);
@@ -210,7 +210,7 @@ void main() {
     // Un extra ne prend pas de place.
     expect((await boss('POST', '/companies/$company/invite', {'qr': late.user['publicId'], 'role': 'extra'})).$1, 201);
     var b = await billing(boss, company);
-    expect([b['staff'], b['slots'], b['minSlots'], b['seatLimit']], [11, 10, 20, 11]);
+    expect([b['staff'], b['slots'], b['minSlots'], b['seatLimit']], [11, 10, 20, 10]);
     // Paiement : pas moins que l'effectif ; 30 places au prix de 30.
     expect((await boss('POST', '/companies/$company/billing/checkout', {'period': 'month', 'cascade': false, 'slots': 10})).$1, 400);
     expect((await boss('POST', '/companies/$company/billing/checkout', {'period': 'month', 'cascade': false, 'slots': 25})).$1, 400);
@@ -218,7 +218,7 @@ void main() {
     expect(quote30['offers']['month-0-0']['price'], 300 + 2 * 100);
     await boss.ok('POST', '/companies/$company/billing/checkout', {'period': 'month', 'cascade': false, 'slots': 30});
     b = await billing(boss, company);
-    expect([b['slots'], b['seatLimit']], [30, 32]);
+    expect([b['slots'], b['seatLimit']], [30, 31]);
     // Places en plus pendant l'abonnement : la différence de prix, chaque mois jusqu'à la fin.
     final more = (await boss.ok('GET', '/companies/$company/billing?slots=50'))['addons']['slots'] as Map;
     expect([more['lines'].single['unitCents'], more['lines'].single['months']], [200, 2]);

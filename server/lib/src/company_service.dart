@@ -42,8 +42,8 @@ class CompanyService {
   }
 
   /// Places : nombre maximal de salariés et responsables (places achetées
-  /// plus 5 %, au moins une personne) ; une entreprise offerte n'a pas de limite.
-  static int seatLimit(int slots) => slots + (slots * 5 + 99) ~/ 100;
+  /// plus 5 %, arrondi à l'inférieur) ; une entreprise offerte n'a pas de limite.
+  static int seatLimit(int slots) => slots + slots * 5 ~/ 100;
 
   /// Une personne de plus (salarié ou responsable) : refusée si les places,
   /// marge comprise, sont toutes prises.
