@@ -51,7 +51,7 @@ void main() {
     await ext('GET', '/ext/members', key);
     expect((await ext('POST', '/ext/publish', key)).$1, 403);
     final all = await logs();
-    expect([for (final l in all) l['action']], ['post /ext/publish', 'read.members', 'shift.update', 'shifts.create']);
+    expect([for (final l in all) l['action']], ['schedule.publish', 'read.members', 'shift.update', 'shifts.create']);
     final update = all[2] as Map;
     expect([update['details']['before'], update['details']['after'], update['kind'], update['source']], [
       {'start': '08:00'},

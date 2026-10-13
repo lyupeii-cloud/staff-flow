@@ -183,7 +183,7 @@ class _ApiLogsPageState extends State<ApiLogsPage> {
     return switch (l['action']) {
           'shifts.create' => [
             '${d['count'] ?? ''}',
-            shift((d['shifts'] as List?)?.firstOrNull),
+            shift((d['shifts'] as List?)?.firstOrNull) ?? (d['input'] as List?)?.firstOrNull as String?,
           ].whereType<String>().join(' · '),
           'shift.update' => shift(d['shift']),
           'shift.delete' => shift(d['before']),
@@ -455,8 +455,8 @@ class _ApiLogsPageState extends State<ApiLogsPage> {
           );
     String fields(Object? m) => m is Map
         ? [
-            for (final e in m.entries)
-              if (e.value != null) '${fieldLabel(t, '${e.key}')} : ${e.value}',
+            for (final e in _ordered(m))
+              if (e.value != null) '${fieldLabel(t, '${e.key}')}: ${e.value}',
           ].join('\n')
         : m is List
         ? m.map(fields).join('\n')
@@ -497,7 +497,7 @@ class _ApiLogsPageState extends State<ApiLogsPage> {
                       Text(t.lgAfter, style: theme.textTheme.labelLarge),
                     ],
                   ),
-                  for (final k in {...before.keys, ...after.keys})
+                  for (final k in _ordered({...before, ...after}).map((e) => e.key))
                     TableRow(
                       children: [
                         Padding(
@@ -524,4 +524,11 @@ class _ApiLogsPageState extends State<ApiLogsPage> {
       ),
     );
   }
+}
+
+/// Champs d'un service dans un ordre lisible (la base les range autrement).
+List<MapEntry> _ordered(Map m) {
+  const order = ['person', 'day', 'start', 'end', 'position', 'site', 'note'];
+  int rank(Object? k) => order.contains(k) ? order.indexOf(k as String) : order.length;
+  return m.entries.toList()..sort((a, b) => rank(a.key).compareTo(rank(b.key)));
 }

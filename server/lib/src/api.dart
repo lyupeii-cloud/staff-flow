@@ -388,7 +388,15 @@ class Api {
           throw const ApiError.badRequest('Champ « shifts » : liste de services attendue (2000 au plus).');
         }
         final publish = body['publish'] == true;
-        ApiLog.note(r, 'shifts.create', {'publish': publish, 'count': list.length});
+        ApiLog.note(r, 'shifts.create', {
+          'publish': publish,
+          'count': list.length,
+          // Ce qui a été demandé (utile si l'envoi est refusé).
+          'input': [
+            for (final s in list.take(50).cast<Map>())
+              [s['person'], s['day'], '${s['start'] ?? ''}–${s['end'] ?? ''}'].whereType<String>().join(' · ')
+          ],
+        });
         if (publish && !k.scopes.contains('publish')) {
           throw const ApiError(403, 'scope_missing', 'Cette clé n\'a pas le droit « {scope} ».', {'scope': 'publish'});
         }

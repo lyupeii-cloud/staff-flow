@@ -66,7 +66,7 @@ class ApiLogService {
         kind: kind,
         method: req.method,
         path: '/${req.url.path}$query',
-        action: log.action ?? '${req.method.toLowerCase()} /${req.url.path}',
+        action: log.action ?? defaultAction(req.method, req.url.pathSegments),
         details: log.details,
         status: status,
         error: error is ApiError ? error : null,
@@ -76,6 +76,26 @@ class ApiLogService {
     } catch (e) {
       print('Journaux API : $e');
     }
+  }
+
+  /// Action d'un appel refusé avant que la route ne la note (droit manquant,
+  /// option arrêtée…).
+  static String defaultAction(String method, List<String> path) {
+    final p = path.length > 1 && path.first == 'ext' ? path.sublist(1) : path;
+    if (method == 'GET') return 'read.${p.isEmpty ? '' : p.last}';
+    return switch ((method, p.firstOrNull, p.length)) {
+      ('POST', 'shifts', 1) => 'shifts.create',
+      ('PATCH', 'shifts', _) => 'shift.update',
+      ('DELETE', 'shifts', _) => 'shift.delete',
+      ('POST', 'publish', _) => 'schedule.publish',
+      ('POST', 'members', _) => 'members.import',
+      ('PUT', 'members', _) => 'member.profile',
+      ('POST', 'positions', _) => 'position.create',
+      ('POST', 'sites', _) => 'site.create',
+      ('POST', 'news', _) => 'announcement.publish',
+      ('POST', 'requests', _) => 'request.${p.last}',
+      _ => '${method.toLowerCase()} /${path.join('/')}',
+    };
   }
 
   Future<void> record({
