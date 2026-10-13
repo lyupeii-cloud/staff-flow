@@ -79,15 +79,18 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
     _reload();
   }
 
-  Future<void> _create() async {
+  /// Nouvelle clé, ou [key] modifiée : nom et droits, la clé elle-même ne
+  /// change pas (rien à refaire dans les logiciels).
+  Future<void> _create({Map? key}) async {
     final t = context.l10n;
-    final name = TextEditingController();
-    final scopes = <String>{'read'};
+    final name = TextEditingController(text: key?['name'] as String?);
+    final initial = {...?(key?['scopes'] as List?)?.cast<String>()};
+    final scopes = key == null ? <String>{'read'} : {...initial};
     final ok = await showDialog<bool>(
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setState) => AlertDialog(
-        title: Text(t.apiNewKey),
+        title: Text(key == null ? t.apiNewKey : '${key['prefix']}…'),
         content: SingleChildScrollView(
           child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
             TextField(
@@ -103,7 +106,8 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
                 contentPadding: EdgeInsets.zero,
                 value: scopes.contains(s),
                 // Écriture : seulement avec l'option « API Pro ».
-                onChanged: s != 'read' && !_pro ? null : (v) => setState(() => v == true ? scopes.add(s) : scopes.remove(s)),
+                // Un droit déjà donné peut toujours être retiré.
+                onChanged: s != 'read' && !_pro && !initial.contains(s) ? null : (v) => setState(() => v == true ? scopes.add(s) : scopes.remove(s)),
                 title: Text(_scopeLabel(t, s)),
               ),
             if (!_pro) Text(t.apiProNeeded, style: Theme.of(context).textTheme.bodySmall),
@@ -111,12 +115,17 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
         ),
         actions: [
           TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
-          FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.create)),
+          FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(key == null ? t.create : t.save)),
         ],
       ),
       ),
     );
     if (ok != true || name.text.trim().isEmpty || scopes.isEmpty || !mounted) return;
+    if (key != null) {
+      await _run(() => widget.session.api
+          .send('PATCH', '$_base/${key['id']}', body: {'name': name.text.trim(), 'scopes': scopes.toList()}));
+      return;
+    }
     await _run(() async {
       final r = await widget.session.api
           .send('POST', _base, body: {'name': name.text.trim(), 'scopes': scopes.toList()});
@@ -226,7 +235,12 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
                             '${[for (final s in (k['scopes'] as List? ?? const ['read'])) _scopeLabel(t, s as String)].join(' · ')}\n'
                             '${k['lastUsedAt'] == null ? t.apiKeyNeverUsed : t.apiKeyLastUsed(longDate(DateTime.parse(k['lastUsedAt']).toLocal(), loc))}'),
                         isThreeLine: true,
-                        trailing: TextButton(onPressed: () => _revoke(k as Map), child: Text(t.apiRevoke)),
+                        onTap: () => _create(key: k as Map),
+                        trailing: Row(mainAxisSize: MainAxisSize.min, children: [
+                          IconButton(
+                              tooltip: t.changeSettings, icon: const Icon(Icons.edit_outlined), onPressed: () => _create(key: k)),
+                          TextButton(onPressed: () => _revoke(k), child: Text(t.apiRevoke)),
+                        ]),
                       ),
                     ),
                 ]);

@@ -104,6 +104,21 @@ void main() {
     expect((await ext('GET', '/ext/invites', key)).$1, 402);
   });
 
+  test('clé modifiée : mêmes caractères, droits ajoutés ou retirés', () async {
+    final k = await boss.ok('POST', p('/api-keys'), {'name': 'Paie', 'scopes': ['read']});
+    final id = (await boss.ok('GET', p('/api-keys')))['keys'][0]['id'];
+    // Ajouter l'écriture : seulement avec « API Pro ».
+    expect((await boss('PATCH', p('/api-keys/$id'), {'scopes': ['read', 'catalog']})).$1, 402);
+    await paid();
+    final e = await boss.ok('PATCH', p('/api-keys/$id'), {'name': 'ERP', 'scopes': ['catalog', 'read']});
+    expect([e['name'], e['scopes']], ['ERP', ['read', 'catalog']]);
+    expect((await ext('POST', '/ext/positions', k['key'], {'name': 'Caisse'})).$1, 201);
+    // Retirer un droit : la même clé n'écrit plus.
+    await boss.ok('PATCH', p('/api-keys/$id'), {'scopes': ['read']});
+    expect((await ext('POST', '/ext/positions', k['key'], {'name': 'Bar'})).$1, 403);
+    expect((await boss('PATCH', p('/api-keys/$id'), {'scopes': []})).$1, 400);
+  });
+
   test('clés : le patron et les responsables qui gèrent l\'abonnement ; API Pro jamais offerte', () async {
     final m = await env.login('m');
     final compta = await env.login('compta');

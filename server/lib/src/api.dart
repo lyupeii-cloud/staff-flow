@@ -289,6 +289,15 @@ class Api {
                 scopes: scopes == null ? const ['read'] : (scopes as List).cast<String>()),
             status: 201);
       }))
+      ..patch('/companies/<id>/api-keys/<keyId>', _authed((r, u) async {
+        final body = await _body(r);
+        final name = body['name'], scopes = body['scopes'];
+        if (name is! String? || (scopes != null && (scopes is! List || scopes.any((s) => s is! String)))) {
+          throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        }
+        return _json(await apiAccess.update(u, r.params['id']!, r.params['keyId']!,
+            name: name, scopes: (scopes as List?)?.cast<String>()));
+      }))
       ..delete('/companies/<id>/api-keys/<keyId>', _authed((r, u) async {
         await apiAccess.revoke(u, r.params['id']!, r.params['keyId']!);
         return Response(204);

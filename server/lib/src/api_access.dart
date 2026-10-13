@@ -100,6 +100,36 @@ class ApiAccessService {
     return {'key': 'sfk_${prefix}_$secret', 'prefix': 'sfk_$prefix', 'name': clean, 'scopes': clean0.toList()};
   }
 
+  /// Nom et droits modifiés, même clé : rien à changer dans les logiciels.
+  /// Ajouter un droit d'écriture demande l'option « API Pro » ; en retirer
+  /// est toujours possible.
+  Future<Map<String, Object?>> update(User actor, String companyId, String keyId, {String? name, List<String>? scopes}) async {
+    final company = await owned(actor, companyId);
+    final rows = await store.query(store.db, '''
+      SELECT name, scopes FROM api_keys WHERE id::text = @k AND company_id = @c::uuid AND revoked_at IS NULL''',
+        {'k': keyId, 'c': companyId});
+    if (rows.isEmpty) throw const ApiError.notFound();
+    final before = (rows.first[1] as List).cast<String>().toSet();
+    final after = scopes == null ? before : {...scopes};
+    if (after.isEmpty || after.any((s) => s != readScope && !writeScopes.contains(s))) {
+      throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    }
+    if (after.difference(before).any(writeScopes.contains) && !proAllowed(company)) {
+      throw const ApiError(402, 'option_required', 'Option « API Pro » nécessaire pour les droits d\'écriture.');
+    }
+    final clean = (name ?? rows.first[0] as String).trim();
+    if (clean.isEmpty || clean.length > 60) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    final list = [for (final s in [readScope, ...writeScopes]) if (after.contains(s)) s];
+    await store.query(store.db, 'UPDATE api_keys SET name = @n, scopes = @s WHERE id::text = @k',
+        {'k': keyId, 'n': clean, 's': list});
+    await store.audit(companyId: companyId, actorId: actor.id, action: 'api.key_updated', details: {
+      'name': clean,
+      'added': [for (final s in list) if (!before.contains(s)) s],
+      'removed': [for (final s in before) if (!after.contains(s)) s],
+    });
+    return {'id': keyId, 'name': clean, 'scopes': list};
+  }
+
   Future<void> revoke(User actor, String companyId, String keyId) async {
     await owned(actor, companyId);
     final rows = await store.query(store.db, '''
