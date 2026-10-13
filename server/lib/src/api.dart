@@ -146,7 +146,10 @@ class Api {
         return Response(204);
       }))
       // Abonnement et factures (propriétaire de l'entreprise).
-      ..get('/companies/<id>/billing', _authed((r, u) async => _json(await billing.summary(u, r.params['id']!))))
+      ..get('/companies/<id>/billing', _authed((r, u) async {
+        final slots = r.url.queryParameters['slots'];
+        return _json(await billing.summary(u, r.params['id']!, slots: slots == null ? null : int.tryParse(slots) ?? -1));
+      }))
       ..put('/companies/<id>/billing/renewal', _authed((r, u) async {
         final body = await _body(r);
         final option = body['option'], renew = body['renew'];
@@ -155,9 +158,10 @@ class Api {
         return Response(204);
       }))
       ..post('/companies/<id>/billing/addon', _authed((r, u) async {
-        final option = (await _body(r))['option'];
-        if (option is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
-        return _json(await billing.buyAddon(u, r.params['id']!, option));
+        final body = await _body(r);
+        final option = body['option'], slots = body['slots'];
+        if (option is! String || slots is! int?) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        return _json(await billing.buyAddon(u, r.params['id']!, option, slots: slots));
       }))
       ..put('/companies/<id>/members/<userId>/billing', _authed((r, u) async {
         final enabled = (await _body(r))['enabled'];
@@ -172,7 +176,10 @@ class Api {
         }
         if (body['api'] != null && body['api'] is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
         return _json(await billing.checkout(u, r.params['id']!,
-            period: body['period'] as String, cascade: body['cascade'] as bool, api: body['api'] as bool?));
+            period: body['period'] as String,
+            cascade: body['cascade'] as bool,
+            api: body['api'] as bool?,
+            slots: body['slots'] is int ? body['slots'] as int : null));
       }))
       ..get('/companies/<id>/invoices/<invoiceId>/link', _authed((r, u) async {
         final id = int.tryParse(r.params['invoiceId']!);

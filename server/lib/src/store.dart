@@ -88,6 +88,7 @@ class Store {
         cascadeOption: r['cascade_option'] as bool? ?? false,
         apiOption: r['api_option'] as bool? ?? false,
         hidePhotos: r['hide_photos'] as bool? ?? false,
+        slots: r['slots'] as int? ?? 10,
         publicId: r['public_id'] as String? ?? '',
         // Sans image : 0 (le numéro, lui, continue de monter pour la suivante).
         logoVersion: r.containsKey('logo') && r['logo'] == null ? 0 : r['logo_version'] as int? ?? 0,

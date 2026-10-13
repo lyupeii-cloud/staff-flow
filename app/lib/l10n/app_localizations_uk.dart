@@ -1266,7 +1266,7 @@ class L10nUk extends L10n {
 
   @override
   String billingStaff(String count) {
-    return 'Враховано працівників: $count (без власника й тимчасових)';
+    return '$count працівників і керівників (без власника та позаштатних)';
   }
 
   @override
@@ -1500,12 +1500,12 @@ class L10nUk extends L10n {
 
   @override
   String billingLineMonth(String staff) {
-    return 'Підписка, $staff працівн.: 1 місяць';
+    return 'Підписка, $staff місць: 1 міс.';
   }
 
   @override
   String billingLineYear(String staff, String paid) {
-    return 'Підписка, $staff працівн.: 12 місяців за ціною $paid';
+    return 'Підписка, $staff місць: 12 міс. за ціною $paid';
   }
 
   @override
@@ -2013,4 +2013,56 @@ class L10nUk extends L10n {
 
   @override
   String get stateClosed => 'Відхилені або скасовані';
+
+  @override
+  String billingLineSlotsAddon(
+    String from,
+    String to,
+    String start,
+    String end,
+    String months,
+  ) {
+    return 'Додано місця, з $from до $to, з $start по $end: $months міс., без знижки';
+  }
+
+  @override
+  String billingSeats(String used, String limit) {
+    return 'Оплачено місць: $used · до $limit осіб із запасом 5 %';
+  }
+
+  @override
+  String get billingSeatsTitle => 'Кількість місць';
+
+  @override
+  String get billingSeatsHint =>
+      'Працівники й керівники (без власника та позаштатних), блоками по 10. 10 місць при створенні; понад це — запас 5 %, далі додавати не можна.';
+
+  @override
+  String get billingSeatsUnit => 'місць';
+
+  @override
+  String billingSeatsAddon(String from, String to) {
+    return 'Місця: $from → $to';
+  }
+
+  @override
+  String billingSeatsRange(String min) {
+    return 'Від $min до 5000, блоками по 10.';
+  }
+
+  @override
+  String get printWeek => 'Тиждень';
+
+  @override
+  String get printMonth => 'Місяць';
+
+  @override
+  String teamCount(String team, String count) {
+    return '$team · $count';
+  }
+
+  @override
+  String teamCountSeats(String team, String count, String slots) {
+    return '$team · $count/$slots';
+  }
 }

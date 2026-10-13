@@ -416,6 +416,7 @@ class ImportService {
     if (company == null || company.status == CompanyStatus.readOnly) {
       throw const ApiError.conflict('Cette entreprise est en lecture seule.');
     }
+    await companies.ensureSeat(companyId);
     final invite = await store.query(store.db, 'SELECT sites::text[] FROM member_invites WHERE id = @i::uuid', {'i': inviteId});
     await store.addMember(companyId, user.id, Role.employee, sites: (invite.first[0] as List?)?.cast<String>());
     await applyInvite(store, companyId, user.id, inviteId);

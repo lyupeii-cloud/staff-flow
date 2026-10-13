@@ -1265,7 +1265,7 @@ class L10nRo extends L10n {
 
   @override
   String billingStaff(String count) {
-    return '$count angajați numărați (fără proprietar și temporari)';
+    return '$count angajați și responsabili (fără proprietar și extra)';
   }
 
   @override
@@ -1498,12 +1498,12 @@ class L10nRo extends L10n {
 
   @override
   String billingLineMonth(String staff) {
-    return 'Abonament, $staff angajați: 1 lună';
+    return 'Abonament, $staff locuri: 1 lună';
   }
 
   @override
   String billingLineYear(String staff, String paid) {
-    return 'Abonament, $staff angajați: 12 luni la prețul a $paid';
+    return 'Abonament, $staff locuri: 12 luni la prețul a $paid';
   }
 
   @override
@@ -2011,4 +2011,56 @@ class L10nRo extends L10n {
 
   @override
   String get stateClosed => 'Refuzate sau anulate';
+
+  @override
+  String billingLineSlotsAddon(
+    String from,
+    String to,
+    String start,
+    String end,
+    String months,
+  ) {
+    return 'Locuri adăugate, de la $from la $to, de la $start la $end: $months luni, fără reducere';
+  }
+
+  @override
+  String billingSeats(String used, String limit) {
+    return '$used locuri plătite · până la $limit persoane cu marja de 5%';
+  }
+
+  @override
+  String get billingSeatsTitle => 'Număr de locuri';
+
+  @override
+  String get billingSeatsHint =>
+      'Angajați și responsabili (fără proprietar și extra), câte 10. 10 locuri la creare; peste, o marjă de 5%, apoi nu se mai pot adăuga.';
+
+  @override
+  String get billingSeatsUnit => 'locuri';
+
+  @override
+  String billingSeatsAddon(String from, String to) {
+    return 'Locuri: $from → $to';
+  }
+
+  @override
+  String billingSeatsRange(String min) {
+    return 'De la $min la 5000, câte 10.';
+  }
+
+  @override
+  String get printWeek => 'Săptămână';
+
+  @override
+  String get printMonth => 'Lună';
+
+  @override
+  String teamCount(String team, String count) {
+    return '$team · $count';
+  }
+
+  @override
+  String teamCountSeats(String team, String count, String slots) {
+    return '$team · $count/$slots';
+  }
 }

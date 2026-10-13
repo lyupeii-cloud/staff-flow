@@ -885,7 +885,7 @@
     }
   },
   "billingStatusComped": "Complimentary",
-  "billingStaff": "{count} employees counted (owner and temps not included)",
+  "billingStaff": "{count} employees and managers (not the owner or temps)",
   "@billingStaff": {
     "placeholders": {
       "count": {
@@ -1079,7 +1079,7 @@
       }
     }
   },
-  "billingLineMonth": "Subscription, {staff} employees: 1 month",
+  "billingLineMonth": "Subscription, {staff} seats: 1 month",
   "@billingLineMonth": {
     "placeholders": {
       "staff": {
@@ -1087,7 +1087,7 @@
       }
     }
   },
-  "billingLineYear": "Subscription, {staff} employees: 12 months for the price of {paid}",
+  "billingLineYear": "Subscription, {staff} seats: 12 months for the price of {paid}",
   "@billingLineYear": {
     "placeholders": {
       "staff": {
@@ -1480,5 +1480,85 @@
   "filterType": "Type",
   "filterState": "Status",
   "statePending": "Pending",
-  "stateClosed": "Refused or cancelled"
+  "stateClosed": "Refused or cancelled",
+  "billingLineSlotsAddon": "Seats added, from {from} to {to}, from {start} to {end}: {months} months, no discount",
+  "@billingLineSlotsAddon": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingSeats": "{used} seats paid · up to {limit} people with the 5% margin",
+  "@billingSeats": {
+    "placeholders": {
+      "used": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "billingSeatsTitle": "Number of seats",
+  "billingSeatsHint": "Employees and managers (not the owner or temps), in blocks of 10. 10 seats when the company is created; beyond that, a 5% margin, then no more additions.",
+  "billingSeatsUnit": "seats",
+  "billingSeatsAddon": "Seats: {from} → {to}",
+  "@billingSeatsAddon": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "billingSeatsRange": "From {min} to 5000, in blocks of 10.",
+  "@billingSeatsRange": {
+    "placeholders": {
+      "min": {
+        "type": "String"
+      }
+    }
+  },
+  "printWeek": "Week",
+  "printMonth": "Month",
+  "teamCount": "{team} · {count}",
+  "@teamCount": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      },
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "teamCountSeats": "{team} · {count}/{slots}",
+  "@teamCountSeats": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      },
+      "count": {
+        "type": "String"
+      },
+      "slots": {
+        "type": "String"
+      }
+    }
+  }
 }

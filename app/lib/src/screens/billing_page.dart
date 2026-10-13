@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -50,7 +52,27 @@ class _BillingPageState extends State<BillingPage> {
   bool _api = false;
   bool _busy = false;
 
+  /// Places choisies (par tranches de 10) ; `null` : celles proposées par le serveur.
+  int? _slots;
+  Timer? _slotsTimer;
+
   String get _base => '/companies/${widget.company.id}/billing';
+
+  @override
+  void dispose() {
+    _slotsTimer?.cancel();
+    super.dispose();
+  }
+
+  /// Nouveau nombre de places : les prix sont recalculés par le serveur.
+  void _setSlots(int value) {
+    final d = _data;
+    if (d == null) return;
+    final v = value.clamp(d['minSlots'] as int, 5000);
+    setState(() => _slots = v - v % 10);
+    _slotsTimer?.cancel();
+    _slotsTimer = Timer(const Duration(milliseconds: 350), _load);
+  }
 
   @override
   void initState() {
@@ -60,13 +82,18 @@ class _BillingPageState extends State<BillingPage> {
 
   Future<void> _load() async {
     try {
-      final d = (await widget.session.api.send('GET', _base) as Map).cast<String, dynamic>();
+      final first = _data == null;
+      final d = (await widget.session.api.send('GET', _slots == null ? _base : '$_base?slots=$_slots') as Map)
+          .cast<String, dynamic>();
       if (!mounted) return;
       setState(() {
         _data = d;
         _error = null;
-        _cascade = d['cascadeOption'] == true && d['cascadeUntil'] == null;
-        _api = d['apiOption'] == true && d['apiUntil'] == null;
+        _slots = d['slotsChosen'] as int?;
+        if (first) {
+          _cascade = d['cascadeOption'] == true && d['cascadeUntil'] == null;
+          _api = d['apiOption'] == true && d['apiUntil'] == null;
+        }
       });
     } catch (e) {
       if (mounted) setState(() => _error = e);
@@ -126,9 +153,34 @@ class _BillingPageState extends State<BillingPage> {
     );
   }
 
+  /// Nombre de places tapé au clavier (au-delà de 500, la réglette s'arrête).
+  Future<void> _typeSlots(Map<String, dynamic> d) async {
+    final t = context.l10n;
+    final c = TextEditingController(text: '${_slots ?? d['slotsChosen']}');
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (dialog) => AlertDialog(
+        title: Text(t.billingSeatsTitle),
+        content: TextField(
+          controller: c,
+          autofocus: true,
+          keyboardType: TextInputType.number,
+          decoration: InputDecoration(helperText: t.billingSeatsRange('${d['minSlots']}')),
+          onSubmitted: (_) => Navigator.pop(dialog, true),
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(dialog, false), child: Text(t.cancel)),
+          FilledButton(onPressed: () => Navigator.pop(dialog, true), child: Text(t.validate)),
+        ],
+      ),
+    );
+    final n = int.tryParse(c.text.trim());
+    if (ok == true && n != null) _setSlots(((n + 9) ~/ 10) * 10);
+  }
+
   /// Option seule ([option] : `api` ou `cascade`), payée jusqu'à la fin de la période.
   Future<void> _buyAddon(String option) => _run(() async {
-        await widget.session.api.send('POST', '$_base/addon', body: {'option': option});
+        await widget.session.api.send('POST', '$_base/addon', body: {'option': option, if (option == 'slots') 'slots': _slots});
         await widget.session.refresh();
         await _load();
       }, done: context.l10n.billingPaidOk);
@@ -139,6 +191,8 @@ class _BillingPageState extends State<BillingPage> {
     final loc = context.localeName;
     String date(Object? iso) => longDate(DateTime.parse(iso as String).toLocal(), loc);
     String line(Map l) => switch (l['label']) {
+          'slotsAddon' => t.billingLineSlotsAddon('${l['slotsFrom']}', '${l['slots']}', date(l['from']),
+              longDate(DateTime.parse(l['to']).subtract(const Duration(days: 1)), loc), '${l['months']}'),
           'apiAddon' => t.billingLineApiAddon(
               date(l['from']), longDate(DateTime.parse(l['to']).subtract(const Duration(days: 1)), loc), '${l['months']}'),
           'cascadeAddon' => t.billingLineCascadeAddon(
@@ -194,7 +248,8 @@ class _BillingPageState extends State<BillingPage> {
   }
 
   Future<void> _pay(String period) => _run(() async {
-        await widget.session.api.send('POST', '$_base/checkout', body: {'period': period, 'cascade': _cascade, 'api': _api});
+        await widget.session.api
+            .send('POST', '$_base/checkout', body: {'period': period, 'cascade': _cascade, 'api': _api, 'slots': _slots});
         await widget.session.refresh();
         await _load();
       }, done: context.l10n.billingPaidOk);
@@ -244,7 +299,7 @@ class _BillingPageState extends State<BillingPage> {
     };
     final prices = (d['prices'] as Map).cast<String, dynamic>();
     final staff = d['staff'] as int;
-    final included = staff >= (d['cascadeIncludedFrom'] as int);
+    final included = (d['slotsChosen'] as int? ?? staff) >= (d['cascadeIncludedFrom'] as int);
     final cascade = _cascade && !included;
     final monthOffer = _offer(d, 'month', cascade, _api), yearOffer = _offer(d, 'year', cascade, _api);
     final month = monthOffer['price'] as int;
@@ -278,12 +333,55 @@ class _BillingPageState extends State<BillingPage> {
         child: ListTile(
           leading: Icon(status == 'grace' ? Icons.lock_clock : Icons.verified_outlined),
           title: Text(statusText),
-          subtitle: Text('${t.billingStaff('$staff')}\n${t.billingCompanyId('${d['publicId']}')}'),
+          subtitle: Text([
+            t.billingStaff('$staff'),
+            if (d['seatLimit'] != null) t.billingSeats('${d['slots']}', '${d['seatLimit']}'),
+            t.billingCompanyId('${d['publicId']}'),
+          ].join('\n')),
           isThreeLine: true,
         ),
       ),
       if (status != 'comped') ...[
         const SizedBox(height: 16),
+        // Places : par tranches de 10, de l'effectif actuel jusqu'à 5000.
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+              Text(t.billingSeatsTitle, style: theme.textTheme.titleSmall),
+              Text(t.billingSeatsHint, style: theme.textTheme.bodySmall),
+              const SizedBox(height: 8),
+              Row(children: [
+                IconButton.filledTonal(
+                  onPressed: _busy || (_slots ?? 10) <= (d['minSlots'] as int) ? null : () => _setSlots((_slots ?? 10) - 10),
+                  icon: const Icon(Icons.remove),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: _busy ? null : () => _typeSlots(d),
+                    child: Column(children: [
+                      Text('${_slots ?? d['slotsChosen']}',
+                          style: theme.textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.w800)),
+                      Text(t.billingSeatsUnit, style: theme.textTheme.bodySmall),
+                    ]),
+                  ),
+                ),
+                IconButton.filledTonal(
+                  onPressed: _busy || (_slots ?? 10) >= 5000 ? null : () => _setSlots((_slots ?? 10) + 10),
+                  icon: const Icon(Icons.add),
+                ),
+              ]),
+              Slider(
+                value: ((_slots ?? 10).clamp(10, 500)).toDouble(),
+                min: 10,
+                max: 500,
+                divisions: 49,
+                label: '${_slots ?? 10}',
+                onChanged: _busy ? null : (v) => _setSlots(v.round()),
+              ),
+            ]),
+          ),
+        ),
         if (included)
           CheckboxListTile(
             contentPadding: EdgeInsets.zero,
@@ -301,7 +399,11 @@ class _BillingPageState extends State<BillingPage> {
         // Abonnement en cours : une option s'ajoute seule, jusqu'à la fin de la période payée.
         if (status == 'active') ...[
           Text(t.billingRenewalOptions, style: theme.textTheme.bodySmall),
-          for (final (key, title) in [('api', t.billingApi), ('cascade', t.billingCascade)])
+          for (final (key, title) in [
+            ('slots', t.billingSeatsAddon('${d['slots']}', '${_slots ?? d['slotsChosen']}')),
+            ('api', t.billingApi),
+            ('cascade', t.billingCascade),
+          ])
             if ((d['addons'] as Map?)?[key] case final Map addon)
               Card(
                 color: theme.colorScheme.secondaryContainer,

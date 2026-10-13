@@ -1268,7 +1268,7 @@ class L10nDe extends L10n {
 
   @override
   String billingStaff(String count) {
-    return '$count Mitarbeitende gezählt (ohne Inhaber und Aushilfen)';
+    return '$count Mitarbeitende und Verantwortliche (ohne Inhaber und Aushilfen)';
   }
 
   @override
@@ -1503,12 +1503,12 @@ class L10nDe extends L10n {
 
   @override
   String billingLineMonth(String staff) {
-    return 'Abonnement, $staff Beschäftigte: 1 Monat';
+    return 'Abonnement, $staff Plätze: 1 Monat';
   }
 
   @override
   String billingLineYear(String staff, String paid) {
-    return 'Abonnement, $staff Beschäftigte: 12 Monate zum Preis von $paid';
+    return 'Abonnement, $staff Plätze: 12 Monate zum Preis von $paid';
   }
 
   @override
@@ -2017,4 +2017,56 @@ class L10nDe extends L10n {
 
   @override
   String get stateClosed => 'Abgelehnt oder storniert';
+
+  @override
+  String billingLineSlotsAddon(
+    String from,
+    String to,
+    String start,
+    String end,
+    String months,
+  ) {
+    return 'Hinzugefügte Plätze, von $from auf $to, vom $start bis $end: $months Monate, ohne Rabatt';
+  }
+
+  @override
+  String billingSeats(String used, String limit) {
+    return '$used bezahlte Plätze · bis zu $limit Personen mit 5 % Spielraum';
+  }
+
+  @override
+  String get billingSeatsTitle => 'Anzahl der Plätze';
+
+  @override
+  String get billingSeatsHint =>
+      'Mitarbeitende und Verantwortliche (ohne Inhaber und Aushilfen), in 10er-Schritten. 10 Plätze bei der Erstellung; darüber 5 % Spielraum, danach keine weiteren.';
+
+  @override
+  String get billingSeatsUnit => 'Plätze';
+
+  @override
+  String billingSeatsAddon(String from, String to) {
+    return 'Plätze: $from → $to';
+  }
+
+  @override
+  String billingSeatsRange(String min) {
+    return 'Von $min bis 5000, in 10er-Schritten.';
+  }
+
+  @override
+  String get printWeek => 'Woche';
+
+  @override
+  String get printMonth => 'Monat';
+
+  @override
+  String teamCount(String team, String count) {
+    return '$team · $count';
+  }
+
+  @override
+  String teamCountSeats(String team, String count, String slots) {
+    return '$team · $count/$slots';
+  }
 }

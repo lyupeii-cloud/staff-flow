@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
@@ -107,19 +108,26 @@ class BillingService {
   /// Option ajoutée en cours d'abonnement : le mois en cours en entier, puis
   /// chaque mois jusqu'à la fin de la période payée (mois offerts de
   /// l'année compris), sans remise. `null` : rien à acheter.
-  Map<String, Object?>? _addon(Company c, Map<String, int> v, int staff, String option) {
+  Map<String, Object?>? _addon(Company c, Map<String, int> v, int staff, String option, {int? slots}) {
     final t = now();
     final until = c.paidUntil;
     if (c.billingStatus != 'active' || until == null || !until.isAfter(t)) return null;
     if (option == 'api' && c.apiOption) return null;
-    if (option == 'cascade' && (c.cascadeOption || staff >= v['cascadeIncludedFrom']!)) return null;
+    if (option == 'cascade' && (c.cascadeOption || c.slots >= v['cascadeIncludedFrom']!)) return null;
+    if (option == 'slots' && (slots == null || slots <= c.slots)) return null;
     final from = DateTime.utc(t.year, t.month);
     var months = (until.year - from.year) * 12 + until.month - from.month;
     if (until.isAfter(DateTime.utc(until.year, until.month))) months++;
     if (months < 1) months = 1;
-    final unit = option == 'api' ? v['apiOptionPrice']! : v['cascadeOptionPrice']!;
+    // Places en plus : la différence de prix par mois entre les deux nombres de places.
+    final unit = switch (option) {
+      'api' => v['apiOptionPrice']!,
+      'cascade' => v['cascadeOptionPrice']!,
+      _ => PlatformService.monthlyCents(v, slots!) - PlatformService.monthlyCents(v, c.slots),
+    };
     final line = {
-      'label': option == 'api' ? 'apiAddon' : 'cascadeAddon',
+      'label': switch (option) { 'api' => 'apiAddon', 'cascade' => 'cascadeAddon', _ => 'slotsAddon' },
+      if (option == 'slots') ...{'slotsFrom': c.slots, 'slots': slots},
       'unitCents': unit,
       'months': months,
       'from': from.toIso8601String(),
@@ -157,12 +165,15 @@ class BillingService {
 
   /// Paiement d'une option seule ([option] : `api` ou `cascade`) ; elle est
   /// active aussitôt et reprise dans les renouvellements suivants.
-  Future<Map<String, Object?>> buyAddon(User actor, String companyId, String option) async {
+  Future<Map<String, Object?>> buyAddon(User actor, String companyId, String option, {int? slots}) async {
     final company = await _owned(actor, companyId);
     if (!canPay(actor)) throw const ApiError.conflict('Le paiement en ligne arrive bientôt.');
-    if (option != 'api' && option != 'cascade') throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    if (option != 'api' && option != 'cascade' && option != 'slots') {
+      throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    }
+    if (option == 'slots') checkSlots(slots, 0);
     final v = await platform.values();
-    final quote = _addon(company, v, await staffCount(companyId), option);
+    final quote = _addon(company, v, await staffCount(companyId), option, slots: slots);
     if (quote == null) throw const ApiError.conflict('Cette option ne peut pas être ajoutée maintenant.');
     final t = now();
     final owner = await store.findUser(actor.id);
@@ -192,9 +203,14 @@ class BillingService {
         'a': quote['total'],
         'sel': jsonEncode(seller),
       });
-      await store.query(tx,
-          'UPDATE companies SET ${option == 'api' ? 'api_option = true, api_until' : 'cascade_option = true, cascade_until'} = NULL WHERE id = @c::uuid',
-          {'c': companyId});
+      await store.query(
+          tx,
+          switch (option) {
+            'api' => 'UPDATE companies SET api_option = true, api_until = NULL WHERE id = @c::uuid',
+            'cascade' => 'UPDATE companies SET cascade_option = true, cascade_until = NULL WHERE id = @c::uuid',
+            _ => 'UPDATE companies SET slots = @n WHERE id = @c::uuid',
+          },
+          {'c': companyId, 'n': slots});
       await store.audit(
           companyId: companyId,
           actorId: actor.id,
@@ -254,12 +270,13 @@ class BillingService {
     final prorataOption = _prorata(option, p.prorataDays, p.monthDays);
     final lines = <Map<String, Object?>>[
       if (prorataBase > 0)
-        {'label': 'prorata', 'staff': staff, 'days': p.prorataDays, 'monthDays': p.monthDays, 'cents': prorataBase},
+        {'label': 'prorata', 'staff': staff, 'slots': staff, 'days': p.prorataDays, 'monthDays': p.monthDays, 'cents': prorataBase},
       if (prorataOption > 0)
         {'label': 'cascadeProrata', 'days': p.prorataDays, 'monthDays': p.monthDays, 'cents': prorataOption},
       {
         'label': 'subscription',
         'staff': staff,
+        'slots': staff,
         'period': period,
         'unitCents': base,
         'months': months,
@@ -279,10 +296,27 @@ class BillingService {
     );
   }
 
-  Future<Map<String, Object?>> summary(User actor, String companyId) async {
+  /// Nombre de places valable : par tranches de 10, de 10 à 5000, et au
+  /// moins l'effectif actuel ([staff]).
+  static int checkSlots(int? slots, int staff) {
+    if (slots == null || slots < 10 || slots > 5000 || slots % 10 != 0) {
+      throw const ApiError.badRequest('Places : de 10 à 5000, par tranches de 10.');
+    }
+    if (slots < staff) {
+      throw ApiError.badRequest('Places : au moins {count}, l\'effectif actuel.', {'count': '${minSlots(staff)}'});
+    }
+    return slots;
+  }
+
+  /// Le plus petit nombre de places qui couvre [staff] personnes.
+  static int minSlots(int staff) => staff <= 10 ? 10 : (staff + 9) ~/ 10 * 10;
+
+  Future<Map<String, Object?>> summary(User actor, String companyId, {int? slots}) async {
     final company = await _owned(actor, companyId);
     final v = await platform.values();
-    final staff = await staffCount(companyId);
+    final realStaff = await staffCount(companyId);
+    // Prix sur les places (choisies, sinon celles de l'entreprise).
+    final staff = slots == null ? max(company.slots, minSlots(realStaff)) : checkSlots(slots, realStaff);
     final invoices = await store.query(store.db, '''
       SELECT id, number, issued_at, period, period_start, period_end, amount_cents
       FROM invoices WHERE company_id = @c::uuid ORDER BY id DESC''', {'c': companyId});
@@ -303,7 +337,10 @@ class BillingService {
     return {
       ...company.billingJson(),
       'publicId': company.publicId,
-      'staff': staff,
+      'staff': realStaff,
+      'slotsChosen': staff,
+      'minSlots': minSlots(realStaff),
+      'seatLimit': company.billingStatus == 'comped' ? null : CompanyService.seatLimit(company.slots),
       'cascadeIncludedFrom': v['cascadeIncludedFrom'],
       'annualMonths': v['annualMonths'],
       'prices': {
@@ -338,6 +375,7 @@ class BillingService {
       // Options à ajouter seules, en cours d'abonnement.
       'addons': {
         for (final o in ['api', 'cascade']) o: _addon(company, v, staff, o),
+        'slots': _addon(company, v, staff, 'slots', slots: staff),
       },
       'isOwner': (await companies.open(actor, companyId)).$2 == Role.owner,
       'prorataDays': month.prorataDays,
@@ -370,13 +408,15 @@ class BillingService {
   /// les tarifs et l'effectif du moment ; l'entreprise redevient modifiable ;
   /// une facture est créée, numérotée par entreprise et par année.
   Future<Map<String, Object?>> checkout(User actor, String companyId,
-      {required String period, required bool cascade, bool? api}) async {
+      {required String period, required bool cascade, bool? api, int? slots}) async {
     final company = await _owned(actor, companyId);
     if (!canPay(actor)) throw const ApiError.conflict('Le paiement en ligne arrive bientôt.');
     if (period != 'month' && period != 'year') throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
     if (company.billingStatus == 'comped') throw const ApiError.conflict('Cette entreprise est offerte : rien à payer.');
     final v = await platform.values();
-    final staff = await staffCount(companyId);
+    // Places payées : choisies, sinon celles de l'entreprise (au moins l'effectif).
+    final realStaff = await staffCount(companyId);
+    final staff = checkSlots(slots ?? (company.slots < realStaff ? minSlots(realStaff) : company.slots), realStaff);
     final plan = _plan(company, period);
     // Sans précision (anciennes versions de l'application) : l'option API reste comme elle est.
     final withApi = api ?? company.apiOption;
@@ -416,7 +456,7 @@ class BillingService {
       final renewal = company.paidUntil != null && company.paidUntil!.isAfter(t) && company.billingStatus == 'active';
       await store.query(tx, '''
         UPDATE companies SET billing_status = 'active', paid_until = @to, grace_ends_at = NULL, status = 'active',
-          billing_period = @p, billing_reminders = '{}',
+          billing_period = @p, billing_reminders = '{}', slots = @slots,
           cascade_option = @co OR (@renewal AND cascade_option),
           cascade_until = CASE WHEN @co THEN NULL WHEN @renewal AND cascade_option THEN coalesce(cascade_until, @old::timestamptz) END,
           api_option = @ao OR (@renewal AND api_option),
@@ -429,6 +469,7 @@ class BillingService {
         'ao': withApi,
         'renewal': renewal,
         'old': company.paidUntil,
+        'slots': staff,
       });
       await store.audit(
           companyId: companyId,
@@ -451,7 +492,7 @@ class BillingService {
     final c = await store.findCompany(companyId);
     if (c == null) return false;
     if (c.billingStatus == 'trial' || c.billingStatus == 'comped' || c.cascadeOption) return true;
-    return await staffCount(companyId) >= await platform.value('cascadeIncludedFrom');
+    return c.slots >= await platform.value('cascadeIncludedFrom');
   }
 
   // --- Factures -------------------------------------------------------------
@@ -616,8 +657,17 @@ class BillingService {
             textAlign: align,
             style: pw.TextStyle(fontSize: 9.5, fontWeight: strong ? pw.FontWeight.bold : null, color: color)));
     String label(Map l) => switch (l['label']) {
+          'prorata' when l['slots'] != null => t('Prorata du mois en cours ({days} jours sur {total}) : abonnement, {slots} places',
+              {'days': '${l['days']}', 'total': '${l['monthDays']}', 'slots': '${l['slots']}'}),
           'prorata' => t('Prorata du mois en cours ({days} jours sur {total}) : abonnement, {staff} salariés',
               {'days': '${l['days']}', 'total': '${l['monthDays']}', 'staff': '${l['staff']}'}),
+          'slotsAddon' => t('Places ajoutées en cours d\'abonnement, de {from} à {to} places, du {start} au {end} : {months} mois', {
+              'from': '${l['slotsFrom']}',
+              'to': '${l['slots']}',
+              'start': _day(DateTime.parse(l['from'] as String)),
+              'end': _day(DateTime.parse(l['to'] as String).subtract(const Duration(days: 1))),
+              'months': '${l['months']}',
+            }),
           'cascadeProrata' => t('Prorata du mois en cours ({days} jours sur {total}) : option « sites en cascade »',
               {'days': '${l['days']}', 'total': '${l['monthDays']}'}),
           'cascade' => t('Option « sites en cascade » : {months} mois', {'months': '${l['months']}'}),
@@ -628,6 +678,10 @@ class BillingService {
               {'from': _day(DateTime.parse(l['from'] as String)), 'to': _day(DateTime.parse(l['to'] as String).subtract(const Duration(days: 1))), 'months': '${l['months']}'}),
           'cascadeAddon' => t('Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois',
               {'from': _day(DateTime.parse(l['from'] as String)), 'to': _day(DateTime.parse(l['to'] as String).subtract(const Duration(days: 1))), 'months': '${l['months']}'}),
+          _ when l['slots'] != null => l['period'] == 'year'
+              ? t('Abonnement Staff Flow, {slots} places : 12 mois, {paid} facturés',
+                  {'slots': '${l['slots']}', 'paid': '${l['paidMonths']}'})
+              : t('Abonnement Staff Flow, {slots} places : 1 mois', {'slots': '${l['slots']}'}),
           _ => l['period'] == 'year'
               ? t('Abonnement Staff Flow, {staff} salariés : 12 mois, {paid} facturés',
                   {'staff': '${l['staff']}', 'paid': '${l['paidMonths']}'})

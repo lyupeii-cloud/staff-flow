@@ -112,7 +112,24 @@ class _TeamViewState extends State<TeamView> {
         children: [
           Row(
             children: [
-              Expanded(child: Text(t.team, style: theme.textTheme.titleMedium)),
+              Expanded(
+                child: FutureBuilder(
+                  future: _members,
+                  builder: (context, snap) {
+                    // Salariés et responsables : ceux qui prennent une place.
+                    final staff = snap.data?.where((m) => m.role == Role.employee || m.role == Role.manager).length;
+                    final seats = role == Role.owner || widget.membership.billingAccess;
+                    return Text(
+                      staff == null
+                          ? t.team
+                          : seats && company.billingStatus != 'comped'
+                              ? t.teamCountSeats(t.team, '$staff', '${company.slots}')
+                              : t.teamCount(t.team, '$staff'),
+                      style: theme.textTheme.titleMedium,
+                    );
+                  },
+                ),
+              ),
               if (role.canManage && !company.readOnly)
                 TextButton.icon(
                   onPressed: _addWithCode,

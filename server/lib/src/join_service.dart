@@ -133,6 +133,7 @@ class JoinService {
 
   Future<(JoinRequest, User)> _invite(User manager, Company company, User user, Role role, List<String>? sites) async {
     final companyId = company.id;
+    if (role != Role.extra) await companies.ensureSeat(companyId);
     if (await store.roleOf(companyId, user.id) != null) {
       throw ApiError.conflict('{name} fait déjà partie de l\'entreprise.', {'name': user.name});
     }
@@ -179,6 +180,16 @@ class JoinService {
     final companyId = rows.first[0] as String;
     if (accept) {
       final sites = rows.first[2] as List?;
+      if (rows.first[1] != 'extra') {
+        try {
+          await companies.ensureSeat(companyId);
+        } on ApiError {
+          // Places prises : l'invitation reste en attente.
+          await store.query(store.db, "UPDATE join_requests SET status = 'pending', resolved_at = NULL WHERE id = @id::uuid",
+              {'id': requestId});
+          rethrow;
+        }
+      }
       await store.addMember(companyId, user.id, Role.parse(rows.first[1] as String),
           sites: sites?.cast<String>());
       if (rows.first[3] case final String inviteId) {

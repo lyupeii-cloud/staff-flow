@@ -1264,7 +1264,7 @@ class L10nRu extends L10n {
 
   @override
   String billingStaff(String count) {
-    return 'Учтено сотрудников: $count (без владельца и временных)';
+    return '$count сотрудников и руководителей (без владельца и внештатных)';
   }
 
   @override
@@ -1496,12 +1496,12 @@ class L10nRu extends L10n {
 
   @override
   String billingLineMonth(String staff) {
-    return 'Подписка, $staff сотр.: 1 месяц';
+    return 'Подписка, $staff мест: 1 мес.';
   }
 
   @override
   String billingLineYear(String staff, String paid) {
-    return 'Подписка, $staff сотр.: 12 месяцев по цене $paid';
+    return 'Подписка, $staff мест: 12 мес. по цене $paid';
   }
 
   @override
@@ -2010,4 +2010,56 @@ class L10nRu extends L10n {
 
   @override
   String get stateClosed => 'Отклонённые или отменённые';
+
+  @override
+  String billingLineSlotsAddon(
+    String from,
+    String to,
+    String start,
+    String end,
+    String months,
+  ) {
+    return 'Добавлены места, с $from до $to, с $start по $end: $months мес., без скидки';
+  }
+
+  @override
+  String billingSeats(String used, String limit) {
+    return 'Оплачено мест: $used · до $limit человек с запасом 5 %';
+  }
+
+  @override
+  String get billingSeatsTitle => 'Количество мест';
+
+  @override
+  String get billingSeatsHint =>
+      'Сотрудники и руководители (без владельца и внештатных), блоками по 10. 10 мест при создании; сверх того — запас 5 %, дальше добавлять нельзя.';
+
+  @override
+  String get billingSeatsUnit => 'мест';
+
+  @override
+  String billingSeatsAddon(String from, String to) {
+    return 'Места: $from → $to';
+  }
+
+  @override
+  String billingSeatsRange(String min) {
+    return 'От $min до 5000, блоками по 10.';
+  }
+
+  @override
+  String get printWeek => 'Неделя';
+
+  @override
+  String get printMonth => 'Месяц';
+
+  @override
+  String teamCount(String team, String count) {
+    return '$team · $count';
+  }
+
+  @override
+  String teamCountSeats(String team, String count, String slots) {
+    return '$team · $count/$slots';
+  }
 }

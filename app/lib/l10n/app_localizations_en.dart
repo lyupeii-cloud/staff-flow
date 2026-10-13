@@ -1257,7 +1257,7 @@ class L10nEn extends L10n {
 
   @override
   String billingStaff(String count) {
-    return '$count employees counted (owner and temps not included)';
+    return '$count employees and managers (not the owner or temps)';
   }
 
   @override
@@ -1490,12 +1490,12 @@ class L10nEn extends L10n {
 
   @override
   String billingLineMonth(String staff) {
-    return 'Subscription, $staff employees: 1 month';
+    return 'Subscription, $staff seats: 1 month';
   }
 
   @override
   String billingLineYear(String staff, String paid) {
-    return 'Subscription, $staff employees: 12 months for the price of $paid';
+    return 'Subscription, $staff seats: 12 months for the price of $paid';
   }
 
   @override
@@ -2002,6 +2002,58 @@ class L10nEn extends L10n {
 
   @override
   String get stateClosed => 'Refused or cancelled';
+
+  @override
+  String billingLineSlotsAddon(
+    String from,
+    String to,
+    String start,
+    String end,
+    String months,
+  ) {
+    return 'Seats added, from $from to $to, from $start to $end: $months months, no discount';
+  }
+
+  @override
+  String billingSeats(String used, String limit) {
+    return '$used seats paid · up to $limit people with the 5% margin';
+  }
+
+  @override
+  String get billingSeatsTitle => 'Number of seats';
+
+  @override
+  String get billingSeatsHint =>
+      'Employees and managers (not the owner or temps), in blocks of 10. 10 seats when the company is created; beyond that, a 5% margin, then no more additions.';
+
+  @override
+  String get billingSeatsUnit => 'seats';
+
+  @override
+  String billingSeatsAddon(String from, String to) {
+    return 'Seats: $from → $to';
+  }
+
+  @override
+  String billingSeatsRange(String min) {
+    return 'From $min to 5000, in blocks of 10.';
+  }
+
+  @override
+  String get printWeek => 'Week';
+
+  @override
+  String get printMonth => 'Month';
+
+  @override
+  String teamCount(String team, String count) {
+    return '$team · $count';
+  }
+
+  @override
+  String teamCountSeats(String team, String count, String slots) {
+    return '$team · $count/$slots';
+  }
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).

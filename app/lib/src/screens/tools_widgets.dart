@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -53,7 +54,34 @@ Future<void> openExport(BuildContext context, Session session, Company company, 
 /// son planning ou celui de l'équipe si le responsable le permet.
 Future<void> choosePrint(BuildContext context, Session session, Membership membership, DateTime from, DateTime to) async {
   final t = context.l10n;
+  final loc = context.localeName;
   final company = membership.company;
+  // La semaine ou le mois du jour affiché.
+  final weekStart = startOfWeek(from);
+  final monthStart = DateTime(from.year, from.month);
+  final monthEnd = DateTime(from.year, from.month + 1, 0);
+  final range = await showModalBottomSheet<(DateTime, DateTime)>(
+    context: context,
+    builder: (context) => SafeArea(
+      child: Column(mainAxisSize: MainAxisSize.min, children: [
+        ListTile(title: Text(t.printPdf, style: Theme.of(context).textTheme.titleMedium)),
+        ListTile(
+          leading: const Icon(Icons.view_week_outlined),
+          title: Text(t.printWeek),
+          subtitle: Text('${dayLabel(weekStart, loc)} – ${dayLabel(addDays(weekStart, 6), loc)}'),
+          onTap: () => Navigator.pop(context, (weekStart, addDays(weekStart, 6))),
+        ),
+        ListTile(
+          leading: const Icon(Icons.calendar_month_outlined),
+          title: Text(t.printMonth),
+          subtitle: Text(DateFormat.yMMMM(loc).format(monthStart)),
+          onTap: () => Navigator.pop(context, (monthStart, monthEnd)),
+        ),
+      ]),
+    ),
+  );
+  if (range == null || !context.mounted) return;
+  (from, to) = range;
   if (membership.role.canManage || company.printScope != 'team') {
     return openExport(context, session, company, 'print', from, to, own: !membership.role.canManage);
   }

@@ -369,63 +369,130 @@ class ToolsService {
   static String _esc(String s) =>
       s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
-  /// Page imprimable : une grille par semaine (personnes × jours), à
-  /// imprimer ou enregistrer en PDF depuis le navigateur. Les dates sont
-  /// écrites dans la langue de la personne par le navigateur.
+  /// Page imprimable, au format paysage : un en-tête (entreprise, période),
+  /// une grille par semaine (personnes × jours, couleur par poste, total
+  /// d'heures par personne et par jour), la légende des postes et, pour un
+  /// mois, le total de chacun. Les dates sont écrites par le navigateur
+  /// dans la langue de la personne.
   String _html(Company company, DateTime from, DateTime to, List<_S> shifts,
       ({Map<String, Member> people, Map<String, String> sites, Map<String, String> positions}) n, String Function(String) t,
       String lang) {
+    const palette = ['#1A8CFC', '#2BB673', '#F2994A', '#9B51E0', '#EB5757', '#00A3A3', '#D4A20B', '#6D7A8C'];
+    final positionIds = {for (final s in shifts) ?s.positionId}.toList()
+      ..sort((a, b) => (n.positions[a] ?? '').toLowerCase().compareTo((n.positions[b] ?? '').toLowerCase()));
+    String color(String? positionId) =>
+        positionId == null ? '#8A94B0' : palette[positionIds.indexOf(positionId) % palette.length];
+    final month = from.day == 1 && to.add(const Duration(days: 1)).day == 1 && to.difference(from).inDays >= 27;
+    String hours(int minutes) {
+      final h = minutes ~/ 60, m = minutes % 60;
+      return m == 0 ? '$h h' : '$h h ${m.toString().padLeft(2, '0')}';
+    }
+
+    // Ordre : par nom, les services non attribués à la fin.
+    int byName(String? x, String? y) {
+      if (x == null || y == null) return x == null ? (y == null ? 0 : 1) : -1;
+      return _who(x, n, t).toLowerCase().compareTo(_who(y, n, t).toLowerCase());
+    }
+
     final out = StringBuffer()
       ..write('<!doctype html><html lang="${_esc(lang)}"><head><meta charset="utf-8">'
           '<meta name="viewport" content="width=device-width,initial-scale=1">'
           '<title>${_esc(company.name)} · ${t('Planning')}</title><style>'
-          '@page{size:landscape;margin:10mm}body{font-family:system-ui,sans-serif;color:#061440;margin:16px}'
-          'h1{font-size:18px;margin:0 0 4px}p.sub{margin:0 0 12px;color:#555;font-size:12px}'
-          'table{border-collapse:collapse;width:100%;margin-bottom:16px;page-break-inside:avoid;font-size:11px}'
-          'th,td{border:1px solid #c9cfdd;padding:4px;vertical-align:top;text-align:left}'
-          'th{background:#eef3fb}td.n{font-weight:600;white-space:nowrap}td.h{text-align:right;white-space:nowrap}'
-          'div.s{margin-bottom:3px}div.s small{color:#555;display:block}'
-          'button{background:#1A8CFC;color:#fff;border:0;border-radius:18px;padding:8px 18px;font-size:14px;margin-bottom:12px}'
-          '@media print{button{display:none}body{margin:0}}</style></head><body>'
+          '@page{size:A4 landscape;margin:9mm}'
+          '*{box-sizing:border-box}body{font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#061440;margin:18px;font-size:11px}'
+          'header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:3px solid #1A8CFC;padding-bottom:8px;margin-bottom:14px}'
+          'header h1{font-size:20px;margin:0}header .p{font-size:13px;color:#33405e;margin-top:2px}'
+          'header .b{text-align:right;color:#55607A;font-size:10px}header .b strong{color:#061440;font-size:13px}header .b strong span{color:#1A8CFC}'
+          'h2{font-size:12px;margin:14px 0 6px;color:#1A3a8C;text-transform:uppercase;letter-spacing:.04em}'
+          'table{border-collapse:separate;border-spacing:0;width:100%;table-layout:fixed;break-inside:avoid;page-break-inside:avoid;'
+          'border:1px solid #d5dbe8;border-radius:8px;overflow:hidden;margin-bottom:10px}'
+          'th,td{border-right:1px solid #e3e7f0;border-bottom:1px solid #e3e7f0;padding:4px 5px;vertical-align:top;text-align:left}'
+          'th:last-child,td:last-child{border-right:0}tr:last-child td{border-bottom:0}'
+          'thead th{background:#061440;color:#fff;font-weight:600;font-size:10.5px}thead th.we{background:#26345e}'
+          'col.who{width:17%}col.tot{width:7%}td.who{font-weight:600}td.who small{display:block;font-weight:400;color:#6b7590}'
+          'td.we{background:#f6f8fc}tbody tr:nth-child(even) td.who{background:#fbfcfe}'
+          'td.tot,th.tot{text-align:right;white-space:nowrap}td.tot{font-weight:600}'
+          '.s{border-left:3px solid #1A8CFC;background:#eef4fd;border-radius:4px;padding:2px 4px;margin-bottom:3px;break-inside:avoid}'
+          '.s b{font-weight:600;white-space:nowrap}.s small{display:block;color:#55607A;font-size:9.5px}'
+          'tfoot td{background:#eef3fb;font-weight:600;color:#1A3a8C}td.un{color:#9b1c1c}'
+          '.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin:6px 0 10px;color:#33405e}'
+          '.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}'
+          'table.sum{width:auto;min-width:40%}table.sum td{padding:3px 10px}'
+          'footer{margin-top:12px;color:#8A94B0;font-size:9px;display:flex;justify-content:space-between}'
+          'button{background:#1A8CFC;color:#fff;border:0;border-radius:18px;padding:8px 18px;font-size:14px;margin-bottom:12px;cursor:pointer}'
+          '@media print{button{display:none}body{margin:0}h2{break-after:avoid}}</style></head><body>'
           '<button onclick="window.print()">${_esc(t('Imprimer ou enregistrer en PDF'))}</button>'
-          '<h1>${_esc(company.name)} · ${t('Planning')}</h1>'
-          '<p class="sub"><span class="d" data-d="${formatDay(from)}"></span> – <span class="d" data-d="${formatDay(to)}"></span></p>');
+          '<header><div><h1>${_esc(company.name)}</h1>'
+          '<div class="p">${t('Planning')} · '
+          '${month ? '<span class="m" data-d="${formatDay(from)}"></span>' : '<span class="d" data-d="${formatDay(from)}"></span> – <span class="d" data-d="${formatDay(to)}"></span>'}'
+          '</div></div><div class="b"><strong>Staff<span>Flow</span></strong><br>${_esc(t('Imprimé le'))} '
+          '<span class="d" data-d="${formatDay(DateTime.now())}"></span></div></header>');
+    if (positionIds.isNotEmpty) {
+      out.write('<div class="legend">');
+      for (final p in positionIds) {
+        out.write('<span><i style="background:${color(p)}"></i>${_esc(n.positions[p] ?? '?')}</span>');
+      }
+      out.write('</div>');
+    }
     var monday = from.subtract(Duration(days: from.weekday - 1));
     while (!monday.isAfter(to)) {
       final days = [for (var i = 0; i < 7; i++) monday.add(Duration(days: i))];
       final week = [for (final s in shifts) if (!s.day.isBefore(days.first) && !s.day.isAfter(days.last)) s];
       if (week.isNotEmpty) {
-        final people = <String?>{for (final s in week) s.userId}.toList()
-          ..sort((x, y) => _who(x, n, t).toLowerCase().compareTo(_who(y, n, t).toLowerCase()));
-        out.write('<table><tr><th>${t('Personne')}</th>');
+        if (month) out.write('<h2><span class="d" data-d="${formatDay(days.first)}"></span> – <span class="d" data-d="${formatDay(days.last)}"></span></h2>');
+        final people = <String?>{for (final s in week) s.userId}.toList()..sort(byName);
+        out.write('<table><colgroup><col class="who">${'<col>' * 7}<col class="tot"></colgroup><thead><tr><th>${t('Personne')}</th>');
         for (final d in days) {
-          out.write('<th><span class="w" data-d="${formatDay(d)}"></span></th>');
+          final outside = d.isBefore(from) || d.isAfter(to);
+          out.write('<th class="${d.weekday >= 6 ? 'we' : ''}">${outside ? '' : '<span class="w" data-d="${formatDay(d)}"></span>'}</th>');
         }
-        out.write('<th>${t('Heures')}</th></tr>');
+        out.write('<th class="tot">${t('Heures')}</th></tr></thead><tbody>');
         for (final p in people) {
           final mine = [for (final s in week) if (s.userId == p) s];
-          out.write('<tr><td class="n">${_esc(_who(p, n, t))}</td>');
+          final member = p == null ? null : n.people[p];
+          final position = member?.positionId == null ? null : n.positions[member!.positionId];
+          out.write('<tr><td class="who${p == null ? ' un' : ''}">${_esc(_who(p, n, t))}'
+              '${position == null ? '' : '<small>${_esc(position)}</small>'}</td>');
           for (final d in days) {
-            out.write('<td>');
+            out.write('<td class="${d.weekday >= 6 ? 'we' : ''}">');
             for (final s in mine.where((s) => s.day == d)) {
               final detail = [n.positions[s.positionId], n.sites[s.siteId]].whereType<String>().join(' · ');
-              out.write('<div class="s">${_time(s.start)}–${_time(s.end)}'
+              out.write('<div class="s" style="border-left-color:${color(s.positionId)}"><b>${_time(s.start)}–${_time(s.end)}</b>'
                   '${detail.isEmpty ? '' : '<small>${_esc(detail)}</small>'}</div>');
             }
             out.write('</td>');
           }
-          final total = mine.fold(0, (m, s) => m + s.minutes);
-          out.write('<td class="h">${_hours(total).replaceAll('.00', '')} h</td></tr>');
+          out.write('<td class="tot">${hours(mine.fold(0, (m, s) => m + s.minutes))}</td></tr>');
         }
-        out.write('</table>');
+        // Total du jour : heures et nombre de personnes.
+        out.write('</tbody><tfoot><tr><td>${t('Total du jour')}</td>');
+        for (final d in days) {
+          final today = [for (final s in week) if (s.day == d) s];
+          out.write('<td>${today.isEmpty ? '' : '${hours(today.fold(0, (m, s) => m + s.minutes))} · ${{for (final s in today) s.userId}.length} 👤'}</td>');
+        }
+        out.write('<td class="tot">${hours(week.fold(0, (m, s) => m + s.minutes))}</td></tr></tfoot></table>');
       }
       monday = monday.add(const Duration(days: 7));
     }
     if (shifts.isEmpty) out.write('<p>${t('Aucun service sur cette période.')}</p>');
-    out.write('<script>const l=${jsonEncode(lang)};'
+    // Mois : total de chacun sur la période.
+    if (month && shifts.isNotEmpty) {
+      final people = <String?>{for (final s in shifts) s.userId}.toList()..sort(byName);
+      out.write('<h2>${t('Total sur la période')}</h2><table class="sum"><tbody>');
+      for (final p in people) {
+        final mine = [for (final s in shifts) if (s.userId == p) s];
+        out.write('<tr><td class="who">${_esc(_who(p, n, t))}</td><td class="tot">${hours(mine.fold(0, (m, s) => m + s.minutes))}</td>'
+            '<td class="tot">${mine.length} ${_esc(t('services'))}</td></tr>');
+      }
+      out.write('</tbody></table>');
+    }
+    out.write('<footer><span>${_esc(company.name)}</span><span>staff-flow.cloud</span></footer>'
+        '<script>const l=${jsonEncode(lang)};'
         'for(const e of document.querySelectorAll("[data-d]")){const d=new Date(e.dataset.d+"T12:00:00Z");'
-        'e.textContent=d.toLocaleDateString(l,e.classList.contains("w")?{weekday:"short",day:"numeric",month:"short",timeZone:"UTC"}'
-        ':{day:"numeric",month:"long",year:"numeric",timeZone:"UTC"})}</script></body></html>');
+        'const o=e.classList.contains("w")?{weekday:"short",day:"numeric",month:"short",timeZone:"UTC"}'
+        ':e.classList.contains("m")?{month:"long",year:"numeric",timeZone:"UTC"}'
+        ':{day:"numeric",month:"long",year:"numeric",timeZone:"UTC"};'
+        'let x=d.toLocaleDateString(l,o);e.textContent=x.charAt(0).toUpperCase()+x.slice(1)}</script></body></html>');
     return out.toString();
   }
 

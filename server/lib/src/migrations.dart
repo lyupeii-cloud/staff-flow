@@ -629,4 +629,11 @@ ALTER TABLE companies ADD COLUMN api_until timestamptz, ADD COLUMN cascade_until
   '''
 ALTER TABLE requests ADD COLUMN cancel_requested_at timestamptz, ADD COLUMN ended_early boolean NOT NULL DEFAULT false;
 ''',
+  // 37 — places (salariés et responsables) achetées : 10 à la création,
+  // par tranches de 10 jusqu'à 5000 ; le prix se calcule sur les places.
+  '''
+ALTER TABLE companies ADD COLUMN slots int NOT NULL DEFAULT 10;
+UPDATE companies c SET slots = greatest(10, ceil((SELECT count(*) FROM memberships m
+  WHERE m.company_id = c.id AND m.left_at IS NULL AND m.role IN ('manager', 'employee')) / 10.0)::int * 10);
+''',
 ];

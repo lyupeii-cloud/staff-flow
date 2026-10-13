@@ -1264,7 +1264,7 @@ class L10nEs extends L10n {
 
   @override
   String billingStaff(String count) {
-    return '$count empleados contados (sin el propietario ni los temporales)';
+    return '$count empleados y responsables (sin el propietario ni los extras)';
   }
 
   @override
@@ -1497,12 +1497,12 @@ class L10nEs extends L10n {
 
   @override
   String billingLineMonth(String staff) {
-    return 'Suscripción, $staff empleados: 1 mes';
+    return 'Suscripción, $staff plazas: 1 mes';
   }
 
   @override
   String billingLineYear(String staff, String paid) {
-    return 'Suscripción, $staff empleados: 12 meses al precio de $paid';
+    return 'Suscripción, $staff plazas: 12 meses al precio de $paid';
   }
 
   @override
@@ -2011,4 +2011,56 @@ class L10nEs extends L10n {
 
   @override
   String get stateClosed => 'Rechazadas o anuladas';
+
+  @override
+  String billingLineSlotsAddon(
+    String from,
+    String to,
+    String start,
+    String end,
+    String months,
+  ) {
+    return 'Plazas añadidas, de $from a $to, del $start al $end: $months meses, sin descuento';
+  }
+
+  @override
+  String billingSeats(String used, String limit) {
+    return '$used plazas pagadas · hasta $limit personas con el margen del 5 %';
+  }
+
+  @override
+  String get billingSeatsTitle => 'Número de plazas';
+
+  @override
+  String get billingSeatsHint =>
+      'Empleados y responsables (sin el propietario ni los extras), en tramos de 10. 10 plazas al crear la empresa; por encima, un margen del 5 % y luego no se puede añadir más.';
+
+  @override
+  String get billingSeatsUnit => 'plazas';
+
+  @override
+  String billingSeatsAddon(String from, String to) {
+    return 'Plazas: $from → $to';
+  }
+
+  @override
+  String billingSeatsRange(String min) {
+    return 'De $min a 5000, en tramos de 10.';
+  }
+
+  @override
+  String get printWeek => 'Semana';
+
+  @override
+  String get printMonth => 'Mes';
+
+  @override
+  String teamCount(String team, String count) {
+    return '$team · $count';
+  }
+
+  @override
+  String teamCountSeats(String team, String count, String slots) {
+    return '$team · $count/$slots';
+  }
 }

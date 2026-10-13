@@ -41,6 +41,25 @@ class CompanyService {
     return raw == null ? null : await store.expandSites(companyId, raw);
   }
 
+  /// Places : nombre maximal de salariés et responsables (places achetées
+  /// plus 5 %, au moins une personne) ; une entreprise offerte n'a pas de limite.
+  static int seatLimit(int slots) => slots + (slots * 5 + 99) ~/ 100;
+
+  /// Une personne de plus (salarié ou responsable) : refusée si les places,
+  /// marge comprise, sont toutes prises.
+  Future<void> ensureSeat(String companyId) async {
+    final rows = await store.query(store.db, '''
+      SELECT c.slots, c.billing_status, (SELECT count(*) FROM memberships m
+        WHERE m.company_id = c.id AND m.left_at IS NULL AND m.role IN ('manager', 'employee'))
+      FROM companies c WHERE c.id = @c::uuid''', {'c': companyId});
+    if (rows.isEmpty || rows.first[1] == 'comped') return;
+    final slots = rows.first[0] as int, used = (rows.first[2] as num).toInt();
+    if (used + 1 > seatLimit(slots)) {
+      throw ApiError(409, 'slots_full', 'Toutes les places de l\'abonnement sont prises ({used} sur {slots}) : ajoutez des places dans Abonnement.',
+          {'used': '$used', 'slots': '$slots'});
+    }
+  }
+
   /// Un responsable de site gère les salariés et extras rattachés à au
   /// moins un de ses sites.
   Future<bool> inSites(String companyId, String userId, Set<String>? mine) async {
@@ -279,6 +298,8 @@ class CompanyService {
     } else if (!await inSites(companyId, userId, mine)) {
       throw const ApiError.forbidden();
     }
+    // Un extra qui devient salarié ou responsable prend une place.
+    if (current == Role.extra) await ensureSeat(companyId);
     await store.setRole(companyId, userId, newRole, appointedBy: newRole == Role.manager ? appointer : null);
     if (newRole == Role.manager) {
       await store.setSites(companyId, userId, chosen);

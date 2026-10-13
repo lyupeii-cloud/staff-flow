@@ -1268,7 +1268,7 @@ class L10nFr extends L10n {
 
   @override
   String billingStaff(String count) {
-    return '$count salariés comptés (sans le propriétaire ni les extras)';
+    return '$count salariés et responsables (sans le propriétaire ni les extras)';
   }
 
   @override
@@ -1500,12 +1500,12 @@ class L10nFr extends L10n {
 
   @override
   String billingLineMonth(String staff) {
-    return 'Abonnement, $staff salariés : 1 mois';
+    return 'Abonnement, $staff places : 1 mois';
   }
 
   @override
   String billingLineYear(String staff, String paid) {
-    return 'Abonnement, $staff salariés : 12 mois au prix de $paid';
+    return 'Abonnement, $staff places : 12 mois au prix de $paid';
   }
 
   @override
@@ -2013,4 +2013,56 @@ class L10nFr extends L10n {
 
   @override
   String get stateClosed => 'Refusées ou annulées';
+
+  @override
+  String billingLineSlotsAddon(
+    String from,
+    String to,
+    String start,
+    String end,
+    String months,
+  ) {
+    return 'Places ajoutées, de $from à $to, du $start au $end : $months mois, sans remise';
+  }
+
+  @override
+  String billingSeats(String used, String limit) {
+    return '$used places payées · jusqu\'à $limit personnes avec la marge de 5 %';
+  }
+
+  @override
+  String get billingSeatsTitle => 'Nombre de places';
+
+  @override
+  String get billingSeatsHint =>
+      'Salariés et responsables (sans le patron ni les extras), par tranches de 10. 10 places à la création ; au-delà, 5 % de marge puis plus d\'ajout possible.';
+
+  @override
+  String get billingSeatsUnit => 'places';
+
+  @override
+  String billingSeatsAddon(String from, String to) {
+    return 'Places : $from → $to';
+  }
+
+  @override
+  String billingSeatsRange(String min) {
+    return 'De $min à 5000, par tranches de 10.';
+  }
+
+  @override
+  String get printWeek => 'Semaine';
+
+  @override
+  String get printMonth => 'Mois';
+
+  @override
+  String teamCount(String team, String count) {
+    return '$team · $count';
+  }
+
+  @override
+  String teamCountSeats(String team, String count, String slots) {
+    return '$team · $count/$slots';
+  }
 }

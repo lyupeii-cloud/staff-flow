@@ -65,6 +65,9 @@ class Company {
   /// Option « accès API » payée.
   final bool apiOption;
 
+  /// Places achetées (salariés et responsables).
+  final int slots;
+
   /// Image de l'entreprise : 0 = aucune ; change à chaque nouvelle image.
   final int logoVersion;
 
@@ -87,6 +90,7 @@ class Company {
         messagingEnabled = j['messagingEnabled'] == true,
         hidePhotos = j['hidePhotos'] == true,
         apiOption = j['billing']?['apiOption'] == true,
+        slots = j['billing']?['slots'] ?? 10,
         logoVersion = j['logoVersion'] ?? 0,
         billingStatus = (j['billing'] as Map?)?['status'] ?? 'comped',
         trialEndsAt = _date((j['billing'] as Map?)?['trialEndsAt']),

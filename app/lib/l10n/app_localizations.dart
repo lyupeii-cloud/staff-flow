@@ -2229,7 +2229,7 @@ abstract class L10n {
   /// No description provided for @billingStaff.
   ///
   /// In en, this message translates to:
-  /// **'{count} employees counted (owner and temps not included)'**
+  /// **'{count} employees and managers (not the owner or temps)'**
   String billingStaff(String count);
 
   /// No description provided for @billingMonthly.
@@ -2607,13 +2607,13 @@ abstract class L10n {
   /// No description provided for @billingLineMonth.
   ///
   /// In en, this message translates to:
-  /// **'Subscription, {staff} employees: 1 month'**
+  /// **'Subscription, {staff} seats: 1 month'**
   String billingLineMonth(String staff);
 
   /// No description provided for @billingLineYear.
   ///
   /// In en, this message translates to:
-  /// **'Subscription, {staff} employees: 12 months for the price of {paid}'**
+  /// **'Subscription, {staff} seats: 12 months for the price of {paid}'**
   String billingLineYear(String staff, String paid);
 
   /// No description provided for @billingLineCascade.
@@ -3449,6 +3449,78 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Refused or cancelled'**
   String get stateClosed;
+
+  /// No description provided for @billingLineSlotsAddon.
+  ///
+  /// In en, this message translates to:
+  /// **'Seats added, from {from} to {to}, from {start} to {end}: {months} months, no discount'**
+  String billingLineSlotsAddon(
+    String from,
+    String to,
+    String start,
+    String end,
+    String months,
+  );
+
+  /// No description provided for @billingSeats.
+  ///
+  /// In en, this message translates to:
+  /// **'{used} seats paid · up to {limit} people with the 5% margin'**
+  String billingSeats(String used, String limit);
+
+  /// No description provided for @billingSeatsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of seats'**
+  String get billingSeatsTitle;
+
+  /// No description provided for @billingSeatsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Employees and managers (not the owner or temps), in blocks of 10. 10 seats when the company is created; beyond that, a 5% margin, then no more additions.'**
+  String get billingSeatsHint;
+
+  /// No description provided for @billingSeatsUnit.
+  ///
+  /// In en, this message translates to:
+  /// **'seats'**
+  String get billingSeatsUnit;
+
+  /// No description provided for @billingSeatsAddon.
+  ///
+  /// In en, this message translates to:
+  /// **'Seats: {from} → {to}'**
+  String billingSeatsAddon(String from, String to);
+
+  /// No description provided for @billingSeatsRange.
+  ///
+  /// In en, this message translates to:
+  /// **'From {min} to 5000, in blocks of 10.'**
+  String billingSeatsRange(String min);
+
+  /// No description provided for @printWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Week'**
+  String get printWeek;
+
+  /// No description provided for @printMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get printMonth;
+
+  /// No description provided for @teamCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{team} · {count}'**
+  String teamCount(String team, String count);
+
+  /// No description provided for @teamCountSeats.
+  ///
+  /// In en, this message translates to:
+  /// **'{team} · {count}/{slots}'**
+  String teamCountSeats(String team, String count, String slots);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

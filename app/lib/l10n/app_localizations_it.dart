@@ -1260,7 +1260,7 @@ class L10nIt extends L10n {
 
   @override
   String billingStaff(String count) {
-    return '$count dipendenti conteggiati (esclusi titolare ed extra)';
+    return '$count dipendenti e responsabili (esclusi titolare ed extra)';
   }
 
   @override
@@ -1494,12 +1494,12 @@ class L10nIt extends L10n {
 
   @override
   String billingLineMonth(String staff) {
-    return 'Abbonamento, $staff dipendenti: 1 mese';
+    return 'Abbonamento, $staff posti: 1 mese';
   }
 
   @override
   String billingLineYear(String staff, String paid) {
-    return 'Abbonamento, $staff dipendenti: 12 mesi al prezzo di $paid';
+    return 'Abbonamento, $staff posti: 12 mesi al prezzo di $paid';
   }
 
   @override
@@ -2007,4 +2007,56 @@ class L10nIt extends L10n {
 
   @override
   String get stateClosed => 'Rifiutate o annullate';
+
+  @override
+  String billingLineSlotsAddon(
+    String from,
+    String to,
+    String start,
+    String end,
+    String months,
+  ) {
+    return 'Posti aggiunti, da $from a $to, dal $start al $end: $months mesi, senza sconto';
+  }
+
+  @override
+  String billingSeats(String used, String limit) {
+    return '$used posti pagati · fino a $limit persone con il margine del 5%';
+  }
+
+  @override
+  String get billingSeatsTitle => 'Numero di posti';
+
+  @override
+  String get billingSeatsHint =>
+      'Dipendenti e responsabili (esclusi titolare ed extra), a blocchi di 10. 10 posti alla creazione; oltre, un margine del 5%, poi non si può più aggiungere.';
+
+  @override
+  String get billingSeatsUnit => 'posti';
+
+  @override
+  String billingSeatsAddon(String from, String to) {
+    return 'Posti: $from → $to';
+  }
+
+  @override
+  String billingSeatsRange(String min) {
+    return 'Da $min a 5000, a blocchi di 10.';
+  }
+
+  @override
+  String get printWeek => 'Settimana';
+
+  @override
+  String get printMonth => 'Mese';
+
+  @override
+  String teamCount(String team, String count) {
+    return '$team · $count';
+  }
+
+  @override
+  String teamCountSeats(String team, String count, String slots) {
+    return '$team · $count/$slots';
+  }
 }
