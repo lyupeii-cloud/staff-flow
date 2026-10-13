@@ -636,4 +636,12 @@ ALTER TABLE companies ADD COLUMN slots int NOT NULL DEFAULT 10;
 UPDATE companies c SET slots = greatest(10, ceil((SELECT count(*) FROM memberships m
   WHERE m.company_id = c.id AND m.left_at IS NULL AND m.role IN ('manager', 'employee')) / 10.0)::int * 10);
 ''',
+  // 38 — comptes sans Google : application 2FA (secret chiffré), codes de
+  // secours, nouveau code d'activation, essais de connexion.
+  '''
+ALTER TABLE users ADD COLUMN totp_secret text, ADD COLUMN totp_last_step bigint, ADD COLUMN backup_codes text[];
+ALTER TABLE member_invites ADD COLUMN user_id uuid REFERENCES users(id) ON DELETE CASCADE;
+CREATE TABLE auth_failures (key text NOT NULL, at timestamptz NOT NULL);
+CREATE INDEX auth_failures_key ON auth_failures (key, at);
+''',
 ];

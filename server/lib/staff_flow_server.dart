@@ -21,4 +21,5 @@ export 'src/store.dart';
 export 'src/telegram.dart';
 export 'src/telegram_login.dart';
 export 'src/tools_service.dart';
+export 'src/totp_service.dart';
 export 'src/translator.dart';

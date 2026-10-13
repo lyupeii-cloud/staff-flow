@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 import '../api.dart';
 import '../brand.dart';
@@ -433,7 +434,8 @@ class _TeamViewState extends State<TeamView> {
       if (isManager && mineToo && hasSites) _MemberAction.makeDeputy,
       if ((isOwner && m.role == Role.manager) || myDeputy) _MemberAction.makeEmployee,
       if (isOwner || mineToo) _MemberAction.toggleExtra,
-      if (!m.telegramLinked && (isOwner || (mineToo && !_meDeputy))) _MemberAction.googleLink,
+      if (!m.telegramLinked && !m.user.local && (isOwner || (mineToo && !_meDeputy))) _MemberAction.googleLink,
+      if (m.user.local && (isOwner || (mineToo && !_meDeputy))) _MemberAction.activationCode,
       if (hasSites && ((isOwner && m.role == Role.manager) || myDeputy || ((isOwner || isManager) && targetIsStaff)))
         _MemberAction.sites,
       if (isOwner && m.role == Role.manager) _MemberAction.transfer,
@@ -487,6 +489,40 @@ class _TeamViewState extends State<TeamView> {
     await _act(() => widget.session.api.setMemberProfile(company.id, m.user.id, value.isEmpty ? null : value, position));
   }
 
+  /// Téléphone perdu ou application 2FA effacée : nouveau code d'activation.
+  Future<void> _activationCode(Member m) async {
+    final ok = await _confirm(t.activationCodeTitle(m.user.name), t.activationCodeConfirm);
+    if (!ok || !mounted) return;
+    try {
+      final r = await widget.session.api.send('POST', '/companies/${company.id}/members/${m.user.id}/activation-code');
+      if (!mounted) return;
+      final code = r['code'] as String;
+      await showDialog<void>(
+        context: context,
+        builder: (dialog) => AlertDialog(
+          title: Text(m.user.name),
+          content: Column(mainAxisSize: MainAxisSize.min, children: [
+            Container(
+              color: Colors.white,
+              padding: const EdgeInsets.all(8),
+              child: SizedBox(width: 180, height: 180, child: QrImageView(data: r['link'] as String, backgroundColor: Colors.white)),
+            ),
+            const SizedBox(height: 12),
+            SelectableText(formatInviteCode(code),
+                style: const TextStyle(fontSize: 26, letterSpacing: 3, fontWeight: FontWeight.w600)),
+            const SizedBox(height: 8),
+            Text(t.activationCodeHint, textAlign: TextAlign.center),
+          ]),
+          actions: [FilledButton(onPressed: () => Navigator.pop(dialog), child: Text(t.close))],
+        ),
+      );
+    } on ApiException catch (e) {
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.describe(t))));
+    } on OfflineException {
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+    }
+  }
+
   /// Je suis sous-responsable (pas de lien de changement de compte Google).
   bool _meDeputy = false;
 
@@ -530,6 +566,8 @@ class _TeamViewState extends State<TeamView> {
     switch (a) {
       case _MemberAction.googleLink:
         await _googleLink(m);
+      case _MemberAction.activationCode:
+        await _activationCode(m);
       case _MemberAction.rename:
         final name = await askName(
           context,
@@ -825,6 +863,7 @@ enum _MemberAction {
   transfer,
   billing,
   googleLink,
+  activationCode,
   remove;
 
   String label(L10n t, Member m) => switch (this) {
@@ -838,6 +877,7 @@ enum _MemberAction {
         transfer => t.actionTransfer,
         billing => m.billingAccess ? t.actionBillingRemove : t.actionBillingGive,
         googleLink => t.memberGoogleLink,
+        activationCode => t.activationCodeAction,
         remove => t.actionRemove,
       };
 }

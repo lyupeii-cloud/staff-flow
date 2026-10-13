@@ -46,16 +46,17 @@ void main() {
       expect([for (final x in positions) x['name']], ['Maçon'], reason: 'un seul poste malgré la casse');
       expect(((await boss.ok('GET', p('/sites')))['items'] as List).single['name'], 'Chantier Nord');
 
-      // Réimporter le même fichier : déjà invités, rien en double.
+      // Réimporter le même fichier : les matricules sont déjà réservés par les invitations.
+      // La colonne e-mail est ignorée (deux personnes peuvent avoir le même).
       final again = await boss.ok('POST', p('/imports'), csv(file, dryRun: true));
-      expect(again['rows'][1]['status'], 'skip');
-      expect(again['rows'][0]['status'], 'error', reason: 'matricule déjà réservé par une invitation');
+      expect([again['rows'][0]['status'], again['rows'][1]['status']], ['error', 'error']);
+      expect(again['rows'][1]['email'], isNull);
     });
 
     test('Excel, sans en-têtes reconnus : ordre du modèle', () async {
       final excel = Excel.createExcel();
       final sheet = excel[excel.getDefaultSheet()!];
-      sheet.appendRow([TextCellValue('Ana'), TextCellValue(''), IntCellValue(42)]);
+      sheet.appendRow([TextCellValue('Ana'), IntCellValue(42)]);
       final r = await boss.ok('POST', p('/imports'),
           {'file': base64Encode(excel.encode()!), 'fileName': 'a.xlsx', 'dryRun': true});
       expect(r['rows'].single['number'], '42');
@@ -81,18 +82,6 @@ void main() {
       expect(m['positionId'], isNotNull);
       expect((await bob('POST', '/invites/redeem', {'code': code})).$1, 404, reason: 'une seule fois');
       expect((await boss.ok('GET', p('/invites')))['invites'], isEmpty);
-    });
-
-    test('e-mail Google : invitation proposée à la connexion, acceptée', () async {
-      await boss.ok('POST', p('/imports'), csv('Nom;E-mail\nBob Leclerc;BOB@example.com\n'));
-      final me = await bob.ok('GET', '/me');
-      final request = (me['pendingJoinRequests'] as List).single;
-      expect(request['company']['id'], company);
-      // Pas de doublon à la connexion suivante.
-      expect(((await bob.ok('GET', '/me'))['pendingJoinRequests'] as List), hasLength(1));
-      await bob.ok('POST', '/join-requests/${request['id']}/accept');
-      final m = ((await boss.ok('GET', p('/members')))['members'] as List).firstWhere((m) => m['user']['id'] == bob.id);
-      expect(m['user']['name'], 'Bob Leclerc');
     });
 
     test('un salarié n\'importe pas ; feuille à imprimer avec les codes', () async {

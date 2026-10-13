@@ -80,6 +80,8 @@ class User {
         'photoUrl': photoUrl,
         'locale': locale,
         'avatar': avatar,
+        // Compte sans Google (connexion par application 2FA).
+        if (googleSub.startsWith('local:')) 'local': true,
       };
 }
 

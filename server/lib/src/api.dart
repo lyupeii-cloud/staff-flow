@@ -26,6 +26,7 @@ import 'store.dart';
 import 'telegram.dart';
 import 'telegram_login.dart';
 import 'tools_service.dart';
+import 'totp_service.dart';
 import 'translator.dart';
 
 /// Construit le gestionnaire HTTP de l'API, sous `/api/v1`.
@@ -43,6 +44,7 @@ class Api {
   late final RequestService requests =
       RequestService(store, companies, planning, notifications, overlaps: overlaps);
   late final JoinService joins = JoinService(store, companies, now: now);
+  late final TotpService totp = TotpService(store, companies, notifications, tokens.derive('totp'), now: now);
   late final ImportService imports = ImportService(store, companies, tokens.derive('invites'), now: now, appUrl: appUrl);
   late final NoticeService notices = NoticeService(store, now: now);
   late final PlatformService platform = PlatformService(store, fileValues: platformFile);
@@ -109,6 +111,27 @@ class Api {
     final v1 = Router(notFoundHandler: _notFound)
       ..post('/auth/google', _loginGoogle)
       ..post('/auth/telegram', (Request r) async => _session(await telegramLogin.redeem(_string(await _body(r), 'token'))))
+      // Comptes sans Google : activation par le code de l'employeur, puis application 2FA.
+      ..post('/auth/activate', (Request r) async => _json(await totp.start(_string(await _body(r), 'code'), _clientIp(r))))
+      ..post('/auth/activate/confirm', (Request r) async {
+        final body = await _body(r);
+        final (user, backup) = await totp.confirm(_string(body, 'pending'), _string(body, 'otp'), _clientIp(r));
+        await store.audit(actorId: user.id, action: 'auth.login');
+        return _json({'token': tokens.issue(user.id, version: user.sessionVersion), 'user': user.toJson(), 'backupCodes': backup});
+      })
+      ..post('/auth/totp', (Request r) async {
+        final body = await _body(r);
+        final company = body['company'];
+        if (company is! String?) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        return _session(await totp.login(_string(body, 'login'), company, _string(body, 'otp'), _clientIp(r)));
+      })
+      // Jeton renouvelé (connexion gardée sur l'appareil).
+      ..post('/auth/refresh', _authed((r, u) async => _json({'token': tokens.issue(u.id, version: u.sessionVersion)})))
+      ..post('/me/link-google', _authed((r, u) async => _json({'switchToken': await googleSwitch.selfLink(u)})))
+      ..post('/companies/<id>/members/<userId>/activation-code', _authed((r, u) async {
+        final (code, link) = await totp.reactivation(u, r.params['id']!, r.params['userId']!, appUrl);
+        return _json({'code': code, 'link': link});
+      }))
       ..get('/me', _authed(_me))
       // Administration de la plateforme (réservée aux administrateurs).
       ..get('/admin/overview', _admin((r, u) async => _json({...await platform.overview(), 'billing': await billing.stats()})))
@@ -614,6 +637,10 @@ class Api {
   // --- Entreprises ---------------------------------------------------------
 
   Future<Response> _createCompany(Request req, User user) async {
+    // Créer une entreprise (et la payer) : réservé aux comptes Google.
+    if (TotpService.isLocal(user)) {
+      throw const ApiError(409, 'google_required', 'Reliez un compte Google pour créer une entreprise.');
+    }
     final body = await _body(req);
     final company = await billing.start(
         user, await companies.create(user, name: _string(body, 'name'), timezone: _string(body, 'timezone')));

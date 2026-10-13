@@ -1760,14 +1760,14 @@ class L10nRu extends L10n {
 
   @override
   String get importIntro =>
-      'Импортируйте список сотрудников из файла Excel или CSV. Каждый получает приглашение: с e-mail Google человек увидит его сразу после входа; иначе дайте ему код или QR-код. Никого не добавляют без согласия.';
+      'Импортируйте список сотрудников из файла Excel или CSV. Каждый получает личный код и QR-код: активирует аккаунт через приложение 2FA (или Google). Никого не добавляют без согласия.';
 
   @override
   String get importTemplate => 'Скачать шаблон Excel';
 
   @override
   String get importTemplateHint =>
-      'Столбцы: имя, e-mail Google, табельный номер, должность, объект. Обязательно только имя.';
+      'Столбцы: имя, табельный номер, должность, объект. Обязательно только имя.';
 
   @override
   String get importChooseFile => 'Выбрать файл (.xlsx или .csv)';
@@ -1817,7 +1817,7 @@ class L10nRu extends L10n {
 
   @override
   String get inviteShowHint =>
-      'Человек сканирует этот QR-код или вводит этот код в Staff Flow (меню аккаунта, «У меня есть код приглашения»). Действует 90 дней, один раз.';
+      'Человек выбирает «Активировать аккаунт» на экране входа (или «У меня есть код приглашения», если аккаунт уже есть), затем сканирует этот QR-код или вводит этот код. Действует 90 дней, один раз.';
 
   @override
   String invitesHint(String count) {
@@ -2062,4 +2062,140 @@ class L10nRu extends L10n {
   String teamCountSeats(String team, String count, String slots) {
     return '$team · $count/$slots';
   }
+
+  @override
+  String get rememberMe => 'Оставаться в системе на этом устройстве';
+
+  @override
+  String get rememberMeHint =>
+      'Включено: как с Google, не нужно вводить код при каждом открытии. Не включайте на общем устройстве.';
+
+  @override
+  String get totpLoginTitle => 'Вход через 2FA';
+
+  @override
+  String get totpLoginHint =>
+      'Введите свой идентификатор Staff Flow (SF-…) или табельный номер, затем 6-значный код из приложения аутентификации.';
+
+  @override
+  String get totpLoginField => 'Идентификатор SF или табельный номер';
+
+  @override
+  String get totpCompanyCode => 'Код компании';
+
+  @override
+  String get totpCompanyCodeHint =>
+      '6 символов от работодателя (только с табельным номером).';
+
+  @override
+  String get totpBackupCode => 'Резервный код';
+
+  @override
+  String get totpCode => 'Код приложения';
+
+  @override
+  String get totpUseApp => 'Использовать приложение 2FA';
+
+  @override
+  String get totpUseBackup => 'Использовать резервный код';
+
+  @override
+  String get totpSignIn => 'Войти';
+
+  @override
+  String get totpLostPhone =>
+      'Потеряли телефон или удалили приложение? Попросите у руководителя новый код активации.';
+
+  @override
+  String get activateTitle => 'Активировать аккаунт';
+
+  @override
+  String get activateStep1 => 'Шаг 1: ваш код приглашения';
+
+  @override
+  String get activateStep1Hint =>
+      'Отсканируйте QR-код от работодателя или введите код, написанный под ним.';
+
+  @override
+  String get activateScan => 'Сканировать QR-код';
+
+  @override
+  String get activateCodeField => 'Код приглашения';
+
+  @override
+  String get activateContinue => 'Продолжить';
+
+  @override
+  String activateHello(String name, String company) {
+    return 'Здравствуйте, $name · $company';
+  }
+
+  @override
+  String get activateStep2 =>
+      'Шаг 2: привяжите приложение аутентификации (Google Authenticator, Microsoft Authenticator…). Оно будет давать 6-значный код при каждом входе.';
+
+  @override
+  String get activateOpenApp => 'Добавить в моё приложение аутентификации';
+
+  @override
+  String get activateOrScan =>
+      'Или с другого устройства отсканируйте этот QR-код приложением:';
+
+  @override
+  String get activateManualKey => 'Ключ для ручного ввода:';
+
+  @override
+  String get activateFirstCode => 'Первый код из приложения';
+
+  @override
+  String get activateDone => 'Активировать';
+
+  @override
+  String get totpReadyTitle => 'Ваш аккаунт готов';
+
+  @override
+  String get totpYourId => 'Ваш идентификатор Staff Flow:';
+
+  @override
+  String get totpBackupHint =>
+      'Резервные коды (каждый работает один раз): запишите их или храните в надёжном месте. Они понадобятся, если приложения больше нет.';
+
+  @override
+  String get totpBackupSaved => 'Записал(а)';
+
+  @override
+  String get linkGoogleTitle => 'Привязать аккаунт Google';
+
+  @override
+  String get linkGoogleHint =>
+      'Чтобы создать компанию и управлять подпиской, привяжите аккаунт Google к своему аккаунту Staff Flow. Компании, графики и приложение 2FA сохраняются.';
+
+  @override
+  String get linkGoogleButton => 'Привязать мой Google';
+
+  @override
+  String get linkGoogleBanner =>
+      'Войдите с аккаунтом Google, который нужно привязать к Staff Flow.';
+
+  @override
+  String get totpLoginButton => 'Войти через приложение 2FA';
+
+  @override
+  String get activateButton => 'Активировать аккаунт (код работодателя)';
+
+  @override
+  String get activationCodeAction => 'Новый код активации';
+
+  @override
+  String activationCodeTitle(String name) {
+    return 'Новый код для $name?';
+  }
+
+  @override
+  String get activationCodeConfirm =>
+      'Старый телефон и старое приложение 2FA перестанут работать. Человек снова активирует аккаунт этим кодом (действует 7 дней).';
+
+  @override
+  String get activationCodeHint =>
+      'Человек выбирает «Активировать аккаунт» на экране входа, затем сканирует этот QR-код или вводит этот код.';
 }

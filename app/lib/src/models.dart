@@ -35,7 +35,11 @@ class User {
         googleName = j['googleName'] ?? j['name'],
         photoUrl = j['photoUrl'],
         locale = j['locale'],
-        avatar = (j['avatar'] as Map?)?.cast<String, dynamic>();
+        avatar = (j['avatar'] as Map?)?.cast<String, dynamic>(),
+        local = j['local'] == true;
+
+  /// Compte sans Google (connexion par application 2FA).
+  final bool local;
 }
 
 class Company {

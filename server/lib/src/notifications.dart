@@ -167,6 +167,7 @@ class NotificationService {
     'billing_deleted': NotifyCategory.billing,
     'google_switch_link': NotifyCategory.requests,
     'announcement': NotifyCategory.messages,
+    'login_blocked': NotifyCategory.requests,
   };
 
   /// Crée un avis par personne ([s] : la transaction en cours, s'il y en a
@@ -280,6 +281,10 @@ class NotificationService {
     final name = '${data['byName'] ?? '?'}';
     return switch (kind) {
       'schedule_published' => (title, t('Votre planning a été publié ou modifié.')),
+      'login_blocked' => (
+          title,
+          t('3 codes incorrects ont été saisis pour votre compte : cet appareil est bloqué 15 minutes. Si ce n\'est pas vous, prévenez votre responsable.')
+        ),
       'announcement' => (
           title,
           t('{name} a publié une annonce : {text}', {'name': name, 'text': '${data['text'] ?? ''}'})

@@ -19,6 +19,7 @@ import 'company_logo.dart';
 import 'company_tab.dart';
 import 'join_code_dialog.dart';
 import 'invite_widgets.dart';
+import 'totp_pages.dart';
 import 'people_widgets.dart';
 import 'sync_widgets.dart';
 import 'avatar_widgets.dart';
@@ -253,6 +254,8 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 Future<void> createCompany(BuildContext context, Session session) async {
+  // Sans Google : relier d'abord un compte Google (abonnement, sécurité).
+  if (session.me?.user.local == true) return askLinkGoogle(context, session);
   final t = context.l10n;
   final name = TextEditingController();
   // Fuseau de l'appareil (réglage du téléphone ou de l'ordinateur) ; à

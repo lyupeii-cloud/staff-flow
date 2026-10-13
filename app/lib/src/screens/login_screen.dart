@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'totp_pages.dart';
+
 import '../brand.dart';
 import '../config.dart';
 import '../platform/standalone.dart';
@@ -59,6 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           child: Center(
+            child: SingleChildScrollView(
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 360),
               child: Padding(
@@ -101,7 +104,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Row(children: [
                             const Icon(Icons.switch_account, color: Colors.white),
                             const SizedBox(width: 12),
-                            Expanded(child: Text(t.switchBanner, style: const TextStyle(color: Colors.white))),
+                            Expanded(
+                                child: Text(session.linkingGoogle ? t.linkGoogleBanner : t.switchBanner,
+                                    style: const TextStyle(color: Colors.white))),
                           ]),
                         ),
                       ),
@@ -122,6 +127,24 @@ class _LoginScreenState extends State<LoginScreen> {
                         icon: const Icon(Icons.login),
                         label: Text(t.signInWithGoogle),
                       ),
+                    // Sans Google : application 2FA, ou activation avec le code de l'employeur.
+                    if (session.googleSwitchToken == null) ...[
+                      const SizedBox(height: 12),
+                      OutlinedButton.icon(
+                        style: OutlinedButton.styleFrom(
+                            foregroundColor: Colors.white, side: const BorderSide(color: Colors.white54)),
+                        onPressed: () => TotpLoginPage.open(context, session),
+                        icon: const Icon(Icons.shield_outlined),
+                        label: Text(t.totpLoginButton),
+                      ),
+                      const SizedBox(height: 8),
+                      TextButton.icon(
+                        style: TextButton.styleFrom(foregroundColor: Colors.white),
+                        onPressed: () => ActivatePage.open(context, session, code: session.inviteCode),
+                        icon: const Icon(Icons.qr_code_2),
+                        label: Text(t.activateButton),
+                      ),
+                    ],
                     // iPhone (pas d'application iOS pour l'instant) : l'installer depuis Safari.
                     if (kIsWeb && defaultTargetPlatform == TargetPlatform.iOS && !isStandalone) ...[
                       const SizedBox(height: 28),
@@ -177,6 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
+          ),
           ),
         ),
       ),

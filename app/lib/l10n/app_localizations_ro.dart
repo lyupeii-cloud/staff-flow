@@ -1762,14 +1762,14 @@ class L10nRo extends L10n {
 
   @override
   String get importIntro =>
-      'Importați lista de angajați dintr-un fișier Excel sau CSV. Fiecare primește o invitație: cu e-mailul Google o vede imediat ce se conectează; altfel, dați-i codul sau codul QR. Nimeni nu este adăugat fără acordul său.';
+      'Importați lista de angajați dintr-un fișier Excel sau CSV. Fiecare primește un cod și un cod QR personale: își activează contul cu o aplicație 2FA (sau cu Google). Nimeni nu este adăugat fără acordul său.';
 
   @override
   String get importTemplate => 'Descarcă șablonul Excel';
 
   @override
   String get importTemplateHint =>
-      'Coloane: nume, e-mail Google, număr matricol, post, locație. Doar numele este obligatoriu.';
+      'Coloane: nume, număr matricol, post, locație. Doar numele este obligatoriu.';
 
   @override
   String get importChooseFile => 'Alege un fișier (.xlsx sau .csv)';
@@ -1819,7 +1819,7 @@ class L10nRo extends L10n {
 
   @override
   String get inviteShowHint =>
-      'Persoana scanează acest cod QR sau introduce acest cod în Staff Flow (meniul contului, „Am un cod de invitație”). Valabil 90 de zile, o singură dată.';
+      'Persoana alege „Activează contul meu” pe ecranul de conectare (sau „Am un cod de invitație” dacă are deja cont), apoi scanează acest cod QR sau tastează acest cod. Valabil 90 de zile, o singură dată.';
 
   @override
   String invitesHint(String count) {
@@ -2063,4 +2063,140 @@ class L10nRo extends L10n {
   String teamCountSeats(String team, String count, String slots) {
     return '$team · $count/$slots';
   }
+
+  @override
+  String get rememberMe => 'Rămâneți conectat pe acest dispozitiv';
+
+  @override
+  String get rememberMeHint =>
+      'Activat: ca la Google, fără cod la fiecare deschidere. Evitați pe un dispozitiv comun.';
+
+  @override
+  String get totpLoginTitle => 'Conectare 2FA';
+
+  @override
+  String get totpLoginHint =>
+      'Introduceți identificatorul Staff Flow (SF-…) sau numărul matricol, apoi codul de 6 cifre din aplicația de autentificare.';
+
+  @override
+  String get totpLoginField => 'ID SF sau număr matricol';
+
+  @override
+  String get totpCompanyCode => 'Codul companiei';
+
+  @override
+  String get totpCompanyCodeHint =>
+      '6 caractere, date de angajator (doar cu număr matricol).';
+
+  @override
+  String get totpBackupCode => 'Cod de rezervă';
+
+  @override
+  String get totpCode => 'Codul aplicației';
+
+  @override
+  String get totpUseApp => 'Folosește aplicația 2FA';
+
+  @override
+  String get totpUseBackup => 'Folosește un cod de rezervă';
+
+  @override
+  String get totpSignIn => 'Conectare';
+
+  @override
+  String get totpLostPhone =>
+      'Ați pierdut telefonul sau ați șters aplicația? Cereți un nou cod de activare responsabilului.';
+
+  @override
+  String get activateTitle => 'Activează contul meu';
+
+  @override
+  String get activateStep1 => 'Pasul 1: codul de invitație';
+
+  @override
+  String get activateStep1Hint =>
+      'Scanați codul QR primit de la angajator sau tastați codul scris dedesubt.';
+
+  @override
+  String get activateScan => 'Scanează codul QR';
+
+  @override
+  String get activateCodeField => 'Cod de invitație';
+
+  @override
+  String get activateContinue => 'Continuă';
+
+  @override
+  String activateHello(String name, String company) {
+    return 'Bună, $name · $company';
+  }
+
+  @override
+  String get activateStep2 =>
+      'Pasul 2: legați o aplicație de autentificare (Google Authenticator, Microsoft Authenticator…). Vă va da un cod de 6 cifre la fiecare conectare.';
+
+  @override
+  String get activateOpenApp => 'Adaugă în aplicația mea de autentificare';
+
+  @override
+  String get activateOrScan =>
+      'Sau, de pe alt dispozitiv, scanați acest cod QR cu aplicația:';
+
+  @override
+  String get activateManualKey => 'Cheie de introdus manual:';
+
+  @override
+  String get activateFirstCode => 'Primul cod afișat de aplicație';
+
+  @override
+  String get activateDone => 'Activează';
+
+  @override
+  String get totpReadyTitle => 'Contul dvs. este gata';
+
+  @override
+  String get totpYourId => 'Identificatorul dvs. Staff Flow:';
+
+  @override
+  String get totpBackupHint =>
+      'Coduri de rezervă (fiecare o singură dată): notați-le sau păstrați-le în siguranță. Le folosiți dacă nu mai aveți aplicația.';
+
+  @override
+  String get totpBackupSaved => 'Am notat';
+
+  @override
+  String get linkGoogleTitle => 'Leagă un cont Google';
+
+  @override
+  String get linkGoogleHint =>
+      'Pentru a crea o companie și a gestiona abonamentul, legați un cont Google de contul Staff Flow. Companiile, programele și aplicația 2FA se păstrează.';
+
+  @override
+  String get linkGoogleButton => 'Leagă contul meu Google';
+
+  @override
+  String get linkGoogleBanner =>
+      'Conectați-vă cu contul Google de legat la Staff Flow.';
+
+  @override
+  String get totpLoginButton => 'Conectare cu o aplicație 2FA';
+
+  @override
+  String get activateButton => 'Activează contul meu (codul angajatorului)';
+
+  @override
+  String get activationCodeAction => 'Cod nou de activare';
+
+  @override
+  String activationCodeTitle(String name) {
+    return 'Cod nou pentru $name?';
+  }
+
+  @override
+  String get activationCodeConfirm =>
+      'Telefonul vechi și aplicația 2FA veche nu vor mai funcționa. Persoana își reactivează contul cu acest cod (valabil 7 zile).';
+
+  @override
+  String get activationCodeHint =>
+      'Persoana alege „Activează contul meu” pe ecranul de conectare, apoi scanează acest cod QR sau tastează acest cod.';
 }

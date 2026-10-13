@@ -3045,7 +3045,7 @@ abstract class L10n {
   /// No description provided for @importIntro.
   ///
   /// In en, this message translates to:
-  /// **'Import your list of employees from an Excel or CSV file. Each one gets an invitation: with their Google e-mail, they see it as soon as they sign in; otherwise, give them their code or QR code. Nobody is added without their consent.'**
+  /// **'Import your list of employees from an Excel or CSV file. Each one gets a personal code and QR code: they activate their account with a 2FA app (or with Google). Nobody is added without their consent.'**
   String get importIntro;
 
   /// No description provided for @importTemplate.
@@ -3057,7 +3057,7 @@ abstract class L10n {
   /// No description provided for @importTemplateHint.
   ///
   /// In en, this message translates to:
-  /// **'Columns: name, Google e-mail, employee number, position, site. Only the name is required.'**
+  /// **'Columns: name, employee number, position, site. Only the name is required.'**
   String get importTemplateHint;
 
   /// No description provided for @importChooseFile.
@@ -3129,7 +3129,7 @@ abstract class L10n {
   /// No description provided for @inviteShowHint.
   ///
   /// In en, this message translates to:
-  /// **'The person scans this QR code or enters this code in Staff Flow (account menu, “I have an invitation code”). Valid for 90 days, once.'**
+  /// **'The person chooses “Activate my account” on the sign-in screen (or “I have an invitation code” if they already have an account), then scans this QR code or types this code. Valid for 90 days, once.'**
   String get inviteShowHint;
 
   /// No description provided for @invitesHint.
@@ -3521,6 +3521,246 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'{team} · {count}/{slots}'**
   String teamCountSeats(String team, String count, String slots);
+
+  /// No description provided for @rememberMe.
+  ///
+  /// In en, this message translates to:
+  /// **'Stay signed in on this device'**
+  String get rememberMe;
+
+  /// No description provided for @rememberMeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'On: like with Google, no code needed each time you open the app. Avoid on a shared device.'**
+  String get rememberMeHint;
+
+  /// No description provided for @totpLoginTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'2FA sign-in'**
+  String get totpLoginTitle;
+
+  /// No description provided for @totpLoginHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your Staff Flow ID (SF-…) or your employee number, then the 6-digit code from your authenticator app.'**
+  String get totpLoginHint;
+
+  /// No description provided for @totpLoginField.
+  ///
+  /// In en, this message translates to:
+  /// **'SF ID or employee number'**
+  String get totpLoginField;
+
+  /// No description provided for @totpCompanyCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Company code'**
+  String get totpCompanyCode;
+
+  /// No description provided for @totpCompanyCodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'6 characters, given by your employer (only with an employee number).'**
+  String get totpCompanyCodeHint;
+
+  /// No description provided for @totpBackupCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup code'**
+  String get totpBackupCode;
+
+  /// No description provided for @totpCode.
+  ///
+  /// In en, this message translates to:
+  /// **'App code'**
+  String get totpCode;
+
+  /// No description provided for @totpUseApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Use the 2FA app'**
+  String get totpUseApp;
+
+  /// No description provided for @totpUseBackup.
+  ///
+  /// In en, this message translates to:
+  /// **'Use a backup code'**
+  String get totpUseBackup;
+
+  /// No description provided for @totpSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in'**
+  String get totpSignIn;
+
+  /// No description provided for @totpLostPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Lost your phone or deleted the app? Ask your manager for a new activation code.'**
+  String get totpLostPhone;
+
+  /// No description provided for @activateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Activate my account'**
+  String get activateTitle;
+
+  /// No description provided for @activateStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Step 1: your invitation code'**
+  String get activateStep1;
+
+  /// No description provided for @activateStep1Hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan the QR code given by your employer, or type the code written below it.'**
+  String get activateStep1Hint;
+
+  /// No description provided for @activateScan.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan the QR code'**
+  String get activateScan;
+
+  /// No description provided for @activateCodeField.
+  ///
+  /// In en, this message translates to:
+  /// **'Invitation code'**
+  String get activateCodeField;
+
+  /// No description provided for @activateContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get activateContinue;
+
+  /// No description provided for @activateHello.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello {name} · {company}'**
+  String activateHello(String name, String company);
+
+  /// No description provided for @activateStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Step 2: link an authenticator app (Google Authenticator, Microsoft Authenticator…). It will give you a 6-digit code each time you sign in.'**
+  String get activateStep2;
+
+  /// No description provided for @activateOpenApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to my authenticator app'**
+  String get activateOpenApp;
+
+  /// No description provided for @activateOrScan.
+  ///
+  /// In en, this message translates to:
+  /// **'Or, from another device, scan this QR code with the app:'**
+  String get activateOrScan;
+
+  /// No description provided for @activateManualKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Key to type by hand:'**
+  String get activateManualKey;
+
+  /// No description provided for @activateFirstCode.
+  ///
+  /// In en, this message translates to:
+  /// **'First code shown by the app'**
+  String get activateFirstCode;
+
+  /// No description provided for @activateDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Activate'**
+  String get activateDone;
+
+  /// No description provided for @totpReadyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account is ready'**
+  String get totpReadyTitle;
+
+  /// No description provided for @totpYourId.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Staff Flow ID:'**
+  String get totpYourId;
+
+  /// No description provided for @totpBackupHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup codes (each works once): write them down or keep them somewhere safe. Use them if you no longer have your app.'**
+  String get totpBackupHint;
+
+  /// No description provided for @totpBackupSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Got it'**
+  String get totpBackupSaved;
+
+  /// No description provided for @linkGoogleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Link a Google account'**
+  String get linkGoogleTitle;
+
+  /// No description provided for @linkGoogleHint.
+  ///
+  /// In en, this message translates to:
+  /// **'To create a company and manage its subscription, link a Google account to your Staff Flow account. Your companies, schedules and 2FA app are kept.'**
+  String get linkGoogleHint;
+
+  /// No description provided for @linkGoogleButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Link my Google account'**
+  String get linkGoogleButton;
+
+  /// No description provided for @linkGoogleBanner.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in with the Google account to link to your Staff Flow account.'**
+  String get linkGoogleBanner;
+
+  /// No description provided for @totpLoginButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in with a 2FA app'**
+  String get totpLoginButton;
+
+  /// No description provided for @activateButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Activate my account (employer code)'**
+  String get activateButton;
+
+  /// No description provided for @activationCodeAction.
+  ///
+  /// In en, this message translates to:
+  /// **'New activation code'**
+  String get activationCodeAction;
+
+  /// No description provided for @activationCodeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New code for {name}?'**
+  String activationCodeTitle(String name);
+
+  /// No description provided for @activationCodeConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'The old phone and the old 2FA app will stop working. The person activates their account again with this code (valid for 7 days).'**
+  String get activationCodeConfirm;
+
+  /// No description provided for @activationCodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The person chooses “Activate my account” on the sign-in screen, then scans this QR code or types this code.'**
+  String get activationCodeHint;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

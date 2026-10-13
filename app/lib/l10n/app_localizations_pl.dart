@@ -1766,14 +1766,14 @@ class L10nPl extends L10n {
 
   @override
   String get importIntro =>
-      'Zaimportuj listę pracowników z pliku Excel lub CSV. Każdy otrzyma zaproszenie: z e-mailem Google zobaczy je zaraz po zalogowaniu; w przeciwnym razie przekaż mu kod lub kod QR. Nikt nie zostanie dodany bez zgody.';
+      'Zaimportuj listę pracowników z pliku Excel lub CSV. Każdy otrzyma osobisty kod i kod QR: aktywuje konto aplikacją 2FA (lub przez Google). Nikt nie zostanie dodany bez zgody.';
 
   @override
   String get importTemplate => 'Pobierz szablon Excel';
 
   @override
   String get importTemplateHint =>
-      'Kolumny: imię i nazwisko, e-mail Google, numer pracownika, stanowisko, lokalizacja. Wymagane jest tylko imię i nazwisko.';
+      'Kolumny: imię i nazwisko, numer pracownika, stanowisko, lokalizacja. Wymagane jest tylko imię i nazwisko.';
 
   @override
   String get importChooseFile => 'Wybierz plik (.xlsx lub .csv)';
@@ -1823,7 +1823,7 @@ class L10nPl extends L10n {
 
   @override
   String get inviteShowHint =>
-      'Osoba skanuje ten kod QR lub wpisuje ten kod w Staff Flow (menu konta, „Mam kod zaproszenia”). Ważny 90 dni, jednorazowo.';
+      'Osoba wybiera „Aktywuj moje konto” na ekranie logowania (albo „Mam kod zaproszenia”, jeśli ma już konto), a potem skanuje ten kod QR lub wpisuje ten kod. Ważny 90 dni, jednorazowo.';
 
   @override
   String invitesHint(String count) {
@@ -2068,4 +2068,140 @@ class L10nPl extends L10n {
   String teamCountSeats(String team, String count, String slots) {
     return '$team · $count/$slots';
   }
+
+  @override
+  String get rememberMe => 'Pozostań zalogowany na tym urządzeniu';
+
+  @override
+  String get rememberMeHint =>
+      'Włączone: jak z Google, bez kodu przy każdym otwarciu. Unikaj na wspólnym urządzeniu.';
+
+  @override
+  String get totpLoginTitle => 'Logowanie 2FA';
+
+  @override
+  String get totpLoginHint =>
+      'Wpisz swój identyfikator Staff Flow (SF-…) lub numer pracownika, a potem 6-cyfrowy kod z aplikacji uwierzytelniającej.';
+
+  @override
+  String get totpLoginField => 'ID SF lub numer pracownika';
+
+  @override
+  String get totpCompanyCode => 'Kod firmy';
+
+  @override
+  String get totpCompanyCodeHint =>
+      '6 znaków od pracodawcy (tylko z numerem pracownika).';
+
+  @override
+  String get totpBackupCode => 'Kod zapasowy';
+
+  @override
+  String get totpCode => 'Kod z aplikacji';
+
+  @override
+  String get totpUseApp => 'Użyj aplikacji 2FA';
+
+  @override
+  String get totpUseBackup => 'Użyj kodu zapasowego';
+
+  @override
+  String get totpSignIn => 'Zaloguj się';
+
+  @override
+  String get totpLostPhone =>
+      'Zgubiony telefon lub usunięta aplikacja? Poproś kierownika o nowy kod aktywacji.';
+
+  @override
+  String get activateTitle => 'Aktywuj moje konto';
+
+  @override
+  String get activateStep1 => 'Krok 1: Twój kod zaproszenia';
+
+  @override
+  String get activateStep1Hint =>
+      'Zeskanuj kod QR od pracodawcy albo wpisz kod podany pod nim.';
+
+  @override
+  String get activateScan => 'Zeskanuj kod QR';
+
+  @override
+  String get activateCodeField => 'Kod zaproszenia';
+
+  @override
+  String get activateContinue => 'Dalej';
+
+  @override
+  String activateHello(String name, String company) {
+    return 'Witaj, $name · $company';
+  }
+
+  @override
+  String get activateStep2 =>
+      'Krok 2: połącz aplikację uwierzytelniającą (Google Authenticator, Microsoft Authenticator…). Będzie podawać 6-cyfrowy kod przy każdym logowaniu.';
+
+  @override
+  String get activateOpenApp => 'Dodaj do mojej aplikacji uwierzytelniającej';
+
+  @override
+  String get activateOrScan =>
+      'Albo z innego urządzenia zeskanuj ten kod QR aplikacją:';
+
+  @override
+  String get activateManualKey => 'Klucz do wpisania ręcznie:';
+
+  @override
+  String get activateFirstCode => 'Pierwszy kod z aplikacji';
+
+  @override
+  String get activateDone => 'Aktywuj';
+
+  @override
+  String get totpReadyTitle => 'Twoje konto jest gotowe';
+
+  @override
+  String get totpYourId => 'Twój identyfikator Staff Flow:';
+
+  @override
+  String get totpBackupHint =>
+      'Kody zapasowe (każdy jednorazowy): zapisz je lub przechowuj w bezpiecznym miejscu. Przydadzą się, jeśli nie masz już aplikacji.';
+
+  @override
+  String get totpBackupSaved => 'Zapisane';
+
+  @override
+  String get linkGoogleTitle => 'Połącz konto Google';
+
+  @override
+  String get linkGoogleHint =>
+      'Aby utworzyć firmę i zarządzać subskrypcją, połącz konto Google ze swoim kontem Staff Flow. Firmy, grafiki i aplikacja 2FA zostają.';
+
+  @override
+  String get linkGoogleButton => 'Połącz moje konto Google';
+
+  @override
+  String get linkGoogleBanner =>
+      'Zaloguj się kontem Google, które chcesz połączyć ze Staff Flow.';
+
+  @override
+  String get totpLoginButton => 'Zaloguj się aplikacją 2FA';
+
+  @override
+  String get activateButton => 'Aktywuj moje konto (kod pracodawcy)';
+
+  @override
+  String get activationCodeAction => 'Nowy kod aktywacji';
+
+  @override
+  String activationCodeTitle(String name) {
+    return 'Nowy kod dla $name?';
+  }
+
+  @override
+  String get activationCodeConfirm =>
+      'Stary telefon i stara aplikacja 2FA przestaną działać. Osoba ponownie aktywuje konto tym kodem (ważny 7 dni).';
+
+  @override
+  String get activationCodeHint =>
+      'Osoba wybiera „Aktywuj moje konto” na ekranie logowania, a potem skanuje ten kod QR lub wpisuje ten kod.';
 }

@@ -143,6 +143,14 @@ class Session extends ChangeNotifier {
         }
       }
       if (api.token == null) return _set(SessionState.signedOut);
+      // Connexion gardée : le jeton est renouvelé à chaque ouverture (il ne
+      // périme pas tant que l'application sert au moins une fois par mois).
+      unawaited(api.send('POST', '/auth/refresh').then((r) async {
+        final token = r['token'] as String?;
+        if (token == null || api.token == null) return;
+        api.token = token;
+        await prefs.setString(tokenKey, token);
+      }, onError: (_) {}));
       // Lancement : l'écran s'affiche tout de suite avec les données de la
       // dernière utilisation, puis se met à jour.
       final cached = await sync.cached('me');
@@ -260,12 +268,32 @@ class Session extends ChangeNotifier {
   }
 
   /// Nouvelle session (par exemple : ancien compte repris avec ce compte Google).
-  Future<void> switchToken(String token) async {
+  /// [remember] faux : la connexion n'est pas gardée sur l'appareil (il
+  /// faudra se reconnecter à la prochaine ouverture).
+  Future<void> switchToken(String token, {bool remember = true}) async {
     await sync.clear();
     api.token = token;
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(tokenKey, token);
+    remember ? await prefs.setString(tokenKey, token) : await prefs.remove(tokenKey);
     await refresh();
+  }
+
+  /// Connexion par application 2FA (ou activation du compte).
+  Future<void> signInWithToken(String token, {required bool remember}) async {
+    error = null;
+    linkingGoogle = false;
+    await switchToken(token, remember: remember);
+  }
+
+  /// Compte sans Google qui relie un compte Google : la prochaine connexion
+  /// Google sera rattachée à ce compte.
+  bool linkingGoogle = false;
+
+  Future<void> startGoogleLink(String token) async {
+    await signOut();
+    googleSwitchToken = token;
+    linkingGoogle = true;
+    notifyListeners();
   }
 
   /// Recharge `/me` ; hors connexion, garde la dernière version enregistrée.

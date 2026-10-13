@@ -102,6 +102,17 @@ class GoogleSwitchService {
 
   // --- Lien créé par le patron ou un responsable --------------------------------------
 
+  /// Compte sans Google : jeton (30 minutes) à passer à la prochaine
+  /// connexion Google, qui relie ce compte Google au compte Staff Flow.
+  Future<String> selfLink(User actor) async {
+    if (!actor.googleSub.startsWith('local:')) throw const ApiError.conflict('Ce compte se connecte déjà avec Google.');
+    final token = base64Url.encode([for (var i = 0; i < 24; i++) Random.secure().nextInt(256)]).replaceAll('=', '');
+    await store.query(store.db, '''
+      INSERT INTO google_switch_links (token_hash, user_id, created_by, expires_at)
+      VALUES (@h, @u::uuid, @u::uuid, @e)''', {'h': _hash(token), 'u': actor.id, 'e': now().add(const Duration(minutes: 30))});
+    return token;
+  }
+
   /// Lien à usage unique (24 h) pour une personne sans Telegram, qui ne
   /// travaille que dans cette entreprise. Renvoie le chemin `/switch/<jeton>`.
   Future<String> createLink(User actor, String companyId, String userId) async {

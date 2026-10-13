@@ -1272,9 +1272,9 @@
     }
   },
   "importTitle": "Import employees",
-  "importIntro": "Import your list of employees from an Excel or CSV file. Each one gets an invitation: with their Google e-mail, they see it as soon as they sign in; otherwise, give them their code or QR code. Nobody is added without their consent.",
+  "importIntro": "Import your list of employees from an Excel or CSV file. Each one gets a personal code and QR code: they activate their account with a 2FA app (or with Google). Nobody is added without their consent.",
   "importTemplate": "Download the Excel template",
-  "importTemplateHint": "Columns: name, Google e-mail, employee number, position, site. Only the name is required.",
+  "importTemplateHint": "Columns: name, employee number, position, site. Only the name is required.",
   "importChooseFile": "Choose a file (.xlsx or .csv)",
   "importNew": "New: {count}",
   "@importNew": {
@@ -1328,7 +1328,7 @@
   },
   "invitesTitle": "Pending invitations",
   "invitesPrint": "Print the codes",
-  "inviteShowHint": "The person scans this QR code or enters this code in Staff Flow (account menu, “I have an invitation code”). Valid for 90 days, once.",
+  "inviteShowHint": "The person chooses “Activate my account” on the sign-in screen (or “I have an invitation code” if they already have an account), then scans this QR code or types this code. Valid for 90 days, once.",
   "invitesHint": "Pending invitations: {count}. Tap a person to show their code and QR code, or print them all.",
   "@invitesHint": {
     "placeholders": {
@@ -1560,5 +1560,62 @@
         "type": "String"
       }
     }
-  }
+  },
+  "rememberMe": "Stay signed in on this device",
+  "rememberMeHint": "On: like with Google, no code needed each time you open the app. Avoid on a shared device.",
+  "totpLoginTitle": "2FA sign-in",
+  "totpLoginHint": "Enter your Staff Flow ID (SF-…) or your employee number, then the 6-digit code from your authenticator app.",
+  "totpLoginField": "SF ID or employee number",
+  "totpCompanyCode": "Company code",
+  "totpCompanyCodeHint": "6 characters, given by your employer (only with an employee number).",
+  "totpBackupCode": "Backup code",
+  "totpCode": "App code",
+  "totpUseApp": "Use the 2FA app",
+  "totpUseBackup": "Use a backup code",
+  "totpSignIn": "Sign in",
+  "totpLostPhone": "Lost your phone or deleted the app? Ask your manager for a new activation code.",
+  "activateTitle": "Activate my account",
+  "activateStep1": "Step 1: your invitation code",
+  "activateStep1Hint": "Scan the QR code given by your employer, or type the code written below it.",
+  "activateScan": "Scan the QR code",
+  "activateCodeField": "Invitation code",
+  "activateContinue": "Continue",
+  "activateHello": "Hello {name} · {company}",
+  "@activateHello": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "activateStep2": "Step 2: link an authenticator app (Google Authenticator, Microsoft Authenticator…). It will give you a 6-digit code each time you sign in.",
+  "activateOpenApp": "Add to my authenticator app",
+  "activateOrScan": "Or, from another device, scan this QR code with the app:",
+  "activateManualKey": "Key to type by hand:",
+  "activateFirstCode": "First code shown by the app",
+  "activateDone": "Activate",
+  "totpReadyTitle": "Your account is ready",
+  "totpYourId": "Your Staff Flow ID:",
+  "totpBackupHint": "Backup codes (each works once): write them down or keep them somewhere safe. Use them if you no longer have your app.",
+  "totpBackupSaved": "Got it",
+  "linkGoogleTitle": "Link a Google account",
+  "linkGoogleHint": "To create a company and manage its subscription, link a Google account to your Staff Flow account. Your companies, schedules and 2FA app are kept.",
+  "linkGoogleButton": "Link my Google account",
+  "linkGoogleBanner": "Sign in with the Google account to link to your Staff Flow account.",
+  "totpLoginButton": "Sign in with a 2FA app",
+  "activateButton": "Activate my account (employer code)",
+  "activationCodeAction": "New activation code",
+  "activationCodeTitle": "New code for {name}?",
+  "@activationCodeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "activationCodeConfirm": "The old phone and the old 2FA app will stop working. The person activates their account again with this code (valid for 7 days).",
+  "activationCodeHint": "The person chooses “Activate my account” on the sign-in screen, then scans this QR code or types this code."
 }

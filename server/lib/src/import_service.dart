@@ -43,15 +43,13 @@ class ImportService {
     String t(String fr) => translate(fr, lang);
     final headers = [
       t('Nom et prénom'),
-      t('E-mail Google (facultatif)'),
       t('Matricule (facultatif)'),
       t('Poste (facultatif)'),
       t('Site (facultatif)'),
     ];
     final helpLines = [
       t('Une ligne par salarié, à partir de la ligne 2. Seul le nom est obligatoire.'),
-      t('E-mail Google : la personne verra l\'invitation dès sa connexion à Staff Flow.'),
-      t('Sans e-mail : donnez-lui son code d\'invitation ou son QR code (feuille à imprimer après l\'importation).'),
+      t('Chaque salarié reçoit son code et son QR code (feuille à imprimer après l\'importation) : il active son compte avec une application 2FA, ou avec Google.'),
       t('Matricule : votre propre numéro de salarié ; l\'identifiant Staff Flow reste attribué.'),
       t('Poste et site : écrits comme dans Staff Flow ; ceux qui n\'existent pas encore seront créés.'),
     ];
@@ -205,7 +203,7 @@ class ImportService {
     // En-têtes reconnus, sinon l'ordre du modèle.
     final detected = [for (final h in rows.first) _column(h)];
     final hasHeader = detected.contains('name');
-    final columns = hasHeader ? detected : const ['name', 'email', 'number', 'position', 'site'];
+    final columns = hasHeader ? detected : const ['name', 'number', 'position', 'site'];
     final data = hasHeader ? rows.skip(1).toList() : rows;
     if (data.length > maxRows) throw const ApiError.badRequest('Trop de lignes (2000 au plus).');
 
@@ -240,7 +238,8 @@ class ImportService {
         return at < 0 || at >= r.length ? '' : r[at].trim();
       }
 
-      final name = cell('name'), email = cell('email').toLowerCase(), number = cell('number');
+      // Plus de colonne e-mail : chacun a son code (un même e-mail peut servir à deux personnes).
+      final name = cell('name'), email = '', number = cell('number');
       final position = cell('position');
       // « Nord › Lille » : on garde le dernier niveau.
       final site = cell('site').split(RegExp(r'\s*[›>/]\s*')).last.trim();
@@ -357,7 +356,7 @@ class ImportService {
       SELECT i.id::text, i.code, i.name, i.email, i.employee_number, i.position_id::text, i.sites::text[],
         i.created_at, i.expires_at, EXISTS (SELECT 1 FROM join_requests r WHERE r.invite_id = i.id AND r.status = 'pending')
       FROM member_invites i
-      WHERE i.company_id = @c::uuid AND i.used_at IS NULL AND i.expires_at > @now
+      WHERE i.company_id = @c::uuid AND i.used_at IS NULL AND i.expires_at > @now AND i.user_id IS NULL
       ORDER BY i.name''', {'c': companyId, 'now': now()});
     return [
       for (final r in rows)
@@ -403,7 +402,7 @@ class ImportService {
     final code = cleanCode(raw);
     final rows = await store.query(store.db, '''
       SELECT i.id::text, i.company_id::text, c.name FROM member_invites i JOIN companies c ON c.id = i.company_id
-      WHERE i.code = @code AND i.used_at IS NULL AND i.expires_at > @now''', {'code': code, 'now': at});
+      WHERE i.code = @code AND i.used_at IS NULL AND i.expires_at > @now AND i.user_id IS NULL''', {'code': code, 'now': at});
     if (rows.isEmpty) {
       recent.add(at);
       throw const ApiError.notFound('Code d\'invitation inconnu ou expiré.');

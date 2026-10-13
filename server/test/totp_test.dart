@@ -1,0 +1,129 @@
+import 'package:shelf/shelf.dart';
+import 'dart:convert';
+
+import 'package:staff_flow_server/staff_flow_server.dart';
+import 'package:test/test.dart';
+
+import 'helpers.dart';
+
+/// Comptes sans Google : activation par le code de l'employeur et
+/// application 2FA, connexion, blocage, codes de secours, nouveau code.
+void main() {
+  final env = TestEnv();
+
+  late Client boss;
+  late String company, publicCode;
+
+  String p(String path) => '/companies/$company$path';
+
+  Map<String, Object?> csv(String text) =>
+      {'file': base64Encode(utf8.encode(text)), 'fileName': 'equipe.csv', 'dryRun': false};
+
+  /// Code à 6 chiffres de l'application 2FA, à l'heure du serveur de test.
+  String otp(String secret, [int offset = 0]) =>
+      TotpService.code(secret, env.clock.now.millisecondsSinceEpoch ~/ 30000 + offset);
+
+  setUp(() async {
+    boss = await env.login('boss');
+    company = await env.createCompany(boss);
+    publicCode = (await boss.ok('GET', p('/billing')))['publicId'];
+  });
+
+  Future<String> invite(String name, {String? number}) async {
+    await boss.ok('POST', p('/imports'), csv('Nom;Matricule\n$name;${number ?? ''}\n'));
+    return ((await boss.ok('GET', p('/invites')))['invites'] as List).firstWhere((i) => i['name'] == name)['code'];
+  }
+
+  /// Active le compte : renvoie (secret 2FA, jeton, identifiant SF, codes de secours).
+  Future<(String, String, String, List<String>)> activate(String code) async {
+    final anon = Client(env.handler);
+    final start = await anon.ok('POST', '/auth/activate', {'code': code});
+    final secret = start['secret'] as String;
+    expect(start['otpauth'], startsWith('otpauth://totp/Staff%20Flow'));
+    final done = await anon.ok('POST', '/auth/activate/confirm', {'pending': start['pending'], 'otp': otp(secret)});
+    return (secret, done['token'] as String, done['user']['publicId'] as String, (done['backupCodes'] as List).cast<String>());
+  }
+
+  test('activation : code de l\'employeur puis application 2FA ; compte dans l\'entreprise, sans Google', () async {
+    final code = await invite('Camille Durand', number: 'C-001');
+    final anon = Client(env.handler);
+    expect((await anon('POST', '/auth/activate', {'code': 'ZZZZZZZZ'})).$1, 404);
+    final start = await anon.ok('POST', '/auth/activate', {'code': code});
+    expect([start['name'], start['companyName']], ['Camille Durand', 'Boulangerie']);
+    expect((await anon('POST', '/auth/activate/confirm', {'pending': start['pending'], 'otp': '000000'})).$1, 400);
+    final done = await anon.ok('POST', '/auth/activate/confirm', {'pending': start['pending'], 'otp': otp(start['secret'])});
+    expect(done['user']['local'], true);
+    expect(done['backupCodes'], hasLength(8));
+    // Le code ne sert qu'une fois.
+    expect((await anon('POST', '/auth/activate', {'code': code})).$1, 404);
+    final members = (await boss.ok('GET', p('/members')))['members'] as List;
+    final m = members.firstWhere((m) => m['user']['publicId'] == done['user']['publicId']);
+    expect([m['user']['name'], m['employeeNumber']], ['Camille Durand', 'C-001']);
+  });
+
+  test('connexion : identifiant SF ou matricule + code entreprise ; un code ne sert qu\'une fois ; codes de secours', () async {
+    final (secret, _, sf, backup) = await activate(await invite('Lucas Moreau', number: 'C-002'));
+    final a = Client(env.handler);
+    env.clock.advance(const Duration(minutes: 1));
+    final r = await a.ok('POST', '/auth/totp', {'login': sf.toLowerCase(), 'otp': otp(secret)});
+    expect(r['user']['publicId'], sf);
+    // Le même code, rejoué : refusé.
+    expect((await a('POST', '/auth/totp', {'login': sf, 'otp': otp(secret)})).$1, 401);
+    env.clock.advance(const Duration(minutes: 1));
+    final byNumber = await a.ok('POST', '/auth/totp', {'login': 'c-002', 'company': publicCode, 'otp': otp(secret)});
+    expect(byNumber['user']['publicId'], sf);
+    // Code de secours : une seule fois.
+    await a.ok('POST', '/auth/totp', {'login': sf, 'otp': backup.first.toLowerCase()});
+    expect((await a('POST', '/auth/totp', {'login': sf, 'otp': backup.first})).$1, 401);
+  });
+
+  test('3 erreurs depuis un appareil : bloqué 15 minutes, les autres appareils non ; la personne est prévenue', () async {
+    final (secret, token, sf, _) = await activate(await invite('Inès Lefèvre'));
+    final bad = Client(env.handler, ip: '10.0.0.9');
+    for (var i = 0; i < 3; i++) {
+      expect((await bad('POST', '/auth/totp', {'login': sf, 'otp': '123456'})).$1, 401);
+    }
+    expect((await bad('POST', '/auth/totp', {'login': sf, 'otp': otp(secret)})).$1, 429);
+    // Un autre appareil n'est pas bloqué.
+    env.clock.advance(const Duration(minutes: 1));
+    await Client(env.handler, ip: '10.0.0.10').ok('POST', '/auth/totp', {'login': sf, 'otp': otp(secret)});
+    await env.api.notifications.settle();
+    final me = Client(env.handler)..token = token;
+    expect([for (final n in (await me.ok('GET', '/notices'))['notices']) n['kind']], contains('login_blocked'));
+    env.clock.advance(const Duration(minutes: 16));
+    await bad.ok('POST', '/auth/totp', {'login': sf, 'otp': otp(secret)});
+  });
+
+  test('sans Google : pas de création d\'entreprise, il relie d\'abord un compte Google', () async {
+    final (_, token, _, _) = await activate(await invite('Hugo Garnier'));
+    final me = Client(env.handler)..token = token;
+    final r = await me('POST', '/companies', {'name': 'Ma boîte', 'timezone': 'Europe/Paris'});
+    expect([r.$1, r.$2['error']['code']], [409, 'google_required']);
+    final link = (await me.ok('POST', '/me/link-google'))['switchToken'];
+    final google = await env.handler(Request('POST', Uri.parse('http://localhost/api/v1/auth/google'),
+        body: jsonEncode({'idToken': 'google:hugo', 'switchToken': link})));
+    expect(google.statusCode, 200);
+    final after = Client(env.handler)..token = jsonDecode(await google.readAsString())['token'];
+    final user = (await after.ok('GET', '/me'))['user'];
+    expect([user['local'], user['email']], [null, 'hugo@example.com']);
+    await after.ok('POST', '/companies', {'name': 'Ma boîte', 'timezone': 'Europe/Paris'});
+  });
+
+  test('téléphone perdu : le patron donne un nouveau code, l\'ancienne application ne sert plus', () async {
+    final (oldSecret, token, sf, _) = await activate(await invite('Manon Rousseau'));
+    final member = ((await boss.ok('GET', p('/members')))['members'] as List).firstWhere((m) => m['user']['publicId'] == sf);
+    final again = await boss.ok('POST', p('/members/${member['user']['id']}/activation-code'));
+    expect((await (Client(env.handler)..token = token)('GET', '/me')).$1, 200);
+    final (newSecret, _, sf2, _) = await activate(again['code'] as String);
+    expect(sf2, sf, reason: 'même compte');
+    // Anciennes sessions fermées, ancienne application refusée.
+    expect(((await (Client(env.handler)..token = token)('GET', '/me')).$1), 401);
+    env.clock.advance(const Duration(minutes: 1));
+    expect((await Client(env.handler)('POST', '/auth/totp', {'login': sf, 'otp': otp(oldSecret)})).$1, 401);
+    await Client(env.handler).ok('POST', '/auth/totp', {'login': sf, 'otp': otp(newSecret)});
+    // Un compte Google ne reçoit pas de code d'activation.
+    final bob = await env.login('bob');
+    await env.store.addMember(company, bob.id, Role.employee);
+    expect((await boss('POST', p('/members/${bob.id}/activation-code'))).$1, 409);
+  });
+}
