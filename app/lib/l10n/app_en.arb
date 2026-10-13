@@ -1602,7 +1602,7 @@
   "totpBackupHint": "Backup codes (each works once): write them down or keep them somewhere safe. Use them if you no longer have your app.",
   "totpBackupSaved": "Got it",
   "linkGoogleTitle": "Link a Google account",
-  "linkGoogleHint": "To create a company and manage its subscription, link a Google account to your Staff Flow account. Your companies, schedules and 2FA app are kept.",
+  "linkGoogleHint": "To create a company, link a Google account to your Staff Flow account. It's only used to protect the company's creator and its subscription: your Google address is never shown to your employees or anyone else, it stays in Staff Flow. You can still sign in with your 2FA app.",
   "linkGoogleButton": "Link my Google account",
   "linkGoogleBanner": "Sign in with the Google account to link to your Staff Flow account.",
   "totpLoginButton": "Sign in with a 2FA app",
@@ -1630,5 +1630,29 @@
       }
     }
   },
-  "signupButton": "Create an account with a 2FA app"
+  "signupButton": "Create an account with a 2FA app",
+  "totpCardTitle": "Sign-in with a 2FA app",
+  "totpCardLocal": "Your account signs in with an authenticator app. ID: {id}",
+  "@totpCardLocal": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "totpCardOn": "On: you can also sign in with your ID {id} and the app code, without Google.",
+  "@totpCardOn": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "totpCardOff": "Set up an authenticator app to be able to sign in without Google (SF ID + 6-digit code).",
+  "totpEnable": "Turn on",
+  "totpDisable": "Remove",
+  "totpEnableTitle": "Turn on 2FA sign-in",
+  "totpEnabledTitle": "2FA sign-in ready",
+  "totpDisableConfirm": "Remove sign-in with a 2FA app? You'll only sign in with Google.",
+  "googlePrivacyNote": "Your Google account is only used to protect the company and its subscription: it's never shown to your employees or anyone else."
 }

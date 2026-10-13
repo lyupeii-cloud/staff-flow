@@ -2171,7 +2171,7 @@ class L10nUk extends L10n {
 
   @override
   String get linkGoogleHint =>
-      'Щоб створити компанію й керувати підпискою, прив\'яжіть обліковий запис Google до свого облікового запису Staff Flow. Компанії, графіки й застосунок 2FA зберігаються.';
+      'Щоб створити компанію, прив\'яжіть обліковий запис Google до свого облікового запису Staff Flow. Він потрібен лише для захисту творця компанії та її підписки: вашу адресу Google ніколи не показують ні працівникам, ні будь-кому іншому, вона залишається в Staff Flow. Ви й надалі зможете входити через застосунок 2FA.';
 
   @override
   String get linkGoogleButton => 'Прив\'язати мій Google';
@@ -2222,4 +2222,41 @@ class L10nUk extends L10n {
 
   @override
   String get signupButton => 'Створити обліковий запис із застосунком 2FA';
+
+  @override
+  String get totpCardTitle => 'Вхід через застосунок 2FA';
+
+  @override
+  String totpCardLocal(String id) {
+    return 'Ваш обліковий запис входить через застосунок автентифікації. Ідентифікатор: $id';
+  }
+
+  @override
+  String totpCardOn(String id) {
+    return 'Увімкнено: ви можете також входити з ідентифікатором $id і кодом застосунку, без Google.';
+  }
+
+  @override
+  String get totpCardOff =>
+      'Налаштуйте застосунок автентифікації, щоб входити без Google (ідентифікатор SF + 6-значний код).';
+
+  @override
+  String get totpEnable => 'Увімкнути';
+
+  @override
+  String get totpDisable => 'Вимкнути';
+
+  @override
+  String get totpEnableTitle => 'Увімкнути вхід через 2FA';
+
+  @override
+  String get totpEnabledTitle => 'Вхід через 2FA готовий';
+
+  @override
+  String get totpDisableConfirm =>
+      'Вимкнути вхід через застосунок 2FA? Ви входитимете лише через Google.';
+
+  @override
+  String get googlePrivacyNote =>
+      'Ваш обліковий запис Google служить лише для захисту компанії та її підписки: його ніколи не показують працівникам чи будь-кому іншому.';
 }

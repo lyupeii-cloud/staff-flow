@@ -227,4 +227,5 @@ const es = <String, String>{
   '3 codes incorrects ont été saisis pour votre compte : cet appareil est bloqué 15 minutes. Si ce n\'est pas vous, prévenez votre responsable.': 'Se introdujeron 3 códigos incorrectos para tu cuenta: ese dispositivo está bloqueado 15 minutos. Si no fuiste tú, avisa a tu responsable.',
   'Chaque salarié reçoit son code et son QR code (feuille à imprimer après l\'importation) : il active son compte avec une application 2FA, ou avec Google.': 'Cada empleado recibe su código y su código QR (hoja para imprimir tras la importación): activa su cuenta con una aplicación 2FA o con Google.',
   'Trop de comptes créés depuis cette connexion : réessayez demain.': 'Demasiadas cuentas creadas desde esta conexión: inténtalo mañana.',
+  'Ce compte se connecte avec une application 2FA : elle ne peut pas être retirée.': 'Esta cuenta inicia sesión con una aplicación 2FA: no se puede quitar.',
 };

@@ -594,7 +594,7 @@
   "totpBackupHint": "Códigos de respaldo (cada uno sirve una vez): anótalos o guárdalos en un lugar seguro. Sirven si ya no tienes la aplicación.",
   "totpBackupSaved": "Anotado",
   "linkGoogleTitle": "Vincular una cuenta de Google",
-  "linkGoogleHint": "Para crear una empresa y gestionar su suscripción, vincula una cuenta de Google a tu cuenta de Staff Flow. Tus empresas, horarios y aplicación 2FA se mantienen.",
+  "linkGoogleHint": "Para crear una empresa, vincula una cuenta de Google a tu cuenta de Staff Flow. Solo sirve para proteger al creador de la empresa y su suscripción: tu dirección de Google nunca se muestra a tus empleados ni a nadie, se queda en Staff Flow. Podrás seguir iniciando sesión con tu aplicación 2FA.",
   "linkGoogleButton": "Vincular mi cuenta de Google",
   "linkGoogleBanner": "Inicia sesión con la cuenta de Google que quieres vincular a Staff Flow.",
   "totpLoginButton": "Iniciar sesión con una aplicación 2FA",
@@ -608,5 +608,15 @@
   "signupStep1Hint": "El nombre que verán tus compañeros y empleadores. Sin Google ni e-mail: tu cuenta está protegida por una aplicación de autenticación.",
   "signupName": "Nombre y apellidos",
   "signupHello": "Hola, {name}",
-  "signupButton": "Crear una cuenta con una aplicación 2FA"
+  "signupButton": "Crear una cuenta con una aplicación 2FA",
+  "totpCardTitle": "Acceso con una aplicación 2FA",
+  "totpCardLocal": "Tu cuenta inicia sesión con una aplicación de autenticación. Identificador: {id}",
+  "totpCardOn": "Activado: también puedes iniciar sesión con tu identificador {id} y el código de la aplicación, sin Google.",
+  "totpCardOff": "Prepara una aplicación de autenticación para poder iniciar sesión sin Google (ID SF + código de 6 cifras).",
+  "totpEnable": "Activar",
+  "totpDisable": "Quitar",
+  "totpEnableTitle": "Activar el acceso 2FA",
+  "totpEnabledTitle": "Acceso 2FA listo",
+  "totpDisableConfirm": "¿Quitar el acceso con la aplicación 2FA? Solo iniciarás sesión con Google.",
+  "googlePrivacyNote": "Tu cuenta de Google solo sirve para proteger la empresa y su suscripción: nunca se muestra a tus empleados ni a nadie."
 }

@@ -594,7 +594,7 @@
   "totpBackupHint": "Coduri de rezervă (fiecare o singură dată): notați-le sau păstrați-le în siguranță. Le folosiți dacă nu mai aveți aplicația.",
   "totpBackupSaved": "Am notat",
   "linkGoogleTitle": "Leagă un cont Google",
-  "linkGoogleHint": "Pentru a crea o companie și a gestiona abonamentul, legați un cont Google de contul Staff Flow. Companiile, programele și aplicația 2FA se păstrează.",
+  "linkGoogleHint": "Pentru a crea o companie, legați un cont Google de contul dvs. Staff Flow. Servește doar la protejarea creatorului companiei și a abonamentului: adresa dvs. Google nu este arătată niciodată angajaților sau altcuiva, rămâne în Staff Flow. Vă veți putea conecta în continuare cu aplicația 2FA.",
   "linkGoogleButton": "Leagă contul meu Google",
   "linkGoogleBanner": "Conectați-vă cu contul Google de legat la Staff Flow.",
   "totpLoginButton": "Conectare cu o aplicație 2FA",
@@ -608,5 +608,15 @@
   "signupStep1Hint": "Numele pe care îl vor vedea colegii și angajatorii. Fără Google, fără e-mail: contul este protejat de o aplicație de autentificare.",
   "signupName": "Prenume și nume",
   "signupHello": "Bună, {name}",
-  "signupButton": "Creează un cont cu o aplicație 2FA"
+  "signupButton": "Creează un cont cu o aplicație 2FA",
+  "totpCardTitle": "Conectare cu o aplicație 2FA",
+  "totpCardLocal": "Contul dvs. se conectează cu o aplicație de autentificare. Identificator: {id}",
+  "totpCardOn": "Activă: vă puteți conecta și cu identificatorul {id} și codul aplicației, fără Google.",
+  "totpCardOff": "Pregătiți o aplicație de autentificare ca să vă puteți conecta fără Google (ID SF + cod de 6 cifre).",
+  "totpEnable": "Activează",
+  "totpDisable": "Elimină",
+  "totpEnableTitle": "Activează conectarea 2FA",
+  "totpEnabledTitle": "Conectarea 2FA este gata",
+  "totpDisableConfirm": "Eliminați conectarea cu aplicația 2FA? Vă veți conecta doar cu Google.",
+  "googlePrivacyNote": "Contul dvs. Google servește doar la protejarea companiei și a abonamentului: nu este arătat niciodată angajaților sau altcuiva."
 }

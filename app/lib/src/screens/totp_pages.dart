@@ -375,3 +375,144 @@ Future<void> askLinkGoogle(BuildContext context, Session session) async {
     if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.describe(t))));
   }
 }
+
+/// Mon profil : connexion par application 2FA. Un compte Google peut la
+/// préparer pour s'en servir à la place de Google ; un compte sans Google
+/// l'a toujours.
+class TotpCard extends StatelessWidget {
+  final Session session;
+
+  const TotpCard({super.key, required this.session});
+
+  Future<void> _enable(BuildContext context) async {
+    final t = context.l10n;
+    try {
+      final start = (await session.api.send('POST', '/me/totp') as Map).cast<String, dynamic>();
+      if (!context.mounted) return;
+      final otp = TextEditingController();
+      String? error;
+      final codes = await showDialog<List<String>>(
+        context: context,
+        builder: (dialog) => StatefulBuilder(
+          builder: (dialog, setState) => AlertDialog(
+            title: Text(t.totpEnableTitle),
+            content: SingleChildScrollView(
+              child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                Text(t.activateStep2),
+                const SizedBox(height: 8),
+                FilledButton.tonalIcon(
+                  onPressed: () => launchUrl(Uri.parse(start['otpauth'] as String), mode: LaunchMode.externalApplication),
+                  icon: const Icon(Icons.add_moderator_outlined),
+                  label: Text(t.activateOpenApp),
+                ),
+                const SizedBox(height: 8),
+                Center(
+                  child: Container(
+                    color: Colors.white,
+                    padding: const EdgeInsets.all(6),
+                    child: SizedBox(
+                        width: 150, height: 150, child: QrImageView(data: start['otpauth'] as String, backgroundColor: Colors.white)),
+                  ),
+                ),
+                SelectableText(start['secret'] as String,
+                    textAlign: TextAlign.center, style: const TextStyle(fontFamily: 'monospace', fontSize: 12)),
+                const SizedBox(height: 8),
+                otpField(otp, label: t.activateFirstCode),
+                if (error != null) Text(error!, style: TextStyle(color: Theme.of(dialog).colorScheme.error)),
+              ]),
+            ),
+            actions: [
+              TextButton(onPressed: () => Navigator.pop(dialog), child: Text(t.cancel)),
+              FilledButton(
+                onPressed: () async {
+                  try {
+                    final r = await session.api
+                        .send('POST', '/me/totp/confirm', body: {'pending': start['pending'], 'otp': otp.text.trim()});
+                    if (dialog.mounted) Navigator.pop(dialog, (r['backupCodes'] as List).cast<String>());
+                  } on ApiException catch (e) {
+                    setState(() => error = e.describe(t));
+                  }
+                },
+                child: Text(t.activateDone),
+              ),
+            ],
+          ),
+        ),
+      );
+      if (codes == null || !context.mounted) return;
+      await session.refresh();
+      if (!context.mounted) return;
+      await showDialog<void>(
+        context: context,
+        builder: (dialog) => AlertDialog(
+          title: Text(t.totpEnabledTitle),
+          content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            Text(t.totpYourId),
+            SelectableText(session.me!.user.publicId, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+            const SizedBox(height: 12),
+            Text(t.totpBackupHint),
+            const SizedBox(height: 8),
+            Wrap(spacing: 12, runSpacing: 6, children: [
+              for (final c in codes)
+                Text('${c.substring(0, 4)}-${c.substring(4)}',
+                    style: const TextStyle(fontFamily: 'monospace', fontSize: 15, fontWeight: FontWeight.w600)),
+            ]),
+          ]),
+          actions: [
+            TextButton.icon(
+              onPressed: () => Clipboard.setData(ClipboardData(text: codes.join('\n'))),
+              icon: const Icon(Icons.copy),
+              label: Text(t.apiKeyCopy),
+            ),
+            FilledButton(onPressed: () => Navigator.pop(dialog), child: Text(t.totpBackupSaved)),
+          ],
+        ),
+      );
+    } on ApiException catch (e) {
+      if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.describe(t))));
+    } on OfflineException {
+      if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+    }
+  }
+
+  Future<void> _disable(BuildContext context) async {
+    final t = context.l10n;
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (dialog) => AlertDialog(
+        content: Text(t.totpDisableConfirm),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(dialog, false), child: Text(t.cancel)),
+          FilledButton(onPressed: () => Navigator.pop(dialog, true), child: Text(t.validate)),
+        ],
+      ),
+    );
+    if (ok != true) return;
+    try {
+      await session.api.send('DELETE', '/me/totp');
+      await session.refresh();
+    } on ApiException catch (e) {
+      if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.describe(t))));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final t = context.l10n;
+    final me = session.me!;
+    final on = me.totp;
+    return Card(
+      child: ListTile(
+        leading: Icon(on ? Icons.verified_user : Icons.shield_outlined, color: on ? Colors.green.shade700 : null),
+        title: Text(t.totpCardTitle),
+        subtitle: Text(me.user.local ? t.totpCardLocal(me.user.publicId) : (on ? t.totpCardOn(me.user.publicId) : t.totpCardOff)),
+        isThreeLine: true,
+        trailing: me.user.local
+            ? null
+            : on
+                ? TextButton(onPressed: () => _disable(context), child: Text(t.totpDisable))
+                : FilledButton.tonal(onPressed: () => _enable(context), child: Text(t.totpEnable)),
+      ),
+    );
+  }
+}

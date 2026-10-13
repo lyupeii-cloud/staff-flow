@@ -207,6 +207,50 @@ class TotpService {
     return {'pending': pending, 'name': clean, 'secret': secret, 'otpauth': otpauth(secret, clean)};
   }
 
+  /// Compte Google qui ajoute la connexion par application 2FA : nouveau secret.
+  Future<Map<String, Object?>> enableStart(User actor) async {
+    final secret = newSecret();
+    final pending = JWT({'u': actor.id, 's': secret}, issuer: 'staff-flow-totp-enable')
+        .sign(_key, expiresIn: const Duration(minutes: 20));
+    return {'pending': pending, 'secret': secret, 'otpauth': otpauth(secret, actor.publicId)};
+  }
+
+  /// Premier code de l'application : la 2FA est active ; renvoie les codes de secours.
+  Future<List<String>> enableConfirm(User actor, String pending, String otp) async {
+    final JWT jwt;
+    try {
+      jwt = JWT.verify(pending, _key, issuer: 'staff-flow-totp-enable');
+    } on JWTException {
+      throw const ApiError.notFound('Lien expiré.');
+    }
+    final claims = jwt.payload as Map;
+    if (claims['u'] != actor.id) throw const ApiError.forbidden();
+    final secret = claims['s'] as String;
+    final step = _match(secret, otp.trim());
+    if (step == null) {
+      throw const ApiError.badRequest('Code de l\'application incorrect : vérifiez l\'heure du téléphone et réessayez.');
+    }
+    final backup = [for (var i = 0; i < backupCount; i++) _randomCode()];
+    await store.query(store.db, '''
+      UPDATE users SET totp_secret = @s, totp_last_step = @st, backup_codes = @b WHERE id = @u::uuid''',
+        {'u': actor.id, 's': _seal(secret), 'st': step, 'b': [for (final c in backup) _hash(c)]});
+    await store.audit(actorId: actor.id, action: 'account.totp_enabled');
+    return backup;
+  }
+
+  /// Un compte Google retire la connexion 2FA (un compte sans Google la garde).
+  Future<void> disable(User actor) async {
+    if (isLocal(actor)) throw const ApiError.conflict('Ce compte se connecte avec une application 2FA : elle ne peut pas être retirée.');
+    await store.query(store.db, 'UPDATE users SET totp_secret = NULL, totp_last_step = NULL, backup_codes = NULL WHERE id = @u::uuid',
+        {'u': actor.id});
+    await store.audit(actorId: actor.id, action: 'account.totp_disabled');
+  }
+
+  Future<bool> enabled(String userId) async =>
+      (await store.query(store.db, 'SELECT totp_secret IS NOT NULL FROM users WHERE id = @u::uuid', {'u': userId}))
+          .first[0] ==
+      true;
+
   /// Comptes sans Google créés librement qui n'ont jamais rejoint d'entreprise.
   Future<void> purgeUnused() async {
     await store.query(store.db, '''

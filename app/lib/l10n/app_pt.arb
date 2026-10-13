@@ -594,7 +594,7 @@
   "totpBackupHint": "Códigos de recuperação (cada um serve uma vez): anote-os ou guarde-os num local seguro. Servem se já não tiver a aplicação.",
   "totpBackupSaved": "Anotado",
   "linkGoogleTitle": "Ligar uma conta Google",
-  "linkGoogleHint": "Para criar uma empresa e gerir a assinatura, ligue uma conta Google à sua conta Staff Flow. As suas empresas, horários e aplicação 2FA são mantidos.",
+  "linkGoogleHint": "Para criar uma empresa, ligue uma conta Google à sua conta Staff Flow. Serve apenas para proteger o criador da empresa e a sua assinatura: o seu endereço Google nunca é mostrado aos seus funcionários nem a ninguém, fica no Staff Flow. Continuará a poder entrar com a sua aplicação 2FA.",
   "linkGoogleButton": "Ligar a minha conta Google",
   "linkGoogleBanner": "Entre com a conta Google a ligar à sua conta Staff Flow.",
   "totpLoginButton": "Entrar com uma aplicação 2FA",
@@ -608,5 +608,15 @@
   "signupStep1Hint": "O nome que os seus colegas e empregadores verão. Sem Google nem e-mail: a sua conta é protegida por uma aplicação de autenticação.",
   "signupName": "Nome e apelido",
   "signupHello": "Olá, {name}",
-  "signupButton": "Criar uma conta com uma aplicação 2FA"
+  "signupButton": "Criar uma conta com uma aplicação 2FA",
+  "totpCardTitle": "Entrada com uma aplicação 2FA",
+  "totpCardLocal": "A sua conta entra com uma aplicação de autenticação. Identificador: {id}",
+  "totpCardOn": "Ativa: também pode entrar com o seu identificador {id} e o código da aplicação, sem Google.",
+  "totpCardOff": "Prepare uma aplicação de autenticação para poder entrar sem Google (ID SF + código de 6 dígitos).",
+  "totpEnable": "Ativar",
+  "totpDisable": "Remover",
+  "totpEnableTitle": "Ativar a entrada 2FA",
+  "totpEnabledTitle": "Entrada 2FA pronta",
+  "totpDisableConfirm": "Remover a entrada com a aplicação 2FA? Só entrará com o Google.",
+  "googlePrivacyNote": "A sua conta Google serve apenas para proteger a empresa e a sua assinatura: nunca é mostrada aos seus funcionários nem a ninguém."
 }

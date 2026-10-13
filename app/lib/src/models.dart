@@ -239,6 +239,9 @@ class Me {
   /// Annonces non lues du fil d'actualités, par entreprise.
   final Map<String, int> unreadNews;
 
+  /// Connexion par application 2FA prête pour ce compte.
+  final bool totp;
+
   /// Familles de notifications activées (planning, requests, messages…).
   final Map<String, bool> notificationPrefs;
 
@@ -266,6 +269,7 @@ class Me {
         telegramLinked = j['telegram'] != null,
         telegramUsername = (j['telegram'] as Map?)?['username'],
         telegramBot = j['telegramBot'],
+        totp = j['totp'] == true,
         unreadNews = {
           for (final e in ((j['unreadNews'] ?? const {}) as Map).entries) e.key as String: e.value as int,
         },

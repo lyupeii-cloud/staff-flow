@@ -594,7 +594,7 @@
   "totpBackupHint": "Backup-Codes (jeder nur einmal): Notieren Sie sie oder bewahren Sie sie sicher auf. Sie helfen, wenn Sie die App nicht mehr haben.",
   "totpBackupSaved": "Notiert",
   "linkGoogleTitle": "Google-Konto verknüpfen",
-  "linkGoogleHint": "Um ein Unternehmen zu erstellen und das Abonnement zu verwalten, verknüpfen Sie ein Google-Konto mit Ihrem Staff-Flow-Konto. Unternehmen, Dienstpläne und 2FA-App bleiben erhalten.",
+  "linkGoogleHint": "Um ein Unternehmen zu erstellen, verknüpfen Sie ein Google-Konto mit Ihrem Staff-Flow-Konto. Es dient nur dem Schutz des Unternehmensgründers und seines Abonnements: Ihre Google-Adresse wird nie Ihren Mitarbeitenden oder anderen gezeigt, sie bleibt in Staff Flow. Sie können sich weiterhin mit Ihrer 2FA-App anmelden.",
   "linkGoogleButton": "Mein Google-Konto verknüpfen",
   "linkGoogleBanner": "Melden Sie sich mit dem Google-Konto an, das mit Staff Flow verknüpft werden soll.",
   "totpLoginButton": "Mit einer 2FA-App anmelden",
@@ -608,5 +608,15 @@
   "signupStep1Hint": "Der Name, den Ihre Kollegen und Arbeitgeber sehen. Kein Google, keine E-Mail: Ihr Konto wird durch eine Authenticator-App geschützt.",
   "signupName": "Vor- und Nachname",
   "signupHello": "Hallo {name}",
-  "signupButton": "Konto mit einer 2FA-App erstellen"
+  "signupButton": "Konto mit einer 2FA-App erstellen",
+  "totpCardTitle": "Anmeldung mit einer 2FA-App",
+  "totpCardLocal": "Ihr Konto meldet sich mit einer Authenticator-App an. ID: {id}",
+  "totpCardOn": "An: Sie können sich auch mit Ihrer ID {id} und dem App-Code anmelden, ohne Google.",
+  "totpCardOff": "Richten Sie eine Authenticator-App ein, um sich ohne Google anmelden zu können (SF-ID + 6-stelliger Code).",
+  "totpEnable": "Aktivieren",
+  "totpDisable": "Entfernen",
+  "totpEnableTitle": "2FA-Anmeldung aktivieren",
+  "totpEnabledTitle": "2FA-Anmeldung bereit",
+  "totpDisableConfirm": "Anmeldung mit 2FA-App entfernen? Sie melden sich dann nur mit Google an.",
+  "googlePrivacyNote": "Ihr Google-Konto dient nur dem Schutz des Unternehmens und seines Abonnements: Es wird nie Ihren Mitarbeitenden oder anderen gezeigt."
 }

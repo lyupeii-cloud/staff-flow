@@ -598,7 +598,7 @@
   "totpBackupHint": "Codes de secours (un seul usage chacun) : notez-les ou gardez-les en lieu sûr. Ils servent si vous n'avez plus votre application.",
   "totpBackupSaved": "C'est noté",
   "linkGoogleTitle": "Relier un compte Google",
-  "linkGoogleHint": "Pour créer une entreprise et gérer son abonnement, reliez un compte Google à votre compte Staff Flow. Vos entreprises, plannings et votre application 2FA sont gardés.",
+  "linkGoogleHint": "Pour créer une entreprise, reliez un compte Google à votre compte Staff Flow. Il sert uniquement à protéger le créateur de l'entreprise et son abonnement : votre adresse Google n'est jamais montrée à vos salariés ni à personne, elle reste dans Staff Flow. Vous pourrez toujours vous connecter avec votre application 2FA.",
   "linkGoogleButton": "Relier mon compte Google",
   "linkGoogleBanner": "Connectez-vous avec le compte Google à relier à votre compte Staff Flow.",
   "totpLoginButton": "Se connecter avec une application 2FA",
@@ -612,5 +612,15 @@
   "signupStep1Hint": "Le nom que verront vos collègues et vos employeurs. Pas de Google, pas d'e-mail : votre compte est protégé par une application d'authentification.",
   "signupName": "Prénom et nom",
   "signupHello": "Bonjour {name}",
-  "signupButton": "Créer un compte avec une application 2FA"
+  "signupButton": "Créer un compte avec une application 2FA",
+  "totpCardTitle": "Connexion par application 2FA",
+  "totpCardLocal": "Votre compte se connecte avec une application d'authentification. Identifiant : {id}",
+  "totpCardOn": "Active : vous pouvez aussi vous connecter avec votre identifiant {id} et le code de l'application, sans Google.",
+  "totpCardOff": "Préparez une application d'authentification pour pouvoir vous connecter sans Google (identifiant SF + code à 6 chiffres).",
+  "totpEnable": "Activer",
+  "totpDisable": "Retirer",
+  "totpEnableTitle": "Activer la connexion 2FA",
+  "totpEnabledTitle": "Connexion 2FA prête",
+  "totpDisableConfirm": "Retirer la connexion par application 2FA ? Vous vous connecterez seulement avec Google.",
+  "googlePrivacyNote": "Votre compte Google sert uniquement à protéger l'entreprise et son abonnement : il n'est jamais montré à vos salariés ni à personne."
 }

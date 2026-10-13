@@ -2160,7 +2160,7 @@ class L10nEn extends L10n {
 
   @override
   String get linkGoogleHint =>
-      'To create a company and manage its subscription, link a Google account to your Staff Flow account. Your companies, schedules and 2FA app are kept.';
+      'To create a company, link a Google account to your Staff Flow account. It\'s only used to protect the company\'s creator and its subscription: your Google address is never shown to your employees or anyone else, it stays in Staff Flow. You can still sign in with your 2FA app.';
 
   @override
   String get linkGoogleButton => 'Link my Google account';
@@ -2211,6 +2211,43 @@ class L10nEn extends L10n {
 
   @override
   String get signupButton => 'Create an account with a 2FA app';
+
+  @override
+  String get totpCardTitle => 'Sign-in with a 2FA app';
+
+  @override
+  String totpCardLocal(String id) {
+    return 'Your account signs in with an authenticator app. ID: $id';
+  }
+
+  @override
+  String totpCardOn(String id) {
+    return 'On: you can also sign in with your ID $id and the app code, without Google.';
+  }
+
+  @override
+  String get totpCardOff =>
+      'Set up an authenticator app to be able to sign in without Google (SF ID + 6-digit code).';
+
+  @override
+  String get totpEnable => 'Turn on';
+
+  @override
+  String get totpDisable => 'Remove';
+
+  @override
+  String get totpEnableTitle => 'Turn on 2FA sign-in';
+
+  @override
+  String get totpEnabledTitle => '2FA sign-in ready';
+
+  @override
+  String get totpDisableConfirm =>
+      'Remove sign-in with a 2FA app? You\'ll only sign in with Google.';
+
+  @override
+  String get googlePrivacyNote =>
+      'Your Google account is only used to protect the company and its subscription: it\'s never shown to your employees or anyone else.';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).

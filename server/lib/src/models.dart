@@ -283,7 +283,8 @@ class Member {
       this.positionId});
 
   Map<String, Object?> toJson() => {
-        'user': user.toJson(),
+        // Le compte Google reste dans Staff Flow : jamais montré aux autres membres.
+        'user': {...user.toJson()}..remove('email'),
         'employeeNumber': employeeNumber,
         'positionId': positionId,
         'billingAccess': billingAccess,

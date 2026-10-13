@@ -2174,7 +2174,7 @@ class L10nPl extends L10n {
 
   @override
   String get linkGoogleHint =>
-      'Aby utworzyć firmę i zarządzać subskrypcją, połącz konto Google ze swoim kontem Staff Flow. Firmy, grafiki i aplikacja 2FA zostają.';
+      'Aby utworzyć firmę, połącz konto Google ze swoim kontem Staff Flow. Służy ono wyłącznie do ochrony twórcy firmy i jej subskrypcji: Twój adres Google nigdy nie jest pokazywany pracownikom ani nikomu innemu, pozostaje w Staff Flow. Nadal możesz logować się aplikacją 2FA.';
 
   @override
   String get linkGoogleButton => 'Połącz moje konto Google';
@@ -2225,4 +2225,41 @@ class L10nPl extends L10n {
 
   @override
   String get signupButton => 'Utwórz konto z aplikacją 2FA';
+
+  @override
+  String get totpCardTitle => 'Logowanie aplikacją 2FA';
+
+  @override
+  String totpCardLocal(String id) {
+    return 'Twoje konto loguje się aplikacją uwierzytelniającą. Identyfikator: $id';
+  }
+
+  @override
+  String totpCardOn(String id) {
+    return 'Włączone: możesz też logować się identyfikatorem $id i kodem z aplikacji, bez Google.';
+  }
+
+  @override
+  String get totpCardOff =>
+      'Przygotuj aplikację uwierzytelniającą, aby logować się bez Google (ID SF + 6-cyfrowy kod).';
+
+  @override
+  String get totpEnable => 'Włącz';
+
+  @override
+  String get totpDisable => 'Usuń';
+
+  @override
+  String get totpEnableTitle => 'Włącz logowanie 2FA';
+
+  @override
+  String get totpEnabledTitle => 'Logowanie 2FA gotowe';
+
+  @override
+  String get totpDisableConfirm =>
+      'Usunąć logowanie aplikacją 2FA? Będziesz logować się tylko przez Google.';
+
+  @override
+  String get googlePrivacyNote =>
+      'Twoje konto Google służy wyłącznie do ochrony firmy i jej subskrypcji: nigdy nie jest pokazywane pracownikom ani nikomu innemu.';
 }

@@ -104,6 +104,24 @@ void main() {
     expect(unused.first[0], 0, reason: 'jamais dans une entreprise : effacés');
   });
 
+  test('compte Google : prépare la 2FA puis s\'en sert pour se connecter ; e-mail jamais montré aux collègues', () async {
+    final bob = await env.login('bob');
+    await env.store.addMember(company, bob.id, Role.employee);
+    final start = await bob.ok('POST', '/me/totp');
+    expect((await bob('POST', '/me/totp/confirm', {'pending': start['pending'], 'otp': '000000'})).$1, 400);
+    final done = await bob.ok('POST', '/me/totp/confirm', {'pending': start['pending'], 'otp': otp(start['secret'])});
+    expect(done['backupCodes'], hasLength(8));
+    expect((await bob.ok('GET', '/me'))['totp'], true);
+    env.clock.advance(const Duration(minutes: 1));
+    final r = await Client(env.handler).ok('POST', '/auth/totp', {'login': bob.user['publicId'], 'otp': otp(start['secret'])});
+    expect(r['user']['id'], bob.id);
+    // Les autres membres ne voient jamais l'adresse Google du patron.
+    final members = (await bob.ok('GET', p('/members')))['members'] as List;
+    expect(members.every((m) => !(m['user'] as Map).containsKey('email')), isTrue);
+    await bob.ok('DELETE', '/me/totp');
+    expect((await bob.ok('GET', '/me'))['totp'], false);
+  });
+
   test('3 erreurs depuis un appareil : bloqué 15 minutes, les autres appareils non ; la personne est prévenue', () async {
     final (secret, token, sf, _) = await activate(await invite('Inès Lefèvre'));
     final bad = Client(env.handler, ip: '10.0.0.9');

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../brand.dart';
 import 'account_tools.dart';
+import 'totp_pages.dart';
 import 'avatar_widgets.dart';
 import '../i18n.dart';
 import '../session.dart';
@@ -97,6 +98,8 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ]),
               ),
+              const SizedBox(height: 12),
+              TotpCard(session: session),
               const SizedBox(height: 12),
               TelegramCard(session: session),
               const SizedBox(height: 12),

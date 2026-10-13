@@ -2169,7 +2169,7 @@ class L10nRo extends L10n {
 
   @override
   String get linkGoogleHint =>
-      'Pentru a crea o companie și a gestiona abonamentul, legați un cont Google de contul Staff Flow. Companiile, programele și aplicația 2FA se păstrează.';
+      'Pentru a crea o companie, legați un cont Google de contul dvs. Staff Flow. Servește doar la protejarea creatorului companiei și a abonamentului: adresa dvs. Google nu este arătată niciodată angajaților sau altcuiva, rămâne în Staff Flow. Vă veți putea conecta în continuare cu aplicația 2FA.';
 
   @override
   String get linkGoogleButton => 'Leagă contul meu Google';
@@ -2220,4 +2220,41 @@ class L10nRo extends L10n {
 
   @override
   String get signupButton => 'Creează un cont cu o aplicație 2FA';
+
+  @override
+  String get totpCardTitle => 'Conectare cu o aplicație 2FA';
+
+  @override
+  String totpCardLocal(String id) {
+    return 'Contul dvs. se conectează cu o aplicație de autentificare. Identificator: $id';
+  }
+
+  @override
+  String totpCardOn(String id) {
+    return 'Activă: vă puteți conecta și cu identificatorul $id și codul aplicației, fără Google.';
+  }
+
+  @override
+  String get totpCardOff =>
+      'Pregătiți o aplicație de autentificare ca să vă puteți conecta fără Google (ID SF + cod de 6 cifre).';
+
+  @override
+  String get totpEnable => 'Activează';
+
+  @override
+  String get totpDisable => 'Elimină';
+
+  @override
+  String get totpEnableTitle => 'Activează conectarea 2FA';
+
+  @override
+  String get totpEnabledTitle => 'Conectarea 2FA este gata';
+
+  @override
+  String get totpDisableConfirm =>
+      'Eliminați conectarea cu aplicația 2FA? Vă veți conecta doar cu Google.';
+
+  @override
+  String get googlePrivacyNote =>
+      'Contul dvs. Google servește doar la protejarea companiei și a abonamentului: nu este arătat niciodată angajaților sau altcuiva.';
 }

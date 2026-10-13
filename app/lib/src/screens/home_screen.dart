@@ -287,6 +287,12 @@ Future<void> createCompany(BuildContext context, Session session) async {
               items: [for (final z in zones) DropdownMenuItem(value: z, child: Text(z))],
               onChanged: (z) => setState(() => timezone = z!),
             ),
+            const SizedBox(height: 12),
+            Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const Icon(Icons.lock_outline, size: 18),
+              const SizedBox(width: 8),
+              Expanded(child: Text(t.googlePrivacyNote, style: Theme.of(context).textTheme.bodySmall)),
+            ]),
           ],
         ),
         actions: [

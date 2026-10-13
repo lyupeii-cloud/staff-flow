@@ -2168,7 +2168,7 @@ class L10nRu extends L10n {
 
   @override
   String get linkGoogleHint =>
-      'Чтобы создать компанию и управлять подпиской, привяжите аккаунт Google к своему аккаунту Staff Flow. Компании, графики и приложение 2FA сохраняются.';
+      'Чтобы создать компанию, привяжите аккаунт Google к своему аккаунту Staff Flow. Он нужен только для защиты создателя компании и её подписки: ваш адрес Google никогда не показывают ни сотрудникам, ни кому-либо ещё, он остаётся в Staff Flow. Вы по-прежнему сможете входить через приложение 2FA.';
 
   @override
   String get linkGoogleButton => 'Привязать мой Google';
@@ -2219,4 +2219,41 @@ class L10nRu extends L10n {
 
   @override
   String get signupButton => 'Создать аккаунт с приложением 2FA';
+
+  @override
+  String get totpCardTitle => 'Вход через приложение 2FA';
+
+  @override
+  String totpCardLocal(String id) {
+    return 'Ваш аккаунт входит через приложение аутентификации. Идентификатор: $id';
+  }
+
+  @override
+  String totpCardOn(String id) {
+    return 'Включено: вы можете также входить с идентификатором $id и кодом приложения, без Google.';
+  }
+
+  @override
+  String get totpCardOff =>
+      'Настройте приложение аутентификации, чтобы входить без Google (идентификатор SF + 6-значный код).';
+
+  @override
+  String get totpEnable => 'Включить';
+
+  @override
+  String get totpDisable => 'Отключить';
+
+  @override
+  String get totpEnableTitle => 'Включить вход через 2FA';
+
+  @override
+  String get totpEnabledTitle => 'Вход через 2FA готов';
+
+  @override
+  String get totpDisableConfirm =>
+      'Отключить вход через приложение 2FA? Вы будете входить только через Google.';
+
+  @override
+  String get googlePrivacyNote =>
+      'Ваш аккаунт Google служит только для защиты компании и её подписки: его никогда не показывают сотрудникам или кому-либо ещё.';
 }

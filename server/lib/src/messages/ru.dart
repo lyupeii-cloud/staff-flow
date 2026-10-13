@@ -227,4 +227,5 @@ const ru = <String, String>{
   '3 codes incorrects ont été saisis pour votre compte : cet appareil est bloqué 15 minutes. Si ce n\'est pas vous, prévenez votre responsable.': 'Для вашего аккаунта введено 3 неверных кода: это устройство заблокировано на 15 минут. Если это были не вы, сообщите руководителю.',
   'Chaque salarié reçoit son code et son QR code (feuille à imprimer après l\'importation) : il active son compte avec une application 2FA, ou avec Google.': 'Каждый сотрудник получает свой код и QR-код (лист для печати после импорта): он активирует аккаунт через приложение 2FA или через Google.',
   'Trop de comptes créés depuis cette connexion : réessayez demain.': 'С этого подключения создано слишком много аккаунтов: попробуйте завтра.',
+  'Ce compte se connecte avec une application 2FA : elle ne peut pas être retirée.': 'Этот аккаунт входит через приложение 2FA: его нельзя отключить.',
 };

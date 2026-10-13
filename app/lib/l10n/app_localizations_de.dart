@@ -2175,7 +2175,7 @@ class L10nDe extends L10n {
 
   @override
   String get linkGoogleHint =>
-      'Um ein Unternehmen zu erstellen und das Abonnement zu verwalten, verknüpfen Sie ein Google-Konto mit Ihrem Staff-Flow-Konto. Unternehmen, Dienstpläne und 2FA-App bleiben erhalten.';
+      'Um ein Unternehmen zu erstellen, verknüpfen Sie ein Google-Konto mit Ihrem Staff-Flow-Konto. Es dient nur dem Schutz des Unternehmensgründers und seines Abonnements: Ihre Google-Adresse wird nie Ihren Mitarbeitenden oder anderen gezeigt, sie bleibt in Staff Flow. Sie können sich weiterhin mit Ihrer 2FA-App anmelden.';
 
   @override
   String get linkGoogleButton => 'Mein Google-Konto verknüpfen';
@@ -2226,4 +2226,41 @@ class L10nDe extends L10n {
 
   @override
   String get signupButton => 'Konto mit einer 2FA-App erstellen';
+
+  @override
+  String get totpCardTitle => 'Anmeldung mit einer 2FA-App';
+
+  @override
+  String totpCardLocal(String id) {
+    return 'Ihr Konto meldet sich mit einer Authenticator-App an. ID: $id';
+  }
+
+  @override
+  String totpCardOn(String id) {
+    return 'An: Sie können sich auch mit Ihrer ID $id und dem App-Code anmelden, ohne Google.';
+  }
+
+  @override
+  String get totpCardOff =>
+      'Richten Sie eine Authenticator-App ein, um sich ohne Google anmelden zu können (SF-ID + 6-stelliger Code).';
+
+  @override
+  String get totpEnable => 'Aktivieren';
+
+  @override
+  String get totpDisable => 'Entfernen';
+
+  @override
+  String get totpEnableTitle => '2FA-Anmeldung aktivieren';
+
+  @override
+  String get totpEnabledTitle => '2FA-Anmeldung bereit';
+
+  @override
+  String get totpDisableConfirm =>
+      'Anmeldung mit 2FA-App entfernen? Sie melden sich dann nur mit Google an.';
+
+  @override
+  String get googlePrivacyNote =>
+      'Ihr Google-Konto dient nur dem Schutz des Unternehmens und seines Abonnements: Es wird nie Ihren Mitarbeitenden oder anderen gezeigt.';
 }

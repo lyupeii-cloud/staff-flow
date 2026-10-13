@@ -3711,7 +3711,7 @@ abstract class L10n {
   /// No description provided for @linkGoogleHint.
   ///
   /// In en, this message translates to:
-  /// **'To create a company and manage its subscription, link a Google account to your Staff Flow account. Your companies, schedules and 2FA app are kept.'**
+  /// **'To create a company, link a Google account to your Staff Flow account. It\'s only used to protect the company\'s creator and its subscription: your Google address is never shown to your employees or anyone else, it stays in Staff Flow. You can still sign in with your 2FA app.'**
   String get linkGoogleHint;
 
   /// No description provided for @linkGoogleButton.
@@ -3797,6 +3797,66 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Create an account with a 2FA app'**
   String get signupButton;
+
+  /// No description provided for @totpCardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-in with a 2FA app'**
+  String get totpCardTitle;
+
+  /// No description provided for @totpCardLocal.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account signs in with an authenticator app. ID: {id}'**
+  String totpCardLocal(String id);
+
+  /// No description provided for @totpCardOn.
+  ///
+  /// In en, this message translates to:
+  /// **'On: you can also sign in with your ID {id} and the app code, without Google.'**
+  String totpCardOn(String id);
+
+  /// No description provided for @totpCardOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Set up an authenticator app to be able to sign in without Google (SF ID + 6-digit code).'**
+  String get totpCardOff;
+
+  /// No description provided for @totpEnable.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on'**
+  String get totpEnable;
+
+  /// No description provided for @totpDisable.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get totpDisable;
+
+  /// No description provided for @totpEnableTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on 2FA sign-in'**
+  String get totpEnableTitle;
+
+  /// No description provided for @totpEnabledTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'2FA sign-in ready'**
+  String get totpEnabledTitle;
+
+  /// No description provided for @totpDisableConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove sign-in with a 2FA app? You\'ll only sign in with Google.'**
+  String get totpDisableConfirm;
+
+  /// No description provided for @googlePrivacyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Google account is only used to protect the company and its subscription: it\'s never shown to your employees or anyone else.'**
+  String get googlePrivacyNote;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

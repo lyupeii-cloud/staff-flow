@@ -129,6 +129,15 @@ class Api {
       // Jeton renouvelé (connexion gardée sur l'appareil).
       ..post('/auth/refresh', _authed((r, u) async => _json({'token': tokens.issue(u.id, version: u.sessionVersion)})))
       ..post('/me/link-google', _authed((r, u) async => _json({'switchToken': await googleSwitch.selfLink(u)})))
+      ..post('/me/totp', _authed((r, u) async => _json(await totp.enableStart(u))))
+      ..post('/me/totp/confirm', _authed((r, u) async {
+        final body = await _body(r);
+        return _json({'backupCodes': await totp.enableConfirm(u, _string(body, 'pending'), _string(body, 'otp'))});
+      }))
+      ..delete('/me/totp', _authed((r, u) async {
+        await totp.disable(u);
+        return Response(204);
+      }))
       ..post('/companies/<id>/members/<userId>/activation-code', _authed((r, u) async {
         final (code, link) = await totp.reactivation(u, r.params['id']!, r.params['userId']!, appUrl);
         return _json({'code': code, 'link': link});
@@ -616,6 +625,7 @@ class Api {
         'notificationPrefs': await notifications.prefs(user.id),
         'noticeRetention': await notices.retention(user.id),
         'unreadNews': await news.unreadByCompany(user.id),
+        'totp': await totp.enabled(user.id),
         if (_isAdmin(user)) 'isAdmin': true,
         'telegram': await telegram.of(user.id),
         'telegramBot': await telegram.botName().catchError((Object _) => null),

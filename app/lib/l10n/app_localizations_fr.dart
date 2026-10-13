@@ -2171,7 +2171,7 @@ class L10nFr extends L10n {
 
   @override
   String get linkGoogleHint =>
-      'Pour créer une entreprise et gérer son abonnement, reliez un compte Google à votre compte Staff Flow. Vos entreprises, plannings et votre application 2FA sont gardés.';
+      'Pour créer une entreprise, reliez un compte Google à votre compte Staff Flow. Il sert uniquement à protéger le créateur de l\'entreprise et son abonnement : votre adresse Google n\'est jamais montrée à vos salariés ni à personne, elle reste dans Staff Flow. Vous pourrez toujours vous connecter avec votre application 2FA.';
 
   @override
   String get linkGoogleButton => 'Relier mon compte Google';
@@ -2222,4 +2222,41 @@ class L10nFr extends L10n {
 
   @override
   String get signupButton => 'Créer un compte avec une application 2FA';
+
+  @override
+  String get totpCardTitle => 'Connexion par application 2FA';
+
+  @override
+  String totpCardLocal(String id) {
+    return 'Votre compte se connecte avec une application d\'authentification. Identifiant : $id';
+  }
+
+  @override
+  String totpCardOn(String id) {
+    return 'Active : vous pouvez aussi vous connecter avec votre identifiant $id et le code de l\'application, sans Google.';
+  }
+
+  @override
+  String get totpCardOff =>
+      'Préparez une application d\'authentification pour pouvoir vous connecter sans Google (identifiant SF + code à 6 chiffres).';
+
+  @override
+  String get totpEnable => 'Activer';
+
+  @override
+  String get totpDisable => 'Retirer';
+
+  @override
+  String get totpEnableTitle => 'Activer la connexion 2FA';
+
+  @override
+  String get totpEnabledTitle => 'Connexion 2FA prête';
+
+  @override
+  String get totpDisableConfirm =>
+      'Retirer la connexion par application 2FA ? Vous vous connecterez seulement avec Google.';
+
+  @override
+  String get googlePrivacyNote =>
+      'Votre compte Google sert uniquement à protéger l\'entreprise et son abonnement : il n\'est jamais montré à vos salariés ni à personne.';
 }
