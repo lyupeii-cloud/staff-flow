@@ -12,3 +12,5 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+# Toute variante du fichier de clé (copies, brouillons du Bloc-notes).
+key.properties*
