@@ -81,6 +81,17 @@ POST   /api/v1/ext/requests/{id}/approve | refuse</code></pre>
   ]
 }</code></pre>
       <p>Errors: 403 if the key lacks the permission, 402 if the “API Pro” option isn't active, 400 if a person, site or time is unknown. Every write is logged in the company history with the key's name.</p>
+      <h2>MCP connector: Staff Flow in your assistant</h2>
+      <p>Assistants that support MCP (Model Context Protocol), such as Claude, connect straight to Staff Flow. You write, for example: “Put Marie on the till Monday from 8 to 4” or “How many hours did the team work in September?”.</p>
+      <pre><code>Adresse / URL :  https://app.staff-flow.cloud/api/v1/mcp
+En-tête / Header : Authorization: Bearer sfk_…
+
+get_company · list_members · get_shifts · get_hours · get_absences
+create_shifts · update_shift · delete_shift · publish_schedule
+import_employees · list_invitations · set_employee_profile
+create_position · create_site · post_announcement
+list_pending_requests · decide_request</code></pre>
+      <p>Add a custom connector with this address and an API key. The assistant only sees the tools the key's permissions allow: reading with the “API access” option, writing with “API Pro”. Shifts it creates arrive as drafts unless the key has the “publish” permission. Every action is logged in the history with the key's name.</p>
       <h2>Personal data</h2>
       <p>The company remains responsible for how it uses the data it retrieves (names, hours, absences) and must protect it in its own software. Keep keys secret; revoke a key as soon as it is no longer used.</p>
     </div>

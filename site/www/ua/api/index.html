@@ -81,6 +81,17 @@ POST   /api/v1/ext/requests/{id}/approve | refuse</code></pre>
   ]
 }</code></pre>
       <p>Помилки: 403, якщо ключ не має потрібного права; 402, якщо опція «API Pro» не активна; 400, якщо людина, об'єкт чи час невідомі. Кожен запис фіксується в історії компанії з назвою ключа.</p>
+      <h2>Конектор MCP: Staff Flow у вашому асистенті</h2>
+      <p>Асистенти з підтримкою MCP (Model Context Protocol), як-от Claude, підключаються безпосередньо до Staff Flow. Ви пишете, наприклад: «Постав Марію на касу в понеділок з 8:00 до 16:00» або «Скільки годин відпрацювала команда у вересні?».</p>
+      <pre><code>Adresse / URL :  https://app.staff-flow.cloud/api/v1/mcp
+En-tête / Header : Authorization: Bearer sfk_…
+
+get_company · list_members · get_shifts · get_hours · get_absences
+create_shifts · update_shift · delete_shift · publish_schedule
+import_employees · list_invitations · set_employee_profile
+create_position · create_site · post_announcement
+list_pending_requests · decide_request</code></pre>
+      <p>Додайте власний конектор із цією адресою та ключем API. Асистент бачить лише інструменти, дозволені правами ключа: читання з опцією «Доступ до API», запис з «API Pro». Створені зміни потрапляють у чернетку, якщо немає права «публікація». Кожна дія фіксується в історії з назвою ключа.</p>
       <h2>Персональні дані</h2>
       <p>Компанія відповідає за використання отриманих даних (імена, години, відсутності) і має захищати їх у своїх програмах. Зберігайте ключі в таємниці; відкликайте ключ, щойно він більше не потрібен.</p>
     </div>

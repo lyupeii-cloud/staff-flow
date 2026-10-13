@@ -50,6 +50,15 @@ const _writeSample = r'''POST /api/v1/ext/shifts
   ]
 }''';
 
+const _mcp = '''Adresse / URL :  https://app.staff-flow.cloud/api/v1/mcp
+En-tête / Header : Authorization: Bearer sfk_…
+
+get_company · list_members · get_shifts · get_hours · get_absences
+create_shifts · update_shift · delete_shift · publish_schedule
+import_employees · list_invitations · set_employee_profile
+create_position · create_site · post_announcement
+list_pending_requests · decide_request''';
+
 const apiDocs = <String, List<List<Object>>>{
   'fr': [
     ['À quoi ça sert', [
@@ -82,6 +91,11 @@ const apiDocs = <String, List<List<Object>>>{
       'Les services envoyés arrivent en brouillon : les responsables les voient, les adaptent, puis publient. Avec le droit « publier » et « publish »: true, ils sont publiés tout de suite. Une personne se désigne par son identifiant SF ou son matricule ; un site ou un poste par son nom ou son id. Heures : « HH:MM » ou minutes depuis minuit.',
       ['pre', _writeSample],
       'Erreurs : 403 si la clé n\'a pas le droit demandé, 402 si l\'option « API Pro » n\'est pas active, 400 si une personne, un site ou une heure est inconnu (rien n\'est alors créé pour ce service). Chaque écriture est notée dans l\'historique de l\'entreprise avec le nom de la clé.',
+    ]],
+    ['Connecteur MCP : Staff Flow dans votre assistant', [
+      'Les assistants compatibles MCP (Model Context Protocol), comme Claude, se branchent directement sur Staff Flow. Vous écrivez par exemple : « Mets Marie à la caisse lundi de 8 h à 16 h » ou « Combien d\'heures a fait l\'équipe en septembre ? ».',
+      ['pre', _mcp],
+      'Ajoutez un connecteur personnalisé avec cette adresse et une clé API. L\'assistant ne voit que les outils permis par les droits de la clé : lecture avec l\'option « accès API », écriture avec « API Pro ». Les services créés arrivent en brouillon, sauf avec le droit « publier ». Chaque action est notée dans l\'historique avec le nom de la clé.',
     ]],
     ['Données personnelles', [
       'L\'entreprise reste responsable de l\'usage des données qu\'elle récupère (noms, horaires, absences) et doit les protéger dans ses propres logiciels. Gardez les clés secrètes ; révoquez une clé dès qu\'elle ne sert plus.',
@@ -119,6 +133,11 @@ const apiDocs = <String, List<List<Object>>>{
       ['pre', _writeSample],
       'Помилки: 403, якщо ключ не має потрібного права; 402, якщо опція «API Pro» не активна; 400, якщо людина, об\'єкт чи час невідомі. Кожен запис фіксується в історії компанії з назвою ключа.',
     ]],
+    ['Конектор MCP: Staff Flow у вашому асистенті', [
+      'Асистенти з підтримкою MCP (Model Context Protocol), як-от Claude, підключаються безпосередньо до Staff Flow. Ви пишете, наприклад: «Постав Марію на касу в понеділок з 8:00 до 16:00» або «Скільки годин відпрацювала команда у вересні?».',
+      ['pre', _mcp],
+      'Додайте власний конектор із цією адресою та ключем API. Асистент бачить лише інструменти, дозволені правами ключа: читання з опцією «Доступ до API», запис з «API Pro». Створені зміни потрапляють у чернетку, якщо немає права «публікація». Кожна дія фіксується в історії з назвою ключа.',
+    ]],
     ['Персональні дані', [
       'Компанія відповідає за використання отриманих даних (імена, години, відсутності) і має захищати їх у своїх програмах. Зберігайте ключі в таємниці; відкликайте ключ, щойно він більше не потрібен.',
     ]],
@@ -154,6 +173,11 @@ const apiDocs = <String, List<List<Object>>>{
       'Shifts you send arrive as drafts: managers see them, adjust them, then publish. With the “publish” permission and "publish": true, they are published at once. A person is given by their SF ID or employee number; a site or position by its name or id. Times: “HH:MM” or minutes since midnight.',
       ['pre', _writeSample],
       'Errors: 403 if the key lacks the permission, 402 if the “API Pro” option isn\'t active, 400 if a person, site or time is unknown. Every write is logged in the company history with the key\'s name.',
+    ]],
+    ['MCP connector: Staff Flow in your assistant', [
+      'Assistants that support MCP (Model Context Protocol), such as Claude, connect straight to Staff Flow. You write, for example: “Put Marie on the till Monday from 8 to 4” or “How many hours did the team work in September?”.',
+      ['pre', _mcp],
+      'Add a custom connector with this address and an API key. The assistant only sees the tools the key\'s permissions allow: reading with the “API access” option, writing with “API Pro”. Shifts it creates arrive as drafts unless the key has the “publish” permission. Every action is logged in the history with the key\'s name.',
     ]],
     ['Personal data', [
       'The company remains responsible for how it uses the data it retrieves (names, hours, absences) and must protect it in its own software. Keep keys secret; revoke a key as soon as it is no longer used.',

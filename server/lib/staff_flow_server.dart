@@ -3,6 +3,7 @@ export 'src/api.dart';
 export 'src/api_access.dart';
 export 'src/auth.dart';
 export 'src/billing_service.dart';
+export 'src/mcp.dart';
 export 'src/news_service.dart';
 export 'src/import_service.dart';
 export 'src/company_service.dart';

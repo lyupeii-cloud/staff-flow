@@ -14,6 +14,7 @@ import 'google_switch.dart';
 import 'join_service.dart';
 import 'messages.dart';
 import 'import_service.dart';
+import 'mcp.dart';
 import 'news_service.dart';
 import 'notice_service.dart';
 import 'notifications.dart';
@@ -667,14 +668,19 @@ class Api {
       ..post('/companies/<id>/reinforcements', _authed(_addReinforcement));
     if (devLogin) v1.post('/auth/dev', _loginDev);
 
+    late final Handler app;
     final root = Router(notFoundHandler: _notFound)
       ..get('/health', (Request _) => _json({'status': 'ok'}))
+      // Connecteur MCP : les outils appellent l'API /ext avec la même clé.
+      ..add('POST', '/api/v1/mcp', (Request r) => McpServer(app, apiAccess).handle(r))
+      ..add('GET', '/api/v1/mcp', (Request r) => McpServer(app, apiAccess).handle(r))
       ..mount('/api/v1/', v1.call);
 
-    return const Pipeline()
+    app = const Pipeline()
         .addMiddleware(_cors())
         .addMiddleware(_errors())
         .addHandler(root.call);
+    return app;
   }
 
   // --- Connexion -----------------------------------------------------------

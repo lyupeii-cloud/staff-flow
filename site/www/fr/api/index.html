@@ -81,6 +81,17 @@ POST   /api/v1/ext/requests/{id}/approve | refuse</code></pre>
   ]
 }</code></pre>
       <p>Erreurs : 403 si la clé n'a pas le droit demandé, 402 si l'option « API Pro » n'est pas active, 400 si une personne, un site ou une heure est inconnu (rien n'est alors créé pour ce service). Chaque écriture est notée dans l'historique de l'entreprise avec le nom de la clé.</p>
+      <h2>Connecteur MCP : Staff Flow dans votre assistant</h2>
+      <p>Les assistants compatibles MCP (Model Context Protocol), comme Claude, se branchent directement sur Staff Flow. Vous écrivez par exemple : « Mets Marie à la caisse lundi de 8 h à 16 h » ou « Combien d'heures a fait l'équipe en septembre ? ».</p>
+      <pre><code>Adresse / URL :  https://app.staff-flow.cloud/api/v1/mcp
+En-tête / Header : Authorization: Bearer sfk_…
+
+get_company · list_members · get_shifts · get_hours · get_absences
+create_shifts · update_shift · delete_shift · publish_schedule
+import_employees · list_invitations · set_employee_profile
+create_position · create_site · post_announcement
+list_pending_requests · decide_request</code></pre>
+      <p>Ajoutez un connecteur personnalisé avec cette adresse et une clé API. L'assistant ne voit que les outils permis par les droits de la clé : lecture avec l'option « accès API », écriture avec « API Pro ». Les services créés arrivent en brouillon, sauf avec le droit « publier ». Chaque action est notée dans l'historique avec le nom de la clé.</p>
       <h2>Données personnelles</h2>
       <p>L'entreprise reste responsable de l'usage des données qu'elle récupère (noms, horaires, absences) et doit les protéger dans ses propres logiciels. Gardez les clés secrètes ; révoquez une clé dès qu'elle ne sert plus.</p>
     </div>
