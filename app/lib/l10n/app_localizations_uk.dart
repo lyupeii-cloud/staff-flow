@@ -2201,4 +2201,25 @@ class L10nUk extends L10n {
   @override
   String get activationCodeHint =>
       'Людина вибирає «Активувати обліковий запис» на екрані входу, потім сканує цей QR-код або вводить цей код.';
+
+  @override
+  String get signupTitle => 'Створити обліковий запис';
+
+  @override
+  String get signupStep1 => 'Крок 1: ваше ім\'я';
+
+  @override
+  String get signupStep1Hint =>
+      'Ім\'я, яке бачитимуть колеги й роботодавці. Без Google і без e-mail: обліковий запис захищає застосунок автентифікації.';
+
+  @override
+  String get signupName => 'Ім\'я та прізвище';
+
+  @override
+  String signupHello(String name) {
+    return 'Вітаємо, $name';
+  }
+
+  @override
+  String get signupButton => 'Створити обліковий запис із застосунком 2FA';
 }

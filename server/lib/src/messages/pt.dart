@@ -226,4 +226,5 @@ const pt = <String, String>{
   'Reliez un compte Google pour créer une entreprise.': 'Ligue uma conta Google para criar uma empresa.',
   '3 codes incorrects ont été saisis pour votre compte : cet appareil est bloqué 15 minutes. Si ce n\'est pas vous, prévenez votre responsable.': 'Foram introduzidos 3 códigos errados na sua conta: esse dispositivo está bloqueado por 15 minutos. Se não foi você, avise o seu responsável.',
   'Chaque salarié reçoit son code et son QR code (feuille à imprimer après l\'importation) : il active son compte avec une application 2FA, ou avec Google.': 'Cada funcionário recebe o seu código e QR code (folha para imprimir após a importação): ativa a conta com uma aplicação 2FA ou com o Google.',
+  'Trop de comptes créés depuis cette connexion : réessayez demain.': 'Contas demais criadas a partir desta ligação: tente amanhã.',
 };

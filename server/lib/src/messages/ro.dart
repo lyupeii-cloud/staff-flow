@@ -226,4 +226,5 @@ const ro = <String, String>{
   'Reliez un compte Google pour créer une entreprise.': 'Legați un cont Google pentru a crea o companie.',
   '3 codes incorrects ont été saisis pour votre compte : cet appareil est bloqué 15 minutes. Si ce n\'est pas vous, prévenez votre responsable.': 'Pentru contul dvs. au fost introduse 3 coduri greșite: acest dispozitiv este blocat 15 minute. Dacă nu ați fost dvs., anunțați-vă responsabilul.',
   'Chaque salarié reçoit son code et son QR code (feuille à imprimer après l\'importation) : il active son compte avec une application 2FA, ou avec Google.': 'Fiecare angajat primește codul și codul QR (foaie de tipărit după import): își activează contul cu o aplicație 2FA sau cu Google.',
+  'Trop de comptes créés depuis cette connexion : réessayez demain.': 'Prea multe conturi create de pe această conexiune: încercați mâine.',
 };

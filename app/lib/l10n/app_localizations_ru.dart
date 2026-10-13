@@ -2198,4 +2198,25 @@ class L10nRu extends L10n {
   @override
   String get activationCodeHint =>
       'Человек выбирает «Активировать аккаунт» на экране входа, затем сканирует этот QR-код или вводит этот код.';
+
+  @override
+  String get signupTitle => 'Создать аккаунт';
+
+  @override
+  String get signupStep1 => 'Шаг 1: ваше имя';
+
+  @override
+  String get signupStep1Hint =>
+      'Имя, которое увидят коллеги и работодатели. Без Google и без e-mail: аккаунт защищает приложение аутентификации.';
+
+  @override
+  String get signupName => 'Имя и фамилия';
+
+  @override
+  String signupHello(String name) {
+    return 'Здравствуйте, $name';
+  }
+
+  @override
+  String get signupButton => 'Создать аккаунт с приложением 2FA';
 }

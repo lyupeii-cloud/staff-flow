@@ -606,5 +606,11 @@
   "activationCodeAction": "Nouveau code d'activation",
   "activationCodeTitle": "Nouveau code pour {name} ?",
   "activationCodeConfirm": "L'ancien téléphone et l'ancienne application 2FA ne serviront plus. La personne active de nouveau son compte avec ce code (valable 7 jours).",
-  "activationCodeHint": "La personne choisit « Activer mon compte » sur l'écran de connexion, puis scanne ce QR code ou tape ce code."
+  "activationCodeHint": "La personne choisit « Activer mon compte » sur l'écran de connexion, puis scanne ce QR code ou tape ce code.",
+  "signupTitle": "Créer un compte",
+  "signupStep1": "Étape 1 : votre nom",
+  "signupStep1Hint": "Le nom que verront vos collègues et vos employeurs. Pas de Google, pas d'e-mail : votre compte est protégé par une application d'authentification.",
+  "signupName": "Prénom et nom",
+  "signupHello": "Bonjour {name}",
+  "signupButton": "Créer un compte avec une application 2FA"
 }

@@ -113,6 +113,7 @@ class Api {
       ..post('/auth/telegram', (Request r) async => _session(await telegramLogin.redeem(_string(await _body(r), 'token'))))
       // Comptes sans Google : activation par le code de l'employeur, puis application 2FA.
       ..post('/auth/activate', (Request r) async => _json(await totp.start(_string(await _body(r), 'code'), _clientIp(r))))
+      ..post('/auth/signup', (Request r) async => _json(await totp.signupStart(_string(await _body(r), 'name'), _clientIp(r))))
       ..post('/auth/activate/confirm', (Request r) async {
         final body = await _body(r);
         final (user, backup) = await totp.confirm(_string(body, 'pending'), _string(body, 'otp'), _clientIp(r));

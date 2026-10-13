@@ -2205,4 +2205,25 @@ class L10nDe extends L10n {
   @override
   String get activationCodeHint =>
       'Die Person wählt „Mein Konto aktivieren“ auf dem Anmeldebildschirm und scannt dann diesen QR-Code oder tippt diesen Code ein.';
+
+  @override
+  String get signupTitle => 'Konto erstellen';
+
+  @override
+  String get signupStep1 => 'Schritt 1: Ihr Name';
+
+  @override
+  String get signupStep1Hint =>
+      'Der Name, den Ihre Kollegen und Arbeitgeber sehen. Kein Google, keine E-Mail: Ihr Konto wird durch eine Authenticator-App geschützt.';
+
+  @override
+  String get signupName => 'Vor- und Nachname';
+
+  @override
+  String signupHello(String name) {
+    return 'Hallo $name';
+  }
+
+  @override
+  String get signupButton => 'Konto mit einer 2FA-App erstellen';
 }

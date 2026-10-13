@@ -144,6 +144,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         icon: const Icon(Icons.qr_code_2),
                         label: Text(t.activateButton),
                       ),
+                      TextButton.icon(
+                        style: TextButton.styleFrom(foregroundColor: Colors.white),
+                        onPressed: () => ActivatePage.openSignup(context, session),
+                        icon: const Icon(Icons.person_add_alt),
+                        label: Text(t.signupButton),
+                      ),
                     ],
                     // iPhone (pas d'application iOS pour l'instant) : l'installer depuis Safari.
                     if (kIsWeb && defaultTargetPlatform == TargetPlatform.iOS && !isStandalone) ...[

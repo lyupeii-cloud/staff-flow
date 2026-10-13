@@ -602,5 +602,11 @@
   "activationCodeAction": "Nuovo codice di attivazione",
   "activationCodeTitle": "Nuovo codice per {name}?",
   "activationCodeConfirm": "Il vecchio telefono e la vecchia app 2FA non funzioneranno più. La persona riattiva l'account con questo codice (valido 7 giorni).",
-  "activationCodeHint": "La persona sceglie «Attiva il mio account» nella schermata di accesso, poi scansiona questo codice QR o digita questo codice."
+  "activationCodeHint": "La persona sceglie «Attiva il mio account» nella schermata di accesso, poi scansiona questo codice QR o digita questo codice.",
+  "signupTitle": "Crea un account",
+  "signupStep1": "Passo 1: il tuo nome",
+  "signupStep1Hint": "Il nome che vedranno colleghi e datori di lavoro. Niente Google né e-mail: l'account è protetto da un'app di autenticazione.",
+  "signupName": "Nome e cognome",
+  "signupHello": "Ciao {name}",
+  "signupButton": "Crea un account con un'app 2FA"
 }

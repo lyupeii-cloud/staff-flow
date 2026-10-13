@@ -602,5 +602,11 @@
   "activationCodeAction": "Cod nou de activare",
   "activationCodeTitle": "Cod nou pentru {name}?",
   "activationCodeConfirm": "Telefonul vechi și aplicația 2FA veche nu vor mai funcționa. Persoana își reactivează contul cu acest cod (valabil 7 zile).",
-  "activationCodeHint": "Persoana alege „Activează contul meu” pe ecranul de conectare, apoi scanează acest cod QR sau tastează acest cod."
+  "activationCodeHint": "Persoana alege „Activează contul meu” pe ecranul de conectare, apoi scanează acest cod QR sau tastează acest cod.",
+  "signupTitle": "Creează un cont",
+  "signupStep1": "Pasul 1: numele dvs.",
+  "signupStep1Hint": "Numele pe care îl vor vedea colegii și angajatorii. Fără Google, fără e-mail: contul este protejat de o aplicație de autentificare.",
+  "signupName": "Prenume și nume",
+  "signupHello": "Bună, {name}",
+  "signupButton": "Creează un cont cu o aplicație 2FA"
 }

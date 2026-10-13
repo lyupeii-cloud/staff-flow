@@ -2190,6 +2190,27 @@ class L10nEn extends L10n {
   @override
   String get activationCodeHint =>
       'The person chooses “Activate my account” on the sign-in screen, then scans this QR code or types this code.';
+
+  @override
+  String get signupTitle => 'Create an account';
+
+  @override
+  String get signupStep1 => 'Step 1: your name';
+
+  @override
+  String get signupStep1Hint =>
+      'The name your colleagues and employers will see. No Google, no e-mail: your account is protected by an authenticator app.';
+
+  @override
+  String get signupName => 'First and last name';
+
+  @override
+  String signupHello(String name) {
+    return 'Hello $name';
+  }
+
+  @override
+  String get signupButton => 'Create an account with a 2FA app';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).

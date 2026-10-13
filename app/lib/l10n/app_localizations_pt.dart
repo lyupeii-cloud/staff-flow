@@ -2196,4 +2196,25 @@ class L10nPt extends L10n {
   @override
   String get activationCodeHint =>
       'A pessoa escolhe «Ativar a minha conta» no ecrã de entrada e depois lê este QR code ou digita este código.';
+
+  @override
+  String get signupTitle => 'Criar uma conta';
+
+  @override
+  String get signupStep1 => 'Passo 1: o seu nome';
+
+  @override
+  String get signupStep1Hint =>
+      'O nome que os seus colegas e empregadores verão. Sem Google nem e-mail: a sua conta é protegida por uma aplicação de autenticação.';
+
+  @override
+  String get signupName => 'Nome e apelido';
+
+  @override
+  String signupHello(String name) {
+    return 'Olá, $name';
+  }
+
+  @override
+  String get signupButton => 'Criar uma conta com uma aplicação 2FA';
 }

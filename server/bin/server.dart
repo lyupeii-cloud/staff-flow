@@ -76,6 +76,7 @@ Future<void> main() async {
   Future<void> tick() async {
     await api.billing.tick().catchError((Object e) => print('Abonnements : $e'));
     await api.imports.purge().catchError((Object e) => print('Invitations : $e'));
+    await api.totp.purgeUnused().catchError((Object e) => print('Comptes 2FA : $e'));
   }
   unawaited(tick());
   Timer.periodic(const Duration(minutes: 10), (_) => tick());

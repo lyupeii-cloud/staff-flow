@@ -226,4 +226,5 @@ const pl = <String, String>{
   'Reliez un compte Google pour créer une entreprise.': 'Połącz konto Google, aby utworzyć firmę.',
   '3 codes incorrects ont été saisis pour votre compte : cet appareil est bloqué 15 minutes. Si ce n\'est pas vous, prévenez votre responsable.': 'Dla Twojego konta wpisano 3 błędne kody: to urządzenie jest zablokowane na 15 minut. Jeśli to nie Ty, powiadom kierownika.',
   'Chaque salarié reçoit son code et son QR code (feuille à imprimer après l\'importation) : il active son compte avec une application 2FA, ou avec Google.': 'Każdy pracownik otrzymuje swój kod i kod QR (arkusz do wydruku po imporcie): aktywuje konto aplikacją 2FA lub przez Google.',
+  'Trop de comptes créés depuis cette connexion : réessayez demain.': 'Z tego połączenia utworzono za dużo kont: spróbuj jutro.',
 };

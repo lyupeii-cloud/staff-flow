@@ -246,4 +246,5 @@ const uk = <String, String>{
   'Reliez un compte Google pour créer une entreprise.': 'Прив\'яжіть обліковий запис Google, щоб створити компанію.',
   '3 codes incorrects ont été saisis pour votre compte : cet appareil est bloqué 15 minutes. Si ce n\'est pas vous, prévenez votre responsable.': 'Для вашого облікового запису введено 3 неправильні коди: цей пристрій заблоковано на 15 хвилин. Якщо це були не ви, повідомте керівника.',
   'Chaque salarié reçoit son code et son QR code (feuille à imprimer après l\'importation) : il active son compte avec une application 2FA, ou avec Google.': 'Кожен працівник отримує свій код і QR-код (аркуш для друку після імпорту): він активує обліковий запис через застосунок 2FA або через Google.',
+  'Trop de comptes créés depuis cette connexion : réessayez demain.': 'Із цього підключення створено забагато облікових записів: спробуйте завтра.',
 };

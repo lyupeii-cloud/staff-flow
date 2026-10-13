@@ -2201,4 +2201,25 @@ class L10nFr extends L10n {
   @override
   String get activationCodeHint =>
       'La personne choisit « Activer mon compte » sur l\'écran de connexion, puis scanne ce QR code ou tape ce code.';
+
+  @override
+  String get signupTitle => 'Créer un compte';
+
+  @override
+  String get signupStep1 => 'Étape 1 : votre nom';
+
+  @override
+  String get signupStep1Hint =>
+      'Le nom que verront vos collègues et vos employeurs. Pas de Google, pas d\'e-mail : votre compte est protégé par une application d\'authentification.';
+
+  @override
+  String get signupName => 'Prénom et nom';
+
+  @override
+  String signupHello(String name) {
+    return 'Bonjour $name';
+  }
+
+  @override
+  String get signupButton => 'Créer un compte avec une application 2FA';
 }

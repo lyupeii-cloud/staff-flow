@@ -141,7 +141,7 @@ class TotpService {
   /// Une erreur de plus ; renvoie `true` si cet appareil vient d'être bloqué.
   Future<bool> _fail(String key) async {
     await store.query(store.db, 'INSERT INTO auth_failures (key, at) VALUES (@k, @t)', {'k': key, 't': now()});
-    await store.query(store.db, 'DELETE FROM auth_failures WHERE at < @old', {'old': now().subtract(const Duration(days: 1))});
+    await store.query(store.db, 'DELETE FROM auth_failures WHERE at < @old', {'old': now().subtract(const Duration(days: 2))});
     final rows = await store.query(store.db, 'SELECT count(*) FROM auth_failures WHERE key = @k AND at > @since',
         {'k': key, 'since': now().subtract(lockout)});
     return (rows.first[0] as num).toInt() == maxFailures;
@@ -185,6 +185,35 @@ class TotpService {
     };
   }
 
+  /// Création libre d'un compte sans Google (sans entreprise) : 5 au plus
+  /// par jour et par adresse ; un compte qui n'a rejoint aucune entreprise
+  /// est effacé au bout de [unusedLifetime].
+  static const signupsPerDay = 5;
+  static const unusedLifetime = Duration(days: 30);
+
+  Future<Map<String, Object?>> signupStart(String name, String ip) async {
+    final clean = name.trim();
+    if (clean.length < 2 || clean.length > 120) {
+      throw const ApiError.badRequest('Le nom doit faire entre 1 et 120 caractères.');
+    }
+    final rows = await store.query(store.db, 'SELECT count(*) FROM auth_failures WHERE key = @k AND at > @since',
+        {'k': 'signup:$ip', 'since': now().subtract(const Duration(days: 1))});
+    if ((rows.first[0] as num).toInt() >= signupsPerDay) {
+      throw const ApiError(429, 'too_many_attempts', 'Trop de comptes créés depuis cette connexion : réessayez demain.');
+    }
+    final secret = newSecret();
+    final pending = JWT({'n': clean, 's': secret}, issuer: 'staff-flow-activation')
+        .sign(_key, expiresIn: const Duration(minutes: 20));
+    return {'pending': pending, 'name': clean, 'secret': secret, 'otpauth': otpauth(secret, clean)};
+  }
+
+  /// Comptes sans Google créés librement qui n'ont jamais rejoint d'entreprise.
+  Future<void> purgeUnused() async {
+    await store.query(store.db, '''
+      DELETE FROM users u WHERE u.google_sub LIKE 'local:%' AND u.created_at < @t
+        AND NOT EXISTS (SELECT 1 FROM memberships m WHERE m.user_id = u.id)''', {'t': now().subtract(unusedLifetime)});
+  }
+
   /// Étape 2 : premier code de l'application 2FA. Crée le compte (ou relie
   /// la nouvelle application à un compte existant) ; renvoie le compte et
   /// les codes de secours.
@@ -202,6 +231,24 @@ class TotpService {
     if (step == null) {
       await _fail('act:$ip');
       throw const ApiError.badRequest('Code de l\'application incorrect : vérifiez l\'heure du téléphone et réessayez.');
+    }
+    // Création libre : un compte sans entreprise.
+    if (claims['n'] case final String name) {
+      final backup = [for (var i = 0; i < backupCount; i++) _randomCode()];
+      final created = await store.query(store.db, '''
+        INSERT INTO users (public_id, google_sub, email, name, totp_secret, totp_last_step, backup_codes, created_at)
+        VALUES (@p, 'local:' || gen_random_uuid(), '', @n, @s, @st, @b, @now) RETURNING id::text''', {
+        'now': now(),
+        'p': newPublicId(),
+        'n': name,
+        's': _seal(secret),
+        'st': step,
+        'b': [for (final c in backup) _hash(c)],
+      });
+      await store.query(store.db, 'INSERT INTO auth_failures (key, at) VALUES (@k, @t)', {'k': 'signup:$ip', 't': now()});
+      final userId = created.first[0] as String;
+      await store.audit(actorId: userId, action: 'account.totp_signup');
+      return ((await store.findActiveUser(userId))!, backup);
     }
     final rows = await store.query(store.db, '''
       SELECT i.code, i.company_id::text, i.user_id::text, i.sites::text[] FROM member_invites i
@@ -224,9 +271,10 @@ class TotpService {
     } else {
       await companies.ensureSeat(companyId);
       final created = await store.query(store.db, '''
-        INSERT INTO users (public_id, google_sub, email, name, totp_secret, totp_last_step, backup_codes)
-        VALUES (@p, 'local:' || gen_random_uuid(), '', (SELECT name FROM member_invites WHERE id::text = @i), @s, @st, @b)
+        INSERT INTO users (public_id, google_sub, email, name, totp_secret, totp_last_step, backup_codes, created_at)
+        VALUES (@p, 'local:' || gen_random_uuid(), '', (SELECT name FROM member_invites WHERE id::text = @i), @s, @st, @b, @now)
         RETURNING id::text''', {
+        'now': now(),
         'p': newPublicId(),
         'i': claims['i'],
         's': _seal(secret),

@@ -3761,6 +3761,42 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'The person chooses “Activate my account” on the sign-in screen, then scans this QR code or types this code.'**
   String get activationCodeHint;
+
+  /// No description provided for @signupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account'**
+  String get signupTitle;
+
+  /// No description provided for @signupStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Step 1: your name'**
+  String get signupStep1;
+
+  /// No description provided for @signupStep1Hint.
+  ///
+  /// In en, this message translates to:
+  /// **'The name your colleagues and employers will see. No Google, no e-mail: your account is protected by an authenticator app.'**
+  String get signupStep1Hint;
+
+  /// No description provided for @signupName.
+  ///
+  /// In en, this message translates to:
+  /// **'First and last name'**
+  String get signupName;
+
+  /// No description provided for @signupHello.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello {name}'**
+  String signupHello(String name);
+
+  /// No description provided for @signupButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account with a 2FA app'**
+  String get signupButton;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

@@ -77,6 +77,33 @@ void main() {
     expect((await a('POST', '/auth/totp', {'login': sf, 'otp': backup.first})).$1, 401);
   });
 
+  test('création libre : un compte sans entreprise, 5 par jour et par connexion, effacé s\'il ne sert pas', () async {
+    final anon = Client(env.handler, ip: '10.1.1.1');
+    expect((await anon('POST', '/auth/signup', {'name': ' '})).$1, 400);
+    final start = await anon.ok('POST', '/auth/signup', {'name': 'Zoé Martin'});
+    final done = await anon.ok('POST', '/auth/activate/confirm', {'pending': start['pending'], 'otp': otp(start['secret'])});
+    final me = Client(env.handler)..token = done['token'];
+    final m = await me.ok('GET', '/me');
+    expect([m['user']['name'], m['user']['local'], m['companies']], ['Zoé Martin', true, isEmpty]);
+    // Connexion avec son identifiant SF.
+    env.clock.advance(const Duration(minutes: 1));
+    await anon.ok('POST', '/auth/totp', {'login': done['user']['publicId'], 'otp': otp(start['secret'])});
+    // Elle rejoint une entreprise par le QR code du patron : elle n'est plus effacée.
+    for (var i = 0; i < 4; i++) {
+      final s = await anon.ok('POST', '/auth/signup', {'name': 'Test $i'});
+      await anon.ok('POST', '/auth/activate/confirm', {'pending': s['pending'], 'otp': otp(s['secret'])});
+    }
+    expect((await anon('POST', '/auth/signup', {'name': 'Un de trop'})).$1, 429);
+    await boss.ok('POST', p('/invite'), {'qr': done['user']['publicId']});
+    final r = ((await me.ok('GET', '/me'))['pendingJoinRequests'] as List).single['id'];
+    await me.ok('POST', '/join-requests/$r/accept');
+    env.clock.advance(const Duration(days: 31));
+    await env.api.totp.purgeUnused();
+    expect((await me('GET', '/me')).$1, 200, reason: 'membre d\'une entreprise : gardé');
+    final unused = await env.store.query(env.store.db, "SELECT count(*) FROM users WHERE name LIKE 'Test %'");
+    expect(unused.first[0], 0, reason: 'jamais dans une entreprise : effacés');
+  });
+
   test('3 erreurs depuis un appareil : bloqué 15 minutes, les autres appareils non ; la personne est prévenue', () async {
     final (secret, token, sf, _) = await activate(await invite('Inès Lefèvre'));
     final bad = Client(env.handler, ip: '10.0.0.9');

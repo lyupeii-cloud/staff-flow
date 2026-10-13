@@ -151,10 +151,16 @@ class ActivatePage extends StatefulWidget {
   final Session session;
   final String? initialCode;
 
-  const ActivatePage({super.key, required this.session, this.initialCode});
+  /// Création libre d'un compte (sans code de l'employeur ni entreprise).
+  final bool signup;
+
+  const ActivatePage({super.key, required this.session, this.initialCode, this.signup = false});
 
   static Future<void> open(BuildContext context, Session session, {String? code}) => Navigator.of(context)
       .push(MaterialPageRoute(builder: (_) => ActivatePage(session: session, initialCode: code)));
+
+  static Future<void> openSignup(BuildContext context, Session session) => Navigator.of(context)
+      .push(MaterialPageRoute(builder: (_) => ActivatePage(session: session, signup: true)));
 
   @override
   State<ActivatePage> createState() => _ActivatePageState();
@@ -163,6 +169,7 @@ class ActivatePage extends StatefulWidget {
 class _ActivatePageState extends State<ActivatePage> {
   late final _code = TextEditingController(text: widget.initialCode == null ? null : formatInviteCode(widget.initialCode!));
   final _otp = TextEditingController();
+  final _name = TextEditingController();
   Map<String, dynamic>? _start;
   bool _remember = true, _busy = false;
   String? _error;
@@ -191,7 +198,9 @@ class _ActivatePageState extends State<ActivatePage> {
   }
 
   Future<void> _check() => _run(() async {
-        final r = await widget.session.api.send('POST', '/auth/activate', body: {'code': _code.text});
+        final r = widget.signup
+            ? await widget.session.api.send('POST', '/auth/signup', body: {'name': _name.text.trim()})
+            : await widget.session.api.send('POST', '/auth/activate', body: {'code': _code.text});
         setState(() => _start = (r as Map).cast<String, dynamic>());
       });
 
@@ -240,12 +249,30 @@ class _ActivatePageState extends State<ActivatePage> {
     final theme = Theme.of(context);
     final start = _start;
     return Scaffold(
-      appBar: AppBar(title: Text(t.activateTitle)),
+      appBar: AppBar(title: Text(widget.signup ? t.signupTitle : t.activateTitle)),
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 440),
           child: ListView(padding: const EdgeInsets.all(20), children: [
-            if (start == null) ...[
+            if (start == null && widget.signup) ...[
+              Text(t.signupStep1, style: theme.textTheme.titleMedium),
+              const SizedBox(height: 8),
+              Text(t.signupStep1Hint),
+              const SizedBox(height: 16),
+              TextField(
+                controller: _name,
+                autofocus: true,
+                textCapitalization: TextCapitalization.words,
+                decoration: InputDecoration(labelText: t.signupName),
+                onSubmitted: (_) => _check(),
+              ),
+              const SizedBox(height: 16),
+              FilledButton(
+                style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(48)),
+                onPressed: _busy ? null : _check,
+                child: Text(t.activateContinue),
+              ),
+            ] else if (start == null) ...[
               Text(t.activateStep1, style: theme.textTheme.titleMedium),
               const SizedBox(height: 8),
               Text(t.activateStep1Hint),
@@ -271,7 +298,11 @@ class _ActivatePageState extends State<ActivatePage> {
                 child: Text(t.activateContinue),
               ),
             ] else ...[
-              Text(t.activateHello(start['name'] as String, start['companyName'] as String), style: theme.textTheme.titleMedium),
+              Text(
+                  start['companyName'] == null
+                      ? t.signupHello(start['name'] as String)
+                      : t.activateHello(start['name'] as String, start['companyName'] as String),
+                  style: theme.textTheme.titleMedium),
               const SizedBox(height: 8),
               Text(t.activateStep2),
               const SizedBox(height: 12),

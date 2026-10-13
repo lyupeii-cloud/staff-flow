@@ -1617,5 +1617,18 @@
     }
   },
   "activationCodeConfirm": "The old phone and the old 2FA app will stop working. The person activates their account again with this code (valid for 7 days).",
-  "activationCodeHint": "The person chooses “Activate my account” on the sign-in screen, then scans this QR code or types this code."
+  "activationCodeHint": "The person chooses “Activate my account” on the sign-in screen, then scans this QR code or types this code.",
+  "signupTitle": "Create an account",
+  "signupStep1": "Step 1: your name",
+  "signupStep1Hint": "The name your colleagues and employers will see. No Google, no e-mail: your account is protected by an authenticator app.",
+  "signupName": "First and last name",
+  "signupHello": "Hello {name}",
+  "@signupHello": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "signupButton": "Create an account with a 2FA app"
 }

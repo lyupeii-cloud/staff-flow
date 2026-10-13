@@ -2199,4 +2199,25 @@ class L10nRo extends L10n {
   @override
   String get activationCodeHint =>
       'Persoana alege „Activează contul meu” pe ecranul de conectare, apoi scanează acest cod QR sau tastează acest cod.';
+
+  @override
+  String get signupTitle => 'Creează un cont';
+
+  @override
+  String get signupStep1 => 'Pasul 1: numele dvs.';
+
+  @override
+  String get signupStep1Hint =>
+      'Numele pe care îl vor vedea colegii și angajatorii. Fără Google, fără e-mail: contul este protejat de o aplicație de autentificare.';
+
+  @override
+  String get signupName => 'Prenume și nume';
+
+  @override
+  String signupHello(String name) {
+    return 'Bună, $name';
+  }
+
+  @override
+  String get signupButton => 'Creează un cont cu o aplicație 2FA';
 }
