@@ -1561,11 +1561,11 @@ class L10nPt extends L10n {
 
   @override
   String get apiSub =>
-      'Seus programas de contabilidade, folha de pagamento ou CRM leem a escala publicada, as horas e as ausências.';
+      'Os seus programas (salários, contabilidade, CRM, planeamento) leem o horário publicado, as horas e as ausências; com «API Pro» também enviam horários, funcionários e avisos.';
 
   @override
   String get apiNeedsOption =>
-      'Opção paga: adicione “acesso API” em “Gerenciar assinatura”.';
+      'Opção paga: adicione «Acesso API» ou «API Pro» em «Gerir a assinatura».';
 
   @override
   String get apiNewKey => 'Nova chave';
@@ -2254,4 +2254,51 @@ class L10nPt extends L10n {
   @override
   String get googlePrivacyNote =>
       'A sua conta Google serve apenas para proteger a empresa e a sua assinatura: nunca é mostrada aos seus funcionários nem a ninguém.';
+
+  @override
+  String get scopeRead =>
+      'Leitura: horário publicado, horas, ausências, funcionários';
+
+  @override
+  String get scopeShifts => 'Horário: criar, alterar, eliminar turnos';
+
+  @override
+  String get scopePublish => 'Publicar o horário';
+
+  @override
+  String get scopeMembers => 'Funcionários: importar, número e cargo';
+
+  @override
+  String get scopeCatalog => 'Cargos e locais';
+
+  @override
+  String get scopeNews => 'Avisos';
+
+  @override
+  String get scopeRequests => 'Pedidos: aprovar ou recusar';
+
+  @override
+  String get apiScopesTitle => 'Direitos da chave';
+
+  @override
+  String get apiProNeeded =>
+      'Os direitos de escrita exigem a opção «API Pro» (assinatura paga).';
+
+  @override
+  String billingLinePro(String months) {
+    return 'Opção «API Pro»: $months meses';
+  }
+
+  @override
+  String billingLineProAddon(String start, String end, String months) {
+    return 'Opção «API Pro», adicionada durante a assinatura, de $start a $end: $months meses, sem desconto';
+  }
+
+  @override
+  String get billingApiPro => 'Opção «API Pro»';
+
+  @override
+  String billingApiProHint(String price) {
+    return '«API Pro» ($price / mês, sem desconto): os seus programas escrevem no Staff Flow (horário, funcionários, avisos, pedidos). Disponível com assinatura paga: adicione-a abaixo.';
+  }
 }

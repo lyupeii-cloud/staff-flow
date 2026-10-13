@@ -266,8 +266,17 @@ class Api {
       }))
       // Clés API (propriétaire) et lecture par les logiciels de l'entreprise.
       ..get('/companies/<id>/api-keys', _authed((r, u) async => _json({'keys': await apiAccess.list(u, r.params['id']!)})))
-      ..post('/companies/<id>/api-keys', _authed((r, u) async =>
-          _json(await apiAccess.create(u, r.params['id']!, _string(await _body(r), 'name')), status: 201)))
+      ..post('/companies/<id>/api-keys', _authed((r, u) async {
+        final body = await _body(r);
+        final scopes = body['scopes'];
+        if (scopes != null && (scopes is! List || scopes.any((s) => s is! String))) {
+          throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        }
+        return _json(
+            await apiAccess.create(u, r.params['id']!, _string(body, 'name'),
+                scopes: scopes == null ? const ['read'] : (scopes as List).cast<String>()),
+            status: 201);
+      }))
       ..delete('/companies/<id>/api-keys/<keyId>', _authed((r, u) async {
         await apiAccess.revoke(u, r.params['id']!, r.params['keyId']!);
         return Response(204);
@@ -281,6 +290,109 @@ class Api {
       ..get('/ext/totals', _apiKey((r, c) async {
         final (from, to) = apiAccess.period(c, r.url.queryParameters);
         return apiAccess.totals(c, from, to);
+      }))
+      // --- API Pro : écriture -------------------------------------------------
+      ..post('/ext/shifts', _apiWrite('shifts', (r, k, u) async {
+        final body = await _body(r);
+        final list = body['shifts'];
+        if (list is! List || list.isEmpty || list.length > 2000 || list.any((s) => s is! Map)) {
+          throw const ApiError.badRequest('Champ « shifts » : liste de services attendue (2000 au plus).');
+        }
+        final publish = body['publish'] == true;
+        if (publish && !k.scopes.contains('publish')) {
+          throw const ApiError(403, 'scope_missing', 'Cette clé n\'a pas le droit « {scope} ».', {'scope': 'publish'});
+        }
+        final c = k.company.id;
+        final created = <String>[];
+        await _input(() async {
+          for (final raw in list.cast<Map>()) {
+            final s = raw.cast<String, dynamic>();
+            final shifts = await planning.create(
+                u,
+                c,
+                ShiftInput(
+                  start: _minutes(s['start']),
+                  end: _minutes(s['end']),
+                  userId: await apiAccess.person(c, s['person']),
+                  siteId: await apiAccess.catalogItem(c, 'sites', s['site']),
+                  positionId: await apiAccess.catalogItem(c, 'positions', s['position']),
+                  note: s['note'] as String?,
+                ),
+                days: [parseDay(_string(s, 'day'))]);
+            created.addAll(shifts.map((x) => x.id));
+          }
+        });
+        // Brouillon par défaut : les responsables l'adaptent puis publient.
+        final published = publish ? (await planning.publish(u, c)).$1 : 0;
+        return {'created': created, 'published': published, 'status': publish ? 'published' : 'draft'};
+      }))
+      ..patch('/ext/shifts/<shiftId>', _apiWrite('shifts', (r, k, u) async {
+        final s = await _body(r);
+        final c = k.company.id;
+        final fields = <String, dynamic>{
+          if (s.containsKey('day')) 'day': _string(s, 'day'),
+          if (s.containsKey('start')) 'start': _minutes(s['start']),
+          if (s.containsKey('end')) 'end': _minutes(s['end']),
+          if (s.containsKey('person')) 'userId': await apiAccess.person(c, s['person']),
+          if (s.containsKey('site')) 'siteId': await apiAccess.catalogItem(c, 'sites', s['site']),
+          if (s.containsKey('position')) 'positionId': await apiAccess.catalogItem(c, 'positions', s['position']),
+          if (s.containsKey('note')) 'note': s['note'],
+        };
+        await _input(() => planning.update(u, c, r.params['shiftId']!, ShiftPatch(fields), scope: Scope.one));
+        return {'id': r.params['shiftId'], 'status': 'draft'};
+      }))
+      ..delete('/ext/shifts/<shiftId>', _apiWrite('shifts', (r, k, u) async {
+        await planning.delete(u, k.company.id, r.params['shiftId']!, scope: Scope.one);
+        return {'deleted': r.params['shiftId']};
+      }))
+      ..post('/ext/publish', _apiWrite('publish', (r, k, u) async => {'published': (await planning.publish(u, k.company.id)).$1}))
+      ..post('/ext/members/import', _apiWrite('members', (r, k, u) async {
+        final body = await _body(r);
+        final rows = body['rows'];
+        if (rows is! List || rows.isEmpty || rows.any((x) => x is! Map)) {
+          throw const ApiError.badRequest('Champ « rows » : liste de salariés attendue.');
+        }
+        final table = [
+          ['Nom', 'Matricule', 'Poste', 'Site'],
+          for (final x in rows.cast<Map>())
+            [for (final f in ['name', 'number', 'position', 'site']) '${x[f] ?? ''}'],
+        ];
+        final result = await imports.run(u, k.company.id, table, dryRun: body['dryRun'] == true, lang: _lang(r));
+        return {...result, 'invites': await imports.list(u, k.company.id)};
+      }))
+      ..get('/ext/invites', _apiWrite('members', (r, k, u) async => imports.list(u, k.company.id)))
+      ..put('/ext/members/<ref>/profile', _apiWrite('members', (r, k, u) async {
+        final body = await _body(r);
+        final c = k.company.id;
+        final userId = (await apiAccess.person(c, r.params['ref']))!;
+        await companies.setMemberProfile(u, c, userId,
+            employeeNumber: body['employeeNumber'] as String?,
+            positionId: await apiAccess.catalogItem(c, 'positions', body['position'], create: true));
+        return {'person': r.params['ref']};
+      }))
+      ..post('/ext/positions', _apiWrite('catalog', (r, k, u) async =>
+          (await planning.addCatalogItem(u, k.company.id, CatalogKind.positions, _string(await _body(r), 'name'))).toJson()))
+      ..post('/ext/sites', _apiWrite('catalog', (r, k, u) async {
+        final body = await _body(r);
+        final parent = await apiAccess.catalogItem(k.company.id, 'sites', body['parent']);
+        return (await planning.addCatalogItem(u, k.company.id, CatalogKind.sites, _string(body, 'name'), parentId: parent))
+            .toJson();
+      }))
+      ..post('/ext/news', _apiWrite('news', (r, k, u) async {
+        final body = await _body(r);
+        final audience = body['audience'] ?? {'everyone': true};
+        if (body['title'] is! String? || audience is! Map) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        return news.publish(u, k.company.id,
+            title: body['title'] as String?, body: _string(body, 'body'), audience: audience.cast<String, dynamic>());
+      }))
+      ..get('/ext/requests', _apiWrite('requests', (r, k, u) async => requests.pending(u, k.company.id)))
+      ..post('/ext/requests/<requestId>/<decision>', _apiWrite('requests', (r, k, u) async {
+        final decision = r.params['decision'];
+        if (decision != 'approve' && decision != 'refuse') throw const ApiError.notFound();
+        final mine = await store.query(store.db, 'SELECT 1 FROM requests WHERE id::text = @i AND company_id = @c::uuid',
+            {'i': r.params['requestId'], 'c': k.company.id});
+        if (mine.isEmpty) throw const ApiError.notFound('Demande introuvable.');
+        return requests.decide(u, r.params['requestId']!, approve: decision == 'approve');
       }))
       ..get('/ext/absences', _apiKey((r, c) async {
         final (from, to) = apiAccess.period(c, r.url.queryParameters);
@@ -1078,14 +1190,40 @@ class Api {
 
   /// Lecture par clé API : JSON (`{"data": …}`), ou CSV avec `?format=csv`.
   Handler _apiKey(Future<Object?> Function(Request, Company) handler) => (Request req) async {
-        final company = await apiAccess.authenticate(req.headers['authorization'] ?? req.headers['x-api-key']);
-        final data = await handler(req, company);
+        final key = await apiAccess.key(req.headers['authorization'] ?? req.headers['x-api-key']);
+        if (!key.scopes.contains(ApiAccessService.readScope)) {
+          throw const ApiError(403, 'scope_missing', 'Cette clé n\'a pas le droit « {scope} ».', {'scope': 'read'});
+        }
+        final data = await handler(req, key.company);
         if (req.url.queryParameters['format'] == 'csv' && data is List) {
           return Response.ok(ApiAccessService.csv(data.cast<Map<String, Object?>>()),
               headers: {'content-type': 'text/csv; charset=utf-8', 'cache-control': 'no-store'});
         }
         return _json({'data': data});
       };
+
+  /// Écriture par clé API (« API Pro ») : droit [scope], au nom du créateur de la clé.
+  Handler _apiWrite(String scope, Future<Object?> Function(Request, ApiKey, User) handler) => (Request req) async {
+        final key = await apiAccess.key(req.headers['authorization'] ?? req.headers['x-api-key']);
+        final actor = await apiAccess.actorFor(key, scope);
+        final data = await handler(req, key, actor);
+        await store.audit(companyId: key.company.id, actorId: actor.id, action: 'api.write', details: {
+          'key': key.name,
+          'method': req.method,
+          'path': req.url.path,
+        });
+        return _json({'data': data}, status: req.method == 'POST' ? 201 : 200);
+      };
+
+  /// Minutes depuis minuit : nombre, ou « HH:MM ».
+  static int _minutes(Object? v) {
+    if (v is int && v >= 0 && v < 1440) return v;
+    if (v is String) {
+      final m = RegExp(r'^(\d{1,2}):(\d{2})$').firstMatch(v.trim());
+      if (m != null && int.parse(m[1]!) < 24 && int.parse(m[2]!) < 60) return int.parse(m[1]!) * 60 + int.parse(m[2]!);
+    }
+    throw const ApiError.badRequest('Heures invalides.');
+  }
 
   Handler _authed(Future<Response> Function(Request, User) handler) => (Request req) async {
         final header = req.headers['authorization'] ?? '';

@@ -210,6 +210,18 @@ class _TeamViewState extends State<TeamView> {
               ),
             ),
           ],
+          if (role != Role.owner && widget.membership.managesAll) ...[
+            const SizedBox(height: 12),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.key_outlined),
+                title: Text(t.apiTitle),
+                subtitle: Text(t.apiSub),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => ApiKeysPage.open(context, widget.session, company),
+              ),
+            ),
+          ],
           // Réglages de l'entreprise : fuseau horaire, impression.
           if (widget.membership.managesAll) ...[
             const SizedBox(height: 24),

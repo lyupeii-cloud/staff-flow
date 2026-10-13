@@ -28,14 +28,36 @@ GET /api/v1/ext/shifts      published shifts         ?from=&to=&format=csv
 GET /api/v1/ext/totals      published hours/person   ?from=&to=&format=csv
 GET /api/v1/ext/absences    approved leave and unavailability  ?from=&to=''';
 
+const _write = '''POST   /api/v1/ext/shifts           create shifts (draft, or "publish": true)
+PATCH  /api/v1/ext/shifts/{id}      edit a shift (back to draft)
+DELETE /api/v1/ext/shifts/{id}      delete a shift
+POST   /api/v1/ext/publish          publish all drafts
+POST   /api/v1/ext/members/import   import employees -> invitations with codes
+GET    /api/v1/ext/invites          pending invitations (code, QR link)
+PUT    /api/v1/ext/members/{ref}/profile   employee number, position
+POST   /api/v1/ext/positions        new position     {"name": "…"}
+POST   /api/v1/ext/sites            new site         {"name": "…", "parent": "…"}
+POST   /api/v1/ext/news             announcement     {"title", "body", "audience"}
+GET    /api/v1/ext/requests         pending requests
+POST   /api/v1/ext/requests/{id}/approve | refuse''';
+
+const _writeSample = r'''POST /api/v1/ext/shifts
+{
+  "publish": false,
+  "shifts": [
+    {"day": "2026-10-20", "start": "07:00", "end": "15:00",
+     "person": "M-0007", "site": "Chantier Nord", "position": "Maçon"}
+  ]
+}''';
+
 const apiDocs = <String, List<List<Object>>>{
   'fr': [
     ['À quoi ça sert', [
-      'L\'option « accès API » permet à vos logiciels de comptabilité, de paie ou à votre CRM de lire automatiquement le planning publié de votre entreprise, les heures de chacun et les absences validées. L\'accès est en lecture seule : rien ne peut être modifié par l\'API.',
+      'L\'option « accès API » permet à vos logiciels de comptabilité, de paie ou à votre CRM de lire automatiquement le planning publié de votre entreprise, les heures de chacun et les absences validées. Avec l\'option « accès API » (2 € par mois), l\'accès est en lecture seule ; l\'option « API Pro » permet aussi d\'écrire (voir plus bas).',
       'L\'option se prend dans l\'application : Management → Gérer l\'abonnement. Elle est ouverte pendant l\'essai gratuit.',
     ]],
     ['1. Créer une clé', [
-      'Dans l\'application, le propriétaire de l\'entreprise ouvre Management → Accès API → Nouvelle clé, et lui donne un nom (par exemple « Logiciel de paie »). La clé complète n\'est affichée qu\'une seule fois : copiez-la dans votre logiciel. Vous pouvez la révoquer à tout moment ; 10 clés au plus par entreprise.',
+      'Dans l\'application, le propriétaire (ou un responsable de toute l\'entreprise) ouvre Management → Accès API → Nouvelle clé, et lui donne un nom (par exemple « Logiciel de paie »). La clé complète n\'est affichée qu\'une seule fois : copiez-la dans votre logiciel. Vous pouvez la révoquer à tout moment ; 10 clés au plus par entreprise.',
     ]],
     ['2. Appeler l\'API', [
       'Envoyez la clé dans l\'en-tête « Authorization: Bearer … » (ou « X-Api-Key »). Toutes les adresses commencent par https://app.staff-flow.cloud/api/v1/ext/.',
@@ -52,6 +74,14 @@ const apiDocs = <String, List<List<Object>>>{
     ]],
     ['5. Erreurs', [
       '401 : clé absente, fausse ou révoquée. 402 : l\'option « accès API » n\'est pas active (abonnement sans l\'option). 400 : dates invalides.',
+    ]],
+    ['API Pro : écrire dans Staff Flow', [
+      'Avec l\'option « API Pro » (9 € par mois, sans remise, avec un abonnement payé ; pas pendant l\'essai ni pendant la période de grâce), vos logiciels envoient aussi des plannings, des salariés, des postes et sites, des annonces, et valident les demandes.',
+      'Chaque clé a ses droits, choisis à sa création : lecture, planning, publier, salariés, postes et sites, annonces, demandes. Le patron et les responsables de toute l\'entreprise créent et révoquent les clés (10 au plus).',
+      ['pre', _write],
+      'Les services envoyés arrivent en brouillon : les responsables les voient, les adaptent, puis publient. Avec le droit « publier » et « publish »: true, ils sont publiés tout de suite. Une personne se désigne par son identifiant SF ou son matricule ; un site ou un poste par son nom ou son id. Heures : « HH:MM » ou minutes depuis minuit.',
+      ['pre', _writeSample],
+      'Erreurs : 403 si la clé n\'a pas le droit demandé, 402 si l\'option « API Pro » n\'est pas active, 400 si une personne, un site ou une heure est inconnu (rien n\'est alors créé pour ce service). Chaque écriture est notée dans l\'historique de l\'entreprise avec le nom de la clé.',
     ]],
     ['Données personnelles', [
       'L\'entreprise reste responsable de l\'usage des données qu\'elle récupère (noms, horaires, absences) et doit les protéger dans ses propres logiciels. Gardez les clés secrètes ; révoquez une clé dès qu\'elle ne sert plus.',
@@ -81,6 +111,14 @@ const apiDocs = <String, List<List<Object>>>{
     ['5. Помилки', [
       '401: ключа немає, він неправильний або відкликаний. 402: опція «доступ до API» не активна (підписка без опції). 400: неправильні дати.',
     ]],
+    ['API Pro: запис у Staff Flow', [
+      'З опцією «API Pro» (9 € на місяць, без знижки, з оплаченою підпискою; не під час пробного періоду й не в пільговий період) ваші програми також надсилають графіки, працівників, посади й об\'єкти, оголошення та погоджують запити.',
+      'Кожен ключ має свої права, вибрані під час створення: читання, графік, публікація, працівники, посади й об\'єкти, оголошення, запити. Власник і керівники всієї компанії створюють і відкликають ключі (не більше 10).',
+      ['pre', _write],
+      'Надіслані зміни потрапляють у чернетку: керівники бачать їх, адаптують, а потім публікують. З правом «публікація» та «publish»: true вони публікуються одразу. Людину вказують ідентифікатором SF або табельним номером; об\'єкт чи посаду — назвою або id. Час: «ГГ:ХХ» або хвилини від півночі.',
+      ['pre', _writeSample],
+      'Помилки: 403, якщо ключ не має потрібного права; 402, якщо опція «API Pro» не активна; 400, якщо людина, об\'єкт чи час невідомі. Кожен запис фіксується в історії компанії з назвою ключа.',
+    ]],
     ['Персональні дані', [
       'Компанія відповідає за використання отриманих даних (імена, години, відсутності) і має захищати їх у своїх програмах. Зберігайте ключі в таємниці; відкликайте ключ, щойно він більше не потрібен.',
     ]],
@@ -108,6 +146,14 @@ const apiDocs = <String, List<List<Object>>>{
     ]],
     ['5. Errors', [
       '401: missing, wrong or revoked key. 402: the “API access” option is not active (subscription without the option). 400: invalid dates.',
+    ]],
+    ['API Pro: writing into Staff Flow', [
+      'With the “API Pro” option (€9 a month, no discount, with a paid subscription; not during the trial or the grace period), your software can also send schedules, employees, positions and sites, announcements, and decide on requests.',
+      'Each key has its own permissions, chosen when it is created: read, schedule, publish, employees, positions and sites, announcements, requests. The owner and company-wide managers create and revoke keys (10 at most).',
+      ['pre', _write],
+      'Shifts you send arrive as drafts: managers see them, adjust them, then publish. With the “publish” permission and "publish": true, they are published at once. A person is given by their SF ID or employee number; a site or position by its name or id. Times: “HH:MM” or minutes since midnight.',
+      ['pre', _writeSample],
+      'Errors: 403 if the key lacks the permission, 402 if the “API Pro” option isn\'t active, 400 if a person, site or time is unknown. Every write is logged in the company history with the key\'s name.',
     ]],
     ['Personal data', [
       'The company remains responsible for how it uses the data it retrieves (names, hours, absences) and must protect it in its own software. Keep keys secret; revoke a key as soon as it is no longer used.',

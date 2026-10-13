@@ -1566,11 +1566,11 @@ class L10nRo extends L10n {
 
   @override
   String get apiSub =>
-      'Programele tale de contabilitate, salarizare sau CRM citesc programul publicat, orele și absențele.';
+      'Programele dvs. (salarizare, contabilitate, CRM, planificare) citesc programul publicat, orele și absențele; cu „API Pro” trimit și programe, angajați și anunțuri.';
 
   @override
   String get apiNeedsOption =>
-      'Opțiune plătită: adaugă „acces API” în „Gestionează abonamentul”.';
+      'Opțiune plătită: adăugați „Acces API” sau „API Pro” în „Gestionează abonamentul”.';
 
   @override
   String get apiNewKey => 'Cheie nouă';
@@ -2257,4 +2257,50 @@ class L10nRo extends L10n {
   @override
   String get googlePrivacyNote =>
       'Contul dvs. Google servește doar la protejarea companiei și a abonamentului: nu este arătat niciodată angajaților sau altcuiva.';
+
+  @override
+  String get scopeRead => 'Citire: program publicat, ore, absențe, angajați';
+
+  @override
+  String get scopeShifts => 'Program: creare, modificare, ștergere ture';
+
+  @override
+  String get scopePublish => 'Publicarea programului';
+
+  @override
+  String get scopeMembers => 'Angajați: import, număr matricol și post';
+
+  @override
+  String get scopeCatalog => 'Posturi și locații';
+
+  @override
+  String get scopeNews => 'Anunțuri';
+
+  @override
+  String get scopeRequests => 'Cereri: aprobare sau refuz';
+
+  @override
+  String get apiScopesTitle => 'Drepturile cheii';
+
+  @override
+  String get apiProNeeded =>
+      'Drepturile de scriere necesită opțiunea „API Pro” (abonament plătit).';
+
+  @override
+  String billingLinePro(String months) {
+    return 'Opțiunea „API Pro”: $months luni';
+  }
+
+  @override
+  String billingLineProAddon(String start, String end, String months) {
+    return 'Opțiunea „API Pro”, adăugată în timpul abonamentului, de la $start la $end: $months luni, fără reducere';
+  }
+
+  @override
+  String get billingApiPro => 'Opțiunea „API Pro”';
+
+  @override
+  String billingApiProHint(String price) {
+    return '„API Pro” ($price / lună, fără reducere): programele dvs. scriu în Staff Flow (program, angajați, anunțuri, cereri). Disponibilă cu abonament plătit: adăugați-o mai jos.';
+  }
 }

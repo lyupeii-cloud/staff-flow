@@ -248,4 +248,12 @@ const uk = <String, String>{
   'Chaque salarié reçoit son code et son QR code (feuille à imprimer après l\'importation) : il active son compte avec une application 2FA, ou avec Google.': 'Кожен працівник отримує свій код і QR-код (аркуш для друку після імпорту): він активує обліковий запис через застосунок 2FA або через Google.',
   'Trop de comptes créés depuis cette connexion : réessayez demain.': 'Із цього підключення створено забагато облікових записів: спробуйте завтра.',
   'Ce compte se connecte avec une application 2FA : elle ne peut pas être retirée.': 'Цей обліковий запис входить через застосунок 2FA: його не можна вимкнути.',
+  'Option « API Pro » nécessaire pour les droits d\'écriture.': 'Для прав на запис потрібна опція «API Pro».',
+  'Cette clé n\'a pas le droit « {scope} ».': 'Цей ключ не має права «{scope}».',
+  'Personne inconnue : {ref}.': 'Невідома особа: {ref}.',
+  'Site ou poste inconnu : {ref}.': 'Невідомий об\'єкт або посада: {ref}.',
+  'Champ « shifts » : liste de services attendue (2000 au plus).': 'Поле «shifts»: потрібен список змін (не більше 2000).',
+  'Champ « rows » : liste de salariés attendue.': 'Поле «rows»: потрібен список працівників.',
+  'Option « API Pro » : {months} mois': 'Опція «API Pro»: {months} міс.',
+  'Option « API Pro », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Опція «API Pro», додана під час підписки, з {from} по {to}: {months} міс.',
 };

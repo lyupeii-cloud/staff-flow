@@ -56,6 +56,31 @@ GET /api/v1/ext/absences    approved leave and unavailability  ?from=&amp;to=</c
 }</code></pre>
       <h2>5. Errors</h2>
       <p>401: missing, wrong or revoked key. 402: the “API access” option is not active (subscription without the option). 400: invalid dates.</p>
+      <h2>API Pro: writing into Staff Flow</h2>
+      <p>With the “API Pro” option (€9 a month, no discount, with a paid subscription; not during the trial or the grace period), your software can also send schedules, employees, positions and sites, announcements, and decide on requests.</p>
+      <p>Each key has its own permissions, chosen when it is created: read, schedule, publish, employees, positions and sites, announcements, requests. The owner and company-wide managers create and revoke keys (10 at most).</p>
+      <pre><code>POST   /api/v1/ext/shifts           create shifts (draft, or &quot;publish&quot;: true)
+PATCH  /api/v1/ext/shifts/{id}      edit a shift (back to draft)
+DELETE /api/v1/ext/shifts/{id}      delete a shift
+POST   /api/v1/ext/publish          publish all drafts
+POST   /api/v1/ext/members/import   import employees -&gt; invitations with codes
+GET    /api/v1/ext/invites          pending invitations (code, QR link)
+PUT    /api/v1/ext/members/{ref}/profile   employee number, position
+POST   /api/v1/ext/positions        new position     {&quot;name&quot;: &quot;…&quot;}
+POST   /api/v1/ext/sites            new site         {&quot;name&quot;: &quot;…&quot;, &quot;parent&quot;: &quot;…&quot;}
+POST   /api/v1/ext/news             announcement     {&quot;title&quot;, &quot;body&quot;, &quot;audience&quot;}
+GET    /api/v1/ext/requests         pending requests
+POST   /api/v1/ext/requests/{id}/approve | refuse</code></pre>
+      <p>Shifts you send arrive as drafts: managers see them, adjust them, then publish. With the “publish” permission and &quot;publish&quot;: true, they are published at once. A person is given by their SF ID or employee number; a site or position by its name or id. Times: “HH:MM” or minutes since midnight.</p>
+      <pre><code>POST /api/v1/ext/shifts
+{
+  &quot;publish&quot;: false,
+  &quot;shifts&quot;: [
+    {&quot;day&quot;: &quot;2026-10-20&quot;, &quot;start&quot;: &quot;07:00&quot;, &quot;end&quot;: &quot;15:00&quot;,
+     &quot;person&quot;: &quot;M-0007&quot;, &quot;site&quot;: &quot;Chantier Nord&quot;, &quot;position&quot;: &quot;Maçon&quot;}
+  ]
+}</code></pre>
+      <p>Errors: 403 if the key lacks the permission, 402 if the “API Pro” option isn't active, 400 if a person, site or time is unknown. Every write is logged in the company history with the key's name.</p>
       <h2>Personal data</h2>
       <p>The company remains responsible for how it uses the data it retrieves (names, hours, absences) and must protect it in its own software. Keep keys secret; revoke a key as soon as it is no longer used.</p>
     </div>

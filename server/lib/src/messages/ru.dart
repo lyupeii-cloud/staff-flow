@@ -228,4 +228,12 @@ const ru = <String, String>{
   'Chaque salarié reçoit son code et son QR code (feuille à imprimer après l\'importation) : il active son compte avec une application 2FA, ou avec Google.': 'Каждый сотрудник получает свой код и QR-код (лист для печати после импорта): он активирует аккаунт через приложение 2FA или через Google.',
   'Trop de comptes créés depuis cette connexion : réessayez demain.': 'С этого подключения создано слишком много аккаунтов: попробуйте завтра.',
   'Ce compte se connecte avec une application 2FA : elle ne peut pas être retirée.': 'Этот аккаунт входит через приложение 2FA: его нельзя отключить.',
+  'Option « API Pro » nécessaire pour les droits d\'écriture.': 'Для прав на запись нужна опция «API Pro».',
+  'Cette clé n\'a pas le droit « {scope} ».': 'У этого ключа нет права «{scope}».',
+  'Personne inconnue : {ref}.': 'Неизвестный человек: {ref}.',
+  'Site ou poste inconnu : {ref}.': 'Неизвестный объект или должность: {ref}.',
+  'Champ « shifts » : liste de services attendue (2000 au plus).': 'Поле «shifts»: нужен список смен (не более 2000).',
+  'Champ « rows » : liste de salariés attendue.': 'Поле «rows»: нужен список сотрудников.',
+  'Option « API Pro » : {months} mois': 'Опция «API Pro»: {months} мес.',
+  'Option « API Pro », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Опция «API Pro», добавленная во время подписки, с {from} по {to}: {months} мес.',
 };

@@ -1571,11 +1571,11 @@ class L10nPl extends L10n {
 
   @override
   String get apiSub =>
-      'Twoje programy księgowe, płacowe lub CRM odczytują opublikowany grafik, godziny i nieobecności.';
+      'Twoje programy (płace, księgowość, CRM, planowanie) odczytują opublikowany grafik, godziny i nieobecności; z „API Pro” mogą też wysyłać grafiki, pracowników i ogłoszenia.';
 
   @override
   String get apiNeedsOption =>
-      'Opcja płatna: dodaj „dostęp API” w „Zarządzaj subskrypcją”.';
+      'Opcja płatna: dodaj „Dostęp API” lub „API Pro” w „Zarządzaj subskrypcją”.';
 
   @override
   String get apiNewKey => 'Nowy klucz';
@@ -2262,4 +2262,52 @@ class L10nPl extends L10n {
   @override
   String get googlePrivacyNote =>
       'Twoje konto Google służy wyłącznie do ochrony firmy i jej subskrypcji: nigdy nie jest pokazywane pracownikom ani nikomu innemu.';
+
+  @override
+  String get scopeRead =>
+      'Odczyt: opublikowany grafik, godziny, nieobecności, pracownicy';
+
+  @override
+  String get scopeShifts => 'Grafik: tworzenie, zmiana, usuwanie zmian';
+
+  @override
+  String get scopePublish => 'Publikowanie grafiku';
+
+  @override
+  String get scopeMembers =>
+      'Pracownicy: import, numer pracownika i stanowisko';
+
+  @override
+  String get scopeCatalog => 'Stanowiska i lokalizacje';
+
+  @override
+  String get scopeNews => 'Ogłoszenia';
+
+  @override
+  String get scopeRequests => 'Wnioski: zatwierdzanie lub odrzucanie';
+
+  @override
+  String get apiScopesTitle => 'Uprawnienia klucza';
+
+  @override
+  String get apiProNeeded =>
+      'Uprawnienia zapisu wymagają opcji „API Pro” (opłacona subskrypcja).';
+
+  @override
+  String billingLinePro(String months) {
+    return 'Opcja „API Pro”: $months mies.';
+  }
+
+  @override
+  String billingLineProAddon(String start, String end, String months) {
+    return 'Opcja „API Pro”, dodana w trakcie subskrypcji, od $start do $end: $months mies., bez rabatu';
+  }
+
+  @override
+  String get billingApiPro => 'Opcja „API Pro”';
+
+  @override
+  String billingApiProHint(String price) {
+    return '„API Pro” ($price / mies., bez rabatu): Twoje programy zapisują dane w Staff Flow (grafik, pracownicy, ogłoszenia, wnioski). Dostępne z opłaconą subskrypcją: dodaj poniżej.';
+  }
 }

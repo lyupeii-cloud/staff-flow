@@ -228,4 +228,12 @@ const it = <String, String>{
   'Chaque salarié reçoit son code et son QR code (feuille à imprimer après l\'importation) : il active son compte avec une application 2FA, ou avec Google.': 'Ogni dipendente riceve il suo codice e il codice QR (foglio da stampare dopo l\'importazione): attiva l\'account con un\'app 2FA o con Google.',
   'Trop de comptes créés depuis cette connexion : réessayez demain.': 'Troppi account creati da questa connessione: riprova domani.',
   'Ce compte se connecte avec une application 2FA : elle ne peut pas être retirée.': 'Questo account accede con un\'app 2FA: non può essere rimossa.',
+  'Option « API Pro » nécessaire pour les droits d\'écriture.': 'Serve l\'opzione «API Pro» per i diritti di scrittura.',
+  'Cette clé n\'a pas le droit « {scope} ».': 'Questa chiave non ha il diritto «{scope}».',
+  'Personne inconnue : {ref}.': 'Persona sconosciuta: {ref}.',
+  'Site ou poste inconnu : {ref}.': 'Sede o ruolo sconosciuto: {ref}.',
+  'Champ « shifts » : liste de services attendue (2000 au plus).': 'Campo «shifts»: è attesa una lista di turni (al massimo 2000).',
+  'Champ « rows » : liste de salariés attendue.': 'Campo «rows»: è attesa una lista di dipendenti.',
+  'Option « API Pro » : {months} mois': 'Opzione «API Pro»: {months} mesi',
+  'Option « API Pro », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opzione «API Pro», aggiunta durante l\'abbonamento, dal {from} al {to}: {months} mesi',
 };

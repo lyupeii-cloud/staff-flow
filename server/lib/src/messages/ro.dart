@@ -228,4 +228,12 @@ const ro = <String, String>{
   'Chaque salarié reçoit son code et son QR code (feuille à imprimer après l\'importation) : il active son compte avec une application 2FA, ou avec Google.': 'Fiecare angajat primește codul și codul QR (foaie de tipărit după import): își activează contul cu o aplicație 2FA sau cu Google.',
   'Trop de comptes créés depuis cette connexion : réessayez demain.': 'Prea multe conturi create de pe această conexiune: încercați mâine.',
   'Ce compte se connecte avec une application 2FA : elle ne peut pas être retirée.': 'Acest cont se conectează cu o aplicație 2FA: nu poate fi eliminată.',
+  'Option « API Pro » nécessaire pour les droits d\'écriture.': 'Opțiunea „API Pro” este necesară pentru drepturile de scriere.',
+  'Cette clé n\'a pas le droit « {scope} ».': 'Această cheie nu are dreptul „{scope}”.',
+  'Personne inconnue : {ref}.': 'Persoană necunoscută: {ref}.',
+  'Site ou poste inconnu : {ref}.': 'Locație sau post necunoscut: {ref}.',
+  'Champ « shifts » : liste de services attendue (2000 au plus).': 'Câmpul „shifts”: se așteaptă o listă de ture (cel mult 2000).',
+  'Champ « rows » : liste de salariés attendue.': 'Câmpul „rows”: se așteaptă o listă de angajați.',
+  'Option « API Pro » : {months} mois': 'Opțiunea „API Pro”: {months} luni',
+  'Option « API Pro », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opțiunea „API Pro”, adăugată în timpul abonamentului, de la {from} la {to}: {months} luni',
 };

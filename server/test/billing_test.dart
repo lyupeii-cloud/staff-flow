@@ -155,9 +155,9 @@ void main() {
     expect((await billing(boss, company))['addons']['api'], isNull);
     await boss.ok('POST', '/companies/$company/billing/checkout', {'period': 'year', 'cascade': false, 'api': false});
     expect((await boss('POST', '/companies/$company/api-keys', {'name': 'Paie'})).$1, 402);
-    // Payé jusqu'au 1er novembre 2027 : octobre 2026 à octobre 2027, 13 mois à 3 €.
+    // Payé jusqu'au 1er novembre 2027 : octobre 2026 à octobre 2027, 13 mois à 2 €.
     final quote = (await billing(boss, company))['addons']['api'] as Map;
-    expect([quote['lines'].single['months'], quote['total']], [13, 13 * 300]);
+    expect([quote['lines'].single['months'], quote['total']], [13, 13 * 200]);
     await boss.ok('POST', '/companies/$company/billing/addon', {'option': 'api'});
     final key = await boss.ok('POST', '/companies/$company/api-keys', {'name': 'Paie'});
     Future<int> read() async => (await env.handler(Request('GET', Uri.parse('http://localhost/api/v1/ext/company'),

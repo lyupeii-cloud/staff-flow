@@ -2715,13 +2715,13 @@ abstract class L10n {
   /// No description provided for @apiSub.
   ///
   /// In en, this message translates to:
-  /// **'Your accounting, payroll or CRM software reads the published schedule, hours and absences.'**
+  /// **'Your software (payroll, accounting, CRM, planning) reads the published schedule, hours and absences; with “API Pro”, it can also send schedules, employees and announcements.'**
   String get apiSub;
 
   /// No description provided for @apiNeedsOption.
   ///
   /// In en, this message translates to:
-  /// **'Paid option: add “API access” in “Manage subscription”.'**
+  /// **'Paid option: add “API access” or “API Pro” in “Manage subscription”.'**
   String get apiNeedsOption;
 
   /// No description provided for @apiNewKey.
@@ -3857,6 +3857,84 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Your Google account is only used to protect the company and its subscription: it\'s never shown to your employees or anyone else.'**
   String get googlePrivacyNote;
+
+  /// No description provided for @scopeRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Read: published schedule, hours, absences, employees'**
+  String get scopeRead;
+
+  /// No description provided for @scopeShifts.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule: create, edit, delete shifts'**
+  String get scopeShifts;
+
+  /// No description provided for @scopePublish.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish the schedule'**
+  String get scopePublish;
+
+  /// No description provided for @scopeMembers.
+  ///
+  /// In en, this message translates to:
+  /// **'Employees: import, employee number and position'**
+  String get scopeMembers;
+
+  /// No description provided for @scopeCatalog.
+  ///
+  /// In en, this message translates to:
+  /// **'Positions and sites'**
+  String get scopeCatalog;
+
+  /// No description provided for @scopeNews.
+  ///
+  /// In en, this message translates to:
+  /// **'Announcements'**
+  String get scopeNews;
+
+  /// No description provided for @scopeRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Requests: approve or refuse'**
+  String get scopeRequests;
+
+  /// No description provided for @apiScopesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Key permissions'**
+  String get apiScopesTitle;
+
+  /// No description provided for @apiProNeeded.
+  ///
+  /// In en, this message translates to:
+  /// **'Write permissions need the “API Pro” option (paid subscription).'**
+  String get apiProNeeded;
+
+  /// No description provided for @billingLinePro.
+  ///
+  /// In en, this message translates to:
+  /// **'“API Pro” option: {months} months'**
+  String billingLinePro(String months);
+
+  /// No description provided for @billingLineProAddon.
+  ///
+  /// In en, this message translates to:
+  /// **'“API Pro” option, added during the subscription, from {start} to {end}: {months} months, no discount'**
+  String billingLineProAddon(String start, String end, String months);
+
+  /// No description provided for @billingApiPro.
+  ///
+  /// In en, this message translates to:
+  /// **'“API Pro” option'**
+  String get billingApiPro;
+
+  /// No description provided for @billingApiProHint.
+  ///
+  /// In en, this message translates to:
+  /// **'“API Pro” ({price} / month, no discount): your software writes into Staff Flow (schedule, employees, announcements, requests). Available with a paid subscription: add it below.'**
+  String billingApiProHint(String price);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

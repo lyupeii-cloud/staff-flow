@@ -1568,11 +1568,11 @@ class L10nFr extends L10n {
 
   @override
   String get apiSub =>
-      'Vos logiciels de comptabilité, de paie ou votre CRM lisent le planning publié, les heures et les absences.';
+      'Vos logiciels (paie, comptabilité, CRM, planification) lisent le planning publié, les heures et les absences ; avec « API Pro », ils envoient aussi des plannings, des salariés et des annonces.';
 
   @override
   String get apiNeedsOption =>
-      'Option payante : ajoutez « accès API » dans « Gérer l\'abonnement ».';
+      'Option payante : ajoutez « accès API » ou « API Pro » dans « Gérer l\'abonnement ».';
 
   @override
   String get apiNewKey => 'Nouvelle clé';
@@ -2259,4 +2259,52 @@ class L10nFr extends L10n {
   @override
   String get googlePrivacyNote =>
       'Votre compte Google sert uniquement à protéger l\'entreprise et son abonnement : il n\'est jamais montré à vos salariés ni à personne.';
+
+  @override
+  String get scopeRead =>
+      'Lecture : planning publié, heures, absences, salariés';
+
+  @override
+  String get scopeShifts =>
+      'Planning : créer, modifier, supprimer des services';
+
+  @override
+  String get scopePublish => 'Publier le planning';
+
+  @override
+  String get scopeMembers => 'Salariés : importer, matricule et poste';
+
+  @override
+  String get scopeCatalog => 'Postes et sites';
+
+  @override
+  String get scopeNews => 'Annonces';
+
+  @override
+  String get scopeRequests => 'Demandes : valider ou refuser';
+
+  @override
+  String get apiScopesTitle => 'Droits de la clé';
+
+  @override
+  String get apiProNeeded =>
+      'Les droits d\'écriture demandent l\'option « API Pro » (abonnement payé).';
+
+  @override
+  String billingLinePro(String months) {
+    return 'Option « API Pro » : $months mois';
+  }
+
+  @override
+  String billingLineProAddon(String start, String end, String months) {
+    return 'Option « API Pro », ajoutée en cours d\'abonnement, du $start au $end : $months mois, sans remise';
+  }
+
+  @override
+  String get billingApiPro => 'Option « API Pro »';
+
+  @override
+  String billingApiProHint(String price) {
+    return '« API Pro » ($price / mois, sans remise) : vos logiciels écrivent dans Staff Flow (planning, salariés, annonces, demandes). Disponible avec un abonnement payé : ajoutez-la ci-dessous.';
+  }
 }

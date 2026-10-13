@@ -342,7 +342,12 @@ class _InvitesPageState extends State<InvitesPage> {
                   detail: [?widget.data.positionName(i['positionId'] as String?), ?i['email']].join(' · ')),
           ], _search.text);
           final byId = {for (final i in all) i['id']: i};
-          return ListView(padding: const EdgeInsets.all(16), children: [
+          return RefreshIndicator(
+            onRefresh: () async {
+              setState(() => _invites = _load());
+              await _invites;
+            },
+            child: ListView(physics: const AlwaysScrollableScrollPhysics(), padding: const EdgeInsets.all(16), children: [
             Text(t.invitesHint(all.length.toString())),
             const SizedBox(height: 12),
             TextField(
@@ -376,7 +381,8 @@ class _InvitesPageState extends State<InvitesPage> {
                 padding: const EdgeInsets.all(24),
                 child: Center(child: Text(t.invitesNone, style: theme.textTheme.bodySmall)),
               ),
-          ]);
+          ]),
+          );
         },
       ),
     );

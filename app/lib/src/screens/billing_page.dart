@@ -198,6 +198,9 @@ class _BillingPageState extends State<BillingPage> {
           'cascadeAddon' => t.billingLineCascadeAddon(
               date(l['from']), longDate(DateTime.parse(l['to']).subtract(const Duration(days: 1)), loc), '${l['months']}'),
           'api' => t.billingLineApi('${l['months']}'),
+          'pro' => t.billingLinePro('${l['months']}'),
+          'proAddon' => t.billingLineProAddon(
+              date(l['from']), longDate(DateTime.parse(l['to']).subtract(const Duration(days: 1)), loc), '${l['months']}'),
           'apiProrata' => t.billingLineApiProrata('${l['days']}', '${l['monthDays']}'),
           'prorata' => t.billingLineProrata('${l['days']}', '${l['monthDays']}'),
           'cascadeProrata' => t.billingLineCascadeProrata('${l['days']}', '${l['monthDays']}'),
@@ -396,12 +399,23 @@ class _BillingPageState extends State<BillingPage> {
               value: _cascade, onLocal: (v) => setState(() => _cascade = v)),
         _optionTile(d, 'api', t.billingApi, t.billingPerMonth(euroAmount(context, d['apiOptionPrice'] as int)),
             value: _api, onLocal: (v) => setState(() => _api = v)),
+        // API Pro : seulement en cours d'abonnement payé (ajoutée ci-dessous, puis renouvelée ou non).
+        if (d['apiProOption'] == true)
+          _optionTile(d, 'pro', t.billingApiPro, t.billingPerMonth(euroAmount(context, d['apiProPrice'] as int)),
+              value: d['proUntil'] == null, onLocal: (_) {})
+        else
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: Text(t.billingApiProHint(euroAmount(context, d['apiProPrice'] as int)),
+                style: theme.textTheme.bodySmall),
+          ),
         // Abonnement en cours : une option s'ajoute seule, jusqu'à la fin de la période payée.
         if (status == 'active') ...[
           Text(t.billingRenewalOptions, style: theme.textTheme.bodySmall),
           for (final (key, title) in [
             ('slots', t.billingSeatsAddon('${d['slots']}', '${_slots ?? d['slotsChosen']}')),
             ('api', t.billingApi),
+            ('pro', t.billingApiPro),
             ('cascade', t.billingCascade),
           ])
             if ((d['addons'] as Map?)?[key] case final Map addon)

@@ -644,4 +644,9 @@ ALTER TABLE member_invites ADD COLUMN user_id uuid REFERENCES users(id) ON DELET
 CREATE TABLE auth_failures (key text NOT NULL, at timestamptz NOT NULL);
 CREATE INDEX auth_failures_key ON auth_failures (key, at);
 ''',
+  // 39 — option « API Pro » (écriture) et droits de chaque clé API.
+  '''
+ALTER TABLE companies ADD COLUMN api_pro_option boolean NOT NULL DEFAULT false, ADD COLUMN api_pro_until timestamptz;
+ALTER TABLE api_keys ADD COLUMN scopes text[] NOT NULL DEFAULT '{read}';
+''',
 ];

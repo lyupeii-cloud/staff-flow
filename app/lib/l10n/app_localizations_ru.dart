@@ -1564,11 +1564,11 @@ class L10nRu extends L10n {
 
   @override
   String get apiSub =>
-      'Ваши программы бухгалтерии, зарплаты или CRM читают опубликованный график, часы и отсутствия.';
+      'Ваши программы (зарплата, учёт, CRM, планирование) читают опубликованный график, часы и отсутствия; с «API Pro» они также отправляют графики, сотрудников и объявления.';
 
   @override
   String get apiNeedsOption =>
-      'Платная опция: добавьте «доступ к API» в «Управлять подпиской».';
+      'Платная опция: добавьте «Доступ к API» или «API Pro» в «Управлять подпиской».';
 
   @override
   String get apiNewKey => 'Новый ключ';
@@ -2256,4 +2256,51 @@ class L10nRu extends L10n {
   @override
   String get googlePrivacyNote =>
       'Ваш аккаунт Google служит только для защиты компании и её подписки: его никогда не показывают сотрудникам или кому-либо ещё.';
+
+  @override
+  String get scopeRead =>
+      'Чтение: опубликованный график, часы, отсутствия, сотрудники';
+
+  @override
+  String get scopeShifts => 'График: создавать, изменять, удалять смены';
+
+  @override
+  String get scopePublish => 'Публиковать график';
+
+  @override
+  String get scopeMembers => 'Сотрудники: импорт, табельный номер и должность';
+
+  @override
+  String get scopeCatalog => 'Должности и объекты';
+
+  @override
+  String get scopeNews => 'Объявления';
+
+  @override
+  String get scopeRequests => 'Запросы: одобрять или отклонять';
+
+  @override
+  String get apiScopesTitle => 'Права ключа';
+
+  @override
+  String get apiProNeeded =>
+      'Права на запись требуют опции «API Pro» (оплаченная подписка).';
+
+  @override
+  String billingLinePro(String months) {
+    return 'Опция «API Pro»: $months мес.';
+  }
+
+  @override
+  String billingLineProAddon(String start, String end, String months) {
+    return 'Опция «API Pro», добавленная во время подписки, с $start по $end: $months мес., без скидки';
+  }
+
+  @override
+  String get billingApiPro => 'Опция «API Pro»';
+
+  @override
+  String billingApiProHint(String price) {
+    return '«API Pro» ($price / мес., без скидки): ваши программы записывают в Staff Flow (график, сотрудники, объявления, запросы). Доступно с оплаченной подпиской: добавьте ниже.';
+  }
 }

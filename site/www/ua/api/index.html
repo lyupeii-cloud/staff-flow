@@ -56,6 +56,31 @@ GET /api/v1/ext/absences    approved leave and unavailability  ?from=&amp;to=</c
 }</code></pre>
       <h2>5. Помилки</h2>
       <p>401: ключа немає, він неправильний або відкликаний. 402: опція «доступ до API» не активна (підписка без опції). 400: неправильні дати.</p>
+      <h2>API Pro: запис у Staff Flow</h2>
+      <p>З опцією «API Pro» (9 € на місяць, без знижки, з оплаченою підпискою; не під час пробного періоду й не в пільговий період) ваші програми також надсилають графіки, працівників, посади й об'єкти, оголошення та погоджують запити.</p>
+      <p>Кожен ключ має свої права, вибрані під час створення: читання, графік, публікація, працівники, посади й об'єкти, оголошення, запити. Власник і керівники всієї компанії створюють і відкликають ключі (не більше 10).</p>
+      <pre><code>POST   /api/v1/ext/shifts           create shifts (draft, or &quot;publish&quot;: true)
+PATCH  /api/v1/ext/shifts/{id}      edit a shift (back to draft)
+DELETE /api/v1/ext/shifts/{id}      delete a shift
+POST   /api/v1/ext/publish          publish all drafts
+POST   /api/v1/ext/members/import   import employees -&gt; invitations with codes
+GET    /api/v1/ext/invites          pending invitations (code, QR link)
+PUT    /api/v1/ext/members/{ref}/profile   employee number, position
+POST   /api/v1/ext/positions        new position     {&quot;name&quot;: &quot;…&quot;}
+POST   /api/v1/ext/sites            new site         {&quot;name&quot;: &quot;…&quot;, &quot;parent&quot;: &quot;…&quot;}
+POST   /api/v1/ext/news             announcement     {&quot;title&quot;, &quot;body&quot;, &quot;audience&quot;}
+GET    /api/v1/ext/requests         pending requests
+POST   /api/v1/ext/requests/{id}/approve | refuse</code></pre>
+      <p>Надіслані зміни потрапляють у чернетку: керівники бачать їх, адаптують, а потім публікують. З правом «публікація» та «publish»: true вони публікуються одразу. Людину вказують ідентифікатором SF або табельним номером; об'єкт чи посаду — назвою або id. Час: «ГГ:ХХ» або хвилини від півночі.</p>
+      <pre><code>POST /api/v1/ext/shifts
+{
+  &quot;publish&quot;: false,
+  &quot;shifts&quot;: [
+    {&quot;day&quot;: &quot;2026-10-20&quot;, &quot;start&quot;: &quot;07:00&quot;, &quot;end&quot;: &quot;15:00&quot;,
+     &quot;person&quot;: &quot;M-0007&quot;, &quot;site&quot;: &quot;Chantier Nord&quot;, &quot;position&quot;: &quot;Maçon&quot;}
+  ]
+}</code></pre>
+      <p>Помилки: 403, якщо ключ не має потрібного права; 402, якщо опція «API Pro» не активна; 400, якщо людина, об'єкт чи час невідомі. Кожен запис фіксується в історії компанії з назвою ключа.</p>
       <h2>Персональні дані</h2>
       <p>Компанія відповідає за використання отриманих даних (імена, години, відсутності) і має захищати їх у своїх програмах. Зберігайте ключі в таємниці; відкликайте ключ, щойно він більше не потрібен.</p>
     </div>

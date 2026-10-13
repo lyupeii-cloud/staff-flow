@@ -127,6 +127,9 @@ class Company {
   /// Places achetées (salariés et responsables) ; 5 % de marge au-delà.
   final int slots;
 
+  /// Option « API Pro » (écriture par clé API) payée.
+  final bool apiProOption;
+
   /// Le patron masque les photos Google dans son entreprise (avatars à la place).
   final bool hidePhotos;
 
@@ -151,6 +154,7 @@ class Company {
     this.apiOption = false,
     this.hidePhotos = false,
     this.slots = 10,
+    this.apiProOption = false,
   });
 
   Map<String, Object?> billingJson() => {
@@ -162,6 +166,7 @@ class Company {
         'cascadeOption': cascadeOption,
         'apiOption': apiOption,
         'slots': slots,
+        'apiProOption': apiProOption,
       };
 
   Company copyWith({String? name, String? timezone, Map<String, int>? Function()? legalRules, String? printScope}) =>
@@ -185,6 +190,7 @@ class Company {
         apiOption: apiOption,
         hidePhotos: hidePhotos,
         slots: slots,
+        apiProOption: apiProOption,
         publicId: publicId,
       );
 

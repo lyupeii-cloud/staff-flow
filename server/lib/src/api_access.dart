@@ -27,20 +27,34 @@ class ApiAccessService {
   static String _token(int n) => List.generate(n, (_) => _alphabet[_random.nextInt(_alphabet.length)]).join();
   static String _hash(String secret) => sha256.convert(utf8.encode(secret)).toString();
 
-  /// Option ouverte : pendant l'essai, entreprise offerte, ou option payée.
+  /// Lecture ouverte : pendant l'essai, entreprise offerte, option « accès
+  /// API » ou « API Pro » payée (coupées pendant la période de grâce).
   static bool allowed(Company c) =>
-      c.billingStatus == 'trial' || c.billingStatus == 'comped' || (c.apiOption && c.billingStatus == 'active');
+      c.billingStatus == 'trial' ||
+      c.billingStatus == 'comped' ||
+      ((c.apiOption || c.apiProOption) && c.billingStatus == 'active');
 
+  /// Écriture (« API Pro ») : abonnement payé (ou offert) avec l'option ;
+  /// ni pendant l'essai, ni pendant la période de grâce.
+  static bool proAllowed(Company c) => c.billingStatus == 'comped' || (c.apiProOption && c.billingStatus == 'active');
+
+  /// Droits possibles d'une clé.
+  static const readScope = 'read';
+  static const writeScopes = {'shifts', 'publish', 'members', 'catalog', 'news', 'requests'};
+
+  /// Le patron et les responsables de toute l'entreprise gèrent les clés.
   Future<Company> _owned(User actor, String companyId) async {
     final (company, role) = await companies.open(actor, companyId);
-    if (role != Role.owner) throw const ApiError.forbidden();
+    if (role != Role.owner && !(role == Role.manager && await companies.managedSites(companyId, actor, role) == null)) {
+      throw const ApiError.forbidden();
+    }
     return company;
   }
 
   Future<List<Map<String, Object?>>> list(User actor, String companyId) async {
     await _owned(actor, companyId);
     final rows = await store.query(store.db, '''
-      SELECT id::text, name, prefix, created_at, last_used_at FROM api_keys
+      SELECT id::text, name, prefix, created_at, last_used_at, scopes FROM api_keys
       WHERE company_id = @c::uuid AND revoked_at IS NULL ORDER BY created_at''', {'c': companyId});
     return [
       for (final r in rows)
@@ -50,14 +64,23 @@ class ApiAccessService {
           'prefix': 'sfk_${r[2]}',
           'createdAt': (r[3] as DateTime).toIso8601String(),
           'lastUsedAt': (r[4] as DateTime?)?.toIso8601String(),
+          'scopes': r[5],
         },
     ];
   }
 
   /// Nouvelle clé : renvoyée en entier une seule fois.
-  Future<Map<String, Object?>> create(User actor, String companyId, String name) async {
+  Future<Map<String, Object?>> create(User actor, String companyId, String name, {List<String> scopes = const ['read']}) async {
     final company = await _owned(actor, companyId);
-    if (!allowed(company)) {
+    final clean0 = {...scopes};
+    if (clean0.isEmpty || clean0.any((s) => s != readScope && !writeScopes.contains(s))) {
+      throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    }
+    if (clean0.any(writeScopes.contains)) {
+      if (!proAllowed(company)) {
+        throw const ApiError(402, 'option_required', 'Option « API Pro » nécessaire pour les droits d\'écriture.');
+      }
+    } else if (!allowed(company)) {
       throw const ApiError(402, 'option_required', 'Option « accès API » nécessaire pour créer une clé.');
     }
     final clean = name.trim();
@@ -67,11 +90,11 @@ class ApiAccessService {
     if ((count.first[0] as num) >= 10) throw const ApiError.conflict('10 clés au plus par entreprise.');
     final prefix = _token(8), secret = _token(32);
     await store.query(store.db, '''
-      INSERT INTO api_keys (company_id, name, prefix, key_hash, created_by)
-      VALUES (@c::uuid, @n, @p, @h, @u::uuid)''',
-        {'c': companyId, 'n': clean, 'p': prefix, 'h': _hash(secret), 'u': actor.id});
+      INSERT INTO api_keys (company_id, name, prefix, key_hash, created_by, scopes)
+      VALUES (@c::uuid, @n, @p, @h, @u::uuid, @s)''',
+        {'c': companyId, 'n': clean, 'p': prefix, 'h': _hash(secret), 'u': actor.id, 's': clean0.toList()});
     await store.audit(companyId: companyId, actorId: actor.id, action: 'api.key_created', details: {'name': clean, 'prefix': prefix});
-    return {'key': 'sfk_${prefix}_$secret', 'prefix': 'sfk_$prefix', 'name': clean};
+    return {'key': 'sfk_${prefix}_$secret', 'prefix': 'sfk_$prefix', 'name': clean, 'scopes': clean0.toList()};
   }
 
   Future<void> revoke(User actor, String companyId, String keyId) async {
@@ -84,7 +107,10 @@ class ApiAccessService {
   }
 
   /// Entreprise d'une clé (`sfk_<préfixe>_<secret>`), ou 401 / 402.
-  Future<Company> authenticate(String? header) async {
+  Future<Company> authenticate(String? header) async => (await key(header)).company;
+
+  /// Clé valide : entreprise, nom, droits et personne au nom de qui elle agit.
+  Future<ApiKey> key(String? header) async {
     final key = header == null
         ? null
         : header.startsWith('Bearer ')
@@ -93,7 +119,8 @@ class ApiAccessService {
     final m = RegExp(r'^sfk_([a-z0-9]{8})_([a-z0-9]{32})$').firstMatch(key ?? '');
     if (m == null) throw const ApiError.unauthorized('Clé API invalide.');
     final rows = await store.query(store.db, '''
-      SELECT company_id::text, key_hash FROM api_keys WHERE prefix = @p AND revoked_at IS NULL''', {'p': m[1]});
+      SELECT company_id::text, key_hash, name, scopes, created_by::text FROM api_keys
+      WHERE prefix = @p AND revoked_at IS NULL''', {'p': m[1]});
     if (rows.isEmpty || rows.first[1] != _hash(m[2]!)) throw const ApiError.unauthorized('Clé API invalide.');
     final company = await store.findCompany(rows.first[0] as String);
     if (company == null) throw const ApiError.unauthorized('Clé API invalide.');
@@ -101,7 +128,58 @@ class ApiAccessService {
       throw const ApiError(402, 'option_required', 'Option « accès API » nécessaire pour créer une clé.');
     }
     await store.query(store.db, 'UPDATE api_keys SET last_used_at = @t WHERE prefix = @p', {'p': m[1], 't': now()});
-    return company;
+    return ApiKey(company, rows.first[2] as String, {...(rows.first[3] as List).cast<String>()}, rows.first[4] as String?);
+  }
+
+  /// Personne au nom de qui une clé d'écriture agit : son créateur s'il
+  /// gère encore toute l'entreprise, sinon le patron. Vérifie le droit
+  /// [scope] et l'option « API Pro ».
+  Future<User> actorFor(ApiKey k, String scope) async {
+    if (!k.scopes.contains(scope)) {
+      throw ApiError(403, 'scope_missing', 'Cette clé n\'a pas le droit « {scope} ».', {'scope': scope});
+    }
+    if (!proAllowed(k.company)) {
+      throw const ApiError(402, 'option_required', 'Option « API Pro » nécessaire pour les droits d\'écriture.');
+    }
+    if (k.createdBy != null) {
+      final u = await store.findActiveUser(k.createdBy!);
+      final role = await store.roleOf(k.company.id, k.createdBy!);
+      if (u != null &&
+          (role == Role.owner || (role == Role.manager && await companies.managedSites(k.company.id, u, role!) == null))) {
+        return u;
+      }
+    }
+    final owner = await store.query(store.db, '''
+      SELECT user_id::text FROM memberships WHERE company_id = @c::uuid AND role = 'owner' AND left_at IS NULL''',
+        {'c': k.company.id});
+    return (await store.findActiveUser(owner.first[0] as String))!;
+  }
+
+  /// Personne désignée par son identifiant SF, son matricule ou son id interne.
+  Future<String?> person(String companyId, Object? ref) async {
+    if (ref == null) return null;
+    if (ref is! String || ref.trim().isEmpty) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    final rows = await store.query(store.db, '''
+      SELECT u.id::text FROM memberships m JOIN users u ON u.id = m.user_id
+      WHERE m.company_id = @c::uuid AND m.left_at IS NULL
+        AND (upper(u.public_id) = upper(@r) OR lower(m.employee_number) = lower(@r) OR u.id::text = @r)''',
+        {'c': companyId, 'r': ref.trim()});
+    if (rows.isEmpty) throw ApiError.badRequest('Personne inconnue : {ref}.', {'ref': ref});
+    return rows.first[0] as String;
+  }
+
+  /// Site ou poste désigné par son id ou son nom ; [create] : créé s'il manque.
+  Future<String?> catalogItem(String companyId, String table, Object? ref, {bool create = false}) async {
+    if (ref == null) return null;
+    if (ref is! String || ref.trim().isEmpty) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    final rows = await store.query(store.db, '''
+      SELECT id::text FROM $table WHERE company_id = @c::uuid AND archived_at IS NULL
+        AND (id::text = @r OR lower(name) = lower(@r)) LIMIT 1''', {'c': companyId, 'r': ref.trim()});
+    if (rows.isNotEmpty) return rows.first[0] as String;
+    if (!create) throw ApiError.badRequest('Site ou poste inconnu : {ref}.', {'ref': ref});
+    final made = await store.query(store.db, 'INSERT INTO $table (company_id, name) VALUES (@c::uuid, @n) RETURNING id::text',
+        {'c': companyId, 'n': ref.trim()});
+    return made.first[0] as String;
   }
 
   // --- Lecture (planning publié) ------------------------------------------------
@@ -190,4 +268,14 @@ class ApiAccessService {
 
     return '﻿${[keys.join(';'), for (final r in rows) [for (final k in keys) cell(r[k])].join(';')].join('\r\n')}\r\n';
   }
+}
+
+/// Clé API authentifiée.
+class ApiKey {
+  final Company company;
+  final String name;
+  final Set<String> scopes;
+  final String? createdBy;
+
+  const ApiKey(this.company, this.name, this.scopes, this.createdBy);
 }

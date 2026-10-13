@@ -1148,8 +1148,8 @@
     }
   },
   "apiTitle": "API access (accounting, CRM)",
-  "apiSub": "Your accounting, payroll or CRM software reads the published schedule, hours and absences.",
-  "apiNeedsOption": "Paid option: add “API access” in “Manage subscription”.",
+  "apiSub": "Your software (payroll, accounting, CRM, planning) reads the published schedule, hours and absences; with “API Pro”, it can also send schedules, employees and announcements.",
+  "apiNeedsOption": "Paid option: add “API access” or “API Pro” in “Manage subscription”.",
   "apiNewKey": "New key",
   "apiKeyName": "Key name (e.g. payroll software)",
   "apiKeyCreated": "Copy this key now and keep it safe: it will not be shown again.",
@@ -1654,5 +1654,45 @@
   "totpEnableTitle": "Turn on 2FA sign-in",
   "totpEnabledTitle": "2FA sign-in ready",
   "totpDisableConfirm": "Remove sign-in with a 2FA app? You'll only sign in with Google.",
-  "googlePrivacyNote": "Your Google account is only used to protect the company and its subscription: it's never shown to your employees or anyone else."
+  "googlePrivacyNote": "Your Google account is only used to protect the company and its subscription: it's never shown to your employees or anyone else.",
+  "scopeRead": "Read: published schedule, hours, absences, employees",
+  "scopeShifts": "Schedule: create, edit, delete shifts",
+  "scopePublish": "Publish the schedule",
+  "scopeMembers": "Employees: import, employee number and position",
+  "scopeCatalog": "Positions and sites",
+  "scopeNews": "Announcements",
+  "scopeRequests": "Requests: approve or refuse",
+  "apiScopesTitle": "Key permissions",
+  "apiProNeeded": "Write permissions need the “API Pro” option (paid subscription).",
+  "billingLinePro": "“API Pro” option: {months} months",
+  "@billingLinePro": {
+    "placeholders": {
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLineProAddon": "“API Pro” option, added during the subscription, from {start} to {end}: {months} months, no discount",
+  "@billingLineProAddon": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingApiPro": "“API Pro” option",
+  "billingApiProHint": "“API Pro” ({price} / month, no discount): your software writes into Staff Flow (schedule, employees, announcements, requests). Available with a paid subscription: add it below.",
+  "@billingApiProHint": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  }
 }

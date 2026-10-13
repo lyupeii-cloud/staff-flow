@@ -113,6 +113,7 @@ class BillingService {
     final until = c.paidUntil;
     if (c.billingStatus != 'active' || until == null || !until.isAfter(t)) return null;
     if (option == 'api' && c.apiOption) return null;
+    if (option == 'pro' && c.apiProOption) return null;
     if (option == 'cascade' && (c.cascadeOption || c.slots >= v['cascadeIncludedFrom']!)) return null;
     if (option == 'slots' && (slots == null || slots <= c.slots)) return null;
     final from = DateTime.utc(t.year, t.month);
@@ -122,11 +123,12 @@ class BillingService {
     // Places en plus : la différence de prix par mois entre les deux nombres de places.
     final unit = switch (option) {
       'api' => v['apiOptionPrice']!,
+      'pro' => v['apiProPrice']!,
       'cascade' => v['cascadeOptionPrice']!,
       _ => PlatformService.monthlyCents(v, slots!) - PlatformService.monthlyCents(v, c.slots),
     };
     final line = {
-      'label': switch (option) { 'api' => 'apiAddon', 'cascade' => 'cascadeAddon', _ => 'slotsAddon' },
+      'label': switch (option) { 'api' => 'apiAddon', 'pro' => 'proAddon', 'cascade' => 'cascadeAddon', _ => 'slotsAddon' },
       if (option == 'slots') ...{'slotsFrom': c.slots, 'slots': slots},
       'unitCents': unit,
       'months': months,
@@ -137,12 +139,17 @@ class BillingService {
     return {'lines': [line], 'total': unit * months, 'from': from.toIso8601String(), 'to': until.toIso8601String()};
   }
 
+  Future<bool> _renews(String companyId, String column) async =>
+      (await store.query(store.db, 'SELECT $column IS NULL FROM companies WHERE id = @c::uuid', {'c': companyId})).first[0] == true;
+
   /// Fin d'une option non renouvelée (`null` : renouvelée).
   Future<Map<String, Object?>> _renewals(String companyId) async {
-    final rows = await store.query(store.db, 'SELECT api_until, cascade_until FROM companies WHERE id = @c::uuid', {'c': companyId});
+    final rows = await store.query(store.db, 'SELECT api_until, cascade_until, api_pro_until FROM companies WHERE id = @c::uuid',
+        {'c': companyId});
     return {
       'apiUntil': (rows.first[0] as DateTime?)?.toIso8601String(),
       'cascadeUntil': (rows.first[1] as DateTime?)?.toIso8601String(),
+      'proUntil': (rows.first[2] as DateTime?)?.toIso8601String(),
     };
   }
 
@@ -151,12 +158,14 @@ class BillingService {
   /// vrai annule cette décision.
   Future<void> setRenewal(User actor, String companyId, String option, bool renew) async {
     final company = await _owned(actor, companyId);
-    if (option != 'api' && option != 'cascade') throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
-    final active = option == 'api' ? company.apiOption : company.cascadeOption;
+    if (option != 'api' && option != 'cascade' && option != 'pro') {
+      throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    }
+    final active = switch (option) { 'api' => company.apiOption, 'pro' => company.apiProOption, _ => company.cascadeOption };
     if (company.billingStatus != 'active' || !active) {
       throw const ApiError.conflict('Cette option n\'est pas active.');
     }
-    final column = option == 'api' ? 'api_until' : 'cascade_until';
+    final column = switch (option) { 'api' => 'api_until', 'pro' => 'api_pro_until', _ => 'cascade_until' };
     await store.query(store.db, 'UPDATE companies SET $column = @u::timestamptz WHERE id = @c::uuid',
         {'c': companyId, 'u': renew ? null : company.paidUntil});
     await store.audit(
@@ -168,7 +177,7 @@ class BillingService {
   Future<Map<String, Object?>> buyAddon(User actor, String companyId, String option, {int? slots}) async {
     final company = await _owned(actor, companyId);
     if (!canPay(actor)) throw const ApiError.conflict('Le paiement en ligne arrive bientôt.');
-    if (option != 'api' && option != 'cascade' && option != 'slots') {
+    if (option != 'api' && option != 'cascade' && option != 'slots' && option != 'pro') {
       throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
     }
     if (option == 'slots') checkSlots(slots, 0);
@@ -207,6 +216,7 @@ class BillingService {
           tx,
           switch (option) {
             'api' => 'UPDATE companies SET api_option = true, api_until = NULL WHERE id = @c::uuid',
+            'pro' => 'UPDATE companies SET api_pro_option = true, api_pro_until = NULL WHERE id = @c::uuid',
             'cascade' => 'UPDATE companies SET cascade_option = true, cascade_until = NULL WHERE id = @c::uuid',
             _ => 'UPDATE companies SET slots = @n WHERE id = @c::uuid',
           },
@@ -258,8 +268,9 @@ class BillingService {
   /// Montants et lignes de facture d'un paiement.
   ({int amount, List<Map<String, Object?>> lines, int base, bool withOption, int recurring}) _price(
       Map<String, int> v, int staff, String period, bool cascade, ({int prorataDays, int monthDays, DateTime periodStart, DateTime periodEnd, DateTime coverFrom}) p,
-      {bool api = false}) {
+      {bool api = false, bool pro = false}) {
     final withOption = cascade && staff < v['cascadeIncludedFrom']!;
+    final proPrice = pro ? v['apiProPrice']! : 0;
     final base = PlatformService.monthlyCents(v, staff);
     final option = withOption ? v['cascadeOptionPrice']! : 0;
     final apiPrice = api ? v['apiOptionPrice']! : 0;
@@ -286,13 +297,14 @@ class BillingService {
       if (withOption) {'label': 'cascade', 'unitCents': option, 'months': months, 'cents': option * months},
       if (prorataApi > 0) {'label': 'apiProrata', 'days': p.prorataDays, 'monthDays': p.monthDays, 'cents': prorataApi},
       if (api) {'label': 'api', 'unitCents': apiPrice, 'months': months, 'cents': apiPrice * months},
+      if (pro) {'label': 'pro', 'unitCents': proPrice, 'months': months, 'cents': proPrice * months},
     ];
     return (
       amount: lines.fold(0, (s, l) => s + (l['cents'] as int)),
       lines: lines,
       base: base,
       withOption: withOption,
-      recurring: baseAmount + (option + apiPrice) * months,
+      recurring: baseAmount + (option + apiPrice + proPrice) * months,
     );
   }
 
@@ -370,11 +382,13 @@ class BillingService {
       },
       'apiOption': company.apiOption,
       'apiOptionPrice': v['apiOptionPrice'],
+      'apiProOption': company.apiProOption,
+      'apiProPrice': v['apiProPrice'],
       'cascadeOptionPrice': v['cascadeOptionPrice'],
       ...await _renewals(companyId),
       // Options à ajouter seules, en cours d'abonnement.
       'addons': {
-        for (final o in ['api', 'cascade']) o: _addon(company, v, staff, o),
+        for (final o in ['api', 'pro', 'cascade']) o: _addon(company, v, staff, o),
         'slots': _addon(company, v, staff, 'slots', slots: staff),
       },
       'isOwner': (await companies.open(actor, companyId)).$2 == Role.owner,
@@ -420,7 +434,8 @@ class BillingService {
     final plan = _plan(company, period);
     // Sans précision (anciennes versions de l'application) : l'option API reste comme elle est.
     final withApi = api ?? company.apiOption;
-    final price = _price(v, staff, period, cascade, plan, api: withApi);
+    final withPro = company.apiProOption && await _renews(companyId, 'api_pro_until') && company.billingStatus == 'active';
+    final price = _price(v, staff, period, cascade, plan, api: withApi, pro: withPro);
     final t = now();
     final owner = await store.findUser(actor.id);
     final seller = await platform.texts();
@@ -674,6 +689,12 @@ class BillingService {
           'apiProrata' => t('Prorata du mois en cours ({days} jours sur {total}) : option « accès API »',
               {'days': '${l['days']}', 'total': '${l['monthDays']}'}),
           'api' => t('Option « accès API » : {months} mois', {'months': '${l['months']}'}),
+          'pro' => t('Option « API Pro » : {months} mois', {'months': '${l['months']}'}),
+          'proAddon' => t('Option « API Pro », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois', {
+              'from': _day(DateTime.parse(l['from'] as String)),
+              'to': _day(DateTime.parse(l['to'] as String).subtract(const Duration(days: 1))),
+              'months': '${l['months']}',
+            }),
           'apiAddon' => t('Option « accès API », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois',
               {'from': _day(DateTime.parse(l['from'] as String)), 'to': _day(DateTime.parse(l['to'] as String).subtract(const Duration(days: 1))), 'months': '${l['months']}'}),
           'cascadeAddon' => t('Option « sites en cascade », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois',
@@ -778,6 +799,8 @@ class BillingService {
     // Options non renouvelées : retirées à la fin de leur période.
     await store.query(store.db, '''
       UPDATE companies SET api_option = false, api_until = NULL WHERE api_until <= @t''', {'t': t});
+    await store.query(store.db, '''
+      UPDATE companies SET api_pro_option = false, api_pro_until = NULL WHERE api_pro_until <= @t''', {'t': t});
     await store.query(store.db, '''
       UPDATE companies SET cascade_option = false, cascade_until = NULL WHERE cascade_until <= @t''', {'t': t});
     final v = await platform.values();

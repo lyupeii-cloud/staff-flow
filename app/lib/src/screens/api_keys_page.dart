@@ -44,8 +44,26 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
 
   bool get _allowed {
     final c = widget.company;
-    return c.billingStatus == 'trial' || c.billingStatus == 'comped' || c.apiOption;
+    return c.billingStatus == 'trial' || c.billingStatus == 'comped' || c.apiOption || _pro;
   }
+
+  /// Écriture (« API Pro ») : abonnement payé avec l'option, ou entreprise offerte.
+  bool get _pro {
+    final c = widget.company;
+    return c.billingStatus == 'comped' || (c.apiProOption && c.billingStatus == 'active');
+  }
+
+  static const _writeScopes = ['shifts', 'publish', 'members', 'catalog', 'news', 'requests'];
+
+  String _scopeLabel(L10n t, String s) => switch (s) {
+        'read' => t.scopeRead,
+        'shifts' => t.scopeShifts,
+        'publish' => t.scopePublish,
+        'members' => t.scopeMembers,
+        'catalog' => t.scopeCatalog,
+        'news' => t.scopeNews,
+        _ => t.scopeRequests,
+      };
 
   Future<void> _run(Future<void> Function() action) async {
     final t = context.l10n;
@@ -63,26 +81,44 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
   Future<void> _create() async {
     final t = context.l10n;
     final name = TextEditingController();
+    final scopes = <String>{'read'};
     final ok = await showDialog<bool>(
       context: context,
-      builder: (context) => AlertDialog(
+      builder: (context) => StatefulBuilder(
+        builder: (context, setState) => AlertDialog(
         title: Text(t.apiNewKey),
-        content: TextField(
-          controller: name,
-          autofocus: true,
-          maxLength: 60,
-          decoration: InputDecoration(labelText: t.apiKeyName),
-          onSubmitted: (_) => Navigator.pop(context, true),
+        content: SingleChildScrollView(
+          child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            TextField(
+              controller: name,
+              autofocus: true,
+              maxLength: 60,
+              decoration: InputDecoration(labelText: t.apiKeyName),
+            ),
+            Text(t.apiScopesTitle, style: Theme.of(context).textTheme.labelLarge),
+            for (final s in ['read', ..._writeScopes])
+              CheckboxListTile(
+                dense: true,
+                contentPadding: EdgeInsets.zero,
+                value: scopes.contains(s),
+                // Écriture : seulement avec l'option « API Pro ».
+                onChanged: s != 'read' && !_pro ? null : (v) => setState(() => v == true ? scopes.add(s) : scopes.remove(s)),
+                title: Text(_scopeLabel(t, s)),
+              ),
+            if (!_pro) Text(t.apiProNeeded, style: Theme.of(context).textTheme.bodySmall),
+          ]),
         ),
         actions: [
           TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
           FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.create)),
         ],
       ),
+      ),
     );
-    if (ok != true || name.text.trim().isEmpty || !mounted) return;
+    if (ok != true || name.text.trim().isEmpty || scopes.isEmpty || !mounted) return;
     await _run(() async {
-      final r = await widget.session.api.send('POST', _base, body: {'name': name.text.trim()});
+      final r = await widget.session.api
+          .send('POST', _base, body: {'name': name.text.trim(), 'scopes': scopes.toList()});
       if (!mounted) return;
       final key = r['key'] as String;
       // La clé n'est montrée qu'une fois.
@@ -176,7 +212,9 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
                       child: ListTile(
                         leading: const Icon(Icons.key_outlined),
                         title: Text('${k['name']}'),
-                        subtitle: Text('${k['prefix']}…\n${k['lastUsedAt'] == null ? t.apiKeyNeverUsed : t.apiKeyLastUsed(longDate(DateTime.parse(k['lastUsedAt']).toLocal(), loc))}'),
+                        subtitle: Text('${k['prefix']}…\n'
+                            '${[for (final s in (k['scopes'] as List? ?? const ['read'])) _scopeLabel(t, s as String)].join(' · ')}\n'
+                            '${k['lastUsedAt'] == null ? t.apiKeyNeverUsed : t.apiKeyLastUsed(longDate(DateTime.parse(k['lastUsedAt']).toLocal(), loc))}'),
                         isThreeLine: true,
                         trailing: TextButton(onPressed: () => _revoke(k as Map), child: Text(t.apiRevoke)),
                       ),

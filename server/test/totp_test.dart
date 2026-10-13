@@ -56,6 +56,8 @@ void main() {
     expect(done['backupCodes'], hasLength(8));
     // Le code ne sert qu'une fois.
     expect((await anon('POST', '/auth/activate', {'code': code})).$1, 404);
+    // Compte activé : plus dans les invitations en attente.
+    expect((await boss.ok('GET', p('/invites')))['invites'], isEmpty);
     final members = (await boss.ok('GET', p('/members')))['members'] as List;
     final m = members.firstWhere((m) => m['user']['publicId'] == done['user']['publicId']);
     expect([m['user']['name'], m['employeeNumber']], ['Camille Durand', 'C-001']);

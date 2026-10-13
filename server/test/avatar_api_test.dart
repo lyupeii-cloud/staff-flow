@@ -73,7 +73,7 @@ void main() {
     final b = await boss.ok('GET', '/companies/$company/billing');
     final offer = b['offers']['year-0-1'];
     expect([for (final l in offer['lines']) l['label']], contains('api'));
-    expect(offer['price'], b['offers']['year-0-0']['price'] + 300 * 12);
+    expect(offer['price'], b['offers']['year-0-0']['price'] + 200 * 12);
     await boss.ok('POST', '/companies/$company/billing/checkout', {'period': 'month', 'cascade': false, 'api': true});
     expect((await boss.ok('GET', '/companies/$company/billing'))['apiOption'], true);
     expect((await ext('/ext/shifts', key)).$1, 200);

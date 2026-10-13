@@ -1558,11 +1558,11 @@ class L10nEn extends L10n {
 
   @override
   String get apiSub =>
-      'Your accounting, payroll or CRM software reads the published schedule, hours and absences.';
+      'Your software (payroll, accounting, CRM, planning) reads the published schedule, hours and absences; with “API Pro”, it can also send schedules, employees and announcements.';
 
   @override
   String get apiNeedsOption =>
-      'Paid option: add “API access” in “Manage subscription”.';
+      'Paid option: add “API access” or “API Pro” in “Manage subscription”.';
 
   @override
   String get apiNewKey => 'New key';
@@ -2248,6 +2248,53 @@ class L10nEn extends L10n {
   @override
   String get googlePrivacyNote =>
       'Your Google account is only used to protect the company and its subscription: it\'s never shown to your employees or anyone else.';
+
+  @override
+  String get scopeRead =>
+      'Read: published schedule, hours, absences, employees';
+
+  @override
+  String get scopeShifts => 'Schedule: create, edit, delete shifts';
+
+  @override
+  String get scopePublish => 'Publish the schedule';
+
+  @override
+  String get scopeMembers => 'Employees: import, employee number and position';
+
+  @override
+  String get scopeCatalog => 'Positions and sites';
+
+  @override
+  String get scopeNews => 'Announcements';
+
+  @override
+  String get scopeRequests => 'Requests: approve or refuse';
+
+  @override
+  String get apiScopesTitle => 'Key permissions';
+
+  @override
+  String get apiProNeeded =>
+      'Write permissions need the “API Pro” option (paid subscription).';
+
+  @override
+  String billingLinePro(String months) {
+    return '“API Pro” option: $months months';
+  }
+
+  @override
+  String billingLineProAddon(String start, String end, String months) {
+    return '“API Pro” option, added during the subscription, from $start to $end: $months months, no discount';
+  }
+
+  @override
+  String get billingApiPro => '“API Pro” option';
+
+  @override
+  String billingApiProHint(String price) {
+    return '“API Pro” ($price / month, no discount): your software writes into Staff Flow (schedule, employees, announcements, requests). Available with a paid subscription: add it below.';
+  }
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).
