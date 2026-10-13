@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:http/http.dart' as http;
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
@@ -16,6 +17,7 @@ import 'messages.dart';
 import 'import_service.dart';
 import 'mcp.dart';
 import 'news_service.dart';
+import 'webhook_service.dart';
 import 'notice_service.dart';
 import 'notifications.dart';
 import 'overlap_service.dart';
@@ -64,6 +66,12 @@ class Api {
   /// aux administrateurs).
   final bool testPaymentsForAll;
 
+  /// Webhooks : client HTTP remplaçable ; en test, adresses locales permises
+  /// et envois lancés à la main.
+  late final WebhookService webhooks = WebhookService(store, apiAccess, tokens.derive('webhooks'),
+      client: webhookClient, now: now, allowPrivate: webhookClient != null, autoDeliver: webhookClient == null);
+  final http.Client? webhookClient;
+
   /// Adresses Google des administrateurs de la plateforme (fichier de
   /// configuration du serveur ; jamais modifiables depuis le web).
   final Set<String> adminEmails;
@@ -104,9 +112,12 @@ class Api {
     this.adminEmails = const {},
     this.platformFile,
     this.testPaymentsForAll = false,
+    this.webhookClient,
     DateTime Function()? now,
   })  : companies = CompanyService(store),
-        now = now ?? (() => DateTime.now().toUtc());
+        now = now ?? (() => DateTime.now().toUtc()) {
+    store.onAudit = (s, c, action, details) => webhooks.onAudit(s, c, action, details);
+  }
 
   Handler get handler {
     final v1 = Router(notFoundHandler: _notFound)
@@ -282,6 +293,25 @@ class Api {
         await apiAccess.revoke(u, r.params['id']!, r.params['keyId']!);
         return Response(204);
       }))
+      // Webhooks (option « API Pro ») : patron et responsables qui gèrent l'abonnement.
+      ..get('/companies/<id>/webhooks', _authed((r, u) async => _json({
+            'webhooks': await webhooks.list(u, r.params['id']!),
+            'events': WebhookService.events,
+          })))
+      ..post('/companies/<id>/webhooks', _authed((r, u) async {
+        final body = await _body(r);
+        return _json(await webhooks.create(u, r.params['id']!, body['url'], body['events']), status: 201);
+      }))
+      ..patch('/companies/<id>/webhooks/<hookId>', _authed((r, u) async {
+        await webhooks.update(u, r.params['id']!, r.params['hookId']!, await _body(r));
+        return Response(204);
+      }))
+      ..delete('/companies/<id>/webhooks/<hookId>', _authed((r, u) async {
+        await webhooks.delete(u, r.params['id']!, r.params['hookId']!);
+        return Response(204);
+      }))
+      ..post('/companies/<id>/webhooks/<hookId>/test',
+          _authed((r, u) async => _json(await webhooks.test(u, r.params['id']!, r.params['hookId']!))))
       ..get('/ext/company', _apiKey((r, c) async => apiAccess.company(c)))
       ..get('/ext/members', _apiKey((r, c) async => apiAccess.members(c)))
       ..get('/ext/shifts', _apiKey((r, c) async {

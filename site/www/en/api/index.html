@@ -92,6 +92,35 @@ import_employees · list_invitations · set_employee_profile
 create_position · create_site · post_announcement
 list_pending_requests · decide_request</code></pre>
       <p>Add a custom connector with this address and an API key. The assistant only sees the tools the key's permissions allow: reading with the “API access” option, writing with “API Pro”. Shifts it creates arrive as drafts unless the key has the “publish” permission. Every action is logged in the history with the key's name.</p>
+      <h2>Webhooks: Staff Flow notifies your software</h2>
+      <p>With the “API Pro” option, Staff Flow sends a message on its own (JSON POST) to your software's address when something happens. No more polling the API.</p>
+      <p>In the app: Management → API access → Webhooks. The owner and managers entrusted with the subscription add up to 5 addresses (https), choose the events, and can send a test delivery.</p>
+      <pre><code>schedule.published       planning publié / schedule published
+request.created          nouvelle demande / new request
+request.decided          demande validée ou refusée / approved or refused
+request.cancelled        demande annulée / request cancelled
+request.cancel_asked     annulation de congé demandée / leave cancellation asked
+request.cancel_decided   annulation de congé décidée / leave cancellation decided
+request.ended            indisponibilité terminée / unavailability ended
+member.joined            nouveau salarié / new employee
+announcement.published   annonce publiée / announcement published</code></pre>
+      <pre><code>POST https://votre-logiciel.example/staff-flow
+Staff-Flow-Event: request.decided
+Staff-Flow-Delivery: 6f1c…
+Staff-Flow-Signature: t=1792400000,v1=5d2a…
+
+{
+  &quot;id&quot;: &quot;6f1c…&quot;,
+  &quot;event&quot;: &quot;request.decided&quot;,
+  &quot;createdAt&quot;: &quot;2026-10-13T08:12:00Z&quot;,
+  &quot;company&quot;: {&quot;id&quot;: &quot;SF-…&quot;, &quot;name&quot;: &quot;Boulangerie&quot;},
+  &quot;data&quot;: {&quot;kind&quot;: &quot;leave&quot;, &quot;approved&quot;: true, &quot;from&quot;: &quot;2026-11-02&quot;, &quot;to&quot;: &quot;2026-11-03&quot;,
+           &quot;person&quot;: {&quot;sfId&quot;: &quot;SF-…&quot;, &quot;name&quot;: &quot;Marie&quot;, &quot;employeeNumber&quot;: &quot;M-0007&quot;}}
+}
+
+v1 = HMAC-SHA256(secret, t + &quot;.&quot; + body)   (hex)</code></pre>
+      <p>Every delivery is signed with the secret given at creation (shown only once): recompute the signature and compare, then reject timestamps older than 5 minutes. Answer with a 2xx code within 10 seconds.</p>
+      <p>On failure, Staff Flow retries after 1 min, 5 min, 30 min, 2 h, 6 h and 12 h. After 10 dropped deliveries in a row, the address is turned off; you turn it back on in the app. People are identified by their SF ID and employee number, never by email address. Option ended or grace period: nothing is sent any more.</p>
       <h2>Personal data</h2>
       <p>The company remains responsible for how it uses the data it retrieves (names, hours, absences) and must protect it in its own software. Keep keys secret; revoke a key as soon as it is no longer used.</p>
     </div>

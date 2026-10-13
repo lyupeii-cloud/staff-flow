@@ -92,6 +92,35 @@ import_employees · list_invitations · set_employee_profile
 create_position · create_site · post_announcement
 list_pending_requests · decide_request</code></pre>
       <p>Ajoutez un connecteur personnalisé avec cette adresse et une clé API. L'assistant ne voit que les outils permis par les droits de la clé : lecture avec l'option « accès API », écriture avec « API Pro ». Les services créés arrivent en brouillon, sauf avec le droit « publier ». Chaque action est notée dans l'historique avec le nom de la clé.</p>
+      <h2>Webhooks : Staff Flow prévient vos logiciels</h2>
+      <p>Avec l'option « API Pro », Staff Flow envoie tout seul un message (POST en JSON) à l'adresse de votre logiciel quand quelque chose se passe. Plus besoin d'interroger l'API en boucle.</p>
+      <p>Dans l'application : Management → Accès API → Webhooks. Le patron et les responsables qui gèrent l'abonnement ajoutent jusqu'à 5 adresses (https), choisissent les événements, et peuvent faire un envoi d'essai.</p>
+      <pre><code>schedule.published       planning publié / schedule published
+request.created          nouvelle demande / new request
+request.decided          demande validée ou refusée / approved or refused
+request.cancelled        demande annulée / request cancelled
+request.cancel_asked     annulation de congé demandée / leave cancellation asked
+request.cancel_decided   annulation de congé décidée / leave cancellation decided
+request.ended            indisponibilité terminée / unavailability ended
+member.joined            nouveau salarié / new employee
+announcement.published   annonce publiée / announcement published</code></pre>
+      <pre><code>POST https://votre-logiciel.example/staff-flow
+Staff-Flow-Event: request.decided
+Staff-Flow-Delivery: 6f1c…
+Staff-Flow-Signature: t=1792400000,v1=5d2a…
+
+{
+  &quot;id&quot;: &quot;6f1c…&quot;,
+  &quot;event&quot;: &quot;request.decided&quot;,
+  &quot;createdAt&quot;: &quot;2026-10-13T08:12:00Z&quot;,
+  &quot;company&quot;: {&quot;id&quot;: &quot;SF-…&quot;, &quot;name&quot;: &quot;Boulangerie&quot;},
+  &quot;data&quot;: {&quot;kind&quot;: &quot;leave&quot;, &quot;approved&quot;: true, &quot;from&quot;: &quot;2026-11-02&quot;, &quot;to&quot;: &quot;2026-11-03&quot;,
+           &quot;person&quot;: {&quot;sfId&quot;: &quot;SF-…&quot;, &quot;name&quot;: &quot;Marie&quot;, &quot;employeeNumber&quot;: &quot;M-0007&quot;}}
+}
+
+v1 = HMAC-SHA256(secret, t + &quot;.&quot; + body)   (hex)</code></pre>
+      <p>Chaque envoi est signé avec le secret donné à la création (affiché une seule fois) : recalculez la signature et comparez-la, puis refusez les horodatages de plus de 5 minutes. Répondez par un code 2xx en moins de 10 secondes.</p>
+      <p>En cas d'échec, Staff Flow réessaie après 1 min, 5 min, 30 min, 2 h, 6 h et 12 h. Après 10 envois abandonnés d'affilée, l'adresse est coupée ; vous la réactivez dans l'application. Les personnes sont désignées par leur identifiant SF et leur matricule, jamais par leur adresse e-mail. Option arrêtée ou période de grâce : plus aucun envoi.</p>
       <h2>Données personnelles</h2>
       <p>L'entreprise reste responsable de l'usage des données qu'elle récupère (noms, horaires, absences) et doit les protéger dans ses propres logiciels. Gardez les clés secrètes ; révoquez une clé dès qu'elle ne sert plus.</p>
     </div>

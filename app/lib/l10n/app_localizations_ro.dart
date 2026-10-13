@@ -2303,4 +2303,96 @@ class L10nRo extends L10n {
   String billingApiProHint(String price) {
     return '„API Pro” ($price / lună, fără reducere): programele dvs. scriu în Staff Flow (program, angajați, anunțuri, cereri). Disponibilă cu abonament plătit: adăugați-o mai jos.';
   }
+
+  @override
+  String get whTitle => 'Webhook-uri';
+
+  @override
+  String get whSub =>
+      'Staff Flow anunță singur programele dvs. când se întâmplă ceva: program publicat, cerere, angajat nou, anunț. Inclus în opțiunea „API Pro”.';
+
+  @override
+  String get whNew => 'Webhook nou';
+
+  @override
+  String get whUrl => 'Adresă (https://…)';
+
+  @override
+  String get whEvents => 'Evenimente trimise';
+
+  @override
+  String get whCreated =>
+      'Secret de semnătură, afișat o singură dată: programul dvs. îl folosește pentru a verifica faptul că fiecare trimitere vine de la Staff Flow.';
+
+  @override
+  String get whTest => 'Încearcă';
+
+  @override
+  String whTestOk(String status) {
+    return 'Primit (cod $status)';
+  }
+
+  @override
+  String whTestFail(String error) {
+    return 'Eșec: $error';
+  }
+
+  @override
+  String get whDisabled => 'Oprit după 10 trimiteri eșuate la rând';
+
+  @override
+  String get whEnable => 'Repornește';
+
+  @override
+  String get whDelete => 'Șterge';
+
+  @override
+  String get whDeleteConfirm => 'Acest webhook nu va mai primi nimic.';
+
+  @override
+  String get whNone => 'Niciun webhook deocamdată.';
+
+  @override
+  String whLast(String date, String status) {
+    return 'Ultima trimitere: $date · $status';
+  }
+
+  @override
+  String get whEvSchedulePublished => 'Program publicat';
+
+  @override
+  String get whEvRequestCreated => 'Cerere nouă';
+
+  @override
+  String get whEvRequestDecided => 'Cerere aprobată sau refuzată';
+
+  @override
+  String get whEvRequestCancelled => 'Cerere anulată';
+
+  @override
+  String get whEvRequestCancelAsked => 'Anulare de concediu cerută';
+
+  @override
+  String get whEvRequestCancelDecided => 'Anulare de concediu decisă';
+
+  @override
+  String get whEvRequestEnded => 'Indisponibilitate încheiată';
+
+  @override
+  String get whEvMemberJoined => 'Angajat nou';
+
+  @override
+  String get whEvAnnouncementPublished => 'Anunț publicat';
+
+  @override
+  String get whStDelivered => 'primit';
+
+  @override
+  String get whStPending => 'în așteptare';
+
+  @override
+  String get whStFailed => 'eșec';
+
+  @override
+  String get whStDropped => 'anulat';
 }

@@ -256,4 +256,8 @@ const uk = <String, String>{
   'Champ « rows » : liste de salariés attendue.': 'Поле «rows»: потрібен список працівників.',
   'Option « API Pro » : {months} mois': 'Опція «API Pro»: {months} міс.',
   'Option « API Pro », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Опція «API Pro», додана під час підписки, з {from} по {to}: {months} міс.',
+  'Option « API Pro » nécessaire pour les webhooks.': 'Для вебхуків потрібна опція «API Pro».',
+  '5 webhooks au plus : supprimez-en un d\'abord.': 'Не більше 5 вебхуків: спочатку видаліть один.',
+  'Adresse invalide : https://… attendue.': 'Неправильна адреса: очікується https://…',
+  'Événements inconnus.': 'Невідомі події.',
 };

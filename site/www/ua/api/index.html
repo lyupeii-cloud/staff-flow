@@ -92,6 +92,35 @@ import_employees · list_invitations · set_employee_profile
 create_position · create_site · post_announcement
 list_pending_requests · decide_request</code></pre>
       <p>Додайте власний конектор із цією адресою та ключем API. Асистент бачить лише інструменти, дозволені правами ключа: читання з опцією «Доступ до API», запис з «API Pro». Створені зміни потрапляють у чернетку, якщо немає права «публікація». Кожна дія фіксується в історії з назвою ключа.</p>
+      <h2>Вебхуки: Staff Flow сам повідомляє ваші програми</h2>
+      <p>З опцією «API Pro» Staff Flow сам надсилає повідомлення (POST у JSON) на адресу вашої програми, коли щось відбувається. Більше не потрібно постійно опитувати API.</p>
+      <p>У застосунку: Управління → Доступ до API → Вебхуки. Власник і керівники, яким доручено підписку, додають до 5 адрес (https), вибирають події та можуть надіслати перевірку.</p>
+      <pre><code>schedule.published       planning publié / schedule published
+request.created          nouvelle demande / new request
+request.decided          demande validée ou refusée / approved or refused
+request.cancelled        demande annulée / request cancelled
+request.cancel_asked     annulation de congé demandée / leave cancellation asked
+request.cancel_decided   annulation de congé décidée / leave cancellation decided
+request.ended            indisponibilité terminée / unavailability ended
+member.joined            nouveau salarié / new employee
+announcement.published   annonce publiée / announcement published</code></pre>
+      <pre><code>POST https://votre-logiciel.example/staff-flow
+Staff-Flow-Event: request.decided
+Staff-Flow-Delivery: 6f1c…
+Staff-Flow-Signature: t=1792400000,v1=5d2a…
+
+{
+  &quot;id&quot;: &quot;6f1c…&quot;,
+  &quot;event&quot;: &quot;request.decided&quot;,
+  &quot;createdAt&quot;: &quot;2026-10-13T08:12:00Z&quot;,
+  &quot;company&quot;: {&quot;id&quot;: &quot;SF-…&quot;, &quot;name&quot;: &quot;Boulangerie&quot;},
+  &quot;data&quot;: {&quot;kind&quot;: &quot;leave&quot;, &quot;approved&quot;: true, &quot;from&quot;: &quot;2026-11-02&quot;, &quot;to&quot;: &quot;2026-11-03&quot;,
+           &quot;person&quot;: {&quot;sfId&quot;: &quot;SF-…&quot;, &quot;name&quot;: &quot;Marie&quot;, &quot;employeeNumber&quot;: &quot;M-0007&quot;}}
+}
+
+v1 = HMAC-SHA256(secret, t + &quot;.&quot; + body)   (hex)</code></pre>
+      <p>Кожне надсилання підписане секретом, виданим під час створення (показується лише раз): обчисліть підпис і порівняйте, а мітки часу старші за 5 хвилин відхиляйте. Відповідайте кодом 2xx протягом 10 секунд.</p>
+      <p>У разі помилки Staff Flow повторює через 1 хв, 5 хв, 30 хв, 2 год, 6 год і 12 год. Після 10 невдалих надсилань поспіль адресу вимикають; увімкнути її можна в застосунку. Людей позначено ідентифікатором SF і табельним номером, ніколи електронною адресою. Опцію припинено або пільговий період: надсилань більше немає.</p>
       <h2>Персональні дані</h2>
       <p>Компанія відповідає за використання отриманих даних (імена, години, відсутності) і має захищати їх у своїх програмах. Зберігайте ключі в таємниці; відкликайте ключ, щойно він більше не потрібен.</p>
     </div>

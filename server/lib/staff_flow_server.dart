@@ -24,3 +24,4 @@ export 'src/telegram_login.dart';
 export 'src/tools_service.dart';
 export 'src/totp_service.dart';
 export 'src/translator.dart';
+export 'src/webhook_service.dart';

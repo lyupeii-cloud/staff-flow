@@ -2304,4 +2304,96 @@ class L10nEs extends L10n {
   String billingApiProHint(String price) {
     return '«API Pro» ($price / mes, sin descuento): tus programas escriben en Staff Flow (horario, empleados, anuncios, solicitudes). Disponible con una suscripción pagada: añádela abajo.';
   }
+
+  @override
+  String get whTitle => 'Webhooks';
+
+  @override
+  String get whSub =>
+      'Staff Flow avisa a tus programas por sí solo cuando ocurre algo: horario publicado, solicitud, nuevo empleado, anuncio. Incluido en la opción «API Pro».';
+
+  @override
+  String get whNew => 'Nuevo webhook';
+
+  @override
+  String get whUrl => 'Dirección (https://…)';
+
+  @override
+  String get whEvents => 'Eventos enviados';
+
+  @override
+  String get whCreated =>
+      'Secreto de firma, mostrado una sola vez: tu programa lo usa para comprobar que cada envío viene de Staff Flow.';
+
+  @override
+  String get whTest => 'Probar';
+
+  @override
+  String whTestOk(String status) {
+    return 'Recibido (código $status)';
+  }
+
+  @override
+  String whTestFail(String error) {
+    return 'Error: $error';
+  }
+
+  @override
+  String get whDisabled => 'Desactivado tras 10 envíos fallidos seguidos';
+
+  @override
+  String get whEnable => 'Reactivar';
+
+  @override
+  String get whDelete => 'Eliminar';
+
+  @override
+  String get whDeleteConfirm => 'Este webhook ya no recibirá nada.';
+
+  @override
+  String get whNone => 'Aún no hay webhooks.';
+
+  @override
+  String whLast(String date, String status) {
+    return 'Último envío: $date · $status';
+  }
+
+  @override
+  String get whEvSchedulePublished => 'Horario publicado';
+
+  @override
+  String get whEvRequestCreated => 'Nueva solicitud';
+
+  @override
+  String get whEvRequestDecided => 'Solicitud aprobada o rechazada';
+
+  @override
+  String get whEvRequestCancelled => 'Solicitud cancelada';
+
+  @override
+  String get whEvRequestCancelAsked => 'Anulación de vacaciones solicitada';
+
+  @override
+  String get whEvRequestCancelDecided => 'Anulación de vacaciones decidida';
+
+  @override
+  String get whEvRequestEnded => 'Indisponibilidad terminada';
+
+  @override
+  String get whEvMemberJoined => 'Nuevo empleado';
+
+  @override
+  String get whEvAnnouncementPublished => 'Anuncio publicado';
+
+  @override
+  String get whStDelivered => 'recibido';
+
+  @override
+  String get whStPending => 'pendiente';
+
+  @override
+  String get whStFailed => 'error';
+
+  @override
+  String get whStDropped => 'descartado';
 }

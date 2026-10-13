@@ -80,6 +80,11 @@ Future<void> main() async {
   }
   unawaited(tick());
   Timer.periodic(const Duration(minutes: 10), (_) => tick());
+  // Webhooks : envois dus et réessais.
+  Timer.periodic(const Duration(minutes: 1), (_) => api.webhooks.deliver().catchError((Object e) {
+        print('Webhooks : $e');
+        return 0;
+      }));
 
   // Bot Telegram : liaison des comptes et codes de vérification.
   if (api.telegram.enabled) {

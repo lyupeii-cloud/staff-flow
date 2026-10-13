@@ -2303,4 +2303,96 @@ class L10nRu extends L10n {
   String billingApiProHint(String price) {
     return '«API Pro» ($price / мес., без скидки): ваши программы записывают в Staff Flow (график, сотрудники, объявления, запросы). Доступно с оплаченной подпиской: добавьте ниже.';
   }
+
+  @override
+  String get whTitle => 'Вебхуки';
+
+  @override
+  String get whSub =>
+      'Staff Flow сам уведомляет ваши программы, когда что-то происходит: опубликован график, запрос, новый сотрудник, объявление. Входит в опцию «API Pro».';
+
+  @override
+  String get whNew => 'Новый вебхук';
+
+  @override
+  String get whUrl => 'Адрес (https://…)';
+
+  @override
+  String get whEvents => 'Отправляемые события';
+
+  @override
+  String get whCreated =>
+      'Секрет подписи, показывается только один раз: ваша программа проверяет им, что каждая отправка действительно от Staff Flow.';
+
+  @override
+  String get whTest => 'Проверить';
+
+  @override
+  String whTestOk(String status) {
+    return 'Получено (код $status)';
+  }
+
+  @override
+  String whTestFail(String error) {
+    return 'Ошибка: $error';
+  }
+
+  @override
+  String get whDisabled => 'Отключён после 10 неудачных отправок подряд';
+
+  @override
+  String get whEnable => 'Включить снова';
+
+  @override
+  String get whDelete => 'Удалить';
+
+  @override
+  String get whDeleteConfirm => 'Этот вебхук больше ничего не будет получать.';
+
+  @override
+  String get whNone => 'Пока нет вебхуков.';
+
+  @override
+  String whLast(String date, String status) {
+    return 'Последняя отправка: $date · $status';
+  }
+
+  @override
+  String get whEvSchedulePublished => 'График опубликован';
+
+  @override
+  String get whEvRequestCreated => 'Новый запрос';
+
+  @override
+  String get whEvRequestDecided => 'Запрос одобрен или отклонён';
+
+  @override
+  String get whEvRequestCancelled => 'Запрос отменён';
+
+  @override
+  String get whEvRequestCancelAsked => 'Запрошена отмена отпуска';
+
+  @override
+  String get whEvRequestCancelDecided => 'Решение об отмене отпуска';
+
+  @override
+  String get whEvRequestEnded => 'Недоступность завершена';
+
+  @override
+  String get whEvMemberJoined => 'Новый сотрудник';
+
+  @override
+  String get whEvAnnouncementPublished => 'Объявление опубликовано';
+
+  @override
+  String get whStDelivered => 'получено';
+
+  @override
+  String get whStPending => 'ожидает';
+
+  @override
+  String get whStFailed => 'ошибка';
+
+  @override
+  String get whStDropped => 'отменено';
 }

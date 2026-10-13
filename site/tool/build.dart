@@ -73,7 +73,7 @@ final t = <String, Map<String, Object>>{
       'Lecture seule, clés révocables à tout moment',
     ],
     'apiCta': 'Voir la documentation',
-    'apiNote': 'Lecture : 2 € par mois, incluse pendant l\'essai. API Pro (vos logiciels envoient plannings, salariés et annonces) : 9 € par mois avec un abonnement payé.',
+    'apiNote': 'Lecture : 2 € par mois, incluse pendant l\'essai. API Pro (écriture, webhooks et connecteur MCP pour votre assistant) : 9 € par mois avec un abonnement payé, jamais incluse.',
     'installH': 'Installez-la comme une application',
     'installSub': 'Pas besoin de passer par un store : depuis le navigateur, ajoutez Staff Flow à votre écran d\'accueil. Elle s\'ouvre alors en plein écran, avec son icône.',
     'install': [
@@ -158,7 +158,7 @@ final t = <String, Map<String, Object>>{
       'Лише читання, ключі можна відкликати будь-коли',
     ],
     'apiCta': 'Переглянути документацію',
-    'apiNote': 'Читання: 2 € на місяць, доступне під час пробного періоду. API Pro (ваші програми надсилають графіки, працівників і оголошення): 9 € на місяць з оплаченою підпискою.',
+    'apiNote': 'Читання: 2 € на місяць, доступне під час пробного періоду. API Pro (запис, вебхуки та конектор MCP для вашого асистента): 9 € на місяць з оплаченою підпискою, ніколи не входить у ціну.',
     'installH': 'Встановіть як застосунок',
     'installSub': 'Магазин застосунків не потрібен: додайте Staff Flow на головний екран прямо з браузера. Тоді він відкриватиметься на весь екран, зі своєю іконкою.',
     'install': [
@@ -243,7 +243,7 @@ final t = <String, Map<String, Object>>{
       'Read-only, keys you can revoke at any time',
     ],
     'apiCta': 'Read the documentation',
-    'apiNote': 'Read access: €2 a month, included during the trial. API Pro (your software sends schedules, employees and announcements): €9 a month with a paid subscription.',
+    'apiNote': 'Read access: €2 a month, included during the trial. API Pro (writing, webhooks and an MCP connector for your assistant): €9 a month with a paid subscription, never included.',
     'installH': 'Install it like an app',
     'installSub': 'No app store needed: add Staff Flow to your home screen straight from the browser. It then opens full screen, with its own icon.',
     'install': [

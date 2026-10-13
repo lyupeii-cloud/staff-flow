@@ -649,4 +649,34 @@ CREATE INDEX auth_failures_key ON auth_failures (key, at);
 ALTER TABLE companies ADD COLUMN api_pro_option boolean NOT NULL DEFAULT false, ADD COLUMN api_pro_until timestamptz;
 ALTER TABLE api_keys ADD COLUMN scopes text[] NOT NULL DEFAULT '{read}';
 ''',
+  // 40 — webhooks (option « API Pro ») : adresses abonnées et envois signés.
+  '''
+CREATE TABLE webhooks (
+  id          uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  company_id  uuid NOT NULL REFERENCES companies(id) ON DELETE CASCADE,
+  url         text NOT NULL,
+  events      text[] NOT NULL,
+  secret      text NOT NULL,
+  created_by  uuid REFERENCES users(id) ON DELETE SET NULL,
+  created_at  timestamptz NOT NULL DEFAULT now(),
+  disabled_at timestamptz,
+  failures    int NOT NULL DEFAULT 0
+);
+CREATE INDEX webhooks_company ON webhooks (company_id);
+CREATE TABLE webhook_deliveries (
+  id           uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  webhook_id   uuid NOT NULL REFERENCES webhooks(id) ON DELETE CASCADE,
+  event        text NOT NULL,
+  payload      jsonb NOT NULL,
+  status       text NOT NULL DEFAULT 'pending',
+  attempts     int NOT NULL DEFAULT 0,
+  next_at      timestamptz NOT NULL,
+  last_status  int,
+  last_error   text,
+  delivered_at timestamptz,
+  created_at   timestamptz NOT NULL
+);
+CREATE INDEX webhook_deliveries_due ON webhook_deliveries (next_at) WHERE status = 'pending';
+CREATE INDEX webhook_deliveries_hook ON webhook_deliveries (webhook_id, created_at);
+''',
 ];

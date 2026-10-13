@@ -8,6 +8,7 @@ import '../models.dart';
 import '../session.dart';
 import 'billing_page.dart';
 import 'tools_widgets.dart';
+import 'webhooks_page.dart';
 
 /// Accès API (option payante) : le patron crée des clés pour ses logiciels
 /// de comptabilité, de paie ou son CRM, et les révoque.
@@ -198,6 +199,15 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
                   onTap: () => BillingPage.open(context, widget.session, widget.company),
                 ),
               ),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.webhook_outlined),
+                title: Text(t.whTitle),
+                subtitle: Text(t.whSub),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => WebhooksPage.open(context, widget.session, widget.company),
+              ),
+            ),
             const SizedBox(height: 8),
             FutureBuilder<List>(
               future: _keys,

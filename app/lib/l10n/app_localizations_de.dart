@@ -2311,4 +2311,97 @@ class L10nDe extends L10n {
   String billingApiProHint(String price) {
     return '„API Pro“ ($price / Monat, ohne Rabatt): Ihre Software schreibt in Staff Flow (Dienstplan, Mitarbeitende, Mitteilungen, Anfragen). Mit bezahltem Abonnement verfügbar: unten hinzufügen.';
   }
+
+  @override
+  String get whTitle => 'Webhooks';
+
+  @override
+  String get whSub =>
+      'Staff Flow benachrichtigt Ihre Software von selbst, wenn etwas passiert: Dienstplan veröffentlicht, Anfrage, neue Mitarbeitende, Mitteilung. In der Option „API Pro“ enthalten.';
+
+  @override
+  String get whNew => 'Neuer Webhook';
+
+  @override
+  String get whUrl => 'Adresse (https://…)';
+
+  @override
+  String get whEvents => 'Gesendete Ereignisse';
+
+  @override
+  String get whCreated =>
+      'Signaturgeheimnis, nur einmal angezeigt: Ihre Software prüft damit, dass jede Zustellung wirklich von Staff Flow kommt.';
+
+  @override
+  String get whTest => 'Testen';
+
+  @override
+  String whTestOk(String status) {
+    return 'Empfangen (Code $status)';
+  }
+
+  @override
+  String whTestFail(String error) {
+    return 'Fehler: $error';
+  }
+
+  @override
+  String get whDisabled =>
+      'Nach 10 fehlgeschlagenen Zustellungen in Folge abgeschaltet';
+
+  @override
+  String get whEnable => 'Wieder einschalten';
+
+  @override
+  String get whDelete => 'Löschen';
+
+  @override
+  String get whDeleteConfirm => 'Dieser Webhook erhält nichts mehr.';
+
+  @override
+  String get whNone => 'Noch kein Webhook.';
+
+  @override
+  String whLast(String date, String status) {
+    return 'Letzte Zustellung: $date · $status';
+  }
+
+  @override
+  String get whEvSchedulePublished => 'Dienstplan veröffentlicht';
+
+  @override
+  String get whEvRequestCreated => 'Neue Anfrage';
+
+  @override
+  String get whEvRequestDecided => 'Anfrage genehmigt oder abgelehnt';
+
+  @override
+  String get whEvRequestCancelled => 'Anfrage storniert';
+
+  @override
+  String get whEvRequestCancelAsked => 'Urlaubsstornierung angefragt';
+
+  @override
+  String get whEvRequestCancelDecided => 'Urlaubsstornierung entschieden';
+
+  @override
+  String get whEvRequestEnded => 'Nichtverfügbarkeit beendet';
+
+  @override
+  String get whEvMemberJoined => 'Neue Mitarbeiterin / neuer Mitarbeiter';
+
+  @override
+  String get whEvAnnouncementPublished => 'Mitteilung veröffentlicht';
+
+  @override
+  String get whStDelivered => 'empfangen';
+
+  @override
+  String get whStPending => 'ausstehend';
+
+  @override
+  String get whStFailed => 'fehlgeschlagen';
+
+  @override
+  String get whStDropped => 'verworfen';
 }

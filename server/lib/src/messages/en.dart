@@ -258,4 +258,8 @@ const en = <String, String>{
   'Champ « rows » : liste de salariés attendue.': 'Field “rows”: list of employees expected.',
   'Option « API Pro » : {months} mois': '“API Pro” option: {months} months',
   'Option « API Pro », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': '“API Pro” option, added during the subscription, from {from} to {to}: {months} months',
+  'Option « API Pro » nécessaire pour les webhooks.': 'The “API Pro” option is required for webhooks.',
+  '5 webhooks au plus : supprimez-en un d\'abord.': '5 webhooks at most: delete one first.',
+  'Adresse invalide : https://… attendue.': 'Invalid address: https://… expected.',
+  'Événements inconnus.': 'Unknown events.',
 };

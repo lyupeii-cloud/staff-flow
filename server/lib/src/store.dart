@@ -273,10 +273,13 @@ class Store {
   }
 
   Future<void> addMember(String companyId, String userId, Role role, {List<String>? sites}) async {
-    await query(_db, '''
+    final added = await query(_db, '''
       INSERT INTO memberships (company_id, user_id, role, sites) VALUES (@c::uuid, @u::uuid, @r, @s::uuid[])
-      ON CONFLICT (company_id, user_id) WHERE left_at IS NULL DO NOTHING''',
+      ON CONFLICT (company_id, user_id) WHERE left_at IS NULL DO NOTHING RETURNING user_id''',
         {'c': companyId, 'u': userId, 'r': role.name, 's': sites});
+    if (added.isNotEmpty) {
+      await audit(companyId: companyId, actorId: userId, action: 'member.joined', details: {'userId': userId, 'role': role.name});
+    }
   }
 
   /// [ids] et tous les sites qui sont en dessous (sites en cascade).
@@ -414,7 +417,11 @@ class Store {
       INSERT INTO audit_log (company_id, actor_id, action, details)
       VALUES (@c::uuid, @a::uuid, @action, @d::jsonb)''',
         {'c': companyId, 'a': actorId, 'action': action, 'd': jsonEncode(details)});
+    if (companyId != null) await onAudit?.call(tx ?? _db, companyId, action, details);
   }
+
+  /// Prévenu de chaque écriture du journal, dans la même transaction (webhooks).
+  Future<void> Function(Session s, String companyId, String action, Map<String, Object?> details)? onAudit;
 }
 
 const _publicIdAlphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';

@@ -236,4 +236,8 @@ const ru = <String, String>{
   'Champ « rows » : liste de salariés attendue.': 'Поле «rows»: нужен список сотрудников.',
   'Option « API Pro » : {months} mois': 'Опция «API Pro»: {months} мес.',
   'Option « API Pro », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Опция «API Pro», добавленная во время подписки, с {from} по {to}: {months} мес.',
+  'Option « API Pro » nécessaire pour les webhooks.': 'Для вебхуков нужна опция «API Pro».',
+  '5 webhooks au plus : supprimez-en un d\'abord.': 'Не более 5 вебхуков: сначала удалите один.',
+  'Adresse invalide : https://… attendue.': 'Неверный адрес: ожидается https://…',
+  'Événements inconnus.': 'Неизвестные события.',
 };

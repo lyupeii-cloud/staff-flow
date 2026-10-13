@@ -59,6 +59,32 @@ import_employees · list_invitations · set_employee_profile
 create_position · create_site · post_announcement
 list_pending_requests · decide_request''';
 
+const _hooks = '''schedule.published       planning publié / schedule published
+request.created          nouvelle demande / new request
+request.decided          demande validée ou refusée / approved or refused
+request.cancelled        demande annulée / request cancelled
+request.cancel_asked     annulation de congé demandée / leave cancellation asked
+request.cancel_decided   annulation de congé décidée / leave cancellation decided
+request.ended            indisponibilité terminée / unavailability ended
+member.joined            nouveau salarié / new employee
+announcement.published   annonce publiée / announcement published''';
+
+const _hookSample = r'''POST https://votre-logiciel.example/staff-flow
+Staff-Flow-Event: request.decided
+Staff-Flow-Delivery: 6f1c…
+Staff-Flow-Signature: t=1792400000,v1=5d2a…
+
+{
+  "id": "6f1c…",
+  "event": "request.decided",
+  "createdAt": "2026-10-13T08:12:00Z",
+  "company": {"id": "SF-…", "name": "Boulangerie"},
+  "data": {"kind": "leave", "approved": true, "from": "2026-11-02", "to": "2026-11-03",
+           "person": {"sfId": "SF-…", "name": "Marie", "employeeNumber": "M-0007"}}
+}
+
+v1 = HMAC-SHA256(secret, t + "." + body)   (hex)''';
+
 const apiDocs = <String, List<List<Object>>>{
   'fr': [
     ['À quoi ça sert', [
@@ -96,6 +122,14 @@ const apiDocs = <String, List<List<Object>>>{
       'Les assistants compatibles MCP (Model Context Protocol), comme Claude, se branchent directement sur Staff Flow. Vous écrivez par exemple : « Mets Marie à la caisse lundi de 8 h à 16 h » ou « Combien d\'heures a fait l\'équipe en septembre ? ».',
       ['pre', _mcp],
       'Ajoutez un connecteur personnalisé avec cette adresse et une clé API. L\'assistant ne voit que les outils permis par les droits de la clé : lecture avec l\'option « accès API », écriture avec « API Pro ». Les services créés arrivent en brouillon, sauf avec le droit « publier ». Chaque action est notée dans l\'historique avec le nom de la clé.',
+    ]],
+    ['Webhooks : Staff Flow prévient vos logiciels', [
+      'Avec l\'option « API Pro », Staff Flow envoie tout seul un message (POST en JSON) à l\'adresse de votre logiciel quand quelque chose se passe. Plus besoin d\'interroger l\'API en boucle.',
+      'Dans l\'application : Management → Accès API → Webhooks. Le patron et les responsables qui gèrent l\'abonnement ajoutent jusqu\'à 5 adresses (https), choisissent les événements, et peuvent faire un envoi d\'essai.',
+      ['pre', _hooks],
+      ['pre', _hookSample],
+      'Chaque envoi est signé avec le secret donné à la création (affiché une seule fois) : recalculez la signature et comparez-la, puis refusez les horodatages de plus de 5 minutes. Répondez par un code 2xx en moins de 10 secondes.',
+      'En cas d\'échec, Staff Flow réessaie après 1 min, 5 min, 30 min, 2 h, 6 h et 12 h. Après 10 envois abandonnés d\'affilée, l\'adresse est coupée ; vous la réactivez dans l\'application. Les personnes sont désignées par leur identifiant SF et leur matricule, jamais par leur adresse e-mail. Option arrêtée ou période de grâce : plus aucun envoi.',
     ]],
     ['Données personnelles', [
       'L\'entreprise reste responsable de l\'usage des données qu\'elle récupère (noms, horaires, absences) et doit les protéger dans ses propres logiciels. Gardez les clés secrètes ; révoquez une clé dès qu\'elle ne sert plus.',
@@ -138,6 +172,14 @@ const apiDocs = <String, List<List<Object>>>{
       ['pre', _mcp],
       'Додайте власний конектор із цією адресою та ключем API. Асистент бачить лише інструменти, дозволені правами ключа: читання з опцією «Доступ до API», запис з «API Pro». Створені зміни потрапляють у чернетку, якщо немає права «публікація». Кожна дія фіксується в історії з назвою ключа.',
     ]],
+    ['Вебхуки: Staff Flow сам повідомляє ваші програми', [
+      'З опцією «API Pro» Staff Flow сам надсилає повідомлення (POST у JSON) на адресу вашої програми, коли щось відбувається. Більше не потрібно постійно опитувати API.',
+      'У застосунку: Управління → Доступ до API → Вебхуки. Власник і керівники, яким доручено підписку, додають до 5 адрес (https), вибирають події та можуть надіслати перевірку.',
+      ['pre', _hooks],
+      ['pre', _hookSample],
+      'Кожне надсилання підписане секретом, виданим під час створення (показується лише раз): обчисліть підпис і порівняйте, а мітки часу старші за 5 хвилин відхиляйте. Відповідайте кодом 2xx протягом 10 секунд.',
+      'У разі помилки Staff Flow повторює через 1 хв, 5 хв, 30 хв, 2 год, 6 год і 12 год. Після 10 невдалих надсилань поспіль адресу вимикають; увімкнути її можна в застосунку. Людей позначено ідентифікатором SF і табельним номером, ніколи електронною адресою. Опцію припинено або пільговий період: надсилань більше немає.',
+    ]],
     ['Персональні дані', [
       'Компанія відповідає за використання отриманих даних (імена, години, відсутності) і має захищати їх у своїх програмах. Зберігайте ключі в таємниці; відкликайте ключ, щойно він більше не потрібен.',
     ]],
@@ -178,6 +220,14 @@ const apiDocs = <String, List<List<Object>>>{
       'Assistants that support MCP (Model Context Protocol), such as Claude, connect straight to Staff Flow. You write, for example: “Put Marie on the till Monday from 8 to 4” or “How many hours did the team work in September?”.',
       ['pre', _mcp],
       'Add a custom connector with this address and an API key. The assistant only sees the tools the key\'s permissions allow: reading with the “API access” option, writing with “API Pro”. Shifts it creates arrive as drafts unless the key has the “publish” permission. Every action is logged in the history with the key\'s name.',
+    ]],
+    ['Webhooks: Staff Flow notifies your software', [
+      'With the “API Pro” option, Staff Flow sends a message on its own (JSON POST) to your software\'s address when something happens. No more polling the API.',
+      'In the app: Management → API access → Webhooks. The owner and managers entrusted with the subscription add up to 5 addresses (https), choose the events, and can send a test delivery.',
+      ['pre', _hooks],
+      ['pre', _hookSample],
+      'Every delivery is signed with the secret given at creation (shown only once): recompute the signature and compare, then reject timestamps older than 5 minutes. Answer with a 2xx code within 10 seconds.',
+      'On failure, Staff Flow retries after 1 min, 5 min, 30 min, 2 h, 6 h and 12 h. After 10 dropped deliveries in a row, the address is turned off; you turn it back on in the app. People are identified by their SF ID and employee number, never by email address. Option ended or grace period: nothing is sent any more.',
     ]],
     ['Personal data', [
       'The company remains responsible for how it uses the data it retrieves (names, hours, absences) and must protect it in its own software. Keep keys secret; revoke a key as soon as it is no longer used.',

@@ -236,4 +236,8 @@ const ro = <String, String>{
   'Champ « rows » : liste de salariés attendue.': 'Câmpul „rows”: se așteaptă o listă de angajați.',
   'Option « API Pro » : {months} mois': 'Opțiunea „API Pro”: {months} luni',
   'Option « API Pro », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Opțiunea „API Pro”, adăugată în timpul abonamentului, de la {from} la {to}: {months} luni',
+  'Option « API Pro » nécessaire pour les webhooks.': 'Webhook-urile necesită opțiunea „API Pro”.',
+  '5 webhooks au plus : supprimez-en un d\'abord.': 'Cel mult 5 webhook-uri: ștergeți mai întâi unul.',
+  'Adresse invalide : https://… attendue.': 'Adresă invalidă: se așteaptă https://…',
+  'Événements inconnus.': 'Evenimente necunoscute.',
 };

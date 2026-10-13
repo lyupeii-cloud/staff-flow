@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:http/http.dart' as http;
+import 'package:http/testing.dart';
 import 'package:postgres/postgres.dart' show Pool, QueryMode, Sql;
 import 'package:shelf/shelf.dart';
 import 'package:staff_flow_server/staff_flow_server.dart';
@@ -137,6 +139,10 @@ class TestEnv {
 
   /// Notifications « envoyées » pendant le test.
   final push = FakePush();
+
+  /// Webhooks reçus ; [hookStatus] : réponse du logiciel de l'entreprise.
+  final hooks = <http.Request>[];
+  var hookStatus = 200;
   final translator = FakeTranslator();
   final telegram = FakeTelegram();
   late FakeClock clock;
@@ -160,6 +166,8 @@ class TestEnv {
       await store.migrate();
       clock = FakeClock();
       push.sent.clear();
+      hooks.clear();
+      hookStatus = 200;
       telegram.sent.clear();
       translator
         ..calls = 0
@@ -174,6 +182,10 @@ class TestEnv {
         translator: translator,
         telegramApi: telegram,
         adminEmails: {'boss@example.com'},
+        webhookClient: MockClient((req) async {
+          hooks.add(req);
+          return http.Response('', hookStatus);
+        }),
       );
       handler = api.handler;
     });

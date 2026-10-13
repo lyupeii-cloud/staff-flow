@@ -2306,4 +2306,96 @@ class L10nUk extends L10n {
   String billingApiProHint(String price) {
     return '«API Pro» ($price / міс., без знижки): ваші програми записують у Staff Flow (графік, працівники, оголошення, запити). Доступно з оплаченою підпискою: додайте нижче.';
   }
+
+  @override
+  String get whTitle => 'Вебхуки';
+
+  @override
+  String get whSub =>
+      'Staff Flow сам повідомляє ваші програми, коли щось відбувається: опубліковано графік, запит, новий працівник, оголошення. Входить в опцію «API Pro».';
+
+  @override
+  String get whNew => 'Новий вебхук';
+
+  @override
+  String get whUrl => 'Адреса (https://…)';
+
+  @override
+  String get whEvents => 'Події, що надсилаються';
+
+  @override
+  String get whCreated =>
+      'Секрет підпису, показується лише раз: ваша програма перевіряє ним, що кожне надсилання справді від Staff Flow.';
+
+  @override
+  String get whTest => 'Перевірити';
+
+  @override
+  String whTestOk(String status) {
+    return 'Отримано (код $status)';
+  }
+
+  @override
+  String whTestFail(String error) {
+    return 'Помилка: $error';
+  }
+
+  @override
+  String get whDisabled => 'Вимкнено після 10 невдалих надсилань поспіль';
+
+  @override
+  String get whEnable => 'Увімкнути знову';
+
+  @override
+  String get whDelete => 'Видалити';
+
+  @override
+  String get whDeleteConfirm => 'Цей вебхук більше нічого не отримуватиме.';
+
+  @override
+  String get whNone => 'Поки що немає вебхуків.';
+
+  @override
+  String whLast(String date, String status) {
+    return 'Останнє надсилання: $date · $status';
+  }
+
+  @override
+  String get whEvSchedulePublished => 'Графік опубліковано';
+
+  @override
+  String get whEvRequestCreated => 'Новий запит';
+
+  @override
+  String get whEvRequestDecided => 'Запит погоджено або відхилено';
+
+  @override
+  String get whEvRequestCancelled => 'Запит скасовано';
+
+  @override
+  String get whEvRequestCancelAsked => 'Запит на скасування відпустки';
+
+  @override
+  String get whEvRequestCancelDecided => 'Рішення щодо скасування відпустки';
+
+  @override
+  String get whEvRequestEnded => 'Недоступність завершено';
+
+  @override
+  String get whEvMemberJoined => 'Новий працівник';
+
+  @override
+  String get whEvAnnouncementPublished => 'Оголошення опубліковано';
+
+  @override
+  String get whStDelivered => 'отримано';
+
+  @override
+  String get whStPending => 'очікує';
+
+  @override
+  String get whStFailed => 'помилка';
+
+  @override
+  String get whStDropped => 'скасовано';
 }

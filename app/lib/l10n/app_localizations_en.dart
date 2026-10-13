@@ -2295,6 +2295,98 @@ class L10nEn extends L10n {
   String billingApiProHint(String price) {
     return '“API Pro” ($price / month, no discount): your software writes into Staff Flow (schedule, employees, announcements, requests). Available with a paid subscription: add it below.';
   }
+
+  @override
+  String get whTitle => 'Webhooks';
+
+  @override
+  String get whSub =>
+      'Staff Flow notifies your software on its own when something happens: schedule published, request, new employee, announcement. Included in the “API Pro” option.';
+
+  @override
+  String get whNew => 'New webhook';
+
+  @override
+  String get whUrl => 'Address (https://…)';
+
+  @override
+  String get whEvents => 'Events sent';
+
+  @override
+  String get whCreated =>
+      'Signing secret, shown only once: your software uses it to check that each delivery really comes from Staff Flow.';
+
+  @override
+  String get whTest => 'Try it';
+
+  @override
+  String whTestOk(String status) {
+    return 'Received (code $status)';
+  }
+
+  @override
+  String whTestFail(String error) {
+    return 'Failed: $error';
+  }
+
+  @override
+  String get whDisabled => 'Turned off after 10 failed deliveries in a row';
+
+  @override
+  String get whEnable => 'Turn back on';
+
+  @override
+  String get whDelete => 'Delete';
+
+  @override
+  String get whDeleteConfirm => 'This webhook will no longer receive anything.';
+
+  @override
+  String get whNone => 'No webhook yet.';
+
+  @override
+  String whLast(String date, String status) {
+    return 'Last delivery: $date · $status';
+  }
+
+  @override
+  String get whEvSchedulePublished => 'Schedule published';
+
+  @override
+  String get whEvRequestCreated => 'New request';
+
+  @override
+  String get whEvRequestDecided => 'Request approved or refused';
+
+  @override
+  String get whEvRequestCancelled => 'Request cancelled';
+
+  @override
+  String get whEvRequestCancelAsked => 'Leave cancellation requested';
+
+  @override
+  String get whEvRequestCancelDecided => 'Leave cancellation decided';
+
+  @override
+  String get whEvRequestEnded => 'Unavailability ended';
+
+  @override
+  String get whEvMemberJoined => 'New employee';
+
+  @override
+  String get whEvAnnouncementPublished => 'Announcement published';
+
+  @override
+  String get whStDelivered => 'received';
+
+  @override
+  String get whStPending => 'pending';
+
+  @override
+  String get whStFailed => 'failed';
+
+  @override
+  String get whStDropped => 'dropped';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).

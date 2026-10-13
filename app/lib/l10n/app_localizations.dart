@@ -3935,6 +3935,174 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'“API Pro” ({price} / month, no discount): your software writes into Staff Flow (schedule, employees, announcements, requests). Available with a paid subscription: add it below.'**
   String billingApiProHint(String price);
+
+  /// No description provided for @whTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Webhooks'**
+  String get whTitle;
+
+  /// No description provided for @whSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Staff Flow notifies your software on its own when something happens: schedule published, request, new employee, announcement. Included in the “API Pro” option.'**
+  String get whSub;
+
+  /// No description provided for @whNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New webhook'**
+  String get whNew;
+
+  /// No description provided for @whUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Address (https://…)'**
+  String get whUrl;
+
+  /// No description provided for @whEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'Events sent'**
+  String get whEvents;
+
+  /// No description provided for @whCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Signing secret, shown only once: your software uses it to check that each delivery really comes from Staff Flow.'**
+  String get whCreated;
+
+  /// No description provided for @whTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Try it'**
+  String get whTest;
+
+  /// No description provided for @whTestOk.
+  ///
+  /// In en, this message translates to:
+  /// **'Received (code {status})'**
+  String whTestOk(String status);
+
+  /// No description provided for @whTestFail.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed: {error}'**
+  String whTestFail(String error);
+
+  /// No description provided for @whDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Turned off after 10 failed deliveries in a row'**
+  String get whDisabled;
+
+  /// No description provided for @whEnable.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn back on'**
+  String get whEnable;
+
+  /// No description provided for @whDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get whDelete;
+
+  /// No description provided for @whDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'This webhook will no longer receive anything.'**
+  String get whDeleteConfirm;
+
+  /// No description provided for @whNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No webhook yet.'**
+  String get whNone;
+
+  /// No description provided for @whLast.
+  ///
+  /// In en, this message translates to:
+  /// **'Last delivery: {date} · {status}'**
+  String whLast(String date, String status);
+
+  /// No description provided for @whEvSchedulePublished.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule published'**
+  String get whEvSchedulePublished;
+
+  /// No description provided for @whEvRequestCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'New request'**
+  String get whEvRequestCreated;
+
+  /// No description provided for @whEvRequestDecided.
+  ///
+  /// In en, this message translates to:
+  /// **'Request approved or refused'**
+  String get whEvRequestDecided;
+
+  /// No description provided for @whEvRequestCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Request cancelled'**
+  String get whEvRequestCancelled;
+
+  /// No description provided for @whEvRequestCancelAsked.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave cancellation requested'**
+  String get whEvRequestCancelAsked;
+
+  /// No description provided for @whEvRequestCancelDecided.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave cancellation decided'**
+  String get whEvRequestCancelDecided;
+
+  /// No description provided for @whEvRequestEnded.
+  ///
+  /// In en, this message translates to:
+  /// **'Unavailability ended'**
+  String get whEvRequestEnded;
+
+  /// No description provided for @whEvMemberJoined.
+  ///
+  /// In en, this message translates to:
+  /// **'New employee'**
+  String get whEvMemberJoined;
+
+  /// No description provided for @whEvAnnouncementPublished.
+  ///
+  /// In en, this message translates to:
+  /// **'Announcement published'**
+  String get whEvAnnouncementPublished;
+
+  /// No description provided for @whStDelivered.
+  ///
+  /// In en, this message translates to:
+  /// **'received'**
+  String get whStDelivered;
+
+  /// No description provided for @whStPending.
+  ///
+  /// In en, this message translates to:
+  /// **'pending'**
+  String get whStPending;
+
+  /// No description provided for @whStFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'failed'**
+  String get whStFailed;
+
+  /// No description provided for @whStDropped.
+  ///
+  /// In en, this message translates to:
+  /// **'dropped'**
+  String get whStDropped;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

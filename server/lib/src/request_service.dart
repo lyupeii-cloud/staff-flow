@@ -178,6 +178,7 @@ class RequestService {
         await store.query(tx, '''
           UPDATE requests SET status = 'approved', peer_id = @p::uuid, decided_by = @a::uuid, updated_at = now()
           WHERE id = @id::uuid''', {'id': r.id, 'a': actor.id, 'p': to});
+        await store.audit(companyId: r.companyId, actorId: actor.id, action: 'request.approved', details: {'id': r.id}, tx: tx);
       });
       await overlaps?.notifyNew(r.companyId, [to]);
     } else {

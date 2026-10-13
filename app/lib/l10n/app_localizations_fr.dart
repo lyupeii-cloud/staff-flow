@@ -2307,4 +2307,96 @@ class L10nFr extends L10n {
   String billingApiProHint(String price) {
     return '« API Pro » ($price / mois, sans remise) : vos logiciels écrivent dans Staff Flow (planning, salariés, annonces, demandes). Disponible avec un abonnement payé : ajoutez-la ci-dessous.';
   }
+
+  @override
+  String get whTitle => 'Webhooks';
+
+  @override
+  String get whSub =>
+      'Staff Flow prévient vos logiciels tout seul quand quelque chose se passe : planning publié, demande, nouveau salarié, annonce. Inclus dans l\'option « API Pro ».';
+
+  @override
+  String get whNew => 'Nouveau webhook';
+
+  @override
+  String get whUrl => 'Adresse (https://…)';
+
+  @override
+  String get whEvents => 'Événements envoyés';
+
+  @override
+  String get whCreated =>
+      'Secret de signature, affiché une seule fois : votre logiciel s\'en sert pour vérifier que chaque envoi vient bien de Staff Flow.';
+
+  @override
+  String get whTest => 'Essayer';
+
+  @override
+  String whTestOk(String status) {
+    return 'Reçu (code $status)';
+  }
+
+  @override
+  String whTestFail(String error) {
+    return 'Échec : $error';
+  }
+
+  @override
+  String get whDisabled => 'Coupé après 10 envois ratés d\'affilée';
+
+  @override
+  String get whEnable => 'Réactiver';
+
+  @override
+  String get whDelete => 'Supprimer';
+
+  @override
+  String get whDeleteConfirm => 'Ce webhook ne recevra plus rien.';
+
+  @override
+  String get whNone => 'Aucun webhook pour l\'instant.';
+
+  @override
+  String whLast(String date, String status) {
+    return 'Dernier envoi : $date · $status';
+  }
+
+  @override
+  String get whEvSchedulePublished => 'Planning publié';
+
+  @override
+  String get whEvRequestCreated => 'Nouvelle demande';
+
+  @override
+  String get whEvRequestDecided => 'Demande validée ou refusée';
+
+  @override
+  String get whEvRequestCancelled => 'Demande annulée';
+
+  @override
+  String get whEvRequestCancelAsked => 'Annulation de congé demandée';
+
+  @override
+  String get whEvRequestCancelDecided => 'Annulation de congé décidée';
+
+  @override
+  String get whEvRequestEnded => 'Indisponibilité terminée';
+
+  @override
+  String get whEvMemberJoined => 'Nouveau salarié';
+
+  @override
+  String get whEvAnnouncementPublished => 'Annonce publiée';
+
+  @override
+  String get whStDelivered => 'reçu';
+
+  @override
+  String get whStPending => 'en attente';
+
+  @override
+  String get whStFailed => 'échec';
+
+  @override
+  String get whStDropped => 'annulé';
 }

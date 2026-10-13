@@ -2310,4 +2310,96 @@ class L10nPl extends L10n {
   String billingApiProHint(String price) {
     return '„API Pro” ($price / mies., bez rabatu): Twoje programy zapisują dane w Staff Flow (grafik, pracownicy, ogłoszenia, wnioski). Dostępne z opłaconą subskrypcją: dodaj poniżej.';
   }
+
+  @override
+  String get whTitle => 'Webhooki';
+
+  @override
+  String get whSub =>
+      'Staff Flow sam powiadamia Twoje programy, gdy coś się dzieje: opublikowany grafik, wniosek, nowy pracownik, ogłoszenie. W ramach opcji „API Pro”.';
+
+  @override
+  String get whNew => 'Nowy webhook';
+
+  @override
+  String get whUrl => 'Adres (https://…)';
+
+  @override
+  String get whEvents => 'Wysyłane zdarzenia';
+
+  @override
+  String get whCreated =>
+      'Sekret podpisu, pokazywany tylko raz: Twój program sprawdza nim, że każda wysyłka naprawdę pochodzi ze Staff Flow.';
+
+  @override
+  String get whTest => 'Wypróbuj';
+
+  @override
+  String whTestOk(String status) {
+    return 'Odebrano (kod $status)';
+  }
+
+  @override
+  String whTestFail(String error) {
+    return 'Błąd: $error';
+  }
+
+  @override
+  String get whDisabled => 'Wyłączony po 10 nieudanych wysyłkach z rzędu';
+
+  @override
+  String get whEnable => 'Włącz ponownie';
+
+  @override
+  String get whDelete => 'Usuń';
+
+  @override
+  String get whDeleteConfirm => 'Ten webhook nie będzie już nic otrzymywał.';
+
+  @override
+  String get whNone => 'Brak webhooków.';
+
+  @override
+  String whLast(String date, String status) {
+    return 'Ostatnia wysyłka: $date · $status';
+  }
+
+  @override
+  String get whEvSchedulePublished => 'Grafik opublikowany';
+
+  @override
+  String get whEvRequestCreated => 'Nowy wniosek';
+
+  @override
+  String get whEvRequestDecided => 'Wniosek zatwierdzony lub odrzucony';
+
+  @override
+  String get whEvRequestCancelled => 'Wniosek anulowany';
+
+  @override
+  String get whEvRequestCancelAsked => 'Prośba o anulowanie urlopu';
+
+  @override
+  String get whEvRequestCancelDecided => 'Decyzja o anulowaniu urlopu';
+
+  @override
+  String get whEvRequestEnded => 'Niedostępność zakończona';
+
+  @override
+  String get whEvMemberJoined => 'Nowy pracownik';
+
+  @override
+  String get whEvAnnouncementPublished => 'Ogłoszenie opublikowane';
+
+  @override
+  String get whStDelivered => 'odebrano';
+
+  @override
+  String get whStPending => 'oczekuje';
+
+  @override
+  String get whStFailed => 'błąd';
+
+  @override
+  String get whStDropped => 'anulowano';
 }

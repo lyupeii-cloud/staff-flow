@@ -44,7 +44,7 @@ class ApiAccessService {
   static const writeScopes = {'shifts', 'publish', 'members', 'catalog', 'news', 'requests'};
 
   /// Le patron et les responsables qui gèrent l'abonnement gèrent les clés.
-  Future<Company> _owned(User actor, String companyId) async {
+  Future<Company> owned(User actor, String companyId) async {
     final (company, _) = await companies.open(actor, companyId);
     if (!await _billingAccess(companyId, actor.id)) throw const ApiError.forbidden();
     return company;
@@ -55,7 +55,7 @@ class ApiAccessService {
         AND (role = 'owner' OR (role = 'manager' AND billing_access))''', {'c': companyId, 'u': userId})).isNotEmpty;
 
   Future<List<Map<String, Object?>>> list(User actor, String companyId) async {
-    await _owned(actor, companyId);
+    await owned(actor, companyId);
     final rows = await store.query(store.db, '''
       SELECT id::text, name, prefix, created_at, last_used_at, scopes FROM api_keys
       WHERE company_id = @c::uuid AND revoked_at IS NULL ORDER BY created_at''', {'c': companyId});
@@ -74,7 +74,7 @@ class ApiAccessService {
 
   /// Nouvelle clé : renvoyée en entier une seule fois.
   Future<Map<String, Object?>> create(User actor, String companyId, String name, {List<String> scopes = const ['read']}) async {
-    final company = await _owned(actor, companyId);
+    final company = await owned(actor, companyId);
     final clean0 = {...scopes};
     if (clean0.isEmpty || clean0.any((s) => s != readScope && !writeScopes.contains(s))) {
       throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
@@ -101,7 +101,7 @@ class ApiAccessService {
   }
 
   Future<void> revoke(User actor, String companyId, String keyId) async {
-    await _owned(actor, companyId);
+    await owned(actor, companyId);
     final rows = await store.query(store.db, '''
       UPDATE api_keys SET revoked_at = @t WHERE id = @k::uuid AND company_id = @c::uuid AND revoked_at IS NULL
       RETURNING prefix''', {'k': keyId, 'c': companyId, 't': now()});

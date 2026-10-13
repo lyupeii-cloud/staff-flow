@@ -1694,5 +1694,57 @@
         "type": "String"
       }
     }
-  }
+  },
+  "whTitle": "Webhooks",
+  "whSub": "Staff Flow notifies your software on its own when something happens: schedule published, request, new employee, announcement. Included in the “API Pro” option.",
+  "whNew": "New webhook",
+  "whUrl": "Address (https://…)",
+  "whEvents": "Events sent",
+  "whCreated": "Signing secret, shown only once: your software uses it to check that each delivery really comes from Staff Flow.",
+  "whTest": "Try it",
+  "whTestOk": "Received (code {status})",
+  "@whTestOk": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "whTestFail": "Failed: {error}",
+  "@whTestFail": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "whDisabled": "Turned off after 10 failed deliveries in a row",
+  "whEnable": "Turn back on",
+  "whDelete": "Delete",
+  "whDeleteConfirm": "This webhook will no longer receive anything.",
+  "whNone": "No webhook yet.",
+  "whLast": "Last delivery: {date} · {status}",
+  "@whLast": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "whEvSchedulePublished": "Schedule published",
+  "whEvRequestCreated": "New request",
+  "whEvRequestDecided": "Request approved or refused",
+  "whEvRequestCancelled": "Request cancelled",
+  "whEvRequestCancelAsked": "Leave cancellation requested",
+  "whEvRequestCancelDecided": "Leave cancellation decided",
+  "whEvRequestEnded": "Unavailability ended",
+  "whEvMemberJoined": "New employee",
+  "whEvAnnouncementPublished": "Announcement published",
+  "whStDelivered": "received",
+  "whStPending": "pending",
+  "whStFailed": "failed",
+  "whStDropped": "dropped"
 }
