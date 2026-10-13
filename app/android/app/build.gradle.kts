@@ -1,7 +1,16 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+}
+
+// Clé de publication : android/key.properties (jamais dans Git), qui pointe
+// vers le fichier .jks gardé hors du projet.
+val keyProperties = Properties().apply {
+    val file = rootProject.file("key.properties")
+    if (file.exists()) file.inputStream().use { load(it) }
 }
 
 android {
@@ -29,11 +38,21 @@ android {
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        if (!keyProperties.isEmpty) {
+            create("upload") {
+                storeFile = file(keyProperties.getProperty("storeFile"))
+                storePassword = keyProperties.getProperty("storePassword")
+                keyAlias = keyProperties.getProperty("keyAlias")
+                keyPassword = keyProperties.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            // Jamais de version publiée signée avec la clé de débogage.
+            signingConfig = signingConfigs.findByName("upload")
         }
     }
 }
@@ -46,4 +65,16 @@ kotlin {
 
 flutter {
     source = "../.."
+}
+
+// Sans key.properties, une version de publication (APK ou AAB) refuse de se
+// construire ; les versions de débogage restent possibles.
+tasks.configureEach {
+    if (name.startsWith("assembleRelease") || name.startsWith("bundleRelease")) {
+        doFirst {
+            if (keyProperties.isEmpty) {
+                throw GradleException("android/key.properties manquant : impossible de signer la version de publication.")
+            }
+        }
+    }
 }
