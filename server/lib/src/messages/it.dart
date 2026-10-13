@@ -244,4 +244,8 @@ const it = <String, String>{
   'La clé API « {key} » a été utilisée depuis une nouvelle adresse ({ip}). Si ce n\'est pas vous, révoquez-la.': 'La chiave API «{key}» è stata usata da un nuovo indirizzo ({ip}). Se non sei stato tu, revocala.',
   'Mois invalide.': 'Mese non valido.',
   'Année invalide.': 'Anno non valido.',
+  'Requête trop volumineuse.': 'Richiesta troppo grande.',
+  'Trop de requêtes : réessayez dans {seconds} s.': 'Troppe richieste: riprova tra {seconds} s.',
+  'Trop d\'essais : réessayez dans {seconds} s.': 'Troppi tentativi: riprova tra {seconds} s.',
+  'Erreur du serveur.': 'Errore del server.',
 };

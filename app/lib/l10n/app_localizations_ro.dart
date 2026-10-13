@@ -2075,13 +2075,6 @@ class L10nRo extends L10n {
   String get totpLoginTitle => 'Conectare 2FA';
 
   @override
-  String get totpLoginHint =>
-      'Introduceți identificatorul Staff Flow (SF-…) sau numărul matricol, apoi codul de 6 cifre din aplicația de autentificare.';
-
-  @override
-  String get totpLoginField => 'ID SF sau număr matricol';
-
-  @override
   String get totpCompanyCode => 'Codul companiei';
 
   @override
@@ -2177,12 +2170,6 @@ class L10nRo extends L10n {
   @override
   String get linkGoogleBanner =>
       'Conectați-vă cu contul Google de legat la Staff Flow.';
-
-  @override
-  String get totpLoginButton => 'Conectare cu o aplicație 2FA';
-
-  @override
-  String get activateButton => 'Activează contul meu (codul angajatorului)';
 
   @override
   String get activationCodeAction => 'Cod nou de activare';
@@ -2535,9 +2522,6 @@ class L10nRo extends L10n {
   }
 
   @override
-  String get lgYear => 'An';
-
-  @override
   String get lgResults => 'Rezultate din tot istoricul';
 
   @override
@@ -2560,4 +2544,32 @@ class L10nRo extends L10n {
 
   @override
   String get lgFStatus => 'Stare';
+
+  @override
+  String get totpContinueButton => 'Continuă cu o aplicație 2FA';
+
+  @override
+  String get totpIdentHint =>
+      'Introduceți identificatorul Staff Flow (SF-…), numărul matricol sau codul de activare primit de la angajator.';
+
+  @override
+  String get totpIdentField =>
+      'Identificator, număr matricol sau codul angajatorului';
+
+  @override
+  String get totpContinue => 'Continuă';
+
+  @override
+  String get totpUnknown =>
+      'Acest identificator nu există. Doriți să creați un cont?';
+
+  @override
+  String get totpGoogleAccount =>
+      'Acest cont se conectează cu Google: reveniți și atingeți „Conectare cu Google”.';
+
+  @override
+  String get totpNoAccount => 'Nu aveți cont? Creați unul';
+
+  @override
+  String get totpChange => 'Alt identificator';
 }

@@ -45,6 +45,9 @@ class WebhookService {
 
   static const maxHooks = 5;
 
+  /// Débit des envois d'une entreprise (sinon : sans limite).
+  Future<bool> Function(String companyId)? allowSend;
+
   /// Chaque envoi (réussi ou non), pour les journaux de l'entreprise.
   Future<void> Function(String companyId, String event, String url, int? status, String? error, Duration took)? onSent;
 
@@ -414,6 +417,14 @@ class WebhookService {
     if (company == null || !ApiAccessService.proAllowed(company)) {
       await store.query(store.db, "UPDATE webhook_deliveries SET status = 'dropped' WHERE id = @d::uuid", {
         'd': deliveryId,
+      });
+      return false;
+    }
+    // Trop d'envois cette heure-ci pour l'entreprise : reporté de 5 minutes.
+    if (!test && allowSend != null && !await allowSend!(company.id)) {
+      await store.query(store.db, 'UPDATE webhook_deliveries SET next_at = @n WHERE id = @d::uuid', {
+        'd': deliveryId,
+        'n': now().add(const Duration(minutes: 5)),
       });
       return false;
     }

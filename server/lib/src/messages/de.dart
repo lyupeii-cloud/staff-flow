@@ -244,4 +244,8 @@ const de = <String, String>{
   'La clé API « {key} » a été utilisée depuis une nouvelle adresse ({ip}). Si ce n\'est pas vous, révoquez-la.': 'Der API-Schlüssel „{key}“ wurde von einer neuen Adresse ({ip}) verwendet. Wenn Sie das nicht waren, widerrufen Sie ihn.',
   'Mois invalide.': 'Ungültiger Monat.',
   'Année invalide.': 'Ungültiges Jahr.',
+  'Requête trop volumineuse.': 'Anfrage zu groß.',
+  'Trop de requêtes : réessayez dans {seconds} s.': 'Zu viele Anfragen: in {seconds} s erneut versuchen.',
+  'Trop d\'essais : réessayez dans {seconds} s.': 'Zu viele Versuche: in {seconds} s erneut versuchen.',
+  'Erreur du serveur.': 'Serverfehler.',
 };

@@ -244,4 +244,8 @@ const ru = <String, String>{
   'La clé API « {key} » a été utilisée depuis une nouvelle adresse ({ip}). Si ce n\'est pas vous, révoquez-la.': 'Ключ API «{key}» использован с нового адреса ({ip}). Если это не вы, отзовите его.',
   'Mois invalide.': 'Неверный месяц.',
   'Année invalide.': 'Неверный год.',
+  'Requête trop volumineuse.': 'Слишком большой запрос.',
+  'Trop de requêtes : réessayez dans {seconds} s.': 'Слишком много запросов: повторите через {seconds} с.',
+  'Trop d\'essais : réessayez dans {seconds} s.': 'Слишком много попыток: повторите через {seconds} с.',
+  'Erreur du serveur.': 'Ошибка сервера.',
 };

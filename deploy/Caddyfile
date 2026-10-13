@@ -6,7 +6,15 @@
 		Strict-Transport-Security "max-age=31536000; includeSubDomains"
 		X-Content-Type-Options nosniff
 		Referrer-Policy strict-origin-when-cross-origin
+		# L'application ne s'affiche jamais dans le cadre d'un autre site.
+		X-Frame-Options DENY
+		Content-Security-Policy "frame-ancestors 'none'"
 		-Server
+	}
+
+	# Aucune requête de plus de 10 Mo (l'API refuse déjà au-delà de 4 Mo).
+	request_body {
+		max_size 10MB
 	}
 
 	handle /api/* {

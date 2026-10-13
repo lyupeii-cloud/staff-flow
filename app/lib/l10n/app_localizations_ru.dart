@@ -2074,13 +2074,6 @@ class L10nRu extends L10n {
   String get totpLoginTitle => 'Вход через 2FA';
 
   @override
-  String get totpLoginHint =>
-      'Введите свой идентификатор Staff Flow (SF-…) или табельный номер, затем 6-значный код из приложения аутентификации.';
-
-  @override
-  String get totpLoginField => 'Идентификатор SF или табельный номер';
-
-  @override
   String get totpCompanyCode => 'Код компании';
 
   @override
@@ -2176,12 +2169,6 @@ class L10nRu extends L10n {
   @override
   String get linkGoogleBanner =>
       'Войдите с аккаунтом Google, который нужно привязать к Staff Flow.';
-
-  @override
-  String get totpLoginButton => 'Войти через приложение 2FA';
-
-  @override
-  String get activateButton => 'Активировать аккаунт (код работодателя)';
 
   @override
   String get activationCodeAction => 'Новый код активации';
@@ -2535,9 +2522,6 @@ class L10nRu extends L10n {
   }
 
   @override
-  String get lgYear => 'Год';
-
-  @override
   String get lgResults => 'Результаты во всей истории';
 
   @override
@@ -2560,4 +2544,32 @@ class L10nRu extends L10n {
 
   @override
   String get lgFStatus => 'Статус';
+
+  @override
+  String get totpContinueButton => 'Продолжить с приложением 2FA';
+
+  @override
+  String get totpIdentHint =>
+      'Введите свой идентификатор Staff Flow (SF-…), табельный номер или код активации от работодателя.';
+
+  @override
+  String get totpIdentField =>
+      'Идентификатор, табельный номер или код работодателя';
+
+  @override
+  String get totpContinue => 'Продолжить';
+
+  @override
+  String get totpUnknown =>
+      'Такого идентификатора нет. Создать учётную запись?';
+
+  @override
+  String get totpGoogleAccount =>
+      'Эта учётная запись входит через Google: вернитесь назад и нажмите «Войти через Google».';
+
+  @override
+  String get totpNoAccount => 'Ещё нет учётной записи? Создать';
+
+  @override
+  String get totpChange => 'Другой идентификатор';
 }

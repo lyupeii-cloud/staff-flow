@@ -127,28 +127,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         icon: const Icon(Icons.login),
                         label: Text(t.signInWithGoogle),
                       ),
-                    // Sans Google : application 2FA, ou activation avec le code de l'employeur.
+                    // Sans Google : un seul bouton (connexion, activation ou création de compte).
                     if (session.googleSwitchToken == null) ...[
                       const SizedBox(height: 12),
                       OutlinedButton.icon(
                         style: OutlinedButton.styleFrom(
                             foregroundColor: Colors.white, side: const BorderSide(color: Colors.white54)),
-                        onPressed: () => TotpLoginPage.open(context, session),
+                        onPressed: () => TotpLoginPage.open(context, session, initial: session.inviteCode),
                         icon: const Icon(Icons.shield_outlined),
-                        label: Text(t.totpLoginButton),
-                      ),
-                      const SizedBox(height: 8),
-                      TextButton.icon(
-                        style: TextButton.styleFrom(foregroundColor: Colors.white),
-                        onPressed: () => ActivatePage.open(context, session, code: session.inviteCode),
-                        icon: const Icon(Icons.qr_code_2),
-                        label: Text(t.activateButton),
-                      ),
-                      TextButton.icon(
-                        style: TextButton.styleFrom(foregroundColor: Colors.white),
-                        onPressed: () => ActivatePage.openSignup(context, session),
-                        icon: const Icon(Icons.person_add_alt),
-                        label: Text(t.signupButton),
+                        label: Text(t.totpContinueButton),
                       ),
                     ],
                     // iPhone (pas d'application iOS pour l'instant) : l'installer depuis Safari.

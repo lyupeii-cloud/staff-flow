@@ -266,4 +266,8 @@ const en = <String, String>{
   'La clé API « {key} » a été utilisée depuis une nouvelle adresse ({ip}). Si ce n\'est pas vous, révoquez-la.': 'API key “{key}” was used from a new address ({ip}). If it wasn\'t you, revoke it.',
   'Mois invalide.': 'Invalid month.',
   'Année invalide.': 'Invalid year.',
+  'Requête trop volumineuse.': 'Request too large.',
+  'Trop de requêtes : réessayez dans {seconds} s.': 'Too many requests: try again in {seconds} s.',
+  'Trop d\'essais : réessayez dans {seconds} s.': 'Too many attempts: try again in {seconds} s.',
+  'Erreur du serveur.': 'Server error.',
 };

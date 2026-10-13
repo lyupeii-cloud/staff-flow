@@ -244,4 +244,8 @@ const pl = <String, String>{
   'La clé API « {key} » a été utilisée depuis une nouvelle adresse ({ip}). Si ce n\'est pas vous, révoquez-la.': 'Klucz API „{key}” został użyty z nowego adresu ({ip}). Jeśli to nie Ty, unieważnij go.',
   'Mois invalide.': 'Nieprawidłowy miesiąc.',
   'Année invalide.': 'Nieprawidłowy rok.',
+  'Requête trop volumineuse.': 'Żądanie jest za duże.',
+  'Trop de requêtes : réessayez dans {seconds} s.': 'Zbyt wiele żądań: spróbuj ponownie za {seconds} s.',
+  'Trop d\'essais : réessayez dans {seconds} s.': 'Zbyt wiele prób: spróbuj ponownie za {seconds} s.',
+  'Erreur du serveur.': 'Błąd serwera.',
 };

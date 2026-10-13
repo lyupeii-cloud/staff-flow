@@ -719,4 +719,11 @@ CREATE TABLE api_key_ips (
 );
 ALTER TABLE api_keys ADD COLUMN failing_alert_at timestamptz, ADD COLUMN new_ip_alert_at timestamptz;
 ''',
+  // 42 — petits états internes du serveur (profil du bot Telegram déjà envoyé…).
+  '''
+CREATE TABLE server_state (
+  key   text PRIMARY KEY,
+  value text NOT NULL
+);
+''',
 ];

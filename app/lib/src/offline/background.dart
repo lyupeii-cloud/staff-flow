@@ -4,6 +4,7 @@ import 'package:workmanager/workmanager.dart';
 
 import '../api.dart';
 import '../session.dart';
+import '../token_store.dart';
 import 'sync.dart';
 
 /// Synchronisation en arrière-plan (Android).
@@ -49,7 +50,7 @@ class BackgroundSync {
 void backgroundSyncDispatcher() {
   Workmanager().executeTask((task, _) async {
     final prefs = await SharedPreferences.getInstance();
-    final token = prefs.getString(Session.tokenKey);
+    final token = await TokenStore.read();
     if (token == null) return true;
     final api = Api()
       ..token = token

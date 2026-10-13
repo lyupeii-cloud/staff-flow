@@ -264,4 +264,8 @@ const uk = <String, String>{
   'La clé API « {key} » a été utilisée depuis une nouvelle adresse ({ip}). Si ce n\'est pas vous, révoquez-la.': 'Ключ API «{key}» використано з нової адреси ({ip}). Якщо це не ви, відкличте його.',
   'Mois invalide.': 'Неправильний місяць.',
   'Année invalide.': 'Неправильний рік.',
+  'Requête trop volumineuse.': 'Запит завеликий.',
+  'Trop de requêtes : réessayez dans {seconds} s.': 'Забагато запитів: спробуйте через {seconds} с.',
+  'Trop d\'essais : réessayez dans {seconds} s.': 'Забагато спроб: спробуйте через {seconds} с.',
+  'Erreur du serveur.': 'Помилка сервера.',
 };

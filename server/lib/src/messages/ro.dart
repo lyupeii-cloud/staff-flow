@@ -244,4 +244,8 @@ const ro = <String, String>{
   'La clé API « {key} » a été utilisée depuis une nouvelle adresse ({ip}). Si ce n\'est pas vous, révoquez-la.': 'Cheia API „{key}” a fost folosită de la o adresă nouă ({ip}). Dacă nu ați fost dvs., revocați-o.',
   'Mois invalide.': 'Lună invalidă.',
   'Année invalide.': 'An invalid.',
+  'Requête trop volumineuse.': 'Cerere prea mare.',
+  'Trop de requêtes : réessayez dans {seconds} s.': 'Prea multe cereri: încercați din nou în {seconds} s.',
+  'Trop d\'essais : réessayez dans {seconds} s.': 'Prea multe încercări: încercați din nou în {seconds} s.',
+  'Erreur du serveur.': 'Eroare de server.',
 };

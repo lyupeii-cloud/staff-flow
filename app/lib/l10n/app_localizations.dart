@@ -3540,18 +3540,6 @@ abstract class L10n {
   /// **'2FA sign-in'**
   String get totpLoginTitle;
 
-  /// No description provided for @totpLoginHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Enter your Staff Flow ID (SF-…) or your employee number, then the 6-digit code from your authenticator app.'**
-  String get totpLoginHint;
-
-  /// No description provided for @totpLoginField.
-  ///
-  /// In en, this message translates to:
-  /// **'SF ID or employee number'**
-  String get totpLoginField;
-
   /// No description provided for @totpCompanyCode.
   ///
   /// In en, this message translates to:
@@ -3725,18 +3713,6 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Sign in with the Google account to link to your Staff Flow account.'**
   String get linkGoogleBanner;
-
-  /// No description provided for @totpLoginButton.
-  ///
-  /// In en, this message translates to:
-  /// **'Sign in with a 2FA app'**
-  String get totpLoginButton;
-
-  /// No description provided for @activateButton.
-  ///
-  /// In en, this message translates to:
-  /// **'Activate my account (employer code)'**
-  String get activateButton;
 
   /// No description provided for @activationCodeAction.
   ///
@@ -4362,12 +4338,6 @@ abstract class L10n {
   /// **'API key “{key}” was used from a new address ({ip}). If it wasn\'t you, revoke it.'**
   String noticeApiNewIp(String key, String ip);
 
-  /// No description provided for @lgYear.
-  ///
-  /// In en, this message translates to:
-  /// **'Year'**
-  String get lgYear;
-
   /// No description provided for @lgResults.
   ///
   /// In en, this message translates to:
@@ -4415,6 +4385,54 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Status'**
   String get lgFStatus;
+
+  /// No description provided for @totpContinueButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with a 2FA app'**
+  String get totpContinueButton;
+
+  /// No description provided for @totpIdentHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your Staff Flow ID (SF-…), your employee number, or the activation code from your employer.'**
+  String get totpIdentHint;
+
+  /// No description provided for @totpIdentField.
+  ///
+  /// In en, this message translates to:
+  /// **'ID, employee number or employer code'**
+  String get totpIdentField;
+
+  /// No description provided for @totpContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get totpContinue;
+
+  /// No description provided for @totpUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'This ID doesn\'t exist. Do you want to create an account?'**
+  String get totpUnknown;
+
+  /// No description provided for @totpGoogleAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'This account signs in with Google: go back and tap “Sign in with Google”.'**
+  String get totpGoogleAccount;
+
+  /// No description provided for @totpNoAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'No account yet? Create one'**
+  String get totpNoAccount;
+
+  /// No description provided for @totpChange.
+  ///
+  /// In en, this message translates to:
+  /// **'Use another ID'**
+  String get totpChange;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

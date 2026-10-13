@@ -336,6 +336,27 @@ class TotpService {
   // --- Connexion ---------------------------------------------------------------
 
   /// [login] : identifiant SF, ou matricule avec [companyCode] (6 caractères).
+  /// Écran de connexion à un seul champ : ce que l'identifiant tapé appelle.
+  /// `code` (compte 2FA : demander le code), `google` (compte Google sans
+  /// 2FA), `activation` (code de l'employeur), `number` (peut-être un
+  /// matricule : demander le code de l'entreprise, puis le code 2FA),
+  /// `unknown` (identifiant SF inconnu : proposer de créer un compte).
+  /// Pour un matricule, on ne dit jamais s'il existe.
+  Future<String> identify(String login) async {
+    final id = login.trim();
+    if (id.isEmpty) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    if (id.toUpperCase().startsWith('SF-')) {
+      final rows = await store.query(store.db, '''
+        SELECT totp_secret IS NOT NULL FROM users WHERE public_id = @p AND deleted_at IS NULL''', {'p': id.toUpperCase()});
+      if (rows.isEmpty) return 'unknown';
+      return rows.first[0] == true ? 'code' : 'google';
+    }
+    final invite = await store.query(store.db, '''
+      SELECT 1 FROM member_invites WHERE code = @code AND used_at IS NULL AND expires_at > @t''',
+        {'code': ImportService.cleanCode(id), 't': now()});
+    return invite.isNotEmpty ? 'activation' : 'number';
+  }
+
   Future<User> login(String login, String? companyCode, String otp, String ip) async {
     final id = login.trim();
     final rows = id.toUpperCase().startsWith('SF-')

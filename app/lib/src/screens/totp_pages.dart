@@ -42,54 +42,93 @@ Widget otpField(TextEditingController c, {required String label, VoidCallback? o
       onSubmitted: (_) => onDone?.call(),
     );
 
-/// Connexion par application 2FA : identifiant SF (ou matricule et code de
-/// l'entreprise) et code à 6 chiffres.
+/// Connexion par application 2FA, en deux temps. 1 : un seul champ, où l'on
+/// tape son identifiant SF, son matricule ou le code de l'employeur ; le
+/// serveur dit ce qu'il appelle (code 2FA, activation, création de compte).
+/// 2 : le code à 6 chiffres (et, pour un matricule, le code de l'entreprise).
 class TotpLoginPage extends StatefulWidget {
   final Session session;
 
-  const TotpLoginPage({super.key, required this.session});
+  /// Code d'invitation déjà connu (lien ou QR code de la fiche d'invitation).
+  final String? initial;
 
-  static Future<void> open(BuildContext context, Session session) =>
-      Navigator.of(context).push(MaterialPageRoute(builder: (_) => TotpLoginPage(session: session)));
+  const TotpLoginPage({super.key, required this.session, this.initial});
+
+  static Future<void> open(BuildContext context, Session session, {String? initial}) => Navigator.of(context)
+      .push(MaterialPageRoute(builder: (_) => TotpLoginPage(session: session, initial: initial)));
 
   @override
   State<TotpLoginPage> createState() => _TotpLoginPageState();
 }
 
 class _TotpLoginPageState extends State<TotpLoginPage> {
-  final _login = TextEditingController();
+  late final _login = TextEditingController(text: widget.initial);
   final _company = TextEditingController();
   final _otp = TextEditingController();
   bool _remember = true, _busy = false, _backup = false;
   String? _error;
 
-  bool get _byNumber => _login.text.trim().isNotEmpty && !_login.text.trim().toUpperCase().startsWith('SF-');
+  /// Réponse du serveur : `code`, `number`, `unknown`, `google` ; null = étape 1.
+  String? _next;
 
-  Future<void> _submit() async {
+  @override
+  void initState() {
+    super.initState();
+    if (widget.initial != null) WidgetsBinding.instance.addPostFrameCallback((_) => _identify());
+  }
+
+  Future<void> _run(Future<void> Function() action) async {
     final t = context.l10n;
     setState(() => (_busy = true, _error = null));
     try {
-      final j = await widget.session.api.send('POST', '/auth/totp', body: {
-        'login': _login.text.trim(),
-        if (_byNumber) 'company': _company.text.trim(),
-        'otp': _otp.text.trim(),
-      });
-      await widget.session.signInWithToken(j['token'] as String, remember: _remember);
-      if (mounted) Navigator.of(context).popUntil((r) => r.isFirst);
+      await action();
     } on OfflineException {
       setState(() => _error = t.offlineUnavailable);
     } on ApiException catch (e) {
       setState(() => _error = e.describe(t));
-      _otp.clear();
     } finally {
       if (mounted) setState(() => _busy = false);
     }
   }
 
+  Future<void> _identify() => _run(() async {
+        final login = _login.text.trim();
+        if (login.isEmpty) return;
+        final j = await widget.session.api.send('POST', '/auth/identify', body: {'login': login});
+        final next = j['next'] as String;
+        if (!mounted) return;
+        if (next == 'activation') {
+          // Code de l'employeur : l'activation prend la suite.
+          await Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (_) => ActivatePage(session: widget.session, initialCode: login)));
+          return;
+        }
+        setState(() => _next = next);
+      });
+
+  Future<void> _submit() => _run(() async {
+        try {
+          final j = await widget.session.api.send('POST', '/auth/totp', body: {
+            'login': _login.text.trim(),
+            if (_next == 'number') 'company': _company.text.trim(),
+            'otp': _otp.text.trim(),
+          });
+          await widget.session.signInWithToken(j['token'] as String, remember: _remember);
+          if (mounted) Navigator.of(context).popUntil((r) => r.isFirst);
+        } on ApiException {
+          _otp.clear();
+          rethrow;
+        }
+      });
+
+  void _signup() => Navigator.of(context)
+      .pushReplacement(MaterialPageRoute(builder: (_) => ActivatePage(session: widget.session, signup: true)));
+
   @override
   Widget build(BuildContext context) {
     final t = context.l10n;
     final theme = Theme.of(context);
+    final asking = _next == 'code' || _next == 'number';
     return Scaffold(
       appBar: AppBar(title: Text(t.totpLoginTitle)),
       body: Center(
@@ -98,46 +137,76 @@ class _TotpLoginPageState extends State<TotpLoginPage> {
           child: ListView(padding: const EdgeInsets.all(20), children: [
             Icon(Icons.shield_outlined, size: 48, color: theme.colorScheme.primary),
             const SizedBox(height: 12),
-            Text(t.totpLoginHint, textAlign: TextAlign.center),
+            if (_next == null) Text(t.totpIdentHint, textAlign: TextAlign.center),
             const SizedBox(height: 16),
             TextField(
               controller: _login,
-              onChanged: (_) => setState(() {}),
+              enabled: _next == null,
+              autofocus: widget.initial == null,
               textCapitalization: TextCapitalization.characters,
-              decoration: InputDecoration(labelText: t.totpLoginField, hintText: 'SF-A7K3P9QX'),
+              decoration: InputDecoration(labelText: t.totpIdentField, hintText: 'SF-A7K3P9QX'),
+              onSubmitted: (_) => _identify(),
             ),
-            if (_byNumber)
-              TextField(
-                controller: _company,
-                textCapitalization: TextCapitalization.characters,
-                maxLength: 6,
-                decoration: InputDecoration(labelText: t.totpCompanyCode, helperText: t.totpCompanyCodeHint, counterText: ''),
+            if (_next != null)
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () => setState(() {
+                    _next = null;
+                    _error = null;
+                    _otp.clear();
+                  }),
+                  child: Text(t.totpChange),
+                ),
               ),
-            const SizedBox(height: 12),
-            otpField(_otp, label: _backup ? t.totpBackupCode : t.totpCode, onDone: _submit, max: _backup ? 8 : 6),
-            Align(
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                onPressed: () => setState(() {
-                  _backup = !_backup;
-                  _otp.clear();
-                }),
-                child: Text(_backup ? t.totpUseApp : t.totpUseBackup),
+            // Identifiant inconnu : proposer de créer un compte.
+            if (_next == 'unknown') ...[
+              Text(t.totpUnknown, textAlign: TextAlign.center),
+              const SizedBox(height: 12),
+              FilledButton(
+                style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(48)),
+                onPressed: _signup,
+                child: Text(t.signupButton),
               ),
-            ),
-            RememberSwitch(value: _remember, onChanged: (v) => setState(() => _remember = v)),
+            ],
+            if (_next == 'google') Text(t.totpGoogleAccount, textAlign: TextAlign.center),
+            if (asking) ...[
+              if (_next == 'number')
+                TextField(
+                  controller: _company,
+                  textCapitalization: TextCapitalization.characters,
+                  maxLength: 6,
+                  decoration:
+                      InputDecoration(labelText: t.totpCompanyCode, helperText: t.totpCompanyCodeHint, counterText: ''),
+                ),
+              const SizedBox(height: 12),
+              otpField(_otp, label: _backup ? t.totpBackupCode : t.totpCode, onDone: _submit, max: _backup ? 8 : 6),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () => setState(() {
+                    _backup = !_backup;
+                    _otp.clear();
+                  }),
+                  child: Text(_backup ? t.totpUseApp : t.totpUseBackup),
+                ),
+              ),
+              RememberSwitch(value: _remember, onChanged: (v) => setState(() => _remember = v)),
+            ],
             if (_error != null)
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: Text(_error!, style: TextStyle(color: theme.colorScheme.error)),
               ),
-            FilledButton(
-              style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(48)),
-              onPressed: _busy ? null : _submit,
-              child: Text(t.totpSignIn),
-            ),
+            if (_next == null || asking)
+              FilledButton(
+                style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(48)),
+                onPressed: _busy ? null : (asking ? _submit : _identify),
+                child: Text(asking ? t.totpSignIn : t.totpContinue),
+              ),
             const SizedBox(height: 12),
-            Text(t.totpLostPhone, style: theme.textTheme.bodySmall, textAlign: TextAlign.center),
+            if (_next == null) TextButton(onPressed: _signup, child: Text(t.totpNoAccount)),
+            if (asking) Text(t.totpLostPhone, style: theme.textTheme.bodySmall, textAlign: TextAlign.center),
           ]),
         ),
       ),

@@ -1564,8 +1564,6 @@
   "rememberMe": "Stay signed in on this device",
   "rememberMeHint": "On: like with Google, no code needed each time you open the app. Avoid on a shared device.",
   "totpLoginTitle": "2FA sign-in",
-  "totpLoginHint": "Enter your Staff Flow ID (SF-…) or your employee number, then the 6-digit code from your authenticator app.",
-  "totpLoginField": "SF ID or employee number",
   "totpCompanyCode": "Company code",
   "totpCompanyCodeHint": "6 characters, given by your employer (only with an employee number).",
   "totpBackupCode": "Backup code",
@@ -1605,8 +1603,6 @@
   "linkGoogleHint": "To create a company, link a Google account to your Staff Flow account. It's only used to protect the company's creator and its subscription: your Google address is never shown to your employees or anyone else, it stays in Staff Flow. You can still sign in with your 2FA app.",
   "linkGoogleButton": "Link my Google account",
   "linkGoogleBanner": "Sign in with the Google account to link to your Staff Flow account.",
-  "totpLoginButton": "Sign in with a 2FA app",
-  "activateButton": "Activate my account (employer code)",
   "activationCodeAction": "New activation code",
   "activationCodeTitle": "New code for {name}?",
   "@activationCodeTitle": {
@@ -1827,7 +1823,6 @@
       }
     }
   },
-  "lgYear": "Year",
   "lgResults": "Results in the whole history",
   "lgAllSources": "All sources",
   "lgAllKinds": "Read and write",
@@ -1835,5 +1830,13 @@
   "lgFDate": "Date",
   "lgFKey": "Key",
   "lgFSource": "Source",
-  "lgFStatus": "Status"
+  "lgFStatus": "Status",
+  "totpContinueButton": "Continue with a 2FA app",
+  "totpIdentHint": "Enter your Staff Flow ID (SF-…), your employee number, or the activation code from your employer.",
+  "totpIdentField": "ID, employee number or employer code",
+  "totpContinue": "Continue",
+  "totpUnknown": "This ID doesn't exist. Do you want to create an account?",
+  "totpGoogleAccount": "This account signs in with Google: go back and tap “Sign in with Google”.",
+  "totpNoAccount": "No account yet? Create one",
+  "totpChange": "Use another ID"
 }

@@ -63,6 +63,19 @@ void main() {
     expect([m['user']['name'], m['employeeNumber']], ['Camille Durand', 'C-001']);
   });
 
+  test('écran à un seul champ : ce que l\'identifiant appelle, sans dire si un matricule existe', () async {
+    final code = await invite('Inès Petit', number: 'C-009');
+    final anon = Client(env.handler);
+    Future<String> next(String login) async => (await anon.ok('POST', '/auth/identify', {'login': login}))['next'] as String;
+    expect(await next(code.toLowerCase()), 'activation');
+    final (_, _, sf, _) = await activate(code);
+    expect(await next(sf.toLowerCase()), 'code');
+    expect(await next(boss.user['publicId'] as String), 'google');
+    expect(await next('SF-ZZZZZZZZ'), 'unknown');
+    // Matricule existant ou non : même réponse.
+    expect([await next('C-009'), await next('C-404')], ['number', 'number']);
+  });
+
   test('connexion : identifiant SF ou matricule + code entreprise ; un code ne sert qu\'une fois ; codes de secours', () async {
     final (secret, _, sf, backup) = await activate(await invite('Lucas Moreau', number: 'C-002'));
     final a = Client(env.handler);

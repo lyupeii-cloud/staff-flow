@@ -2,10 +2,18 @@
 #   docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d --build
 name: staff-flow
 
+# Journaux des conteneurs : 5 fichiers de 10 Mo au plus par service.
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "5"
+
 services:
   db:
     image: postgres:17-alpine
     restart: unless-stopped
+    logging: *logging
     environment:
       POSTGRES_DB: staffflow
       POSTGRES_USER: staffflow
@@ -20,6 +28,7 @@ services:
   api:
     build: ../server
     restart: unless-stopped
+    logging: *logging
     depends_on:
       db: { condition: service_healthy }
     environment:
@@ -35,6 +44,10 @@ services:
       FCM_CREDENTIALS_B64: ${FCM_CREDENTIALS_B64:-}
       # Traduction des messages, sur ce serveur (service « translate » ci-dessous).
       TRANSLATE_URL: http://translate:5000
+      # Sauvegardes vues en lecture seule : alerte si elles ne se font plus.
+      BACKUP_WATCH_DIR: /backups
+    volumes:
+      - ${BACKUP_DIR:-/home/debian/backups/staff-flow}:/backups:ro
 
   web:
     build:
@@ -43,6 +56,7 @@ services:
       args:
         GOOGLE_WEB_CLIENT_ID: ${GOOGLE_WEB_CLIENT_ID:?}
     restart: unless-stopped
+    logging: *logging
     depends_on: [api]
     environment:
       DOMAIN: ${DOMAIN:?}
@@ -60,6 +74,7 @@ services:
   translate:
     image: libretranslate/libretranslate:v1.9.6
     restart: unless-stopped
+    logging: *logging
     environment:
       LT_LOAD_ONLY: en,fr,uk,ru,pl,ro,de,es,pt,it
     volumes:
@@ -68,6 +83,7 @@ services:
   backup:
     build: ./backup
     restart: unless-stopped
+    logging: *logging
     depends_on:
       db: { condition: service_healthy }
     environment:
@@ -77,6 +93,9 @@ services:
       TZ: Europe/Paris
     volumes:
       - ${BACKUP_DIR:-/home/debian/backups/staff-flow}:/backups
+      # Ce qui est sauvegardé en plus de la base (lecture seule).
+      - ..:/repo:ro
+      - ${HOSTING_DIR:-/home/debian/hosting}:/hosting:ro
 
 volumes:
   db:

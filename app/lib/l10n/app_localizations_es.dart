@@ -2075,13 +2075,6 @@ class L10nEs extends L10n {
   String get totpLoginTitle => 'Acceso 2FA';
 
   @override
-  String get totpLoginHint =>
-      'Introduce tu identificador de Staff Flow (SF-…) o tu número de empleado y luego el código de 6 cifras de tu aplicación de autenticación.';
-
-  @override
-  String get totpLoginField => 'ID SF o número de empleado';
-
-  @override
   String get totpCompanyCode => 'Código de la empresa';
 
   @override
@@ -2177,12 +2170,6 @@ class L10nEs extends L10n {
   @override
   String get linkGoogleBanner =>
       'Inicia sesión con la cuenta de Google que quieres vincular a Staff Flow.';
-
-  @override
-  String get totpLoginButton => 'Iniciar sesión con una aplicación 2FA';
-
-  @override
-  String get activateButton => 'Activar mi cuenta (código del empleador)';
 
   @override
   String get activationCodeAction => 'Nuevo código de activación';
@@ -2536,9 +2523,6 @@ class L10nEs extends L10n {
   }
 
   @override
-  String get lgYear => 'Año';
-
-  @override
   String get lgResults => 'Resultados en todo el historial';
 
   @override
@@ -2561,4 +2545,32 @@ class L10nEs extends L10n {
 
   @override
   String get lgFStatus => 'Estado';
+
+  @override
+  String get totpContinueButton => 'Continuar con una app 2FA';
+
+  @override
+  String get totpIdentHint =>
+      'Introduce tu identificador de Staff Flow (SF-…), tu número de empleado o el código de activación de tu empresa.';
+
+  @override
+  String get totpIdentField =>
+      'Identificador, número de empleado o código de la empresa';
+
+  @override
+  String get totpContinue => 'Continuar';
+
+  @override
+  String get totpUnknown =>
+      'Este identificador no existe. ¿Quieres crear una cuenta?';
+
+  @override
+  String get totpGoogleAccount =>
+      'Esta cuenta inicia sesión con Google: vuelve atrás y toca «Iniciar sesión con Google».';
+
+  @override
+  String get totpNoAccount => '¿Aún no tienes cuenta? Crear una';
+
+  @override
+  String get totpChange => 'Otro identificador';
 }

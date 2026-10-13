@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
 
 import 'errors.dart';
@@ -260,11 +261,20 @@ class TelegramService {
   /// l'image de description se règlent dans @BotFather : deploy/telegram/.)
   Future<void> customize() async {
     if (api == null) return;
-    // Telegram limite ces réglages : une erreur (déjà réglé, trop souvent) n'empêche pas le reste.
+    // Déjà envoyé tel quel : rien à refaire (Telegram refuse les envois trop fréquents).
+    final version = sha256
+        .convert(utf8.encode(jsonEncode([for (final e in _profile.entries) [e.key, '${e.value}']])))
+        .toString();
+    final sent = await store.query(store.db, "SELECT value FROM server_state WHERE key = 'telegram_profile'");
+    if (sent.isNotEmpty && sent.first[0] == version) return;
+    // Telegram limite ces réglages : une erreur (déjà réglé, trop souvent) n'empêche pas le reste,
+    // et tout sera renvoyé au prochain démarrage.
+    var done = true;
     Future<void> set(String method, Map<String, Object?> body) async {
       try {
         await api!.configure(method, body);
       } catch (e) {
+        done = false;
         print('Telegram $method : $e');
       }
     }
@@ -281,6 +291,11 @@ class TelegramService {
         ],
         ...l,
       });
+    }
+    if (done) {
+      await store.query(store.db, '''
+        INSERT INTO server_state (key, value) VALUES ('telegram_profile', @v)
+        ON CONFLICT (key) DO UPDATE SET value = excluded.value''', {'v': version});
     }
   }
 

@@ -65,6 +65,7 @@ Future<void> main() async {
     adminEmails: {for (final e in list('ADMIN_EMAILS')) e.toLowerCase()},
     testPaymentsForAll: env['BILLING_TEST'] == 'true',
     platformFile: (env['PLATFORM_CONFIG'] ?? '').isEmpty ? null : PlatformService.readFile(env['PLATFORM_CONFIG']!),
+    backupDir: env['BACKUP_WATCH_DIR'],
   );
 
   final port = int.parse(env['PORT'] ?? '8080');
@@ -78,6 +79,7 @@ Future<void> main() async {
     await api.imports.purge().catchError((Object e) => print('Invitations : $e'));
     await api.totp.purgeUnused().catchError((Object e) => print('Comptes 2FA : $e'));
     await api.apiLogs.archive().catchError((Object e) => print('Journaux API : $e'));
+    await api.monitor.check().catchError((Object e) => print('Surveillance : $e'));
   }
   unawaited(tick());
   Timer.periodic(const Duration(minutes: 10), (_) => tick());

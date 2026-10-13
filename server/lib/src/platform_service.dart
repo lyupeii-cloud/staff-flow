@@ -59,6 +59,12 @@ class PlatformService {
     SettingDef('graceDays', 'durations', SettingKind.count, 15, 0, 90),
     SettingDef('apiLogLiveMonths', 'durations', SettingKind.count, 12, 1, 36),
     SettingDef('apiLogYears', 'durations', SettingKind.count, 3, 1, 10),
+    SettingDef('apiReadPerMinute', 'limits', SettingKind.count, 120, 1, 100000),
+    SettingDef('apiWritePerMinute', 'limits', SettingKind.count, 60, 1, 100000),
+    SettingDef('apiCompanyPerMinute', 'limits', SettingKind.count, 300, 1, 100000),
+    SettingDef('apiKeyPerDay', 'limits', SettingKind.count, 20000, 1, 10000000),
+    SettingDef('authPerMinute', 'limits', SettingKind.count, 20, 1, 10000),
+    SettingDef('webhooksPerHour', 'limits', SettingKind.count, 1000, 1, 1000000),
     SettingDef('priceNoticeDays', 'durations', SettingKind.count, 30, 0, 365),
     SettingDef('invoiceRetentionYears', 'durations', SettingKind.count, 10, 1, 30),
   ];

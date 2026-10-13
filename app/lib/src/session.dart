@@ -6,6 +6,8 @@ import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'token_store.dart';
+
 import 'api.dart';
 import 'calendar_sync.dart';
 import 'config.dart';
@@ -39,7 +41,7 @@ class Session extends ChangeNotifier {
   /// Jour à montrer dans le planning d'une entreprise (« Tous mes plannings »).
   final openDay = ValueNotifier<({String companyId, DateTime day})?>(null);
 
-  static const tokenKey = 'session_token';
+  static const tokenKey = TokenStore.key;
 
   SessionState state = SessionState.loading;
   Me? me;
@@ -131,7 +133,7 @@ class Session extends ChangeNotifier {
       timeFormat = prefs.getString(timeFormatKey) ?? 'auto';
       sync = await Sync.open(api);
       _watchLifecycle();
-      api.token = prefs.getString(tokenKey);
+      api.token = await TokenStore.read();
       // Lien du bot Telegram : connexion directe (il ne sert qu'une fois).
       final link = telegramLoginToken;
       if (link != null) {
@@ -149,7 +151,7 @@ class Session extends ChangeNotifier {
         final token = r['token'] as String?;
         if (token == null || api.token == null) return;
         api.token = token;
-        await prefs.setString(tokenKey, token);
+        await TokenStore.write(token);
       }, onError: (_) {}));
       // Lancement : l'écran s'affiche tout de suite avec les données de la
       // dernière utilisation, puis se met à jour.
@@ -273,8 +275,7 @@ class Session extends ChangeNotifier {
   Future<void> switchToken(String token, {bool remember = true}) async {
     await sync.clear();
     api.token = token;
-    final prefs = await SharedPreferences.getInstance();
-    remember ? await prefs.setString(tokenKey, token) : await prefs.remove(tokenKey);
+    remember ? await TokenStore.write(token) : await TokenStore.delete();
     await refresh();
   }
 
@@ -307,8 +308,7 @@ class Session extends ChangeNotifier {
     api.token = null;
     me = null;
     await sync.clear();
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(tokenKey);
+    await TokenStore.delete();
     if (_googleReady) await GoogleSignIn.instance.signOut();
     _set(SessionState.signedOut);
   }

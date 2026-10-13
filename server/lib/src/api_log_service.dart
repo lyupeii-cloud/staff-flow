@@ -18,6 +18,9 @@ class ApiLog {
   String? action;
   final Map<String, Object?> details = {};
 
+  /// En-têtes de débit ajoutés à la réponse.
+  final Map<String, String> headers = {};
+
   static ApiLog? of(Request r) => r.context['apiLog'] as ApiLog?;
 
   /// Remplit [action] et [details] (sans effet hors d'un appel journalisé).
@@ -45,6 +48,9 @@ class ApiLogService {
 
   static const pageSize = 50;
 
+  /// Dernière minute où un refus de débit a été noté, par clé.
+  final _limitedAt = <String?, int>{};
+
   /// Échecs d'une clé en une heure avant d'alerter le patron.
   static const failureAlert = 10;
 
@@ -56,6 +62,12 @@ class ApiLogService {
     try {
       final key = log.key ?? await access.peek(req.headers['authorization'] ?? req.headers['x-api-key']);
       if (key == null) return; // Clé inconnue : rien à rattacher à une entreprise.
+      // Débit dépassé : une ligne par minute et par clé, pas une par appel refusé.
+      if (status == 429) {
+        final minute = now().millisecondsSinceEpoch ~/ 60000;
+        if (_limitedAt[key.id] == minute) return;
+        _limitedAt[key.id] = minute;
+      }
       final query = req.url.query.isEmpty ? '' : '?${req.url.query}';
       await record(
         companyId: key.company.id,

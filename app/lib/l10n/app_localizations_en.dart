@@ -2066,13 +2066,6 @@ class L10nEn extends L10n {
   String get totpLoginTitle => '2FA sign-in';
 
   @override
-  String get totpLoginHint =>
-      'Enter your Staff Flow ID (SF-…) or your employee number, then the 6-digit code from your authenticator app.';
-
-  @override
-  String get totpLoginField => 'SF ID or employee number';
-
-  @override
   String get totpCompanyCode => 'Company code';
 
   @override
@@ -2168,12 +2161,6 @@ class L10nEn extends L10n {
   @override
   String get linkGoogleBanner =>
       'Sign in with the Google account to link to your Staff Flow account.';
-
-  @override
-  String get totpLoginButton => 'Sign in with a 2FA app';
-
-  @override
-  String get activateButton => 'Activate my account (employer code)';
 
   @override
   String get activationCodeAction => 'New activation code';
@@ -2527,9 +2514,6 @@ class L10nEn extends L10n {
   }
 
   @override
-  String get lgYear => 'Year';
-
-  @override
   String get lgResults => 'Results in the whole history';
 
   @override
@@ -2552,6 +2536,33 @@ class L10nEn extends L10n {
 
   @override
   String get lgFStatus => 'Status';
+
+  @override
+  String get totpContinueButton => 'Continue with a 2FA app';
+
+  @override
+  String get totpIdentHint =>
+      'Enter your Staff Flow ID (SF-…), your employee number, or the activation code from your employer.';
+
+  @override
+  String get totpIdentField => 'ID, employee number or employer code';
+
+  @override
+  String get totpContinue => 'Continue';
+
+  @override
+  String get totpUnknown =>
+      'This ID doesn\'t exist. Do you want to create an account?';
+
+  @override
+  String get totpGoogleAccount =>
+      'This account signs in with Google: go back and tap “Sign in with Google”.';
+
+  @override
+  String get totpNoAccount => 'No account yet? Create one';
+
+  @override
+  String get totpChange => 'Use another ID';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).

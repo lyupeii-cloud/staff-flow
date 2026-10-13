@@ -11,7 +11,10 @@ class ApiError implements Exception {
   final String message;
   final Map<String, String> args;
 
-  const ApiError(this.status, this.code, this.message, [this.args = const {}]);
+  /// En-têtes ajoutés à la réponse (`Retry-After`…).
+  final Map<String, String> headers;
+
+  const ApiError(this.status, this.code, this.message, [this.args = const {}, this.headers = const {}]);
 
   const ApiError.badRequest(String message, [Map<String, String> args = const {}])
       : this(400, 'bad_request', message, args);

@@ -2077,13 +2077,6 @@ class L10nUk extends L10n {
   String get totpLoginTitle => 'Вхід через 2FA';
 
   @override
-  String get totpLoginHint =>
-      'Введіть свій ідентифікатор Staff Flow (SF-…) або табельний номер, а потім 6-значний код із застосунку автентифікації.';
-
-  @override
-  String get totpLoginField => 'Ідентифікатор SF або табельний номер';
-
-  @override
   String get totpCompanyCode => 'Код компанії';
 
   @override
@@ -2179,12 +2172,6 @@ class L10nUk extends L10n {
   @override
   String get linkGoogleBanner =>
       'Увійдіть з обліковим записом Google, який треба прив\'язати до Staff Flow.';
-
-  @override
-  String get totpLoginButton => 'Увійти через застосунок 2FA';
-
-  @override
-  String get activateButton => 'Активувати обліковий запис (код роботодавця)';
 
   @override
   String get activationCodeAction => 'Новий код активації';
@@ -2538,9 +2525,6 @@ class L10nUk extends L10n {
   }
 
   @override
-  String get lgYear => 'Рік';
-
-  @override
   String get lgResults => 'Результати в усій історії';
 
   @override
@@ -2563,4 +2547,32 @@ class L10nUk extends L10n {
 
   @override
   String get lgFStatus => 'Статус';
+
+  @override
+  String get totpContinueButton => 'Продовжити із застосунком 2FA';
+
+  @override
+  String get totpIdentHint =>
+      'Введіть свій ідентифікатор Staff Flow (SF-…), табельний номер або код активації від роботодавця.';
+
+  @override
+  String get totpIdentField =>
+      'Ідентифікатор, табельний номер або код роботодавця';
+
+  @override
+  String get totpContinue => 'Продовжити';
+
+  @override
+  String get totpUnknown =>
+      'Такого ідентифікатора немає. Створити обліковий запис?';
+
+  @override
+  String get totpGoogleAccount =>
+      'Цей обліковий запис входить через Google: поверніться назад і торкніться «Увійти через Google».';
+
+  @override
+  String get totpNoAccount => 'Ще немає облікового запису? Створити';
+
+  @override
+  String get totpChange => 'Інший ідентифікатор';
 }

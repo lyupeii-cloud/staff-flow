@@ -17,7 +17,9 @@ import 'join_service.dart';
 import 'messages.dart';
 import 'import_service.dart';
 import 'mcp.dart';
+import 'monitor_service.dart';
 import 'news_service.dart';
+import 'rate_limit.dart';
 import 'webhook_service.dart';
 import 'notice_service.dart';
 import 'notifications.dart';
@@ -73,6 +75,9 @@ class Api {
       client: webhookClient, now: now, allowPrivate: webhookClient != null, autoDeliver: webhookClient == null);
   final http.Client? webhookClient;
 
+  /// Débits : clés API, entreprises, connexions, webhooks.
+  late final RateLimiter limiter = RateLimiter(now: now);
+
   /// Journaux des clés API (appels et webhooks).
   late final ApiLogService apiLogs =
       ApiLogService(store, apiAccess, notifications, platform, tokens.derive('api-logs'), now: now);
@@ -83,6 +88,12 @@ class Api {
 
   /// Réglages lus au démarrage dans le fichier `PLATFORM_CONFIG`.
   final Map<String, int>? platformFile;
+
+  /// Dossier des sauvegardes vu par l'API (contrôle de leur fraîcheur).
+  final String? backupDir;
+
+  /// Alertes aux administrateurs : erreurs, disque, sauvegardes.
+  late final MonitorService monitor = MonitorService(store, telegram, adminEmails, now: now, backupDir: backupDir);
 
   /// Horloge (UTC), remplaçable dans les tests.
   final DateTime Function() now;
@@ -116,12 +127,15 @@ class Api {
     this.appUrl = 'https://app.staff-flow.cloud',
     this.adminEmails = const {},
     this.platformFile,
+    this.backupDir,
     this.testPaymentsForAll = false,
     this.webhookClient,
     DateTime Function()? now,
   })  : companies = CompanyService(store),
         now = now ?? (() => DateTime.now().toUtc()) {
     store.onAudit = (s, c, action, details) => webhooks.onAudit(s, c, action, details);
+    webhooks.allowSend = (c) async =>
+        limiter.hit('wh:$c', await platform.value('webhooksPerHour'), const Duration(hours: 1)).ok;
     webhooks.onSent = (companyId, event, url, status, error, took) => apiLogs.record(
         companyId: companyId,
         source: 'webhook',
@@ -148,6 +162,8 @@ class Api {
         await store.audit(actorId: user.id, action: 'auth.login');
         return _json({'token': tokens.issue(user.id, version: user.sessionVersion), 'user': user.toJson(), 'backupCodes': backup});
       })
+      ..post('/auth/identify',
+          (Request r) async => _json({'next': await totp.identify(_string(await _body(r), 'login'))}))
       ..post('/auth/totp', (Request r) async {
         final body = await _body(r);
         final company = body['company'];
@@ -821,7 +837,14 @@ class Api {
 
     late final Handler app;
     final root = Router(notFoundHandler: _notFound)
-      ..get('/health', (Request _) => _json({'status': 'ok'}))
+      ..get('/health', (Request _) async {
+        try {
+          await store.query(store.db, 'SELECT 1');
+          return _json({'status': 'ok'});
+        } catch (_) {
+          return _json({'status': 'database_down'}, status: 503);
+        }
+      })
       // Connecteur MCP : les outils appellent l'API /ext avec la même clé.
       ..add('POST', '/api/v1/mcp', (Request r) => McpServer(app, apiAccess).handle(r))
       ..add('GET', '/api/v1/mcp', (Request r) => McpServer(app, apiAccess).handle(r))
@@ -830,6 +853,7 @@ class Api {
     app = const Pipeline()
         .addMiddleware(_cors())
         .addMiddleware(_errors())
+        .addMiddleware(_authThrottle())
         .addHandler(root.call);
     return app;
   }
@@ -1355,7 +1379,7 @@ class Api {
         try {
           final res = await inner(req.change(context: {'apiLog': log}));
           status = res.statusCode;
-          return res;
+          return res.change(headers: log.headers);
         } on ApiError catch (e) {
           status = e.status;
           error = e;
@@ -1367,9 +1391,29 @@ class Api {
         }
       };
 
+  /// Débit d'une clé : par minute (lecture ou écriture), par jour, et pour
+  /// toute l'entreprise. Au-delà : 429 avec l'attente avant de réessayer.
+  Future<void> _throttle(Request req, ApiKey key, {required bool write}) async {
+    final v = await platform.values();
+    final checks = [
+      limiter.hit('k${write ? 'w' : 'r'}:${key.id}', v[write ? 'apiWritePerMinute' : 'apiReadPerMinute']!,
+          const Duration(minutes: 1)),
+      limiter.hit('kd:${key.id}', v['apiKeyPerDay']!, const Duration(days: 1)),
+      limiter.hit('c:${key.company.id}', v['apiCompanyPerMinute']!, const Duration(minutes: 1)),
+    ];
+    final refused = checks.where((c) => !c.ok).firstOrNull;
+    final shown = refused ?? checks.first;
+    ApiLog.of(req)?.headers.addAll(shown.headers);
+    if (refused != null) {
+      throw ApiError(429, 'rate_limited', 'Trop de requêtes : réessayez dans {seconds} s.',
+          {'seconds': refused.headers['retry-after']!}, refused.headers);
+    }
+  }
+
   Handler _apiKey(Future<Object?> Function(Request, Company) handler) => _logged('read', (Request req) async {
         final key = await apiAccess.key(req.headers['authorization'] ?? req.headers['x-api-key']);
         ApiLog.of(req)?.key = key;
+        await _throttle(req, key, write: false);
         final q = req.url.queryParameters;
         ApiLog.note(req, 'read.${req.url.pathSegments.last}', {
           if (q['from'] != null) 'from': q['from'],
@@ -1392,6 +1436,7 @@ class Api {
       _logged('write', (Request req) async {
         final key = await apiAccess.key(req.headers['authorization'] ?? req.headers['x-api-key']);
         ApiLog.of(req)?.key = key;
+        await _throttle(req, key, write: req.method != 'GET');
         final actor = await apiAccess.actorFor(key, scope);
         final data = await handler(req, key, actor);
         await store.audit(companyId: key.company.id, actorId: actor.id, action: 'api.write', details: {
@@ -1453,11 +1498,36 @@ class Api {
         "DELETE FROM idempotency_keys WHERE created_at < now() - interval '7 days'");
   }
 
+  /// Codes devinables (2FA, activation, invitation, Telegram) : nombre
+  /// d'essais par minute et par adresse IP.
+  Middleware _authThrottle() => (inner) => (req) async {
+        final p = req.url.path;
+        if (req.method == 'POST' &&
+            // Google signe ses jetons : rien à deviner, pas de limite.
+            ((p.startsWith('api/v1/auth/') && !p.endsWith('/dev') && !p.endsWith('/refresh') && !p.endsWith('/google')) ||
+                p.endsWith('/redeem') ||
+                p.endsWith('/join'))) {
+          final r = limiter.hit('ip:${_clientIp(req)}', await platform.value('authPerMinute'), const Duration(minutes: 1));
+          if (!r.ok) {
+            throw ApiError(429, 'too_many_attempts', 'Trop d\'essais : réessayez dans {seconds} s.',
+                {'seconds': r.headers['retry-after']!}, r.headers);
+          }
+        }
+        return inner(req);
+      };
+
   Middleware _errors() => (inner) => (req) async {
         try {
           return await inner(req);
         } on ApiError catch (e) {
-          return _json(e.toJson(negotiateLanguage(req.headers['accept-language'])), status: e.status);
+          return _json(e.toJson(negotiateLanguage(req.headers['accept-language'])), status: e.status)
+              .change(headers: e.headers);
+        } catch (e, stack) {
+          if (e is HijackException) rethrow;
+          print('Erreur ${req.method} /${req.url.path} : $e\n$stack');
+          monitor.error(e);
+          return _json(const ApiError(500, 'internal', 'Erreur du serveur.')
+              .toJson(negotiateLanguage(req.headers['accept-language'])), status: 500);
         }
       };
 
@@ -1476,9 +1546,18 @@ class Api {
         return res.change(headers: headers);
       };
 
+  /// Corps JSON : 1 Mo au plus (4 Mo pour un fichier d'import, 2 Mo pour un logo).
   static Future<Map<String, dynamic>> _body(Request req) async {
+    final path = req.url.path;
+    final max = path.endsWith('/imports') ? 4 << 20 : (path.endsWith('/logo') ? 2 << 20 : 1 << 20);
+    if ((req.contentLength ?? 0) > max) throw const ApiError(413, 'too_large', 'Requête trop volumineuse.');
+    final bytes = <int>[];
+    await for (final chunk in req.read()) {
+      bytes.addAll(chunk);
+      if (bytes.length > max) throw const ApiError(413, 'too_large', 'Requête trop volumineuse.');
+    }
     try {
-      final decoded = jsonDecode(await req.readAsString());
+      final decoded = jsonDecode(utf8.decode(bytes));
       if (decoded is Map<String, dynamic>) return decoded;
     } on FormatException {
       // traité ci-dessous
