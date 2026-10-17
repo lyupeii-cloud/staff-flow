@@ -84,7 +84,7 @@ const _labels = {
   'sellerName': 'Vendeur : nom',
   'sellerAddressLatin': 'Vendeur : adresse (alphabet latin)',
   'sellerAddressLocal': 'Vendeur : adresse (ukrainien)',
-  'sellerRegistration': 'Vendeur : n° d\'enregistrement (ЄДРПОУ)',
+  'sellerRegistration': 'Vendeur : n° d\'enregistrement (РНОКПП pour un ФОП, ЄДРПОУ pour une société)',
   'sellerTax': 'Mention fiscale (TVA…)',
 };
 
