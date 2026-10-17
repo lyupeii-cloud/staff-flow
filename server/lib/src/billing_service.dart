@@ -894,6 +894,32 @@ class BillingService {
     };
   }
 
+  /// Suppression d'une entreprise par l'administration (essais, tests) :
+  /// [confirm] doit reprendre son nom exact. Les factures déjà émises sont
+  /// gardées au nom du patron (durée légale), comme à la fin d'une période
+  /// de grâce ; une entreprise jamais payée disparaît entièrement.
+  Future<void> adminDelete(User admin, String companyId, String confirm) async {
+    final rows = await store.query(store.db, '''
+      SELECT c.name, m.user_id::text FROM companies c
+      LEFT JOIN memberships m ON m.company_id = c.id AND m.role = 'owner' AND m.left_at IS NULL
+      WHERE c.id::text = @c''', {'c': companyId});
+    if (rows.isEmpty) throw const ApiError.notFound();
+    final name = rows.first[0] as String, owner = rows.first[1] as String?;
+    if (confirm.trim() != name) throw const ApiError.badRequest('Le nom tapé ne correspond pas.');
+    final paid = (await store.query(store.db, 'SELECT 1 FROM invoices WHERE company_id = @c::uuid LIMIT 1', {'c': companyId}))
+        .isNotEmpty;
+    await store.db.runTx((tx) async {
+      if (paid) {
+        await store.query(tx, 'UPDATE invoices SET holder_id = @u::uuid WHERE company_id = @c::uuid', {'c': companyId, 'u': owner});
+      } else {
+        await store.query(tx, 'DELETE FROM audit_log WHERE company_id = @c::uuid', {'c': companyId});
+        await store.query(tx, "DELETE FROM audit_log WHERE details->>'companyId' = @c", {'c': companyId});
+      }
+      await store.query(tx, 'DELETE FROM companies WHERE id = @c::uuid', {'c': companyId});
+      await store.audit(actorId: admin.id, action: 'admin.company_deleted', details: {'name': name}, tx: tx);
+    });
+  }
+
   Future<List<Map<String, Object?>>> adminCompanies() async {
     final rows = await store.query(store.db, '''
       SELECT c.id::text, c.name, c.billing_status, c.trial_ends_at, c.paid_until, c.grace_ends_at, u.email, c.public_id,

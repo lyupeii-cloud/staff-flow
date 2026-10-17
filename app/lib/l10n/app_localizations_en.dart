@@ -153,10 +153,10 @@ class L10nEn extends L10n {
   String get viewPlanning => 'Schedule';
 
   @override
-  String get viewTeam => 'Management';
+  String get viewTeam => 'Configuration';
 
   @override
-  String get viewPositions => 'Positions';
+  String get viewPositions => 'Org chart';
 
   @override
   String get readOnlyCompany => 'This company is read-only.';
@@ -2580,6 +2580,13 @@ class L10nEn extends L10n {
   @override
   String get apiProNotActive =>
       'The “API Pro” option isn\'t active for this company.';
+
+  @override
+  String get apiKeySaved => 'Key saved.';
+
+  @override
+  String get apiKeyIncomplete =>
+      'Give the key a name and choose at least one permission.';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).

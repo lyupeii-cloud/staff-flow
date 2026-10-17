@@ -248,4 +248,5 @@ const es = <String, String>{
   'Trop de requêtes : réessayez dans {seconds} s.': 'Demasiadas solicitudes: inténtalo de nuevo en {seconds} s.',
   'Trop d\'essais : réessayez dans {seconds} s.': 'Demasiados intentos: inténtalo de nuevo en {seconds} s.',
   'Erreur du serveur.': 'Error del servidor.',
+  'Le nom tapé ne correspond pas.': 'El nombre escrito no coincide.',
 };

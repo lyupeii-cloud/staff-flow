@@ -56,4 +56,15 @@ void main() {
     expect([o['users'], o['companies'], o['activeCompanies'], o['theoreticalMonthlyCents']], [2, 1, 1, 300]);
     expect(o['companiesBySize'], {'1-10': 1});
   });
+
+  test('suppression d\'une entreprise par l\'administration : nom exact retapé, réservée à l\'administrateur', () async {
+    final boss = await env.login('boss');
+    final owner = await env.login('owner');
+    final company = await env.createCompany(owner, 'Test 3');
+    expect((await owner('DELETE', '/admin/companies/$company', {'confirm': 'Test 3'})).$1, 404);
+    expect((await boss('DELETE', '/admin/companies/$company', {'confirm': 'Test'})).$1, 400);
+    expect((await boss('DELETE', '/admin/companies/$company', {'confirm': 'Test 3'})).$1, 204);
+    expect((await owner.ok('GET', '/me'))['companies'], isEmpty);
+    expect((await boss('DELETE', '/admin/companies/$company', {'confirm': 'Test 3'})).$1, 404);
+  });
 }

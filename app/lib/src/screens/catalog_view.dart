@@ -216,7 +216,7 @@ class CatalogView extends StatelessWidget {
 }
 
 /// Liste de postes ou de sites : à partir de 15, une recherche et un tri
-/// (ordre habituel ou par nom) apparaissent, comme dans « Management ».
+/// (ordre habituel ou par nom) apparaissent, comme dans « Configurations ».
 class _Filtered extends StatefulWidget {
   final List<PickItem> items;
 

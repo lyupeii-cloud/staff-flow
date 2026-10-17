@@ -248,4 +248,5 @@ const pl = <String, String>{
   'Trop de requêtes : réessayez dans {seconds} s.': 'Zbyt wiele żądań: spróbuj ponownie za {seconds} s.',
   'Trop d\'essais : réessayez dans {seconds} s.': 'Zbyt wiele prób: spróbuj ponownie za {seconds} s.',
   'Erreur du serveur.': 'Błąd serwera.',
+  'Le nom tapé ne correspond pas.': 'Wpisana nazwa się nie zgadza.',
 };

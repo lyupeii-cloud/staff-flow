@@ -268,4 +268,5 @@ const uk = <String, String>{
   'Trop de requêtes : réessayez dans {seconds} s.': 'Забагато запитів: спробуйте через {seconds} с.',
   'Trop d\'essais : réessayez dans {seconds} s.': 'Забагато спроб: спробуйте через {seconds} с.',
   'Erreur du serveur.': 'Помилка сервера.',
+  'Le nom tapé ne correspond pas.': 'Введена назва не збігається.',
 };

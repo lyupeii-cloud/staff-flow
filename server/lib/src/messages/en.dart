@@ -270,4 +270,5 @@ const en = <String, String>{
   'Trop de requêtes : réessayez dans {seconds} s.': 'Too many requests: try again in {seconds} s.',
   'Trop d\'essais : réessayez dans {seconds} s.': 'Too many attempts: try again in {seconds} s.',
   'Erreur du serveur.': 'Server error.',
+  'Le nom tapé ne correspond pas.': 'The name typed doesn\'t match.',
 };

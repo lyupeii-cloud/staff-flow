@@ -123,10 +123,18 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
       ),
       ),
     );
-    if (ok != true || name.text.trim().isEmpty || scopes.isEmpty || !mounted) return;
+    if (ok != true || !mounted) return;
+    final messenger = ScaffoldMessenger.of(context);
+    if (name.text.trim().isEmpty || scopes.isEmpty) {
+      messenger.showSnackBar(SnackBar(content: Text(t.apiKeyIncomplete)));
+      return;
+    }
     if (key != null) {
-      await _run(() => widget.session.api
-          .send('PATCH', '$_base/${key['id']}', body: {'name': name.text.trim(), 'scopes': scopes.toList()}));
+      await _run(() async {
+        await widget.session.api
+            .send('PATCH', '$_base/${key['id']}', body: {'name': name.text.trim(), 'scopes': scopes.toList()});
+        messenger.showSnackBar(SnackBar(content: Text(t.apiKeySaved)));
+      });
       return;
     }
     await _run(() async {

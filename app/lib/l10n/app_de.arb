@@ -39,8 +39,8 @@
   "joinInvite": "„{company}“ lädt dich ein als: {role}.",
   "joinedCompany": "Du bist {company} beigetreten.",
   "viewPlanning": "Dienstplan",
-  "viewTeam": "Management",
-  "viewPositions": "Positionen",
+  "viewTeam": "Konfiguration",
+  "viewPositions": "Organigramm",
   "readOnlyCompany": "Unternehmen nur lesbar.",
   "team": "Team",
   "leaveCompany": "Dieses Unternehmen verlassen",
@@ -719,5 +719,7 @@
   "billingActiveOptions": "Aktive Optionen",
   "billingNoOptions": "Keine aktive Option.",
   "optionNotActive": "Diese Option ist für dieses Unternehmen nicht aktiv.",
-  "apiProNotActive": "Die Option „API Pro“ ist für dieses Unternehmen nicht aktiv."
+  "apiProNotActive": "Die Option „API Pro“ ist für dieses Unternehmen nicht aktiv.",
+  "apiKeySaved": "Schlüssel gespeichert.",
+  "apiKeyIncomplete": "Geben Sie dem Schlüssel einen Namen und wählen Sie mindestens ein Recht."
 }

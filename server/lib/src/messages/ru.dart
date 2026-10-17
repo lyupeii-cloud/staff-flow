@@ -248,4 +248,5 @@ const ru = <String, String>{
   'Trop de requêtes : réessayez dans {seconds} s.': 'Слишком много запросов: повторите через {seconds} с.',
   'Trop d\'essais : réessayez dans {seconds} s.': 'Слишком много попыток: повторите через {seconds} с.',
   'Erreur du serveur.': 'Ошибка сервера.',
+  'Le nom tapé ne correspond pas.': 'Введённое название не совпадает.',
 };

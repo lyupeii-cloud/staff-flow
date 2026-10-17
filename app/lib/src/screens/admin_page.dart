@@ -225,6 +225,46 @@ class _Companies extends StatelessWidget {
     'comped': 'Offerte',
   };
 
+  /// Suppression définitive (essais, tests) : il faut retaper le nom exact.
+  Future<void> _delete(BuildContext context, Map c, VoidCallback reload) async {
+    final messenger = ScaffoldMessenger.of(context);
+    final name = TextEditingController();
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Supprimer « ${c['name']} » ?'),
+        content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          const Text('Le planning, les membres, les demandes et l\'historique de cette entreprise sont effacés '
+              'définitivement. Les factures déjà émises restent au nom du patron. Une sauvegarde de la nuit '
+              'permet de revenir en arrière en cas d\'erreur.'),
+          const SizedBox(height: 12),
+          TextField(
+            controller: name,
+            autofocus: true,
+            decoration: InputDecoration(labelText: 'Tapez le nom exact : ${c['name']}'),
+          ),
+        ]),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Annuler')),
+          FilledButton(
+            style: FilledButton.styleFrom(backgroundColor: Theme.of(context).colorScheme.error),
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Supprimer définitivement'),
+          ),
+        ],
+      ),
+    );
+    if (ok != true) return;
+    try {
+      await session.api.send('DELETE', '/admin/companies/${c['id']}', body: {'confirm': name.text});
+      await session.refresh();
+      messenger.showSnackBar(SnackBar(content: Text('« ${c['name']} » supprimée.')));
+    } on ApiException catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text(e.serverMessage ?? 'Erreur ${e.status}')));
+    }
+    reload();
+  }
+
   @override
   Widget build(BuildContext context) {
     String day(String? iso) => iso == null ? '' : DateTime.parse(iso).toLocal().toString().substring(0, 16);
@@ -251,6 +291,11 @@ class _Companies extends StatelessWidget {
                             _ => '',
                           }}'),
                     ]),
+                  ),
+                  IconButton(
+                    tooltip: 'Supprimer l\'entreprise',
+                    icon: const Icon(Icons.delete_forever_outlined),
+                    onPressed: () => _delete(context, c, reload),
                   ),
                   Column(children: [
                     const Text('Offerte'),

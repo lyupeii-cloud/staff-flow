@@ -43,8 +43,8 @@
   "joinInvite": "« {company} » vous invite comme {role}.",
   "joinedCompany": "Vous avez rejoint {company}.",
   "viewPlanning": "Planning",
-  "viewTeam": "Management",
-  "viewPositions": "Postes",
+  "viewTeam": "Configurations",
+  "viewPositions": "Organigramme",
   "readOnlyCompany": "Entreprise en lecture seule.",
   "team": "Équipe",
   "leaveCompany": "Quitter cette entreprise",
@@ -723,5 +723,7 @@
   "billingActiveOptions": "Options actives",
   "billingNoOptions": "Aucune option active.",
   "optionNotActive": "Cette option n'est pas active pour cette entreprise.",
-  "apiProNotActive": "L'option « API Pro » n'est pas active pour cette entreprise."
+  "apiProNotActive": "L'option « API Pro » n'est pas active pour cette entreprise.",
+  "apiKeySaved": "Clé enregistrée.",
+  "apiKeyIncomplete": "Donnez un nom à la clé et choisissez au moins un droit."
 }

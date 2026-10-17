@@ -375,13 +375,13 @@ abstract class L10n {
   /// No description provided for @viewTeam.
   ///
   /// In en, this message translates to:
-  /// **'Management'**
+  /// **'Configuration'**
   String get viewTeam;
 
   /// No description provided for @viewPositions.
   ///
   /// In en, this message translates to:
-  /// **'Positions'**
+  /// **'Org chart'**
   String get viewPositions;
 
   /// No description provided for @readOnlyCompany.
@@ -4463,6 +4463,18 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'The “API Pro” option isn\'t active for this company.'**
   String get apiProNotActive;
+
+  /// No description provided for @apiKeySaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Key saved.'**
+  String get apiKeySaved;
+
+  /// No description provided for @apiKeyIncomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Give the key a name and choose at least one permission.'**
+  String get apiKeyIncomplete;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

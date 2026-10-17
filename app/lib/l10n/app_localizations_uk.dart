@@ -153,10 +153,10 @@ class L10nUk extends L10n {
   String get viewPlanning => 'Графік';
 
   @override
-  String get viewTeam => 'Управління';
+  String get viewTeam => 'Налаштування';
 
   @override
-  String get viewPositions => 'Посади';
+  String get viewPositions => 'Оргструктура';
 
   @override
   String get readOnlyCompany => 'Компанія доступна лише для перегляду.';
@@ -2590,4 +2590,11 @@ class L10nUk extends L10n {
 
   @override
   String get apiProNotActive => 'Опція «API Pro» не активна для цієї компанії.';
+
+  @override
+  String get apiKeySaved => 'Ключ збережено.';
+
+  @override
+  String get apiKeyIncomplete =>
+      'Дайте ключу назву й виберіть щонайменше одне право.';
 }

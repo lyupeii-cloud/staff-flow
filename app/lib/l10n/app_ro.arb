@@ -39,8 +39,8 @@
   "joinInvite": "„{company}” te invită ca {role}.",
   "joinedCompany": "Te-ai alăturat firmei {company}.",
   "viewPlanning": "Program",
-  "viewTeam": "Management",
-  "viewPositions": "Posturi",
+  "viewTeam": "Configurări",
+  "viewPositions": "Organigramă",
   "readOnlyCompany": "Firmă doar pentru citire.",
   "team": "Echipă",
   "leaveCompany": "Părăsește această firmă",
@@ -719,5 +719,7 @@
   "billingActiveOptions": "Opțiuni active",
   "billingNoOptions": "Nicio opțiune activă.",
   "optionNotActive": "Această opțiune nu este activă pentru această companie.",
-  "apiProNotActive": "Opțiunea „API Pro” nu este activă pentru această companie."
+  "apiProNotActive": "Opțiunea „API Pro” nu este activă pentru această companie.",
+  "apiKeySaved": "Cheie salvată.",
+  "apiKeyIncomplete": "Dați un nume cheii și alegeți cel puțin un drept."
 }

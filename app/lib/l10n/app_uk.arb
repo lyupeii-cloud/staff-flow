@@ -43,8 +43,8 @@
   "joinInvite": "«{company}» запрошує вас як: {role}.",
   "joinedCompany": "Ви приєдналися до «{company}».",
   "viewPlanning": "Графік",
-  "viewTeam": "Управління",
-  "viewPositions": "Посади",
+  "viewTeam": "Налаштування",
+  "viewPositions": "Оргструктура",
   "readOnlyCompany": "Компанія доступна лише для перегляду.",
   "team": "Команда",
   "leaveCompany": "Вийти з компанії",
@@ -723,5 +723,7 @@
   "billingActiveOptions": "Активні опції",
   "billingNoOptions": "Немає активних опцій.",
   "optionNotActive": "Ця опція не активна для цієї компанії.",
-  "apiProNotActive": "Опція «API Pro» не активна для цієї компанії."
+  "apiProNotActive": "Опція «API Pro» не активна для цієї компанії.",
+  "apiKeySaved": "Ключ збережено.",
+  "apiKeyIncomplete": "Дайте ключу назву й виберіть щонайменше одне право."
 }

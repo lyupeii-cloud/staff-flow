@@ -216,6 +216,12 @@ class Api {
         return _json({'path': '/api/v1/invoices/${billing.adminInvoiceLink(u, id, _lang(r))}'});
       }))
       ..get('/admin/companies', _admin((r, u) async => _json({'companies': await billing.adminCompanies()})))
+      ..delete('/admin/companies/<id>', _admin((r, u) async {
+        final confirm = (await _body(r))['confirm'];
+        if (confirm is! String) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        await billing.adminDelete(u, r.params['id']!, confirm);
+        return Response(204);
+      }))
       ..put('/admin/companies/<id>/comped', _admin((r, u) async {
         final comped = (await _body(r))['comped'];
         if (comped is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');

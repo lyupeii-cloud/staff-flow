@@ -248,4 +248,5 @@ const ro = <String, String>{
   'Trop de requêtes : réessayez dans {seconds} s.': 'Prea multe cereri: încercați din nou în {seconds} s.',
   'Trop d\'essais : réessayez dans {seconds} s.': 'Prea multe încercări: încercați din nou în {seconds} s.',
   'Erreur du serveur.': 'Eroare de server.',
+  'Le nom tapé ne correspond pas.': 'Numele introdus nu corespunde.',
 };

@@ -153,10 +153,10 @@ class L10nRo extends L10n {
   String get viewPlanning => 'Program';
 
   @override
-  String get viewTeam => 'Management';
+  String get viewTeam => 'Configurări';
 
   @override
-  String get viewPositions => 'Posturi';
+  String get viewPositions => 'Organigramă';
 
   @override
   String get readOnlyCompany => 'Firmă doar pentru citire.';
@@ -2590,4 +2590,11 @@ class L10nRo extends L10n {
   @override
   String get apiProNotActive =>
       'Opțiunea „API Pro” nu este activă pentru această companie.';
+
+  @override
+  String get apiKeySaved => 'Cheie salvată.';
+
+  @override
+  String get apiKeyIncomplete =>
+      'Dați un nume cheii și alegeți cel puțin un drept.';
 }

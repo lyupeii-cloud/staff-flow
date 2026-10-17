@@ -88,8 +88,8 @@
     }
   },
   "viewPlanning": "Schedule",
-  "viewTeam": "Management",
-  "viewPositions": "Positions",
+  "viewTeam": "Configuration",
+  "viewPositions": "Org chart",
   "readOnlyCompany": "This company is read-only.",
   "team": "Team",
   "leaveCompany": "Leave this company",
@@ -1843,5 +1843,7 @@
   "billingActiveOptions": "Active options",
   "billingNoOptions": "No active option.",
   "optionNotActive": "This option isn't active for this company.",
-  "apiProNotActive": "The “API Pro” option isn't active for this company."
+  "apiProNotActive": "The “API Pro” option isn't active for this company.",
+  "apiKeySaved": "Key saved.",
+  "apiKeyIncomplete": "Give the key a name and choose at least one permission."
 }

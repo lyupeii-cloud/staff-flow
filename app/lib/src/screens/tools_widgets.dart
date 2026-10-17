@@ -185,7 +185,7 @@ class ToolsSettings extends StatelessWidget {
   }
 }
 
-/// Réglages de l'entreprise (onglet « Management ») : fuseau horaire et
+/// Réglages de l'entreprise (onglet « Configurations ») : fuseau horaire et
 /// droit d'impression des salariés.
 class CompanySettings extends StatelessWidget {
   final Session session;

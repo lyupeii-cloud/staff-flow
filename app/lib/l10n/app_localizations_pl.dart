@@ -153,10 +153,10 @@ class L10nPl extends L10n {
   String get viewPlanning => 'Grafik';
 
   @override
-  String get viewTeam => 'Zarządzanie';
+  String get viewTeam => 'Konfiguracja';
 
   @override
-  String get viewPositions => 'Stanowiska';
+  String get viewPositions => 'Struktura';
 
   @override
   String get readOnlyCompany => 'Firma tylko do odczytu.';
@@ -2594,4 +2594,11 @@ class L10nPl extends L10n {
   @override
   String get apiProNotActive =>
       'Opcja „API Pro” nie jest aktywna dla tej firmy.';
+
+  @override
+  String get apiKeySaved => 'Klucz zapisany.';
+
+  @override
+  String get apiKeyIncomplete =>
+      'Nadaj kluczowi nazwę i wybierz co najmniej jedno uprawnienie.';
 }
