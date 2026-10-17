@@ -141,7 +141,9 @@ class _BillingPageState extends State<BillingPage> {
     final until = d['${option}Until'] as String?;
     return CheckboxListTile(
       contentPadding: EdgeInsets.zero,
-      value: value,
+      // Option active : la case reflète le renouvellement enregistré sur le
+      // serveur (cochée = renouvelée), relu après chaque changement.
+      value: active ? until == null : value,
       onChanged: _busy ? null : (v) => active ? _setRenewal(option, v ?? false) : onLocal(v ?? false),
       title: Text(title),
       subtitle: Text([
@@ -402,7 +404,7 @@ class _BillingPageState extends State<BillingPage> {
         _optionTile(d, 'api', t.billingApi, t.billingPerMonth(euroAmount(context, d['apiOptionPrice'] as int)),
             value: _api, onLocal: (v) => setState(() => _api = v)),
         // API Pro : seulement en cours d'abonnement payé (ajoutée ci-dessous, puis renouvelée ou non).
-        if (d['apiProOption'] == true)
+        if (d['apiProOption'] == true && status == 'active')
           _optionTile(d, 'pro', t.billingApiPro, t.billingPerMonth(euroAmount(context, d['apiProPrice'] as int)),
               value: d['proUntil'] == null, onLocal: (_) {})
         else
