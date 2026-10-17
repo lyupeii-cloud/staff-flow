@@ -27,9 +27,9 @@
       
       <h2>What it is for</h2>
       <p>The “API access” option lets your accounting, payroll or CRM software automatically read your company's published schedule, everyone's hours and approved absences. Access is read-only: nothing can be changed through the API.</p>
-      <p>Add the option in the app: Management → Manage subscription. It is available during the free trial.</p>
+      <p>Add the option in the web version (app.staff-flow.cloud): Configuration → Manage subscription. It is available during the free trial, with 1 key.</p>
       <h2>1. Create a key</h2>
-      <p>In the app, the company owner (or a manager entrusted with the subscription) opens Management → API access → New key and gives it a name (for example “Payroll software”). The full key is shown only once: copy it into your software. You can revoke it at any time; 10 keys at most per company.</p>
+      <p>In the app, the company owner (or a manager entrusted with the subscription) opens Configuration → API access → New key and gives it a name (for example “Payroll software”). The full key is shown only once: copy it into your software. You can revoke it at any time; 10 keys at most per company.</p>
       <h2>2. Call the API</h2>
       <p>Send the key in the “Authorization: Bearer …” header (or “X-Api-Key”). All addresses start with https://app.staff-flow.cloud/api/v1/ext/.</p>
       <pre><code>curl -H &quot;Authorization: Bearer sfk_xxxxxxxx_yyyyyyyy…&quot; \
@@ -57,8 +57,8 @@ GET /api/v1/ext/absences    approved leave and unavailability  ?from=&amp;to=</c
       <h2>5. Errors</h2>
       <p>401: missing, wrong or revoked key. 402: the “API access” option is not active (subscription without the option). 400: invalid dates.</p>
       <h2>API Pro: writing into Staff Flow</h2>
-      <p>With the “API Pro” option (€9 a month, no discount, with a paid subscription; not during the trial or the grace period), your software can also send schedules, employees, positions and sites, announcements, and decide on requests.</p>
-      <p>Each key has its own permissions, chosen when it is created: read, schedule, publish, employees, positions and sites, announcements, requests. Only the owner and managers entrusted with the subscription create and revoke keys (10 at most). “API Pro” is never included: not during the trial, not for a complimentary company, not above 100 employees. It can be cancelled like any option: it stays active until the end of the paid period.</p>
+      <p>With the “API Pro” option (€10 a month for 1 key, €20 for 5 keys, no discount, with a paid subscription; not during the trial or the grace period), your software can also send schedules, employees, positions and sites, announcements, and decide on requests.</p>
+      <p>Each key has its own permissions, chosen when it is created: read, schedule, publish, employees, positions and sites, announcements, requests. Only the owner and managers entrusted with the subscription create and revoke keys: 1 key with read access or “API Pro” 1 key, 5 keys with “API Pro” 5 keys. Moving from read access to “API Pro” keeps the same key; moving from 1 to 5 keys is paid as the difference until the end of the period; going back to 1 key happens at renewal (extra keys are set aside, you choose which to keep). Without the option, keys stop working and are deleted after 30 days (you are warned 7 days before). “API Pro” is never included: not during the trial, not for a complimentary company, not above 100 employees. It can be cancelled like any option: it stays active until the end of the paid period.</p>
       <pre><code>POST   /api/v1/ext/shifts           create shifts (draft, or &quot;publish&quot;: true)
 PATCH  /api/v1/ext/shifts/{id}      edit a shift (back to draft)
 DELETE /api/v1/ext/shifts/{id}      delete a shift
@@ -94,7 +94,7 @@ list_pending_requests · decide_request</code></pre>
       <p>Add a custom connector with this address and an API key. The assistant only sees the tools the key's permissions allow: reading with the “API access” option, writing with “API Pro”. Shifts it creates arrive as drafts unless the key has the “publish” permission. Every action is logged in the history with the key's name.</p>
       <h2>Webhooks: Staff Flow notifies your software</h2>
       <p>With the “API Pro” option, Staff Flow sends a message on its own (JSON POST) to your software's address when something happens. No more polling the API.</p>
-      <p>In the app: Management → API access → Webhooks. The owner and managers entrusted with the subscription add up to 5 addresses (https), choose the events, and can send a test delivery.</p>
+      <p>In the app: Configuration → API access → Webhooks. The owner and managers entrusted with the subscription add up to 5 addresses (https), choose the events, and can send a test delivery.</p>
       <pre><code>schedule.published       planning publié / schedule published
 request.created          nouvelle demande / new request
 request.decided          demande validée ou refusée / approved or refused
@@ -123,7 +123,7 @@ v1 = HMAC-SHA256(secret, t + &quot;.&quot; + body)   (hex)</code></pre>
       <p>On failure, Staff Flow retries after 1 min, 5 min, 30 min, 2 h, 6 h and 12 h. After 10 dropped deliveries in a row, the address is turned off; you turn it back on in the app. People are identified by their SF ID and employee number, never by email address. Option ended or grace period: nothing is sent any more.</p>
       <h2>Logs and alerts</h2>
       <p>Every call from your keys (read, write, MCP assistant) and every webhook delivery is logged: date, key, plain-language action, result, duration, IP address. For an edit, the before and after (“start 08:00 → 09:00”).</p>
-      <p>In the app: Management → API access → Logs. One month at a time (swipe to change), search (person, employee number, action) and filters (key, source, read or write, succeeded or failed). For the owner and managers entrusted with the subscription.</p>
+      <p>In the app: Configuration → API access → Logs. One month at a time (swipe to change), search (person, employee number, action) and filters (key, source, read or write, succeeded or failed). For the owner and managers entrusted with the subscription.</p>
       <p>The last 12 months stay online; older months are archived automatically and can still be browsed and searched (“search the whole history”). Each year can be downloaded as a ZIP (one CSV file per month, opens in Excel). Logs are deleted after 3 years.</p>
       <p>The owner is alerted if a key fails 10 times in one hour, or is used from a new IP address (a possible sign of a stolen key). Each key shows its calls today and this month. A key's permissions can be changed without changing the key.</p>
       <h2>Personal data</h2>
