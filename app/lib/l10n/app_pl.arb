@@ -714,5 +714,10 @@
   "totpUnknown": "Taki identyfikator nie istnieje. Utworzyć konto?",
   "totpGoogleAccount": "To konto loguje się przez Google: wróć i dotknij „Zaloguj się przez Google”.",
   "totpNoAccount": "Nie masz konta? Utwórz je",
-  "totpChange": "Inny identyfikator"
+  "totpChange": "Inny identyfikator",
+  "billingNotInApp": "Zakupy nie są dostępne w aplikacji mobilnej.",
+  "billingActiveOptions": "Aktywne opcje",
+  "billingNoOptions": "Brak aktywnych opcji.",
+  "optionNotActive": "Ta opcja nie jest aktywna dla tej firmy.",
+  "apiProNotActive": "Opcja „API Pro” nie jest aktywna dla tej firmy."
 }

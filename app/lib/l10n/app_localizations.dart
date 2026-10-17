@@ -4433,6 +4433,36 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Use another ID'**
   String get totpChange;
+
+  /// No description provided for @billingNotInApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchases aren\'t available in the mobile app.'**
+  String get billingNotInApp;
+
+  /// No description provided for @billingActiveOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Active options'**
+  String get billingActiveOptions;
+
+  /// No description provided for @billingNoOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'No active option.'**
+  String get billingNoOptions;
+
+  /// No description provided for @optionNotActive.
+  ///
+  /// In en, this message translates to:
+  /// **'This option isn\'t active for this company.'**
+  String get optionNotActive;
+
+  /// No description provided for @apiProNotActive.
+  ///
+  /// In en, this message translates to:
+  /// **'The “API Pro” option isn\'t active for this company.'**
+  String get apiProNotActive;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

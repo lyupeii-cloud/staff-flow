@@ -2576,4 +2576,22 @@ class L10nFr extends L10n {
 
   @override
   String get totpChange => 'Changer d\'identifiant';
+
+  @override
+  String get billingNotInApp =>
+      'Les achats ne sont pas proposés dans l\'application mobile.';
+
+  @override
+  String get billingActiveOptions => 'Options actives';
+
+  @override
+  String get billingNoOptions => 'Aucune option active.';
+
+  @override
+  String get optionNotActive =>
+      'Cette option n\'est pas active pour cette entreprise.';
+
+  @override
+  String get apiProNotActive =>
+      'L\'option « API Pro » n\'est pas active pour cette entreprise.';
 }

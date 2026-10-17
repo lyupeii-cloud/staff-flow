@@ -2563,6 +2563,23 @@ class L10nEn extends L10n {
 
   @override
   String get totpChange => 'Use another ID';
+
+  @override
+  String get billingNotInApp =>
+      'Purchases aren\'t available in the mobile app.';
+
+  @override
+  String get billingActiveOptions => 'Active options';
+
+  @override
+  String get billingNoOptions => 'No active option.';
+
+  @override
+  String get optionNotActive => 'This option isn\'t active for this company.';
+
+  @override
+  String get apiProNotActive =>
+      'The “API Pro” option isn\'t active for this company.';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).

@@ -718,5 +718,10 @@
   "totpUnknown": "Cet identifiant n'existe pas. Voulez-vous créer un compte ?",
   "totpGoogleAccount": "Ce compte se connecte avec Google : revenez en arrière et touchez « Se connecter avec Google ».",
   "totpNoAccount": "Pas encore de compte ? Créer un compte",
-  "totpChange": "Changer d'identifiant"
+  "totpChange": "Changer d'identifiant",
+  "billingNotInApp": "Les achats ne sont pas proposés dans l'application mobile.",
+  "billingActiveOptions": "Options actives",
+  "billingNoOptions": "Aucune option active.",
+  "optionNotActive": "Cette option n'est pas active pour cette entreprise.",
+  "apiProNotActive": "L'option « API Pro » n'est pas active pour cette entreprise."
 }

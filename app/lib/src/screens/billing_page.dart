@@ -8,6 +8,7 @@ import '../api.dart';
 import '../dates.dart';
 import '../i18n.dart';
 import '../models.dart';
+import '../purchases.dart';
 import '../session.dart';
 import 'account_tools.dart';
 import 'tools_widgets.dart';
@@ -300,6 +301,7 @@ class _BillingPageState extends State<BillingPage> {
       'grace' => t.billingStatusGrace(day(d['graceEndsAt'])),
       _ => t.billingStatusComped,
     };
+    if (!Purchases.enabled) return _readOnly(context, t, theme, d, statusText);
     final prices = (d['prices'] as Map).cast<String, dynamic>();
     final staff = d['staff'] as int;
     final included = (d['slotsChosen'] as int? ?? staff) >= (d['cascadeIncludedFrom'] as int);
@@ -484,6 +486,63 @@ class _BillingPageState extends State<BillingPage> {
         ),
     ];
   }
+
+  /// Application mobile : l'abonnement en lecture seule (état, places,
+  /// options actives, factures), sans aucun prix ni achat — voir [Purchases].
+  List<Widget> _readOnly(BuildContext context, L10n t, ThemeData theme, Map<String, dynamic> d, String statusText) {
+    final loc = context.localeName;
+    final status = d['status'] as String;
+    final invoices = d['invoices'] as List;
+    final included = (d['slotsChosen'] as int? ?? d['staff'] as int) >= (d['cascadeIncludedFrom'] as int);
+    String? ends(String option) {
+      final until = d['${option}Until'] as String?;
+      return until == null
+          ? null
+          : t.billingOptionEnds(longDate(DateTime.parse(until).subtract(const Duration(days: 1)), loc));
+    }
+
+    final options = [
+      if (d['apiOption'] == true) (t.billingApi, ends('api')),
+      if (d['apiProOption'] == true) (t.billingApiPro, ends('pro')),
+      if (d['cascadeOption'] == true || included) (t.billingCascade, ends('cascade')),
+    ];
+    return [
+      Card(
+        color: status == 'grace' ? theme.colorScheme.errorContainer : theme.colorScheme.primaryContainer,
+        child: ListTile(
+          leading: Icon(status == 'grace' ? Icons.lock_clock : Icons.verified_outlined),
+          title: Text(statusText),
+          subtitle: Text([
+            t.billingStaff('${d['staff']}'),
+            if (d['seatLimit'] != null) t.billingSeats('${d['slots']}', '${d['seatLimit']}'),
+            t.billingCompanyId('${d['publicId']}'),
+          ].join('\n')),
+          isThreeLine: true,
+        ),
+      ),
+      const SizedBox(height: 16),
+      Text(t.billingActiveOptions, style: theme.textTheme.titleMedium),
+      if (options.isEmpty)
+        Padding(padding: const EdgeInsets.only(top: 8), child: Text(t.billingNoOptions))
+      else
+        for (final (name, until) in options)
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const Icon(Icons.check_circle_outline),
+            title: Text(name),
+            subtitle: Text(until ?? t.billingOptionActive),
+          ),
+      const SizedBox(height: 8),
+      Text(t.billingNotInApp, style: theme.textTheme.bodySmall),
+      const SizedBox(height: 24),
+      Text(t.billingInvoices, style: theme.textTheme.titleMedium),
+      _Invoices(
+        invoices: [for (final i in invoices) (i as Map).cast<String, dynamic>()],
+        busy: _busy,
+        onOpen: _openInvoice,
+      ),
+    ];
+  }
 }
 
 /// Factures, une année à la fois, choisie dans un menu déroulant (la plus
@@ -528,7 +587,7 @@ class _InvoicesState extends State<_Invoices> {
               leading: const Icon(Icons.receipt_long_outlined),
               title: Text(i['period'] == 'addon' ? '${i['number']} · ${t.billingAddonInvoice}' : '${i['number']}'),
               subtitle: Text('${day(i['from'])} – ${day(DateTime.parse(i['to']).subtract(const Duration(days: 1)).toIso8601String())}'
-                  ' · ${euroAmount(context, i['amountCents'] as int)}'),
+                  '${Purchases.enabled ? ' · ${euroAmount(context, i['amountCents'] as int)}' : ''}'),
               trailing: const Icon(Icons.download_outlined),
               onTap: widget.busy ? null : () => widget.onOpen(i['id'] as int),
             ),

@@ -5,6 +5,7 @@ import '../api.dart';
 import '../dates.dart';
 import '../i18n.dart';
 import '../models.dart';
+import '../purchases.dart';
 import '../session.dart';
 import 'billing_page.dart';
 import 'tools_widgets.dart';
@@ -111,7 +112,8 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
                 onChanged: s != 'read' && !_pro && !initial.contains(s) ? null : (v) => setState(() => v == true ? scopes.add(s) : scopes.remove(s)),
                 title: Text(_scopeLabel(t, s)),
               ),
-            if (!_pro) Text(t.apiProNeeded, style: Theme.of(context).textTheme.bodySmall),
+            if (!_pro)
+              Text(Purchases.enabled ? t.apiProNeeded : t.apiProNotActive, style: Theme.of(context).textTheme.bodySmall),
           ]),
         ),
         actions: [
@@ -204,9 +206,9 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
                 color: theme.colorScheme.tertiaryContainer,
                 child: ListTile(
                   leading: const Icon(Icons.lock_outline),
-                  title: Text(t.apiNeedsOption),
-                  trailing: const Icon(Icons.chevron_right),
-                  onTap: () => BillingPage.open(context, widget.session, widget.company),
+                  title: Text(Purchases.enabled ? t.apiNeedsOption : t.optionNotActive),
+                  trailing: Purchases.enabled ? const Icon(Icons.chevron_right) : null,
+                  onTap: Purchases.enabled ? () => BillingPage.open(context, widget.session, widget.company) : null,
                 ),
               ),
             Card(

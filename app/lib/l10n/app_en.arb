@@ -1838,5 +1838,10 @@
   "totpUnknown": "This ID doesn't exist. Do you want to create an account?",
   "totpGoogleAccount": "This account signs in with Google: go back and tap “Sign in with Google”.",
   "totpNoAccount": "No account yet? Create one",
-  "totpChange": "Use another ID"
+  "totpChange": "Use another ID",
+  "billingNotInApp": "Purchases aren't available in the mobile app.",
+  "billingActiveOptions": "Active options",
+  "billingNoOptions": "No active option.",
+  "optionNotActive": "This option isn't active for this company.",
+  "apiProNotActive": "The “API Pro” option isn't active for this company."
 }

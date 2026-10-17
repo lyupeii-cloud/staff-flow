@@ -714,5 +714,10 @@
   "totpUnknown": "Este identificador não existe. Quer criar uma conta?",
   "totpGoogleAccount": "Esta conta inicia sessão com o Google: volte atrás e toque em «Iniciar sessão com o Google».",
   "totpNoAccount": "Ainda não tem conta? Criar uma",
-  "totpChange": "Outro identificador"
+  "totpChange": "Outro identificador",
+  "billingNotInApp": "As compras não estão disponíveis na app móvel.",
+  "billingActiveOptions": "Opções ativas",
+  "billingNoOptions": "Nenhuma opção ativa.",
+  "optionNotActive": "Esta opção não está ativa para esta empresa.",
+  "apiProNotActive": "A opção «API Pro» não está ativa para esta empresa."
 }

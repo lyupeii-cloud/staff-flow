@@ -2573,4 +2573,21 @@ class L10nEs extends L10n {
 
   @override
   String get totpChange => 'Otro identificador';
+
+  @override
+  String get billingNotInApp =>
+      'Las compras no están disponibles en la app móvil.';
+
+  @override
+  String get billingActiveOptions => 'Opciones activas';
+
+  @override
+  String get billingNoOptions => 'Ninguna opción activa.';
+
+  @override
+  String get optionNotActive => 'Esta opción no está activa para esta empresa.';
+
+  @override
+  String get apiProNotActive =>
+      'La opción «API Pro» no está activa para esta empresa.';
 }

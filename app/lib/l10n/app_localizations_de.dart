@@ -2580,4 +2580,22 @@ class L10nDe extends L10n {
 
   @override
   String get totpChange => 'Andere ID';
+
+  @override
+  String get billingNotInApp =>
+      'Käufe sind in der mobilen App nicht verfügbar.';
+
+  @override
+  String get billingActiveOptions => 'Aktive Optionen';
+
+  @override
+  String get billingNoOptions => 'Keine aktive Option.';
+
+  @override
+  String get optionNotActive =>
+      'Diese Option ist für dieses Unternehmen nicht aktiv.';
+
+  @override
+  String get apiProNotActive =>
+      'Die Option „API Pro“ ist für dieses Unternehmen nicht aktiv.';
 }

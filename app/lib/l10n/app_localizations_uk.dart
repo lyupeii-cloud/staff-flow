@@ -2575,4 +2575,19 @@ class L10nUk extends L10n {
 
   @override
   String get totpChange => 'Інший ідентифікатор';
+
+  @override
+  String get billingNotInApp => 'Покупки недоступні в мобільному застосунку.';
+
+  @override
+  String get billingActiveOptions => 'Активні опції';
+
+  @override
+  String get billingNoOptions => 'Немає активних опцій.';
+
+  @override
+  String get optionNotActive => 'Ця опція не активна для цієї компанії.';
+
+  @override
+  String get apiProNotActive => 'Опція «API Pro» не активна для цієї компанії.';
 }

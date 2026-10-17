@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../api.dart';
 import '../i18n.dart';
 import '../models.dart';
+import '../purchases.dart';
 import '../session.dart';
 import 'billing_page.dart';
 import 'catalog_view.dart';
@@ -207,10 +208,13 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
         dense: true,
         leading: Icon(status == 'grace' ? Icons.lock_clock : Icons.hourglass_bottom),
         title: Text(billingStatusText(context, company) ?? ''),
-        trailing: TextButton(
-          onPressed: () => BillingPage.open(context, widget.session, company),
-          child: Text(t.billingTitle),
-        ),
+        // Mobile : l'état seul, sans accès à l'achat (voir Purchases).
+        trailing: Purchases.enabled
+            ? TextButton(
+                onPressed: () => BillingPage.open(context, widget.session, company),
+                child: Text(t.billingTitle),
+              )
+            : null,
       ),
     );
   }

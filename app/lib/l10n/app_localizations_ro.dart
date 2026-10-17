@@ -2572,4 +2572,22 @@ class L10nRo extends L10n {
 
   @override
   String get totpChange => 'Alt identificator';
+
+  @override
+  String get billingNotInApp =>
+      'Achizițiile nu sunt disponibile în aplicația mobilă.';
+
+  @override
+  String get billingActiveOptions => 'Opțiuni active';
+
+  @override
+  String get billingNoOptions => 'Nicio opțiune activă.';
+
+  @override
+  String get optionNotActive =>
+      'Această opțiune nu este activă pentru această companie.';
+
+  @override
+  String get apiProNotActive =>
+      'Opțiunea „API Pro” nu este activă pentru această companie.';
 }

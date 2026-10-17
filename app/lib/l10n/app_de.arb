@@ -714,5 +714,10 @@
   "totpUnknown": "Diese ID gibt es nicht. Möchten Sie ein Konto erstellen?",
   "totpGoogleAccount": "Dieses Konto meldet sich mit Google an: Gehen Sie zurück und tippen Sie auf „Mit Google anmelden“.",
   "totpNoAccount": "Noch kein Konto? Konto erstellen",
-  "totpChange": "Andere ID"
+  "totpChange": "Andere ID",
+  "billingNotInApp": "Käufe sind in der mobilen App nicht verfügbar.",
+  "billingActiveOptions": "Aktive Optionen",
+  "billingNoOptions": "Keine aktive Option.",
+  "optionNotActive": "Diese Option ist für dieses Unternehmen nicht aktiv.",
+  "apiProNotActive": "Die Option „API Pro“ ist für dieses Unternehmen nicht aktiv."
 }

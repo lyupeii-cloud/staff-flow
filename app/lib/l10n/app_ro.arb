@@ -714,5 +714,10 @@
   "totpUnknown": "Acest identificator nu există. Doriți să creați un cont?",
   "totpGoogleAccount": "Acest cont se conectează cu Google: reveniți și atingeți „Conectare cu Google”.",
   "totpNoAccount": "Nu aveți cont? Creați unul",
-  "totpChange": "Alt identificator"
+  "totpChange": "Alt identificator",
+  "billingNotInApp": "Achizițiile nu sunt disponibile în aplicația mobilă.",
+  "billingActiveOptions": "Opțiuni active",
+  "billingNoOptions": "Nicio opțiune activă.",
+  "optionNotActive": "Această opțiune nu este activă pentru această companie.",
+  "apiProNotActive": "Opțiunea „API Pro” nu este activă pentru această companie."
 }

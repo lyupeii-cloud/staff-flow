@@ -2578,4 +2578,20 @@ class L10nPl extends L10n {
 
   @override
   String get totpChange => 'Inny identyfikator';
+
+  @override
+  String get billingNotInApp => 'Zakupy nie są dostępne w aplikacji mobilnej.';
+
+  @override
+  String get billingActiveOptions => 'Aktywne opcje';
+
+  @override
+  String get billingNoOptions => 'Brak aktywnych opcji.';
+
+  @override
+  String get optionNotActive => 'Ta opcja nie jest aktywna dla tej firmy.';
+
+  @override
+  String get apiProNotActive =>
+      'Opcja „API Pro” nie jest aktywna dla tej firmy.';
 }

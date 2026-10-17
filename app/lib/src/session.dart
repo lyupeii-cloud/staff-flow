@@ -206,6 +206,11 @@ class Session extends ChangeNotifier {
       onShow: () async {
         await BackgroundSync.cancel();
         await sync.resume(reload: true);
+        final now = DateTime.now();
+        if (now.difference(_lastShowRefresh) > const Duration(minutes: 1)) {
+          _lastShowRefresh = now;
+          unawaited(refresh().then((_) {}, onError: (_) {}));
+        }
         // Retour dans l'application : l'agenda est revérifié (au plus toutes les 10 minutes).
         unawaited(CalendarSync.sync(api, minInterval: const Duration(minutes: 10)).then((_) {}, onError: (_) {}));
       },
@@ -213,6 +218,9 @@ class Session extends ChangeNotifier {
   }
 
   AppLifecycleListener? _lifecycle;
+
+  /// Dernière relecture des droits au retour dans l'application.
+  DateTime _lastShowRefresh = DateTime.now();
 
   @override
   void dispose() {

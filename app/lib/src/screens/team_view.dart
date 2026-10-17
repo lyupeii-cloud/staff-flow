@@ -6,6 +6,7 @@ import '../api.dart';
 import '../brand.dart';
 import '../i18n.dart';
 import '../models.dart';
+import '../purchases.dart';
 import '../session.dart';
 import 'api_keys_page.dart';
 import 'billing_page.dart';
@@ -173,7 +174,7 @@ class _TeamViewState extends State<TeamView> {
             Card(
               child: ListTile(
                 leading: const Icon(Icons.workspace_premium_outlined),
-                title: Text(t.billingManage),
+                title: Text(Purchases.enabled ? t.billingManage : t.billingTitle),
                 subtitle: Text('${billingStatusText(context, company) ?? ''}\n${t.billingCompanyId(company.publicId)}'),
                 isThreeLine: true,
                 trailing: const Icon(Icons.chevron_right),
@@ -187,7 +188,7 @@ class _TeamViewState extends State<TeamView> {
             Card(
               child: ListTile(
                 leading: const Icon(Icons.workspace_premium_outlined),
-                title: Text(t.billingManage),
+                title: Text(Purchases.enabled ? t.billingManage : t.billingTitle),
                 subtitle: Text('${billingStatusText(context, company) ?? ''}\n${t.billingCompanyId(company.publicId)}'),
                 isThreeLine: true,
                 trailing: const Icon(Icons.chevron_right),

@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../api.dart';
 import '../i18n.dart';
 import '../models.dart';
+import '../purchases.dart';
 import '../session.dart';
 import 'api_keys_page.dart';
 import 'billing_page.dart';
@@ -220,9 +221,11 @@ class _WebhooksPageState extends State<WebhooksPage> {
                           color: theme.colorScheme.tertiaryContainer,
                           child: ListTile(
                             leading: const Icon(Icons.lock_outline),
-                            title: Text(t.apiProNeeded),
-                            trailing: const Icon(Icons.chevron_right),
-                            onTap: () => BillingPage.open(context, widget.session, widget.company),
+                            title: Text(Purchases.enabled ? t.apiProNeeded : t.apiProNotActive),
+                            trailing: Purchases.enabled ? const Icon(Icons.chevron_right) : null,
+                            onTap: Purchases.enabled
+                                ? () => BillingPage.open(context, widget.session, widget.company)
+                                : null,
                           ),
                         ),
                       const SizedBox(height: 8),

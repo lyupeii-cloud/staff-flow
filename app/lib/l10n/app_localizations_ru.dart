@@ -2572,4 +2572,19 @@ class L10nRu extends L10n {
 
   @override
   String get totpChange => 'Другой идентификатор';
+
+  @override
+  String get billingNotInApp => 'Покупки недоступны в мобильном приложении.';
+
+  @override
+  String get billingActiveOptions => 'Активные опции';
+
+  @override
+  String get billingNoOptions => 'Нет активных опций.';
+
+  @override
+  String get optionNotActive => 'Эта опция не активна для этой компании.';
+
+  @override
+  String get apiProNotActive => 'Опция «API Pro» не активна для этой компании.';
 }

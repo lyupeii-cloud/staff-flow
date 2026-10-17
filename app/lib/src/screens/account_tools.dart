@@ -4,6 +4,7 @@ import '../api.dart';
 import '../brand.dart';
 import '../dates.dart';
 import '../i18n.dart';
+import '../purchases.dart';
 import '../session.dart';
 import 'billing_page.dart';
 import 'home_screen.dart';
@@ -369,7 +370,7 @@ class _ClosedInvoicesPageState extends State<ClosedInvoicesPage> {
                 leading: const Icon(Icons.receipt_long_outlined),
                 title: Text('${i['number']}'),
                 subtitle: Text('${i['companyName']} · ${longDate(DateTime.parse(i['issuedAt']).toLocal(), loc)}'
-                    ' · ${euroAmount(context, i['amountCents'] as int)}'),
+                    '${Purchases.enabled ? ' · ${euroAmount(context, i['amountCents'] as int)}' : ''}'),
                 trailing: const Icon(Icons.download_outlined),
                 onTap: () => downloadFromServer(context, widget.session, '/me/invoices/${i['id']}/link'),
               ),
