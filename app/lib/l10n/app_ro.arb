@@ -428,6 +428,7 @@
   "billingApi": "Opțiunea „acces API”",
   "billingLineApi": "Opțiunea „acces API”: {months} luni, fără reducere",
   "billingLineApiProrata": "Restul lunii curente ({days} zile din {total}): opțiunea „acces API”",
+  "billingLineProProrata": "Restul lunii curente ({days} zile din {total}): opțiunea „API Pro”",
   "apiTitle": "Acces API (contabilitate, CRM)",
   "apiSub": "Programele dvs. (salarizare, contabilitate, CRM, planificare) citesc programul publicat, orele și absențele; cu „API Pro” trimit și programe, angajați și anunțuri.",
   "apiNeedsOption": "Opțiune plătită: adăugați „Acces API” sau „API Pro” în „Gestionează abonamentul”.",

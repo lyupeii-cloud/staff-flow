@@ -368,6 +368,7 @@ class BillingService {
     final option = withOption ? v['cascadeOptionPrice']! : 0;
     final apiPrice = api ? v['apiOptionPrice']! : 0;
     final prorataApi = _prorata(apiPrice, p.prorataDays, p.monthDays);
+    final prorataPro = _prorata(proPrice, p.prorataDays, p.monthDays);
     final months = period == 'year' ? 12 : 1;
     final baseAmount = period == 'year' ? base * v['annualMonths']! : base;
     final prorataBase = _prorata(base, p.prorataDays, p.monthDays);
@@ -390,6 +391,8 @@ class BillingService {
       if (withOption) {'label': 'cascade', 'unitCents': option, 'months': months, 'cents': option * months},
       if (prorataApi > 0) {'label': 'apiProrata', 'days': p.prorataDays, 'monthDays': p.monthDays, 'cents': prorataApi},
       if (api) {'label': 'api', 'unitCents': apiPrice, 'months': months, 'cents': apiPrice * months},
+      if (prorataPro > 0)
+        {'label': 'proProrata', 'keys': proKeys, 'days': p.prorataDays, 'monthDays': p.monthDays, 'cents': prorataPro},
       if (pro) {'label': 'pro', 'keys': proKeys, 'unitCents': proPrice, 'months': months, 'cents': proPrice * months},
     ];
     return (
@@ -399,6 +402,23 @@ class BillingService {
       withOption: withOption,
       recurring: baseAmount + (option + apiPrice + proPrice) * months,
     );
+  }
+
+  /// Clés « API Pro » payées avec l'abonnement. Option déjà active : elle
+  /// est reprise si elle se renouvelle (au nombre de clés choisi pour le
+  /// renouvellement), sinon elle s'arrête à la fin de la période payée.
+  /// Pas encore active : [pro] (0, 1 ou 10 clés) la choisit dès l'achat de
+  /// l'abonnement ; sans précision (anciennes versions), pas d'API Pro.
+  Future<int> _proKeys(Company company, int? pro) async {
+    if (pro != null && pro != 0 && pro != 1 && pro != 10) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    if (company.apiProOption && company.billingStatus == 'active') {
+      if (!await _renews(company.id, 'api_pro_until')) return 0;
+      final next = (await store.query(store.db, 'SELECT api_pro_next_keys FROM companies WHERE id = @c::uuid',
+              {'c': company.id}))
+          .first[0] as int?;
+      return next ?? company.apiProKeys;
+    }
+    return pro ?? 0;
   }
 
   /// Nombre de places valable : par tranches de 10, de 10 à 5000, et au
@@ -426,11 +446,16 @@ class BillingService {
       SELECT id, number, issued_at, period, period_start, period_end, amount_cents
       FROM invoices WHERE company_id = @c::uuid ORDER BY id DESC''', {'c': companyId});
     final month = _plan(company, 'month');
-    int due(String period, bool cascade) => _price(v, staff, period, cascade, _plan(company, period)).amount;
+    // « API Pro » active et renouvelée : comprise dans chaque formule.
+    final renewedPro = await _proKeys(company, null);
+    int due(String period, bool cascade) =>
+        _price(v, staff, period, cascade, _plan(company, period), proKeys: renewedPro).amount;
     // Détail de chaque formule, montré avant le paiement.
-    Map<String, Object?> quote(String period, bool cascade, [bool api = false]) {
+    Map<String, Object?> quote(String period, bool cascade, [bool api = false, int pro = 0]) {
       final plan = _plan(company, period);
-      final price = _price(v, staff, period, cascade, plan, api: api);
+      final proKeys = renewedPro > 0 ? renewedPro : pro;
+      // La lecture est comprise dans « API Pro ».
+      final price = _price(v, staff, period, cascade, plan, api: api && proKeys == 0, proKeys: proKeys);
       return {
         'lines': price.lines,
         'total': price.amount,
@@ -472,6 +497,10 @@ class BillingService {
         for (final p in ['month', 'year'])
           for (final c in [false, true])
             for (final x in [false, true]) '$p-${c ? 1 : 0}-${x ? 1 : 0}': quote(p, c, x),
+        // « API Pro » choisie dès l'achat : « période-cascade-0-clés », par exemple « month-0-0-10 ».
+        for (final p in ['month', 'year'])
+          for (final c in [false, true])
+            for (final k in [1, 10]) '$p-${c ? 1 : 0}-0-$k': quote(p, c, false, k),
       },
       'apiOption': company.apiOption,
       'apiOptionPrice': v['apiOptionPrice'],
@@ -525,7 +554,7 @@ class BillingService {
   /// les tarifs et l'effectif du moment ; l'entreprise redevient modifiable ;
   /// une facture est créée, numérotée par entreprise et par année.
   Future<Map<String, Object?>> checkout(User actor, String companyId,
-      {required String period, required bool cascade, bool? api, int? slots}) async {
+      {required String period, required bool cascade, bool? api, int? pro, int? slots}) async {
     final company = await _owned(actor, companyId);
     if (!canPay(actor)) throw const ApiError.conflict('Le paiement en ligne arrive bientôt.');
     if (period != 'month' && period != 'year') throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
@@ -535,13 +564,10 @@ class BillingService {
     final realStaff = await staffCount(companyId);
     final staff = checkSlots(slots ?? (company.slots < realStaff ? minSlots(realStaff) : company.slots), realStaff);
     final plan = _plan(company, period);
+    final proKeys = await _proKeys(company, pro);
     // Sans précision (anciennes versions de l'application) : l'option API reste comme elle est.
-    final withPro = company.apiProOption && await _renews(companyId, 'api_pro_until') && company.billingStatus == 'active';
-    final next = (await store.query(store.db, 'SELECT api_pro_next_keys FROM companies WHERE id = @c::uuid', {'c': companyId}))
-        .first[0] as int?;
-    final proKeys = withPro ? (next ?? company.apiProKeys) : 0;
     // La lecture est comprise dans « API Pro ».
-    final withApi = (api ?? company.apiOption) && !withPro;
+    final withApi = (api ?? company.apiOption) && proKeys == 0;
     final price = _price(v, staff, period, cascade, plan, api: withApi, proKeys: proKeys);
     final t = now();
     final owner = await store.findUser(actor.id);
@@ -581,8 +607,10 @@ class BillingService {
           billing_period = @p, billing_reminders = '{}', slots = @slots,
           cascade_option = @co OR (@renewal AND cascade_option),
           cascade_until = CASE WHEN @co THEN NULL WHEN @renewal AND cascade_option THEN coalesce(cascade_until, @old::timestamptz) END,
-          api_option = @ao OR (@renewal AND api_option),
-          api_until = CASE WHEN @ao THEN NULL WHEN @renewal AND api_option THEN coalesce(api_until, @old::timestamptz) END,
+          api_option = @ao OR (@renewal AND api_option AND @pk = 0),
+          api_until = CASE WHEN @ao THEN NULL WHEN @renewal AND api_option AND @pk = 0 THEN coalesce(api_until, @old::timestamptz) END,
+          api_pro_option = @pk > 0 OR (@renewal AND api_pro_option),
+          api_pro_until = CASE WHEN @pk > 0 THEN NULL WHEN @renewal AND api_pro_option THEN coalesce(api_pro_until, @old::timestamptz) END,
           api_pro_keys = CASE WHEN @pk > 0 THEN @pk ELSE api_pro_keys END,
           api_pro_next_keys = CASE WHEN @pk > 0 THEN NULL ELSE api_pro_next_keys END
         WHERE id = @c::uuid''', {
@@ -804,6 +832,8 @@ class BillingService {
               {'days': '${l['days']}', 'total': '${l['monthDays']}'}),
           'api' => t('Option « accès API » : {months} mois', {'months': '${l['months']}'}),
           'pro' => t('Option « API Pro » : {months} mois', {'months': '${l['months']}'}),
+          'proProrata' => t('Prorata du mois en cours ({days} jours sur {total}) : option « API Pro »',
+              {'days': '${l['days']}', 'total': '${l['monthDays']}'}),
           'pro10Addon' => t('Option « API Pro » : 10 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise', {
               'from': _day(DateTime.parse(l['from'] as String)),
               'to': _day(DateTime.parse(l['to'] as String).subtract(const Duration(days: 1))),

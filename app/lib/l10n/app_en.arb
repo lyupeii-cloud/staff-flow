@@ -1147,6 +1147,17 @@
       }
     }
   },
+  "billingLineProProrata": "Rest of this month ({days} days out of {total}): “API Pro” option",
+  "@billingLineProProrata": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
   "apiTitle": "API access (accounting, CRM)",
   "apiSub": "Your software (payroll, accounting, CRM, planning) reads the published schedule, hours and absences; with “API Pro”, it can also send schedules, employees and announcements.",
   "apiNeedsOption": "Paid option: add “API access” or “API Pro” in “Manage subscription”.",

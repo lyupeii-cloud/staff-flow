@@ -1567,6 +1567,11 @@ class L10nDe extends L10n {
   }
 
   @override
+  String billingLineProProrata(String days, String total) {
+    return 'Rest des laufenden Monats ($days von $total Tagen): Option „API Pro“';
+  }
+
+  @override
   String get apiTitle => 'API-Zugang (Buchhaltung, CRM)';
 
   @override

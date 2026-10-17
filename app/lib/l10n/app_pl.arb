@@ -428,6 +428,7 @@
   "billingApi": "Opcja „dostęp API”",
   "billingLineApi": "Opcja „dostęp API”: {months} mies., bez rabatu",
   "billingLineApiProrata": "Reszta bieżącego miesiąca ({days} z {total} dni): opcja „dostęp API”",
+  "billingLineProProrata": "Reszta bieżącego miesiąca ({days} z {total} dni): opcja „API Pro”",
   "apiTitle": "Dostęp API (księgowość, CRM)",
   "apiSub": "Twoje programy (płace, księgowość, CRM, planowanie) odczytują opublikowany grafik, godziny i nieobecności; z „API Pro” mogą też wysyłać grafiki, pracowników i ogłoszenia.",
   "apiNeedsOption": "Opcja płatna: dodaj „Dostęp API” lub „API Pro” w „Zarządzaj subskrypcją”.",

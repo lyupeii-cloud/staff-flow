@@ -254,6 +254,7 @@ const uk = <String, String>{
   'Champ « shifts » : liste de services attendue (2000 au plus).': 'Поле «shifts»: потрібен список змін (не більше 2000).',
   'Champ « rows » : liste de salariés attendue.': 'Поле «rows»: потрібен список працівників.',
   'Option « API Pro » : {months} mois': 'Опція «API Pro»: {months} міс.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « API Pro »': 'Решта поточного місяця ({days} дн. з {total}): опція «API Pro»',
   'Option « API Pro », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Опція «API Pro», додана під час підписки, з {from} по {to}: {months} міс.',
   'Option « API Pro » nécessaire pour les webhooks.': 'Для вебхуків потрібна опція «API Pro».',
   '5 webhooks au plus : supprimez-en un d\'abord.': 'Не більше 5 вебхуків: спочатку видаліть один.',

@@ -1560,6 +1560,11 @@ class L10nRu extends L10n {
   }
 
   @override
+  String billingLineProProrata(String days, String total) {
+    return 'Остаток текущего месяца ($days дн. из $total): опция «API Pro»';
+  }
+
+  @override
   String get apiTitle => 'Доступ к API (бухгалтерия, CRM)';
 
   @override

@@ -256,6 +256,7 @@ const en = <String, String>{
   'Champ « shifts » : liste de services attendue (2000 au plus).': 'Field “shifts”: list of shifts expected (2000 at most).',
   'Champ « rows » : liste de salariés attendue.': 'Field “rows”: list of employees expected.',
   'Option « API Pro » : {months} mois': '“API Pro” option: {months} months',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « API Pro »': 'Rest of this month ({days} days out of {total}): “API Pro” option',
   'Option « API Pro », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': '“API Pro” option, added during the subscription, from {from} to {to}: {months} months',
   'Option « API Pro » nécessaire pour les webhooks.': 'The “API Pro” option is required for webhooks.',
   '5 webhooks au plus : supprimez-en un d\'abord.': '5 webhooks at most: delete one first.',

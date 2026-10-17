@@ -428,6 +428,7 @@
   "billingApi": "Opção “acesso API”",
   "billingLineApi": "Opção “acesso API”: {months} meses, sem desconto",
   "billingLineApiProrata": "Resto do mês atual ({days} dias de {total}): opção “acesso API”",
+  "billingLineProProrata": "Resto do mês atual ({days} dias de {total}): opção «API Pro»",
   "apiTitle": "Acesso API (contabilidade, CRM)",
   "apiSub": "Os seus programas (salários, contabilidade, CRM, planeamento) leem o horário publicado, as horas e as ausências; com «API Pro» também enviam horários, funcionários e avisos.",
   "apiNeedsOption": "Opção paga: adicione «Acesso API» ou «API Pro» em «Gerir a assinatura».",

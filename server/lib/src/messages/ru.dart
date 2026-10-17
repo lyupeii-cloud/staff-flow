@@ -234,6 +234,7 @@ const ru = <String, String>{
   'Champ « shifts » : liste de services attendue (2000 au plus).': 'Поле «shifts»: нужен список смен (не более 2000).',
   'Champ « rows » : liste de salariés attendue.': 'Поле «rows»: нужен список сотрудников.',
   'Option « API Pro » : {months} mois': 'Опция «API Pro»: {months} мес.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « API Pro »': 'Остаток текущего месяца ({days} дн. из {total}): опция «API Pro»',
   'Option « API Pro », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois': 'Опция «API Pro», добавленная во время подписки, с {from} по {to}: {months} мес.',
   'Option « API Pro » nécessaire pour les webhooks.': 'Для вебхуков нужна опция «API Pro».',
   '5 webhooks au plus : supprimez-en un d\'abord.': 'Не более 5 вебхуков: сначала удалите один.',

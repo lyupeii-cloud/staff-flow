@@ -51,6 +51,9 @@ class _BillingPageState extends State<BillingPage> {
   Object? _error;
   bool _cascade = false;
   bool _api = false;
+
+  /// « API Pro » choisie avec l'abonnement : 0 (sans), 1 ou 10 clés.
+  int _pro = 0;
   bool _busy = false;
 
   /// Places choisies (par tranches de 10) ; `null` : celles proposées par le serveur.
@@ -117,13 +120,19 @@ class _BillingPageState extends State<BillingPage> {
     }
   }
 
+  /// « API Pro » déjà active : elle se renouvelle (ou non) avec l'abonnement.
+  static bool _proActive(Map<String, dynamic> d) => d['apiProOption'] == true && d['status'] == 'active';
+
   /// Détail ligne par ligne de ce qui sera payé, puis paiement.
-  /// Offre du serveur : période, option cascade, option API.
-  static Map<String, dynamic> _offer(Map<String, dynamic> d, String period, bool cascade, bool api) =>
-      ((d['offers'] as Map)['$period-${cascade ? 1 : 0}-${api ? 1 : 0}'] as Map).cast<String, dynamic>();
+  /// Offre du serveur : période, option cascade, option API, « API Pro » (clés).
+  static Map<String, dynamic> _offer(Map<String, dynamic> d, String period, bool cascade, bool api, int pro) =>
+      ((d['offers'] as Map)[pro > 0 && !_proActive(d)
+              ? '$period-${cascade ? 1 : 0}-0-$pro'
+              : '$period-${cascade ? 1 : 0}-${api ? 1 : 0}'] as Map)
+          .cast<String, dynamic>();
 
   Future<void> _confirm(Map<String, dynamic> d, String period, bool cascade) =>
-      _showQuote(_offer(d, period, cascade, _api), () => _pay(period));
+      _showQuote(_offer(d, period, cascade, _api, _pro), () => _pay(period));
 
   /// Option active : la renouveler ou non (elle reste jusqu'à la fin de la période payée).
   Future<void> _setRenewal(String option, bool renew) => _run(() async {
@@ -243,6 +252,7 @@ class _BillingPageState extends State<BillingPage> {
           'proAddon' => t.billingLineProAddon(
               date(l['from']), longDate(DateTime.parse(l['to']).subtract(const Duration(days: 1)), loc), '${l['months']}'),
           'apiProrata' => t.billingLineApiProrata('${l['days']}', '${l['monthDays']}'),
+          'proProrata' => t.billingLineProProrata('${l['days']}', '${l['monthDays']}'),
           'prorata' => t.billingLineProrata('${l['days']}', '${l['monthDays']}'),
           'cascadeProrata' => t.billingLineCascadeProrata('${l['days']}', '${l['monthDays']}'),
           'cascade' => t.billingLineCascade('${l['months']}'),
@@ -293,7 +303,13 @@ class _BillingPageState extends State<BillingPage> {
 
   Future<void> _pay(String period) => _run(() async {
         await widget.session.api
-            .send('POST', '$_base/checkout', body: {'period': period, 'cascade': _cascade, 'api': _api, 'slots': _slots});
+            .send('POST', '$_base/checkout', body: {
+          'period': period,
+          'cascade': _cascade,
+          'api': _api && _pro == 0,
+          if (!_proActive(_data!)) 'pro': _pro,
+          'slots': _slots,
+        });
         await widget.session.refresh();
         await _load();
       }, done: context.l10n.billingPaidOk);
@@ -346,7 +362,7 @@ class _BillingPageState extends State<BillingPage> {
     final staff = d['staff'] as int;
     final included = (d['slotsChosen'] as int? ?? staff) >= (d['cascadeIncludedFrom'] as int);
     final cascade = _cascade && !included;
-    final monthOffer = _offer(d, 'month', cascade, _api), yearOffer = _offer(d, 'year', cascade, _api);
+    final monthOffer = _offer(d, 'month', cascade, _api, _pro), yearOffer = _offer(d, 'year', cascade, _api, _pro);
     final month = monthOffer['price'] as int;
     final year = yearOffer['price'] as int;
     final dueMonth = monthOffer['total'] as int;
@@ -440,7 +456,7 @@ class _BillingPageState extends State<BillingPage> {
               t.billingPerMonth(euroAmount(context, prices['monthCascade'] - prices['month'])),
               value: _cascade, onLocal: (v) => setState(() => _cascade = v)),
         // Lecture : comprise dans « API Pro ».
-        if (d['apiProOption'] == true && status == 'active')
+        if (_proActive(d) || _pro > 0)
           Padding(
             padding: const EdgeInsets.only(bottom: 8),
             child: Text(t.billingApiIncluded, style: theme.textTheme.bodySmall),
@@ -448,8 +464,8 @@ class _BillingPageState extends State<BillingPage> {
         else
           _optionTile(d, 'api', t.billingApi, t.billingPerMonth(euroAmount(context, d['apiOptionPrice'] as int)),
               value: _api, onLocal: (v) => setState(() => _api = v)),
-        // API Pro : seulement en cours d'abonnement payé (ajoutée ci-dessous, puis renouvelée ou non).
-        if (d['apiProOption'] == true && status == 'active') ...[
+        // API Pro active : renouvelée ou non ; sinon, elle se choisit avec l'abonnement (1 ou 10 clés).
+        if (_proActive(d)) ...[
           _optionTile(
               d,
               'pro',
@@ -461,12 +477,17 @@ class _BillingPageState extends State<BillingPage> {
           // 10 clés : le prochain renouvellement peut repasser à 1 clé.
           if (d['apiProKeys'] == 10 && d['proUntil'] == null) _proKeysChoice(t, theme, d),
         ] else
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8),
-            child: Text(
-                t.billingApiProHint(euroAmount(context, d['apiProPrice'] as int), euroAmount(context, d['apiPro10Price'] as int)),
-                style: theme.textTheme.bodySmall),
-          ),
+          for (final (keys, title, price) in [
+            (1, t.billingApiPro1, d['apiProPrice'] as int),
+            (10, t.billingApiPro10, d['apiPro10Price'] as int),
+          ])
+            CheckboxListTile(
+              contentPadding: EdgeInsets.zero,
+              value: _pro == keys,
+              onChanged: _busy ? null : (v) => setState(() => _pro = v == true ? keys : 0),
+              title: Text(title),
+              subtitle: Text(t.billingPerMonth(euroAmount(context, price))),
+            ),
         // Abonnement en cours : une option s'ajoute seule, jusqu'à la fin de la période payée.
         if (status == 'active') ...[
           Text(t.billingRenewalOptions, style: theme.textTheme.bodySmall),

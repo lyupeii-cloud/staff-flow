@@ -1554,6 +1554,11 @@ class L10nEn extends L10n {
   }
 
   @override
+  String billingLineProProrata(String days, String total) {
+    return 'Rest of this month ($days days out of $total): “API Pro” option';
+  }
+
+  @override
   String get apiTitle => 'API access (accounting, CRM)';
 
   @override

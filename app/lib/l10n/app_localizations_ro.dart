@@ -1562,6 +1562,11 @@ class L10nRo extends L10n {
   }
 
   @override
+  String billingLineProProrata(String days, String total) {
+    return 'Restul lunii curente ($days zile din $total): opțiunea „API Pro”';
+  }
+
+  @override
   String get apiTitle => 'Acces API (contabilitate, CRM)';
 
   @override

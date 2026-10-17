@@ -2706,6 +2706,12 @@ abstract class L10n {
   /// **'Rest of this month ({days} days out of {total}): “API access” option'**
   String billingLineApiProrata(String days, String total);
 
+  /// No description provided for @billingLineProProrata.
+  ///
+  /// In en, this message translates to:
+  /// **'Rest of this month ({days} days out of {total}): “API Pro” option'**
+  String billingLineProProrata(String days, String total);
+
   /// No description provided for @apiTitle.
   ///
   /// In en, this message translates to:

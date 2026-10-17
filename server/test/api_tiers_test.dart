@@ -42,11 +42,40 @@ void main() {
     final id = ((await boss.ok('GET', p('/api-keys')))['keys'] as List).single['id'];
     await boss.ok('PATCH', p('/api-keys/$id'), {'scopes': ['read', 'catalog']});
     expect(await ext(key, 'POST', '/ext/positions', {'name': 'Caisse'}), 201);
-    // Renouvellement avec Pro : la lecture n'est pas facturée en plus.
-    final lines = ((await boss.ok('GET', p('/billing')))['offers']['month-0-1']['lines'] as List).map((l) => l['label']);
-    expect(lines, contains('api'));
+    // Renouvellement avec Pro : la lecture n'est pas facturée en plus (le détail montré le dit aussi).
+    final offer = (await boss.ok('GET', p('/billing')))['offers']['month-0-1'] as Map;
+    expect([for (final l in offer['lines'] as List) l['label']], ['subscription', 'pro']);
     final paid = await boss.ok('POST', p('/billing/checkout'), {'period': 'month', 'cascade': false, 'api': true});
-    expect(paid['amountCents'], 300 + 1000);
+    expect([paid['amountCents'], offer['total']], [300 + 1000, 300 + 1000]);
+  });
+
+  test('« API Pro » choisie dès le premier paiement de l\'abonnement, avec le prorata du mois en cours', () async {
+    final offer = (await boss.ok('GET', p('/billing')))['offers']['month-0-0-10'] as Map;
+    expect([for (final l in offer['lines'] as List) l['label']], ['prorata', 'subscription', 'proProrata', 'pro']);
+    // Le 5 octobre : 27 jours sur 31 au prorata, puis novembre.
+    expect(offer['total'], 262 + 300 + 1742 + 2000);
+    // La lecture est comprise : pas facturée en plus.
+    final paid = await boss.ok('POST', p('/billing/checkout'), {'period': 'month', 'cascade': false, 'api': true, 'pro': 10});
+    expect(paid['amountCents'], offer['total']);
+    final b = await boss.ok('GET', p('/billing'));
+    expect([b['apiOption'], b['apiProOption'], b['apiProKeys'], b['proUntil'], b['addons']['pro'], b['addons']['pro10']],
+        [false, true, 10, null, null, null]);
+    expect((await boss.ok('GET', p('/api-keys')))['limit'], 10);
+    final key = await newKey('Planif', ['read', 'shifts']);
+    expect(await ext(key), 200);
+    // Renouvellement : reprise sans prorata, sans la redemander.
+    final renew = await boss.ok('POST', p('/billing/checkout'), {'period': 'month', 'cascade': false});
+    expect(renew['amountCents'], 300 + 2000);
+    // Mauvais nombre de clés.
+    expect((await boss('POST', p('/billing/checkout'), {'period': 'month', 'cascade': false, 'pro': 5})).$1, 400);
+  });
+
+  test('« API Pro » prise au renouvellement de l\'abonnement (sans passer par l\'option seule)', () async {
+    await boss.ok('POST', p('/billing/checkout'), {'period': 'month', 'cascade': false, 'api': true});
+    final paid = await boss.ok('POST', p('/billing/checkout'), {'period': 'year', 'cascade': false, 'pro': 1});
+    expect(paid['amountCents'], 300 * 10 + 1000 * 12);
+    final b = await boss.ok('GET', p('/billing'));
+    expect([b['apiOption'], b['apiProOption'], b['apiProKeys']], [false, true, 1]);
   });
 
   test('10 clés ; baisse à 1 clé au renouvellement : clés en trop désactivées, le patron choisit', () async {

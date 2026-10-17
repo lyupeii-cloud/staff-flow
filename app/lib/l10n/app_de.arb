@@ -428,6 +428,7 @@
   "billingApi": "Option „API-Zugang“",
   "billingLineApi": "Option „API-Zugang“: {months} Monate, ohne Rabatt",
   "billingLineApiProrata": "Rest des laufenden Monats ({days} von {total} Tagen): Option „API-Zugang“",
+  "billingLineProProrata": "Rest des laufenden Monats ({days} von {total} Tagen): Option „API Pro“",
   "apiTitle": "API-Zugang (Buchhaltung, CRM)",
   "apiSub": "Ihre Software (Lohn, Buchhaltung, CRM, Planung) liest den veröffentlichten Dienstplan, Stunden und Abwesenheiten; mit „API Pro“ sendet sie auch Dienstpläne, Mitarbeitende und Mitteilungen.",
   "apiNeedsOption": "Kostenpflichtige Option: Fügen Sie „API-Zugang“ oder „API Pro“ unter „Abonnement verwalten“ hinzu.",
