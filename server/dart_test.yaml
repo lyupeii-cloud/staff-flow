@@ -1,0 +1,2 @@
+# Les fichiers de test partagent une même base PostgreSQL vidée avant chaque test.
+concurrency: 1

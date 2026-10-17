@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accès API : planning, heures et absences – Staff Flow</title>
+  <link rel="canonical" href="https://staff-flow.cloud/fr/api/">
+  <link rel="alternate" hreflang="fr" href="https://staff-flow.cloud/fr/api/">
+  <link rel="alternate" hreflang="uk" href="https://staff-flow.cloud/ua/api/">
+  <link rel="alternate" hreflang="en" href="https://staff-flow.cloud/en/api/">
+  <meta name="theme-color" content="#061440">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="/style.css?v=6">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" translate="no" href="/fr/"><img src="/brand.png" alt="Staff Flow" width="205" height="46"></a>
+    <nav class="langs" translate="no" aria-label="Language"><a href="/fr/api/" lang="fr" title="Français" aria-current="page">FR</a><a href="/ua/api/" lang="uk" title="Українська">UA</a><a href="/en/api/" lang="en" title="English">EN</a></nav>
+    <a class="btn btn-main" href="https://app.staff-flow.cloud">Ouvrir l'application</a>
+  </div>
+</header>
+<main>
+  <section>
+    <div class="wrap legal">
+      <h1>Accès API : planning, heures et absences</h1>
+      
+      <h2>À quoi ça sert</h2>
+      <p>L'option « accès API » permet à vos logiciels de comptabilité, de paie ou à votre CRM de lire automatiquement le planning publié de votre entreprise, les heures de chacun et les absences validées. Avec l'option « accès API » (2 € par mois), l'accès est en lecture seule ; l'option « API Pro » permet aussi d'écrire (voir plus bas).</p>
+      <p>L'option se prend sur la version web (app.staff-flow.cloud) : Configurations → Gérer l'abonnement. Elle est ouverte pendant l'essai gratuit, avec 1 clé.</p>
+      <h2>1. Créer une clé</h2>
+      <p>Dans l'application, le propriétaire (ou un responsable à qui il a confié la gestion de l'abonnement) ouvre Configurations → Accès API → Nouvelle clé, et lui donne un nom (par exemple « Logiciel de paie »). La clé complète n'est affichée qu'une seule fois : copiez-la dans votre logiciel. Vous pouvez la révoquer à tout moment ; 10 clés au plus par entreprise.</p>
+      <h2>2. Appeler l'API</h2>
+      <p>Envoyez la clé dans l'en-tête « Authorization: Bearer … » (ou « X-Api-Key »). Toutes les adresses commencent par https://app.staff-flow.cloud/api/v1/ext/.</p>
+      <pre><code>curl -H &quot;Authorization: Bearer sfk_xxxxxxxx_yyyyyyyy…&quot; \
+  &quot;https://app.staff-flow.cloud/api/v1/ext/shifts?from=2026-10-01&amp;to=2026-10-31&quot;</code></pre>
+      <h2>3. Les adresses</h2>
+      <pre><code>GET /api/v1/ext/company     company, sites, positions
+GET /api/v1/ext/members     people (current and former), role, dates
+GET /api/v1/ext/shifts      published shifts         ?from=&amp;to=&amp;format=csv
+GET /api/v1/ext/totals      published hours/person   ?from=&amp;to=&amp;format=csv
+GET /api/v1/ext/absences    approved leave and unavailability  ?from=&amp;to=</code></pre>
+      <p>Période : « from » et « to » au format AAAA-MM-JJ. Sans « from », depuis la création de l'entreprise ; sans « to », jusqu'à aujourd'hui ; 5 ans au plus par appel.</p>
+      <p>Format : JSON par défaut ({&quot;data&quot;: […]}) ; ajoutez « format=csv » pour un fichier CSV (séparateur « ; », lisible par Excel).</p>
+      <p>Seul le planning publié est transmis (ce que voient les salariés), jamais les brouillons.</p>
+      <h2>4. Exemple de réponse</h2>
+      <pre><code>{
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;6c1f…&quot;, &quot;day&quot;: &quot;2026-10-06&quot;, &quot;start&quot;: &quot;08:00&quot;, &quot;end&quot;: &quot;16:00&quot;,
+      &quot;minutes&quot;: 480, &quot;userId&quot;: &quot;a41e…&quot;, &quot;userName&quot;: &quot;Olena&quot;,
+      &quot;siteId&quot;: &quot;…&quot;, &quot;site&quot;: &quot;Centre&quot;, &quot;positionId&quot;: &quot;…&quot;, &quot;position&quot;: &quot;Barista&quot;,
+      &quot;note&quot;: null
+    }
+  ]
+}</code></pre>
+      <h2>5. Erreurs</h2>
+      <p>401 : clé absente, fausse ou révoquée. 402 : l'option « accès API » n'est pas active (abonnement sans l'option). 400 : dates invalides.</p>
+      <h2>API Pro : écrire dans Staff Flow</h2>
+      <p>Avec l'option « API Pro » (10 € par mois pour 1 clé, 20 € pour 10 clés, sans remise, avec un abonnement payé ; pas pendant l'essai ni pendant la période de grâce), vos logiciels envoient aussi des plannings, des salariés, des postes et sites, des annonces, et valident les demandes.</p>
+      <p>Chaque clé a ses droits, choisis à sa création : lecture, planning, publier, salariés, postes et sites, annonces, demandes. Seuls le patron et les responsables qui gèrent l'abonnement créent et révoquent les clés : 1 clé avec la lecture ou « API Pro » 1 clé, 10 clés avec « API Pro » 10 clés. Passer de la lecture à « API Pro » garde la même clé ; passer de 1 à 10 clés se paie à la différence jusqu'à la fin de la période ; revenir à 1 clé se fait au renouvellement (les clés en trop sont mises de côté, vous choisissez lesquelles garder). Sans option, les clés cessent de fonctionner et sont supprimées après 30 jours (vous êtes prévenu 7 jours avant). « API Pro » n'est jamais incluse : ni pendant l'essai, ni pour une entreprise offerte, ni au-delà de 100 salariés. Elle se résilie comme toute option : elle reste active jusqu'à la fin de la période payée.</p>
+      <pre><code>POST   /api/v1/ext/shifts           create shifts (draft, or &quot;publish&quot;: true)
+PATCH  /api/v1/ext/shifts/{id}      edit a shift (back to draft)
+DELETE /api/v1/ext/shifts/{id}      delete a shift
+POST   /api/v1/ext/publish          publish all drafts
+POST   /api/v1/ext/members/import   import employees -&gt; invitations with codes
+GET    /api/v1/ext/invites          pending invitations (code, QR link)
+PUT    /api/v1/ext/members/{ref}/profile   employee number, position
+POST   /api/v1/ext/positions        new position     {&quot;name&quot;: &quot;…&quot;}
+POST   /api/v1/ext/sites            new site         {&quot;name&quot;: &quot;…&quot;, &quot;parent&quot;: &quot;…&quot;}
+POST   /api/v1/ext/news             announcement     {&quot;title&quot;, &quot;body&quot;, &quot;audience&quot;}
+GET    /api/v1/ext/requests         pending requests
+POST   /api/v1/ext/requests/{id}/approve | refuse</code></pre>
+      <p>Les services envoyés arrivent en brouillon : les responsables les voient, les adaptent, puis publient. Avec le droit « publier » et « publish »: true, ils sont publiés tout de suite. Une personne se désigne par son identifiant SF ou son matricule ; un site ou un poste par son nom ou son id. Heures : « HH:MM » ou minutes depuis minuit.</p>
+      <pre><code>POST /api/v1/ext/shifts
+{
+  &quot;publish&quot;: false,
+  &quot;shifts&quot;: [
+    {&quot;day&quot;: &quot;2026-10-20&quot;, &quot;start&quot;: &quot;07:00&quot;, &quot;end&quot;: &quot;15:00&quot;,
+     &quot;person&quot;: &quot;M-0007&quot;, &quot;site&quot;: &quot;Chantier Nord&quot;, &quot;position&quot;: &quot;Maçon&quot;}
+  ]
+}</code></pre>
+      <p>Erreurs : 403 si la clé n'a pas le droit demandé, 402 si l'option « API Pro » n'est pas active, 400 si une personne, un site ou une heure est inconnu (rien n'est alors créé pour ce service). Chaque écriture est notée dans l'historique de l'entreprise avec le nom de la clé.</p>
+      <h2>Connecteur MCP : Staff Flow dans votre assistant</h2>
+      <p>Les assistants compatibles MCP (Model Context Protocol), comme Claude, se branchent directement sur Staff Flow. Vous écrivez par exemple : « Mets Marie à la caisse lundi de 8 h à 16 h » ou « Combien d'heures a fait l'équipe en septembre ? ».</p>
+      <pre><code>Adresse / URL :  https://app.staff-flow.cloud/api/v1/mcp
+En-tête / Header : Authorization: Bearer sfk_…
+
+get_company · list_members · get_shifts · get_hours · get_absences
+create_shifts · update_shift · delete_shift · publish_schedule
+import_employees · list_invitations · set_employee_profile
+create_position · create_site · post_announcement
+list_pending_requests · decide_request</code></pre>
+      <p>Ajoutez un connecteur personnalisé avec cette adresse et une clé API. L'assistant ne voit que les outils permis par les droits de la clé : lecture avec l'option « accès API », écriture avec « API Pro ». Les services créés arrivent en brouillon, sauf avec le droit « publier ». Chaque action est notée dans l'historique avec le nom de la clé.</p>
+      <h2>Webhooks : Staff Flow prévient vos logiciels</h2>
+      <p>Avec l'option « API Pro », Staff Flow envoie tout seul un message (POST en JSON) à l'adresse de votre logiciel quand quelque chose se passe. Plus besoin d'interroger l'API en boucle.</p>
+      <p>Dans l'application : Configurations → Accès API → Webhooks. Le patron et les responsables qui gèrent l'abonnement ajoutent jusqu'à 5 adresses (https), choisissent les événements, et peuvent faire un envoi d'essai.</p>
+      <pre><code>schedule.published       planning publié / schedule published
+request.created          nouvelle demande / new request
+request.decided          demande validée ou refusée / approved or refused
+request.cancelled        demande annulée / request cancelled
+request.cancel_asked     annulation de congé demandée / leave cancellation asked
+request.cancel_decided   annulation de congé décidée / leave cancellation decided
+request.ended            indisponibilité terminée / unavailability ended
+member.joined            nouveau salarié / new employee
+announcement.published   annonce publiée / announcement published</code></pre>
+      <pre><code>POST https://votre-logiciel.example/staff-flow
+Staff-Flow-Event: request.decided
+Staff-Flow-Delivery: 6f1c…
+Staff-Flow-Signature: t=1792400000,v1=5d2a…
+
+{
+  &quot;id&quot;: &quot;6f1c…&quot;,
+  &quot;event&quot;: &quot;request.decided&quot;,
+  &quot;createdAt&quot;: &quot;2026-10-13T08:12:00Z&quot;,
+  &quot;company&quot;: {&quot;id&quot;: &quot;SF-…&quot;, &quot;name&quot;: &quot;Boulangerie&quot;},
+  &quot;data&quot;: {&quot;kind&quot;: &quot;leave&quot;, &quot;approved&quot;: true, &quot;from&quot;: &quot;2026-11-02&quot;, &quot;to&quot;: &quot;2026-11-03&quot;,
+           &quot;person&quot;: {&quot;sfId&quot;: &quot;SF-…&quot;, &quot;name&quot;: &quot;Marie&quot;, &quot;employeeNumber&quot;: &quot;M-0007&quot;}}
+}
+
+v1 = HMAC-SHA256(secret, t + &quot;.&quot; + body)   (hex)</code></pre>
+      <p>Chaque envoi est signé avec le secret donné à la création (affiché une seule fois) : recalculez la signature et comparez-la, puis refusez les horodatages de plus de 5 minutes. Répondez par un code 2xx en moins de 10 secondes.</p>
+      <p>En cas d'échec, Staff Flow réessaie après 1 min, 5 min, 30 min, 2 h, 6 h et 12 h. Après 10 envois abandonnés d'affilée, l'adresse est coupée ; vous la réactivez dans l'application. Les personnes sont désignées par leur identifiant SF et leur matricule, jamais par leur adresse e-mail. Option arrêtée ou période de grâce : plus aucun envoi.</p>
+      <h2>Journaux et alertes</h2>
+      <p>Chaque appel de vos clés (lecture, écriture, assistant MCP) et chaque envoi de webhook est noté : date, clé, action en clair, résultat, durée, adresse IP. Pour une modification, l'avant et l'après (« début 08:00 → 09:00 »).</p>
+      <p>Dans l'application : Configurations → Accès API → Journaux. Un mois à la fois (glissez pour changer), recherche (personne, matricule, action) et filtres (clé, origine, lecture ou écriture, réussi ou échec). Réservé au patron et aux responsables qui gèrent l'abonnement.</p>
+      <p>Les 12 derniers mois restent en ligne ; les mois plus anciens sont archivés automatiquement, toujours consultables et cherchables (« chercher dans tout l'historique »). Chaque année se télécharge en ZIP (un fichier CSV par mois, lisible dans Excel). Les journaux sont supprimés après 3 ans.</p>
+      <p>Le patron est prévenu si une clé échoue 10 fois en une heure, ou si elle est utilisée depuis une nouvelle adresse IP (signe possible d'une clé volée). Chaque clé affiche ses appels du jour et du mois. Les droits d'une clé se modifient sans changer la clé.</p>
+      <h2>Données personnelles</h2>
+      <p>L'entreprise reste responsable de l'usage des données qu'elle récupère (noms, horaires, absences) et doit les protéger dans ses propres logiciels. Gardez les clés secrètes ; révoquez une clé dès qu'elle ne sert plus.</p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© 2026 Staff Flow · <a href="/fr/terms/">Conditions d'utilisation et de vente</a> · <a href="/fr/privacy/">Politique de confidentialité</a> · <a href="/fr/api/">API</a> · <a href="mailto:contact@staff-flow.cloud">contact@staff-flow.cloud</a></span>
+    <span><a href="/fr/" lang="fr">Français</a> · <a href="/ua/" lang="uk">Українська</a> · <a href="/en/" lang="en">English</a></span>
+  </div>
+</footer>
+</body>
+</html>

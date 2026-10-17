@@ -1,0 +1,2666 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for Romanian Moldavian Moldovan (`ro`).
+class L10nRo extends L10n {
+  L10nRo([String locale = 'ro']) : super(locale);
+
+  @override
+  String get cancel => 'Anulează';
+
+  @override
+  String get save => 'Salvează';
+
+  @override
+  String get confirm => 'Confirmă';
+
+  @override
+  String get validate => 'Confirmă';
+
+  @override
+  String get add => 'Adaugă';
+
+  @override
+  String get rename => 'Redenumește';
+
+  @override
+  String get delete => 'Șterge';
+
+  @override
+  String get accept => 'Acceptă';
+
+  @override
+  String get decline => 'Refuză';
+
+  @override
+  String get close => 'Închide';
+
+  @override
+  String get retry => 'Încearcă din nou';
+
+  @override
+  String get name => 'Nume';
+
+  @override
+  String get serverUnreachable => 'Serverul nu poate fi accesat.';
+
+  @override
+  String errorStatus(int status) {
+    return 'Eroare $status';
+  }
+
+  @override
+  String get roleOwner => 'Proprietar';
+
+  @override
+  String get roleManager => 'Responsabil';
+
+  @override
+  String get roleEmployee => 'Angajat';
+
+  @override
+  String get roleExtra => 'Temporar';
+
+  @override
+  String get taglineStart => 'Programul echipei tale, ';
+
+  @override
+  String get taglineEnd => 'oriunde.';
+
+  @override
+  String get googleNotConfigured =>
+      'Google sign-in is not configured (GOOGLE_WEB_CLIENT_ID).';
+
+  @override
+  String get signInWithGoogle => 'Conectează-te cu Google';
+
+  @override
+  String get devSection => 'Development';
+
+  @override
+  String get emailLabel => 'Email address';
+
+  @override
+  String get devSignIn => 'Test sign-in';
+
+  @override
+  String googleUnavailable(String detail) {
+    return 'Conectarea cu Google nu este disponibilă: $detail';
+  }
+
+  @override
+  String googleFailed(String detail) {
+    return 'Conectarea cu Google a eșuat: $detail';
+  }
+
+  @override
+  String get newCompany => 'Firmă nouă';
+
+  @override
+  String get timezone => 'Fus orar';
+
+  @override
+  String get create => 'Creează';
+
+  @override
+  String get noCompanyTitle => 'Încă nu faci parte din nicio firmă.';
+
+  @override
+  String get noCompanyHint =>
+      'Pentru a te alătura firmei angajatorului, generează un cod și dă-l responsabilului tău.';
+
+  @override
+  String get joinCompany => 'Alătură-te unei firme';
+
+  @override
+  String get createCompany => 'Creează o firmă';
+
+  @override
+  String transferOffer(String company) {
+    return 'Ți se propune să devii proprietarul „$company”.';
+  }
+
+  @override
+  String get someCompany => 'o firmă';
+
+  @override
+  String get becameOwner => 'Acum ești proprietarul.';
+
+  @override
+  String get myAccount => 'Contul meu';
+
+  @override
+  String get idCopied => 'Identificator copiat.';
+
+  @override
+  String get signOut => 'Deconectează-te';
+
+  @override
+  String joinInvite(String company, String role) {
+    return '„$company” te invită ca $role.';
+  }
+
+  @override
+  String joinedCompany(String company) {
+    return 'Te-ai alăturat firmei $company.';
+  }
+
+  @override
+  String get viewPlanning => 'Program';
+
+  @override
+  String get viewTeam => 'Configurări';
+
+  @override
+  String get viewPositions => 'Organigramă';
+
+  @override
+  String get readOnlyCompany => 'Firmă doar pentru citire.';
+
+  @override
+  String get team => 'Echipă';
+
+  @override
+  String get leaveCompany => 'Părăsește această firmă';
+
+  @override
+  String meSuffix(String name) {
+    return '$name (tu)';
+  }
+
+  @override
+  String transferConfirmTitle(String name) {
+    return 'Transferi firma către $name?';
+  }
+
+  @override
+  String get transferConfirmBody =>
+      'După acceptare, persoana va deveni proprietar (abonament, facturi, responsabili), iar tu vei deveni responsabil.';
+
+  @override
+  String transferSent(String name) {
+    return 'Propunere trimisă către $name.';
+  }
+
+  @override
+  String removeConfirmTitle(String name) {
+    return 'Elimini persoana $name?';
+  }
+
+  @override
+  String get removeConfirmBody => 'Istoricul este păstrat.';
+
+  @override
+  String get addPersonTitle => 'Adaugă o persoană';
+
+  @override
+  String get addPersonHint =>
+      'Roag-o să deschidă Staff Flow, meniul contului, „Alătură-te unei firme”, apoi introdu codul afișat.';
+
+  @override
+  String get sixDigitCode => 'Cod din 6 cifre';
+
+  @override
+  String invitationSent(String name) {
+    return 'Invitație trimisă către $name: trebuie să o accepte.';
+  }
+
+  @override
+  String leaveConfirmTitle(String company) {
+    return 'Părăsești $company?';
+  }
+
+  @override
+  String get leaveConfirmBody => 'Nu vei mai vedea programul acestei firme.';
+
+  @override
+  String get renameCompany => 'Redenumește firma';
+
+  @override
+  String get actionMakeManager => 'Numește responsabil';
+
+  @override
+  String get actionMakeEmployee => 'Din nou angajat';
+
+  @override
+  String get actionToEmployee => 'Treci la angajat';
+
+  @override
+  String get actionToExtra => 'Treci la temporar';
+
+  @override
+  String get actionTransfer => 'Transferă proprietatea';
+
+  @override
+  String get actionRemove => 'Elimină din firmă';
+
+  @override
+  String get positions => 'Posturi';
+
+  @override
+  String get sites => 'Locații';
+
+  @override
+  String get positionsHint => 'Ce face persoana: casă, bucătărie, recepție…';
+
+  @override
+  String get sitesHint =>
+      'Unde are loc tura, dacă firma are mai multe locații.';
+
+  @override
+  String get archived => 'Arhivat';
+
+  @override
+  String get archive => 'Arhivează';
+
+  @override
+  String get reactivate => 'Reactivează';
+
+  @override
+  String weekOf(String date) {
+    return 'Săptămâna din $date';
+  }
+
+  @override
+  String changesPublished(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count de modificări publicate.',
+      few: '$count modificări publicate.',
+      one: '$count modificare publicată.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shiftButton => 'Tură';
+
+  @override
+  String get display => 'Afișare';
+
+  @override
+  String get week => 'Săptămână';
+
+  @override
+  String get month => 'Lună';
+
+  @override
+  String get today => 'Azi';
+
+  @override
+  String get onlyMine => 'Doar turele mele';
+
+  @override
+  String get replacePersonMenu => 'Înlocuiește o persoană…';
+
+  @override
+  String pendingChanges(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count de modificări nepublicate',
+      few: '$count modificări nepublicate',
+      one: '$count modificare nepublicată',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pendingHint => 'Angajații nu le văd încă.';
+
+  @override
+  String get publish => 'Publică';
+
+  @override
+  String yourHours(String duration) {
+    return 'Orele tale în perioadă: $duration';
+  }
+
+  @override
+  String get addShiftThisDay => 'Adaugă o tură în această zi';
+
+  @override
+  String get noShift => 'Nicio tură';
+
+  @override
+  String get unassigned => 'Nealocat';
+
+  @override
+  String get formerMember => 'Fost membru';
+
+  @override
+  String get statusDraft => 'Ciornă';
+
+  @override
+  String get statusModified => 'Modificat';
+
+  @override
+  String get statusDeleted => 'Șters';
+
+  @override
+  String durationHours(int hours) {
+    return '$hours h';
+  }
+
+  @override
+  String durationHoursMinutes(int hours, String minutes) {
+    return '$hours h $minutes';
+  }
+
+  @override
+  String get editShift => 'Editează tura';
+
+  @override
+  String get newShift => 'Tură nouă';
+
+  @override
+  String get thisShift => 'Doar această tură';
+
+  @override
+  String get thisAndFollowing => 'Aceasta și următoarele';
+
+  @override
+  String daysLabel(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Zile',
+      one: 'Zi',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get otherDay => 'Altă zi';
+
+  @override
+  String get start => 'Început';
+
+  @override
+  String get end => 'Sfârșit';
+
+  @override
+  String get endsNextDay => 'Se termină a doua zi.';
+
+  @override
+  String get person => 'Persoană';
+
+  @override
+  String get position => 'Post';
+
+  @override
+  String get site => 'Locație';
+
+  @override
+  String get noteOptional => 'Notă (opțional)';
+
+  @override
+  String get repetition => 'Repetare';
+
+  @override
+  String get repeatNone => 'Niciuna';
+
+  @override
+  String get repeatDaily => 'Zilnic';
+
+  @override
+  String get repeatWeekly => 'Săptămânal';
+
+  @override
+  String get repeatForPrefix => 'Timp de ';
+
+  @override
+  String get repeatDaysSuffix => ' zile';
+
+  @override
+  String get repeatWeeksSuffix => ' săptămâni';
+
+  @override
+  String get repeatUntilPrefix => 'Până pe ';
+
+  @override
+  String get replacePersonTitle => 'Înlocuiește o persoană';
+
+  @override
+  String get replaceFrom => 'Înlocuiește';
+
+  @override
+  String get replaceBy => 'Cu';
+
+  @override
+  String dateRange(String from, String to) {
+    return 'De la $from la $to';
+  }
+
+  @override
+  String shiftsChanged(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count de ture modificate.',
+      few: '$count ture modificate.',
+      one: '$count tură modificată.',
+      zero: 'Nicio tură modificată.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get replaceButton => 'Înlocuiește';
+
+  @override
+  String get joinHint =>
+      'Dă acest cod responsabilului tău. După ce îl introduce în aplicație, vei primi o invitație de acceptat.';
+
+  @override
+  String get codeExpired => 'Cod expirat.';
+
+  @override
+  String codeValidFor(String time) {
+    return 'Valabil încă $time';
+  }
+
+  @override
+  String get newCode => 'Cod nou';
+
+  @override
+  String get language => 'Limbă';
+
+  @override
+  String get languageAuto => 'Automat (limba dispozitivului)';
+
+  @override
+  String get syncUpToDate => 'Actualizat';
+
+  @override
+  String get syncOffline => 'Offline';
+
+  @override
+  String syncPending(int count) {
+    return 'Modificări în așteptare: $count';
+  }
+
+  @override
+  String get syncNow => 'Sincronizează';
+
+  @override
+  String syncRejected(String reason) {
+    return 'Modificare refuzată de server: $reason';
+  }
+
+  @override
+  String get pendingBadge => 'În așteptare';
+
+  @override
+  String get offlineUnavailable => 'Indisponibil offline.';
+
+  @override
+  String get offlineCached => 'Offline: ultimele date salvate.';
+
+  @override
+  String get savedOffline =>
+      'Salvat pe dispozitiv, va fi trimis când revine rețeaua.';
+
+  @override
+  String get notices => 'Notificări';
+
+  @override
+  String get noNotices => 'Nicio notificare.';
+
+  @override
+  String noticeOverwritten(String name, String date) {
+    return '$name a înlocuit modificarea ta la tura din $date.';
+  }
+
+  @override
+  String get history => 'Istoric';
+
+  @override
+  String get recentChanges => 'Modificări recente';
+
+  @override
+  String get undoChange => 'Anulează această modificare';
+
+  @override
+  String get undoDone => 'Modificare anulată.';
+
+  @override
+  String get historyCreate => 'Creare';
+
+  @override
+  String get historyUpdate => 'Modificare';
+
+  @override
+  String get historyDelete => 'Ștergere';
+
+  @override
+  String get historyUndo => 'Anulare';
+
+  @override
+  String get noHistory => 'Nicio modificare.';
+
+  @override
+  String get pendingNotEditable =>
+      'Această tură nu este încă sincronizată: încearcă din nou când ești online.';
+
+  @override
+  String get myQrCode => 'Codul meu QR';
+
+  @override
+  String get myQrCodeHint =>
+      'Un responsabil scanează acest cod pentru a te adăuga în firma sa; apoi confirmi tu. Nu se schimbă niciodată.';
+
+  @override
+  String get changeMyName => 'Schimbă-mi numele';
+
+  @override
+  String get nameShownToTeam =>
+      'Acest nume este afișat colegilor în locul numelui tău Google.';
+
+  @override
+  String googleName(String name) {
+    return 'Nume Google: $name';
+  }
+
+  @override
+  String get useGoogleName => 'Folosește numele meu Google';
+
+  @override
+  String renameMemberTitle(String name) {
+    return 'Redenumește $name';
+  }
+
+  @override
+  String get renameMemberHint =>
+      'Acest nume este folosit doar în această firmă.';
+
+  @override
+  String get useOwnName => 'Folosește propriul nume';
+
+  @override
+  String get scanQrCode => 'Scanează un cod QR';
+
+  @override
+  String get scanQrHint =>
+      'Îndreaptă camera spre codul QR afișat în aplicația persoanei (meniul contului, „Codul meu QR”).';
+
+  @override
+  String get orEnterCode => 'Sau introdu codul de 6 cifre';
+
+  @override
+  String get qrInvalid => 'Acesta nu este un cod QR Staff Flow.';
+
+  @override
+  String cameraUnavailable(String error) {
+    return 'Camera nu este disponibilă ($error).';
+  }
+
+  @override
+  String get notificationsTitle => 'Notificări';
+
+  @override
+  String get notifChooseHint =>
+      'Alege despre ce primești notificări. Totul rămâne vizibil la clopoțel.';
+
+  @override
+  String get notifPlanning => 'Program publicat sau modificat';
+
+  @override
+  String get notifRequests => 'Cereri: schimburi, concedii, invitații';
+
+  @override
+  String get notifMessages => 'Anunțuri noi';
+
+  @override
+  String get notifOverlap => 'Ture suprapuse între firme';
+
+  @override
+  String get notifConflicts => 'Modificările tale înlocuite de alt responsabil';
+
+  @override
+  String get notifBilling => 'Mementouri despre abonament';
+
+  @override
+  String get pushEnabled => 'Notificările sunt activate pe acest dispozitiv.';
+
+  @override
+  String get pushOff => 'Notificările sunt dezactivate pe acest dispozitiv.';
+
+  @override
+  String get pushBlocked =>
+      'Notificările sunt blocate: permite-le în setările telefonului sau ale browserului.';
+
+  @override
+  String get pushUnavailable =>
+      'Notificările nu sunt disponibile pe acest dispozitiv.';
+
+  @override
+  String get enablePush => 'Activează';
+
+  @override
+  String noticeSchedulePublished(String company) {
+    return '$company: programul tău a fost publicat sau modificat.';
+  }
+
+  @override
+  String noticeJoinInvite(String company) {
+    return '$company vrea să te adauge în echipa sa.';
+  }
+
+  @override
+  String noticeTransferOffer(String name, String company) {
+    return '$name îți propune să devii proprietarul $company.';
+  }
+
+  @override
+  String noticeMemberJoined(String name, String company) {
+    return '$name s-a alăturat $company.';
+  }
+
+  @override
+  String get translateAction => 'Traduce';
+
+  @override
+  String get deleteAllNotices => 'Șterge tot';
+
+  @override
+  String get deleteAllNoticesConfirm => 'Ștergi toate avizele?';
+
+  @override
+  String get noticeRetention => 'Șterge avizele citite după';
+
+  @override
+  String get retentionDay => '1 zi';
+
+  @override
+  String get retentionWeek => '1 săptămână';
+
+  @override
+  String get retentionMonth => '1 lună';
+
+  @override
+  String get billingOwnersOnly => 'Activ doar dacă deții o firmă.';
+
+  @override
+  String get readOnlyPastDays =>
+      'Zilele mai vechi de o lună sunt doar pentru citire.';
+
+  @override
+  String get wholeCompany => 'Toată firma';
+
+  @override
+  String get sitesLabel => 'Puncte de lucru';
+
+  @override
+  String get actionSites => 'Puncte de lucru…';
+
+  @override
+  String managerOf(String name) {
+    return '$name răspunde de';
+  }
+
+  @override
+  String teamSitesOf(String name) {
+    return 'Echipa lui $name';
+  }
+
+  @override
+  String get notYourSite =>
+      'Acest punct de lucru nu este în responsabilitatea ta.';
+
+  @override
+  String get chooseYourSite => 'Alege cel puțin un punct de lucru.';
+
+  @override
+  String get viewRequests => 'Cereri';
+
+  @override
+  String get newRequest => 'Cerere nouă';
+
+  @override
+  String get requestLeave => 'Concediu';
+
+  @override
+  String get requestUnavailability => 'Indisponibilitate';
+
+  @override
+  String get requestSwap => 'Schimb de tură';
+
+  @override
+  String get swapHint =>
+      'Pentru a propune un schimb, atinge una dintre turele tale viitoare din planificare.';
+
+  @override
+  String get noRequests => 'Încă nu există cereri.';
+
+  @override
+  String get requestsToHandle => 'De rezolvat';
+
+  @override
+  String get statusPendingPeer => 'Așteaptă colegul';
+
+  @override
+  String get statusPendingManager => 'Așteaptă responsabilul';
+
+  @override
+  String get statusApproved => 'Acceptată';
+
+  @override
+  String get statusRefused => 'Refuzată';
+
+  @override
+  String get statusCancelled => 'Anulată';
+
+  @override
+  String get cancelRequest => 'Anulează cererea';
+
+  @override
+  String get acceptSwap => 'Preia această tură';
+
+  @override
+  String get approve => 'Validează';
+
+  @override
+  String periodLabel(String from, String to) {
+    return 'De la $from până la $to';
+  }
+
+  @override
+  String swapToPeer(String name) {
+    return 'Propus lui $name';
+  }
+
+  @override
+  String get swapToTeam => 'Toată echipa';
+
+  @override
+  String everyWeekdays(String days) {
+    return 'În fiecare săptămână: $days';
+  }
+
+  @override
+  String get unavailableEveryWeek =>
+      'Zile în care nu ești niciodată disponibil:';
+
+  @override
+  String get choosePeriod => 'Alege datele';
+
+  @override
+  String get choosePeriodOptional => 'Limitează la o perioadă (opțional)';
+
+  @override
+  String get clearPeriod => 'Fără perioadă';
+
+  @override
+  String get sendRequest => 'Trimite cererea';
+
+  @override
+  String get proposeSwap => 'Propune un schimb';
+
+  @override
+  String get swapWith => 'Propune lui';
+
+  @override
+  String get swapSteps =>
+      'Colegul acceptă, apoi un responsabil validează. Planificarea se schimbă doar după aceea.';
+
+  @override
+  String get absentThatDay => 'Absență validată în acea zi';
+
+  @override
+  String get requestSent => 'Cerere trimisă.';
+
+  @override
+  String noticeSwapOffer(String name) {
+    return '$name îți propune una dintre turele sale.';
+  }
+
+  @override
+  String noticeSwapDeclined(String name) {
+    return '$name a refuzat propunerea ta de schimb.';
+  }
+
+  @override
+  String get noticeSwapToApprove => 'Un schimb de tură așteaptă validarea ta.';
+
+  @override
+  String noticeLeaveToApprove(String name) {
+    return '$name cere concediu.';
+  }
+
+  @override
+  String noticeUnavailabilityToApprove(String name) {
+    return '$name anunță că nu este disponibil.';
+  }
+
+  @override
+  String get noticeRequestApproved => 'Cererea ta a fost acceptată.';
+
+  @override
+  String get noticeRequestRefused => 'Cererea ta a fost refuzată.';
+
+  @override
+  String get choosePeer => 'Cine preia această tură?';
+
+  @override
+  String get discardAll => 'Anulează tot';
+
+  @override
+  String get notifySitesHint =>
+      'Alege locațiile pentru care primești notificări despre cereri. Toate cererile rămân vizibile în listă.';
+
+  @override
+  String get pendingRequestTooltip =>
+      'Cerere în așteptare: atinge pentru a o deschide';
+
+  @override
+  String get requestsHistory => 'Toate cererile';
+
+  @override
+  String get revertChange => 'Anulează această modificare';
+
+  @override
+  String get statusExpired => 'Fără obiect';
+
+  @override
+  String get swapWithHint => 'Atinge pentru a alege un anumit coleg';
+
+  @override
+  String changesDiscarded(String count) {
+    return 'Modificări anulate: $count';
+  }
+
+  @override
+  String discardConfirm(String count) {
+    return 'Anulezi cele $count modificări nepublicate?';
+  }
+
+  @override
+  String get allSchedules => 'Toate planificările mele';
+
+  @override
+  String get busyElsewhere => 'Lucrează deja la altă firmă în acest interval';
+
+  @override
+  String get overlapTooltip => 'Se suprapune cu o tură de la altă firmă';
+
+  @override
+  String get overlapWarning =>
+      'Unele dintre turele tale de la două firme se suprapun.';
+
+  @override
+  String noticeOverlap(String date) {
+    return 'Două dintre turele tale de la firme diferite se suprapun pe $date.';
+  }
+
+  @override
+  String get allMyCompanies => 'Toate firmele mele';
+
+  @override
+  String get openRequest => 'Vezi cererea';
+
+  @override
+  String get thisCompany => 'Această firmă';
+
+  @override
+  String get withExtras => 'Cu colaboratorii';
+
+  @override
+  String reinforcementHint(String company) {
+    return 'De la $company: va fi adăugat ca întăritură și anunțat.';
+  }
+
+  @override
+  String get addToGoogle => 'Adaugă în Google Calendar';
+
+  @override
+  String get calendarEnabled => 'Sincronizează turele mele';
+
+  @override
+  String get changeSettings => 'Modifică';
+
+  @override
+  String get countryBelgium => 'Belgia';
+
+  @override
+  String get countryCanada => 'Canada';
+
+  @override
+  String get countryFrance => 'Franța';
+
+  @override
+  String get countrySwitzerland => 'Elveția';
+
+  @override
+  String get employeesSection => 'Angajați';
+
+  @override
+  String get emptyNoAlert => 'Gol: fără alertă';
+
+  @override
+  String get extrasSection => 'Colaboratori';
+
+  @override
+  String get googleCalendar => 'Google Calendar';
+
+  @override
+  String get hoursTotals => 'Totaluri de ore';
+
+  @override
+  String get legalAlerts => 'Alerte legale';
+
+  @override
+  String get legalAlertsHint =>
+      'Avertismente, niciodată blocări. Alege regulile care se aplică la tine, sau niciuna.';
+
+  @override
+  String get legalPreset => 'Model pe țară';
+
+  @override
+  String get maxConsecutiveLabel => 'Maximum de zile lucrate la rând';
+
+  @override
+  String get maxDayLabel => 'Durată maximă pe zi (ore)';
+
+  @override
+  String get maxWeekLabel => 'Durată maximă pe săptămână (ore)';
+
+  @override
+  String get minRestLabel => 'Repaus minim între două ture (ore)';
+
+  @override
+  String get noLegalRules => 'Nicio alertă aleasă.';
+
+  @override
+  String get presetNone => 'Niciuna';
+
+  @override
+  String get presetsCheck =>
+      'Modelele sunt un punct de plecare: verifică-le după legislația țării tale și contractul colectiv.';
+
+  @override
+  String get printMine => 'Planificarea mea';
+
+  @override
+  String get printOwn => 'Doar propria planificare';
+
+  @override
+  String get printPdf => 'Tipărire / PDF';
+
+  @override
+  String get printRights => 'Ce pot tipări angajații';
+
+  @override
+  String get printTeam => 'Planificarea întregii echipe';
+
+  @override
+  String get printTeamOption => 'Planificarea echipei';
+
+  @override
+  String get totalsHint =>
+      'Inclusiv ciornele. Exporturile Excel și CSV folosesc planificarea publicată.';
+
+  @override
+  String alertConsecutive(String name, String value, String limit) {
+    return '$name: $value zile la rând (maximum $limit)';
+  }
+
+  @override
+  String alertDay(String name, String value, String limit) {
+    return '$name: $value într-o zi (maximum $limit)';
+  }
+
+  @override
+  String alertRest(String name, String value, String limit) {
+    return '$name: doar $value de repaus (minimum $limit)';
+  }
+
+  @override
+  String alertWeek(String name, String value, String limit) {
+    return '$name: $value într-o săptămână (maximum $limit)';
+  }
+
+  @override
+  String legalAlertsCount(String count) {
+    return 'Alerte legale: $count';
+  }
+
+  @override
+  String shiftsCount(String count) {
+    return 'Ture: $count';
+  }
+
+  @override
+  String get actionMakeDeputy => 'Numește adjunct al responsabilului';
+
+  @override
+  String get actionRemoveDeputy => 'Retrage rolul de adjunct';
+
+  @override
+  String get busyHere => 'Lucrează deja în firmă în acest interval';
+
+  @override
+  String get calendarDenied =>
+      'Accesul la calendar a fost refuzat. Permite-l din setările telefonului.';
+
+  @override
+  String get calendarLinkHint =>
+      'Adaugă-l din Google Calendar pe un calculator; Google îl actualizează în câteva ore.';
+
+  @override
+  String get calendarNone => 'Niciun calendar editabil pe acest telefon.';
+
+  @override
+  String get calendarOnPhoneHint =>
+      'În calendarul tău Google: vizibil imediat, pe telefon și în Google Calendar.';
+
+  @override
+  String get chooseCalendar => 'Alege calendarul';
+
+  @override
+  String get otherSiteHint =>
+      'Angajat de la altă locație: responsabilii lui vor fi anunțați.';
+
+  @override
+  String get subManager => 'Adjunct al responsabilului';
+
+  @override
+  String calendarSynced(String count) {
+    return 'Ture în calendar: $count';
+  }
+
+  @override
+  String deputyOf(String name) {
+    return 'Adjunct al responsabilului: $name';
+  }
+
+  @override
+  String noticeBorrowed(String by, String name, String site, String date) {
+    return '$by l-a programat pe $name la locația $site pe $date.';
+  }
+
+  @override
+  String noticeReinforcement(String company) {
+    return '$company te-a adăugat ca întăritură.';
+  }
+
+  @override
+  String get companyNotificationsHint =>
+      'Oprite: nu sună nimic pe acest telefon, dar totul rămâne în clopoțel.';
+
+  @override
+  String get companyNotificationsOn => 'Primește notificările acestei firme';
+
+  @override
+  String get companyTimezone => 'Fusul orar al firmei';
+
+  @override
+  String get companyTimezoneHint =>
+      'Toate orele acestei firme sunt în acest fus (inclusiv ora de vară). Calendarele le convertesc automat.';
+
+  @override
+  String get iosInstallHint =>
+      'Pe iPhone: atinge Partajează, apoi „Adaugă pe ecranul principal” pentru a instala Staff Flow.';
+
+  @override
+  String get searchCity => 'Caută un oraș';
+
+  @override
+  String get thisPhone => 'Acest dispozitiv';
+
+  @override
+  String companyNotifications(String name) {
+    return 'Notificări: $name';
+  }
+
+  @override
+  String timezoneDiffers(String zone, String company, String here) {
+    return 'Ore după ora din $zone ($company). Dispozitivul tău: $here.';
+  }
+
+  @override
+  String get addPreset => 'Adaugă presetarea';
+
+  @override
+  String get addPresets => 'Creează presetări';
+
+  @override
+  String get appearance => 'Aspect';
+
+  @override
+  String get chooseLogo => 'Alege o imagine PNG';
+
+  @override
+  String get customization => 'Personalizare';
+
+  @override
+  String get editPresets => 'Presetări';
+
+  @override
+  String get enable => 'Reactivează';
+
+  @override
+  String get logoHint =>
+      'O imagine PNG mică (logoul tău) afișată pe fila firmei, pentru toți membrii.';
+
+  @override
+  String get logoPngOnly => 'Alege o imagine PNG de cel mult 1 MB.';
+
+  @override
+  String get myIdentifier => 'Identificatorul meu';
+
+  @override
+  String get myProfile => 'Profilul meu';
+
+  @override
+  String get presetName => 'Nume (ex. Dimineață)';
+
+  @override
+  String get removeLogo => 'Elimină imaginea';
+
+  @override
+  String get settingsTitle => 'Setări';
+
+  @override
+  String get shiftPresets => 'Presetări de ore';
+
+  @override
+  String get shiftPresetsHint =>
+      'Ore gata făcute (dimineață, seară, noapte…): o atingere într-o tură completează începutul și sfârșitul.';
+
+  @override
+  String get themeDark => 'Întunecat';
+
+  @override
+  String get themeLight => 'Luminos';
+
+  @override
+  String get themeSystem => 'Sistem';
+
+  @override
+  String get awaitingApproval => 'De aprobat';
+
+  @override
+  String get placementNeedsApproval =>
+      '! Această persoană nu este din punctele dvs. de lucru: tura va aștepta aprobarea superiorului sau a proprietarului înainte de a putea fi publicată. Altfel, alegeți pe altcineva.';
+
+  @override
+  String get placementAwaiting =>
+      'Așteaptă aprobarea unui superior sau a proprietarului.';
+
+  @override
+  String noticePlacementToApprove(String by, String name, String date) {
+    return '$by vrea să programeze pe $name, de la alt punct de lucru, pe $date: necesită aprobare.';
+  }
+
+  @override
+  String noticePlacementApproved(String by, String name, String date) {
+    return '$by a aprobat programarea lui $name pe $date.';
+  }
+
+  @override
+  String noticePlacementRefused(String by, String name, String date) {
+    return '$by a refuzat programarea lui $name pe $date.';
+  }
+
+  @override
+  String get addSubSite => 'Adaugă un sub-punct de lucru';
+
+  @override
+  String get moveSite => 'Mută';
+
+  @override
+  String get topLevel => 'Primul nivel';
+
+  @override
+  String moveSiteTitle(String name) {
+    return 'Mută „$name” sub…';
+  }
+
+  @override
+  String subSiteOf(String name) {
+    return 'Sub-punct al $name';
+  }
+
+  @override
+  String get siteTreeHint =>
+      'Până la 10 niveluri, de exemplu Regiune › Oraș › Magazin. Primele 3 sunt incluse în abonament; mai departe e nevoie de opțiunea „Locații în cascadă”. Responsabilul unei locații gestionează și tot ce este dedesubt.';
+
+  @override
+  String get subSitesOnlyHint =>
+      'Aici adăugați sub-puncte de lucru sub propriile puncte.';
+
+  @override
+  String get messagingSetting => 'Flux de noutăți';
+
+  @override
+  String get messagingSettingHint =>
+      'Activat: proprietarul și responsabilii publică anunțuri (pentru toți, un post, o locație sau persoane alese); fiecare le citește și le poate traduce. Dezactivat: fila dispare pentru toți.';
+
+  @override
+  String get billingTitle => 'Abonament';
+
+  @override
+  String billingStatusTrial(String date) {
+    return 'Perioadă de probă gratuită până la $date';
+  }
+
+  @override
+  String billingStatusActive(String date) {
+    return 'Plătit până la $date';
+  }
+
+  @override
+  String billingStatusGrace(String date) {
+    return 'Doar citire: fără plată, firma va fi ștearsă pe $date.';
+  }
+
+  @override
+  String get billingStatusComped => 'Oferit';
+
+  @override
+  String billingStaff(String count) {
+    return '$count angajați și responsabili (fără proprietar și extra)';
+  }
+
+  @override
+  String get billingMonthly => 'Lunar';
+
+  @override
+  String billingYearly(String months) {
+    return 'Anual ($months luni facturate)';
+  }
+
+  @override
+  String get billingCascade =>
+      'Opțiunea „Locații în cascadă” (nivelurile 4–10)';
+
+  @override
+  String billingCascadeIncluded(String count) {
+    return 'Inclusă de la $count angajați';
+  }
+
+  @override
+  String billingPay(String amount) {
+    return 'Plătește $amount';
+  }
+
+  @override
+  String get billingTestNotice => 'Plată de test: nu se încasează nimic.';
+
+  @override
+  String get billingSoon => 'Plata online vine în curând.';
+
+  @override
+  String get billingPaidOk => 'Plată înregistrată.';
+
+  @override
+  String get billingInvoices => 'Facturi';
+
+  @override
+  String get billingNoInvoices => 'Încă nu există facturi.';
+
+  @override
+  String get billingManage => 'Gestionează abonamentul';
+
+  @override
+  String get billingReadOnlyStaff =>
+      'Această firmă este doar în citire până când proprietarul reînnoiește abonamentul.';
+
+  @override
+  String billingPerMonth(String amount) {
+    return '$amount / lună';
+  }
+
+  @override
+  String billingPerYear(String amount) {
+    return '$amount / an';
+  }
+
+  @override
+  String noticeBillingTrialEnding(String company) {
+    return '$company: perioada de probă gratuită se încheie în mai puțin de 24 de ore.';
+  }
+
+  @override
+  String noticeBillingGrace(String company, String date) {
+    return '$company este doar în citire din cauza neplății; ștergere pe $date.';
+  }
+
+  @override
+  String noticeBillingGraceReminder(String company, String date) {
+    return 'Memento: fără plată, $company va fi ștearsă pe $date.';
+  }
+
+  @override
+  String noticeBillingDeleted(String company) {
+    return '$company a fost ștearsă din cauza neplății.';
+  }
+
+  @override
+  String billingCompanyId(String id) {
+    return 'ID-ul firmei: $id';
+  }
+
+  @override
+  String billingDueToday(String amount) {
+    return 'Astăzi: $amount';
+  }
+
+  @override
+  String billingProrataNote(String days) {
+    return 'Include restul lunii curente ($days zile, pro rata), apoi luni întregi de la data de 1.';
+  }
+
+  @override
+  String get telegramTitle => 'Telegram';
+
+  @override
+  String get telegramNotLinked =>
+      'Încă neconectat. Servește la verificarea identității, de exemplu pentru schimbarea contului Google.';
+
+  @override
+  String telegramLinked(String name) {
+    return 'Conectat: $name';
+  }
+
+  @override
+  String get telegramNoUsername => 'fără nume de utilizator';
+
+  @override
+  String get telegramLink => 'Conectează-mi Telegramul';
+
+  @override
+  String get telegramLinkHint =>
+      'Se deschide Telegram: atinge „Start”, apoi revino aici.';
+
+  @override
+  String get telegramUnlink => 'Deconectează';
+
+  @override
+  String get telegramUnavailable => 'Telegram nu este încă disponibil.';
+
+  @override
+  String get telegramShowIn => 'Afișează-mi Telegramul în:';
+
+  @override
+  String get newQrCode => 'Schimbă codul QR';
+
+  @override
+  String get newQrCodeConfirm =>
+      'Vechiul cod QR și vechiul identificator nu vor mai funcționa. Locul tău în firme nu se schimbă.';
+
+  @override
+  String get newQrCodeDone => 'Cod QR nou creat.';
+
+  @override
+  String get changeGoogle => 'Schimbă contul Google';
+
+  @override
+  String get changeGoogleSub => 'Același cont, același număr, aceleași firme';
+
+  @override
+  String changeGoogleSteps(String id) {
+    return '1. Conectează-ți Telegramul în acest profil (obligatoriu).\n2. Deconectează-te, apoi conectează-te cu noul cont Google.\n3. Alege „Am deja un cont Staff Flow” și introdu identificatorul $id.\n4. Introdu codul primit pe Telegram.\nContul, numărul și firmele tale rămân aceleași.';
+  }
+
+  @override
+  String get recoverAccount => 'Am deja un cont Staff Flow';
+
+  @override
+  String get recoverHint =>
+      'Introdu identificatorul vechiului cont (SF-…). Un cod va fi trimis pe Telegramul conectat la acel cont.';
+
+  @override
+  String get recoverIdLabel => 'Identificator (SF-…)';
+
+  @override
+  String get recoverSend => 'Trimite codul';
+
+  @override
+  String get recoverCodeSent => 'Cod trimis pe Telegram.';
+
+  @override
+  String get recoverCodeLabel => 'Cod primit (6 cifre)';
+
+  @override
+  String get recoverConfirm => 'Recuperează-mi contul';
+
+  @override
+  String get recoverDone => 'Gata: ai revenit în contul tău.';
+
+  @override
+  String get exportData => 'Exportă-mi datele';
+
+  @override
+  String get exportDataSub => 'Un fișier cu toate datele tale personale';
+
+  @override
+  String get deleteAccount => 'Șterge-mi contul';
+
+  @override
+  String get deleteGhost => 'Șterge păstrând o fantomă';
+
+  @override
+  String get deleteGhostHint =>
+      'Părăsești toate firmele. Conectează-te mai târziu cu același cont Google ca să-ți recuperezi contul și numărul.';
+
+  @override
+  String get deleteErase => 'Șterge totul definitiv';
+
+  @override
+  String get deleteEraseHint =>
+      'Numele, e-mailul, fotografia, Telegramul, mesajele și notificările sunt șterse. Nu se poate anula.';
+
+  @override
+  String get deleteGhostNote =>
+      'În ambele cazuri, istoricul firmelor păstrează în locul tău un „Ghost” anonim (cereri de concediu, ture trecute…) ca patronul și responsabilii să poată reconstitui evenimentele.';
+
+  @override
+  String get deleteOwnerNote =>
+      'Ești proprietarul unei firme? Transfer-o mai întâi sau lasă abonamentul să expire.';
+
+  @override
+  String get deleteConfirmButton => 'Șterge';
+
+  @override
+  String get accountRestored => 'Bine ai revenit! Contul tău a fost reactivat.';
+
+  @override
+  String get closedInvoices => 'Facturile firmelor închise';
+
+  @override
+  String get downloadAllInvoices => 'Descarcă toate facturile (ZIP)';
+
+  @override
+  String get legalTerms => 'Condiții de utilizare și de vânzare';
+
+  @override
+  String get legalPrivacy => 'Politica de confidențialitate';
+
+  @override
+  String get billingDetailTitle => 'Detaliile plății';
+
+  @override
+  String billingLineProrata(String days, String total) {
+    return 'Restul lunii curente ($days zile din $total): abonament';
+  }
+
+  @override
+  String billingLineCascadeProrata(String days, String total) {
+    return 'Restul lunii curente ($days zile din $total): opțiunea „locații imbricate”';
+  }
+
+  @override
+  String billingLineMonth(String staff) {
+    return 'Abonament, $staff locuri: 1 lună';
+  }
+
+  @override
+  String billingLineYear(String staff, String paid) {
+    return 'Abonament, $staff locuri: 12 luni la prețul a $paid';
+  }
+
+  @override
+  String billingLineCascade(String months) {
+    return 'Opțiunea „locații imbricate”: $months luni, fără reducere';
+  }
+
+  @override
+  String get billingTotal => 'Total';
+
+  @override
+  String billingCovers(String from, String to) {
+    return 'Perioadă acoperită: $from – $to';
+  }
+
+  @override
+  String get billingGraceInvoices =>
+      'Această firmă nu este reînnoită: descarcă acum toate facturile ei.';
+
+  @override
+  String get billingYearLabel => 'An';
+
+  @override
+  String get sitesNoneChosen => 'Nicio locație aleasă';
+
+  @override
+  String get avatarTitle => 'Avatarul meu';
+
+  @override
+  String get avatarSub => 'O imagine în locul fotografiei tale';
+
+  @override
+  String get avatarUseGoogle => 'Folosește fotografia mea Google';
+
+  @override
+  String get avatarColor => 'Culoare';
+
+  @override
+  String get hidePhotosTitle => 'Ascunde fotografiile Google';
+
+  @override
+  String get hidePhotosSub =>
+      'În această firmă, fiecare apare cu avatarul sau inițiala sa.';
+
+  @override
+  String get billingApi => 'Opțiunea „acces API”';
+
+  @override
+  String billingLineApi(String months) {
+    return 'Opțiunea „acces API”: $months luni, fără reducere';
+  }
+
+  @override
+  String billingLineApiProrata(String days, String total) {
+    return 'Restul lunii curente ($days zile din $total): opțiunea „acces API”';
+  }
+
+  @override
+  String get apiTitle => 'Acces API (contabilitate, CRM)';
+
+  @override
+  String get apiSub =>
+      'Programele dvs. (salarizare, contabilitate, CRM, planificare) citesc programul publicat, orele și absențele; cu „API Pro” trimit și programe, angajați și anunțuri.';
+
+  @override
+  String get apiNeedsOption =>
+      'Opțiune plătită: adăugați „Acces API” sau „API Pro” în „Gestionează abonamentul”.';
+
+  @override
+  String get apiNewKey => 'Cheie nouă';
+
+  @override
+  String get apiKeyName => 'Numele cheii (ex.: program de salarizare)';
+
+  @override
+  String get apiKeyCreated =>
+      'Copiază acum această cheie și păstreaz-o în siguranță: nu va mai fi afișată.';
+
+  @override
+  String get apiKeyCopy => 'Copiază';
+
+  @override
+  String get apiKeyCopied => 'Cheie copiată.';
+
+  @override
+  String apiKeyLastUsed(String date) {
+    return 'Ultima utilizare: $date';
+  }
+
+  @override
+  String get apiKeyNeverUsed => 'Nefolosită';
+
+  @override
+  String get apiRevoke => 'Revocă';
+
+  @override
+  String get apiRevokeConfirm =>
+      'Programele care folosesc această cheie își vor pierde accesul.';
+
+  @override
+  String get apiDocs => 'Documentația API';
+
+  @override
+  String get memberGoogleLink => 'Reconectarea Google a angajatului';
+
+  @override
+  String googleLinkHint(String name) {
+    return 'Trimite acest link lui $name. Se deschide într-un browser (nu în aplicația Android), o singură dată, timp de 24 de ore: $name se conectează cu noul cont Google și își recuperează contul. Toate celelalte dispozitive ale sale sunt apoi deconectate.';
+  }
+
+  @override
+  String get googleLinkCopied => 'Link copiat.';
+
+  @override
+  String get switchBanner =>
+      'Link de schimbare a contului Google: conectează-te cu noul cont Google pentru a-ți recupera contul Staff Flow.';
+
+  @override
+  String get switchSignOutFirst =>
+      'Acest link conectează un cont Staff Flow la un nou cont Google. Deconectează-te mai întâi, apoi conectează-te cu noul cont Google.';
+
+  @override
+  String get switchDone =>
+      'Gata: contul tău Staff Flow este conectat la acest cont Google. Celelalte dispozitive ale tale au fost deconectate.';
+
+  @override
+  String changeGoogleBot(String bot) {
+    return 'Cel mai simplu: în Telegram trimite /changegoogle botului $bot și urmează instrucțiunile, apoi conectează-te cu noul cont Google în 10 minute.';
+  }
+
+  @override
+  String get changeGoogleNoTelegram =>
+      'Fără Telegram: cere patronului sau unui responsabil un link de schimbare a contului Google.';
+
+  @override
+  String noticeGoogleSwitchLink(String name) {
+    return '$name a creat un link pentru a conecta contul tău la un nou cont Google. Dacă nu ai cerut asta, anunță-ți responsabilul.';
+  }
+
+  @override
+  String get sessionRevoked =>
+      'Ai fost deconectat: contul tău este acum conectat la alt cont Google.';
+
+  @override
+  String telegramLoginHint(String bot) {
+    return 'Sfat: trimite /connexion botului $bot ca să primești un link și să deschizi Staff Flow în browser, fără aplicație și fără cont Google.';
+  }
+
+  @override
+  String get timeFormat => 'Formatul orei';
+
+  @override
+  String get timeFormatAuto => 'Auto';
+
+  @override
+  String get people => 'Persoane';
+
+  @override
+  String get sortNatural => 'Ordinea obișnuită';
+
+  @override
+  String get sortName => 'Nume';
+
+  @override
+  String get employeeNumber => 'Număr matricol';
+
+  @override
+  String get sfIdLabel => 'ID Staff Flow';
+
+  @override
+  String get pickSearch => 'Caută';
+
+  @override
+  String get pickSearchPeople => 'Caută: nume, număr matricol, ID SF';
+
+  @override
+  String get pickSortTitle => 'Sortează și afișează după';
+
+  @override
+  String pickSelected(String count) {
+    return 'Bifate: $count';
+  }
+
+  @override
+  String get pickCheckAll => 'Bifează tot';
+
+  @override
+  String get pickClear => 'Debifează tot';
+
+  @override
+  String get pickNoResult => 'Niciun rezultat';
+
+  @override
+  String get pickMultiHint =>
+      'Bifați mai multe persoane: se va crea câte o tură pentru fiecare, dintr-o dată.';
+
+  @override
+  String get filterAll => 'Toate';
+
+  @override
+  String filterValue(String label, String value) {
+    return '$label: $value';
+  }
+
+  @override
+  String get noPositionGroup => 'Fără post';
+
+  @override
+  String get noSiteGroup => 'Fără locație';
+
+  @override
+  String get groupByTitle => 'Grupează după';
+
+  @override
+  String get groupRole => 'Rol';
+
+  @override
+  String get groupNone => 'Fără grupare';
+
+  @override
+  String showMore(String count, String left) {
+    return 'Arată încă $count (au rămas $left)';
+  }
+
+  @override
+  String get findByQr => 'Găsește un membru după codul său QR';
+
+  @override
+  String get qrNotMember =>
+      'Acest cod QR nu corespunde nimănui din această companie.';
+
+  @override
+  String get memberProfile => 'Număr matricol și post';
+
+  @override
+  String get employeeNumberHint =>
+      'Numărul propriu al companiei dvs. (opțional). ID-ul Staff Flow rămâne atribuit.';
+
+  @override
+  String get usualPosition => 'Post obișnuit';
+
+  @override
+  String get inviteCodeTitle => 'Cod de invitație';
+
+  @override
+  String get inviteCodeHint =>
+      'Introduceți codul primit de la angajator sau scanați codul QR al invitației.';
+
+  @override
+  String inviteJoined(String company) {
+    return 'Ați intrat în $company.';
+  }
+
+  @override
+  String get importTitle => 'Importă angajați';
+
+  @override
+  String get importIntro =>
+      'Importați lista de angajați dintr-un fișier Excel sau CSV. Fiecare primește un cod și un cod QR personale: își activează contul cu o aplicație 2FA (sau cu Google). Nimeni nu este adăugat fără acordul său.';
+
+  @override
+  String get importTemplate => 'Descarcă șablonul Excel';
+
+  @override
+  String get importTemplateHint =>
+      'Coloane: nume, număr matricol, post, locație. Doar numele este obligatoriu.';
+
+  @override
+  String get importChooseFile => 'Alege un fișier (.xlsx sau .csv)';
+
+  @override
+  String importNew(String count) {
+    return 'Noi: $count';
+  }
+
+  @override
+  String importUpdate(String count) {
+    return 'Actualizați: $count';
+  }
+
+  @override
+  String importSkip(String count) {
+    return 'Deja invitați: $count';
+  }
+
+  @override
+  String importErrors(String count) {
+    return 'Erori: $count';
+  }
+
+  @override
+  String importConfirm(String count) {
+    return 'Importă ($count)';
+  }
+
+  @override
+  String get importErrorsIgnored =>
+      'Rândurile cu erori vor fi ignorate: corectați-le în fișier și importați-l din nou.';
+
+  @override
+  String get importCreated => 'nou';
+
+  @override
+  String importDone(String count) {
+    return 'Invitații create: $count';
+  }
+
+  @override
+  String get invitesTitle => 'Invitații în așteptare';
+
+  @override
+  String get invitesPrint => 'Tipărește codurile';
+
+  @override
+  String get inviteShowHint =>
+      'Persoana alege „Activează contul meu” pe ecranul de conectare (sau „Am un cod de invitație” dacă are deja cont), apoi scanează acest cod QR sau tastează acest cod. Valabil 90 de zile, o singură dată.';
+
+  @override
+  String invitesHint(String count) {
+    return 'Invitații în așteptare: $count. Atingeți o persoană pentru a-i afișa codul și codul QR sau tipăriți-le pe toate.';
+  }
+
+  @override
+  String get inviteSeenByEmail => 'invitație văzută (e-mail)';
+
+  @override
+  String get invitesNone => 'Nicio invitație în așteptare.';
+
+  @override
+  String get haveInviteCode => 'Am un cod de invitație';
+
+  @override
+  String get newsTab => 'Noutăți';
+
+  @override
+  String get newsNew => 'Anunț nou';
+
+  @override
+  String get newsEmpty => 'Niciun anunț deocamdată.';
+
+  @override
+  String get newsEmptyManager =>
+      'Niciun anunț deocamdată. Publicați primul: pentru toată compania, un post, o locație sau persoane alese.';
+
+  @override
+  String get newsOlder => 'Anunțuri mai vechi';
+
+  @override
+  String get newsEdited => 'modificat';
+
+  @override
+  String get newsEdit => 'Modifică anunțul';
+
+  @override
+  String get newsDeleteTitle => 'Retrageți acest anunț?';
+
+  @override
+  String get newsForEveryone => 'Pentru toată lumea';
+
+  @override
+  String get newsEveryoneMySites => 'Toți din locațiile mele';
+
+  @override
+  String newsFor(String names) {
+    return 'Pentru: $names';
+  }
+
+  @override
+  String newsReadCount(String count) {
+    return 'Citit de $count';
+  }
+
+  @override
+  String newsReadOf(String count, String total) {
+    return 'Citit de $count din $total';
+  }
+
+  @override
+  String get newsTranslated => 'Tradus automat';
+
+  @override
+  String get newsTitleField => 'Titlu (opțional)';
+
+  @override
+  String get newsBodyField => 'Textul anunțului';
+
+  @override
+  String get newsRecipients => 'Destinatari';
+
+  @override
+  String get newsTargetHint =>
+      'Bifați unul sau mai multe grupuri: anunțul ajunge la fiecare persoană care corespunde oricăruia dintre ele.';
+
+  @override
+  String get newsPublish => 'Publică';
+
+  @override
+  String newsSent(String count) {
+    return 'Anunț trimis către $count persoană(e).';
+  }
+
+  @override
+  String billingLineApiAddon(String from, String to, String months) {
+    return 'Opțiunea „Acces API”, adăugată în timpul abonamentului, de la $from la $to: $months luni, fără reducere';
+  }
+
+  @override
+  String billingLineCascadeAddon(String from, String to, String months) {
+    return 'Opțiunea „Locații în cascadă”, adăugată în timpul abonamentului, de la $from la $to: $months luni, fără reducere';
+  }
+
+  @override
+  String get billingRenewalOptions =>
+      'Opțiunile bifate vor fi incluse în următoarele reînnoiri. O opțiune debifată rămâne activă până la sfârșitul perioadei deja plătite.';
+
+  @override
+  String billingAddonTitle(String option) {
+    return 'Adaugă acum: $option';
+  }
+
+  @override
+  String billingAddonHint(String date) {
+    return 'Luna curentă întreagă, apoi fiecare lună până la $date (sfârșitul perioadei plătite), fără reducere. Opțiunea este activă imediat după plată și inclusă în reînnoirile următoare.';
+  }
+
+  @override
+  String get billingAddonInvoice => 'opțiune';
+
+  @override
+  String billingAccessRemoved(String name) {
+    return '$name nu mai gestionează abonamentul.';
+  }
+
+  @override
+  String billingAccessGiven(String name) {
+    return '$name poate acum gestiona abonamentul și facturile.';
+  }
+
+  @override
+  String get actionBillingRemove => 'Retrage gestionarea abonamentului';
+
+  @override
+  String get actionBillingGive => 'Permite gestionarea abonamentului';
+
+  @override
+  String get billingAccessTag => 'Gestionează abonamentul';
+
+  @override
+  String get billingOptionRenewed => 'Reînnoirea opțiunii a fost reluată.';
+
+  @override
+  String get billingOptionStopped =>
+      'Opțiunea nu va fi reînnoită: rămâne activă până la sfârșitul perioadei plătite.';
+
+  @override
+  String billingOptionEnds(String date) {
+    return 'Activă până la $date, nu va fi reînnoită (bifați pentru a o păstra)';
+  }
+
+  @override
+  String get billingOptionActive =>
+      'Activă și reînnoită (debifați pentru a nu o reînnoi)';
+
+  @override
+  String get statusCancelRequested => 'Anulare cerută';
+
+  @override
+  String get requestEndedEarly => 'Încheiată mai devreme de persoană.';
+
+  @override
+  String get confirmCancelRequest =>
+      'Anulați această cerere? Responsabilii nu o vor mai vedea.';
+
+  @override
+  String get endUnavailability => 'Încheie indisponibilitatea mea';
+
+  @override
+  String get confirmEndUnavailability =>
+      'Încheiați indisponibilitatea? Veți fi din nou disponibil(ă) de azi, iar responsabilii vor fi anunțați.';
+
+  @override
+  String get askLeaveCancel => 'Cere anularea acestui concediu';
+
+  @override
+  String get confirmAskLeaveCancel =>
+      'Cereți anularea acestui concediu? Un responsabil trebuie să o aprobe; până atunci, concediul rămâne planificat.';
+
+  @override
+  String get refuseLeaveCancel => 'Refuză anularea';
+
+  @override
+  String get acceptLeaveCancel => 'Acceptă anularea';
+
+  @override
+  String get requestsSearchHint => 'Caută: nume, număr matricol, ID SF, notă';
+
+  @override
+  String get filterType => 'Tip';
+
+  @override
+  String get filterState => 'Stare';
+
+  @override
+  String get statePending => 'În așteptare';
+
+  @override
+  String get stateClosed => 'Refuzate sau anulate';
+
+  @override
+  String billingLineSlotsAddon(
+    String from,
+    String to,
+    String start,
+    String end,
+    String months,
+  ) {
+    return 'Locuri adăugate, de la $from la $to, de la $start la $end: $months luni, fără reducere';
+  }
+
+  @override
+  String billingSeats(String used, String limit) {
+    return '$used locuri plătite · până la $limit persoane cu marja de 5%';
+  }
+
+  @override
+  String get billingSeatsTitle => 'Număr de locuri';
+
+  @override
+  String get billingSeatsHint =>
+      'Angajați și responsabili (fără proprietar și extra), câte 10. 10 locuri la creare; peste, o marjă de 5%, apoi nu se mai pot adăuga.';
+
+  @override
+  String get billingSeatsUnit => 'locuri';
+
+  @override
+  String billingSeatsAddon(String from, String to) {
+    return 'Locuri: $from → $to';
+  }
+
+  @override
+  String billingSeatsRange(String min) {
+    return 'De la $min la 5000, câte 10.';
+  }
+
+  @override
+  String get printWeek => 'Săptămână';
+
+  @override
+  String get printMonth => 'Lună';
+
+  @override
+  String teamCount(String team, String count) {
+    return '$team · $count';
+  }
+
+  @override
+  String teamCountSeats(String team, String count, String slots) {
+    return '$team · $count/$slots';
+  }
+
+  @override
+  String get rememberMe => 'Rămâneți conectat pe acest dispozitiv';
+
+  @override
+  String get rememberMeHint =>
+      'Activat: ca la Google, fără cod la fiecare deschidere. Evitați pe un dispozitiv comun.';
+
+  @override
+  String get totpLoginTitle => 'Conectare 2FA';
+
+  @override
+  String get totpCompanyCode => 'Codul companiei';
+
+  @override
+  String get totpCompanyCodeHint =>
+      '6 caractere, date de angajator (doar cu număr matricol).';
+
+  @override
+  String get totpBackupCode => 'Cod de rezervă';
+
+  @override
+  String get totpCode => 'Codul aplicației';
+
+  @override
+  String get totpUseApp => 'Folosește aplicația 2FA';
+
+  @override
+  String get totpUseBackup => 'Folosește un cod de rezervă';
+
+  @override
+  String get totpSignIn => 'Conectare';
+
+  @override
+  String get totpLostPhone =>
+      'Ați pierdut telefonul sau ați șters aplicația? Cereți un nou cod de activare responsabilului.';
+
+  @override
+  String get activateTitle => 'Activează contul meu';
+
+  @override
+  String get activateStep1 => 'Pasul 1: codul de invitație';
+
+  @override
+  String get activateStep1Hint =>
+      'Scanați codul QR primit de la angajator sau tastați codul scris dedesubt.';
+
+  @override
+  String get activateScan => 'Scanează codul QR';
+
+  @override
+  String get activateCodeField => 'Cod de invitație';
+
+  @override
+  String get activateContinue => 'Continuă';
+
+  @override
+  String activateHello(String name, String company) {
+    return 'Bună, $name · $company';
+  }
+
+  @override
+  String get activateStep2 =>
+      'Pasul 2: legați o aplicație de autentificare (Google Authenticator, Microsoft Authenticator…). Vă va da un cod de 6 cifre la fiecare conectare.';
+
+  @override
+  String get activateOpenApp => 'Adaugă în aplicația mea de autentificare';
+
+  @override
+  String get activateOrScan =>
+      'Sau, de pe alt dispozitiv, scanați acest cod QR cu aplicația:';
+
+  @override
+  String get activateManualKey => 'Cheie de introdus manual:';
+
+  @override
+  String get activateFirstCode => 'Primul cod afișat de aplicație';
+
+  @override
+  String get activateDone => 'Activează';
+
+  @override
+  String get totpReadyTitle => 'Contul dvs. este gata';
+
+  @override
+  String get totpYourId => 'Identificatorul dvs. Staff Flow:';
+
+  @override
+  String get totpBackupHint =>
+      'Coduri de rezervă (fiecare o singură dată): notați-le sau păstrați-le în siguranță. Le folosiți dacă nu mai aveți aplicația.';
+
+  @override
+  String get totpBackupSaved => 'Am notat';
+
+  @override
+  String get linkGoogleTitle => 'Leagă un cont Google';
+
+  @override
+  String get linkGoogleHint =>
+      'Pentru a crea o companie, legați un cont Google de contul dvs. Staff Flow. Servește doar la protejarea creatorului companiei și a abonamentului: adresa dvs. Google nu este arătată niciodată angajaților sau altcuiva, rămâne în Staff Flow. Vă veți putea conecta în continuare cu aplicația 2FA.';
+
+  @override
+  String get linkGoogleButton => 'Leagă contul meu Google';
+
+  @override
+  String get linkGoogleBanner =>
+      'Conectați-vă cu contul Google de legat la Staff Flow.';
+
+  @override
+  String get activationCodeAction => 'Cod nou de activare';
+
+  @override
+  String activationCodeTitle(String name) {
+    return 'Cod nou pentru $name?';
+  }
+
+  @override
+  String get activationCodeConfirm =>
+      'Telefonul vechi și aplicația 2FA veche nu vor mai funcționa. Persoana își reactivează contul cu acest cod (valabil 7 zile).';
+
+  @override
+  String get activationCodeHint =>
+      'Persoana alege „Activează contul meu” pe ecranul de conectare, apoi scanează acest cod QR sau tastează acest cod.';
+
+  @override
+  String get signupTitle => 'Creează un cont';
+
+  @override
+  String get signupStep1 => 'Pasul 1: numele dvs.';
+
+  @override
+  String get signupStep1Hint =>
+      'Numele pe care îl vor vedea colegii și angajatorii. Fără Google, fără e-mail: contul este protejat de o aplicație de autentificare.';
+
+  @override
+  String get signupName => 'Prenume și nume';
+
+  @override
+  String signupHello(String name) {
+    return 'Bună, $name';
+  }
+
+  @override
+  String get signupButton => 'Creează un cont cu o aplicație 2FA';
+
+  @override
+  String get totpCardTitle => 'Conectare cu o aplicație 2FA';
+
+  @override
+  String totpCardLocal(String id) {
+    return 'Contul dvs. se conectează cu o aplicație de autentificare. Identificator: $id';
+  }
+
+  @override
+  String totpCardOn(String id) {
+    return 'Activă: vă puteți conecta și cu identificatorul $id și codul aplicației, fără Google.';
+  }
+
+  @override
+  String get totpCardOff =>
+      'Pregătiți o aplicație de autentificare ca să vă puteți conecta fără Google (ID SF + cod de 6 cifre).';
+
+  @override
+  String get totpEnable => 'Activează';
+
+  @override
+  String get totpDisable => 'Elimină';
+
+  @override
+  String get totpEnableTitle => 'Activează conectarea 2FA';
+
+  @override
+  String get totpEnabledTitle => 'Conectarea 2FA este gata';
+
+  @override
+  String get totpDisableConfirm =>
+      'Eliminați conectarea cu aplicația 2FA? Vă veți conecta doar cu Google.';
+
+  @override
+  String get googlePrivacyNote =>
+      'Contul dvs. Google servește doar la protejarea companiei și a abonamentului: nu este arătat niciodată angajaților sau altcuiva.';
+
+  @override
+  String get scopeRead => 'Citire: program publicat, ore, absențe, angajați';
+
+  @override
+  String get scopeShifts => 'Program: creare, modificare, ștergere ture';
+
+  @override
+  String get scopePublish => 'Publicarea programului';
+
+  @override
+  String get scopeMembers => 'Angajați: import, număr matricol și post';
+
+  @override
+  String get scopeCatalog => 'Posturi și locații';
+
+  @override
+  String get scopeNews => 'Anunțuri';
+
+  @override
+  String get scopeRequests => 'Cereri: aprobare sau refuz';
+
+  @override
+  String get apiScopesTitle => 'Drepturile cheii';
+
+  @override
+  String get apiProNeeded =>
+      'Drepturile de scriere necesită opțiunea „API Pro” (abonament plătit).';
+
+  @override
+  String billingLinePro(String months) {
+    return 'Opțiunea „API Pro”: $months luni';
+  }
+
+  @override
+  String billingLineProAddon(String start, String end, String months) {
+    return 'Opțiunea „API Pro”, adăugată în timpul abonamentului, de la $start la $end: $months luni, fără reducere';
+  }
+
+  @override
+  String billingApiProHint(String price1, String price5) {
+    return '„API Pro” (citire și scriere, webhookuri, jurnale): $price1 / lună pentru 1 cheie, $price5 / lună pentru 10 chei, fără reducere. Alegeți aici, odată cu plata abonamentului.';
+  }
+
+  @override
+  String get whTitle => 'Webhook-uri';
+
+  @override
+  String get whSub =>
+      'Staff Flow anunță singur programele dvs. când se întâmplă ceva: program publicat, cerere, angajat nou, anunț. Inclus în opțiunea „API Pro”.';
+
+  @override
+  String get whNew => 'Webhook nou';
+
+  @override
+  String get whUrl => 'Adresă (https://…)';
+
+  @override
+  String get whEvents => 'Evenimente trimise';
+
+  @override
+  String get whCreated =>
+      'Secret de semnătură, afișat o singură dată: programul dvs. îl folosește pentru a verifica faptul că fiecare trimitere vine de la Staff Flow.';
+
+  @override
+  String get whTest => 'Încearcă';
+
+  @override
+  String whTestOk(String status) {
+    return 'Primit (cod $status)';
+  }
+
+  @override
+  String whTestFail(String error) {
+    return 'Eșec: $error';
+  }
+
+  @override
+  String get whDisabled => 'Oprit după 10 trimiteri eșuate la rând';
+
+  @override
+  String get whEnable => 'Repornește';
+
+  @override
+  String get whDelete => 'Șterge';
+
+  @override
+  String get whDeleteConfirm => 'Acest webhook nu va mai primi nimic.';
+
+  @override
+  String get whNone => 'Niciun webhook deocamdată.';
+
+  @override
+  String whLast(String date, String status) {
+    return 'Ultima trimitere: $date · $status';
+  }
+
+  @override
+  String get whEvSchedulePublished => 'Program publicat';
+
+  @override
+  String get whEvRequestCreated => 'Cerere nouă';
+
+  @override
+  String get whEvRequestDecided => 'Cerere aprobată sau refuzată';
+
+  @override
+  String get whEvRequestCancelled => 'Cerere anulată';
+
+  @override
+  String get whEvRequestCancelAsked => 'Anulare de concediu cerută';
+
+  @override
+  String get whEvRequestCancelDecided => 'Anulare de concediu decisă';
+
+  @override
+  String get whEvRequestEnded => 'Indisponibilitate încheiată';
+
+  @override
+  String get whEvMemberJoined => 'Angajat nou';
+
+  @override
+  String get whEvAnnouncementPublished => 'Anunț publicat';
+
+  @override
+  String get whStDelivered => 'primit';
+
+  @override
+  String get whStPending => 'în așteptare';
+
+  @override
+  String get whStFailed => 'eșec';
+
+  @override
+  String get whStDropped => 'anulat';
+
+  @override
+  String get lgTitle => 'Jurnale';
+
+  @override
+  String get lgSub =>
+      'Fiecare apel al cheilor API și al asistentului MCP și fiecare trimitere de webhook. Glisați pentru a schimba luna.';
+
+  @override
+  String get lgSearch => 'Căutare: persoană, număr matricol, acțiune…';
+
+  @override
+  String get lgAllHistory => 'Caută în tot istoricul (inclusiv arhive)';
+
+  @override
+  String get lgArchived => 'Lună arhivată';
+
+  @override
+  String get lgNone => 'Nimic în această lună.';
+
+  @override
+  String get lgMore => 'Afișează mai mult';
+
+  @override
+  String get lgExport => 'Descarcă un an (ZIP)';
+
+  @override
+  String get lgAllKeys => 'Toate cheile';
+
+  @override
+  String get lgSourceApi => 'API';
+
+  @override
+  String get lgSourceMcp => 'Asistent MCP';
+
+  @override
+  String get lgSourceWebhook => 'Webhook';
+
+  @override
+  String get lgKindRead => 'Citire';
+
+  @override
+  String get lgKindWrite => 'Scriere';
+
+  @override
+  String get lgOk => 'Reușit';
+
+  @override
+  String get lgError => 'Eșec';
+
+  @override
+  String get lgBefore => 'Înainte';
+
+  @override
+  String get lgAfter => 'După';
+
+  @override
+  String lgStats(String today, String month) {
+    return 'Azi: $today · luna aceasta: $month';
+  }
+
+  @override
+  String lgLastFailure(String date) {
+    return 'Ultimul eșec: $date';
+  }
+
+  @override
+  String get lgActShiftsCreate => 'Ture create';
+
+  @override
+  String get lgActShiftUpdate => 'Tură modificată';
+
+  @override
+  String get lgActShiftDelete => 'Tură ștearsă';
+
+  @override
+  String get lgActPublish => 'Program publicat';
+
+  @override
+  String get lgActImport => 'Angajați importați';
+
+  @override
+  String get lgActProfile => 'Număr matricol sau post modificat';
+
+  @override
+  String get lgActPosition => 'Post creat';
+
+  @override
+  String get lgActSite => 'Locație creată';
+
+  @override
+  String get lgActNews => 'Anunț publicat';
+
+  @override
+  String get lgActApprove => 'Cerere aprobată';
+
+  @override
+  String get lgActRefuse => 'Cerere refuzată';
+
+  @override
+  String get lgActRead => 'Citire';
+
+  @override
+  String get lgActWebhook => 'Webhook trimis';
+
+  @override
+  String get lgFDay => 'Zi';
+
+  @override
+  String get lgFStart => 'Început';
+
+  @override
+  String get lgFEnd => 'Sfârșit';
+
+  @override
+  String get lgFPerson => 'Persoană';
+
+  @override
+  String get lgFSite => 'Locație';
+
+  @override
+  String get lgFPosition => 'Post';
+
+  @override
+  String get lgFNote => 'Notă';
+
+  @override
+  String get lgFNumber => 'Număr matricol';
+
+  @override
+  String noticeApiFailing(String key, String count) {
+    return 'Cheia API „$key” a eșuat de $count ori într-o oră: verificați programul care o folosește.';
+  }
+
+  @override
+  String noticeApiNewIp(String key, String ip) {
+    return 'Cheia API „$key” a fost folosită de la o adresă nouă ($ip). Dacă nu ați fost dvs., revocați-o.';
+  }
+
+  @override
+  String get lgResults => 'Rezultate din tot istoricul';
+
+  @override
+  String get lgAllSources => 'Toate sursele';
+
+  @override
+  String get lgAllKinds => 'Citire și scriere';
+
+  @override
+  String get lgAllResults => 'Reușite și eșecuri';
+
+  @override
+  String get lgFDate => 'Data';
+
+  @override
+  String get lgFKey => 'Cheie';
+
+  @override
+  String get lgFSource => 'Sursă';
+
+  @override
+  String get lgFStatus => 'Stare';
+
+  @override
+  String get totpContinueButton => 'Continuă cu o aplicație 2FA';
+
+  @override
+  String get totpIdentHint =>
+      'Introduceți identificatorul Staff Flow (SF-…), numărul matricol sau codul de activare primit de la angajator.';
+
+  @override
+  String get totpIdentField =>
+      'Identificator, număr matricol sau codul angajatorului';
+
+  @override
+  String get totpContinue => 'Continuă';
+
+  @override
+  String get totpUnknown =>
+      'Acest identificator nu există. Doriți să creați un cont?';
+
+  @override
+  String get totpGoogleAccount =>
+      'Acest cont se conectează cu Google: reveniți și atingeți „Conectare cu Google”.';
+
+  @override
+  String get totpNoAccount => 'Nu aveți cont? Creați unul';
+
+  @override
+  String get totpChange => 'Alt identificator';
+
+  @override
+  String get billingNotInApp =>
+      'Achizițiile nu sunt disponibile în aplicația mobilă.';
+
+  @override
+  String get billingActiveOptions => 'Opțiuni active';
+
+  @override
+  String get billingNoOptions => 'Nicio opțiune activă.';
+
+  @override
+  String get optionNotActive =>
+      'Această opțiune nu este activă pentru această companie.';
+
+  @override
+  String get apiProNotActive =>
+      'Opțiunea „API Pro” nu este activă pentru această companie.';
+
+  @override
+  String get apiKeySaved => 'Cheie salvată.';
+
+  @override
+  String get apiKeyIncomplete =>
+      'Dați un nume cheii și alegeți cel puțin un drept.';
+
+  @override
+  String get billingApiPro1 => 'Opțiunea „API Pro” (1 cheie)';
+
+  @override
+  String get billingApiPro10 => 'Opțiunea „API Pro” (10 chei)';
+
+  @override
+  String get billingApiPro10Upgrade => 'Treceți la 10 chei';
+
+  @override
+  String get billingProKeysNext => 'La următoarea reînnoire';
+
+  @override
+  String get billingProKeys1 => '1 cheie';
+
+  @override
+  String get billingProKeys10 => '10 chei';
+
+  @override
+  String billingProKeysWarning(String count) {
+    return '$count chei sunt active: la reînnoire, doar cea mai veche rămâne activă. Veți alege pe care o păstrați în „Acces API”.';
+  }
+
+  @override
+  String get billingApiIncluded => 'Citirea este inclusă în „API Pro”.';
+
+  @override
+  String billingLinePro10Addon(String start, String end, String months) {
+    return 'Opțiunea „API Pro”, 10 chei, adăugată în timpul abonamentului, de la $start la $end: $months luni, fără reducere';
+  }
+
+  @override
+  String billingLinePro10Upgrade(String start, String end, String months) {
+    return 'Trecerea „API Pro” la 10 chei, de la $start la $end: $months luni (diferența de preț), fără reducere';
+  }
+
+  @override
+  String apiKeysCount(String count, String limit) {
+    return 'Chei active: $count / $limit';
+  }
+
+  @override
+  String get apiKeyDisabled => 'Dezactivată: peste planul dvs. API';
+
+  @override
+  String get apiKeyEnable => 'Reactivează';
+
+  @override
+  String get apiKeyDisable => 'Pune deoparte';
+
+  @override
+  String get apiKeyLimitReached =>
+      'Planul dvs. nu permite mai multe chei: puneți o cheie deoparte sau treceți la un plan superior.';
+
+  @override
+  String noticeApiKeysDeletion(String company, String date) {
+    return '$company: acces API oprit, cheile vor fi șterse pe $date, dacă opțiunea nu este reluată.';
+  }
+
+  @override
+  String get billingApiProChoice => 'Opțiunea „API Pro”';
+
+  @override
+  String get billingApiProNone => 'Fără';
+
+  @override
+  String get billingApiProNowNote =>
+      'Abonament în curs: perioada deja plătită este completată și ea cu „API Pro”, în aceeași plată.';
+}

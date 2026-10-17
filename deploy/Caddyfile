@@ -1,0 +1,33 @@
+# Adresse de l'application, et APP_DOMAIN (nouvelle adresse, facultative).
+{$DOMAIN} {$APP_DOMAIN} {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		# L'application ne s'affiche jamais dans le cadre d'un autre site.
+		X-Frame-Options DENY
+		Content-Security-Policy "frame-ancestors 'none'"
+		-Server
+	}
+
+	# Aucune requête de plus de 10 Mo (l'API refuse déjà au-delà de 4 Mo).
+	request_body {
+		max_size 10MB
+	}
+
+	handle /api/* {
+		reverse_proxy api:8080
+	}
+	handle /health {
+		reverse_proxy api:8080
+	}
+
+	# Application Flutter : toute autre adresse renvoie index.html.
+	handle {
+		root * /srv
+		try_files {path} /index.html
+		file_server
+	}
+}

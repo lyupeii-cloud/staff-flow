@@ -1,0 +1,1923 @@
+{
+  "@@locale": "en",
+  "cancel": "Cancel",
+  "save": "Save",
+  "confirm": "Confirm",
+  "validate": "Confirm",
+  "add": "Add",
+  "rename": "Rename",
+  "delete": "Delete",
+  "accept": "Accept",
+  "decline": "Decline",
+  "close": "Close",
+  "retry": "Try again",
+  "name": "Name",
+  "serverUnreachable": "Cannot reach the server.",
+  "errorStatus": "Error {status}",
+  "@errorStatus": {
+    "placeholders": {
+      "status": {
+        "type": "int"
+      }
+    }
+  },
+  "roleOwner": "Owner",
+  "roleManager": "Manager",
+  "roleEmployee": "Employee",
+  "roleExtra": "Extra",
+  "taglineStart": "Your team's schedules, ",
+  "taglineEnd": "everywhere.",
+  "googleNotConfigured": "Google sign-in is not configured (GOOGLE_WEB_CLIENT_ID).",
+  "signInWithGoogle": "Sign in with Google",
+  "devSection": "Development",
+  "emailLabel": "Email address",
+  "devSignIn": "Test sign-in",
+  "googleUnavailable": "Google sign-in unavailable: {detail}",
+  "@googleUnavailable": {
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
+  "googleFailed": "Google sign-in failed: {detail}",
+  "@googleFailed": {
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
+  "newCompany": "New company",
+  "timezone": "Time zone",
+  "create": "Create",
+  "noCompanyTitle": "You are not part of any company yet.",
+  "noCompanyHint": "To join your employer's, generate a code and give it to your manager.",
+  "joinCompany": "Join a company",
+  "createCompany": "Create a company",
+  "transferOffer": "You are invited to become the owner of “{company}”.",
+  "@transferOffer": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "someCompany": "a company",
+  "becameOwner": "You are now the owner.",
+  "myAccount": "My account",
+  "idCopied": "ID copied.",
+  "signOut": "Sign out",
+  "joinInvite": "“{company}” invites you as {role}.",
+  "@joinInvite": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      },
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "joinedCompany": "You joined {company}.",
+  "@joinedCompany": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "viewPlanning": "Schedule",
+  "viewTeam": "Configuration",
+  "viewPositions": "Org chart",
+  "readOnlyCompany": "This company is read-only.",
+  "team": "Team",
+  "leaveCompany": "Leave this company",
+  "meSuffix": "{name} (you)",
+  "@meSuffix": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "transferConfirmTitle": "Transfer the company to {name}?",
+  "@transferConfirmTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "transferConfirmBody": "Once they accept, they will become the owner (subscription, invoices, managers) and you will become a manager.",
+  "transferSent": "Offer sent to {name}.",
+  "@transferSent": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "removeConfirmTitle": "Remove {name}?",
+  "@removeConfirmTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "removeConfirmBody": "Their history is kept.",
+  "addPersonTitle": "Add a person",
+  "addPersonHint": "Ask them to open Staff Flow, then their account menu, “Join a company”, and enter the code they see.",
+  "sixDigitCode": "6-digit code",
+  "invitationSent": "Invitation sent to {name}: they need to accept it.",
+  "@invitationSent": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "leaveConfirmTitle": "Leave {company}?",
+  "@leaveConfirmTitle": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "leaveConfirmBody": "You will no longer see its schedule.",
+  "renameCompany": "Rename the company",
+  "actionMakeManager": "Make manager",
+  "actionMakeEmployee": "Make employee again",
+  "actionToEmployee": "Make employee",
+  "actionToExtra": "Make extra",
+  "actionTransfer": "Transfer ownership",
+  "actionRemove": "Remove from the company",
+  "positions": "Positions",
+  "sites": "Sites",
+  "positionsHint": "What the person does: checkout, kitchen, reception…",
+  "sitesHint": "Where the shift takes place, if the company has several locations.",
+  "archived": "Archived",
+  "archive": "Archive",
+  "reactivate": "Reactivate",
+  "weekOf": "Week of {date}",
+  "@weekOf": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "changesPublished": "{count, plural, =1{1 change published.} other{{count} changes published.}}",
+  "@changesPublished": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shiftButton": "Shift",
+  "display": "View",
+  "week": "Week",
+  "month": "Month",
+  "today": "Today",
+  "onlyMine": "Only my shifts",
+  "replacePersonMenu": "Replace a person…",
+  "pendingChanges": "{count, plural, =1{1 unpublished change} other{{count} unpublished changes}}",
+  "@pendingChanges": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pendingHint": "Employees can't see them yet.",
+  "publish": "Publish",
+  "yourHours": "Your hours for this period: {duration}",
+  "@yourHours": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "addShiftThisDay": "Add a shift on this day",
+  "noShift": "No shifts",
+  "unassigned": "Unassigned",
+  "formerMember": "Former member",
+  "statusDraft": "Draft",
+  "statusModified": "Changed",
+  "statusDeleted": "Deleted",
+  "durationHours": "{hours}h",
+  "@durationHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "durationHoursMinutes": "{hours}h{minutes}",
+  "@durationHoursMinutes": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "editShift": "Edit shift",
+  "newShift": "New shift",
+  "thisShift": "This shift",
+  "thisAndFollowing": "This and following",
+  "daysLabel": "{count, plural, =1{Day} other{Days}}",
+  "@daysLabel": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "otherDay": "Another day",
+  "start": "Start",
+  "end": "End",
+  "endsNextDay": "Ends the next day.",
+  "person": "Person",
+  "position": "Position",
+  "site": "Site",
+  "noteOptional": "Note (optional)",
+  "repetition": "Repeat",
+  "repeatNone": "None",
+  "repeatDaily": "Every day",
+  "repeatWeekly": "Every week",
+  "repeatForPrefix": "For ",
+  "repeatDaysSuffix": " days",
+  "repeatWeeksSuffix": " weeks",
+  "repeatUntilPrefix": "Until ",
+  "replacePersonTitle": "Replace a person",
+  "replaceFrom": "Replace",
+  "replaceBy": "With",
+  "dateRange": "From {from} to {to}",
+  "@dateRange": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "shiftsChanged": "{count, plural, =0{No shifts changed.} =1{1 shift changed.} other{{count} shifts changed.}}",
+  "@shiftsChanged": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "replaceButton": "Replace",
+  "joinHint": "Give this code to your manager. They enter it in their app, then you receive an invitation to accept.",
+  "codeExpired": "Code expired.",
+  "codeValidFor": "Valid for {time}",
+  "@codeValidFor": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "newCode": "New code",
+  "language": "Language",
+  "languageAuto": "Automatic (device language)",
+  "syncUpToDate": "Up to date",
+  "syncOffline": "Offline",
+  "syncPending": "Pending changes: {count}",
+  "@syncPending": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "syncNow": "Sync now",
+  "syncRejected": "Change refused by the server: {reason}",
+  "@syncRejected": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "pendingBadge": "Pending",
+  "offlineUnavailable": "Unavailable offline.",
+  "offlineCached": "Offline: showing the last saved data.",
+  "savedOffline": "Saved on this device, will be sent when the network is back.",
+  "notices": "Notices",
+  "noNotices": "No notices.",
+  "noticeOverwritten": "{name} replaced your change to the shift on {date}.",
+  "@noticeOverwritten": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "history": "History",
+  "recentChanges": "Recent changes",
+  "undoChange": "Undo this change",
+  "undoDone": "Change undone.",
+  "historyCreate": "Created",
+  "historyUpdate": "Changed",
+  "historyDelete": "Deleted",
+  "historyUndo": "Undone",
+  "noHistory": "No changes.",
+  "pendingNotEditable": "This shift is not synced yet: try again once online.",
+  "myQrCode": "My QR code",
+  "myQrCodeHint": "A manager scans this code to add you to their company; you then confirm. It never changes.",
+  "changeMyName": "Change my name",
+  "nameShownToTeam": "This name is shown to your colleagues instead of your Google name.",
+  "googleName": "Google name: {name}",
+  "@googleName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "useGoogleName": "Use my Google name",
+  "renameMemberTitle": "Rename {name}",
+  "@renameMemberTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "renameMemberHint": "This name is only used in this company.",
+  "useOwnName": "Use their own name",
+  "scanQrCode": "Scan a QR code",
+  "scanQrHint": "Point the camera at the QR code shown in their app (account menu, “My QR code”).",
+  "orEnterCode": "Or enter their 6-digit code",
+  "qrInvalid": "This is not a Staff Flow QR code.",
+  "cameraUnavailable": "Camera unavailable ({error}).",
+  "@cameraUnavailable": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationsTitle": "Notifications",
+  "notifChooseHint": "Choose what you are notified about. Everything stays visible in the bell.",
+  "notifPlanning": "Schedule published or changed",
+  "notifRequests": "Requests: swaps, leave, invitations",
+  "notifMessages": "New announcements",
+  "notifOverlap": "Overlapping shifts between companies",
+  "notifConflicts": "Your changes replaced by another manager",
+  "notifBilling": "Subscription reminders",
+  "pushEnabled": "Notifications are on for this device.",
+  "pushOff": "Notifications are off on this device.",
+  "pushBlocked": "Notifications are blocked: allow them in your phone or browser settings.",
+  "pushUnavailable": "Notifications are not available on this device.",
+  "enablePush": "Turn on",
+  "noticeSchedulePublished": "{company}: your schedule has been published or changed.",
+  "@noticeSchedulePublished": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeJoinInvite": "{company} wants to add you to its team.",
+  "@noticeJoinInvite": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeTransferOffer": "{name} offers to make you the owner of {company}.",
+  "@noticeTransferOffer": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeMemberJoined": "{name} joined {company}.",
+  "@noticeMemberJoined": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "translateAction": "Translate",
+  "deleteAllNotices": "Delete all",
+  "deleteAllNoticesConfirm": "Delete all notices?",
+  "noticeRetention": "Delete read notices after",
+  "retentionDay": "1 day",
+  "retentionWeek": "1 week",
+  "retentionMonth": "1 month",
+  "billingOwnersOnly": "Only active when you own a company.",
+  "readOnlyPastDays": "Days more than a month old are read-only.",
+  "wholeCompany": "Whole company",
+  "sitesLabel": "Sites",
+  "actionSites": "Sites…",
+  "managerOf": "{name} manages",
+  "@managerOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "teamSitesOf": "{name}'s team",
+  "@teamSitesOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notYourSite": "This site is not under your responsibility.",
+  "chooseYourSite": "Choose at least one site.",
+  "viewRequests": "Requests",
+  "newRequest": "New request",
+  "requestLeave": "Leave",
+  "requestUnavailability": "Unavailability",
+  "requestSwap": "Shift swap",
+  "swapHint": "To offer a swap, tap one of your upcoming shifts in the schedule.",
+  "noRequests": "No requests yet.",
+  "requestsToHandle": "To handle",
+  "statusPendingPeer": "Waiting for the colleague",
+  "statusPendingManager": "Waiting for a manager",
+  "statusApproved": "Approved",
+  "statusRefused": "Refused",
+  "statusCancelled": "Canceled",
+  "cancelRequest": "Cancel request",
+  "acceptSwap": "Take this shift",
+  "approve": "Approve",
+  "periodLabel": "From {from} to {to}",
+  "@periodLabel": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "swapToPeer": "Offered to {name}",
+  "@swapToPeer": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "swapToTeam": "Whole team",
+  "everyWeekdays": "Every week: {days}",
+  "@everyWeekdays": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "unavailableEveryWeek": "Days you are never available:",
+  "choosePeriod": "Choose dates",
+  "choosePeriodOptional": "Limit to a period (optional)",
+  "clearPeriod": "No period",
+  "sendRequest": "Send request",
+  "proposeSwap": "Offer a swap",
+  "swapWith": "Offer to",
+  "swapSteps": "The colleague accepts, then a manager approves. The schedule only changes after that.",
+  "absentThatDay": "Approved absence that day",
+  "requestSent": "Request sent.",
+  "noticeSwapOffer": "{name} offers you one of their shifts.",
+  "@noticeSwapOffer": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeSwapDeclined": "{name} declined your swap offer.",
+  "@noticeSwapDeclined": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeSwapToApprove": "A shift swap is waiting for your approval.",
+  "noticeLeaveToApprove": "{name} is asking for leave.",
+  "@noticeLeaveToApprove": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeUnavailabilityToApprove": "{name} reports being unavailable.",
+  "@noticeUnavailabilityToApprove": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeRequestApproved": "Your request has been approved.",
+  "noticeRequestRefused": "Your request has been refused.",
+  "choosePeer": "Who takes over this shift?",
+  "discardAll": "Discard all",
+  "notifySitesHint": "Choose the sites you get request notifications for. All requests stay visible in the list.",
+  "pendingRequestTooltip": "Pending request: tap to open it",
+  "requestsHistory": "All requests",
+  "revertChange": "Undo this change",
+  "statusExpired": "No longer applies",
+  "swapWithHint": "Tap to choose a specific colleague",
+  "changesDiscarded": "Changes discarded: {count}",
+  "@changesDiscarded": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "discardConfirm": "Discard the {count} unpublished changes?",
+  "@discardConfirm": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "allSchedules": "All my schedules",
+  "busyElsewhere": "Already working at another company at this time",
+  "overlapTooltip": "Overlaps a shift at another company",
+  "overlapWarning": "Some of your shifts at two companies overlap.",
+  "noticeOverlap": "Two of your shifts at different companies overlap on {date}.",
+  "@noticeOverlap": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "allMyCompanies": "All my companies",
+  "openRequest": "View request",
+  "thisCompany": "This company",
+  "withExtras": "Include extras",
+  "reinforcementHint": "From {company}: will be added as backup staff and notified.",
+  "@reinforcementHint": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "addToGoogle": "Add to Google Calendar",
+  "calendarEnabled": "Sync my shifts",
+  "changeSettings": "Edit",
+  "countryBelgium": "Belgium",
+  "countryCanada": "Canada",
+  "countryFrance": "France",
+  "countrySwitzerland": "Switzerland",
+  "employeesSection": "Employees",
+  "emptyNoAlert": "Empty: no alert",
+  "extrasSection": "Extras",
+  "googleCalendar": "Google Calendar",
+  "hoursTotals": "Hour totals",
+  "legalAlerts": "Legal alerts",
+  "legalAlertsHint": "Warnings, never blocks. Choose the rules that apply to you, or none.",
+  "legalPreset": "Country template",
+  "maxConsecutiveLabel": "Maximum consecutive working days",
+  "maxDayLabel": "Maximum hours per day",
+  "maxWeekLabel": "Maximum hours per week",
+  "minRestLabel": "Minimum rest between shifts (hours)",
+  "noLegalRules": "No alerts chosen.",
+  "presetNone": "None",
+  "presetsCheck": "Templates are starting points: check them against your country's rules and your collective agreement.",
+  "printMine": "My schedule",
+  "printOwn": "Their own schedule only",
+  "printPdf": "Print / PDF",
+  "printRights": "What employees can print",
+  "printTeam": "The whole team's schedule",
+  "printTeamOption": "The team's schedule",
+  "totalsHint": "Drafts included. Excel and CSV exports use the published schedule.",
+  "alertConsecutive": "{name}: {value} days in a row (maximum {limit})",
+  "@alertConsecutive": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "alertDay": "{name}: {value} in the day (maximum {limit})",
+  "@alertDay": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "alertRest": "{name}: only {value} of rest (minimum {limit})",
+  "@alertRest": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "alertWeek": "{name}: {value} in the week (maximum {limit})",
+  "@alertWeek": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "legalAlertsCount": "Legal alerts: {count}",
+  "@legalAlertsCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "shiftsCount": "Shifts: {count}",
+  "@shiftsCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "actionMakeDeputy": "Appoint as deputy manager",
+  "actionRemoveDeputy": "Remove deputy manager role",
+  "busyHere": "Already working at this company at this time",
+  "calendarDenied": "Calendar access denied. Allow it in the phone settings.",
+  "calendarLinkHint": "Add it from Google Calendar on a computer; Google updates it within a few hours.",
+  "calendarNone": "No editable calendar on this phone.",
+  "calendarOnPhoneHint": "In your Google calendar: visible right away, on the phone and in Google Calendar.",
+  "chooseCalendar": "Choose the calendar",
+  "otherSiteHint": "Employee from another site: their managers will be notified.",
+  "subManager": "Deputy manager",
+  "calendarSynced": "Shifts in the calendar: {count}",
+  "@calendarSynced": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "deputyOf": "Deputy manager: {name}",
+  "@deputyOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeBorrowed": "{by} scheduled {name} at {site} on {date}.",
+  "@noticeBorrowed": {
+    "placeholders": {
+      "by": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "site": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeReinforcement": "{company} added you as backup staff.",
+  "@noticeReinforcement": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "companyNotificationsHint": "Off: nothing rings on this phone, but everything stays in the bell.",
+  "companyNotificationsOn": "Get notifications from this company",
+  "companyTimezone": "Company time zone",
+  "companyTimezoneHint": "All of this company's times are in this time zone (daylight saving included). Calendars convert them automatically.",
+  "iosInstallHint": "On iPhone: tap Share, then “Add to Home Screen” to install Staff Flow.",
+  "searchCity": "Search for a city",
+  "thisPhone": "This device",
+  "companyNotifications": "Notifications: {name}",
+  "@companyNotifications": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "timezoneDiffers": "Times are in {zone} time ({company}). Your device: {here}.",
+  "@timezoneDiffers": {
+    "placeholders": {
+      "zone": {
+        "type": "String"
+      },
+      "company": {
+        "type": "String"
+      },
+      "here": {
+        "type": "String"
+      }
+    }
+  },
+  "addPreset": "Add preset",
+  "addPresets": "Create presets",
+  "appearance": "Appearance",
+  "chooseLogo": "Choose a PNG image",
+  "customization": "Customization",
+  "editPresets": "Presets",
+  "enable": "Turn back on",
+  "logoHint": "A small PNG image (your logo) shown on the company tab, for all its members.",
+  "logoPngOnly": "Choose a PNG image of 1 MB or less.",
+  "myIdentifier": "My identifier",
+  "myProfile": "My profile",
+  "presetName": "Name (e.g. Morning)",
+  "removeLogo": "Remove image",
+  "settingsTitle": "Settings",
+  "shiftPresets": "Shift presets",
+  "shiftPresetsHint": "Ready-made times (morning, evening, night…): one tap in a shift fills in the start and end.",
+  "themeDark": "Dark",
+  "themeLight": "Light",
+  "themeSystem": "System",
+  "awaitingApproval": "To approve",
+  "placementNeedsApproval": "! This person isn't on your sites: the shift will wait for approval from your superior or the owner before it can be published. Otherwise, pick someone else.",
+  "placementAwaiting": "Waiting for approval from a superior or the owner.",
+  "noticePlacementToApprove": "{by} wants to schedule {name}, from another site, on {date}: approval needed.",
+  "@noticePlacementToApprove": {
+    "placeholders": {
+      "by": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noticePlacementApproved": "{by} approved scheduling {name} on {date}.",
+  "@noticePlacementApproved": {
+    "placeholders": {
+      "by": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noticePlacementRefused": "{by} refused scheduling {name} on {date}.",
+  "@noticePlacementRefused": {
+    "placeholders": {
+      "by": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "addSubSite": "Add a sub-site",
+  "moveSite": "Move",
+  "topLevel": "Top level",
+  "moveSiteTitle": "Move “{name}” under…",
+  "@moveSiteTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "subSiteOf": "Sub-site of {name}",
+  "@subSiteOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "siteTreeHint": "Up to 10 levels, for example Region › City › Shop. The first 3 are included in the subscription; beyond that, you need the “nested sites” option. A site's manager also manages everything below it.",
+  "subSitesOnlyHint": "Here you add sub-sites under your own sites.",
+  "messagingSetting": "News feed",
+  "messagingSettingHint": "On: the owner and managers post announcements (for everyone, a position, a site or chosen people); everyone reads them and can translate them. Off: the tab disappears for everyone.",
+  "billingTitle": "Subscription",
+  "billingStatusTrial": "Free trial until {date}",
+  "@billingStatusTrial": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingStatusActive": "Paid until {date}",
+  "@billingStatusActive": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingStatusGrace": "Read-only: without payment, the company will be deleted on {date}.",
+  "@billingStatusGrace": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingStatusComped": "Complimentary",
+  "billingStaff": "{count} employees and managers (not the owner or temps)",
+  "@billingStaff": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "billingMonthly": "Monthly",
+  "billingYearly": "Yearly ({months} months billed)",
+  "@billingYearly": {
+    "placeholders": {
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingCascade": "“Nested sites” option (levels 4 to 10)",
+  "billingCascadeIncluded": "Included from {count} employees",
+  "@billingCascadeIncluded": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "billingPay": "Pay {amount}",
+  "@billingPay": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "billingTestNotice": "Test payment: nothing is charged.",
+  "billingSoon": "Online payment is coming soon.",
+  "billingPaidOk": "Payment recorded.",
+  "billingInvoices": "Invoices",
+  "billingNoInvoices": "No invoices yet.",
+  "billingManage": "Manage subscription",
+  "billingReadOnlyStaff": "This company is read-only until the owner renews the subscription.",
+  "billingPerMonth": "{amount} / month",
+  "@billingPerMonth": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "billingPerYear": "{amount} / year",
+  "@billingPerYear": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeBillingTrialEnding": "{company}: the free trial ends in less than 24 hours.",
+  "@noticeBillingTrialEnding": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeBillingGrace": "{company} is read-only for non-payment; deletion on {date}.",
+  "@noticeBillingGrace": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeBillingGraceReminder": "Reminder: without payment, {company} will be deleted on {date}.",
+  "@noticeBillingGraceReminder": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeBillingDeleted": "{company} was deleted for non-payment.",
+  "@noticeBillingDeleted": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "billingCompanyId": "Company ID: {id}",
+  "@billingCompanyId": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "billingDueToday": "Today: {amount}",
+  "@billingDueToday": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "billingProrataNote": "Includes the rest of this month ({days} days, prorated), then whole months from the 1st.",
+  "@billingProrataNote": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "telegramTitle": "Telegram",
+  "telegramNotLinked": "Not linked yet. It is used to verify your identity, for example to change Google account.",
+  "telegramLinked": "Linked: {name}",
+  "@telegramLinked": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "telegramNoUsername": "no username",
+  "telegramLink": "Link my Telegram",
+  "telegramLinkHint": "Telegram opens: tap “Start”, then come back here.",
+  "telegramUnlink": "Unlink",
+  "telegramUnavailable": "Telegram is not available yet.",
+  "telegramShowIn": "Show my Telegram in:",
+  "newQrCode": "Change QR code",
+  "newQrCodeConfirm": "Your old QR code and old ID will stop working. Your place in your companies does not change.",
+  "newQrCodeDone": "New QR code created.",
+  "changeGoogle": "Change Google account",
+  "changeGoogleSub": "Same account, same number, same companies",
+  "changeGoogleSteps": "1. Link your Telegram in this profile (required).\n2. Sign out, then sign in with the new Google account.\n3. Choose “I already have a Staff Flow account” and enter your ID {id}.\n4. Enter the code received on Telegram.\nYour account, number and companies stay the same.",
+  "@changeGoogleSteps": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "recoverAccount": "I already have a Staff Flow account",
+  "recoverHint": "Enter the ID of your old account (SF-…). A code will be sent to the Telegram linked to that account.",
+  "recoverIdLabel": "ID (SF-…)",
+  "recoverSend": "Send the code",
+  "recoverCodeSent": "Code sent on Telegram.",
+  "recoverCodeLabel": "Code received (6 digits)",
+  "recoverConfirm": "Recover my account",
+  "recoverDone": "Done: you are back in your account.",
+  "exportData": "Export my data",
+  "exportDataSub": "A file with all your personal data",
+  "deleteAccount": "Delete my account",
+  "deleteGhost": "Delete but keep a ghost",
+  "deleteGhostHint": "You leave all your companies. Sign in later with the same Google account to get your account and number back.",
+  "deleteErase": "Erase everything permanently",
+  "deleteEraseHint": "Name, email, photo, Telegram, messages and notifications are erased. This cannot be undone.",
+  "deleteGhostNote": "Either way, company history keeps an anonymous “Ghost” in your place (leave requests, past shifts…) so the owner and managers can trace what happened.",
+  "deleteOwnerNote": "Own a company? Transfer it first, or let its subscription end.",
+  "deleteConfirmButton": "Delete",
+  "accountRestored": "Welcome back! Your account has been reactivated.",
+  "closedInvoices": "Invoices of closed companies",
+  "downloadAllInvoices": "Download all invoices (ZIP)",
+  "legalTerms": "Terms of use and sale",
+  "legalPrivacy": "Privacy policy",
+  "billingDetailTitle": "Payment details",
+  "billingLineProrata": "Rest of this month ({days} days out of {total}): subscription",
+  "@billingLineProrata": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLineCascadeProrata": "Rest of this month ({days} days out of {total}): “nested sites” option",
+  "@billingLineCascadeProrata": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLineMonth": "Subscription, {staff} seats: 1 month",
+  "@billingLineMonth": {
+    "placeholders": {
+      "staff": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLineYear": "Subscription, {staff} seats: 12 months for the price of {paid}",
+  "@billingLineYear": {
+    "placeholders": {
+      "staff": {
+        "type": "String"
+      },
+      "paid": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLineCascade": "“Nested sites” option: {months} months, no discount",
+  "@billingLineCascade": {
+    "placeholders": {
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingTotal": "Total",
+  "billingCovers": "Period covered: {from} to {to}",
+  "@billingCovers": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "billingGraceInvoices": "This company is not being renewed: download all its invoices now.",
+  "billingYearLabel": "Year",
+  "sitesNoneChosen": "No site chosen",
+  "avatarTitle": "My avatar",
+  "avatarSub": "A picture instead of your photo",
+  "avatarUseGoogle": "Use my Google photo",
+  "avatarColor": "Color",
+  "hidePhotosTitle": "Hide Google photos",
+  "hidePhotosSub": "In this company, everyone appears with their avatar or initial.",
+  "billingApi": "“API access” option",
+  "billingLineApi": "“API access” option: {months} months, no discount",
+  "@billingLineApi": {
+    "placeholders": {
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLineApiProrata": "Rest of this month ({days} days out of {total}): “API access” option",
+  "@billingLineApiProrata": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "apiTitle": "API access (accounting, CRM)",
+  "apiSub": "Your software (payroll, accounting, CRM, planning) reads the published schedule, hours and absences; with “API Pro”, it can also send schedules, employees and announcements.",
+  "apiNeedsOption": "Paid option: add “API access” or “API Pro” in “Manage subscription”.",
+  "apiNewKey": "New key",
+  "apiKeyName": "Key name (e.g. payroll software)",
+  "apiKeyCreated": "Copy this key now and keep it safe: it will not be shown again.",
+  "apiKeyCopy": "Copy",
+  "apiKeyCopied": "Key copied.",
+  "apiKeyLastUsed": "Last used: {date}",
+  "@apiKeyLastUsed": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "apiKeyNeverUsed": "Never used",
+  "apiRevoke": "Revoke",
+  "apiRevokeConfirm": "Software using this key will lose access.",
+  "apiDocs": "API documentation",
+  "memberGoogleLink": "Employee Google reconnection",
+  "googleLinkHint": "Send this link to {name}. It opens in a browser (not in the Android app), once, for 24 hours: {name} signs in with their new Google account and gets their account back. All their other devices are then signed out.",
+  "@googleLinkHint": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "googleLinkCopied": "Link copied.",
+  "switchBanner": "Google account change link: sign in with your new Google account to get your Staff Flow account back.",
+  "switchSignOutFirst": "This link attaches a Staff Flow account to a new Google account. Sign out first, then sign in with the new Google account.",
+  "switchDone": "Done: your Staff Flow account is linked to this Google account. Your other devices have been signed out.",
+  "changeGoogleBot": "The easiest way: in Telegram, send /changegoogle to the bot {bot} and follow its instructions, then sign in with the new Google account within 10 minutes.",
+  "@changeGoogleBot": {
+    "placeholders": {
+      "bot": {
+        "type": "String"
+      }
+    }
+  },
+  "changeGoogleNoTelegram": "Without Telegram: ask your owner or a manager for a Google account change link.",
+  "noticeGoogleSwitchLink": "{name} created a link to attach your account to a new Google account. If you did not ask for this, tell your manager.",
+  "@noticeGoogleSwitchLink": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "sessionRevoked": "You have been signed out: your account is now linked to another Google account.",
+  "telegramLoginHint": "Tip: send /connexion to the bot {bot} to get a link and open Staff Flow in a browser, without the app or a Google account.",
+  "@telegramLoginHint": {
+    "placeholders": {
+      "bot": {
+        "type": "String"
+      }
+    }
+  },
+  "timeFormat": "Time format",
+  "timeFormatAuto": "Auto",
+  "people": "People",
+  "sortNatural": "Default order",
+  "sortName": "Name",
+  "employeeNumber": "Employee number",
+  "sfIdLabel": "Staff Flow ID",
+  "pickSearch": "Search",
+  "pickSearchPeople": "Search: name, employee number, SF ID",
+  "pickSortTitle": "Sort and show by",
+  "pickSelected": "Checked: {count}",
+  "@pickSelected": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "pickCheckAll": "Check all",
+  "pickClear": "Uncheck all",
+  "pickNoResult": "No results",
+  "pickMultiHint": "Check several people: a shift will be created for each of them, all at once.",
+  "filterAll": "All",
+  "filterValue": "{label}: {value}",
+  "@filterValue": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "noPositionGroup": "No position",
+  "noSiteGroup": "No site",
+  "groupByTitle": "Group by",
+  "groupRole": "Role",
+  "groupNone": "No grouping",
+  "showMore": "Show {count} more ({left} left)",
+  "@showMore": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "left": {
+        "type": "String"
+      }
+    }
+  },
+  "findByQr": "Find a member with their QR code",
+  "qrNotMember": "This QR code doesn't match anyone in this company.",
+  "memberProfile": "Employee number and position",
+  "employeeNumberHint": "Your company's own number (optional). The Staff Flow ID stays assigned.",
+  "usualPosition": "Usual position",
+  "inviteCodeTitle": "Invitation code",
+  "inviteCodeHint": "Enter the code you received from your employer, or scan the QR code of your invitation.",
+  "inviteJoined": "You joined {company}.",
+  "@inviteJoined": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "importTitle": "Import employees",
+  "importIntro": "Import your list of employees from an Excel or CSV file. Each one gets a personal code and QR code: they activate their account with a 2FA app (or with Google). Nobody is added without their consent.",
+  "importTemplate": "Download the Excel template",
+  "importTemplateHint": "Columns: name, employee number, position, site. Only the name is required.",
+  "importChooseFile": "Choose a file (.xlsx or .csv)",
+  "importNew": "New: {count}",
+  "@importNew": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "importUpdate": "Updated: {count}",
+  "@importUpdate": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "importSkip": "Already invited: {count}",
+  "@importSkip": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "importErrors": "Errors: {count}",
+  "@importErrors": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "importConfirm": "Import ({count})",
+  "@importConfirm": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "importErrorsIgnored": "Rows with errors will be skipped: fix them in the file and import it again.",
+  "importCreated": "new",
+  "importDone": "Invitations created: {count}",
+  "@importDone": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "invitesTitle": "Pending invitations",
+  "invitesPrint": "Print the codes",
+  "inviteShowHint": "The person chooses “Activate my account” on the sign-in screen (or “I have an invitation code” if they already have an account), then scans this QR code or types this code. Valid for 90 days, once.",
+  "invitesHint": "Pending invitations: {count}. Tap a person to show their code and QR code, or print them all.",
+  "@invitesHint": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteSeenByEmail": "invitation seen (e-mail)",
+  "invitesNone": "No pending invitations.",
+  "haveInviteCode": "I have an invitation code",
+  "newsTab": "News",
+  "newsNew": "New announcement",
+  "newsEmpty": "No announcements yet.",
+  "newsEmptyManager": "No announcements yet. Post the first one: for the whole company, a position, a site or chosen people.",
+  "newsOlder": "Older announcements",
+  "newsEdited": "edited",
+  "newsEdit": "Edit the announcement",
+  "newsDeleteTitle": "Remove this announcement?",
+  "newsForEveryone": "For everyone",
+  "newsEveryoneMySites": "Everyone in my sites",
+  "newsFor": "For: {names}",
+  "@newsFor": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "newsReadCount": "Read by {count}",
+  "@newsReadCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "newsReadOf": "Read by {count} of {total}",
+  "@newsReadOf": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "newsTranslated": "Automatically translated",
+  "newsTitleField": "Title (optional)",
+  "newsBodyField": "Announcement text",
+  "newsRecipients": "Recipients",
+  "newsTargetHint": "Check one or more groups: the announcement goes to everyone who matches any of them.",
+  "newsPublish": "Post",
+  "newsSent": "Announcement sent to {count} person(s).",
+  "@newsSent": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLineApiAddon": "“API access” option, added during the subscription, from {from} to {to}: {months} months, no discount",
+  "@billingLineApiAddon": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLineCascadeAddon": "“Nested sites” option, added during the subscription, from {from} to {to}: {months} months, no discount",
+  "@billingLineCascadeAddon": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingRenewalOptions": "Checked options will be included in your next renewals. An unchecked option stays active until the end of the period already paid.",
+  "billingAddonTitle": "Add now: {option}",
+  "@billingAddonTitle": {
+    "placeholders": {
+      "option": {
+        "type": "String"
+      }
+    }
+  },
+  "billingAddonHint": "The whole current month, then each month until {date} (end of the paid period), no discount. The option is active as soon as you pay and is included in the next renewals.",
+  "@billingAddonHint": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingAddonInvoice": "option",
+  "billingAccessRemoved": "{name} no longer manages the subscription.",
+  "@billingAccessRemoved": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "billingAccessGiven": "{name} can now manage the subscription and invoices.",
+  "@billingAccessGiven": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actionBillingRemove": "Stop managing the subscription",
+  "actionBillingGive": "Allow to manage the subscription",
+  "billingAccessTag": "Manages the subscription",
+  "billingOptionRenewed": "Option renewal resumed.",
+  "billingOptionStopped": "Option not renewed: it stays active until the end of the paid period.",
+  "billingOptionEnds": "Active until {date}, won't be renewed (check to keep it)",
+  "@billingOptionEnds": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingOptionActive": "Active and renewed (uncheck to stop renewing it)",
+  "statusCancelRequested": "Cancellation requested",
+  "requestEndedEarly": "Ended early by the person.",
+  "confirmCancelRequest": "Cancel this request? Managers will no longer see it.",
+  "endUnavailability": "End my unavailability",
+  "confirmEndUnavailability": "End your unavailability? You will be available again from today, and managers will be notified.",
+  "askLeaveCancel": "Ask to cancel this leave",
+  "confirmAskLeaveCancel": "Ask to cancel this leave? A manager will have to approve it; until then, the leave stays planned.",
+  "refuseLeaveCancel": "Refuse the cancellation",
+  "acceptLeaveCancel": "Accept the cancellation",
+  "requestsSearchHint": "Search: name, employee number, SF ID, note",
+  "filterType": "Type",
+  "filterState": "Status",
+  "statePending": "Pending",
+  "stateClosed": "Refused or cancelled",
+  "billingLineSlotsAddon": "Seats added, from {from} to {to}, from {start} to {end}: {months} months, no discount",
+  "@billingLineSlotsAddon": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingSeats": "{used} seats paid · up to {limit} people with the 5% margin",
+  "@billingSeats": {
+    "placeholders": {
+      "used": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "billingSeatsTitle": "Number of seats",
+  "billingSeatsHint": "Employees and managers (not the owner or temps), in blocks of 10. 10 seats when the company is created; beyond that, a 5% margin, then no more additions.",
+  "billingSeatsUnit": "seats",
+  "billingSeatsAddon": "Seats: {from} → {to}",
+  "@billingSeatsAddon": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "billingSeatsRange": "From {min} to 5000, in blocks of 10.",
+  "@billingSeatsRange": {
+    "placeholders": {
+      "min": {
+        "type": "String"
+      }
+    }
+  },
+  "printWeek": "Week",
+  "printMonth": "Month",
+  "teamCount": "{team} · {count}",
+  "@teamCount": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      },
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "teamCountSeats": "{team} · {count}/{slots}",
+  "@teamCountSeats": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      },
+      "count": {
+        "type": "String"
+      },
+      "slots": {
+        "type": "String"
+      }
+    }
+  },
+  "rememberMe": "Stay signed in on this device",
+  "rememberMeHint": "On: like with Google, no code needed each time you open the app. Avoid on a shared device.",
+  "totpLoginTitle": "2FA sign-in",
+  "totpCompanyCode": "Company code",
+  "totpCompanyCodeHint": "6 characters, given by your employer (only with an employee number).",
+  "totpBackupCode": "Backup code",
+  "totpCode": "App code",
+  "totpUseApp": "Use the 2FA app",
+  "totpUseBackup": "Use a backup code",
+  "totpSignIn": "Sign in",
+  "totpLostPhone": "Lost your phone or deleted the app? Ask your manager for a new activation code.",
+  "activateTitle": "Activate my account",
+  "activateStep1": "Step 1: your invitation code",
+  "activateStep1Hint": "Scan the QR code given by your employer, or type the code written below it.",
+  "activateScan": "Scan the QR code",
+  "activateCodeField": "Invitation code",
+  "activateContinue": "Continue",
+  "activateHello": "Hello {name} · {company}",
+  "@activateHello": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "company": {
+        "type": "String"
+      }
+    }
+  },
+  "activateStep2": "Step 2: link an authenticator app (Google Authenticator, Microsoft Authenticator…). It will give you a 6-digit code each time you sign in.",
+  "activateOpenApp": "Add to my authenticator app",
+  "activateOrScan": "Or, from another device, scan this QR code with the app:",
+  "activateManualKey": "Key to type by hand:",
+  "activateFirstCode": "First code shown by the app",
+  "activateDone": "Activate",
+  "totpReadyTitle": "Your account is ready",
+  "totpYourId": "Your Staff Flow ID:",
+  "totpBackupHint": "Backup codes (each works once): write them down or keep them somewhere safe. Use them if you no longer have your app.",
+  "totpBackupSaved": "Got it",
+  "linkGoogleTitle": "Link a Google account",
+  "linkGoogleHint": "To create a company, link a Google account to your Staff Flow account. It's only used to protect the company's creator and its subscription: your Google address is never shown to your employees or anyone else, it stays in Staff Flow. You can still sign in with your 2FA app.",
+  "linkGoogleButton": "Link my Google account",
+  "linkGoogleBanner": "Sign in with the Google account to link to your Staff Flow account.",
+  "activationCodeAction": "New activation code",
+  "activationCodeTitle": "New code for {name}?",
+  "@activationCodeTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "activationCodeConfirm": "The old phone and the old 2FA app will stop working. The person activates their account again with this code (valid for 7 days).",
+  "activationCodeHint": "The person chooses “Activate my account” on the sign-in screen, then scans this QR code or types this code.",
+  "signupTitle": "Create an account",
+  "signupStep1": "Step 1: your name",
+  "signupStep1Hint": "The name your colleagues and employers will see. No Google, no e-mail: your account is protected by an authenticator app.",
+  "signupName": "First and last name",
+  "signupHello": "Hello {name}",
+  "@signupHello": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "signupButton": "Create an account with a 2FA app",
+  "totpCardTitle": "Sign-in with a 2FA app",
+  "totpCardLocal": "Your account signs in with an authenticator app. ID: {id}",
+  "@totpCardLocal": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "totpCardOn": "On: you can also sign in with your ID {id} and the app code, without Google.",
+  "@totpCardOn": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "totpCardOff": "Set up an authenticator app to be able to sign in without Google (SF ID + 6-digit code).",
+  "totpEnable": "Turn on",
+  "totpDisable": "Remove",
+  "totpEnableTitle": "Turn on 2FA sign-in",
+  "totpEnabledTitle": "2FA sign-in ready",
+  "totpDisableConfirm": "Remove sign-in with a 2FA app? You'll only sign in with Google.",
+  "googlePrivacyNote": "Your Google account is only used to protect the company and its subscription: it's never shown to your employees or anyone else.",
+  "scopeRead": "Read: published schedule, hours, absences, employees",
+  "scopeShifts": "Schedule: create, edit, delete shifts",
+  "scopePublish": "Publish the schedule",
+  "scopeMembers": "Employees: import, employee number and position",
+  "scopeCatalog": "Positions and sites",
+  "scopeNews": "Announcements",
+  "scopeRequests": "Requests: approve or refuse",
+  "apiScopesTitle": "Key permissions",
+  "apiProNeeded": "Write permissions need the “API Pro” option (paid subscription).",
+  "billingLinePro": "“API Pro” option: {months} months",
+  "@billingLinePro": {
+    "placeholders": {
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLineProAddon": "“API Pro” option, added during the subscription, from {start} to {end}: {months} months, no discount",
+  "@billingLineProAddon": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingApiProHint": "“API Pro” (read and write, webhooks, logs): {price1} / month for 1 key, {price5} / month for 10 keys, no discount. Choose it here, with the subscription payment.",
+  "@billingApiProHint": {
+    "placeholders": {
+      "price1": {
+        "type": "String"
+      },
+      "price5": {
+        "type": "String"
+      }
+    }
+  },
+  "whTitle": "Webhooks",
+  "whSub": "Staff Flow notifies your software on its own when something happens: schedule published, request, new employee, announcement. Included in the “API Pro” option.",
+  "whNew": "New webhook",
+  "whUrl": "Address (https://…)",
+  "whEvents": "Events sent",
+  "whCreated": "Signing secret, shown only once: your software uses it to check that each delivery really comes from Staff Flow.",
+  "whTest": "Try it",
+  "whTestOk": "Received (code {status})",
+  "@whTestOk": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "whTestFail": "Failed: {error}",
+  "@whTestFail": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "whDisabled": "Turned off after 10 failed deliveries in a row",
+  "whEnable": "Turn back on",
+  "whDelete": "Delete",
+  "whDeleteConfirm": "This webhook will no longer receive anything.",
+  "whNone": "No webhook yet.",
+  "whLast": "Last delivery: {date} · {status}",
+  "@whLast": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "whEvSchedulePublished": "Schedule published",
+  "whEvRequestCreated": "New request",
+  "whEvRequestDecided": "Request approved or refused",
+  "whEvRequestCancelled": "Request cancelled",
+  "whEvRequestCancelAsked": "Leave cancellation requested",
+  "whEvRequestCancelDecided": "Leave cancellation decided",
+  "whEvRequestEnded": "Unavailability ended",
+  "whEvMemberJoined": "New employee",
+  "whEvAnnouncementPublished": "Announcement published",
+  "whStDelivered": "received",
+  "whStPending": "pending",
+  "whStFailed": "failed",
+  "whStDropped": "dropped",
+  "lgTitle": "Logs",
+  "lgSub": "Every call from your API keys and the MCP assistant, and every webhook delivery. Swipe to change month.",
+  "lgSearch": "Search: person, employee number, action…",
+  "lgAllHistory": "Search the whole history (archives included)",
+  "lgArchived": "Archived month",
+  "lgNone": "Nothing for this month.",
+  "lgMore": "Show more",
+  "lgExport": "Download a year (ZIP)",
+  "lgAllKeys": "All keys",
+  "lgSourceApi": "API",
+  "lgSourceMcp": "MCP assistant",
+  "lgSourceWebhook": "Webhook",
+  "lgKindRead": "Read",
+  "lgKindWrite": "Write",
+  "lgOk": "Succeeded",
+  "lgError": "Failed",
+  "lgBefore": "Before",
+  "lgAfter": "After",
+  "lgStats": "Today: {today} · this month: {month}",
+  "@lgStats": {
+    "placeholders": {
+      "today": {
+        "type": "String"
+      },
+      "month": {
+        "type": "String"
+      }
+    }
+  },
+  "lgLastFailure": "Last failure: {date}",
+  "@lgLastFailure": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "lgActShiftsCreate": "Shifts created",
+  "lgActShiftUpdate": "Shift edited",
+  "lgActShiftDelete": "Shift deleted",
+  "lgActPublish": "Schedule published",
+  "lgActImport": "Employees imported",
+  "lgActProfile": "Employee number or position changed",
+  "lgActPosition": "Position created",
+  "lgActSite": "Site created",
+  "lgActNews": "Announcement published",
+  "lgActApprove": "Request approved",
+  "lgActRefuse": "Request refused",
+  "lgActRead": "Read",
+  "lgActWebhook": "Webhook sent",
+  "lgFDay": "Day",
+  "lgFStart": "Start",
+  "lgFEnd": "End",
+  "lgFPerson": "Person",
+  "lgFSite": "Site",
+  "lgFPosition": "Position",
+  "lgFNote": "Note",
+  "lgFNumber": "Employee number",
+  "noticeApiFailing": "API key “{key}” failed {count} times in one hour: check the software using it.",
+  "@noticeApiFailing": {
+    "placeholders": {
+      "key": {
+        "type": "String"
+      },
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "noticeApiNewIp": "API key “{key}” was used from a new address ({ip}). If it wasn't you, revoke it.",
+  "@noticeApiNewIp": {
+    "placeholders": {
+      "key": {
+        "type": "String"
+      },
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "lgResults": "Results in the whole history",
+  "lgAllSources": "All sources",
+  "lgAllKinds": "Read and write",
+  "lgAllResults": "Succeeded and failed",
+  "lgFDate": "Date",
+  "lgFKey": "Key",
+  "lgFSource": "Source",
+  "lgFStatus": "Status",
+  "totpContinueButton": "Continue with a 2FA app",
+  "totpIdentHint": "Enter your Staff Flow ID (SF-…), your employee number, or the activation code from your employer.",
+  "totpIdentField": "ID, employee number or employer code",
+  "totpContinue": "Continue",
+  "totpUnknown": "This ID doesn't exist. Do you want to create an account?",
+  "totpGoogleAccount": "This account signs in with Google: go back and tap “Sign in with Google”.",
+  "totpNoAccount": "No account yet? Create one",
+  "totpChange": "Use another ID",
+  "billingNotInApp": "Purchases aren't available in the mobile app.",
+  "billingActiveOptions": "Active options",
+  "billingNoOptions": "No active option.",
+  "optionNotActive": "This option isn't active for this company.",
+  "apiProNotActive": "The “API Pro” option isn't active for this company.",
+  "apiKeySaved": "Key saved.",
+  "apiKeyIncomplete": "Give the key a name and choose at least one permission.",
+  "billingApiPro1": "“API Pro” option (1 key)",
+  "billingApiPro10": "“API Pro” option (10 keys)",
+  "billingApiPro10Upgrade": "Move to 10 keys",
+  "billingProKeysNext": "At the next renewal",
+  "billingProKeys1": "1 key",
+  "billingProKeys10": "10 keys",
+  "billingProKeysWarning": "{count} keys are active: at renewal, only the oldest stays active. You'll choose which one to keep in “API access”.",
+  "@billingProKeysWarning": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "billingApiIncluded": "Read access included in “API Pro”.",
+  "billingLinePro10Addon": "“API Pro” option, 10 keys, added during the subscription, from {start} to {end}: {months} months, no discount",
+  "@billingLinePro10Addon": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLinePro10Upgrade": "“API Pro” upgrade to 10 keys, from {start} to {end}: {months} months (price difference), no discount",
+  "@billingLinePro10Upgrade": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "apiKeysCount": "Active keys: {count} / {limit}",
+  "@apiKeysCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "apiKeyDisabled": "Disabled: beyond your API plan",
+  "apiKeyEnable": "Turn back on",
+  "apiKeyDisable": "Set aside",
+  "apiKeyLimitReached": "Your plan allows no more keys: set a key aside, or move to a higher plan.",
+  "noticeApiKeysDeletion": "{company}: API access stopped, the keys will be deleted on {date} unless the option is taken again.",
+  "@noticeApiKeysDeletion": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingApiProChoice": "“API Pro” option",
+  "billingApiProNone": "None",
+  "billingApiProNowNote": "Current subscription: the period already paid is also topped up with “API Pro”, in the same payment."
+}

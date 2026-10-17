@@ -1,0 +1,899 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+
+import '../api.dart';
+import '../brand.dart';
+import '../i18n.dart';
+import '../models.dart';
+import '../purchases.dart';
+import '../session.dart';
+import 'api_keys_page.dart';
+import 'billing_page.dart';
+import 'company_logo.dart';
+import 'company_tab.dart';
+import 'home_screen.dart';
+import 'invite_widgets.dart';
+import 'people_widgets.dart';
+import 'pick_list.dart';
+import 'tools_widgets.dart';
+import 'avatar_widgets.dart';
+
+/// Équipe de l'entreprise : membres, rôles, ajout par code, transfert.
+class TeamView extends StatefulWidget {
+  final Session session;
+  final Membership membership;
+
+  /// Sites et postes de l'entreprise.
+  final CompanyData data;
+
+  /// Appelé quand la liste des membres a pu changer.
+  final VoidCallback onChanged;
+
+  const TeamView(
+      {super.key, required this.session, required this.membership, required this.data, required this.onChanged});
+
+  @override
+  State<TeamView> createState() => _TeamViewState();
+}
+
+class _TeamViewState extends State<TeamView> {
+  late Future<List<Member>> _members;
+
+  Company get company => widget.membership.company;
+  Role get role => widget.membership.role;
+
+  /// Sites que je gère (`null` : toute l'entreprise).
+  Set<String>? get mine => widget.membership.managedSites;
+
+  /// Sites actifs de l'entreprise que je peux attribuer.
+  List<CatalogItem> get _assignable => [
+        for (final (s, _) in widget.data.siteTree)
+          if (!s.archived && (mine == null || mine!.contains(s.id))) s,
+      ];
+
+  /// Niveau d'un site dans l'arbre (0 : premier niveau), pour le décaler.
+  late final Map<String, int> _depth = {for (final (s, d) in widget.data.siteTree) s.id: d};
+
+  /// Un responsable de site gère les salariés et extras de ses sites.
+  bool _inMySites(Member m) => mine == null || (m.sites ?? const []).any(mine!.contains);
+
+  String _siteNames(List<String>? ids) => [
+        for (final id in ids ?? const <String>[]) widget.data.siteName(id) ?? '?',
+      ].join(', ');
+  L10n get t => context.l10n;
+
+  /// Recherche (nom, matricule, ID SF), regroupement et pages de 20.
+  final _search = TextEditingController();
+  late _GroupBy _groupBy = widget.data.positions.any((p) => !p.archived) ? _GroupBy.position : _GroupBy.role;
+  final Map<String, int> _shown = {};
+  static const _page = 20;
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+    PickPrefs.load().then((_) {
+      if (mounted) setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _search.dispose();
+    super.dispose();
+  }
+
+  @override
+  void didUpdateWidget(TeamView old) {
+    super.didUpdateWidget(old);
+    if (old.membership.role != role) _load();
+  }
+
+  void _load() {
+    _members = widget.session.sync
+        .read('members:${company.id}', '/companies/${company.id}/members')
+        .then((j) => [for (final m in j['members']) Member.fromJson(m)]);
+  }
+
+  Future<void> _act(Future<void> Function() action, {String? success}) async {
+    await runAction(context, widget.session, action, success: success);
+    if (mounted) setState(_load);
+    widget.onChanged();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final me = widget.session.me!.user;
+    return RefreshIndicator(
+      onRefresh: () async => setState(_load),
+      child: ListView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        padding: const EdgeInsets.all(16),
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: FutureBuilder(
+                  future: _members,
+                  builder: (context, snap) {
+                    // Salariés et responsables : ceux qui prennent une place.
+                    final staff = snap.data?.where((m) => m.role == Role.employee || m.role == Role.manager).length;
+                    final seats = role == Role.owner || widget.membership.billingAccess;
+                    return Text(
+                      staff == null
+                          ? t.team
+                          : seats && company.billingStatus != 'comped'
+                              ? t.teamCountSeats(t.team, '$staff', '${company.slots}')
+                              : t.teamCount(t.team, '$staff'),
+                      style: theme.textTheme.titleMedium,
+                    );
+                  },
+                ),
+              ),
+              if (role.canManage && !company.readOnly)
+                TextButton.icon(
+                  onPressed: _addWithCode,
+                  icon: const Icon(Icons.person_add, size: 18),
+                  label: Text(t.add),
+                ),
+              if (widget.membership.managesAll && !company.readOnly)
+                IconButton(
+                  tooltip: t.importTitle,
+                  onPressed: () async {
+                    await ImportPage.open(context, widget.session, company, widget.data);
+                    if (mounted) setState(_load);
+                    widget.onChanged();
+                  },
+                  icon: const Icon(Icons.upload_file),
+                ),
+              if (widget.membership.managesAll && !company.readOnly)
+                TextButton.icon(
+                  onPressed: _rename,
+                  icon: const Icon(Icons.edit, size: 18),
+                  label: Text(t.rename),
+                ),
+            ],
+          ),
+          FutureBuilder(
+            future: _members,
+            builder: (context, snap) {
+              if (snap.hasError) return Text('${snap.error}');
+              if (!snap.hasData) {
+                return const Padding(
+                    padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator()));
+              }
+              _meDeputy = snap.data!.any((x) => x.user.id == me.id && x.appointedBy != null);
+              return _browser(snap.data!, me.id);
+            },
+          ),
+          // Abonnement confié par le patron (comptable…) : seulement la carte Abonnement.
+          if (role != Role.owner && widget.membership.billingAccess) ...[
+            const SizedBox(height: 20),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.workspace_premium_outlined),
+                title: Text(Purchases.enabled ? t.billingManage : t.billingTitle),
+                subtitle: Text('${billingStatusText(context, company) ?? ''}\n${t.billingCompanyId(company.publicId)}'),
+                isThreeLine: true,
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => BillingPage.open(context, widget.session, company),
+              ),
+            ),
+          ],
+          // Personnalisation : l'image de l'entreprise, pour le patron seulement.
+          if (role == Role.owner) ...[
+            const SizedBox(height: 20),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.workspace_premium_outlined),
+                title: Text(Purchases.enabled ? t.billingManage : t.billingTitle),
+                subtitle: Text('${billingStatusText(context, company) ?? ''}\n${t.billingCompanyId(company.publicId)}'),
+                isThreeLine: true,
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => BillingPage.open(context, widget.session, company),
+              ),
+            ),
+            const SizedBox(height: 20),
+            CompanyLogoSettings(session: widget.session, company: company),
+            const SizedBox(height: 12),
+            CompanyMessagingSetting(session: widget.session, company: company),
+            CompanyPhotosSetting(session: widget.session, company: company),
+            const SizedBox(height: 12),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.key_outlined),
+                title: Text(t.apiTitle),
+                subtitle: Text(t.apiSub),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => ApiKeysPage.open(context, widget.session, company),
+              ),
+            ),
+          ],
+          // Clés API : responsables à qui le patron a confié l'abonnement.
+          if (role == Role.manager && widget.membership.billingAccess) ...[
+            const SizedBox(height: 12),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.key_outlined),
+                title: Text(t.apiTitle),
+                subtitle: Text(t.apiSub),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => ApiKeysPage.open(context, widget.session, company),
+              ),
+            ),
+          ],
+          // Réglages de l'entreprise : fuseau horaire, impression.
+          if (widget.membership.managesAll) ...[
+            const SizedBox(height: 24),
+            CompanySettings(session: widget.session, company: company),
+          ],
+          if (role != Role.owner) ...[
+            const SizedBox(height: 24),
+            OutlinedButton.icon(
+              onPressed: _leave,
+              icon: const Icon(Icons.logout),
+              label: Text(t.leaveCompany),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+
+  PickItem _item(Member m) => PickItem(m.user.id, m.user.name,
+      number: m.employeeNumber, sfId: m.user.publicId, detail: widget.data.positionName(m.positionId));
+
+  /// Liste des membres : recherche, tri, groupes repliables (postes, sites,
+  /// rôles) et 20 personnes affichées à la fois par groupe.
+  Widget _browser(List<Member> all, String meId) {
+    final theme = Theme.of(context);
+    final sort = PickPrefs.people.value;
+    final byId = {for (final m in all) m.user.id: m};
+    final found = [
+      for (final i in sortItems(searchItems([for (final m in all) _item(m)], _search.text), sort)) byId[i.id]!,
+    ];
+    final searching = _search.text.trim().isNotEmpty;
+
+    Widget page(String key, List<Member> list) {
+      final n = _shown[key] ?? _page;
+      return Column(children: [
+        for (final m in list.take(n)) _memberTile(m, isMe: m.user.id == meId, sort: sort),
+        if (list.length > n)
+          TextButton.icon(
+            onPressed: () => setState(() => _shown[key] = n + _page),
+            icon: const Icon(Icons.expand_more),
+            label: Text(t.showMore('${(list.length - n).clamp(0, _page)}', '${list.length - n}')),
+          ),
+      ]);
+    }
+
+    final groups = <(String, String, List<Member>)>[];
+    if (!searching && _groupBy != _GroupBy.none) {
+      switch (_groupBy) {
+        case _GroupBy.position:
+          for (final p in widget.data.positions) {
+            final list = [for (final m in found) if (m.positionId == p.id) m];
+            if (list.isNotEmpty) groups.add((p.id, p.name, list));
+          }
+          final none = [for (final m in found) if (widget.data.positionName(m.positionId) == null) m];
+          if (none.isNotEmpty) groups.add(('', t.noPositionGroup, none));
+        case _GroupBy.site:
+          for (final (s, _) in widget.data.siteTree) {
+            final list = [for (final m in found) if (m.sites?.contains(s.id) ?? false) m];
+            if (list.isNotEmpty) groups.add((s.id, widget.data.sitePath(s.id) ?? s.name, list));
+          }
+          final none = [for (final m in found) if ((m.sites ?? const []).isEmpty) m];
+          if (none.isNotEmpty) groups.add(('', t.noSiteGroup, none));
+        case _GroupBy.role:
+          for (final r in Role.values) {
+            final list = [for (final m in found) if (m.role == r) m];
+            if (list.isNotEmpty) groups.add((r.name, r.label(t), list));
+          }
+        case _GroupBy.none:
+      }
+    }
+
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      const SizedBox(height: 8),
+      Row(children: [
+        Expanded(
+          child: TextField(
+            controller: _search,
+            onChanged: (_) => setState(() => _shown.clear()),
+            decoration: InputDecoration(
+              isDense: true,
+              filled: true,
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(24), borderSide: BorderSide.none),
+              prefixIcon: const Icon(Icons.search, size: 20),
+              hintText: t.pickSearchPeople,
+              suffixIcon: _search.text.isEmpty
+                  ? null
+                  : IconButton(icon: const Icon(Icons.close, size: 18), onPressed: () => setState(_search.clear)),
+            ),
+          ),
+        ),
+        IconButton(tooltip: t.findByQr, icon: const Icon(Icons.qr_code_scanner), onPressed: () => _findByQr(all)),
+        PopupMenuButton<_GroupBy>(
+          tooltip: t.groupByTitle,
+          icon: const Icon(Icons.account_tree_outlined),
+          onSelected: (g) => setState(() {
+            _groupBy = g;
+            _shown.clear();
+          }),
+          itemBuilder: (_) => [
+            for (final g in _GroupBy.values)
+              CheckedPopupMenuItem(value: g, checked: g == _groupBy, child: Text(g.label(t))),
+          ],
+        ),
+        PopupMenuButton<PickSort>(
+          tooltip: t.pickSortTitle,
+          icon: const Icon(Icons.sort),
+          onSelected: (s) async {
+            await PickPrefs.set(s);
+            if (mounted) setState(() {});
+          },
+          itemBuilder: (_) => [
+            for (final s in const [PickSort.name, PickSort.number, PickSort.sfId])
+              CheckedPopupMenuItem(value: s, checked: s == sort, child: Text(s.label(t))),
+          ],
+        ),
+      ]),
+      const SizedBox(height: 4),
+      if (found.isEmpty)
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: Center(child: Text(t.pickNoResult, style: theme.textTheme.bodySmall)),
+        )
+      else if (groups.isEmpty)
+        page('*', found)
+      else
+        for (final (key, title, list) in groups)
+          ExpansionTile(
+            key: PageStorageKey('team-${_groupBy.name}-$key'),
+            tilePadding: EdgeInsets.zero,
+            initiallyExpanded: all.length <= _page,
+            title: Text(title, style: theme.textTheme.titleSmall),
+            trailing: Row(mainAxisSize: MainAxisSize.min, children: [
+              Badge(
+                label: Text('${list.length}'),
+                backgroundColor: theme.colorScheme.secondaryContainer,
+                textColor: theme.colorScheme.onSecondaryContainer,
+              ),
+              const Icon(Icons.expand_more),
+            ]),
+            children: [page(key, list)],
+          ),
+    ]);
+  }
+
+  /// Le salarié montre son QR code : on le retrouve dans la liste.
+  Future<void> _findByQr(List<Member> all) async {
+    final qr = await scanQrCode(context);
+    if (qr == null || !mounted) return;
+    final id = RegExp(r'SF-[A-Z2-9]{8}').firstMatch(qr.toUpperCase())?[0];
+    final m = all.where((m) => m.user.publicId == id).firstOrNull;
+    if (m == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.qrNotMember)));
+      return;
+    }
+    setState(() {
+      _search.text = m.user.publicId;
+      _shown.clear();
+    });
+  }
+
+  /// Titre d'une ligne : la clé de tri d'abord (matricule, ID SF ou nom).
+  String _title(Member m, PickSort sort, bool isMe) {
+    final name = isMe ? t.meSuffix(m.user.name) : m.user.name;
+    return switch (sort) {
+      PickSort.number when m.employeeNumber != null => '${m.employeeNumber} · $name',
+      PickSort.sfId => '${m.user.publicId} · $name',
+      _ => name,
+    };
+  }
+
+  Widget _memberTile(Member m, {required bool isMe, PickSort sort = PickSort.name}) {
+    final actions = isMe || company.readOnly ? const <_MemberAction>[] : _actionsFor(m);
+    return ListTile(
+      contentPadding: EdgeInsets.zero,
+      leading: UserAvatar.of(m.user),
+      title: Text(_title(m, sort, isMe)),
+      subtitle: Text([
+        if (m.appointedBy != null) t.subManager else m.role.label(t),
+        if (m.billingAccess) t.billingAccessTag,
+        if (m.role == Role.manager) m.sites == null ? t.wholeCompany : _siteNames(m.sites),
+        if (m.role != Role.manager && m.sites != null) _siteNames(m.sites),
+        ?widget.data.positionName(m.positionId),
+        if (sort != PickSort.number && m.employeeNumber != null) '${t.employeeNumber} ${m.employeeNumber}',
+        if (sort != PickSort.sfId) m.user.publicId,
+      ].join(' · ')),
+      trailing: actions.isEmpty && m.telegram == null
+          ? null
+          : Row(mainAxisSize: MainAxisSize.min, children: [
+              if (m.telegram != null)
+                IconButton(
+                  tooltip: '@${m.telegram}',
+                  icon: const Icon(Icons.send_outlined, color: Brand.blue),
+                  onPressed: () => openUrl(context, 'https://t.me/${m.telegram}'),
+                ),
+              if (actions.isNotEmpty)
+                PopupMenuButton<_MemberAction>(
+                  onSelected: (a) => _run(a, m),
+                  itemBuilder: (_) => [
+                    for (final a in actions) PopupMenuItem(value: a, child: Text(a.label(t, m))),
+                  ],
+                ),
+            ]),
+    );
+  }
+
+  /// Mêmes règles que le serveur : le propriétaire gère les responsables,
+  /// un responsable gère les salariés et les extras.
+  List<_MemberAction> _actionsFor(Member m) {
+    if (m.role == Role.owner) return const [];
+    final isOwner = role == Role.owner;
+    final isManager = role == Role.manager;
+    final targetIsStaff = m.role == Role.employee || m.role == Role.extra;
+    // Responsable de site : seulement les salariés et extras de ses sites.
+    final mineToo = isManager && targetIsStaff && _inMySites(m);
+    final hasSites = widget.data.sites.any((s) => !s.archived);
+    // Sous-responsable qu'il a nommé lui-même.
+    final myDeputy = isManager && m.role == Role.manager && m.appointedBy == widget.session.me?.user.id;
+    return [
+      if (isOwner || mineToo) _MemberAction.rename,
+      if (isOwner || mineToo) _MemberAction.profile,
+      if (isOwner && targetIsStaff) _MemberAction.makeManager,
+      if (isManager && mineToo && hasSites) _MemberAction.makeDeputy,
+      if ((isOwner && m.role == Role.manager) || myDeputy) _MemberAction.makeEmployee,
+      if (isOwner || mineToo) _MemberAction.toggleExtra,
+      if (!m.telegramLinked && !m.user.local && (isOwner || (mineToo && !_meDeputy))) _MemberAction.googleLink,
+      if (m.user.local && (isOwner || (mineToo && !_meDeputy))) _MemberAction.activationCode,
+      if (hasSites && ((isOwner && m.role == Role.manager) || myDeputy || ((isOwner || isManager) && targetIsStaff)))
+        _MemberAction.sites,
+      if (isOwner && m.role == Role.manager) _MemberAction.transfer,
+      if (isOwner) _MemberAction.billing,
+      if (isOwner || mineToo || myDeputy) _MemberAction.remove,
+    ];
+  }
+
+  /// Matricule donné par l'employeur et poste habituel.
+  Future<void> _editProfile(Member m) async {
+    final number = TextEditingController(text: m.employeeNumber);
+    final positions = [for (final p in widget.data.positions) if (!p.archived || p.id == m.positionId) p];
+    String? position = m.positionId;
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setState) => AlertDialog(
+          title: Text(m.user.name),
+          content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            TextField(
+              controller: number,
+              autofocus: true,
+              maxLength: 40,
+              decoration: InputDecoration(labelText: t.employeeNumber, helperText: t.employeeNumberHint, helperMaxLines: 3),
+            ),
+            const SizedBox(height: 8),
+            Text('${t.sfIdLabel} : ${m.user.publicId}', style: Theme.of(context).textTheme.bodySmall),
+            if (positions.isNotEmpty) ...[
+              const SizedBox(height: 12),
+              DropdownButtonFormField<String?>(
+                initialValue: position,
+                isExpanded: true,
+                decoration: InputDecoration(labelText: t.usualPosition),
+                items: [
+                  const DropdownMenuItem(value: null, child: Text('—')),
+                  for (final p in positions) DropdownMenuItem(value: p.id, child: Text(p.name)),
+                ],
+                onChanged: (v) => setState(() => position = v),
+              ),
+            ],
+          ]),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
+            FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.save)),
+          ],
+        ),
+      ),
+    );
+    if (ok != true) return;
+    final value = number.text.trim();
+    await _act(() => widget.session.api.setMemberProfile(company.id, m.user.id, value.isEmpty ? null : value, position));
+  }
+
+  /// Téléphone perdu ou application 2FA effacée : nouveau code d'activation.
+  Future<void> _activationCode(Member m) async {
+    final ok = await _confirm(t.activationCodeTitle(m.user.name), t.activationCodeConfirm);
+    if (!ok || !mounted) return;
+    try {
+      final r = await widget.session.api.send('POST', '/companies/${company.id}/members/${m.user.id}/activation-code');
+      if (!mounted) return;
+      final code = r['code'] as String;
+      await showDialog<void>(
+        context: context,
+        builder: (dialog) => AlertDialog(
+          title: Text(m.user.name),
+          content: Column(mainAxisSize: MainAxisSize.min, children: [
+            Container(
+              color: Colors.white,
+              padding: const EdgeInsets.all(8),
+              child: SizedBox(width: 180, height: 180, child: QrImageView(data: r['link'] as String, backgroundColor: Colors.white)),
+            ),
+            const SizedBox(height: 12),
+            SelectableText(formatInviteCode(code),
+                style: const TextStyle(fontSize: 26, letterSpacing: 3, fontWeight: FontWeight.w600)),
+            const SizedBox(height: 8),
+            Text(t.activationCodeHint, textAlign: TextAlign.center),
+          ]),
+          actions: [FilledButton(onPressed: () => Navigator.pop(dialog), child: Text(t.close))],
+        ),
+      );
+    } on ApiException catch (e) {
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.describe(t))));
+    } on OfflineException {
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+    }
+  }
+
+  /// Je suis sous-responsable (pas de lien de changement de compte Google).
+  bool _meDeputy = false;
+
+  /// Lien pour qu'une personne sans Telegram change de compte Google.
+  Future<void> _googleLink(Member m) async {
+    try {
+      final r = await widget.session.api.send('POST', '/companies/${company.id}/members/${m.user.id}/google-link');
+      if (!mounted) return;
+      final url = serverUrl(r['path'] as String);
+      await showDialog<void>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(t.memberGoogleLink),
+          content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            Text(t.googleLinkHint(m.user.name)),
+            const SizedBox(height: 12),
+            SelectableText(url, style: const TextStyle(fontSize: 13)),
+          ]),
+          actions: [
+            TextButton.icon(
+              onPressed: () {
+                Clipboard.setData(ClipboardData(text: url));
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.googleLinkCopied)));
+              },
+              icon: const Icon(Icons.copy),
+              label: Text(t.apiKeyCopy),
+            ),
+            FilledButton(onPressed: () => Navigator.pop(context), child: Text(t.close)),
+          ],
+        ),
+      );
+    } on ApiException catch (e) {
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.describe(t))));
+    } on OfflineException {
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.offlineUnavailable)));
+    }
+  }
+
+  Future<void> _run(_MemberAction a, Member m) async {
+    final api = widget.session.api;
+    switch (a) {
+      case _MemberAction.googleLink:
+        await _googleLink(m);
+      case _MemberAction.activationCode:
+        await _activationCode(m);
+      case _MemberAction.rename:
+        final name = await askName(
+          context,
+          title: t.renameMemberTitle(m.user.name),
+          current: m.user.name,
+          hint: '${t.renameMemberHint}\n${t.googleName(m.user.googleName)}',
+          resetLabel: t.useOwnName,
+          canReset: m.nameInCompany != null,
+        );
+        if (name != null) {
+          await _act(() => api.renameMember(company.id, m.user.id, name.isEmpty ? null : name));
+        }
+      case _MemberAction.profile:
+        await _editProfile(m);
+      case _MemberAction.billing:
+        await _act(
+            () => api.send('PUT', '/companies/${company.id}/members/${m.user.id}/billing', body: {'enabled': !m.billingAccess}),
+            success: m.billingAccess ? t.billingAccessRemoved(m.user.name) : t.billingAccessGiven(m.user.name));
+      case _MemberAction.makeManager:
+        // Responsable de toute l'entreprise, ou de certains sites.
+        final scope = widget.data.sites.any((s) => !s.archived)
+            ? await _pickSites(t.managerOf(m.user.name), const [], allowWhole: true)
+            : (sites: null,);
+        if (scope != null) {
+          await _act(() => api.setRole(company.id, m.user.id, Role.manager, sites: scope.sites ?? const []));
+        }
+      case _MemberAction.makeDeputy:
+        // Sous-responsable : un ou plusieurs de ses propres sites.
+        final scope = await _pickSites(t.deputyOf(m.user.name), const [], allowWhole: false);
+        if (scope != null && (scope.sites ?? const []).isNotEmpty) {
+          await _act(() => api.setRole(company.id, m.user.id, Role.manager, sites: scope.sites));
+        } else if (scope != null && mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.chooseYourSite)));
+        }
+      case _MemberAction.sites:
+        final chosen = await _pickSites(
+          m.role == Role.manager ? t.managerOf(m.user.name) : t.teamSitesOf(m.user.name),
+          m.sites ?? const [],
+          allowWhole: m.role == Role.manager && role == Role.owner,
+        );
+        if (chosen != null && m.role == Role.manager && role != Role.owner && (chosen.sites ?? const []).isEmpty) {
+          if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.chooseYourSite)));
+        } else if (chosen != null) {
+          await _act(() => api.setMemberSites(company.id, m.user.id, chosen.sites));
+        }
+      case _MemberAction.makeEmployee:
+        await _act(() => api.setRole(company.id, m.user.id, Role.employee));
+      case _MemberAction.toggleExtra:
+        final to = m.role == Role.extra ? Role.employee : Role.extra;
+        await _act(() => api.setRole(company.id, m.user.id, to));
+      case _MemberAction.transfer:
+        if (await _confirm(t.transferConfirmTitle(m.user.name), t.transferConfirmBody)) {
+          await _act(() => api.proposeTransfer(company.id, m.user.id),
+              success: t.transferSent(m.user.name));
+        }
+      case _MemberAction.remove:
+        if (await _confirm(t.removeConfirmTitle(m.user.name), t.removeConfirmBody)) {
+          await _act(() => api.removeMember(company.id, m.user.id));
+        }
+    }
+  }
+
+  /// Choix de sites. [allowWhole] : pour un responsable, « toute l'entreprise ».
+  /// Renvoie `null` si l'on annule ; `sites: null` pour toute l'entreprise
+  /// (responsable) ou aucun site (salarié).
+  Future<({List<String>? sites})?> _pickSites(String title, List<String> current, {required bool allowWhole}) {
+    final options = _assignable;
+    var whole = allowWhole && current.isEmpty;
+    final chosen = {...current.where((id) => options.any((s) => s.id == id))};
+    return showDialog<({List<String>? sites})>(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setState) => AlertDialog(
+          title: Text(title),
+          content: SizedBox(
+            width: 360,
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                if (allowWhole)
+                  RadioGroup<bool>(
+                    groupValue: whole,
+                    onChanged: (v) => setState(() => whole = v ?? whole),
+                    child: Column(
+                      children: [
+                        RadioListTile<bool>(value: true, title: Text(t.wholeCompany)),
+                        RadioListTile<bool>(value: false, title: Text(t.sitesLabel)),
+                      ],
+                    ),
+                  ),
+                for (final s in options)
+                  CheckboxListTile(
+                    enabled: !whole,
+                    value: !whole && chosen.contains(s.id),
+                    onChanged: (v) => setState(() => v == true ? chosen.add(s.id) : chosen.remove(s.id)),
+                    title: Text(s.name),
+                    contentPadding: EdgeInsets.only(left: (allowWhole ? 32 : 16) + 16.0 * (_depth[s.id] ?? 0), right: 16),
+                  ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(context), child: Text(t.cancel)),
+            FilledButton(
+              onPressed: () {
+                if (allowWhole && !whole && chosen.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.chooseYourSite)));
+                  return;
+                }
+                Navigator.pop(context, (sites: whole || chosen.isEmpty ? null : chosen.toList()));
+              },
+              child: Text(t.save),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// Ajout d'une personne : le responsable scanne son QR code permanent
+  /// (menu du compte, « Mon QR code »), ou saisit le code à 6 chiffres
+  /// qu'elle a généré. Elle doit ensuite accepter l'invitation.
+  Future<void> _addWithCode() async {
+    final code = TextEditingController();
+    var role = Role.employee;
+    // Sites de son équipe : obligatoire pour un responsable de site.
+    final siteOptions = _assignable;
+    final chosenSites = <String>{if (mine != null && siteOptions.length == 1) siteOptions.single.id};
+    bool sitesMissing() => mine != null && chosenSites.isEmpty;
+    final choice = await showDialog<_AddWith>(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setState) => AlertDialog(
+          title: Text(t.addPersonTitle),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SegmentedButton<Role>(
+                  segments: [
+                    ButtonSegment(value: Role.employee, label: Text(Role.employee.label(t))),
+                    ButtonSegment(value: Role.extra, label: Text(Role.extra.label(t))),
+                  ],
+                  selected: {role},
+                  onSelectionChanged: (s) => setState(() => role = s.first),
+                ),
+                if (siteOptions.isNotEmpty) ...[
+                  const SizedBox(height: 12),
+                  // Menu déroulant à cases à cocher : lisible même avec beaucoup de sites.
+                  MenuAnchor(
+                    menuChildren: [
+                      for (final s in siteOptions)
+                        CheckboxMenuButton(
+                          value: chosenSites.contains(s.id),
+                          closeOnActivate: false,
+                          onChanged: (v) => setState(() => v == true ? chosenSites.add(s.id) : chosenSites.remove(s.id)),
+                          child: Text(widget.data.sitePath(s.id) ?? s.name),
+                        ),
+                    ],
+                    builder: (context, menu, _) => InkWell(
+                      borderRadius: BorderRadius.circular(4),
+                      onTap: () => menu.isOpen ? menu.close() : menu.open(),
+                      child: InputDecorator(
+                        decoration: InputDecoration(
+                          labelText: t.sitesLabel,
+                          border: const OutlineInputBorder(),
+                          suffixIcon: const Icon(Icons.arrow_drop_down),
+                        ),
+                        child: Text(
+                          chosenSites.isEmpty
+                              ? t.sitesNoneChosen
+                              : [for (final s in siteOptions) if (chosenSites.contains(s.id)) widget.data.sitePath(s.id) ?? s.name]
+                                  .join(', '),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+                const SizedBox(height: 16),
+                // Le plus simple avec les mains occupées : un grand bouton.
+                FilledButton.icon(
+                  style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(64)),
+                  onPressed: () => sitesMissing()
+                      ? ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.chooseYourSite)))
+                      : Navigator.pop(context, _AddWith.qr),
+                  icon: const Icon(Icons.qr_code_scanner, size: 32),
+                  label: Text(t.scanQrCode, style: const TextStyle(fontSize: 18)),
+                ),
+                const SizedBox(height: 20),
+                Text(t.orEnterCode, style: Theme.of(context).textTheme.titleSmall),
+                const SizedBox(height: 4),
+                Text(t.addPersonHint, style: Theme.of(context).textTheme.bodySmall),
+                TextField(
+                  controller: code,
+                  keyboardType: TextInputType.number,
+                  maxLength: 6,
+                  style: const TextStyle(fontSize: 24, letterSpacing: 8),
+                  decoration: InputDecoration(labelText: t.sixDigitCode, counterText: ''),
+                  onSubmitted: (_) => Navigator.pop(context, _AddWith.code),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(context), child: Text(t.cancel)),
+            FilledButton(
+                onPressed: () => sitesMissing()
+                    ? ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.chooseYourSite)))
+                    : Navigator.pop(context, _AddWith.code),
+                child: Text(t.validate)),
+          ],
+        ),
+      ),
+    );
+    if (choice == null || !mounted) return;
+    final api = widget.session.api;
+    final sites = chosenSites.isEmpty ? null : chosenSites.toList();
+    String? name;
+    if (choice == _AddWith.qr) {
+      final qr = await scanQrCode(context);
+      if (qr == null || !mounted) return;
+      await _act(() async => name = await api.inviteByQr(company.id, qr, role, sites: sites));
+    } else {
+      await _act(() async => name = await api.redeemJoinCode(company.id, code.text, role, sites: sites));
+    }
+    if (name != null && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.invitationSent(name!))));
+    }
+  }
+
+  Future<void> _leave() async {
+    if (await _confirm(t.leaveConfirmTitle(company.name), t.leaveConfirmBody)) {
+      await _act(() => widget.session.api.removeMember(company.id, widget.session.me!.user.id));
+    }
+  }
+
+  Future<void> _rename() async {
+    final name = TextEditingController(text: company.name);
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(t.renameCompany),
+        content: TextField(controller: name, autofocus: true),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
+          FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.save)),
+        ],
+      ),
+    );
+    if (ok == true) await _act(() => widget.session.api.updateCompany(company.id, name: name.text));
+  }
+
+  Future<bool> _confirm(String title, String body) async =>
+      await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(title),
+          content: Text(body),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(context, false), child: Text(t.cancel)),
+            FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(t.confirm)),
+          ],
+        ),
+      ) ??
+      false;
+}
+
+enum _GroupBy {
+  position,
+  site,
+  role,
+  none;
+
+  String label(L10n t) => switch (this) {
+        position => t.position,
+        site => t.site,
+        role => t.groupRole,
+        none => t.groupNone,
+      };
+}
+
+enum _MemberAction {
+  rename,
+  profile,
+  sites,
+  makeManager,
+  makeDeputy,
+  makeEmployee,
+  toggleExtra,
+  transfer,
+  billing,
+  googleLink,
+  activationCode,
+  remove;
+
+  String label(L10n t, Member m) => switch (this) {
+        rename => t.rename,
+        profile => t.memberProfile,
+        sites => t.actionSites,
+        makeManager => t.actionMakeManager,
+        makeDeputy => t.actionMakeDeputy,
+        makeEmployee => m.appointedBy != null ? t.actionRemoveDeputy : t.actionMakeEmployee,
+        toggleExtra => m.role == Role.extra ? t.actionToEmployee : t.actionToExtra,
+        transfer => t.actionTransfer,
+        billing => m.billingAccess ? t.actionBillingRemove : t.actionBillingGive,
+        googleLink => t.memberGoogleLink,
+        activationCode => t.activationCodeAction,
+        remove => t.actionRemove,
+      };
+}
+
+enum _AddWith { qr, code }
