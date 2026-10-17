@@ -355,8 +355,8 @@ class _CompanyTabState extends State<CompanyTab> with AutomaticKeepAliveClientMi
                       Badge(isLabelVisible: unread > 0, label: Text('$unread'), child: const Icon(Icons.campaign)),
                       t.newsTab
                     ),
-                    (_View.team, const Icon(Icons.manage_accounts), t.viewTeam),
-                    if (role.canManage) (_View.catalog, const Icon(Icons.store), t.viewPositions),
+                    (_View.team, const Icon(Icons.tune), t.viewTeam),
+                    if (role.canManage) (_View.catalog, const Icon(Icons.account_tree), t.viewPositions),
                   ],
                   onSelected: (v) {
                     // L'équipe a pu changer : le planning repart de la liste à jour.
