@@ -626,7 +626,7 @@
   "apiProNeeded": "Uprawnienia zapisu wymagają opcji „API Pro” (opłacona subskrypcja).",
   "billingLinePro": "Opcja „API Pro”: {months} mies.",
   "billingLineProAddon": "Opcja „API Pro”, dodana w trakcie subskrypcji, od {start} do {end}: {months} mies., bez rabatu",
-  "billingApiProHint": "„API Pro” (odczyt i zapis, webhooki, dzienniki): {price1} / mies. za 1 klucz, {price5} / mies. za 10 kluczy, bez rabatu. Z opłaconą subskrypcją: dodaj poniżej.",
+  "billingApiProHint": "„API Pro” (odczyt i zapis, webhooki, dzienniki): {price1} / mies. za 1 klucz, {price5} / mies. za 10 kluczy, bez rabatu. Wybierz tutaj, razem z opłatą za subskrypcję.",
   "whTitle": "Webhooki",
   "whSub": "Staff Flow sam powiadamia Twoje programy, gdy coś się dzieje: opublikowany grafik, wniosek, nowy pracownik, ogłoszenie. W ramach opcji „API Pro”.",
   "whNew": "Nowy webhook",
@@ -736,5 +736,8 @@
   "apiKeyEnable": "Włącz ponownie",
   "apiKeyDisable": "Odłóż",
   "apiKeyLimitReached": "Twój plan nie pozwala na więcej kluczy: odłóż klucz lub przejdź na wyższy plan.",
-  "noticeApiKeysDeletion": "{company}: dostęp API zatrzymany, klucze zostaną usunięte {date}, chyba że opcja zostanie wznowiona."
+  "noticeApiKeysDeletion": "{company}: dostęp API zatrzymany, klucze zostaną usunięte {date}, chyba że opcja zostanie wznowiona.",
+  "billingApiProChoice": "Opcja „API Pro”",
+  "billingApiProNone": "Bez",
+  "billingApiProNowNote": "Bieżąca subskrypcja: już opłacony okres też zostaje uzupełniony o „API Pro” w tej samej płatności."
 }

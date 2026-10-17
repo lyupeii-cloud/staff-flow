@@ -253,4 +253,6 @@ const de = <String, String>{
   'Accès API arrêté : les clés API seront supprimées le {day}, sauf si l\'option est reprise d\'ici là.': 'API-Zugang beendet: Die API-Schlüssel werden am {day} gelöscht, sofern die Option nicht vorher erneut gebucht wird.',
   'Option « API Pro » : 10 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': 'Option „API Pro“: 10 Schlüssel, während des Abonnements hinzugefügt, vom {from} bis {to}: {months} Monate, ohne Rabatt',
   'Passage de « API Pro » à 10 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': 'Wechsel von „API Pro“ auf 10 Schlüssel, vom {from} bis {to}: {months} Monate (Preisdifferenz), ohne Rabatt',
+  'Option « API Pro », 10 clés : {months} mois': 'Option „API Pro“, 10 Schlüssel: {months} Monat(e)',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « API Pro »': 'Anteilig für den laufenden Monat ({days} von {total} Tagen): Option „API Pro“',
 };

@@ -2289,7 +2289,7 @@ class L10nFr extends L10n {
 
   @override
   String billingApiProHint(String price1, String price5) {
-    return '« API Pro » (lecture et écriture, webhooks, journaux) : $price1 / mois pour 1 clé, $price5 / mois pour 10 clés, sans remise. Avec un abonnement payé : ajoutez-la ci-dessous.';
+    return '« API Pro » (lecture et écriture, webhooks, journaux) : $price1 / mois pour 1 clé, $price5 / mois pour 10 clés, sans remise. À choisir ici, avec le paiement de l\'abonnement.';
   }
 
   @override
@@ -2657,4 +2657,14 @@ class L10nFr extends L10n {
   String noticeApiKeysDeletion(String company, String date) {
     return '$company : accès API arrêté, les clés seront supprimées le $date sauf si l\'option est reprise.';
   }
+
+  @override
+  String get billingApiProChoice => 'Option « API Pro »';
+
+  @override
+  String get billingApiProNone => 'Sans';
+
+  @override
+  String get billingApiProNowNote =>
+      'Abonnement en cours : la période déjà payée est aussi complétée avec « API Pro », dans le même paiement.';
 }

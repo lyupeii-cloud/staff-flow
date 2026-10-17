@@ -2277,7 +2277,7 @@ class L10nEn extends L10n {
 
   @override
   String billingApiProHint(String price1, String price5) {
-    return '“API Pro” (read and write, webhooks, logs): $price1 / month for 1 key, $price5 / month for 10 keys, no discount. With a paid subscription: add it below.';
+    return '“API Pro” (read and write, webhooks, logs): $price1 / month for 1 key, $price5 / month for 10 keys, no discount. Choose it here, with the subscription payment.';
   }
 
   @override
@@ -2643,6 +2643,16 @@ class L10nEn extends L10n {
   String noticeApiKeysDeletion(String company, String date) {
     return '$company: API access stopped, the keys will be deleted on $date unless the option is taken again.';
   }
+
+  @override
+  String get billingApiProChoice => '“API Pro” option';
+
+  @override
+  String get billingApiProNone => 'None';
+
+  @override
+  String get billingApiProNowNote =>
+      'Current subscription: the period already paid is also topped up with “API Pro”, in the same payment.';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).

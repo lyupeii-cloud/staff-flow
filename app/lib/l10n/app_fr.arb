@@ -630,7 +630,7 @@
   "apiProNeeded": "Les droits d'écriture demandent l'option « API Pro » (abonnement payé).",
   "billingLinePro": "Option « API Pro » : {months} mois",
   "billingLineProAddon": "Option « API Pro », ajoutée en cours d'abonnement, du {start} au {end} : {months} mois, sans remise",
-  "billingApiProHint": "« API Pro » (lecture et écriture, webhooks, journaux) : {price1} / mois pour 1 clé, {price5} / mois pour 10 clés, sans remise. Avec un abonnement payé : ajoutez-la ci-dessous.",
+  "billingApiProHint": "« API Pro » (lecture et écriture, webhooks, journaux) : {price1} / mois pour 1 clé, {price5} / mois pour 10 clés, sans remise. À choisir ici, avec le paiement de l'abonnement.",
   "whTitle": "Webhooks",
   "whSub": "Staff Flow prévient vos logiciels tout seul quand quelque chose se passe : planning publié, demande, nouveau salarié, annonce. Inclus dans l'option « API Pro ».",
   "whNew": "Nouveau webhook",
@@ -740,5 +740,8 @@
   "apiKeyEnable": "Réactiver",
   "apiKeyDisable": "Mettre de côté",
   "apiKeyLimitReached": "Votre formule ne permet pas de clé de plus : mettez une clé de côté, ou passez à une formule supérieure.",
-  "noticeApiKeysDeletion": "{company} : accès API arrêté, les clés seront supprimées le {date} sauf si l'option est reprise."
+  "noticeApiKeysDeletion": "{company} : accès API arrêté, les clés seront supprimées le {date} sauf si l'option est reprise.",
+  "billingApiProChoice": "Option « API Pro »",
+  "billingApiProNone": "Sans",
+  "billingApiProNowNote": "Abonnement en cours : la période déjà payée est aussi complétée avec « API Pro », dans le même paiement."
 }

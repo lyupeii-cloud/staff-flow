@@ -253,4 +253,6 @@ const pt = <String, String>{
   'Accès API arrêté : les clés API seront supprimées le {day}, sauf si l\'option est reprise d\'ici là.': 'Acesso API parado: as chaves API serão eliminadas a {day}, a menos que a opção seja retomada até lá.',
   'Option « API Pro » : 10 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': 'Opção «API Pro»: 10 chaves, adicionada durante a assinatura, de {from} a {to}: {months} meses, sem desconto',
   'Passage de « API Pro » à 10 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': 'Passagem de «API Pro» para 10 chaves, de {from} a {to}: {months} meses (diferença de preço), sem desconto',
+  'Option « API Pro », 10 clés : {months} mois': 'Opção «API Pro», 10 chaves: {months} mês(es)',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « API Pro »': 'Pro rata do mês em curso ({days} de {total} dias): opção «API Pro»',
 };

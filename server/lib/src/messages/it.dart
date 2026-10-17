@@ -253,4 +253,6 @@ const it = <String, String>{
   'Accès API arrêté : les clés API seront supprimées le {day}, sauf si l\'option est reprise d\'ici là.': 'Accesso API interrotto: le chiavi API saranno eliminate il {day}, salvo riattivazione dell\'opzione prima di allora.',
   'Option « API Pro » : 10 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': 'Opzione «API Pro»: 10 chiavi, aggiunta durante l\'abbonamento, dal {from} al {to}: {months} mesi, senza sconto',
   'Passage de « API Pro » à 10 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': 'Passaggio di «API Pro» a 10 chiavi, dal {from} al {to}: {months} mesi (differenza di prezzo), senza sconto',
+  'Option « API Pro », 10 clés : {months} mois': 'Opzione «API Pro», 10 chiavi: {months} mese/i',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « API Pro »': 'Pro rata del mese in corso ({days} giorni su {total}): opzione «API Pro»',
 };

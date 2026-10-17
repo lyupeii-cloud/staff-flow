@@ -253,4 +253,6 @@ const ru = <String, String>{
   'Accès API arrêté : les clés API seront supprimées le {day}, sauf si l\'option est reprise d\'ici là.': 'Доступ к API остановлен: ключи API будут удалены {day}, если опцию не возобновят до этого.',
   'Option « API Pro » : 10 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': 'Опция «API Pro»: 10 ключей, добавлена во время подписки, с {from} по {to}: {months} мес., без скидки',
   'Passage de « API Pro » à 10 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': 'Переход «API Pro» на 10 ключей, с {from} по {to}: {months} мес. (разница в цене), без скидки',
+  'Option « API Pro », 10 clés : {months} mois': 'Опция «API Pro», 10 ключей: {months} мес.',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « API Pro »': 'Пропорционально за текущий месяц ({days} из {total} дн.): опция «API Pro»',
 };

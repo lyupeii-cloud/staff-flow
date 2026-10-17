@@ -275,4 +275,6 @@ const en = <String, String>{
   'Accès API arrêté : les clés API seront supprimées le {day}, sauf si l\'option est reprise d\'ici là.': 'API access stopped: the API keys will be deleted on {day} unless the option is taken again before then.',
   'Option « API Pro » : 10 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': '“API Pro” option: 10 keys, added during the subscription, from {from} to {to}: {months} months, no discount',
   'Passage de « API Pro » à 10 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': '“API Pro” upgrade to 10 keys, from {from} to {to}: {months} months (price difference), no discount',
+  'Option « API Pro », 10 clés : {months} mois': '“API Pro” option, 10 keys: {months} month(s)',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « API Pro »': 'Pro rata for the current month ({days} of {total} days): “API Pro” option',
 };

@@ -626,7 +626,7 @@
   "apiProNeeded": "Schreibrechte brauchen die Option „API Pro“ (bezahltes Abonnement).",
   "billingLinePro": "Option „API Pro“: {months} Monate",
   "billingLineProAddon": "Option „API Pro“, während des Abonnements hinzugefügt, vom {start} bis {end}: {months} Monate, ohne Rabatt",
-  "billingApiProHint": "„API Pro“ (Lesen und Schreiben, Webhooks, Protokolle): {price1} / Monat für 1 Schlüssel, {price5} / Monat für 10 Schlüssel, ohne Rabatt. Mit bezahltem Abonnement: unten hinzufügen.",
+  "billingApiProHint": "„API Pro“ (Lesen und Schreiben, Webhooks, Protokolle): {price1} / Monat für 1 Schlüssel, {price5} / Monat für 10 Schlüssel, ohne Rabatt. Hier wählen, zusammen mit der Zahlung des Abonnements.",
   "whTitle": "Webhooks",
   "whSub": "Staff Flow benachrichtigt Ihre Software von selbst, wenn etwas passiert: Dienstplan veröffentlicht, Anfrage, neue Mitarbeitende, Mitteilung. In der Option „API Pro“ enthalten.",
   "whNew": "Neuer Webhook",
@@ -736,5 +736,8 @@
   "apiKeyEnable": "Wieder einschalten",
   "apiKeyDisable": "Beiseitelegen",
   "apiKeyLimitReached": "Ihr Tarif erlaubt keine weiteren Schlüssel: Legen Sie einen beiseite oder wechseln Sie in einen höheren Tarif.",
-  "noticeApiKeysDeletion": "{company}: API-Zugang beendet, die Schlüssel werden am {date} gelöscht, sofern die Option nicht erneut gebucht wird."
+  "noticeApiKeysDeletion": "{company}: API-Zugang beendet, die Schlüssel werden am {date} gelöscht, sofern die Option nicht erneut gebucht wird.",
+  "billingApiProChoice": "Option „API Pro“",
+  "billingApiProNone": "Ohne",
+  "billingApiProNowNote": "Laufendes Abonnement: Der bereits bezahlte Zeitraum wird in derselben Zahlung ebenfalls um „API Pro“ ergänzt."
 }

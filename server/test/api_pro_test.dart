@@ -54,6 +54,38 @@ void main() {
     expect((await ext('POST', '/ext/publish', key['key'])).$1, 403);
   });
 
+  test('« API Pro » choisie dès le premier paiement, ou avec un renouvellement payé d\'avance', () async {
+    // Pendant l'essai : abonnement + API Pro 10 clés dans le même paiement.
+    final d = await boss.ok('GET', p('/billing'));
+    final offer = d['proOffers']['month-0-10'] as Map;
+    final labels = [for (final l in offer['lines'] as List) l['label']];
+    expect(labels, contains('pro'));
+    expect(labels, isNot(contains('api')));
+    expect((offer['lines'] as List).firstWhere((l) => l['label'] == 'pro')['unitCents'], 2000);
+    final paid = await boss.ok('POST', p('/billing/checkout'), {'period': 'month', 'cascade': false, 'pro': 10});
+    expect(paid['amountCents'], offer['total']);
+    var b = await boss.ok('GET', p('/billing'));
+    expect([b['apiProOption'], b['apiProKeys'], b['apiOption'], b['proUntil']], [true, 10, false, null]);
+    final key = await boss.ok('POST', p('/api-keys'), {'name': 'ERP', 'scopes': ['read', 'catalog']});
+    expect((await ext('POST', '/ext/positions', key['key'], {'name': 'Caisse'})).$1, 201);
+    // Renouvellement sans « API Pro » : elle reste jusqu'à la fin de la période payée.
+    await boss.ok('POST', p('/billing/checkout'), {'period': 'month', 'cascade': false, 'pro': 0});
+    b = await boss.ok('GET', p('/billing'));
+    expect([b['apiProOption'], b['proUntil'] != null], [true, true]);
+    expect((await boss('POST', p('/billing/checkout'), {'period': 'month', 'cascade': false, 'pro': 5})).$1, 400);
+  });
+
+  test('abonnement en cours sans « API Pro » : le renouvellement d\'avance paie aussi la période en cours', () async {
+    await paid(pro: false);
+    final d = await boss.ok('GET', p('/billing'));
+    final offer = d['proOffers']['month-0-1'] as Map;
+    final labels = [for (final l in offer['lines'] as List) l['label']];
+    expect(labels, containsAll(['proAddon', 'pro']));
+    final r = await boss.ok('POST', p('/billing/checkout'), {'period': 'month', 'cascade': false, 'pro': 1});
+    expect(r['amountCents'], offer['total']);
+    expect((await boss.ok('GET', p('/billing')))['apiProKeys'], 1);
+  });
+
   test('planning envoyé : brouillon par défaut (les responsables l\'adaptent), ou publié directement', () async {
     final bob = await env.login('bob');
     await env.store.addMember(company, bob.id, Role.employee);

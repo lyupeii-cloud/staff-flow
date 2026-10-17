@@ -626,7 +626,7 @@
   "apiProNeeded": "Drepturile de scriere necesită opțiunea „API Pro” (abonament plătit).",
   "billingLinePro": "Opțiunea „API Pro”: {months} luni",
   "billingLineProAddon": "Opțiunea „API Pro”, adăugată în timpul abonamentului, de la {start} la {end}: {months} luni, fără reducere",
-  "billingApiProHint": "„API Pro” (citire și scriere, webhook-uri, jurnale): {price1} / lună pentru 1 cheie, {price5} / lună pentru 10 chei, fără reducere. Cu abonament plătit: adăugați-o mai jos.",
+  "billingApiProHint": "„API Pro” (citire și scriere, webhookuri, jurnale): {price1} / lună pentru 1 cheie, {price5} / lună pentru 10 chei, fără reducere. Alegeți aici, odată cu plata abonamentului.",
   "whTitle": "Webhook-uri",
   "whSub": "Staff Flow anunță singur programele dvs. când se întâmplă ceva: program publicat, cerere, angajat nou, anunț. Inclus în opțiunea „API Pro”.",
   "whNew": "Webhook nou",
@@ -736,5 +736,8 @@
   "apiKeyEnable": "Reactivează",
   "apiKeyDisable": "Pune deoparte",
   "apiKeyLimitReached": "Planul dvs. nu permite mai multe chei: puneți o cheie deoparte sau treceți la un plan superior.",
-  "noticeApiKeysDeletion": "{company}: acces API oprit, cheile vor fi șterse pe {date}, dacă opțiunea nu este reluată."
+  "noticeApiKeysDeletion": "{company}: acces API oprit, cheile vor fi șterse pe {date}, dacă opțiunea nu este reluată.",
+  "billingApiProChoice": "Opțiunea „API Pro”",
+  "billingApiProNone": "Fără",
+  "billingApiProNowNote": "Abonament în curs: perioada deja plătită este completată și ea cu „API Pro”, în aceeași plată."
 }

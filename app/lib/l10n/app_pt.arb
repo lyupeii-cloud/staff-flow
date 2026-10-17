@@ -626,7 +626,7 @@
   "apiProNeeded": "Os direitos de escrita exigem a opção «API Pro» (assinatura paga).",
   "billingLinePro": "Opção «API Pro»: {months} meses",
   "billingLineProAddon": "Opção «API Pro», adicionada durante a assinatura, de {start} a {end}: {months} meses, sem desconto",
-  "billingApiProHint": "«API Pro» (leitura e escrita, webhooks, registos): {price1} / mês por 1 chave, {price5} / mês por 10 chaves, sem desconto. Com assinatura paga: adicione-a abaixo.",
+  "billingApiProHint": "«API Pro» (leitura e escrita, webhooks, registos): {price1} / mês por 1 chave, {price5} / mês por 10 chaves, sem desconto. Escolha aqui, com o pagamento da assinatura.",
   "whTitle": "Webhooks",
   "whSub": "O Staff Flow avisa os seus programas sozinho quando algo acontece: horário publicado, pedido, novo funcionário, aviso. Incluído na opção «API Pro».",
   "whNew": "Novo webhook",
@@ -736,5 +736,8 @@
   "apiKeyEnable": "Reativar",
   "apiKeyDisable": "Pôr de lado",
   "apiKeyLimitReached": "O seu plano não permite mais chaves: ponha uma chave de lado ou passe para um plano superior.",
-  "noticeApiKeysDeletion": "{company}: acesso API parado, as chaves serão eliminadas a {date}, a menos que a opção seja retomada."
+  "noticeApiKeysDeletion": "{company}: acesso API parado, as chaves serão eliminadas a {date}, a menos que a opção seja retomada.",
+  "billingApiProChoice": "Opção «API Pro»",
+  "billingApiProNone": "Sem",
+  "billingApiProNowNote": "Assinatura em curso: o período já pago também é completado com «API Pro», no mesmo pagamento."
 }

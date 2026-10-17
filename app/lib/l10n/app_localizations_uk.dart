@@ -2288,7 +2288,7 @@ class L10nUk extends L10n {
 
   @override
   String billingApiProHint(String price1, String price5) {
-    return '«API Pro» (читання й запис, вебхуки, журнали): $price1 / міс. за 1 ключ, $price5 / міс. за 10 ключів, без знижки. З оплаченою підпискою: додайте нижче.';
+    return '«API Pro» (читання і запис, вебхуки, журнали): $price1 / міс. за 1 ключ, $price5 / міс. за 10 ключів, без знижки. Оберіть тут, разом з оплатою підписки.';
   }
 
   @override
@@ -2653,4 +2653,14 @@ class L10nUk extends L10n {
   String noticeApiKeysDeletion(String company, String date) {
     return '$company: доступ до API зупинено, ключі буде видалено $date, якщо опцію не поновлять.';
   }
+
+  @override
+  String get billingApiProChoice => 'Опція «API Pro»';
+
+  @override
+  String get billingApiProNone => 'Без';
+
+  @override
+  String get billingApiProNowNote =>
+      'Поточна підписка: уже оплачений період також доповнюється «API Pro» в тому самому платежі.';
 }

@@ -3903,7 +3903,7 @@ abstract class L10n {
   /// No description provided for @billingApiProHint.
   ///
   /// In en, this message translates to:
-  /// **'“API Pro” (read and write, webhooks, logs): {price1} / month for 1 key, {price5} / month for 10 keys, no discount. With a paid subscription: add it below.'**
+  /// **'“API Pro” (read and write, webhooks, logs): {price1} / month for 1 key, {price5} / month for 10 keys, no discount. Choose it here, with the subscription payment.'**
   String billingApiProHint(String price1, String price5);
 
   /// No description provided for @whTitle.
@@ -4565,6 +4565,24 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'{company}: API access stopped, the keys will be deleted on {date} unless the option is taken again.'**
   String noticeApiKeysDeletion(String company, String date);
+
+  /// No description provided for @billingApiProChoice.
+  ///
+  /// In en, this message translates to:
+  /// **'“API Pro” option'**
+  String get billingApiProChoice;
+
+  /// No description provided for @billingApiProNone.
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get billingApiProNone;
+
+  /// No description provided for @billingApiProNowNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Current subscription: the period already paid is also topped up with “API Pro”, in the same payment.'**
+  String get billingApiProNowNote;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

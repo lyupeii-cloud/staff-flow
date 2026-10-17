@@ -253,4 +253,6 @@ const ro = <String, String>{
   'Accès API arrêté : les clés API seront supprimées le {day}, sauf si l\'option est reprise d\'ici là.': 'Acces API oprit: cheile API vor fi șterse pe {day}, dacă opțiunea nu este reluată până atunci.',
   'Option « API Pro » : 10 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': 'Opțiunea „API Pro”: 10 chei, adăugată în timpul abonamentului, de la {from} la {to}: {months} luni, fără reducere',
   'Passage de « API Pro » à 10 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': 'Trecerea „API Pro” la 10 chei, de la {from} la {to}: {months} luni (diferența de preț), fără reducere',
+  'Option « API Pro », 10 clés : {months} mois': 'Opțiunea „API Pro”, 10 chei: {months} lună/luni',
+  'Prorata du mois en cours ({days} jours sur {total}) : option « API Pro »': 'Proporțional pentru luna în curs ({days} din {total} zile): opțiunea „API Pro”',
 };

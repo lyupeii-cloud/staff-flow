@@ -2285,7 +2285,7 @@ class L10nRo extends L10n {
 
   @override
   String billingApiProHint(String price1, String price5) {
-    return '„API Pro” (citire și scriere, webhook-uri, jurnale): $price1 / lună pentru 1 cheie, $price5 / lună pentru 10 chei, fără reducere. Cu abonament plătit: adăugați-o mai jos.';
+    return '„API Pro” (citire și scriere, webhookuri, jurnale): $price1 / lună pentru 1 cheie, $price5 / lună pentru 10 chei, fără reducere. Alegeți aici, odată cu plata abonamentului.';
   }
 
   @override
@@ -2653,4 +2653,14 @@ class L10nRo extends L10n {
   String noticeApiKeysDeletion(String company, String date) {
     return '$company: acces API oprit, cheile vor fi șterse pe $date, dacă opțiunea nu este reluată.';
   }
+
+  @override
+  String get billingApiProChoice => 'Opțiunea „API Pro”';
+
+  @override
+  String get billingApiProNone => 'Fără';
+
+  @override
+  String get billingApiProNowNote =>
+      'Abonament în curs: perioada deja plătită este completată și ea cu „API Pro”, în aceeași plată.';
 }

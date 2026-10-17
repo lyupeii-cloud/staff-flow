@@ -1682,7 +1682,7 @@
       }
     }
   },
-  "billingApiProHint": "“API Pro” (read and write, webhooks, logs): {price1} / month for 1 key, {price5} / month for 10 keys, no discount. With a paid subscription: add it below.",
+  "billingApiProHint": "“API Pro” (read and write, webhooks, logs): {price1} / month for 1 key, {price5} / month for 10 keys, no discount. Choose it here, with the subscription payment.",
   "@billingApiProHint": {
     "placeholders": {
       "price1": {
@@ -1916,5 +1916,8 @@
         "type": "String"
       }
     }
-  }
+  },
+  "billingApiProChoice": "“API Pro” option",
+  "billingApiProNone": "None",
+  "billingApiProNowNote": "Current subscription: the period already paid is also topped up with “API Pro”, in the same payment."
 }

@@ -150,6 +150,14 @@ class BillingService {
     return {'lines': [line], 'total': unit * months, 'from': from.toIso8601String(), 'to': until.toIso8601String()};
   }
 
+  /// « API Pro » choisie avec un renouvellement payé d'avance : la période
+  /// déjà payée est complétée tout de suite (comme l'option seule).
+  List<Map<String, Object?>> _proNow(Company c, Map<String, int> v, int staff, int keys) {
+    if (keys <= 0 || (c.apiProOption && c.apiProKeys >= keys)) return const [];
+    final addon = _addon(c, v, staff, keys >= 10 ? 'pro10' : 'pro');
+    return addon == null ? const [] : (addon['lines'] as List).cast<Map<String, Object?>>();
+  }
+
   /// Prix mensuel de « API Pro » : 1 clé, ou 10 clés.
   static int proUnit(Map<String, int> v, int keys) => keys >= 10 ? v['apiPro10Price']! : v['apiProPrice']!;
 
@@ -368,6 +376,7 @@ class BillingService {
     final option = withOption ? v['cascadeOptionPrice']! : 0;
     final apiPrice = api ? v['apiOptionPrice']! : 0;
     final prorataApi = _prorata(apiPrice, p.prorataDays, p.monthDays);
+    final prorataPro = _prorata(proPrice, p.prorataDays, p.monthDays);
     final months = period == 'year' ? 12 : 1;
     final baseAmount = period == 'year' ? base * v['annualMonths']! : base;
     final prorataBase = _prorata(base, p.prorataDays, p.monthDays);
@@ -390,6 +399,7 @@ class BillingService {
       if (withOption) {'label': 'cascade', 'unitCents': option, 'months': months, 'cents': option * months},
       if (prorataApi > 0) {'label': 'apiProrata', 'days': p.prorataDays, 'monthDays': p.monthDays, 'cents': prorataApi},
       if (api) {'label': 'api', 'unitCents': apiPrice, 'months': months, 'cents': apiPrice * months},
+      if (prorataPro > 0) {'label': 'proProrata', 'keys': proKeys, 'days': p.prorataDays, 'monthDays': p.monthDays, 'cents': prorataPro},
       if (pro) {'label': 'pro', 'keys': proKeys, 'unitCents': proPrice, 'months': months, 'cents': proPrice * months},
     ];
     return (
@@ -428,12 +438,13 @@ class BillingService {
     final month = _plan(company, 'month');
     int due(String period, bool cascade) => _price(v, staff, period, cascade, _plan(company, period)).amount;
     // Détail de chaque formule, montré avant le paiement.
-    Map<String, Object?> quote(String period, bool cascade, [bool api = false]) {
+    Map<String, Object?> quote(String period, bool cascade, [bool api = false, int proKeys = 0]) {
       final plan = _plan(company, period);
-      final price = _price(v, staff, period, cascade, plan, api: api);
+      final price = _price(v, staff, period, cascade, plan, api: api && proKeys == 0, proKeys: proKeys);
+      final extra = _proNow(company, v, staff, proKeys);
       return {
-        'lines': price.lines,
-        'total': price.amount,
+        'lines': [...extra, ...price.lines],
+        'total': price.amount + extra.fold(0, (s, l) => s + (l['cents'] as int)),
         'price': price.recurring,
         'from': plan.coverFrom.toIso8601String(),
         'to': plan.periodEnd.toIso8601String(),
@@ -472,6 +483,12 @@ class BillingService {
         for (final p in ['month', 'year'])
           for (final c in [false, true])
             for (final x in [false, true]) '$p-${c ? 1 : 0}-${x ? 1 : 0}': quote(p, c, x),
+      },
+      // Avec « API Pro » (lecture comprise) : « période-cascade-clés », par exemple « month-0-10 ».
+      'proOffers': {
+        for (final p in ['month', 'year'])
+          for (final c in [false, true])
+            for (final k in [1, 10]) '$p-${c ? 1 : 0}-$k': quote(p, c, false, k),
       },
       'apiOption': company.apiOption,
       'apiOptionPrice': v['apiOptionPrice'],
@@ -525,11 +542,12 @@ class BillingService {
   /// les tarifs et l'effectif du moment ; l'entreprise redevient modifiable ;
   /// une facture est créée, numérotée par entreprise et par année.
   Future<Map<String, Object?>> checkout(User actor, String companyId,
-      {required String period, required bool cascade, bool? api, int? slots}) async {
+      {required String period, required bool cascade, bool? api, int? pro, int? slots}) async {
     final company = await _owned(actor, companyId);
     if (!canPay(actor)) throw const ApiError.conflict('Le paiement en ligne arrive bientôt.');
     if (period != 'month' && period != 'year') throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
     if (company.billingStatus == 'comped') throw const ApiError.conflict('Cette entreprise est offerte : rien à payer.');
+    if (pro != null && pro != 0 && pro != 1 && pro != 10) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
     final v = await platform.values();
     // Places payées : choisies, sinon celles de l'entreprise (au moins l'effectif).
     final realStaff = await staffCount(companyId);
@@ -539,10 +557,18 @@ class BillingService {
     final withPro = company.apiProOption && await _renews(companyId, 'api_pro_until') && company.billingStatus == 'active';
     final next = (await store.query(store.db, 'SELECT api_pro_next_keys FROM companies WHERE id = @c::uuid', {'c': companyId}))
         .first[0] as int?;
-    final proKeys = withPro ? (next ?? company.apiProKeys) : 0;
+    // Sans [pro] (anciennes versions) : « API Pro » renouvelée comme elle est.
+    final proKeys = pro ?? (withPro ? (next ?? company.apiProKeys) : 0);
     // La lecture est comprise dans « API Pro ».
-    final withApi = (api ?? company.apiOption) && !withPro;
-    final price = _price(v, staff, period, cascade, plan, api: withApi, proKeys: proKeys);
+    final withApi = (api ?? company.apiOption) && proKeys == 0;
+    final base = _price(v, staff, period, cascade, plan, api: withApi, proKeys: proKeys);
+    final proNow = _proNow(company, v, staff, proKeys);
+    final lines = [...proNow, ...base.lines];
+    final price = (
+      lines: lines,
+      amount: lines.fold(0, (s, l) => s + (l['cents'] as int)),
+      withOption: base.withOption,
+    );
     final t = now();
     final owner = await store.findUser(actor.id);
     final seller = await platform.texts();
@@ -581,8 +607,10 @@ class BillingService {
           billing_period = @p, billing_reminders = '{}', slots = @slots,
           cascade_option = @co OR (@renewal AND cascade_option),
           cascade_until = CASE WHEN @co THEN NULL WHEN @renewal AND cascade_option THEN coalesce(cascade_until, @old::timestamptz) END,
-          api_option = @ao OR (@renewal AND api_option),
-          api_until = CASE WHEN @ao THEN NULL WHEN @renewal AND api_option THEN coalesce(api_until, @old::timestamptz) END,
+          api_option = @ao OR (@renewal AND api_option AND @pk = 0),
+          api_until = CASE WHEN @ao OR @pk > 0 THEN NULL WHEN @renewal AND api_option THEN coalesce(api_until, @old::timestamptz) END,
+          api_pro_option = @pk > 0 OR (@renewal AND api_pro_option),
+          api_pro_until = CASE WHEN @pk > 0 THEN NULL WHEN @renewal AND api_pro_option THEN coalesce(api_pro_until, @old::timestamptz) END,
           api_pro_keys = CASE WHEN @pk > 0 THEN @pk ELSE api_pro_keys END,
           api_pro_next_keys = CASE WHEN @pk > 0 THEN NULL ELSE api_pro_next_keys END
         WHERE id = @c::uuid''', {
@@ -803,7 +831,10 @@ class BillingService {
           'apiProrata' => t('Prorata du mois en cours ({days} jours sur {total}) : option « accès API »',
               {'days': '${l['days']}', 'total': '${l['monthDays']}'}),
           'api' => t('Option « accès API » : {months} mois', {'months': '${l['months']}'}),
+          'pro' when (l['keys'] as int? ?? 1) >= 10 => t('Option « API Pro », 10 clés : {months} mois', {'months': '${l['months']}'}),
           'pro' => t('Option « API Pro » : {months} mois', {'months': '${l['months']}'}),
+          'proProrata' => t('Prorata du mois en cours ({days} jours sur {total}) : option « API Pro »',
+              {'days': '${l['days']}', 'total': '${l['monthDays']}'}),
           'pro10Addon' => t('Option « API Pro » : 10 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise', {
               'from': _day(DateTime.parse(l['from'] as String)),
               'to': _day(DateTime.parse(l['to'] as String).subtract(const Duration(days: 1))),

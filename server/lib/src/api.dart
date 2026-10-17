@@ -264,10 +264,12 @@ class Api {
           throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
         }
         if (body['api'] != null && body['api'] is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+        if (body['pro'] != null && body['pro'] is! int) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
         return _json(await billing.checkout(u, r.params['id']!,
             period: body['period'] as String,
             cascade: body['cascade'] as bool,
             api: body['api'] as bool?,
+            pro: body['pro'] as int?,
             slots: body['slots'] is int ? body['slots'] as int : null));
       }))
       ..get('/companies/<id>/invoices/<invoiceId>/link', _authed((r, u) async {

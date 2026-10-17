@@ -1,87 +1,55 @@
-# staff-flow
+# Staff Flow
 
-Organisation des plannings de travail des entreprises : application Android et site web
-(Flutter, un seul code) reliés à une API Dart hébergée sur un serveur OVH.
+Plannings d'équipe en SaaS : site web et application Android (Flutter, un seul code), API Dart
+et PostgreSQL sur un serveur OVH. Production : https://app.staff-flow.cloud — site : https://staff-flow.cloud
 
-| Dossier   | Contenu                                                                 |
-| --------- | ----------------------------------------------------------------------- |
-| `app/`    | Application Flutter (Android + web)                                      |
-| `server/` | API Dart (shelf) + PostgreSQL, migrations appliquées au démarrage       |
-| `deploy/` | Docker Compose pour le serveur : PostgreSQL, API, Caddy (HTTPS), sauvegardes |
+Branche de travail : `demandes` (le serveur la suit).
 
-## État : phases 1 et 2
+| Dossier   | Contenu |
+| --------- | ------- |
+| `app/`    | Application Flutter (web + Android). Textes : `lib/l10n/app_*.arb` (10 langues) |
+| `server/` | API Dart (shelf) + PostgreSQL ; migrations appliquées au démarrage. Messages : `lib/src/messages/` |
+| `site/`   | Site vitrine statique : `tool/build.dart` (pages), `tool/legal.dart` (CGV, confidentialité), `tool/api_docs.dart` (doc API) → `www/` ; `staff-flow.cloud.caddy` à copier dans `/home/debian/hosting/sites/` s'il change |
+| `deploy/` | Docker Compose du serveur : PostgreSQL, API, Caddy (HTTPS), sauvegardes chiffrées, bot Telegram |
+| `tool/`   | Scripts : tests, déploiement, site, APK, environnement de test |
 
-**Phase 1 — fondations**
+Les achats (abonnement, options, « API Pro ») se font seulement sur le site web ; l'application
+Android affiche l'abonnement en lecture seule (`app/lib/src/purchases.dart`).
 
-- Connexion uniquement avec un compte Google ; chaque utilisateur reçoit un identifiant unique (`SF-XXXXXXXX`).
-- Entreprises, avec un rôle par entreprise : propriétaire, responsable, salarié, extra.
-- Un onglet par entreprise dans l'application.
-- Le propriétaire nomme ou retire les responsables ; un responsable gère les salariés et les extras.
-- Transfert de propriété : le propriétaire désigne un responsable, qui doit accepter.
-- Un membre retiré garde son historique ; un salarié peut quitter une entreprise.
-- Journal des actions sensibles (`audit_log`).
-- Serveur : HTTPS automatique (Let's Encrypt), sauvegardes quotidiennes chiffrées conservées 30 jours.
+## Commandes
 
-**Phase 2 — planning**
-
-- Sites et postes ; services sur un ou plusieurs jours, de nuit compris.
-- Répétition chaque jour ou certains jours de la semaine, jusqu'à une date ou N fois ; une occurrence se modifie seule sans casser la série.
-- Brouillon puis publication : les salariés voient la dernière version publiée.
-- Remplacement d'une personne par une autre sur une période.
-- Vues semaine et mois ; filtre « mes services » ; total d'heures de la période.
-- Ajout par code à 6 chiffres (2 minutes, usage unique, confirmé par le salarié, blocage 2 minutes après 3 erreurs).
-
-**Langues** : 10 langues, celles des pays visés (anglais américain et britannique, français, ukrainien, russe, polonais, roumain, allemand, espagnol, portugais, italien), toutes incluses dans l'application ; anglais américain pour toute autre langue. L'anglais britannique (`app_en_GB.arb`) ne contient que les textes qui changent ; les dates suivent le format britannique. Le traducteur des messages (LibreTranslate) charge les mêmes langues. Par défaut, Android suit la langue du téléphone et le site celle du compte Google (sinon celle du navigateur) ; le menu « Langue » permet d'en choisir une autre. Textes de l'application : `app/lib/l10n/app_*.arb` ; messages du serveur : `server/lib/src/messages/<code>.dart`. Ajouter une langue = un fichier `.arb`, un fichier de messages serveur et une ligne dans `appLanguages` (app/lib/src/i18n.dart) ; les tests vérifient que rien ne manque.
-
-## Développement local (Windows)
-
-Prérequis : Flutter 3.47.6 (contient Dart 3.13.5).
+Prérequis : Flutter 3.47.6 (Dart 3.13.5), accès SSH au serveur.
 
 ```bash
-# API avec connexion de test (sans Google)
-cd server
-DATABASE_URL=postgresql://… SESSION_SECRET=une-chaine-d-au-moins-32-caracteres-xx DEV_LOGIN=true ALLOWED_ORIGINS=http://localhost:5050 dart run bin/server.dart
-
-# Application web, branchée sur cette API
-cd app
-flutter run -d chrome --web-port 5050 --dart-define=API_URL=http://localhost:8080 --dart-define=DEV_LOGIN=true
+sh tool/test-server.sh -r compact      # tests de l'API, sur un PostgreSQL jetable du serveur
+cd app && flutter analyze && flutter test
+sh tool/staging.sh up                  # API de test (tunnel http://localhost:8099), puis « down »
+sh tool/deploy.sh                      # sauvegarde, puis mise à jour de l'API et de l'application web
+sh tool/publish-site.sh                # génère et publie staff-flow.cloud
+sh tool/build-apk.sh                   # APK signé (arm64) dans dist/
 ```
 
-L'API exige PostgreSQL (`DATABASE_URL=postgresql://…`).
-
-Tests :
+Application web branchée sur l'API de test :
 
 ```bash
-# Tests de l'API sur un PostgreSQL jetable, sur le serveur (conteneurs supprimés ensuite)
-tool/test-server.sh
-# ou avec une base locale : TEST_DATABASE_URL=postgresql://… dart test
-cd app && flutter test
+cd app && flutter run -d chrome --web-port 5050 --dart-define=API_URL=http://localhost:8099 --dart-define=DEV_LOGIN=true
 ```
 
-## Connexion Google (à faire une fois)
+L'APK de production exige `app/android/key.properties` et la clé de signature (jamais dans le dépôt).
+Les fichiers produits (APK, tableurs…) vont dans `dist/`, ignoré par git.
 
-Dans la [Google Cloud Console](https://console.cloud.google.com/apis/credentials) :
+## Langues
 
-1. Créer un projet, puis configurer l'écran de consentement OAuth.
-2. Créer un identifiant **OAuth « Application Web »**, avec comme origine JavaScript autorisée `https://<ton domaine>` (et `http://localhost:5050` pour le développement). Cet identifiant sert à la fois de `GOOGLE_WEB_CLIENT_ID` et de `GOOGLE_CLIENT_IDS`.
-3. Créer un identifiant **OAuth « Android »** avec le nom de package `com.staffflow.staff_flow` et l'empreinte SHA-1 de la clé de signature. Il n'a pas besoin d'être renseigné dans l'application.
+Ajouter une langue : un fichier `.arb`, un fichier de messages serveur et une ligne dans
+`appLanguages` (`app/lib/src/i18n.dart`) ; les tests vérifient que rien ne manque.
 
-## Déploiement sur le serveur OVH (Debian 13)
+## Serveur (Debian, Docker)
 
 ```bash
-# Docker
-sudo apt install -y ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-echo "deb [signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian $(. /etc/os-release && echo $VERSION_CODENAME) stable" | sudo tee /etc/apt/sources.list.d/docker.list
-sudo apt update && sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
-
-# Code et configuration
 git clone https://github.com/lyupeii-cloud/staff-flow.git && cd staff-flow
 cp deploy/.env.example deploy/.env   # puis le remplir
-docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d --build
+sudo docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d --build
 ```
 
-Le nom de domaine doit pointer vers le serveur, et les ports 80 et 443 doivent être ouverts : Caddy obtient alors le certificat HTTPS tout seul.
-
-Les sauvegardes sont enregistrées dans `BACKUP_DIR`, `/home/debian/backups/staff-flow` par défaut. La commande de restauration est en tête de `deploy/backup/backup.sh`. Il faut aussi copier ces sauvegardes hors du serveur, par exemple avec l'espace de sauvegarde FTP fourni par OVH.
+Sauvegardes : `/home/debian/backups/staff-flow`, chiffrées ; restauration décrite en tête de
+`deploy/backup/backup.sh`.
