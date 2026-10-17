@@ -236,6 +236,12 @@ class Api {
       ..put('/companies/<id>/billing/renewal', _authed((r, u) async {
         final body = await _body(r);
         final option = body['option'], renew = body['renew'];
+        if (option == 'proKeys') {
+          final keys = body['keys'];
+          if (keys is! int) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+          await billing.setProKeys(u, r.params['id']!, keys);
+          return Response(204);
+        }
         if (option is! String || renew is! bool) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
         await billing.setRenewal(u, r.params['id']!, option, renew);
         return Response(204);
@@ -318,8 +324,10 @@ class Api {
       ..get('/companies/<id>/api-keys', _authed((r, u) async {
         final keys = await apiAccess.list(u, r.params['id']!);
         final stats = await apiLogs.keyStats(await apiAccess.owned(u, r.params['id']!));
+        final company = await apiAccess.owned(u, r.params['id']!);
         return _json({
-          'keys': [for (final k in keys) {...k, 'stats': stats[k['id']] ?? {'today': 0, 'month': 0}}]
+          'keys': [for (final k in keys) {...k, 'stats': stats[k['id']] ?? {'today': 0, 'month': 0}}],
+          'limit': ApiAccessService.keyLimit(company),
         });
       }))
       ..get('/companies/<id>/api-logs/months', _authed((r, u) async => _json({'months': await apiLogs.months(u, r.params['id']!)})))
@@ -363,6 +371,10 @@ class Api {
       ..patch('/companies/<id>/api-keys/<keyId>', _authed((r, u) async {
         final body = await _body(r);
         final name = body['name'], scopes = body['scopes'];
+        if (body['enabled'] case final bool enabled) {
+          await apiAccess.setEnabled(u, r.params['id']!, r.params['keyId']!, enabled);
+          return Response(204);
+        }
         if (name is! String? || (scopes != null && (scopes is! List || scopes.any((s) => s is! String)))) {
           throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
         }

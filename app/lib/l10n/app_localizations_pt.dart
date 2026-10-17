@@ -2282,11 +2282,8 @@ class L10nPt extends L10n {
   }
 
   @override
-  String get billingApiPro => 'Opção «API Pro»';
-
-  @override
-  String billingApiProHint(String price) {
-    return '«API Pro» ($price / mês, sem desconto): os seus programas escrevem no Staff Flow (horário, funcionários, avisos, pedidos). Disponível com assinatura paga: adicione-a abaixo.';
+  String billingApiProHint(String price1, String price5) {
+    return '«API Pro» (leitura e escrita, webhooks, registos): $price1 / mês por 1 chave, $price5 / mês por 5 chaves, sem desconto. Com assinatura paga: adicione-a abaixo.';
   }
 
   @override
@@ -2596,4 +2593,63 @@ class L10nPt extends L10n {
   @override
   String get apiKeyIncomplete =>
       'Dê um nome à chave e escolha pelo menos um direito.';
+
+  @override
+  String get billingApiPro1 => 'Opção «API Pro» (1 chave)';
+
+  @override
+  String get billingApiPro5 => 'Opção «API Pro» (5 chaves)';
+
+  @override
+  String get billingApiPro5Upgrade => 'Passar para 5 chaves';
+
+  @override
+  String get billingProKeysNext => 'Na próxima renovação';
+
+  @override
+  String get billingProKeys1 => '1 chave';
+
+  @override
+  String get billingProKeys5 => '5 chaves';
+
+  @override
+  String billingProKeysWarning(String count) {
+    return '$count chaves estão ativas: na renovação, só a mais antiga fica ativa. Escolherá qual manter em «Acesso API».';
+  }
+
+  @override
+  String get billingApiIncluded => 'Leitura incluída na «API Pro».';
+
+  @override
+  String billingLinePro5Addon(String start, String end, String months) {
+    return 'Opção «API Pro», 5 chaves, adicionada durante a assinatura, de $start a $end: $months meses, sem desconto';
+  }
+
+  @override
+  String billingLinePro5Upgrade(String start, String end, String months) {
+    return 'Passagem da «API Pro» para 5 chaves, de $start a $end: $months meses (diferença de preço), sem desconto';
+  }
+
+  @override
+  String apiKeysCount(String count, String limit) {
+    return 'Chaves ativas: $count / $limit';
+  }
+
+  @override
+  String get apiKeyDisabled => 'Desativada: além do seu plano API';
+
+  @override
+  String get apiKeyEnable => 'Reativar';
+
+  @override
+  String get apiKeyDisable => 'Pôr de lado';
+
+  @override
+  String get apiKeyLimitReached =>
+      'O seu plano não permite mais chaves: ponha uma chave de lado ou passe para um plano superior.';
+
+  @override
+  String noticeApiKeysDeletion(String company, String date) {
+    return '$company: acesso API parado, as chaves serão eliminadas a $date, a menos que a opção seja retomada.';
+  }
 }

@@ -2292,11 +2292,8 @@ class L10nDe extends L10n {
   }
 
   @override
-  String get billingApiPro => 'Option „API Pro“';
-
-  @override
-  String billingApiProHint(String price) {
-    return '„API Pro“ ($price / Monat, ohne Rabatt): Ihre Software schreibt in Staff Flow (Dienstplan, Mitarbeitende, Mitteilungen, Anfragen). Mit bezahltem Abonnement verfügbar: unten hinzufügen.';
+  String billingApiProHint(String price1, String price5) {
+    return '„API Pro“ (Lesen und Schreiben, Webhooks, Protokolle): $price1 / Monat für 1 Schlüssel, $price5 / Monat für 5 Schlüssel, ohne Rabatt. Mit bezahltem Abonnement: unten hinzufügen.';
   }
 
   @override
@@ -2605,4 +2602,63 @@ class L10nDe extends L10n {
   @override
   String get apiKeyIncomplete =>
       'Geben Sie dem Schlüssel einen Namen und wählen Sie mindestens ein Recht.';
+
+  @override
+  String get billingApiPro1 => 'Option „API Pro“ (1 Schlüssel)';
+
+  @override
+  String get billingApiPro5 => 'Option „API Pro“ (5 Schlüssel)';
+
+  @override
+  String get billingApiPro5Upgrade => 'Auf 5 Schlüssel wechseln';
+
+  @override
+  String get billingProKeysNext => 'Bei der nächsten Verlängerung';
+
+  @override
+  String get billingProKeys1 => '1 Schlüssel';
+
+  @override
+  String get billingProKeys5 => '5 Schlüssel';
+
+  @override
+  String billingProKeysWarning(String count) {
+    return '$count Schlüssel sind aktiv: Bei der Verlängerung bleibt nur der älteste aktiv. Welchen Sie behalten, wählen Sie unter „API-Zugang“.';
+  }
+
+  @override
+  String get billingApiIncluded => 'Lesen ist in „API Pro“ enthalten.';
+
+  @override
+  String billingLinePro5Addon(String start, String end, String months) {
+    return 'Option „API Pro“, 5 Schlüssel, während des Abonnements hinzugefügt, vom $start bis $end: $months Monate, ohne Rabatt';
+  }
+
+  @override
+  String billingLinePro5Upgrade(String start, String end, String months) {
+    return 'Wechsel von „API Pro“ auf 5 Schlüssel, vom $start bis $end: $months Monate (Preisdifferenz), ohne Rabatt';
+  }
+
+  @override
+  String apiKeysCount(String count, String limit) {
+    return 'Aktive Schlüssel: $count / $limit';
+  }
+
+  @override
+  String get apiKeyDisabled => 'Deaktiviert: über Ihren API-Tarif hinaus';
+
+  @override
+  String get apiKeyEnable => 'Wieder einschalten';
+
+  @override
+  String get apiKeyDisable => 'Beiseitelegen';
+
+  @override
+  String get apiKeyLimitReached =>
+      'Ihr Tarif erlaubt keine weiteren Schlüssel: Legen Sie einen beiseite oder wechseln Sie in einen höheren Tarif.';
+
+  @override
+  String noticeApiKeysDeletion(String company, String date) {
+    return '$company: API-Zugang beendet, die Schlüssel werden am $date gelöscht, sofern die Option nicht erneut gebucht wird.';
+  }
 }

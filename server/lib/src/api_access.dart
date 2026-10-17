@@ -39,6 +39,10 @@ class ApiAccessService {
   /// offerte, ni grande entreprise), coupée pendant la période de grâce.
   static bool proAllowed(Company c) => c.apiProOption && c.billingStatus == 'active';
 
+  /// Clés actives permises : « API Pro » 1 ou 5 clés ; accès API en lecture
+  /// (essai, entreprise offerte ou option payée) : 1 clé ; sinon aucune.
+  static int keyLimit(Company c) => proAllowed(c) ? c.apiProKeys : (allowed(c) ? 1 : 0);
+
   /// Droits possibles d'une clé.
   static const readScope = 'read';
   static const writeScopes = {'shifts', 'publish', 'members', 'catalog', 'news', 'requests'};
@@ -57,7 +61,7 @@ class ApiAccessService {
   Future<List<Map<String, Object?>>> list(User actor, String companyId) async {
     await owned(actor, companyId);
     final rows = await store.query(store.db, '''
-      SELECT id::text, name, prefix, created_at, last_used_at, scopes FROM api_keys
+      SELECT id::text, name, prefix, created_at, last_used_at, scopes, disabled_at IS NOT NULL FROM api_keys
       WHERE company_id = @c::uuid AND revoked_at IS NULL ORDER BY created_at''', {'c': companyId});
     return [
       for (final r in rows)
@@ -68,8 +72,32 @@ class ApiAccessService {
           'createdAt': (r[3] as DateTime).toIso8601String(),
           'lastUsedAt': (r[4] as DateTime?)?.toIso8601String(),
           'scopes': r[5],
+          'disabled': r[6],
         },
     ];
+  }
+
+  /// Clés actives (non révoquées, non désactivées).
+  Future<int> activeKeys(String companyId) async => (await store.query(store.db, '''
+      SELECT count(*) FROM api_keys WHERE company_id = @c::uuid AND revoked_at IS NULL AND disabled_at IS NULL''',
+          {'c': companyId})).first[0] as int;
+
+  /// Une clé désactivée (au-delà de la formule) est réactivée, ou une clé
+  /// active mise de côté pour en réactiver une autre.
+  Future<void> setEnabled(User actor, String companyId, String keyId, bool enabled) async {
+    final company = await owned(actor, companyId);
+    if (enabled && await activeKeys(companyId) >= keyLimit(company)) {
+      throw ApiError(409, 'key_limit', 'Votre formule permet {count} clé(s) active(s) : désactivez-en une d\'abord.',
+          {'count': '${keyLimit(company)}'});
+    }
+    final rows = await store.query(store.db, '''
+      UPDATE api_keys SET disabled_at = CASE WHEN @on THEN NULL ELSE coalesce(disabled_at, @t) END
+      WHERE id::text = @k AND company_id = @c::uuid AND revoked_at IS NULL RETURNING prefix''',
+        {'k': keyId, 'c': companyId, 'on': enabled, 't': now()});
+    if (rows.isEmpty) throw const ApiError.notFound();
+    await store.audit(
+        companyId: companyId, actorId: actor.id, action: enabled ? 'api.key_enabled' : 'api.key_disabled',
+        details: {'prefix': rows.first[0]});
   }
 
   /// Nouvelle clé : renvoyée en entier une seule fois.
@@ -88,9 +116,10 @@ class ApiAccessService {
     }
     final clean = name.trim();
     if (clean.isEmpty || clean.length > 60) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
-    final count = await store.query(store.db,
-        'SELECT count(*) FROM api_keys WHERE company_id = @c::uuid AND revoked_at IS NULL', {'c': companyId});
-    if ((count.first[0] as num) >= 10) throw const ApiError.conflict('10 clés au plus par entreprise.');
+    if (await activeKeys(companyId) >= keyLimit(company)) {
+      throw ApiError(409, 'key_limit', 'Votre formule permet {count} clé(s) active(s) : désactivez-en une d\'abord.',
+          {'count': '${keyLimit(company)}'});
+    }
     final prefix = _token(8), secret = _token(32);
     await store.query(store.db, '''
       INSERT INTO api_keys (company_id, name, prefix, key_hash, created_by, scopes)
@@ -160,13 +189,13 @@ class ApiAccessService {
     final m = RegExp(r'^sfk_([a-z0-9]{8})_([a-z0-9]{32})$').firstMatch(key ?? '');
     if (m == null) throw const ApiError.unauthorized('Clé API invalide.');
     final rows = await store.query(store.db, '''
-      SELECT company_id::text, key_hash, name, scopes, created_by::text, id::text FROM api_keys
+      SELECT company_id::text, key_hash, name, scopes, created_by::text, id::text, disabled_at IS NOT NULL FROM api_keys
       WHERE prefix = @p AND revoked_at IS NULL''', {'p': m[1]});
     if (rows.isEmpty || rows.first[1] != _hash(m[2]!)) throw const ApiError.unauthorized('Clé API invalide.');
     final company = await store.findCompany(rows.first[0] as String);
     if (company == null) throw const ApiError.unauthorized('Clé API invalide.');
     return ApiKey(company, rows.first[2] as String, {...(rows.first[3] as List).cast<String>()}, rows.first[4] as String?,
-        id: rows.first[5] as String, prefix: 'sfk_${m[1]}');
+        id: rows.first[5] as String, prefix: 'sfk_${m[1]}', disabled: rows.first[6] == true);
   }
 
   /// Clé valide : entreprise, nom, droits et personne au nom de qui elle agit.
@@ -174,6 +203,9 @@ class ApiAccessService {
     final k = await _find(header);
     if (!allowed(k.company)) {
       throw const ApiError(402, 'option_required', 'Option « accès API » nécessaire pour créer une clé.');
+    }
+    if (k.disabled) {
+      throw const ApiError(403, 'key_disabled', 'Cette clé est désactivée : la formule API de l\'entreprise ne la couvre plus.');
     }
     await store.query(store.db, 'UPDATE api_keys SET last_used_at = @t WHERE id = @k::uuid', {'k': k.id, 't': now()});
     return k;
@@ -358,5 +390,8 @@ class ApiKey {
   final String? id;
   final String? prefix;
 
-  const ApiKey(this.company, this.name, this.scopes, this.createdBy, {this.id, this.prefix});
+  /// Désactivée : au-delà de la formule API de l'entreprise.
+  final bool disabled;
+
+  const ApiKey(this.company, this.name, this.scopes, this.createdBy, {this.id, this.prefix, this.disabled = false});
 }

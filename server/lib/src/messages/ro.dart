@@ -132,7 +132,6 @@ const ro = <String, String>{
   'N° d\'enregistrement : {id}': 'Nr. de înregistrare: {id}',
   'Payé.': 'Plătit.',
   'Option « accès API » nécessaire pour créer une clé.': 'Pentru a crea o cheie este necesară opțiunea „acces API”.',
-  '10 clés au plus par entreprise.': 'Cel mult 10 chei pe firmă.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Restul lunii curente ({days} zile din {total}): opțiunea „acces API”',
   'Option « accès API » : {months} mois': 'Opțiunea „acces API”: {months} luni',
   'Trop de demandes pour ce compte : réessayez demain.': 'Prea multe cereri pentru acest cont: încearcă din nou mâine.',
@@ -249,4 +248,9 @@ const ro = <String, String>{
   'Trop d\'essais : réessayez dans {seconds} s.': 'Prea multe încercări: încercați din nou în {seconds} s.',
   'Erreur du serveur.': 'Eroare de server.',
   'Le nom tapé ne correspond pas.': 'Numele introdus nu corespunde.',
+  'Votre formule permet {count} clé(s) active(s) : désactivez-en une d\'abord.': 'Planul dvs. permite {count} chei active: dezactivați mai întâi una.',
+  'Cette clé est désactivée : la formule API de l\'entreprise ne la couvre plus.': 'Această cheie este dezactivată: planul API al companiei nu o mai acoperă.',
+  'Accès API arrêté : les clés API seront supprimées le {day}, sauf si l\'option est reprise d\'ici là.': 'Acces API oprit: cheile API vor fi șterse pe {day}, dacă opțiunea nu este reluată până atunci.',
+  'Option « API Pro » : 5 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': 'Opțiunea „API Pro”: 5 chei, adăugată în timpul abonamentului, de la {from} la {to}: {months} luni, fără reducere',
+  'Passage de « API Pro » à 5 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': 'Trecerea „API Pro” la 5 chei, de la {from} la {to}: {months} luni (diferența de preț), fără reducere',
 };

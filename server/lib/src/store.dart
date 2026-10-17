@@ -90,6 +90,7 @@ class Store {
         hidePhotos: r['hide_photos'] as bool? ?? false,
         slots: r['slots'] as int? ?? 10,
         apiProOption: r['api_pro_option'] as bool? ?? false,
+        apiProKeys: r['api_pro_keys'] as int? ?? 1,
         publicId: r['public_id'] as String? ?? '',
         // Sans image : 0 (le numéro, lui, continue de monter pour la suivante).
         logoVersion: r.containsKey('logo') && r['logo'] == null ? 0 : r['logo_version'] as int? ?? 0,

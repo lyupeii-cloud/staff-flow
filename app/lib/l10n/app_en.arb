@@ -1682,11 +1682,13 @@
       }
     }
   },
-  "billingApiPro": "“API Pro” option",
-  "billingApiProHint": "“API Pro” ({price} / month, no discount): your software writes into Staff Flow (schedule, employees, announcements, requests). Available with a paid subscription: add it below.",
+  "billingApiProHint": "“API Pro” (read and write, webhooks, logs): {price1} / month for 1 key, {price5} / month for 5 keys, no discount. With a paid subscription: add it below.",
   "@billingApiProHint": {
     "placeholders": {
-      "price": {
+      "price1": {
+        "type": "String"
+      },
+      "price5": {
         "type": "String"
       }
     }
@@ -1845,5 +1847,74 @@
   "optionNotActive": "This option isn't active for this company.",
   "apiProNotActive": "The “API Pro” option isn't active for this company.",
   "apiKeySaved": "Key saved.",
-  "apiKeyIncomplete": "Give the key a name and choose at least one permission."
+  "apiKeyIncomplete": "Give the key a name and choose at least one permission.",
+  "billingApiPro1": "“API Pro” option (1 key)",
+  "billingApiPro5": "“API Pro” option (5 keys)",
+  "billingApiPro5Upgrade": "Move to 5 keys",
+  "billingProKeysNext": "At the next renewal",
+  "billingProKeys1": "1 key",
+  "billingProKeys5": "5 keys",
+  "billingProKeysWarning": "{count} keys are active: at renewal, only the oldest stays active. You'll choose which one to keep in “API access”.",
+  "@billingProKeysWarning": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "billingApiIncluded": "Read access included in “API Pro”.",
+  "billingLinePro5Addon": "“API Pro” option, 5 keys, added during the subscription, from {start} to {end}: {months} months, no discount",
+  "@billingLinePro5Addon": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "billingLinePro5Upgrade": "“API Pro” upgrade to 5 keys, from {start} to {end}: {months} months (price difference), no discount",
+  "@billingLinePro5Upgrade": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      }
+    }
+  },
+  "apiKeysCount": "Active keys: {count} / {limit}",
+  "@apiKeysCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "apiKeyDisabled": "Disabled: beyond your API plan",
+  "apiKeyEnable": "Turn back on",
+  "apiKeyDisable": "Set aside",
+  "apiKeyLimitReached": "Your plan allows no more keys: set a key aside, or move to a higher plan.",
+  "noticeApiKeysDeletion": "{company}: API access stopped, the keys will be deleted on {date} unless the option is taken again.",
+  "@noticeApiKeysDeletion": {
+    "placeholders": {
+      "company": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  }
 }

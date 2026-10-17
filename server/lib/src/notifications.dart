@@ -167,6 +167,7 @@ class NotificationService {
     'billing_deleted': NotifyCategory.billing,
     'api_failing': NotifyCategory.billing,
     'api_new_ip': NotifyCategory.billing,
+    'api_keys_deletion': NotifyCategory.billing,
     'google_switch_link': NotifyCategory.requests,
     'announcement': NotifyCategory.messages,
     'login_blocked': NotifyCategory.requests,
@@ -330,6 +331,11 @@ class NotificationService {
           title,
           t('La clé API « {key} » a échoué {count} fois en une heure : vérifiez le logiciel qui l\'utilise (journaux de l\'accès API).',
               {'key': '${data['key'] ?? ''}', 'count': '${data['count'] ?? ''}'})
+        ),
+      'api_keys_deletion' => (
+          title,
+          t('Accès API arrêté : les clés API seront supprimées le {day}, sauf si l\'option est reprise d\'ici là.',
+              {'day': '${data['day'] ?? ''}'})
         ),
       'api_new_ip' => (
           title,

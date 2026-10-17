@@ -726,4 +726,12 @@ CREATE TABLE server_state (
   value text NOT NULL
 );
 ''',
+  // 43 — formules API : « API Pro » pour 1 ou 5 clés (et celle du prochain
+  // renouvellement), clés désactivées au-delà de la formule, accès API
+  // coupé depuis (suppression des clés après 30 jours, prévenue avant).
+  '''
+ALTER TABLE companies ADD COLUMN api_pro_keys int NOT NULL DEFAULT 1, ADD COLUMN api_pro_next_keys int,
+  ADD COLUMN api_off_since timestamptz, ADD COLUMN api_off_warned boolean NOT NULL DEFAULT false;
+ALTER TABLE api_keys ADD COLUMN disabled_at timestamptz;
+''',
 ];

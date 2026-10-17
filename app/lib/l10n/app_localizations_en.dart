@@ -2276,11 +2276,8 @@ class L10nEn extends L10n {
   }
 
   @override
-  String get billingApiPro => '“API Pro” option';
-
-  @override
-  String billingApiProHint(String price) {
-    return '“API Pro” ($price / month, no discount): your software writes into Staff Flow (schedule, employees, announcements, requests). Available with a paid subscription: add it below.';
+  String billingApiProHint(String price1, String price5) {
+    return '“API Pro” (read and write, webhooks, logs): $price1 / month for 1 key, $price5 / month for 5 keys, no discount. With a paid subscription: add it below.';
   }
 
   @override
@@ -2587,6 +2584,65 @@ class L10nEn extends L10n {
   @override
   String get apiKeyIncomplete =>
       'Give the key a name and choose at least one permission.';
+
+  @override
+  String get billingApiPro1 => '“API Pro” option (1 key)';
+
+  @override
+  String get billingApiPro5 => '“API Pro” option (5 keys)';
+
+  @override
+  String get billingApiPro5Upgrade => 'Move to 5 keys';
+
+  @override
+  String get billingProKeysNext => 'At the next renewal';
+
+  @override
+  String get billingProKeys1 => '1 key';
+
+  @override
+  String get billingProKeys5 => '5 keys';
+
+  @override
+  String billingProKeysWarning(String count) {
+    return '$count keys are active: at renewal, only the oldest stays active. You\'ll choose which one to keep in “API access”.';
+  }
+
+  @override
+  String get billingApiIncluded => 'Read access included in “API Pro”.';
+
+  @override
+  String billingLinePro5Addon(String start, String end, String months) {
+    return '“API Pro” option, 5 keys, added during the subscription, from $start to $end: $months months, no discount';
+  }
+
+  @override
+  String billingLinePro5Upgrade(String start, String end, String months) {
+    return '“API Pro” upgrade to 5 keys, from $start to $end: $months months (price difference), no discount';
+  }
+
+  @override
+  String apiKeysCount(String count, String limit) {
+    return 'Active keys: $count / $limit';
+  }
+
+  @override
+  String get apiKeyDisabled => 'Disabled: beyond your API plan';
+
+  @override
+  String get apiKeyEnable => 'Turn back on';
+
+  @override
+  String get apiKeyDisable => 'Set aside';
+
+  @override
+  String get apiKeyLimitReached =>
+      'Your plan allows no more keys: set a key aside, or move to a higher plan.';
+
+  @override
+  String noticeApiKeysDeletion(String company, String date) {
+    return '$company: API access stopped, the keys will be deleted on $date unless the option is taken again.';
+  }
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).

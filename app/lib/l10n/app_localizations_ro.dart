@@ -2284,11 +2284,8 @@ class L10nRo extends L10n {
   }
 
   @override
-  String get billingApiPro => 'Opțiunea „API Pro”';
-
-  @override
-  String billingApiProHint(String price) {
-    return '„API Pro” ($price / lună, fără reducere): programele dvs. scriu în Staff Flow (program, angajați, anunțuri, cereri). Disponibilă cu abonament plătit: adăugați-o mai jos.';
+  String billingApiProHint(String price1, String price5) {
+    return '„API Pro” (citire și scriere, webhook-uri, jurnale): $price1 / lună pentru 1 cheie, $price5 / lună pentru 5 chei, fără reducere. Cu abonament plătit: adăugați-o mai jos.';
   }
 
   @override
@@ -2597,4 +2594,63 @@ class L10nRo extends L10n {
   @override
   String get apiKeyIncomplete =>
       'Dați un nume cheii și alegeți cel puțin un drept.';
+
+  @override
+  String get billingApiPro1 => 'Opțiunea „API Pro” (1 cheie)';
+
+  @override
+  String get billingApiPro5 => 'Opțiunea „API Pro” (5 chei)';
+
+  @override
+  String get billingApiPro5Upgrade => 'Treceți la 5 chei';
+
+  @override
+  String get billingProKeysNext => 'La următoarea reînnoire';
+
+  @override
+  String get billingProKeys1 => '1 cheie';
+
+  @override
+  String get billingProKeys5 => '5 chei';
+
+  @override
+  String billingProKeysWarning(String count) {
+    return '$count chei sunt active: la reînnoire, doar cea mai veche rămâne activă. Veți alege pe care o păstrați în „Acces API”.';
+  }
+
+  @override
+  String get billingApiIncluded => 'Citirea este inclusă în „API Pro”.';
+
+  @override
+  String billingLinePro5Addon(String start, String end, String months) {
+    return 'Opțiunea „API Pro”, 5 chei, adăugată în timpul abonamentului, de la $start la $end: $months luni, fără reducere';
+  }
+
+  @override
+  String billingLinePro5Upgrade(String start, String end, String months) {
+    return 'Trecerea „API Pro” la 5 chei, de la $start la $end: $months luni (diferența de preț), fără reducere';
+  }
+
+  @override
+  String apiKeysCount(String count, String limit) {
+    return 'Chei active: $count / $limit';
+  }
+
+  @override
+  String get apiKeyDisabled => 'Dezactivată: peste planul dvs. API';
+
+  @override
+  String get apiKeyEnable => 'Reactivează';
+
+  @override
+  String get apiKeyDisable => 'Pune deoparte';
+
+  @override
+  String get apiKeyLimitReached =>
+      'Planul dvs. nu permite mai multe chei: puneți o cheie deoparte sau treceți la un plan superior.';
+
+  @override
+  String noticeApiKeysDeletion(String company, String date) {
+    return '$company: acces API oprit, cheile vor fi șterse pe $date, dacă opțiunea nu este reluată.';
+  }
 }

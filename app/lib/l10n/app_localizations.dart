@@ -3900,17 +3900,11 @@ abstract class L10n {
   /// **'“API Pro” option, added during the subscription, from {start} to {end}: {months} months, no discount'**
   String billingLineProAddon(String start, String end, String months);
 
-  /// No description provided for @billingApiPro.
-  ///
-  /// In en, this message translates to:
-  /// **'“API Pro” option'**
-  String get billingApiPro;
-
   /// No description provided for @billingApiProHint.
   ///
   /// In en, this message translates to:
-  /// **'“API Pro” ({price} / month, no discount): your software writes into Staff Flow (schedule, employees, announcements, requests). Available with a paid subscription: add it below.'**
-  String billingApiProHint(String price);
+  /// **'“API Pro” (read and write, webhooks, logs): {price1} / month for 1 key, {price5} / month for 5 keys, no discount. With a paid subscription: add it below.'**
+  String billingApiProHint(String price1, String price5);
 
   /// No description provided for @whTitle.
   ///
@@ -4475,6 +4469,102 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Give the key a name and choose at least one permission.'**
   String get apiKeyIncomplete;
+
+  /// No description provided for @billingApiPro1.
+  ///
+  /// In en, this message translates to:
+  /// **'“API Pro” option (1 key)'**
+  String get billingApiPro1;
+
+  /// No description provided for @billingApiPro5.
+  ///
+  /// In en, this message translates to:
+  /// **'“API Pro” option (5 keys)'**
+  String get billingApiPro5;
+
+  /// No description provided for @billingApiPro5Upgrade.
+  ///
+  /// In en, this message translates to:
+  /// **'Move to 5 keys'**
+  String get billingApiPro5Upgrade;
+
+  /// No description provided for @billingProKeysNext.
+  ///
+  /// In en, this message translates to:
+  /// **'At the next renewal'**
+  String get billingProKeysNext;
+
+  /// No description provided for @billingProKeys1.
+  ///
+  /// In en, this message translates to:
+  /// **'1 key'**
+  String get billingProKeys1;
+
+  /// No description provided for @billingProKeys5.
+  ///
+  /// In en, this message translates to:
+  /// **'5 keys'**
+  String get billingProKeys5;
+
+  /// No description provided for @billingProKeysWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} keys are active: at renewal, only the oldest stays active. You\'ll choose which one to keep in “API access”.'**
+  String billingProKeysWarning(String count);
+
+  /// No description provided for @billingApiIncluded.
+  ///
+  /// In en, this message translates to:
+  /// **'Read access included in “API Pro”.'**
+  String get billingApiIncluded;
+
+  /// No description provided for @billingLinePro5Addon.
+  ///
+  /// In en, this message translates to:
+  /// **'“API Pro” option, 5 keys, added during the subscription, from {start} to {end}: {months} months, no discount'**
+  String billingLinePro5Addon(String start, String end, String months);
+
+  /// No description provided for @billingLinePro5Upgrade.
+  ///
+  /// In en, this message translates to:
+  /// **'“API Pro” upgrade to 5 keys, from {start} to {end}: {months} months (price difference), no discount'**
+  String billingLinePro5Upgrade(String start, String end, String months);
+
+  /// No description provided for @apiKeysCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Active keys: {count} / {limit}'**
+  String apiKeysCount(String count, String limit);
+
+  /// No description provided for @apiKeyDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Disabled: beyond your API plan'**
+  String get apiKeyDisabled;
+
+  /// No description provided for @apiKeyEnable.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn back on'**
+  String get apiKeyEnable;
+
+  /// No description provided for @apiKeyDisable.
+  ///
+  /// In en, this message translates to:
+  /// **'Set aside'**
+  String get apiKeyDisable;
+
+  /// No description provided for @apiKeyLimitReached.
+  ///
+  /// In en, this message translates to:
+  /// **'Your plan allows no more keys: set a key aside, or move to a higher plan.'**
+  String get apiKeyLimitReached;
+
+  /// No description provided for @noticeApiKeysDeletion.
+  ///
+  /// In en, this message translates to:
+  /// **'{company}: API access stopped, the keys will be deleted on {date} unless the option is taken again.'**
+  String noticeApiKeysDeletion(String company, String date);
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

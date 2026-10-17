@@ -2291,11 +2291,8 @@ class L10nPl extends L10n {
   }
 
   @override
-  String get billingApiPro => 'Opcja „API Pro”';
-
-  @override
-  String billingApiProHint(String price) {
-    return '„API Pro” ($price / mies., bez rabatu): Twoje programy zapisują dane w Staff Flow (grafik, pracownicy, ogłoszenia, wnioski). Dostępne z opłaconą subskrypcją: dodaj poniżej.';
+  String billingApiProHint(String price1, String price5) {
+    return '„API Pro” (odczyt i zapis, webhooki, dzienniki): $price1 / mies. za 1 klucz, $price5 / mies. za 5 kluczy, bez rabatu. Z opłaconą subskrypcją: dodaj poniżej.';
   }
 
   @override
@@ -2601,4 +2598,63 @@ class L10nPl extends L10n {
   @override
   String get apiKeyIncomplete =>
       'Nadaj kluczowi nazwę i wybierz co najmniej jedno uprawnienie.';
+
+  @override
+  String get billingApiPro1 => 'Opcja „API Pro” (1 klucz)';
+
+  @override
+  String get billingApiPro5 => 'Opcja „API Pro” (5 kluczy)';
+
+  @override
+  String get billingApiPro5Upgrade => 'Przejdź na 5 kluczy';
+
+  @override
+  String get billingProKeysNext => 'Przy następnym odnowieniu';
+
+  @override
+  String get billingProKeys1 => '1 klucz';
+
+  @override
+  String get billingProKeys5 => '5 kluczy';
+
+  @override
+  String billingProKeysWarning(String count) {
+    return 'Aktywnych kluczy: $count. Przy odnowieniu aktywny zostanie tylko najstarszy. Wybierzesz, który zachować, w „Dostęp API”.';
+  }
+
+  @override
+  String get billingApiIncluded => 'Odczyt wliczony w „API Pro”.';
+
+  @override
+  String billingLinePro5Addon(String start, String end, String months) {
+    return 'Opcja „API Pro”, 5 kluczy, dodana w trakcie subskrypcji, od $start do $end: $months mies., bez rabatu';
+  }
+
+  @override
+  String billingLinePro5Upgrade(String start, String end, String months) {
+    return 'Przejście „API Pro” na 5 kluczy, od $start do $end: $months mies. (różnica ceny), bez rabatu';
+  }
+
+  @override
+  String apiKeysCount(String count, String limit) {
+    return 'Aktywne klucze: $count / $limit';
+  }
+
+  @override
+  String get apiKeyDisabled => 'Wyłączony: ponad Twój plan API';
+
+  @override
+  String get apiKeyEnable => 'Włącz ponownie';
+
+  @override
+  String get apiKeyDisable => 'Odłóż';
+
+  @override
+  String get apiKeyLimitReached =>
+      'Twój plan nie pozwala na więcej kluczy: odłóż klucz lub przejdź na wyższy plan.';
+
+  @override
+  String noticeApiKeysDeletion(String company, String date) {
+    return '$company: dostęp API zatrzymany, klucze zostaną usunięte $date, chyba że opcja zostanie wznowiona.';
+  }
 }

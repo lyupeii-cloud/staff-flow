@@ -161,6 +161,7 @@ class NoticesButton extends StatelessWidget {
       'billing_grace_reminder' => t.noticeBillingGraceReminder(company, longDate(parseDay(data['day']), loc)),
       'billing_deleted' => t.noticeBillingDeleted(data['companyName'] ?? '?'),
       'api_failing' => t.noticeApiFailing('${data['key'] ?? '?'}', '${data['count'] ?? ''}'),
+      'api_keys_deletion' => t.noticeApiKeysDeletion(company, longDate(parseDay(data['day']), loc)),
       'api_new_ip' => t.noticeApiNewIp('${data['key'] ?? '?'}', '${data['ip'] ?? '?'}'),
       'google_switch_link' => t.noticeGoogleSwitchLink(data['byName'] ?? '?'),
       'placement_to_approve' =>
@@ -192,6 +193,7 @@ class NoticesButton extends StatelessWidget {
         'billing_deleted' => Icons.delete_forever_outlined,
         'api_failing' => Icons.error_outline,
         'api_new_ip' => Icons.gpp_maybe_outlined,
+        'api_keys_deletion' => Icons.key_off_outlined,
         'placement_to_approve' => Icons.hourglass_top,
         'placement_approved' => Icons.check_circle,
         'placement_refused' => Icons.cancel,

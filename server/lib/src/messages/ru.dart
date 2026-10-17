@@ -132,7 +132,6 @@ const ru = <String, String>{
   'N° d\'enregistrement : {id}': 'Регистрационный номер: {id}',
   'Payé.': 'Оплачено.',
   'Option « accès API » nécessaire pour créer une clé.': 'Чтобы создать ключ, нужна опция «доступ к API».',
-  '10 clés au plus par entreprise.': 'Не более 10 ключей на компанию.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Остаток текущего месяца ({days} дн. из {total}): опция «доступ к API»',
   'Option « accès API » : {months} mois': 'Опция «доступ к API»: {months} мес.',
   'Trop de demandes pour ce compte : réessayez demain.': 'Слишком много запросов для этого аккаунта: попробуйте завтра.',
@@ -249,4 +248,9 @@ const ru = <String, String>{
   'Trop d\'essais : réessayez dans {seconds} s.': 'Слишком много попыток: повторите через {seconds} с.',
   'Erreur du serveur.': 'Ошибка сервера.',
   'Le nom tapé ne correspond pas.': 'Введённое название не совпадает.',
+  'Votre formule permet {count} clé(s) active(s) : désactivez-en une d\'abord.': 'Ваш тариф позволяет {count} активных ключей: сначала отключите один.',
+  'Cette clé est désactivée : la formule API de l\'entreprise ne la couvre plus.': 'Этот ключ отключён: тариф API компании его больше не покрывает.',
+  'Accès API arrêté : les clés API seront supprimées le {day}, sauf si l\'option est reprise d\'ici là.': 'Доступ к API остановлен: ключи API будут удалены {day}, если опцию не возобновят до этого.',
+  'Option « API Pro » : 5 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': 'Опция «API Pro»: 5 ключей, добавлена во время подписки, с {from} по {to}: {months} мес., без скидки',
+  'Passage de « API Pro » à 5 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': 'Переход «API Pro» на 5 ключей, с {from} по {to}: {months} мес. (разница в цене), без скидки',
 };

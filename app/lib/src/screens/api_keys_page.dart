@@ -39,7 +39,27 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
 
   String get _base => '/companies/${widget.company.id}/api-keys';
 
-  Future<List> _load() async => (await widget.session.api.send('GET', _base))['keys'] as List;
+  /// Clés actives permises par la formule (1 en lecture ou « API Pro » 1 clé, 5 en « API Pro » 5 clés).
+  int? _limit;
+
+  /// Clés actives (relu avec la liste).
+  int _activeCount = 0;
+
+  Future<List> _load() async {
+    final r = await widget.session.api.send('GET', _base);
+    final keys = r['keys'] as List;
+    if (mounted) {
+      setState(() {
+        _limit = r['limit'] as int?;
+        _activeCount = keys.where((k) => k['disabled'] != true).length;
+      });
+    }
+    return keys;
+  }
+
+  /// Clé mise de côté (désactivée) ou réactivée, sans la supprimer.
+  Future<void> _setEnabled(Map k, bool enabled) =>
+      _run(() => widget.session.api.send('PATCH', '$_base/${k['id']}', body: {'enabled': enabled}));
 
   void _reload() => setState(() {
         _keys = _load();
@@ -192,7 +212,8 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(title: Text(t.apiTitle)),
-      floatingActionButton: _allowed
+      // Nouvelle clé : seulement sous la limite de la formule.
+      floatingActionButton: _allowed && (_limit == null || _activeCount < _limit!)
           ? FloatingActionButton.extended(onPressed: _create, icon: const Icon(Icons.key), label: Text(t.apiNewKey))
           : null,
       body: Center(
@@ -245,12 +266,25 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
                   return TextButton.icon(onPressed: _reload, icon: const Icon(Icons.refresh), label: Text(t.retry));
                 }
                 if (!snap.hasData) return const Center(child: CircularProgressIndicator());
-                return Column(children: [
+                final active = snap.data!.where((k) => k['disabled'] != true).length;
+                final full = _limit != null && active >= _limit!;
+                return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                  if (_limit != null && _limit! > 0)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 4),
+                      child: Text(t.apiKeysCount('$active', '$_limit'), style: theme.textTheme.titleSmall),
+                    ),
+                  if (full && _allowed)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Text(t.apiKeyLimitReached, style: theme.textTheme.bodySmall),
+                    ),
                   for (final k in snap.data!)
                     Card(
+                      color: k['disabled'] == true ? theme.colorScheme.surfaceContainerHighest : null,
                       child: ListTile(
-                        leading: const Icon(Icons.key_outlined),
-                        title: Text('${k['name']}'),
+                        leading: Icon(k['disabled'] == true ? Icons.key_off_outlined : Icons.key_outlined),
+                        title: Text(k['disabled'] == true ? '${k['name']} · ${t.apiKeyDisabled}' : '${k['name']}'),
                         subtitle: Text('${k['prefix']}…\n'
                             '${[for (final s in (k['scopes'] as List? ?? const ['read'])) _scopeLabel(t, s as String)].join(' · ')}\n'
                             '${k['lastUsedAt'] == null ? t.apiKeyNeverUsed : t.apiKeyLastUsed(longDate(DateTime.parse(k['lastUsedAt']).toLocal(), loc))}\n'
@@ -259,9 +293,20 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
                         isThreeLine: true,
                         onTap: () => _create(key: k as Map),
                         trailing: Row(mainAxisSize: MainAxisSize.min, children: [
-                          IconButton(
-                              tooltip: t.changeSettings, icon: const Icon(Icons.edit_outlined), onPressed: () => _create(key: k)),
-                          TextButton(onPressed: () => _revoke(k), child: Text(t.apiRevoke)),
+                          if (k['disabled'] == true)
+                            TextButton(onPressed: full ? null : () => _setEnabled(k, true), child: Text(t.apiKeyEnable))
+                          else
+                            IconButton(
+                                tooltip: t.changeSettings,
+                                icon: const Icon(Icons.edit_outlined),
+                                onPressed: () => _create(key: k)),
+                          PopupMenuButton<String>(
+                            onSelected: (v) => v == 'revoke' ? _revoke(k) : _setEnabled(k, false),
+                            itemBuilder: (_) => [
+                              if (k['disabled'] != true) PopupMenuItem(value: 'aside', child: Text(t.apiKeyDisable)),
+                              PopupMenuItem(value: 'revoke', child: Text(t.apiRevoke)),
+                            ],
+                          ),
                         ]),
                       ),
                     ),

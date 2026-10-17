@@ -132,7 +132,6 @@ const pt = <String, String>{
   'N° d\'enregistrement : {id}': 'N.º de registro: {id}',
   'Payé.': 'Pago.',
   'Option « accès API » nécessaire pour créer une clé.': 'É necessária a opção “acesso API” para criar uma chave.',
-  '10 clés au plus par entreprise.': 'No máximo 10 chaves por empresa.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Resto do mês atual ({days} dias de {total}): opção “acesso API”',
   'Option « accès API » : {months} mois': 'Opção “acesso API”: {months} meses',
   'Trop de demandes pour ce compte : réessayez demain.': 'Pedidos demais para esta conta: tente novamente amanhã.',
@@ -249,4 +248,9 @@ const pt = <String, String>{
   'Trop d\'essais : réessayez dans {seconds} s.': 'Demasiadas tentativas: tente novamente dentro de {seconds} s.',
   'Erreur du serveur.': 'Erro do servidor.',
   'Le nom tapé ne correspond pas.': 'O nome escrito não corresponde.',
+  'Votre formule permet {count} clé(s) active(s) : désactivez-en une d\'abord.': 'O seu plano permite {count} chaves ativas: desative uma primeiro.',
+  'Cette clé est désactivée : la formule API de l\'entreprise ne la couvre plus.': 'Esta chave está desativada: o plano API da empresa já não a cobre.',
+  'Accès API arrêté : les clés API seront supprimées le {day}, sauf si l\'option est reprise d\'ici là.': 'Acesso API parado: as chaves API serão eliminadas a {day}, a menos que a opção seja retomada até lá.',
+  'Option « API Pro » : 5 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': 'Opção «API Pro»: 5 chaves, adicionada durante a assinatura, de {from} a {to}: {months} meses, sem desconto',
+  'Passage de « API Pro » à 5 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': 'Passagem de «API Pro» para 5 chaves, de {from} a {to}: {months} meses (diferença de preço), sem desconto',
 };

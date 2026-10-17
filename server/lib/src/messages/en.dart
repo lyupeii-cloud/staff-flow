@@ -152,7 +152,6 @@ const en = <String, String>{
   'N° d\'enregistrement : {id}': 'Registration no.: {id}',
   'Payé.': 'Paid.',
   'Option « accès API » nécessaire pour créer une clé.': 'The “API access” option is required to create a key.',
-  '10 clés au plus par entreprise.': '10 keys at most per company.',
   'Prorata du mois en cours ({days} jours sur {total}) : option « accès API »': 'Rest of this month ({days} days out of {total}): “API access” option',
   'Option « accès API » : {months} mois': '“API access” option: {months} months',
   'Clé API invalide.': 'Invalid API key.',
@@ -271,4 +270,9 @@ const en = <String, String>{
   'Trop d\'essais : réessayez dans {seconds} s.': 'Too many attempts: try again in {seconds} s.',
   'Erreur du serveur.': 'Server error.',
   'Le nom tapé ne correspond pas.': 'The name typed doesn\'t match.',
+  'Votre formule permet {count} clé(s) active(s) : désactivez-en une d\'abord.': 'Your plan allows {count} active key(s): disable one first.',
+  'Cette clé est désactivée : la formule API de l\'entreprise ne la couvre plus.': 'This key is disabled: the company\'s API plan no longer covers it.',
+  'Accès API arrêté : les clés API seront supprimées le {day}, sauf si l\'option est reprise d\'ici là.': 'API access stopped: the API keys will be deleted on {day} unless the option is taken again before then.',
+  'Option « API Pro » : 5 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': '“API Pro” option: 5 keys, added during the subscription, from {from} to {to}: {months} months, no discount',
+  'Passage de « API Pro » à 5 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': '“API Pro” upgrade to 5 keys, from {from} to {to}: {months} months (price difference), no discount',
 };

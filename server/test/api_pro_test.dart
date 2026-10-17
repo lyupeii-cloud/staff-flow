@@ -32,16 +32,21 @@ void main() {
     if (pro) await boss.ok('POST', p('/billing/addon'), {'option': 'pro'});
   }
 
-  test('pas pendant l\'essai ; payée : 9 € par mois, puis clé avec droits choisis', () async {
+  test('pas pendant l\'essai ; payée : 10 € par mois pour 1 clé, 20 € pour 5, clés avec droits choisis', () async {
     expect((await boss('POST', p('/api-keys'), {'name': 'Paie', 'scopes': ['read', 'shifts']})).$1, 402);
     // Lecture seule : possible pendant l'essai.
     await boss.ok('POST', p('/api-keys'), {'name': 'Compta', 'scopes': ['read']});
     await paid(pro: false);
     final addon = (await boss.ok('GET', p('/billing')))['addons']['pro'] as Map;
-    expect([addon['lines'].single['unitCents'], addon['lines'].single['label']], [900, 'proAddon']);
+    expect([addon['lines'].single['unitCents'], addon['lines'].single['label']], [1000, 'proAddon']);
     await boss.ok('POST', p('/billing/addon'), {'option': 'pro'});
     expect((await boss.ok('GET', p('/billing')))['apiProOption'], true);
     expect((await boss('POST', p('/api-keys'), {'name': 'X', 'scopes': ['admin']})).$1, 400);
+    // 1 clé : celle de lecture est déjà là. Passage à 5 clés : la différence (10 €).
+    expect((await boss('POST', p('/api-keys'), {'name': 'Planif', 'scopes': ['shifts']})).$1, 409);
+    final upgrade = (await boss.ok('GET', p('/billing')))['addons']['pro5'] as Map;
+    expect([upgrade['lines'].single['unitCents'], upgrade['lines'].single['label']], [1000, 'pro5Upgrade']);
+    await boss.ok('POST', p('/billing/addon'), {'option': 'pro5'});
     final key = await boss.ok('POST', p('/api-keys'), {'name': 'Planif', 'scopes': ['shifts']});
     expect(key['scopes'], ['shifts']);
     // Sans le droit « read » : pas de lecture ; sans « publish » : pas de publication.

@@ -2287,11 +2287,8 @@ class L10nUk extends L10n {
   }
 
   @override
-  String get billingApiPro => 'Опція «API Pro»';
-
-  @override
-  String billingApiProHint(String price) {
-    return '«API Pro» ($price / міс., без знижки): ваші програми записують у Staff Flow (графік, працівники, оголошення, запити). Доступно з оплаченою підпискою: додайте нижче.';
+  String billingApiProHint(String price1, String price5) {
+    return '«API Pro» (читання й запис, вебхуки, журнали): $price1 / міс. за 1 ключ, $price5 / міс. за 5 ключів, без знижки. З оплаченою підпискою: додайте нижче.';
   }
 
   @override
@@ -2597,4 +2594,63 @@ class L10nUk extends L10n {
   @override
   String get apiKeyIncomplete =>
       'Дайте ключу назву й виберіть щонайменше одне право.';
+
+  @override
+  String get billingApiPro1 => 'Опція «API Pro» (1 ключ)';
+
+  @override
+  String get billingApiPro5 => 'Опція «API Pro» (5 ключів)';
+
+  @override
+  String get billingApiPro5Upgrade => 'Перейти на 5 ключів';
+
+  @override
+  String get billingProKeysNext => 'Під час наступного поновлення';
+
+  @override
+  String get billingProKeys1 => '1 ключ';
+
+  @override
+  String get billingProKeys5 => '5 ключів';
+
+  @override
+  String billingProKeysWarning(String count) {
+    return 'Активних ключів: $count. Під час поновлення активним залишиться лише найстаріший. Ви виберете, який залишити, у «Доступ до API».';
+  }
+
+  @override
+  String get billingApiIncluded => 'Читання входить в «API Pro».';
+
+  @override
+  String billingLinePro5Addon(String start, String end, String months) {
+    return 'Опція «API Pro», 5 ключів, додана під час підписки, з $start по $end: $months міс., без знижки';
+  }
+
+  @override
+  String billingLinePro5Upgrade(String start, String end, String months) {
+    return 'Перехід «API Pro» на 5 ключів, з $start по $end: $months міс. (різниця в ціні), без знижки';
+  }
+
+  @override
+  String apiKeysCount(String count, String limit) {
+    return 'Активні ключі: $count / $limit';
+  }
+
+  @override
+  String get apiKeyDisabled => 'Вимкнено: понад ваш тариф API';
+
+  @override
+  String get apiKeyEnable => 'Увімкнути знову';
+
+  @override
+  String get apiKeyDisable => 'Відкласти';
+
+  @override
+  String get apiKeyLimitReached =>
+      'Ваш тариф не дозволяє більше ключів: відкладіть ключ або перейдіть на вищий тариф.';
+
+  @override
+  String noticeApiKeysDeletion(String company, String date) {
+    return '$company: доступ до API зупинено, ключі буде видалено $date, якщо опцію не поновлять.';
+  }
 }

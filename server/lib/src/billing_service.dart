@@ -9,6 +9,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 
 import 'company_service.dart';
+import 'api_access.dart';
 import 'errors.dart';
 import 'messages.dart';
 import 'models.dart';
@@ -112,8 +113,10 @@ class BillingService {
     final t = now();
     final until = c.paidUntil;
     if (c.billingStatus != 'active' || until == null || !until.isAfter(t)) return null;
-    if (option == 'api' && c.apiOption) return null;
+    // Lecture comprise dans « API Pro ».
+    if (option == 'api' && (c.apiOption || c.apiProOption)) return null;
     if (option == 'pro' && c.apiProOption) return null;
+    if (option == 'pro5' && c.apiProOption && c.apiProKeys >= 5) return null;
     if (option == 'cascade' && (c.cascadeOption || c.slots >= v['cascadeIncludedFrom']!)) return null;
     if (option == 'slots' && (slots == null || slots <= c.slots)) return null;
     final from = DateTime.utc(t.year, t.month);
@@ -123,12 +126,20 @@ class BillingService {
     // Places en plus : la différence de prix par mois entre les deux nombres de places.
     final unit = switch (option) {
       'api' => v['apiOptionPrice']!,
-      'pro' => v['apiProPrice']!,
+      'pro' => proUnit(v, 1),
+      // Déjà en « API Pro » 1 clé : seulement la différence.
+      'pro5' => c.apiProOption ? proUnit(v, 5) - proUnit(v, 1) : proUnit(v, 5),
       'cascade' => v['cascadeOptionPrice']!,
       _ => PlatformService.monthlyCents(v, slots!) - PlatformService.monthlyCents(v, c.slots),
     };
     final line = {
-      'label': switch (option) { 'api' => 'apiAddon', 'pro' => 'proAddon', 'cascade' => 'cascadeAddon', _ => 'slotsAddon' },
+      'label': switch (option) {
+        'api' => 'apiAddon',
+        'pro' => 'proAddon',
+        'pro5' => c.apiProOption ? 'pro5Upgrade' : 'pro5Addon',
+        'cascade' => 'cascadeAddon',
+        _ => 'slotsAddon'
+      },
       if (option == 'slots') ...{'slotsFrom': c.slots, 'slots': slots},
       'unitCents': unit,
       'months': months,
@@ -137,6 +148,85 @@ class BillingService {
       'cents': unit * months,
     };
     return {'lines': [line], 'total': unit * months, 'from': from.toIso8601String(), 'to': until.toIso8601String()};
+  }
+
+  /// Prix mensuel de « API Pro » : 1 clé, ou 5 clés.
+  static int proUnit(Map<String, int> v, int keys) => keys >= 5 ? v['apiPro5Price']! : v['apiProPrice']!;
+
+  /// « API Pro » : nombre de clés du prochain renouvellement (1 ou 5). Le
+  /// passage à 5 clés se paie tout de suite (option « pro5 ») ; la baisse
+  /// à 1 clé prend effet au renouvellement (clés en trop désactivées).
+  Future<void> setProKeys(User actor, String companyId, int keys) async {
+    final company = await _owned(actor, companyId);
+    if (keys != 1 && keys != 5) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    if (company.billingStatus != 'active' || !company.apiProOption) {
+      throw const ApiError.conflict('Cette option n\'est pas active.');
+    }
+    if (keys > company.apiProKeys) throw const ApiError.conflict('Cette option ne peut pas être ajoutée maintenant.');
+    await store.query(store.db, 'UPDATE companies SET api_pro_next_keys = @n WHERE id = @c::uuid',
+        {'c': companyId, 'n': keys == company.apiProKeys ? null : keys});
+    await store.audit(companyId: companyId, actorId: actor.id, action: 'billing.renewal', details: {'option': 'proKeys', 'keys': keys});
+  }
+
+  /// Clés au-delà de la formule : désactivées (les plus récentes).
+  Future<void> _enforceKeys(String companyId) async {
+    final c = await store.findCompany(companyId);
+    // Accès coupé (limite 0) : rien à désactiver, les clés reprennent avec l'option.
+    if (c == null || ApiAccessService.keyLimit(c) == 0) return;
+    await store.query(store.db, '''
+      UPDATE api_keys SET disabled_at = @t WHERE id IN (
+        SELECT id FROM api_keys WHERE company_id = @c::uuid AND revoked_at IS NULL AND disabled_at IS NULL
+        ORDER BY created_at OFFSET @n)''', {'c': companyId, 'n': ApiAccessService.keyLimit(c), 't': now()});
+  }
+
+  /// Accès API arrêté (essai fini, option non renouvelée, période de grâce) :
+  /// les clés ne marchent plus ; le patron est prévenu 7 jours avant leur
+  /// suppression, 30 jours après l'arrêt. Accès revenu : tout reprend.
+  Future<void> _apiKeysTick(DateTime t) async {
+    final rows = await store.query(store.db, '''
+      SELECT DISTINCT k.company_id::text, c.api_off_since, c.api_off_warned FROM api_keys k
+      JOIN companies c ON c.id = k.company_id WHERE k.revoked_at IS NULL''');
+    for (final r in rows) {
+      final companyId = r[0] as String;
+      final c = await store.findCompany(companyId);
+      if (c == null) continue;
+      final since = r[1] as DateTime?;
+      if (ApiAccessService.keyLimit(c) > 0) {
+        if (since != null) {
+          await store.query(store.db, 'UPDATE companies SET api_off_since = NULL, api_off_warned = false WHERE id = @c::uuid',
+              {'c': companyId});
+        }
+        await _enforceKeys(companyId);
+        continue;
+      }
+      if (since == null) {
+        await store.query(store.db, 'UPDATE companies SET api_off_since = @t, api_off_warned = false WHERE id = @c::uuid',
+            {'c': companyId, 't': t});
+        continue;
+      }
+      final end = since.add(const Duration(days: 30));
+      if (!t.isBefore(end)) {
+        await store.query(store.db, 'DELETE FROM api_keys WHERE company_id = @c::uuid AND revoked_at IS NULL', {'c': companyId});
+        await store.query(store.db, 'UPDATE companies SET api_off_since = NULL, api_off_warned = false WHERE id = @c::uuid',
+            {'c': companyId});
+        final owner = await _ownerId(companyId);
+        if (owner != null) await store.audit(companyId: companyId, actorId: owner, action: 'api.keys_deleted');
+      } else if (r[2] != true && !t.isBefore(end.subtract(const Duration(days: 7)))) {
+        await store.query(store.db, 'UPDATE companies SET api_off_warned = true WHERE id = @c::uuid', {'c': companyId});
+        final managers = await store.query(store.db, '''
+          SELECT user_id::text FROM memberships WHERE company_id = @c::uuid AND left_at IS NULL
+            AND (role = 'owner' OR (role = 'manager' AND billing_access))''', {'c': companyId});
+        await notifications.notify([for (final m in managers) m[0] as String],
+            companyId: companyId, kind: 'api_keys_deletion', data: {'day': _iso(end)});
+      }
+    }
+  }
+
+  Future<String?> _ownerId(String companyId) async {
+    final r = await store.query(store.db, '''
+      SELECT user_id::text FROM memberships WHERE company_id = @c::uuid AND role = 'owner' AND left_at IS NULL''',
+        {'c': companyId});
+    return r.isEmpty ? null : r.first[0] as String;
   }
 
   Future<bool> _renews(String companyId, String column) async =>
@@ -177,7 +267,7 @@ class BillingService {
   Future<Map<String, Object?>> buyAddon(User actor, String companyId, String option, {int? slots}) async {
     final company = await _owned(actor, companyId);
     if (!canPay(actor)) throw const ApiError.conflict('Le paiement en ligne arrive bientôt.');
-    if (option != 'api' && option != 'cascade' && option != 'slots' && option != 'pro') {
+    if (option != 'api' && option != 'cascade' && option != 'slots' && option != 'pro' && option != 'pro5') {
       throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
     }
     if (option == 'slots') checkSlots(slots, 0);
@@ -216,7 +306,9 @@ class BillingService {
           tx,
           switch (option) {
             'api' => 'UPDATE companies SET api_option = true, api_until = NULL WHERE id = @c::uuid',
-            'pro' => 'UPDATE companies SET api_pro_option = true, api_pro_until = NULL WHERE id = @c::uuid',
+            // « API Pro » comprend la lecture : l'option lecture s'arrête, la clé est gardée.
+            'pro' || 'pro5' => '''UPDATE companies SET api_pro_option = true, api_pro_until = NULL, api_pro_next_keys = NULL,
+                api_pro_keys = ${option == 'pro5' ? 5 : 1}, api_option = false, api_until = NULL WHERE id = @c::uuid''',
             'cascade' => 'UPDATE companies SET cascade_option = true, cascade_until = NULL WHERE id = @c::uuid',
             _ => 'UPDATE companies SET slots = @n WHERE id = @c::uuid',
           },
@@ -268,9 +360,10 @@ class BillingService {
   /// Montants et lignes de facture d'un paiement.
   ({int amount, List<Map<String, Object?>> lines, int base, bool withOption, int recurring}) _price(
       Map<String, int> v, int staff, String period, bool cascade, ({int prorataDays, int monthDays, DateTime periodStart, DateTime periodEnd, DateTime coverFrom}) p,
-      {bool api = false, bool pro = false}) {
+      {bool api = false, int proKeys = 0}) {
     final withOption = cascade && staff < v['cascadeIncludedFrom']!;
-    final proPrice = pro ? v['apiProPrice']! : 0;
+    final pro = proKeys > 0;
+    final proPrice = pro ? proUnit(v, proKeys) : 0;
     final base = PlatformService.monthlyCents(v, staff);
     final option = withOption ? v['cascadeOptionPrice']! : 0;
     final apiPrice = api ? v['apiOptionPrice']! : 0;
@@ -297,7 +390,7 @@ class BillingService {
       if (withOption) {'label': 'cascade', 'unitCents': option, 'months': months, 'cents': option * months},
       if (prorataApi > 0) {'label': 'apiProrata', 'days': p.prorataDays, 'monthDays': p.monthDays, 'cents': prorataApi},
       if (api) {'label': 'api', 'unitCents': apiPrice, 'months': months, 'cents': apiPrice * months},
-      if (pro) {'label': 'pro', 'unitCents': proPrice, 'months': months, 'cents': proPrice * months},
+      if (pro) {'label': 'pro', 'keys': proKeys, 'unitCents': proPrice, 'months': months, 'cents': proPrice * months},
     ];
     return (
       amount: lines.fold(0, (s, l) => s + (l['cents'] as int)),
@@ -384,11 +477,21 @@ class BillingService {
       'apiOptionPrice': v['apiOptionPrice'],
       'apiProOption': company.apiProOption,
       'apiProPrice': v['apiProPrice'],
+      'apiPro5Price': v['apiPro5Price'],
+      'apiProKeys': company.apiProKeys,
+      'apiProNextKeys': (await store.query(store.db, 'SELECT api_pro_next_keys FROM companies WHERE id = @c::uuid',
+              {'c': companyId}))
+          .first[0],
+      'apiKeyCount': (await store.query(store.db, '''
+          SELECT count(*) FROM api_keys WHERE company_id = @c::uuid AND revoked_at IS NULL AND disabled_at IS NULL''',
+              {'c': companyId}))
+          .first[0],
+      'apiKeyLimit': ApiAccessService.keyLimit(company),
       'cascadeOptionPrice': v['cascadeOptionPrice'],
       ...await _renewals(companyId),
       // Options à ajouter seules, en cours d'abonnement.
       'addons': {
-        for (final o in ['api', 'pro', 'cascade']) o: _addon(company, v, staff, o),
+        for (final o in ['api', 'pro', 'pro5', 'cascade']) o: _addon(company, v, staff, o),
         'slots': _addon(company, v, staff, 'slots', slots: staff),
       },
       'isOwner': (await companies.open(actor, companyId)).$2 == Role.owner,
@@ -433,9 +536,13 @@ class BillingService {
     final staff = checkSlots(slots ?? (company.slots < realStaff ? minSlots(realStaff) : company.slots), realStaff);
     final plan = _plan(company, period);
     // Sans précision (anciennes versions de l'application) : l'option API reste comme elle est.
-    final withApi = api ?? company.apiOption;
     final withPro = company.apiProOption && await _renews(companyId, 'api_pro_until') && company.billingStatus == 'active';
-    final price = _price(v, staff, period, cascade, plan, api: withApi, pro: withPro);
+    final next = (await store.query(store.db, 'SELECT api_pro_next_keys FROM companies WHERE id = @c::uuid', {'c': companyId}))
+        .first[0] as int?;
+    final proKeys = withPro ? (next ?? company.apiProKeys) : 0;
+    // La lecture est comprise dans « API Pro ».
+    final withApi = (api ?? company.apiOption) && !withPro;
+    final price = _price(v, staff, period, cascade, plan, api: withApi, proKeys: proKeys);
     final t = now();
     final owner = await store.findUser(actor.id);
     final seller = await platform.texts();
@@ -475,8 +582,11 @@ class BillingService {
           cascade_option = @co OR (@renewal AND cascade_option),
           cascade_until = CASE WHEN @co THEN NULL WHEN @renewal AND cascade_option THEN coalesce(cascade_until, @old::timestamptz) END,
           api_option = @ao OR (@renewal AND api_option),
-          api_until = CASE WHEN @ao THEN NULL WHEN @renewal AND api_option THEN coalesce(api_until, @old::timestamptz) END
+          api_until = CASE WHEN @ao THEN NULL WHEN @renewal AND api_option THEN coalesce(api_until, @old::timestamptz) END,
+          api_pro_keys = CASE WHEN @pk > 0 THEN @pk ELSE api_pro_keys END,
+          api_pro_next_keys = CASE WHEN @pk > 0 THEN NULL ELSE api_pro_next_keys END
         WHERE id = @c::uuid''', {
+        'pk': proKeys,
         'c': companyId,
         'to': plan.periodEnd,
         'p': period,
@@ -498,6 +608,10 @@ class BillingService {
         'amountCents': price.amount,
         'paidUntil': plan.periodEnd.toIso8601String(),
       };
+    }).then((r) async {
+      // Formule réduite au renouvellement : clés en trop désactivées.
+      await _enforceKeys(companyId);
+      return r;
     });
   }
 
@@ -690,6 +804,16 @@ class BillingService {
               {'days': '${l['days']}', 'total': '${l['monthDays']}'}),
           'api' => t('Option « accès API » : {months} mois', {'months': '${l['months']}'}),
           'pro' => t('Option « API Pro » : {months} mois', {'months': '${l['months']}'}),
+          'pro5Addon' => t('Option « API Pro » : 5 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise', {
+              'from': _day(DateTime.parse(l['from'] as String)),
+              'to': _day(DateTime.parse(l['to'] as String).subtract(const Duration(days: 1))),
+              'months': '${l['months']}',
+            }),
+          'pro5Upgrade' => t('Passage de « API Pro » à 5 clés, du {from} au {to} : {months} mois (différence de prix), sans remise', {
+              'from': _day(DateTime.parse(l['from'] as String)),
+              'to': _day(DateTime.parse(l['to'] as String).subtract(const Duration(days: 1))),
+              'months': '${l['months']}',
+            }),
           'proAddon' => t('Option « API Pro », ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois', {
               'from': _day(DateTime.parse(l['from'] as String)),
               'to': _day(DateTime.parse(l['to'] as String).subtract(const Duration(days: 1))),
@@ -800,7 +924,8 @@ class BillingService {
     await store.query(store.db, '''
       UPDATE companies SET api_option = false, api_until = NULL WHERE api_until <= @t''', {'t': t});
     await store.query(store.db, '''
-      UPDATE companies SET api_pro_option = false, api_pro_until = NULL WHERE api_pro_until <= @t''', {'t': t});
+      UPDATE companies SET api_pro_option = false, api_pro_until = NULL, api_pro_next_keys = NULL
+      WHERE api_pro_until <= @t''', {'t': t});
     await store.query(store.db, '''
       UPDATE companies SET cascade_option = false, cascade_until = NULL WHERE cascade_until <= @t''', {'t': t});
     final v = await platform.values();
@@ -860,6 +985,7 @@ class BillingService {
         await notifications.notify([r[2] as String], kind: 'billing_deleted', data: {'companyName': r[1]});
       }
     }
+    await _apiKeysTick(t);
     // Factures des entreprises fermées : gardées la durée légale, puis effacées.
     await store.query(store.db, '''
       DELETE FROM invoices WHERE company_id IS NULL AND issued_at < @t::timestamptz - make_interval(years => @y)''',

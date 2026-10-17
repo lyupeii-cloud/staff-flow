@@ -156,6 +156,40 @@ class _BillingPageState extends State<BillingPage> {
     );
   }
 
+  /// « API Pro » 5 clés : nombre de clés au prochain renouvellement, avec
+  /// l'avertissement des clés qui seront désactivées.
+  Widget _proKeysChoice(L10n t, ThemeData theme, Map<String, dynamic> d) {
+    final next = d['apiProNextKeys'] as int? ?? d['apiProKeys'] as int;
+    final active = d['apiKeyCount'] as int? ?? 0;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text(t.billingProKeysNext, style: theme.textTheme.bodySmall),
+        const SizedBox(height: 4),
+        SegmentedButton<int>(
+          segments: [
+            ButtonSegment(value: 5, label: Text(t.billingProKeys5)),
+            ButtonSegment(value: 1, label: Text(t.billingProKeys1)),
+          ],
+          selected: {next},
+          onSelectionChanged: _busy
+              ? null
+              : (s) => _run(() async {
+                    await widget.session.api
+                        .send('PUT', '$_base/renewal', body: {'option': 'proKeys', 'keys': s.first});
+                    await _load();
+                  }),
+        ),
+        if (next == 1 && active > 1)
+          Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: Text(t.billingProKeysWarning('$active'),
+                style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.error)),
+          ),
+      ]),
+    );
+  }
+
   /// Nombre de places tapé au clavier (au-delà de 500, la réglette s'arrête).
   Future<void> _typeSlots(Map<String, dynamic> d) async {
     final t = context.l10n;
@@ -202,6 +236,10 @@ class _BillingPageState extends State<BillingPage> {
               date(l['from']), longDate(DateTime.parse(l['to']).subtract(const Duration(days: 1)), loc), '${l['months']}'),
           'api' => t.billingLineApi('${l['months']}'),
           'pro' => t.billingLinePro('${l['months']}'),
+          'pro5Addon' => t.billingLinePro5Addon(
+              date(l['from']), longDate(DateTime.parse(l['to']).subtract(const Duration(days: 1)), loc), '${l['months']}'),
+          'pro5Upgrade' => t.billingLinePro5Upgrade(
+              date(l['from']), longDate(DateTime.parse(l['to']).subtract(const Duration(days: 1)), loc), '${l['months']}'),
           'proAddon' => t.billingLineProAddon(
               date(l['from']), longDate(DateTime.parse(l['to']).subtract(const Duration(days: 1)), loc), '${l['months']}'),
           'apiProrata' => t.billingLineApiProrata('${l['days']}', '${l['monthDays']}'),
@@ -401,16 +439,32 @@ class _BillingPageState extends State<BillingPage> {
           _optionTile(d, 'cascade', t.billingCascade,
               t.billingPerMonth(euroAmount(context, prices['monthCascade'] - prices['month'])),
               value: _cascade, onLocal: (v) => setState(() => _cascade = v)),
-        _optionTile(d, 'api', t.billingApi, t.billingPerMonth(euroAmount(context, d['apiOptionPrice'] as int)),
-            value: _api, onLocal: (v) => setState(() => _api = v)),
-        // API Pro : seulement en cours d'abonnement payé (ajoutée ci-dessous, puis renouvelée ou non).
+        // Lecture : comprise dans « API Pro ».
         if (d['apiProOption'] == true && status == 'active')
-          _optionTile(d, 'pro', t.billingApiPro, t.billingPerMonth(euroAmount(context, d['apiProPrice'] as int)),
-              value: d['proUntil'] == null, onLocal: (_) {})
-        else
           Padding(
             padding: const EdgeInsets.only(bottom: 8),
-            child: Text(t.billingApiProHint(euroAmount(context, d['apiProPrice'] as int)),
+            child: Text(t.billingApiIncluded, style: theme.textTheme.bodySmall),
+          )
+        else
+          _optionTile(d, 'api', t.billingApi, t.billingPerMonth(euroAmount(context, d['apiOptionPrice'] as int)),
+              value: _api, onLocal: (v) => setState(() => _api = v)),
+        // API Pro : seulement en cours d'abonnement payé (ajoutée ci-dessous, puis renouvelée ou non).
+        if (d['apiProOption'] == true && status == 'active') ...[
+          _optionTile(
+              d,
+              'pro',
+              d['apiProKeys'] == 5 ? t.billingApiPro5 : t.billingApiPro1,
+              t.billingPerMonth(euroAmount(
+                  context, (d['apiProKeys'] == 5 ? d['apiPro5Price'] : d['apiProPrice']) as int)),
+              value: d['proUntil'] == null,
+              onLocal: (_) {}),
+          // 5 clés : le prochain renouvellement peut repasser à 1 clé.
+          if (d['apiProKeys'] == 5 && d['proUntil'] == null) _proKeysChoice(t, theme, d),
+        ] else
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: Text(
+                t.billingApiProHint(euroAmount(context, d['apiProPrice'] as int), euroAmount(context, d['apiPro5Price'] as int)),
                 style: theme.textTheme.bodySmall),
           ),
         // Abonnement en cours : une option s'ajoute seule, jusqu'à la fin de la période payée.
@@ -419,7 +473,8 @@ class _BillingPageState extends State<BillingPage> {
           for (final (key, title) in [
             ('slots', t.billingSeatsAddon('${d['slots']}', '${_slots ?? d['slotsChosen']}')),
             ('api', t.billingApi),
-            ('pro', t.billingApiPro),
+            ('pro', t.billingApiPro1),
+            ('pro5', d['apiProOption'] == true ? t.billingApiPro5Upgrade : t.billingApiPro5),
             ('cascade', t.billingCascade),
           ])
             if ((d['addons'] as Map?)?[key] case final Map addon)
@@ -505,7 +560,7 @@ class _BillingPageState extends State<BillingPage> {
 
     final options = [
       if (d['apiOption'] == true) (t.billingApi, ends('api')),
-      if (d['apiProOption'] == true) (t.billingApiPro, ends('pro')),
+      if (d['apiProOption'] == true) (d['apiProKeys'] == 5 ? t.billingApiPro5 : t.billingApiPro1, ends('pro')),
       if (d['cascadeOption'] == true || included) (t.billingCascade, ends('cascade')),
     ];
     return [
