@@ -2285,7 +2285,7 @@ class L10nRu extends L10n {
 
   @override
   String billingApiProHint(String price1, String price5) {
-    return '«API Pro» (чтение и запись, вебхуки, журналы): $price1 / мес. за 1 ключ, $price5 / мес. за 5 ключей, без скидки. С оплаченной подпиской: добавьте ниже.';
+    return '«API Pro» (чтение и запись, вебхуки, журналы): $price1 / мес. за 1 ключ, $price5 / мес. за 10 ключей, без скидки. С оплаченной подпиской: добавьте ниже.';
   }
 
   @override
@@ -2596,10 +2596,10 @@ class L10nRu extends L10n {
   String get billingApiPro1 => 'Опция «API Pro» (1 ключ)';
 
   @override
-  String get billingApiPro5 => 'Опция «API Pro» (5 ключей)';
+  String get billingApiPro10 => 'Опция «API Pro» (10 ключей)';
 
   @override
-  String get billingApiPro5Upgrade => 'Перейти на 5 ключей';
+  String get billingApiPro10Upgrade => 'Перейти на 10 ключей';
 
   @override
   String get billingProKeysNext => 'При следующем продлении';
@@ -2608,7 +2608,7 @@ class L10nRu extends L10n {
   String get billingProKeys1 => '1 ключ';
 
   @override
-  String get billingProKeys5 => '5 ключей';
+  String get billingProKeys10 => '10 ключей';
 
   @override
   String billingProKeysWarning(String count) {
@@ -2619,13 +2619,13 @@ class L10nRu extends L10n {
   String get billingApiIncluded => 'Чтение входит в «API Pro».';
 
   @override
-  String billingLinePro5Addon(String start, String end, String months) {
-    return 'Опция «API Pro», 5 ключей, добавлена во время подписки, с $start по $end: $months мес., без скидки';
+  String billingLinePro10Addon(String start, String end, String months) {
+    return 'Опция «API Pro», 10 ключей, добавлена во время подписки, с $start по $end: $months мес., без скидки';
   }
 
   @override
-  String billingLinePro5Upgrade(String start, String end, String months) {
-    return 'Переход «API Pro» на 5 ключей, с $start по $end: $months мес. (разница в цене), без скидки';
+  String billingLinePro10Upgrade(String start, String end, String months) {
+    return 'Переход «API Pro» на 10 ключей, с $start по $end: $months мес. (разница в цене), без скидки';
   }
 
   @override

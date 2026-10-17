@@ -2277,7 +2277,7 @@ class L10nEn extends L10n {
 
   @override
   String billingApiProHint(String price1, String price5) {
-    return '“API Pro” (read and write, webhooks, logs): $price1 / month for 1 key, $price5 / month for 5 keys, no discount. With a paid subscription: add it below.';
+    return '“API Pro” (read and write, webhooks, logs): $price1 / month for 1 key, $price5 / month for 10 keys, no discount. With a paid subscription: add it below.';
   }
 
   @override
@@ -2589,10 +2589,10 @@ class L10nEn extends L10n {
   String get billingApiPro1 => '“API Pro” option (1 key)';
 
   @override
-  String get billingApiPro5 => '“API Pro” option (5 keys)';
+  String get billingApiPro10 => '“API Pro” option (10 keys)';
 
   @override
-  String get billingApiPro5Upgrade => 'Move to 5 keys';
+  String get billingApiPro10Upgrade => 'Move to 10 keys';
 
   @override
   String get billingProKeysNext => 'At the next renewal';
@@ -2601,7 +2601,7 @@ class L10nEn extends L10n {
   String get billingProKeys1 => '1 key';
 
   @override
-  String get billingProKeys5 => '5 keys';
+  String get billingProKeys10 => '10 keys';
 
   @override
   String billingProKeysWarning(String count) {
@@ -2612,13 +2612,13 @@ class L10nEn extends L10n {
   String get billingApiIncluded => 'Read access included in “API Pro”.';
 
   @override
-  String billingLinePro5Addon(String start, String end, String months) {
-    return '“API Pro” option, 5 keys, added during the subscription, from $start to $end: $months months, no discount';
+  String billingLinePro10Addon(String start, String end, String months) {
+    return '“API Pro” option, 10 keys, added during the subscription, from $start to $end: $months months, no discount';
   }
 
   @override
-  String billingLinePro5Upgrade(String start, String end, String months) {
-    return '“API Pro” upgrade to 5 keys, from $start to $end: $months months (price difference), no discount';
+  String billingLinePro10Upgrade(String start, String end, String months) {
+    return '“API Pro” upgrade to 10 keys, from $start to $end: $months months (price difference), no discount';
   }
 
   @override

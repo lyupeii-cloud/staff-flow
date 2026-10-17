@@ -39,7 +39,7 @@ class _ApiKeysPageState extends State<ApiKeysPage> {
 
   String get _base => '/companies/${widget.company.id}/api-keys';
 
-  /// Clés actives permises par la formule (1 en lecture ou « API Pro » 1 clé, 5 en « API Pro » 5 clés).
+  /// Clés actives permises par la formule (1 en lecture ou « API Pro » 1 clé, 5 en « API Pro » 10 clés).
   int? _limit;
 
   /// Clés actives (relu avec la liste).

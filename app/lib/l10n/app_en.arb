@@ -1682,7 +1682,7 @@
       }
     }
   },
-  "billingApiProHint": "“API Pro” (read and write, webhooks, logs): {price1} / month for 1 key, {price5} / month for 5 keys, no discount. With a paid subscription: add it below.",
+  "billingApiProHint": "“API Pro” (read and write, webhooks, logs): {price1} / month for 1 key, {price5} / month for 10 keys, no discount. With a paid subscription: add it below.",
   "@billingApiProHint": {
     "placeholders": {
       "price1": {
@@ -1849,11 +1849,11 @@
   "apiKeySaved": "Key saved.",
   "apiKeyIncomplete": "Give the key a name and choose at least one permission.",
   "billingApiPro1": "“API Pro” option (1 key)",
-  "billingApiPro5": "“API Pro” option (5 keys)",
-  "billingApiPro5Upgrade": "Move to 5 keys",
+  "billingApiPro10": "“API Pro” option (10 keys)",
+  "billingApiPro10Upgrade": "Move to 10 keys",
   "billingProKeysNext": "At the next renewal",
   "billingProKeys1": "1 key",
-  "billingProKeys5": "5 keys",
+  "billingProKeys10": "10 keys",
   "billingProKeysWarning": "{count} keys are active: at renewal, only the oldest stays active. You'll choose which one to keep in “API access”.",
   "@billingProKeysWarning": {
     "placeholders": {
@@ -1863,8 +1863,8 @@
     }
   },
   "billingApiIncluded": "Read access included in “API Pro”.",
-  "billingLinePro5Addon": "“API Pro” option, 5 keys, added during the subscription, from {start} to {end}: {months} months, no discount",
-  "@billingLinePro5Addon": {
+  "billingLinePro10Addon": "“API Pro” option, 10 keys, added during the subscription, from {start} to {end}: {months} months, no discount",
+  "@billingLinePro10Addon": {
     "placeholders": {
       "start": {
         "type": "String"
@@ -1877,8 +1877,8 @@
       }
     }
   },
-  "billingLinePro5Upgrade": "“API Pro” upgrade to 5 keys, from {start} to {end}: {months} months (price difference), no discount",
-  "@billingLinePro5Upgrade": {
+  "billingLinePro10Upgrade": "“API Pro” upgrade to 10 keys, from {start} to {end}: {months} months (price difference), no discount",
+  "@billingLinePro10Upgrade": {
     "placeholders": {
       "start": {
         "type": "String"

@@ -1,13 +1,12 @@
 import 'dart:convert';
 
 import 'package:shelf/shelf.dart';
-import 'package:staff_flow_server/staff_flow_server.dart';
 import 'package:test/test.dart';
 
 import 'helpers.dart';
 
-/// Formules API : lecture (1 clé), « API Pro » 1 ou 5 clés ; passage de la
-/// lecture à Pro, de 1 à 5 clés, baisse au renouvellement, arrêt puis
+/// Formules API : lecture (1 clé), « API Pro » 1 ou 10 clés ; passage de la
+/// lecture à Pro, de 1 à 10 clés, baisse au renouvellement, arrêt puis
 /// suppression des clés après 30 jours.
 void main() {
   final env = TestEnv();
@@ -50,15 +49,15 @@ void main() {
     expect(paid['amountCents'], 300 + 1000);
   });
 
-  test('5 clés ; baisse à 1 clé au renouvellement : clés en trop désactivées, le patron choisit', () async {
+  test('10 clés ; baisse à 1 clé au renouvellement : clés en trop désactivées, le patron choisit', () async {
     await boss.ok('POST', p('/billing/checkout'), {'period': 'month', 'cascade': false});
-    final quote = (await boss.ok('GET', p('/billing')))['addons']['pro5'] as Map;
-    expect([quote['lines'].single['unitCents'], quote['lines'].single['label']], [2000, 'pro5Addon']);
-    await boss.ok('POST', p('/billing/addon'), {'option': 'pro5'});
+    final quote = (await boss.ok('GET', p('/billing')))['addons']['pro10'] as Map;
+    expect([quote['lines'].single['unitCents'], quote['lines'].single['label']], [2000, 'pro10Addon']);
+    await boss.ok('POST', p('/billing/addon'), {'option': 'pro10'});
     final a = await newKey('A'), b = await newKey('B');
-    expect((await boss.ok('GET', p('/api-keys')))['limit'], 5);
-    // Déjà 5 clés : rien à changer au renouvellement.
-    expect((await boss('PUT', p('/billing/renewal'), {'option': 'proKeys', 'keys': 5})).$1, 204);
+    expect((await boss.ok('GET', p('/api-keys')))['limit'], 10);
+    // Déjà 10 clés : rien à changer au renouvellement.
+    expect((await boss('PUT', p('/billing/renewal'), {'option': 'proKeys', 'keys': 10})).$1, 204);
     await boss.ok('PUT', p('/billing/renewal'), {'option': 'proKeys', 'keys': 1});
     expect((await boss.ok('GET', p('/billing')))['apiProNextKeys'], 1);
     final renew = await boss.ok('POST', p('/billing/checkout'), {'period': 'month', 'cascade': false});

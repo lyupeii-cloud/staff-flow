@@ -2288,7 +2288,7 @@ class L10nUk extends L10n {
 
   @override
   String billingApiProHint(String price1, String price5) {
-    return '«API Pro» (читання й запис, вебхуки, журнали): $price1 / міс. за 1 ключ, $price5 / міс. за 5 ключів, без знижки. З оплаченою підпискою: додайте нижче.';
+    return '«API Pro» (читання й запис, вебхуки, журнали): $price1 / міс. за 1 ключ, $price5 / міс. за 10 ключів, без знижки. З оплаченою підпискою: додайте нижче.';
   }
 
   @override
@@ -2599,10 +2599,10 @@ class L10nUk extends L10n {
   String get billingApiPro1 => 'Опція «API Pro» (1 ключ)';
 
   @override
-  String get billingApiPro5 => 'Опція «API Pro» (5 ключів)';
+  String get billingApiPro10 => 'Опція «API Pro» (10 ключів)';
 
   @override
-  String get billingApiPro5Upgrade => 'Перейти на 5 ключів';
+  String get billingApiPro10Upgrade => 'Перейти на 10 ключів';
 
   @override
   String get billingProKeysNext => 'Під час наступного поновлення';
@@ -2611,7 +2611,7 @@ class L10nUk extends L10n {
   String get billingProKeys1 => '1 ключ';
 
   @override
-  String get billingProKeys5 => '5 ключів';
+  String get billingProKeys10 => '10 ключів';
 
   @override
   String billingProKeysWarning(String count) {
@@ -2622,13 +2622,13 @@ class L10nUk extends L10n {
   String get billingApiIncluded => 'Читання входить в «API Pro».';
 
   @override
-  String billingLinePro5Addon(String start, String end, String months) {
-    return 'Опція «API Pro», 5 ключів, додана під час підписки, з $start по $end: $months міс., без знижки';
+  String billingLinePro10Addon(String start, String end, String months) {
+    return 'Опція «API Pro», 10 ключів, додана під час підписки, з $start по $end: $months міс., без знижки';
   }
 
   @override
-  String billingLinePro5Upgrade(String start, String end, String months) {
-    return 'Перехід «API Pro» на 5 ключів, з $start по $end: $months міс. (різниця в ціні), без знижки';
+  String billingLinePro10Upgrade(String start, String end, String months) {
+    return 'Перехід «API Pro» на 10 ключів, з $start по $end: $months міс. (різниця в ціні), без знижки';
   }
 
   @override

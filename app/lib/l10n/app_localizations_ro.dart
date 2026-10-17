@@ -2285,7 +2285,7 @@ class L10nRo extends L10n {
 
   @override
   String billingApiProHint(String price1, String price5) {
-    return '„API Pro” (citire și scriere, webhook-uri, jurnale): $price1 / lună pentru 1 cheie, $price5 / lună pentru 5 chei, fără reducere. Cu abonament plătit: adăugați-o mai jos.';
+    return '„API Pro” (citire și scriere, webhook-uri, jurnale): $price1 / lună pentru 1 cheie, $price5 / lună pentru 10 chei, fără reducere. Cu abonament plătit: adăugați-o mai jos.';
   }
 
   @override
@@ -2599,10 +2599,10 @@ class L10nRo extends L10n {
   String get billingApiPro1 => 'Opțiunea „API Pro” (1 cheie)';
 
   @override
-  String get billingApiPro5 => 'Opțiunea „API Pro” (5 chei)';
+  String get billingApiPro10 => 'Opțiunea „API Pro” (10 chei)';
 
   @override
-  String get billingApiPro5Upgrade => 'Treceți la 5 chei';
+  String get billingApiPro10Upgrade => 'Treceți la 10 chei';
 
   @override
   String get billingProKeysNext => 'La următoarea reînnoire';
@@ -2611,7 +2611,7 @@ class L10nRo extends L10n {
   String get billingProKeys1 => '1 cheie';
 
   @override
-  String get billingProKeys5 => '5 chei';
+  String get billingProKeys10 => '10 chei';
 
   @override
   String billingProKeysWarning(String count) {
@@ -2622,13 +2622,13 @@ class L10nRo extends L10n {
   String get billingApiIncluded => 'Citirea este inclusă în „API Pro”.';
 
   @override
-  String billingLinePro5Addon(String start, String end, String months) {
-    return 'Opțiunea „API Pro”, 5 chei, adăugată în timpul abonamentului, de la $start la $end: $months luni, fără reducere';
+  String billingLinePro10Addon(String start, String end, String months) {
+    return 'Opțiunea „API Pro”, 10 chei, adăugată în timpul abonamentului, de la $start la $end: $months luni, fără reducere';
   }
 
   @override
-  String billingLinePro5Upgrade(String start, String end, String months) {
-    return 'Trecerea „API Pro” la 5 chei, de la $start la $end: $months luni (diferența de preț), fără reducere';
+  String billingLinePro10Upgrade(String start, String end, String months) {
+    return 'Trecerea „API Pro” la 10 chei, de la $start la $end: $months luni (diferența de preț), fără reducere';
   }
 
   @override

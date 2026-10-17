@@ -271,6 +271,6 @@ const uk = <String, String>{
   'Votre formule permet {count} clé(s) active(s) : désactivez-en une d\'abord.': 'Ваш тариф дозволяє {count} активних ключів: спочатку вимкніть один.',
   'Cette clé est désactivée : la formule API de l\'entreprise ne la couvre plus.': 'Цей ключ вимкнено: тариф API компанії його більше не покриває.',
   'Accès API arrêté : les clés API seront supprimées le {day}, sauf si l\'option est reprise d\'ici là.': 'Доступ до API зупинено: ключі API буде видалено {day}, якщо опцію не буде поновлено до того часу.',
-  'Option « API Pro » : 5 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': 'Опція «API Pro»: 5 ключів, додана під час підписки, з {from} по {to}: {months} міс., без знижки',
-  'Passage de « API Pro » à 5 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': 'Перехід «API Pro» на 5 ключів, з {from} по {to}: {months} міс. (різниця в ціні), без знижки',
+  'Option « API Pro » : 10 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': 'Опція «API Pro»: 10 ключів, додана під час підписки, з {from} по {to}: {months} міс., без знижки',
+  'Passage de « API Pro » à 10 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': 'Перехід «API Pro» на 10 ключів, з {from} по {to}: {months} міс. (різниця в ціні), без знижки',
 };

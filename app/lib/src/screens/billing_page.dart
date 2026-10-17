@@ -156,7 +156,7 @@ class _BillingPageState extends State<BillingPage> {
     );
   }
 
-  /// « API Pro » 5 clés : nombre de clés au prochain renouvellement, avec
+  /// « API Pro » 10 clés : nombre de clés au prochain renouvellement, avec
   /// l'avertissement des clés qui seront désactivées.
   Widget _proKeysChoice(L10n t, ThemeData theme, Map<String, dynamic> d) {
     final next = d['apiProNextKeys'] as int? ?? d['apiProKeys'] as int;
@@ -168,7 +168,7 @@ class _BillingPageState extends State<BillingPage> {
         const SizedBox(height: 4),
         SegmentedButton<int>(
           segments: [
-            ButtonSegment(value: 5, label: Text(t.billingProKeys5)),
+            ButtonSegment(value: 10, label: Text(t.billingProKeys10)),
             ButtonSegment(value: 1, label: Text(t.billingProKeys1)),
           ],
           selected: {next},
@@ -236,9 +236,9 @@ class _BillingPageState extends State<BillingPage> {
               date(l['from']), longDate(DateTime.parse(l['to']).subtract(const Duration(days: 1)), loc), '${l['months']}'),
           'api' => t.billingLineApi('${l['months']}'),
           'pro' => t.billingLinePro('${l['months']}'),
-          'pro5Addon' => t.billingLinePro5Addon(
+          'pro10Addon' => t.billingLinePro10Addon(
               date(l['from']), longDate(DateTime.parse(l['to']).subtract(const Duration(days: 1)), loc), '${l['months']}'),
-          'pro5Upgrade' => t.billingLinePro5Upgrade(
+          'pro10Upgrade' => t.billingLinePro10Upgrade(
               date(l['from']), longDate(DateTime.parse(l['to']).subtract(const Duration(days: 1)), loc), '${l['months']}'),
           'proAddon' => t.billingLineProAddon(
               date(l['from']), longDate(DateTime.parse(l['to']).subtract(const Duration(days: 1)), loc), '${l['months']}'),
@@ -453,18 +453,18 @@ class _BillingPageState extends State<BillingPage> {
           _optionTile(
               d,
               'pro',
-              d['apiProKeys'] == 5 ? t.billingApiPro5 : t.billingApiPro1,
+              d['apiProKeys'] == 10 ? t.billingApiPro10 : t.billingApiPro1,
               t.billingPerMonth(euroAmount(
-                  context, (d['apiProKeys'] == 5 ? d['apiPro5Price'] : d['apiProPrice']) as int)),
+                  context, (d['apiProKeys'] == 10 ? d['apiPro10Price'] : d['apiProPrice']) as int)),
               value: d['proUntil'] == null,
               onLocal: (_) {}),
-          // 5 clés : le prochain renouvellement peut repasser à 1 clé.
-          if (d['apiProKeys'] == 5 && d['proUntil'] == null) _proKeysChoice(t, theme, d),
+          // 10 clés : le prochain renouvellement peut repasser à 1 clé.
+          if (d['apiProKeys'] == 10 && d['proUntil'] == null) _proKeysChoice(t, theme, d),
         ] else
           Padding(
             padding: const EdgeInsets.only(bottom: 8),
             child: Text(
-                t.billingApiProHint(euroAmount(context, d['apiProPrice'] as int), euroAmount(context, d['apiPro5Price'] as int)),
+                t.billingApiProHint(euroAmount(context, d['apiProPrice'] as int), euroAmount(context, d['apiPro10Price'] as int)),
                 style: theme.textTheme.bodySmall),
           ),
         // Abonnement en cours : une option s'ajoute seule, jusqu'à la fin de la période payée.
@@ -474,7 +474,7 @@ class _BillingPageState extends State<BillingPage> {
             ('slots', t.billingSeatsAddon('${d['slots']}', '${_slots ?? d['slotsChosen']}')),
             ('api', t.billingApi),
             ('pro', t.billingApiPro1),
-            ('pro5', d['apiProOption'] == true ? t.billingApiPro5Upgrade : t.billingApiPro5),
+            ('pro10', d['apiProOption'] == true ? t.billingApiPro10Upgrade : t.billingApiPro10),
             ('cascade', t.billingCascade),
           ])
             if ((d['addons'] as Map?)?[key] case final Map addon)
@@ -560,7 +560,7 @@ class _BillingPageState extends State<BillingPage> {
 
     final options = [
       if (d['apiOption'] == true) (t.billingApi, ends('api')),
-      if (d['apiProOption'] == true) (d['apiProKeys'] == 5 ? t.billingApiPro5 : t.billingApiPro1, ends('pro')),
+      if (d['apiProOption'] == true) (d['apiProKeys'] == 10 ? t.billingApiPro10 : t.billingApiPro1, ends('pro')),
       if (d['cascadeOption'] == true || included) (t.billingCascade, ends('cascade')),
     ];
     return [

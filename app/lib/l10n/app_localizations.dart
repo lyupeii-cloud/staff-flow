@@ -3903,7 +3903,7 @@ abstract class L10n {
   /// No description provided for @billingApiProHint.
   ///
   /// In en, this message translates to:
-  /// **'“API Pro” (read and write, webhooks, logs): {price1} / month for 1 key, {price5} / month for 5 keys, no discount. With a paid subscription: add it below.'**
+  /// **'“API Pro” (read and write, webhooks, logs): {price1} / month for 1 key, {price5} / month for 10 keys, no discount. With a paid subscription: add it below.'**
   String billingApiProHint(String price1, String price5);
 
   /// No description provided for @whTitle.
@@ -4476,17 +4476,17 @@ abstract class L10n {
   /// **'“API Pro” option (1 key)'**
   String get billingApiPro1;
 
-  /// No description provided for @billingApiPro5.
+  /// No description provided for @billingApiPro10.
   ///
   /// In en, this message translates to:
-  /// **'“API Pro” option (5 keys)'**
-  String get billingApiPro5;
+  /// **'“API Pro” option (10 keys)'**
+  String get billingApiPro10;
 
-  /// No description provided for @billingApiPro5Upgrade.
+  /// No description provided for @billingApiPro10Upgrade.
   ///
   /// In en, this message translates to:
-  /// **'Move to 5 keys'**
-  String get billingApiPro5Upgrade;
+  /// **'Move to 10 keys'**
+  String get billingApiPro10Upgrade;
 
   /// No description provided for @billingProKeysNext.
   ///
@@ -4500,11 +4500,11 @@ abstract class L10n {
   /// **'1 key'**
   String get billingProKeys1;
 
-  /// No description provided for @billingProKeys5.
+  /// No description provided for @billingProKeys10.
   ///
   /// In en, this message translates to:
-  /// **'5 keys'**
-  String get billingProKeys5;
+  /// **'10 keys'**
+  String get billingProKeys10;
 
   /// No description provided for @billingProKeysWarning.
   ///
@@ -4518,17 +4518,17 @@ abstract class L10n {
   /// **'Read access included in “API Pro”.'**
   String get billingApiIncluded;
 
-  /// No description provided for @billingLinePro5Addon.
+  /// No description provided for @billingLinePro10Addon.
   ///
   /// In en, this message translates to:
-  /// **'“API Pro” option, 5 keys, added during the subscription, from {start} to {end}: {months} months, no discount'**
-  String billingLinePro5Addon(String start, String end, String months);
+  /// **'“API Pro” option, 10 keys, added during the subscription, from {start} to {end}: {months} months, no discount'**
+  String billingLinePro10Addon(String start, String end, String months);
 
-  /// No description provided for @billingLinePro5Upgrade.
+  /// No description provided for @billingLinePro10Upgrade.
   ///
   /// In en, this message translates to:
-  /// **'“API Pro” upgrade to 5 keys, from {start} to {end}: {months} months (price difference), no discount'**
-  String billingLinePro5Upgrade(String start, String end, String months);
+  /// **'“API Pro” upgrade to 10 keys, from {start} to {end}: {months} months (price difference), no discount'**
+  String billingLinePro10Upgrade(String start, String end, String months);
 
   /// No description provided for @apiKeysCount.
   ///

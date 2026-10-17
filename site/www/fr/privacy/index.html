@@ -38,14 +38,16 @@
       <p>Appareils : jeton de notification, plateforme et langue de l'appareil.</p>
       <p>Facturation : nom de l'entreprise, nom du propriétaire, montants et périodes. Nous ne recevons jamais vos données de carte bancaire.</p>
       <p>Données techniques : journaux du serveur (dont l'adresse IP) et journal des actions, pour la sécurité.</p>
+      <p>Clés API et journaux des appels : nom et droits des clés ; pour chaque appel, la date, l'action, le résultat, la durée et l'adresse IP du logiciel appelant ; adresses des webhooks choisies par l'entreprise.</p>
       <h2>3. Pourquoi</h2>
       <p>Fournir le service que vous utilisez (exécution du contrat) : planning, demandes, annonces, invitations, notifications.</p>
       <p>Sécurité, prévention des abus et vérification d'identité (intérêt légitime).</p>
       <p>Facturation et comptabilité (obligation légale).</p>
       <p>Vos données ne sont jamais vendues et ne servent pas à la publicité.</p>
       <h2>4. Qui y a accès</h2>
-      <p>Les membres de vos entreprises voient ce que leur rôle permet : planning, noms, et votre Telegram seulement si vous choisissez de l'afficher.</p>
-      <p>Nos prestataires techniques : OVHcloud (hébergement du serveur), Google (connexion et notifications Firebase Cloud Messaging), Telegram (si vous le reliez), et le prestataire de paiement lors d'un paiement.</p>
+      <p>Les membres de vos entreprises voient ce que leur rôle permet : planning, noms, et votre Telegram seulement si vous choisissez de l'afficher. Votre adresse e-mail et votre compte Google ne leur sont jamais montrés.</p>
+      <p>Les logiciels et assistants que votre entreprise choisit de brancher (API, webhooks, connecteur MCP) reçoivent les données que ses clés autorisent, sous la responsabilité de l'entreprise.</p>
+      <p>Nos prestataires techniques : OVHcloud (hébergement du serveur), Google (connexion et notifications Firebase Cloud Messaging), Telegram (si vous le reliez), le prestataire de paiement lors d'un paiement, et un prestataire de stockage (Google Drive) pour une copie des sauvegardes, chiffrée et illisible sans notre clé.</p>
       <p>La traduction des annonces se fait sur notre propre serveur : elles ne sont pas envoyées à un service de traduction extérieur.</p>
       <h2>5. Où</h2>
       <p>Le serveur de Staff Flow est actuellement situé en Australie (OVHcloud). Pour les personnes situées dans l'Union européenne, il s'agit d'un transfert de données hors de l'Union européenne.</p>
@@ -53,15 +55,15 @@
       <p>Compte : tant qu'il existe. Supprimé « en fantôme », il est conservé pour que vous puissiez revenir ; effacé définitivement, vos données personnelles sont effacées aussitôt et il ne reste qu'un « Ghost » anonyme dans l'historique des entreprises.</p>
       <p>Entreprise : jusqu'à sa suppression, au plus tard 15 jours après la fin de son abonnement.</p>
       <p>Factures : 10 ans (obligation légale).</p>
-      <p>Sauvegardes et journaux techniques : durée limitée, pour la sécurité et la reprise après incident.</p>
+      <p>Sauvegardes chiffrées : 30 jours. Journaux des clés API : 12 mois en ligne, puis archivés, supprimés après 3 ans. Clés API d'une option arrêtée : supprimées après 30 jours. Invitations non utilisées : 90 jours. Essais de connexion échoués : 24 heures. Journaux techniques du serveur : durée limitée, pour la sécurité.</p>
       <h2>7. Vos droits</h2>
       <p>Vous pouvez accéder à vos données et les récupérer (« Mon profil » → « Exporter mes données »), les corriger (nom), et supprimer votre compte (« Mon profil » → « Supprimer mon compte »). Vous pouvez aussi vous opposer à un traitement ou en demander la limitation en écrivant à contact@staff-flow.cloud.</p>
       <p>Pour les données saisies par une entreprise, adressez-vous d'abord à elle ; nous l'aiderons à répondre.</p>
       <p>Vous pouvez saisir l'autorité de protection des données de votre pays (en France : la CNIL ; en Ukraine : le Commissaire aux droits de l'homme du Parlement).</p>
       <h2>8. Sécurité</h2>
-      <p>Connexions chiffrées (HTTPS), accès selon le rôle, liens de téléchargement valables quelques minutes, vérification par Telegram pour changer de compte Google.</p>
+      <p>Connexions chiffrées (HTTPS), accès selon le rôle, liens de téléchargement valables quelques minutes, vérification par Telegram pour changer de compte Google, application d'authentification (2FA) avec blocage après 3 codes erronés, secrets 2FA et clés API conservés chiffrés ou sous forme d'empreinte, webhooks signés, nombre d'essais et d'appels limité, sauvegardes chiffrées.</p>
       <h2>9. Stockage sur l'appareil</h2>
-      <p>L'application garde sur votre appareil votre session et une copie du planning, pour fonctionner sans réseau. Ni l'application ni le site n'utilisent de traceur publicitaire ou de mesure d'audience.</p>
+      <p>L'application garde sur votre appareil votre session et une copie du planning, pour fonctionner sans réseau. Sur Android, la session est gardée dans le coffre chiffré du téléphone et exclue des sauvegardes. Ni l'application ni le site n'utilisent de traceur publicitaire ou de mesure d'audience.</p>
       <h2>10. Modifications</h2>
       <p>Cette politique peut évoluer ; les changements importants sont annoncés dans l'application.</p>
     </div>

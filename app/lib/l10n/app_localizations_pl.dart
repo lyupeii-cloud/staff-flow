@@ -2292,7 +2292,7 @@ class L10nPl extends L10n {
 
   @override
   String billingApiProHint(String price1, String price5) {
-    return '„API Pro” (odczyt i zapis, webhooki, dzienniki): $price1 / mies. za 1 klucz, $price5 / mies. za 5 kluczy, bez rabatu. Z opłaconą subskrypcją: dodaj poniżej.';
+    return '„API Pro” (odczyt i zapis, webhooki, dzienniki): $price1 / mies. za 1 klucz, $price5 / mies. za 10 kluczy, bez rabatu. Z opłaconą subskrypcją: dodaj poniżej.';
   }
 
   @override
@@ -2603,10 +2603,10 @@ class L10nPl extends L10n {
   String get billingApiPro1 => 'Opcja „API Pro” (1 klucz)';
 
   @override
-  String get billingApiPro5 => 'Opcja „API Pro” (5 kluczy)';
+  String get billingApiPro10 => 'Opcja „API Pro” (10 kluczy)';
 
   @override
-  String get billingApiPro5Upgrade => 'Przejdź na 5 kluczy';
+  String get billingApiPro10Upgrade => 'Przejdź na 10 kluczy';
 
   @override
   String get billingProKeysNext => 'Przy następnym odnowieniu';
@@ -2615,7 +2615,7 @@ class L10nPl extends L10n {
   String get billingProKeys1 => '1 klucz';
 
   @override
-  String get billingProKeys5 => '5 kluczy';
+  String get billingProKeys10 => '10 kluczy';
 
   @override
   String billingProKeysWarning(String count) {
@@ -2626,13 +2626,13 @@ class L10nPl extends L10n {
   String get billingApiIncluded => 'Odczyt wliczony w „API Pro”.';
 
   @override
-  String billingLinePro5Addon(String start, String end, String months) {
-    return 'Opcja „API Pro”, 5 kluczy, dodana w trakcie subskrypcji, od $start do $end: $months mies., bez rabatu';
+  String billingLinePro10Addon(String start, String end, String months) {
+    return 'Opcja „API Pro”, 10 kluczy, dodana w trakcie subskrypcji, od $start do $end: $months mies., bez rabatu';
   }
 
   @override
-  String billingLinePro5Upgrade(String start, String end, String months) {
-    return 'Przejście „API Pro” na 5 kluczy, od $start do $end: $months mies. (różnica ceny), bez rabatu';
+  String billingLinePro10Upgrade(String start, String end, String months) {
+    return 'Przejście „API Pro” na 10 kluczy, od $start do $end: $months mies. (różnica ceny), bez rabatu';
   }
 
   @override

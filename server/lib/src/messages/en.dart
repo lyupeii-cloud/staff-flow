@@ -273,6 +273,6 @@ const en = <String, String>{
   'Votre formule permet {count} clé(s) active(s) : désactivez-en une d\'abord.': 'Your plan allows {count} active key(s): disable one first.',
   'Cette clé est désactivée : la formule API de l\'entreprise ne la couvre plus.': 'This key is disabled: the company\'s API plan no longer covers it.',
   'Accès API arrêté : les clés API seront supprimées le {day}, sauf si l\'option est reprise d\'ici là.': 'API access stopped: the API keys will be deleted on {day} unless the option is taken again before then.',
-  'Option « API Pro » : 5 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': '“API Pro” option: 5 keys, added during the subscription, from {from} to {to}: {months} months, no discount',
-  'Passage de « API Pro » à 5 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': '“API Pro” upgrade to 5 keys, from {from} to {to}: {months} months (price difference), no discount',
+  'Option « API Pro » : 10 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': '“API Pro” option: 10 keys, added during the subscription, from {from} to {to}: {months} months, no discount',
+  'Passage de « API Pro » à 10 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': '“API Pro” upgrade to 10 keys, from {from} to {to}: {months} months (price difference), no discount',
 };

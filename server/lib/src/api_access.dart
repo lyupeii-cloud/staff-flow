@@ -39,7 +39,7 @@ class ApiAccessService {
   /// offerte, ni grande entreprise), coupée pendant la période de grâce.
   static bool proAllowed(Company c) => c.apiProOption && c.billingStatus == 'active';
 
-  /// Clés actives permises : « API Pro » 1 ou 5 clés ; accès API en lecture
+  /// Clés actives permises : « API Pro » 1 ou 10 clés ; accès API en lecture
   /// (essai, entreprise offerte ou option payée) : 1 clé ; sinon aucune.
   static int keyLimit(Company c) => proAllowed(c) ? c.apiProKeys : (allowed(c) ? 1 : 0);
 

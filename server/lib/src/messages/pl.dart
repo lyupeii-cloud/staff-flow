@@ -251,6 +251,6 @@ const pl = <String, String>{
   'Votre formule permet {count} clé(s) active(s) : désactivez-en une d\'abord.': 'Twój plan pozwala na {count} aktywnych kluczy: najpierw wyłącz jeden.',
   'Cette clé est désactivée : la formule API de l\'entreprise ne la couvre plus.': 'Ten klucz jest wyłączony: plan API firmy już go nie obejmuje.',
   'Accès API arrêté : les clés API seront supprimées le {day}, sauf si l\'option est reprise d\'ici là.': 'Dostęp API zatrzymany: klucze API zostaną usunięte {day}, chyba że opcja zostanie wznowiona.',
-  'Option « API Pro » : 5 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': 'Opcja „API Pro”: 5 kluczy, dodana w trakcie subskrypcji, od {from} do {to}: {months} mies., bez rabatu',
-  'Passage de « API Pro » à 5 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': 'Przejście „API Pro” na 5 kluczy, od {from} do {to}: {months} mies. (różnica ceny), bez rabatu',
+  'Option « API Pro » : 10 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': 'Opcja „API Pro”: 10 kluczy, dodana w trakcie subskrypcji, od {from} do {to}: {months} mies., bez rabatu',
+  'Passage de « API Pro » à 10 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': 'Przejście „API Pro” na 10 kluczy, od {from} do {to}: {months} mies. (różnica ceny), bez rabatu',
 };

@@ -23,15 +23,15 @@ void main() {
       method, Uri.parse('http://localhost/api/v1$path'),
       body: body == null ? null : jsonEncode(body), headers: {'authorization': 'Bearer $key'}));
 
-  /// « API Pro » 5 clés (plusieurs clés dans les tests).
-  Future<void> pro5() async {
+  /// « API Pro » 10 clés (plusieurs clés dans les tests).
+  Future<void> pro10() async {
     await boss.ok('POST', p('/billing/checkout'), {'period': 'month', 'cascade': false});
-    await boss.ok('POST', p('/billing/addon'), {'option': 'pro5'});
+    await boss.ok('POST', p('/billing/addon'), {'option': 'pro10'});
   }
 
   test('lectures par minute et par clé : 429 avec l\'attente, une seule ligne de journal', () async {
     await boss.ok('PUT', '/admin/settings/apiReadPerMinute', {'value': 3});
-    await pro5();
+    await pro10();
     final key = (await boss.ok('POST', p('/api-keys'), {'name': 'ERP', 'scopes': ['read']}))['key'] as String;
     final first = await ext('GET', '/ext/company', key);
     expect([first.statusCode, first.headers['x-ratelimit-limit'], first.headers['x-ratelimit-remaining']], [200, '3', '2']);
@@ -53,7 +53,7 @@ void main() {
 
   test('toutes les clés d\'une entreprise : limite commune', () async {
     await boss.ok('PUT', '/admin/settings/apiCompanyPerMinute', {'value': 2});
-    await pro5();
+    await pro10();
     final a = (await boss.ok('POST', p('/api-keys'), {'name': 'A', 'scopes': ['read']}))['key'] as String;
     final b = (await boss.ok('POST', p('/api-keys'), {'name': 'B', 'scopes': ['read']}))['key'] as String;
     await ext('GET', '/ext/company', a);

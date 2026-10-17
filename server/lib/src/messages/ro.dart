@@ -251,6 +251,6 @@ const ro = <String, String>{
   'Votre formule permet {count} clé(s) active(s) : désactivez-en une d\'abord.': 'Planul dvs. permite {count} chei active: dezactivați mai întâi una.',
   'Cette clé est désactivée : la formule API de l\'entreprise ne la couvre plus.': 'Această cheie este dezactivată: planul API al companiei nu o mai acoperă.',
   'Accès API arrêté : les clés API seront supprimées le {day}, sauf si l\'option est reprise d\'ici là.': 'Acces API oprit: cheile API vor fi șterse pe {day}, dacă opțiunea nu este reluată până atunci.',
-  'Option « API Pro » : 5 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': 'Opțiunea „API Pro”: 5 chei, adăugată în timpul abonamentului, de la {from} la {to}: {months} luni, fără reducere',
-  'Passage de « API Pro » à 5 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': 'Trecerea „API Pro” la 5 chei, de la {from} la {to}: {months} luni (diferența de preț), fără reducere',
+  'Option « API Pro » : 10 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': 'Opțiunea „API Pro”: 10 chei, adăugată în timpul abonamentului, de la {from} la {to}: {months} luni, fără reducere',
+  'Passage de « API Pro » à 10 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': 'Trecerea „API Pro” la 10 chei, de la {from} la {to}: {months} luni (diferența de preț), fără reducere',
 };

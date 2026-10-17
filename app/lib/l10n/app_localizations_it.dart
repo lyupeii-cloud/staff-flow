@@ -2281,7 +2281,7 @@ class L10nIt extends L10n {
 
   @override
   String billingApiProHint(String price1, String price5) {
-    return '«API Pro» (lettura e scrittura, webhook, registri): $price1 / mese per 1 chiave, $price5 / mese per 5 chiavi, senza sconto. Con un abbonamento pagato: aggiungila qui sotto.';
+    return '«API Pro» (lettura e scrittura, webhook, registri): $price1 / mese per 1 chiave, $price5 / mese per 10 chiavi, senza sconto. Con un abbonamento pagato: aggiungila qui sotto.';
   }
 
   @override
@@ -2595,10 +2595,10 @@ class L10nIt extends L10n {
   String get billingApiPro1 => 'Opzione «API Pro» (1 chiave)';
 
   @override
-  String get billingApiPro5 => 'Opzione «API Pro» (5 chiavi)';
+  String get billingApiPro10 => 'Opzione «API Pro» (10 chiavi)';
 
   @override
-  String get billingApiPro5Upgrade => 'Passa a 5 chiavi';
+  String get billingApiPro10Upgrade => 'Passa a 10 chiavi';
 
   @override
   String get billingProKeysNext => 'Al prossimo rinnovo';
@@ -2607,7 +2607,7 @@ class L10nIt extends L10n {
   String get billingProKeys1 => '1 chiave';
 
   @override
-  String get billingProKeys5 => '5 chiavi';
+  String get billingProKeys10 => '10 chiavi';
 
   @override
   String billingProKeysWarning(String count) {
@@ -2618,13 +2618,13 @@ class L10nIt extends L10n {
   String get billingApiIncluded => 'Lettura inclusa in «API Pro».';
 
   @override
-  String billingLinePro5Addon(String start, String end, String months) {
-    return 'Opzione «API Pro», 5 chiavi, aggiunta durante l\'abbonamento, dal $start al $end: $months mesi, senza sconto';
+  String billingLinePro10Addon(String start, String end, String months) {
+    return 'Opzione «API Pro», 10 chiavi, aggiunta durante l\'abbonamento, dal $start al $end: $months mesi, senza sconto';
   }
 
   @override
-  String billingLinePro5Upgrade(String start, String end, String months) {
-    return 'Passaggio di «API Pro» a 5 chiavi, dal $start al $end: $months mesi (differenza di prezzo), senza sconto';
+  String billingLinePro10Upgrade(String start, String end, String months) {
+    return 'Passaggio di «API Pro» a 10 chiavi, dal $start al $end: $months mesi (differenza di prezzo), senza sconto';
   }
 
   @override

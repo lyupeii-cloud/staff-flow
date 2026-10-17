@@ -2293,7 +2293,7 @@ class L10nDe extends L10n {
 
   @override
   String billingApiProHint(String price1, String price5) {
-    return '„API Pro“ (Lesen und Schreiben, Webhooks, Protokolle): $price1 / Monat für 1 Schlüssel, $price5 / Monat für 5 Schlüssel, ohne Rabatt. Mit bezahltem Abonnement: unten hinzufügen.';
+    return '„API Pro“ (Lesen und Schreiben, Webhooks, Protokolle): $price1 / Monat für 1 Schlüssel, $price5 / Monat für 10 Schlüssel, ohne Rabatt. Mit bezahltem Abonnement: unten hinzufügen.';
   }
 
   @override
@@ -2607,10 +2607,10 @@ class L10nDe extends L10n {
   String get billingApiPro1 => 'Option „API Pro“ (1 Schlüssel)';
 
   @override
-  String get billingApiPro5 => 'Option „API Pro“ (5 Schlüssel)';
+  String get billingApiPro10 => 'Option „API Pro“ (10 Schlüssel)';
 
   @override
-  String get billingApiPro5Upgrade => 'Auf 5 Schlüssel wechseln';
+  String get billingApiPro10Upgrade => 'Auf 10 Schlüssel wechseln';
 
   @override
   String get billingProKeysNext => 'Bei der nächsten Verlängerung';
@@ -2619,7 +2619,7 @@ class L10nDe extends L10n {
   String get billingProKeys1 => '1 Schlüssel';
 
   @override
-  String get billingProKeys5 => '5 Schlüssel';
+  String get billingProKeys10 => '10 Schlüssel';
 
   @override
   String billingProKeysWarning(String count) {
@@ -2630,13 +2630,13 @@ class L10nDe extends L10n {
   String get billingApiIncluded => 'Lesen ist in „API Pro“ enthalten.';
 
   @override
-  String billingLinePro5Addon(String start, String end, String months) {
-    return 'Option „API Pro“, 5 Schlüssel, während des Abonnements hinzugefügt, vom $start bis $end: $months Monate, ohne Rabatt';
+  String billingLinePro10Addon(String start, String end, String months) {
+    return 'Option „API Pro“, 10 Schlüssel, während des Abonnements hinzugefügt, vom $start bis $end: $months Monate, ohne Rabatt';
   }
 
   @override
-  String billingLinePro5Upgrade(String start, String end, String months) {
-    return 'Wechsel von „API Pro“ auf 5 Schlüssel, vom $start bis $end: $months Monate (Preisdifferenz), ohne Rabatt';
+  String billingLinePro10Upgrade(String start, String end, String months) {
+    return 'Wechsel von „API Pro“ auf 10 Schlüssel, vom $start bis $end: $months Monate (Preisdifferenz), ohne Rabatt';
   }
 
   @override

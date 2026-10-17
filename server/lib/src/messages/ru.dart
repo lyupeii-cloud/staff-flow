@@ -251,6 +251,6 @@ const ru = <String, String>{
   'Votre formule permet {count} clé(s) active(s) : désactivez-en une d\'abord.': 'Ваш тариф позволяет {count} активных ключей: сначала отключите один.',
   'Cette clé est désactivée : la formule API de l\'entreprise ne la couvre plus.': 'Этот ключ отключён: тариф API компании его больше не покрывает.',
   'Accès API arrêté : les clés API seront supprimées le {day}, sauf si l\'option est reprise d\'ici là.': 'Доступ к API остановлен: ключи API будут удалены {day}, если опцию не возобновят до этого.',
-  'Option « API Pro » : 5 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': 'Опция «API Pro»: 5 ключей, добавлена во время подписки, с {from} по {to}: {months} мес., без скидки',
-  'Passage de « API Pro » à 5 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': 'Переход «API Pro» на 5 ключей, с {from} по {to}: {months} мес. (разница в цене), без скидки',
+  'Option « API Pro » : 10 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise': 'Опция «API Pro»: 10 ключей, добавлена во время подписки, с {from} по {to}: {months} мес., без скидки',
+  'Passage de « API Pro » à 10 clés, du {from} au {to} : {months} mois (différence de prix), sans remise': 'Переход «API Pro» на 10 ключей, с {from} по {to}: {months} мес. (разница в цене), без скидки',
 };

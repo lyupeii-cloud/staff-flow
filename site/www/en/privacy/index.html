@@ -38,14 +38,16 @@
       <p>Devices: notification token, platform and device language.</p>
       <p>Billing: company name, owner name, amounts and periods. We never receive your bank card details.</p>
       <p>Technical data: server logs (including IP address) and an action log, for security.</p>
+      <p>API keys and call logs: name and permissions of keys; for each call, the date, action, result, duration and IP address of the calling software; webhook addresses chosen by the company.</p>
       <h2>3. Why</h2>
       <p>To provide the service you use (performance of the contract): schedule, requests, announcements, invitations, notifications.</p>
       <p>Security, abuse prevention and identity checks (legitimate interest).</p>
       <p>Billing and accounting (legal obligation).</p>
       <p>Your data is never sold and is not used for advertising.</p>
       <h2>4. Who has access</h2>
-      <p>Members of your companies see what their role allows: the schedule, names, and your Telegram only if you choose to show it.</p>
-      <p>Our technical providers: OVHcloud (server hosting), Google (sign-in and Firebase Cloud Messaging notifications), Telegram (if you link it), and the payment provider when you pay.</p>
+      <p>Members of your companies see what their role allows: the schedule, names, and your Telegram only if you choose to show it. Your email address and Google account are never shown to them.</p>
+      <p>The software and assistants your company chooses to connect (API, webhooks, MCP connector) receive the data its keys allow, under the company's responsibility.</p>
+      <p>Our technical providers: OVHcloud (server hosting), Google (sign-in and Firebase Cloud Messaging notifications), Telegram (if you link it), the payment provider when you pay, and a storage provider (Google Drive) for a copy of the backups, encrypted and unreadable without our key.</p>
       <p>Announcements are translated on our own server: they are not sent to an outside translation service.</p>
       <h2>5. Where</h2>
       <p>The Staff Flow server is currently located in Australia (OVHcloud). For people in the European Union, this is a transfer of data outside the European Union.</p>
@@ -53,15 +55,15 @@
       <p>Account: as long as it exists. Deleted “as a ghost”, it is kept so you can come back; erased permanently, your personal data is erased at once and only an anonymous “Ghost” remains in company history.</p>
       <p>Company: until it is deleted, at the latest 15 days after its subscription ends.</p>
       <p>Invoices: 10 years (legal obligation).</p>
-      <p>Backups and technical logs: a limited time, for security and recovery after an incident.</p>
+      <p>Encrypted backups: 30 days. API key logs: 12 months online, then archived, deleted after 3 years. API keys of a stopped option: deleted after 30 days. Unused invitations: 90 days. Failed sign-in attempts: 24 hours. Server technical logs: a limited time, for security.</p>
       <h2>7. Your rights</h2>
       <p>You can access and download your data (“My profile” → “Export my data”), correct it (name), and delete your account (“My profile” → “Delete my account”). You can also object to processing or ask for it to be restricted by writing to contact@staff-flow.cloud.</p>
       <p>For data entered by a company, please contact the company first; we will help it reply.</p>
       <p>You can complain to the data protection authority of your country (in Ukraine: the Ukrainian Parliament Commissioner for Human Rights; in France: the CNIL).</p>
       <h2>8. Security</h2>
-      <p>Encrypted connections (HTTPS), role-based access, download links valid for a few minutes, Telegram verification to change Google account.</p>
+      <p>Encrypted connections (HTTPS), role-based access, download links valid for a few minutes, Telegram verification to change Google account, authenticator app (2FA) with lockout after 3 wrong codes, 2FA secrets and API keys stored encrypted or hashed, signed webhooks, limited attempts and calls, encrypted backups.</p>
       <h2>9. Storage on your device</h2>
-      <p>The app keeps your session and a copy of the schedule on your device, to work offline. Neither the app nor the website uses advertising trackers or audience measurement.</p>
+      <p>The app keeps your session and a copy of the schedule on your device, to work offline. On Android, the session is kept in the phone's encrypted store and excluded from backups. Neither the app nor the website uses advertising trackers or audience measurement.</p>
       <h2>10. Changes</h2>
       <p>This policy may change; significant changes are announced in the app.</p>
     </div>

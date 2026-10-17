@@ -734,4 +734,9 @@ ALTER TABLE companies ADD COLUMN api_pro_keys int NOT NULL DEFAULT 1, ADD COLUMN
   ADD COLUMN api_off_since timestamptz, ADD COLUMN api_off_warned boolean NOT NULL DEFAULT false;
 ALTER TABLE api_keys ADD COLUMN disabled_at timestamptz;
 ''',
+  // 44 — « API Pro » : la grande formule passe de 5 à 10 clés.
+  '''
+UPDATE companies SET api_pro_keys = 10 WHERE api_pro_keys = 5;
+UPDATE companies SET api_pro_next_keys = 10 WHERE api_pro_next_keys = 5;
+''',
 ];

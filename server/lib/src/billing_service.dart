@@ -116,7 +116,7 @@ class BillingService {
     // Lecture comprise dans « API Pro ».
     if (option == 'api' && (c.apiOption || c.apiProOption)) return null;
     if (option == 'pro' && c.apiProOption) return null;
-    if (option == 'pro5' && c.apiProOption && c.apiProKeys >= 5) return null;
+    if (option == 'pro10' && c.apiProOption && c.apiProKeys >= 10) return null;
     if (option == 'cascade' && (c.cascadeOption || c.slots >= v['cascadeIncludedFrom']!)) return null;
     if (option == 'slots' && (slots == null || slots <= c.slots)) return null;
     final from = DateTime.utc(t.year, t.month);
@@ -128,7 +128,7 @@ class BillingService {
       'api' => v['apiOptionPrice']!,
       'pro' => proUnit(v, 1),
       // Déjà en « API Pro » 1 clé : seulement la différence.
-      'pro5' => c.apiProOption ? proUnit(v, 5) - proUnit(v, 1) : proUnit(v, 5),
+      'pro10' => c.apiProOption ? proUnit(v, 10) - proUnit(v, 1) : proUnit(v, 10),
       'cascade' => v['cascadeOptionPrice']!,
       _ => PlatformService.monthlyCents(v, slots!) - PlatformService.monthlyCents(v, c.slots),
     };
@@ -136,7 +136,7 @@ class BillingService {
       'label': switch (option) {
         'api' => 'apiAddon',
         'pro' => 'proAddon',
-        'pro5' => c.apiProOption ? 'pro5Upgrade' : 'pro5Addon',
+        'pro10' => c.apiProOption ? 'pro10Upgrade' : 'pro10Addon',
         'cascade' => 'cascadeAddon',
         _ => 'slotsAddon'
       },
@@ -150,15 +150,15 @@ class BillingService {
     return {'lines': [line], 'total': unit * months, 'from': from.toIso8601String(), 'to': until.toIso8601String()};
   }
 
-  /// Prix mensuel de « API Pro » : 1 clé, ou 5 clés.
-  static int proUnit(Map<String, int> v, int keys) => keys >= 5 ? v['apiPro5Price']! : v['apiProPrice']!;
+  /// Prix mensuel de « API Pro » : 1 clé, ou 10 clés.
+  static int proUnit(Map<String, int> v, int keys) => keys >= 10 ? v['apiPro10Price']! : v['apiProPrice']!;
 
   /// « API Pro » : nombre de clés du prochain renouvellement (1 ou 5). Le
-  /// passage à 5 clés se paie tout de suite (option « pro5 ») ; la baisse
+  /// passage à 10 clés se paie tout de suite (option « pro10 ») ; la baisse
   /// à 1 clé prend effet au renouvellement (clés en trop désactivées).
   Future<void> setProKeys(User actor, String companyId, int keys) async {
     final company = await _owned(actor, companyId);
-    if (keys != 1 && keys != 5) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
+    if (keys != 1 && keys != 10) throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
     if (company.billingStatus != 'active' || !company.apiProOption) {
       throw const ApiError.conflict('Cette option n\'est pas active.');
     }
@@ -267,7 +267,7 @@ class BillingService {
   Future<Map<String, Object?>> buyAddon(User actor, String companyId, String option, {int? slots}) async {
     final company = await _owned(actor, companyId);
     if (!canPay(actor)) throw const ApiError.conflict('Le paiement en ligne arrive bientôt.');
-    if (option != 'api' && option != 'cascade' && option != 'slots' && option != 'pro' && option != 'pro5') {
+    if (option != 'api' && option != 'cascade' && option != 'slots' && option != 'pro' && option != 'pro10') {
       throw const ApiError.badRequest('Champ manquant ou de mauvais type.');
     }
     if (option == 'slots') checkSlots(slots, 0);
@@ -307,8 +307,8 @@ class BillingService {
           switch (option) {
             'api' => 'UPDATE companies SET api_option = true, api_until = NULL WHERE id = @c::uuid',
             // « API Pro » comprend la lecture : l'option lecture s'arrête, la clé est gardée.
-            'pro' || 'pro5' => '''UPDATE companies SET api_pro_option = true, api_pro_until = NULL, api_pro_next_keys = NULL,
-                api_pro_keys = ${option == 'pro5' ? 5 : 1}, api_option = false, api_until = NULL WHERE id = @c::uuid''',
+            'pro' || 'pro10' => '''UPDATE companies SET api_pro_option = true, api_pro_until = NULL, api_pro_next_keys = NULL,
+                api_pro_keys = ${option == 'pro10' ? 10 : 1}, api_option = false, api_until = NULL WHERE id = @c::uuid''',
             'cascade' => 'UPDATE companies SET cascade_option = true, cascade_until = NULL WHERE id = @c::uuid',
             _ => 'UPDATE companies SET slots = @n WHERE id = @c::uuid',
           },
@@ -477,7 +477,7 @@ class BillingService {
       'apiOptionPrice': v['apiOptionPrice'],
       'apiProOption': company.apiProOption,
       'apiProPrice': v['apiProPrice'],
-      'apiPro5Price': v['apiPro5Price'],
+      'apiPro10Price': v['apiPro10Price'],
       'apiProKeys': company.apiProKeys,
       'apiProNextKeys': (await store.query(store.db, 'SELECT api_pro_next_keys FROM companies WHERE id = @c::uuid',
               {'c': companyId}))
@@ -491,7 +491,7 @@ class BillingService {
       ...await _renewals(companyId),
       // Options à ajouter seules, en cours d'abonnement.
       'addons': {
-        for (final o in ['api', 'pro', 'pro5', 'cascade']) o: _addon(company, v, staff, o),
+        for (final o in ['api', 'pro', 'pro10', 'cascade']) o: _addon(company, v, staff, o),
         'slots': _addon(company, v, staff, 'slots', slots: staff),
       },
       'isOwner': (await companies.open(actor, companyId)).$2 == Role.owner,
@@ -804,12 +804,12 @@ class BillingService {
               {'days': '${l['days']}', 'total': '${l['monthDays']}'}),
           'api' => t('Option « accès API » : {months} mois', {'months': '${l['months']}'}),
           'pro' => t('Option « API Pro » : {months} mois', {'months': '${l['months']}'}),
-          'pro5Addon' => t('Option « API Pro » : 5 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise', {
+          'pro10Addon' => t('Option « API Pro » : 10 clés, ajoutée en cours d\'abonnement, du {from} au {to} : {months} mois, sans remise', {
               'from': _day(DateTime.parse(l['from'] as String)),
               'to': _day(DateTime.parse(l['to'] as String).subtract(const Duration(days: 1))),
               'months': '${l['months']}',
             }),
-          'pro5Upgrade' => t('Passage de « API Pro » à 5 clés, du {from} au {to} : {months} mois (différence de prix), sans remise', {
+          'pro10Upgrade' => t('Passage de « API Pro » à 10 clés, du {from} au {to} : {months} mois (différence de prix), sans remise', {
               'from': _day(DateTime.parse(l['from'] as String)),
               'to': _day(DateTime.parse(l['to'] as String).subtract(const Duration(days: 1))),
               'months': '${l['months']}',
